@@ -21,6 +21,10 @@ t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.n
     padding-left: 22px;
     background: url(./parts/files/browser/media/icons/Folder_inverse.svg) 1px 4px no-repeat;
 }
+.monaco-tree-row .content .sub-content .explorer-item.folder-icon {
+    padding-left: 22px;
+    background: url(./parts/files/browser/media/icons/Folder_inverse.svg) 1px 4px no-repeat;
+}
 .monaco-tree-row.expanded .content .sub-content .explorer-item.folder-icon {
     padding-left: 22px;
     background: url(./parts/files/browser/media/icons/Folder_opened.svg) 1px 4px no-repeat;
@@ -30,8 +34,7 @@ t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.n
     padding-left: 22px;
     background: url(./parts/files/browser/media/icons/File.svg) 1px 3px no-repeat;
     background-size: 16px;
-} 
-
+}
 .explorer-item.js-file-icon {
     padding-left: 22px;
     background: url(./parts/files/browser/media/icons/file_type_js@2x.png) 1px 4px no-repeat;
