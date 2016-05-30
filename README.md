@@ -5,9 +5,9 @@ Icons for VS Code Explorer
 ## Instructions
 In order to get your icons working you'll have to follow these steps:
 
-1. Go to your VSCode installation folder and find the path **resources\app\out\vs\workbench\workbench.main.js**. In Windows it will be something like this: *C:\Program Files (x86)\Microsoft VS Code Insiders\resources\app\out\vs\workbench*
+1 - Go to your VSCode installation folder and find the path **resources\app\out\vs\workbench\workbench.main.js**. In Windows it will be something like this: *C:\Program Files (x86)\Microsoft VS Code Insiders\resources\app\out\vs\workbench*
 
-2. Find this piece of code:
+2 - Find this piece of code:
 ```js
 t.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}
 ```
@@ -15,7 +15,7 @@ and replace it with this:
 ```js
 t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.name.substring(s.name.lastIndexOf(".")+1).toLowerCase();switch(e){case"gif":case"png":case"sql":case"less":case"dockerfile":case"yml":case"ts":case"jpg":case"js":case"jsx":case"css":case"scss":case"md":case"json":case"html":case"htm":return e+"-file-icon";default:return"text-file-icon"}}
 ```
-3. Now find the following path: **resources\app\out\vs\workbench\workbench.main.css** and add this piece of code: 
+3 - Now find the following path: **resources\app\out\vs\workbench\workbench.main.css** and add this piece of code: 
 ```css
 .monaco-tree-row .content .sub-content .explorer-item.folder-icon {
     padding-left: 22px;
@@ -113,6 +113,6 @@ t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.n
     background-size: 16px;
 }
 ```
-4. Finally, copy the **icons folder** into this path: **resources\app\out\vs\workbench\parts\files\browser\media\**
+4 - Finally, copy the **icons folder** into this path: **resources\app\out\vs\workbench\parts\files\browser\media\**
 
-5. Restart your VSCode
+5 - Restart your VSCode
