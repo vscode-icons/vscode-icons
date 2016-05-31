@@ -153,4 +153,6 @@ t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.n
 ```
 4 - Finally, copy the **icons folder** into this path: **resources\app\out\vs\workbench\parts\files\browser\media\**
 
-5 - Restart your VSCode
+5 - Restart your VSCode and you should see something like this:
+
+![screenshot](https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png)
