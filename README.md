@@ -20,7 +20,7 @@ t.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-
 ```
 and replace it with this:
 ```js
-t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.name.substring(s.name.lastIndexOf(".")+1).toLowerCase();switch(e){case"cmd":case"bat":case"sh":case"txt":case"php":case"jade":case"ttf":case"otf":case"woff2":case"woff":case"gitattributes":case"gitignore":case"svg":case"gif":case"png":case"sql":case"less":case"dockerfile":case"yml":case"ts":case"jpg":case"js":case"jsx":case"css":case"scss":case"md":case"json":case"html":case"htm":return e+"-file-icon";default:return"text-file-icon"}}
+t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.name.substring(s.name.lastIndexOf(".")+1).toLowerCase();switch(e){case"license":case"cmd":case"bat":case"sh":case"txt":case"php":case"jade":case"ttf":case"otf":case"woff2":case"woff":case"gitattributes":case"gitignore":case"svg":case"gif":case"png":case"sql":case"less":case"dockerfile":case"yml":case"ts":case"jpg":case"js":case"jsx":case"css":case"scss":case"md":case"json":case"html":case"htm":return e+"-file-icon";default:return"text-file-icon"}}
 ```
 3 - Now find the following path: **resources\app\out\vs\workbench\workbench.main.css** and add this piece of code: 
 ```css
@@ -144,6 +144,11 @@ t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.n
 .explorer-item.txt-file-icon {
     padding-left: 22px;
     background: url(./parts/files/browser/media/icons/file_type_txt@2x.png) 1px 4px no-repeat;
+    background-size: 16px;
+}
+.explorer-item.license-file-icon {
+    padding-left: 22px;
+    background: url(./parts/files/browser/media/icons/file_type_license@2x.png) 1px 4px no-repeat;
     background-size: 16px;
 }
 .explorer-item.sh-file-icon,
