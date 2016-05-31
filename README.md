@@ -13,7 +13,7 @@ t.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-
 ```
 and replace it with this:
 ```js
-t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.name.substring(s.name.lastIndexOf(".")+1).toLowerCase();switch(e){case"svg":case"gif":case"png":case"sql":case"less":case"dockerfile":case"yml":case"ts":case"jpg":case"js":case"jsx":case"css":case"scss":case"md":case"json":case"html":case"htm":return e+"-file-icon";default:return"text-file-icon"}}
+t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.name.substring(s.name.lastIndexOf(".")+1).toLowerCase();switch(e){case"cmd":case"bat":case"sh":case"txt":case"php":case"jade":case"ttf":case"otf":case"woff2":case"woff":case"gitattributes":case"gitignore":case"svg":case"gif":case"png":case"sql":case"less":case"dockerfile":case"yml":case"ts":case"jpg":case"js":case"jsx":case"css":case"scss":case"md":case"json":case"html":case"htm":return e+"-file-icon";default:return"text-file-icon"}}
 ```
 3 - Now find the following path: **resources\app\out\vs\workbench\workbench.main.css** and add this piece of code: 
 ```css
@@ -60,17 +60,15 @@ t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.n
     background: url(./parts/files/browser/media/icons/file_type_sass@2x.png) 1px 4px no-repeat;
     background-size: 16px;
 } 
-.explorer-item.html-file-icon {
-    padding-left: 22px;
-    background: url(./parts/files/browser/media/icons/file_type_html@2x.png) 1px 4px no-repeat;
-    background-size: 16px;
-} 
+.explorer-item.html-file-icon,
 .explorer-item.htm-file-icon {
     padding-left: 22px;
     background: url(./parts/files/browser/media/icons/file_type_html@2x.png) 1px 4px no-repeat;
     background-size: 16px;
-} 
+}
 .explorer-item.jpg-file-icon,
+.explorer-item.jpeg-file-icon,
+.explorer-item.bmp-file-icon,
 .explorer-item.png-file-icon,
 .explorer-item.gif-file-icon {
     padding-left: 22px;
@@ -107,9 +105,45 @@ t.prototype.iconClass=function(s){if(s.isDirectory)return"folder-icon";var e=s.n
     background: url(./parts/files/browser/media/icons/file_type_docker@2x.png) 1px 4px no-repeat;
     background-size: 16px;
 }
+.explorer-item.gitignore-file-icon, 
+.explorer-item.gitattributes-file-icon {
+    padding-left: 22px;
+    background: url(./parts/files/browser/media/icons/file_type_git@2x.png) 1px 4px no-repeat;
+    background-size: 16px;
+}
+.explorer-item.woff-file-icon, 
+.explorer-item.woff2-file-icon, 
+.explorer-item.otf-file-icon, 
+.explorer-item.ttf-file-icon {
+    padding-left: 22px;
+    background: url(./parts/files/browser/media/icons/file_type_font@2x.png) 1px 4px no-repeat;
+    background-size: 16px;
+}
 .explorer-item.less-file-icon {
     padding-left: 22px;
     background: url(./parts/files/browser/media/icons/file_type_less@2x.png) 1px 4px no-repeat;
+    background-size: 16px;
+}
+.explorer-item.jade-file-icon {
+    padding-left: 22px;
+    background: url(./parts/files/browser/media/icons/file_type_jade@2x.png) 1px 4px no-repeat;
+    background-size: 16px;
+}
+.explorer-item.php-file-icon {
+    padding-left: 22px;
+    background: url(./parts/files/browser/media/icons/file_type_php@2x.png) 1px 4px no-repeat;
+    background-size: 16px;
+}
+.explorer-item.txt-file-icon {
+    padding-left: 22px;
+    background: url(./parts/files/browser/media/icons/file_type_txt@2x.png) 1px 4px no-repeat;
+    background-size: 16px;
+}
+.explorer-item.sh-file-icon,
+.explorer-item.bat-file-icon,
+.explorer-item.cmd-file-icon {
+    padding-left: 22px;
+    background: url(./parts/files/browser/media/icons/file_type_shell@2x.png) 1px 4px no-repeat;
     background-size: 16px;
 }
 ```
