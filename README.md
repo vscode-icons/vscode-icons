@@ -5,7 +5,11 @@ Icons for VS Code Explorer
 ## Instructions
 In order to get your icons working you'll have to follow these steps:
 
-1 - Go to your VSCode installation folder and find the path **resources\app\out\vs\workbench\workbench.main.js**. In Windows it will be something like this: *C:\Program Files (x86)\Microsoft VS Code Insiders\resources\app\out\vs\workbench*
+1 - Go to your VSCode installation folder and find the path **resources\app\out\vs\workbench\workbench.main.js**. 
+
+In **Windows** it will be something like this: *C:\Program Files (x86)\Microsoft VS Code Insiders\resources\app\out\vs\workbench*
+
+In **OS X* you'll have to go to *Applications > Right click over Visual Studio Code.app > Show Package Contents*.
 
 2 - Find this piece of code:
 ```js
