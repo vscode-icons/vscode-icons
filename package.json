@@ -1,0 +1,43 @@
+{
+  "name": "vscode-icons",
+  "displayName": "vscode-icons",
+  "description": "Icons for Visual Studio Code",
+  "version": "0.0.1",
+  "publisher": "Roberto Huertas",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.installIcons",
+        "title": "Icons Enable"
+      },
+      {
+        "command": "extension.uninstallIcons",
+        "title": "Icons Disable"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "download-file": "^0.1.5",
+    "extract-zip": "^1.5.0",
+    "replace-in-file": "^1.0.2",
+    "request": "^2.72.0",
+    "unzip": "^0.1.11"
+  }
+}
