@@ -10,7 +10,7 @@ If you want to disable the icons execute the *Icons Disable* command instead.
 
 # Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
-Currently, icons are not supported by the extension functionality so what this extension modifies two files by injecting .js and .css:
+Currently, icons are not supported by the extension functionality that VS Code provides so this extension solves this issue by injecting code into two files:
 
 - workbench.main.js
 - workbench.main.css
