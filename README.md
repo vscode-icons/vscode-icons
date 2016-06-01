@@ -21,7 +21,9 @@ As this extension modifies VS Code files it will get disabled with every VS Code
 
 Take into account that this extension is still in beta so you may find some bugs while playing with it. Please, report them to [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
 
-Please, leave a review so the VS Code Team can know that this is a very demanded feature. Maybe that would be enough so they can provide a proper way to extend the IDE regarding icons and customizations. ;D
+**Please, leave a review if you can so the VS Code Team can know that this is a very demanded feature. Maybe that would be enough so they can provide a proper way to extend the IDE regarding icons and customizations. ;D**
+
+More extensions will be supported shortly!
 
 
 # Screenshot
