@@ -17,6 +17,8 @@ Currently, icons are not supported by the extension functionality that VS Code p
 
 The extension will keep a copy of the original files in case something goes wrong. That's what the disable command will do for you.
 
+As this extension modifies VS Code files it will get disabled with every VS Code update. You will have to enable icons again via command palette.
+
 Take into account that this extension is still in beta so you may find some bugs while playing with it. Please, report them to [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
 
 
