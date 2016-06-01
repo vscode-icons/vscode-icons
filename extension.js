@@ -152,7 +152,7 @@ function activate(context) {
                 vscode.window.showInformationMessage('Icons already disabled.');
                 return;
             }
-            // TODO CHECK IF NORMAL FILE HAS BEEN UPDATED
+            // checking if normal file has been udpated.
             fs.stat(jsfile, function (errOr, statsOr) {
                 if (errOr) {
                     vscode.window.showInformationMessage('Something went wrong: ' + errOr);
