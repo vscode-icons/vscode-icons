@@ -1,5 +1,5 @@
 # vscode-icons
-Bring icons for your VS Code.
+Bring icons to your VS Code.
 
 In order to enable the extension just execute the command *Icons Enable*.
 

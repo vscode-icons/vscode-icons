@@ -48,31 +48,63 @@ function activate(context) {
         });
     }
 
-    var installIcons = vscode.commands.registerCommand('extension.installIcons', function () {
+    function timeDiff(d1, d2) {
+        var timeDiff = Math.abs(d2.getTime() - d1.getTime());
+        return timeDiff;
+    }
 
-        fs.access(cssfilebak, function (err) {
-            if (err) {
-                var c = fs.createReadStream(cssfile).pipe(fs.createWriteStream(cssfilebak));
-                c.on('finish', function () {
-                    replaceCss();
-                });
+    function diffDays(d1, d2) {
+        var timeDiff = timeDiff(d1, d2);
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        return diffDays;
+    }
+
+    function hasBeenUpdated(stats1, stats2) {
+        var dbak = new Date(stats1.ctime);
+        var dor = new Date(stats2.ctime);
+        var segs = timeDiff(dbak, dor) / 1000;
+        return segs > 5;
+    }
+
+    function cleanCssInstall() {
+        var c = fs.createReadStream(cssfile).pipe(fs.createWriteStream(cssfilebak));
+        c.on('finish', function () {
+            replaceCss();
+        });
+    }
+
+    function cleanJsInstall() {
+        var j = fs.createReadStream(jsfile).pipe(fs.createWriteStream(jsfilebak));
+        j.on('finish', function () {
+            replaceJs();
+        });
+    }
+
+    function installItem(bakfile, orfile, cleanInstallFunc, replaceFunc) {
+        fs.stat(bakfile, function (errBak, statsBak) {
+            if (errBak) {
+                // clean installation
+                cleanInstallFunc();
             } else {
-                replaceCss();
+                // check cssfilebak's timestamp and compare it to the cssfile's.
+                fs.stat(orfile, function (errOr, statsOr) {
+                    if (err1) {
+                        vscode.window.showInformationMessage('Something went wrong: ' + errOr);
+                    } else {
+                        var updated = hasBeenUpdated(statsBak, statsOr);
+                        if (updated) {
+                            // some update has occurred. clean install
+                            cleanInstallFunc();
+                        } else {
+                            replaceFunc();
+                        }
+                    }
+                });
             }
         });
+    }
 
-
-        fs.access(jsfilebak, function (err) {
-            if (err) {
-                var j = fs.createReadStream(jsfile).pipe(fs.createWriteStream(jsfilebak));
-                j.on('finish', function () {
-                    replaceJs();
-                });
-            } else {
-                replaceJs();
-            }
-        });
-
+    function addIcons() {
         //add icons to folder
         var zipUrl = 'http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true';
         k = iconFolder + (isWin ? '\\icons.zip' : '/icons.zip');
@@ -89,32 +121,54 @@ function activate(context) {
                 })
             });
         });
+    }
 
+    function restoreBak() {
+        fs.unlink(jsfile, function (err) {
+            var j = fs.createReadStream(jsfilebak).pipe(fs.createWriteStream(jsfile));
+            j.on('finish', function () {
+                fs.unlink(jsfilebak);
+            });
+        });
+        fs.unlink(cssfile, function (err) {
+            var c = fs.createReadStream(cssfilebak).pipe(fs.createWriteStream(cssfile));
+            c.on('finish', function () {
+                fs.unlink(cssfilebak);
+                vscode.window.showInformationMessage('Icons disabled. Restart the IDE.');
+            });
+        })
+    }
 
-
+    var installIcons = vscode.commands.registerCommand('extension.installIcons', function () {
+        installItem(cssfilebak, cssfile, cleanCssInstall, replaceCss);
+        installItem(jsfilebak, jsfile, cleanJsInstall, replaceJs);
+        addIcons();
     });
 
     var uninstallIcons = vscode.commands.registerCommand('extension.uninstallIcons', function () {
 
-        fs.access(jsfilebak, function (err) {
-            if (err) {
+        fs.stat(jsfilebak, function (errBak, statsBak) {
+            if (errBak) {
                 vscode.window.showInformationMessage('Icons already disabled.');
                 return;
             }
-            fs.unlink(jsfile, function (err) {
-                var j = fs.createReadStream(jsfilebak).pipe(fs.createWriteStream(jsfile));
-                j.on('finish', function () {
-                    fs.unlink(jsfilebak);
-                });
+            // TODO CHECK IF NORMAL FILE HAS BEEN UPDATED
+            fs.stat(jsfile, function (errOr, statsOr) {
+                if (errOr) {
+                    vscode.window.showInformationMessage('Something went wrong: ' + errOr);
+                } else {
+                    var updated = hasBeenUpdated(statsBak, statsOr);
+                    if (updated) {
+                        // some update has occurred. clean install
+                        fs.unlink(jsfilebak);
+                        fs.unlink(cssfilebak);
+                        vscode.window.showInformationMessage('Icons disabled. Restart the IDE.');
+                    } else {
+                        // restoring bak files
+                        restoreBak();
+                    }
+                }
             });
-            fs.unlink(cssfile, function (err) {
-                var c = fs.createReadStream(cssfilebak).pipe(fs.createWriteStream(cssfile));
-                c.on('finish', function () {
-                    fs.unlink(cssfilebak);
-                });
-            })
-
-            vscode.window.showInformationMessage('Icons disabled. Restart the IDE.');
         });
 
 
