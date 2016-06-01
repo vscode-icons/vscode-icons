@@ -3,7 +3,7 @@
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
   "version": "0.0.1",
-  "publisher": "Roberto Huertas",
+  "publisher": "robertohuertasm",
   "engines": {
     "vscode": "^1.0.0"
   },
