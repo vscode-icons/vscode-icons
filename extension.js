@@ -175,6 +175,7 @@ function activate(context) {
 
     });
 
+    context.subscriptions.push(installIcons);
     context.subscriptions.push(uninstallIcons);
 }
 exports.activate = activate;
