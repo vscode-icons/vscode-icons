@@ -1,15 +1,27 @@
 # vscode-icons
 Bring icons for your VS Code.
 
-In order to enable the extension just execute the command Icons Enable.
+In order to enable the extension just execute the command *Icons Enable*.
 
-If you want to disable the icons execute the Icons Disable command instead.
+If you want to disable the icons execute the *Icons Disable* command instead.
 
-## Important!!
+### Windows users
 **In Windows, make sure you run your VS Code in Administrator mode before enabling or disabling the icons!**
 
-![screenshot](https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png)
+# Disclaimer
+This extension modifies some VS Code files so use it at your own risk.
+Currently, icons are not supported by the extension functionality so what this extension modifies two files by injecting .js and .css:
 
-It's still in beta so if you find anything please report to the repo's issues.
+- workbench.main.js
+- workbench.main.css
+
+The extension will keep a copy of the original files in case something goes wrong. That's what the disable command will do for you.
+
+Take into account that this extension is still in beta so you may find some bugs while playing with it. Please, report them to [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
+
+
+# Screenshot
+<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" width="500">
+
 
 **Enjoy!**
