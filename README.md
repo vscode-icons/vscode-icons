@@ -27,7 +27,7 @@ More extensions will be supported shortly!
 
 
 # Screenshot
-<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" width="500">
+<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" >
 
 
 **Enjoy!**
