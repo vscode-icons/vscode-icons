@@ -33,7 +33,7 @@ exports.extensions = {
     { icon: "haxe", extensions: ["hxml"] },
     { icon: "html", extensions: ["html", "html"] },
     { icon: "image", extensions: ["jpeg", "jpg", "gif", "png", "bmp"] },
-    { icon: "jade", extensions: ["jade"] },
+    { icon: "jade", extensions: ["jade", "pug"] },
     { icon: "java", extensions: ["java"] },
     { icon: "js", extensions: ["js"] },
     { icon: "jsp", extensions: ["jsp"] },
