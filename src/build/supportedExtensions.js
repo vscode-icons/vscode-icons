@@ -57,7 +57,7 @@ exports.extensions = {
     { icon: "python", extensions: ["py"] },
     { icon: "r", extensions: ["r"] },
     { icon: "rails", extensions: [] },
-    { icon: "react", extensions: ["jsx"] },
+    { icon: "react", extensions: ["jsx", "tsx"] },
     { icon: "ruby", extensions: ["rb"] },
     { icon: "rust", extensions: ["rs"] },
     { icon: "sass", extensions: ["sass"] },
