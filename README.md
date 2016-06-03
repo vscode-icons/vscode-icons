@@ -1,12 +1,24 @@
 # vscode-icons
 Bring icons to your VS Code.
 
-In order to enable the extension just execute the command *Icons Enable*.
+## Extesion commands
 
-If you want to disable the icons execute the *Icons Disable* command instead.
+- ***Icons Enable*** : It enables the extension.
+- ***Icons Disable***: It will disable the icons.
+- ***Icons Update***: Useful in case of extension update. It will disable and enable the icons for you refreshing the injected code and downloading new icons.
 
-### Windows users
+## Windows users
 **In Windows, make sure you run your VS Code in Administrator mode before enabling or disabling the icons!**
+
+## List of supported icons
+The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/src/build/supoprtedExtensions.js). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
+
+If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template so any help will be really appreciated and credit will be given to you ;D
+
+## Supported OS
+
+At the moment the only supported operating systems are Windows and OS X. Linux support will come shortly.
+
 
 # Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
