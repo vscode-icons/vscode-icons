@@ -125,7 +125,6 @@ function activate(context) {
     }
 
     function isRestored(restore) {
-        restore++;
         if (restore == 2) {
             vscode.window.showInformationMessage('Icons disabled. Restart the IDE.');
             emitUninstall();
@@ -137,13 +136,15 @@ function activate(context) {
             var j = fs.createReadStream(jsfilebak).pipe(fs.createWriteStream(jsfile));
             j.on('finish', function () {
                 fs.unlink(jsfilebak);
-                 isRestored(restore);
+                restore++;
+                isRestored(restore);
             });
         });
         fs.unlink(cssfile, function (err) {
             var c = fs.createReadStream(cssfilebak).pipe(fs.createWriteStream(cssfile));
             c.on('finish', function () {
                 fs.unlink(cssfilebak);
+                restore++;
                 isRestored(restore);
             });
         });
@@ -161,7 +162,6 @@ function activate(context) {
             if (errBak) {
                 vscode.window.showInformationMessage('Icons already disabled.');
                 emitUninstall();
-
                 return;
             }
             // checking if normal file has been udpated.
