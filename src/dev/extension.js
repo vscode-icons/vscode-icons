@@ -23,13 +23,13 @@ function activate(context) {
     var cssfilebak = base + (isWin ? '\\workbench.main.css.bak' : '/workbench.main.css.bak');
 
     var cssreplace = '/*! *****************************************************************************';
-    var csswith = replacements.css + ' \n\n' + cssreplace;
+    var csswith = replacements.css;
 
     function replaceCss() {
         replace({
             files: cssfile,
             replace: cssreplace,
-            with: csswith + cssreplace
+            with: csswith + '\n\n '+ cssreplace
         }, function (err, changedFiles) {
             console.log(err);
         });

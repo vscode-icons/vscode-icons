@@ -1,6 +1,6 @@
 var mustache = require('mustache');
 var _ = require('underscore');
-var extensions = require('./supportedExtensions');
+var extensions = require('./supportedExtensions').extensions;
 var fs = require('fs');
 var ncp = require('ncp').ncp;
 
@@ -25,21 +25,21 @@ var cssTemplate =
     'padding-left:22px;' +
     'background-size: 16px !important;' +
   '}' +
-  '{{#supportedExtensions}} ' +
+  '{{#supported}} ' +
     '{{#extensions}}' +
-      '.explorer-item.{{.}}-file-icon { ' +
+      '.explorer-item.{{parse}}-file-icon { ' +
       'background: url(parts/files/browser/media/icons/file_type_{{icon}}@2x.png) 1px 4px no-repeat;' +
     '}' +
    '{{/extensions}}' +
-  '{{/supportedExtensions}}';
+  '{{/supported}}';
   
 var css = mustache.render(cssTemplate, extensions);
 
-var allExtensions = _.flatten(_.map(extensions.supportedExtensions, function(x){ return x.extensions}));
+var allExtensions = _.flatten(_.map(extensions.supported, function(x){ return x.extensions}));
 
-var specialExtensions = _.uniq(_.filter(extensions.supportedExtensions, function(x) { return x.special;}).map(function(x) {return x.special;}))
+var specialExtensions = _.uniq(_.filter(extensions.supported, function(x) { return x.special;}).map(function(x) {return x.special;}))
 
-var specialSupportedExtensions = _.flatten(_.filter(extensions.supportedExtensions, function(x) { return x.special;}).map(function(x) {return x.extensions;}));
+var specialSupportedExtensions = _.flatten(_.filter(extensions.supported, function(x) { return x.special;}).map(function(x) {return x.extensions;}));
 
 function arrToStr(arr){
   return JSON.stringify(arr);
@@ -67,12 +67,12 @@ var jsTemplate =
   '}' +
   
   'if(exts.indexOf(e) >= 0) {' +
+    'if((/^\d/).test(e)) e = "n" + e;' +
     'return e + fileclass;' +
     '}else{' +
     'return "default" + fileclass;'+
     '}' +
 '}';
-
 
 var js = mustache.render(jsTemplate, jsView);
 
