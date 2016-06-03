@@ -41,5 +41,11 @@ More extensions will be supported shortly!
 # Screenshot
 <img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" >
 
+# Building the extension's source code
+If you're willing to explore the extension source code and want to make it work you should run this first:
+```js
+npm run build
+```
+This script will generate the css and js code to be injected into vscode source code.
 
 **Enjoy!**

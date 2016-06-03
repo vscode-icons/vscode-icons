@@ -18,6 +18,7 @@ exports.supportedExtensions = [
   { icon: "dlang", extensions: ["d"] },
   { icon: "docker", extensions: ["dockerfile"] },
   { icon: "erlang", extensions: ["erl", "hrl", "emakefile", "emakerfile"] },
+  { icon: "eslint", extensions: ["eslintrc"] },
   { icon: "font", extensions: ["woff", "woff2", "ttf"] },
   { icon: "git", extensions: ["gitattributes", "gitignore"] },
   { icon: "go", extensions: ["go"] },
