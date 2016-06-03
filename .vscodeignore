@@ -1,3 +1,4 @@
 icons.zip
-test/*
-icons/*
+test
+icons
+src/

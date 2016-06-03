@@ -1,52 +1,65 @@
 {
-    "name": "vscode-icons",
-    "displayName": "vscode-icons",
-    "description": "Icons for Visual Studio Code",
-    "version": "0.2.17",
-    "publisher": "robertohuertasm",
-    "author": {
-        "email": "roberto.huertas@outlook.com",
-        "name": "Roberto Huertas",
-        "url": "http://codecoding.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/robertohuertasm/vscode-icons"
-    },
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Other",
-        "Themes"
-    ],
-    "homepage": "https://github.com/robertohuertasm/vscode-icons",
-    "icon": "images/logo.png",
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.installIcons",
-                "title": "Icons Enable"
-            },
-            {
-                "command": "extension.uninstallIcons",
-                "title": "Icons Disable"
-            }
-        ]
-    },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "vscode": "^0.11.0"
-    },
-    "dependencies": {
-        "extract-zip": "^1.5.0",
-        "replace-in-file": "^1.0.2",
-        "request": "^2.72.0"
-    }
+  "name": "vscode-icons",
+  "displayName": "vscode-icons",
+  "description": "Icons for Visual Studio Code",
+  "version": "0.2.17",
+  "publisher": "robertohuertasm",
+  "author": {
+    "email": "roberto.huertas@outlook.com",
+    "name": "Roberto Huertas",
+    "url": "http://codecoding.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertohuertasm/vscode-icons"
+  },
+  "bugs": {
+    "url": "https://github.com/robertohuertasm/vscode-icons/issues",
+    "email": "roberto.huertas@outlook.com"
+  },
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other",
+    "Themes"
+  ],
+  "preview": true,
+  "homepage": "https://github.com/robertohuertasm/vscode-icons",
+  "icon": "images/logo.png",
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.installIcons",
+        "title": "Icons Enable"
+      },
+      {
+        "command": "extension.uninstallIcons",
+        "title": "Icons Disable"
+      },
+      {
+        "command": "extension.reinstallIcons",
+        "title": "Icons Update"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node ./src/build/build.js",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "mustache": "^2.2.1",
+    "ncp": "^2.0.0",
+    "underscore": "^1.8.3",
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "extract-zip": "^1.5.0",
+    "replace-in-file": "^1.0.2",
+    "request": "^2.72.0"
+  }
 }
