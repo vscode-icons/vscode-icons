@@ -10,6 +10,17 @@ Bring icons to your VS Code.
 ## Windows users
 **In Windows, make sure you run your VS Code in Administrator mode before enabling or disabling the icons!**
 
+## Linux users
+**Linux also requires you to reclaim ownership of the vs code folders** 
+You can achieve this by executing this on your terminal:
+```sh
+#for vs code
+sudo chown -R $(whoami) /usr/share/code
+#for vs code insiders
+sudo chown -R $(whoami) /usr/share/code-insiders
+```
+
+
 ## List of supported icons
 The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
 
