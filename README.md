@@ -1,6 +1,8 @@
 # vscode-icons
 Bring icons to your VS Code.
 
+<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" >
+
 ## Extesion commands
 
 - ***Icons Enable*** : It enables the extension.
@@ -53,10 +55,6 @@ Take into account that this extension is still in beta so you may find some bugs
 **Please, leave a review if you can so the VS Code Team can know that this is a very demanded feature. Maybe that would be enough so they can provide a proper way to extend the IDE regarding icons and customizations. ;D**
 
 More extensions will be supported shortly!
-
-
-# Screenshot
-<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" >
 
 # Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this first:
