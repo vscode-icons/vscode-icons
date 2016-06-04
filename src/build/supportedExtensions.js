@@ -58,6 +58,7 @@ exports.extensions = {
     { icon: "r", extensions: ["r"] },
     { icon: "rails", extensions: [] },
     { icon: "react", extensions: ["jsx"] },
+    { icon: "reactts", extensions: ["tsx"] },
     { icon: "ruby", extensions: ["rb"] },
     { icon: "rust", extensions: ["rs"] },
     { icon: "sass", extensions: ["sass"] },
