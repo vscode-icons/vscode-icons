@@ -34,10 +34,6 @@ The list is slowly growing. If you want to check what icons are currently suppor
 
 If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template so any help will be really appreciated and credit will be given to you ;D
 
-## Supported OS
-
-At the moment the only supported operating systems are Windows and OS X. Linux support will come shortly.
-
 
 # Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
@@ -54,7 +50,7 @@ Take into account that this extension is still in beta so you may find some bugs
 
 **Please, leave a review if you can so the VS Code Team can know that this is a very demanded feature. Maybe that would be enough so they can provide a proper way to extend the IDE regarding icons and customizations. ;D**
 
-More extensions will be supported shortly!
+More file extensions will be supported shortly!
 
 # Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this first:
