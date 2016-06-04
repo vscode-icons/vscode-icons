@@ -3,7 +3,7 @@ Bring icons to your VS Code.
 
 <img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" >
 
-## Extesion commands
+## Extension commands
 
 - ***Icons Enable*** : It enables the extension.
 - ***Icons Disable***: It will disable the icons.
