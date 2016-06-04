@@ -80,7 +80,7 @@ exports.extensions = {
     { icon: "typescript", extensions: ["ts"] },
     { icon: "vscode", extensions: ["vscodeignore", "launch", "jsconfig"], special: "json" },
     { icon: "yaml", extensions: ["yml", "yaml"] },
-    { icon: "zip", extensions: ["zip", "rar", "7z"] },
+    { icon: "zip", extensions: ["zip", "rar", "7z"] }
   ],
   "parse": function(){
     if((/^\d/).test(this)) return 'n' + this;
