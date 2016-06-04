@@ -14,11 +14,17 @@ Bring icons to your VS Code.
 **Linux also requires you to reclaim ownership of the vs code folders** 
 You can achieve this by executing this on your terminal (Ubuntu):
 ```sh
-#for vs code
+#for vs code:
 sudo chown -R $(whoami) /usr/share/code
-#for vs code insiders
+#for vs code insiders:
 sudo chown -R $(whoami) /usr/share/code-insiders
+#if you want to check your folder's owner:
+ls -la /usr/share/code
+#if you want to rollback this permissions back to root:
+sudo chown -R root /usr/share/code
 ```
+If you're using any other Linux flavour please [take a look at this Github's issue](https://github.com/robertohuertasm/vscode-icons/issues/6).
+
 
 
 ## List of supported icons
