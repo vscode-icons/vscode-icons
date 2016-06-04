@@ -67,7 +67,7 @@ var jsTemplate =
   '}' +
   
   'if(exts.indexOf(e) >= 0) {' +
-    'if((/^\d/).test(e)) e = "n" + e;' +
+    'if(/^\\\\d/.test(e)) e = "n" + e;' +
     'return e + fileclass;' +
     '}else{' +
     'return "default" + fileclass;'+

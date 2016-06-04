@@ -6,10 +6,18 @@ var path = require('path');
 var replace = require('replace-in-file');
 var replacements = require('./replacements');
 var events = require('events');
+var msg = require('./messages').messages;
 
 function activate(context) {
 
     console.log('Congratulations, your extension is now active!');
+
+    process.on('uncaughtException', function (err) {
+        if (/ENOENT|EACCES|EPERM/.test(err.code)) {
+            vscode.window.showInformationMessage(msg.admin);
+            return;
+        }
+    });
 
     var eventEmitter = new events.EventEmitter();
     var isWin = /^win/.test(process.platform);
@@ -29,7 +37,7 @@ function activate(context) {
         replace({
             files: cssfile,
             replace: cssreplace,
-            with: csswith + '\n\n '+ cssreplace
+            with: csswith + '\n\n ' + cssreplace
         }, function (err, changedFiles) {
             console.log(err);
         });
@@ -60,7 +68,7 @@ function activate(context) {
         var dbak = new Date(stats1.ctime);
         var dor = new Date(stats2.ctime);
         var segs = timeDiff(dbak, dor) / 1000;
-        return segs > 5;
+        return segs > 20;
     }
 
     function cleanCssInstall() {
@@ -86,7 +94,7 @@ function activate(context) {
                 // check cssfilebak's timestamp and compare it to the cssfile's.
                 fs.stat(orfile, function (errOr, statsOr) {
                     if (errOr) {
-                        vscode.window.showInformationMessage('Something went wrong: ' + errOr);
+                        vscode.window.showInformationMessage(msg.smthingwrong + errOr);
                     } else {
                         var updated = hasBeenUpdated(statsBak, statsOr);
                         if (updated) {
@@ -111,7 +119,7 @@ function activate(context) {
             extract(k, { dir: iconFolder }, function (err) {
                 // extraction is complete. make sure to handle the err 
                 if (err) console.log(err);
-                vscode.window.showInformationMessage('Icons enabled. Restart the IDE.');
+                vscode.window.showInformationMessage(msg.enabled);
                 //remove icon.zip
                 fs.unlink(k, function (err) {
                     console.log(err);
@@ -125,14 +133,18 @@ function activate(context) {
     }
 
     function isRestored(restore) {
-        if (restore == 2) {
-            vscode.window.showInformationMessage('Icons disabled. Restart the IDE.');
+        if (restore === 2) {
+            vscode.window.showInformationMessage(msg.disabled);
             emitUninstall();
         }
     }
     function restoreBak() {
         var restore = 0;
         fs.unlink(jsfile, function (err) {
+            if (err) {
+                vscode.window.showInformationMessage(msg.admin);
+                return;
+            }
             var j = fs.createReadStream(jsfilebak).pipe(fs.createWriteStream(jsfile));
             j.on('finish', function () {
                 fs.unlink(jsfilebak);
@@ -141,6 +153,10 @@ function activate(context) {
             });
         });
         fs.unlink(cssfile, function (err) {
+            if (err) {
+                vscode.window.showInformationMessage(msg.admin);
+                return;
+            }
             var c = fs.createReadStream(cssfilebak).pipe(fs.createWriteStream(cssfile));
             c.on('finish', function () {
                 fs.unlink(cssfilebak);
@@ -160,21 +176,21 @@ function activate(context) {
     function fUninstall() {
         fs.stat(jsfilebak, function (errBak, statsBak) {
             if (errBak) {
-                vscode.window.showInformationMessage('Icons already disabled.');
+                vscode.window.showInformationMessage(msg.already_disabled);
                 emitUninstall();
                 return;
             }
             // checking if normal file has been udpated.
             fs.stat(jsfile, function (errOr, statsOr) {
                 if (errOr) {
-                    vscode.window.showInformationMessage('Something went wrong: ' + errOr);
+                    vscode.window.showInformationMessage(msg.smthingwrong + errOr);
                 } else {
                     var updated = hasBeenUpdated(statsBak, statsOr);
                     if (updated) {
                         // some update has occurred. clean install
                         fs.unlink(jsfilebak);
                         fs.unlink(cssfilebak);
-                        vscode.window.showInformationMessage('Icons disabled. Restart the IDE.');
+                        vscode.window.showInformationMessage(msg.disabled);
                         emitUninstall();
                     } else {
                         // restoring bak files
