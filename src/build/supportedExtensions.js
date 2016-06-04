@@ -48,7 +48,7 @@ exports.extensions = {
     { icon: "matlab", extensions: ["m", "fig", "mat", "mex", "mexn", "mexrs6", "mn", "mum", "mx", "mx3", "rwd", "slx", "slddc", "smv", "tikz", "xvc", "xvc"] },
     { icon: "mustache", extensions: ["mustache", "mst"] },
     { icon: "node", extensions: ["json"] },
-    { icon: "npm", extensions: ["package"], special: "json" },
+    { icon: "npm", extensions: ["npmignore"]},
     { icon: "ocaml", extensions: ["cma", "cmi", "ml", "mly", "ocamlmakefile"] },
     { icon: "perl", extensions: ["perl"] },
     { icon: "php", extensions: ["php", "php1", "php2", "php3", "php4", "php5", "php6", "phps", "phpsa", "phpt"] },
