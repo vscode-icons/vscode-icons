@@ -10,6 +10,7 @@ exports.extensions = {
     { icon: "bower", extensions: ["bowerrc"] },
     { icon: "c", extensions: ["c"] },
     { icon: "c++", extensions: ["cpp"] },
+    { icon: "cake", extensions: ["cake"] },
     { icon: "cfm", extensions: ["cfm"] },
     { icon: "clojure", extensions: ["clojure", "cjm"] },
     { icon: "coffescript", extensions: ["coffee"] },
