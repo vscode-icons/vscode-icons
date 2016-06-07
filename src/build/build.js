@@ -83,7 +83,7 @@ var final = mustache.render(finalTemplate, {js: js, css: css});
 
 //writing the files
 fs.writeFileSync('./src/dev/replacements.js', final);
-console.log('File with replacemnts successfully created!');
+console.log('File with replacements successfully created!');
 
 //moving to dist
 ncp.limit = 16;
