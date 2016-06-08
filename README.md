@@ -3,6 +3,20 @@ Bring icons to your VS Code.
 
 <img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" >
 
+## Installation
+
+Some people have reported that they cannot find the extension when they insert the installation command:
+```
+ext install vscode-icons
+```
+
+If you're in the same position try this:
+```sh
+ext install icons
+# or
+ext install "vscode-icons"
+```
+
 ## Extension commands
 
 - ***Icons Enable*** : It enables the extension.
