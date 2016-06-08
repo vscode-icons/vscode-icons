@@ -23,7 +23,7 @@ exports.extensions = {
     { icon: "erlang", extensions: ["erl", "hrl", "emakefile", "emakerfile"] },
     { icon: "eslint", extensions: ["eslintrc"] },
     { icon: "font", extensions: ["woff", "woff2", "ttf"] },
-    { icon: "git", extensions: ["gitattributes", "gitignore"] },
+    { icon: "git", extensions: ["gitattributes", "gitignore", "gitmodules"] },
     { icon: "go", extensions: ["go"] },
     { icon: "gradle", extensions: ["gradle"] },
     { icon: "graphviz", extensions: [] },
