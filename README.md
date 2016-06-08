@@ -19,6 +19,8 @@ ext install "vscode-icons"
 
 ## Extension commands
 
+As you know to access the command palette and introduce commands you can use ***F1*** (all OS), ***Ctrl+Shift+P*** (Windows & Linux) or ***Cmd+Shift+P*** (OS X).
+
 - ***Icons Enable*** : It enables the extension.
 - ***Icons Disable***: It will disable the icons.
 - ***Icons Update***: Useful in case of extension update. It will disable and enable the icons for you refreshing the injected code and downloading new icons.
