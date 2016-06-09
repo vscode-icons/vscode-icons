@@ -12,7 +12,7 @@ exports.extensions = {
     { icon: "cheader", extensions: ["h"] },
     { icon: "c++", extensions: ["cpp"] },
     { icon: "cake", extensions: ["cake"] },
-    { icon: "cfm", extensions: ["cfm"] },
+    { icon: "cfm", extensions: ["cfm", "cfc", "lucee"] },
     { icon: "clojure", extensions: ["clojure", "cjm"] },
     { icon: "coffescript", extensions: ["coffee"] },
     { icon: "compass", extensions: [] },
