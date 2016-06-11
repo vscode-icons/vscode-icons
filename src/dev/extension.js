@@ -138,6 +138,7 @@ function activate(context) {
             emitUninstall();
         }
     }
+
     function restoreBak() {
         var restore = 0;
         fs.unlink(jsfile, function (err) {
