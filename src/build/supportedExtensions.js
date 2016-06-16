@@ -32,6 +32,7 @@ exports.extensions = {
     { icon: "gruntfile", extensions: ["gruntfile"], special: "js" },
     { icon: "gulpfile", extensions: ["gulpfile"], special: "js" },
     { icon: "haml", extensions: ["haml"] },
+    { icon: "handlebars", extensions: ["hbs", "handlebars"] },
     { icon: "haskell", extensions: ["has", "hs", "lhs", "lit", "gf"] },
     { icon: "haxe", extensions: ["hxml"] },
     { icon: "html", extensions: ["html", "html"] },
