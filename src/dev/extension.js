@@ -120,6 +120,7 @@ function activate(context) {
                 // extraction is complete. make sure to handle the err 
                 if (err) console.log(err);
                 vscode.window.showInformationMessage(msg.enabled);
+                fReloadWindow();				
                 //remove icon.zip
                 fs.unlink(k, function (err) {
                     console.log(err);
@@ -136,6 +137,7 @@ function activate(context) {
         if (restore === 2) {
             vscode.window.showInformationMessage(msg.disabled);
             emitUninstall();
+			fReloadWindow();
         }
     }
 
@@ -193,6 +195,7 @@ function activate(context) {
                         fs.unlink(cssfilebak);
                         vscode.window.showInformationMessage(msg.disabled);
                         emitUninstall();
+						fReloadWindow();
                     } else {
                         // restoring bak files
                         restoreBak();
@@ -207,6 +210,11 @@ function activate(context) {
         fUninstall();
     }
 
+	function fReloadWindow() {
+		// reload vscode-window
+		vscode.commands.executeCommand("workbench.action.reloadWindow");
+	}
+	
     var installIcons = vscode.commands.registerCommand('extension.installIcons', fInstall);
     var uninstallIcons = vscode.commands.registerCommand('extension.uninstallIcons', fUninstall);
     var reinstallIcons = vscode.commands.registerCommand('extension.reinstallIcons', fReinstall);
