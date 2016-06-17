@@ -10,7 +10,7 @@ var msg = require('./messages').messages;
 
 function activate(context) {
 
-    console.log('Congratulations, your extension is now active!');
+    console.log('vscode-icons is active!');
 
     process.on('uncaughtException', function (err) {
         if (/ENOENT|EACCES|EPERM/.test(err.code)) {
@@ -119,29 +119,36 @@ function activate(context) {
             extract(k, { dir: iconFolder }, function (err) {
                 // extraction is complete. make sure to handle the err 
                 if (err) console.log(err);
-                vscode.window.showInformationMessage(msg.enabled);
-                fReloadWindow();				
                 //remove icon.zip
                 fs.unlink(k, function (err) {
-                    console.log(err);
+                    if (err) {
+                        console.log(err);
+                    }
+                    vscode.window.showInformationMessage(msg.enabled, { title: msg.restartIde })
+                        .then(function (msg) {
+                            reloadWindow();
+                        });
+
                 });
             });
         });
     }
 
-    function emitUninstall() {
+    function emitEndUninstall() {
         eventEmitter.emit('endUninstall');
     }
 
-    function isRestored(restore) {
-        if (restore === 2) {
-            vscode.window.showInformationMessage(msg.disabled);
-            emitUninstall();
-			fReloadWindow();
+    function restoredAction(isRestored, willReinstall) {
+        if (isRestored === 2) {
+            if (willReinstall) {
+                emitEndUninstall();
+            } else {
+                disabledRestart();
+            }
         }
     }
 
-    function restoreBak() {
+    function restoreBak(willReinstall) {
         var restore = 0;
         fs.unlink(jsfile, function (err) {
             if (err) {
@@ -152,7 +159,7 @@ function activate(context) {
             j.on('finish', function () {
                 fs.unlink(jsfilebak);
                 restore++;
-                isRestored(restore);
+                restoredAction(restore, willReinstall);
             });
         });
         fs.unlink(cssfile, function (err) {
@@ -164,11 +171,24 @@ function activate(context) {
             c.on('finish', function () {
                 fs.unlink(cssfilebak);
                 restore++;
-                isRestored(restore);
+                restoredAction(restore, willReinstall);
             });
         });
     }
 
+    function reloadWindow() {
+        // reload vscode-window
+        vscode.commands.executeCommand("workbench.action.reloadWindow");
+    }
+
+    function disabledRestart() {
+        vscode.window.showInformationMessage(msg.disabled, { title: msg.restartIde })
+            .then(function (msg) {
+                reloadWindow();
+            });
+    }
+
+    // ####  main commands ######################################################
 
     function fInstall() {
         installItem(cssfilebak, cssfile, cleanCssInstall, replaceCss);
@@ -176,11 +196,14 @@ function activate(context) {
         addIcons();
     }
 
-    function fUninstall() {
+    function fUninstall(willReinstall) {
         fs.stat(jsfilebak, function (errBak, statsBak) {
             if (errBak) {
-                vscode.window.showInformationMessage(msg.already_disabled);
-                emitUninstall();
+                if (willReinstall) {
+                    emitEndUninstall();
+                } else {
+                    vscode.window.showInformationMessage(msg.already_disabled);
+                }
                 return;
             }
             // checking if normal file has been udpated.
@@ -193,12 +216,14 @@ function activate(context) {
                         // some update has occurred. clean install
                         fs.unlink(jsfilebak);
                         fs.unlink(cssfilebak);
-                        vscode.window.showInformationMessage(msg.disabled);
-                        emitUninstall();
-						fReloadWindow();
+                        if (willReinstall) {
+                            emitEndUninstall();
+                        } else {
+                            disabledRestart();
+                        }
                     } else {
                         // restoring bak files
-                        restoreBak();
+                        restoreBak(willReinstall);
                     }
                 }
             });
@@ -207,14 +232,9 @@ function activate(context) {
 
     function fReinstall() {
         eventEmitter.once('endUninstall', fInstall);
-        fUninstall();
+        fUninstall(true);
     }
 
-	function fReloadWindow() {
-		// reload vscode-window
-		vscode.commands.executeCommand("workbench.action.reloadWindow");
-	}
-	
     var installIcons = vscode.commands.registerCommand('extension.installIcons', fInstall);
     var uninstallIcons = vscode.commands.registerCommand('extension.uninstallIcons', fUninstall);
     var reinstallIcons = vscode.commands.registerCommand('extension.reinstallIcons', fReinstall);
