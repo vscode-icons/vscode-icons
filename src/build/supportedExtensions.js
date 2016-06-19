@@ -55,6 +55,7 @@ exports.extensions = {
     { icon: "markup", extensions: [] },
     { icon: "matlab", extensions: ["m", "fig", "mat", "mex", "mexn", "mexrs6", "mn", "mum", "mx", "mx3", "rwd", "slx", "slddc", "smv", "tikz", "xvc", "xvc"] },
     { icon: "mustache", extensions: ["mustache", "mst"] },
+    { icon: "nim", extensions: ["nim", "nims", "cfg"] },
     { icon: "node", extensions: ["json"] },
     { icon: "npm", extensions: ["npmignore"]},
     { icon: "ocaml", extensions: ["cma", "cmi", "ml", "mly", "ocamlmakefile"] },
