@@ -2,8 +2,9 @@ exports.extensions = {
   supported: [
     { icon: "actionscript", extensions: ["as"] },
     { icon: "angular", extensions: [] },
-    { icon: "apache", extensions: [] },
+    { icon: "apache", extensions: ["htaccess"] },
     { icon: "applescript", extensions: ["app"] },
+    { icon: "asp", extensions: ["asp"] },
     { icon: "autohotkey", extensions: ["ahk"] },
     { icon: "babel", extensions: ["babelrc"] },
     { icon: "binary", extensions: ["bin"] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
@@ -16,7 +17,7 @@ exports.extensions = {
     { icon: "cfm", extensions: ["cfm", "cfc", "lucee"] },
     { icon: "clojure", extensions: ["clojure", "cjm"] },
     { icon: "coffescript", extensions: ["coffee"] },
-    { icon: "config", extensions: ["env","ini", "htaccess"] },
+    { icon: "config", extensions: ["env","ini"] },
     { icon: "compass", extensions: [] },
     { icon: "cs", extensions: ["cs"] },
     { icon: "css", extensions: ["css"] },
