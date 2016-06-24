@@ -89,7 +89,7 @@ exports.extensions = {
     { icon: "twig", extensions: ["twig"] },
     { icon: "typescript", extensions: ["ts"] },
     { icon: "vue", extensions: ["vue"] },
-    { icon: "vscode", extensions: ["vscodeignore", "launch", "jsconfig"], special: "json" },
+    { icon: "vscode", extensions: ["vscodeignore", "launch", "jsconfig", "tsconfig"], special: "json" },
     { icon: "yaml", extensions: ["yml", "yaml"] },
     { icon: "zip", extensions: ["zip", "rar", "7z"] }
   ],
