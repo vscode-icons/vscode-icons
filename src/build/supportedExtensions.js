@@ -79,6 +79,8 @@ exports.extensions = {
     { icon: "slim", extensions: [] },
     { icon: "source", extensions: [] },
     { icon: "sql", extensions: ["sql"] },
+    { icon: "stylelint", extensions: ["stylelintrc"] },
+    { icon: "stylelint", extensions: ["stylelint.config"], special: "js" },
     { icon: "stylus", extensions: ["styl"] },
     { icon: "svg", extensions: ["svg"] },
     { icon: "swift", extensions: ["swift"] },
