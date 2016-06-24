@@ -25,6 +25,7 @@ exports.extensions = {
     { icon: "editorconfig", extensions: ["editorconfig"] },
     { icon: "erlang", extensions: ["erl", "hrl", "emakefile", "emakerfile"] },
     { icon: "eslint", extensions: ["eslintrc", "eslintignore"] },
+    { icon: "favicon", extensions: ["favicon"], special: "ico" },
     { icon: "font", extensions: ["woff", "woff2", "ttf"] },
     { icon: "fsharp", extensions: ["fs", "fsx", "fsi"] },
     { icon: "git", extensions: ["gitattributes", "gitignore", "gitmodules"] },
