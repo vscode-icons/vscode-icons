@@ -16,7 +16,7 @@ exports.extensions = {
     { icon: "cfm", extensions: ["cfm", "cfc", "lucee"] },
     { icon: "clojure", extensions: ["clojure", "cjm"] },
     { icon: "coffescript", extensions: ["coffee"] },
-    { icon: "config", extensions: ["env"] },
+    { icon: "config", extensions: ["env","ini", "htaccess"] },
     { icon: "compass", extensions: [] },
     { icon: "cs", extensions: ["cs"] },
     { icon: "css", extensions: ["css"] },
