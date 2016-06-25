@@ -61,20 +61,20 @@ var jsTemplate =
   'var specialExt = {{{specialExtensions}}};' +
 
   'function sn(ext){' +
-    'var res = ext.replace(/\\./g,"_");' +
-    'if(/^\\d/.test(res)) res = "n" + res;' +
+    'var res = ext.replace(/\\\\./g,"_");' +
+    'if(/^\\\\d/.test(res)) res = "n" + res;' +
     'return res + fileclass;' +
   '}' +
   
   'if (specialExt.indexOf(e) >= 0) {' +
     'var special = {{{specialSupportedExtensions}}};' +
     'var f = s.name.substring(0, dot);' +
-    'special.forEach(function(sp) {' +
-      'if(sp.indexOf(".") === 0) {' +
-        'var r = new RegExp(sp.replace(/\./,"\\.") + "$");' +
-        'if(r.test(s.name)) return sn(sp);' +
-      '}' +
-    '}, this);' +
+    'for(var kk=0, len=special.length; kk<len; kk++) {' +
+      'var sp = special[kk];' +
+      'if(sp===f) return sn(sp);' +
+      'var r = new RegExp(sp.replace(/\\\\./g,"\\\\\\\\.") + "$");' +
+      'if(r.test(s.name)) return sn(sp);' +
+    '}' +
   '}' +
   
   'if(exts.indexOf(e) >= 0) {' +
