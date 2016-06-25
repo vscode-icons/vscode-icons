@@ -10,6 +10,7 @@ exports.extensions = {
     { icon: "binary", extensions: ["bin"] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: "blade", extensions: [] },
     { icon: "bower", extensions: ["bowerrc"] },
+    { icon: "bower", extensions: ["bower"], special:"json" },
     { icon: "c", extensions: ["c"] },
     { icon: "cheader", extensions: ["h"] },
     { icon: "c++", extensions: ["cpp"] },
@@ -42,6 +43,7 @@ exports.extensions = {
     { icon: "haxe", extensions: ["hxml"] },
     { icon: "html", extensions: ["html", "html"] },
     { icon: "image", extensions: ["jpeg", "jpg", "gif", "png", "bmp"] },
+    { icon: "ionic", extensions: ["ionic"], special:"project" },
     { icon: "jade", extensions: ["jade", "pug"] },
     { icon: "java", extensions: ["java"] },
     { icon: "js", extensions: ["js"] },
@@ -92,6 +94,7 @@ exports.extensions = {
     { icon: "textile", extensions: ["textile"] },
     { icon: "twig", extensions: ["twig"] },
     { icon: "typescript", extensions: ["ts"] },
+    { icon: "typescriptdef", extensions: [".d.ts"], special:"ts" },
     { icon: "vue", extensions: ["vue"] },
     { icon: "vscode", extensions: ["vscodeignore", "launch", "jsconfig", "tsconfig"], special: "json" },
     { icon: "xml", extensions: ["xml", "axml", "xaml"] },
@@ -99,7 +102,8 @@ exports.extensions = {
     { icon: "zip", extensions: ["zip", "rar", "7z"] }
   ],
   "parse": function(){
-    if((/^\d/).test(this)) return 'n' + this;
-    return this;
+    var s = this.replace(/\./g,'_');
+    if((/^\d/).test(s)) return 'n' + s;
+    return s;
   }
 };

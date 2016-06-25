@@ -59,19 +59,29 @@ var jsTemplate =
   'var e = s.name.substring(dot + 1).toLowerCase();' +
   'var exts = {{{allExtensions}}};' +
   'var specialExt = {{{specialExtensions}}};' +
+
+  'function sn(ext){' +
+    'var res = ext.replace(/\./g,"_");' +
+    'if(/^\\d/.test(res)) res = "n" + res;' +
+    'return res + fileclass;' +
+  '}' +
   
   'if (specialExt.indexOf(e) >= 0) {' +
     'var special = {{{specialSupportedExtensions}}};' +
     'var f = s.name.substring(0, dot);' +
-    'if(special.indexOf(f) >=0) return f + fileclass;' +
+    'special.forEach(function(sp) {' +
+      'if(sp.indexOf(".") === 0) {' +
+        'var r = new RegExp(sp.replace(/\./,"\\.") + "$");' +
+        'if(r.test(s.name)) return sn(sp);' +
+      '}' +
+    '}, this);' +
   '}' +
   
   'if(exts.indexOf(e) >= 0) {' +
-    'if(/^\\\\d/.test(e)) e = "n" + e;' +
-    'return e + fileclass;' +
-    '}else{' +
+    'return sn(e);' +
+  '}else{' +
     'return "default" + fileclass;'+
-    '}' +
+  '}' +
 '}';
 
 var js = mustache.render(jsTemplate, jsView);
