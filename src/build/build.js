@@ -61,7 +61,7 @@ var jsTemplate =
   'var specialExt = {{{specialExtensions}}};' +
 
   'function sn(ext){' +
-    'var res = ext.replace(/\./g,"_");' +
+    'var res = ext.replace(/\\./g,"_");' +
     'if(/^\\d/.test(res)) res = "n" + res;' +
     'return res + fileclass;' +
   '}' +
