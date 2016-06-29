@@ -61,6 +61,7 @@ exports.extensions = {
     { icon: "mustache", extensions: ["mustache", "mst"] },
     { icon: "nim", extensions: ["nim", "nims", "cfg"] },
     { icon: "node", extensions: ["json"] },
+    { icon: "node2", extensions: ["nvmrc"] },
     { icon: "npm", extensions: ["npmignore"]},
     { icon: "ocaml", extensions: ["cma", "cmi", "ml", "mly", "ocamlmakefile"] },
     { icon: "perl", extensions: ["perl"] },
