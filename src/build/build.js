@@ -68,12 +68,12 @@ var jsTemplate =
   
   'if (specialExt.indexOf(e) >= 0) {' +
     'var special = {{{specialSupportedExtensions}}};' +
-    'var f = s.name.substring(0, dot);' +
+    'var f = s.name.substring(0, dot).toLowerCase();' +
     'for(var kk=0, len=special.length; kk<len; kk++) {' +
       'var sp = special[kk];' +
       'if(sp===f) return sn(sp);' +
       'var r = new RegExp(sp.replace(/\\\\./g,"\\\\\\\\.") + "$");' +
-      'if(r.test(s.name)) return sn(sp);' +
+      'if(r.test(s.name.toLowerCase())) return sn(sp);' +
     '}' +
   '}' +
   
