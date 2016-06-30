@@ -85,7 +85,7 @@ function activate(context) {
         });
     }
 
-    function installItem(bakfile, orfile, cleanInstallFunc, replaceFunc) {
+    function installItem(bakfile, orfile, cleanInstallFunc) {
         fs.stat(bakfile, function (errBak, statsBak) {
             if (errBak) {
                 // clean installation
@@ -100,9 +100,7 @@ function activate(context) {
                         if (updated) {
                             // some update has occurred. clean install
                             cleanInstallFunc();
-                        } else {
-                            replaceFunc();
-                        }
+                        } 
                     }
                 });
             }
@@ -112,7 +110,11 @@ function activate(context) {
     function addIcons() {
         //add icons to folder
         var zipUrl = 'http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true';
-        k = iconFolder + (isWin ? '\\icons.zip' : '/icons.zip');
+        var config = vscode.workspace.getConfiguration("vsicons");
+        if(config && config.icons){
+            zipUrl = config.icons;
+        }
+        var k = iconFolder + (isWin ? '\\icons.zip' : '/icons.zip');
 
         var r = request(zipUrl).pipe(fs.createWriteStream(k));
         r.on('finish', function () {
@@ -191,8 +193,8 @@ function activate(context) {
     // ####  main commands ######################################################
 
     function fInstall() {
-        installItem(cssfilebak, cssfile, cleanCssInstall, replaceCss);
-        installItem(jsfilebak, jsfile, cleanJsInstall, replaceJs);
+        installItem(cssfilebak, cssfile, cleanCssInstall);
+        installItem(jsfilebak, jsfile, cleanJsInstall);
         addIcons();
     }
 

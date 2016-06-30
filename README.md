@@ -55,6 +55,23 @@ The list is slowly growing. If you want to check what icons are currently suppor
 
 If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template so any help will be really appreciated and credit will be given to you ;D
 
+## Custom icons support
+If you want to use your own set of icons you can define a url in your settings and the extension will look for a package there.
+
+The default icons url is [http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true](http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true).
+
+**Very important:** that the icons' package must be named ***icons.zip***
+
+In order to set your icons.zip url you must open Preferences > User Settings and set this:
+
+```json
+{
+  "vsicons.icons": "http://yourUrl/icons.zip"
+}
+```
+
+If you create cool icons' sets please share your urls in the Github repo as issues and I will link them here so everyone can get access to them! ;D
+
 ##Working Files
 Some of you have asked for icons for the Working Files section. As you know, this extension takes profit of the existing code by replacing it and changing a little bit its logic. There's no support from the Extension API for DOM manipulation. The Working Files section is under heavy refactoring and there are going to be changes coming soon. In fact, tabs will be implemented in this section (you can take a peek by installing the Insiders version).
 
