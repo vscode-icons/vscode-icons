@@ -25,6 +25,7 @@ exports.extensions = {
     { icon: "dlang", extensions: ["d"] },
     { icon: "docker", extensions: ["dockerfile"] },
     { icon: "editorconfig", extensions: ["editorconfig"] },
+    { icon: "elixir", extensions: ["ex", "exs", "eex"] },
     { icon: "erlang", extensions: ["erl", "hrl", "emakefile", "emakerfile"] },
     { icon: "eslint", extensions: ["eslintrc", "eslintignore"] },
     { icon: "favicon", extensions: ["favicon"], special: "ico" },
