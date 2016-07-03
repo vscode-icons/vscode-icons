@@ -75,6 +75,7 @@ exports.extensions = {
     { icon: "rails", extensions: [] },
     { icon: "reactjs", extensions: ["jsx"] },
     { icon: "reactts", extensions: ["tsx"] },
+    { icon: "robotframework", extensions: ["robot"] },
     { icon: "ruby", extensions: ["rb", "gemfile"] },
     { icon: "ruby", extensions: ["gemfile"], special: "lock" },
     { icon: "rust", extensions: ["rs"] },
