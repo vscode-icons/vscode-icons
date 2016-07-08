@@ -7,13 +7,13 @@ exports.extensions = {
     { icon: "asp", extensions: ["asp"] },
     { icon: "autohotkey", extensions: ["ahk"] },
     { icon: "babel", extensions: ["babelrc"] },
-    { icon: "binary", extensions: ["bin"] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: "binary", extensions: ["bin", "o", "a", "exe", "obj", "lib", "dll", "pyc"] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: "blade", extensions: [] },
     { icon: "bower", extensions: ["bowerrc"] },
     { icon: "bower", extensions: ["bower"], special:"json" },
     { icon: "c", extensions: ["c"] },
     { icon: "cheader", extensions: ["h"] },
-    { icon: "c++", extensions: ["cpp"] },
+    { icon: "c++", extensions: ["cpp", "hpp", "cc", "cxx"] },
     { icon: "cake", extensions: ["cake"] },
     { icon: "cfm", extensions: ["cfm", "cfc", "lucee"] },
     { icon: "clojure", extensions: ["clojure", "cjm"] },
@@ -29,7 +29,7 @@ exports.extensions = {
     { icon: "erlang", extensions: ["erl", "hrl", "emakefile", "emakerfile"] },
     { icon: "eslint", extensions: ["eslintrc", "eslintignore"] },
     { icon: "favicon", extensions: ["favicon"], special: "ico" },
-    { icon: "font", extensions: ["woff", "woff2", "ttf"] },
+    { icon: "font", extensions: ["woff", "woff2", "ttf", "otf", "eot", "pfa", "pfb", "sfd"] },
     { icon: "fsharp", extensions: ["fs", "fsx", "fsi"] },
     { icon: "git", extensions: ["gitattributes", "gitignore", "gitmodules"] },
     { icon: "go", extensions: ["go"] },
@@ -42,7 +42,7 @@ exports.extensions = {
     { icon: "handlebars", extensions: ["hbs", "handlebars"] },
     { icon: "haskell", extensions: ["has", "hs", "lhs", "lit", "gf"] },
     { icon: "haxe", extensions: ["hxml"] },
-    { icon: "html", extensions: ["html", "html"] },
+    { icon: "html", extensions: ["htm", "html"] },
     { icon: "image", extensions: ["jpeg", "jpg", "gif", "png", "bmp"] },
     { icon: "ionic", extensions: ["ionic"], special:"project" },
     { icon: "jade", extensions: ["jade", "pug"] },
@@ -83,7 +83,7 @@ exports.extensions = {
     { icon: "scala", extensions: ["scala"] },
     { icon: "scss", extensions: ["scss"] },
     { icon: "settings", extensions: [] },
-    { icon: "shell", extensions: ["bat", "sh", "cmd", "bash"] },
+    { icon: "shell", extensions: ["bat", "sh", "cmd", "bash", "zsh", "fish"] },
     { icon: "slim", extensions: [] },
     { icon: "source", extensions: [] },
     { icon: "sql", extensions: ["sql"] },
@@ -103,7 +103,7 @@ exports.extensions = {
     { icon: "vscode", extensions: ["vscodeignore", "launch", "jsconfig", "tsconfig"], special: "json" },
     { icon: "xml", extensions: ["xml", "axml", "xaml"] },
     { icon: "yaml", extensions: ["yml", "yaml"] },
-    { icon: "zip", extensions: ["zip", "rar", "7z"] }
+    { icon: "zip", extensions: ["zip", "rar", "7z", "tar", "gz", "bzip2", "xz", "bz2"] }
   ],
   "parse": function(){
     var s = this.replace(/\./g,'_');
