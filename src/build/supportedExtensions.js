@@ -103,7 +103,8 @@ exports.extensions = {
     { icon: "vscode", extensions: ["vscodeignore", "launch", "jsconfig", "tsconfig"], special: "json" },
     { icon: "xml", extensions: ["xml", "axml", "xaml"] },
     { icon: "yaml", extensions: ["yml", "yaml"] },
-    { icon: "zip", extensions: ["zip", "rar", "7z"] }
+    { icon: "zip", extensions: ["zip", "rar", "7z"] },
+    { icon: "cucumber", extensions: ["feature"] }
   ],
   "parse": function(){
     var s = this.replace(/\./g,'_');
