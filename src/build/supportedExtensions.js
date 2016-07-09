@@ -23,6 +23,7 @@ exports.extensions = {
     { icon: "cs", extensions: ["cs"] },
     { icon: "cshtml", extensions: ["cshtml"] },
     { icon: "css", extensions: ["css"] },
+    { icon: "csslint", extensions: ["csslintrc"] },
     { icon: "cucumber", extensions: ["feature"] },
     { icon: "dlang", extensions: ["d"] },
     { icon: "docker", extensions: ["dockerfile"] },
