@@ -22,6 +22,7 @@ exports.extensions = {
     { icon: "compass", extensions: [] },
     { icon: "cs", extensions: ["cs"] },
     { icon: "css", extensions: ["css"] },
+    { icon: "cucumber", extensions: ["feature"] },
     { icon: "dlang", extensions: ["d"] },
     { icon: "docker", extensions: ["dockerfile"] },
     { icon: "editorconfig", extensions: ["editorconfig"] },
@@ -103,8 +104,7 @@ exports.extensions = {
     { icon: "vscode", extensions: ["vscodeignore", "launch", "jsconfig", "tsconfig"], special: "json" },
     { icon: "xml", extensions: ["xml", "axml", "xaml"] },
     { icon: "yaml", extensions: ["yml", "yaml"] },
-    { icon: "zip", extensions: ["zip", "rar", "7z"] },
-    { icon: "cucumber", extensions: ["feature"] }
+    { icon: "zip", extensions: ["zip", "rar", "7z"] }
   ],
   "parse": function(){
     var s = this.replace(/\./g,'_');
