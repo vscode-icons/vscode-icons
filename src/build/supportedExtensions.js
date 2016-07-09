@@ -22,6 +22,7 @@ exports.extensions = {
     { icon: "compass", extensions: [] },
     { icon: "cs", extensions: ["cs"] },
     { icon: "css", extensions: ["css"] },
+    { icon: "cucumber", extensions: ["feature"] },
     { icon: "dlang", extensions: ["d"] },
     { icon: "docker", extensions: ["dockerfile"] },
     { icon: "editorconfig", extensions: ["editorconfig"] },
