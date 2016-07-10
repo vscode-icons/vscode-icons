@@ -2,7 +2,7 @@ exports.extensions = {
   supported: [
     { icon: "actionscript", extensions: ["as"] },
     { icon: "angular", extensions: [] },
-    { icon: "apache", extensions: ["htaccess"] },
+    { icon: "apache", extensions: ["htaccess", "htpasswd"] },
     { icon: "applescript", extensions: ["app"] },
     { icon: "asp", extensions: ["asp"] },
     { icon: "autohotkey", extensions: ["ahk"] },
