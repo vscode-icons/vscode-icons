@@ -109,7 +109,7 @@ function activate(context) {
 
     function addIcons() {
         //add icons to folder
-        var zipUrl = 'http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true';
+        var zipUrl = 'https://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true';
         var config = vscode.workspace.getConfiguration("vsicons");
         if(config && config.icons){
             zipUrl = config.icons;
