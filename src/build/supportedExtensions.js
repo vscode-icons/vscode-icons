@@ -8,7 +8,7 @@ exports.extensions = {
     { icon: "autohotkey", extensions: ["ahk"] },
     { icon: "babel", extensions: ["babelrc"] },
     { icon: "binary", extensions: ["bin", "o", "a", "exe", "obj", "lib", "dll", "pyc"] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
-    { icon: "blade", extensions: [] },
+    { icon: "blade", extensions: [".blade.php"], special:"php" },
     { icon: "bower", extensions: ["bowerrc"] },
     { icon: "bower", extensions: ["bower"], special:"json" },
     { icon: "c", extensions: ["c"] },
