@@ -96,10 +96,11 @@ Take into account that this extension is still in beta so you may find some bugs
 More file extensions will be supported shortly!
 
 # Building the extension's source code
-If you're willing to explore the extension source code and want to make it work you should run this first:
+If you're willing to explore the extension source code and want to make it work you should run this:
 ```js
+npm install -d
 npm run build
 ```
-This script will generate the css and js code to be injected into vscode source code.
+This script will install any dependencies and generate the css/js code to be injected into vscode source code.
 
 **Enjoy!**
