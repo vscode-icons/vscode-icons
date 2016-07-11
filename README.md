@@ -72,6 +72,10 @@ In order to set your icons.zip url you must open Preferences > User Settings and
 
 If you create cool icons' sets please share your urls in the Github repo as issues and I will link them here so everyone can get access to them! ;D
 
+### Custom Icon Packages
+
+- [`jedmao/grayscale`](https://github.com/jedmao/vscode-icons/blob/grayscale-icons/icons.zip?raw=true)
+
 ##Working Files
 Some of you have asked for icons for the Working Files section. As you know, this extension takes profit of the existing code by replacing it and changing a little bit its logic. There's no support from the Extension API for DOM manipulation. The Working Files section is under heavy refactoring and there are going to be changes coming soon. In fact, tabs will be implemented in this section (you can take a peek by installing the Insiders version).
 
