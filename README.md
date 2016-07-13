@@ -107,4 +107,22 @@ npm run build
 ```
 This script will install any dependencies and generate the css/js code to be injected into vscode source code.
 
+# FAQs
+
+**I've updated to the latest version of the extension but I can't see any icon.**
+
+Probably there's been a change in icons folder location due to new VSCode folder structure. Try executing the ***Icons Update*** command.
+
+**I've installed the extension but I can't see no icons.**
+
+Remember that you have to actively activate the extension by executing the ***Icons Enable*** command.
+
+**I've updated my VSCode and now I can't see any icon.**
+
+As this extension will inject code into the core files of VSCode every time that VSCode gets update those changes are lost so you will have to execute ***Icons Update*** command.
+
+**I've tried everything but nothing seems to be working.**
+
+Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
+
 **Enjoy!**
