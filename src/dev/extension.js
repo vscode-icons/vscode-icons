@@ -24,7 +24,7 @@ function activate(context) {
     var appDir = path.dirname(require.main.filename);
 
     var base = appDir + (isWin ? '\\vs\\workbench' : '/vs/workbench');
-    var iconFolder = base + (isWin ? '\\parts\\files\\browser\\media' : '/parts/files/browser/media');
+    var iconFolder = base + (isWin ? '\\browser\\parts\\editor\\media' : '/browser/parts/editor/media');
 
 
     var cssfile = base + (isWin ? '\\workbench.main.css' : '/workbench.main.css');
