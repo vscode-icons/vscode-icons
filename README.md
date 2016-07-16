@@ -121,6 +121,8 @@ Remember that you have to actively activate the extension by executing the ***Ic
 
 As this extension will inject code into the core files of VSCode every time that VSCode gets update those changes are lost so you will have to execute ***Icons Update*** command.
 
+If this doesn't work then maybe you're behind a proxy. In this case, see [issue #21](https://github.com/robertohuertasm/vscode-icons/issues/21).
+
 **I've tried everything but nothing seems to be working.**
 
 Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
