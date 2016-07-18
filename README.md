@@ -72,6 +72,10 @@ In order to set your icons.zip url you must open Preferences > User Settings and
 
 If you create cool icons' sets please share your urls in the Github repo as issues and I will link them here so everyone can get access to them! ;D
 
+### Custom Icon Packages
+
+- [`jedmao/grayscale`](https://github.com/jedmao/vscode-icons/blob/grayscale-icons/icons.zip?raw=true)
+
 ##Working Files
 Some of you have asked for icons for the Working Files section. As you know, this extension takes profit of the existing code by replacing it and changing a little bit its logic. There's no support from the Extension API for DOM manipulation. The Working Files section is under heavy refactoring and there are going to be changes coming soon. In fact, tabs will be implemented in this section (you can take a peek by installing the Insiders version).
 
@@ -96,10 +100,31 @@ Take into account that this extension is still in beta so you may find some bugs
 More file extensions will be supported shortly!
 
 # Building the extension's source code
-If you're willing to explore the extension source code and want to make it work you should run this first:
+If you're willing to explore the extension source code and want to make it work you should run this:
 ```js
+npm install -d
 npm run build
 ```
-This script will generate the css and js code to be injected into vscode source code.
+This script will install any dependencies and generate the css/js code to be injected into vscode source code.
+
+# FAQs
+
+**I've updated to the latest version of the extension but I can't see any icon.**
+
+Probably there's been a change in icons folder location due to new VSCode folder structure. Try executing the ***Icons Update*** command.
+
+**I've installed the extension but I can't see no icons.**
+
+Remember that you have to actively activate the extension by executing the ***Icons Enable*** command.
+
+**I've updated my VSCode and now I can't see any icon.**
+
+As this extension will inject code into the core files of VSCode every time that VSCode gets update those changes are lost so you will have to execute ***Icons Update*** command.
+
+If this doesn't work then maybe you're behind a proxy. In this case, see [issue #21](https://github.com/robertohuertasm/vscode-icons/issues/21).
+
+**I've tried everything but nothing seems to be working.**
+
+Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
 
 **Enjoy!**
