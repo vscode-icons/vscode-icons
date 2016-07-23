@@ -55,20 +55,28 @@ The list is slowly growing. If you want to check what icons are currently suppor
 
 If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template so any help will be really appreciated and credit will be given to you ;D
 
-## Custom icons support
-If you want to use your own set of icons you can define a url in your settings and the extension will look for a package there.
+## Custom icons support and offline icons support
+If you want to use your own set of icons you can define a uri in your settings and the extension will look for a package there.
 
-The default icons url is [http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true](http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true).
+The default icons uri is [http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true](http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true).
 
 **Very important:**: the icons' package must be named ***icons.zip*** and contain an "icons" folder => icons.zip > icons > [all the icons]
 
-In order to set your icons.zip url you must open Preferences > User Settings and set this:
+In order to set your icons.zip uri you must open Preferences > User Settings and set this:
 
 ```json
 {
   "vsicons.icons": "http://yourUrl/icons.zip"
 }
 ```
+or if you want to use a local uri then
+```json
+{
+  "vsicons.icons": "/Users/roberto/Git/github/robertohuertasm/vscode-icons/icons.zip"
+}
+
+```
+
 
 If you create cool icons' sets please share your urls in the Github repo as issues and I will link them here so everyone can get access to them! ;D
 
@@ -126,5 +134,8 @@ If this doesn't work then maybe you're behind a proxy. In this case, see [issue 
 **I've tried everything but nothing seems to be working.**
 
 Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
+
+# Change log 
+If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/README.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/README.md).
 
 **Enjoy!**
