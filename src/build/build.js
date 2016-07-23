@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 var mustache = require('mustache');
 var _ = require('underscore');
 var extensions = require('./supportedExtensions').extensions;
@@ -32,26 +33,26 @@ var cssTemplate =
     '}' +
    '{{/extensions}}' +
   '{{/supported}}';
-  
+
 var css = mustache.render(cssTemplate, extensions);
 
-var allExtensions = _.flatten(_.map(extensions.supported, function(x){ return x.extensions;}));
+var allExtensions = _.flatten(_.map(extensions.supported, function (x) { return x.extensions; }));
 
-var specialExtensions = _.uniq(_.filter(extensions.supported, function(x) { return x.special;}).map(function(x) {return x.special;}));
+var specialExtensions = _.uniq(_.filter(extensions.supported, function (x) { return x.special; }).map(function (x) { return x.special; }));
 
-var specialSupportedExtensions = _.flatten(_.filter(extensions.supported, function(x) { return x.special;}).map(function(x) {return x.extensions;}));
+var specialSupportedExtensions = _.flatten(_.filter(extensions.supported, function (x) { return x.special; }).map(function (x) { return x.extensions; }));
 
-function arrToStr(arr){
+var arrToStr = function (arr) {
   return JSON.stringify(arr);
-}
+};
 
 var jsView = {
   allExtensions: arrToStr(allExtensions),
   specialExtensions: arrToStr(specialExtensions),
-  specialSupportedExtensions : arrToStr(specialSupportedExtensions)
+  specialSupportedExtensions: arrToStr(specialSupportedExtensions)
 };
 
-var jsTemplate = 
+var jsTemplate =
 't.prototype.iconClass = function (s) {' +
   'if (s.isDirectory) return "folder-icon";' +
   'var fileclass = "-file-icon file-icon";' +
@@ -65,7 +66,7 @@ var jsTemplate =
     'if(/^\\\\d/.test(res)) res = "n" + res;' +
     'return res + fileclass;' +
   '}' +
-  
+
   'if (specialExt.indexOf(e) >= 0) {' +
     'var special = {{{specialSupportedExtensions}}};' +
     'var f = s.name.substring(0, dot).toLowerCase();' +
@@ -76,31 +77,32 @@ var jsTemplate =
       'if(r.test(s.name.toLowerCase())) return sn(sp);' +
     '}' +
   '}' +
-  
+
   'if(exts.indexOf(e) >= 0) {' +
     'return sn(e);' +
   '}else{' +
-    'return "default" + fileclass;'+
+    'return "default" + fileclass;' +
   '}' +
 '}';
 
 var js = mustache.render(jsTemplate, jsView);
 
-var finalTemplate = 
+var finalTemplate =
 'module.exports = { js: \'{{{js}}}\', css: \'{{{css}}}\' };';
 
-var final = mustache.render(finalTemplate, {js: js, css: css});
+var final = mustache.render(finalTemplate, { js: js, css: css });
 
-//writing the files
+// writing the files
 fs.writeFileSync('./src/dev/replacements.js', final);
 console.log('File with replacements successfully created!');
 
-//moving to dist
+// moving to dist
 ncp.limit = 16;
 ncp('./src/dev', './dist', function (err) {
- if (err) {
-   return console.error(err);
- }
- console.log('Build completed!');
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log('Build completed!');
 });
 
