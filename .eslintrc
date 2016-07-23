@@ -1,0 +1,15 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 5
+  },
+  "extends": [
+    "airbnb-base/legacy"
+  ],
+  "rules": {
+    "no-restricted-syntax": [
+      0,
+      "ForInStatement"
+    ],
+    "func-names": 0
+  }
+}

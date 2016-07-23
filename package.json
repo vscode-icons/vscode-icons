@@ -2,8 +2,9 @@
     "name": "vscode-icons",
     "displayName": "vscode-icons",
     "description": "Icons for Visual Studio Code",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "publisher": "robertohuertasm",
+    "license": "MIT",
     "author": {
         "email": "roberto.huertas@outlook.com",
         "name": "Roberto Huertas",
@@ -58,7 +59,12 @@
         "mustache": "^2.2.1",
         "ncp": "^2.0.0",
         "underscore": "^1.8.3",
-        "vscode": "^0.11.0"
+        "vscode": "^0.11.0",
+        "eslint": "^2.10.2",
+        "eslint-config-airbnb": "^9.0.1",
+        "eslint-plugin-import": "^1.8.0",
+        "eslint-plugin-jsx-a11y": "^1.2.0",
+        "eslint-plugin-react": "^5.1.1"
     },
     "dependencies": {
         "extract-zip": "^1.5.0",
