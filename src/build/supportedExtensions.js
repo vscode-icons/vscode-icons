@@ -80,6 +80,7 @@ exports.extensions = {
     { icon: 'rails', extensions: [] },
     { icon: 'reactjs', extensions: ['jsx'] },
     { icon: 'reactts', extensions: ['tsx'] },
+    { icon: 'riot', extensions: ['tag'] },
     { icon: 'robotframework', extensions: ['robot'] },
     { icon: 'ruby', extensions: ['rb', 'gemfile'] },
     { icon: 'ruby', extensions: ['gemfile'], special: 'lock' },
@@ -111,8 +112,7 @@ exports.extensions = {
     { icon: 'vscode', extensions: ['vscodeignore', 'launch', 'jsconfig', 'tsconfig'], special: 'json' },
     { icon: 'xml', extensions: ['xml', 'axml', 'xaml'] },
     { icon: 'yaml', extensions: ['yml', 'yaml'] },
-    { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'] },
-    { icon: 'riot', extensions: ['tag'] }
+    { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'] }
   ],
   parse: function () {
     var s = this.replace(/\./g, '_');

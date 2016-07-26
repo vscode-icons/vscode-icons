@@ -88,21 +88,21 @@ var jsTemplate =
 var js = mustache.render(jsTemplate, jsView);
 
 var finalTemplate =
-'module.exports = { js: \'{{{js}}}\', css: \'{{{css}}}\' };';
+'/* eslint-disable */\n module.exports = { js: \'{{{js}}}\', css: \'{{{css}}}\' };';
 
 var final = mustache.render(finalTemplate, { js: js, css: css });
 
 // writing the files
 fs.writeFileSync('./src/dev/replacements.js', final);
-console.log('File with replacements successfully created!');
+console.log('File with replacements successfully created!'); // eslint-disable-line
 
 // moving to dist
 ncp.limit = 16;
 ncp('./src/dev', './dist', function (err) {
   if (err) {
-    console.error(err);
+    console.error(err); // eslint-disable-line
     return;
   }
-  console.log('Build completed!');
+  console.log('Build completed!'); // eslint-disable-line
 });
 
