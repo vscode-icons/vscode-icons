@@ -45,6 +45,11 @@ sudo chown -R $(whoami) /usr/share/code-insiders
 ls -la /usr/share/code
 #if you want to rollback this permissions back to root:
 sudo chown -R root /usr/share/code
+
+#https://github.com/robertohuertasm/vscode-icons/issues/6#issuecomment-231535553
+#an alternative approach that wouldn't need all the previous steps:
+sudo code --user-data-dir=.
+
 ```
 If you're using any other Linux flavour please [take a look at this Github's issue](https://github.com/robertohuertasm/vscode-icons/issues/6).
 
