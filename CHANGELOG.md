@@ -7,4 +7,4 @@
 
 ## 1.4.4 (July 23, 2016)
 - Offline custom icons support
-- added airbnb eslint style
+- Added airbnb eslint style
