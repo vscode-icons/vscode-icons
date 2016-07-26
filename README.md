@@ -94,6 +94,14 @@ Some of you have asked for icons for the Working Files section. As you know, thi
 
 In this scenario, I think it's better to wait for the next version of the Working Files section and then try to "hack" it. Possibly, once tabs are implemented the team is going to provide a proper way to extend the treeview with icons so the "hack" won't be needed at all ;P
 
+# Hide folder icons
+If you prefer not to show the folder icon because you feel that you have enough with the default VS Code icon then you can opt to disable it by using this setting (*Preferences > User Settings*):
+
+```json
+{
+  "vsicons.hideFolders": true
+}
+```
 
 # Disclaimer
 This extension modifies some VS Code files so use it at your own risk.

@@ -52,9 +52,17 @@ var jsView = {
   specialSupportedExtensions: arrToStr(specialSupportedExtensions)
 };
 
+// var sv = this.state.actionProvider.state._actionProvider.registry.instantiationService._services._entries[3][1]
+// var sv = this.actionProvider.registry.instantiationService._services.get('configurationService');
+// sv.getConfiguration().vsicons
+// sv.loadConfiguration().then(function(a) { console.log(a); });
+
 var jsTemplate =
-'t.prototype.iconClass = function (s) {' +
-  'if (s.isDirectory) return "folder-icon";' +
+  't.prototype.iconClass = function (s) {' +
+  'var c = this.actionProvider.registry.instantiationService._services.get("configurationService");' +
+  'var cf = c ? c.getConfiguration() : null;' +
+  'var hideFolder = cf && cf.vsicons && cf.vsicons.hideFolders;' +
+  'if (s.isDirectory) return hideFolder ? "folder-no-icon": "folder-icon";' +
   'var fileclass = "-file-icon file-icon";' +
   'var dot = s.name.lastIndexOf(".");' +
   'var e = s.name.substring(dot + 1).toLowerCase();' +
