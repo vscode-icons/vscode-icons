@@ -141,6 +141,6 @@ If this doesn't work then maybe you're behind a proxy. In this case, see [issue 
 Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
 
 # Change log 
-If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/README.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/README.md).
+If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
 
 **Enjoy!**
