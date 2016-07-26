@@ -31,6 +31,7 @@ exports.extensions = {
     { icon: 'editorconfig', extensions: ['editorconfig'] },
     { icon: 'elixir', extensions: ['ex', 'exs', 'eex'] },
     { icon: 'elm', extensions: ['elm'] },
+    { icon: 'erb', extensions: ['rhtml'] },
     { icon: 'erlang', extensions: ['erl', 'hrl', 'emakefile', 'emakerfile'] },
     { icon: 'eslint', extensions: ['eslintrc', 'eslintignore'] },
     { icon: 'favicon', extensions: ['favicon'], special: 'ico' },

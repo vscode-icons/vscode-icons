@@ -4,6 +4,7 @@
 
 - Option to hide folder icons
 - Use File associations to change icons
+- ERB support
 
 ## 1.4.5 (July 26, 2016)
 - Fix changelog link in readme ([@Empereol](https://github.com/Empereol) in [#106](https://github.com/robertohuertasm/vscode-icons/pull/106))
