@@ -70,6 +70,8 @@ var jsTemplate =
   'var specialExt = {{{specialExtensions}}};' +
 
   'function sn(ext){' +
+    'var fa = (cf && cf.vsicons && cf.vsicons.useFileAssociations && cf.files && cf.files.associations) ? cf.files.associations["*." + ext] : ext;' +
+    'ext =  fa || ext;' +
     'var res = ext.replace(/\\\\./g,"_");' +
     'if(/^\\\\d/.test(res)) res = "n" + res;' +
     'return res + fileclass;' +

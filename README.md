@@ -94,7 +94,9 @@ Some of you have asked for icons for the Working Files section. As you know, thi
 
 In this scenario, I think it's better to wait for the next version of the Working Files section and then try to "hack" it. Possibly, once tabs are implemented the team is going to provide a proper way to extend the treeview with icons so the "hack" won't be needed at all ;P
 
-# Hide folder icons
+# Optional Settings
+
+## Hide folder icons
 If you prefer not to show the folder icon because you feel that you have enough with the default VS Code icon then you can opt to disable it by using this setting (*Preferences > User Settings*):
 
 ```json
@@ -102,6 +104,23 @@ If you prefer not to show the folder icon because you feel that you have enough 
   "vsicons.hideFolders": true
 }
 ```
+
+## Use File associations to change icons
+You know you can [associate certain extensions to a specific language](https://code.visualstudio.com/docs/languages/overview#_adding-a-file-extension-to-a-language). Now you can also leverage this feature in order to map some extensions to a different icon. 
+
+Let's say you want to map all your .js files to the html icon. Then you will have to create the file association in your settings file (note that it also affects the language association in VS Code) and then enable the extension flag.
+
+Only simple glob patterns will work ending with the extension. e.g: *.js, *.blade.php...
+
+```json
+{
+  "files.associations": {
+    "*.js": "html"
+  },
+  "vsicons.useFileAssociations": true
+}
+```
+
 
 # Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
