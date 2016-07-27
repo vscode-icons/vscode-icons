@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.5.1 (July 27, 2016)
+- Enhancement: new sass icon ([@mysticman](https://github.com/mysticman) in [#109](https://github.com/robertohuertasm/vscode-icons/pull/109))
+
 ## 1.5 (July 27, 2016)
 
 - Option to hide folder icons
