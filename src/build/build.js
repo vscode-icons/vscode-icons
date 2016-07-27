@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 var mustache = require('mustache');
 var _ = require('underscore');
 var extensions = require('./supportedExtensions').extensions;
@@ -32,28 +33,36 @@ var cssTemplate =
     '}' +
    '{{/extensions}}' +
   '{{/supported}}';
-  
+
 var css = mustache.render(cssTemplate, extensions);
 
-var allExtensions = _.flatten(_.map(extensions.supported, function(x){ return x.extensions;}));
+var allExtensions = _.flatten(_.map(extensions.supported, function (x) { return x.extensions; }));
 
-var specialExtensions = _.uniq(_.filter(extensions.supported, function(x) { return x.special;}).map(function(x) {return x.special;}));
+var specialExtensions = _.uniq(_.filter(extensions.supported, function (x) { return x.special; }).map(function (x) { return x.special; }));
 
-var specialSupportedExtensions = _.flatten(_.filter(extensions.supported, function(x) { return x.special;}).map(function(x) {return x.extensions;}));
+var specialSupportedExtensions = _.flatten(_.filter(extensions.supported, function (x) { return x.special; }).map(function (x) { return x.extensions; }));
 
-function arrToStr(arr){
+var arrToStr = function (arr) {
   return JSON.stringify(arr);
-}
+};
 
 var jsView = {
   allExtensions: arrToStr(allExtensions),
   specialExtensions: arrToStr(specialExtensions),
-  specialSupportedExtensions : arrToStr(specialSupportedExtensions)
+  specialSupportedExtensions: arrToStr(specialSupportedExtensions)
 };
 
-var jsTemplate = 
-'t.prototype.iconClass = function (s) {' +
-  'if (s.isDirectory) return "folder-icon";' +
+// var sv = this.state.actionProvider.state._actionProvider.registry.instantiationService._services._entries[3][1]
+// var sv = this.actionProvider.registry.instantiationService._services.get('configurationService');
+// sv.getConfiguration().vsicons
+// sv.loadConfiguration().then(function(a) { console.log(a); });
+
+var jsTemplate =
+  't.prototype.iconClass = function (s) {' +
+  'var c = this.actionProvider.registry.instantiationService._services.get("configurationService");' +
+  'var cf = c ? c.getConfiguration() : null;' +
+  'var hideFolder = cf && cf.vsicons && cf.vsicons.hideFolders;' +
+  'if (s.isDirectory) return hideFolder ? "folder-no-icon": "folder-icon";' +
   'var fileclass = "-file-icon file-icon";' +
   'var dot = s.name.lastIndexOf(".");' +
   'var e = s.name.substring(dot + 1).toLowerCase();' +
@@ -61,11 +70,13 @@ var jsTemplate =
   'var specialExt = {{{specialExtensions}}};' +
 
   'function sn(ext){' +
+    'var fa = (cf && cf.vsicons && cf.vsicons.useFileAssociations && cf.files && cf.files.associations) ? cf.files.associations["*." + ext] : ext;' +
+    'ext =  fa || ext;' +
     'var res = ext.replace(/\\\\./g,"_");' +
     'if(/^\\\\d/.test(res)) res = "n" + res;' +
     'return res + fileclass;' +
   '}' +
-  
+
   'if (specialExt.indexOf(e) >= 0) {' +
     'var special = {{{specialSupportedExtensions}}};' +
     'var f = s.name.substring(0, dot).toLowerCase();' +
@@ -76,31 +87,32 @@ var jsTemplate =
       'if(r.test(s.name.toLowerCase())) return sn(sp);' +
     '}' +
   '}' +
-  
+
   'if(exts.indexOf(e) >= 0) {' +
     'return sn(e);' +
   '}else{' +
-    'return "default" + fileclass;'+
+    'return "default" + fileclass;' +
   '}' +
 '}';
 
 var js = mustache.render(jsTemplate, jsView);
 
-var finalTemplate = 
-'module.exports = { js: \'{{{js}}}\', css: \'{{{css}}}\' };';
+var finalTemplate =
+'/* eslint-disable */\n module.exports = { js: \'{{{js}}}\', css: \'{{{css}}}\' };';
 
-var final = mustache.render(finalTemplate, {js: js, css: css});
+var final = mustache.render(finalTemplate, { js: js, css: css });
 
-//writing the files
+// writing the files
 fs.writeFileSync('./src/dev/replacements.js', final);
-console.log('File with replacements successfully created!');
+console.log('File with replacements successfully created!'); // eslint-disable-line
 
-//moving to dist
+// moving to dist
 ncp.limit = 16;
 ncp('./src/dev', './dist', function (err) {
- if (err) {
-   return console.error(err);
- }
- console.log('Build completed!');
+  if (err) {
+    console.error(err); // eslint-disable-line
+    return;
+  }
+  console.log('Build completed!'); // eslint-disable-line
 });
 

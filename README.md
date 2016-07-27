@@ -45,6 +45,11 @@ sudo chown -R $(whoami) /usr/share/code-insiders
 ls -la /usr/share/code
 #if you want to rollback this permissions back to root:
 sudo chown -R root /usr/share/code
+
+#https://github.com/robertohuertasm/vscode-icons/issues/6#issuecomment-231535553
+#an alternative approach that wouldn't need all the previous steps:
+sudo code --user-data-dir=.
+
 ```
 If you're using any other Linux flavour please [take a look at this Github's issue](https://github.com/robertohuertasm/vscode-icons/issues/6).
 
@@ -88,6 +93,33 @@ If you create cool icons' sets please share your urls in the Github repo as issu
 Some of you have asked for icons for the Working Files section. As you know, this extension takes profit of the existing code by replacing it and changing a little bit its logic. There's no support from the Extension API for DOM manipulation. The Working Files section is under heavy refactoring and there are going to be changes coming soon. In fact, tabs will be implemented in this section (you can take a peek by installing the Insiders version).
 
 In this scenario, I think it's better to wait for the next version of the Working Files section and then try to "hack" it. Possibly, once tabs are implemented the team is going to provide a proper way to extend the treeview with icons so the "hack" won't be needed at all ;P
+
+# Optional Settings
+
+## Hide folder icons
+If you prefer not to show the folder icon because you feel that you have enough with the default VS Code icon then you can opt to disable it by using this setting (*Preferences > User Settings*):
+
+```json
+{
+  "vsicons.hideFolders": true
+}
+```
+
+## Use File associations to change icons
+You know you can [associate certain extensions to a specific language](https://code.visualstudio.com/docs/languages/overview#_adding-a-file-extension-to-a-language). Now you can also leverage this feature in order to map some extensions to a different icon. 
+
+Let's say you want to map all your .js files to the html icon. Then you will have to create the file association in your settings file (note that it also affects the language association in VS Code) and then enable the extension flag.
+
+Only simple glob patterns will work ending with the extension. e.g: *.js, *.blade.php...
+
+```json
+{
+  "files.associations": {
+    "*.js": "html"
+  },
+  "vsicons.useFileAssociations": true
+}
+```
 
 
 # Disclaimer
@@ -136,6 +168,6 @@ If this doesn't work then maybe you're behind a proxy. In this case, see [issue 
 Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
 
 # Change log 
-If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/README.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/README.md).
+If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
 
 **Enjoy!**
