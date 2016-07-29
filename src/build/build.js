@@ -75,10 +75,10 @@ var jsTemplate =
   'var exts = {{{allExtensions}}};' +
   'var specialExt = {{{specialExtensions}}};' +
 
-  'if (window.extensionCache) {' +
-    'var ch = window.extensionCache[e];' +
-    'if (ch) return ch;' +
-  '}' +
+  // 'if (window.extensionCache) {' +
+  //   'var ch = window.extensionCache[e];' +
+  //   'if (ch) return ch;' +
+  // '}' +
 
   'function sn(ext){' +
     'var fa = (cf && cf.vsicons && cf.vsicons.useFileAssociations && cf.files && cf.files.associations) ? cf.files.associations["*." + ext] : ext;' +
@@ -86,8 +86,8 @@ var jsTemplate =
     'var res = ext.replace(/\\\\./g,"_");' +
     'if(/^\\\\d/.test(res)) res = "n" + res;' +
 
-    'window.extensionCache = window.extensionCache || {};' +
-    'window.extensionCache[ext] = res + fileclass;' +
+    // 'window.extensionCache = window.extensionCache || {};' +
+    // 'window.extensionCache[ext] = res + fileclass;' +
 
     'return res + fileclass;' +
   '}' +
