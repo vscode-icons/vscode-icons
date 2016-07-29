@@ -72,20 +72,23 @@ var jsTemplate =
   'var fileclass = "-file-icon file-icon";' +
   'var dot = s.name.lastIndexOf(".");' +
   'var e = s.name.substring(dot + 1).toLowerCase();' +
+  'var exts = {{{allExtensions}}};' +
+  'var specialExt = {{{specialExtensions}}};' +
+
   'if (window.extensionCache) {' +
     'var ch = window.extensionCache[e];' +
     'if (ch) return ch;' +
   '}' +
-  'var exts = {{{allExtensions}}};' +
-  'var specialExt = {{{specialExtensions}}};' +
 
   'function sn(ext){' +
     'var fa = (cf && cf.vsicons && cf.vsicons.useFileAssociations && cf.files && cf.files.associations) ? cf.files.associations["*." + ext] : ext;' +
     'ext =  fa || ext;' +
     'var res = ext.replace(/\\\\./g,"_");' +
     'if(/^\\\\d/.test(res)) res = "n" + res;' +
+
     'window.extensionCache = window.extensionCache || {};' +
-    'window.extensionCache[e] = res + fileclass;' +
+    'window.extensionCache[ext] = res + fileclass;' +
+
     'return res + fileclass;' +
   '}' +
 

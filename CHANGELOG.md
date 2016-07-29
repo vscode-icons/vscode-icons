@@ -1,12 +1,7 @@
 # Change Log
 
-## 1.5.3 (July 30, 2016)
-- Fix some Clojure extensions were not working
-- Icons in tabs
-- Readme update
-
 ## 1.5.2 (July 28, 2016)
-- Enhancement: new go icon ([@mysticman](hhttps://github.com/xmattstrongx) in [#112](https://github.com/robertohuertasm/vscode-icons/pull/112))
+- Enhancement: new go icon ([@xmattstrongx](https://github.com/xmattstrongx) in [#112](https://github.com/robertohuertasm/vscode-icons/pull/112))
 - Icons in tabs
 
 ## 1.5.1 (July 27, 2016)
