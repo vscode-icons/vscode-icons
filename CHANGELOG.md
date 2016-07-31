@@ -2,7 +2,6 @@
 
 ## 1.5.2 (July 28, 2016)
 - Enhancement: new go icon ([@xmattstrongx](https://github.com/xmattstrongx) in [#112](https://github.com/robertohuertasm/vscode-icons/pull/112))
-- Icons in tabs
 
 ## 1.5.1 (July 27, 2016)
 - Enhancement: new sass icon ([@mysticman](https://github.com/mysticman) in [#109](https://github.com/robertohuertasm/vscode-icons/pull/109))
