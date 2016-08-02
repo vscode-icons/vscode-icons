@@ -63,6 +63,8 @@ exports.extensions = {
     { icon: 'lsl', extensions: ['lsl'] },
     { icon: 'lua', extensions: ['lua'] },
     { icon: 'markdown', extensions: ['md'] },
+    { icon: 'marko', extensions: ['marko'] },
+    { icon: 'markojs', extensions: ['.marko.js'], special: 'js' },
     { icon: 'markup', extensions: [] },
     { icon: 'matlab', extensions: ['m', 'fig', 'mat', 'mex', 'mexn', 'mexrs6', 'mn', 'mum', 'mx', 'mx3', 'rwd', 'slx', 'slddc', 'smv', 'tikz', 'xvc', 'xvc'] },
     { icon: 'mustache', extensions: ['mustache', 'mst'] },
