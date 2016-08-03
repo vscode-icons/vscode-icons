@@ -65,7 +65,7 @@ If you want to use your own set of icons you can define a uri in your settings a
 
 The default icons uri is [http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true](http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true).
 
-**Very important:**: the icons' package must be named ***icons.zip*** and contain an "icons" folder => icons.zip > icons > [all the icons]
+**Very important:** the icons' package must be named ***icons.zip*** and contain an "icons" folder => icons.zip > icons > [all the icons]
 
 In order to set your icons.zip uri you must open Preferences > User Settings and set this:
 
