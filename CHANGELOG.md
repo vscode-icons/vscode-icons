@@ -1,9 +1,11 @@
 # Change Log
 
+## 1.5.4 (August 3, 2016)
+  - Enhancement: more eslint icon options
+
 ## 1.5.3 (August 3, 2016) 
  - Fix: some Clojure extensions were not working
  - Enhancement: new marko icon ([@yomed](https://github.com/yomed) in [#112](https://github.com/robertohuertasm/vscode-icons/pull/121))
-
 
 ## 1.5.2 (July 28, 2016)
 - Enhancement: new go icon ([@xmattstrongx](https://github.com/xmattstrongx) in [#112](https://github.com/robertohuertasm/vscode-icons/pull/112))
