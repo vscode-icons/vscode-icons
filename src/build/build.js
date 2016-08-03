@@ -56,6 +56,12 @@ var jsView = {
 // var sv = this.actionProvider.registry.instantiationService._services.get('configurationService');
 // sv.getConfiguration().vsicons
 // sv.loadConfiguration().then(function(a) { console.log(a); });
+// tabs: 3 different approaches. -> o.contextService.options.globalSettings.settings.vsicons...
+// or o.instantiationService._services.get("configurationService")
+// use global cache: cache icon result in a global object and get it from tab-label function.
+// Replace "tab-label" for a function call accepting the o || r (r insiders, o code)
+
+// TODO CACHE EXTENSIONS
 
 var jsTemplate =
   't.prototype.iconClass = function (s) {' +
@@ -69,11 +75,20 @@ var jsTemplate =
   'var exts = {{{allExtensions}}};' +
   'var specialExt = {{{specialExtensions}}};' +
 
+  // 'if (window.extensionCache) {' +
+  //   'var ch = window.extensionCache[e];' +
+  //   'if (ch) return ch;' +
+  // '}' +
+
   'function sn(ext){' +
     'var fa = (cf && cf.vsicons && cf.vsicons.useFileAssociations && cf.files && cf.files.associations) ? cf.files.associations["*." + ext] : ext;' +
     'ext =  fa || ext;' +
     'var res = ext.replace(/\\\\./g,"_");' +
     'if(/^\\\\d/.test(res)) res = "n" + res;' +
+
+    // 'window.extensionCache = window.extensionCache || {};' +
+    // 'window.extensionCache[ext] = res + fileclass;' +
+
     'return res + fileclass;' +
   '}' +
 

@@ -94,9 +94,9 @@ Some of you have asked for icons for the Working Files section. As you know, thi
 
 In this scenario, I think it's better to wait for the next version of the Working Files section and then try to "hack" it. Possibly, once tabs are implemented the team is going to provide a proper way to extend the treeview with icons so the "hack" won't be needed at all ;P
 
-# Optional Settings
+## Optional Settings
 
-## Hide folder icons
+### Hide folder icons
 If you prefer not to show the folder icon because you feel that you have enough with the default VS Code icon then you can opt to disable it by using this setting (*Preferences > User Settings*):
 
 ```json
@@ -105,7 +105,7 @@ If you prefer not to show the folder icon because you feel that you have enough 
 }
 ```
 
-## Use File associations to change icons
+### Use File associations to change icons
 You know you can [associate certain extensions to a specific language](https://code.visualstudio.com/docs/languages/overview#_adding-a-file-extension-to-a-language). Now you can also leverage this feature in order to map some extensions to a different icon. 
 
 Let's say you want to map all your .js files to the html icon. Then you will have to create the file association in your settings file (note that it also affects the language association in VS Code) and then enable the extension flag.
@@ -122,7 +122,7 @@ Only simple glob patterns will work ending with the extension. e.g: *.js, *.blad
 ```
 
 
-# Disclaimer
+## Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
 Currently, icons are not supported by the extension functionality that VS Code provides so this extension solves this issue by injecting code into two files:
 
@@ -139,7 +139,7 @@ Take into account that this extension is still in beta so you may find some bugs
 
 More file extensions will be supported shortly!
 
-# Building the extension's source code
+## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:
 ```js
 npm install -d
@@ -147,7 +147,7 @@ npm run build
 ```
 This script will install any dependencies and generate the css/js code to be injected into vscode source code.
 
-# FAQs
+## FAQs
 
 **I've updated to the latest version of the extension but I can't see any icon.**
 
@@ -167,7 +167,7 @@ If this doesn't work then maybe you're behind a proxy. In this case, see [issue 
 
 Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
 
-# Change log 
+## Change log 
 If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
 
 **Enjoy!**
