@@ -5,4 +5,4 @@ exports.messages = {
   already_disabled: 'Icons wurden bereits deaktiviert.',
   smthingwrong: 'Ups! Etwas ist schief gelaufen: ',
   restartIde: 'Visual Studio Code neu starten'
-}
+};
