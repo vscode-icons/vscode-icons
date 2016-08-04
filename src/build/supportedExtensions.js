@@ -100,7 +100,7 @@ exports.extensions = {
     { icon: 'slim', extensions: [] },
     { icon: 'source', extensions: [] },
     { icon: 'sql', extensions: ['sql'] },
-    { icon: 'smarty', extensions: ['tpl'] },
+    { icon: 'smarty', extensions: ['tpl', 'swig'] },
     { icon: 'stylelint', extensions: ['stylelintrc'] },
     { icon: 'stylelint', extensions: ['stylelint.config'], special: 'js' },
     { icon: 'stylus', extensions: ['styl'] },
