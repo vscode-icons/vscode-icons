@@ -9,7 +9,7 @@ Thanks for helping out! :smile:
 ##Pull Request:
 1. Use the present tense.
 2. References issues whenever possible.
-3. Make your code clean.(jsDoc would be great!)
+3. Try to make your code clean and observe the ESLint Rules.
 4. Build the extension by yourself using this:
 ```sh
 npm install -d
