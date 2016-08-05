@@ -12,6 +12,8 @@
 
 ###Checklist:
 - [ ] I'm using Visual Studio Code Version [1.x.x] [Stable/Insider]
+- [ ] I'm using the extension version [1.x.x]
+- [ ] I've regared to the (FAQ)[https://github.com/robertohuertasm/vscode-icons/blob/master/README.md#faqs] and they did not help.
 - [ ] My system is: [OS] [Arch]
 - [ ] I'm sure this issue is not a *duplicate*?
 
