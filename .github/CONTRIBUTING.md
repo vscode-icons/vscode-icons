@@ -10,5 +10,5 @@ Thanks for helping out! :smile:
 1. Use the present tense.
 2. References issues whenever possible.
 3. Try to make your code clean and observe the ESLint Rules.
-4. Build the extension by yourself using this: ```sh npm install -d ``` and ```sh npm run build```
+4. Build the extension by yourself using this: ```npm install -d ``` and ```npm run build```
 5. Only commit built files
