@@ -1,4 +1,4 @@
-##Instruction Template
+_**Instruction Template**_
 
 **THIS IS AN EXAMPLE TEMPLATE**
 
@@ -10,19 +10,19 @@
 
 **Thanks :smile:**
 
-###Checklist:
+**Checklist:**
 - [ ] I'm using Visual Studio Code Version [1.x.x] [Stable/Insider]
 - [ ] I'm using the extension version [1.x.x]
 - [ ] I've regarded to the (FAQ)[https://github.com/robertohuertasm/vscode-icons/blob/master/README.md#faqs] and they did not help.
 - [ ] My system is: [OS] [Arch]
 - [ ] I'm sure this issue is not a *duplicate*?
 
-###Description:
+**Description:**
 [short description of the bug, enhancement or feature request]
 
-###Steps to reproduce:
+**Steps to reproduce:**
 1. First step
-2. Second
+2. Second step
 3. And you can count yourself, can't you?
 
 _Expected behaviour:_
