@@ -179,7 +179,7 @@ Probably there's been a change in icons folder location due to new VSCode folder
 
 **I've installed the extension but I can't see no icons.**
 
-Remember that you have to actively activate the extension by executing the ***Icons Enable*** command.
+Remember that you have to activate the extension by executing the ***Icons Enable*** command.
 
 **I've updated my VSCode and now I can't see any icon.**
 
@@ -189,7 +189,9 @@ If this doesn't work then maybe you're behind a proxy. In this case, see [issue 
 
 **I've tried everything but nothing seems to be working.**
 
-Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
+Reinstall your VSCode and start afresh. It should work 99% of the times. If not, and you're a linux user check [issue #146](https://github.com/robertohuertasm/vscode-icons/issues/146).
+
+If still now working, then raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but first, take a look at the [closed issues](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
 
 ## Change log 
 If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
