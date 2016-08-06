@@ -81,7 +81,7 @@ var jsTemplate =
   // '}' +
 
   'function sn(ext){' +
-    'var fa = (cf && cf.vsicons && cf.vsicons.useFileAssociations && cf.files && cf.files.associations) ? cf.files.associations["*." + ext] : ext;' +
+    'var fa = (cf && cf.vsicons && cf.vsicons.useFileAssociations && cf.vsicons.associations) ? cf.vsicons.associations["*." + ext] : ext;' +
     'ext =  fa || ext;' +
     'var res = ext.replace(/\\\\./g,"_");' +
     'if(/^\\\\d/.test(res)) res = "n" + res;' +

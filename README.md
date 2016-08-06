@@ -54,7 +54,6 @@ sudo code --user-data-dir=.
 If you're using any other Linux flavour please [take a look at this Github's issue](https://github.com/robertohuertasm/vscode-icons/issues/6).
 
 
-
 ## List of supported icons
 The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
 
@@ -108,17 +107,42 @@ If you prefer not to show the folder icon because you feel that you have enough 
 ### Use File associations to change icons
 You know you can [associate certain extensions to a specific language](https://code.visualstudio.com/docs/languages/overview#_adding-a-file-extension-to-a-language). Now you can also leverage this feature in order to map some extensions to a different icon. 
 
-Let's say you want to map all your .js files to the html icon. Then you will have to create the file association in your settings file (note that it also affects the language association in VS Code) and then enable the extension flag.
+Let's say you want to map all your .js files to the html icon. Then you will have to create the file association in your settings file and then enable the extension flag.
 
-Only simple glob patterns will work ending with the extension. e.g: *.js, *.blade.php...
+Only simple glob patterns will work ending with the extension. e.g: *.js, *.blade.php... Complex patterns aren't supported at the moment.
+
+Note that the associations must be mapped to another extension which is recognized by this extension. You can take a look at the list [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). All items containted in *"extensions"* array are supported.
+
+For instance, if you wanted to map *asp* extension to *c++* icon you should do something like this:
 
 ```json
 {
-  "files.associations": {
-    "*.js": "html"
-  },
-  "vsicons.useFileAssociations": true
+ "vsicons": {
+      "useFileAssociations": true,
+      "associations":{
+          "*.asp": "cxx"
+      }
+  }
 }
+```
+
+Note that this would also work:
+
+```json
+{
+ "vsicons": {
+      "useFileAssociations": true,
+      "associations":{
+          "*.asp": "cpp"
+      }
+  }
+}
+```
+
+That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by default.
+
+```json
+{ icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
 
