@@ -128,7 +128,7 @@ For instance, if you wanted to map *asp* extension to *c++* icon you should do s
 
 Note that this would also work:
 
-```
+```json
 {
  "vsicons": {
       "useFileAssociations": true,
