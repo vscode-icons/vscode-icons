@@ -25,6 +25,10 @@ _**Instruction Template**_
 **Description:**
 [short description of the bug, enhancement or feature request]
 
+[**PLEASE INSERT THE ERROR(S) YOU CAN SEE IN DEV CONSOLE HERE**]
+
+[_Where is the dev console? Launch code, click on "Help" in the menubar at the top, click on "Toggle Developer Tools", and click on that window on "Console"._]
+
 **Steps to reproduce:**
 1. First step
 2. Second step
