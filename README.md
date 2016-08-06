@@ -132,7 +132,7 @@ Note that this would also work:
 {
  "vsicons": {
       "useFileAssociations": true,
-      "associations":{
+      "associations": {
           "*.asp": "cpp"
       }
   }
@@ -141,7 +141,7 @@ Note that this would also work:
 
 That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by default.
 
-```json
+```
 { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
