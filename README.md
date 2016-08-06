@@ -145,7 +145,7 @@ That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by
 { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
-
+(See [extensions.js](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js#L17))
 ## Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
 Currently, icons are not supported by the extension functionality that VS Code provides so this extension solves this issue by injecting code into two files:
