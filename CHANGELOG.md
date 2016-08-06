@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.5.6 (August 6, 2016) 
+ - Fix: file associations now is not linked to vscode file associations to avoid incompatibilities. [#146](https://github.com/robertohuertasm/vscode-icons/issues/146)
+
 ## 1.5.5 (August 4, 2016) 
  - Enhancement: swig extension gets smarty icon ([@jens1o](https://github.com/jens1o) in [#138](https://github.com/robertohuertasm/vscode-icons/pull/138))
 
