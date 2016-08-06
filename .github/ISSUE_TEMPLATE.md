@@ -16,6 +16,11 @@ _**Instruction Template**_
 - [ ] I've regarded to the [FAQ](https://github.com/robertohuertasm/vscode-icons/blob/master/README.md#faqs) and they did not help.
 - [ ] My system is: [OS] [Arch]
 - [ ] I'm sure this issue is not a *duplicate*?
+- [ ] I want to create an icon request(remove these lines under there if not):
+      - Icon Name: [name]
+      - Sample original Icon(32x32/png/transparent whenever possible): [url]
+      - Extensions: .just, .a, .bunch, .of, .extensions
+      - [ ] I crossed out "Description", "Steps to reproduce", "Expected behaviour" and "Actual behaviour".
 
 **Description:**
 [short description of the bug, enhancement or feature request]
