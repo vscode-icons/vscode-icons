@@ -104,7 +104,16 @@ If you prefer not to show the folder icon because you feel that you have enough 
 }
 ```
 
-### Use File associations to change icons
+### Hide icons in tabs
+If you prefer not to show icons in tabs you can disable them by using this setting (*Preferences > User Settings*):
+
+```json
+{
+  "vsicons.hideIconsInTabs": true
+}
+```
+
+### Use custom file associations to change icons
 You know you can [associate certain extensions to a specific language](https://code.visualstudio.com/docs/languages/overview#_adding-a-file-extension-to-a-language). Now you can also leverage this feature in order to map some extensions to a different icon. 
 
 Let's say you want to map all your .js files to the html icon. Then you will have to create the file association in your settings file and then enable the extension flag.

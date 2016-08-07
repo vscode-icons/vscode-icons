@@ -3,6 +3,7 @@
 ## 1.6 (August 7, 2016) 
  - Enhancement: file associations now support not supported expressions. [#152](https://github.com/robertohuertasm/vscode-icons/issues/152)
  - Enhancement: file associations now support Regular Expressions. [#147](https://github.com/robertohuertasm/vscode-icons/issues/147)
+ - Icons in tabs are supported. [#101](https://github.com/robertohuertasm/vscode-icons/issues/101)
  - Several code improvements.
 
 ## 1.5.6 (August 6, 2016) 

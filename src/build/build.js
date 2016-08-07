@@ -4,7 +4,11 @@ var _ = require('underscore');
 var extensions = require('./supportedExtensions').extensions;
 var fs = require('fs');
 var ncp = require('ncp').ncp;
-var iconClass = require('./templates/iconClass');
+var iconClassTemplate = require('./templates/iconClass');
+var checkAssociationsTemplate = require('./templates/checkAssociations');
+var iconResolveTemplate = require('./templates/iconResolve');
+var tabLabelTemplate = require('./templates/tabLabel');
+var finalTemplate = require('./templates/final');
 var cssTemplate = require('./templates/css');
 
 var css = mustache.render(cssTemplate, extensions);
@@ -18,27 +22,28 @@ var arrToStr = function (arr) {
 };
 
 var jsView = {
-  allExtensions: arrToStr(allExtensions),
+  extensions: arrToStr(allExtensions),
   specialExtensions: arrToStr(specialExtensions),
   specialSupportedExtensions: arrToStr(specialSupportedExtensions)
 };
 
-var jsTemplate =
-  't.prototype.iconClass = '
-  + iconClass
-  .replace(/'/gi, '"')
-  .replace(/[\n\r]/gi, '')
-  .replace(/\\/gi, '\\\\')
-  .replace(/\["#exts"\]/gi, '{{{allExtensions}}}')
-  .replace(/\["#specialExt"\]/gi, '{{{specialExtensions}}}')
-  .replace(/\["#special"\]/gi, '{{{specialSupportedExtensions}}}');
+var parse = function (st) {
+  return st
+         .replace(/'/gi, '"')
+         .replace(/[\n\r]/gi, '')
+         .replace(/\\/gi, '\\\\');
+};
 
-var js = mustache.render(jsTemplate, jsView);
-
-var finalTemplate =
-'/* eslint-disable */\n module.exports = { js: \'{{{js}}}\', css: \'{{{css}}}\' };';
-
-var final = mustache.render(finalTemplate, { js: js, css: css });
+var final = mustache.render(finalTemplate, {
+  iconClass: parse(iconClassTemplate),
+  checkAssociations: parse(checkAssociationsTemplate),
+  tabLabel: parse(tabLabelTemplate),
+  iconResolve: parse(iconResolveTemplate),
+  css: css,
+  extensions: parse(jsView.extensions),
+  specialExtensions: parse(jsView.specialExtensions),
+  specialSupportedExtensions: parse(jsView.specialSupportedExtensions)
+});
 
 // writing the files
 fs.writeFileSync('./src/dev/replacements.js', final);

@@ -26,4 +26,7 @@ module.exports = '.monaco-tree-row .content .sub-content .explorer-item.folder-i
       'background: url(browser/parts/editor/media/icons/file_type_{{icon}}@2x.png) 1px 4px no-repeat;' +
     '}' +
    '{{/extensions}}' +
-  '{{/supported}}';
+  '{{/supported}}' +
+  '.explorer-item.file-icon.tab-label {' +
+    'background-position:0px 2px;' +
+  '}';
