@@ -14,8 +14,19 @@ var cssTemplate = require('./templates/css');
 var css = mustache.render(cssTemplate, extensions);
 
 var allExtensions = _.flatten(_.map(extensions.supported, function (x) { return x.extensions; }));
-var specialExtensions = _.uniq(_.filter(extensions.supported, function (x) { return x.special; }).map(function (x) { return x.special; }));
-var specialSupportedExtensions = _.flatten(_.filter(extensions.supported, function (x) { return x.special; }).map(function (x) { return x.extensions; }));
+var specialExtensions =
+  _.filter(extensions.supported, function (x) { return x.special; })
+  .map(function (x) { return [x.special, x.extensions]; })
+  .reduce(function (o, i) {
+    var oo = o;
+    var ext = oo[i[0]];
+    if (ext) {
+      oo[i[0]] = ext.concat(i[1]);
+    } else {
+      oo[i[0]] = i[1];
+    }
+    return o;
+  }, {});
 
 var arrToStr = function (arr) {
   return JSON.stringify(arr);
@@ -23,8 +34,7 @@ var arrToStr = function (arr) {
 
 var jsView = {
   extensions: arrToStr(allExtensions),
-  specialExtensions: arrToStr(specialExtensions),
-  specialSupportedExtensions: arrToStr(specialSupportedExtensions)
+  specialExtensions: arrToStr(specialExtensions)
 };
 
 var parse = function (st) {
@@ -41,8 +51,7 @@ var final = mustache.render(finalTemplate, {
   iconResolve: parse(iconResolveTemplate),
   css: css,
   extensions: parse(jsView.extensions),
-  specialExtensions: parse(jsView.specialExtensions),
-  specialSupportedExtensions: parse(jsView.specialSupportedExtensions)
+  specialExtensions: parse(jsView.specialExtensions)
 });
 
 // writing the files

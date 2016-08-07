@@ -156,6 +156,7 @@ That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by
 { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
+**IMPORTANT**: After changing file associations you have to execute the ***"Icons Update"*** command.
 
 ## Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
@@ -183,6 +184,10 @@ npm run build
 This script will install any dependencies and generate the css/js code to be injected into vscode source code.
 
 ## FAQs
+
+**Tabs have disappeared.**
+
+Make sure you're running VSCode >= 1.4.0. See [issue #101](https://github.com/robertohuertasm/vscode-icons/issues/101)
 
 **I've updated to the latest version of the extension but I can't see any icon.**
 

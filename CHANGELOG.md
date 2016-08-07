@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.6.1 (August 8, 2016) 
+ - Fix: complex extensions were not working
+ - Special extension algorithm improved
+
 ## 1.6.0 (August 7, 2016) 
  - Enhancement: file associations now support not supported expressions. [#152](https://github.com/robertohuertasm/vscode-icons/issues/152)
  - Enhancement: file associations now support Regular Expressions. [#147](https://github.com/robertohuertasm/vscode-icons/issues/147)

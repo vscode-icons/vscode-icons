@@ -11,19 +11,19 @@ var iconResolve = function (config, filename, classname) {
   var specialExt = vsicons.specialExtensions;
 
   function sn(ext) {
-    var res = ext.replace(/\\./g, '_');
-    if (/^\\d/.test(res)) res = 'n' + res;
+    var res = ext.replace(/\./g, '_');
+    if (/^\d/.test(res)) res = 'n' + res;
     return res + classname;
   }
 
-  if (specialExt.indexOf(e) >= 0) {
-    var special = vsicons.specialSupportedExtensions;
+  var spext = specialExt[e];
+  if (spext) {
     var f = filename.substring(0, dot).toLowerCase();
-    for (var kk = 0, len = special.length; kk < len; kk++) {
-      var sp = special[kk];
+    for (var kk = 0, len = spext.length; kk < len; kk++) {
+      var sp = spext[kk];
       if (sp === f) return sn(sp);
-      var r = new RegExp(sp.replace(/\\./g, '\\\\.') + '$');
-      if (r.test(filename.toLowerCase())) return sn(sp);
+      var r = new RegExp(sp.replace(/\./gi, '\\.') + '$');
+      if (r.test(filename)) return sn(sp);
     }
   }
 

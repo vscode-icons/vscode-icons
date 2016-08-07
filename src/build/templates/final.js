@@ -9,8 +9,7 @@ module.exports =
   'checkAssociations: {{{checkAssociations}}}, ' +
   'iconResolve: {{{iconResolve}}}, ' +
   'extensions: {{{extensions}}}, ' +
-  'specialExtensions: {{{specialExtensions}}}, ' +
-  'specialSupportedExtensions: {{{specialSupportedExtensions}}}' +
+  'specialExtensions: {{{specialExtensions}}} ' +
 '};\',' +
 'css: \'{{{css}}}\' };';
 
