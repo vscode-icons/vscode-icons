@@ -11,7 +11,7 @@
 
 // TODO CACHE EXTENSIONS
 
-module.exports = function (s) {
+var iconClass = function (s) {
   var c = this.actionProvider.registry.instantiationService._services.get('configurationService');
   var cf = c ? c.getConfiguration() : null;
   var hideFolder = cf && cf.vsicons && cf.vsicons.hideFolders;
@@ -45,3 +45,5 @@ module.exports = function (s) {
   }
   return 'default' + fileclass;
 };
+
+module.exports = iconClass.toString();

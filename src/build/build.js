@@ -4,36 +4,8 @@ var _ = require('underscore');
 var extensions = require('./supportedExtensions').extensions;
 var fs = require('fs');
 var ncp = require('ncp').ncp;
-var tempJs = require('./jsTemplate');
-
-var cssTemplate =
-  '.monaco-tree-row .content .sub-content .explorer-item.folder-icon {' +
-    'padding-left: 22px;' +
-    'background: url(browser/parts/editor/media/icons/Folder_inverse.svg) 1px 4px no-repeat;' +
-  '}'
-  +
-  '.monaco-tree-row.expanded .content .sub-content .explorer-item.folder-icon { ' +
-    'padding-left: 22px;' +
-    'background: url(browser/parts/editor/media/icons/Folder_opened.svg) 1px 4px no-repeat;' +
-    'background-size: 16px;' +
-  '}'
-  +
-  '.explorer-item.default-file-icon {' +
-    'padding-left:22px;' +
-    'adding-left:22px;background:url(browser/parts/editor/media/icons/File.svg) 1px 3px no-repeat;' +
-    'background-size: 16px;' +
-  '}' +
-  '.explorer-item.file-icon {' +
-    'padding-left:22px;' +
-    'background-size: 16px !important;' +
-  '}' +
-  '{{#supported}} ' +
-    '{{#extensions}}' +
-      '.explorer-item.{{parse}}-file-icon { ' +
-      'background: url(browser/parts/editor/media/icons/file_type_{{icon}}@2x.png) 1px 4px no-repeat;' +
-    '}' +
-   '{{/extensions}}' +
-  '{{/supported}}';
+var iconClass = require('./templates/iconClass');
+var cssTemplate = require('./templates/css');
 
 var css = mustache.render(cssTemplate, extensions);
 
@@ -55,8 +27,7 @@ var jsView = {
 
 var jsTemplate =
   't.prototype.iconClass = '
-  + tempJs
-  .toString()
+  + iconClass
   .replace(/'/gi, '"')
   .replace(/[\n\r]/gi, '')
   .replace(/\\/gi, '\\\\')
