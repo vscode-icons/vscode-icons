@@ -4,6 +4,7 @@ var _ = require('underscore');
 var extensions = require('./supportedExtensions').extensions;
 var fs = require('fs');
 var ncp = require('ncp').ncp;
+var tempJs = require('./jsTemplate');
 
 var cssTemplate =
   '.monaco-tree-row .content .sub-content .explorer-item.folder-icon {' +
@@ -52,63 +53,16 @@ var jsView = {
   specialSupportedExtensions: arrToStr(specialSupportedExtensions)
 };
 
-// var sv = this.state.actionProvider.state._actionProvider.registry.instantiationService._services._entries[3][1]
-// var sv = this.actionProvider.registry.instantiationService._services.get('configurationService');
-// sv.getConfiguration().vsicons
-// sv.loadConfiguration().then(function(a) { console.log(a); });
-// tabs: 3 different approaches. -> o.contextService.options.globalSettings.settings.vsicons...
-// or o.instantiationService._services.get("configurationService")
-// use global cache: cache icon result in a global object and get it from tab-label function.
-// Replace "tab-label" for a function call accepting the o || r (r insiders, o code)
-
-// TODO CACHE EXTENSIONS
-
 var jsTemplate =
-  't.prototype.iconClass = function (s) {' +
-  'var c = this.actionProvider.registry.instantiationService._services.get("configurationService");' +
-  'var cf = c ? c.getConfiguration() : null;' +
-  'var hideFolder = cf && cf.vsicons && cf.vsicons.hideFolders;' +
-  'if (s.isDirectory) return hideFolder ? "folder-no-icon": "folder-icon";' +
-  'var fileclass = "-file-icon file-icon";' +
-  'var dot = s.name.lastIndexOf(".");' +
-  'var e = s.name.substring(dot + 1).toLowerCase();' +
-  'var exts = {{{allExtensions}}};' +
-  'var specialExt = {{{specialExtensions}}};' +
-
-  // 'if (window.extensionCache) {' +
-  //   'var ch = window.extensionCache[e];' +
-  //   'if (ch) return ch;' +
-  // '}' +
-
-  'function sn(ext){' +
-    'var fa = (cf && cf.vsicons && cf.vsicons.useFileAssociations && cf.vsicons.associations) ? cf.vsicons.associations["*." + ext] : ext;' +
-    'ext =  fa || ext;' +
-    'var res = ext.replace(/\\\\./g,"_");' +
-    'if(/^\\\\d/.test(res)) res = "n" + res;' +
-
-    // 'window.extensionCache = window.extensionCache || {};' +
-    // 'window.extensionCache[ext] = res + fileclass;' +
-
-    'return res + fileclass;' +
-  '}' +
-
-  'if (specialExt.indexOf(e) >= 0) {' +
-    'var special = {{{specialSupportedExtensions}}};' +
-    'var f = s.name.substring(0, dot).toLowerCase();' +
-    'for(var kk=0, len=special.length; kk<len; kk++) {' +
-      'var sp = special[kk];' +
-      'if(sp===f) return sn(sp);' +
-      'var r = new RegExp(sp.replace(/\\\\./g,"\\\\\\\\.") + "$");' +
-      'if(r.test(s.name.toLowerCase())) return sn(sp);' +
-    '}' +
-  '}' +
-
-  'if(exts.indexOf(e) >= 0) {' +
-    'return sn(e);' +
-  '}else{' +
-    'return "default" + fileclass;' +
-  '}' +
-'}';
+  't.prototype.iconClass = '
+  + tempJs
+  .toString()
+  .replace(/'/gi, '"')
+  .replace(/[\n\r]/gi, '')
+  .replace(/\\/gi, '\\\\')
+  .replace(/\["#exts"\]/gi, '{{{allExtensions}}}')
+  .replace(/\["#specialExt"\]/gi, '{{{specialExtensions}}}')
+  .replace(/\["#special"\]/gi, '{{{specialSupportedExtensions}}}');
 
 var js = mustache.render(jsTemplate, jsView);
 
