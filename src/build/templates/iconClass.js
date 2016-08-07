@@ -1,4 +1,4 @@
-/* eslint-disable  no-underscore-dangle, vars-on-top, max-len, no-undef */
+/* eslint-disable  no-underscore-dangle, vars-on-top, max-len*/
 
 // var sv = this.state.actionProvider.state._actionProvider.registry.instantiationService._services._entries[3][1]
 // var sv = this.actionProvider.registry.instantiationService._services.get('configurationService');
@@ -14,11 +14,31 @@
 var iconClass = function (s) {
   var c = this.actionProvider.registry.instantiationService._services.get('configurationService');
   var cf = c ? c.getConfiguration() : null;
+
   var hideFolder = cf && cf.vsicons && cf.vsicons.hideFolders;
   if (s.isDirectory) return hideFolder ? 'folder-no-icon' : 'folder-icon';
+
   var fileclass = '-file-icon file-icon';
+
+  function checkAssociations(filename) {
+    if (!cf || !cf.vsicons || !cf.vsicons.useFileAssociations || !cf.vsicons.associations) return null;
+    var ascs = cf.vsicons.associations;
+    for (var i = 0, alen = ascs.length; i < alen; i++) {
+      var asc = ascs[i];
+      var rx = new RegExp(asc[0], 'gi');
+      if (rx.test(filename)) {
+        return asc[1] + fileclass;
+      }
+    }
+    return null;
+  }
+
+  var assoc = checkAssociations(s.name);
+  if (assoc) return assoc;
+
   var dot = s.name.lastIndexOf('.');
   var e = s.name.substring(dot + 1).toLowerCase();
+
   var exts = ['#exts'];
   var specialExt = ['#specialExt'];
 

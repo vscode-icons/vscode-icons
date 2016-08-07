@@ -109,9 +109,9 @@ You know you can [associate certain extensions to a specific language](https://c
 
 Let's say you want to map all your .js files to the html icon. Then you will have to create the file association in your settings file and then enable the extension flag.
 
-Only simple glob patterns will work ending with the extension. e.g: *.js, *.blade.php... Complex patterns aren't supported at the moment.
+All kind of **regular expressions** are allowed.
 
-Note that the associations must be mapped to another extension which is recognized by this extension. You can take a look at the list [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). All items containted in *"extensions"* array are supported.
+Note that the associations must be mapped to a supported extension. You can take a look at the list [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). All items containted in *"extensions"* array are supported.
 
 For instance, if you wanted to map *asp* extension to *c++* icon you should do something like this:
 
@@ -119,12 +119,14 @@ For instance, if you wanted to map *asp* extension to *c++* icon you should do s
 {
  "vsicons": {
       "useFileAssociations": true,
-      "associations":{
-          "*.asp": "cxx"
-      }
+      "associations":[
+          ["\\.asp$", "cxx"]
+      ]
   }
 }
 ```
+
+We're using an associative array instead of an object so we can respect the order of the different associations. This way you can create your own rules. **First expression to be matched will win**.
 
 Note that this would also work:
 
@@ -132,20 +134,20 @@ Note that this would also work:
 {
  "vsicons": {
       "useFileAssociations": true,
-      "associations": {
-          "*.asp": "cpp"
-      }
+      "associations": [
+          ["\\.asp$", "cpp"]
+      ]
   }
 }
 ```
 
-That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by default.
+That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by default (See [extensions.js](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js#L17)).
 
 ```
 { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
-(See [extensions.js](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js#L17))
+
 ## Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
 Currently, icons are not supported by the extension functionality that VS Code provides so this extension solves this issue by injecting code into two files:

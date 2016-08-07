@@ -10,9 +10,7 @@ var cssTemplate = require('./templates/css');
 var css = mustache.render(cssTemplate, extensions);
 
 var allExtensions = _.flatten(_.map(extensions.supported, function (x) { return x.extensions; }));
-
 var specialExtensions = _.uniq(_.filter(extensions.supported, function (x) { return x.special; }).map(function (x) { return x.special; }));
-
 var specialSupportedExtensions = _.flatten(_.filter(extensions.supported, function (x) { return x.special; }).map(function (x) { return x.extensions; }));
 
 var arrToStr = function (arr) {
