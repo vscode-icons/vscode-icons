@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.6.2 (August 8, 2016) 
+ - Fix: New tabs were not showing the title. [#153](https://github.com/robertohuertasm/vscode-icons/issues/153)
+
 ## 1.6.1 (August 8, 2016) 
  - Fix: complex extensions were not working
  - Special extension algorithm improved
