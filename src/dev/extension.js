@@ -3,49 +3,42 @@ var vscode = require('vscode'); // eslint-disable-line
 var fs = require('fs');
 var request = require('request');
 var extract = require('extract-zip');
-var path = require('path');
 var replace = require('replace-in-file');
 var replacements = require('./replacements');
 var events = require('events');
 var msg = require('./messages').messages;
+var settings = require('./settings');
 
 function activate(context) {
   var eventEmitter = new events.EventEmitter();
-  var isWin = /^win/.test(process.platform);
-  var appDir = path.dirname(require.main.filename);
-
-  var base = appDir + (isWin ? '\\vs\\workbench' : '/vs/workbench');
-  var iconFolder = base + (isWin ?
-                           '\\browser\\parts\\editor\\media' :
-                           '/browser/parts/editor/media');
-  var cssfile = base + (isWin ?
-                        '\\workbench.main.css' :
-                        '/workbench.main.css');
-  var cssfilebak = base + (isWin ? '\\workbench.main.css.bak' : '/workbench.main.css.bak');
-  var cssreplace = '/*! *****************************************************************************'; // eslint-disable-line
+  var vars = settings.getSettings();
   var csswith = replacements.css;
-
-  var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
-  var jsfilebak = base + (isWin ? '\\workbench.main.js.bak' : '/workbench.main.js.bak');
-
   var installIcons;
   var uninstallIcons;
   var reinstallIcons;
 
   console.log('vscode-icons is active!');
 
+  function showAdminPrivilegesError() {
+    vscode.window.showInformationMessage(msg.admin);
+    var state = settings.getState();
+    if (state.status === settings.status.enabled) {
+      settings.deleteState();
+    }
+  }
+
   process.on('uncaughtException', function (err) {
     if (/ENOENT|EACCES|EPERM/.test(err.code)) {
-      vscode.window.showInformationMessage(msg.admin);
+      showAdminPrivilegesError();
       return;
     }
   });
 
   function replaceCss() {
     replace({
-      files: cssfile,
-      replace: cssreplace,
-      with: csswith + '\n\n ' + cssreplace
+      files: vars.cssfile,
+      replace: vars.cssreplace,
+      with: csswith + '\n\n ' + vars.cssreplace
     }, function (err) {
       console.log(err);
     });
@@ -55,7 +48,7 @@ function activate(context) {
     var changed = null;
     try {
       changed = replace({
-        files: jsfile,
+        files: vars.jsfile,
         replace: jsreplace,
         with: jswith
       });
@@ -84,6 +77,7 @@ function activate(context) {
   }
 
   function disabledRestart() {
+    settings.setStatus(settings.status.disabled);
     vscode.window.showInformationMessage(msg.disabled, { title: msg.restartIde })
       .then(function () {
         reloadWindow();
@@ -98,14 +92,14 @@ function activate(context) {
   }
 
   function cleanCssInstall() {
-    var c = fs.createReadStream(cssfile).pipe(fs.createWriteStream(cssfilebak));
+    var c = fs.createReadStream(vars.cssfile).pipe(fs.createWriteStream(vars.cssfilebak));
     c.on('finish', function () {
       replaceCss();
     });
   }
 
   function cleanJsInstall() {
-    var j = fs.createReadStream(jsfile).pipe(fs.createWriteStream(jsfilebak));
+    var j = fs.createReadStream(vars.jsfile).pipe(fs.createWriteStream(vars.jsfilebak));
     j.on('finish', function () {
       replaceAllJs();
     });
@@ -135,7 +129,7 @@ function activate(context) {
   }
 
   function extractIcons(iconPath) {
-    extract(iconPath, { dir: iconFolder }, function (err) {
+    extract(iconPath, { dir: vars.iconFolder }, function (err) {
       // extraction is complete. make sure to handle the err
       if (err) console.log(err);
       // remove icon.zip
@@ -154,7 +148,7 @@ function activate(context) {
   function addIcons() {
     var zipUrl = 'https://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true';
     var config = vscode.workspace.getConfiguration('vsicons');
-    var k = iconFolder + (isWin ? '\\icons.zip' : '/icons.zip');
+    var k = vars.iconFolder + (vars.isWin ? '\\icons.zip' : '/icons.zip');
     var rx = /^http.+/i;
     var r = null;
 
@@ -192,26 +186,26 @@ function activate(context) {
     var j = null;
     var c = null;
 
-    fs.unlink(jsfile, function (err) {
+    fs.unlink(vars.jsfile, function (err) {
       if (err) {
-        vscode.window.showInformationMessage(msg.admin);
+        showAdminPrivilegesError();
         return;
       }
-      j = fs.createReadStream(jsfilebak).pipe(fs.createWriteStream(jsfile));
+      j = fs.createReadStream(vars.jsfilebak).pipe(fs.createWriteStream(vars.jsfile));
       j.on('finish', function () {
-        fs.unlink(jsfilebak);
+        fs.unlink(vars.jsfilebak);
         restore++;
         restoredAction(restore, willReinstall);
       });
     });
-    fs.unlink(cssfile, function (err) {
+    fs.unlink(vars.cssfile, function (err) {
       if (err) {
-        vscode.window.showInformationMessage(msg.admin);
+        showAdminPrivilegesError();
         return;
       }
-      c = fs.createReadStream(cssfilebak).pipe(fs.createWriteStream(cssfile));
+      c = fs.createReadStream(vars.cssfilebak).pipe(fs.createWriteStream(vars.cssfile));
       c.on('finish', function () {
-        fs.unlink(cssfilebak);
+        fs.unlink(vars.cssfilebak);
         restore++;
         restoredAction(restore, willReinstall);
       });
@@ -221,13 +215,14 @@ function activate(context) {
   // ####  main commands ######################################################
 
   function fInstall() {
-    installItem(cssfilebak, cssfile, cleanCssInstall);
-    installItem(jsfilebak, jsfile, cleanJsInstall);
+    installItem(vars.cssfilebak, vars.cssfile, cleanCssInstall);
+    installItem(vars.jsfilebak, vars.jsfile, cleanJsInstall);
     addIcons();
+    settings.setStatus(settings.status.enabled);
   }
 
   function fUninstall(willReinstall) {
-    fs.stat(jsfilebak, function (errBak, statsBak) {
+    fs.stat(vars.jsfilebak, function (errBak, statsBak) {
       if (errBak) {
         if (willReinstall) {
           emitEndUninstall();
@@ -237,7 +232,7 @@ function activate(context) {
         return;
       }
       // checking if normal file has been udpated.
-      fs.stat(jsfile, function (errOr, statsOr) {
+      fs.stat(vars.jsfile, function (errOr, statsOr) {
         var updated = false;
         if (errOr) {
           vscode.window.showInformationMessage(msg.smthingwrong + errOr);
@@ -245,8 +240,8 @@ function activate(context) {
           updated = hasBeenUpdated(statsBak, statsOr);
           if (updated) {
             // some update has occurred. clean install
-            fs.unlink(jsfilebak);
-            fs.unlink(cssfilebak);
+            fs.unlink(vars.jsfilebak);
+            fs.unlink(vars.cssfilebak);
             if (willReinstall) {
               emitEndUninstall();
             } else {
@@ -273,6 +268,17 @@ function activate(context) {
   context.subscriptions.push(installIcons);
   context.subscriptions.push(uninstallIcons);
   context.subscriptions.push(reinstallIcons);
+
+  var state = settings.getState();
+  if (state.status === settings.status.notInstalled) {
+    fInstall();
+  } else {
+    if (state.status === settings.status.enabled &&
+        state.version !== vars.extVersion) {
+      // auto-update
+      fReinstall();
+    }
+  }
 }
 exports.activate = activate;
 
