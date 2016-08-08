@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.6.2 (August 8, 2016) 
+ - Fix: New tabs were not showing the title. [#153](https://github.com/robertohuertasm/vscode-icons/issues/153)
+
+## 1.6.1 (August 8, 2016) 
+ - Fix: complex extensions were not working
+ - Special extension algorithm improved
+
+## 1.6.0 (August 7, 2016) 
+ - Enhancement: file associations now support not supported expressions. [#152](https://github.com/robertohuertasm/vscode-icons/issues/152)
+ - Enhancement: file associations now support Regular Expressions. [#147](https://github.com/robertohuertasm/vscode-icons/issues/147)
+ - Icons in tabs are supported. [#101](https://github.com/robertohuertasm/vscode-icons/issues/101)
+ - Nunjucks support. [#118](https://github.com/robertohuertasm/vscode-icons/issues/118)
+ - Several code improvements.
+
 ## 1.5.6 (August 6, 2016) 
  - Fix: file associations now is not linked to vscode file associations to avoid incompatibilities. [#146](https://github.com/robertohuertasm/vscode-icons/issues/146)
 

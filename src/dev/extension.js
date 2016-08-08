@@ -1,3 +1,4 @@
+/* eslint-disable no-console*/
 var vscode = require('vscode'); // eslint-disable-line
 var fs = require('fs');
 var request = require('request');
@@ -26,8 +27,6 @@ function activate(context) {
 
   var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
   var jsfilebak = base + (isWin ? '\\workbench.main.js.bak' : '/workbench.main.js.bak');
-  var jsreplace = 't.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}'; // eslint-disable-line
-  var jswith = replacements.js;
 
   var installIcons;
   var uninstallIcons;
@@ -52,14 +51,26 @@ function activate(context) {
     });
   }
 
-  function replaceJs() {
-    replace({
-      files: jsfile,
-      replace: jsreplace,
-      with: jswith
-    }, function (err) {
-      console.log(err);
-    });
+  function replaceJs(jsreplace, jswith) {
+    var changed = null;
+    try {
+      changed = replace({
+        files: jsfile,
+        replace: jsreplace,
+        with: jswith
+      });
+      console.log('REPLACE SUCCESSFUL:', jsreplace.toString());
+    } catch (error) {
+      console.log(error);
+    }
+    return changed;
+  }
+
+  function replaceAllJs() {
+    // eslint-disable-next-line max-len
+    replaceJs('t.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}', replacements.iconClassReplace);
+    replaceJs('"tab-label"', replacements.tabLabelReplace);
+    replaceJs(/^\/\*!-+\n/, replacements.vsicons + '\n\n /*!----\n');
   }
 
   function timeDiff(d1, d2) {
@@ -96,7 +107,7 @@ function activate(context) {
   function cleanJsInstall() {
     var j = fs.createReadStream(jsfile).pipe(fs.createWriteStream(jsfilebak));
     j.on('finish', function () {
-      replaceJs();
+      replaceAllJs();
     });
   }
 

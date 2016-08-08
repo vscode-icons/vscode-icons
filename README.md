@@ -104,14 +104,23 @@ If you prefer not to show the folder icon because you feel that you have enough 
 }
 ```
 
-### Use File associations to change icons
+### Hide icons in tabs
+If you prefer not to show icons in tabs you can disable them by using this setting (*Preferences > User Settings*):
+
+```json
+{
+  "vsicons.hideIconsInTabs": true
+}
+```
+
+### Use custom file associations to change icons
 You know you can [associate certain extensions to a specific language](https://code.visualstudio.com/docs/languages/overview#_adding-a-file-extension-to-a-language). Now you can also leverage this feature in order to map some extensions to a different icon. 
 
 Let's say you want to map all your .js files to the html icon. Then you will have to create the file association in your settings file and then enable the extension flag.
 
-Only simple glob patterns will work ending with the extension. e.g: *.js, *.blade.php... Complex patterns aren't supported at the moment.
+All kind of **regular expressions** are allowed.
 
-Note that the associations must be mapped to another extension which is recognized by this extension. You can take a look at the list [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). All items containted in *"extensions"* array are supported.
+Note that the associations must be mapped to a supported extension. You can take a look at the list [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). All items containted in *"extensions"* array are supported.
 
 For instance, if you wanted to map *asp* extension to *c++* icon you should do something like this:
 
@@ -119,12 +128,14 @@ For instance, if you wanted to map *asp* extension to *c++* icon you should do s
 {
  "vsicons": {
       "useFileAssociations": true,
-      "associations":{
-          "*.asp": "cxx"
-      }
+      "associations":[
+          ["\\.asp$", "cxx"]
+      ]
   }
 }
 ```
+
+We're using an associative array instead of an object so we can respect the order of the different associations. This way you can create your own rules. **First expression to be matched will win**.
 
 Note that this would also work:
 
@@ -132,20 +143,21 @@ Note that this would also work:
 {
  "vsicons": {
       "useFileAssociations": true,
-      "associations": {
-          "*.asp": "cpp"
-      }
+      "associations": [
+          ["\\.asp$", "cpp"]
+      ]
   }
 }
 ```
 
-That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by default.
+That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by default (See [extensions.js](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js#L17)).
 
 ```
 { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
-(See [extensions.js](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js#L17))
+**IMPORTANT**: After changing file associations you have to execute the ***"Icons Update"*** command.
+
 ## Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
 Currently, icons are not supported by the extension functionality that VS Code provides so this extension solves this issue by injecting code into two files:
@@ -173,13 +185,17 @@ This script will install any dependencies and generate the css/js code to be inj
 
 ## FAQs
 
+**Tabs have disappeared.**
+
+Make sure you're running VSCode >= 1.4.0. See [issue #101](https://github.com/robertohuertasm/vscode-icons/issues/101)
+
 **I've updated to the latest version of the extension but I can't see any icon.**
 
 Probably there's been a change in icons folder location due to new VSCode folder structure. Try executing the ***Icons Update*** command.
 
 **I've installed the extension but I can't see no icons.**
 
-Remember that you have to actively activate the extension by executing the ***Icons Enable*** command.
+Remember that you have to activate the extension by executing the ***Icons Enable*** command.
 
 **I've updated my VSCode and now I can't see any icon.**
 
@@ -189,7 +205,9 @@ If this doesn't work then maybe you're behind a proxy. In this case, see [issue 
 
 **I've tried everything but nothing seems to be working.**
 
-Please, raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but take a look at the [closed issues first](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
+Reinstall your VSCode and start afresh. It should work 99% of the times. If not, and you're a linux user check [issue #146](https://github.com/robertohuertasm/vscode-icons/issues/146).
+
+If still now working, then raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but first, take a look at the [closed issues](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
 
 ## Change log 
 If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
