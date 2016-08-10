@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.6.3 (August 8, 2016) 
+ - Fix: Extension tabs were not showing the title. [#153](https://github.com/robertohuertasm/vscode-icons/issues/153)
+ - Auto Enable support. [#156](https://github.com/robertohuertasm/vscode-icons/issues/156)
+
 ## 1.6.2 (August 8, 2016) 
  - Fix: New tabs were not showing the title. [#153](https://github.com/robertohuertasm/vscode-icons/issues/153)
 

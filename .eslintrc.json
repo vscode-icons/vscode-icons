@@ -10,6 +10,7 @@
       0,
       "ForInStatement"
     ],
-    "func-names": 0
+    "func-names": 0,
+    "vars-on-top": 0
   }
 }
