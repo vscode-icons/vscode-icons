@@ -110,7 +110,7 @@ exports.extensions = {
     { icon: 'svg', extensions: ['svg'] },
     { icon: 'swift', extensions: ['swift'] },
     { icon: 'tcl', extensions: ['tcl'] },
-    { icon: 'tex', extensions: ['texi'] },
+    { icon: 'tex', extensions: ['texi', 'tex'] },
     { icon: 'text', extensions: ['txt'] },
     { icon: 'textile', extensions: ['textile'] },
     { icon: 'todo', extensions: ['todo'] },
