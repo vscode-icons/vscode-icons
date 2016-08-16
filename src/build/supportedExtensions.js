@@ -82,6 +82,7 @@ exports.extensions = {
     { icon: 'perl', extensions: ['perl'] },
     { icon: 'php', extensions: ['php', 'php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt'] },
     { icon: 'procfile', extensions: ['procfile'] },
+    { icon: 'postcss', extensions: ['pcss', 'postcss'] },
     { icon: 'powershell', extensions: ['ps1', 'psm1', 'psd1'] },
     { icon: 'puppet', extensions: ['epp'] },
     { icon: 'python', extensions: ['py'] },
