@@ -66,7 +66,7 @@ exports.extensions = {
     { icon: 'lisp', extensions: ['bil'] },
     { icon: 'lsl', extensions: ['lsl'] },
     { icon: 'lua', extensions: ['lua'] },
-    { icon: 'markdown', extensions: ['md'] },
+    { icon: 'markdown', extensions: ['md', 'markdown'] },
     { icon: 'marko', extensions: ['marko'] },
     { icon: 'markojs', extensions: ['.marko.js'], special: 'js' },
     { icon: 'markup', extensions: [] },
