@@ -60,8 +60,7 @@ function activate(context) {
   }
 
   function replaceAllJs() {
-    // eslint-disable-next-line max-len
-    replaceJs('t.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}', replacements.iconClassReplace);
+    replaceJs(vars.jsiconsreplace, replacements.iconClassReplace);
     replaceJs('"tab-label"', replacements.tabLabelReplace);
     replaceJs(/^\/\*!-+\n/, replacements.vsicons + '\n\n /*!----\n');
   }

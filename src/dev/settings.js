@@ -30,6 +30,9 @@ function getSettings() {
     '/workbench.main.css');
   var cssfilebak = base + (isWin ? '\\workbench.main.css.bak' : '/workbench.main.css.bak');
   var cssreplace = '/*! *****************************************************************************'; // eslint-disable-line
+  var jsiconsreplace = isInsiders ?
+  't.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"file-icon"}' :
+  't.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}';
   var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
   var jsfilebak = base + (isWin ? '\\workbench.main.js.bak' : '/workbench.main.js.bak');
 
@@ -44,7 +47,8 @@ function getSettings() {
     cssfilebak: cssfilebak,
     jsfilebak: jsfilebak,
     cssreplace: cssreplace,
-    extVersion: extVersion
+    extVersion: extVersion,
+    jsiconsreplace: jsiconsreplace
   };
   return settings;
 }
