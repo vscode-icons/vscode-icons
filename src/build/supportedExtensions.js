@@ -8,7 +8,7 @@ exports.extensions = {
     { icon: 'asp', extensions: ['asp'] },
     { icon: 'autohotkey', extensions: ['ahk'] },
     { icon: 'babel', extensions: ['babelrc'] },
-    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'pyc'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'pyc', 'pyd', 'pyo'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'blade', extensions: ['.blade.php'], special: 'php' },
     { icon: 'bower', extensions: ['bowerrc'] },
     { icon: 'bower', extensions: ['bower'], special: 'json' },
@@ -85,7 +85,7 @@ exports.extensions = {
     { icon: 'postcss', extensions: ['pcss', 'postcss'] },
     { icon: 'powershell', extensions: ['ps1', 'psm1', 'psd1'] },
     { icon: 'puppet', extensions: ['epp'] },
-    { icon: 'python', extensions: ['py'] },
+    { icon: 'python', extensions: ['py', 'pyw'] },
     { icon: 'r', extensions: ['r'] },
     { icon: 'rails', extensions: [] },
     { icon: 'reactjs', extensions: ['jsx'] },
