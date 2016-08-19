@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.6.5 (August 16, 2016) 
+ - Patch: Tab icon was disappearing while reloading in insider version. [#163](https://github.com/robertohuertasm/vscode-icons/issues/163)
+
 ## 1.6.4 (August 15, 2016) 
  - Enhancement: .erb extension associated with ERB icon. ([@Haydos585](https://github.com/Haydos585) in [#160](https://github.com/robertohuertasm/vscode-icons/pull/160)
 
