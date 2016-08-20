@@ -89,10 +89,6 @@ If you create cool icons' sets please share your urls in the Github repo as issu
 - [`jedmao/grayscale`](https://github.com/jedmao/vscode-icons/blob/grayscale-icons/icons.zip?raw=true)
 - [`julianpaulozzi/vscode-icons-image-lib`](http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true)(based on official Visual Studio Image Library).
 
-##Working Files
-Some of you have asked for icons for the Working Files section. As you know, this extension takes profit of the existing code by replacing it and changing a little bit its logic. There's no support from the Extension API for DOM manipulation. The Working Files section is under heavy refactoring and there are going to be changes coming soon. In fact, tabs will be implemented in this section (you can take a peek by installing the Insiders version).
-
-In this scenario, I think it's better to wait for the next version of the Working Files section and then try to "hack" it. Possibly, once tabs are implemented the team is going to provide a proper way to extend the treeview with icons so the "hack" won't be needed at all ;P
 
 ## Optional Settings
 

@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.6.6 (August 20, 2016) 
+ - Patch: Support for new iconClass function in insider version. [#173](https://github.com/robertohuertasm/vscode-icons/issues/173)
+ - Enhancement: support for new Python files. ([@blackwind](https://github.com/blackwind) in [#171](https://github.com/robertohuertasm/vscode-icons/pull/171)
+ - Enhancement: support for .markdown extension. ([@myakura](https://github.com/myakura) in [#170](https://github.com/robertohuertasm/vscode-icons/pull/170)
+ - Enhancement: jade icon has been replaced with pug icon. ([@olzaragoza](https://github.com/olzaragoza) in [#169](https://github.com/robertohuertasm/vscode-icons/pull/169) & [#168](https://github.com/robertohuertasm/vscode-icons/issues/168)
+ - Enhancement: postcss support. ([@sean-clayton](https://github.com/sean-clayton) in [#166](https://github.com/robertohuertasm/vscode-icons/pull/166)
+
+ 
+
 ## 1.6.5 (August 16, 2016) 
  - Patch: Tab icon was disappearing while reloading in insider version. [#163](https://github.com/robertohuertasm/vscode-icons/issues/163)
 
