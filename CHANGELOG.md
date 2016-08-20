@@ -7,8 +7,6 @@
  - Enhancement: jade icon has been replaced with pug icon. ([@olzaragoza](https://github.com/olzaragoza) in [#169](https://github.com/robertohuertasm/vscode-icons/pull/169) & [#168](https://github.com/robertohuertasm/vscode-icons/issues/168)
  - Enhancement: postcss support. ([@sean-clayton](https://github.com/sean-clayton) in [#166](https://github.com/robertohuertasm/vscode-icons/pull/166)
 
- 
-
 ## 1.6.5 (August 16, 2016) 
  - Patch: Tab icon was disappearing while reloading in insider version. [#163](https://github.com/robertohuertasm/vscode-icons/issues/163)
 
