@@ -48,7 +48,7 @@ exports.extensions = {
     { icon: 'go', extensions: ['go'] },
     { icon: 'gradle', extensions: ['gradle'] },
     { icon: 'graphviz', extensions: [] },
-    { icon: 'groovy', extensions: [] },
+    { icon: 'groovy', extensions: ['groovy'] },
     { icon: 'gruntfile', extensions: ['gruntfile'], special: 'js' },
     { icon: 'gulpfile', extensions: ['gulpfile'], special: 'js' },
     { icon: 'haml', extensions: ['haml'] },
