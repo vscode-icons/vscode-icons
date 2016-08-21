@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.7.1 (August 22, 2016)
+ - Patch: no extVersion updated so no autoupdate available. 
+
 ## 1.7.0 (August 22, 2016)
   - Icons available in 'Open Editors' section. [#174] (https://github.com/robertohuertasm/vscode-icons/issues/89)
   - Enhancement: sql icon change to a more standard one. [#89] (https://github.com/robertohuertasm/vscode-icons/issues/89)
