@@ -4,6 +4,7 @@ exports.extensions = {
     { icon: 'actionscript', extensions: ['as'] },
     { icon: 'angular', extensions: [] },
     { icon: 'apache', extensions: ['htaccess', 'htpasswd'] },
+    { icon: 'apib', extensions: ['apib'] },
     { icon: 'applescript', extensions: ['app'] },
     { icon: 'asp', extensions: ['asp'] },
     { icon: 'assembly', extensions: ['s', 'asm'] },
