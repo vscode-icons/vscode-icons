@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.7.0 (August 21, 2016)
+## 1.7.0 (August 22, 2016)
   - Icons available in 'Open Editors' section.
   - Enhancement: sql icon change to a more standard one. [#89] (https://github.com/robertohuertasm/vscode-icons/issues/89)
   - Assembly support. [#172] (https://github.com/robertohuertasm/vscode-icons/issues/172)
