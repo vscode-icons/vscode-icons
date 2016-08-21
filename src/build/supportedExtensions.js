@@ -31,6 +31,7 @@ exports.extensions = {
     { icon: 'dlang', extensions: ['d'] },
     { icon: 'docker', extensions: ['dockerfile'] },
     { icon: 'editorconfig', extensions: ['editorconfig'] },
+    { icon: 'ejs', extensions: ['ejs'] },
     { icon: 'elixir', extensions: ['ex', 'exs', 'eex'] },
     { icon: 'elm', extensions: ['elm'] },
     { icon: 'erb', extensions: ['rhtml', 'erb'] },

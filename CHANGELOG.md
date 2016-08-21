@@ -8,6 +8,8 @@
   - Enhancement: resolved .m files conflict. Matlab users can use file associations to get matlab icon back. [#128](https://github.com/robertohuertasm/vscode-icons/issues/128)
   - Apib support. [#167](https://github.com/robertohuertasm/vscode-icons/issues/167)
   - React templates support. [#127](https://github.com/robertohuertasm/vscode-icons/issues/127)
+  - Groovy support.[#113](https://github.com/robertohuertasm/vscode-icons/issues/113)
+  - EJS support. [#165](https://github.com/robertohuertasm/vscode-icons/issues/165)
 
 
 ## 1.6.6 (August 20, 2016) 
