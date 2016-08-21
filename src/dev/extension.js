@@ -62,6 +62,7 @@ function activate(context) {
   function replaceAllJs() {
     replaceJs(vars.jsiconsreplace, replacements.iconClassReplace);
     replaceJs('"tab-label"', replacements.tabLabelReplace);
+    replaceJs('["monaco-tree-row"]', replacements.editorsReplace);
     replaceJs(/^\/\*!-+\n/, replacements.vsicons + '\n\n /*!----\n');
   }
 

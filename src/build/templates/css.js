@@ -27,6 +27,12 @@ module.exports = '.monaco-tree-row .content .sub-content .explorer-item.folder-i
     '}' +
    '{{/extensions}}' +
   '{{/supported}}' +
+  '.explorer-item.file-icon.editors {' +
+    'background-position:35px 3px;' +
+  '}' +
+  '.explorer-item.file-icon.editors .open-editor {' +
+    'margin-left:24px !important;' +
+  '}' +
   '.explorer-item.file-icon.tab-label {' +
     'background-position:0px 2px;' +
   '}';

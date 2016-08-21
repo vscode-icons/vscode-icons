@@ -10,6 +10,7 @@ var iconResolveTemplate = require('./templates/iconResolve');
 var tabLabelTemplate = require('./templates/tabLabel');
 var finalTemplate = require('./templates/final');
 var cssTemplate = require('./templates/css');
+var editorsTemplate = require('./templates/editors');
 
 var css = mustache.render(cssTemplate, extensions);
 
@@ -48,6 +49,7 @@ var final = mustache.render(finalTemplate, {
   iconClass: parse(iconClassTemplate),
   checkAssociations: parse(checkAssociationsTemplate),
   tabLabel: parse(tabLabelTemplate),
+  editors: parse(editorsTemplate),
   iconResolve: parse(iconResolveTemplate),
   css: css,
   extensions: parse(jsView.extensions),

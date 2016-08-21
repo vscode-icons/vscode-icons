@@ -110,6 +110,15 @@ If you prefer not to show icons in tabs you can disable them by using this setti
 }
 ```
 
+### Hide icons in 'open editors' section
+If you prefer not to show icons in 'open editors' section you can disable them by using this setting (*Preferences > User Settings*):
+
+```json
+{
+  "vsicons.hideIconsEditors": true
+}
+```
+
 ### Use custom file associations to change icons
 You know you can [associate certain extensions to a specific language](https://code.visualstudio.com/docs/languages/overview#_adding-a-file-extension-to-a-language). Now you can also leverage this feature in order to map some extensions to a different icon. 
 

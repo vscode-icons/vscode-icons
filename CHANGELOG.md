@@ -1,5 +1,7 @@
 # Change Log
 
+## 1.7.0 (August 21, 2016) 
+
 ## 1.6.6 (August 20, 2016) 
  - Patch: Support for new iconClass function in insider version. [#173](https://github.com/robertohuertasm/vscode-icons/issues/173)
  - Enhancement: support for new Python files. ([@blackwind](https://github.com/blackwind) in [#171](https://github.com/robertohuertasm/vscode-icons/pull/171)
