@@ -93,6 +93,7 @@ exports.extensions = {
     { icon: 'r', extensions: ['r'] },
     { icon: 'rails', extensions: [] },
     { icon: 'reactjs', extensions: ['jsx'] },
+    { icon: 'reacttemplate', extensions: ['rt'] },
     { icon: 'reactts', extensions: ['tsx'] },
     { icon: 'riot', extensions: ['tag'] },
     { icon: 'robotframework', extensions: ['robot'] },
