@@ -3,6 +3,9 @@
 ## 1.7.0 (August 21, 2016)
   - Icons available in 'Open Editors' section.
   - Enhancement: sql icon change to a more standard one. [#89] (https://github.com/robertohuertasm/vscode-icons/issues/89)
+  - Assembly support. [#172] (https://github.com/robertohuertasm/vscode-icons/issues/172)
+  - Excel and similar formats support. [#158] (https://github.com/robertohuertasm/vscode-icons/issues/158)
+  - Enhancement: resolved .m files conflict. Matlab users can use file associations to get matlab icon back. [#128](https://github.com/robertohuertasm/vscode-icons/issues/128)
 
 
 ## 1.6.6 (August 20, 2016) 
