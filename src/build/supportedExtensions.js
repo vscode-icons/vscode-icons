@@ -6,6 +6,7 @@ exports.extensions = {
     { icon: 'apache', extensions: ['htaccess', 'htpasswd'] },
     { icon: 'applescript', extensions: ['app'] },
     { icon: 'asp', extensions: ['asp'] },
+    { icon: 'assembly', extensions: ['s', 'asm'] },
     { icon: 'autohotkey', extensions: ['ahk'] },
     { icon: 'babel', extensions: ['babelrc'] },
     { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'pyc', 'pyd', 'pyo'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
