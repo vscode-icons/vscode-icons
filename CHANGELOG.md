@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.7.2 (August 23, 2016)
+ - Patch: solved issue with new vscode insiders version. [#176](https://github.com/robertohuertasm/vscode-icons/issues/176)
+
 ## 1.7.1 (August 22, 2016)
  - Patch: no extVersion updated so no autoupdate available. 
 

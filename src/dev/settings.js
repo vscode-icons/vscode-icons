@@ -31,7 +31,7 @@ function getSettings() {
   var cssfilebak = base + (isWin ? '\\workbench.main.css.bak' : '/workbench.main.css.bak');
   var cssreplace = '/*! *****************************************************************************'; // eslint-disable-line
   var jsiconsreplace = isInsiders ?
-  't.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"file-icon"}' :
+  ['this.fileIconClasses(i.resource.fsPath)', 'e.fileIconClasses(r)'] :
   't.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}';
   var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
   var jsfilebak = base + (isWin ? '\\workbench.main.js.bak' : '/workbench.main.js.bak');
@@ -39,6 +39,7 @@ function getSettings() {
   settings = {
     appPath: appPath,
     isWin: isWin,
+    isInsiders: isInsiders,
     extensionFolder: extensionFolder,
     settingsPath: path.join(appPath, codePath, 'User', 'vsicons.settings.json'),
     iconFolder: iconFolder,

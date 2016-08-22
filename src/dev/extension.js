@@ -60,7 +60,12 @@ function activate(context) {
   }
 
   function replaceAllJs() {
-    replaceJs(vars.jsiconsreplace, replacements.iconClassReplace);
+    if (vars.isInsiders) {
+      replaceJs(vars.jsiconsreplace[0], replacements.iconClassInsidersReplace);
+      replaceJs(vars.jsiconsreplace[1], replacements.iconClassInsiders2Replace);
+    } else {
+      replaceJs(vars.jsiconsreplace, replacements.iconClassReplace);
+    }
     replaceJs('"tab-label"', replacements.tabLabelReplace);
     replaceJs('["monaco-tree-row"]', replacements.editorsReplace);
     replaceJs(/^\/\*!-+\n/, replacements.vsicons + '\n\n /*!----\n');

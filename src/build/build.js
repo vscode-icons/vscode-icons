@@ -50,6 +50,7 @@ var final = mustache.render(finalTemplate, {
   checkAssociations: parse(checkAssociationsTemplate),
   tabLabel: parse(tabLabelTemplate),
   editors: parse(editorsTemplate),
+  iconCache: '{}',
   iconResolve: parse(iconResolveTemplate),
   css: css,
   extensions: parse(jsView.extensions),
