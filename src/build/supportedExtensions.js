@@ -55,7 +55,7 @@ exports.extensions = {
     { icon: 'haml', extensions: ['haml'] },
     { icon: 'handlebars', extensions: ['hbs', 'handlebars'] },
     { icon: 'haskell', extensions: ['has', 'hs', 'lhs', 'lit', 'gf'] },
-    { icon: 'haxe', extensions: ['hxml'] },
+    { icon: 'haxe', extensions: ['hx', 'hxml'] },
     { icon: 'html', extensions: ['htm', 'html'] },
     { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp'] },
     { icon: 'ionic', extensions: ['ionic'], special: 'project' },
