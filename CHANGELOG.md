@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.7.3 (August 22, 2016)
+  - Enhancement: .hxproj files support. ([@Gama11](https://github.com/Gama11) in [#184](https://github.com/robertohuertasm/vscode-icons/pull/184)
+  - Enhancement: gitkeep support. ([@Gama11](https://github.com/Gama11) in [#183](https://github.com/robertohuertasm/vscode-icons/pull/183)
+  - Enhancement: .hxp associated with Lime icon. ([@Gama11](https://github.com/Gama11) in [#182](https://github.com/robertohuertasm/vscode-icons/pull/182)
+  - Enhancement: Haxe source files support. ([@Gama11](https://github.com/Gama11) in [#178](https://github.com/robertohuertasm/vscode-icons/pull/178)
+
 ## 1.7.2 (August 23, 2016)
  - Patch: solved issue with new vscode insiders version. [#176](https://github.com/robertohuertasm/vscode-icons/issues/176)
 
