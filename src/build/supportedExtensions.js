@@ -68,6 +68,7 @@ exports.extensions = {
     { icon: 'less', extensions: ['less'] },
     { icon: 'license', extensions: ['license'] },
     { icon: 'lisp', extensions: ['bil'] },
+    { icon: 'lime', extensions: ['hxp'] },
     { icon: 'lsl', extensions: ['lsl'] },
     { icon: 'lua', extensions: ['lua'] },
     { icon: 'm', extensions: ['m'] },
