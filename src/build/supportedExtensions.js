@@ -45,7 +45,7 @@ exports.extensions = {
     { icon: 'favicon', extensions: ['favicon'], special: 'ico' },
     { icon: 'font', extensions: ['woff', 'woff2', 'ttf', 'otf', 'eot', 'pfa', 'pfb', 'sfd'] },
     { icon: 'fsharp', extensions: ['fs', 'fsx', 'fsi'] },
-    { icon: 'git', extensions: ['gitattributes', 'gitignore', 'gitmodules'] },
+    { icon: 'git', extensions: ['gitattributes', 'gitignore', 'gitmodules', 'gitkeep'] },
     { icon: 'go', extensions: ['go'] },
     { icon: 'gradle', extensions: ['gradle'] },
     { icon: 'graphviz', extensions: [] },
