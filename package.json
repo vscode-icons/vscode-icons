@@ -56,13 +56,12 @@
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
-    "adm-zip": "^0.4.7",
-    "easy-zip": "0.0.4",
     "eslint": "^2.10.2",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-react": "^5.1.1",
+    "folder-zip": "0.0.5",
     "mustache": "^2.2.1",
     "ncp": "^2.0.0",
     "node-zip": "^1.1.1",
