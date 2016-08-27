@@ -4,6 +4,7 @@
   - Enhancement: Flash icon support. ([@Gama11](https://github.com/Gama11) in [#200](https://github.com/robertohuertasm/vscode-icons/pull/200))
   - Enhancement: .so and .ndll added to binary category. ([@Gama11](https://github.com/Gama11) in [#199](https://github.com/robertohuertasm/vscode-icons/pull/199))
   - Enhancement: .ico added to image category. ([@Gama11](https://github.com/Gama11) in [#198](https://github.com/robertohuertasm/vscode-icons/pull/198))
+  - Enhancement: jshint support. ([@jens1o](https://github.com/jens1o) in [#196](https://github.com/robertohuertasm/vscode-icons/pull/196))
   - Enhancement: travis support. ([@jens1o](https://github.com/jens1o) in [#195](https://github.com/robertohuertasm/vscode-icons/pull/195))
   - Enhancement: paket support. ([@jens1o](https://github.com/jens1o) in [#192](https://github.com/robertohuertasm/vscode-icons/pull/192))
   - Enhancement: .config files and pdb supported. ([@MarcosMeli](https://github.com/MarcosMeli) in [#190](https://github.com/robertohuertasm/vscode-icons/pull/190))
