@@ -94,6 +94,7 @@ exports.extensions = {
     { icon: 'paket', extensions: ['paket.template'], special: 'template' },
     { icon: 'paket', extensions: ['paket.local'], special: 'local' },
     { icon: 'perl', extensions: ['perl'] },
+    { icon: 'photoshop', extensions: ['psd'] },
     { icon: 'php', extensions: ['php', 'php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml'] },
     { icon: 'procfile', extensions: ['procfile'] },
     { icon: 'postcss', extensions: ['pcss', 'postcss'] },

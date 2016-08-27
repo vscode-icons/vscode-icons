@@ -92,7 +92,11 @@ ncp('./src/dev', './dist', function (err) {
   }
   // recreating the zip file based on icons folder.
   try {
-    fs.unlinkSync('icons.zip');
+    try {
+      fs.unlinkSync('icons.zip');
+    } catch (error) {
+      //
+    }
     var z = new Zip();
     z.zipFolder('icons', {}, function () {
       z.writeToFile('icons.zip');
