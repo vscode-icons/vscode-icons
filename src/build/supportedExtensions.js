@@ -28,6 +28,7 @@ exports.extensions = {
     { icon: 'css', extensions: ['css'] },
     { icon: 'csslint', extensions: ['csslintrc'] },
     { icon: 'cucumber', extensions: ['feature'] },
+    { icon: 'dartlang', extensions: ['dart'] },
     { icon: 'dlang', extensions: ['d'] },
     { icon: 'docker', extensions: ['dockerfile'] },
     { icon: 'editorconfig', extensions: ['editorconfig'] },
