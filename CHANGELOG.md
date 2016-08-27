@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.8.1 (August xx, 2016)
+## 1.8.1 (August 27, 2016)
   - Enhancement: Neko binaries support. ([@Gama11](https://github.com/Gama11) in [#189](https://github.com/robertohuertasm/vscode-icons/pull/189))
 
 ## 1.8.0 (August 27, 2016)
