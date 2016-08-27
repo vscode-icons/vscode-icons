@@ -44,6 +44,7 @@ exports.extensions = {
     { icon: 'excel', extensions: ['xls', 'xlsx', 'csv', 'ods'] },
     { icon: 'favicon', extensions: ['favicon'], special: 'ico' },
     { icon: 'font', extensions: ['woff', 'woff2', 'ttf', 'otf', 'eot', 'pfa', 'pfb', 'sfd'] },
+    { icon: 'flash', extensions: ['swf', 'swc', 'sol'] },
     { icon: 'fsharp', extensions: ['fs', 'fsx', 'fsi'] },
     { icon: 'git', extensions: ['gitattributes', 'gitignore', 'gitmodules', 'gitkeep'] },
     { icon: 'go', extensions: ['go'] },
