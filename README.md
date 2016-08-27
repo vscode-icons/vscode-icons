@@ -6,7 +6,7 @@
 
 Bring icons to your VS Code.
 
-<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" >
+<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot_folders.png" >
 
 ## Installation
 
