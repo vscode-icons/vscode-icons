@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 var mustache = require('mustache');
 var _ = require('underscore');
+var Zip = require('folder-zip');
 var extensions = require('./supportedExtensions').extensions;
 var folders = require('./supportedFolders').extensions;
 var fs = require('fs');
@@ -59,9 +60,9 @@ var jsView = {
 
 var parse = function (st) {
   return st
-         .replace(/'/gi, '"')
-         .replace(/[\n\r]/gi, '')
-         .replace(/\\/gi, '\\\\');
+    .replace(/'/gi, '"')
+    .replace(/[\n\r]/gi, '')
+    .replace(/\\/gi, '\\\\');
 };
 
 var final = mustache.render(finalTemplate, {
@@ -89,6 +90,16 @@ ncp('./src/dev', './dist', function (err) {
     console.error(err); // eslint-disable-line
     return;
   }
-  console.log('Build completed!'); // eslint-disable-line
+  // recreating the zip file based on icons folder.
+  try {
+    fs.unlinkSync('icons.zip');
+    var z = new Zip();
+    z.zipFolder('icons', {}, function () {
+      z.writeToFile('icons.zip');
+    });
+    console.log('Build completed!'); // eslint-disable-line
+  } catch (error) {
+    console.log('Build failed!', error); // eslint-disable-line
+  }
 });
 
