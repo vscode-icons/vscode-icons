@@ -1,14 +1,14 @@
 /* eslint-disable  no-underscore-dangle, vars-on-top, max-len*/
 /* global vsicons */
-var iconResolve = function (config, filename, classname) {
+var iconResolve = function (config, filename, classname, isFolder) {
   var assoc = vsicons.checkAssociations(config, filename, classname);
   if (assoc) return assoc;
 
   var dot = filename.lastIndexOf('.');
   var e = filename.substring(dot + 1).toLowerCase();
 
-  var exts = vsicons.extensions;
-  var specialExt = vsicons.specialExtensions;
+  var exts = isFolder ? vsicons.folderExtensions : vsicons.extensions;
+  var specialExt = isFolder ? vsicons.folderSpecialExtensions : vsicons.specialExtensions;
 
   function sn(ext) {
     var res = ext.replace(/\./g, '_');

@@ -4,11 +4,12 @@ var tabLabel = function (context) {
   if (!context.instantiationService) return 'tab-label';
   var c = context.instantiationService._services.get('configurationService');
   var cf = c ? c.getConfiguration() : null;
-  if ((!context.name) ||
+  var name = context.name || context.getName();
+  if ((!name) ||
   (cf && cf.vsicons && cf.vsicons.hideIconsInTabs)) {
     return 'tab-label';
   }
-  return vsicons.iconResolve(cf, context.name, '-file-icon file-icon tab-label explorer-item');
+  return vsicons.iconResolve(cf, name, '-file-icon file-icon tab-label explorer-item');
 };
 
 module.exports = tabLabel.toString();

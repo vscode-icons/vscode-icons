@@ -60,9 +60,15 @@ function activate(context) {
   }
 
   function replaceAllJs() {
-    // eslint-disable-next-line max-len
-    replaceJs('t.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}', replacements.iconClassReplace);
+    if (vars.isInsiders) {
+      replaceJs(vars.jsiconsreplace[0], replacements.iconClassInsidersReplace);
+      replaceJs(vars.jsiconsreplace[1], replacements.iconClassInsiders2Replace);
+      replaceJs(vars.jsiconsreplace[2], replacements.iconClassInsiders3Replace);
+    } else {
+      replaceJs(vars.jsiconsreplace, replacements.iconClassReplace);
+    }
     replaceJs('"tab-label"', replacements.tabLabelReplace);
+    replaceJs('["monaco-tree-row"]', replacements.editorsReplace);
     replaceJs(/^\/\*!-+\n/, replacements.vsicons + '\n\n /*!----\n');
   }
 

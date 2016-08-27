@@ -6,7 +6,7 @@
 
 Bring icons to your VS Code.
 
-<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot.png" >
+<img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot_folders.png" >
 
 ## Installation
 
@@ -59,6 +59,9 @@ The list is slowly growing. If you want to check what icons are currently suppor
 
 If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template so any help will be really appreciated and credit will be given to you ;D
 
+## List of supported folder icons
+If you want to check which folder icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedFolders.js). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/robertohuertasm/vscode-icons/issues).
+
 ## Custom icons support and offline icons support
 If you want to use your own set of icons you can define a uri in your settings and the extension will look for a package there.
 
@@ -89,10 +92,6 @@ If you create cool icons' sets please share your urls in the Github repo as issu
 - [`jedmao/grayscale`](https://github.com/jedmao/vscode-icons/blob/grayscale-icons/icons.zip?raw=true)
 - [`julianpaulozzi/vscode-icons-image-lib`](http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true)(based on official Visual Studio Image Library).
 
-##Working Files
-Some of you have asked for icons for the Working Files section. As you know, this extension takes profit of the existing code by replacing it and changing a little bit its logic. There's no support from the Extension API for DOM manipulation. The Working Files section is under heavy refactoring and there are going to be changes coming soon. In fact, tabs will be implemented in this section (you can take a peek by installing the Insiders version).
-
-In this scenario, I think it's better to wait for the next version of the Working Files section and then try to "hack" it. Possibly, once tabs are implemented the team is going to provide a proper way to extend the treeview with icons so the "hack" won't be needed at all ;P
 
 ## Optional Settings
 
@@ -111,6 +110,15 @@ If you prefer not to show icons in tabs you can disable them by using this setti
 ```json
 {
   "vsicons.hideIconsInTabs": true
+}
+```
+
+### Hide icons in 'open editors' section
+If you prefer not to show icons in 'open editors' section you can disable them by using this setting (*Preferences > User Settings*):
+
+```json
+{
+  "vsicons.hideIconsEditors": true
 }
 ```
 
