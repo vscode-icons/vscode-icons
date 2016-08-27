@@ -122,6 +122,7 @@ exports.extensions = {
     { icon: 'text', extensions: ['txt'] },
     { icon: 'textile', extensions: ['textile'] },
     { icon: 'todo', extensions: ['todo'] },
+    { icon: 'travis', extensions: ['.travis.yml'] },
     { icon: 'twig', extensions: ['twig'] },
     { icon: 'typescript', extensions: ['ts'] },
     { icon: 'typescriptdef', extensions: ['.d.ts'], special: 'ts' },
