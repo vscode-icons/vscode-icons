@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.8.2 (August xx, 2016)
+  - Enhancement: .so and .ndll added to binary category. ([@Gama11](https://github.com/Gama11) in [#199](https://github.com/robertohuertasm/vscode-icons/pull/199))
+  - Enhancement: .ico added to image category. ([@Gama11](https://github.com/Gama11) in [#198](https://github.com/robertohuertasm/vscode-icons/pull/198))
+  - Enhancement: .config files and pdb supported. ([@MarcosMeli](https://github.com/MarcosMeli) in [#190](https://github.com/robertohuertasm/vscode-icons/pull/190))
+
 ## 1.8.1 (August 27, 2016)
   - Enhancement: Neko binaries support. ([@Gama11](https://github.com/Gama11) in [#189](https://github.com/robertohuertasm/vscode-icons/pull/189))
 
