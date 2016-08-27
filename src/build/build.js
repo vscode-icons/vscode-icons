@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 var mustache = require('mustache');
 var _ = require('underscore');
+var Zip = require('easy-zip').EasyZip;
 var extensions = require('./supportedExtensions').extensions;
 var folders = require('./supportedFolders').extensions;
 var fs = require('fs');
@@ -90,5 +91,16 @@ ncp('./src/dev', './dist', function (err) {
     return;
   }
   console.log('Build completed!'); // eslint-disable-line
+});
+
+// recreating the zip file based on icons folder.
+try {
+  fs.unlinkSync('icons.zip');
+} catch (error) {
+  //
+}
+var z = new Zip();
+z.zipFolder('icons', function () {
+  z.writeToFile('icons.zip');
 });
 
