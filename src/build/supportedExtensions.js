@@ -10,7 +10,7 @@ exports.extensions = {
     { icon: 'assembly', extensions: ['s', 'asm'] },
     { icon: 'autohotkey', extensions: ['ahk'] },
     { icon: 'babel', extensions: ['babelrc'] },
-    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'pyc', 'pyd', 'pyo', 'n', 'pdb'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'so', 'pyc', 'pyd', 'pyo', 'n', 'ndll', 'pdb'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'blade', extensions: ['.blade.php'], special: 'php' },
     { icon: 'bower', extensions: ['bowerrc'] },
     { icon: 'bower', extensions: ['bower'], special: 'json' },
