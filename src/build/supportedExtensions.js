@@ -10,7 +10,7 @@ exports.extensions = {
     { icon: 'assembly', extensions: ['s', 'asm'] },
     { icon: 'autohotkey', extensions: ['ahk'] },
     { icon: 'babel', extensions: ['babelrc'] },
-    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'pyc', 'pyd', 'pyo', 'n'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'pyc', 'pyd', 'pyo', 'n', 'pdb'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'blade', extensions: ['.blade.php'], special: 'php' },
     { icon: 'bower', extensions: ['bowerrc'] },
     { icon: 'bower', extensions: ['bower'], special: 'json' },
@@ -21,7 +21,7 @@ exports.extensions = {
     { icon: 'cheader', extensions: ['h'] },
     { icon: 'clojure', extensions: ['clojure', 'cjm', 'clj', 'cljs', 'cljc', 'edn'] },
     { icon: 'coffeescript', extensions: ['coffee'] },
-    { icon: 'config', extensions: ['env', 'ini', 'makefile'] },
+    { icon: 'config', extensions: ['env', 'ini', 'makefile', 'config'] },
     { icon: 'compass', extensions: [] },
     { icon: 'cs', extensions: ['cs'] },
     { icon: 'cshtml', extensions: ['cshtml'] },
