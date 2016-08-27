@@ -58,7 +58,7 @@ exports.extensions = {
     { icon: 'haxe', extensions: ['hx', 'hxml'] },
     { icon: 'haxedevelop', extensions: ['hxproj'] },
     { icon: 'html', extensions: ['htm', 'html'] },
-    { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp'] },
+    { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'ico'] },
     { icon: 'ionic', extensions: ['ionic'], special: 'project' },
     { icon: 'jade', extensions: ['jade', 'pug'] },
     { icon: 'java', extensions: ['java'] },
