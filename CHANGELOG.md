@@ -1,8 +1,10 @@
 # Change Log
 
+## 1.8.1 (August xx, 2016)
+  - Enhancement: Neko binaries support. ([@Gama11](https://github.com/Gama11) in [#189](https://github.com/robertohuertasm/vscode-icons/pull/189))
+
 ## 1.8.0 (August 27, 2016)
   - Support for folder icons. [#124](https://github.com/robertohuertasm/vscode-icons/issues/124)
-  - Enhancement: Neko binaries support. ([@Gama11](https://github.com/Gama11) in [#189](https://github.com/robertohuertasm/vscode-icons/pull/189))
   - Enhancement: OCaml icon for .merlin. ([@Gama11](https://github.com/Gama11) in [#187](https://github.com/robertohuertasm/vscode-icons/pull/187))
   - phtml files associated with php icon. [#179](https://github.com/robertohuertasm/vscode-icons/issues/179)
 
