@@ -6,6 +6,8 @@ module.exports =
   'concat(vsicons.iconClass(this, i, true))\', ' +
 'iconClassInsiders2Replace: \'e.fileIconClasses(r).' +
   'concat(vsicons.iconClass(e, r, true, true))\', ' +
+'iconClassInsiders3Replace: \'this.folderIconClasses(i.resource.fsPath).' +
+  'concat(vsicons.iconClass(this, i, true))\', ' +
 'tabLabelReplace: \'vsicons.tabLabel(r)\', ' +
 'editorsReplace: \'vsicons.editors(this)\', ' +
 'vsicons: \'vsicons = {' +
@@ -17,7 +19,9 @@ module.exports =
   'checkAssociations: {{{checkAssociations}}}, ' +
   'iconResolve: {{{iconResolve}}}, ' +
   'extensions: {{{extensions}}}, ' +
-  'specialExtensions: {{{specialExtensions}}} ' +
+  'specialExtensions: {{{specialExtensions}}}, ' +
+  'folderExtensions: {{{folderExtensions}}}, ' +
+  'folderSpecialExtensions: {{{folderSpecialExtensions}}}, ' +
 '};\',' +
 'css: \'{{{css}}}\' };';
 

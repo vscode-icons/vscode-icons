@@ -63,6 +63,7 @@ function activate(context) {
     if (vars.isInsiders) {
       replaceJs(vars.jsiconsreplace[0], replacements.iconClassInsidersReplace);
       replaceJs(vars.jsiconsreplace[1], replacements.iconClassInsiders2Replace);
+      replaceJs(vars.jsiconsreplace[2], replacements.iconClassInsiders3Replace);
     } else {
       replaceJs(vars.jsiconsreplace, replacements.iconClassReplace);
     }

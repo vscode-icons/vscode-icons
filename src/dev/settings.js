@@ -31,7 +31,11 @@ function getSettings() {
   var cssfilebak = base + (isWin ? '\\workbench.main.css.bak' : '/workbench.main.css.bak');
   var cssreplace = '/*! *****************************************************************************'; // eslint-disable-line
   var jsiconsreplace = isInsiders ?
-  ['this.fileIconClasses(i.resource.fsPath)', 'e.fileIconClasses(r)'] :
+  [
+    'this.fileIconClasses(i.resource.fsPath)',
+    'e.fileIconClasses(r)',
+    'this.folderIconClasses(i.resource.fsPath)'
+  ] :
   't.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}';
   var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
   var jsfilebak = base + (isWin ? '\\workbench.main.js.bak' : '/workbench.main.js.bak');
