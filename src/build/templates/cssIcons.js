@@ -1,17 +1,6 @@
 /* eslint-disable max-len */
 
-module.exports = '.monaco-tree-row .content .sub-content .explorer-item.folder-icon {' +
-    'padding-left: 22px;' +
-    'background: url(browser/parts/editor/media/icons/Folder_inverse.svg) 1px 4px no-repeat;' +
-  '}'
-  +
-  '.monaco-tree-row.expanded .content .sub-content .explorer-item.folder-icon { ' +
-    'padding-left: 22px;' +
-    'background: url(browser/parts/editor/media/icons/Folder_opened.svg) 1px 4px no-repeat;' +
-    'background-size: 16px;' +
-  '}'
-  +
-  '.explorer-item.default-file-icon {' +
+module.exports = '.explorer-item.default-file-icon {' +
     'padding-left:22px;' +
     'adding-left:22px;background:url(browser/parts/editor/media/icons/File.svg) 1px 3px no-repeat;' +
     'background-size: 16px;' +
