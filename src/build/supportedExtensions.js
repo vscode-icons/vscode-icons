@@ -10,7 +10,7 @@ exports.extensions = {
     { icon: 'assembly', extensions: ['s', 'asm'] },
     { icon: 'autohotkey', extensions: ['ahk'] },
     { icon: 'babel', extensions: ['babelrc'] },
-    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'pyc', 'pyd', 'pyo', 'n', 'pdb'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'so', 'pyc', 'pyd', 'pyo', 'n', 'ndll', 'pdb'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'blade', extensions: ['.blade.php'], special: 'php' },
     { icon: 'bower', extensions: ['bowerrc'] },
     { icon: 'bower', extensions: ['bower'], special: 'json' },
@@ -58,7 +58,7 @@ exports.extensions = {
     { icon: 'haxe', extensions: ['hx', 'hxml'] },
     { icon: 'haxedevelop', extensions: ['hxproj'] },
     { icon: 'html', extensions: ['htm', 'html'] },
-    { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp'] },
+    { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'ico'] },
     { icon: 'ionic', extensions: ['ionic'], special: 'project' },
     { icon: 'jade', extensions: ['jade', 'pug'] },
     { icon: 'java', extensions: ['java'] },
@@ -122,6 +122,7 @@ exports.extensions = {
     { icon: 'text', extensions: ['txt'] },
     { icon: 'textile', extensions: ['textile'] },
     { icon: 'todo', extensions: ['todo'] },
+    { icon: 'travis', extensions: ['travis.yml'], special: 'yml' },
     { icon: 'twig', extensions: ['twig'] },
     { icon: 'typescript', extensions: ['ts'] },
     { icon: 'typescriptdef', extensions: ['.d.ts'], special: 'ts' },
