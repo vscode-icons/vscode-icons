@@ -292,8 +292,7 @@ function activate(context) {
 }
 exports.activate = activate;
 
-// this method is called when your extension is deactivated
+// this method is called when your vscode is closed
 function deactivate() {
-  fUninstall(false);
 }
 exports.deactivate = deactivate;
