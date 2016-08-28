@@ -104,6 +104,31 @@ If you prefer not to show the folder icon because you feel that you have enough 
 }
 ```
 
+### Hide custom folder icons
+If you prefer not to show custom folder icons section you can disable them by using this setting (*Preferences > User Settings*):
+
+```json
+{
+  "vsicons.hideCustomFolderIcons": true
+}
+```
+
+Note that this will not hide folder icons but only customized ones like `.git`, `.meteor`, `node_modules`...
+
+If you just want to get rid of some specific icons then I'd suggest to use file associations (see below).
+
+```json
+// in order to hide the 'src' folder custom icon:
+{
+ "vsicons": {
+      "useFileAssociations": true,
+      "associations":[
+          ["^src$", ""]
+      ]
+  }
+}
+```
+
 ### Hide icons in tabs
 If you prefer not to show icons in tabs you can disable them by using this setting (*Preferences > User Settings*):
 
@@ -165,7 +190,16 @@ That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by
 { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
-**IMPORTANT**: After changing file associations you have to execute the ***"Icons Update"*** command.
+**IMPORTANT**: After changing file associations you have to execute the ***"Icons Update"*** command or restart your VSCode.
+
+## Contributing with icons
+
+If you're willing to create an icon just follow this few conventions:
+
+1. We're using PNG-24 at the moment.
+2. 32x32
+3. 2px margin (but see [#195](https://github.com/robertohuertasm/vscode-icons/pull/195))
+4. It must be transparent.
 
 ## Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
@@ -217,6 +251,12 @@ If this doesn't work then maybe you're behind a proxy. In this case, see [issue 
 Reinstall your VSCode and start afresh. It should work 99% of the times. If not, and you're a linux user check [issue #146](https://github.com/robertohuertasm/vscode-icons/issues/146).
 
 If still now working, then raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but first, take a look at the [closed issues](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
+
+**Why are you always updating so frequently?**
+
+This has already been discussed in the project's Github as you can see here [#110](https://github.com/robertohuertasm/vscode-icons/issues/110) but as this seems to be a recurring subject I've decided to post it here so the thread remains open to discussion.
+
+In general, I prefer to deliver as soon as possible by providing users with all the new stuff as soon as we get it. Often times is just a patch that must be released because something was missing or not working ok due to changes in VSCode (remember that VSCode insiders is released daily!). I'm well aware that some of you are not confortable with that, but the option to update is finally yours. You have the choice to press the update button in your VSCode or just keep it waiting until you decide is fine for you to update the extension. 
 
 ## Change log 
 If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).

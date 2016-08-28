@@ -12,8 +12,12 @@ var iconClass = function (context, fileInfo, isInsiders, seekCache) {
   var cf = c ? c.getConfiguration() : null;
   var className = fileInfo.isDirectory ? '-folder-icon folder-icon' : '-file-icon file-icon';
   var hideFolder = cf && cf.vsicons && cf.vsicons.hideFolders;
+  var hideCustomFolderIcons = cf && cf.vsicons && cf.vsicons.hideCustomFolderIcons;
 
-  if (fileInfo.isDirectory && hideFolder) return 'folder-no-icon';
+  if (fileInfo.isDirectory) {
+    if (hideFolder) return 'folder-no-icon';
+    if (hideCustomFolderIcons) return 'folder-icon';
+  }
   if (!fileInfo.name) return 'default-file-icon file-icon';
   result = vsicons.iconResolve(cf, fileInfo.name, className, fileInfo.isDirectory);
   if (isInsiders) {
