@@ -252,6 +252,12 @@ Reinstall your VSCode and start afresh. It should work 99% of the times. If not,
 
 If still now working, then raise an issue into [the Github repository](https://github.com/robertohuertasm/vscode-icons/issues) but first, take a look at the [closed issues](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) as you may find [there](https://github.com/robertohuertasm/vscode-icons/issues?q=is%3Aissue+is%3Aclosed) the answer to your problems. ;D
 
+**Why are you always updating so frequently?**
+
+This has already been discussed in the project's Github as you can see here [#110](https://github.com/robertohuertasm/vscode-icons/issues/110) but as this seems to be a recurring subject I've decided to post it here so the thread remains open to discussion.
+
+In general, I prefer to deliver as soon as possible by providing users with all the new stuff as soon as we get it. Often times is just a patch that must be released because something was missing or not working ok due to changes in VSCode (remember that VSCode insiders is released daily!). I'm well aware that some of you are not confortable with that, but the option to update is finally yours. You have the choice to press the update button in your VSCode or just keep it waiting until you decide is fine for you to update the extension. 
+
 ## Change log 
 If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
 
