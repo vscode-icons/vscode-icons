@@ -136,6 +136,7 @@ exports.extensions = {
     { icon: 'twig', extensions: ['twig'] },
     { icon: 'typescript', extensions: ['ts'] },
     { icon: 'typescriptdef', extensions: ['.d.ts'], special: 'ts' },
+    { icon: 'volt', extensions: ['volt'] },
     { icon: 'vbhtml', extensions: ['vbhtml'] },
     { icon: 'vue', extensions: ['vue'] },
     { icon: 'vscode', extensions: ['vscodeignore', 'launch', 'jsconfig', 'tsconfig'], special: 'json' },
