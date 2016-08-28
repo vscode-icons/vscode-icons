@@ -66,6 +66,7 @@ exports.extensions = {
     { icon: 'java', extensions: ['java'] },
     { icon: 'js', extensions: ['js'] },
     { icon: 'jshintrc', extensions: ['jshintrc'] },
+    { icon: 'jsmap', extensions: ['.js.map'], special: 'map' },
     { icon: 'jsp', extensions: ['jsp'] },
     { icon: 'julia', extensions: ['jl'] },
     { icon: 'log', extensions: ['log'] },

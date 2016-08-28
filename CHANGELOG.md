@@ -1,11 +1,17 @@
 # Change Log
 
 ## 1.8.2 (August xx, 2016)
+  - Support for .js.map icon. [#154](https://github.com/robertohuertasm/vscode-icons/issues/154)
+  - Support for hiding custom folder icons.
+  - Support for test folder icon. [#202](https://github.com/robertohuertasm/vscode-icons/issues/202)
+  - Create contribution guidance for icons in Readme. [#201](https://github.com/robertohuertasm/vscode-icons/issues/201)
   - Enhancement: Flash icon support. ([@Gama11](https://github.com/Gama11) in [#200](https://github.com/robertohuertasm/vscode-icons/pull/200))
   - Enhancement: .so and .ndll added to binary category. ([@Gama11](https://github.com/Gama11) in [#199](https://github.com/robertohuertasm/vscode-icons/pull/199))
   - Enhancement: .ico added to image category. ([@Gama11](https://github.com/Gama11) in [#198](https://github.com/robertohuertasm/vscode-icons/pull/198))
   - Enhancement: jshint support. ([@jens1o](https://github.com/jens1o) in [#196](https://github.com/robertohuertasm/vscode-icons/pull/196))
   - Enhancement: travis support. ([@jens1o](https://github.com/jens1o) in [#195](https://github.com/robertohuertasm/vscode-icons/pull/195))
+  - Enhancement: dart support. ([@jens1o](https://github.com/jens1o) in [#194](https://github.com/robertohuertasm/vscode-icons/pull/194))
+  - Enhancement: dart support. ([@jens1o](https://github.com/jens1o) in [#193](https://github.com/robertohuertasm/vscode-icons/pull/193))
   - Enhancement: paket support. ([@jens1o](https://github.com/jens1o) in [#192](https://github.com/robertohuertasm/vscode-icons/pull/192))
   - Enhancement: .config files and pdb supported. ([@MarcosMeli](https://github.com/MarcosMeli) in [#190](https://github.com/robertohuertasm/vscode-icons/pull/190))
   - Build process recreates icons.zip so it's no longer needed to mantain this file in PRs.

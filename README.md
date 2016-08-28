@@ -104,6 +104,31 @@ If you prefer not to show the folder icon because you feel that you have enough 
 }
 ```
 
+### Hide custom folder icons
+If you prefer not to show custom folder icons section you can disable them by using this setting (*Preferences > User Settings*):
+
+```json
+{
+  "vsicons.hideCustomFolderIcons": true
+}
+```
+
+Note that this will not hide folder icons but only customized ones like `.git`, `.meteor`, `node_modules`...
+
+If you just want to get rid of some specific icons then I'd suggest to use file associations (see below).
+
+```json
+// in order to hide the 'src' folder custom icon:
+{
+ "vsicons": {
+      "useFileAssociations": true,
+      "associations":[
+          ["^src$", ""]
+      ]
+  }
+}
+```
+
 ### Hide icons in tabs
 If you prefer not to show icons in tabs you can disable them by using this setting (*Preferences > User Settings*):
 
@@ -165,7 +190,16 @@ That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by
 { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
-**IMPORTANT**: After changing file associations you have to execute the ***"Icons Update"*** command.
+**IMPORTANT**: After changing file associations you have to execute the ***"Icons Update"*** command or restart your VSCode.
+
+## Contributing with icons
+
+If you're willing to create an icon just follow this few conventions:
+
+1. We're using PNG-24 at the moment.
+2. 32x32
+3. 2px margin (but see [#195](https://github.com/robertohuertasm/vscode-icons/pull/195))
+4. It must be transparent.
 
 ## Disclaimer
 This extension modifies some VS Code files so use it at your own risk.
