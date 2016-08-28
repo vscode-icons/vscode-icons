@@ -62,6 +62,7 @@ exports.extensions = {
     { icon: 'html', extensions: ['htm', 'html'] },
     { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'ico'] },
     { icon: 'ionic', extensions: ['ionic'], special: 'project' },
+    { icon: 'ionic', extensions: ['ionic.config'], special: 'json' },
     { icon: 'jade', extensions: ['jade', 'pug'] },
     { icon: 'java', extensions: ['java'] },
     { icon: 'js', extensions: ['js'] },
