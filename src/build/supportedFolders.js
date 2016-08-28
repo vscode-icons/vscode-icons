@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 exports.extensions = {
   supported: [
-    { icon: 'dist', extensions: ['dist'] },
+    { icon: 'dist', extensions: ['dist', 'out'] },
     { icon: 'git', extensions: ['git', 'github'] },
     { icon: 'node', extensions: ['node_modules'] },
     { icon: 'meteor', extensions: ['meteor'] },
