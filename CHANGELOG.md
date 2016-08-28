@@ -1,6 +1,7 @@
 # Change Log
 
 ## 1.8.2 (August xx, 2016)
+  - Contribution point added. [#107](https://github.com/robertohuertasm/vscode-icons/issues/107)
   - Support for .js.map icon. [#154](https://github.com/robertohuertasm/vscode-icons/issues/154)
   - Support for hiding custom folder icons.
   - Support for test folder icon. [#202](https://github.com/robertohuertasm/vscode-icons/issues/202)

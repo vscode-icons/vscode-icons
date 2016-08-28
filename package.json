@@ -49,7 +49,47 @@
         "command": "extension.reinstallIcons",
         "title": "Icons Update"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "vscode-icons configuration",
+      "properties": {
+        "vsicons.hideFolders": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true folder icons won't be shown."
+        },
+        "vsicons.hideCustomFolderIcons": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true custom folder icons won't be shown."
+        },
+        "vsicons.hideIconsInTabs": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true tab icons won't be shown."
+        },
+        "vsicons.hideIconsEditors": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true icons won't be shown in 'open editors' section."
+        },
+        "vsicons.useFileAssociations": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true file and folder associations will be honored."
+        },
+        "vsicons.associations": {
+          "type": "array",
+          "default": null,
+          "description": "This is an associative array that must be filled with arrays whose first member is a regular expression matching the extension that you want to associate and the second member is the name of the extension whose icon you want to use."
+        },
+        "vsicons.icons": {
+          "type": "string",
+          "default": null,
+          "description": "If set you will change the location of the icons.zip file that vscode-icons uses in order to get the icons into your machine. You can use a well-formed URI or a local path."
+        }
+      }
+    }
   },
   "scripts": {
     "build": "node ./src/build/build.js",
