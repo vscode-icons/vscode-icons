@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.8.3 (August 29, 2016)
+  - Patch: Replacement.js was not correctly generated.
+
 ## 1.8.2 (August 29, 2016)
   - Patch: support for VSCode insiders 1.5.0 92d3324.
   - Support for poet. ([@jens1o](https://github.com/jens1o) in [#217](https://github.com/robertohuertasm/vscode-icons/pull/217))
