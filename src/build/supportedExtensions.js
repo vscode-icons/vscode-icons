@@ -6,6 +6,7 @@ exports.extensions = {
     { icon: 'apache', extensions: ['htaccess', 'htpasswd'] },
     { icon: 'apib', extensions: ['apib'] },
     { icon: 'applescript', extensions: ['app'] },
+    { icon: 'appveyor', extensions: ['appveyor.yml'], special: 'yml' },
     { icon: 'asp', extensions: ['asp'] },
     { icon: 'assembly', extensions: ['s', 'asm'] },
     { icon: 'autohotkey', extensions: ['ahk'] },
