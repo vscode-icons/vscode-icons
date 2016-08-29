@@ -90,7 +90,7 @@ If you create cool icons' sets please share your urls in the Github repo as issu
 ### Custom Icon Packages
 
 - [`jedmao/grayscale`](https://github.com/jedmao/vscode-icons/blob/grayscale-icons/icons.zip?raw=true)
-- [`julianpaulozzi/vscode-icons-image-lib`](http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true)(based on official Visual Studio Image Library).
+- [`julianpaulozzi/vscode-icons-image-lib`](https://github.com/julianpaulozzi/vscode-icons-image-lib/blob/master/icons.zip?raw=true)(based on official Visual Studio Image Library).
 
 
 ## Optional Settings
