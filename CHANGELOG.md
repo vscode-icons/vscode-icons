@@ -1,6 +1,13 @@
 # Change Log
 
-## 1.8.2 (August xx, 2016)
+## 1.8.3 (August 29, 2016)
+  - Patch: Replacement.js was not correctly generated.
+
+## 1.8.2 (August 29, 2016)
+  - Patch: support for VSCode insiders 1.5.0 92d3324.
+  - Support for poet. ([@jens1o](https://github.com/jens1o) in [#217](https://github.com/robertohuertasm/vscode-icons/pull/217))
+  - Support for `source` folder icon. ([@Gama11](https://github.com/Gama11) in [#216](https://github.com/robertohuertasm/vscode-icons/pull/216))
+  - Support for `export` folder icon. ([@Gama11](https://github.com/Gama11) in [#215](https://github.com/robertohuertasm/vscode-icons/pull/215))
   - Support for `out` folder icon.
   - Enhancement: Ionic support. ([@jens1o](https://github.com/jens1o) in [#211](https://github.com/robertohuertasm/vscode-icons/pull/211))
   - Enhancement: Volt support. ([@jens1o](https://github.com/jens1o) in [#210](https://github.com/robertohuertasm/vscode-icons/pull/210))
