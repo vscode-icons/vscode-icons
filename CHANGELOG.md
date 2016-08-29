@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.8.4 (August xx, 2016)
+  - Appveyor support. ([@Gama11](https://github.com/Gama11) in [#223](https://github.com/robertohuertasm/vscode-icons/pull/223))
+  - SQLite support. ([@Gama11](https://github.com/Gama11) in [#222](https://github.com/robertohuertasm/vscode-icons/pull/222))
+  - Patch: readme typo. ([@rogeralsing](https://github.com/rogeralsing) in [#221](https://github.com/robertohuertasm/vscode-icons/pull/221))
+  - Composer support. ([@jens1o](https://github.com/jens1o) in [#220](https://github.com/robertohuertasm/vscode-icons/pull/220))
+
 ## 1.8.3 (August 29, 2016)
   - Patch: Replacement.js was not correctly generated.
 
