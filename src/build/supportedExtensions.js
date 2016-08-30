@@ -11,7 +11,7 @@ exports.extensions = {
     { icon: 'assembly', extensions: ['s', 'asm'] },
     { icon: 'autohotkey', extensions: ['ahk'] },
     { icon: 'babel', extensions: ['babelrc'] },
-    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'so', 'pyc', 'pyd', 'pyo', 'n', 'ndll', 'pdb'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'so', 'pyc', 'pyd', 'pyo', 'n', 'ndll', 'pdb', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi' ] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'blade', extensions: ['.blade.php'], special: 'php' },
     { icon: 'bower', extensions: ['bowerrc'] },
     { icon: 'bower', extensions: ['bower'], special: 'json' },
@@ -97,7 +97,7 @@ exports.extensions = {
     { icon: 'npm', extensions: ['npmignore'] },
     { icon: 'npm', extensions: ['package'], special: 'json' },
     { icon: 'nunjucks', extensions: ['njk', 'nunjucks', 'nunjs', 'nunj', 'njs', 'nj'] },
-    { icon: 'ocaml', extensions: ['cma', 'cmi', 'ml', 'mly', 'ocamlmakefile', 'merlin'] },
+    { icon: 'ocaml', extensions: ['ml', 'mll', 'mli', 'mly', 'ocamlmakefile', 'merlin'] },
     { icon: 'paket', extensions: ['paket.dependencies'], special: 'dependencies' },
     { icon: 'paket', extensions: ['paket.lock'], special: 'lock' },
     { icon: 'paket', extensions: ['paket.references'], special: 'references' },
