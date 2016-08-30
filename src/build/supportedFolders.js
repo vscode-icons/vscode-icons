@@ -3,6 +3,7 @@ exports.extensions = {
   supported: [
     { icon: 'dist', extensions: ['dist', 'out', 'export'] },
     { icon: 'git', extensions: ['git', 'github'] },
+    { icon: 'haxelib', extensions: ['haxelib'] },
     { icon: 'node', extensions: ['node_modules'] },
     { icon: 'meteor', extensions: ['meteor'] },
     { icon: 'src', extensions: ['src', 'source'] },

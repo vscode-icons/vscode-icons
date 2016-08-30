@@ -1,5 +1,26 @@
 # Change Log
 
+## 1.8.4 (xxxxx xx, 2016)
+  - Enhancement: jade and pug configuration. ([@jdforsythe](https://github.com/jdforsythe) in [#240](https://github.com/robertohuertasm/vscode-icons/pull/240))
+
+## 1.8.4 (August 30, 2016)
+  - Patch: support for VSCode insiders 1.5.0 18f7fe90. Custom Folders.
+  
+## 1.8.4 (August 30, 2016)
+  - Enhancement: using the key icon for .enc extension. ([@Gama11](https://github.com/Gama11) in [#233](https://github.com/robertohuertasm/vscode-icons/pull/233))
+  - Patch: support for VSCode insiders 1.5.0 18f7fe90.
+  - Patch files support. ([@Gama11](https://github.com/Gama11) in [#230](https://github.com/robertohuertasm/vscode-icons/pull/230))
+  - Enhancement: OCaml binary files to binaries. .mli, .mll to OCaml. ([@Gama11](https://github.com/Gama11) in [#228](https://github.com/robertohuertasm/vscode-icons/pull/228))
+  - Haxe checkstyle.json support. ([@Gama11](https://github.com/Gama11) in [#227](https://github.com/robertohuertasm/vscode-icons/pull/227))
+  - Lime include.xml support. ([@Gama11](https://github.com/Gama11) in [#226](https://github.com/robertohuertasm/vscode-icons/pull/226))
+  - Codeclimate.yml support. ([@Gama11](https://github.com/Gama11) in [#225](https://github.com/robertohuertasm/vscode-icons/pull/225))
+  - Haxelib support. ([@Gama11](https://github.com/Gama11) in [#224](https://github.com/robertohuertasm/vscode-icons/pull/224))
+  - Haxelib.json support.
+  - Appveyor support. ([@Gama11](https://github.com/Gama11) in [#223](https://github.com/robertohuertasm/vscode-icons/pull/223))
+  - SQLite support. ([@Gama11](https://github.com/Gama11) in [#222](https://github.com/robertohuertasm/vscode-icons/pull/222))
+  - Patch: readme typo. ([@rogeralsing](https://github.com/rogeralsing) in [#221](https://github.com/robertohuertasm/vscode-icons/pull/221))
+  - Composer support. ([@jens1o](https://github.com/jens1o) in [#220](https://github.com/robertohuertasm/vscode-icons/pull/220))
+
 ## 1.8.3 (August 29, 2016)
   - Patch: Replacement.js was not correctly generated.
 

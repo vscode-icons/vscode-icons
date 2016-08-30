@@ -90,7 +90,7 @@ If you create cool icons' sets please share your urls in the Github repo as issu
 ### Custom Icon Packages
 
 - [`jedmao/grayscale`](https://github.com/jedmao/vscode-icons/blob/grayscale-icons/icons.zip?raw=true)
-- [`julianpaulozzi/vscode-icons-image-lib`](http://github.com/robertohuertasm/vscode-icons/blob/master/icons.zip?raw=true)(based on official Visual Studio Image Library).
+- [`julianpaulozzi/vscode-icons-image-lib`](https://github.com/julianpaulozzi/vscode-icons-image-lib/blob/master/icons.zip?raw=true)(based on official Visual Studio Image Library).
 
 
 ## Optional Settings
@@ -215,6 +215,8 @@ As this extension modifies VS Code files it will get disabled with every VS Code
 Take into account that this extension is still in beta so you may find some bugs while playing with it. Please, report them to [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
 
 **Please, leave a review if you can so the VS Code Team can know that this is a very demanded feature and, maybe, they can then provide a proper way to extend the IDE regarding icons and customizations soon enough. ;D**
+
+**NOTE: The VSCode team is going to provide a extension point in next stable release. It's still lacking some of this extension's abilities but they're committed to support almost all the features that we're providing right now so finally, good news!! I will keep you posted with the integration progress and how is this going to affect the extension.**
 
 More file extensions will be supported shortly!
 
