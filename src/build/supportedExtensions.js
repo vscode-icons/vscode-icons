@@ -78,7 +78,7 @@ exports.extensions = {
     { icon: 'julia', extensions: ['jl'] },
     { icon: 'log', extensions: ['log'] },
     { icon: 'less', extensions: ['less'] },
-    { icon: 'license', extensions: ['license'] },
+    { icon: 'license', extensions: ['license', 'enc'] },
     { icon: 'lisp', extensions: ['bil'] },
     { icon: 'lime', extensions: ['hxp'] },
     { icon: 'lime', extensions: ['include.xml'], special: 'xml' },
