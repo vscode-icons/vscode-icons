@@ -103,6 +103,7 @@ exports.extensions = {
     { icon: 'paket', extensions: ['paket.references'], special: 'references' },
     { icon: 'paket', extensions: ['paket.template'], special: 'template' },
     { icon: 'paket', extensions: ['paket.local'], special: 'local' },
+    { icon: 'patch', extensions: ['patch'] },
     { icon: 'perl', extensions: ['perl'] },
     { icon: 'poedit', extensions: ['po', 'mo'] },
     { icon: 'photoshop', extensions: ['psd'] },
