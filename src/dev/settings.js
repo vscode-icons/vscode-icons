@@ -34,7 +34,7 @@ function getSettings() {
   [
     'this.fileIconClasses(i.resource.fsPath)',
     'e.fileIconClasses(r)',
-    'this.folderIconClasses(n.resource.fsPath)'
+    'this.folderIconClasses(i.resource.fsPath)'
   ] :
   't.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}';
   var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');

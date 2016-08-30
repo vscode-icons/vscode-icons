@@ -1,6 +1,9 @@
 # Change Log
 
 ## 1.8.4 (August 30, 2016)
+  - Patch: support for VSCode insiders 1.5.0 18f7fe90. Custom Folders.
+  
+## 1.8.4 (August 30, 2016)
   - Enhancement: using the key icon for .enc extension. ([@Gama11](https://github.com/Gama11) in [#233](https://github.com/robertohuertasm/vscode-icons/pull/233))
   - Patch: support for VSCode insiders 1.5.0 18f7fe90.
   - Patch files support. ([@Gama11](https://github.com/Gama11) in [#230](https://github.com/robertohuertasm/vscode-icons/pull/230))

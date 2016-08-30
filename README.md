@@ -216,7 +216,7 @@ Take into account that this extension is still in beta so you may find some bugs
 
 **Please, leave a review if you can so the VS Code Team can know that this is a very demanded feature and, maybe, they can then provide a proper way to extend the IDE regarding icons and customizations soon enough. ;D**
 
-**NOTE: The VSCode team is going to provide a extension point in next stable release. It's still lacking some of this extension's abilities but they're committed to support almost all the features that we're providing right now so finally, good news!! I will keep you posted with the integration progress and how is this going to affect the extension.
+**NOTE: The VSCode team is going to provide a extension point in next stable release. It's still lacking some of this extension's abilities but they're committed to support almost all the features that we're providing right now so finally, good news!! I will keep you posted with the integration progress and how is this going to affect the extension.**
 
 More file extensions will be supported shortly!
 
