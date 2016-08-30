@@ -32,7 +32,7 @@ function getSettings() {
   var cssreplace = '/*! *****************************************************************************'; // eslint-disable-line
   var jsiconsreplace = isInsiders ?
   [
-    'this.fileIconClasses(n.resource.fsPath)',
+    'this.fileIconClasses(i.resource.fsPath)',
     'e.fileIconClasses(r)',
     'this.folderIconClasses(n.resource.fsPath)'
   ] :
