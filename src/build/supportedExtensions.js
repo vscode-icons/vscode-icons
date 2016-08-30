@@ -63,6 +63,7 @@ exports.extensions = {
     { icon: 'haskell', extensions: ['has', 'hs', 'lhs', 'lit', 'gf'] },
     { icon: 'haxe', extensions: ['hx', 'hxml'] },
     { icon: 'haxe', extensions: ['haxelib'], special: 'json' },
+    { icon: 'haxecheckstyle', extensions: ['checkstyle.json'], special: 'json' },
     { icon: 'haxedevelop', extensions: ['hxproj'] },
     { icon: 'html', extensions: ['htm', 'html'] },
     { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'ico'] },
