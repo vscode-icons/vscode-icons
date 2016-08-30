@@ -96,6 +96,7 @@ exports.extensions = {
     { icon: 'node2', extensions: ['nvmrc'] },
     { icon: 'npm', extensions: ['npmignore'] },
     { icon: 'npm', extensions: ['package'], special: 'json' },
+    { icon: 'nsi', extensions: ['nsi', 'nsh'] },
     { icon: 'nunjucks', extensions: ['njk', 'nunjucks', 'nunjs', 'nunj', 'njs', 'nj'] },
     { icon: 'ocaml', extensions: ['ml', 'mll', 'mli', 'mly', 'ocamlmakefile', 'merlin'] },
     { icon: 'paket', extensions: ['paket.dependencies'], special: 'dependencies' },
