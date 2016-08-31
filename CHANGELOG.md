@@ -1,9 +1,10 @@
 # Change Log
 
-## 1.8.4 (xxxxx xx, 2016)
+## 1.8.6 (August 31, 2016)
+  - Bower components folder support. ([@jens1o](https://github.com/jens1o) in [#241](https://github.com/robertohuertasm/vscode-icons/pull/241))
   - Enhancement: jade and pug configuration. ([@jdforsythe](https://github.com/jdforsythe) in [#240](https://github.com/robertohuertasm/vscode-icons/pull/240))
 
-## 1.8.4 (August 30, 2016)
+## 1.8.5 (August 30, 2016)
   - Patch: support for VSCode insiders 1.5.0 18f7fe90. Custom Folders.
   
 ## 1.8.4 (August 30, 2016)
