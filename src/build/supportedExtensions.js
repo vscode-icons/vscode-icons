@@ -8,6 +8,7 @@ exports.extensions = {
     { icon: 'applescript', extensions: ['app'] },
     { icon: 'appveyor', extensions: ['appveyor.yml'], special: 'yml' },
     { icon: 'asp', extensions: ['asp'] },
+    { icon: 'aspx', extensions: ['aspx'] },
     { icon: 'assembly', extensions: ['s', 'asm'] },
     { icon: 'autohotkey', extensions: ['ahk'] },
     { icon: 'babel', extensions: ['babelrc'] },
