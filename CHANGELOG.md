@@ -1,9 +1,9 @@
 # Change Log
 
 ## 1.8.7 (September XX, 2016)
-  - PHPUnit file type support. ([@jens1o](https://github.com/jens1o) in [#245](https://github.com/robertohuertasm/vscode-icons/pull/245))
-  - RAML file type support. ([@jens1o](https://github.com/jens1o) in [#246](https://github.com/robertohuertasm/vscode-icons/pull/246))
-  - ASPX file type support. ([@jens1o](https://github.com/jens1o) in [#247](https://github.com/robertohuertasm/vscode-icons/pull/247))
+  - Enhancement: PHPUnit file type support. ([@jens1o](https://github.com/jens1o) in [#245](https://github.com/robertohuertasm/vscode-icons/pull/245))
+  - Enhancement: RAML file type support. ([@jens1o](https://github.com/jens1o) in [#246](https://github.com/robertohuertasm/vscode-icons/pull/246))
+  - Enhancement: ASPX file type support. ([@jens1o](https://github.com/jens1o) in [#247](https://github.com/robertohuertasm/vscode-icons/pull/247))
 
 ## 1.8.6 (August 31, 2016)
   - Bower components folder support. ([@jens1o](https://github.com/jens1o) in [#241](https://github.com/robertohuertasm/vscode-icons/pull/241))
