@@ -120,6 +120,7 @@ exports.extensions = {
     { icon: 'python', extensions: ['py', 'pyw'] },
     { icon: 'r', extensions: ['r'] },
     { icon: 'rails', extensions: [] },
+    { icon: 'raml', extensions: ['raml'] },
     { icon: 'reactjs', extensions: ['jsx'] },
     { icon: 'reacttemplate', extensions: ['rt'] },
     { icon: 'reactts', extensions: ['tsx'] },
