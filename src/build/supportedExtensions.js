@@ -97,7 +97,7 @@ exports.extensions = {
     { icon: 'matlab', extensions: ['fig', 'mat', 'mex', 'mexn', 'mexrs6', 'mn', 'mum', 'mx', 'mx3', 'rwd', 'slx', 'slddc', 'smv', 'tikz', 'xvc', 'xvc'] },
     { icon: 'mustache', extensions: ['mustache', 'mst'] },
     { icon: 'nim', extensions: ['nim', 'nims', 'cfg'] },
-    { icon: 'node', extensions: ['json'] },
+    { icon: 'node', extensions: ['json', 'webmanifest'] },
     { icon: 'node2', extensions: ['nvmrc'] },
     { icon: 'npm', extensions: ['npmignore'] },
     { icon: 'npm', extensions: ['package'], special: 'json' },
