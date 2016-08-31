@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 exports.extensions = {
   supported: [
+    { icon: 'bower', extensions: ['bower_components'] },
     { icon: 'dist', extensions: ['dist', 'out', 'export'] },
     { icon: 'git', extensions: ['git', 'github'] },
     { icon: 'haxelib', extensions: ['haxelib'] },
