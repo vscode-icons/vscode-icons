@@ -1,6 +1,7 @@
 # Change Log
 
-## 1.8.7 (September XX, 2016)
+## 1.8.7 (September 01, 2016)
+  - Patch: support for VSCode insiders 1.5.0 d2c04e37. Custom Folders.
   - Enhancement: PHPUnit file type support. ([@jens1o](https://github.com/jens1o) in [#245](https://github.com/robertohuertasm/vscode-icons/pull/245))
   - Enhancement: RAML file type support. ([@jens1o](https://github.com/jens1o) in [#246](https://github.com/robertohuertasm/vscode-icons/pull/246))
   - Enhancement: ASPX file type support. ([@jens1o](https://github.com/jens1o) in [#247](https://github.com/robertohuertasm/vscode-icons/pull/247))
