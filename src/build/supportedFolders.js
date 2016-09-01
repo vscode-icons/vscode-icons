@@ -7,7 +7,7 @@ exports.extensions = {
     { icon: 'haxelib', extensions: ['haxelib'] },
     { icon: 'node', extensions: ['node_modules'] },
     { icon: 'meteor', extensions: ['meteor'] },
-    { icon: 'src', extensions: ['src', 'source'] },
+    { icon: 'src', extensions: ['src', 'source', 'sources'] },
     { icon: 'test', extensions: ['tests', 'test', '__tests__', '__test__'] },
     { icon: 'typings', extensions: ['typings'] },
     { icon: 'vscode', extensions: ['vscode'] }
