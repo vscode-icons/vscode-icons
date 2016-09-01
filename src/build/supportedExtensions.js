@@ -160,7 +160,7 @@ exports.extensions = {
     { icon: 'vbhtml', extensions: ['vbhtml'] },
     { icon: 'vbproj', extensions: ['vbproj'] },
     { icon: 'vue', extensions: ['vue'] },
-    { icon: 'vscode', extensions: ['vscodeignore', 'launch', 'jsconfig', 'tsconfig'], special: 'json' },
+    { icon: 'vscode', extensions: ['vscodeignore', 'launch', 'tasks', 'jsconfig', 'tsconfig'], special: 'json' },
     { icon: 'xml', extensions: ['xml', 'axml', 'xaml', 'pex'] },
     { icon: 'yaml', extensions: ['yml', 'yaml'] },
     { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'] }
