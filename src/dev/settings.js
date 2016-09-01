@@ -32,9 +32,9 @@ function getSettings() {
   var cssreplace = '/*! *****************************************************************************'; // eslint-disable-line
   var jsiconsreplace = isInsiders ?
   [
-    'this.fileIconClasses(i.resource.fsPath)',
+    'this.fileIconClasses(n.resource.fsPath)',
     'e.fileIconClasses(r)',
-    'this.folderIconClasses(i.resource.fsPath)'
+    'this.folderIconClasses(n.resource.fsPath)'
   ] :
   't.prototype.iconClass=function(e){return e.isDirectory?"folder-icon":"text-file-icon"}';
   var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
