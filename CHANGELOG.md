@@ -1,10 +1,13 @@
 # Change Log
 
-## 1.8.7 (September XX, 2016)
+## 1.8.7 (September 01, 2016)
+  - Enhancement: .pex as an xml extension. ([@Gama11](https://github.com/Gama11) in [#252](https://github.com/robertohuertasm/vscode-icons/pull/252))
+  - Patch: support for VSCode insiders 1.5.0 d2c04e37. ([@robertohuertasm](https://github.com/robertohuertasm) in [#251](https://github.com/robertohuertasm/vscode-icons/pull/251))
   - Enhancement: PHPUnit file type support. ([@jens1o](https://github.com/jens1o) in [#245](https://github.com/robertohuertasm/vscode-icons/pull/245))
   - Enhancement: RAML file type support. ([@jens1o](https://github.com/jens1o) in [#246](https://github.com/robertohuertasm/vscode-icons/pull/246))
   - Enhancement: ASPX file type support. ([@jens1o](https://github.com/jens1o) in [#247](https://github.com/robertohuertasm/vscode-icons/pull/247))
   - Enhancement: csproj, sln, vbproj file types support ([@jens1o](https://github.com/jens1o) in [#248](https://github.com/robertohuertasm/vscode-icons/pull/248))
+  - Enhancement: webmanifest file type support(as json) ([@jens1o](https://github.com/jens1o) in [#250](https://github.com/robertohuertasm/vscode-icons/pull/250))
 
 ## 1.8.6 (August 31, 2016)
   - Bower components folder support. ([@jens1o](https://github.com/jens1o) in [#241](https://github.com/robertohuertasm/vscode-icons/pull/241))
