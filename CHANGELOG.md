@@ -1,6 +1,9 @@
 # Change Log
 
-## 1.8.8 (September 03, 2016)
+## 1.8.9 (September 03, 2016)
+  - Patch: support for dotted extensions in CheckAssociations method. ([@robertohuertasm](https://github.com/robertohuertasm) in [#262](https://github.com/robertohuertasm/vscode-icons/pull/262))
+
+## 1.8.8 (September 02, 2016)
   - Patch: support for VSCode Insiders 1.5.0 5fb513. ([@robertohuertasm](https://github.com/robertohuertasm) in [#261](https://github.com/robertohuertasm/vscode-icons/pull/261))
   - Enhancement: Ansible & Terraform support. ([@jens1o](https://github.com/jens1o) in [#260](https://github.com/robertohuertasm/vscode-icons/pull/260))
   - Script[s] folder icons. ([@claudiospizzi](https://github.com/claudiospizzi) in [#257](https://github.com/robertohuertasm/vscode-icons/pull/257))
