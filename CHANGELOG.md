@@ -1,7 +1,7 @@
 # Change Log
 
 ## 1.8.9 (September 03, 2016)
-  - Patch: support for dotted extensions in CheckAssociations method. ([@robertohuertasm](https://github.com/robertohuertasm) in [#262](https://github.com/robertohuertasm/vscode-icons/pull/262))
+  - Patch: support for dotted extensions in CheckAssociations method.
 
 ## 1.8.8 (September 02, 2016)
   - Patch: support for VSCode Insiders 1.5.0 5fb513. ([@robertohuertasm](https://github.com/robertohuertasm) in [#261](https://github.com/robertohuertasm/vscode-icons/pull/261))
