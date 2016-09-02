@@ -7,7 +7,7 @@ exports.extensions = {
     { icon: 'apib', extensions: ['apib'] },
     { icon: 'applescript', extensions: ['app'] },
     { icon: 'appveyor', extensions: ['appveyor.yml'], special: 'yml' },
-    { icon: 'ansible', extensions: ['.ansible'] },
+    { icon: 'ansible', extensions: ['ansible'] },
     { icon: 'asp', extensions: ['asp'] },
     { icon: 'aspx', extensions: ['aspx'] },
     { icon: 'assembly', extensions: ['s', 'asm'] },
