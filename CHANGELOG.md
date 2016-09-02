@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.8.8 (September 03, 2016)
+  - Patch: support for VSCode Insiders 1.5.0 5fb513. ([@robertohuertasm](https://github.com/robertohuertasm) in [#261](https://github.com/robertohuertasm/vscode-icons/pull/261))
+  - Enhancement: Ansible & Terraform support. ([@jens1o](https://github.com/jens1o) in [#260](https://github.com/robertohuertasm/vscode-icons/pull/260))
+  - Script[s] folder icons. ([@claudiospizzi](https://github.com/claudiospizzi) in [#257](https://github.com/robertohuertasm/vscode-icons/pull/257))
+  - Enhancement: 'sources' linked to src folder icon. ([@claudiospizzi](https://github.com/claudiospizzi) in [#256](https://github.com/robertohuertasm/vscode-icons/pull/256))
+  - Enhancement: task.json linked to vscode icon. ([@Gama11](https://github.com/Gama11) in [#255](https://github.com/robertohuertasm/vscode-icons/pull/255))
+  - Enhancement: license.md support. ([@Gama11](https://github.com/Gama11) in [#254](https://github.com/robertohuertasm/vscode-icons/pull/254))
+  - Enhancement: CodeClimate icon with margins. ([@Gama11](https://github.com/Gama11) in [#253](https://github.com/robertohuertasm/vscode-icons/pull/253))
+
 ## 1.8.7 (September 01, 2016)
   - Enhancement: .pex as an xml extension. ([@Gama11](https://github.com/Gama11) in [#252](https://github.com/robertohuertasm/vscode-icons/pull/252))
   - Patch: support for VSCode insiders 1.5.0 d2c04e37. ([@robertohuertasm](https://github.com/robertohuertasm) in [#251](https://github.com/robertohuertasm/vscode-icons/pull/251))
