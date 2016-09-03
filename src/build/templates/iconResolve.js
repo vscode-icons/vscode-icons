@@ -22,7 +22,7 @@ var iconResolve = function (config, filename, classname, isFolder) {
     for (var kk = 0, len = spext.length; kk < len; kk++) {
       var sp = spext[kk];
       if (sp === f) return sn(sp);
-      var r = new RegExp(sp.replace(/\./gi, '\\.') + '$');
+      var r = new RegExp(sp.replace(/\./gi, '\\.') + '$', 'gi');
       if (r.test(filename)) return sn(sp);
     }
   }
