@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.9.0 (September 03, 2016)
+  - Patch: Fixed case-sensitivity in special extensions. ([@robertohuertasm](https://github.com/robertohuertasm) in [#264](https://github.com/robertohuertasm/vscode-icons/pull/264))
+
 ## 1.8.9 (September 03, 2016)
   - Patch: support for dotted extensions in CheckAssociations method.
 
