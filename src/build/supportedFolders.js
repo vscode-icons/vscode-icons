@@ -2,7 +2,7 @@
 exports.extensions = {
   supported: [
     { icon: 'bower', extensions: ['bower_components'] },
-    { icon: 'dist', extensions: ['dist', 'out', 'export'] },
+    { icon: 'dist', extensions: ['dist', 'out', 'export', 'build'] },
     { icon: 'git', extensions: ['git', 'github'] },
     { icon: 'haxelib', extensions: ['haxelib'] },
     { icon: 'node', extensions: ['node_modules'] },
