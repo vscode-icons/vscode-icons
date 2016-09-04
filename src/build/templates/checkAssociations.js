@@ -15,7 +15,9 @@ var checkAssociations = function checkAssociations(config, filename, additionalC
     asc = ascs[i];
     rx = new RegExp(asc[0], 'gi');
     if (rx.test(filename)) {
-      return asc[1] + (additionalClass || '');
+      var s = asc[1].replace(/\./g, '_');
+      if ((/^\d/).test(s)) s = 'n' + s;
+      return s + (additionalClass || '');
     }
   }
   return null;
