@@ -17,7 +17,7 @@ _**Instruction Template**_
 - My system is: [OS] [Arch]
 - [ ] I'm sure this issue is not a *duplicate*?
 - [ ] I want to create an icon request(if not, remove these lines below):
-      - Type: [icon/folder]
+      - Type: [extension/folder]
       - Icon Name: [name]
       - Sample original Icon(32x32/png/transparent whenever possible): [url]
       - Extensions: .just, .a, .bunch, .of, .extensions
