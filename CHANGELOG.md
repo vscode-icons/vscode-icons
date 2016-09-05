@@ -1,6 +1,9 @@
 # Change Log
 
-## 1.9.0 (September 03, 2016)
+## 1.9.0 (September 06, 2016)
+  - Enhancement: license and licence are both supported. ([@Gama11](https://github.com/Gama11) in [#269](https://github.com/robertohuertasm/vscode-icons/pull/269))
+  - Enhancement: Issue template now adds `type option`. ([@jens1o](https://github.com/jens1o) in [#268](https://github.com/robertohuertasm/vscode-icons/pull/268))
+  - Enhancement: `build` folder added to `dist` folder icon. ([@edvail](https://github.com/edvail) in [#265](https://github.com/robertohuertasm/vscode-icons/pull/265))
   - Patch: Fixed case-sensitivity in special extensions. ([@robertohuertasm](https://github.com/robertohuertasm) in [#264](https://github.com/robertohuertasm/vscode-icons/pull/264))
 
 ## 1.8.9 (September 03, 2016)
