@@ -8,6 +8,21 @@ Bring icons to your VS Code.
 
 <img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/screenshot_folders.png" >
 
+## IMPORTANT NOTE
+
+The Visual Studio Code team has been working in bringing icons to VSCode and they're finally here. A little bit sooner than they told me but finally here. 
+
+I'm going to support the official API as soon as possible. This official API still lacks (imho) some important features as icons in tabs and "open editors" section and, more importantly, custom file associations. The official API is not allowing the users to customize what's been already decided by the icon theme creator (that's not entirely true as you can manage language associations but it's not as customizable as this extension) and that's why I'm planning to keep both functionalities alive: the extension will provide the official way of working by default but will allow to execute the usual commands and enjoy all the usual goodness of this extension.
+
+I'm also warning you that VSCode team is thinking of not allowing code injection anymore so this extension may eventually die, at least its custom functionality. I'll try to keep it live until the official API provides more or less the same benefits but I'm also counting on your feedback to let me know if it's worth the effort.
+
+Finally, I also would like to ask you to raise the possible issues that you may find while using this extension into the [extension's repository](https://github.com/robertohuertasm/vscode-icons/issues), not the VSCode one ;D
+
+**Thank you all for your kind support. Finally icons are here to stay (that was the main purpose of this extension). Now let's hope they get even better :D**
+
+----
+
+
 ## Installation
 
 Some people have reported that they cannot find the extension when they insert the installation command:
@@ -190,6 +205,8 @@ That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by
 { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] }
 ```
 
+**NOTE**: Please, take into account that the first element of the array is a valid Regular Expression and the second one is a **valid extension not the icon name** ;D.
+
 **IMPORTANT**: After changing file associations you have to execute the ***"Icons Update"*** command or restart your VSCode.
 
 ## Contributing with icons
@@ -214,9 +231,7 @@ As this extension modifies VS Code files it will get disabled with every VS Code
 
 Take into account that this extension is still in beta so you may find some bugs while playing with it. Please, report them to [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
 
-**Please, leave a review if you can so the VS Code Team can know that this is a very demanded feature and, maybe, they can then provide a proper way to extend the IDE regarding icons and customizations soon enough. ;D**
-
-**NOTE: The VSCode team is going to provide a extension point in next stable release. It's still lacking some of this extension's abilities but they're committed to support almost all the features that we're providing right now so finally, good news!! I will keep you posted with the integration progress and how is this going to affect the extension.**
+**Please, leave a review with your opinion on whether I should keep this extension live or not. Thanks! ;D**
 
 More file extensions will be supported shortly!
 

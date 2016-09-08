@@ -50,13 +50,10 @@ function replaceJs(jsreplace, jswith) {
 }
 
 function replaceAllJs() {
-  if (vars.isInsiders) {
-    replaceJs(vars.jsiconsreplace[0], replacements.iconClassInsidersReplace);
-    replaceJs(vars.jsiconsreplace[1], replacements.iconClassInsiders2Replace);
-    replaceJs(vars.jsiconsreplace[2], replacements.iconClassInsiders3Replace);
-  } else {
-    replaceJs(vars.jsiconsreplace, replacements.iconClassReplace);
-  }
+  replaceJs(vars.jsiconsreplace[0], replacements.iconClassReplace);
+  replaceJs(vars.jsiconsreplace[1], replacements.iconClass2Replace);
+  replaceJs(vars.jsiconsreplace[2], replacements.iconClass3Replace);
+
   replaceJs('"tab-label"', replacements.tabLabelReplace);
   replaceJs('["monaco-tree-row"]', replacements.editorsReplace);
   replaceJs(/^\/\*!-+\n/, replacements.vsicons + '\n\n /*!----\n');
@@ -208,9 +205,15 @@ function restoreBak(willReinstall) {
   });
 }
 
+function isInjected(){
+  var content = fs.readFileSync(vars.jsfile, 'utf8');
+  return /vsicons/.test(content);
+}
+
 // ####  main commands ######################################################
 
 function fInstall() {
+  if(isInjected()) return;
   installItem(vars.cssfilebak, vars.cssfile, cleanCssInstall);
   installItem(vars.jsfilebak, vars.jsfile, cleanJsInstall);
   addIcons();
