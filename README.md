@@ -16,7 +16,7 @@ I'm going to support the official API as soon as possible. This official API sti
 
 I'm also warning you that VSCode team is thinking of not allowing code injection anymore so this extension may eventually die, at least its custom functionality. I'll try to keep it live until the official API provides more or less the same benefits but I'm also counting on your feedback to let me know if it's worth the effort.
 
-Finally, I also would like to ask you to raise the possible issues that you may find while using these extension into the [extension's repository](https://github.com/robertohuertasm/vscode-icons/issues), not the VSCode one ;D
+Finally, I also would like to ask you to raise the possible issues that you may find while using this extension into the [extension's repository](https://github.com/robertohuertasm/vscode-icons/issues), not the VSCode one ;D
 
 **Thank you all for your kind support. Finally icons are here to stay (that was the main purpose of this extension). Now let's hope they get even better :D**
 
