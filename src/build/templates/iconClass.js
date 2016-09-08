@@ -1,8 +1,8 @@
 /* eslint-disable  no-underscore-dangle*/
 /* global vsicons */
-var iconClass = function (context, fileInfo, isInsiders, seekCache) {
+var iconClass = function (context, fileInfo, seekCache) {
   var result;
-  if (isInsiders && seekCache) {
+  if (seekCache) {
     result = vsicons.iconCache[fileInfo];
     if (result) return result;
   }
@@ -20,14 +20,12 @@ var iconClass = function (context, fileInfo, isInsiders, seekCache) {
   }
   if (!fileInfo.name) return 'default-file-icon file-icon';
   result = vsicons.iconResolve(cf, fileInfo.name, className, fileInfo.isDirectory);
-  if (isInsiders) {
-    var resArray = result.split(' ');
-    if (!seekCache) {
-      vsicons.iconCache[fileInfo.resource.fsPath] = resArray;
-    }
-    return resArray;
+
+  var resArray = result.split(' ');
+  if (!seekCache) {
+    vsicons.iconCache[fileInfo.resource.fsPath] = resArray;
   }
-  return result;
+  return resArray;
 };
 
 module.exports = iconClass.toString();

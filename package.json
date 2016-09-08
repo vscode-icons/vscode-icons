@@ -2,7 +2,7 @@
     "name": "vscode-icons",
     "displayName": "vscode-icons",
     "description": "Icons for Visual Studio Code",
-    "version": "1.9.0",
+    "version": "1.9.1",
     "publisher": "robertohuertasm",
     "license": "MIT",
     "author": {
@@ -80,12 +80,12 @@
                 },
                 "vsicons.associations": {
                     "type": "array",
-                    "default": null,
+                    "default": [],
                     "description": "This is an associative array that must be filled with arrays whose first member is a regular expression matching the extension that you want to associate and the second member is the name of the extension whose icon you want to use."
                 },
                 "vsicons.icons": {
                     "type": "string",
-                    "default": null,
+                    "default": "",
                     "description": "If set you will change the location of the icons.zip file that vscode-icons uses in order to get the icons into your machine. You can use a well-formed URI or a local path."
                 }
             }
@@ -110,7 +110,7 @@
     },
     "dependencies": {
         "extract-zip": "^1.5.0",
-        "request": "^2.72.0",
-        "replace-in-file": "^1.1.3"
+        "replace-in-file": "^1.1.3",
+        "request": "^2.72.0"
     }
 }
