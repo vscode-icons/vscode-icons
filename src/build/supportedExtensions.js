@@ -98,6 +98,7 @@ exports.extensions = {
     { icon: 'markojs', extensions: ['.marko.js'], special: 'js' },
     { icon: 'markup', extensions: [] },
     { icon: 'matlab', extensions: ['fig', 'mat', 'mex', 'mexn', 'mexrs6', 'mn', 'mum', 'mx', 'mx3', 'rwd', 'slx', 'slddc', 'smv', 'tikz', 'xvc', 'xvc'] },
+    { icon: 'masterpage', extensions: ['master'] },
     { icon: 'mustache', extensions: ['mustache', 'mst'] },
     { icon: 'nim', extensions: ['nim', 'nims', 'cfg'] },
     { icon: 'node', extensions: ['json', 'webmanifest'] },
