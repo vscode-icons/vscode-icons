@@ -89,7 +89,14 @@
                     "description": "If set you will change the location of the icons.zip file that vscode-icons uses in order to get the icons into your machine. You can use a well-formed URI or a local path."
                 }
             }
-        }
+        },
+        "iconThemes": [
+            {
+                "id": "vscode-icons",
+                "label": "VSCode Icons",
+                "path": "./icons.json"
+            }
+        ]
     },
     "scripts": {
         "build": "node ./src/build/build.js",
