@@ -1,5 +1,8 @@
 # Change Log
 
+## 2.0.1 (September 10, 2016)
+  - Fix: Readme update.
+
 ## 2.0.0 (September 10, 2016)
   - Support for the new [File & Folder Icons contribution point](https://code.visualstudio.com/blogs/2016/09/08/icon-themes).
 

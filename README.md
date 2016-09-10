@@ -50,8 +50,9 @@ ext install icons
 ext install "vscode-icons"
 ```
 
-## Wanting to use the official API
+## Wanting to use the official API and get rid of the custom functionality
 You will have to disable the extension by executing the `Icons Disable` command. Then go to **File > Preferences > File Icon Theme > VSCode Icons**.
+If you have never used the custom functionality then just ignore the command execution step and go directly to **File > Preferences > File Icon Theme > VSCode Icons**.
 
 ## List of supported icons
 The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
