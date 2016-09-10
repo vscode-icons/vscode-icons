@@ -1,6 +1,5 @@
 .github/**
 .vscode/**
-icons/**
 images/*.psd
 src/**
 typings/**
