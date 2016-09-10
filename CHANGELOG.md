@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.1 (September 10, 2016)
+  - Fix: Readme update.
+
+## 2.0.0 (September 10, 2016)
+  - Support for the new [File & Folder Icons contribution point](https://code.visualstudio.com/blogs/2016/09/08/icon-themes).
+
 ## 1.9.1 (September 08, 2016)
   - Support for 1.5.0 stable version.
   - Enhancement: Added support for .ascx. [#275](https://github.com/robertohuertasm/vscode-icons/issues/275)

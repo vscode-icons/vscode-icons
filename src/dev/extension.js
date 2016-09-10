@@ -1,6 +1,7 @@
 /* eslint-disable no-console*/
 var vscode = require('vscode'); // eslint-disable-line
 var fs = require('fs');
+var open = require('open');
 var request = require('request');
 var extract = require('extract-zip');
 var replace = require('replace-in-file');
@@ -205,15 +206,40 @@ function restoreBak(willReinstall) {
   });
 }
 
-function isInjected(){
+function isInjected() {
   var content = fs.readFileSync(vars.jsfile, 'utf8');
   return /vsicons/.test(content);
+}
+
+function showWelcomeMessage() {
+  settings.setStatus(settings.status.notInstalled);
+  vscode.window.showInformationMessage(msg.welcomeMessage,
+    { title: msg.aboutOfficialApi }, { title: msg.seeReadme })
+    .then(function (btn) {
+      if (!btn) return;
+      if (btn.title === msg.aboutOfficialApi) {
+        open(msg.urlOfficialApi);
+      } else if (btn.title === msg.seeReadme) {
+        open(msg.urlReadme);
+      }
+    });
+}
+
+function showNewVersionMessage(autoinstall) {
+  vscode.window.showInformationMessage(msg.newVersionMessage + ' v.' + vars.extVersion,
+    { title: msg.seeReleaseNotes })
+    .then(function (btn) {
+      if (btn && btn.title === msg.seeReleaseNotes) {
+        open(msg.urlReleaseNote);
+      }
+      if (autoinstall) autoinstall();
+    });
 }
 
 // ####  main commands ######################################################
 
 function fInstall() {
-  if(isInjected()) return;
+  if (isInjected()) return;
   installItem(vars.cssfilebak, vars.cssfile, cleanCssInstall);
   installItem(vars.jsfilebak, vars.jsfile, cleanJsInstall);
   addIcons();
@@ -262,13 +288,14 @@ function fReinstall() {
 
 function runAutoInstall() {
   var state = settings.getState();
-  if (state.status === settings.status.notInstalled) {
-    fInstall();
+  var isNewVersion = state.version !== vars.extVersion;
+  if (!state.welcomeShown) {
+    // show welcome message
+    showWelcomeMessage();
   } else {
-    if (state.status === settings.status.enabled &&
-      state.version !== vars.extVersion) {
-      // auto-update
-      fReinstall();
+    if (isNewVersion) {
+      var callback = state.status === settings.status.enabled ? fReinstall : null;
+      showNewVersionMessage(callback);
     }
   }
 }
