@@ -24,6 +24,7 @@ exports.extensions = {
     { icon: 'cfm', extensions: ['cfm', 'cfc', 'lucee'] },
     { icon: 'cheader', extensions: ['h'] },
     { icon: 'clojure', extensions: ['clojure', 'cjm', 'clj', 'cljs', 'cljc', 'edn'] },
+    { icon: 'cobol', extensions: ['cbl', 'cob', 'cby'] },
     { icon: 'codeclimate', extensions: ['codeclimate.yml'], special: 'yml', contribType: ctype.filename },
     { icon: 'coffeescript', extensions: ['coffee'] },
     { icon: 'config', extensions: ['env', 'ini', 'makefile', 'config'] },
