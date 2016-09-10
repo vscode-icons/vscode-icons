@@ -529,11 +529,11 @@
     "out": "_fd_dist",
     "export": "_fd_dist",
     "build": "_fd_dist",
-    "git": "_fd_git",
-    "github": "_fd_git",
+    ".git": "_fd_git",
+    ".github": "_fd_git",
     "haxelib": "_fd_haxelib",
     "node_modules": "_fd_node",
-    "meteor": "_fd_meteor",
+    ".meteor": "_fd_meteor",
     "script": "_fd_script",
     "scripts": "_fd_script",
     "src": "_fd_src",
@@ -544,7 +544,7 @@
     "__tests__": "_fd_test",
     "__test__": "_fd_test",
     "typings": "_fd_typings",
-    "vscode": "_fd_vscode"
+    ".vscode": "_fd_vscode"
   },
   "folderNamesExpanded": {
     "bower_components": "_fd_bower_open",
@@ -552,11 +552,11 @@
     "out": "_fd_dist_open",
     "export": "_fd_dist_open",
     "build": "_fd_dist_open",
-    "git": "_fd_git_open",
-    "github": "_fd_git_open",
+    ".git": "_fd_git_open",
+    ".github": "_fd_git_open",
     "haxelib": "_fd_haxelib_open",
     "node_modules": "_fd_node_open",
-    "meteor": "_fd_meteor_open",
+    ".meteor": "_fd_meteor_open",
     "script": "_fd_script_open",
     "scripts": "_fd_script_open",
     "src": "_fd_src_open",
@@ -567,7 +567,7 @@
     "__tests__": "_fd_test_open",
     "__test__": "_fd_test_open",
     "typings": "_fd_typings_open",
-    "vscode": "_fd_vscode_open"
+    ".vscode": "_fd_vscode_open"
   },
   "fileExtensions": {
     "as": "_f_actionscript",
@@ -602,7 +602,6 @@
     "cma": "_f_binary",
     "cmxa": "_f_binary",
     "cmi": "_f_binary",
-    "blade.php": "_f_blade",
     "bowerrc": "_f_bower",
     "cpp": "_f_c++",
     "hpp": "_f_c++",
@@ -839,7 +838,8 @@
     "gz": "_f_zip",
     "bzip2": "_f_zip",
     "xz": "_f_zip",
-    "bz2": "_f_zip"
+    "bz2": "_f_zip",
+    "blade.php": "_f_blade"
   },
   "fileNames": {
     "appveyor.yml": "_f_appveyor",

@@ -1,123 +1,130 @@
 {
-    "name": "vscode-icons",
-    "displayName": "vscode-icons",
-    "description": "Icons for Visual Studio Code",
-    "version": "1.9.1",
-    "publisher": "robertohuertasm",
-    "license": "MIT",
-    "author": {
-        "email": "roberto.huertas@outlook.com",
-        "name": "Roberto Huertas",
-        "url": "http://codecoding.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/robertohuertasm/vscode-icons"
-    },
-    "bugs": {
-        "url": "https://github.com/robertohuertasm/vscode-icons/issues",
-        "email": "roberto.huertas@outlook.com"
-    },
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Other",
-        "Themes"
+  "name": "vscode-icons",
+  "displayName": "vscode-icons",
+  "description": "Icons for Visual Studio Code",
+  "version": "1.9.1",
+  "publisher": "robertohuertasm",
+  "license": "MIT",
+  "author": {
+    "email": "roberto.huertas@outlook.com",
+    "name": "Roberto Huertas",
+    "url": "http://codecoding.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertohuertasm/vscode-icons"
+  },
+  "bugs": {
+    "url": "https://github.com/robertohuertasm/vscode-icons/issues",
+    "email": "roberto.huertas@outlook.com"
+  },
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other",
+    "Themes"
+  ],
+  "keywords": [
+    "icon-theme",
+    "theme",
+    "icons",
+    "vscode-icons"
+  ],
+  "preview": true,
+  "homepage": "https://github.com/robertohuertasm/vscode-icons",
+  "icon": "images/logo.png",
+  "galleryBanner": {
+    "color": "#ffdd00"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.installIcons",
+        "title": "Icons Enable"
+      },
+      {
+        "command": "extension.uninstallIcons",
+        "title": "Icons Disable"
+      },
+      {
+        "command": "extension.reinstallIcons",
+        "title": "Icons Update"
+      }
     ],
-    "preview": true,
-    "homepage": "https://github.com/robertohuertasm/vscode-icons",
-    "icon": "images/logo.png",
-    "galleryBanner": {
-        "color": "#ffdd00"
-    },
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./dist/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.installIcons",
-                "title": "Icons Enable"
-            },
-            {
-                "command": "extension.uninstallIcons",
-                "title": "Icons Disable"
-            },
-            {
-                "command": "extension.reinstallIcons",
-                "title": "Icons Update"
-            }
-        ],
-        "configuration": {
-            "title": "vscode-icons configuration",
-            "properties": {
-                "vsicons.hideFolders": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true folder icons won't be shown."
-                },
-                "vsicons.hideCustomFolderIcons": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true custom folder icons won't be shown."
-                },
-                "vsicons.hideIconsInTabs": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true tab icons won't be shown."
-                },
-                "vsicons.hideIconsEditors": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true icons won't be shown in 'open editors' section."
-                },
-                "vsicons.useFileAssociations": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true file and folder associations will be honored."
-                },
-                "vsicons.associations": {
-                    "type": "array",
-                    "default": [],
-                    "description": "This is an associative array that must be filled with arrays whose first member is a regular expression matching the extension that you want to associate and the second member is the name of the extension whose icon you want to use."
-                },
-                "vsicons.icons": {
-                    "type": "string",
-                    "default": "",
-                    "description": "If set you will change the location of the icons.zip file that vscode-icons uses in order to get the icons into your machine. You can use a well-formed URI or a local path."
-                }
-            }
+    "configuration": {
+      "title": "vscode-icons configuration",
+      "properties": {
+        "vsicons.hideFolders": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true folder icons won't be shown."
         },
-        "iconThemes": [
-            {
-                "id": "vscode-icons",
-                "label": "VSCode Icons",
-                "path": "./icons.json"
-            }
-        ]
+        "vsicons.hideCustomFolderIcons": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true custom folder icons won't be shown."
+        },
+        "vsicons.hideIconsInTabs": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true tab icons won't be shown."
+        },
+        "vsicons.hideIconsEditors": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true icons won't be shown in 'open editors' section."
+        },
+        "vsicons.useFileAssociations": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true file and folder associations will be honored."
+        },
+        "vsicons.associations": {
+          "type": "array",
+          "default": [],
+          "description": "This is an associative array that must be filled with arrays whose first member is a regular expression matching the extension that you want to associate and the second member is the name of the extension whose icon you want to use."
+        },
+        "vsicons.icons": {
+          "type": "string",
+          "default": "",
+          "description": "If set you will change the location of the icons.zip file that vscode-icons uses in order to get the icons into your machine. You can use a well-formed URI or a local path."
+        }
+      }
     },
-    "scripts": {
-        "build": "node ./src/build/build.js",
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "eslint": "^2.10.2",
-        "eslint-config-airbnb": "^9.0.1",
-        "eslint-plugin-import": "^1.8.0",
-        "eslint-plugin-jsx-a11y": "^1.2.0",
-        "eslint-plugin-react": "^5.1.1",
-        "folder-zip": "0.0.5",
-        "mustache": "^2.2.1",
-        "ncp": "^2.0.0",
-        "node-zip": "^1.1.1",
-        "underscore": "^1.8.3",
-        "vscode": "^0.11.0"
-    },
-    "dependencies": {
-        "extract-zip": "^1.5.0",
-        "replace-in-file": "^1.1.3",
-        "request": "^2.72.0"
-    }
+    "iconThemes": [
+      {
+        "id": "vscode-icons",
+        "label": "VSCode Icons",
+        "path": "./icons.json"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node ./src/build/build.js",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.1.1",
+    "folder-zip": "0.0.5",
+    "mustache": "^2.2.1",
+    "ncp": "^2.0.0",
+    "node-zip": "^1.1.1",
+    "underscore": "^1.8.3",
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "extract-zip": "^1.5.0",
+    "open": "0.0.5",
+    "replace-in-file": "^1.1.3",
+    "request": "^2.72.0"
+  }
 }

@@ -15,7 +15,7 @@ exports.extensions = {
     { icon: 'autohotkey', extensions: ['ahk'] },
     { icon: 'babel', extensions: ['babelrc'] },
     { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'so', 'pyc', 'pyd', 'pyo', 'n', 'ndll', 'pdb', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
-    { icon: 'blade', extensions: ['.blade.php'], special: 'php' },
+    { icon: 'blade', extensions: ['.blade.php'], special: 'php', contribOrder: 1 },
     { icon: 'bower', extensions: ['bowerrc'] },
     { icon: 'bower', extensions: ['bower.json'], special: 'json', contribType: ctype.filename },
     { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] },
@@ -96,7 +96,7 @@ exports.extensions = {
     { icon: 'm', extensions: ['m'] },
     { icon: 'markdown', extensions: ['md', 'markdown'] },
     { icon: 'marko', extensions: ['marko'] },
-    { icon: 'markojs', extensions: ['.marko.js'], special: 'js'},
+    { icon: 'markojs', extensions: ['.marko.js'], special: 'js' },
     { icon: 'markup', extensions: [] },
     { icon: 'matlab', extensions: ['fig', 'mat', 'mex', 'mexn', 'mexrs6', 'mn', 'mum', 'mx', 'mx3', 'rwd', 'slx', 'slddc', 'smv', 'tikz', 'xvc', 'xvc'] },
     { icon: 'masterpage', extensions: ['master'] },

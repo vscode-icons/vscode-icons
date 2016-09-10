@@ -50,6 +50,9 @@ ext install icons
 ext install "vscode-icons"
 ```
 
+## Wanting to use the official API
+You will have to disable the extension by executing the `Icons Disable` command. Then go to **File > Preferences > File Icon Theme > VSCode Icons**.
+
 ## List of supported icons
 The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
 
@@ -87,7 +90,7 @@ More file extensions will be supported shortly!
 All the information that follows is related to the custom functionality. If you want to use any of this please read the *disclaimer* below.
 
 ## Disclaimer
-You can still use the custom functionality which will provide you icons in "open editors" section, tab icons and custom icon association in case you want to change something. In case you do, you just have to execute the command `icons enable` but you will have to be aware that this extension modifies some VS Code files in order to provide you with these unsupported features so use it at your own risk.
+You can still use the custom functionality which will provide you icons in "open editors" section, tab icons and custom icon association in case you want to change something. In case you do, you just have to execute the command `Icons Enable` but you will have to be aware that this extension modifies some VS Code files in order to provide you with these unsupported features so use it at your own risk.
 Injection will take place into two files:
 
 - workbench.main.js
@@ -263,11 +266,15 @@ That's mainly because *.cpp*, *.cxx* and some others are mapped to *c++* icon by
 
 ## FAQs
 
+**I want to use the official API but I'm still seeing the custom API icons**
+
+You will have to disable the extension by executing the `Icons Disable` command. Then go to **File > Preferences > File Icon Theme > VSCode Icons**.
+
 **I have uninstalled the extension but icons are still there**
 
 *(This is only valid if you are using the custom funcionality)*
-Due to the fact that we're injecting code into VSCode core files and there's no way to detect when you're uninstalling the extension you will have to execute the `icons disable` command before uninstalling. 
-In case you have already uninstalled you must install the extension again, run the `icons disable` command and uninstall again.
+Due to the fact that we're injecting code into VSCode core files and there's no way to detect when you're uninstalling the extension you will have to execute the `Icons Disable` command before uninstalling. 
+In case you have already uninstalled you must install the extension again, run the `Icons Disable` command and uninstall again.
 
 **Tabs have disappeared.**
 
