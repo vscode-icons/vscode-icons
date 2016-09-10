@@ -14,6 +14,7 @@ var finalTemplate = require('./templates/final');
 var cssIconsTemplate = require('./templates/cssIcons');
 var cssFoldersTemplate = require('./templates/cssFolders');
 var editorsTemplate = require('./templates/editors');
+var iconGenerator = require('./iconGenerator');
 
 var cssIcons = mustache.render(cssIconsTemplate, extensions);
 var cssFolders = mustache.render(cssFoldersTemplate, folders);
@@ -82,6 +83,9 @@ var final = mustache.render(finalTemplate, {
 // writing the files
 fs.writeFileSync('./src/dev/replacements.js', final);
 console.log('File with replacements successfully created!'); // eslint-disable-line
+
+// generating icons.json
+iconGenerator.generate();
 
 // moving to dist
 ncp.limit = 16;

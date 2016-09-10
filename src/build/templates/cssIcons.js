@@ -12,7 +12,7 @@ module.exports = '.explorer-item.default-file-icon {' +
   '{{#supported}} ' +
     '{{#extensions}}' +
       '.explorer-item.{{parse}}-file-icon { ' +
-      'background: url(browser/parts/editor/media/icons/file_type_{{icon}}@2x.png) 1px 4px no-repeat;' +
+      'background: url(browser/parts/editor/media/icons/file_type_{{icon}}@2x.png) 1px 3px no-repeat;' +
     '}' +
    '{{/extensions}}' +
   '{{/supported}}' +

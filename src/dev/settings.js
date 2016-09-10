@@ -30,12 +30,12 @@ function getSettings() {
     '/workbench.main.css');
   var cssfilebak = base + (isWin ? '\\workbench.main.css.bak' : '/workbench.main.css.bak');
   var cssreplace = '/*! *****************************************************************************'; // eslint-disable-line
-  var jsiconsreplace = 
-  [
-    /this\.fileIconClasses\((i|n)\.resource\.fsPath\)/,
-    'e.fileIconClasses(r)',
-    /this\.folderIconClasses\((i|n)\.resource\.fsPath\)/
-  ];
+  var jsiconsreplace =
+    [
+      /this\.fileIconClasses\((i|n)\.resource\.fsPath\)/,
+      'e.fileIconClasses(r)',
+      /this\.folderIconClasses\((i|n)\.resource\.fsPath\)/
+    ];
   var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
   var jsfilebak = base + (isWin ? '\\workbench.main.js.bak' : '/workbench.main.js.bak');
 
@@ -44,7 +44,7 @@ function getSettings() {
     isWin: isWin,
     isInsiders: isInsiders,
     extensionFolder: extensionFolder,
-    settingsPath: path.join(appPath, codePath, 'User', 'vsicones.settings.json'),
+    settingsPath: path.join(appPath, codePath, 'User', 'vsicons.settings.json'),
     iconFolder: iconFolder,
     cssfile: cssfile,
     jsfile: jsfile,
@@ -65,7 +65,8 @@ function getState() {
   } catch (error) {
     return {
       version: '0',
-      status: status.notInstalled
+      status: status.notInstalled,
+      welcomeShown: false
     };
   }
 }
@@ -78,7 +79,8 @@ function setState(state) {
 function setStatus(sts) {
   setState({
     version: extVersion,
-    status: sts
+    status: sts,
+    welcomeShown: true
   });
 }
 
