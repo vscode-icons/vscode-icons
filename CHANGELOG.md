@@ -1,7 +1,11 @@
 # Change Log
 
+## 2.0.2 (September 11, 2016)
+  - Patch: some icons were not showing while using the official contribution point. ([@robertohuertasm](https://github.com/robertohuertasm) in [#291](https://github.com/robertohuertasm/vscode-icons/pull/291))
+  - Enhancement: support for Cobol. ([@jens1o](https://github.com/jens1o) in [#288](https://github.com/robertohuertasm/vscode-icons/pull/288))
+
 ## 2.0.1 (September 10, 2016)
-  - Fix: Readme update.
+  - Patch: Readme update.
 
 ## 2.0.0 (September 10, 2016)
   - Support for the new [File & Folder Icons contribution point](https://code.visualstudio.com/blogs/2016/09/08/icon-themes).
@@ -9,9 +13,9 @@
 ## 1.9.1 (September 08, 2016)
   - Support for 1.5.0 stable version.
   - Enhancement: Added support for .ascx. [#275](https://github.com/robertohuertasm/vscode-icons/issues/275)
-  - Fix: Added injection guard. [#276](https://github.com/robertohuertasm/vscode-icons/issues/276)
+  - Patch: Added injection guard. [#276](https://github.com/robertohuertasm/vscode-icons/issues/276)
   - Readme update as per [#274](https://github.com/robertohuertasm/vscode-icons/issues/274) and new VSCode 1.5.0 unexpected release.
-  - Fix: Removed unexpected warnings. [#266](https://github.com/robertohuertasm/vscode-icons/issues/266)
+  - Patch: Removed unexpected warnings. [#266](https://github.com/robertohuertasm/vscode-icons/issues/266)
   - Enhancement: Added support for docker-compose.yml files. [#273](https://github.com/robertohuertasm/vscode-icons/issues/273)
   - Enhancement: Add Vagrant file support. ([@BrunnerLivio](https://github.com/BrunnerLivio) in [#272](https://github.com/robertohuertasm/vscode-icons/pull/272))
 

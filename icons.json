@@ -138,6 +138,9 @@
     "_f_clojure": {
       "iconPath": "./icons/file_type_clojure@2x.png"
     },
+    "_f_cobol": {
+      "iconPath": "./icons/file_type_cobol@2x.png"
+    },
     "_f_codeclimate": {
       "iconPath": "./icons/file_type_codeclimate@2x.png"
     },
@@ -619,6 +622,9 @@
     "cljs": "_f_clojure",
     "cljc": "_f_clojure",
     "edn": "_f_clojure",
+    "cbl": "_f_cobol",
+    "cob": "_f_cobol",
+    "cby": "_f_cobol",
     "coffee": "_f_coffeescript",
     "env": "_f_config",
     "ini": "_f_config",
@@ -703,8 +709,6 @@
     "jl": "_f_julia",
     "log": "_f_log",
     "less": "_f_less",
-    "license": "_f_license",
-    "licence": "_f_license",
     "enc": "_f_license",
     "bil": "_f_lisp",
     "hxp": "_f_lime",
@@ -845,6 +849,7 @@
     "appveyor.yml": "_f_appveyor",
     "bower.json": "_f_bower",
     "codeclimate.yml": "_f_codeclimate",
+    "makefile": "_f_config",
     "composer.json": "_f_composer",
     "composer.lock": "_f_composer",
     "docker-compose.yml": "_f_docker",
@@ -862,6 +867,8 @@
     ".jade-lint.json": "_f_jade",
     ".pug-lintrc.js": "_f_jade",
     ".pug-lintrc.json": "_f_jade",
+    "license": "_f_license",
+    "licence": "_f_license",
     "license.md": "_f_license",
     "licence.md": "_f_license",
     "include.xml": "_f_lime",
@@ -874,7 +881,7 @@
     "phpunit.xml": "_f_phpunit",
     "gemfile.lock": "_f_ruby",
     "stylelint.config.js": "_f_stylelint",
-    "travis.yml": "_f_travis",
+    ".travis.yml": "_f_travis",
     "vscodeignore.json": "_f_vscode",
     "launch.json": "_f_vscode",
     "tasks.json": "_f_vscode",
