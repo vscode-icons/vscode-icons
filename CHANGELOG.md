@@ -1,5 +1,8 @@
 # Change Log
 
+## 2.0.3 (September 12, 2016)
+  - Patch: Welcome message is always shown. ([@robertohuertasm](https://github.com/robertohuertasm) in [#295](https://github.com/robertohuertasm/vscode-icons/pull/295))
+
 ## 2.0.2 (September 11, 2016)
   - Patch: some icons were not showing while using the official contribution point. ([@robertohuertasm](https://github.com/robertohuertasm) in [#291](https://github.com/robertohuertasm/vscode-icons/pull/291))
   - Enhancement: support for Cobol. ([@jens1o](https://github.com/jens1o) in [#288](https://github.com/robertohuertasm/vscode-icons/pull/288))
