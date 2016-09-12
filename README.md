@@ -69,7 +69,8 @@ If you're willing to create an icon just follow this few conventions:
 1. We're using PNG-24 at the moment.
 2. 32x32
 3. 2px margin (but see [#195](https://github.com/robertohuertasm/vscode-icons/pull/195))
-4. It must be transparent.
+4. Center the icon, but lower it a pixel.
+5. It must be transparent.
 
 ## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:
