@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.4 (September 12, 2016)
+  - Support for .vscodeignore files.
+
+
 ## 2.0.3 (September 12, 2016)
   - Patch: Welcome message is always shown & .cpy extension support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#296](https://github.com/robertohuertasm/vscode-icons/pull/296))
 
