@@ -24,4 +24,14 @@ module.exports =
         'background-size: 16px;' +
       '}' +
     '{{/extensions}}' +
-  '{{/supported}}';
+  '{{/supported}}' +
+  '.monaco-tree-row .content .sub-content .explorer-item.folder-no-icon {' +
+    'padding-left: 0px;' +
+    'background: none' +
+  '}'
+  +
+  '.monaco-tree-row.expanded .content .sub-content .explorer-item.folder-no-icon { ' +
+    'padding-left: 0px;' +
+    'background: none;' +
+    'background-size: 0px;' +
+  '}';
