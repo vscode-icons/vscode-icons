@@ -1,7 +1,8 @@
 # Change Log
 
 ## 2.0.3 (September 12, 2016)
-  - Patch: Welcome message is always shown. ([@robertohuertasm](https://github.com/robertohuertasm) in [#295](https://github.com/robertohuertasm/vscode-icons/pull/295))
+  - Patch: .cpy extension support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#297](https://github.com/robertohuertasm/vscode-icons/pull/297))
+  - Patch: Welcome message is always shown. ([@robertohuertasm](https://github.com/robertohuertasm) in [#296](https://github.com/robertohuertasm/vscode-icons/pull/296))
 
 ## 2.0.2 (September 11, 2016)
   - Patch: some icons were not showing while using the official contribution point. ([@robertohuertasm](https://github.com/robertohuertasm) in [#291](https://github.com/robertohuertasm/vscode-icons/pull/291))
