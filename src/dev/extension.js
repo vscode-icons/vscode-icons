@@ -232,7 +232,11 @@ function showNewVersionMessage(autoinstall) {
       if (btn && btn.title === msg.seeReleaseNotes) {
         open(msg.urlReleaseNote);
       }
-      if (autoinstall) autoinstall();
+      if (autoinstall) {
+        autoinstall();
+      } else {
+        settings.setStatus(settings.status.disabled);
+      }
     });
 }
 
