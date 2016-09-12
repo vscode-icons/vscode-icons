@@ -1,7 +1,7 @@
 # Change Log
 
 ## 2.0.4 (September 12, 2016)
-  - Support for .vscodeignore files.
+  - Support for .vscodeignore files. ([@robertohuertasm](https://github.com/robertohuertasm) in [#300](https://github.com/robertohuertasm/vscode-icons/pull/300))
 
 
 ## 2.0.3 (September 12, 2016)

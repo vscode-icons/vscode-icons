@@ -829,6 +829,7 @@
     "vbhtml": "_f_vbhtml",
     "vbproj": "_f_vbproj",
     "vue": "_f_vue",
+    "vscodeignore": "_f_vscode",
     "xml": "_f_xml",
     "axml": "_f_xml",
     "xaml": "_f_xml",
