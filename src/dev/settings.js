@@ -33,7 +33,7 @@ function getSettings() {
   var jsiconsreplace =
     [
       /this\.fileIconClasses\((i|n)\.resource\.fsPath\)/,
-      'e.fileIconClasses(r)',
+      /e.fileIconClasses\((r|o)\)/,
       /this\.folderIconClasses\((i|n)\.resource\.fsPath\)/
     ];
   var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
