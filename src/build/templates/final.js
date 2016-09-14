@@ -2,7 +2,7 @@ module.exports =
 '/* eslint-disable */\n module.exports = { ' +
 'iconClassReplace: \'this.fileIconClasses((n||i).resource.fsPath).' +
   'concat(vsicons.iconClass(this, n||i))\', ' +
-'iconClass2Replace: \'e.fileIconClasses(r).' +
+'iconClass2Replace: \'e.fileIconClasses(r||o).' +
   'concat(vsicons.iconClass(e, r, true))\', ' +
 'iconClass3Replace: \'this.folderIconClasses((n||i).resource.fsPath).' +
   'concat(vsicons.iconClass(this, n||i))\', ' +
