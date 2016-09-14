@@ -32,7 +32,7 @@ exports.extensions = {
     { icon: 'compass', extensions: [] },
     { icon: 'composer', extensions: ['composer.json'], special: 'json', contribType: ctype.filename },
     { icon: 'composer', extensions: ['composer.lock'], special: 'lock', contribType: ctype.filename },
-    { icon: 'cs', extensions: ['cs'] },
+    { icon: 'cs', extensions: ['cs', 'csx'] },
     { icon: 'cshtml', extensions: ['cshtml'] },
     { icon: 'csproj', extensions: ['csproj'] },
     { icon: 'css', extensions: ['css'] },
