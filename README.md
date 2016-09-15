@@ -80,6 +80,14 @@ npm run build
 ```
 This script will install any dependencies and generate the css/js code to be injected into vscode source code.
 
+### Building the extension's source code via docker
+Make sure that you have docker installed.
+```
+docker build -t vscode-icons .
+docker run --rm -it -v $PWD/dist:/app/dist vscode-icons
+```
+All of the files will be generated in the `dist` folder.
+
 ## Change log 
 If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
 
