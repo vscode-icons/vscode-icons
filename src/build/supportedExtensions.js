@@ -41,6 +41,7 @@ exports.extensions = {
     { icon: 'dartlang', extensions: ['dart'] },
     { icon: 'dlang', extensions: ['d'] },
     { icon: 'docker', extensions: ['dockerfile', 'dockerignore'], contribType: ctype.filename },
+    { icon: 'docker', extensions: ['dockerignore'] },
     { icon: 'docker', extensions: ['docker-compose.yml'], special: 'yml', contribType: ctype.filename },
     { icon: 'editorconfig', extensions: ['editorconfig'] },
     { icon: 'ejs', extensions: ['ejs'] },

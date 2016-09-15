@@ -642,6 +642,7 @@
     "feature": "_f_cucumber",
     "dart": "_f_dartlang",
     "d": "_f_dlang",
+    "dockerignore": "_f_docker",
     "editorconfig": "_f_editorconfig",
     "ejs": "_f_ejs",
     "ex": "_f_elixir",

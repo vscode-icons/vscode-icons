@@ -4,6 +4,8 @@
   - Patch: Support for latest Insiders version.
   - Enhancement: Webpack support. ([@jens1o](https://github.com/jens1o) in [#310](https://github.com/robertohuertasm/vscode-icons/pull/310))
   - Enhancement: csx support. ([@jens1o](https://github.com/jens1o) in [#309](https://github.com/robertohuertasm/vscode-icons/pull/309))
+  - Enhancement: Dockerignore support. ([@FrenchBen](https://github.com/FrenchBen) in [#306](https://github.com/robertohuertasm/vscode-icons/pull/306))
+  - Patch: Solved support for Docker with new api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#311](https://github.com/robertohuertasm/vscode-icons/pull/311))
 
 ## 2.0.4 (September 13, 2016)
   - Support for .vscodeignore files. ([@robertohuertasm](https://github.com/robertohuertasm) in [#300](https://github.com/robertohuertasm/vscode-icons/pull/300))
