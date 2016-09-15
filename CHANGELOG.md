@@ -1,5 +1,10 @@
 # Change Log
 
+## 2.0.5 (September 15, 2016)
+  - Patch: Support for latest Insiders version.
+  - Enhancement: Webpack support. ([@jens1o](https://github.com/jens1o) in [#310](https://github.com/robertohuertasm/vscode-icons/pull/310))
+  - Enhancement: csx support. ([@jens1o](https://github.com/jens1o) in [#309](https://github.com/robertohuertasm/vscode-icons/pull/309))
+
 ## 2.0.4 (September 13, 2016)
   - Support for .vscodeignore files. ([@robertohuertasm](https://github.com/robertohuertasm) in [#300](https://github.com/robertohuertasm/vscode-icons/pull/300))
   - Patch: Hide folders setting is working again. ([@robertohuertasm](https://github.com/robertohuertasm) in [#301](https://github.com/robertohuertasm/vscode-icons/pull/301))
