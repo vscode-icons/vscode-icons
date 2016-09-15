@@ -172,6 +172,7 @@ exports.extensions = {
     { icon: 'vue', extensions: ['vue'] },
     { icon: 'vscode', extensions: ['vscodeignore.json', 'launch.json', 'tasks.json', 'jsconfig.json', 'tsconfig.json'], special: 'json', contribType: ctype.filename },
     { icon: 'vscode', extensions: ['vscodeignore'] },
+    { icon: 'webpack', extensions: ['webpack.config.js'], special: 'js', contribType: ctype.filename },
     { icon: 'xml', extensions: ['xml', 'axml', 'xaml', 'pex'] },
     { icon: 'yaml', extensions: ['yml', 'yaml'] },
     { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'] }
