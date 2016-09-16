@@ -524,9 +524,6 @@
     },
     "_f_zip": {
       "iconPath": "./icons/file_type_zip@2x.png"
-    },
-    "_f_xliff": {
-      "iconPath": "./icons/file_type_xliff@2x.png"
     }
   },
   "file": "_file",
@@ -852,8 +849,6 @@
     "xz": "_f_zip",
     "bz2": "_f_zip",
     "blade.php": "_f_blade",
-    ".xliff": "_f_xliff",
-    ".xlf": "_f_xliff"    
   },
   "fileNames": {
     "appveyor.yml": "_f_appveyor",
