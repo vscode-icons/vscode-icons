@@ -848,7 +848,7 @@
     "bzip2": "_f_zip",
     "xz": "_f_zip",
     "bz2": "_f_zip",
-    "blade.php": "_f_blade",
+    "blade.php": "_f_blade"
   },
   "fileNames": {
     "appveyor.yml": "_f_appveyor",
@@ -894,7 +894,7 @@
     "tasks.json": "_f_vscode",
     "jsconfig.json": "_f_vscode",
     "tsconfig.json": "_f_vscode",
-    "webpack.config.js": "_f_webpack",
+    "webpack.config.js": "_f_webpack"
   },
   "languageIds": {}
 }
