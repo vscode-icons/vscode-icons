@@ -1,6 +1,7 @@
 # Change Log
 
 ## 2.0.6 (September 18, 2016)
+  - Enhancement: More webpack extensions added to support official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#318](https://github.com/robertohuertasm/vscode-icons/pull/318))
   - .xliff support. ([@aalaap](https://github.com/aalaap) in [#317](https://github.com/robertohuertasm/vscode-icons/pull/317))
 
 ## 2.0.5 (September 15, 2016)
