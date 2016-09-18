@@ -516,6 +516,9 @@
     "_f_webpack": {
       "iconPath": "./icons/file_type_webpack@2x.png"
     },
+    "_f_xliff": {
+      "iconPath": "./icons/file_type_xliff@2x.png"
+    },
     "_f_xml": {
       "iconPath": "./icons/file_type_xml@2x.png"
     },
@@ -834,6 +837,8 @@
     "vbproj": "_f_vbproj",
     "vue": "_f_vue",
     "vscodeignore": "_f_vscode",
+    "xliff": "_f_xliff",
+    "xlf": "_f_xliff",
     "xml": "_f_xml",
     "axml": "_f_xml",
     "xaml": "_f_xml",
@@ -894,7 +899,11 @@
     "tasks.json": "_f_vscode",
     "jsconfig.json": "_f_vscode",
     "tsconfig.json": "_f_vscode",
-    "webpack.config.js": "_f_webpack"
+    "webpack.config.js": "_f_webpack",
+    "webpack.config.babel.js": "_f_webpack",
+    "webpack.config.dev.js": "_f_webpack",
+    "webpack.config.staging.js": "_f_webpack",
+    "webpack.config.production.js": "_f_webpack"
   },
   "languageIds": {}
 }
