@@ -120,6 +120,9 @@
     "_f_bower": {
       "iconPath": "./icons/file_type_bower@2x.png"
     },
+    "_f_bundler": {
+      "iconPath": "./icons/file_type_bundler@2x.png"
+    },
     "_f_c++": {
       "iconPath": "./icons/file_type_c++@2x.png"
     },
@@ -858,6 +861,8 @@
   "fileNames": {
     "appveyor.yml": "_f_appveyor",
     "bower.json": "_f_bower",
+    "gemfile": "_f_bundler",
+    "gemfile.lock": "_f_bundler",
     "codeclimate.yml": "_f_codeclimate",
     "makefile": "_f_config",
     "composer.json": "_f_composer",
@@ -891,8 +896,6 @@
     "paket.template": "_f_paket",
     "paket.local": "_f_paket",
     "phpunit.xml": "_f_phpunit",
-    "gemfile": "_f_ruby",
-    "gemfile.lock": "_f_ruby",
     "stylelint.config.js": "_f_stylelint",
     ".travis.yml": "_f_travis",
     "vscodeignore.json": "_f_vscode",
