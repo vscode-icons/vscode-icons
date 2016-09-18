@@ -1,6 +1,7 @@
 # Change Log
 
 ## 2.0.6 (September 18, 2016)
+  - Enhancement: Gemfile and .gemspec support for the official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#322](https://github.com/robertohuertasm/vscode-icons/pull/322))
   - Enhancement: More webpack extensions added to support official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#320](https://github.com/robertohuertasm/vscode-icons/pull/320))
   - .xliff support. ([@aalaap](https://github.com/aalaap) in [#317](https://github.com/robertohuertasm/vscode-icons/pull/317))
 
