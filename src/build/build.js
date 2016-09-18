@@ -7,6 +7,7 @@ var folders = require('./supportedFolders').extensions;
 var fs = require('fs');
 var ncp = require('ncp').ncp;
 var iconClassTemplate = require('./templates/iconClass');
+var iconClassWrapperTemplate = require('./templates/iconClassWrapper');
 var checkAssociationsTemplate = require('./templates/checkAssociations');
 var iconResolveTemplate = require('./templates/iconResolve');
 var tabLabelTemplate = require('./templates/tabLabel');
@@ -67,6 +68,7 @@ var parse = function (st) {
 };
 
 var final = mustache.render(finalTemplate, {
+  iconClassWrapper: parse(iconClassWrapperTemplate),
   iconClass: parse(iconClassTemplate),
   checkAssociations: parse(checkAssociationsTemplate),
   tabLabel: parse(tabLabelTemplate),

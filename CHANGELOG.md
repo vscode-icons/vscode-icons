@@ -1,5 +1,18 @@
 # Change Log
 
+## 2.0.6 (September 18, 2016)
+  - Enhancement: Gemfile and Gemfile.lock associated to Bundler icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#323](https://github.com/robertohuertasm/vscode-icons/pull/323))
+  - Enhancement: Gemfile and .gemspec support for the official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#322](https://github.com/robertohuertasm/vscode-icons/pull/322))
+  - Enhancement: More webpack extensions added to support official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#320](https://github.com/robertohuertasm/vscode-icons/pull/320))
+  - .xliff support. ([@aalaap](https://github.com/aalaap) in [#317](https://github.com/robertohuertasm/vscode-icons/pull/317))
+
+## 2.0.5 (September 15, 2016)
+  - Patch: Support for latest Insiders version.
+  - Enhancement: Webpack support. ([@jens1o](https://github.com/jens1o) in [#310](https://github.com/robertohuertasm/vscode-icons/pull/310))
+  - Enhancement: csx support. ([@jens1o](https://github.com/jens1o) in [#309](https://github.com/robertohuertasm/vscode-icons/pull/309))
+  - Enhancement: Dockerignore support. ([@FrenchBen](https://github.com/FrenchBen) in [#306](https://github.com/robertohuertasm/vscode-icons/pull/306))
+  - Patch: Solved support for Docker with new api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#311](https://github.com/robertohuertasm/vscode-icons/pull/311))
+
 ## 2.0.4 (September 13, 2016)
   - Support for .vscodeignore files. ([@robertohuertasm](https://github.com/robertohuertasm) in [#300](https://github.com/robertohuertasm/vscode-icons/pull/300))
   - Patch: Hide folders setting is working again. ([@robertohuertasm](https://github.com/robertohuertasm) in [#301](https://github.com/robertohuertasm/vscode-icons/pull/301))

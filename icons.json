@@ -120,6 +120,9 @@
     "_f_bower": {
       "iconPath": "./icons/file_type_bower@2x.png"
     },
+    "_f_bundler": {
+      "iconPath": "./icons/file_type_bundler@2x.png"
+    },
     "_f_c++": {
       "iconPath": "./icons/file_type_c++@2x.png"
     },
@@ -513,6 +516,12 @@
     "_f_vscode": {
       "iconPath": "./icons/file_type_vscode@2x.png"
     },
+    "_f_webpack": {
+      "iconPath": "./icons/file_type_webpack@2x.png"
+    },
+    "_f_xliff": {
+      "iconPath": "./icons/file_type_xliff@2x.png"
+    },
     "_f_xml": {
       "iconPath": "./icons/file_type_xml@2x.png"
     },
@@ -631,6 +640,7 @@
     "makefile": "_f_config",
     "config": "_f_config",
     "cs": "_f_cs",
+    "csx": "_f_cs",
     "cshtml": "_f_cshtml",
     "csproj": "_f_csproj",
     "css": "_f_css",
@@ -638,7 +648,7 @@
     "feature": "_f_cucumber",
     "dart": "_f_dartlang",
     "d": "_f_dlang",
-    "dockerfile": "_f_docker",
+    "dockerignore": "_f_docker",
     "editorconfig": "_f_editorconfig",
     "ejs": "_f_ejs",
     "ex": "_f_elixir",
@@ -792,7 +802,7 @@
     "tag": "_f_riot",
     "robot": "_f_robotframework",
     "rb": "_f_ruby",
-    "gemfile": "_f_ruby",
+    "gemspec": "_f_ruby",
     "rs": "_f_rust",
     "sass": "_f_sass",
     "scala": "_f_scala",
@@ -830,6 +840,8 @@
     "vbproj": "_f_vbproj",
     "vue": "_f_vue",
     "vscodeignore": "_f_vscode",
+    "xliff": "_f_xliff",
+    "xlf": "_f_xliff",
     "xml": "_f_xml",
     "axml": "_f_xml",
     "xaml": "_f_xml",
@@ -849,10 +861,14 @@
   "fileNames": {
     "appveyor.yml": "_f_appveyor",
     "bower.json": "_f_bower",
+    "gemfile": "_f_bundler",
+    "gemfile.lock": "_f_bundler",
     "codeclimate.yml": "_f_codeclimate",
     "makefile": "_f_config",
     "composer.json": "_f_composer",
     "composer.lock": "_f_composer",
+    "dockerfile": "_f_docker",
+    "dockerignore": "_f_docker",
     "docker-compose.yml": "_f_docker",
     ".eslintrc.js": "_f_eslint",
     ".eslintrc.json": "_f_eslint",
@@ -880,14 +896,18 @@
     "paket.template": "_f_paket",
     "paket.local": "_f_paket",
     "phpunit.xml": "_f_phpunit",
-    "gemfile.lock": "_f_ruby",
     "stylelint.config.js": "_f_stylelint",
     ".travis.yml": "_f_travis",
     "vscodeignore.json": "_f_vscode",
     "launch.json": "_f_vscode",
     "tasks.json": "_f_vscode",
     "jsconfig.json": "_f_vscode",
-    "tsconfig.json": "_f_vscode"
+    "tsconfig.json": "_f_vscode",
+    "webpack.config.js": "_f_webpack",
+    "webpack.config.babel.js": "_f_webpack",
+    "webpack.config.dev.js": "_f_webpack",
+    "webpack.config.staging.js": "_f_webpack",
+    "webpack.config.production.js": "_f_webpack"
   },
   "languageIds": {}
 }
