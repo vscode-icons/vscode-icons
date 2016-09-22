@@ -79,7 +79,7 @@ exports.extensions = {
     { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'ico'] },
     { icon: 'ionic', extensions: ['ionic.project'], special: 'project', contribType: ctype.filename },
     { icon: 'ionic', extensions: ['ionic.config.json'], special: 'json', contribType: ctype.filename },
-    { icon: 'jade', extensions: ['jade', 'pug', 'jade-lintrc', 'pug-lintrc'] },
+    { icon: 'jade', extensions: ['jade', 'pug', 'jade-lintrc', 'pug-lintrc', 'tag'] },
     { icon: 'jade', extensions: ['.jade-lint.json'], special: 'json', contribType: ctype.filename },
     { icon: 'jade', extensions: ['.pug-lintrc.js'], special: 'js', contribType: ctype.filename },
     { icon: 'jade', extensions: ['.pug-lintrc.json'], special: 'json', contribType: ctype.filename },
