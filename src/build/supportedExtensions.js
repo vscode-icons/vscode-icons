@@ -60,6 +60,7 @@ exports.extensions = {
     { icon: 'favicon', extensions: ['favicon.ico'], special: 'ico', contribType: ctype.filename },
     { icon: 'font', extensions: ['woff', 'woff2', 'ttf', 'otf', 'eot', 'pfa', 'pfb', 'sfd'] },
     { icon: 'flash', extensions: ['swf', 'swc', 'sol'] },
+    { icon: 'flow', extensions: ['flowconfig', 'js.flow']
     { icon: 'fsharp', extensions: ['fs', 'fsx', 'fsi'] },
     { icon: 'git', extensions: ['gitattributes', 'gitignore', 'gitmodules', 'gitkeep'] },
     { icon: 'go', extensions: ['go'] },
