@@ -139,6 +139,7 @@ exports.extensions = {
     { icon: 'reactts', extensions: ['tsx'] },
     { icon: 'riot', extensions: ['tag'] },
     { icon: 'robotframework', extensions: ['robot'] },
+    { icon: 'rspec', extensions: ['rspec'] },
     { icon: 'ruby', extensions: ['rb', 'gemspec'] },
     { icon: 'rust', extensions: ['rs'] },
     { icon: 'sass', extensions: ['sass'] },
