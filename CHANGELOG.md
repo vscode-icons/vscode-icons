@@ -1,6 +1,10 @@
 # Change Log
 
-## 2.0.6 (September 18, 2016)
+## 2.0.6 (September 24, 2016)
+  - Enhancement: support for Flow. ([@jens1o](https://github.com/jens1o) in [#333](https://github.com/robertohuertasm/vscode-icons/pull/333))
+  - Enhancement: support for .tag. ([@jens1o](https://github.com/jens1o) in [#333](https://github.com/robertohuertasm/vscode-icons/pull/333))
+  - Enhancement: support for .vb. ([@jens1o](https://github.com/jens1o) in [#332](https://github.com/robertohuertasm/vscode-icons/pull/332))
+  - Enhancement: support for .rspec. ([@jens1o](https://github.com/jens1o) in [#331](https://github.com/robertohuertasm/vscode-icons/pull/331))
   - Enhancement: Gemfile and Gemfile.lock associated to Bundler icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#323](https://github.com/robertohuertasm/vscode-icons/pull/323))
   - Enhancement: Gemfile and .gemspec support for the official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#322](https://github.com/robertohuertasm/vscode-icons/pull/322))
   - Enhancement: More webpack extensions added to support official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#320](https://github.com/robertohuertasm/vscode-icons/pull/320))
