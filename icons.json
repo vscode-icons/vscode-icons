@@ -219,6 +219,9 @@
     "_f_flash": {
       "iconPath": "./icons/file_type_flash@2x.png"
     },
+    "_f_flow": {
+      "iconPath": "./icons/file_type_flow@2x.png"
+    },
     "_f_fsharp": {
       "iconPath": "./icons/file_type_fsharp@2x.png"
     },
@@ -417,6 +420,9 @@
     "_f_robotframework": {
       "iconPath": "./icons/file_type_robotframework@2x.png"
     },
+    "_f_rspec": {
+      "iconPath": "./icons/file_type_rspec@2x.png"
+    },
     "_f_ruby": {
       "iconPath": "./icons/file_type_ruby@2x.png"
     },
@@ -501,14 +507,17 @@
     "_f_vagrant": {
       "iconPath": "./icons/file_type_vagrant@2x.png"
     },
-    "_f_volt": {
-      "iconPath": "./icons/file_type_volt@2x.png"
+    "_f_vb": {
+      "iconPath": "./icons/file_type_vb@2x.png"
     },
     "_f_vbhtml": {
       "iconPath": "./icons/file_type_vbhtml@2x.png"
     },
     "_f_vbproj": {
       "iconPath": "./icons/file_type_vbproj@2x.png"
+    },
+    "_f_volt": {
+      "iconPath": "./icons/file_type_volt@2x.png"
     },
     "_f_vue": {
       "iconPath": "./icons/file_type_vue@2x.png"
@@ -678,6 +687,8 @@
     "swf": "_f_flash",
     "swc": "_f_flash",
     "sol": "_f_flash",
+    "flowconfig": "_f_flow",
+    "js.flow": "_f_flow",
     "fs": "_f_fsharp",
     "fsx": "_f_fsharp",
     "fsi": "_f_fsharp",
@@ -711,6 +722,7 @@
     "pug": "_f_jade",
     "jade-lintrc": "_f_jade",
     "pug-lintrc": "_f_jade",
+    "tag": "_f_riot",
     "java": "_f_java",
     "js": "_f_js",
     "jshintrc": "_f_jshintrc",
@@ -799,8 +811,8 @@
     "jsx": "_f_reactjs",
     "rt": "_f_reacttemplate",
     "tsx": "_f_reactts",
-    "tag": "_f_riot",
     "robot": "_f_robotframework",
+    "rspec": "_f_rspec",
     "rb": "_f_ruby",
     "gemspec": "_f_ruby",
     "rs": "_f_rust",
@@ -835,9 +847,10 @@
     "ts": "_f_typescript",
     "d.ts": "_f_typescriptdef",
     "vagrantfile": "_f_vagrant",
-    "volt": "_f_volt",
+    "vb": "_f_vb",
     "vbhtml": "_f_vbhtml",
     "vbproj": "_f_vbproj",
+    "volt": "_f_volt",
     "vue": "_f_vue",
     "vscodeignore": "_f_vscode",
     "xliff": "_f_xliff",
