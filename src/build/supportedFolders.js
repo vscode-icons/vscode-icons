@@ -3,6 +3,7 @@ exports.extensions = {
   supported: [
     { icon: 'bower', extensions: ['bower_components'] },
     { icon: 'dist', extensions: ['dist', 'out', 'export', 'build'] },
+    { icon: 'flow', extensions: ['flow'] },
     { icon: 'git', extensions: ['git', 'github'], dot: true },
     { icon: 'haxelib', extensions: ['haxelib'] },
     { icon: 'node', extensions: ['node_modules'] },
