@@ -171,6 +171,7 @@ exports.extensions = {
     { icon: 'typescript', extensions: ['ts'] },
     { icon: 'typescriptdef', extensions: ['.d.ts'], special: 'ts' },
     { icon: 'vagrant', extensions: ['vagrantfile'] },
+    { icon: 'vash', extensions: ['vash'] },
     { icon: 'vb', extensions: ['vb'] },
     { icon: 'vbhtml', extensions: ['vbhtml'] },
     { icon: 'vbproj', extensions: ['vbproj'] },

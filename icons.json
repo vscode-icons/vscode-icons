@@ -510,6 +510,9 @@
     "_f_vagrant": {
       "iconPath": "./icons/file_type_vagrant@2x.png"
     },
+    "_f_vash": {
+      "iconPath": "./icons/file_type_vash@2x.png"
+    },
     "_f_vb": {
       "iconPath": "./icons/file_type_vb@2x.png"
     },
@@ -851,6 +854,7 @@
     "ts": "_f_typescript",
     "d.ts": "_f_typescriptdef",
     "vagrantfile": "_f_vagrant",
+    "vash": "_f_vash",
     "vb": "_f_vb",
     "vbhtml": "_f_vbhtml",
     "vbproj": "_f_vbproj",
