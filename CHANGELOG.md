@@ -1,6 +1,8 @@
 # Change Log
 
 ## 2.0.6 (September 24, 2016)
+  - Enhancement: spec & specs added to test icons. ([@robertohuertasm](https://github.com/robertohuertasm) in [#349](https://github.com/robertohuertasm/vscode-icons/pull/349))
+  - Enhancement: support for flow folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#348](https://github.com/robertohuertasm/vscode-icons/pull/348))
   - Enhancement: fixed size of typescript icons. ([@robertohuertasm](https://github.com/robertohuertasm) in [#346](https://github.com/robertohuertasm/vscode-icons/pull/346))
   - Enhancement: elixir icon is now lighter. ([@robertohuertasm](https://github.com/robertohuertasm) in [#345](https://github.com/robertohuertasm/vscode-icons/pull/345))
   - Enhancement: c# icon is now green. ([@robertohuertasm](https://github.com/robertohuertasm) in [#344](https://github.com/robertohuertasm/vscode-icons/pull/344))
