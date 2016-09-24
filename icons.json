@@ -174,6 +174,9 @@
     "_f_csslint": {
       "iconPath": "./icons/file_type_csslint@2x.png"
     },
+    "_f_cssmap": {
+      "iconPath": "./icons/file_type_cssmap@2x.png"
+    },
     "_f_cucumber": {
       "iconPath": "./icons/file_type_cucumber@2x.png"
     },
@@ -654,6 +657,7 @@
     "csproj": "_f_csproj",
     "css": "_f_css",
     "csslintrc": "_f_csslint",
+    "css.map": "_f_cssmap",
     "feature": "_f_cucumber",
     "dart": "_f_dartlang",
     "d": "_f_dlang",
