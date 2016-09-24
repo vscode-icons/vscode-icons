@@ -471,6 +471,9 @@
     "_f_stylus": {
       "iconPath": "./icons/file_type_stylus@2x.png"
     },
+    "_f_storyboard": {
+      "iconPath": "./icons/file_type_storyboard@2x.png"
+    },
     "_f_svg": {
       "iconPath": "./icons/file_type_svg@2x.png"
     },
@@ -533,6 +536,9 @@
     },
     "_f_webpack": {
       "iconPath": "./icons/file_type_webpack@2x.png"
+    },
+    "_f_xib": {
+      "iconPath": "./icons/file_type_xib@2x.png"
     },
     "_f_xliff": {
       "iconPath": "./icons/file_type_xliff@2x.png"
@@ -840,6 +846,7 @@
     "swig": "_f_smarty",
     "stylelintrc": "_f_stylelint",
     "styl": "_f_stylus",
+    "storyboard": "_f_storyboard",
     "svg": "_f_svg",
     "swift": "_f_swift",
     "tcl": "_f_tcl",
@@ -861,6 +868,7 @@
     "volt": "_f_volt",
     "vue": "_f_vue",
     "vscodeignore": "_f_vscode",
+    "xib": "_f_xib",
     "xliff": "_f_xliff",
     "xlf": "_f_xliff",
     "xml": "_f_xml",
