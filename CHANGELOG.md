@@ -1,6 +1,7 @@
 # Change Log
 
 ## 2.0.6 (September 24, 2016)
+  - Enhancement: support for .xib and .storyboards. ([@robertohuertasm](https://github.com/robertohuertasm) in [#342](https://github.com/robertohuertasm/vscode-icons/pull/342))
   - Enhancement: support for .vash. ([@robertohuertasm](https://github.com/robertohuertasm) in [#341](https://github.com/robertohuertasm/vscode-icons/pull/341))
   - Enhancement: support for .css.map. ([@robertohuertasm](https://github.com/robertohuertasm) in [#340](https://github.com/robertohuertasm/vscode-icons/pull/340))
   - Enhancement: support for Flow. ([@jens1o](https://github.com/jens1o) in [#333](https://github.com/robertohuertasm/vscode-icons/pull/333))
