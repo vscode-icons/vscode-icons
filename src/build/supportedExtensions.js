@@ -39,6 +39,7 @@ exports.extensions = {
     { icon: 'csproj', extensions: ['csproj'] },
     { icon: 'css', extensions: ['css'] },
     { icon: 'csslint', extensions: ['csslintrc'] },
+    { icon: 'cssmap', extensions: ['.css.map'], special: 'map' },
     { icon: 'cucumber', extensions: ['feature'] },
     { icon: 'dartlang', extensions: ['dart'] },
     { icon: 'dlang', extensions: ['d'] },
