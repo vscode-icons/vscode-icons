@@ -1,8 +1,8 @@
 # Change Log
 
 ## 2.0.6 (September 24, 2016)
-  - Enhancement: elixir icon is now lighter. ([@robertohuertasm](https://github.com/robertohuertasm) in [#344](https://github.com/robertohuertasm/vscode-icons/pull/344))
-  - Enhancement: c# icon is now green. ([@robertohuertasm](https://github.com/robertohuertasm) in [#343](https://github.com/robertohuertasm/vscode-icons/pull/343))
+  - Enhancement: elixir icon is now lighter. ([@robertohuertasm](https://github.com/robertohuertasm) in [#345](https://github.com/robertohuertasm/vscode-icons/pull/345))
+  - Enhancement: c# icon is now green. ([@robertohuertasm](https://github.com/robertohuertasm) in [#344](https://github.com/robertohuertasm/vscode-icons/pull/344))
   - Enhancement: support for .xib and .storyboards. ([@robertohuertasm](https://github.com/robertohuertasm) in [#342](https://github.com/robertohuertasm/vscode-icons/pull/342))
   - Enhancement: support for .vash. ([@robertohuertasm](https://github.com/robertohuertasm) in [#341](https://github.com/robertohuertasm/vscode-icons/pull/341))
   - Enhancement: support for .css.map. ([@robertohuertasm](https://github.com/robertohuertasm) in [#340](https://github.com/robertohuertasm/vscode-icons/pull/340))
