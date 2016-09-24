@@ -583,6 +583,8 @@
     "test": "_fd_test",
     "__tests__": "_fd_test",
     "__test__": "_fd_test",
+    "spec": "_fd_test",
+    "specs": "_fd_test",
     "typings": "_fd_typings",
     ".vscode": "_fd_vscode"
   },
@@ -607,6 +609,8 @@
     "test": "_fd_test_open",
     "__tests__": "_fd_test_open",
     "__test__": "_fd_test_open",
+    "spec": "_fd_test_open",
+    "specs": "_fd_test_open",
     "typings": "_fd_typings_open",
     ".vscode": "_fd_vscode_open"
   },

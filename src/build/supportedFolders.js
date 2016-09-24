@@ -10,7 +10,7 @@ exports.extensions = {
     { icon: 'meteor', extensions: ['meteor'], dot: true },
     { icon: 'script', extensions: ['script', 'scripts'] },
     { icon: 'src', extensions: ['src', 'source', 'sources'] },
-    { icon: 'test', extensions: ['tests', 'test', '__tests__', '__test__'] },
+    { icon: 'test', extensions: ['tests', 'test', '__tests__', '__test__', 'spec', 'specs'] },
     { icon: 'typings', extensions: ['typings'] },
     { icon: 'vscode', extensions: ['vscode'], dot: true }
   ],
