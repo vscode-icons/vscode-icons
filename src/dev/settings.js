@@ -1,5 +1,6 @@
 var fs = require('fs');
 var vscode = require('vscode'); // eslint-disable-line
+var semver = require('semver');
 var path = require('path');
 var getAppPath = require('./vscodePath');
 var extVersion = require('./extVersion');
@@ -13,6 +14,8 @@ var status = {
 function getSettings() {
   if (settings) return settings;
   var isInsiders = /insiders/i.test(vscode.env.appName);
+  var version = semver(vscode.version);
+  var isGt160 = semver.lt(version.major + '.' + version.minor + '.' + version.patch, '1.6.0');
   var isWin = /^win/.test(process.platform);
   var homeDir = isWin ? 'USERPROFILE' : 'HOME';
   var extensionFolder = path.join(homeDir, isInsiders
@@ -52,7 +55,9 @@ function getSettings() {
     jsfilebak: jsfilebak,
     cssreplace: cssreplace,
     extVersion: extVersion,
-    jsiconsreplace: jsiconsreplace
+    jsiconsreplace: jsiconsreplace,
+    version: version,
+    isGt160: isGt160
   };
   return settings;
 }

@@ -11,6 +11,8 @@ exports.messages = {
   seeReadme: 'Learn about this extension',
   welcomeMessage: 'vscode-icons now ships with official API support.  Go to File > Preferences > File Icon Theme and select VSCode Icons in order to activate.',
   aboutOfficialApi: 'Learn more about File & Folder icons',
+  dropSupportMessage: 'Icons Enable command is no longer supported for VSCode >= v1.6.0.',
+  learnMore: 'Want to learn more?',
   urlReleaseNote: 'https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md',
   urlReadme: 'https://github.com/robertohuertasm/vscode-icons/blob/master/README.md',
   urlOfficialApi: 'http://code.visualstudio.com/docs/customization/themes#_select-an-icon-theme'
