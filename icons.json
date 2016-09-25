@@ -21,6 +21,12 @@
     "_fd_dist_open": {
       "iconPath": "./icons/folder_type_dist_opened@2x.png"
     },
+    "_fd_docs": {
+      "iconPath": "./icons/folder_type_docs@2x.png"
+    },
+    "_fd_docs_open": {
+      "iconPath": "./icons/folder_type_docs_opened@2x.png"
+    },
     "_fd_flow": {
       "iconPath": "./icons/folder_type_flow@2x.png"
     },
@@ -574,6 +580,7 @@
     "out": "_fd_dist",
     "export": "_fd_dist",
     "build": "_fd_dist",
+    "docs": "_fd_docs",
     "flow": "_fd_flow",
     ".git": "_fd_git",
     ".github": "_fd_git",
@@ -602,6 +609,7 @@
     "out": "_fd_dist_open",
     "export": "_fd_dist_open",
     "build": "_fd_dist_open",
+    "docs": "_fd_docs_open",
     "flow": "_fd_flow_open",
     ".git": "_fd_git_open",
     ".github": "_fd_git_open",

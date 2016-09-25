@@ -1,6 +1,8 @@
 # Change Log
 
 ## 2.0.6 (September 24, 2016)
+  - Enhancement: docs folder support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#352](https://github.com/robertohuertasm/vscode-icons/pull/352))
+  - Enhancement: xliff icon reduced. ([@robertohuertasm](https://github.com/robertohuertasm) in [#351](https://github.com/robertohuertasm/vscode-icons/pull/351))
   - Enhancement: support for images folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#350](https://github.com/robertohuertasm/vscode-icons/pull/350))
   - Enhancement: spec & specs added to test icons. ([@robertohuertasm](https://github.com/robertohuertasm) in [#349](https://github.com/robertohuertasm/vscode-icons/pull/349))
   - Enhancement: support for flow folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#348](https://github.com/robertohuertasm/vscode-icons/pull/348))
