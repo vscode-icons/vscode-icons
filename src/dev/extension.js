@@ -244,6 +244,15 @@ function showNewVersionMessage(autoinstall) {
 
 function fInstall() {
   if (isInjected()) return;
+  if (!vars.isGt160) {
+    vscode.window.showInformationMessage(msg.dropSupportMessage,
+      { title: msg.learnMore })
+      .then(function (btn) {
+        if (!btn) return;
+        open(msg.urlReadme);
+      });
+    return;
+  }
   installItem(vars.cssfilebak, vars.cssfile, cleanCssInstall);
   installItem(vars.jsfilebak, vars.jsfile, cleanJsInstall);
   addIcons();
