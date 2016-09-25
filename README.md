@@ -31,9 +31,10 @@ With the release of the version 2.0.0 we started to support the official contrib
 There are several motives that have led me to take this decision:
 
 1. The main goal of this extension has been completely achieved, which was to point out the importance of having icons in VSCode.
-2. Code Injection has its drawbacks both for the VSCode team and for me. Having to keep up with the Insiders build has become a nightmare and from time to time new recurrent issues are being created in VSCode's Github project about something being broken.
-3. Support from VSCode team is great and they're willing to hear all the suggestions from the community regarding icon themes.
+2. VSCode 1.6.0 supports icons beyond the file explorer. [See vscode#11751](https://github.com/Microsoft/vscode/issues/11751#issuecomment-248634495) 
+3. Code Injection has its drawbacks both for the VSCode team and for me. Having to keep up with the Insiders build has become a nightmare and from time to time new recurrent issues are being created in VSCode's Github project about something being broken.
 4. Code injection will be eventually not allowed.
+5. Support from VSCode team is great and they're willing to hear all the suggestions from the community regarding icon themes.
 
 Still, there's one missing point: `Custom Icon associations` is still not supported. They're not convinced of the value that this would bring to VSCode, so again, it's up to all of you to make the difference and tell if that's important for you. I'd suggest you to create a Github issue with your opinions on this matter so the VSCode team can have a clear vision about how important are `Custom Icon associations` to you. [This is a starting point](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649). Provide a +1 if you want the VSCode team to support this feature.
 
