@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.0.1 (September XX, 2016)
+  - Fix: masterpage not been found ([@jens1o](https://github.com/jens1o) in 18c145ed76852c7ddc5ef27d665d629d2edfc143
+
 ## 3.0.0 (September 25, 2016)
   - Icons Enable not supported anymore for VSCode >= v1.6.0. ([@robertohuertasm](https://github.com/robertohuertasm) in [#353](https://github.com/robertohuertasm/vscode-icons/pull/353))
   - Enhancement: docs folder support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#352](https://github.com/robertohuertasm/vscode-icons/pull/352))
