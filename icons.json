@@ -968,7 +968,8 @@
     "webpack.config.staging.js": "_f_webpack",
     "webpack.config.production.js": "_f_webpack",
     "webpack.config.ts": "_f_webpack",
-    "webpack.config.coffee": "_f_webpack"
+    "webpack.config.coffee": "_f_webpack",
+    "elm-package.json": "_f_elm"
   },
   "languageIds": {}
 }

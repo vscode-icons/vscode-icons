@@ -2,6 +2,7 @@
 
 ## 3.0.1 (October 02, 2016)
   - Patch: masterpage icon not been found ([@jens1o](https://github.com/jens1o) in [18c145ed76852c7ddc5ef27d665d629d2edfc143](https://github.com/robertohuertasm/vscode-icons/commit/18c145ed76852c7ddc5ef27d665d629d2edfc143))
+  - Enhancement: added support for elm-package.json. ([@robertohuertasm](https://github.com/robertohuertasm) in [#359](https://github.com/robertohuertasm/vscode-icons/pull/359))
   - Enhancement: webpack ts and coffee flavours. ([@robertohuertasm](https://github.com/robertohuertasm) in [#357](https://github.com/robertohuertasm/vscode-icons/pull/357))
 
 ## 3.0.0 (September 25, 2016)
