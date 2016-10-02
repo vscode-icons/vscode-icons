@@ -966,7 +966,9 @@
     "webpack.config.babel.js": "_f_webpack",
     "webpack.config.dev.js": "_f_webpack",
     "webpack.config.staging.js": "_f_webpack",
-    "webpack.config.production.js": "_f_webpack"
+    "webpack.config.production.js": "_f_webpack",
+    "webpack.config.ts": "_f_webpack",
+    "webpack.config.coffee": "_f_webpack"
   },
   "languageIds": {}
 }
