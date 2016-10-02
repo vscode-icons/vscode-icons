@@ -2,6 +2,7 @@
 
 ## 3.0.1 (October 02, 2016)
   - Patch: masterpage icon not been found ([@jens1o](https://github.com/jens1o) in [18c145ed76852c7ddc5ef27d665d629d2edfc143](https://github.com/robertohuertasm/vscode-icons/commit/18c145ed76852c7ddc5ef27d665d629d2edfc143))
+  - Enhancement: added support for style, css, less, sass and scss folders. ([@robertohuertasm](https://github.com/robertohuertasm) in [#362](https://github.com/robertohuertasm/vscode-icons/pull/362))
   - Enhancement: added support for locale folders. ([@robertohuertasm](https://github.com/robertohuertasm) in [#361](https://github.com/robertohuertasm/vscode-icons/pull/361))
   - Enhancement: added support for Jinja and SaltStack. ([@robertohuertasm](https://github.com/robertohuertasm) in [#360](https://github.com/robertohuertasm/vscode-icons/pull/360))
   - Enhancement: added support for elm-package.json. ([@robertohuertasm](https://github.com/robertohuertasm) in [#359](https://github.com/robertohuertasm/vscode-icons/pull/359))

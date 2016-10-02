@@ -15,6 +15,12 @@
     "_fd_bower_open": {
       "iconPath": "./icons/folder_type_bower_opened@2x.png"
     },
+    "_fd_css": {
+      "iconPath": "./icons/folder_type_css@2x.png"
+    },
+    "_fd_css_open": {
+      "iconPath": "./icons/folder_type_css_opened@2x.png"
+    },
     "_fd_dist": {
       "iconPath": "./icons/folder_type_dist@2x.png"
     },
@@ -51,6 +57,12 @@
     "_fd_images_open": {
       "iconPath": "./icons/folder_type_images_opened@2x.png"
     },
+    "_fd_less": {
+      "iconPath": "./icons/folder_type_less@2x.png"
+    },
+    "_fd_less_open": {
+      "iconPath": "./icons/folder_type_less_opened@2x.png"
+    },
     "_fd_locale": {
       "iconPath": "./icons/folder_type_locale@2x.png"
     },
@@ -69,6 +81,12 @@
     "_fd_meteor_open": {
       "iconPath": "./icons/folder_type_meteor_opened@2x.png"
     },
+    "_fd_sass": {
+      "iconPath": "./icons/folder_type_sass@2x.png"
+    },
+    "_fd_sass_open": {
+      "iconPath": "./icons/folder_type_sass_opened@2x.png"
+    },
     "_fd_script": {
       "iconPath": "./icons/folder_type_script@2x.png"
     },
@@ -80,6 +98,12 @@
     },
     "_fd_src_open": {
       "iconPath": "./icons/folder_type_src_opened@2x.png"
+    },
+    "_fd_style": {
+      "iconPath": "./icons/folder_type_style@2x.png"
+    },
+    "_fd_style_open": {
+      "iconPath": "./icons/folder_type_style_opened@2x.png"
     },
     "_fd_test": {
       "iconPath": "./icons/folder_type_test@2x.png"
@@ -588,6 +612,7 @@
   "folderExpanded": "_folder_open",
   "folderNames": {
     "bower_components": "_fd_bower",
+    "css": "_fd_css",
     "dist": "_fd_dist",
     "out": "_fd_dist",
     "export": "_fd_dist",
@@ -599,15 +624,20 @@
     "haxelib": "_fd_haxelib",
     "images": "_fd_images",
     "img": "_fd_images",
+    "less": "_fd_less",
     "locale": "_fd_locale",
     "locales": "_fd_locale",
     "node_modules": "_fd_node",
     ".meteor": "_fd_meteor",
+    "sass": "_fd_sass",
+    "scss": "_fd_sass",
     "script": "_fd_script",
     "scripts": "_fd_script",
     "src": "_fd_src",
     "source": "_fd_src",
     "sources": "_fd_src",
+    "style": "_fd_style",
+    "styles": "_fd_style",
     "tests": "_fd_test",
     "test": "_fd_test",
     "__tests__": "_fd_test",
@@ -619,6 +649,7 @@
   },
   "folderNamesExpanded": {
     "bower_components": "_fd_bower_open",
+    "css": "_fd_css_open",
     "dist": "_fd_dist_open",
     "out": "_fd_dist_open",
     "export": "_fd_dist_open",
@@ -630,15 +661,20 @@
     "haxelib": "_fd_haxelib_open",
     "images": "_fd_images_open",
     "img": "_fd_images_open",
+    "less": "_fd_less_open",
     "locale": "_fd_locale_open",
     "locales": "_fd_locale_open",
     "node_modules": "_fd_node_open",
     ".meteor": "_fd_meteor_open",
+    "sass": "_fd_sass_open",
+    "scss": "_fd_sass_open",
     "script": "_fd_script_open",
     "scripts": "_fd_script_open",
     "src": "_fd_src_open",
     "source": "_fd_src_open",
     "sources": "_fd_src_open",
+    "style": "_fd_style_open",
+    "styles": "_fd_style_open",
     "tests": "_fd_test_open",
     "test": "_fd_test_open",
     "__tests__": "_fd_test_open",
