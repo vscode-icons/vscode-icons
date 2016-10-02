@@ -8,6 +8,7 @@ exports.extensions = {
     { icon: 'git', extensions: ['git', 'github'], dot: true },
     { icon: 'haxelib', extensions: ['haxelib'] },
     { icon: 'images', extensions: ['images', 'img'] },
+    { icon: 'locale', extensions: ['locale', 'locales'] },
     { icon: 'node', extensions: ['node_modules'] },
     { icon: 'meteor', extensions: ['meteor'], dot: true },
     { icon: 'script', extensions: ['script', 'scripts'] },

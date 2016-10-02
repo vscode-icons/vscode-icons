@@ -51,6 +51,12 @@
     "_fd_images_open": {
       "iconPath": "./icons/folder_type_images_opened@2x.png"
     },
+    "_fd_locale": {
+      "iconPath": "./icons/folder_type_locale@2x.png"
+    },
+    "_fd_locale_open": {
+      "iconPath": "./icons/folder_type_locale_opened@2x.png"
+    },
     "_fd_node": {
       "iconPath": "./icons/folder_type_node@2x.png"
     },
@@ -593,6 +599,8 @@
     "haxelib": "_fd_haxelib",
     "images": "_fd_images",
     "img": "_fd_images",
+    "locale": "_fd_locale",
+    "locales": "_fd_locale",
     "node_modules": "_fd_node",
     ".meteor": "_fd_meteor",
     "script": "_fd_script",
@@ -622,6 +630,8 @@
     "haxelib": "_fd_haxelib_open",
     "images": "_fd_images_open",
     "img": "_fd_images_open",
+    "locale": "_fd_locale_open",
+    "locales": "_fd_locale_open",
     "node_modules": "_fd_node_open",
     ".meteor": "_fd_meteor_open",
     "script": "_fd_script_open",
