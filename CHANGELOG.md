@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.0.2 (October 11, 2016)
+  - Patch: Welcome message was being shown all the time.
+
 ## 3.0.1 (October 02, 2016)
   - Patch: masterpage icon not been found ([@jens1o](https://github.com/jens1o) in [18c145ed76852c7ddc5ef27d665d629d2edfc143](https://github.com/robertohuertasm/vscode-icons/commit/18c145ed76852c7ddc5ef27d665d629d2edfc143))
   - Enhancement: added support for style, css, less, sass and scss folders. ([@robertohuertasm](https://github.com/robertohuertasm) in [#362](https://github.com/robertohuertasm/vscode-icons/pull/362))

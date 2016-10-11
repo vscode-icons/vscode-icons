@@ -309,6 +309,7 @@ function runAutoInstall() {
     if (isNewVersion) {
       var callback = state.status === settings.status.enabled ? fReinstall : null;
       // this will automatically uninstall hacks in >= 1.6.0 as installation won't work.'
+      settings.setStatus(state.status);
       showNewVersionMessage(callback);
     }
   }
