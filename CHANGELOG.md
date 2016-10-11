@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.0.3 (October 11, 2016)
+  - Patch: Bad versioning. (I bet you were missing this kind of rapid updates ;P)
+
 ## 3.0.2 (October 11, 2016)
   - Patch: Welcome message was being shown all the time.
 
