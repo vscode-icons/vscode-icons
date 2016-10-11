@@ -20,8 +20,6 @@ I would also like to thank all the community for their support bringing ideas, c
 
 With the release of the version 2.0.0 we started to support the official contribution point so you wouldn't have to start your VSCode with administrator privileges anymore! ... unless you would still like to get the old functionality:
 
-  - ***Tab Icons*** (officially supported soon by VSCode)
-  - ***Open Editors Icons*** (officially supported soon by VSCode)
   - ***Custom Icon associations*** (no plans for this kind of support)
 
 **With the release of 3.0.0 version, support for old functionality has completely removed for VSCode with versions greater or equal to 1.6.0**. Older VSCode versions will still have access to it. I'm willing to wait for a while before completely removing the access to it just to let people progressively update their VSCode and their vscode-icons extension version.
