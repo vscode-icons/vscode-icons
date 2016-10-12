@@ -132,6 +132,7 @@ exports.extensions = {
     { icon: 'photoshop', extensions: ['psd'] },
     { icon: 'php', extensions: ['php', 'php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'] },
     { icon: 'phpunit', extensions: ['phpunit.xml'], special: 'xml', contribType: ctype.filename },
+    { icon: 'plantuml', extensions: ['pu', 'plantuml', 'iuml', 'puml'] },
     { icon: 'procfile', extensions: ['procfile'] },
     { icon: 'postcss', extensions: ['pcss', 'postcss'] },
     { icon: 'powershell', extensions: ['ps1', 'psm1', 'psd1'] },

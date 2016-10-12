@@ -1,6 +1,7 @@
 # Change Log
 
 ## 3.0.4 (October 12, 2016)
+  - Feature: plantuml support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#378](https://github.com/robertohuertasm/vscode-icons/pull/378))
   - Feature: delphi support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#377](https://github.com/robertohuertasm/vscode-icons/pull/377))
   - Feature: fortran support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#376](https://github.com/robertohuertasm/vscode-icons/pull/376))
   - Feature: qlikview and rest files support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#375](https://github.com/robertohuertasm/vscode-icons/pull/375))
