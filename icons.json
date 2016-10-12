@@ -441,6 +441,9 @@
     "_f_phpunit": {
       "iconPath": "./icons/file_type_phpunit@2x.png"
     },
+    "_f_plantuml": {
+      "iconPath": "./icons/file_type_plantuml@2x.png"
+    },
     "_f_procfile": {
       "iconPath": "./icons/file_type_procfile@2x.png"
     },
@@ -911,6 +914,10 @@
     "phpt": "_f_php",
     "phtml": "_f_php",
     "phar": "_f_php",
+    "pu": "_f_plantuml",
+    "plantuml": "_f_plantuml",
+    "iuml": "_f_plantuml",
+    "puml": "_f_plantuml",
     "procfile": "_f_procfile",
     "pcss": "_f_postcss",
     "postcss": "_f_postcss",
