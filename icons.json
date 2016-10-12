@@ -264,9 +264,6 @@
     "_f_favicon": {
       "iconPath": "./icons/file_type_favicon@2x.png"
     },
-    "_f_font": {
-      "iconPath": "./icons/file_type_font@2x.png"
-    },
     "_f_flash": {
       "iconPath": "./icons/file_type_flash@2x.png"
     },
@@ -275,6 +272,12 @@
     },
     "_f_fsharp": {
       "iconPath": "./icons/file_type_fsharp@2x.png"
+    },
+    "_f_font": {
+      "iconPath": "./icons/file_type_font@2x.png"
+    },
+    "_f_fortran": {
+      "iconPath": "./icons/file_type_fortran@2x.png"
     },
     "_f_git": {
       "iconPath": "./icons/file_type_git@2x.png"
@@ -777,14 +780,6 @@
     "xlsx": "_f_excel",
     "csv": "_f_excel",
     "ods": "_f_excel",
-    "woff": "_f_font",
-    "woff2": "_f_font",
-    "ttf": "_f_font",
-    "otf": "_f_font",
-    "eot": "_f_font",
-    "pfa": "_f_font",
-    "pfb": "_f_font",
-    "sfd": "_f_font",
     "swf": "_f_flash",
     "swc": "_f_flash",
     "sol": "_f_flash",
@@ -793,6 +788,17 @@
     "fs": "_f_fsharp",
     "fsx": "_f_fsharp",
     "fsi": "_f_fsharp",
+    "woff": "_f_font",
+    "woff2": "_f_font",
+    "ttf": "_f_font",
+    "otf": "_f_font",
+    "eot": "_f_font",
+    "pfa": "_f_font",
+    "pfb": "_f_font",
+    "sfd": "_f_font",
+    "f90": "_f_fortran",
+    "mod": "_f_fortran",
+    "f": "_f_fortran",
     "gitattributes": "_f_git",
     "gitignore": "_f_git",
     "gitmodules": "_f_git",
