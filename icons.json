@@ -1003,7 +1003,8 @@
     "bzip2": "_f_zip",
     "xz": "_f_zip",
     "bz2": "_f_zip",
-    "blade.php": "_f_blade"
+    "blade.php": "_f_blade",
+    "yarnclean": "_f_yarn"
   },
   "fileNames": {
     "appveyor.yml": "_f_appveyor",
