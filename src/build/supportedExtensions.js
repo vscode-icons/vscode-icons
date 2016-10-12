@@ -196,6 +196,7 @@ exports.extensions = {
     { icon: 'xliff', extensions: ['xliff', 'xlf'] },
     { icon: 'xml', extensions: ['xml', 'axml', 'xaml', 'pex'] },
     { icon: 'yaml', extensions: ['yml', 'yaml'] },
+    { icon: 'yarn', extensions: ['yarnclean'] },
     { icon: 'yarn', extensions: ['yarn.lock'], special: 'lock', contribType: ctype.filename },
     { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'] }
   ],
