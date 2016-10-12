@@ -1,7 +1,9 @@
 # Change Log
 
 ## 3.0.4 (October 12, 2016)
+  - Feature: qlikview and rest files support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#375](https://github.com/robertohuertasm/vscode-icons/pull/375))
   - Patch: Vagrantfiles working again. ([@robertohuertasm](https://github.com/robertohuertasm) in [#374](https://github.com/robertohuertasm/vscode-icons/pull/374))
+  
 
 ## 3.0.3 (October 11, 2016)
   - Patch: Bad versioning. (I bet you were missing this kind of rapid updates ;P)

@@ -450,6 +450,9 @@
     "_f_python": {
       "iconPath": "./icons/file_type_python@2x.png"
     },
+    "_f_qlikview": {
+      "iconPath": "./icons/file_type_qlikview@2x.png"
+    },
     "_f_r": {
       "iconPath": "./icons/file_type_r@2x.png"
     },
@@ -467,6 +470,9 @@
     },
     "_f_reactts": {
       "iconPath": "./icons/file_type_reactts@2x.png"
+    },
+    "_f_rest": {
+      "iconPath": "./icons/file_type_rest@2x.png"
     },
     "_f_riot": {
       "iconPath": "./icons/file_type_riot@2x.png"
@@ -902,11 +908,14 @@
     "epp": "_f_puppet",
     "py": "_f_python",
     "pyw": "_f_python",
+    "qvd": "_f_qlikview",
+    "qvw": "_f_qlikview",
     "r": "_f_r",
     "raml": "_f_raml",
     "jsx": "_f_reactjs",
     "rt": "_f_reacttemplate",
     "tsx": "_f_reactts",
+    "rest": "_f_rest",
     "robot": "_f_robotframework",
     "rspec": "_f_rspec",
     "rb": "_f_ruby",
