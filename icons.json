@@ -621,6 +621,9 @@
     "_f_yaml": {
       "iconPath": "./icons/file_type_yaml@2x.png"
     },
+    "_f_yarn": {
+      "iconPath": "./icons/file_type_yarn@2x.png"
+    },
     "_f_zip": {
       "iconPath": "./icons/file_type_zip@2x.png"
     }
@@ -1055,6 +1058,7 @@
     "webpack.config.production.js": "_f_webpack",
     "webpack.config.ts": "_f_webpack",
     "webpack.config.coffee": "_f_webpack",
+    "yarn.lock": "_f_yarn",
     "elm-package.json": "_f_elm"
   },
   "languageIds": {}
