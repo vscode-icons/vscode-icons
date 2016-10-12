@@ -231,6 +231,9 @@
     "_f_dartlang": {
       "iconPath": "./icons/file_type_dartlang@2x.png"
     },
+    "_f_delphi": {
+      "iconPath": "./icons/file_type_delphi@2x.png"
+    },
     "_f_dlang": {
       "iconPath": "./icons/file_type_dlang@2x.png"
     },
@@ -760,6 +763,9 @@
     "css.map": "_f_cssmap",
     "feature": "_f_cucumber",
     "dart": "_f_dartlang",
+    "pas": "_f_delphi",
+    "dfm": "_f_delphi",
+    "dpr": "_f_delphi",
     "d": "_f_dlang",
     "dockerignore": "_f_docker",
     "editorconfig": "_f_editorconfig",

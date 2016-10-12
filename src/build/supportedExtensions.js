@@ -42,6 +42,7 @@ exports.extensions = {
     { icon: 'cssmap', extensions: ['.css.map'], special: 'map' },
     { icon: 'cucumber', extensions: ['feature'] },
     { icon: 'dartlang', extensions: ['dart'] },
+    { icon: 'delphi', extensions: ['pas', 'dfm', 'dpr'] },
     { icon: 'dlang', extensions: ['d'] },
     { icon: 'docker', extensions: ['dockerfile', 'dockerignore'], contribType: ctype.filename },
     { icon: 'docker', extensions: ['dockerignore'] },
