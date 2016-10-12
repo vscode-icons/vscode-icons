@@ -453,6 +453,9 @@
     "_f_powershell": {
       "iconPath": "./icons/file_type_powershell@2x.png"
     },
+    "_f_protobuf": {
+      "iconPath": "./icons/file_type_protobuf@2x.png"
+    },
     "_f_puppet": {
       "iconPath": "./icons/file_type_puppet@2x.png"
     },
@@ -924,6 +927,7 @@
     "ps1": "_f_powershell",
     "psm1": "_f_powershell",
     "psd1": "_f_powershell",
+    "proto": "_f_protobuf",
     "epp": "_f_puppet",
     "py": "_f_python",
     "pyw": "_f_python",

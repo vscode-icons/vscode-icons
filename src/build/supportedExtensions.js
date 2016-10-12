@@ -136,6 +136,7 @@ exports.extensions = {
     { icon: 'procfile', extensions: ['procfile'] },
     { icon: 'postcss', extensions: ['pcss', 'postcss'] },
     { icon: 'powershell', extensions: ['ps1', 'psm1', 'psd1'] },
+    { icon: 'protobuf', extensions: ['proto'] },
     { icon: 'puppet', extensions: ['epp'] },
     { icon: 'python', extensions: ['py', 'pyw'] },
     { icon: 'qlikview', extensions: ['qvd', 'qvw'] },
