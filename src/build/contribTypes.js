@@ -4,4 +4,4 @@ module.exports = {
     javascript: 'javascript',
     python: 'python'
   }
-}
+};
