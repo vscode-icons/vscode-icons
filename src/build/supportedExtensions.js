@@ -189,7 +189,7 @@ exports.extensions = {
     { icon: 'vue', extensions: ['vue'] },
     { icon: 'vscode', extensions: ['vscodeignore.json', 'launch.json', 'tasks.json', 'jsconfig.json', 'tsconfig.json'], special: 'json', contribType: ctype.filename },
     { icon: 'vscode', extensions: ['vscodeignore'] },
-    { icon: 'webpack', extensions: ['webpack.config.js', 'webpack.config.babel.js', 'webpack.config.dev.js', 'webpack.config.staging.js', 'webpack.config.production.js'], special: 'js', contribType: ctype.filename },
+    { icon: 'webpack', extensions: ['webpack.config.js', 'webpack.config.babel.js', 'webpack.config.dev.js', 'webpack.config.staging.js', 'webpack.config.production.js', 'webpack.config.prod.js'], special: 'js', contribType: ctype.filename },
     { icon: 'webpack', extensions: ['webpack.config.ts'], special: 'ts', contribType: ctype.filename },
     { icon: 'webpack', extensions: ['webpack.config.coffee'], special: 'coffee', contribType: ctype.filename },
     { icon: 'xib', extensions: ['xib'] },
