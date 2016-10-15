@@ -134,6 +134,7 @@ exports.extensions = {
     { icon: 'phpunit', extensions: ['phpunit.xml'], special: 'xml', contribType: ctype.filename },
     { icon: 'plantuml', extensions: ['pu', 'plantuml', 'iuml', 'puml'] },
     { icon: 'procfile', extensions: ['procfile'] },
+    { icon: 'prolog', extensions: ['P', 'pl', 'pro'] },
     { icon: 'postcss', extensions: ['pcss', 'postcss'] },
     { icon: 'powershell', extensions: ['ps1', 'psm1', 'psd1'] },
     { icon: 'protobuf', extensions: ['proto'] },
