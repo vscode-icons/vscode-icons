@@ -1,6 +1,7 @@
 # Change Log
 
 ## 3.0.5 (October 15, 2016)
+  - Patch: prolog icon is transparent. ([@jens1o](https://github.com/jens1o) in [#395](https://github.com/robertohuertasm/vscode-icons/pull/395))
   - Feature: rollup support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#394](https://github.com/robertohuertasm/vscode-icons/pull/394))
   - Patch: stylelint icon is now white to support dark theme. ([@robertohuertasm](https://github.com/robertohuertasm) in [#393](https://github.com/robertohuertasm/vscode-icons/pull/393))
   - Feature: prolog support. ([@jens1o](https://github.com/jens1o) in [#391](https://github.com/robertohuertasm/vscode-icons/pull/391))
