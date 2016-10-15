@@ -609,6 +609,12 @@
     "_f_webpack": {
       "iconPath": "./icons/file_type_webpack@2x.png"
     },
+    "_f_wxml": {
+      "iconPath": "./icons/file_type_wxml@2x.png"
+    },
+    "_f_wxss": {
+      "iconPath": "./icons/file_type_wxss@2x.png"
+    },
     "_f_xib": {
       "iconPath": "./icons/file_type_xib@2x.png"
     },
@@ -986,6 +992,8 @@
     "volt": "_f_volt",
     "vue": "_f_vue",
     "vscodeignore": "_f_vscode",
+    "wxml": "_f_wxml",
+    "wxss": "_f_wxss",
     "xib": "_f_xib",
     "xliff": "_f_xliff",
     "xlf": "_f_xliff",
@@ -995,6 +1003,7 @@
     "pex": "_f_xml",
     "yml": "_f_yaml",
     "yaml": "_f_yaml",
+    "yarnclean": "_f_yarn",
     "zip": "_f_zip",
     "rar": "_f_zip",
     "7z": "_f_zip",
@@ -1003,8 +1012,7 @@
     "bzip2": "_f_zip",
     "xz": "_f_zip",
     "bz2": "_f_zip",
-    "blade.php": "_f_blade",
-    "yarnclean": "_f_yarn"
+    "blade.php": "_f_blade"
   },
   "fileNames": {
     "appveyor.yml": "_f_appveyor",
