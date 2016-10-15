@@ -244,6 +244,15 @@ function showNewVersionMessage(autoinstall) {
 
 function fInstall() {
   if (isInjected()) return;
+  if (!vars.isGt160) {
+    vscode.window.showInformationMessage(msg.dropSupportMessage,
+      { title: msg.learnMore })
+      .then(function (btn) {
+        if (!btn) return;
+        open(msg.urlReadme);
+      });
+    return;
+  }
   installItem(vars.cssfilebak, vars.cssfile, cleanCssInstall);
   installItem(vars.jsfilebak, vars.jsfile, cleanJsInstall);
   addIcons();
@@ -299,6 +308,8 @@ function runAutoInstall() {
   } else {
     if (isNewVersion) {
       var callback = state.status === settings.status.enabled ? fReinstall : null;
+      // this will automatically uninstall hacks in >= 1.6.0 as installation won't work.'
+      settings.setStatus(state.status);
       showNewVersionMessage(callback);
     }
   }

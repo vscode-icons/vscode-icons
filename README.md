@@ -14,21 +14,29 @@ As you all know, VSCode finally supports File and Folder icons in an official wa
 
 I would like to thank the VSCode team for their support during this summer in terms of migrating this extension and prepare the new contribution point, specially [@aeschli](https://github.com/aeschli) for his good disposition.
 
-I would also thank to all the community for their support bringing ideas, collaborating and making this path easy and I would also like to stress the great help that [@jens1o](https://github.com/jens1o) has provided to the project. He's amazing! And he's only 14!! :D Thanks, truly!
+I would also like to thank all the community for their support bringing ideas, collaborating and making this path easy and I would also like to stress the great help that [@jens1o](https://github.com/jens1o) has provided to the project. He's amazing! And he's only 14!! :D Thanks, truly!
 
 ### State of the extension
 
-With the release of the version 2.0.0 we're starting to support the official contribution point so you won't have to start your VSCode with administrator privileges anymore! ... unless you want to get the old functionality:
+With the release of the version 2.0.0 we started to support the official contribution point so you wouldn't have to start your VSCode with administrator privileges anymore! ... unless you would still like to get the old functionality:
 
-  - ***Tab Icons*** (officially supported soon by VSCode)
-  - ***Open Editors Icons*** (officially supported soon by VSCode)
   - ***Custom Icon associations*** (no plans for this kind of support)
 
-My idea is to also offer support to the old functionality until the new API offers a similar experience. I'm told by the VSCode team that they're thinking of not allowing code injection anymore so maybe I will have to drop the special functionalities before the new API gets them.
+**With the release of 3.0.0 version, support for old functionality has completely removed for VSCode with versions greater or equal to 1.6.0**. Older VSCode versions will still have access to it. I'm willing to wait for a while before completely removing the access to it just to let people progressively update their VSCode and their vscode-icons extension version.
 
-I've stressed the importance of `Custom Icon associations` so the users may have the opportunity to change the associated icons at will and/or add new file associations using *regular expressions* but they're not convinced of the value that this would bring to VSCode, so again, it's up to all of you to make the difference and tell if that's important for you. I'd suggest you to keep leaving a review with your opinions on this matter so the VSCode team and myself can have a clear vision about how important are `Custom Icon associations` to you.
+#### Why is this happening?
 
-Note that from now on, the extension will not auto execute the `Icons Enable` command unless you have already executed it (so you are in custom mode). If you decide to use the official File and Folder Icons menu then it's ok. You won't have to worry about admin privileges or auto-enabling.
+There are several motives that have led me to take this decision:
+
+1. The main goal of this extension has been completely achieved, which was to point out the importance of having icons in VSCode.
+2. VSCode 1.6.0 supports icons beyond the file explorer. [See vscode#11751](https://github.com/Microsoft/vscode/issues/11751#issuecomment-248634495) 
+3. Code Injection has its drawbacks both for the VSCode team and for me. Having to keep up with the Insiders build has become a nightmare and from time to time new recurrent issues are being created in VSCode's Github project about something being broken.
+4. Code injection will be eventually not allowed.
+5. Support from VSCode team is great and they're willing to hear all the suggestions from the community regarding icon themes.
+
+Still, there's one missing point: `Custom Icon associations` is still not supported. They're not convinced of the value that this would bring to VSCode, so again, it's up to all of you to make the difference and tell if that's important for you. I'd suggest you to create a Github issue with your opinions on this matter so the VSCode team can have a clear vision about how important are `Custom Icon associations` to you. [This is a starting point](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649). Provide a +1 if you want the VSCode team to support this feature.
+
+More information in [#328](https://github.com/robertohuertasm/vscode-icons/issues/328)
 
 Finally, I also would like to ask you to raise the possible issues that you may find while using this extension into the [extension's repository](https://github.com/robertohuertasm/vscode-icons/issues), not the VSCode one ;D
 
@@ -51,8 +59,16 @@ ext install "vscode-icons"
 ```
 
 ## Wanting to use the official API and get rid of the custom functionality
-You will have to disable the extension by executing the `Icons Disable` command. Then go to **File > Preferences > File Icon Theme > VSCode Icons**. (Note on OSX it is **Code > Preferences > File Icon Theme > VSCode Icons**.)
-If you have never used the custom functionality then just ignore the command execution step and go directly to **File > Preferences > File Icon Theme > VSCode Icons**. (On OSX it is **Code > Preferences > File Icon Theme > VSCode Icons**)
+You will have to disable the extension by executing the `Icons Disable` command. 
+
+Then go to **File > Preferences > File Icon Theme > VSCode Icons**. 
+
+(Note on OSX it is **Code > Preferences > File Icon Theme > VSCode Icons**.)
+
+If you have never used the custom functionality then just ignore the command execution step and go directly to 
+**File > Preferences > File Icon Theme > VSCode Icons**. 
+
+(On OSX it is **Code > Preferences > File Icon Theme > VSCode Icons**)
 
 ## List of supported icons
 The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
@@ -91,12 +107,10 @@ All of the files will be generated in the `dist` folder.
 ## Change log 
 If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
 
-**Please, leave a review with your opinion on whether I should keep this extension live or not. Thanks! ;D**
-
 More file extensions will be supported shortly!
 
 ----
-# Custom functionality
+# Custom functionality **(only for VSCode < v1.6.0)**
 All the information that follows is related to the custom functionality. If you want to use any of this please read the *disclaimer* below.
 
 ## Disclaimer

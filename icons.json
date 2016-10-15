@@ -15,11 +15,29 @@
     "_fd_bower_open": {
       "iconPath": "./icons/folder_type_bower_opened@2x.png"
     },
+    "_fd_css": {
+      "iconPath": "./icons/folder_type_css@2x.png"
+    },
+    "_fd_css_open": {
+      "iconPath": "./icons/folder_type_css_opened@2x.png"
+    },
     "_fd_dist": {
       "iconPath": "./icons/folder_type_dist@2x.png"
     },
     "_fd_dist_open": {
       "iconPath": "./icons/folder_type_dist_opened@2x.png"
+    },
+    "_fd_docs": {
+      "iconPath": "./icons/folder_type_docs@2x.png"
+    },
+    "_fd_docs_open": {
+      "iconPath": "./icons/folder_type_docs_opened@2x.png"
+    },
+    "_fd_flow": {
+      "iconPath": "./icons/folder_type_flow@2x.png"
+    },
+    "_fd_flow_open": {
+      "iconPath": "./icons/folder_type_flow_opened@2x.png"
     },
     "_fd_git": {
       "iconPath": "./icons/folder_type_git@2x.png"
@@ -33,6 +51,24 @@
     "_fd_haxelib_open": {
       "iconPath": "./icons/folder_type_haxelib_opened@2x.png"
     },
+    "_fd_images": {
+      "iconPath": "./icons/folder_type_images@2x.png"
+    },
+    "_fd_images_open": {
+      "iconPath": "./icons/folder_type_images_opened@2x.png"
+    },
+    "_fd_less": {
+      "iconPath": "./icons/folder_type_less@2x.png"
+    },
+    "_fd_less_open": {
+      "iconPath": "./icons/folder_type_less_opened@2x.png"
+    },
+    "_fd_locale": {
+      "iconPath": "./icons/folder_type_locale@2x.png"
+    },
+    "_fd_locale_open": {
+      "iconPath": "./icons/folder_type_locale_opened@2x.png"
+    },
     "_fd_node": {
       "iconPath": "./icons/folder_type_node@2x.png"
     },
@@ -45,6 +81,12 @@
     "_fd_meteor_open": {
       "iconPath": "./icons/folder_type_meteor_opened@2x.png"
     },
+    "_fd_sass": {
+      "iconPath": "./icons/folder_type_sass@2x.png"
+    },
+    "_fd_sass_open": {
+      "iconPath": "./icons/folder_type_sass_opened@2x.png"
+    },
     "_fd_script": {
       "iconPath": "./icons/folder_type_script@2x.png"
     },
@@ -56,6 +98,12 @@
     },
     "_fd_src_open": {
       "iconPath": "./icons/folder_type_src_opened@2x.png"
+    },
+    "_fd_style": {
+      "iconPath": "./icons/folder_type_style@2x.png"
+    },
+    "_fd_style_open": {
+      "iconPath": "./icons/folder_type_style_opened@2x.png"
     },
     "_fd_test": {
       "iconPath": "./icons/folder_type_test@2x.png"
@@ -174,11 +222,17 @@
     "_f_csslint": {
       "iconPath": "./icons/file_type_csslint@2x.png"
     },
+    "_f_cssmap": {
+      "iconPath": "./icons/file_type_cssmap@2x.png"
+    },
     "_f_cucumber": {
       "iconPath": "./icons/file_type_cucumber@2x.png"
     },
     "_f_dartlang": {
       "iconPath": "./icons/file_type_dartlang@2x.png"
+    },
+    "_f_delphi": {
+      "iconPath": "./icons/file_type_delphi@2x.png"
     },
     "_f_dlang": {
       "iconPath": "./icons/file_type_dlang@2x.png"
@@ -213,14 +267,20 @@
     "_f_favicon": {
       "iconPath": "./icons/file_type_favicon@2x.png"
     },
-    "_f_font": {
-      "iconPath": "./icons/file_type_font@2x.png"
-    },
     "_f_flash": {
       "iconPath": "./icons/file_type_flash@2x.png"
     },
+    "_f_flow": {
+      "iconPath": "./icons/file_type_flow@2x.png"
+    },
     "_f_fsharp": {
       "iconPath": "./icons/file_type_fsharp@2x.png"
+    },
+    "_f_font": {
+      "iconPath": "./icons/file_type_font@2x.png"
+    },
+    "_f_fortran": {
+      "iconPath": "./icons/file_type_fortran@2x.png"
     },
     "_f_git": {
       "iconPath": "./icons/file_type_git@2x.png"
@@ -275,6 +335,9 @@
     },
     "_f_java": {
       "iconPath": "./icons/file_type_java@2x.png"
+    },
+    "_f_jinja": {
+      "iconPath": "./icons/file_type_jinja@2x.png"
     },
     "_f_js": {
       "iconPath": "./icons/file_type_js@2x.png"
@@ -378,6 +441,9 @@
     "_f_phpunit": {
       "iconPath": "./icons/file_type_phpunit@2x.png"
     },
+    "_f_plantuml": {
+      "iconPath": "./icons/file_type_plantuml@2x.png"
+    },
     "_f_procfile": {
       "iconPath": "./icons/file_type_procfile@2x.png"
     },
@@ -387,11 +453,17 @@
     "_f_powershell": {
       "iconPath": "./icons/file_type_powershell@2x.png"
     },
+    "_f_protobuf": {
+      "iconPath": "./icons/file_type_protobuf@2x.png"
+    },
     "_f_puppet": {
       "iconPath": "./icons/file_type_puppet@2x.png"
     },
     "_f_python": {
       "iconPath": "./icons/file_type_python@2x.png"
+    },
+    "_f_qlikview": {
+      "iconPath": "./icons/file_type_qlikview@2x.png"
     },
     "_f_r": {
       "iconPath": "./icons/file_type_r@2x.png"
@@ -411,17 +483,26 @@
     "_f_reactts": {
       "iconPath": "./icons/file_type_reactts@2x.png"
     },
+    "_f_rest": {
+      "iconPath": "./icons/file_type_rest@2x.png"
+    },
     "_f_riot": {
       "iconPath": "./icons/file_type_riot@2x.png"
     },
     "_f_robotframework": {
       "iconPath": "./icons/file_type_robotframework@2x.png"
     },
+    "_f_rspec": {
+      "iconPath": "./icons/file_type_rspec@2x.png"
+    },
     "_f_ruby": {
       "iconPath": "./icons/file_type_ruby@2x.png"
     },
     "_f_rust": {
       "iconPath": "./icons/file_type_rust@2x.png"
+    },
+    "_f_saltstack": {
+      "iconPath": "./icons/file_type_saltstack@2x.png"
     },
     "_f_sass": {
       "iconPath": "./icons/file_type_sass@2x.png"
@@ -462,6 +543,9 @@
     "_f_stylus": {
       "iconPath": "./icons/file_type_stylus@2x.png"
     },
+    "_f_storyboard": {
+      "iconPath": "./icons/file_type_storyboard@2x.png"
+    },
     "_f_svg": {
       "iconPath": "./icons/file_type_svg@2x.png"
     },
@@ -501,14 +585,20 @@
     "_f_vagrant": {
       "iconPath": "./icons/file_type_vagrant@2x.png"
     },
-    "_f_volt": {
-      "iconPath": "./icons/file_type_volt@2x.png"
+    "_f_vash": {
+      "iconPath": "./icons/file_type_vash@2x.png"
+    },
+    "_f_vb": {
+      "iconPath": "./icons/file_type_vb@2x.png"
     },
     "_f_vbhtml": {
       "iconPath": "./icons/file_type_vbhtml@2x.png"
     },
     "_f_vbproj": {
       "iconPath": "./icons/file_type_vbproj@2x.png"
+    },
+    "_f_volt": {
+      "iconPath": "./icons/file_type_volt@2x.png"
     },
     "_f_vue": {
       "iconPath": "./icons/file_type_vue@2x.png"
@@ -519,6 +609,9 @@
     "_f_webpack": {
       "iconPath": "./icons/file_type_webpack@2x.png"
     },
+    "_f_xib": {
+      "iconPath": "./icons/file_type_xib@2x.png"
+    },
     "_f_xliff": {
       "iconPath": "./icons/file_type_xliff@2x.png"
     },
@@ -527,6 +620,9 @@
     },
     "_f_yaml": {
       "iconPath": "./icons/file_type_yaml@2x.png"
+    },
+    "_f_yarn": {
+      "iconPath": "./icons/file_type_yarn@2x.png"
     },
     "_f_zip": {
       "iconPath": "./icons/file_type_zip@2x.png"
@@ -537,47 +633,75 @@
   "folderExpanded": "_folder_open",
   "folderNames": {
     "bower_components": "_fd_bower",
+    "css": "_fd_css",
     "dist": "_fd_dist",
     "out": "_fd_dist",
     "export": "_fd_dist",
     "build": "_fd_dist",
+    "docs": "_fd_docs",
+    "flow": "_fd_flow",
     ".git": "_fd_git",
     ".github": "_fd_git",
     "haxelib": "_fd_haxelib",
+    "images": "_fd_images",
+    "img": "_fd_images",
+    "less": "_fd_less",
+    "locale": "_fd_locale",
+    "locales": "_fd_locale",
     "node_modules": "_fd_node",
     ".meteor": "_fd_meteor",
+    "sass": "_fd_sass",
+    "scss": "_fd_sass",
     "script": "_fd_script",
     "scripts": "_fd_script",
     "src": "_fd_src",
     "source": "_fd_src",
     "sources": "_fd_src",
+    "style": "_fd_style",
+    "styles": "_fd_style",
     "tests": "_fd_test",
     "test": "_fd_test",
     "__tests__": "_fd_test",
     "__test__": "_fd_test",
+    "spec": "_fd_test",
+    "specs": "_fd_test",
     "typings": "_fd_typings",
     ".vscode": "_fd_vscode"
   },
   "folderNamesExpanded": {
     "bower_components": "_fd_bower_open",
+    "css": "_fd_css_open",
     "dist": "_fd_dist_open",
     "out": "_fd_dist_open",
     "export": "_fd_dist_open",
     "build": "_fd_dist_open",
+    "docs": "_fd_docs_open",
+    "flow": "_fd_flow_open",
     ".git": "_fd_git_open",
     ".github": "_fd_git_open",
     "haxelib": "_fd_haxelib_open",
+    "images": "_fd_images_open",
+    "img": "_fd_images_open",
+    "less": "_fd_less_open",
+    "locale": "_fd_locale_open",
+    "locales": "_fd_locale_open",
     "node_modules": "_fd_node_open",
     ".meteor": "_fd_meteor_open",
+    "sass": "_fd_sass_open",
+    "scss": "_fd_sass_open",
     "script": "_fd_script_open",
     "scripts": "_fd_script_open",
     "src": "_fd_src_open",
     "source": "_fd_src_open",
     "sources": "_fd_src_open",
+    "style": "_fd_style_open",
+    "styles": "_fd_style_open",
     "tests": "_fd_test_open",
     "test": "_fd_test_open",
     "__tests__": "_fd_test_open",
     "__test__": "_fd_test_open",
+    "spec": "_fd_test_open",
+    "specs": "_fd_test_open",
     "typings": "_fd_typings_open",
     ".vscode": "_fd_vscode_open"
   },
@@ -645,8 +769,12 @@
     "csproj": "_f_csproj",
     "css": "_f_css",
     "csslintrc": "_f_csslint",
+    "css.map": "_f_cssmap",
     "feature": "_f_cucumber",
     "dart": "_f_dartlang",
+    "pas": "_f_delphi",
+    "dfm": "_f_delphi",
+    "dpr": "_f_delphi",
     "d": "_f_dlang",
     "dockerignore": "_f_docker",
     "editorconfig": "_f_editorconfig",
@@ -667,6 +795,14 @@
     "xlsx": "_f_excel",
     "csv": "_f_excel",
     "ods": "_f_excel",
+    "swf": "_f_flash",
+    "swc": "_f_flash",
+    "sol": "_f_flash",
+    "flowconfig": "_f_flow",
+    "js.flow": "_f_flow",
+    "fs": "_f_fsharp",
+    "fsx": "_f_fsharp",
+    "fsi": "_f_fsharp",
     "woff": "_f_font",
     "woff2": "_f_font",
     "ttf": "_f_font",
@@ -675,12 +811,9 @@
     "pfa": "_f_font",
     "pfb": "_f_font",
     "sfd": "_f_font",
-    "swf": "_f_flash",
-    "swc": "_f_flash",
-    "sol": "_f_flash",
-    "fs": "_f_fsharp",
-    "fsx": "_f_fsharp",
-    "fsi": "_f_fsharp",
+    "f90": "_f_fortran",
+    "mod": "_f_fortran",
+    "f": "_f_fortran",
     "gitattributes": "_f_git",
     "gitignore": "_f_git",
     "gitmodules": "_f_git",
@@ -711,7 +844,9 @@
     "pug": "_f_jade",
     "jade-lintrc": "_f_jade",
     "pug-lintrc": "_f_jade",
+    "tag": "_f_riot",
     "java": "_f_java",
+    "jinja": "_f_jinja",
     "js": "_f_js",
     "jshintrc": "_f_jshintrc",
     "js.map": "_f_jsmap",
@@ -785,25 +920,34 @@
     "phpt": "_f_php",
     "phtml": "_f_php",
     "phar": "_f_php",
+    "pu": "_f_plantuml",
+    "plantuml": "_f_plantuml",
+    "iuml": "_f_plantuml",
+    "puml": "_f_plantuml",
     "procfile": "_f_procfile",
     "pcss": "_f_postcss",
     "postcss": "_f_postcss",
     "ps1": "_f_powershell",
     "psm1": "_f_powershell",
     "psd1": "_f_powershell",
+    "proto": "_f_protobuf",
     "epp": "_f_puppet",
     "py": "_f_python",
     "pyw": "_f_python",
+    "qvd": "_f_qlikview",
+    "qvw": "_f_qlikview",
     "r": "_f_r",
     "raml": "_f_raml",
     "jsx": "_f_reactjs",
     "rt": "_f_reacttemplate",
     "tsx": "_f_reactts",
-    "tag": "_f_riot",
+    "rest": "_f_rest",
     "robot": "_f_robotframework",
+    "rspec": "_f_rspec",
     "rb": "_f_ruby",
     "gemspec": "_f_ruby",
     "rs": "_f_rust",
+    "sls": "_f_saltstack",
     "sass": "_f_sass",
     "scala": "_f_scala",
     "scss": "_f_scss",
@@ -821,6 +965,7 @@
     "swig": "_f_smarty",
     "stylelintrc": "_f_stylelint",
     "styl": "_f_stylus",
+    "storyboard": "_f_storyboard",
     "svg": "_f_svg",
     "swift": "_f_swift",
     "tcl": "_f_tcl",
@@ -834,12 +979,14 @@
     "twig": "_f_twig",
     "ts": "_f_typescript",
     "d.ts": "_f_typescriptdef",
-    "vagrantfile": "_f_vagrant",
-    "volt": "_f_volt",
+    "vash": "_f_vash",
+    "vb": "_f_vb",
     "vbhtml": "_f_vbhtml",
     "vbproj": "_f_vbproj",
+    "volt": "_f_volt",
     "vue": "_f_vue",
     "vscodeignore": "_f_vscode",
+    "xib": "_f_xib",
     "xliff": "_f_xliff",
     "xlf": "_f_xliff",
     "xml": "_f_xml",
@@ -856,7 +1003,8 @@
     "bzip2": "_f_zip",
     "xz": "_f_zip",
     "bz2": "_f_zip",
-    "blade.php": "_f_blade"
+    "blade.php": "_f_blade",
+    "yarnclean": "_f_yarn"
   },
   "fileNames": {
     "appveyor.yml": "_f_appveyor",
@@ -898,6 +1046,7 @@
     "phpunit.xml": "_f_phpunit",
     "stylelint.config.js": "_f_stylelint",
     ".travis.yml": "_f_travis",
+    "vagrantfile": "_f_vagrant",
     "vscodeignore.json": "_f_vscode",
     "launch.json": "_f_vscode",
     "tasks.json": "_f_vscode",
@@ -907,7 +1056,11 @@
     "webpack.config.babel.js": "_f_webpack",
     "webpack.config.dev.js": "_f_webpack",
     "webpack.config.staging.js": "_f_webpack",
-    "webpack.config.production.js": "_f_webpack"
+    "webpack.config.production.js": "_f_webpack",
+    "webpack.config.ts": "_f_webpack",
+    "webpack.config.coffee": "_f_webpack",
+    "yarn.lock": "_f_yarn",
+    "elm-package.json": "_f_elm"
   },
   "languageIds": {}
 }

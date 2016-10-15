@@ -1,6 +1,45 @@
 # Change Log
 
-## 2.0.6 (September 18, 2016)
+## 3.0.4 (October 12, 2016)
+  - Feature: protobuf support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#379](https://github.com/robertohuertasm/vscode-icons/pull/379))
+  - Feature: plantuml support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#378](https://github.com/robertohuertasm/vscode-icons/pull/378))
+  - Feature: delphi support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#377](https://github.com/robertohuertasm/vscode-icons/pull/377))
+  - Feature: fortran support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#376](https://github.com/robertohuertasm/vscode-icons/pull/376))
+  - Feature: qlikview and rest files support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#375](https://github.com/robertohuertasm/vscode-icons/pull/375))
+  - Patch: Vagrantfiles working again. ([@robertohuertasm](https://github.com/robertohuertasm) in [#374](https://github.com/robertohuertasm/vscode-icons/pull/374))
+  
+
+## 3.0.3 (October 11, 2016)
+  - Patch: Bad versioning. (I bet you were missing this kind of rapid updates ;P)
+
+## 3.0.2 (October 11, 2016)
+  - Patch: Welcome message was being shown all the time.
+
+## 3.0.1 (October 02, 2016)
+  - Patch: masterpage icon not been found ([@jens1o](https://github.com/jens1o) in [18c145ed76852c7ddc5ef27d665d629d2edfc143](https://github.com/robertohuertasm/vscode-icons/commit/18c145ed76852c7ddc5ef27d665d629d2edfc143))
+  - Enhancement: added support for style, css, less, sass and scss folders. ([@robertohuertasm](https://github.com/robertohuertasm) in [#362](https://github.com/robertohuertasm/vscode-icons/pull/362))
+  - Enhancement: added support for locale folders. ([@robertohuertasm](https://github.com/robertohuertasm) in [#361](https://github.com/robertohuertasm/vscode-icons/pull/361))
+  - Enhancement: added support for Jinja and SaltStack. ([@robertohuertasm](https://github.com/robertohuertasm) in [#360](https://github.com/robertohuertasm/vscode-icons/pull/360))
+  - Enhancement: added support for elm-package.json. ([@robertohuertasm](https://github.com/robertohuertasm) in [#359](https://github.com/robertohuertasm/vscode-icons/pull/359))
+  - Enhancement: webpack ts and coffee flavours. ([@robertohuertasm](https://github.com/robertohuertasm) in [#357](https://github.com/robertohuertasm/vscode-icons/pull/357))
+
+## 3.0.0 (September 25, 2016)
+  - Icons Enable not supported anymore for VSCode >= v1.6.0. ([@robertohuertasm](https://github.com/robertohuertasm) in [#353](https://github.com/robertohuertasm/vscode-icons/pull/353))
+  - Enhancement: docs folder support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#352](https://github.com/robertohuertasm/vscode-icons/pull/352))
+  - Enhancement: xliff icon reduced. ([@robertohuertasm](https://github.com/robertohuertasm) in [#351](https://github.com/robertohuertasm/vscode-icons/pull/351))
+  - Enhancement: support for images folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#350](https://github.com/robertohuertasm/vscode-icons/pull/350))
+  - Enhancement: spec & specs added to test icons. ([@robertohuertasm](https://github.com/robertohuertasm) in [#349](https://github.com/robertohuertasm/vscode-icons/pull/349))
+  - Enhancement: support for flow folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#348](https://github.com/robertohuertasm/vscode-icons/pull/348))
+  - Enhancement: fixed size of typescript icons. ([@robertohuertasm](https://github.com/robertohuertasm) in [#346](https://github.com/robertohuertasm/vscode-icons/pull/346))
+  - Enhancement: elixir icon is now lighter. ([@robertohuertasm](https://github.com/robertohuertasm) in [#345](https://github.com/robertohuertasm/vscode-icons/pull/345))
+  - Enhancement: c# icon is now green. ([@robertohuertasm](https://github.com/robertohuertasm) in [#344](https://github.com/robertohuertasm/vscode-icons/pull/344))
+  - Enhancement: support for .xib and .storyboards. ([@robertohuertasm](https://github.com/robertohuertasm) in [#342](https://github.com/robertohuertasm/vscode-icons/pull/342))
+  - Enhancement: support for .vash. ([@robertohuertasm](https://github.com/robertohuertasm) in [#341](https://github.com/robertohuertasm/vscode-icons/pull/341))
+  - Enhancement: support for .css.map. ([@robertohuertasm](https://github.com/robertohuertasm) in [#340](https://github.com/robertohuertasm/vscode-icons/pull/340))
+  - Enhancement: support for Flow. ([@jens1o](https://github.com/jens1o) in [#333](https://github.com/robertohuertasm/vscode-icons/pull/333))
+  - Enhancement: support for .tag. ([@jens1o](https://github.com/jens1o) in [#333](https://github.com/robertohuertasm/vscode-icons/pull/333))
+  - Enhancement: support for .vb. ([@jens1o](https://github.com/jens1o) in [#332](https://github.com/robertohuertasm/vscode-icons/pull/332))
+  - Enhancement: support for .rspec. ([@jens1o](https://github.com/jens1o) in [#331](https://github.com/robertohuertasm/vscode-icons/pull/331))
   - Enhancement: Gemfile and Gemfile.lock associated to Bundler icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#323](https://github.com/robertohuertasm/vscode-icons/pull/323))
   - Enhancement: Gemfile and .gemspec support for the official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#322](https://github.com/robertohuertasm/vscode-icons/pull/322))
   - Enhancement: More webpack extensions added to support official api. ([@robertohuertasm](https://github.com/robertohuertasm) in [#320](https://github.com/robertohuertasm/vscode-icons/pull/320))
