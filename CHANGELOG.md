@@ -1,7 +1,8 @@
 # Change Log
 
 ## 3.0.5 (October 15, 2016)
-  - Patch: stylelint icon is now white to support dark theme. ([@robertohuertasm](https://github.com/robertohuertasm) in [#392](https://github.com/robertohuertasm/vscode-icons/pull/392))
+  - Feature: rollup support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#394](https://github.com/robertohuertasm/vscode-icons/pull/394))
+  - Patch: stylelint icon is now white to support dark theme. ([@robertohuertasm](https://github.com/robertohuertasm) in [#393](https://github.com/robertohuertasm/vscode-icons/pull/393))
   - Feature: prolog support. ([@jens1o](https://github.com/jens1o) in [#391](https://github.com/robertohuertasm/vscode-icons/pull/391))
   - Feature: wechat support. ([@coderfe](https://github.com/coderfe) in [#390](https://github.com/robertohuertasm/vscode-icons/pull/390))
   - Patch: webpack production added. ([@jens1o](https://github.com/jens1o) in [#389](https://github.com/robertohuertasm/vscode-icons/pull/389))

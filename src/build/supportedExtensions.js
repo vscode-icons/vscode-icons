@@ -150,6 +150,7 @@ exports.extensions = {
     { icon: 'rest', extensions: ['rest'] },
     { icon: 'riot', extensions: ['tag'] },
     { icon: 'robotframework', extensions: ['robot'] },
+    { icon: 'rollup', extensions: ['rollup.config.js'], special: 'js', contribType: ctype.filename },
     { icon: 'rspec', extensions: ['rspec'] },
     { icon: 'ruby', extensions: ['rb', 'gemspec'] },
     { icon: 'rust', extensions: ['rs'] },
