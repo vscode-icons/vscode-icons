@@ -192,6 +192,8 @@ exports.extensions = {
     { icon: 'webpack', extensions: ['webpack.config.js', 'webpack.config.babel.js', 'webpack.config.dev.js', 'webpack.config.staging.js', 'webpack.config.production.js'], special: 'js', contribType: ctype.filename },
     { icon: 'webpack', extensions: ['webpack.config.ts'], special: 'ts', contribType: ctype.filename },
     { icon: 'webpack', extensions: ['webpack.config.coffee'], special: 'coffee', contribType: ctype.filename },
+    { icon: 'wxml', extensions: ['wxml'] },
+    { icon: 'wxss', extensions: ['wxss'] },
     { icon: 'xib', extensions: ['xib'] },
     { icon: 'xliff', extensions: ['xliff', 'xlf'] },
     { icon: 'xml', extensions: ['xml', 'axml', 'xaml', 'pex'] },
