@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.0.5 (October 15, 2016)
+  - Patch: stylelint icon is now white to support dark theme. ([@robertohuertasm](https://github.com/robertohuertasm) in [#392](https://github.com/robertohuertasm/vscode-icons/pull/392))
+  - Feature: prolog support. ([@jens1o](https://github.com/jens1o) in [#391](https://github.com/robertohuertasm/vscode-icons/pull/391))
+  - Feature: wechat support. ([@coderfe](https://github.com/coderfe) in [#390](https://github.com/robertohuertasm/vscode-icons/pull/390))
+  - Patch: webpack production added. ([@jens1o](https://github.com/jens1o) in [#389](https://github.com/robertohuertasm/vscode-icons/pull/389))
+  - Feature: yarnclean support. ([@wagerfield](https://github.com/wagerfield) in [#382](https://github.com/robertohuertasm/vscode-icons/pull/382))
+  - Feature: yarn support. ([@wagerfield](https://github.com/wagerfield) in [#381](https://github.com/robertohuertasm/vscode-icons/pull/381))
+
 ## 3.0.4 (October 12, 2016)
   - Feature: protobuf support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#379](https://github.com/robertohuertasm/vscode-icons/pull/379))
   - Feature: plantuml support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#378](https://github.com/robertohuertasm/vscode-icons/pull/378))
