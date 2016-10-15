@@ -119,6 +119,7 @@ exports.extensions = {
     { icon: 'npm', extensions: ['npmignore'] },
     { icon: 'npm', extensions: ['package.json'], special: 'json', contribType: ctype.filename },
     { icon: 'nsi', extensions: ['nsi', 'nsh'] },
+    { icon: 'nuget', extensions: ['nuget', 'nupkg', 'nospec', 'psmdcp'] },
     { icon: 'nunjucks', extensions: ['njk', 'nunjucks', 'nunjs', 'nunj', 'njs', 'nj'] },
     { icon: 'ocaml', extensions: ['ml', 'mll', 'mli', 'mly', 'ocamlmakefile', 'merlin'] },
     { icon: 'paket', extensions: ['paket.dependencies'], special: 'dependencies', contribType: ctype.filename },
