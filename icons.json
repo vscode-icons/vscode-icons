@@ -447,6 +447,9 @@
     "_f_procfile": {
       "iconPath": "./icons/file_type_procfile@2x.png"
     },
+    "_f_prolog": {
+      "iconPath": "./icons/file_type_prolog@2x.png"
+    },
     "_f_postcss": {
       "iconPath": "./icons/file_type_postcss@2x.png"
     },
@@ -491,6 +494,9 @@
     },
     "_f_robotframework": {
       "iconPath": "./icons/file_type_robotframework@2x.png"
+    },
+    "_f_rollup": {
+      "iconPath": "./icons/file_type_rollup@2x.png"
     },
     "_f_rspec": {
       "iconPath": "./icons/file_type_rspec@2x.png"
@@ -931,6 +937,9 @@
     "iuml": "_f_plantuml",
     "puml": "_f_plantuml",
     "procfile": "_f_procfile",
+    "P": "_f_prolog",
+    "pl": "_f_prolog",
+    "pro": "_f_prolog",
     "pcss": "_f_postcss",
     "postcss": "_f_postcss",
     "ps1": "_f_powershell",
@@ -1052,6 +1061,7 @@
     "paket.template": "_f_paket",
     "paket.local": "_f_paket",
     "phpunit.xml": "_f_phpunit",
+    "rollup.config.js": "_f_rollup",
     "stylelint.config.js": "_f_stylelint",
     ".travis.yml": "_f_travis",
     "vagrantfile": "_f_vagrant",
@@ -1065,6 +1075,7 @@
     "webpack.config.dev.js": "_f_webpack",
     "webpack.config.staging.js": "_f_webpack",
     "webpack.config.production.js": "_f_webpack",
+    "webpack.config.prod.js": "_f_webpack",
     "webpack.config.ts": "_f_webpack",
     "webpack.config.coffee": "_f_webpack",
     "yarn.lock": "_f_yarn",
