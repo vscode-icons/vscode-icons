@@ -139,7 +139,7 @@ exports.extensions = {
     { icon: 'postcss', extensions: ['pcss', 'postcss'] },
     { icon: 'powershell', extensions: ['ps1', 'psm1', 'psd1'] },
     { icon: 'protobuf', extensions: ['proto'] },
-    { icon: 'puppet', extensions: ['epp'] },
+    { icon: 'puppet', extensions: ['epp', 'pp'] },
     { icon: 'python', extensions: ['py', 'pyw'] },
     { icon: 'qlikview', extensions: ['qvd', 'qvw'] },
     { icon: 'r', extensions: ['r'] },
