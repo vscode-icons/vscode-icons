@@ -414,6 +414,9 @@
     "_f_nsi": {
       "iconPath": "./icons/file_type_nsi@2x.png"
     },
+    "_f_nuget": {
+      "iconPath": "./icons/file_type_nuget@2x.png"
+    },
     "_f_nunjucks": {
       "iconPath": "./icons/file_type_nunjucks@2x.png"
     },
@@ -903,6 +906,10 @@
     "npmignore": "_f_npm",
     "nsi": "_f_nsi",
     "nsh": "_f_nsi",
+    "nuget": "_f_nuget",
+    "nupkg": "_f_nuget",
+    "nospec": "_f_nuget",
+    "psmdcp": "_f_nuget",
     "njk": "_f_nunjucks",
     "nunjucks": "_f_nunjucks",
     "nunjs": "_f_nunjucks",
