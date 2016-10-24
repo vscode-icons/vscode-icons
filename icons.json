@@ -954,6 +954,7 @@
     "psd1": "_f_powershell",
     "proto": "_f_protobuf",
     "epp": "_f_puppet",
+    "pp": "_f_puppet",
     "py": "_f_python",
     "pyw": "_f_python",
     "qvd": "_f_qlikview",
