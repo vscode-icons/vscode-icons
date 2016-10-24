@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.6 (October 24, 2016)
+  - Patch: wechat icons updated. ([@coderfe](https://github.com/coderfe) in [#401](https://github.com/robertohuertasm/vscode-icons/pull/401))
+  - Patch: .pp exetension added to puppet. ([@csprabala](https://github.com/csprabala) in [#400](https://github.com/robertohuertasm/vscode-icons/pull/400))
+
 ## 3.0.5 (October 15, 2016)
   - Patch: prolog icon is transparent. ([@jens1o](https://github.com/jens1o) in [#395](https://github.com/robertohuertasm/vscode-icons/pull/395))
   - Feature: rollup support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#394](https://github.com/robertohuertasm/vscode-icons/pull/394))
