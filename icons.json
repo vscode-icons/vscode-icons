@@ -983,6 +983,7 @@
     "sln": "_f_sln",
     "sql": "_f_sql",
     "sqlite": "_f_sqlite",
+    "sqlite3": "_f_sqlite",
     "db3": "_f_sqlite",
     "tpl": "_f_smarty",
     "swig": "_f_smarty",

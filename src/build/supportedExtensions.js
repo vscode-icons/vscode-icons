@@ -165,7 +165,7 @@ exports.extensions = {
     { icon: 'sln', extensions: ['sln'] },
     { icon: 'source', extensions: [] },
     { icon: 'sql', extensions: ['sql'] },
-    { icon: 'sqlite', extensions: ['sqlite', 'db3'] },
+    { icon: 'sqlite', extensions: ['sqlite', 'sqlite3', 'db3'] },
     { icon: 'smarty', extensions: ['tpl', 'swig'] },
     { icon: 'stylelint', extensions: ['stylelintrc'] },
     { icon: 'stylelint', extensions: ['stylelint.config.js'], special: 'js', contribType: ctype.filename },
