@@ -200,7 +200,7 @@ exports.extensions = {
     { icon: 'wxss', extensions: ['wxss'] },
     { icon: 'xib', extensions: ['xib'] },
     { icon: 'xliff', extensions: ['xliff', 'xlf'] },
-    { icon: 'xml', extensions: ['xml', 'axml', 'xaml', 'pex'] },
+    { icon: 'xml', extensions: ['xml', 'axml', 'xaml', 'pex', 'tmx'] },
     { icon: 'yaml', extensions: ['yml', 'yaml'] },
     { icon: 'yarn', extensions: ['yarnclean'] },
     { icon: 'yarn', extensions: ['yarn.lock'], special: 'lock', contribType: ctype.filename },
