@@ -1021,6 +1021,7 @@
     "axml": "_f_xml",
     "xaml": "_f_xml",
     "pex": "_f_xml",
+    "tmx": "_f_xml",
     "yml": "_f_yaml",
     "yaml": "_f_yaml",
     "yarnclean": "_f_yarn",
