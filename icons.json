@@ -240,6 +240,9 @@
     "_f_docker": {
       "iconPath": "./icons/file_type_docker@2x.png"
     },
+    "_f_e2e": {
+      "iconPath": "./icons/file_type_e2e@2x.png"
+    },
     "_f_editorconfig": {
       "iconPath": "./icons/file_type_editorconfig@2x.png"
     },
@@ -537,6 +540,9 @@
     "_f_source": {
       "iconPath": "./icons/file_type_source@2x.png"
     },
+    "_f_spec": {
+      "iconPath": "./icons/file_type_spec@2x.png"
+    },
     "_f_sql": {
       "iconPath": "./icons/file_type_sql@2x.png"
     },
@@ -566,6 +572,9 @@
     },
     "_f_terraform": {
       "iconPath": "./icons/file_type_terraform@2x.png"
+    },
+    "_f_test": {
+      "iconPath": "./icons/file_type_test@2x.png"
     },
     "_f_tex": {
       "iconPath": "./icons/file_type_tex@2x.png"
@@ -792,6 +801,7 @@
     "dpr": "_f_delphi",
     "d": "_f_dlang",
     "dockerignore": "_f_docker",
+    "e2e.js": "_f_e2e",
     "editorconfig": "_f_editorconfig",
     "ejs": "_f_ejs",
     "ex": "_f_elixir",
@@ -863,6 +873,7 @@
     "java": "_f_java",
     "jinja": "_f_jinja",
     "js": "_f_js",
+    "es6": "_f_js",
     "jshintrc": "_f_jshintrc",
     "js.map": "_f_jsmap",
     "jsp": "_f_jsp",
@@ -983,6 +994,7 @@
     "zsh": "_f_shell",
     "fish": "_f_shell",
     "sln": "_f_sln",
+    "spec.js": "_f_spec",
     "sql": "_f_sql",
     "sqlite": "_f_sqlite",
     "sqlite3": "_f_sqlite",
@@ -997,6 +1009,7 @@
     "tcl": "_f_tcl",
     "tf": "_f_terraform",
     "terra": "_f_terraform",
+    "test.js": "_f_test",
     "texi": "_f_tex",
     "tex": "_f_tex",
     "txt": "_f_text",
