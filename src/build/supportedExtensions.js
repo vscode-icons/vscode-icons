@@ -178,6 +178,8 @@ exports.extensions = {
     { icon: 'swift', extensions: ['swift'] },
     { icon: 'tcl', extensions: ['tcl'] },
     { icon: 'terraform', extensions: ['tf', 'terra'] },
+    { icon: 'testjs', extensions: ['.test.js', '.spec.js'], special: 'js' },
+    { icon: 'testts', extensions: ['.test.ts', '.spec.ts'], special: 'ts' },
     { icon: 'tex', extensions: ['texi', 'tex'] },
     { icon: 'text', extensions: ['txt'] },
     { icon: 'textile', extensions: ['textile'] },

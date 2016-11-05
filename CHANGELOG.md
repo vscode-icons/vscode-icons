@@ -1,6 +1,7 @@
 # Change Log
 
 ## 3.0.8 (November 5, 2016)
+  - Feature: Support for .test.js, .spec.js, .test.ts and .spec.ts. ([@robertohuertasm](https://github.com/robertohuertasm) in [#417](https://github.com/robertohuertasm/vscode-icons/pull/417))
   - Feature: Lerna, tslint support. Git enhanced. ([@robertohuertasm](https://github.com/robertohuertasm) in [#416](https://github.com/robertohuertasm/vscode-icons/pull/416))
   - Feature: Gitlab CI support. ([@jens1o](https://github.com/jens1o) in [#414](https://github.com/robertohuertasm/vscode-icons/pull/414))
   - Enhancement: powershell and git icon enhanced for dark themes. ([@jonathanheaden](https://github.com/jonathanheaden) in [#413](https://github.com/robertohuertasm/vscode-icons/pull/413))
