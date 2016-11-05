@@ -23,24 +23,6 @@ function getSettings() {
     : '.vscode', 'extensions');
   var codePath = isInsiders ? '/Code - Insiders' : '/Code';
   var appPath = getAppPath();
-  var appDir = path.dirname(require.main.filename);
-  var base = appDir + (isWin ? '\\vs\\workbench' : '/vs/workbench');
-  var iconFolder = base + (isWin ?
-    '\\browser\\parts\\editor\\media' :
-    '/browser/parts/editor/media');
-  var cssfile = base + (isWin ?
-    '\\workbench.main.css' :
-    '/workbench.main.css');
-  var cssfilebak = base + (isWin ? '\\workbench.main.css.bak' : '/workbench.main.css.bak');
-  var cssreplace = '/*! *****************************************************************************'; // eslint-disable-line
-  var jsiconsreplace =
-    [
-      /this\.fileIconClasses\((i|n)\.resource\.fsPath\)/,
-      /e.fileIconClasses\((r|o)\)/,
-      /this\.folderIconClasses\((i|n)\.resource\.fsPath\)/
-    ];
-  var jsfile = base + (isWin ? '\\workbench.main.js' : '/workbench.main.js');
-  var jsfilebak = base + (isWin ? '\\workbench.main.js.bak' : '/workbench.main.js.bak');
 
   settings = {
     appPath: appPath,
@@ -48,14 +30,7 @@ function getSettings() {
     isInsiders: isInsiders,
     extensionFolder: extensionFolder,
     settingsPath: path.join(appPath, codePath, 'User', 'vsicons.settings.json'),
-    iconFolder: iconFolder,
-    cssfile: cssfile,
-    jsfile: jsfile,
-    cssfilebak: cssfilebak,
-    jsfilebak: jsfilebak,
-    cssreplace: cssreplace,
     extVersion: extVersion,
-    jsiconsreplace: jsiconsreplace,
     version: version,
     isGt160: isGt160
   };

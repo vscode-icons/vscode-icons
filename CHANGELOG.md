@@ -1,5 +1,8 @@
 # Change Log
 
+## 4.0.0 (November 8, 2016)
+  - Enhancement: Old functionality completely removed from the extension. ([@robertohuertasm](https://github.com/robertohuertasm) in [#418](https://github.com/robertohuertasm/vscode-icons/pull/418))
+
 ## 3.0.8 (November 5, 2016)
   - Feature: Support for .test.js, .spec.js, .test.ts and .spec.ts. ([@robertohuertasm](https://github.com/robertohuertasm) in [#417](https://github.com/robertohuertasm/vscode-icons/pull/417))
   - Feature: Lerna, tslint support. Git enhanced. ([@robertohuertasm](https://github.com/robertohuertasm) in [#416](https://github.com/robertohuertasm/vscode-icons/pull/416))

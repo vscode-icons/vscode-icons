@@ -20,10 +20,5 @@ exports.extensions = {
     { icon: 'test', extensions: ['tests', 'test', '__tests__', '__test__', 'spec', 'specs'] },
     { icon: 'typings', extensions: ['typings'] },
     { icon: 'vscode', extensions: ['vscode'], dot: true }
-  ],
-  parse: function () {
-    var s = this.replace(/\./g, '_');
-    if ((/^\d/).test(s)) return 'n' + s;
-    return s;
-  }
+  ]
 };
