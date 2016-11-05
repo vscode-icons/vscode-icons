@@ -573,6 +573,12 @@
     "_f_terraform": {
       "iconPath": "./icons/file_type_terraform@2x.png"
     },
+    "_f_testjs": {
+      "iconPath": "./icons/file_type_testjs@2x.png"
+    },
+    "_f_testts": {
+      "iconPath": "./icons/file_type_testts@2x.png"
+    },
     "_f_tex": {
       "iconPath": "./icons/file_type_tex@2x.png"
     },
@@ -1006,6 +1012,10 @@
     "tcl": "_f_tcl",
     "tf": "_f_terraform",
     "terra": "_f_terraform",
+    "test.js": "_f_testjs",
+    "spec.js": "_f_testjs",
+    "test.ts": "_f_testts",
+    "spec.ts": "_f_testts",
     "texi": "_f_tex",
     "tex": "_f_tex",
     "txt": "_f_text",
