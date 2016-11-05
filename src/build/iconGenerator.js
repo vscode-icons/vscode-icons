@@ -28,11 +28,11 @@ var folderNames = _.reduce(folders.supported, function (old, current) {
 }, { folders: {}, foldersOpen: {} });
 
 var fileDefs = _.uniq(_.map(files.supported, function (o) {
-  return o.icon;
+  return { icon: o.icon, svg: o.svg };
 })).reduce(function (old, current) {
   var oldObj = old;
-  oldObj['_f_' + current] = {
-    iconPath: './icons/file_type_' + current + '@2x.png'
+  oldObj['_f_' + current.icon] = {
+    iconPath: './icons/file_type_' + current.icon + '@2x.' + (current.svg ? 'svg' : 'png')
   };
   return oldObj;
 }, {});
