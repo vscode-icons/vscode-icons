@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.8 (Nov 2, 2016)
+  - Enhancement: .test.js as test. ([@kristianmandrup](https://github.com/kristianmandrup) in [#406]
+  - Enhancement: .spec.js as spec. ([@kristianmandrup](https://github.com/kristianmandrup) in [#406]
+
 ## 3.0.7 (October 28, 2016)
   - Enhancement: .tmx as xml. ([@Gama11](https://github.com/Gama11) in [#405](https://github.com/robertohuertasm/vscode-icons/pull/405))
   - Enhancement: ruby got .ru, .reek and Rakefile. ([@markokajzer](https://github.com/markokajzer) in [#403](https://github.com/robertohuertasm/vscode-icons/pull/403))
