@@ -285,6 +285,9 @@
     "_f_git": {
       "iconPath": "./icons/file_type_git@2x.png"
     },
+    "_f_gitlab": {
+      "iconPath": "./icons/file_type_gitlab@2x.png"
+    },
     "_f_go": {
       "iconPath": "./icons/file_type_go@2x.png"
     },
@@ -356,6 +359,9 @@
     },
     "_f_log": {
       "iconPath": "./icons/file_type_log@2x.png"
+    },
+    "_f_lerna": {
+      "iconPath": "./icons/file_type_lerna@2x.png"
     },
     "_f_less": {
       "iconPath": "./icons/file_type_less@2x.png"
@@ -581,6 +587,9 @@
     },
     "_f_travis": {
       "iconPath": "./icons/file_type_travis@2x.png"
+    },
+    "_f_tslint": {
+      "iconPath": "./icons/file_type_tslint@2x.png"
     },
     "_f_twig": {
       "iconPath": "./icons/file_type_twig@2x.png"
@@ -1052,6 +1061,7 @@
     ".eslintrc.yaml": "_f_eslint",
     ".eslintrc.yml": "_f_eslint",
     "favicon.ico": "_f_favicon",
+    "gitlab-ci.yml": "_f_gitlab",
     "gruntfile.js": "_f_gruntfile",
     "gulpfile.js": "_f_gulpfile",
     "haxelib.json": "_f_haxe",
@@ -1061,6 +1071,7 @@
     ".jade-lint.json": "_f_jade",
     ".pug-lintrc.js": "_f_jade",
     ".pug-lintrc.json": "_f_jade",
+    "lerna.json": "_f_lerna",
     "license": "_f_license",
     "licence": "_f_license",
     "license.md": "_f_license",
@@ -1077,6 +1088,7 @@
     "rakefile": "_f_ruby",
     "stylelint.config.js": "_f_stylelint",
     ".travis.yml": "_f_travis",
+    "tslint.json": "_f_tslint",
     "vagrantfile": "_f_vagrant",
     "vscodeignore.json": "_f_vscode",
     "launch.json": "_f_vscode",
