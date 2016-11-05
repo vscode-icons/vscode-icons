@@ -414,6 +414,9 @@
     "_f_nsi": {
       "iconPath": "./icons/file_type_nsi@2x.png"
     },
+    "_f_nuget": {
+      "iconPath": "./icons/file_type_nuget@2x.png"
+    },
     "_f_nunjucks": {
       "iconPath": "./icons/file_type_nunjucks@2x.png"
     },
@@ -903,6 +906,10 @@
     "npmignore": "_f_npm",
     "nsi": "_f_nsi",
     "nsh": "_f_nsi",
+    "nuget": "_f_nuget",
+    "nupkg": "_f_nuget",
+    "nospec": "_f_nuget",
+    "psmdcp": "_f_nuget",
     "njk": "_f_nunjucks",
     "nunjucks": "_f_nunjucks",
     "nunjs": "_f_nunjucks",
@@ -947,6 +954,7 @@
     "psd1": "_f_powershell",
     "proto": "_f_protobuf",
     "epp": "_f_puppet",
+    "pp": "_f_puppet",
     "py": "_f_python",
     "pyw": "_f_python",
     "qvd": "_f_qlikview",
@@ -961,6 +969,8 @@
     "rspec": "_f_rspec",
     "rb": "_f_ruby",
     "gemspec": "_f_ruby",
+    "ru": "_f_ruby",
+    "reek": "_f_ruby",
     "rs": "_f_rust",
     "sls": "_f_saltstack",
     "sass": "_f_sass",
@@ -975,6 +985,7 @@
     "sln": "_f_sln",
     "sql": "_f_sql",
     "sqlite": "_f_sqlite",
+    "sqlite3": "_f_sqlite",
     "db3": "_f_sqlite",
     "tpl": "_f_smarty",
     "swig": "_f_smarty",
@@ -1010,6 +1021,7 @@
     "axml": "_f_xml",
     "xaml": "_f_xml",
     "pex": "_f_xml",
+    "tmx": "_f_xml",
     "yml": "_f_yaml",
     "yaml": "_f_yaml",
     "yarnclean": "_f_yarn",
@@ -1062,6 +1074,7 @@
     "paket.local": "_f_paket",
     "phpunit.xml": "_f_phpunit",
     "rollup.config.js": "_f_rollup",
+    "rakefile": "_f_ruby",
     "stylelint.config.js": "_f_stylelint",
     ".travis.yml": "_f_travis",
     "vagrantfile": "_f_vagrant",

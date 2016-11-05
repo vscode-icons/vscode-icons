@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.0.7 (October 28, 2016)
+  - Enhancement: .tmx as xml. ([@Gama11](https://github.com/Gama11) in [#405](https://github.com/robertohuertasm/vscode-icons/pull/405))
+  - Enhancement: ruby got .ru, .reek and Rakefile. ([@markokajzer](https://github.com/markokajzer) in [#403](https://github.com/robertohuertasm/vscode-icons/pull/403))
+  - Enhancement: .sqlite3 extension support. ([@markokajzer](https://github.com/markokajzer) in [#402](https://github.com/robertohuertasm/vscode-icons/pull/402))
+
+## 3.0.6 (October 24, 2016)
+  - Enhancement: wechat icons updated. ([@coderfe](https://github.com/coderfe) in [#401](https://github.com/robertohuertasm/vscode-icons/pull/401))
+  - Enhancement: .pp exetension added to puppet. ([@csprabala](https://github.com/csprabala) in [#400](https://github.com/robertohuertasm/vscode-icons/pull/400))
+
 ## 3.0.5 (October 15, 2016)
   - Patch: prolog icon is transparent. ([@jens1o](https://github.com/jens1o) in [#395](https://github.com/robertohuertasm/vscode-icons/pull/395))
   - Feature: rollup support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#394](https://github.com/robertohuertasm/vscode-icons/pull/394))
