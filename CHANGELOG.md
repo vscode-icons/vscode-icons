@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.0.8 (November 5, 2016)
+  - Feature: Lerna, tslint support. Git enhanced. ([@robertohuertasm](https://github.com/robertohuertasm) in [#416](https://github.com/robertohuertasm/vscode-icons/pull/416))
+  - Feature: Gitlab CI support. ([@jens1o](https://github.com/jens1o) in [#414](https://github.com/robertohuertasm/vscode-icons/pull/414))
+  - Enhancement: powershell and git icon enhanced for dark themes. ([@jonathanheaden](https://github.com/jonathanheaden) in [#413](https://github.com/robertohuertasm/vscode-icons/pull/413))
+
 ## 3.0.7 (October 28, 2016)
   - Enhancement: .tmx as xml. ([@Gama11](https://github.com/Gama11) in [#405](https://github.com/robertohuertasm/vscode-icons/pull/405))
   - Enhancement: ruby got .ru, .reek and Rakefile. ([@markokajzer](https://github.com/markokajzer) in [#403](https://github.com/robertohuertasm/vscode-icons/pull/403))
