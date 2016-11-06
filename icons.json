@@ -1055,6 +1055,7 @@
     "blade.php": "_f_blade"
   },
   "fileNames": {
+    "angular-cli.json": "_f_angular",
     "appveyor.yml": "_f_appveyor",
     "bower.json": "_f_bower",
     "gemfile": "_f_bundler",
