@@ -1,6 +1,6 @@
 # Change Log
 
-## 4.0.0 (November 8, 2016)
+## 4.0.0 (November 7, 2016)
   - Enhancement: add dockerfile as extension just for custom scenario support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#430](https://github.com/robertohuertasm/vscode-icons/pull/430))
   - Enhancement: Lots of improvements removing old functionality from the build process. ([@JimiC](https://github.com/JimiC) in [#426](https://github.com/robertohuertasm/vscode-icons/pull/426))
   - Feature: .jbuilder support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#429](https://github.com/robertohuertasm/vscode-icons/pull/429))
