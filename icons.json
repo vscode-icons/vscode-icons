@@ -330,6 +330,9 @@
     "_f_html": {
       "iconPath": "./icons/file_type_html@2x.png"
     },
+    "_f_idris": {
+      "iconPath": "./icons/file_type_idris@2x.svg"
+    },
     "_f_image": {
       "iconPath": "./icons/file_type_image@2x.png"
     },
@@ -871,6 +874,9 @@
     "hxproj": "_f_haxedevelop",
     "htm": "_f_html",
     "html": "_f_html",
+    "idr": "_f_idris",
+    "lidr": "_f_idris",
+    "ibc": "_f_idris",
     "jpeg": "_f_image",
     "jpg": "_f_image",
     "gif": "_f_image",
