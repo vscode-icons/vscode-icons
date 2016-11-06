@@ -1,6 +1,7 @@
 # Change Log
 
 ## 4.0.0 (November 8, 2016)
+  - Feature: SugarSS support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#423](https://github.com/robertohuertasm/vscode-icons/pull/423))
   - Feature: Ember icon support. ([@JimiC](https://github.com/JimiC) in [#422](https://github.com/robertohuertasm/vscode-icons/pull/422))
   - Patch: .cfg extension added to config icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#423](https://github.com/robertohuertasm/vscode-icons/pull/423))
   - Feature: angular-cli support. ([@JimiC](https://github.com/JimiC) in [#419](https://github.com/robertohuertasm/vscode-icons/pull/419))

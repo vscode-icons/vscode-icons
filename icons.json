@@ -543,6 +543,9 @@
     "_f_sln": {
       "iconPath": "./icons/file_type_sln@2x.png"
     },
+    "_f_smarty": {
+      "iconPath": "./icons/file_type_smarty@2x.png"
+    },
     "_f_source": {
       "iconPath": "./icons/file_type_source@2x.png"
     },
@@ -552,8 +555,8 @@
     "_f_sqlite": {
       "iconPath": "./icons/file_type_sqlite@2x.png"
     },
-    "_f_smarty": {
-      "iconPath": "./icons/file_type_smarty@2x.png"
+    "_f_sss": {
+      "iconPath": "./icons/file_type_sss@2x.svg"
     },
     "_f_stylelint": {
       "iconPath": "./icons/file_type_stylelint@2x.png"
@@ -1001,12 +1004,13 @@
     "zsh": "_f_shell",
     "fish": "_f_shell",
     "sln": "_f_sln",
+    "tpl": "_f_smarty",
+    "swig": "_f_smarty",
     "sql": "_f_sql",
     "sqlite": "_f_sqlite",
     "sqlite3": "_f_sqlite",
     "db3": "_f_sqlite",
-    "tpl": "_f_smarty",
-    "swig": "_f_smarty",
+    "sss": "_f_sss",
     "stylelintrc": "_f_stylelint",
     "styl": "_f_stylus",
     "storyboard": "_f_storyboard",
