@@ -252,6 +252,9 @@
     "_f_elm": {
       "iconPath": "./icons/file_type_elm@2x.png"
     },
+    "_f_ember": {
+      "iconPath": "./icons/file_type_ember@2x.png"
+    },
     "_f_erb": {
       "iconPath": "./icons/file_type_erb@2x.png"
     },
@@ -1067,6 +1070,7 @@
     "dockerfile": "_f_docker",
     "dockerignore": "_f_docker",
     "docker-compose.yml": "_f_docker",
+    "ember-cli": "_f_ember",
     ".eslintrc.js": "_f_eslint",
     ".eslintrc.json": "_f_eslint",
     ".eslintrc.yaml": "_f_eslint",
