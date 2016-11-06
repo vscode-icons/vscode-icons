@@ -83,6 +83,7 @@ exports.extensions = {
     { icon: 'haxecheckstyle', extensions: ['checkstyle.json'], contribType: ctype.filename },
     { icon: 'haxedevelop', extensions: ['hxproj'] },
     { icon: 'html', extensions: ['htm', 'html'] },
+    { icon: 'idris', extensions: ['idr', 'lidr', 'ibc'], svg: true },
     { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'ico'] },
     { icon: 'ionic', extensions: ['ionic.project'], contribType: ctype.filename },
     { icon: 'ionic', extensions: ['ionic.config.json'], contribType: ctype.filename },
