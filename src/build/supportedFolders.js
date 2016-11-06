@@ -12,6 +12,7 @@ exports.extensions = {
     { icon: 'less', extensions: ['less'] },
     { icon: 'locale', extensions: ['locale', 'locales'] },
     { icon: 'node', extensions: ['node_modules'] },
+    { icon: 'nuget', extensions: ['nuget'], dot: true },
     { icon: 'meteor', extensions: ['meteor'], dot: true },
     { icon: 'sass', extensions: ['sass', 'scss'] },
     { icon: 'script', extensions: ['script', 'scripts'] },
