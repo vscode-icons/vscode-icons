@@ -1,6 +1,7 @@
 # Change Log
 
 ## 4.0.0 (November 8, 2016)
+  - Feature: .jbuilder support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#429](https://github.com/robertohuertasm/vscode-icons/pull/429))
   - Feature: .toml support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#428](https://github.com/robertohuertasm/vscode-icons/pull/428))
   - Feature: Idris support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#426](https://github.com/robertohuertasm/vscode-icons/pull/426))
   - Feature: SugarSS support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#425](https://github.com/robertohuertasm/vscode-icons/pull/425))

@@ -345,6 +345,9 @@
     "_f_java": {
       "iconPath": "./icons/file_type_java@2x.png"
     },
+    "_f_jbuilder": {
+      "iconPath": "./icons/file_type_jbuilder@2x.svg"
+    },
     "_f_jinja": {
       "iconPath": "./icons/file_type_jinja@2x.png"
     },
@@ -892,6 +895,7 @@
     "pug-lintrc": "_f_jade",
     "tag": "_f_riot",
     "java": "_f_java",
+    "jbuilder": "_f_jbuilder",
     "jinja": "_f_jinja",
     "js": "_f_js",
     "jshintrc": "_f_jshintrc",

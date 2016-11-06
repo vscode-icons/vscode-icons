@@ -92,6 +92,7 @@ exports.extensions = {
     { icon: 'jade', extensions: ['.pug-lintrc.js'], contribType: ctype.filename },
     { icon: 'jade', extensions: ['.pug-lintrc.json'], contribType: ctype.filename },
     { icon: 'java', extensions: ['java'] },
+    { icon: 'jbuilder', extensions: ['jbuilder'], svg: true },
     { icon: 'jinja', extensions: ['jinja'] },
     { icon: 'js', extensions: ['js'] },
     { icon: 'jshintrc', extensions: ['jshintrc'] },
