@@ -600,6 +600,9 @@
     "_f_todo": {
       "iconPath": "./icons/file_type_todo@2x.png"
     },
+    "_f_toml": {
+      "iconPath": "./icons/file_type_toml@2x.svg"
+    },
     "_f_travis": {
       "iconPath": "./icons/file_type_travis@2x.png"
     },
@@ -1034,6 +1037,7 @@
     "txt": "_f_text",
     "textile": "_f_textile",
     "todo": "_f_todo",
+    "toml": "_f_toml",
     "twig": "_f_twig",
     "ts": "_f_typescript",
     "d.ts": "_f_typescriptdef",
