@@ -47,6 +47,7 @@ exports.extensions = {
     { icon: 'docker', extensions: ['dockerfile', 'dockerignore'], contribType: ctype.filename },
     { icon: 'docker', extensions: ['dockerignore'] },
     { icon: 'docker', extensions: ['docker-compose.yml'], contribType: ctype.filename },
+    { icon: 'ember', extensions: ['.ember-cli'] },
     { icon: 'editorconfig', extensions: ['editorconfig'] },
     { icon: 'ejs', extensions: ['ejs'] },
     { icon: 'elixir', extensions: ['ex', 'exs', 'eex'] },

@@ -240,6 +240,9 @@
     "_f_docker": {
       "iconPath": "./icons/file_type_docker@2x.png"
     },
+    "_f_ember": {
+      "iconPath": "./icons/file_type_ember@2x.png"
+    },
     "_f_editorconfig": {
       "iconPath": "./icons/file_type_editorconfig@2x.png"
     },
@@ -807,6 +810,7 @@
     "dpr": "_f_delphi",
     "d": "_f_dlang",
     "dockerignore": "_f_docker",
+    "ember-cli": "_f_ember",
     "editorconfig": "_f_editorconfig",
     "ejs": "_f_ejs",
     "ex": "_f_elixir",
