@@ -240,9 +240,6 @@
     "_f_docker": {
       "iconPath": "./icons/file_type_docker@2x.png"
     },
-    "_f_ember": {
-      "iconPath": "./icons/file_type_ember@2x.png"
-    },
     "_f_editorconfig": {
       "iconPath": "./icons/file_type_editorconfig@2x.png"
     },
@@ -254,6 +251,9 @@
     },
     "_f_elm": {
       "iconPath": "./icons/file_type_elm@2x.png"
+    },
+    "_f_ember": {
+      "iconPath": "./icons/file_type_ember@2x.png"
     },
     "_f_erb": {
       "iconPath": "./icons/file_type_erb@2x.png"
@@ -810,13 +810,13 @@
     "dpr": "_f_delphi",
     "d": "_f_dlang",
     "dockerignore": "_f_docker",
-    "ember-cli": "_f_ember",
     "editorconfig": "_f_editorconfig",
     "ejs": "_f_ejs",
     "ex": "_f_elixir",
     "exs": "_f_elixir",
     "eex": "_f_elixir",
     "elm": "_f_elm",
+    "ember-cli": "_f_ember",
     "rhtml": "_f_erb",
     "erb": "_f_erb",
     "erl": "_f_erlang",
