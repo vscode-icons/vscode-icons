@@ -52,7 +52,7 @@ exports.extensions = {
     { icon: 'elixir', extensions: ['ex', 'exs', 'eex'] },
     { icon: 'elm', extensions: ['elm'] },
     { icon: 'elm', extensions: ['elm-package.json'], contribType: ctype.filename, contribOrder: 1 },
-    { icon: 'ember', extensions: ['ember-cli'] },
+    { icon: 'ember', extensions: ['ember-cli'], contribType: ctype.filename },
     { icon: 'erb', extensions: ['rhtml', 'erb'] },
     { icon: 'erlang', extensions: ['erl', 'hrl', 'emakefile', 'emakerfile'] },
     { icon: 'eslint', extensions: ['eslintrc', 'eslintignore'] },
