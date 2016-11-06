@@ -187,6 +187,7 @@ exports.extensions = {
     { icon: 'text', extensions: ['txt'] },
     { icon: 'textile', extensions: ['textile'] },
     { icon: 'todo', extensions: ['todo'] },
+    { icon: 'toml', extensions: ['toml'], svg: true },
     { icon: 'travis', extensions: ['.travis.yml'], contribType: ctype.filename },
     { icon: 'tslint', extensions: ['tslint.json'], contribType: ctype.filename },
     { icon: 'twig', extensions: ['twig'] },
