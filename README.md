@@ -18,7 +18,7 @@ I would also like to thank all the community for their support bringing ideas, c
 
 ### State of the extension
 
-**With the release of 4.0.0 version, support for old functionality has completely been removed for VSCode **.
+**With the release of 4.0.0 version, support for old functionality has completely been removed for VSCode**.
 
 #### Why is this happening?
 
