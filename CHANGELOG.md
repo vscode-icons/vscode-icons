@@ -1,5 +1,8 @@
 # Change Log
 
+## 4.0.1 (November 8, 2016)
+  - Fix: Gitlab-CI association starts with a dot. ([@neoeinstein](https://github.com/neoeinstein) in [#434](https://github.com/robertohuertasm/vscode-icons/pull/434))
+
 ## 4.0.0 (November 7, 2016)
   - Enhancement: add dockerfile as extension just for custom scenario support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#430](https://github.com/robertohuertasm/vscode-icons/pull/430))
   - Enhancement: Lots of improvements removing old functionality from the build process. ([@JimiC](https://github.com/JimiC) in [#426](https://github.com/robertohuertasm/vscode-icons/pull/426))

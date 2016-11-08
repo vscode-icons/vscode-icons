@@ -1093,7 +1093,7 @@
     ".gitignore": "_f_git",
     ".gitmodules": "_f_git",
     ".gitkeep": "_f_git",
-    "gitlab-ci.yml": "_f_gitlab",
+    ".gitlab-ci.yml": "_f_gitlab",
     "gruntfile.js": "_f_gruntfile",
     "gulpfile.js": "_f_gulpfile",
     "haxelib.json": "_f_haxe",
