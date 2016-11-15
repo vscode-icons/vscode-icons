@@ -91,7 +91,7 @@ exports.extensions = {
     { icon: 'jsmap', extensions: ['js.map'] },
     { icon: 'jsp', extensions: ['jsp'] },
     { icon: 'julia', extensions: ['jl'] },
-    { icon: 'kotlin', extensions: ['.kt'] },
+    { icon: 'kotlin', extensions: ['kt'] },
     { icon: 'log', extensions: ['log'] },
     { icon: 'lerna', extensions: ['lerna.json'], contribType: ctype.filename },
     { icon: 'less', extensions: ['less'] },
