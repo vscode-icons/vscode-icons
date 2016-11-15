@@ -113,7 +113,7 @@ exports.extensions = {
     { icon: 'node', extensions: ['json', 'webmanifest'] },
     { icon: 'node2', extensions: ['.nvmrc'], contribType: ctype.filename },
     { icon: 'npm', extensions: ['.npmignore', 'package.json'], contribType: ctype.filename },
-    { icon: 'nsi', extensions: ['nsi', 'nsh'] },
+    { icon: 'nsi', extensions: ['nsi', 'nsh'], svg: true },
     { icon: 'nuget', extensions: ['nupkg', 'nuspec', 'psmdcp'] },
     { icon: 'nunjucks', extensions: ['njk', 'nunjucks', 'nunjs', 'nunj', 'njs', 'nj'] },
     { icon: 'ocaml', extensions: ['ml', 'mll', 'mli', 'mly', 'ocamlmakefile', 'merlin'] },
