@@ -433,7 +433,7 @@
       "iconPath": "./icons/file_type_npm@2x.png"
     },
     "_f_nsi": {
-      "iconPath": "./icons/file_type_nsi@2x.png"
+      "iconPath": "./icons/file_type_nsi@2x.svg"
     },
     "_f_nuget": {
       "iconPath": "./icons/file_type_nuget@2x.png"
