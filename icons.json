@@ -22,10 +22,10 @@
       "iconPath": "./icons/folder_type_css_opened@2x.png"
     },
     "_fd_dist": {
-      "iconPath": "./icons/folder_type_dist@2x.png"
+      "iconPath": "./icons/folder_type_dist@2x.svg"
     },
     "_fd_dist_open": {
-      "iconPath": "./icons/folder_type_dist_opened@2x.png"
+      "iconPath": "./icons/folder_type_dist_opened@2x.svg"
     },
     "_fd_docs": {
       "iconPath": "./icons/folder_type_docs@2x.png"
