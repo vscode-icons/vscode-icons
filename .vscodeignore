@@ -1,6 +1,8 @@
 .github/**
 .vscode/**
 images/*.psd
+images/*.ai
+Dockerfile
 src/**
 typings/**
 .gitignore
