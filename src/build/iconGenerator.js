@@ -4,28 +4,29 @@ var files = require('./supportedExtensions').extensions;
 var folders = require('./supportedFolders').extensions;
 var ctype = require('./contribTypes');
 
-var folderDefs = _.uniq(_.map(folders.supported, function (o) {
-  return o.icon;
-})).reduce(function (old, current) {
-  var oldObj = old;
-  oldObj['_fd_' + current] = {
-    iconPath: './icons/folder_type_' + current + '@2x.png'
-  };
-  oldObj['_fd_' + current + '_open'] = {
-    iconPath: './icons/folder_type_' + current + '_opened@2x.png'
-  };
-  return oldObj;
-}, {});
+var f = folders.supported.reduce(function (old, current) {
+  var defs = old.defs;
+  var names = old.names;
 
-var folderNames = _.reduce(folders.supported, function (old, current) {
-  var oldObj = old;
+  var icon = current.icon;
+  defs['_fd_' + icon] = {
+    iconPath: './icons/folder_type_' + icon + '@2x.' + (current.svg ? 'svg' : 'png')
+  };
+  defs['_fd_' + icon + '_open'] = {
+    iconPath: './icons/folder_type_' + icon + '_opened@2x.' + (current.svg ? 'svg' : 'png')
+  };
+
   current.extensions.forEach(function (o) {
     var key = current.dot ? '.' + o : o;
-    oldObj.folders[key] = '_fd_' + current.icon;
-    oldObj.foldersOpen[key] = '_fd_' + current.icon + '_open';
+    names.folders[key] = '_fd_' + current.icon;
+    names.foldersOpen[key] = '_fd_' + current.icon + '_open';
   });
-  return oldObj;
-}, { folders: {}, foldersOpen: {} });
+
+  return old;
+}, { defs: {}, names: { folders: {}, foldersOpen: {} } });
+
+var folderNames = f.names;
+var folderDefs = f.defs;
 
 var fileDefs = _.uniq(_.map(files.supported, function (o) {
   return { icon: o.icon, svg: o.svg };

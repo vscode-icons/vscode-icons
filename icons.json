@@ -22,10 +22,10 @@
       "iconPath": "./icons/folder_type_css_opened@2x.png"
     },
     "_fd_dist": {
-      "iconPath": "./icons/folder_type_dist@2x.png"
+      "iconPath": "./icons/folder_type_dist@2x.svg"
     },
     "_fd_dist_open": {
-      "iconPath": "./icons/folder_type_dist_opened@2x.png"
+      "iconPath": "./icons/folder_type_dist_opened@2x.svg"
     },
     "_fd_docs": {
       "iconPath": "./icons/folder_type_docs@2x.png"
@@ -56,9 +56,6 @@
     },
     "_fd_images_open": {
       "iconPath": "./icons/folder_type_images_opened@2x.png"
-    },
-    "_f_kotlin": {
-      "iconPath": "./icons/file_type_kotlin@2x.png"
     },
     "_fd_less": {
       "iconPath": "./icons/folder_type_less@2x.png"
@@ -375,6 +372,9 @@
     "_f_julia": {
       "iconPath": "./icons/file_type_julia@2x.png"
     },
+    "_f_kotlin": {
+      "iconPath": "./icons/file_type_kotlin@2x.svg"
+    },
     "_f_log": {
       "iconPath": "./icons/file_type_log@2x.png"
     },
@@ -436,7 +436,7 @@
       "iconPath": "./icons/file_type_npm@2x.png"
     },
     "_f_nsi": {
-      "iconPath": "./icons/file_type_nsi@2x.png"
+      "iconPath": "./icons/file_type_nsi@2x.svg"
     },
     "_f_nuget": {
       "iconPath": "./icons/file_type_nuget@2x.png"
@@ -896,6 +896,7 @@
     "js.map": "_f_jsmap",
     "jsp": "_f_jsp",
     "jl": "_f_julia",
+    "kt": "_f_kotlin",
     "log": "_f_log",
     "less": "_f_less",
     "enc": "_f_license",
@@ -1079,7 +1080,6 @@
     "dockerfile": "_f_docker",
     ".dockerignore": "_f_docker",
     "docker-compose.yml": "_f_docker",
-    ".kt": "_f_kotlin",
     ".editorconfig": "_f_editorconfig",
     "elm-package.json": "_f_elm",
     ".ember-cli": "_f_ember",
