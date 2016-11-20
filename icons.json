@@ -22,10 +22,10 @@
       "iconPath": "./icons/folder_type_css_opened@2x.png"
     },
     "_fd_dist": {
-      "iconPath": "./icons/folder_type_dist@2x.svg"
+      "iconPath": "./icons/folder_type_dist@2x.png"
     },
     "_fd_dist_open": {
-      "iconPath": "./icons/folder_type_dist_opened@2x.svg"
+      "iconPath": "./icons/folder_type_dist_opened@2x.png"
     },
     "_fd_docs": {
       "iconPath": "./icons/folder_type_docs@2x.png"
@@ -128,6 +128,12 @@
     },
     "_fd_vscode_open": {
       "iconPath": "./icons/folder_type_vscode_opened@2x.png"
+    },
+    "_fd_webpack": {
+      "iconPath": "./icons/folder_type_webpack@2x.png"
+    },
+    "_fd_webpack_open": {
+      "iconPath": "./icons/folder_type_webpack_opened@2x.png"
     },
     "_f_actionscript": {
       "iconPath": "./icons/file_type_actionscript@2x.png"
@@ -721,7 +727,8 @@
     "spec": "_fd_test",
     "specs": "_fd_test",
     "typings": "_fd_typings",
-    ".vscode": "_fd_vscode"
+    ".vscode": "_fd_vscode",
+    "webpack": "_fd_webpack"
   },
   "folderNamesExpanded": {
     "bower_components": "_fd_bower_open",
@@ -759,7 +766,8 @@
     "spec": "_fd_test_open",
     "specs": "_fd_test_open",
     "typings": "_fd_typings_open",
-    ".vscode": "_fd_vscode_open"
+    ".vscode": "_fd_vscode_open",
+    "webpack": "_fd_webpack_open"
   },
   "fileExtensions": {
     "as": "_f_actionscript",
