@@ -199,7 +199,14 @@ exports.extensions = {
     {
       icon: 'webpack', extensions: [
         'webpack.config.js',
+        'webpack.config.common.js',
         'webpack.config.babel.js',
+        'webpack.config.common.babel.js',
+        'webpack.config.base.babel.js',
+        'webpack.config.dev.babel.js',
+        'webpack.config.staging.babel.js',
+        'webpack.config.production.babel.js',
+        'webpack.config.prod.babel.js',
         'webpack.config.dev.js',
         'webpack.config.staging.js',
         'webpack.config.production.js',
