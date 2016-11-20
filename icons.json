@@ -57,6 +57,9 @@
     "_fd_images_open": {
       "iconPath": "./icons/folder_type_images_opened@2x.png"
     },
+    "_f_kotlin": {
+      "iconPath": "./icons/file_type_kotlin@2x.png"
+    },
     "_fd_less": {
       "iconPath": "./icons/folder_type_less@2x.png"
     },
@@ -1076,6 +1079,7 @@
     "dockerfile": "_f_docker",
     ".dockerignore": "_f_docker",
     "docker-compose.yml": "_f_docker",
+    ".kt": "_f_kotlin",
     ".editorconfig": "_f_editorconfig",
     "elm-package.json": "_f_elm",
     ".ember-cli": "_f_ember",
