@@ -62,7 +62,7 @@
         "eslint-plugin-react": "^5.1.1",
         "ncp": "^2.0.0",
         "underscore": "^1.8.3",
-        "vscode": "^0.11.0"
+        "vscode": "^1.0.0"
     },
     "dependencies": {
         "open": "0.0.5",
