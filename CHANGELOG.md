@@ -1,5 +1,10 @@
 # Change Log
 
+## 4.0.2 (November 20, 2016)
+  - Feature: Kotlin support. ([@Jonatino](https://github.com/Jonatino) in [#440](https://github.com/robertohuertasm/vscode-icons/pull/440))
+  - Enhancement: NSIS logo is now SVG. ([@idleberg ](https://github.com/idleberg) in [#439](https://github.com/robertohuertasm/vscode-icons/pull/439))
+  - Enhancement: More webpack file names support. ([@schiehll](https://github.com/schiehll) in [#443](https://github.com/robertohuertasm/vscode-icons/pull/443))
+
 ## 4.0.1 (November 8, 2016)
   - Fix: Gitlab-CI association starts with a dot. ([@neoeinstein](https://github.com/neoeinstein) in [#434](https://github.com/robertohuertasm/vscode-icons/pull/434))
 
