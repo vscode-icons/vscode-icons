@@ -20,6 +20,7 @@ exports.extensions = {
     { icon: 'style', extensions: ['style', 'styles'] },
     { icon: 'test', extensions: ['tests', 'test', '__tests__', '__test__', 'spec', 'specs'] },
     { icon: 'typings', extensions: ['typings'] },
-    { icon: 'vscode', extensions: ['vscode'], dot: true }
+    { icon: 'vscode', extensions: ['vscode'], dot: true },
+    { icon: 'webpack', extensions: ['webpack'] }
   ]
 };

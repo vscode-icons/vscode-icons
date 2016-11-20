@@ -1,6 +1,7 @@
 # Change Log
 
 ## 4.0.2 (November 20, 2016)
+  - Feature: webpack folder support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#448](https://github.com/robertohuertasm/vscode-icons/pull/448))
   - Fix: Kotlin icon to SVG and small optimizations. ([@robertohuertasm](https://github.com/robertohuertasm) in [#447](https://github.com/robertohuertasm/vscode-icons/pull/447))
   - Feature: Kotlin support. ([@Jonatino](https://github.com/Jonatino) in [#440](https://github.com/robertohuertasm/vscode-icons/pull/440))
   - Enhancement: NSIS logo is now SVG. ([@idleberg ](https://github.com/idleberg) in [#439](https://github.com/robertohuertasm/vscode-icons/pull/439))
