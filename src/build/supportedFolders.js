@@ -6,7 +6,7 @@ exports.extensions = {
     { icon: 'dist', extensions: ['dist', 'out', 'export', 'build'] },
     { icon: 'docs', extensions: ['docs'] },
     { icon: 'flow', extensions: ['flow'] },
-    { icon: 'git', extensions: ['git', 'github'], dot: true },
+    { icon: 'git', extensions: ['github', 'git'], dot: true },
     { icon: 'haxelib', extensions: ['haxelib'] },
     { icon: 'images', extensions: ['images', 'img'] },
     { icon: 'less', extensions: ['less'] },
