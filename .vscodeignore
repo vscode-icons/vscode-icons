@@ -1,5 +1,6 @@
 .github/**
 .vscode/**
+examples/**
 images/*.psd
 images/*.ai
 Dockerfile
