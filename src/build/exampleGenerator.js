@@ -7,17 +7,21 @@ var supportedFlags = ['--all', '--folders', '--files'];
 
 var folderNames = folders.supported.reduce(function (init, current) {
   var obj = init;
-  obj[current.icon] = current.dot
-    ? '.' + current.extensions[0]
-    : current.extensions[0];
+  if (current.extensions[0]) {
+    obj[current.icon] = current.dot
+      ? '.' + current.extensions[0]
+      : current.extensions[0];
+  }
   return obj;
 }, {});
 
 var fileNames = files.supported.reduce(function (init, current) {
   var obj = init;
-  obj[current.icon] = current.contribType === ctype.filename
-    ? current.extensions[0]
-    : 'file.' + current.extensions[0];
+  if (current.extensions[0]) {
+    obj[current.icon] = current.contribType === ctype.filename
+      ? current.extensions[0]
+      : 'file.' + current.extensions[0];
+  }
   return obj;
 }, {});
 
