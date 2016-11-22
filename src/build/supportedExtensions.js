@@ -103,7 +103,7 @@ exports.extensions = {
     { icon: 'lsl', extensions: ['lsl'] },
     { icon: 'lua', extensions: ['lua'] },
     { icon: 'm', extensions: ['m'] },
-    { icon: 'markdown', extensions: ['md', 'markdown'] },
+    { icon: 'markdown', extensions: ['md', 'mdown', 'markdown'] },
     { icon: 'marko', extensions: ['marko'] },
     { icon: 'markojs', extensions: ['marko.js'] },
     { icon: 'markup', extensions: [] },
