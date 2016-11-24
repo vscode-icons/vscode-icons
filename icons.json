@@ -1126,6 +1126,7 @@
     "include.xml": "_f_lime",
     ".nvmrc": "_f_node2",
     ".npmignore": "_f_npm",
+    ".npmrc": "_f_npm",
     "package.json": "_f_npm",
     "paket.dependencies": "_f_paket",
     "paket.lock": "_f_paket",
