@@ -824,6 +824,7 @@
     "ini": "_f_config",
     "makefile": "_f_config",
     "config": "_f_config",
+    "conf": "_f_config",
     "cfg": "_f_config",
     "cs": "_f_cs",
     "csx": "_f_cs",
