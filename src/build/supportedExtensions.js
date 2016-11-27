@@ -120,6 +120,7 @@ exports.extensions = {
     { icon: 'ocaml', extensions: ['ml', 'mll', 'mli', 'mly', 'ocamlmakefile', 'merlin'] },
     { icon: 'paket', extensions: ['paket.dependencies', 'paket.lock', 'paket.references', 'paket.template', 'paket.local'], contribType: ctype.filename },
     { icon: 'patch', extensions: ['patch'] },
+    { icon: 'pdf', extensions: ['pdf'], svg: true },
     { icon: 'perl', extensions: ['perl'] },
     { icon: 'poedit', extensions: ['po', 'mo'] },
     { icon: 'photoshop', extensions: ['psd'] },
