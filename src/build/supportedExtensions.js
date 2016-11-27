@@ -65,6 +65,7 @@ exports.extensions = {
     { icon: 'gitlab', extensions: ['.gitlab-ci.yml'], contribType: ctype.filename },
     { icon: 'go', extensions: ['go'] },
     { icon: 'gradle', extensions: ['gradle'] },
+    { icon: 'graphql', extensions: ['gql', 'graphql'], svg: true },
     { icon: 'graphviz', extensions: [] },
     { icon: 'groovy', extensions: ['groovy'] },
     { icon: 'gruntfile', extensions: ['gruntfile.js'], contribType: ctype.filename },

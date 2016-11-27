@@ -309,6 +309,9 @@
     "_f_gradle": {
       "iconPath": "./icons/file_type_gradle@2x.png"
     },
+    "_f_graphql": {
+      "iconPath": "./icons/file_type_graphql@2x.svg"
+    },
     "_f_graphviz": {
       "iconPath": "./icons/file_type_graphviz@2x.png"
     },
@@ -871,6 +874,8 @@
     "f": "_f_fortran",
     "go": "_f_go",
     "gradle": "_f_gradle",
+    "gql": "_f_graphql",
+    "graphql": "_f_graphql",
     "groovy": "_f_groovy",
     "haml": "_f_haml",
     "hbs": "_f_handlebars",
