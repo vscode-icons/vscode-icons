@@ -898,6 +898,7 @@
     "pug": "_f_jade",
     "tag": "_f_riot",
     "java": "_f_java",
+    "class": "_f_java",
     "jbuilder": "_f_jbuilder",
     "jinja": "_f_jinja",
     "js": "_f_js",

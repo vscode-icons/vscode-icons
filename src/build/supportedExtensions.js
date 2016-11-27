@@ -83,7 +83,7 @@ exports.extensions = {
     { icon: 'ionic', extensions: ['ionic.config.json'], contribType: ctype.filename },
     { icon: 'jade', extensions: ['jade', 'pug', 'tag'] },
     { icon: 'jade', extensions: ['.jade-lintrc', '.pug-lintrc', '.jade-lint.json', '.pug-lintrc.js', '.pug-lintrc.json'], contribType: ctype.filename },
-    { icon: 'java', extensions: ['java'] },
+    { icon: 'java', extensions: ['java', 'class'] },
     { icon: 'jbuilder', extensions: ['jbuilder'], svg: true },
     { icon: 'jinja', extensions: ['jinja'] },
     { icon: 'js', extensions: ['js'] },
