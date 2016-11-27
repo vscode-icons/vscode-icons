@@ -17,6 +17,7 @@ exports.extensions = {
     { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'so', 'pyc', 'pyd', 'pyo', 'n', 'ndll', 'pdb', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi'] }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'blade', extensions: ['blade.php'] },
     { icon: 'bower', extensions: ['.bowerrc', 'bower.json'], contribType: ctype.filename },
+    { icon: 'buckbuild', extensions: ['.buckconfig'], contribType: ctype.filename, svg: true },
     { icon: 'bundler', extensions: ['gemfile', 'gemfile.lock'], contribType: ctype.filename },
     { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] },
     { icon: 'c', extensions: ['c'] },

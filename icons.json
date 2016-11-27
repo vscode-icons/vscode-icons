@@ -180,6 +180,9 @@
     "_f_bower": {
       "iconPath": "./icons/file_type_bower@2x.png"
     },
+    "_f_buckbuild": {
+      "iconPath": "./icons/file_type_buckbuild@2x.svg"
+    },
     "_f_bundler": {
       "iconPath": "./icons/file_type_bundler@2x.png"
     },
@@ -1086,6 +1089,7 @@
     ".babelrc": "_f_babel",
     ".bowerrc": "_f_bower",
     "bower.json": "_f_bower",
+    ".buckconfig": "_f_buckbuild",
     "gemfile": "_f_bundler",
     "gemfile.lock": "_f_bundler",
     "codeclimate.yml": "_f_codeclimate",
