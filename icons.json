@@ -465,6 +465,9 @@
     "_f_patch": {
       "iconPath": "./icons/file_type_patch@2x.png"
     },
+    "_f_pdf": {
+      "iconPath": "./icons/file_type_pdf@2x.svg"
+    },
     "_f_perl": {
       "iconPath": "./icons/file_type_perl@2x.png"
     },
@@ -968,6 +971,7 @@
     "ocamlmakefile": "_f_ocaml",
     "merlin": "_f_ocaml",
     "patch": "_f_patch",
+    "pdf": "_f_pdf",
     "perl": "_f_perl",
     "po": "_f_poedit",
     "mo": "_f_poedit",
