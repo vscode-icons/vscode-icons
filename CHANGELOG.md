@@ -1,5 +1,14 @@
 # Change Log
 
+## 4.0.3 (November 27, 2016)
+  - Feature: New version message is now optional. ([@robertohuertasm](https://github.com/robertohuertasm) in [#460](https://github.com/robertohuertasm/vscode-icons/pull/460))
+  - Feature: .npmrc support. ([@jsonnutter](https://github.com/jasonnutter) in [#457](https://github.com/robertohuertasm/vscode-icons/pull/457))
+  - Feature: mdown support. ([@keywest](https://github.com/keywest) in [#455](https://github.com/robertohuertasm/vscode-icons/pull/455))
+  - Development tool: Improvement in the example tool. ([@JimiC](https://github.com/JimiC) in [#452](https://github.com/robertohuertasm/vscode-icons/pull/452))
+  - Enhancement: typings folder removed. ([@JimiC](https://github.com/JimiC) in [#451](https://github.com/robertohuertasm/vscode-icons/pull/451))
+  - Enhancement: .ai and dockerfile removed from final package. ([@robertohuertasm](https://github.com/robertohuertasm) in [#449](https://github.com/robertohuertasm/vscode-icons/pull/449))
+  - Development tool: Generate examples for your new icons. ([@JimiC](https://github.com/JimiC) in [#446](https://github.com/robertohuertasm/vscode-icons/pull/446))
+
 ## 4.0.2 (November 20, 2016)
   - Feature: webpack folder support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#448](https://github.com/robertohuertasm/vscode-icons/pull/448))
   - Fix: Kotlin icon to SVG and small optimizations. ([@robertohuertasm](https://github.com/robertohuertasm) in [#447](https://github.com/robertohuertasm/vscode-icons/pull/447))
