@@ -21,12 +21,16 @@ function showWelcomeMessage() {
 
 function showNewVersionMessage() {
   vscode.window.showInformationMessage(msg.newVersionMessage + ' v.' + vars.extVersion,
-    { title: msg.seeReleaseNotes })
+    { title: msg.seeReleaseNotes }, { title: msg.dontshowthis })
     .then(function (btn) {
-      if (btn && btn.title === msg.seeReleaseNotes) {
-        open(msg.urlReleaseNote);
-      }
       settings.setStatus(settings.status.disabled);
+      if (!btn) return;
+      if (btn.title === msg.seeReleaseNotes) {
+        open(msg.urlReleaseNote);
+      } else if (btn.title === msg.dontshowthis) {
+        vscode.workspace.getConfiguration()
+          .update('vsicons.dontShowNewVersionMessage', true, true);
+      }
     });
 }
 
@@ -37,9 +41,12 @@ function runAutoInstall() {
     // show welcome message
     showWelcomeMessage();
   } else {
+    showNewVersionMessage();
     if (isNewVersion) {
-      // this will automatically uninstall hacks in >= 1.6.0 as installation won't work.'
       settings.setStatus(state.status);
+      if (vscode.workspace.getConfiguration().vsicons.dontShowNewVersionMessage) {
+        return;
+      }
       showNewVersionMessage();
     }
   }

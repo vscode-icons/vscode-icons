@@ -57,11 +57,11 @@ function setState(state) {
 }
 
 function setStatus(sts) {
-  setState({
-    version: extVersion,
-    status: sts,
-    welcomeShown: true
-  });
+  var state = getState();
+  state.version = extVersion;
+  state.status = sts;
+  state.welcomeShown = true;
+  setState(state);
 }
 
 function deleteState() {

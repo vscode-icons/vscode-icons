@@ -109,6 +109,13 @@ npm run example -- --all
 
 The above syntax will create examples for all supported files and folders.
 
+## Configuration
+If you want to see again the new version message every time you receive an update then you can modify this configuration setting:
+```json
+{
+  "vsicons.dontShowNewVersionMessage": false
+}
+```
 
 ## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:
