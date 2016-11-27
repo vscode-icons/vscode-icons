@@ -381,9 +381,6 @@
     "_f_kotlin": {
       "iconPath": "./icons/file_type_kotlin@2x.svg"
     },
-    "_f_log": {
-      "iconPath": "./icons/file_type_log@2x.png"
-    },
     "_f_lerna": {
       "iconPath": "./icons/file_type_lerna@2x.png"
     },
@@ -398,6 +395,9 @@
     },
     "_f_lime": {
       "iconPath": "./icons/file_type_lime@2x.png"
+    },
+    "_f_log": {
+      "iconPath": "./icons/file_type_log@2x.png"
     },
     "_f_lsl": {
       "iconPath": "./icons/file_type_lsl@2x.png"
@@ -905,11 +905,11 @@
     "jsp": "_f_jsp",
     "jl": "_f_julia",
     "kt": "_f_kotlin",
-    "log": "_f_log",
     "less": "_f_less",
     "enc": "_f_license",
     "bil": "_f_lisp",
     "hxp": "_f_lime",
+    "log": "_f_log",
     "lsl": "_f_lsl",
     "lua": "_f_lua",
     "m": "_f_m",
@@ -1083,6 +1083,7 @@
     "gemfile.lock": "_f_bundler",
     "codeclimate.yml": "_f_codeclimate",
     "makefile": "_f_config",
+    ".env.example": "_f_config",
     "composer.json": "_f_composer",
     "composer.lock": "_f_composer",
     ".csslintrc": "_f_csslint",
