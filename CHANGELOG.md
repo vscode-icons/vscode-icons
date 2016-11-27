@@ -1,6 +1,7 @@
 # Change Log
 
 ## 4.0.3 (November 27, 2016)
+  - Feature: .class support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#462](https://github.com/robertohuertasm/vscode-icons/pull/462))
   - Feature: .env.example file associated to config icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#461](https://github.com/robertohuertasm/vscode-icons/pull/461))
   - Feature: New version message is now optional. ([@robertohuertasm](https://github.com/robertohuertasm) in [#460](https://github.com/robertohuertasm/vscode-icons/pull/460))
   - Feature: .npmrc support. ([@jsonnutter](https://github.com/jasonnutter) in [#457](https://github.com/robertohuertasm/vscode-icons/pull/457))
