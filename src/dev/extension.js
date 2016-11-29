@@ -41,7 +41,6 @@ function runAutoInstall() {
     // show welcome message
     showWelcomeMessage();
   } else {
-    showNewVersionMessage();
     if (isNewVersion) {
       settings.setStatus(state.status);
       if (vscode.workspace.getConfiguration().vsicons.dontShowNewVersionMessage) {
