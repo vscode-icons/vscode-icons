@@ -1,5 +1,8 @@
 # Change Log
 
+## 4.0.4 (November 30, 2016)
+  - Patch: Removed line causing new version message to always be shown on init. ([@JimiC](https://github.com/JimiC) in [#469](https://github.com/robertohuertasm/vscode-icons/pull/469))
+
 ## 4.0.3 (November 29, 2016)
   - Enhancement: .conf as config extension. ([@JimiC](https://github.com/JimiC) in [#467](https://github.com/robertohuertasm/vscode-icons/pull/467))
   - Feature: pdf support. ([@JimiC](https://github.com/JimiC) in [#466](https://github.com/robertohuertasm/vscode-icons/pull/466))
