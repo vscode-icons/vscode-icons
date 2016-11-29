@@ -1,6 +1,11 @@
 # Change Log
 
-## 4.0.3 (November 27, 2016)
+## 4.0.3 (November 29, 2016)
+  - Enhancement: .conf as config extension. ([@JimiC](https://github.com/JimiC) in [#467](https://github.com/robertohuertasm/vscode-icons/pull/467))
+  - Feature: pdf support. ([@JimiC](https://github.com/JimiC) in [#466](https://github.com/robertohuertasm/vscode-icons/pull/466))
+  - Feature: buckbuild support. ([@JimiC](https://github.com/JimiC) in [#465](https://github.com/robertohuertasm/vscode-icons/pull/465))
+  - Feature: graphql support. ([@JimiC](https://github.com/JimiC) in [#464](https://github.com/robertohuertasm/vscode-icons/pull/464))
+  - Feature: purescript support. ([@JimiC](https://github.com/JimiC) in [#463](https://github.com/robertohuertasm/vscode-icons/pull/463))
   - Feature: .class support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#462](https://github.com/robertohuertasm/vscode-icons/pull/462))
   - Feature: .env.example file associated to config icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#461](https://github.com/robertohuertasm/vscode-icons/pull/461))
   - Feature: New version message is now optional. ([@robertohuertasm](https://github.com/robertohuertasm) in [#460](https://github.com/robertohuertasm/vscode-icons/pull/460))
