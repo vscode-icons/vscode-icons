@@ -1123,6 +1123,7 @@
     "favicon.ico": "_f_favicon",
     ".flowconfig": "_f_flow",
     ".gitattributes": "_f_git",
+    ".gitconfig": "_f_git",
     ".gitignore": "_f_git",
     ".gitmodules": "_f_git",
     ".gitkeep": "_f_git",

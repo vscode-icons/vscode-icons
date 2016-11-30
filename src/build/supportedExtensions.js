@@ -62,7 +62,7 @@ exports.extensions = {
     { icon: 'fsharp', extensions: ['fs', 'fsx', 'fsi'] },
     { icon: 'font', extensions: ['woff', 'woff2', 'ttf', 'otf', 'eot', 'pfa', 'pfb', 'sfd'] },
     { icon: 'fortran', extensions: ['f90', 'mod', 'f'] },
-    { icon: 'git', extensions: ['.gitattributes', '.gitignore', '.gitmodules', '.gitkeep'], contribType: ctype.filename },
+    { icon: 'git', extensions: ['.gitattributes', '.gitconfig', '.gitignore', '.gitmodules', '.gitkeep'], contribType: ctype.filename },
     { icon: 'gitlab', extensions: ['.gitlab-ci.yml'], contribType: ctype.filename },
     { icon: 'go', extensions: ['go'] },
     { icon: 'gradle', extensions: ['gradle'] },
