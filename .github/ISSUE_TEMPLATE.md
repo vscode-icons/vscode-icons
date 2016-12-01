@@ -18,5 +18,4 @@ _**Instruction Template**_
       - Icon Name: [name]
       - Sample original Icon(32x32/png/transparent whenever possible): [url]
       - Extensions: .just, .a, .bunch, .of, .extensions
-      - [ ] I crossed out "Description", "Steps to reproduce", "Expected behaviour" and "Actual behaviour".
 
