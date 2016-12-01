@@ -1046,6 +1046,7 @@
     "svg": "_f_svg",
     "swift": "_f_swift",
     "tcl": "_f_tcl",
+    "exp": "_f_tcl",
     "tf": "_f_terraform",
     "terra": "_f_terraform",
     "test.js": "_f_testjs",

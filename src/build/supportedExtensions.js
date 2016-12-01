@@ -170,7 +170,7 @@ exports.extensions = {
     { icon: 'storyboard', extensions: ['storyboard'] },
     { icon: 'svg', extensions: ['svg'] },
     { icon: 'swift', extensions: ['swift'] },
-    { icon: 'tcl', extensions: ['tcl'] },
+    { icon: 'tcl', extensions: ['tcl', 'exp'] },
     { icon: 'terraform', extensions: ['tf', 'terra'] },
     { icon: 'testjs', extensions: ['test.js', 'spec.js'] },
     { icon: 'testts', extensions: ['test.ts', 'spec.ts'] },
