@@ -138,6 +138,9 @@
     "_f_actionscript": {
       "iconPath": "./icons/file_type_actionscript@2x.png"
     },
+    "_f_ai": {
+      "iconPath": "./icons/file_type_ai@2x.svg"
+    },
     "_f_angular": {
       "iconPath": "./icons/file_type_angular@2x.png"
     },
@@ -783,6 +786,7 @@
   },
   "fileExtensions": {
     "as": "_f_actionscript",
+    "ai": "_f_ai",
     "apib": "_f_apib",
     "app": "_f_applescript",
     "ansible": "_f_ansible",

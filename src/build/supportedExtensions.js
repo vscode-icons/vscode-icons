@@ -3,6 +3,7 @@ var ctype = require('./contribTypes');
 exports.extensions = {
   supported: [
     { icon: 'actionscript', extensions: ['as'] },
+    { icon: 'ai', extensions: ['ai'], svg: true },
     { icon: 'angular', extensions: ['angular-cli.json'], contribType: ctype.filename },
     { icon: 'apache', extensions: ['.htaccess', '.htpasswd'], contribType: ctype.filename },
     { icon: 'apib', extensions: ['apib'] },
