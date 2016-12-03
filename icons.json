@@ -669,14 +669,17 @@
     "_f_vbproj": {
       "iconPath": "./icons/file_type_vbproj@2x.png"
     },
+    "_f_vim": {
+      "iconPath": "./icons/file_type_vim@2x.svg"
+    },
     "_f_volt": {
       "iconPath": "./icons/file_type_volt@2x.png"
     },
-    "_f_vue": {
-      "iconPath": "./icons/file_type_vue@2x.png"
-    },
     "_f_vscode": {
       "iconPath": "./icons/file_type_vscode@2x.png"
+    },
+    "_f_vue": {
+      "iconPath": "./icons/file_type_vue@2x.png"
     },
     "_f_webpack": {
       "iconPath": "./icons/file_type_webpack@2x.png"
@@ -1075,6 +1078,7 @@
     "vb": "_f_vb",
     "vbhtml": "_f_vbhtml",
     "vbproj": "_f_vbproj",
+    "vim": "_f_vim",
     "volt": "_f_volt",
     "vue": "_f_vue",
     "wxml": "_f_wxml",
@@ -1175,6 +1179,8 @@
     ".travis.yml": "_f_travis",
     "tslint.json": "_f_tslint",
     "vagrantfile": "_f_vagrant",
+    ".vimrc": "_f_vim",
+    ".gvimrc": "_f_vim",
     "vscodeignore.json": "_f_vscode",
     "launch.json": "_f_vscode",
     "tasks.json": "_f_vscode",

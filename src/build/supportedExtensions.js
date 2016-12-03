@@ -191,8 +191,9 @@ exports.extensions = {
     { icon: 'vb', extensions: ['vb'] },
     { icon: 'vbhtml', extensions: ['vbhtml'] },
     { icon: 'vbproj', extensions: ['vbproj'] },
+    { icon: 'vim', extensions: ['vim'], svg: true },
+    { icon: 'vim', extensions: ['.vimrc', '.gvimrc'], contribType: ctype.filename, svg: true },
     { icon: 'volt', extensions: ['volt'] },
-    { icon: 'vue', extensions: ['vue'] },
     {
       icon: 'vscode', extensions: [
         'vscodeignore.json',
@@ -203,6 +204,7 @@ exports.extensions = {
         '.vscodeignore'
       ], contribType: ctype.filename
     },
+    { icon: 'vue', extensions: ['vue'] },
     {
       icon: 'webpack', extensions: [
         'webpack.config.js',
