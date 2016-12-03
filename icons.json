@@ -270,6 +270,9 @@
     "_f_elm": {
       "iconPath": "./icons/file_type_elm@2x.png"
     },
+    "_f_emacs": {
+      "iconPath": "./icons/file_type_emacs@2x.svg"
+    },
     "_f_ember": {
       "iconPath": "./icons/file_type_ember@2x.png"
     },
@@ -860,6 +863,8 @@
     "exs": "_f_elixir",
     "eex": "_f_elixir",
     "elm": "_f_elm",
+    "el": "_f_emacs",
+    "elc": "_f_emacs",
     "rhtml": "_f_erb",
     "erb": "_f_erb",
     "erl": "_f_erlang",
