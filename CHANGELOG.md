@@ -1,5 +1,15 @@
 # Change Log
 
+## 4.0.5 (December 04, 2016)
+  - Enhancement: Java files support improved. ([@JimiC](https://github.com/JimiC) in [#487](https://github.com/robertohuertasm/vscode-icons/pull/487))
+  - Enhancement: Screenshot removed from distributable. ([@JimiC](https://github.com/JimiC) in [#486](https://github.com/robertohuertasm/vscode-icons/pull/486))
+  - Enhancement: c++ renamed to cpp. ([@JimiC](https://github.com/JimiC) in [#484](https://github.com/robertohuertasm/vscode-icons/pull/484))
+  - Feature: Illustrator support. ([@JimiC](https://github.com/JimiC) in [#483](https://github.com/robertohuertasm/vscode-icons/pull/483))
+  - Feature: Emacs support. ([@JimiC](https://github.com/JimiC) in [#481](https://github.com/robertohuertasm/vscode-icons/pull/481))
+  - Feature: Vim support. ([@JimiC](https://github.com/JimiC) in [#480](https://github.com/robertohuertasm/vscode-icons/pull/480))
+  - Feature: .exp support. ([@garettmd](https://github.com/garettmd) in [#478](https://github.com/robertohuertasm/vscode-icons/pull/478))
+  - Feature: .gitconfig support. ([@itiut](https://github.com/itiut) in [#471](https://github.com/robertohuertasm/vscode-icons/pull/471))
+
 ## 4.0.4 (November 30, 2016)
   - Patch: Removed line causing new version message to always be shown on init. ([@JimiC](https://github.com/JimiC) in [#469](https://github.com/robertohuertasm/vscode-icons/pull/469))
 

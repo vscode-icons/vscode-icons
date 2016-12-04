@@ -12,7 +12,7 @@ Bring icons to your VS Code.
 
 As you all know, VSCode finally supports File and Folder icons in an official way. Read this great article by [@chrisdias](https://twitter.com/chrisdias): ["Rebellion. Mutiny. Revolt. Uprising."](https://code.visualstudio.com/blogs/2016/09/08/icon-themes) if you want to learn the history about this plugin and how finally icons landed in VSCode.
 
-I would like to thank the VSCode team for their support during this summer in terms of migrating this extension and prepare the new contribution point, specially [@aeschli](https://github.com/aeschli) for his good disposition.
+I would like to thank the VSCode team for their support during this summer (2106) in terms of migrating this extension and prepare the new contribution point, specially [@aeschli](https://github.com/aeschli) for his good disposition.
 
 I would also like to thank all the community for their support bringing ideas, collaborating and making this path easy and I would also like to stress the great help that [@jens1o](https://github.com/jens1o) has provided to the project. He's amazing! And he's only 14!! :D Thanks, truly!
 
@@ -37,6 +37,19 @@ More information in [#328](https://github.com/robertohuertasm/vscode-icons/issue
 Finally, I also would like to ask you to raise the possible issues that you may find while using this extension into the [extension's repository](https://github.com/robertohuertasm/vscode-icons/issues), not the VSCode one ;D
 
 **Thank you all for your kind support. Finally icons are here to stay (that was the main purpose of this extension). Now let's hope they get even better :D**
+
+----
+## Main Contributors
+
+This project has gone far beyond it's main purpose, which was to provide icons for VSCode when the platform didn't still support them, and now it tries to provide the most complete set of icons you can find. I began this journey alone but this wouldn't have been possible without the help of many of you. Some members of the community have been strongly committed to the project and now they are part of the core team of mantainers.
+
+Please, meet the team behind this extension: 
+
+ - [@jens1o](https://github.com/jens1o)
+ - [@JimiC](https://github.com/JimiC)
+ - [@robertohuertasm](https://github.com/robertohuertasm)
+
+If you're willing to collaborate with us feel free to join our [Github repository](https://github.com/robertohuertasm/vscode-icons/). ;)
 
 ----
 
