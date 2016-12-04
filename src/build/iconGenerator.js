@@ -4,6 +4,7 @@ var _ = require('underscore');
 var files = require('./supportedExtensions').extensions;
 var folders = require('./supportedFolders').extensions;
 var ctype = require('./contribTypes');
+var packageJson = require('./../../package.json');
 
 
 /**
@@ -162,7 +163,30 @@ function writeJsonToFile(json, iconsFilename, outDir) {
     fs.writeFileSync(outDir + iconsFilename, JSON.stringify(json, null, 2));
     console.log('Icon contribution file successfully generated!');
   } catch (error) {
-    console.log('Something went wrong while generating the icon contribution file:', error);
+    console.error('Something went wrong while generating the icon contribution file:', error);
+  }
+}
+
+
+/**
+ * Updates the package.json file.
+ *
+ * @param {any} newIconThemesPath The new path of the icons directory.
+ */
+function updatePackageJson(newIconThemesPath) {
+  var oldIconThemesPath = packageJson.contributes.iconThemes[0].path;
+
+  if (!oldIconThemesPath || (oldIconThemesPath === newIconThemesPath)) {
+    return;
+  }
+
+  packageJson.contributes.iconThemes[0].path = newIconThemesPath;
+
+  try {
+    fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
+    console.log('package.json updated');
+  } catch (err) {
+    console.error(err);
   }
 }
 
@@ -200,6 +224,7 @@ function generate(iconsFilename, outDir) {
   json.languageIds = res.files.names.languageIds;
 
   writeJsonToFile(json, iconsFilename, outputDir);
+  updatePackageJson(outputDir + iconsFilename);
 }
 
 module.exports = { generate: generate };
