@@ -20,7 +20,7 @@ exports.extensions = {
     { icon: 'bower', extensions: ['.bowerrc', 'bower.json'], contribType: ctype.filename },
     { icon: 'buckbuild', extensions: ['.buckconfig'], contribType: ctype.filename, svg: true },
     { icon: 'bundler', extensions: ['gemfile', 'gemfile.lock'], contribType: ctype.filename },
-    { icon: 'c++', extensions: ['cpp', 'hpp', 'cc', 'cxx'] },
+    { icon: 'cpp', extensions: ['cpp', 'hpp', 'cc', 'cxx'] },
     { icon: 'c', extensions: ['c'] },
     { icon: 'cake', extensions: ['cake'] },
     { icon: 'cfm', extensions: ['cfm', 'cfc', 'lucee'] },
