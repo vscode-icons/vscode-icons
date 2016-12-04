@@ -161,7 +161,7 @@ function writeJsonToFile(json, iconsFilename, outDir) {
     }
 
     fs.writeFileSync(outDir + iconsFilename, JSON.stringify(json, null, 2));
-    console.log('Icon contribution file successfully generated!');
+    console.log('Icon contribution file successfully generated!'); //eslint-disable-line
   } catch (error) {
     console.error('Something went wrong while generating the icon contribution file:', error);
   }
@@ -184,7 +184,7 @@ function updatePackageJson(newIconThemesPath) {
 
   try {
     fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
-    console.log('package.json updated');
+    console.log('package.json updated'); //eslint-disable-line
   } catch (err) {
     console.error(err);
   }

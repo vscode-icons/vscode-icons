@@ -16,6 +16,6 @@ ncp('./src/dev', outDir, function (err) {
     console.error(err);
     return;
   }
-  console.log('Build completed!');
+  console.log('Build completed!'); //eslint-disable-line
 });
 

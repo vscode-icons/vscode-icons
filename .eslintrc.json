@@ -12,7 +12,14 @@
         "code": 100
       }
     ],
-    "no-console": 0,
+    "no-console": [
+      1,
+      {
+        "allow": [
+          "error"
+        ]
+      }
+    ],
     "no-restricted-syntax": [
       0,
       "ForInStatement"

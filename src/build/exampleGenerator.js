@@ -74,7 +74,7 @@ function buildFiles(icons) {
 
     try {
       fs.writeFileSync(fileName, null);
-      console.log('Example file for \'' + icon + '\' successfully created!');
+      console.log('Example file for \'' + icon + '\' successfully created!'); //eslint-disable-line
     } catch (error) {
       console.error('Something went wrong while creating the file for \'' + icon + '\' :\n', error);
     }
@@ -97,7 +97,7 @@ function buildFolders(icons) {
 
     try {
       fs.mkdirSync(dirName);
-      console.log('Example folder for \'' + icon + '\' successfully created!');
+      console.log('Example folder for \'' + icon + '\' successfully created!'); //eslint-disable-line
     } catch (error) {
       console.error('Something went wrong while creating the folder for \''
         + icon + '\' :\n', error);
