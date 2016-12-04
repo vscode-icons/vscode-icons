@@ -189,8 +189,8 @@
     "_f_bundler": {
       "iconPath": "./icons/file_type_bundler@2x.png"
     },
-    "_f_c++": {
-      "iconPath": "./icons/file_type_c++@2x.png"
+    "_f_cpp": {
+      "iconPath": "./icons/file_type_cpp@2x.png"
     },
     "_f_c": {
       "iconPath": "./icons/file_type_c@2x.png"
@@ -822,10 +822,10 @@
     "cmxa": "_f_binary",
     "cmi": "_f_binary",
     "blade.php": "_f_blade",
-    "cpp": "_f_c++",
-    "hpp": "_f_c++",
-    "cc": "_f_c++",
-    "cxx": "_f_c++",
+    "cpp": "_f_cpp",
+    "hpp": "_f_cpp",
+    "cc": "_f_cpp",
+    "cxx": "_f_cpp",
     "c": "_f_c",
     "cake": "_f_cake",
     "cfm": "_f_cfm",
