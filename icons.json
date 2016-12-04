@@ -204,6 +204,9 @@
     "_f_cheader": {
       "iconPath": "./icons/file_type_cheader@2x.png"
     },
+    "_f_class": {
+      "iconPath": "./icons/file_type_class@2x.svg"
+    },
     "_f_clojure": {
       "iconPath": "./icons/file_type_clojure@2x.png"
     },
@@ -366,8 +369,11 @@
     "_f_jade": {
       "iconPath": "./icons/file_type_jade@2x.png"
     },
+    "_f_jar": {
+      "iconPath": "./icons/file_type_jar@2x.svg"
+    },
     "_f_java": {
-      "iconPath": "./icons/file_type_java@2x.png"
+      "iconPath": "./icons/file_type_java@2x.svg"
     },
     "_f_jbuilder": {
       "iconPath": "./icons/file_type_jbuilder@2x.svg"
@@ -832,6 +838,7 @@
     "cfc": "_f_cfm",
     "lucee": "_f_cfm",
     "h": "_f_cheader",
+    "class": "_f_class",
     "clojure": "_f_clojure",
     "cjm": "_f_clojure",
     "clj": "_f_clojure",
@@ -925,7 +932,6 @@
     "pug": "_f_jade",
     "tag": "_f_riot",
     "java": "_f_java",
-    "class": "_f_java",
     "jbuilder": "_f_jbuilder",
     "jinja": "_f_jinja",
     "js": "_f_js",
