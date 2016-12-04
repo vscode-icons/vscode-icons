@@ -52,7 +52,7 @@ function runAutoInstall() {
 }
 
 function activate() {
-  console.log('vscode-icons is active!');
+  console.log('vscode-icons is active!'); //eslint-disable-line
   runAutoInstall();
 }
 exports.activate = activate;

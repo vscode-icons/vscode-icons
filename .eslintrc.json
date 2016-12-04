@@ -6,6 +6,20 @@
     "airbnb-base/legacy"
   ],
   "rules": {
+    "max-len": [
+      2,
+      {
+        "code": 100
+      }
+    ],
+    "no-console": [
+      1,
+      {
+        "allow": [
+          "error"
+        ]
+      }
+    ],
     "no-restricted-syntax": [
       0,
       "ForInStatement"
