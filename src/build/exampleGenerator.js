@@ -68,7 +68,7 @@ function buildFiles(icons) {
     var fileName = fileNames[icon];
 
     if (!fileName) {
-      console.log('Unsupported file: ' + icon);
+      console.error('Unsupported file: ' + icon);
       return;
     }
 
@@ -76,7 +76,7 @@ function buildFiles(icons) {
       fs.writeFileSync(fileName, null);
       console.log('Example file for \'' + icon + '\' successfully created!');
     } catch (error) {
-      console.log('Something went wrong while creating the file for \'' + icon + '\' :\n', error);
+      console.error('Something went wrong while creating the file for \'' + icon + '\' :\n', error);
     }
   });
 }
@@ -91,7 +91,7 @@ function buildFolders(icons) {
     var dirName = folderNames[icon];
 
     if (!dirName) {
-      console.log('Unsupported folder: ' + icon);
+      console.error('Unsupported folder: ' + icon);
       return;
     }
 
@@ -99,7 +99,8 @@ function buildFolders(icons) {
       fs.mkdirSync(dirName);
       console.log('Example folder for \'' + icon + '\' successfully created!');
     } catch (error) {
-      console.log('Something went wrong while creating the folder for \'' + icon + '\' :\n', error);
+      console.error('Something went wrong while creating the folder for \''
+        + icon + '\' :\n', error);
     }
   });
 }
@@ -149,13 +150,13 @@ function assertFlags(args) {
   var supportedFlagsMsg = 'Supported flags are ' + supportedFlags.join(', ') + '.';
 
   if (args.length <= 2) {
-    console.log('Please provide a valid flag. ' + supportedFlagsMsg);
+    console.error('Please provide a valid flag. ' + supportedFlagsMsg);
     return true;
   }
 
   if (args.length > 2) {
     if (supportedFlags.indexOf(args[2]) === -1) {
-      console.log(supportedFlagsMsg);
+      console.error(supportedFlagsMsg);
       return true;
     }
   }
