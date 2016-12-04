@@ -1,82 +1,83 @@
 {
-    "name": "vscode-icons",
-    "displayName": "vscode-icons",
-    "description": "Icons for Visual Studio Code",
-    "version": "4.0.4",
-    "publisher": "robertohuertasm",
-    "license": "MIT",
-    "author": {
-        "email": "roberto.huertas@outlook.com",
-        "name": "Roberto Huertas",
-        "url": "http://codecoding.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/robertohuertasm/vscode-icons"
-    },
-    "bugs": {
-        "url": "https://github.com/robertohuertasm/vscode-icons/issues",
-        "email": "roberto.huertas@outlook.com"
-    },
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Other",
-        "Themes"
+  "name": "vscode-icons",
+  "displayName": "vscode-icons",
+  "description": "Icons for Visual Studio Code",
+  "version": "4.0.4",
+  "publisher": "robertohuertasm",
+  "license": "MIT",
+  "author": {
+    "email": "roberto.huertas@outlook.com",
+    "name": "Roberto Huertas",
+    "url": "http://codecoding.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertohuertasm/vscode-icons"
+  },
+  "bugs": {
+    "url": "https://github.com/robertohuertasm/vscode-icons/issues",
+    "email": "roberto.huertas@outlook.com"
+  },
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other",
+    "Themes"
+  ],
+  "keywords": [
+    "icon-theme",
+    "theme",
+    "icons",
+    "vscode-icons"
+  ],
+  "preview": true,
+  "homepage": "https://github.com/robertohuertasm/vscode-icons",
+  "icon": "images/logo.png",
+  "galleryBanner": {
+    "color": "#ffdd00"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension",
+  "contributes": {
+    "iconThemes": [
+      {
+        "id": "vscode-icons",
+        "label": "VSCode Icons",
+        "path": "./icons.json"
+      }
     ],
-    "keywords": [
-        "icon-theme",
-        "theme",
-        "icons",
-        "vscode-icons"
-    ],
-    "preview": true,
-    "homepage": "https://github.com/robertohuertasm/vscode-icons",
-    "icon": "images/logo.png",
-    "galleryBanner": {
-        "color": "#ffdd00"
-    },
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./dist/extension",
-    "contributes": {
-        "iconThemes": [
-            {
-                "id": "vscode-icons",
-                "label": "VSCode Icons",
-                "path": "./icons.json"
-            }
-        ],
-        "configuration": {
-            "title": "vscode-icons configuration",
-            "properties": {
-                "vsicons.dontShowNewVersionMessage": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the new version message won't be shown anymore."
-                }
-            }
+    "configuration": {
+      "title": "vscode-icons configuration",
+      "properties": {
+        "vsicons.dontShowNewVersionMessage": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the new version message won't be shown anymore."
         }
-    },
-    "scripts": {
-        "build": "node ./src/build/build.js",
-        "example": "node ./src/build/example.js ",
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "eslint": "^2.10.2",
-        "eslint-config-airbnb": "^9.0.1",
-        "eslint-plugin-import": "^1.8.0",
-        "eslint-plugin-jsx-a11y": "^1.2.0",
-        "eslint-plugin-react": "^5.1.1",
-        "ncp": "^2.0.0",
-        "underscore": "^1.8.3",
-        "vscode": "^1.0.0"
-    },
-    "dependencies": {
-        "open": "0.0.5",
-        "semver": "^5.3.0"
+      }
     }
+  },
+  "scripts": {
+    "build": "node ./src/build/build.js",
+    "example": "node ./src/build/example.js ",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "lint": "node ./node_modules/eslint/bin/eslint src"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.1.1",
+    "ncp": "^2.0.0",
+    "underscore": "^1.8.3",
+    "vscode": "^1.0.0"
+  },
+  "dependencies": {
+    "open": "0.0.5",
+    "semver": "^5.3.0"
+  }
 }
