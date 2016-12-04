@@ -32,35 +32,40 @@ function buildJsonStructure(iconsFolderBasePath) {
 
   return {
     /**   folders section   **/
-    folders: folders.supported.reduce(function (old, current) {
-      var defs = old.defs;
-      var names = old.names;
-      var icon = current.icon;
-      var iconFolderType = 'folder_type_' + icon;
-      var folderPath = iconsFolderBasePath + iconFolderType;
-      var openFolderPath = folderPath + '_opened';
-      var iconFolderDefinition = '_fd_' + icon;
-      var iconOpenFolderDefinition = iconFolderDefinition + '_open';
-      var iconFileExtension = current.svg ? '.svg' : '.png';
+    folders: _.sortBy(folders.supported, function (item) {
+      return item.icon;
+    })
+      .reduce(function (old, current) {
+        var defs = old.defs;
+        var names = old.names;
+        var icon = current.icon;
+        var iconFolderType = 'folder_type_' + icon;
+        var folderPath = iconsFolderBasePath + iconFolderType;
+        var openFolderPath = folderPath + '_opened';
+        var iconFolderDefinition = '_fd_' + icon;
+        var iconOpenFolderDefinition = iconFolderDefinition + '_open';
+        var iconFileExtension = current.svg ? '.svg' : '.png';
 
-      defs[iconFolderDefinition] = {
-        iconPath: folderPath + suffix + iconFileExtension
-      };
-      defs[iconOpenFolderDefinition] = {
-        iconPath: openFolderPath + suffix + iconFileExtension
-      };
+        defs[iconFolderDefinition] = {
+          iconPath: folderPath + suffix + iconFileExtension
+        };
+        defs[iconOpenFolderDefinition] = {
+          iconPath: openFolderPath + suffix + iconFileExtension
+        };
 
-      current.extensions.forEach(function (extension) {
-        var key = current.dot ? '.' + extension : extension;
-        names.folderNames[key] = iconFolderDefinition;
-        names.folderNamesExpanded[key] = iconOpenFolderDefinition;
-      });
+        current.extensions.forEach(function (extension) {
+          var key = current.dot ? '.' + extension : extension;
+          names.folderNames[key] = iconFolderDefinition;
+          names.folderNamesExpanded[key] = iconOpenFolderDefinition;
+        });
 
-      return old;
-    }, { defs: {}, names: { folderNames: {}, folderNamesExpanded: {} } }),
+        return old;
+      }, { defs: {}, names: { folderNames: {}, folderNamesExpanded: {} } }),
 
     /**   files section   **/
-    files: _.uniq(files.supported, true)
+    files: _.uniq(_.sortBy(files.supported, function (item) {
+      return item.icon;
+    }), true)
       .reduce(function (old, current) {
         var defs = old.defs;
         var names = old.names;

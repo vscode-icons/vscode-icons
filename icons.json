@@ -69,6 +69,12 @@
     "_fd_locale_open": {
       "iconPath": "./icons/folder_type_locale_opened@2x.png"
     },
+    "_fd_meteor": {
+      "iconPath": "./icons/folder_type_meteor@2x.png"
+    },
+    "_fd_meteor_open": {
+      "iconPath": "./icons/folder_type_meteor_opened@2x.png"
+    },
     "_fd_node": {
       "iconPath": "./icons/folder_type_node@2x.png"
     },
@@ -80,12 +86,6 @@
     },
     "_fd_nuget_open": {
       "iconPath": "./icons/folder_type_nuget_opened@2x.png"
-    },
-    "_fd_meteor": {
-      "iconPath": "./icons/folder_type_meteor@2x.png"
-    },
-    "_fd_meteor_open": {
-      "iconPath": "./icons/folder_type_meteor_opened@2x.png"
     },
     "_fd_sass": {
       "iconPath": "./icons/folder_type_sass@2x.png"
@@ -144,6 +144,9 @@
     "_f_angular": {
       "iconPath": "./icons/file_type_angular@2x.png"
     },
+    "_f_ansible": {
+      "iconPath": "./icons/file_type_ansible@2x.png"
+    },
     "_f_apache": {
       "iconPath": "./icons/file_type_apache@2x.png"
     },
@@ -155,9 +158,6 @@
     },
     "_f_appveyor": {
       "iconPath": "./icons/file_type_appveyor@2x.png"
-    },
-    "_f_ansible": {
-      "iconPath": "./icons/file_type_ansible@2x.png"
     },
     "_f_asp": {
       "iconPath": "./icons/file_type_asp@2x.png"
@@ -189,9 +189,6 @@
     "_f_bundler": {
       "iconPath": "./icons/file_type_bundler@2x.png"
     },
-    "_f_cpp": {
-      "iconPath": "./icons/file_type_cpp@2x.png"
-    },
     "_f_c": {
       "iconPath": "./icons/file_type_c@2x.png"
     },
@@ -219,14 +216,17 @@
     "_f_coffeescript": {
       "iconPath": "./icons/file_type_coffeescript@2x.png"
     },
-    "_f_config": {
-      "iconPath": "./icons/file_type_config@2x.png"
-    },
     "_f_compass": {
       "iconPath": "./icons/file_type_compass@2x.png"
     },
     "_f_composer": {
       "iconPath": "./icons/file_type_composer@2x.png"
+    },
+    "_f_config": {
+      "iconPath": "./icons/file_type_config@2x.png"
+    },
+    "_f_cpp": {
+      "iconPath": "./icons/file_type_cpp@2x.png"
     },
     "_f_cs": {
       "iconPath": "./icons/file_type_cs@2x.png"
@@ -300,14 +300,14 @@
     "_f_flow": {
       "iconPath": "./icons/file_type_flow@2x.png"
     },
-    "_f_fsharp": {
-      "iconPath": "./icons/file_type_fsharp@2x.png"
-    },
     "_f_font": {
       "iconPath": "./icons/file_type_font@2x.png"
     },
     "_f_fortran": {
       "iconPath": "./icons/file_type_fortran@2x.png"
+    },
+    "_f_fsharp": {
+      "iconPath": "./icons/file_type_fsharp@2x.png"
     },
     "_f_git": {
       "iconPath": "./icons/file_type_git@2x.png"
@@ -408,11 +408,11 @@
     "_f_license": {
       "iconPath": "./icons/file_type_license@2x.png"
     },
-    "_f_lisp": {
-      "iconPath": "./icons/file_type_lisp@2x.png"
-    },
     "_f_lime": {
       "iconPath": "./icons/file_type_lime@2x.png"
+    },
+    "_f_lisp": {
+      "iconPath": "./icons/file_type_lisp@2x.png"
     },
     "_f_log": {
       "iconPath": "./icons/file_type_log@2x.png"
@@ -438,11 +438,11 @@
     "_f_markup": {
       "iconPath": "./icons/file_type_markup@2x.png"
     },
-    "_f_matlab": {
-      "iconPath": "./icons/file_type_matlab@2x.png"
-    },
     "_f_masterpage": {
       "iconPath": "./icons/file_type_masterpage@2x.png"
+    },
+    "_f_matlab": {
+      "iconPath": "./icons/file_type_matlab@2x.png"
     },
     "_f_mustache": {
       "iconPath": "./icons/file_type_mustache@2x.png"
@@ -483,9 +483,6 @@
     "_f_perl": {
       "iconPath": "./icons/file_type_perl@2x.png"
     },
-    "_f_poedit": {
-      "iconPath": "./icons/file_type_poedit@2x.png"
-    },
     "_f_photoshop": {
       "iconPath": "./icons/file_type_photoshop@2x.png"
     },
@@ -498,17 +495,20 @@
     "_f_plantuml": {
       "iconPath": "./icons/file_type_plantuml@2x.png"
     },
-    "_f_procfile": {
-      "iconPath": "./icons/file_type_procfile@2x.png"
-    },
-    "_f_prolog": {
-      "iconPath": "./icons/file_type_prolog@2x.png"
+    "_f_poedit": {
+      "iconPath": "./icons/file_type_poedit@2x.png"
     },
     "_f_postcss": {
       "iconPath": "./icons/file_type_postcss@2x.png"
     },
     "_f_powershell": {
       "iconPath": "./icons/file_type_powershell@2x.png"
+    },
+    "_f_procfile": {
+      "iconPath": "./icons/file_type_procfile@2x.png"
+    },
+    "_f_prolog": {
+      "iconPath": "./icons/file_type_prolog@2x.png"
     },
     "_f_protobuf": {
       "iconPath": "./icons/file_type_protobuf@2x.png"
@@ -603,14 +603,14 @@
     "_f_sss": {
       "iconPath": "./icons/file_type_sss@2x.svg"
     },
+    "_f_storyboard": {
+      "iconPath": "./icons/file_type_storyboard@2x.png"
+    },
     "_f_stylelint": {
       "iconPath": "./icons/file_type_stylelint@2x.png"
     },
     "_f_stylus": {
       "iconPath": "./icons/file_type_stylus@2x.png"
-    },
-    "_f_storyboard": {
-      "iconPath": "./icons/file_type_storyboard@2x.png"
     },
     "_f_svg": {
       "iconPath": "./icons/file_type_svg@2x.png"
@@ -735,9 +735,9 @@
     "less": "_fd_less",
     "locale": "_fd_locale",
     "locales": "_fd_locale",
+    ".meteor": "_fd_meteor",
     "node_modules": "_fd_node",
     ".nuget": "_fd_nuget",
-    ".meteor": "_fd_meteor",
     "sass": "_fd_sass",
     "scss": "_fd_sass",
     "script": "_fd_script",
@@ -774,9 +774,9 @@
     "less": "_fd_less_open",
     "locale": "_fd_locale_open",
     "locales": "_fd_locale_open",
+    ".meteor": "_fd_meteor_open",
     "node_modules": "_fd_node_open",
     ".nuget": "_fd_nuget_open",
-    ".meteor": "_fd_meteor_open",
     "sass": "_fd_sass_open",
     "scss": "_fd_sass_open",
     "script": "_fd_script_open",
@@ -799,9 +799,9 @@
   "fileExtensions": {
     "as": "_f_actionscript",
     "ai": "_f_ai",
+    "ansible": "_f_ansible",
     "apib": "_f_apib",
     "app": "_f_applescript",
-    "ansible": "_f_ansible",
     "asp": "_f_asp",
     "aspx": "_f_aspx",
     "ascx": "_f_aspx",
@@ -828,10 +828,6 @@
     "cmxa": "_f_binary",
     "cmi": "_f_binary",
     "blade.php": "_f_blade",
-    "cpp": "_f_cpp",
-    "hpp": "_f_cpp",
-    "cc": "_f_cpp",
-    "cxx": "_f_cpp",
     "c": "_f_c",
     "cake": "_f_cake",
     "cfm": "_f_cfm",
@@ -855,6 +851,10 @@
     "config": "_f_config",
     "conf": "_f_config",
     "cfg": "_f_config",
+    "cpp": "_f_cpp",
+    "hpp": "_f_cpp",
+    "cc": "_f_cpp",
+    "cxx": "_f_cpp",
     "cs": "_f_cs",
     "csx": "_f_cs",
     "cshtml": "_f_cshtml",
@@ -887,9 +887,6 @@
     "swc": "_f_flash",
     "sol": "_f_flash",
     "js.flow": "_f_flow",
-    "fs": "_f_fsharp",
-    "fsx": "_f_fsharp",
-    "fsi": "_f_fsharp",
     "woff": "_f_font",
     "woff2": "_f_font",
     "ttf": "_f_font",
@@ -901,6 +898,9 @@
     "f90": "_f_fortran",
     "mod": "_f_fortran",
     "f": "_f_fortran",
+    "fs": "_f_fsharp",
+    "fsx": "_f_fsharp",
+    "fsi": "_f_fsharp",
     "go": "_f_go",
     "gradle": "_f_gradle",
     "gql": "_f_graphql",
@@ -941,8 +941,8 @@
     "kt": "_f_kotlin",
     "less": "_f_less",
     "enc": "_f_license",
-    "bil": "_f_lisp",
     "hxp": "_f_lime",
+    "bil": "_f_lisp",
     "log": "_f_log",
     "lsl": "_f_lsl",
     "lua": "_f_lua",
@@ -952,6 +952,7 @@
     "markdown": "_f_markdown",
     "marko": "_f_marko",
     "marko.js": "_f_markojs",
+    "master": "_f_masterpage",
     "fig": "_f_matlab",
     "mat": "_f_matlab",
     "mex": "_f_matlab",
@@ -967,7 +968,6 @@
     "smv": "_f_matlab",
     "tikz": "_f_matlab",
     "xvc": "_f_matlab",
-    "master": "_f_masterpage",
     "mustache": "_f_mustache",
     "mst": "_f_mustache",
     "nim": "_f_nim",
@@ -994,8 +994,6 @@
     "patch": "_f_patch",
     "pdf": "_f_pdf",
     "perl": "_f_perl",
-    "po": "_f_poedit",
-    "mo": "_f_poedit",
     "psd": "_f_photoshop",
     "php": "_f_php",
     "php1": "_f_php",
@@ -1013,14 +1011,16 @@
     "plantuml": "_f_plantuml",
     "iuml": "_f_plantuml",
     "puml": "_f_plantuml",
-    "P": "_f_prolog",
-    "pl": "_f_prolog",
-    "pro": "_f_prolog",
+    "po": "_f_poedit",
+    "mo": "_f_poedit",
     "pcss": "_f_postcss",
     "postcss": "_f_postcss",
     "ps1": "_f_powershell",
     "psm1": "_f_powershell",
     "psd1": "_f_powershell",
+    "P": "_f_prolog",
+    "pl": "_f_prolog",
+    "pro": "_f_prolog",
     "proto": "_f_protobuf",
     "epp": "_f_puppet",
     "pp": "_f_puppet",
@@ -1059,8 +1059,8 @@
     "sqlite3": "_f_sqlite",
     "db3": "_f_sqlite",
     "sss": "_f_sss",
-    "styl": "_f_stylus",
     "storyboard": "_f_storyboard",
+    "styl": "_f_stylus",
     "svg": "_f_svg",
     "swift": "_f_swift",
     "tcl": "_f_tcl",
@@ -1121,10 +1121,10 @@
     "gemfile": "_f_bundler",
     "gemfile.lock": "_f_bundler",
     "codeclimate.yml": "_f_codeclimate",
-    "makefile": "_f_config",
-    ".env.example": "_f_config",
     "composer.json": "_f_composer",
     "composer.lock": "_f_composer",
+    "makefile": "_f_config",
+    ".env.example": "_f_config",
     ".csslintrc": "_f_csslint",
     "dockerfile": "_f_docker",
     ".dockerignore": "_f_docker",
