@@ -1,13 +1,14 @@
 .github/**
 .vscode/**
+examples/**
 images/*.psd
+images/*.ai
+images/screenshot_folders.png
+Dockerfile
 src/**
 typings/**
 .gitignore
 code*.js
 jsconfig.json
 .eslintrc.json
-icons.zip
-icons_before_2.0.0.zip
 npm-debug.log
-screenshot_old.png
