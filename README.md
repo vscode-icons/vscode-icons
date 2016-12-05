@@ -12,9 +12,9 @@ Bring icons to your VS Code.
 
 As you all know, VSCode finally supports File and Folder icons in an official way. Read this great article by [@chrisdias](https://twitter.com/chrisdias): ["Rebellion. Mutiny. Revolt. Uprising."](https://code.visualstudio.com/blogs/2016/09/08/icon-themes) if you want to learn the history about this plugin and how finally icons landed in VSCode.
 
-I would like to thank the VSCode team for their support during this summer (2106) in terms of migrating this extension and prepare the new contribution point, specially [@aeschli](https://github.com/aeschli) for his good disposition.
+I would like to thank the VSCode team for their support during this summer (2016) in terms of migrating this extension and preparing the new contribution point(especially [@aeschli](https://github.com/aeschli) for his good disposition).
 
-I would also like to thank all the community for their support bringing ideas, collaborating and making this path easy and I would also like to stress the great help that [@jens1o](https://github.com/jens1o) has provided to the project. He's amazing! And he's only 14!! :D Thanks, truly!
+I would also like to thank the whole community for their support: bringing ideas, collaborating and making this path easy. And I would also like to stress the great help that [@jens1o](https://github.com/jens1o) has provided to the project. He's amazing! And he's only 14!! :D Thanks, truly!
 
 ### State of the extension
 
@@ -30,7 +30,7 @@ There are several motives that have led me to take this decision:
 4. Code injection will be eventually not allowed.
 5. Support from VSCode team is great and they're willing to hear all the suggestions from the community regarding icon themes.
 
-Still, there's one missing point: `Custom Icon associations` is still not supported. They're not convinced of the value that this would bring to VSCode, so again, it's up to all of you to make the difference and tell if that's important for you. I'd suggest you to create a Github issue with your opinions on this matter so the VSCode team can have a clear vision about how important are `Custom Icon associations` to you. [This is a starting point](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649). Provide a +1 if you want the VSCode team to support this feature.
+Still, there's one missing point: `Custom Icon associations` is still not supported. They're not convinced of the value that this would bring to VSCode, so again, it's up to all of us to make the difference. I suggest that you create a Github issue with your opinions on this matter, so that the VSCode team can have a clear vision about importance of `Custom Icon associations` to the community (us). [This is a starting point](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649). Provide a +1 if you want the VSCode team to support this feature.
 
 More information in [#328](https://github.com/robertohuertasm/vscode-icons/issues/328)
 
@@ -77,7 +77,7 @@ Go to **File > Preferences > File Icon Theme > VSCode Icons**.
 ## List of supported icons
 The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedExtensions.js). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
 
-If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template so any help will be really appreciated and credit will be given to you ;D
+If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template, so any help will be really appreciated and credit will be given to you ;D
 
 ## List of supported folder icons
 If you want to check which folder icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/build/supportedFolders.js). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/robertohuertasm/vscode-icons/issues).
@@ -123,7 +123,7 @@ npm run example -- --all
 The above syntax will create examples for all supported files and folders.
 
 ## Configuration
-If you want to see again the new version message every time you receive an update then you can modify this configuration setting:
+If you want to see the new version message every time you receive an update, then you can modify this configuration setting:
 ```json
 {
   "vsicons.dontShowNewVersionMessage": false
@@ -146,7 +146,7 @@ docker run --rm -it -v $PWD/dist:/app/dist vscode-icons
 All of the files will be generated in the `dist` folder.
 
 ## Change log 
-If you want to take a look at our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md) just click [here](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md).
+You can checkout all our changes in our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md)
 
 If you feel that there's some icon missing please report it to the Github repository!
 
