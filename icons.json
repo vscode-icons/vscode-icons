@@ -1114,6 +1114,7 @@
     ".htaccess": "_f_apache",
     ".htpasswd": "_f_apache",
     "appveyor.yml": "_f_appveyor",
+    ".appveyor.yml": "_f_appveyor",
     ".babelrc": "_f_babel",
     ".bowerrc": "_f_bower",
     "bower.json": "_f_bower",
