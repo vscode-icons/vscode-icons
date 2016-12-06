@@ -1194,6 +1194,8 @@
     "jsconfig.json": "_f_vscode",
     "tsconfig.json": "_f_vscode",
     ".vscodeignore": "_f_vscode",
+    "extensions.json": "_f_vscode",
+    "settings.json": "_f_vscode",
     "webpack.config.js": "_f_webpack",
     "webpack.config.common.js": "_f_webpack",
     "webpack.config.babel.js": "_f_webpack",
