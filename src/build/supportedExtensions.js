@@ -8,7 +8,7 @@ exports.extensions = {
     { icon: 'apache', extensions: ['.htaccess', '.htpasswd'], contribType: ctype.filename },
     { icon: 'apib', extensions: ['apib'] },
     { icon: 'applescript', extensions: ['app'] },
-    { icon: 'appveyor', extensions: ['appveyor.yml'], contribType: ctype.filename },
+    { icon: 'appveyor', extensions: ['appveyor.yml', '.appveyor.yml'], contribType: ctype.filename },
     { icon: 'ansible', extensions: ['ansible'] },
     { icon: 'asp', extensions: ['asp'] },
     { icon: 'aspx', extensions: ['aspx', 'ascx'] },
