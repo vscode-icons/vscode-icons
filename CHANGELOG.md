@@ -1,5 +1,14 @@
 # Change Log
 
+## 4.0.6 (December 11, 2016)
+  - Enhancement: Added tests to the project. ([@robertohuertasm](https://github.com/robertohuertasm) in [#497](https://github.com/robertohuertasm/vscode-icons/pull/497))
+  - Enhancement: Added tests to the project. ([@JimiC](https://github.com/JimiC) in [#495](https://github.com/robertohuertasm/vscode-icons/pull/495))
+  - Enhancement: Eslint dependencies updated. ([@JimiC](https://github.com/JimiC) in [#494](https://github.com/robertohuertasm/vscode-icons/pull/494))
+  - Enhancement: Lodash replaces Underscore. ([@JimiC](https://github.com/JimiC) in [#493](https://github.com/robertohuertasm/vscode-icons/pull/493))
+  - Enhancement: Appveyor now support starting dot. ([@JimiC](https://github.com/JimiC) in [#492](https://github.com/robertohuertasm/vscode-icons/pull/492))
+  - Enhancement: Readme grammar corrected. ([@Kitanga](https://github.com/Kitanga) in [#490](https://github.com/robertohuertasm/vscode-icons/pull/490))
+  - Enhancement: Build process refactored. ([@JimiC](https://github.com/JimiC) in [#488](https://github.com/robertohuertasm/vscode-icons/pull/488))
+
 ## 4.0.5 (December 04, 2016)
   - Enhancement: Java files support improved. ([@JimiC](https://github.com/JimiC) in [#487](https://github.com/robertohuertasm/vscode-icons/pull/487))
   - Enhancement: Screenshot removed from distributable. ([@JimiC](https://github.com/JimiC) in [#486](https://github.com/robertohuertasm/vscode-icons/pull/486))
