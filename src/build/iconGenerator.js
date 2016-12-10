@@ -20,7 +20,6 @@ function removeFirstDot(txt) {
   return txt;
 }
 
-
 /**
  * Builds the structure for folders and files to use in the json file.
  *
@@ -102,14 +101,13 @@ function buildJsonStructure(iconsFolderBasePath) {
  * @returns A json object with the apprepriate schema for vscode
  */
 function getDefaultSchema(iconsFolderBasePath) {
-
+  /* eslint-disable no-underscore-dangle */
   defaultSchema.iconDefinitions._file.iconPath = iconsFolderBasePath + 'File.svg';
   defaultSchema.iconDefinitions._folder.iconPath = iconsFolderBasePath + 'Folder_inverse.svg';
   defaultSchema.iconDefinitions._folder_open.iconPath = iconsFolderBasePath + 'Folder_opened.svg';
-  
+  /* eslint-enable no-underscore-dangle */
   return defaultSchema;
 }
-
 
 /**
  * Gets the relative path to the destination folder from the source directory.
@@ -136,7 +134,6 @@ function getPathToDirName(toDirName, fromDirPath) {
     (toDirName.endsWith('/') ? '' : '/');
 }
 
-
 /**
  * Write the json to a file.
  *
@@ -156,7 +153,6 @@ function writeJsonToFile(json, iconsFilename, outDir) {
     console.error('Something went wrong while generating the icon contribution file:', error);
   }
 }
-
 
 /**
  * Updates the package.json file.
@@ -179,7 +175,6 @@ function updatePackageJson(newIconThemesPath) {
     console.error(err);
   }
 }
-
 
 /**
  * Generates an icon json file.

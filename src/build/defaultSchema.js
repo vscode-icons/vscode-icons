@@ -18,4 +18,4 @@ exports.schema = {
   fileExtensions: {},
   fileNames: {},
   languageIds: {}
-}
+};

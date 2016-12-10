@@ -5,6 +5,15 @@
   "extends": [
     "airbnb-base/legacy"
   ],
+  "globals": {
+    "describe": true,
+    "it": true,
+    "fit": true,
+    "expect": true,
+    "xit": true,
+    "xdescribe": true,
+    "fdescribe": true
+  }, 
   "rules": {
     "max-len": [
       2,
