@@ -1,6 +1,6 @@
 var fs = require('fs');
 var path = require('path');
-var _ = require('underscore');
+var _ = require('lodash');
 var files = require('./supportedExtensions').extensions;
 var folders = require('./supportedFolders').extensions;
 var ctype = require('./contribTypes');
@@ -63,7 +63,7 @@ function buildJsonStructure(iconsFolderBasePath) {
       }, { defs: {}, names: { folderNames: {}, folderNamesExpanded: {} } }),
 
     /**   files section   **/
-    files: _.uniq(_.sortBy(files.supported, function (item) {
+    files: _.sortedUniq(_.sortBy(files.supported, function (item) {
       return item.icon;
     }), true)
       .reduce(function (old, current) {

@@ -1,4 +1,3 @@
-/* eslint-disable no-console*/
 var vscode = require('vscode'); // eslint-disable-line
 var open = require('open');
 var msg = require('./messages').messages;
