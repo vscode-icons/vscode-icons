@@ -25,6 +25,12 @@
       "ForInStatement"
     ],
     "func-names": 0,
-    "vars-on-top": 0
+    "vars-on-top": 0,
+    "no-plusplus": [
+      2,
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ]
   }
 }
