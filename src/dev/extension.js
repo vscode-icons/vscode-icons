@@ -1,4 +1,4 @@
-var vscode = require('vscode'); // eslint-disable-line
+var vscode = require('vscode');
 var open = require('open');
 var msg = require('./messages').messages;
 var settings = require('./settings');
@@ -36,15 +36,16 @@ function showNewVersionMessage() {
 function runAutoInstall() {
   var state = settings.getState();
   var isNewVersion = state.version !== vars.extVersion;
+
   if (!state.welcomeShown) {
     // show welcome message
     showWelcomeMessage();
-  } else {
-    if (isNewVersion) {
-      settings.setStatus(state.status);
-      if (vscode.workspace.getConfiguration().vsicons.dontShowNewVersionMessage) {
-        return;
-      }
+    return;
+  }
+
+  if (isNewVersion) {
+    settings.setStatus(state.status);
+    if (!vscode.workspace.getConfiguration().vsicons.dontShowNewVersionMessage) {
       showNewVersionMessage();
     }
   }

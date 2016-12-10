@@ -197,18 +197,21 @@ exports.extensions = {
     { icon: 'vim', extensions: ['.vimrc', '.gvimrc'], contribType: ctype.filename, svg: true },
     { icon: 'volt', extensions: ['volt'] },
     {
-      icon: 'vscode', extensions: [
+      icon: 'vscode',
+      extensions: [
         'vscodeignore.json',
         'launch.json',
         'tasks.json',
         'jsconfig.json',
         'tsconfig.json',
         '.vscodeignore'
-      ], contribType: ctype.filename
+      ],
+      contribType: ctype.filename
     },
     { icon: 'vue', extensions: ['vue'] },
     {
-      icon: 'webpack', extensions: [
+      icon: 'webpack',
+      extensions: [
         'webpack.config.js',
         'webpack.config.common.js',
         'webpack.config.babel.js',
@@ -224,7 +227,8 @@ exports.extensions = {
         'webpack.config.prod.js',
         'webpack.config.ts',
         'webpack.config.coffee'
-      ], contribType: ctype.filename
+      ],
+      contribType: ctype.filename
     },
     { icon: 'wxml', extensions: ['wxml'] },
     { icon: 'wxss', extensions: ['wxss'] },

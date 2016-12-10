@@ -1,5 +1,5 @@
 var fs = require('fs');
-var vscode = require('vscode'); // eslint-disable-line
+var vscode = require('vscode');
 var semver = require('semver');
 var path = require('path');
 var getAppPath = require('./vscodePath');
