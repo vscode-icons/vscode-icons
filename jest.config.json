@@ -1,0 +1,12 @@
+{
+  "verbose": true,
+  "moduleDirectories": [
+    "node_modules",
+    "src/build",
+    "src/dev"
+  ],
+  "testEnvironment": "node",
+  "testPathDirs": [
+    "tests"
+  ]
+}

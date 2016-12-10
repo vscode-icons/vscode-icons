@@ -1,11 +1,11 @@
 var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
+var defaultSchema = require('./defaultSchema').schema;
 var files = require('./supportedExtensions').extensions;
 var folders = require('./supportedFolders').extensions;
 var ctype = require('./contribTypes');
 var packageJson = require('./../../package.json');
-
 
 /**
  * Removes the first dot from the text.
@@ -102,27 +102,12 @@ function buildJsonStructure(iconsFolderBasePath) {
  * @returns A json object with the apprepriate schema for vscode
  */
 function getDefaultSchema(iconsFolderBasePath) {
-  return {
-    iconDefinitions: {
-      _file: {
-        iconPath: iconsFolderBasePath + 'File.svg'
-      },
-      _folder: {
-        iconPath: iconsFolderBasePath + 'Folder_inverse.svg'
-      },
-      _folder_open: {
-        iconPath: iconsFolderBasePath + 'Folder_opened.svg'
-      }
-    },
-    file: '_file',
-    folder: '_folder',
-    folderExpanded: '_folder_open',
-    folderNames: {},
-    folderNamesExpanded: {},
-    fileExtensions: {},
-    fileNames: {},
-    languageIds: {}
-  };
+
+  defaultSchema.iconDefinitions._file.iconPath = iconsFolderBasePath + 'File.svg';
+  defaultSchema.iconDefinitions._folder.iconPath = iconsFolderBasePath + 'Folder_inverse.svg';
+  defaultSchema.iconDefinitions._folder_open.iconPath = iconsFolderBasePath + 'Folder_opened.svg';
+  
+  return defaultSchema;
 }
 
 
@@ -232,4 +217,9 @@ function generate(iconsFilename, outDir) {
   updatePackageJson(outputDir + iconsFilename);
 }
 
-module.exports = { generate: generate };
+module.exports = {
+  generate: generate,
+  removeFirstDot: removeFirstDot,
+  getPathToDirName: getPathToDirName,
+  getDefaultSchema: getDefaultSchema
+};
