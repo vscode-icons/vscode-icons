@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.1.0 (December 11, 2016)
+  - Enhancement: Angular icons' fonts rasterized. Official icons for `ts`, `js` and `d.ts`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#509](https://github.com/robertohuertasm/vscode-icons/pull/509))
+  - Feature: Language Id support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#500](https://github.com/robertohuertasm/vscode-icons/pull/500))
+  - Enhancement: File and folder icons improved. ([@JimiC](https://github.com/JimiC) in [#507](https://github.com/robertohuertasm/vscode-icons/pull/493))
+  - Feature: Jest support. ([@JimiC](https://github.com/JimiC) in [#503](https://github.com/robertohuertasm/vscode-icons/pull/503))
+  - Enhancement: Added more tests. ([@JimiC](https://github.com/JimiC) in [#502](https://github.com/robertohuertasm/vscode-icons/pull/502))
+  - Fix: tag extension removed from 'pug' as it conflicted with 'riot'. ([@JimiC](https://github.com/JimiC) in [#501](https://github.com/robertohuertasm/vscode-icons/pull/501))
+
 ## 4.0.6 (December 11, 2016)
   - Feature: Language Id support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#500](https://github.com/robertohuertasm/vscode-icons/pull/500))
   - Enhancement: Official python icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#499](https://github.com/robertohuertasm/vscode-icons/pull/499))
