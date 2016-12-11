@@ -101,6 +101,7 @@ exports.extensions = {
     { icon: 'jar', extensions: ['java'], svg: true },
     { icon: 'java', extensions: ['java'], svg: true },
     { icon: 'jbuilder', extensions: ['jbuilder'], svg: true },
+    { icon: 'jest', extensions: ['.jest.config.json'], filename: true, svg: true },
     { icon: 'jinja', extensions: ['jinja'] },
     { icon: 'js', extensions: ['js'] },
     { icon: 'jshintrc', extensions: ['.jshintrc'], filename: true },
