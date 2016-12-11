@@ -1,6 +1,7 @@
 # Change Log
 
 ## 4.0.6 (December 11, 2016)
+  - Feature: Added tests to the project and icons.json moved to dist folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#498](https://github.com/robertohuertasm/vscode-icons/pull/498))
   - Enhancement: Added tests to the project. ([@robertohuertasm](https://github.com/robertohuertasm) in [#497](https://github.com/robertohuertasm/vscode-icons/pull/497))
   - Enhancement: Added tests to the project. ([@JimiC](https://github.com/JimiC) in [#495](https://github.com/robertohuertasm/vscode-icons/pull/495))
   - Enhancement: Eslint dependencies updated. ([@JimiC](https://github.com/JimiC) in [#494](https://github.com/robertohuertasm/vscode-icons/pull/494))
