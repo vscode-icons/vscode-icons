@@ -84,7 +84,7 @@ function buildJsonStructure(iconsFolderBasePath) {
           };
 
           current.languages.forEach(function (langIds) {
-            if (_.isArray(langIds)) {
+            if (Array.isArray(langIds)) {
               langIds.forEach(function (id) { assignLanguages(id); });
             } else {
               assignLanguages(langIds);
@@ -227,5 +227,6 @@ module.exports = {
   generate: generate,
   removeFirstDot: removeFirstDot,
   getPathToDirName: getPathToDirName,
-  getDefaultSchema: getDefaultSchema
+  getDefaultSchema: getDefaultSchema,
+  buildJsonStructure: buildJsonStructure
 };
