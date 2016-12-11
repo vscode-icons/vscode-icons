@@ -1,0 +1,18 @@
+<svg id="Layer_10" data-name="Layer 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1.02" y1="32.98" x2="1.09" y2="32.91" gradientTransform="matrix(189.38, 0, 0, -189.81, -188.24, 6264.66)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#387eb8"/>
+      <stop offset="1" stop-color="#366994"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.71" y1="33.27" x2="0.79" y2="33.2" gradientTransform="matrix(189.38, 0, 0, -189.81, -122.24, 6328.91)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe052"/>
+      <stop offset="1" stop-color="#ffc331"/>
+    </linearGradient>
+  </defs>
+  <title>file_type_python@2x</title>
+  <g>
+    <path d="M15.9,2.14C8.82,2.14,9.27,5.2,9.27,5.2V8.38H16v1H6.59S2.06,8.82,2.06,16s4,6.89,4,6.89H8.37V19.54s-0.13-4,3.89-4H19s3.76,0.06,3.76-3.64V5.83s0.57-3.7-6.82-3.7h0ZM12.18,4.27A1.21,1.21,0,1,1,11,5.49a1.21,1.21,0,0,1,1.21-1.21h0Z" style="fill: url(#linear-gradient)"/>
+    <path d="M16.1,29.86c7.08,0,6.63-3.07,6.63-3.07V23.62H16v-1h9.44s4.53,0.51,4.53-6.63-4-6.89-4-6.89H23.63v3.31s0.13,4-3.89,4H13s-3.76-.06-3.76,3.64v6.11s-0.57,3.7,6.82,3.7h0Zm3.72-2.14A1.21,1.21,0,1,1,21,26.51a1.21,1.21,0,0,1-1.21,1.21h0Z" style="fill: url(#linear-gradient-2)"/>
+  </g>
+  <rect width="32" height="32" style="fill: #fff;opacity: 0"/>
+</svg>
