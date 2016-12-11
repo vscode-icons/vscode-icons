@@ -4,7 +4,6 @@ var _ = require('lodash');
 var defaultSchema = require('./defaultSchema').schema;
 var files = require('./supportedExtensions').extensions;
 var folders = require('./supportedFolders').extensions;
-var ctype = require('./contribTypes');
 var packageJson = require('./../../package.json');
 
 /**
@@ -73,19 +72,31 @@ function buildJsonStructure(iconsFolderBasePath) {
         var filePath = iconsFolderBasePath + iconFileType;
         var iconFileDefinition = '_f_' + icon;
         var iconFileExtension = current.svg ? '.svg' : '.png';
-        var contribType = current.contribType;
+        var isFilename = current.filename;
 
         defs[iconFileDefinition] = {
           iconPath: filePath + suffix + iconFileExtension
         };
 
+        if (current.languages) {
+          var assignLanguages = function (langId) {
+            names.languageIds[langId] = iconFileDefinition;
+          };
+
+          current.languages.forEach(function (langIds) {
+            if (_.isArray(langIds)) {
+              langIds.forEach(function (id) { assignLanguages(id); });
+            } else {
+              assignLanguages(langIds);
+            }
+          });
+        }
+
         current.extensions.forEach(function (extension) {
-          if (contribType === ctype.filename) {
+          if (isFilename) {
             names.fileNames[extension] = iconFileDefinition;
-          } else if (!contribType) {
-            names.fileExtensions[removeFirstDot(extension)] = iconFileDefinition;
           } else {
-            names.languageIds[contribType] = iconFileDefinition;
+            names.fileExtensions[removeFirstDot(extension)] = iconFileDefinition;
           }
         });
 
