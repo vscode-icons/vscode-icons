@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-var languages = require('./languages');
+var languages = require('./languages').languages;
 exports.extensions = {
   supported: [
     { icon: 'actionscript', extensions: ['as'] },

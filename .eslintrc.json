@@ -6,14 +6,20 @@
     "airbnb-base/legacy"
   ],
   "globals": {
+    "afterEach": true,
+    "beforeEach": true,
+    "afterAll": true,
+    "beforeAll": true,
     "describe": true,
+    "expect": true,
     "it": true,
     "fit": true,
-    "expect": true,
-    "xit": true,
+    "test": true,
     "xdescribe": true,
-    "fdescribe": true
-  }, 
+    "fdescribe": true,
+    "xit": true,
+    "xtest": true
+  },
   "rules": {
     "max-len": [
       2,
