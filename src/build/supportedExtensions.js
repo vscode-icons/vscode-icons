@@ -150,7 +150,7 @@ exports.extensions = {
     { icon: 'protobuf', extensions: ['proto'] },
     { icon: 'puppet', extensions: ['epp', 'pp'] },
     { icon: 'purescript', extensions: ['purs'], svg: true },
-    { icon: 'python', extensions: ['py', 'pyw'] },
+    { icon: 'python', extensions: ['py', 'pyw'], svg: true },
     { icon: 'qlikview', extensions: ['qvd', 'qvw'] },
     { icon: 'r', extensions: ['r'] },
     { icon: 'rails', extensions: [] },
