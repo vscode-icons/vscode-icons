@@ -7,7 +7,8 @@ var outDir = './dist';
 // The function takes as second argument the directory where
 // we want the file to be placed.
 // Default directory is the 'root' directory
-iconGenerator.generate('icons.json');
+
+iconGenerator.generate('icons.json', outDir);
 
 // moving to dist
 ncp.limit = 16;
