@@ -113,9 +113,9 @@ function buildJsonStructure(iconsFolderBasePath) {
  */
 function getDefaultSchema(iconsFolderBasePath) {
   /* eslint-disable no-underscore-dangle */
-  defaultSchema.iconDefinitions._file.iconPath = iconsFolderBasePath + 'File.svg';
-  defaultSchema.iconDefinitions._folder.iconPath = iconsFolderBasePath + 'Folder_inverse.svg';
-  defaultSchema.iconDefinitions._folder_open.iconPath = iconsFolderBasePath + 'Folder_opened.svg';
+  defaultSchema.iconDefinitions._file.iconPath = iconsFolderBasePath + 'file.svg';
+  defaultSchema.iconDefinitions._folder.iconPath = iconsFolderBasePath + 'folder.svg';
+  defaultSchema.iconDefinitions._folder_open.iconPath = iconsFolderBasePath + 'folder_opened.svg';
   /* eslint-enable no-underscore-dangle */
   return defaultSchema;
 }
