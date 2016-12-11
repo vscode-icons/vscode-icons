@@ -15,6 +15,8 @@ exports.extensions = {
     { icon: 'ng2_service_js', extensions: ['service.js'], svg: true },
     { icon: 'ng2_module_ts', extensions: ['module.ts'], svg: true },
     { icon: 'ng2_module_js', extensions: ['module.js'], svg: true },
+    { icon: 'ng2_routing_ts', extensions: ['routing.ts'], svg: true },
+    { icon: 'ng2_routing_js', extensions: ['routing.js'], svg: true },
     { icon: 'ng2_routing_ts', extensions: ['app-routing.module.ts'], filename: true, svg: true },
     { icon: 'ng2_routing_js', extensions: ['app-routing.module.js'], filename: true, svg: true },
     { icon: 'apache', extensions: ['.htaccess', '.htpasswd'], filename: true },
