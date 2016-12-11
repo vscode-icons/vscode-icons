@@ -1,6 +1,6 @@
 # Change Log
 
-## 4.1.0 (December 11, 2016)
+## 4.1.0 (December 12, 2016)
   - Enhancement: Angular icons' fonts rasterized. Official icons for `ts`, `js` and `d.ts`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#509](https://github.com/robertohuertasm/vscode-icons/pull/509))
   - Feature: Language Id support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#500](https://github.com/robertohuertasm/vscode-icons/pull/500))
   - Enhancement: File and folder icons improved. ([@JimiC](https://github.com/JimiC) in [#507](https://github.com/robertohuertasm/vscode-icons/pull/493))
