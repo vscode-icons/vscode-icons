@@ -1,7 +1,6 @@
 var fs = require('fs');
 var files = require('./supportedExtensions').extensions;
 var folders = require('./supportedFolders').extensions;
-var ctype = require('./contribTypes');
 
 var supportedFlags = ['--all', '--folders', '--files'];
 
@@ -18,7 +17,7 @@ var folderNames = folders.supported.reduce(function (init, current) {
 var fileNames = files.supported.reduce(function (init, current) {
   var obj = init;
   if (current.extensions[0]) {
-    obj[current.icon] = current.contribType === ctype.filename
+    obj[current.icon] = current.filename
       ? current.extensions[0]
       : 'file.' + current.extensions[0];
   }
