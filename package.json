@@ -1,86 +1,86 @@
 {
-  "name": "vscode-icons",
-  "displayName": "vscode-icons",
-  "description": "Icons for Visual Studio Code",
-  "version": "4.0.5",
-  "publisher": "robertohuertasm",
-  "license": "MIT",
-  "author": {
-    "email": "roberto.huertas@outlook.com",
-    "name": "Roberto Huertas",
-    "url": "http://codecoding.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/robertohuertasm/vscode-icons"
-  },
-  "bugs": {
-    "url": "https://github.com/robertohuertasm/vscode-icons/issues",
-    "email": "roberto.huertas@outlook.com"
-  },
-  "engines": {
-    "vscode": "^1.0.0"
-  },
-  "categories": [
-    "Other",
-    "Themes"
-  ],
-  "keywords": [
-    "icon-theme",
-    "theme",
-    "icons",
-    "vscode-icons"
-  ],
-  "preview": true,
-  "homepage": "https://github.com/robertohuertasm/vscode-icons",
-  "icon": "images/logo.png",
-  "galleryBanner": {
-    "color": "#ffdd00"
-  },
-  "activationEvents": [
-    "*"
-  ],
-  "main": "./dist/extension",
-  "contributes": {
-    "iconThemes": [
-      {
-        "id": "vscode-icons",
-        "label": "VSCode Icons",
-        "path": "./dist/icons.json"
-      }
+    "name": "vscode-icons",
+    "displayName": "vscode-icons",
+    "description": "Icons for Visual Studio Code",
+    "version": "4.0.6",
+    "publisher": "robertohuertasm",
+    "license": "MIT",
+    "author": {
+        "email": "roberto.huertas@outlook.com",
+        "name": "Roberto Huertas",
+        "url": "http://codecoding.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/robertohuertasm/vscode-icons"
+    },
+    "bugs": {
+        "url": "https://github.com/robertohuertasm/vscode-icons/issues",
+        "email": "roberto.huertas@outlook.com"
+    },
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other",
+        "Themes"
     ],
-    "configuration": {
-      "title": "vscode-icons configuration",
-      "properties": {
-        "vsicons.dontShowNewVersionMessage": {
-          "type": "boolean",
-          "default": false,
-          "description": "If set to true the new version message won't be shown anymore."
+    "keywords": [
+        "icon-theme",
+        "theme",
+        "icons",
+        "vscode-icons"
+    ],
+    "preview": true,
+    "homepage": "https://github.com/robertohuertasm/vscode-icons",
+    "icon": "images/logo.png",
+    "galleryBanner": {
+        "color": "#ffdd00"
+    },
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./dist/extension",
+    "contributes": {
+        "iconThemes": [
+            {
+                "id": "vscode-icons",
+                "label": "VSCode Icons",
+                "path": "./dist/icons.json"
+            }
+        ],
+        "configuration": {
+            "title": "vscode-icons configuration",
+            "properties": {
+                "vsicons.dontShowNewVersionMessage": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true the new version message won't be shown anymore."
+                }
+            }
         }
-      }
+    },
+    "scripts": {
+        "prebuild": "npm run lint && npm run test",
+        "build": "node ./src/build/build.js",
+        "example": "node ./src/build/example.js ",
+        "lint": "node ./node_modules/eslint/bin/eslint src",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "jest --config ./jest.config.json"
+    },
+    "devDependencies": {
+        "eslint": "^3.12.0",
+        "eslint-config-airbnb": "^13.0.0",
+        "eslint-plugin-import": "^2.2.0",
+        "eslint-plugin-jsx-a11y": "^3.0.1",
+        "eslint-plugin-react": "^6.6.0",
+        "ncp": "^2.0.0",
+        "lodash": "^4.17.2",
+        "vscode": "^1.0.0",
+        "jest-cli": "^17.0.3"
+    },
+    "dependencies": {
+        "open": "0.0.5",
+        "semver": "^5.3.0"
     }
-  },
-  "scripts": {
-    "prebuild": "npm run lint && npm run test",
-    "build": "node ./src/build/build.js",
-    "example": "node ./src/build/example.js ",
-    "lint": "node ./node_modules/eslint/bin/eslint src",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "jest --config ./jest.config.json"
-  },
-  "devDependencies": {
-    "eslint": "^3.12.0",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.1",
-    "eslint-plugin-react": "^6.6.0",
-    "ncp": "^2.0.0",
-    "lodash": "^4.17.2",
-    "vscode": "^1.0.0",
-    "jest-cli": "^17.0.3"
-  },
-  "dependencies": {
-    "open": "0.0.5",
-    "semver": "^5.3.0"
-  }
 }
