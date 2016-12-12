@@ -2,7 +2,7 @@
 [![Version](http://vsmarketplacebadge.apphb.com/version/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 [![Installs](http://vsmarketplacebadge.apphb.com/installs/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/robertohuertasm.vscode-icons.svg)](https://vsmarketplacebadge.apphb.com/rating/robertohuertasm.vscode-icons.svg)
-
+[![Build Status](https://travis-ci.org/robertohuertasm/vscode-icons.svg?branch=master)](https://travis-ci.org/robertohuertasm/vscode-icons)
 
 Bring icons to your VS Code.
 
