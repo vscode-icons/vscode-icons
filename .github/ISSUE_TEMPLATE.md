@@ -16,6 +16,6 @@ _**Instruction Template**_
 - [ ] I want to create an icon request(if not, remove these lines below):
       - Type: [extension/folder]
       - Icon Name: [name]
-      - Sample original Icon(32x32/svg/transparent whenever possible): [url]
+      - Sample original Icon (32x32/svg/transparent whenever possible): [url]
       - Extensions: .just, .a, .bunch, .of, .extensions
 
