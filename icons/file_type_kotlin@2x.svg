@@ -1,16 +1,1 @@
-<svg id="Layer_7" data-name="Layer 7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
-  <defs>
-    <linearGradient id="linear-gradient" x1="-0.04" y1="1.32" x2="31.69" y2="33.41" gradientTransform="matrix(0.89, 0, 0, -0.89, 1.74, 31.63)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#0296d8"/>
-      <stop offset="1" stop-color="#8371d9"/>
-    </linearGradient>
-    <linearGradient id="linear-gradient-2" x1="-3.94" y1="6.32" x2="28.52" y2="35.8" gradientTransform="matrix(0.89, 0, 0, -0.89, 1.74, 31.63)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#cb55c0"/>
-      <stop offset="1" stop-color="#f28e0e"/>
-    </linearGradient>
-  </defs>
-  <title>file_type_kotlin@2x</title>
-  <path id="rect4140" d="M2,2V30H30v0l-6.95-7-6.95-7,6.95-7L29.95,2H2Z" style="fill: url(#linear-gradient)"/>
-  <path id="rect4185" d="M16.32,2L2,16.32V30H2.13l14-14,0,0,6.95-7L29.95,2H16.32Z" style="fill: url(#linear-gradient-2)"/>
-  <rect width="32" height="32" style="fill: #fff;opacity: 0"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"><defs><linearGradient id="linear-gradient" x1="73.71" y1="910.23" x2="105.45" y2="878.13" gradientTransform="translate(-64.14 -782.56) scale(0.89)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0296d8"/><stop offset="1" stop-color="#8371d9"/></linearGradient><linearGradient id="linear-gradient-2" x1="69.81" y1="905.23" x2="102.28" y2="875.75" gradientTransform="translate(-64.14 -782.56) scale(0.89)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#cb55c0"/><stop offset="1" stop-color="#f28e0e"/></linearGradient></defs><title>file_type_kotlin</title><g id="kotlin"><path d="M2,2V30H30v0l-6.95-7-6.95-7,6.95-7L29.94,2Z" style="fill:url(#linear-gradient)"/><path d="M16.32,2,2,16.32V30h.12l14-14,0,0,6.95-7L29.94,2Z" style="fill:url(#linear-gradient-2)"/></g></svg>

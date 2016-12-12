@@ -1,10 +1,1 @@
-<svg id="Layer_3" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <title>file_type_idris@2x</title>
-  <g id="g3353">
-    <path id="path3345" d="M13.56,6.16c3.59,1.09,4.5,2,5.77,5.22-0.24-4-1.83-5.6-5.77-5.22h0Z" style="fill: #8a0819"/>
-    <path id="path3343" d="M8.58,12.38c2.33,0.72,5,1.29,6,5.74,0.41-5.55-2.22-5.83-6-5.74h0Z" style="fill: #8a0819"/>
-    <path id="path3341" d="M10.16,8.84c3.5,0.72,5.73,1.67,7,6.19,0.3-5.83-2.9-6.41-7-6.19h0Z" style="fill: #8a0819"/>
-    <path id="path5" d="M14.75,2c19.09,12.45-4.24,12.67.83,27.13l3,0.87C10.31,18.78,37,13,14.75,2h0Z" style="fill: #8a0819"/>
-  </g>
-  <rect width="32" height="32" style="fill: #fff;opacity: 0"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>file_type_idris</title><g id="idris"><path d="M13.38,6.2c3.6,1.1,4.5,2,5.8,5.2-.3-4-1.9-5.6-5.8-5.2Z" style="fill:#8a0819"/><path d="M8.38,12.4c2.3.7,5,1.3,6,5.7.4-5.5-2.2-5.8-6-5.7Z" style="fill:#8a0819"/><path d="M10,8.8c3.5.7,5.7,1.7,7,6.2.3-5.8-2.9-6.4-7-6.2Z" style="fill:#8a0819"/><path d="M14.58,2c19.1,12.4-4.2,12.7.8,27.1l3,.9c-8.3-11.2,18.4-17-3.8-28Z" style="fill:#8a0819"/></g></svg>
