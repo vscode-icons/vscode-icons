@@ -20,6 +20,16 @@ describe('generating icons', function () {
     expect(iconGenerator.getPathToDirName(toDirName, fromDirPath)).toEqual(pathTo);
   });
 
+  it('file extension should not have a leading dot', function () {
+    files.supported
+      .filter(function (file) { return !file.filename; })
+      .forEach(function (file) {
+        file.extensions.forEach(function (extension) {
+          expect(extension.startsWith('.')).toBeFalsy();
+        });
+      });
+  });
+
   it('ensures each supported file extension has an associated icon file', function () {
     var suffix = '@2x';
     var iconDirPath = iconGenerator.getPathToDirName('icons', '.');
@@ -144,7 +154,7 @@ describe('generating icons', function () {
       var fileExtensions = iconGenerator.buildJsonStructure().files.names.fileExtensions;
 
       files.supported
-        .filter(function (file) { return !file.filename && !file.languages; })
+        .filter(function (file) { return !file.filename; })
         .forEach(function (file) {
           var definition = '_f_' + file.icon;
           file.extensions.forEach(function (extension) {
