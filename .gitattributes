@@ -1,4 +1,9 @@
 ###############################################################################
-# Set behavior to preserve unix style line endings.
+# Set default behavior to automatically normalize line endings.
 ###############################################################################
-core.autocrlf = input
+* text=auto
+
+###############################################################################
+# Set behavior to preserve unix style line endings for javascript files.
+###############################################################################
+*.js eol=lf
