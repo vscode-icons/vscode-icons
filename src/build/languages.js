@@ -1,6 +1,27 @@
 exports.languages = {
+  c: 'c',
+  cpp: 'cpp',
+  csharp: 'csharp',
+  css: 'css',
+  fsharp: 'fsharp',
+  html: 'html',
+  java: 'java',
   javascript: 'javascript',
+  json: 'json',
+  less: 'less',
+  markdown: 'markdown',
   perl: ['perl', 'perl6'],
+  php: 'php',
+  powershell: 'powershell',
   prolog: 'prolog',
-  json: 'json'
+  python: 'python',
+  rust: 'rust',
+  scss: 'scss',
+  shellscript: 'shellscript',
+  swift: 'swift',
+  typescript: 'typescript',
+  vb: 'vb',
+  xml: 'xml',
+  xsl: 'xsl',
+  yaml: 'yaml'
 };
