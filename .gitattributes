@@ -4,6 +4,13 @@
 * text=auto
 
 ###############################################################################
-# Set behavior to preserve unix style line endings for javascript files.
+# Set behavior to preserve unix style line endings.
 ###############################################################################
-*.js eol=lf
+*.* text eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.psd binary
+*.ai binary
