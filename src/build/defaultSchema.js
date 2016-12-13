@@ -8,6 +8,15 @@ exports.schema = {
     },
     _folder_open: {
       iconPath: ''
+    },
+    _file_light: {
+      iconPath: ''
+    },
+    _folder_light: {
+      iconPath: ''
+    },
+    _folder_light_open: {
+      iconPath: ''
     }
   },
   file: '_file',
@@ -17,5 +26,14 @@ exports.schema = {
   folderNamesExpanded: {},
   fileExtensions: {},
   fileNames: {},
-  languageIds: {}
+  languageIds: {},
+  light: {
+    file: '_file_light',
+    folder: '_folder_light',
+    folderExpanded: '_folder_light_open',
+    folderNames: {},
+    folderNamesExpanded: {},
+    fileExtensions: {},
+    fileNames: {}
+  }
 };
