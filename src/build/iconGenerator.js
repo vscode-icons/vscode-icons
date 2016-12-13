@@ -44,7 +44,7 @@ function buildJsonStructure(iconsFolderBasePath) {
         var folderPath = iconsFolderBasePath + iconFolderType;
         var folderLightPath = iconsFolderBasePath + iconFolderLightType;
         var openFolderPath = folderPath + '_opened';
-        var openFolderLightPath = openFolderPath + '_opened';
+        var openFolderLightPath = folderLightPath + '_opened';
         var iconFolderDefinition = '_fd_' + icon;
         var iconFolderLightDefinition = '_fd_light_' + icon;
         var iconOpenFolderDefinition = iconFolderDefinition + '_open';
