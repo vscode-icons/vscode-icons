@@ -20,138 +20,197 @@ function removeFirstDot(txt) {
 }
 
 /**
+ * Builds the structure for folders to use in the json file.
+ *
+ * @param {any} iconsFolderBasePath The base path to the icons folder
+ * @param {any} hasDefaultLightFolder Indicates if a default folder for the light theme is specified
+ * @param {any} suffix The suffix to use in the file name
+ * @returns An object with folders properties
+ */
+function buildFolders(iconsFolderBasePath, hasDefaultLightFolder, suffix) {
+  return _.sortBy(folders.supported, function (item) {
+    return item.icon;
+  })
+    .reduce(function (old, current) {
+      var defs = old.defs;
+      var names = old.names;
+      var light = old.light;
+      var icon = current.icon;
+      var hasLightVersion = current.light;
+      var iconFolderType = 'folder_type_' + icon;
+      var iconFolderLightType = 'folder_type_light_' + icon;
+      var folderPath = iconsFolderBasePath + iconFolderType;
+      var folderLightPath = iconsFolderBasePath + iconFolderLightType;
+      var openFolderPath = folderPath + '_opened';
+      var openFolderLightPath = folderLightPath + '_opened';
+      var iconFolderDefinition = '_fd_' + icon;
+      var iconFolderLightDefinition = '_fd_light_' + icon;
+      var iconOpenFolderDefinition = iconFolderDefinition + '_open';
+      var iconOpenFolderLightDefinition = iconFolderLightDefinition + '_open';
+      var iconFileExtension = current.svg ? '.svg' : '.png';
+
+      defs[iconFolderDefinition] = {
+        iconPath: folderPath + suffix + iconFileExtension
+      };
+      defs[iconOpenFolderDefinition] = {
+        iconPath: openFolderPath + suffix + iconFileExtension
+      };
+
+      if (hasDefaultLightFolder && !hasLightVersion) {
+        defs[iconFolderLightDefinition] = {
+          iconPath: folderPath + suffix + iconFileExtension
+        };
+        defs[iconOpenFolderLightDefinition] = {
+          iconPath: openFolderPath + suffix + iconFileExtension
+        };
+      }
+
+      if (hasLightVersion) {
+        defs[iconFolderLightDefinition] = {
+          iconPath: folderLightPath + suffix + iconFileExtension
+        };
+        defs[iconOpenFolderLightDefinition] = {
+          iconPath: openFolderLightPath + suffix + iconFileExtension
+        };
+      }
+
+      current.extensions.forEach(function (extension) {
+        var key = current.dot ? '.' + extension : extension;
+        names.folderNames[key] = iconFolderDefinition;
+        names.folderNamesExpanded[key] = iconOpenFolderDefinition;
+
+        if (hasDefaultLightFolder && !hasLightVersion) {
+          light.folderNames[key] = iconFolderDefinition;
+          light.folderNamesExpanded[key] = iconOpenFolderDefinition;
+        }
+
+        if (hasLightVersion) {
+          light.folderNames[key] = iconFolderLightDefinition;
+          light.folderNamesExpanded[key] = iconOpenFolderLightDefinition;
+        }
+      });
+
+      return old;
+    }, {
+      defs: {},
+      names: { folderNames: {}, folderNamesExpanded: {} },
+      light: { folderNames: {}, folderNamesExpanded: {} }
+    });
+}
+
+/**
+ * Builds the structure for files to use in the json file.
+ *
+ * @param {any} iconsFolderBasePath The base path to the icons folder
+ * @param {any} hasDefaultLightFile Indicates if a default file for the light theme is specified
+ * @param {any} suffix The suffix to use in the file name
+ * @returns An object with files properties
+ */
+function buildFiles(iconsFolderBasePath, hasDefaultLightFile, suffix) {
+  return _.sortedUniq(_.sortBy(files.supported, function (item) {
+    return item.icon;
+  }), true)
+    .reduce(function (old, current) {
+      var defs = old.defs;
+      var names = old.names;
+      var languageIds = old.languageIds;
+      var light = old.light;
+      var icon = current.icon;
+      var hasLightVersion = current.light;
+      var iconFileType = 'file_type_' + icon;
+      var iconFileLightType = 'file_type_light_' + icon;
+      var filePath = iconsFolderBasePath + iconFileType;
+      var fileLightPath = iconsFolderBasePath + iconFileLightType;
+      var iconFileDefinition = '_f_' + icon;
+      var iconFileLightDefinition = '_f_light_' + icon;
+      var iconFileExtension = current.svg ? '.svg' : '.png';
+      var isFilename = current.filename;
+
+      defs[iconFileDefinition] = {
+        iconPath: filePath + suffix + iconFileExtension
+      };
+
+      if (hasDefaultLightFile && !hasLightVersion) {
+        defs[iconFileLightDefinition] = {
+          iconPath: filePath + suffix + iconFileExtension
+        };
+      }
+
+      if (hasLightVersion) {
+        defs[iconFileLightDefinition] = {
+          iconPath: fileLightPath + suffix + iconFileExtension
+        };
+      }
+
+      if (current.languages) {
+        var assignLanguages = function (langId) {
+          languageIds[langId] = iconFileDefinition;
+        };
+
+        current.languages.forEach(function (langIds) {
+          if (Array.isArray(langIds)) {
+            langIds.forEach(function (id) { assignLanguages(id); });
+          } else {
+            assignLanguages(langIds);
+          }
+        });
+      }
+
+      current.extensions.forEach(function (extension) {
+        if (isFilename) {
+          names.fileNames[extension] = iconFileDefinition;
+
+          if (hasDefaultLightFile && !hasLightVersion) {
+            light.fileNames[extension] = iconFileDefinition;
+          }
+
+          if (hasLightVersion) {
+            light.fileNames[extension] = iconFileLightDefinition;
+          }
+        } else {
+          names.fileExtensions[removeFirstDot(extension)] = iconFileDefinition;
+
+          if (hasDefaultLightFile && !hasLightVersion) {
+            light.fileExtensions[removeFirstDot(extension)] = iconFileDefinition;
+          }
+
+          if (hasLightVersion) {
+            light.fileExtensions[removeFirstDot(extension)] = iconFileLightDefinition;
+          }
+        }
+      });
+
+      return old;
+    }, {
+      defs: {},
+      names: { fileExtensions: {}, fileNames: {} },
+      light: { fileExtensions: {}, fileNames: {} },
+      languageIds: {}
+    });
+}
+
+/**
  * Builds the structure for folders and files to use in the json file.
  *
  * @param {any} iconsFolderBasePath The base path to the icons folder
  * @returns An object with folders and files properties
  */
-function buildJsonStructure(iconsFolderBasePath) {
+function buildJsonStructure(iconsFolderBasePath, json) {
   var suffix = '@2x';
+
+  /* eslint-disable no-underscore-dangle */
+  var hasDefaultLightFolder = json.iconDefinitions._folder_light.iconPath != null &&
+    json.iconDefinitions._folder_light.iconPath !== '';
+  var hasDefaultLightFile = json.iconDefinitions._file_light.iconPath != null &&
+    json.iconDefinitions._file_light.iconPath !== '';
+  /* eslint-enable no-underscore-dangle */
 
   return {
     /**   folders section   **/
-    folders: _.sortBy(folders.supported, function (item) {
-      return item.icon;
-    })
-      .reduce(function (old, current) {
-        var defs = old.defs;
-        var names = old.names;
-        var light = old.light;
-        var icon = current.icon;
-        var hasLightVersion = current.light;
-        var iconFolderType = 'folder_type_' + icon;
-        var iconFolderLightType = 'folder_type_light_' + icon;
-        var folderPath = iconsFolderBasePath + iconFolderType;
-        var folderLightPath = iconsFolderBasePath + iconFolderLightType;
-        var openFolderPath = folderPath + '_opened';
-        var openFolderLightPath = folderLightPath + '_opened';
-        var iconFolderDefinition = '_fd_' + icon;
-        var iconFolderLightDefinition = '_fd_light_' + icon;
-        var iconOpenFolderDefinition = iconFolderDefinition + '_open';
-        var iconOpenFolderLightDefinition = iconFolderLightDefinition + '_open';
-        var iconFileExtension = current.svg ? '.svg' : '.png';
-
-        defs[iconFolderDefinition] = {
-          iconPath: folderPath + suffix + iconFileExtension
-        };
-        defs[iconOpenFolderDefinition] = {
-          iconPath: openFolderPath + suffix + iconFileExtension
-        };
-
-        if (hasLightVersion) {
-          defs[iconFolderLightDefinition] = {
-            iconPath: folderLightPath + suffix + iconFileExtension
-          };
-          defs[iconOpenFolderLightDefinition] = {
-            iconPath: openFolderLightPath + suffix + iconFileExtension
-          };
-        }
-
-        current.extensions.forEach(function (extension) {
-          var key = current.dot ? '.' + extension : extension;
-          names.folderNames[key] = iconFolderDefinition;
-          names.folderNamesExpanded[key] = iconOpenFolderDefinition;
-
-          if (hasLightVersion) {
-            light.folderNames[key] = iconFolderLightDefinition;
-            light.folderNamesExpanded[key] = iconOpenFolderLightDefinition;
-          }
-        });
-
-        return old;
-      }, {
-        defs: {},
-        names: { folderNames: {}, folderNamesExpanded: {} },
-        light: { folderNames: {}, folderNamesExpanded: {} }
-      }),
+    folders: buildFolders(iconsFolderBasePath, hasDefaultLightFolder, suffix),
 
     /**   files section   **/
-    files: _.sortedUniq(_.sortBy(files.supported, function (item) {
-      return item.icon;
-    }), true)
-      .reduce(function (old, current) {
-        var defs = old.defs;
-        var names = old.names;
-        var languageIds = old.languageIds;
-        var light = old.light;
-        var icon = current.icon;
-        var hasLightVersion = current.light;
-        var iconFileType = 'file_type_' + icon;
-        var iconFileLightType = 'file_type_light_' + icon;
-        var filePath = iconsFolderBasePath + iconFileType;
-        var fileLightPath = iconsFolderBasePath + iconFileLightType;
-        var iconFileDefinition = '_f_' + icon;
-        var iconFileLightDefinition = '_f_light_' + icon;
-        var iconFileExtension = current.svg ? '.svg' : '.png';
-        var isFilename = current.filename;
-
-        defs[iconFileDefinition] = {
-          iconPath: filePath + suffix + iconFileExtension
-        };
-
-        if (hasLightVersion) {
-          defs[iconFileLightDefinition] = {
-            iconPath: fileLightPath + suffix + iconFileExtension
-          };
-        }
-
-        if (current.languages) {
-          var assignLanguages = function (langId) {
-            languageIds[langId] = iconFileDefinition;
-          };
-
-          current.languages.forEach(function (langIds) {
-            if (Array.isArray(langIds.ids)) {
-              langIds.ids.forEach(function (id) { assignLanguages(id); });
-            } else {
-              assignLanguages(langIds.ids);
-            }
-          });
-        }
-
-        current.extensions.forEach(function (extension) {
-          if (isFilename) {
-            names.fileNames[extension] = iconFileDefinition;
-
-            if (hasLightVersion) {
-              light.fileNames[extension] = iconFileLightDefinition;
-            }
-          } else {
-            names.fileExtensions[removeFirstDot(extension)] = iconFileDefinition;
-
-            if (hasLightVersion) {
-              light.fileExtensions[removeFirstDot(extension)] = iconFileLightDefinition;
-            }
-          }
-        });
-
-        return old;
-      }, {
-        defs: {},
-        names: { fileExtensions: {}, fileNames: {} },
-        light: { fileExtensions: {}, fileNames: {} },
-        languageIds: {}
-      })
+    files: buildFiles(iconsFolderBasePath, hasDefaultLightFile, suffix)
   };
 }
 
@@ -188,6 +247,7 @@ function getDefaultSchema(iconsFolderBasePath) {
     .iconPath = '';
 
   /* eslint-enable no-underscore-dangle */
+
   return defaultSchema;
 }
 
@@ -280,8 +340,8 @@ function generate(iconsFilename, outDir) {
   }
 
   var iconsFolderBasePath = getPathToDirName('icons', outputDir);
-  var res = buildJsonStructure(iconsFolderBasePath);
   var json = getDefaultSchema(iconsFolderBasePath);
+  var res = buildJsonStructure(iconsFolderBasePath, json);
 
   json.iconDefinitions = Object.assign(json.iconDefinitions, res.folders.defs, res.files.defs);
   json.folderNames = res.folders.names.folderNames;
@@ -303,5 +363,6 @@ module.exports = {
   removeFirstDot: removeFirstDot,
   getPathToDirName: getPathToDirName,
   getDefaultSchema: getDefaultSchema,
-  buildJsonStructure: buildJsonStructure
+  buildFolders: buildFolders,
+  buildFiles: buildFiles
 };
