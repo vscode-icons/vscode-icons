@@ -16,11 +16,18 @@ var folderNames = folders.supported.reduce(function (init, current) {
 
 var fileNames = files.supported.reduce(function (init, current) {
   var obj = init;
-  if (current.extensions[0]) {
-    obj[current.icon] = current.filename
-      ? current.extensions[0]
-      : 'file.' + current.extensions[0];
+  var extension = current.languages && current.languages[0]
+    ? current.languages[0].defaultExtension
+    : current.extensions[0];
+
+  if (!extension) {
+    return obj;
   }
+
+  obj[current.icon] = current.filename
+    ? extension
+    : 'file.' + extension;
+
   return obj;
 }, {});
 
