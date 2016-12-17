@@ -267,7 +267,7 @@ describe('generating icons', function () {
         });
     });
 
-  it('ensures each supported folder has a folder name referencing its definiton',
+  it('ensures each supported folder has a folder name referencing its definition',
     function () {
       var folderNames = iconGenerator.buildFolders().names.folderNames;
 
@@ -281,7 +281,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported folder that has a light theme version ' +
-    'has a folder name referencing its \'light\' definiton',
+    'has a folder name referencing its \'light\' definition',
     function () {
       var folderNames = iconGenerator.buildFolders().light.folderNames;
 
@@ -296,7 +296,7 @@ describe('generating icons', function () {
         });
     });
 
-  it('ensures each supported folder has a folder name expanded referencing its definiton',
+  it('ensures each supported folder has a folder name expanded referencing its definition',
     function () {
       var folderNamesExpanded = iconGenerator.buildFolders().names.folderNamesExpanded;
 
@@ -310,7 +310,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported folder that has a light theme version ' +
-    'has a folder name expanded referencing its open \'light\' definiton',
+    'has a folder name expanded referencing its open \'light\' definition',
     function () {
       var folderNamesExpanded = iconGenerator.buildFolders().light.folderNamesExpanded;
 
@@ -326,7 +326,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported file extension that is not a filename ' +
-    'has a file extension referencing its definiton',
+    'has a file extension referencing its definition',
     function () {
       var fileExtensions = iconGenerator.buildFiles().names.fileExtensions;
 
@@ -342,7 +342,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported file extension that is not a filename ' +
-    'and has a light theme version has a file extension referencing its \'light\' definiton',
+    'and has a light theme version has a file extension referencing its \'light\' definition',
     function () {
       var fileExtensions = iconGenerator.buildFiles().light.fileExtensions;
 
@@ -358,7 +358,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported file extension that is a filename ' +
-    'has a file name referencing its definiton',
+    'has a file name referencing its definition',
     function () {
       var fileNames = iconGenerator.buildFiles().names.fileNames;
 
@@ -373,7 +373,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported file extension that is a filename ' +
-    'and has a light theme version has a file name referencing its \'light\' definiton',
+    'and has a light theme version has a file name referencing its \'light\' definition',
     function () {
       var fileNames = iconGenerator.buildFiles().light.fileNames;
 
@@ -388,7 +388,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported file extension that is supported by language ids ' +
-    'has a language id referencing its definiton',
+    'has a language id referencing its definition',
     function () {
       var languageIds = iconGenerator.buildFiles().languageIds;
 
@@ -451,7 +451,7 @@ describe('generating icons', function () {
 
   it('ensures each supported folder that has not a light theme version ' +
     'if a default folder icon for light theme is specified, ' +
-    'has a folder name referencing its inherited definiton',
+    'has a folder name referencing its inherited definition',
     function () {
       var folderNames = iconGenerator.buildFolders(null, true).light.folderNames;
 
@@ -468,7 +468,7 @@ describe('generating icons', function () {
 
   it('ensures each supported folder that has not a light theme version ' +
     'if a default folder icon for light theme is specified, ' +
-    'has a folder name expanded referencing its inherited definiton',
+    'has a folder name expanded referencing its inherited definition',
     function () {
       var folderNamesExpanded = iconGenerator.buildFolders(null, true).light.folderNamesExpanded;
 
@@ -484,7 +484,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported file extension that is not a filename ' +
-    'and has not a light theme version, has a file extension referencing its inherited definiton',
+    'and has not a light theme version, has a file extension referencing its inherited definition',
     function () {
       var fileExtensions = iconGenerator.buildFiles(null, true).light.fileExtensions;
 
@@ -500,7 +500,7 @@ describe('generating icons', function () {
     });
 
   it('ensures each supported file extension that is a filename ' +
-    'and has a light theme version has a file name referencing its inherited definiton',
+    'and has a light theme version has a file name referencing its inherited definition',
     function () {
       var fileNames = iconGenerator.buildFiles(null, true).light.fileNames;
 
