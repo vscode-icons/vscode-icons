@@ -106,7 +106,7 @@ exports.extensions = {
     { icon: 'java', extensions: ['java'], languages: [languages.java], svg: true },
     { icon: 'jbuilder', extensions: ['jbuilder'], svg: true },
     { icon: 'jest', extensions: ['jest.config.json'], filename: true, svg: true },
-    { icon: 'jinja', extensions: ['jinja'] },
+    { icon: 'jinja', extensions: ['jinja', 'jinja2'], svg: true },
     { icon: 'js', extensions: ['js'], languages: [languages.javascript], svg: true },
     { icon: 'jshintrc', extensions: ['.jshintrc'], filename: true },
     { icon: 'jsmap', extensions: ['js.map'] },
