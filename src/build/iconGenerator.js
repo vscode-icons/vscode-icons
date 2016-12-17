@@ -121,10 +121,10 @@ function buildJsonStructure(iconsFolderBasePath) {
           };
 
           current.languages.forEach(function (langIds) {
-            if (Array.isArray(langIds)) {
-              langIds.forEach(function (id) { assignLanguages(id); });
+            if (Array.isArray(langIds.ids)) {
+              langIds.ids.forEach(function (id) { assignLanguages(id); });
             } else {
-              assignLanguages(langIds);
+              assignLanguages(langIds.ids);
             }
           });
         }

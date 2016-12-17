@@ -381,10 +381,10 @@ describe('generating icons', function () {
           };
 
           file.languages.forEach(function (langIds) {
-            if (Array.isArray(langIds)) {
-              langIds.forEach(function (id) { assertLanguage(id); });
+            if (Array.isArray(langIds.ids)) {
+              langIds.ids.forEach(function (id) { assertLanguage(id); });
             } else {
-              assertLanguage(langIds);
+              assertLanguage(langIds.ids);
             }
           });
         });
