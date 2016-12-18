@@ -66,7 +66,7 @@ exports.extensions = {
     { icon: 'elm', extensions: ['elm'] },
     { icon: 'elm', extensions: ['elm-package.json'], filename: true },
     { icon: 'emacs', extensions: ['el', 'elc'], svg: true },
-    { icon: 'ember', extensions: ['.ember-cli'], filename: true },
+    { icon: 'ember', extensions: ['.ember-cli'], filename: true, svg: true },
     { icon: 'erb', extensions: ['rhtml', 'erb'] },
     { icon: 'erlang', extensions: ['erl', 'hrl'] },
     { icon: 'erlang', extensions: ['emakefile', '.emakerfile'], filename: true },
