@@ -223,7 +223,8 @@ exports.extensions = {
         'tsconfig.json',
         '.vscodeignore'
       ],
-      filename: true
+      filename: true,
+      svg: true
     },
     { icon: 'vue', extensions: ['vue'] },
     {
