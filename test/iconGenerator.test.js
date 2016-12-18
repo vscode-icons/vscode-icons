@@ -1,32 +1,26 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, no-unused-expressions */
 
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 var expect = require('chai').expect;
 var iconGenerator = require('../src/build/iconGenerator');
 var files = require('../src/build/supportedExtensions').extensions;
 var folders = require('../src/build/supportedFolders').extensions;
 
-suite("Extension Tests", function () {
-
-  // Defines a Mocha unit test
-  test("Something 1", function () {
-    assert.equal(-1, [1, 2, 3].indexOf(5));
-    assert.equal(-1, [1, 2, 3].indexOf(0));
-  });
-});
+var iconsFolderPath = path.join(__dirname, './../icons');
 
 describe('generating icons', function () {
   it('removes first dot from text', function () {
     var text = '.test';
     var noDottedText = 'test';
-    expect(iconGenerator.removeFirstDot(text)).equals(noDottedText);
+    expect(iconGenerator.removeFirstDot(text)).equal(noDottedText);
   });
 
   it('resolves path from one directory to another', function () {
-    var fromDirPath = './test/';
-    var toDirName = 'icons';
+    var fromDirPath = __dirname;
+    var toDirName = path.join(__dirname, './../icons');
     var pathTo = './../icons/';
     expect(iconGenerator.getPathToDirName(toDirName, fromDirPath)).equals(pathTo);
   });
@@ -61,14 +55,14 @@ describe('generating icons', function () {
 
   it('ensures each supported file extension has an associated icon file', function () {
     var suffix = '@2x';
-    var iconDirPath = iconGenerator.getPathToDirName('icons', '.');
+
+    var iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     files.supported.forEach(function (file) {
       var iconFileExtension = file.svg ? '.svg' : '.png';
       var iconFilePath = iconDirPath + 'file_type_' +
         file.icon + suffix + iconFileExtension;
-
-      expect(fs.existsSync(iconFilePath)).to.be.true;
+      expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
     });
   });
 
@@ -76,7 +70,7 @@ describe('generating icons', function () {
     'has an associated icon file',
     function () {
       var suffix = '@2x';
-      var iconDirPath = iconGenerator.getPathToDirName('icons', '.');
+      var iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
       files.supported
         .filter(function (file) { return file.light; })
@@ -85,20 +79,19 @@ describe('generating icons', function () {
           var iconFilePath = iconDirPath + 'file_type_light_' +
             file.icon + suffix + iconFileExtension;
 
-          expect(fs.existsSync(iconFilePath)).to.be.true;
+          expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
         });
     });
 
   it('ensures each supported folder has an associated icon file', function () {
     var suffix = '@2x';
-    var iconDirPath = iconGenerator.getPathToDirName('icons', '.');
+    var iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     folders.supported.forEach(function (folder) {
       var iconFileExtension = folder.svg ? '.svg' : '.png';
       var iconFilePath = iconDirPath + 'folder_type_' +
         folder.icon + suffix + iconFileExtension;
-
-      expect(fs.existsSync(iconFilePath)).to.be.true;
+      expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
     });
   });
 
@@ -106,7 +99,7 @@ describe('generating icons', function () {
     'has an associated icon file',
     function () {
       var suffix = '@2x';
-      var iconDirPath = iconGenerator.getPathToDirName('icons', '.');
+      var iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
       folders.supported
         .filter(function (folder) { return folder.light; })
@@ -115,20 +108,20 @@ describe('generating icons', function () {
           var iconFilePath = iconDirPath + 'folder_type_light_' +
             folder.icon + suffix + iconFileExtension;
 
-          expect(fs.existsSync(iconFilePath)).to.be.true;
+          expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
         });
     });
 
   it('ensures each supported folder has an associated opened icon file', function () {
     var suffix = '@2x';
-    var iconDirPath = iconGenerator.getPathToDirName('icons', '.');
+    var iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     folders.supported.forEach(function (folder) {
       var iconFileExtension = folder.svg ? '.svg' : '.png';
       var iconOpenFilePath = iconDirPath + 'folder_type_' +
         folder.icon + '_opened' + suffix + iconFileExtension;
 
-      expect(fs.existsSync(iconOpenFilePath)).to.be.true;
+      expect(fs.existsSync(path.join(__dirname, iconOpenFilePath))).to.be.true;
     });
   });
 
@@ -136,7 +129,7 @@ describe('generating icons', function () {
     'has an associated opened icon file',
     function () {
       var suffix = '@2x';
-      var iconDirPath = iconGenerator.getPathToDirName('icons', '.');
+      var iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
       folders.supported
         .filter(function (folder) { return folder.light; })
@@ -145,7 +138,7 @@ describe('generating icons', function () {
           var iconOpenFilePath = iconDirPath + 'folder_type_light_' +
             folder.icon + '_opened' + suffix + iconFileExtension;
 
-          expect(fs.existsSync(iconOpenFilePath)).to.be.true;
+          expect(fs.existsSync(path.join(__dirname, iconOpenFilePath))).to.be.true;
         });
     });
 

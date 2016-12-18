@@ -66,9 +66,12 @@
     "example": "node ./src/build/example.js ",
     "lint": "eslint src test",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "mocha"
+    "test": "mocha",
+    "test:vs": "node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.33",
     "chai": "^3.5.0",
     "eslint": "^3.12.0",
     "eslint-config-airbnb": "^13.0.0",
