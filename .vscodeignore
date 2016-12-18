@@ -12,3 +12,8 @@ code*.js
 jsconfig.json
 .eslintrc.json
 npm-debug.log
+.vscode/**
+.vscode-test/**
+test/**
+vsc-extension-quickstart.md
+.eslintrc.json
