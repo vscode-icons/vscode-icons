@@ -113,6 +113,7 @@ exports.extensions = {
     { icon: 'json', extensions: ['webmanifest'], languages: [languages.json] },
     { icon: 'jsp', extensions: ['jsp'] },
     { icon: 'julia', extensions: ['jl'] },
+    { icon: 'karma', extensions: ['karma.conf.js', 'karma.conf.coffee'], filename: true, svg: true },
     { icon: 'kotlin', extensions: ['kt'], svg: true },
     { icon: 'lerna', extensions: ['lerna.json'], filename: true },
     { icon: 'less', extensions: [], languages: [languages.less] },

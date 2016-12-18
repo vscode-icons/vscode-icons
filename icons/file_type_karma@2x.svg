@@ -1,0 +1,10 @@
+<svg id="background" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>file_type_karma@2x</title>
+  <rect width="32" height="32" style="fill: #fff;opacity: 0"/>
+  <g>
+    <path d="M18.93,20.37l4.32,6.44h6.83L22.34,15.38l-3.41,5" style="fill: #429f87"/>
+    <path d="M5.16,23.83l3.16-3,5.06,6-3.25-12L7.4,19.35,5.16,23.83" style="fill: #429f87"/>
+    <path d="M5.16,23.83l5-9L7,17.83l-5.06-6,3.25,12" style="fill: #56c5a8"/>
+    <path d="M29.43,5.18H22.6l-4.18,6.18V5.18H12.15v6.41L15.49,23.9l0.78,2.92h2.15V21.41l11-16.23" style="fill: #56c5a8"/>
+  </g>
+</svg>
