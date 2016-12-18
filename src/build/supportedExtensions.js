@@ -154,6 +154,7 @@ exports.extensions = {
     { icon: 'procfile', extensions: ['procfile'], filename: true },
     { icon: 'prolog', extensions: ['P'], languages: [languages.prolog] },
     { icon: 'protobuf', extensions: ['proto'] },
+    { icon: 'protractor', extensions: ['protractor.conf.js'], filename: true },
     { icon: 'puppet', extensions: ['epp', 'pp'] },
     { icon: 'purescript', extensions: ['purs'], svg: true },
     { icon: 'python', extensions: ['pyw'], languages: [languages.python], svg: true },
