@@ -1,6 +1,7 @@
 # Change Log
 
 ## 4.2.0 (December 18, 2016)
+  - Feature: Protractor support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#551](https://github.com/robertohuertasm/vscode-icons/pull/551))
   - Feature: Karma support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#550](https://github.com/robertohuertasm/vscode-icons/pull/550))
   - Enhancement: Tests can be debugged and executed in the VSCode context. ([@robertohuertasm](https://github.com/robertohuertasm) in [#548](https://github.com/robertohuertasm/vscode-icons/pull/548))
   - Enhancement: `html` and `css` icons to svg. ([@JimiC](https://github.com/JimiC) in [#547](https://github.com/robertohuertasm/vscode-icons/pull/547))
