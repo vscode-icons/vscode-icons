@@ -2,3 +2,4 @@ node_modules
 dist
 examples
 npm-debug.log
+.vscode-test/**
