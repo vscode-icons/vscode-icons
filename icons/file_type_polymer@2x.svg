@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="32px" height="32" viewBox="2 0 32 32" preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <symbol id="a" viewBox="0 -40 168 40">
+    <path fill="#303F9F" d="M12.092-20l-3.97-6.875 3.97-6.875 3.97 6.875z"/>
+    <path fill="#3F51B5" d="M35.908-6.25l-3.97-6.875L35.908-20l3.97 6.875z"/>
+    <path fill="#7986CB" d="M39.877-13.125L27.97-33.75h7.938L43.848-20z"/>
+    <path fill="#FF4081" d="M27.97-6.25l-15.88-27.5h7.94l15.876 27.5z"/>
+    <path fill="#536DFE" d="M12.092-6.25L4.152-20l3.97-6.875L20.032-6.25z"/>
+    <path fill="#FFF" fill-opacity=".2" d="M27.97-6.25l3.968-6.875 3.97 6.875z"/>
+    <path fill="#FFF" fill-opacity=".1" d="M24-13.125l3.97 6.875 3.968-6.875z"/>
+    <path fill="#FFF" fill-opacity="0" d="M24-13.125L27.97-20l3.968 6.875z"/>
+    <path fill-opacity=".1" d="M20.03-20L24-13.125 27.97-20z"/>
+    <path fill-opacity=".2" d="M20.03-20L24-26.875 27.97-20z"/>
+    <path fill-opacity=".3" d="M16.062-26.875L20.032-20 24-26.875z"/>
+    <path fill-opacity=".4" d="M16.062-26.875l3.97-6.875L24-26.875z"/>
+    <path fill-opacity=".5" d="M12.092-33.75l3.97 6.875 3.97-6.875z"/>
+    <path fill="#FFF" fill-opacity=".2" d="M12.092-6.25l3.97-6.875 3.97 6.875z"/>
+    <path fill="#FFF" fill-opacity=".1" d="M8.123-13.125l3.97 6.875 3.97-6.875z"/>
+    <path fill="#FFF" fill-opacity="0" d="M8.123-13.125L12.093-20l3.97 6.875z"/>
+    <path fill-opacity=".1" d="M4.153-20l3.97 6.875L12.093-20z"/>
+    <path fill-opacity=".2" d="M4.153-20l3.97-6.875L12.093-20z"/>
+    <path fill="#FFF" fill-opacity="0" d="M16.062-26.875L12.092-20l-3.97-6.875z"/>
+    <path fill-opacity=".2" d="M16.062-26.875l-3.97-6.875-3.97 6.875zm23.815 13.75l-3.97 6.875-3.97-6.875z"/>
+    <path fill="#FFF" fill-opacity="0" d="M39.877-13.125L35.907-20l-3.97 6.875z"/>
+    <path fill="#FFF" fill-opacity=".2" d="M35.908-20l3.97 6.875L43.848-20z"/>
+    <path fill="#FFF" fill-opacity=".1" d="M35.908-20l3.97-6.875L43.848-20z"/>
+    <path fill="#FFF" fill-opacity="0" d="M31.938-26.875L35.908-20l3.97-6.875z"/>
+    <path fill-opacity=".1" d="M31.938-26.875l3.97-6.875 3.97 6.875z"/>
+    <path fill-opacity=".2" d="M27.97-33.75l3.968 6.875 3.97-6.875z"/>
+    <path fill="none" d="M44-40H4V0h40z"/>
+    <path fill="none" d="M168-40H0V0h168z"/>
+  </symbol>
+  <use width="168" height="40" y="-40" transform="matrix(0.748950183391571, 0, 0, -0.748950183391571, 0.0000012699889850864565, 1.020995855331421)" overflow="visible" xlink:href="#a"/>
+</svg>
