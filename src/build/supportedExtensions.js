@@ -45,6 +45,7 @@ exports.extensions = {
     { icon: 'coffeescript', extensions: ['coffee'] },
     { icon: 'config', extensions: ['env', 'ini', 'makefile', 'config', 'conf', 'cfg'] },
     { icon: 'config', extensions: ['makefile', '.env.example'], filename: true },
+    { icon: 'cmake', extensions: ['CMakeCache.txt', 'CMakeLists.txt', '.cmake'], filename: true, svg: true },
     { icon: 'compass', extensions: [] },
     { icon: 'composer', extensions: ['composer.json', 'composer.lock'], filename: true },
     { icon: 'cpp', extensions: ['hpp', 'cc', 'cxx'], languages: [languages.cpp] },
