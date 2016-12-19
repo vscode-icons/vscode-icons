@@ -13,6 +13,7 @@ exports.languages = {
   perl: { ids: ['perl', 'perl6'], defaultExtension: 'pl' },
   php: { ids: 'php', defaultExtension: 'php' },
   powershell: { ids: 'powershell', defaultExtension: 'ps1' },
+  polymer: { ids: 'polymer', defaultExtension: 'html' },
   prolog: { ids: 'prolog', defaultExtension: 'pro' },
   python: { ids: 'python', defaultExtension: 'py' },
   rust: { ids: 'rust', defaultExtension: 'rs' },
