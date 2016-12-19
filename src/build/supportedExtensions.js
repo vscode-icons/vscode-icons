@@ -150,7 +150,7 @@ exports.extensions = {
     { icon: 'phpunit', extensions: ['phpunit.xml'], filename: true },
     { icon: 'plantuml', extensions: ['pu', 'plantuml', 'iuml', 'puml'] },
     { icon: 'poedit', extensions: ['po', 'mo'] },
-    { icon: 'polymer', languages: [languages.polymer], svg: true },
+    { icon: 'polymer', extensions: ['htm'], languages: [languages.polymer], svg: true },
     { icon: 'postcss', extensions: ['pcss', 'postcss'] },
     { icon: 'powershell', extensions: ['psm1', 'psd1'], languages: [languages.powershell] },
     { icon: 'procfile', extensions: ['procfile'], filename: true },
