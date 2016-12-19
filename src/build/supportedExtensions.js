@@ -40,6 +40,7 @@ exports.extensions = {
     { icon: 'cheader', extensions: ['h'] },
     { icon: 'class', extensions: ['class'], svg: true },
     { icon: 'clojure', extensions: ['clojure', 'cjm', 'clj', 'cljs', 'cljc', 'edn'] },
+    { icon: 'cmake', extensions: ['CMakeCache.txt', 'CMakeLists.txt', '.cmake'], filename: true, svg: true },
     { icon: 'cobol', extensions: ['cbl', 'cob', 'cpy'] },
     { icon: 'codeclimate', extensions: ['codeclimate.yml'], filename: true },
     { icon: 'coffeescript', extensions: ['coffee'] },
