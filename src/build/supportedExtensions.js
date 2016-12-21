@@ -155,7 +155,7 @@ exports.extensions = {
     { icon: 'plantuml', extensions: ['pu', 'plantuml', 'iuml', 'puml'] },
     { icon: 'poedit', extensions: ['po', 'mo'] },
     { icon: 'polymer', extensions: [], languages: [languages.polymer], svg: true },
-    { icon: 'postcss', extensions: ['pcss', 'postcss'] },
+    { icon: 'postcss', extensions: [], languages: [languages.postcss] },
     { icon: 'powershell', extensions: [], languages: [languages.powershell] },
     { icon: 'procfile', extensions: ['procfile'], filename: true },
     { icon: 'prolog', extensions: ['pro', 'P'], languages: [languages.prolog] },
