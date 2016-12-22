@@ -167,6 +167,8 @@ exports.extensions = {
     { icon: 'qlikview', extensions: ['qvd', 'qvw'] },
     { icon: 'r', extensions: [], languages: [languages.r] },
     { icon: 'rails', extensions: [] },
+    { icon: 'rake', extensions: ['rake'], svg: true },
+    { icon: 'rake', extensions: ['rakefile'], filename: true, svg: true },
     { icon: 'raml', extensions: ['raml'] },
     { icon: 'reactjs', extensions: [], languages: [languages.javascriptreact] },
     { icon: 'reacttemplate', extensions: ['rt'] },
