@@ -34,6 +34,7 @@ exports.languages = {
   python: { ids: 'python', defaultExtension: 'py' },
   r: { ids: 'r', defaultExtension: 'r' },
   razor: { ids: 'razor', defaultExtension: 'cshtml' },
+  restructuredtext: { ids: 'restructuredtext', defaultExtension: 'rst' },
   ruby: { ids: 'ruby', defaultExtension: 'rb' },
   rust: { ids: 'rust', defaultExtension: 'rs' },
   scss: { ids: 'scss', defaultExtension: 'scss' },

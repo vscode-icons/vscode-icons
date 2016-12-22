@@ -171,7 +171,7 @@ exports.extensions = {
     { icon: 'reactjs', extensions: [], languages: [languages.javascriptreact] },
     { icon: 'reacttemplate', extensions: ['rt'] },
     { icon: 'reactts', extensions: ['tsx'] },
-    { icon: 'rest', extensions: ['rest'] },
+    { icon: 'rest', extensions: [], languages: [languages.restructuredtext] },
     { icon: 'riot', extensions: ['tag'] },
     { icon: 'robotframework', extensions: ['robot'] },
     { icon: 'rollup', extensions: ['rollup.config.js'], filename: true },
