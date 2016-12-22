@@ -187,6 +187,7 @@ exports.extensions = {
     { icon: 'slim', extensions: [] },
     { icon: 'sln', extensions: ['sln'] },
     { icon: 'smarty', extensions: ['tpl', 'swig'] },
+    { icon: 'snyk', extensions: ['.snyk'], filename: true, svg: true },
     { icon: 'source', extensions: [] },
     { icon: 'sql', extensions: [], languages: [languages.sql] },
     { icon: 'sqlite', extensions: ['sqlite', 'sqlite3', 'db3'] },
