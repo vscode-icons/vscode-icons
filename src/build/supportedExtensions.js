@@ -45,7 +45,7 @@ exports.extensions = {
     { icon: 'cobol', extensions: ['cbl', 'cob', 'cpy'] },
     { icon: 'codeclimate', extensions: ['codeclimate.yml'], filename: true },
     { icon: 'coffeescript', extensions: [], languages: [languages.coffeescript] },
-    { icon: 'config', extensions: ['env', 'config', 'conf', 'cfg'] },
+    { icon: 'config', extensions: ['env', 'config'], languages: [languages.properties] },
     { icon: 'config', extensions: ['.env.example'], filename: true },
     { icon: 'compass', extensions: [] },
     { icon: 'composer', extensions: ['composer.json', 'composer.lock'], filename: true },
