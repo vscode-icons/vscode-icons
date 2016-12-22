@@ -31,6 +31,7 @@ exports.languages = {
   postcss: { ids: 'postcss', defaultExtension: 'pcss' },
   powershell: { ids: 'powershell', defaultExtension: 'ps1' },
   prolog: { ids: 'prolog', defaultExtension: 'pro' },
+  properties: { ids: 'properties', defaultExtension: 'properties' },
   pug: { ids: 'jade', defaultExtension: 'pug' },
   python: { ids: 'python', defaultExtension: 'py' },
   r: { ids: 'r', defaultExtension: 'r' },
