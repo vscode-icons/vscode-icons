@@ -4,6 +4,7 @@ exports.languages = {
   clojure: { ids: 'clojure', defaultExtension: 'clojure' },
   coffeescript: { ids: 'coffeescript', defaultExtension: 'coffee' },
   cpp: { ids: 'cpp', defaultExtension: 'cpp' },
+  crystal: { ids: 'crystal', defaultExtension: 'cr' },
   csharp: { ids: 'csharp', defaultExtension: 'cs' },
   css: { ids: 'css', defaultExtension: 'css' },
   fsharp: { ids: 'fsharp', defaultExtension: 'fs' },

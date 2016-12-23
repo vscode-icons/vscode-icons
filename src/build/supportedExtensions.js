@@ -50,6 +50,7 @@ exports.extensions = {
     { icon: 'compass', extensions: [] },
     { icon: 'composer', extensions: ['composer.json', 'composer.lock'], filename: true },
     { icon: 'cpp', extensions: [], languages: [languages.cpp] },
+    { icon: 'crystal', extensions: [], languages: [languages.crystal], svg: true },
     { icon: 'csharp', extensions: ['csx'], languages: [languages.csharp] },
     { icon: 'cshtml', extensions: [], languages: [languages.razor] },
     { icon: 'csproj', extensions: ['csproj'] },
