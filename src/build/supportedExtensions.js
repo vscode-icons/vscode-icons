@@ -199,6 +199,7 @@ exports.extensions = {
     { icon: 'storyboard', extensions: ['storyboard'] },
     { icon: 'svg', extensions: ['svg'] },
     { icon: 'swift', extensions: [], languages: [languages.swift] },
+    { icon: 'swift', extensions: ['Package.pins'], filename: true },
     { icon: 'tcl', extensions: ['tcl', 'exp'] },
     { icon: 'terraform', extensions: ['tf', 'terra'] },
     { icon: 'testjs', extensions: ['test.js', 'spec.js'] },
