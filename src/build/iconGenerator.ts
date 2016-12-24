@@ -7,7 +7,7 @@ import { extensions as files } from './supportedExtensions';
 import { extensions as folders } from './supportedFolders';
 
 // tslint:disable-next-line no-var-requires
-const packageJson = require('./../../package.json');
+const packageJson = require('../../../package.json');
 
 /**
  * Removes the first dot from the text.
