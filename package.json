@@ -65,7 +65,7 @@
     "build": "node ./out/src/build/build.js",
     "example": "node ./out/src/build/example.js ",
     "test": "mocha ./out/test",
-    "lint": "tslint src/**/*.ts",
+    "lint": "tslint src/**/*.ts test/**/*.ts",
     "test:vs": "node ./node_modules/vscode/bin/test",
     "vscode:prepublish": "tsc -p ./",
     "compile:w": "tsc -watch -p ./",
