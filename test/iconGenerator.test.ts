@@ -1,7 +1,5 @@
+// :> mocha does not work always well with arrow functions
 /* tslint:disable only-arrow-functions */
-
-'use strict';
-
 import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
