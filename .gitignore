@@ -1,5 +1,5 @@
 node_modules
-dist
+out
 examples
 npm-debug.log
 .vscode-test/**

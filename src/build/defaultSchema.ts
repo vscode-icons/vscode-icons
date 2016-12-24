@@ -1,23 +1,23 @@
-exports.schema = {
+export const schema = {
   iconDefinitions: {
     _file: {
-      iconPath: ''
+      iconPath: '',
     },
     _folder: {
-      iconPath: ''
+      iconPath: '',
     },
     _folder_open: {
-      iconPath: ''
+      iconPath: '',
     },
     _file_light: {
-      iconPath: ''
+      iconPath: '',
     },
     _folder_light: {
-      iconPath: ''
+      iconPath: '',
     },
     _folder_light_open: {
-      iconPath: ''
-    }
+      iconPath: '',
+    },
   },
   file: '_file',
   folder: '_folder',
@@ -34,6 +34,6 @@ exports.schema = {
     folderNames: {},
     folderNamesExpanded: {},
     fileExtensions: {},
-    fileNames: {}
-  }
+    fileNames: {},
+  },
 };

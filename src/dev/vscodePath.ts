@@ -1,7 +1,7 @@
-var os = require('os');
+import * as os from 'os';
 
-module.exports = function () {
-  var appPath = process.env.APPDATA;
+export function vscodePath () {
+  let appPath = process.env.APPDATA;
   if (!appPath) {
     if (process.platform === 'darwin') {
       appPath = process.env.HOME + '/Library/Application Support';

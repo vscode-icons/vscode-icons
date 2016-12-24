@@ -1,6 +1,8 @@
-/* eslint-disable max-len */
-var languages = require('./languages').languages;
-exports.extensions = {
+/* tslint:disable max-line-length */
+import { languages } from './languages';
+import { IExtensionCollection, IFileExtension } from '../models/IExtension';
+
+export const extensions: IExtensionCollection<IFileExtension> = {
   supported: [
     { icon: 'actionscript', extensions: ['as'], svg: true },
     { icon: 'ai', extensions: ['ai'], svg: true },
@@ -231,10 +233,10 @@ exports.extensions = {
         'tasks.json',
         'jsconfig.json',
         'tsconfig.json',
-        '.vscodeignore'
+        '.vscodeignore',
       ],
       filename: true,
-      svg: true
+      svg: true,
     },
     { icon: 'vue', extensions: ['vue'] },
     {
@@ -254,10 +256,10 @@ exports.extensions = {
         'webpack.config.production.js',
         'webpack.config.prod.js',
         'webpack.config.ts',
-        'webpack.config.coffee'
+        'webpack.config.coffee',
       ],
       filename: true,
-      svg: true
+      svg: true,
     },
     { icon: 'wxml', extensions: ['wxml'] },
     { icon: 'wxss', extensions: ['wxss'] },
@@ -268,6 +270,6 @@ exports.extensions = {
     { icon: 'yaml', extensions: ['yml'], languages: [languages.yaml], svg: true },
     { icon: 'yarn', extensions: ['yarnclean'], svg: true },
     { icon: 'yarn', extensions: ['yarn.lock'], filename: true, svg: true },
-    { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'] }
-  ]
+    { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'] },
+  ],
 };

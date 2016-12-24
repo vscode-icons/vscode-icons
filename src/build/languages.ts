@@ -1,4 +1,6 @@
-exports.languages = {
+import { ILanguageCollection } from '../models/ILanguage';
+
+export const languages: ILanguageCollection = {
   bat: { ids: 'bat', defaultExtension: 'bat' },
   c: { ids: 'c', defaultExtension: 'c' },
   clojure: { ids: 'clojure', defaultExtension: 'clojure' },
@@ -49,5 +51,5 @@ exports.languages = {
   vb: { ids: 'vb', defaultExtension: 'vb' },
   xml: { ids: 'xml', defaultExtension: 'xml' },
   xsl: { ids: 'xsl', defaultExtension: 'xsl' },
-  yaml: { ids: 'yaml', defaultExtension: 'yaml' }
+  yaml: { ids: 'yaml', defaultExtension: 'yaml' },
 };

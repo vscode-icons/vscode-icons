@@ -1,15 +1,20 @@
-var vscode = require('vscode');
-var open = require('open');
-var msg = require('./messages').messages;
-var settings = require('./settings');
-var vars = settings.getSettings();
+import * as vscode from 'vscode';
+import * as open from 'open';
+import { messages as msg } from './messages';
+import * as settings from './settings';
+
+const vars = settings.getSettings();
+
+function getConfig() {
+  return vscode.workspace.getConfiguration() as IExtendedWorkspaceConfiguration;
+}
 
 function showWelcomeMessage() {
   settings.setStatus(settings.status.notInstalled);
   vscode.window.showInformationMessage(msg.welcomeMessage,
     { title: msg.aboutOfficialApi }, { title: msg.seeReadme })
-    .then(function (btn) {
-      if (!btn) return;
+    .then(btn => {
+      if (!btn) { return; }
       if (btn.title === msg.aboutOfficialApi) {
         open(msg.urlOfficialApi);
       } else if (btn.title === msg.seeReadme) {
@@ -21,21 +26,21 @@ function showWelcomeMessage() {
 function showNewVersionMessage() {
   vscode.window.showInformationMessage(msg.newVersionMessage + ' v.' + vars.extVersion,
     { title: msg.seeReleaseNotes }, { title: msg.dontshowthis })
-    .then(function (btn) {
+    .then(btn => {
       settings.setStatus(settings.status.disabled);
-      if (!btn) return;
+      if (!btn) { return; }
       if (btn.title === msg.seeReleaseNotes) {
         open(msg.urlReleaseNote);
       } else if (btn.title === msg.dontshowthis) {
-        vscode.workspace.getConfiguration()
+        getConfig()
           .update('vsicons.dontShowNewVersionMessage', true, true);
       }
     });
 }
 
 function runAutoInstall() {
-  var state = settings.getState();
-  var isNewVersion = state.version !== vars.extVersion;
+  const state = settings.getState();
+  const isNewVersion = state.version !== vars.extVersion;
 
   if (!state.welcomeShown) {
     // show welcome message
@@ -45,18 +50,19 @@ function runAutoInstall() {
 
   if (isNewVersion) {
     settings.setStatus(state.status);
-    if (!vscode.workspace.getConfiguration().vsicons.dontShowNewVersionMessage) {
+    if (!getConfig().vsicons.dontShowNewVersionMessage) {
       showNewVersionMessage();
     }
   }
 }
 
-function activate() {
-  console.log('vscode-icons is active!'); //eslint-disable-line
+export function activate() {
+  // tslint:disable-next-line no-console
+  console.log('vscode-icons is active!');
   runAutoInstall();
 }
-exports.activate = activate;
 
 // this method is called when your vscode is closed
-function deactivate() { }
-exports.deactivate = deactivate;
+export function deactivate() {
+  // no code here at the moment
+}
