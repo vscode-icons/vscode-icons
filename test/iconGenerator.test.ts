@@ -35,25 +35,21 @@ describe('generating icons', function () {
 
   it('ensures default file has an icon path', function () {
     const json = iconGenerator.getDefaultSchema();
-
     expect(json.iconDefinitions._file.iconPath).not.to.be.equal('');
   });
 
   it('ensures default folder has an icon path', function () {
     const json = iconGenerator.getDefaultSchema();
-
     expect(json.iconDefinitions._folder.iconPath).not.to.be.equal('');
   });
 
   it('ensures default folder has an open icon path', function () {
     const json = iconGenerator.getDefaultSchema();
-
     expect(json.iconDefinitions._folder_open.iconPath).not.to.be.equal('');
   });
 
   it('ensures each supported file extension has an associated icon file', function () {
     const suffix = '@2x';
-
     const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     files.supported.forEach(function (file) {
