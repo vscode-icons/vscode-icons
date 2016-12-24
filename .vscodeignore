@@ -2,8 +2,10 @@
 .vscode/**
 .vscode-test/**
 test/**
-out/**
 src/**
+out/src/build/**
+out/src/models/**
+out/test/**
 typings/**
 examples/**
 images/*.psd
