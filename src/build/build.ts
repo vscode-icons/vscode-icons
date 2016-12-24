@@ -1,4 +1,3 @@
-import { ncp } from 'ncp';
 import { generate } from './iconGenerator';
 const outDir = './out/src/dev';
 
