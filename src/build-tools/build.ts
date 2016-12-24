@@ -1,5 +1,5 @@
 import { generate } from './iconGenerator';
-const outDir = './out/src/dev';
+const outDir = './out/src/extension';
 
 // generating icons.json
 // The function takes as second argument the directory where

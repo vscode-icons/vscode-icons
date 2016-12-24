@@ -4,16 +4,33 @@ import * as vscode from 'vscode';
 import * as semver from 'semver';
 import { vscodePath as getAppPath } from './vscodePath';
 import { version as extVersion } from './extVersion';
+import { ISettings } from '../../models/ISettings';
+import { IState } from '../../models/IState';
 
-let settings = null;
+let settings: ISettings = null;
 
-export const status = {
+export interface IExtensionStatus {
+  enabled: string;
+  disabled: string;
+  notInstalled: string;
+}
+
+export interface ISettingsManager {
+  getSettings: () => ISettings;
+  getState: () => IState;
+  setState: (state: IState) => void;
+  setStatus: (sts: string) => void;
+  deleteState: () => void;
+  status: IExtensionStatus;
+}
+
+export const status: IExtensionStatus = {
   enabled: 'enabled',
   disabled: 'disabled',
   notInstalled: 'notInstalled',
 };
 
-export function getSettings() {
+function getSettings(): ISettings {
   if (settings) { return settings; };
   const isInsiders = /insiders/i.test((<any> vscode.env).appName);
   const version = semver(vscode.version);
@@ -39,11 +56,11 @@ export function getSettings() {
   return settings;
 }
 
-export function getState() {
+function getState(): IState {
   const vars = getSettings();
   try {
     const state = fs.readFileSync(vars.settingsPath, 'utf8');
-    return JSON.parse(state);
+    return <IState> JSON.parse(state);
   } catch (error) {
     return {
       version: '0',
@@ -53,12 +70,12 @@ export function getState() {
   }
 }
 
-export function setState(state) {
+function setState(state: IState): void {
   const vars = getSettings();
   fs.writeFileSync(vars.settingsPath, JSON.stringify(state));
 }
 
-export function setStatus(sts) {
+function setStatus(sts: string): void {
   const state = getState();
   state.version = extVersion;
   state.status = sts;
@@ -66,7 +83,16 @@ export function setStatus(sts) {
   setState(state);
 }
 
-export function deleteState() {
+function deleteState(): void {
   const vars = getSettings();
   fs.unlinkSync(vars.settingsPath);
 }
+
+export const settingsManager: ISettingsManager = {
+  getSettings,
+  getState,
+  setState,
+  setStatus,
+  deleteState,
+  status,
+};

@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "module": "commonjs",
+        "moduleResolution": "node",
         "target": "es6",
         "outDir": "out",
         "lib": [
@@ -12,7 +13,6 @@
     "exclude": [
         "node_modules",
         ".vscode-test",
-        "examples",
-        "dist"
+        "examples"
     ]
 }
