@@ -75,11 +75,10 @@
   "devDependencies": {
     "@types/chai": "^3.4.34",
     "@types/mocha": "^2.2.33",
-    "@types/ncp": "^0.5.29",
     "chai": "^3.5.0",
     "lodash": "^4.17.2",
     "mocha": "^3.2.0",
-    "ncp": "^2.0.0",
+    "tslint": "^4.2.0",
     "typescript": "^2.0.3",
     "vscode": "^1.0.0"
   },
