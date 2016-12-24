@@ -74,7 +74,9 @@
   },
   "devDependencies": {
     "@types/chai": "^3.4.34",
+    "@types/lodash": "^4.14.44",
     "@types/mocha": "^2.2.33",
+    "@types/node": "^6.0.40",
     "chai": "^3.5.0",
     "lodash": "^4.17.2",
     "mocha": "^3.2.0",
