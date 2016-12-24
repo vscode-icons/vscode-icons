@@ -247,17 +247,17 @@ export function getPathToDirName(toDirName, fromDirPath) {
   }
 
   return './' +
-    path.relative(fromDirPath, toDirName).replace('\\', '/') +
+    path.relative(fromDirPath, toDirName).replace(/\\/g, '/') +
     (toDirName.endsWith('/') ? '' : '/');
 }
 
 /**
  * Generates an icon json file.
  *
- * @param {any} iconsFilename The icons file name
- * @param {any} outDir The output diretory
+ * @param {string} iconsFilename The icons file name
+ * @param {string} outDir The output diretory
  */
-export function generate(iconsFilename, outDir) {
+export function generate(iconsFilename: string, outDir: string) {
   let outputDir = outDir;
 
   if (iconsFilename == null) {

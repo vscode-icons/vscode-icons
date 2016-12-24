@@ -9,7 +9,7 @@ import  *  as iconGenerator  from '../src/build/iconGenerator';
 import { extensions as files } from '../src/build/supportedExtensions';
 import { extensions as folders } from '../src/build/supportedFolders';
 
-const iconsFolderPath = path.join(__dirname, './../icons');
+const iconsFolderPath = path.join(__dirname, '../../icons');
 
 describe('generating icons', function () {
   it('removes first dot from text', function () {
@@ -20,8 +20,8 @@ describe('generating icons', function () {
 
   it('resolves path from one directory to another', function () {
     const fromDirPath = __dirname;
-    const toDirName = path.join(__dirname, './../icons');
-    const pathTo = './../icons/';
+    const toDirName = path.join(__dirname, '../../icons');
+    const pathTo = './../../icons/';
     expect(iconGenerator.getPathToDirName(toDirName, fromDirPath)).equals(pathTo);
   });
 
