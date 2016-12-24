@@ -1,91 +1,111 @@
 {
-  "name": "vscode-icons",
-  "displayName": "vscode-icons",
-  "description": "Icons for Visual Studio Code",
-  "version": "4.2.0",
-  "publisher": "robertohuertasm",
-  "license": "MIT",
-  "author": {
-    "email": "roberto.huertas@outlook.com",
-    "name": "Roberto Huertas",
-    "url": "http://codecoding.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/robertohuertasm/vscode-icons"
-  },
-  "bugs": {
-    "url": "https://github.com/robertohuertasm/vscode-icons/issues",
-    "email": "roberto.huertas@outlook.com"
-  },
-  "engines": {
-    "vscode": "^1.0.0"
-  },
-  "categories": [
-    "Other",
-    "Themes"
-  ],
-  "keywords": [
-    "icon-theme",
-    "theme",
-    "icons",
-    "vscode-icons"
-  ],
-  "preview": true,
-  "homepage": "https://github.com/robertohuertasm/vscode-icons",
-  "icon": "images/logo.png",
-  "galleryBanner": {
-    "color": "#ffdd00"
-  },
-  "activationEvents": [
-    "*"
-  ],
-  "main": "./out/src/dev/extension",
-  "contributes": {
-    "iconThemes": [
-      {
-        "id": "vscode-icons",
-        "label": "VSCode Icons",
-        "path": "./out/src/dev/icons.json"
-      }
+    "name": "vscode-icons",
+    "displayName": "vscode-icons",
+    "description": "Icons for Visual Studio Code",
+    "version": "4.2.0",
+    "publisher": "robertohuertasm",
+    "license": "MIT",
+    "author": {
+        "email": "roberto.huertas@outlook.com",
+        "name": "Roberto Huertas",
+        "url": "http://codecoding.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/robertohuertasm/vscode-icons"
+    },
+    "bugs": {
+        "url": "https://github.com/robertohuertasm/vscode-icons/issues",
+        "email": "roberto.huertas@outlook.com"
+    },
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other",
+        "Themes"
     ],
-    "configuration": {
-      "title": "vscode-icons configuration",
-      "properties": {
-        "vsicons.dontShowNewVersionMessage": {
-          "type": "boolean",
-          "default": false,
-          "description": "If set to true the new version message won't be shown anymore."
+    "keywords": [
+        "icon-theme",
+        "theme",
+        "icons",
+        "vscode-icons"
+    ],
+    "preview": true,
+    "homepage": "https://github.com/robertohuertasm/vscode-icons",
+    "icon": "images/logo.png",
+    "galleryBanner": {
+        "color": "#ffdd00"
+    },
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/src/extension/extension",
+    "contributes": {
+        "iconThemes": [
+            {
+                "id": "vscode-icons",
+                "label": "VSCode Icons",
+                "path": "./out/src/extension/icons.json"
+            }
+        ],
+        "configuration": {
+            "title": "vscode-icons configuration",
+            "properties": {
+                "vsicons.dontShowNewVersionMessage": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true the new version message won't be shown anymore."
+                },
+                "vsicons.presets.angular2": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If set to true the extension will match some of the common Angular 2 patterns"
+                },
+                "vsicons.presets.jsOfficial": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true the extension will use the official JS icon"
+                },
+                "vsicons.presets.tsOfficial": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If set to true the extension will use the official TS icon"
+                },
+                "vsicons.associations": {
+                    "type": "array",
+                    "default": [],
+                    "description": "This custom associations will override the icon associations defined by default."
+                }
+            }
         }
-      }
+    },
+    "scripts": {
+        "prebuild": "npm run lint && npm run compile && npm run test",
+        "build": "node ./out/src/build-tools/build.js",
+        "example": "node ./out/src/build-tools/example.js ",
+        "test": "mocha ./out/test",
+        "lint": "tslint src/**/*.ts test/**/*.ts",
+        "test:vs": "node ./node_modules/vscode/bin/test",
+        "vscode:prepublish": "tsc -p ./",
+        "compile:w": "tsc -watch -p ./",
+        "compile": "tsc -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "@types/chai": "^3.4.34",
+        "@types/lodash": "^4.14.44",
+        "@types/mocha": "^2.2.33",
+        "@types/node": "^6.0.40",
+        "chai": "^3.5.0",
+        "lodash": "^4.17.2",
+        "mocha": "^3.2.0",
+        "tslint": "^4.2.0",
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0"
+    },
+    "dependencies": {
+        "open": "0.0.5",
+        "semver": "^5.3.0"
     }
-  },
-  "scripts": {
-    "prebuild": "npm run lint && npm run compile && npm run test",
-    "build": "node ./out/src/build/build.js",
-    "example": "node ./out/src/build/example.js ",
-    "test": "mocha ./out/test",
-    "lint": "tslint src/**/*.ts test/**/*.ts",
-    "test:vs": "node ./node_modules/vscode/bin/test",
-    "vscode:prepublish": "tsc -p ./",
-    "compile:w": "tsc -watch -p ./",
-    "compile": "tsc -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install"
-  },
-  "devDependencies": {
-    "@types/chai": "^3.4.34",
-    "@types/lodash": "^4.14.44",
-    "@types/mocha": "^2.2.33",
-    "@types/node": "^6.0.40",
-    "chai": "^3.5.0",
-    "lodash": "^4.17.2",
-    "mocha": "^3.2.0",
-    "tslint": "^4.2.0",
-    "typescript": "^2.0.3",
-    "vscode": "^1.0.0"
-  },
-  "dependencies": {
-    "open": "0.0.5",
-    "semver": "^5.3.0"
-  }
 }

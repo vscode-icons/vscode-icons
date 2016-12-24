@@ -1,3 +1,0 @@
-interface IVsicons {
-  dontShowNewVersionMessage?: boolean;
-}
