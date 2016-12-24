@@ -114,7 +114,7 @@ export function buildFiles(
   iconsFolderBasePath: string = '',
   hasDefaultLightFile: boolean = false,
   suffix: string = '') {
-  return _.sortedUniq(_.sortBy(files.supported, item => item.icon), true)
+  return _.sortedUniq(_.sortBy(files.supported, item => item.icon))
     .reduce((old, current) => {
       const defs = old.defs;
       const names = old.names;
