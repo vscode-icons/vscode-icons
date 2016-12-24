@@ -1,4 +1,4 @@
-exports.messages = {
+export const messages = {
   newVersionMessage: 'Welcome to the new version of vscode-icons.',
   seeReleaseNotes: 'Information about the latest changes',
   dontshowthis: 'Don\'t show me this message next time',
@@ -9,5 +9,5 @@ exports.messages = {
   learnMore: 'Want to learn more?',
   urlReleaseNote: 'https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md',
   urlReadme: 'https://github.com/robertohuertasm/vscode-icons/blob/master/README.md',
-  urlOfficialApi: 'http://code.visualstudio.com/docs/customization/themes#_select-an-icon-theme'
+  urlOfficialApi: 'http://code.visualstudio.com/docs/customization/themes#_select-an-icon-theme',
 };

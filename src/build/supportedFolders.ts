@@ -1,5 +1,6 @@
-/* eslint-disable max-len */
-exports.extensions = {
+import { IExtensionCollection, IFolderExtension } from '../models/IExtension';
+/* tslint:disable max-line-length */
+export const extensions: IExtensionCollection<IFolderExtension> = {
   supported: [
     { icon: 'bower', extensions: ['bower_components'], svg: true },
     { icon: 'css', extensions: ['css'], svg: true },
@@ -21,6 +22,6 @@ exports.extensions = {
     { icon: 'test', extensions: ['tests', 'test', '__tests__', '__test__', 'spec', 'specs'] },
     { icon: 'typings', extensions: ['typings'] },
     { icon: 'vscode', extensions: ['vscode'], dot: true, svg: true },
-    { icon: 'webpack', extensions: ['webpack'], svg: true }
-  ]
+    { icon: 'webpack', extensions: ['webpack'], svg: true },
+  ],
 };

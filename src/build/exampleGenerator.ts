@@ -1,11 +1,11 @@
-var fs = require('fs');
-var files = require('./supportedExtensions').extensions;
-var folders = require('./supportedFolders').extensions;
+import * as fs from 'fs';
+import { extensions as files } from './supportedExtensions';
+import { extensions as folders } from './supportedFolders';
 
-var supportedFlags = ['--all', '--folders', '--files'];
+const supportedFlags = ['--all', '--folders', '--files'];
 
-var folderNames = folders.supported.reduce(function (init, current) {
-  var obj = init;
+const folderNames = folders.supported.reduce((init, current) => {
+  const obj = init;
   if (current.extensions[0]) {
     obj[current.icon] = current.dot
       ? '.' + current.extensions[0]
@@ -14,9 +14,9 @@ var folderNames = folders.supported.reduce(function (init, current) {
   return obj;
 }, {});
 
-var fileNames = files.supported.reduce(function (init, current) {
-  var obj = init;
-  var extension = current.languages && current.languages[0]
+const fileNames = files.supported.reduce((init, current) => {
+  const obj = init;
+  const extension = current.languages && current.languages[0]
     ? current.languages[0].defaultExtension
     : current.extensions[0];
 
@@ -31,7 +31,6 @@ var fileNames = files.supported.reduce(function (init, current) {
   return obj;
 }, {});
 
-
 /**
  * Deletes a directory and all subdirectories
  *
@@ -39,8 +38,8 @@ var fileNames = files.supported.reduce(function (init, current) {
  */
 function deleteDirectoryRecursively(path) {
   if (fs.existsSync(path)) {
-    fs.readdirSync(path).forEach(function (file) {
-      var curPath = path + '/' + file;
+    fs.readdirSync(path).forEach(file => {
+      const curPath = path + '/' + file;
       if (fs.lstatSync(curPath).isDirectory()) { // recurse
         deleteDirectoryRecursively(curPath);
       } else { // delete file
@@ -50,7 +49,6 @@ function deleteDirectoryRecursively(path) {
     fs.rmdirSync(path);
   }
 }
-
 
 /**
  * Creates a directory if it doesn't exists.
@@ -63,15 +61,14 @@ function createDirectory(dirName) {
   process.chdir(dirName);
 }
 
-
 /**
  * Builds the files.
  *
  * @param {any} icons The icons names to build examples of
  */
 function buildFiles(icons) {
-  icons.forEach(function (icon) {
-    var fileName = fileNames[icon];
+  icons.forEach(icon => {
+    const fileName = fileNames[icon];
 
     if (!fileName) {
       console.error('Unsupported file: ' + icon);
@@ -80,7 +77,8 @@ function buildFiles(icons) {
 
     try {
       fs.writeFileSync(fileName, null);
-      console.log('Example file for \'' + icon + '\' successfully created!'); //eslint-disable-line
+      // tslint:disable-next-line no-console
+      console.log('Example file for \'' + icon + '\' successfully created!');
     } catch (error) {
       console.error('Something went wrong while creating the file for \'' + icon + '\' :\n', error);
     }
@@ -93,8 +91,8 @@ function buildFiles(icons) {
  * @param {any} icons The icons names to build examples of
  */
 function buildFolders(icons) {
-  icons.forEach(function (icon) {
-    var dirName = folderNames[icon];
+  icons.forEach(icon => {
+    const dirName = folderNames[icon];
 
     if (!dirName) {
       console.error('Unsupported folder: ' + icon);
@@ -103,7 +101,8 @@ function buildFolders(icons) {
 
     try {
       fs.mkdirSync(dirName);
-      console.log('Example folder for \'' + icon + '\' successfully created!'); //eslint-disable-line
+      // tslint:disable-next-line no-console
+      console.log('Example folder for \'' + icon + '\' successfully created!');
     } catch (error) {
       console.error('Something went wrong while creating the folder for \''
         + icon + '\' :\n', error);
@@ -118,7 +117,7 @@ function buildFolders(icons) {
  * @param {any} icons The icons names to build examples of
  */
 function buildExample(flag, icons) {
-  var currentDir = process.cwd();
+  const currentDir = process.cwd();
 
   createDirectory('examples');
 
@@ -153,7 +152,7 @@ function buildExample(flag, icons) {
  * @returns 'true' if the check fails, otherwise 'false'
  */
 function assertFlags(args) {
-  var supportedFlagsMsg = 'Supported flags are ' + supportedFlags.join(', ') + '.';
+  const supportedFlagsMsg = 'Supported flags are ' + supportedFlags.join(', ') + '.';
 
   if (args.length <= 2) {
     console.error('Please provide a valid flag. ' + supportedFlagsMsg);
@@ -176,20 +175,18 @@ function assertFlags(args) {
  * @param {any} args The arguments
  * @returns
  */
-function generate(args) {
-  var icons = [];
+export function generate(args) {
+  const icons = [];
 
   if (assertFlags(args)) {
     return;
   }
 
   if (supportedFlags.slice(1).indexOf(args[2]) > -1) {
-    for (var i = 3; i < args.length; i++) {
+    for (let i = 3; i < args.length; i++) {
       icons.push(args[i]);
     }
   }
 
   buildExample(args[2].slice(2), icons);
 }
-
-module.exports = { generate: generate };
