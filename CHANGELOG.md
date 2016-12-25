@@ -1,5 +1,23 @@
 # Change Log
 
+## 4.3.0 (December 25, 2016)
+  - Enhancement: Typescript is now used in the project. ([@robertohuertasm](https://github.com/robertohuertasm) in [#578](https://github.com/robertohuertasm/vscode-icons/pull/578), [#579](https://github.com/robertohuertasm/vscode-icons/pull/579) & [#580](https://github.com/robertohuertasm/vscode-icons/pull/580))
+  - Fix: Angular2 icons restored. ([@robertohuertasm](https://github.com/robertohuertasm) in [#577](https://github.com/robertohuertasm/vscode-icons/pull/577))
+  - Feature: Crystal support. ([@ohgiwk](https://github.com/ohgiwk) in [#576](https://github.com/robertohuertasm/vscode-icons/pull/576))
+  - Feature: `Package.pins` for Swift support. ([@JimiC](https://github.com/JimiC) in [#574](https://github.com/robertohuertasm/vscode-icons/pull/574))
+  - Enhancement: Massive png to svg icon conversion. New super cool folder icons! ([@JimiC](https://github.com/JimiC) in [#572](https://github.com/robertohuertasm/vscode-icons/pull/572) & [#573](https://github.com/robertohuertasm/vscode-icons/pull/573))
+  - Feature: Snyk badge added. ([@JimiC](https://github.com/JimiC) in [#570](https://github.com/robertohuertasm/vscode-icons/pull/570))
+  - Enhancement: Properties language support. ([@JimiC](https://github.com/JimiC) in [#569](https://github.com/robertohuertasm/vscode-icons/pull/569))
+  - Enhancement: PostCSS language support. ([@JimiC](https://github.com/JimiC) in [#568](https://github.com/robertohuertasm/vscode-icons/pull/568))
+  - Enhancement: reStructuredText language support. ([@JimiC](https://github.com/JimiC) in [#566](https://github.com/robertohuertasm/vscode-icons/pull/566))
+  - Feature: Rake support. ([@JimiC](https://github.com/JimiC) in [#566](https://github.com/robertohuertasm/vscode-icons/pull/566))
+  - Enhancement: Support for more language ids. ([@JimiC](https://github.com/JimiC) in [#563](https://github.com/robertohuertasm/vscode-icons/pull/563))
+  - Feature: Snyk support. ([@wyze](https://github.com/wyze) in [#562](https://github.com/robertohuertasm/vscode-icons/pull/562))
+  - Enhancement: New svg icons for some existing png icons. ([@ginfuru](https://github.com/ginfuru) in [#560](https://github.com/robertohuertasm/vscode-icons/pull/560))
+  - Feature: Polymer support. ([@JonathanWolfe](https://github.com/JonathanWolfe) in [#558](https://github.com/robertohuertasm/vscode-icons/pull/558))
+  - Feature: cmake support. ([@Mikayex](https://github.com/Mikayex) in [#555](https://github.com/robertohuertasm/vscode-icons/pull/555))
+  - Fix: Readme errors. ([@robertohuertasm](https://github.com/robertohuertasm) in [#553](https://github.com/robertohuertasm/vscode-icons/pull/553))
+
 ## 4.2.0 (December 18, 2016)
   - Enhancement: vscode icon -> svg. ([@robertohuertasm](https://github.com/robertohuertasm) in [#552](https://github.com/robertohuertasm/vscode-icons/pull/552))
   - Feature: Protractor support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#551](https://github.com/robertohuertasm/vscode-icons/pull/551))

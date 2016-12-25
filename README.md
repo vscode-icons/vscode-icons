@@ -39,6 +39,18 @@ Finally, I also would like to ask you to raise the possible issues that you may 
 
 **Thank you all for your kind support. Finally icons are here to stay (that was the main purpose of this extension). Now let's hope they get even better :D**
 
+## Christmas release
+@JimiC has been working hard and has built some **very cool folder icons** for this Christmas! Besides that, he has also transformed a **huge quantity of our `png icons` into nicer `svg icons`**.
+
+As you may have notice we did a **regresion regarding `js and ts` icons**. Some of you were not happy with the official logos so we decided to keep the old ones until we can provide with the ability to customize some of the icons. 
+
+You may know that the `VSCode API` is not really very flexible, but the team has been thinking on a few ways to make the **icon customization** possible without tampering the original VSCode code.
+
+Please, stay tuned, because we may deliver a first version of this feature soon.
+
+Thank you all for your support!
+Merry Christmas!
+
 ----
 ## Main Contributors
 

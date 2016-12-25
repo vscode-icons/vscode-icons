@@ -3,6 +3,7 @@
 .vscode-test/**
 test/**
 src/**
+**/*.map
 out/src/build-tools/**
 out/src/models/**
 out/test/**
@@ -13,6 +14,8 @@ images/*.ai
 images/screenshot_folders.png
 Dockerfile
 .gitignore
+.gitattributes
+.travis.yml
 tsconfig.json
 tslint.json
 npm-debug.log
