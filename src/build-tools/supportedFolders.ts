@@ -2,10 +2,13 @@ import { IExtensionCollection, IFolderExtension } from '../models/IExtension';
 /* tslint:disable max-line-length */
 export const extensions: IExtensionCollection<IFolderExtension> = {
   supported: [
+    { icon: 'aws', extensions: ['aws'], svg: true },
+    { icon: 'aws', extensions: ['aws'], dot: true, svg: true },
     { icon: 'bower', extensions: ['bower_components'], svg: true },
     { icon: 'css', extensions: ['css'], svg: true },
     { icon: 'dist', extensions: ['dist', 'out', 'export', 'build'], svg: true },
     { icon: 'docs', extensions: ['docs'] },
+    { icon: 'elasticbeanstalk', extensions: ['elasticbeanstalk', 'ebextensions'], dot: true, svg: true },
     { icon: 'flow', extensions: ['flow'] },
     { icon: 'git', extensions: ['github', 'git'], dot: true, svg: true },
     { icon: 'haxelib', extensions: ['haxelib'] },
