@@ -51,7 +51,7 @@ export function buildFolders(
       const iconFolderLightDefinition = '_fd_light_' + icon;
       const iconOpenFolderDefinition = iconFolderDefinition + '_open';
       const iconOpenFolderLightDefinition = iconFolderLightDefinition + '_open';
-      const iconFileExtension = current.svg ? '.svg' : '.png';
+      const iconFileExtension = '.svg';
 
       defs[iconFolderDefinition] = {
         iconPath: folderPath + suffix + iconFileExtension,
