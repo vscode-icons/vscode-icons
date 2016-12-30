@@ -3,7 +3,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
-import  *  as iconGenerator  from '../src/build-tools/iconGenerator';
+import *  as iconGenerator from '../src/build-tools/iconGenerator';
 import { extensions as files } from '../src/build-tools/supportedExtensions';
 import { extensions as folders } from '../src/build-tools/supportedFolders';
 
