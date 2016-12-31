@@ -1,4 +1,5 @@
-export const schema = {
+import { IIconSchema } from '../models/IIconSchema';
+export const schema: IIconSchema = {
   iconDefinitions: {
     _file: {
       iconPath: '',
@@ -35,5 +36,6 @@ export const schema = {
     folderNamesExpanded: {},
     fileExtensions: {},
     fileNames: {},
+    languageIds: {},
   },
 };

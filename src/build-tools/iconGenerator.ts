@@ -3,19 +3,13 @@ import * as path from 'path';
 import * as _ from 'lodash';
 
 import { schema as defaultSchema } from './defaultSchema';
-import { extensions as files } from './supportedExtensions';
-import { extensions as folders } from './supportedFolders';
-import { FileFormat } from './../models/IExtension';
+import {  } from './../models/IExtension';
+import { IExtensionCollection, IFileExtension, IFolderExtension, FileFormat} from '../models/IExtension';
+import { IIconSchema } from '../models/IIconSchema';
 
 // tslint:disable-next-line no-var-requires
 const packageJson = require('../../../package.json');
 
-/**
- * Removes the first dot from the text.
- *
- * @param {string} txt The text
- * @returns A text without leading dot
- */
 export function removeFirstDot(txt: string) {
   if (txt.indexOf('.') === 0) {
     return txt.substring(1, txt.length);
@@ -23,19 +17,12 @@ export function removeFirstDot(txt: string) {
   return txt;
 }
 
-/**
- * Builds the structure for folders to use in the json file.
- *
- * @param {string} iconsFolderBasePath The base path to the icons folder
- * @param {boolean} hasDefaultLightFolder Indicates if a default folder for the light theme is specified
- * @param {string} suffix The suffix to use in the file name
- * @returns An object with folders properties
- */
 export function buildFolders(
+  folders: IExtensionCollection<IFolderExtension>,
   iconsFolderBasePath: string = '',
   hasDefaultLightFolder: boolean = false,
   suffix: string = '') {
-  return _.sortBy(folders.supported, item => item.icon)
+  return _.sortBy(folders.supported.filter(x => !x.disabled), item => item.icon)
     .reduce((old, current) => {
       const defs = old.defs;
       const names = old.names;
@@ -103,19 +90,12 @@ export function buildFolders(
     });
 }
 
-/**
- * Builds the structure for files to use in the json file.
- *
- * @param {string} iconsFolderBasePath The base path to the icons folder
- * @param {boolean} hasDefaultLightFile Indicates if a default file for the light theme is specified
- * @param {string} suffix The suffix to use in the file name
- * @returns An object with files properties
- */
 export function buildFiles(
+  files: IExtensionCollection<IFileExtension>,
   iconsFolderBasePath: string = '',
   hasDefaultLightFile: boolean = false,
   suffix: string = '') {
-  return _.sortedUniq(_.sortBy(files.supported, item => item.icon))
+  return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled), item => item.icon))
     .reduce((old, current) => {
       const defs = old.defs;
       const names = old.names;
@@ -195,19 +175,14 @@ export function buildFiles(
     });
 }
 
-/**
- * Gets the default schema for the json file.
- *
- * @param {any} iconsFolderBasePath The base path to the icons folder
- * @returns A json object with the apprepriate schema for vscode
- */
-export function getDefaultSchema(iconsFolderBasePath?: string) {
+export function getDefaultSchema(iconsFolderBasePath?: string): IIconSchema {
+  const schema = Object.assign({}, defaultSchema);
   // dark theme
-  defaultSchema.iconDefinitions._file
+  schema.iconDefinitions._file
     .iconPath = iconsFolderBasePath + 'file.svg';
-  defaultSchema.iconDefinitions._folder
+  schema.iconDefinitions._folder
     .iconPath = iconsFolderBasePath + 'folder.svg';
-  defaultSchema.iconDefinitions._folder_open
+  schema.iconDefinitions._folder_open
     .iconPath = iconsFolderBasePath + 'folder_opened.svg';
 
   // light theme
@@ -218,13 +193,13 @@ export function getDefaultSchema(iconsFolderBasePath?: string) {
   // and light icons definitions have to be specified for each extension
   // and populate the light section, otherwise they inherit from dark theme
   // and only those in 'light' section get overriden.
-  defaultSchema.iconDefinitions._file_light
+  schema.iconDefinitions._file_light
     .iconPath = '';
-  defaultSchema.iconDefinitions._folder_light
+  schema.iconDefinitions._folder_light
     .iconPath = '';
-  defaultSchema.iconDefinitions._folder_light_open
+  schema.iconDefinitions._folder_light_open
     .iconPath = '';
-  return defaultSchema;
+  return schema;
 }
 
 /**
@@ -246,24 +221,13 @@ export function getPathToDirName(toDirName, fromDirPath) {
   if (!fs.existsSync(toDirName)) {
     throw new Error('Directory \'' + toDirName + '\' not found.');
   }
-
   return './' +
     path.relative(fromDirPath, toDirName).replace(/\\/g, '/') +
     (toDirName.endsWith('/') ? '' : '/');
 }
 
-/**
- * Generates an icon json file.
- *
- * @param {string} iconsFilename The icons file name
- * @param {string} outDir The output diretory
- */
-export function generate(iconsFilename: string, outDir: string) {
+function cleanOutDir(outDir: string) {
   let outputDir = outDir;
-
-  if (iconsFilename == null) {
-    throw new Error('iconsFilename not defined.');
-  }
 
   if (outputDir == null) {
     outputDir = './';
@@ -272,12 +236,34 @@ export function generate(iconsFilename: string, outDir: string) {
   if (!outputDir.endsWith('/')) {
     outputDir += '/';
   }
+  return outputDir;
+}
 
-  const iconsFolderBasePath = getPathToDirName('icons', outputDir);
+export function persist(
+  iconsFilename: string,
+  outDir: string,
+  json: IIconSchema,
+): void {
+  const outputDir = cleanOutDir(outDir);
+  if (iconsFilename == null) {
+    throw new Error('iconsFilename not defined.');
+  }
+  writeJsonToFile(json, iconsFilename, outputDir);
+  updatePackageJson(outputDir + iconsFilename);
+}
+
+export function generateJson(
+  outDir: string,
+  files: IExtensionCollection<IFileExtension>,
+  folders: IExtensionCollection<IFolderExtension>,
+): IIconSchema {
+
+  const outputDir = cleanOutDir(outDir);
+  const iconsFolderBasePath = getPathToDirName(path.join(__dirname, '../../../icons'), outputDir);
   const json = getDefaultSchema(iconsFolderBasePath);
-  const res = buildJsonStructure(iconsFolderBasePath, json);
+  const res = buildJsonStructure(files, folders, iconsFolderBasePath, json);
 
-  json.iconDefinitions = Object.assign(json.iconDefinitions, res.folders.defs, res.files.defs);
+  json.iconDefinitions = Object.assign({}, json.iconDefinitions, res.folders.defs, res.files.defs);
   json.folderNames = res.folders.names.folderNames;
   json.folderNamesExpanded = res.folders.names.folderNamesExpanded;
   json.fileExtensions = res.files.names.fileExtensions;
@@ -288,17 +274,13 @@ export function generate(iconsFilename: string, outDir: string) {
   json.light.fileExtensions = res.files.light.fileExtensions;
   json.light.fileNames = res.files.light.fileNames;
 
-  writeJsonToFile(json, iconsFilename, outputDir);
-  updatePackageJson(outputDir + iconsFilename);
+  return json;
 }
 
-/**
- * Builds the structure for folders and files to use in the json file.
- *
- * @param {any} iconsFolderBasePath The base path to the icons folder
- * @returns An object with folders and files properties
- */
-function buildJsonStructure(iconsFolderBasePath, json) {
+function buildJsonStructure(
+  files: IExtensionCollection<IFileExtension>,
+  folders: IExtensionCollection<IFolderExtension>,
+  iconsFolderBasePath, json) {
   const suffix = '@2x';
 
   /* eslint-disable no-underscore-dangle */
@@ -310,19 +292,12 @@ function buildJsonStructure(iconsFolderBasePath, json) {
 
   return {
     // folders section
-    folders: buildFolders(iconsFolderBasePath, hasDefaultLightFolder, suffix),
+    folders: buildFolders(folders, iconsFolderBasePath, hasDefaultLightFolder, suffix),
     //  files section 
-    files: buildFiles(iconsFolderBasePath, hasDefaultLightFile, suffix),
+    files: buildFiles(files, iconsFolderBasePath, hasDefaultLightFile, suffix),
   };
 }
 
-/**
- * Write the json to a file.
- *
- * @param {any} json The Json object
- * @param {any} iconsFilename The icons file name
- * @param {any} outDir The output diretory
- */
 function writeJsonToFile(json, iconsFilename, outDir) {
   try {
     if (!fs.existsSync(outDir)) {
@@ -337,11 +312,6 @@ function writeJsonToFile(json, iconsFilename, outDir) {
   }
 }
 
-/**
- * Updates the package.json file.
- *
- * @param {any} newIconThemesPath The new path of the icons directory.
- */
 function updatePackageJson(newIconThemesPath) {
   const oldIconThemesPath = packageJson.contributes.iconThemes[0].path;
 
