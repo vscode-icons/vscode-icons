@@ -52,4 +52,16 @@ describe.only('merging configuration documents', function () {
     expect(newPath.substr(newPath.length - 3, 3)).not.equals('svg');
   });
 
+  it('ensures disabled extensions are not included into the manifest', function () {
+    const customFileExtensions: IExtensionCollection<IFileExtension> = {
+      supported: [
+        { icon: 'actionscript', extensions: [], disabled: true },
+      ],
+    };
+    const json = mergeConfig(customFileExtensions, fileExtensions, null, folderExtensions);
+    const extendedPath = json.iconDefinitions['_f_actionscript'];
+    expect(extendedPath).to.be.undefined;
+    expect(json.iconDefinitions['_f_newExt']).to.be.undefined;
+  });
+
 });

@@ -180,9 +180,6 @@
     "_fd_webpack_open": {
       "iconPath": ".//folder_type_webpack_opened@2x.svg"
     },
-    "_f_actionscript": {
-      "iconPath": ".//file_type_actionscript@2x.svg"
-    },
     "_f_ai": {
       "iconPath": ".//file_type_ai@2x.svg"
     },
@@ -521,6 +518,9 @@
     },
     "_f_mustache": {
       "iconPath": ".//file_type_mustache@2x.png"
+    },
+    "_f_newExt": {
+      "iconPath": ".//file_type_newExt@2x.png"
     },
     "_f_ng2_component_js": {
       "iconPath": ".//file_type_ng2_component_js@2x.svg"
@@ -938,8 +938,6 @@
     "webpack": "_fd_webpack_open"
   },
   "fileExtensions": {
-    "as": "_f_actionscript",
-    "as2": "_f_actionscript",
     "ai": "_f_ai",
     "ansible": "_f_ansible",
     "apib": "_f_apib",
@@ -1079,6 +1077,8 @@
     "xvc": "_f_matlab",
     "mustache": "_f_mustache",
     "mst": "_f_mustache",
+    "as": "_f_newExt",
+    "mynew": "_f_newExt",
     "component.js": "_f_ng2_component_js",
     "component.ts": "_f_ng2_component_ts",
     "directive.js": "_f_ng2_directive_js",

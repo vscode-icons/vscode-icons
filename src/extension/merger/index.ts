@@ -27,7 +27,7 @@ function mergeFiles(
   supported: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
   if (!custom || !custom.supported || !custom.supported.length) { return supported; }
   // start the merge operation
-  let final: IFileExtension[] = supported.supported.concat();
+  let final: IFileExtension[] = _.cloneDeep(supported.supported);
   custom.supported.forEach(file => {
     const officialFiles = final.filter(x => x.icon === file.icon);
     if (officialFiles.length) {

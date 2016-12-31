@@ -202,13 +202,6 @@ export function getDefaultSchema(iconsFolderBasePath?: string): IIconSchema {
   return schema;
 }
 
-/**
- * Gets the relative path to the destination folder from the source directory.
- *
- * @param {any} toDirName The destination directory name
- * @param {any} fromDirPath The path of the source diretory
- * @returns The relative path to the destination directory
- */
 export function getPathToDirName(toDirName, fromDirPath) {
   if (toDirName == null) {
     throw new Error('toDirName not defined.');
