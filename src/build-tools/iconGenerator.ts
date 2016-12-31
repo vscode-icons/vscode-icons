@@ -42,45 +42,45 @@ export function buildFolders(
       const light = old.light;
       const icon = current.icon;
       const hasLightVersion = current.light;
-      const iconFolderType = 'folder_type_' + icon;
-      const iconFolderLightType = 'folder_type_light_' + icon;
-      const folderPath = iconsFolderBasePath + iconFolderType;
-      const folderLightPath = iconsFolderBasePath + iconFolderLightType;
-      const openFolderPath = folderPath + '_opened';
-      const openFolderLightPath = folderLightPath + '_opened';
-      const iconFolderDefinition = '_fd_' + icon;
-      const iconFolderLightDefinition = '_fd_light_' + icon;
-      const iconOpenFolderDefinition = iconFolderDefinition + '_open';
-      const iconOpenFolderLightDefinition = iconFolderLightDefinition + '_open';
-      const iconFileExtension = '.' + FileFormat[current.format];
+      const iconFolderType = `folder_type_${icon}`;
+      const iconFolderLightType = `folder_type_light_${icon}`;
+      const folderPath = `${iconsFolderBasePath}${iconFolderType}`;
+      const folderLightPath = `${iconsFolderBasePath}${iconFolderLightType}`;
+      const openFolderPath = `${folderPath}_opened`;
+      const openFolderLightPath = `${folderLightPath}_opened`;
+      const iconFolderDefinition = `_fd_${icon}`;
+      const iconFolderLightDefinition = `_fd_light_${icon}`;
+      const iconOpenFolderDefinition = `${iconFolderDefinition}_open`;
+      const iconOpenFolderLightDefinition = `${iconFolderLightDefinition}_open`;
+      const iconFileExtension = `.${FileFormat[current.format]}`;
 
       defs[iconFolderDefinition] = {
-        iconPath: folderPath + suffix + iconFileExtension,
+        iconPath: `${folderPath}${suffix}${iconFileExtension}`,
       };
       defs[iconOpenFolderDefinition] = {
-        iconPath: openFolderPath + suffix + iconFileExtension,
+        iconPath: `${openFolderPath}${suffix}${iconFileExtension}`,
       };
 
       if (hasDefaultLightFolder && !hasLightVersion) {
         defs[iconFolderLightDefinition] = {
-          iconPath: folderPath + suffix + iconFileExtension,
+          iconPath: `${folderPath}${suffix}${iconFileExtension}`,
         };
         defs[iconOpenFolderLightDefinition] = {
-          iconPath: openFolderPath + suffix + iconFileExtension,
+          iconPath: `${openFolderPath}${suffix}${iconFileExtension}`,
         };
       }
 
       if (hasLightVersion) {
         defs[iconFolderLightDefinition] = {
-          iconPath: folderLightPath + suffix + iconFileExtension,
+          iconPath: `${folderLightPath}${suffix}${iconFileExtension}`,
         };
         defs[iconOpenFolderLightDefinition] = {
-          iconPath: openFolderLightPath + suffix + iconFileExtension,
+          iconPath: `${openFolderLightPath}${suffix}${iconFileExtension}`,
         };
       }
 
       current.extensions.forEach(extension => {
-        const key = current.dot ? '.' + extension : extension;
+        const key = `${current.dot ? '.' : ''}${extension}`;
         names.folderNames[key] = iconFolderDefinition;
         names.folderNamesExpanded[key] = iconOpenFolderDefinition;
 
@@ -123,28 +123,28 @@ export function buildFiles(
       const light = old.light;
       const icon = current.icon;
       const hasLightVersion = current.light;
-      const iconFileType = 'file_type_' + icon;
-      const iconFileLightType = 'file_type_light_' + icon;
-      const filePath = iconsFolderBasePath + iconFileType;
-      const fileLightPath = iconsFolderBasePath + iconFileLightType;
-      const iconFileDefinition = '_f_' + icon;
-      const iconFileLightDefinition = '_f_light_' + icon;
-      const iconFileExtension = '.' + FileFormat[current.format];
+      const iconFileType = `file_type_${icon}`;
+      const iconFileLightType = `file_type_light_${icon}`;
+      const filePath = `${iconsFolderBasePath}${iconFileType}`;
+      const fileLightPath = `${iconsFolderBasePath}${iconFileLightType}`;
+      const iconFileDefinition = `_f_${icon}`;
+      const iconFileLightDefinition = `_f_light_${icon}`;
+      const iconFileExtension = `.${FileFormat[current.format]}`;
       const isFilename = current.filename;
 
       defs[iconFileDefinition] = {
-        iconPath: filePath + suffix + iconFileExtension,
+        iconPath: `${filePath}${suffix}${iconFileExtension}`,
       };
 
       if (hasDefaultLightFile && !hasLightVersion) {
         defs[iconFileLightDefinition] = {
-          iconPath: filePath + suffix + iconFileExtension,
+          iconPath: `${filePath}${suffix}${iconFileExtension}`,
         };
       }
 
       if (hasLightVersion) {
         defs[iconFileLightDefinition] = {
-          iconPath: fileLightPath + suffix + iconFileExtension,
+          iconPath: `${fileLightPath}${suffix}${iconFileExtension}`,
         };
       }
 
@@ -204,11 +204,11 @@ export function buildFiles(
 export function getDefaultSchema(iconsFolderBasePath?: string) {
   // dark theme
   defaultSchema.iconDefinitions._file
-    .iconPath = iconsFolderBasePath + 'file.svg';
+    .iconPath = `${iconsFolderBasePath}file.svg`;
   defaultSchema.iconDefinitions._folder
-    .iconPath = iconsFolderBasePath + 'folder.svg';
+    .iconPath = `${iconsFolderBasePath}folder.svg`;
   defaultSchema.iconDefinitions._folder_open
-    .iconPath = iconsFolderBasePath + 'folder_opened.svg';
+    .iconPath = `${iconsFolderBasePath}folder_opened.svg`;
 
   // light theme
   // default file and folder related icon paths if not set,
@@ -244,12 +244,13 @@ export function getPathToDirName(toDirName, fromDirPath) {
   }
 
   if (!fs.existsSync(toDirName)) {
-    throw new Error('Directory \'' + toDirName + '\' not found.');
+    throw new Error(`Directory '${toDirName}' not found.`);
   }
 
-  return './' +
-    path.relative(fromDirPath, toDirName).replace(/\\/g, '/') +
-    (toDirName.endsWith('/') ? '' : '/');
+  let relativePath = path.relative(fromDirPath, toDirName).replace(/\\/g, '/');
+  let trailingPathSeparator = toDirName.endsWith('/') ? '' : '/';
+
+  return `./${relativePath}${trailingPathSeparator}`;
 }
 
 /**
@@ -301,12 +302,10 @@ export function generate(iconsFilename: string, outDir: string) {
 function buildJsonStructure(iconsFolderBasePath, json) {
   const suffix = '@2x';
 
-  /* eslint-disable no-underscore-dangle */
   const hasDefaultLightFolder = json.iconDefinitions._folder_light.iconPath != null &&
     json.iconDefinitions._folder_light.iconPath !== '';
   const hasDefaultLightFile = json.iconDefinitions._file_light.iconPath != null &&
     json.iconDefinitions._file_light.iconPath !== '';
-  /* eslint-enable no-underscore-dangle */
 
   return {
     // folders section

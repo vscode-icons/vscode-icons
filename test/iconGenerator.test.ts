@@ -54,9 +54,7 @@ describe('generating icons', function () {
     const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     files.supported.forEach(function (file) {
-      const iconFileExtension = '.' + FileFormat[file.format];
-      const iconFilePath = iconDirPath + 'file_type_' +
-        file.icon + suffix + iconFileExtension;
+      const iconFilePath = `${iconDirPath}file_type_${file.icon}${suffix}.${FileFormat[file.format]}`;
       expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
     });
   });
@@ -70,10 +68,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return file.light; })
         .forEach(function (file) {
-          const iconFileExtension = '.' + FileFormat[file.format];
-          const iconFilePath = iconDirPath + 'file_type_light_' +
-            file.icon + suffix + iconFileExtension;
-
+          const iconFilePath = `${iconDirPath}file_type_light_${file.icon}${suffix}.${FileFormat[file.format]}`;
           expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
         });
     });
@@ -83,9 +78,7 @@ describe('generating icons', function () {
     const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     folders.supported.forEach(function (folder) {
-      const iconFileExtension = '.' + FileFormat[folder.format];
-      const iconFilePath = iconDirPath + 'folder_type_' +
-        folder.icon + suffix + iconFileExtension;
+      const iconFilePath = `${iconDirPath}folder_type_${folder.icon}${suffix}.${FileFormat[folder.format]}`;
       expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
     });
   });
@@ -99,10 +92,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const iconFileExtension = '.' + FileFormat[folder.format];
-          const iconFilePath = iconDirPath + 'folder_type_light_' +
-            folder.icon + suffix + iconFileExtension;
-
+          const iconFilePath = `${iconDirPath}folder_type_light_${folder.icon}${suffix}.${FileFormat[folder.format]}`;
           expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
         });
     });
@@ -112,10 +102,7 @@ describe('generating icons', function () {
     const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     folders.supported.forEach(function (folder) {
-      const iconFileExtension = '.' + FileFormat[folder.format];
-      const iconOpenFilePath = iconDirPath + 'folder_type_' +
-        folder.icon + '_opened' + suffix + iconFileExtension;
-
+      const iconOpenFilePath = `${iconDirPath}folder_type_${folder.icon}_opened${suffix}.${FileFormat[folder.format]}`;
       expect(fs.existsSync(path.join(__dirname, iconOpenFilePath))).to.be.true;
     });
   });
@@ -129,10 +116,8 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const iconFileExtension = '.' + FileFormat[folder.format];
-          const iconOpenFilePath = iconDirPath + 'folder_type_light_' +
-            folder.icon + '_opened' + suffix + iconFileExtension;
-
+          const iconOpenFilePath =
+            `${iconDirPath}folder_type_light_${folder.icon}_opened${suffix}.${FileFormat[folder.format]}`;
           expect(fs.existsSync(path.join(__dirname, iconOpenFilePath))).to.be.true;
         });
     });
@@ -141,7 +126,7 @@ describe('generating icons', function () {
     const fileDefinitions = iconGenerator.buildFiles().defs;
 
     files.supported.forEach(function (file) {
-      const definition = '_f_' + file.icon;
+      const definition = `_f_${file.icon}`;
       expect(fileDefinitions[definition]).not.to.be.undefined;
     });
   });
@@ -154,7 +139,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return file.light; })
         .forEach(function (file) {
-          const definition = '_f_light_' + file.icon;
+          const definition = `_f_light_${file.icon}`;
           expect(fileDefinitions[definition]).not.to.be.undefined;
         });
     });
@@ -163,7 +148,7 @@ describe('generating icons', function () {
     const fileDefinitions = iconGenerator.buildFiles().defs;
 
     files.supported.forEach(function (file) {
-      const definition = '_f_' + file.icon;
+      const definition = `_f_${file.icon}`;
       expect(fileDefinitions[definition].iconPath).not.to.be.equal('');
     });
   });
@@ -175,7 +160,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return file.light; })
         .forEach(function (file) {
-          const definition = '_f_light_' + file.icon;
+          const definition = `_f_light_${file.icon}`;
           expect(fileDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
@@ -184,7 +169,7 @@ describe('generating icons', function () {
     const folderDefinitions = iconGenerator.buildFolders().defs;
 
     folders.supported.forEach(function (folder) {
-      const definition = '_fd_' + folder.icon;
+      const definition = `_fd_${folder.icon}`;
       expect(folderDefinitions[definition]).not.to.be.undefined;
     });
   });
@@ -196,7 +181,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_light_' + folder.icon;
+          const definition = `_fd_light_${folder.icon}`;
           expect(folderDefinitions[definition]).not.to.be.undefined;
         });
     });
@@ -205,7 +190,7 @@ describe('generating icons', function () {
     const folderDefinitions = iconGenerator.buildFolders().defs;
 
     folders.supported.forEach(function (folder) {
-      const definition = '_fd_' + folder.icon + '_open';
+      const definition = `_fd_${folder.icon}_open`;
       expect(folderDefinitions[definition]).not.to.be.undefined;
     });
   });
@@ -217,7 +202,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_light_' + folder.icon + '_open';
+          const definition = `_fd_light_${folder.icon}_open`;
           expect(folderDefinitions[definition]).not.to.be.undefined;
         });
     });
@@ -226,7 +211,7 @@ describe('generating icons', function () {
     const folderDefinitions = iconGenerator.buildFolders().defs;
 
     folders.supported.forEach(function (folder) {
-      const definition = '_fd_' + folder.icon;
+      const definition = `_fd_${folder.icon}`;
       expect(folderDefinitions[definition].iconPath).not.to.be.equal('');
     });
   });
@@ -238,7 +223,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_light_' + folder.icon;
+          const definition = `_fd_light_${folder.icon}`;
           expect(folderDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
@@ -247,7 +232,7 @@ describe('generating icons', function () {
     const folderDefinitions = iconGenerator.buildFolders().defs;
 
     folders.supported.forEach(function (folder) {
-      const definition = '_fd_' + folder.icon + '_open';
+      const definition = `_fd_${folder.icon}_open`;
       expect(folderDefinitions[definition].iconPath).not.to.be.equal('');
     });
   });
@@ -259,7 +244,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_light_' + folder.icon + '_open';
+          const definition = `_fd_light_${folder.icon}_open`;
           expect(folderDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
@@ -269,9 +254,9 @@ describe('generating icons', function () {
       const folderNames = iconGenerator.buildFolders().names.folderNames;
 
       folders.supported.forEach(function (folder) {
-        const definition = '_fd_' + folder.icon;
+        const definition = `_fd_${folder.icon}`;
         folder.extensions.forEach(function (extension) {
-          const extensionName = (folder.dot ? '.' : '') + extension;
+          const extensionName = `${folder.dot ? '.' : ''}${extension}`;
           expect(folderNames[extensionName]).equals(definition);
         });
       });
@@ -285,9 +270,9 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_light_' + folder.icon;
+          const definition = `_fd_light_${folder.icon}`;
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
+            const extensionName = `${folder.dot ? '.' : ''}${extension}`;
             expect(folderNames[extensionName]).equal(definition);
           });
         });
@@ -298,9 +283,9 @@ describe('generating icons', function () {
       const folderNamesExpanded = iconGenerator.buildFolders().names.folderNamesExpanded;
 
       folders.supported.forEach(function (folder) {
-        const definition = '_fd_' + folder.icon + '_open';
+        const definition = `_fd_${folder.icon}_open`;
         folder.extensions.forEach(function (extension) {
-          const extensionName = (folder.dot ? '.' : '') + extension;
+          const extensionName = `${folder.dot ? '.' : ''}${extension}`;
           expect(folderNamesExpanded[extensionName]).equal(definition);
         });
       });
@@ -314,9 +299,9 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_light_' + folder.icon + '_open';
+          const definition = `_fd_light_${folder.icon}_open`;
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
+            const extensionName = `${folder.dot ? '.' : ''}${extension}`;
             expect(folderNamesExpanded[extensionName]).equal(definition);
           });
         });
@@ -330,7 +315,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return !file.filename; })
         .forEach(function (file) {
-          const definition = '_f_' + file.icon;
+          const definition = `_f_${file.icon}`;
           file.extensions.forEach(function (extension) {
             const extensionName = iconGenerator.removeFirstDot(extension);
             expect(fileExtensions[extensionName]).equal(definition);
@@ -346,7 +331,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return !file.filename && file.light; })
         .forEach(function (file) {
-          const definition = '_f_light_' + file.icon;
+          const definition = `_f_light_${file.icon}`;
           file.extensions.forEach(function (extension) {
             const extensionName = iconGenerator.removeFirstDot(extension);
             expect(fileExtensions[extensionName]).equal(definition);
@@ -362,7 +347,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return file.filename && !file.languages; })
         .forEach(function (file) {
-          const definition = '_f_' + file.icon;
+          const definition = `_f_${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(fileNames[extension]).equal(definition);
           });
@@ -377,7 +362,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return file.filename && !file.languages && file.light; })
         .forEach(function (file) {
-          const definition = '_f_light_' + file.icon;
+          const definition = `_f_light_${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(fileNames[extension]).equal(definition);
           });
@@ -392,7 +377,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return file.languages; })
         .forEach(function (file) {
-          const definition = '_f_' + file.icon;
+          const definition = `_f_${file.icon}`;
           const assertLanguage = function (language) {
             expect(languageIds[language]).equal(definition);
           };
@@ -415,7 +400,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return !file.light; })
         .forEach(function (file) {
-          const definition = '_f_light_' + file.icon;
+          const definition = `_f_light_${file.icon}`;
           expect(fileDefinitions[definition]).not.to.be.undefined;
         });
     });
@@ -428,7 +413,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return !folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_light_' + folder.icon;
+          const definition = `_fd_light_${folder.icon}`;
           expect(folderDefinitions[definition]).not.to.be.undefined;
         });
     });
@@ -441,7 +426,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return !folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_light_' + folder.icon + '_open';
+          const definition = `_fd_light_${folder.icon}_open`;
           expect(folderDefinitions[definition]).not.to.be.undefined;
         });
     });
@@ -455,9 +440,9 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return !folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_' + folder.icon;
+          const definition = `_fd_${folder.icon}`;
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
+            const extensionName = `${folder.dot ? '.' : ''}${extension}`;
             expect(folderNames[extensionName]).equals(definition);
           });
         });
@@ -472,9 +457,9 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return !folder.light; })
         .forEach(function (folder) {
-          const definition = '_fd_' + folder.icon + '_open';
+          const definition = `_fd_${folder.icon}_open`;
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
+            const extensionName = `${folder.dot ? '.' : ''}${extension}`;
             expect(folderNamesExpanded[extensionName]).equals(definition);
           });
         });
@@ -488,7 +473,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return !file.filename && !file.light; })
         .forEach(function (file) {
-          const definition = '_f_' + file.icon;
+          const definition = `_f_${file.icon}`;
           file.extensions.forEach(function (extension) {
             const extensionName = iconGenerator.removeFirstDot(extension);
             expect(fileExtensions[extensionName]).equals(definition);
@@ -504,7 +489,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return file.filename && !file.languages && !file.light; })
         .forEach(function (file) {
-          const definition = '_f_' + file.icon;
+          const definition = `_f_${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(fileNames[extension]).equals(definition);
           });

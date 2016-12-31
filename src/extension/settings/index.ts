@@ -34,7 +34,7 @@ function getSettings(): ISettings {
   if (settings) { return settings; };
   const isInsiders = /insiders/i.test((<any> vscode.env).appName);
   const version = semver(vscode.version);
-  const isGt160 = semver.lt(version.major + '.' + version.minor + '.' + version.patch, '1.6.0');
+  const isGt160 = semver.lt(`${version.major}.${version.minor}.${version.patch}`, '1.6.0');
   const isWin = /^win/.test(process.platform);
   const homeDir = isWin ? 'USERPROFILE' : 'HOME';
   const extensionFolder = path.join(homeDir, isInsiders
