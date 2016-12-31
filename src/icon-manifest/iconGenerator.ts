@@ -33,8 +33,8 @@ export class IconGenerator {
         const iconFolderType = `folder_type_${icon}`;
         const iconFolderLightType = `folder_type_light_${icon}`;
         const fPath = this.getIconPath(current, iconsFolderBasePath);
-        const folderPath = fPath + iconFolderType;
-        const folderLightPath = fPath + iconFolderLightType;
+        const folderPath = path.join(fPath, iconFolderType);
+        const folderLightPath = path.join(fPath, iconFolderLightType);
         const openFolderPath = `${folderPath}_opened`;
         const openFolderLightPath = `${folderLightPath}_opened`;
         const iconFolderDefinition = `_fd_${icon}`;
@@ -109,8 +109,8 @@ export class IconGenerator {
         const iconFileType = `file_type_${icon}`;
         const iconFileLightType = `file_type_light_${icon}`;
         const fPath = this.getIconPath(current, iconsFolderBasePath);
-        const filePath = fPath + iconFileType;
-        const fileLightPath = fPath + iconFileLightType;
+        const filePath = path.join(fPath, iconFileType);
+        const fileLightPath = path.join(fPath, iconFileLightType);
         const iconFileDefinition = `_f_${icon}`;
         const iconFileLightDefinition = `_f_light_${icon}`;
         const iconFileExtension = `.${typeof current.format === 'string' ?

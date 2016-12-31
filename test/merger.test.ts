@@ -109,12 +109,12 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
   });
 
-  it('ensures _custom icons have an absolute path', function () {
+  it.only('ensures _custom icons have an absolute path', function () {
     const customFileExtensions: IExtensionCollection<IFileExtension> = {
       supported: [
         {
           icon: 'custom_icon',
-          extensions: [],
+          extensions: ['custom'],
           format: 'svg',
         },
       ],
@@ -123,6 +123,7 @@ describe('FileExtensions: merging configuration documents', function () {
     const icon = json.iconDefinitions['_f_custom_icon'];
     expect(icon).exist;
     expect(icon.iconPath.startsWith('C:')).to.be.true;
+    expect(json.fileExtensions['custom']).equals('_f_custom_icon');
   });
 
 });
