@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as open from 'open';
 import { messages as msg } from '../messages';
-import { getConfig } from '../utils/extensions';
+import { getConfig } from '../utils/vscode-extensions';
 import { IState } from '../models/IState';
 import { ISettings } from '../models/ISettings';
 import { ISettingsManager, status } from '../settings';

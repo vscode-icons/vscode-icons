@@ -4,7 +4,7 @@ import { IconGenerator } from '../icon-manifest/iconGenerator';
 import { IExtensionCollection, IFileExtension, IFolderExtension } from '../models/IExtension';
 import { extensions } from '../icon-manifest/supportedExtensions';
 import { IIconSchema } from '../models/IIconSchema';
-import { isCodeContext } from '../utils/context';
+import { isCodeContext } from '../utils';
 import { IVSCode } from '../models/IVSCode';
 
 // TODO set this in settings/config

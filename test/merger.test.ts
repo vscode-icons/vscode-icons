@@ -4,7 +4,7 @@ import { mergeConfig } from '../src/merger';
 import { extensions as fileExtensions } from './support/supportedExtensions';
 import { extensions as folderExtensions } from './support/supportedFolders';
 import { IExtensionCollection, IFileExtension, FileFormat } from '../src/models/IExtension';
-import { vscode } from '../src/utils/vscode';
+import { vscode } from '../src/utils';
 
 describe('FileExtensions: merging configuration documents', function () {
 

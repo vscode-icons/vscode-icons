@@ -8,7 +8,7 @@ import { IconGenerator } from '../src/icon-manifest/iconGenerator';
 import { extensions as files } from '../src/icon-manifest/supportedExtensions';
 import { extensions as folders } from '../src/icon-manifest/supportedFolders';
 import { FileFormat } from '../src/models/IExtension';
-import { vscode } from '../src/utils/vscode';
+import { vscode } from '../src/utils';
 
 const iconsFolderPath = path.join(__dirname, '../../icons');
 const iconGenerator = new IconGenerator(vscode);

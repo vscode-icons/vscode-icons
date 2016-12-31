@@ -1,7 +1,7 @@
 import { IconGenerator } from './iconGenerator';
 import { extensions as files } from './supportedExtensions';
 import { extensions as folders } from './supportedFolders';
-import { vscode } from '../utils/vscode';
+import { vscode } from '../utils';
 
 const outDir = './out/src';
 
