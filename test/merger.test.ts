@@ -1,11 +1,11 @@
 // tslint:disable only-arrow-functions
 import { expect } from 'chai';
-import { mergeConfig } from '../src/extension/merger';
+import { mergeConfig } from '../src/merger';
 import { extensions as fileExtensions } from './support/supportedExtensions';
 import { extensions as folderExtensions } from './support/supportedFolders';
 import { IExtensionCollection, IFileExtension, FileFormat } from '../src/models/IExtension';
 
-describe.only('merging configuration documents', function () {
+describe('merging configuration documents', function () {
 
   it('ensures new extensions are added to existing file extension and respect the extension type', function () {
     const customFileExtensions: IExtensionCollection<IFileExtension> = {
@@ -55,7 +55,7 @@ describe.only('merging configuration documents', function () {
   it('ensures disabled extensions are not included into the manifest', function () {
     const customFileExtensions: IExtensionCollection<IFileExtension> = {
       supported: [
-        { icon: 'actionscript', extensions: [], disabled: true },
+        { icon: 'actionscript', extensions: [], disabled: true, format: 'svg' },
       ],
     };
     const json = mergeConfig(customFileExtensions, fileExtensions, null, folderExtensions);

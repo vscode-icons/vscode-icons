@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 import * as open from 'open';
 import { messages as msg } from '../messages';
 import { getConfig } from '../utils/extensions';
-import { IState } from '../../models/IState';
-import { ISettings } from '../../models/ISettings';
+import { IState } from '../models/IState';
+import { ISettings } from '../models/ISettings';
 import { ISettingsManager } from '../settings';
 
 export function manageWelcomeMessage(settingsManager: ISettingsManager) {

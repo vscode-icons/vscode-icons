@@ -3,10 +3,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
-import * as iconGenerator from '../src/build-tools/iconGenerator';
-import { schema as defaultSchema } from '../src/build-tools/defaultSchema';
-import { extensions as files } from '../src/build-tools/supportedExtensions';
-import { extensions as folders } from '../src/build-tools/supportedFolders';
+import * as iconGenerator from '../src/icon-manifest/iconGenerator';
+import { schema as defaultSchema } from '../src/icon-manifest/defaultSchema';
+import { extensions as files } from '../src/icon-manifest/supportedExtensions';
+import { extensions as folders } from '../src/icon-manifest/supportedFolders';
 import { FileFormat } from '../src/models/IExtension';
 
 const iconsFolderPath = path.join(__dirname, '../../icons');

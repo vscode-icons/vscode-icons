@@ -2,7 +2,7 @@ import { persist, generateJson } from './iconGenerator';
 import { extensions as files } from './supportedExtensions';
 import { extensions as folders } from './supportedFolders';
 
-const outDir = './out/src/extension';
+const outDir = './out/src';
 
 // generating icons.json
 // The function takes as second argument the directory where

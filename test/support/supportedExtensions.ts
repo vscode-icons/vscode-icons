@@ -1,5 +1,5 @@
 /* tslint:disable max-line-length */
-import { languages } from '../../src/build-tools/languages';
+import { languages } from '../../src/icon-manifest/languages';
 import { IExtensionCollection, IFileExtension, FileFormat } from '../../src/models/IExtension';
 
 export const extensions: IExtensionCollection<IFileExtension> = {

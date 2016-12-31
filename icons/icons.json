@@ -444,9 +444,6 @@
     "_f_js": {
       "iconPath": ".//file_type_js@2x.svg"
     },
-    "_f_js_official": {
-      "iconPath": ".//file_type_js_official@2x.svg"
-    },
     "_f_jshintrc": {
       "iconPath": ".//file_type_jshintrc@2x.png"
     },
@@ -520,7 +517,7 @@
       "iconPath": ".//file_type_mustache@2x.png"
     },
     "_f_newExt": {
-      "iconPath": ".//file_type_newExt@2x.png"
+      "iconPath": ".//file_type_newExt@2x.1"
     },
     "_f_ng2_component_js": {
       "iconPath": ".//file_type_ng2_component_js@2x.svg"
@@ -779,9 +776,6 @@
     },
     "_f_typescript": {
       "iconPath": ".//file_type_typescript@2x.svg"
-    },
-    "_f_typescript_official": {
-      "iconPath": ".//file_type_typescript_official@2x.svg"
     },
     "_f_typescriptdef": {
       "iconPath": ".//file_type_typescriptdef@2x.svg"

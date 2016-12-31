@@ -1,13 +1,13 @@
 import * as _ from 'lodash';
 import * as path from 'path';
-import { generateJson, persist } from '../../build-tools/iconGenerator';
-import { IExtensionCollection, IFileExtension, IFolderExtension } from '../../models/IExtension';
-import { extensions } from '../../build-tools/supportedExtensions';
-import { IIconSchema } from '../../models/IIconSchema';
+import { generateJson, persist } from '../icon-manifest/iconGenerator';
+import { IExtensionCollection, IFileExtension, IFolderExtension } from '../models/IExtension';
+import { extensions } from '../icon-manifest/supportedExtensions';
+import { IIconSchema } from '../models/IIconSchema';
 import { isCodeContext } from '../utils/context';
 
 // TODO set this in settings/config
-const outDir = isCodeContext() ? path.join(__dirname, '../../../../icons') : './out/src/extension';
+const outDir = isCodeContext() ? path.join(__dirname, '../../../icons') : './out/src';
 
 export function mergeConfig(
   customFiles: IExtensionCollection<IFileExtension>,

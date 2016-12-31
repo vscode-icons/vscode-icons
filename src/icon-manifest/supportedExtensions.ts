@@ -1,5 +1,4 @@
 /* tslint:disable max-line-length */
-
 import { languages } from './languages';
 import { IExtensionCollection, IFileExtension, FileFormat } from '../models/IExtension';
 

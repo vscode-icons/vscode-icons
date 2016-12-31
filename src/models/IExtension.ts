@@ -3,7 +3,7 @@ import { ILanguage } from './ILanguage';
 export interface IExtension {
   icon: string; // name of the icon.
   extensions: string[]; // set of extensions associated to the icon.
-  format: FileFormat; // format of the icon
+  format: FileFormat | string; // format of the icon
   svg?: boolean; // set it to true if the icon format is svg
   light?: boolean; // set it to true if the extension support light icons.
   disabled?: boolean; // user customization: if false the extension won't be exported.

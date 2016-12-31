@@ -3,7 +3,6 @@ import * as path from 'path';
 import * as _ from 'lodash';
 
 import { schema as defaultSchema } from './defaultSchema';
-import {  } from './../models/IExtension';
 import { IExtensionCollection, IFileExtension, IFolderExtension, FileFormat} from '../models/IExtension';
 import { IIconSchema } from '../models/IIconSchema';
 

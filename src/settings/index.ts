@@ -4,8 +4,8 @@ import * as vscode from 'vscode';
 import * as semver from 'semver';
 import { vscodePath as getAppPath } from './vscodePath';
 import { version as extVersion } from './extVersion';
-import { ISettings } from '../../models/ISettings';
-import { IState } from '../../models/IState';
+import { ISettings } from '../models/ISettings';
+import { IState } from '../models/IState';
 
 let settings: ISettings = null;
 

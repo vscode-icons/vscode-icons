@@ -1,5 +1,4 @@
 /* tslint:disable max-line-length */
-
 import { IExtensionCollection, IFolderExtension, FileFormat } from '../models/IExtension';
 
 export const extensions: IExtensionCollection<IFolderExtension> = {

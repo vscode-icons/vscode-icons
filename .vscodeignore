@@ -4,8 +4,6 @@
 test/**
 src/**
 **/*.map
-out/src/build-tools/**
-out/src/models/**
 out/test/**
 typings/**
 examples/**

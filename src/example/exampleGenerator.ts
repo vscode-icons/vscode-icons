@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import { extensions as files } from './supportedExtensions';
-import { extensions as folders } from './supportedFolders';
+import { extensions as files } from '../icon-manifest/supportedExtensions';
+import { extensions as folders } from '../icon-manifest/supportedFolders';
 
 const supportedFlags = ['--all', '--folders', '--files'];
 
