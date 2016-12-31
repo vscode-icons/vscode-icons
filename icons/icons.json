@@ -180,6 +180,9 @@
     "_fd_webpack_open": {
       "iconPath": ".//folder_type_webpack_opened@2x.svg"
     },
+    "_f_actionscript": {
+      "iconPath": ".//file_type_actionscript@2x.svg"
+    },
     "_f_ai": {
       "iconPath": ".//file_type_ai@2x.svg"
     },
@@ -299,6 +302,9 @@
     },
     "_f_cucumber": {
       "iconPath": ".//file_type_cucumber@2x.png"
+    },
+    "_f_custom_icon": {
+      "iconPath": "C:\\Users\\Roberto\\AppData\\Roaming\\Code\\User\\vsicons-custom-iconsfile_type_custom_icon@2x.svg"
     },
     "_f_dartlang": {
       "iconPath": ".//file_type_dartlang@2x.png"
@@ -444,6 +450,9 @@
     "_f_js": {
       "iconPath": ".//file_type_js@2x.svg"
     },
+    "_f_js_official": {
+      "iconPath": ".//file_type_js_official@2x.svg"
+    },
     "_f_jshintrc": {
       "iconPath": ".//file_type_jshintrc@2x.png"
     },
@@ -515,9 +524,6 @@
     },
     "_f_mustache": {
       "iconPath": ".//file_type_mustache@2x.png"
-    },
-    "_f_newExt": {
-      "iconPath": ".//file_type_newExt@2x.1"
     },
     "_f_ng2_component_js": {
       "iconPath": ".//file_type_ng2_component_js@2x.svg"
@@ -777,6 +783,9 @@
     "_f_typescript": {
       "iconPath": ".//file_type_typescript@2x.svg"
     },
+    "_f_typescript_official": {
+      "iconPath": ".//file_type_typescript_official@2x.svg"
+    },
     "_f_typescriptdef": {
       "iconPath": ".//file_type_typescriptdef@2x.svg"
     },
@@ -932,6 +941,7 @@
     "webpack": "_fd_webpack_open"
   },
   "fileExtensions": {
+    "as": "_f_actionscript",
     "ai": "_f_ai",
     "ansible": "_f_ansible",
     "apib": "_f_apib",
@@ -1071,8 +1081,6 @@
     "xvc": "_f_matlab",
     "mustache": "_f_mustache",
     "mst": "_f_mustache",
-    "as": "_f_newExt",
-    "mynew": "_f_newExt",
     "component.js": "_f_ng2_component_js",
     "component.ts": "_f_ng2_component_ts",
     "directive.js": "_f_ng2_directive_js",

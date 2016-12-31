@@ -4,7 +4,7 @@ import { messages as msg } from '../messages';
 import { getConfig } from '../utils/extensions';
 import { IState } from '../models/IState';
 import { ISettings } from '../models/ISettings';
-import { ISettingsManager } from '../settings';
+import { ISettingsManager, status } from '../settings';
 
 export function manageWelcomeMessage(settingsManager: ISettingsManager) {
   const state = settingsManager.getState();
@@ -26,7 +26,7 @@ export function manageWelcomeMessage(settingsManager: ISettingsManager) {
 }
 
 function showWelcomeMessage(settingsManager: ISettingsManager) {
-  settingsManager.setStatus(settingsManager.status.notInstalled);
+  settingsManager.setStatus(status.notInstalled);
   vscode.window.showInformationMessage(msg.welcomeMessage,
     { title: msg.aboutOfficialApi }, { title: msg.seeReadme })
     .then(btn => {
@@ -44,7 +44,7 @@ function showNewVersionMessage(settingsManager: ISettingsManager) {
   vscode.window.showInformationMessage(msg.newVersionMessage + ' v.' + vars.extVersion,
     { title: msg.seeReleaseNotes }, { title: msg.dontshowthis })
     .then(btn => {
-      settingsManager.setStatus(settingsManager.status.disabled);
+      settingsManager.setStatus(status.disabled);
       if (!btn) { return; }
       if (btn.title === msg.seeReleaseNotes) {
         open(msg.urlReleaseNote);

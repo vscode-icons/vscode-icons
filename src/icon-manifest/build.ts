@@ -1,6 +1,7 @@
-import { persist, generateJson } from './iconGenerator';
+import { IconGenerator } from './iconGenerator';
 import { extensions as files } from './supportedExtensions';
 import { extensions as folders } from './supportedFolders';
+import { vscode } from '../utils/vscode';
 
 const outDir = './out/src';
 
@@ -8,5 +9,6 @@ const outDir = './out/src';
 // The function takes as second argument the directory where
 // we want the file to be placed.
 // Default directory is the 'root' directory
-const json = generateJson(outDir, files, folders);
-persist('icons.json', outDir, json);
+const iconGenerator = new IconGenerator(vscode);
+const json = iconGenerator.generateJson(outDir, files, folders);
+iconGenerator.persist('icons.json', outDir, json);

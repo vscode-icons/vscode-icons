@@ -1,13 +1,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as vscode from 'vscode';
 import * as semver from 'semver';
 import { vscodePath as getAppPath } from './vscodePath';
 import { version as extVersion } from './extVersion';
 import { ISettings } from '../models/ISettings';
 import { IState } from '../models/IState';
-
-let settings: ISettings = null;
+import { IVSCode } from '../models/IVSCode';
 
 export interface IExtensionStatus {
   enabled: string;
@@ -21,7 +19,6 @@ export interface ISettingsManager {
   setState: (state: IState) => void;
   setStatus: (sts: string) => void;
   deleteState: () => void;
-  status: IExtensionStatus;
 }
 
 export const status: IExtensionStatus = {
@@ -30,69 +27,67 @@ export const status: IExtensionStatus = {
   notInstalled: 'notInstalled',
 };
 
-function getSettings(): ISettings {
-  if (settings) { return settings; };
-  const isInsiders = /insiders/i.test((<any> vscode.env).appName);
-  const version = semver(vscode.version);
-  const isGt160 = semver.lt(version.major + '.' + version.minor + '.' + version.patch, '1.6.0');
-  const isWin = /^win/.test(process.platform);
-  const homeDir = isWin ? 'USERPROFILE' : 'HOME';
-  const extensionFolder = path.join(homeDir, isInsiders
-    ? '.vscode-insiders'
-    : '.vscode', 'extensions');
-  const codePath = isInsiders ? '/Code - Insiders' : '/Code';
-  const appPath = getAppPath();
+export class SettingsManager {
+  private settings: ISettings;
 
-  settings = {
-    appPath,
-    isWin,
-    isInsiders,
-    extensionFolder,
-    settingsPath: path.join(appPath, codePath, 'User', 'vsicons.settings.json'),
-    extVersion,
-    version,
-    isGt160,
-  };
-  return settings;
-}
+  constructor(private vscode: IVSCode) { }
 
-function getState(): IState {
-  const vars = getSettings();
-  try {
-    const state = fs.readFileSync(vars.settingsPath, 'utf8');
-    return <IState> JSON.parse(state);
-  } catch (error) {
-    return {
-      version: '0',
-      status: status.notInstalled,
-      welcomeShown: false,
+  public getSettings(): ISettings {
+    if (this.settings) { return this.settings; };
+    const isInsiders = /insiders/i.test(this.vscode.env.appName);
+    const version = semver(this.vscode.version);
+    const isGt160 = semver.lt(version.major + '.' + version.minor + '.' + version.patch, '1.6.0');
+    const isWin = /^win/.test(process.platform);
+    const homeDir = isWin ? 'USERPROFILE' : 'HOME';
+    const extensionFolder = path.join(homeDir, isInsiders
+      ? '.vscode-insiders'
+      : '.vscode', 'extensions');
+    const codePath = isInsiders ? '/Code - Insiders' : '/Code';
+    const appPath = getAppPath();
+    const vscodeAppData = path.join(appPath, codePath, 'User');
+
+    this.settings = {
+      vscodeAppData,
+      isWin,
+      isInsiders,
+      extensionFolder,
+      settingsPath: path.join(vscodeAppData, 'vsicons.settings.json'),
+      extVersion,
+      version,
+      isGt160,
     };
+    return this.settings;
+  }
+
+  public getState(): IState {
+    const vars = this.getSettings();
+    try {
+      const state = fs.readFileSync(vars.settingsPath, 'utf8');
+      return <IState> JSON.parse(state);
+    } catch (error) {
+      return {
+        version: '0',
+        status: status.notInstalled,
+        welcomeShown: false,
+      };
+    }
+  }
+
+  public setState(state: IState): void {
+    const vars = this.getSettings();
+    fs.writeFileSync(vars.settingsPath, JSON.stringify(state));
+  }
+
+  public setStatus(sts: string): void {
+    const state = this.getState();
+    state.version = extVersion;
+    state.status = sts;
+    state.welcomeShown = true;
+    this.setState(state);
+  }
+
+  public deleteState() {
+    const vars = this.getSettings();
+    fs.unlinkSync(vars.settingsPath);
   }
 }
-
-function setState(state: IState): void {
-  const vars = getSettings();
-  fs.writeFileSync(vars.settingsPath, JSON.stringify(state));
-}
-
-function setStatus(sts: string): void {
-  const state = getState();
-  state.version = extVersion;
-  state.status = sts;
-  state.welcomeShown = true;
-  setState(state);
-}
-
-function deleteState(): void {
-  const vars = getSettings();
-  fs.unlinkSync(vars.settingsPath);
-}
-
-export const settingsManager: ISettingsManager = {
-  getSettings,
-  getState,
-  setState,
-  setStatus,
-  deleteState,
-  status,
-};

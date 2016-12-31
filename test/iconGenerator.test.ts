@@ -3,13 +3,15 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
-import * as iconGenerator from '../src/icon-manifest/iconGenerator';
 import { schema as defaultSchema } from '../src/icon-manifest/defaultSchema';
+import { IconGenerator } from '../src/icon-manifest/iconGenerator';
 import { extensions as files } from '../src/icon-manifest/supportedExtensions';
 import { extensions as folders } from '../src/icon-manifest/supportedFolders';
 import { FileFormat } from '../src/models/IExtension';
+import { vscode } from '../src/utils/vscode';
 
 const iconsFolderPath = path.join(__dirname, '../../icons');
+const iconGenerator = new IconGenerator(vscode);
 
 describe('generating icons', function () {
   it('removes first dot from text', function () {

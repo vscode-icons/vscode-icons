@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
-import { settingsManager } from './settings';
+import { SettingsManager } from './settings';
 import { manageWelcomeMessage } from './welcome';
 
 function Initialize() {
-  manageWelcomeMessage(settingsManager);
+  manageWelcomeMessage(new SettingsManager(vscode));
 }
 
 export function activate() {
