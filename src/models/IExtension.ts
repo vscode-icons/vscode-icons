@@ -3,7 +3,7 @@ import { ILanguage } from './ILanguage';
 interface IExtension {
   icon: string;
   extensions: string[];
-  svg?: boolean;
+  format: FileFormat;
   alternate?: boolean;
   light?: boolean;
 }
@@ -19,4 +19,14 @@ export interface IFileExtension extends IExtension {
 
 export interface IFolderExtension extends IExtension {
   dot?: boolean;
+}
+
+export enum FileFormat {
+  svg,
+  png,
+  jpg,
+  gif,
+  bmp,
+  tiff,
+  ico,
 }
