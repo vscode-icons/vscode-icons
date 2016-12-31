@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import { schema as defaultSchema } from './defaultSchema';
 import { extensions as files } from './supportedExtensions';
 import { extensions as folders } from './supportedFolders';
+import { FileFormat } from './../models/IExtension';
 
 // tslint:disable-next-line no-var-requires
 const packageJson = require('../../../package.json');
@@ -51,7 +52,7 @@ export function buildFolders(
       const iconFolderLightDefinition = '_fd_light_' + icon;
       const iconOpenFolderDefinition = iconFolderDefinition + '_open';
       const iconOpenFolderLightDefinition = iconFolderLightDefinition + '_open';
-      const iconFileExtension = current.svg ? '.svg' : '.png';
+      const iconFileExtension = '.' + FileFormat[current.format];
 
       defs[iconFolderDefinition] = {
         iconPath: folderPath + suffix + iconFileExtension,
@@ -128,7 +129,7 @@ export function buildFiles(
       const fileLightPath = iconsFolderBasePath + iconFileLightType;
       const iconFileDefinition = '_f_' + icon;
       const iconFileLightDefinition = '_f_light_' + icon;
-      const iconFileExtension = current.svg ? '.svg' : '.png';
+      const iconFileExtension = '.' + FileFormat[current.format];
       const isFilename = current.filename;
 
       defs[iconFileDefinition] = {

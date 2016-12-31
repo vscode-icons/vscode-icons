@@ -3,9 +3,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
-import *  as iconGenerator from '../src/build-tools/iconGenerator';
+import * as iconGenerator from '../src/build-tools/iconGenerator';
 import { extensions as files } from '../src/build-tools/supportedExtensions';
 import { extensions as folders } from '../src/build-tools/supportedFolders';
+import { FileFormat } from '../src/models/IExtension';
 
 const iconsFolderPath = path.join(__dirname, '../../icons');
 
@@ -18,7 +19,7 @@ describe('generating icons', function () {
 
   it('resolves path from one directory to another', function () {
     const fromDirPath = __dirname;
-    const toDirName = path.join(__dirname, '../../icons');
+    const toDirName = iconsFolderPath;
     const pathTo = './../../icons/';
     expect(iconGenerator.getPathToDirName(toDirName, fromDirPath)).equals(pathTo);
   });
@@ -53,7 +54,7 @@ describe('generating icons', function () {
     const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     files.supported.forEach(function (file) {
-      const iconFileExtension = file.svg ? '.svg' : '.png';
+      const iconFileExtension = '.' + FileFormat[file.format];
       const iconFilePath = iconDirPath + 'file_type_' +
         file.icon + suffix + iconFileExtension;
       expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
@@ -69,7 +70,7 @@ describe('generating icons', function () {
       files.supported
         .filter(function (file) { return file.light; })
         .forEach(function (file) {
-          const iconFileExtension = file.svg ? '.svg' : '.png';
+          const iconFileExtension = '.' + FileFormat[file.format];
           const iconFilePath = iconDirPath + 'file_type_light_' +
             file.icon + suffix + iconFileExtension;
 
@@ -82,7 +83,7 @@ describe('generating icons', function () {
     const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     folders.supported.forEach(function (folder) {
-      const iconFileExtension = folder.svg ? '.svg' : '.png';
+      const iconFileExtension = '.' + FileFormat[folder.format];
       const iconFilePath = iconDirPath + 'folder_type_' +
         folder.icon + suffix + iconFileExtension;
       expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
@@ -98,7 +99,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const iconFileExtension = folder.svg ? '.svg' : '.png';
+          const iconFileExtension = '.' + FileFormat[folder.format];
           const iconFilePath = iconDirPath + 'folder_type_light_' +
             folder.icon + suffix + iconFileExtension;
 
@@ -111,7 +112,7 @@ describe('generating icons', function () {
     const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
 
     folders.supported.forEach(function (folder) {
-      const iconFileExtension = folder.svg ? '.svg' : '.png';
+      const iconFileExtension = '.' + FileFormat[folder.format];
       const iconOpenFilePath = iconDirPath + 'folder_type_' +
         folder.icon + '_opened' + suffix + iconFileExtension;
 
@@ -128,7 +129,7 @@ describe('generating icons', function () {
       folders.supported
         .filter(function (folder) { return folder.light; })
         .forEach(function (folder) {
-          const iconFileExtension = folder.svg ? '.svg' : '.png';
+          const iconFileExtension = '.' + FileFormat[folder.format];
           const iconOpenFilePath = iconDirPath + 'folder_type_light_' +
             folder.icon + '_opened' + suffix + iconFileExtension;
 
