@@ -50,32 +50,32 @@
       }
     ],
     "commands": [
-        {
-          "command": "extension.regenerateIcons",
-          "title": "Apply Icons Customization",
-          "category": "Icons"
-        },
-        {
-          "command": "extension.ng2Preset",
-          "title": "Toggle Angular2 Preset (Project Level)",
-          "category": "Icons"
-        },
-        {
-          "command": "extension.jsPreset",
-          "title": "Toggle Official JS Preset (User Level)",
-          "category": "Icons"
-        },
-        {
-          "command": "extension.tsPreset",
-          "title": "Toggle Official TS Preset (User Level)",
-          "category": "Icons"
-        },
-        {
-          "command": "extension.restoreIcons",
-          "title": "Restore Default Icon Manifest",
-          "category": "Icons"
-        }
-      ],
+      {
+        "command": "extension.regenerateIcons",
+        "title": "Apply Icons Customization",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.ng2Preset",
+        "title": "Toggle Angular2 Preset (Project Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.jsPreset",
+        "title": "Toggle Official JS Preset (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.tsPreset",
+        "title": "Toggle Official TS Preset (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.restoreIcons",
+        "title": "Restore Default Icon Manifest",
+        "category": "Icons"
+      }
+    ],
     "configuration": {
       "title": "vscode-icons configuration",
       "properties": {

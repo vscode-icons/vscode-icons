@@ -14,11 +14,79 @@ const packageJson = require('../../../package.json');
 
 export class IconGenerator implements IIconGenerator {
   private settingsManager: ISettingsManager;
-  private outputPath: string;
+  private iconsFolderPath: string;
+  private manifestFolderPath: string;
 
   constructor(private vscode: IVSCode) {
     this.settingsManager = new SettingsManager(vscode);
-    this.outputPath = path.join(__dirname, '../../../icons');
+    // relative to this file
+    this.iconsFolderPath = path.join(__dirname, '../../../icons');
+    this.manifestFolderPath = path.join(__dirname, '../../../out/src');
+    // this.manifestFolderPath = './out/src';
+  }
+
+  public getDefaultSchema(iconsFolderBasePath?: string): IIconSchema {
+    const schema = Object.assign({}, defaultSchema);
+    // dark theme
+    schema.iconDefinitions._file
+      .iconPath = iconsFolderBasePath + 'file.svg';
+    schema.iconDefinitions._folder
+      .iconPath = iconsFolderBasePath + 'folder.svg';
+    schema.iconDefinitions._folder_open
+      .iconPath = iconsFolderBasePath + 'folder_opened.svg';
+
+    // light theme
+    // default file and folder related icon paths if not set,
+    // inherit their icons from dark theme.
+    // The icon paths should not be set unless there is a specific icon for them.
+    // If the icon paths get set then they override the dark theme section
+    // and light icons definitions have to be specified for each extension
+    // and populate the light section, otherwise they inherit from dark theme
+    // and only those in 'light' section get overriden.
+    schema.iconDefinitions._file_light
+      .iconPath = '';
+    schema.iconDefinitions._folder_light
+      .iconPath = '';
+    schema.iconDefinitions._folder_light_open
+      .iconPath = '';
+    return schema;
+  }
+
+  public generateJson(
+    files: IExtensionCollection<IFileExtension>,
+    folders: IExtensionCollection<IFolderExtension>,
+    outDir: string = null): IIconSchema {
+
+    const outputDir = this.cleanOutDir(outDir || this.manifestFolderPath);
+    const iconsFolderBasePath = this.getRelativePath(outputDir, this.iconsFolderPath);
+    const json = this.getDefaultSchema(iconsFolderBasePath);
+    const res = this.buildJsonStructure(files, folders, iconsFolderBasePath, json);
+
+    json.iconDefinitions = Object.assign({}, json.iconDefinitions, res.folders.defs, res.files.defs);
+    json.folderNames = res.folders.names.folderNames;
+    json.folderNamesExpanded = res.folders.names.folderNamesExpanded;
+    json.fileExtensions = res.files.names.fileExtensions;
+    json.fileNames = res.files.names.fileNames;
+    json.languageIds = res.files.languageIds;
+    json.light.folderNames = res.folders.light.folderNames;
+    json.light.folderNamesExpanded = res.folders.light.folderNamesExpanded;
+    json.light.fileExtensions = res.files.light.fileExtensions;
+    json.light.fileNames = res.files.light.fileNames;
+
+    return json;
+  }
+
+  public persist(
+    iconsFilename: string,
+    json: IIconSchema,
+    outDir: string = null): void {
+    const outputDir = this.cleanOutDir(outDir || this.manifestFolderPath);
+    if (iconsFilename == null) {
+      throw new Error('iconsFilename not defined.');
+    }
+    this.writeJsonToFile(json, iconsFilename, outputDir);
+    const rel = this.cleanOutDir(this.getRelativePath('.', outputDir));
+    this.updatePackageJson(rel + iconsFilename);
   }
 
   public buildFolders(
@@ -185,70 +253,7 @@ export class IconGenerator implements IIconGenerator {
       });
   }
 
-  public getDefaultSchema(iconsFolderBasePath?: string): IIconSchema {
-    const schema = Object.assign({}, defaultSchema);
-    // dark theme
-    schema.iconDefinitions._file
-      .iconPath = iconsFolderBasePath + 'file.svg';
-    schema.iconDefinitions._folder
-      .iconPath = iconsFolderBasePath + 'folder.svg';
-    schema.iconDefinitions._folder_open
-      .iconPath = iconsFolderBasePath + 'folder_opened.svg';
-
-    // light theme
-    // default file and folder related icon paths if not set,
-    // inherit their icons from dark theme.
-    // The icon paths should not be set unless there is a specific icon for them.
-    // If the icon paths get set then they override the dark theme section
-    // and light icons definitions have to be specified for each extension
-    // and populate the light section, otherwise they inherit from dark theme
-    // and only those in 'light' section get overriden.
-    schema.iconDefinitions._file_light
-      .iconPath = '';
-    schema.iconDefinitions._folder_light
-      .iconPath = '';
-    schema.iconDefinitions._folder_light_open
-      .iconPath = '';
-    return schema;
-  }
-
-  public generateJson(
-    files: IExtensionCollection<IFileExtension>,
-    folders: IExtensionCollection<IFolderExtension>,
-    outDir: string): IIconSchema {
-
-    const outputDir = this.cleanOutDir(outDir);
-    const iconsFolderBasePath = this.getPathToDirName(this.outputPath, outputDir);
-    const json = this.getDefaultSchema(iconsFolderBasePath);
-    const res = this.buildJsonStructure(files, folders, iconsFolderBasePath, json);
-
-    json.iconDefinitions = Object.assign({}, json.iconDefinitions, res.folders.defs, res.files.defs);
-    json.folderNames = res.folders.names.folderNames;
-    json.folderNamesExpanded = res.folders.names.folderNamesExpanded;
-    json.fileExtensions = res.files.names.fileExtensions;
-    json.fileNames = res.files.names.fileNames;
-    json.languageIds = res.files.languageIds;
-    json.light.folderNames = res.folders.light.folderNames;
-    json.light.folderNamesExpanded = res.folders.light.folderNamesExpanded;
-    json.light.fileExtensions = res.files.light.fileExtensions;
-    json.light.fileNames = res.files.light.fileNames;
-
-    return json;
-  }
-
-  public persist(
-    iconsFilename: string,
-    json: IIconSchema,
-    outDir: string): void {
-    const outputDir = this.cleanOutDir(outDir);
-    if (iconsFilename == null) {
-      throw new Error('iconsFilename not defined.');
-    }
-    this.writeJsonToFile(json, iconsFilename, outputDir);
-    this.updatePackageJson(outputDir + iconsFilename);
-  }
-
-  public getPathToDirName(toDirName, fromDirPath) {
+  public getRelativePath(fromDirPath, toDirName) {
     if (toDirName == null) {
       throw new Error('toDirName not defined.');
     }

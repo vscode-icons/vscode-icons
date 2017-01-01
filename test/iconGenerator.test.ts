@@ -24,7 +24,7 @@ describe('generating icons', function () {
     const fromDirPath = __dirname;
     const toDirName = iconsFolderPath;
     const pathTo = './../../icons/';
-    expect(iconGenerator.getPathToDirName(toDirName, fromDirPath)).equals(pathTo);
+    expect(iconGenerator.getRelativePath(fromDirPath, toDirName)).equals(pathTo);
   });
 
   it('file extension should not have a leading dot', function () {
@@ -54,7 +54,7 @@ describe('generating icons', function () {
 
   it('ensures each supported file extension has an associated icon file', function () {
     const suffix = '@2x';
-    const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
+    const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
 
     files.supported
       .filter(file => !file.disabled)
@@ -70,7 +70,7 @@ describe('generating icons', function () {
     'has an associated icon file',
     function () {
       const suffix = '@2x';
-      const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
+      const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
 
       files.supported
         .filter(file => file.light && !file.disabled)
@@ -85,7 +85,7 @@ describe('generating icons', function () {
 
   it('ensures each supported folder has an associated icon file', function () {
     const suffix = '@2x';
-    const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
+    const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
 
     folders.supported
     .filter(folder => !folder.disabled)
@@ -101,7 +101,7 @@ describe('generating icons', function () {
     'has an associated icon file',
     function () {
       const suffix = '@2x';
-      const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
+      const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
 
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
@@ -115,7 +115,7 @@ describe('generating icons', function () {
 
   it('ensures each supported folder has an associated opened icon file', function () {
     const suffix = '@2x';
-    const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
+    const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
 
     folders.supported
     .filter(folder => !folder.disabled)
@@ -131,7 +131,7 @@ describe('generating icons', function () {
     'has an associated opened icon file',
     function () {
       const suffix = '@2x';
-      const iconDirPath = iconGenerator.getPathToDirName(iconsFolderPath, __dirname);
+      const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
 
       folders.supported
         .filter(folder => folder.light && !folder.disabled)

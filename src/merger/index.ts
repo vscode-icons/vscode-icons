@@ -4,11 +4,7 @@ import { IconGenerator } from '../icon-manifest/iconGenerator';
 import { IExtensionCollection, IFileExtension, IFolderExtension, IExtension, FileFormat } from '../models/IExtension';
 import { extensions } from '../icon-manifest/supportedExtensions';
 import { IIconSchema } from '../models/IIconSchema';
-import { isCodeContext } from '../utils';
 import { IIconGenerator } from '../models/IIconGenerator';
-
-// TODO set this in settings/config
-const outDir = isCodeContext() ? path.join(__dirname, '../../../icons') : './out/src';
 
 export function mergeConfig(
   customFiles: IExtensionCollection<IFileExtension>,
@@ -19,7 +15,8 @@ export function mergeConfig(
 
   const files = mergeItems(customFiles, supportedFiles);
   const folders = mergeItems(customFolders, supportedFolders);
-  const json = iconGenerator.generateJson(files, folders, outDir);
+  const json = iconGenerator.generateJson(files, folders);
+  // iconGenerator.persist('icons2.json', json);
   return json;
 }
 
