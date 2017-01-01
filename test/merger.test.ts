@@ -1,10 +1,20 @@
 // tslint:disable only-arrow-functions
 import { expect } from 'chai';
-import { mergeConfig } from '../src/merger';
 import { extensions as fileExtensions } from './support/supportedExtensions';
 import { extensions as folderExtensions } from './support/supportedFolders';
-import { IExtensionCollection, IFileExtension, FileFormat, IFolderExtension } from '../src/models/IExtension';
 import { vscode } from '../src/utils';
+import {
+  mergeConfig,
+  toggleAngular2Preset,
+  toggleJavascriptOfficial,
+  toggleTypescriptOfficial,
+} from '../src/merger';
+import {
+  IExtensionCollection,
+  IFileExtension,
+  FileFormat,
+  IFolderExtension,
+} from '../src/models/IExtension';
 
 describe('FileExtensions: merging configuration documents', function () {
 
@@ -271,6 +281,62 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(icon.iconPath.indexOf('robertohuertasm.vscode-icons.custom-icons')).to.be.greaterThan(-1);
     expect(json.folderNames['custom']).equals('_fd_custom_icon');
     expect(json.folderNamesExpanded['custom']).equals('_fd_custom_icon_open');
+  });
+
+});
+
+describe('Presets: merging configuration documents', function () {
+
+  it('ensures angular2 extensions are disabled', function () {
+    const custom: IExtensionCollection<IFileExtension> = {
+      supported: [],
+    };
+
+    const result = toggleAngular2Preset(true, custom);
+    const ng2group = result.supported
+      .filter(x => x.icon.startsWith('ng2_'));
+    expect(ng2group.length).equals(12);
+    ng2group.forEach(x => {
+      expect(x.disabled).to.be.true;
+    });
+  });
+
+  it('ensures angular2 extensions are disabled even if custom icon is present', function () {
+    const custom: IExtensionCollection<IFileExtension> = {
+      supported: [
+        { icon: 'ng2_component_ts', extensions: ['mycomponent.ts'], format: FileFormat.svg },
+      ],
+    };
+
+    const result = toggleAngular2Preset(true, custom);
+    const ng2group = result.supported
+      .filter(x => x.icon.startsWith('ng2_'));
+    expect(ng2group.length).equals(12);
+    ng2group.forEach(x => {
+      expect(x.disabled).to.be.true;
+    });
+  });
+
+  it('ensures js official extension is enabled', function () {
+    const custom: IExtensionCollection<IFileExtension> = {
+      supported: [],
+    };
+    const result = toggleJavascriptOfficial(false, custom);
+    const official = result.supported.find(x => x.icon ===  'js_official');
+    const unofficial = result.supported.find(x => x.icon ===  'js');
+    expect(official.disabled).to.be.false;
+    expect(unofficial.disabled).to.be.true;
+  });
+
+  it('ensures ts official extension is enabled', function () {
+    const custom: IExtensionCollection<IFileExtension> = {
+      supported: [],
+    };
+    const result = toggleTypescriptOfficial(false, custom);
+    const official = result.supported.find(x => x.icon ===  'typescript_official');
+    const unofficial = result.supported.find(x => x.icon ===  'typescript');
+    expect(official.disabled).to.be.false;
+    expect(unofficial.disabled).to.be.true;
   });
 
 });

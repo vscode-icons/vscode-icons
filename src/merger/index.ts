@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 import { IconGenerator } from '../icon-manifest/iconGenerator';
-import { IExtensionCollection, IFileExtension, IFolderExtension, IExtension } from '../models/IExtension';
+import { IExtensionCollection, IFileExtension, IFolderExtension, IExtension, FileFormat } from '../models/IExtension';
 import { extensions } from '../icon-manifest/supportedExtensions';
 import { IIconSchema } from '../models/IIconSchema';
 import { isCodeContext } from '../utils';
@@ -63,6 +63,56 @@ function mergeItems(
         .forEach(x => _.remove(x.extensions, ext));
     });
     final.push(file);
- });
+  });
   return { supported: final };
+}
+
+export function toggleAngular2Preset(
+  disable: boolean,
+  customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+  const icons = [
+    'ng2_component_ts',
+    'ng2_component_js',
+    'ng2_directive_ts',
+    'ng2_directive_js',
+    'ng2_pipe_ts',
+    'ng2_pipe_js',
+    'ng2_service_ts',
+    'ng2_service_js',
+    'ng2_module_ts',
+    'ng2_module_js',
+    'ng2_routing_ts',
+    'ng2_routing_js',
+  ];
+  return togglePreset(disable, icons, customFiles);
+}
+
+export function toggleTypescriptOfficial(
+  disable: boolean,
+  customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+  const temp = togglePreset(disable, ['typescript_official'], customFiles);
+  return togglePreset(!disable, ['typescript'], temp);
+}
+
+export function toggleJavascriptOfficial(
+  disable: boolean,
+  customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+  const temp = togglePreset(disable, ['js_official'], customFiles);
+  return togglePreset(!disable, ['js'], temp);
+}
+
+function togglePreset(
+  disable: boolean,
+  icons: string[],
+  customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+  const workingCopy = _.cloneDeep(customFiles);
+  icons.forEach(icon => {
+    const existing = workingCopy.supported.filter(x => x.icon === icon);
+    if (!existing.length) {
+      workingCopy.supported.push({ icon, extensions: [], format: FileFormat.svg, disabled: disable });
+    } else {
+      existing.forEach(x => { x.disabled = disable; });
+    }
+  });
+  return workingCopy;
 }

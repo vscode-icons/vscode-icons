@@ -72,10 +72,15 @@
           "default": false,
           "description": "If set to true the extension will use the official TS icon"
         },
-        "vsicons.associations": {
+        "vsicons.associations.files": {
           "type": "array",
           "default": [],
-          "description": "This custom associations will override the icon associations defined by default."
+          "description": "These custom associations will override the file icon associations defined by default."
+        },
+        "vsicons.associations.folders": {
+          "type": "array",
+          "default": [],
+          "description": "These custom associations will override the folder icon associations defined by default."
         }
       }
     }
