@@ -7,11 +7,12 @@ import { IExtensionCollection, IFileExtension, IFolderExtension, FileFormat, IEx
 import { IIconSchema } from '../models/IIconSchema';
 import { IVSCode } from '../models/IVSCode';
 import { ISettingsManager, SettingsManager } from '../settings';
+import { IIconGenerator } from '../models/IIconGenerator';
 
 // tslint:disable-next-line no-var-requires
 const packageJson = require('../../../package.json');
 
-export class IconGenerator {
+export class IconGenerator implements IIconGenerator {
   private settingsManager: ISettingsManager;
   private outputPath: string;
 
@@ -212,9 +213,9 @@ export class IconGenerator {
   }
 
   public generateJson(
-    outDir: string,
     files: IExtensionCollection<IFileExtension>,
-    folders: IExtensionCollection<IFolderExtension>): IIconSchema {
+    folders: IExtensionCollection<IFolderExtension>,
+    outDir: string): IIconSchema {
 
     const outputDir = this.cleanOutDir(outDir);
     const iconsFolderBasePath = this.getPathToDirName(this.outputPath, outputDir);
@@ -237,8 +238,8 @@ export class IconGenerator {
 
   public persist(
     iconsFilename: string,
-    outDir: string,
-    json: IIconSchema): void {
+    json: IIconSchema,
+    outDir: string): void {
     const outputDir = this.cleanOutDir(outDir);
     if (iconsFilename == null) {
       throw new Error('iconsFilename not defined.');

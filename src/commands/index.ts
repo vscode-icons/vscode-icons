@@ -1,4 +1,10 @@
 import * as vscode from 'vscode';
+import { getConfig } from '../utils/vscode-extensions';
+import { mergeConfig } from '../merger';
+import { extensions as files } from '../icon-manifest/supportedExtensions';
+import { extensions as folders } from '../icon-manifest/supportedFolders';
+import { IconGenerator } from '../icon-manifest/iconGenerator';
+import { IExtensionCollection, IFileExtension, IFolderExtension } from '../models/IExtension';
 
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
@@ -19,21 +25,43 @@ function registerCommand(
 }
 
 function applyCustomizationCommand() {
-  vscode.window.showInformationMessage('applyCustomizationCommand');
+  const conf = getConfig().vsicons;
+  const customFiles = { supported: conf.associations.files };
+  const customFolders = { supported: conf.associations.folders };
+  generateManifest(customFiles, customFolders);
+  vscode.window.showInformationMessage('Customization applied. Restart the app.');
 }
 
 function restoreDefaultManifestCommand() {
-  vscode.window.showInformationMessage('restoreDefaultManifestCommand');
+  generateManifest(null, null);
+  vscode.window.showInformationMessage('Icons restored to its factory state. Restart the app.');
 }
 
 function toggleAngular2PresetCommand() {
+  togglePreset('angular2', false);
   vscode.window.showInformationMessage('toggleAngular2PresetCommand');
 }
 
 function toggleJsPresetCommand() {
+  togglePreset('jsOfficial');
   vscode.window.showInformationMessage('toggleJsPresetCommand');
 }
 
 function toggleTsPresetCommand() {
+  togglePreset('tsOfficial');
   vscode.window.showInformationMessage('toggleTsPresetCommand');
+}
+
+function togglePreset(preset: string, global: boolean = true) {
+  const conf = getConfig();
+  const currentValue = conf.vsicons.presets[preset];
+  conf.update(`vsicons.presets.${preset}`, !currentValue, global);
+}
+
+function generateManifest(
+  customFiles: IExtensionCollection<IFileExtension>,
+  customFolders: IExtensionCollection<IFolderExtension>) {
+  const iconGenerator = new IconGenerator(vscode);
+  const json = mergeConfig(customFiles, files, customFolders, folders, iconGenerator);
+  iconGenerator.persist('icons.json', json, './out/src');
 }

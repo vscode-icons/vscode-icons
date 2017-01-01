@@ -5,7 +5,7 @@ import { IExtensionCollection, IFileExtension, IFolderExtension, IExtension, Fil
 import { extensions } from '../icon-manifest/supportedExtensions';
 import { IIconSchema } from '../models/IIconSchema';
 import { isCodeContext } from '../utils';
-import { IVSCode } from '../models/IVSCode';
+import { IIconGenerator } from '../models/IIconGenerator';
 
 // TODO set this in settings/config
 const outDir = isCodeContext() ? path.join(__dirname, '../../../icons') : './out/src';
@@ -15,12 +15,11 @@ export function mergeConfig(
   supportedFiles: IExtensionCollection<IFileExtension>,
   customFolders: IExtensionCollection<IFolderExtension>,
   supportedFolders: IExtensionCollection<IFolderExtension>,
-  vscode: IVSCode): IIconSchema {
+  iconGenerator: IIconGenerator): IIconSchema {
 
-  const iconGenerator = new IconGenerator(vscode);
   const files = mergeItems(customFiles, supportedFiles);
   const folders = mergeItems(customFolders, supportedFolders);
-  const json = iconGenerator.generateJson(outDir, files, folders);
+  const json = iconGenerator.generateJson(files, folders, outDir);
   return json;
 }
 

@@ -1,11 +1,14 @@
-import { IFileExtension } from './IExtension';
+import { IFileExtension, IFolderExtension } from './IExtension';
 
 export interface IVSIcons {
   dontShowNewVersionMessage?: boolean;
-    presets: {
+  presets: {
     angular2: boolean;
     jsOfficial: boolean;
     tsOfficial: boolean;
   };
-  associations: IFileExtension[];
+  associations: {
+    files: IFileExtension[];
+    folders: IFolderExtension[];
+  };
 }

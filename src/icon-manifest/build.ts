@@ -10,5 +10,5 @@ const outDir = './out/src';
 // we want the file to be placed.
 // Default directory is the 'root' directory
 const iconGenerator = new IconGenerator(vscode);
-const json = iconGenerator.generateJson(outDir, files, folders);
-iconGenerator.persist('icons.json', outDir, json);
+const json = iconGenerator.generateJson(files, folders, outDir);
+iconGenerator.persist('icons.json', json, outDir);

@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { extensions as fileExtensions } from './support/supportedExtensions';
 import { extensions as folderExtensions } from './support/supportedFolders';
 import { vscode } from '../src/utils';
+import { IconGenerator } from '../src/icon-manifest/iconGenerator';
 import {
   mergeConfig,
   toggleAngular2Preset,
@@ -16,6 +17,12 @@ import {
   IFolderExtension,
 } from '../src/models/IExtension';
 
+let iconGenerator: IconGenerator;
+
+beforeEach(() => {
+  iconGenerator = new IconGenerator(vscode);
+});
+
 describe('FileExtensions: merging configuration documents', function () {
 
   it('ensures new extensions are added to existing file extension and respect the extension type', function () {
@@ -24,8 +31,7 @@ describe('FileExtensions: merging configuration documents', function () {
         { icon: 'actionscript', extensions: ['as2'], format: 'svg' },
       ],
     };
-
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const def = json.iconDefinitions['_f_actionscript'];
     expect(def).exist;
     expect(def.iconPath).exist;
@@ -40,7 +46,7 @@ describe('FileExtensions: merging configuration documents', function () {
       ],
     };
 
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const overridenPath = json.iconDefinitions['_f_actionscript'];
     const newPath: string = json.iconDefinitions['_f_actionscript2'].iconPath;
     expect(overridenPath).to.not.exist;
@@ -54,7 +60,7 @@ describe('FileExtensions: merging configuration documents', function () {
       ],
     };
 
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const extendedPath = json.iconDefinitions['_f_actionscript'];
     const newPath: string = json.iconDefinitions['_f_newExt'].iconPath;
     expect(extendedPath).not.to.exist;
@@ -70,7 +76,7 @@ describe('FileExtensions: merging configuration documents', function () {
         { icon: 'actionscript', extensions: [], disabled: true, format: 'svg' },
       ],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const extendedPath = json.iconDefinitions['_f_actionscript'];
     expect(extendedPath).not.to.exist;
     expect(json.iconDefinitions['_f_newExt']).not.to.exist;
@@ -82,7 +88,7 @@ describe('FileExtensions: merging configuration documents', function () {
         { icon: 'newExt', extensions: ['bin', 'o'], format: 'svg' },
       ],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     expect(json.iconDefinitions['_f_newExt']).exist;
     expect(json.fileExtensions['bin']).equals('_f_newExt');
     expect(json.fileExtensions['o']).equals('_f_newExt');
@@ -99,7 +105,7 @@ describe('FileExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     expect(json.iconDefinitions['_f_actionscript']).exist;
     expect(json.languageIds['newlang']).equals('_f_actionscript');
   });
@@ -114,7 +120,7 @@ describe('FileExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const icon = json.iconDefinitions['_f_custom_icon'];
     expect(icon).exist;
     expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
@@ -131,7 +137,7 @@ describe('FileExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const icon = json.iconDefinitions['_f_custom_icon'];
     expect(icon).exist;
     expect(icon.iconPath.startsWith('C:')).to.be.true;
@@ -148,7 +154,7 @@ describe('FileExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, vscode);
+    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const icon = json.iconDefinitions['_f_custom_icon'];
     expect(icon).exist;
     expect(icon.iconPath.indexOf('robertohuertasm.vscode-icons.custom-icons')).to.be.greaterThan(-1);
@@ -166,7 +172,7 @@ describe('FolderExtensions: merging configuration documents', function () {
       ],
     };
 
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, vscode);
+    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const def = json.iconDefinitions['_fd_aws'];
     expect(def).exist;
     expect(def.iconPath).exist;
@@ -182,7 +188,7 @@ describe('FolderExtensions: merging configuration documents', function () {
       ],
     };
 
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, vscode);
+    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const overridenPath = json.iconDefinitions['_fd_aws'];
     const newPath: string = json.iconDefinitions['_fd_aws2'].iconPath;
     expect(overridenPath).to.not.exist;
@@ -196,7 +202,7 @@ describe('FolderExtensions: merging configuration documents', function () {
       ],
     };
 
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, vscode);
+    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const extendedPath = json.iconDefinitions['_fd_aws'];
     const newPath: string = json.iconDefinitions['_fd_newExt'].iconPath;
     expect(extendedPath).not.to.exist;
@@ -214,7 +220,7 @@ describe('FolderExtensions: merging configuration documents', function () {
         { icon: 'aws', extensions: [], disabled: true, format: 'svg' },
       ],
     };
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, vscode);
+    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const extendedPath = json.iconDefinitions['_fd_aws'];
     expect(extendedPath).not.to.exist;
     expect(json.iconDefinitions['_fd_newExt']).not.to.exist;
@@ -226,7 +232,7 @@ describe('FolderExtensions: merging configuration documents', function () {
         { icon: 'newExt', extensions: ['aws'], format: 'svg' },
       ],
     };
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, vscode);
+    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     expect(json.iconDefinitions['_fd_newExt']).exist;
     expect(json.folderNames['aws']).equals('_fd_newExt');
   });
@@ -241,7 +247,7 @@ describe('FolderExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, vscode);
+    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const icon = json.iconDefinitions['_fd_custom_icon'];
     expect(icon).exist;
     expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
@@ -258,7 +264,7 @@ describe('FolderExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, vscode);
+    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const icon = json.iconDefinitions['_f_custom_icon'];
     expect(icon).exist;
     expect(icon.iconPath.startsWith('C:')).to.be.true;
@@ -275,7 +281,7 @@ describe('FolderExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, vscode);
+    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const icon = json.iconDefinitions['_fd_custom_icon'];
     expect(icon).exist;
     expect(icon.iconPath.indexOf('robertohuertasm.vscode-icons.custom-icons')).to.be.greaterThan(-1);
