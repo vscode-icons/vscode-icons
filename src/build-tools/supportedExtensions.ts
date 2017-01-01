@@ -116,7 +116,7 @@ export const extensions: IExtensionCollection<IFileExtension> = {
     { icon: 'jinja', extensions: ['jinja', 'jinja2'], format: FileFormat.svg },
     { icon: 'js', extensions: [], languages: [languages.javascript], format: FileFormat.svg },
     { icon: 'jshintrc', extensions: ['.jshintrc'], filename: true, format: FileFormat.png },
-    { icon: 'jsmap', extensions: ['js.map'], format: FileFormat.png },
+    { icon: 'jsmap', extensions: ['js.map', 'min.map'], format: FileFormat.png },
     { icon: 'json', extensions: [], languages: [languages.json], format: FileFormat.png },
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.png },
     { icon: 'julia', extensions: ['jl'], format: FileFormat.png },
