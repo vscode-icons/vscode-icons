@@ -13,9 +13,11 @@ const packageJson = require('../../../package.json');
 
 export class IconGenerator {
   private settingsManager: ISettingsManager;
+  private outputPath: string;
 
   constructor(private vscode: IVSCode) {
     this.settingsManager = new SettingsManager(vscode);
+    this.outputPath = path.join(__dirname, '../../../icons');
   }
 
   public buildFolders(
@@ -23,6 +25,7 @@ export class IconGenerator {
     iconsFolderBasePath: string = '',
     hasDefaultLightFolder: boolean = false,
     suffix: string = '') {
+    if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     return _.sortBy(folders.supported.filter(x => !x.disabled), item => item.icon)
       .reduce((old, current) => {
         const defs = old.defs;
@@ -98,6 +101,7 @@ export class IconGenerator {
     iconsFolderBasePath: string = '',
     hasDefaultLightFile: boolean = false,
     suffix: string = '') {
+    if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled), item => item.icon))
       .reduce((old, current) => {
         const defs = old.defs;
@@ -213,7 +217,7 @@ export class IconGenerator {
     folders: IExtensionCollection<IFolderExtension>): IIconSchema {
 
     const outputDir = this.cleanOutDir(outDir);
-    const iconsFolderBasePath = this.getPathToDirName(path.join(__dirname, '../../../icons'), outputDir);
+    const iconsFolderBasePath = this.getPathToDirName(this.outputPath, outputDir);
     const json = this.getDefaultSchema(iconsFolderBasePath);
     const res = this.buildJsonStructure(files, folders, iconsFolderBasePath, json);
 
@@ -288,7 +292,12 @@ export class IconGenerator {
 
   private getIconPath(ext: IExtension, defaultPath: string): string {
     if (ext._custom) {
-      return path.join(this.settingsManager.getSettings().vscodeAppData, 'vsicons-custom-icons');
+
+      // this option is not allowed for the moment.
+      // VSCode doesn't allow absolute paths...
+      // return path.join(this.settingsManager.getSettings().vscodeAppData, 'vsicons-custom-icons');
+      // HACK: temporary solution... 
+      return defaultPath.replace('../icons', '../../robertohuertasm.vscode-icons.custom-icons');
     }
     return defaultPath;
   }

@@ -93,12 +93,12 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(json.languageIds['newlang']).equals('_f_actionscript');
   });
 
-  it('ensures _custom icon keeps the correct extension', function () {
+  it.only('ensures _custom icon keeps the correct extension', function () {
     const customFileExtensions: IExtensionCollection<IFileExtension> = {
       supported: [
         {
           icon: 'custom_icon',
-          extensions: [],
+          extensions: ['custom'],
           format: 'svg',
         },
       ],
@@ -109,7 +109,8 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
   });
 
-  it.only('ensures _custom icons have an absolute path', function () {
+  // vscode doesn't allow absolute paths in icon css for the moment.
+  it.skip('ensures _custom icons have an absolute path', function () {
     const customFileExtensions: IExtensionCollection<IFileExtension> = {
       supported: [
         {
@@ -123,6 +124,23 @@ describe('FileExtensions: merging configuration documents', function () {
     const icon = json.iconDefinitions['_f_custom_icon'];
     expect(icon).exist;
     expect(icon.iconPath.startsWith('C:')).to.be.true;
+    expect(json.fileExtensions['custom']).equals('_f_custom_icon');
+  });
+
+  it('ensures _custom icons have a custom path', function () {
+    const customFileExtensions: IExtensionCollection<IFileExtension> = {
+      supported: [
+        {
+          icon: 'custom_icon',
+          extensions: ['custom'],
+          format: 'svg',
+        },
+      ],
+    };
+    const json = mergeConfig(customFileExtensions, fileExtensions, null, folderExtensions, vscode);
+    const icon = json.iconDefinitions['_f_custom_icon'];
+    expect(icon).exist;
+    expect(icon.iconPath.indexOf('robertohuertasm.vscode-icons.custom-icons')).to.be.greaterThan(-1);
     expect(json.fileExtensions['custom']).equals('_f_custom_icon');
   });
 
