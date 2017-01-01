@@ -83,14 +83,14 @@ export function toggleAngular2Preset(
   return togglePreset(disable, icons, customFiles);
 }
 
-export function toggleTypescriptOfficial(
+export function toggleTypescriptOfficialPreset(
   disable: boolean,
   customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
   const temp = togglePreset(disable, ['typescript_official'], customFiles);
   return togglePreset(!disable, ['typescript'], temp);
 }
 
-export function toggleJavascriptOfficial(
+export function toggleJavascriptOfficialPreset(
   disable: boolean,
   customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
   const temp = togglePreset(disable, ['js_official'], customFiles);

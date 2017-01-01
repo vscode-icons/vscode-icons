@@ -7,8 +7,8 @@ import { IconGenerator } from '../src/icon-manifest/iconGenerator';
 import {
   mergeConfig,
   toggleAngular2Preset,
-  toggleJavascriptOfficial,
-  toggleTypescriptOfficial,
+  toggleJavascriptOfficialPreset,
+  toggleTypescriptOfficialPreset,
 } from '../src/merger';
 import {
   IExtensionCollection,
@@ -297,7 +297,6 @@ describe('Presets: merging configuration documents', function () {
     const custom: IExtensionCollection<IFileExtension> = {
       supported: [],
     };
-
     const result = toggleAngular2Preset(true, custom);
     const ng2group = result.supported
       .filter(x => x.icon.startsWith('ng2_'));
@@ -323,13 +322,32 @@ describe('Presets: merging configuration documents', function () {
     });
   });
 
+  it('ensures all angular2 extensions are disabled even if duplicity is present', function () {
+    const custom: IExtensionCollection<IFileExtension> = {
+      supported: [
+        { icon: 'ng2_routing_ts', extensions: ['routing.ts'], format: FileFormat.svg },
+        { icon: 'ng2_routing_js', extensions: ['routing.js'], format: FileFormat.svg },
+        { icon: 'ng2_routing_ts', extensions: ['app-routing.module.ts'], filename: true, format: FileFormat.svg },
+        { icon: 'ng2_routing_js', extensions: ['app-routing.module.js'], filename: true, format: FileFormat.svg },
+      ],
+    };
+
+    const result = toggleAngular2Preset(true, custom);
+    const ng2group = result.supported
+      .filter(x => x.icon.startsWith('ng2_'));
+    expect(ng2group.length).equals(14);
+    ng2group.forEach(x => {
+      expect(x.disabled).to.be.true;
+    });
+  });
+
   it('ensures js official extension is enabled', function () {
     const custom: IExtensionCollection<IFileExtension> = {
       supported: [],
     };
-    const result = toggleJavascriptOfficial(false, custom);
-    const official = result.supported.find(x => x.icon ===  'js_official');
-    const unofficial = result.supported.find(x => x.icon ===  'js');
+    const result = toggleJavascriptOfficialPreset(false, custom);
+    const official = result.supported.find(x => x.icon === 'js_official');
+    const unofficial = result.supported.find(x => x.icon === 'js');
     expect(official.disabled).to.be.false;
     expect(unofficial.disabled).to.be.true;
   });
@@ -338,9 +356,9 @@ describe('Presets: merging configuration documents', function () {
     const custom: IExtensionCollection<IFileExtension> = {
       supported: [],
     };
-    const result = toggleTypescriptOfficial(false, custom);
-    const official = result.supported.find(x => x.icon ===  'typescript_official');
-    const unofficial = result.supported.find(x => x.icon ===  'typescript');
+    const result = toggleTypescriptOfficialPreset(false, custom);
+    const official = result.supported.find(x => x.icon === 'typescript_official');
+    const unofficial = result.supported.find(x => x.icon === 'typescript');
     expect(official.disabled).to.be.false;
     expect(unofficial.disabled).to.be.true;
   });

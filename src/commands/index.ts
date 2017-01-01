@@ -1,6 +1,11 @@
 import * as vscode from 'vscode';
 import { getConfig } from '../utils/vscode-extensions';
-import { mergeConfig } from '../merger';
+import {
+  mergeConfig,
+  toggleAngular2Preset,
+  toggleJavascriptOfficialPreset,
+  toggleTypescriptOfficialPreset,
+} from '../merger';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
 import { IconGenerator } from '../icon-manifest/iconGenerator';
@@ -62,6 +67,14 @@ function generateManifest(
   customFiles: IExtensionCollection<IFileExtension>,
   customFolders: IExtensionCollection<IFolderExtension>) {
   const iconGenerator = new IconGenerator(vscode);
-  const json = mergeConfig(customFiles, files, customFolders, folders, iconGenerator);
-  iconGenerator.persist('icons.json', json, './out/src');
+  let workingCustomFiles = customFiles;
+  if (customFiles && customFolders) {
+    // check presets...
+    const conf = getConfig().vsicons;
+    workingCustomFiles = toggleAngular2Preset(!conf.presets.angular2, customFiles);
+    workingCustomFiles = toggleJavascriptOfficialPreset(!conf.presets.jsOfficial, workingCustomFiles);
+    workingCustomFiles = toggleTypescriptOfficialPreset(!conf.presets.tsOfficial, workingCustomFiles);
+  }
+  const json = mergeConfig(workingCustomFiles, files, customFolders, folders, iconGenerator);
+  iconGenerator.persist('icons.json', json);
 }
