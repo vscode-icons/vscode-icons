@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
 import * as iconGenerator from '../src/build-tools/iconGenerator';
+import { schema as defaultSchema } from '../src/build-tools/defaultSchema';
 import { extensions as files } from '../src/build-tools/supportedExtensions';
 import { extensions as folders } from '../src/build-tools/supportedFolders';
 import { FileFormat } from '../src/models/IExtension';
@@ -511,11 +512,7 @@ describe('generating icons', function () {
         });
     });
 
-  /*
-    This can be unskipped once 'toMatchObject' method has been released by facebook.
-    See: https://github.com/facebook/jest/issues/2195
-  */
-  it.skip('ensures icons schema is vscode default schema for icons', function () {
-    // expect(iconGenerator.getDefaultSchema()).toMatchObject(defaultSchema);
+  it('ensures icons schema is vscode default schema for icons', function () {
+    expect(iconGenerator.getDefaultSchema()).to.deep.equal(defaultSchema);
   });
 });
