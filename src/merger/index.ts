@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 import { IconGenerator } from '../icon-manifest/iconGenerator';
-import { IExtensionCollection, IFileExtension, IFolderExtension } from '../models/IExtension';
+import { IExtensionCollection, IFileExtension, IFolderExtension, IExtension } from '../models/IExtension';
 import { extensions } from '../icon-manifest/supportedExtensions';
 import { IIconSchema } from '../models/IIconSchema';
 import { isCodeContext } from '../utils';
@@ -18,19 +18,19 @@ export function mergeConfig(
   vscode: IVSCode): IIconSchema {
 
   const iconGenerator = new IconGenerator(vscode);
-  const files = mergeFiles(customFiles, supportedFiles);
-  const folders = mergeFiles(customFolders, supportedFolders);
+  const files = mergeItems(customFiles, supportedFiles);
+  const folders = mergeItems(customFolders, supportedFolders);
   const json = iconGenerator.generateJson(outDir, files, folders);
   iconGenerator.persist('icons.json', outDir, json); // TODO remove
   return json;
 }
 
-function mergeFiles(
-  custom: IExtensionCollection<IFileExtension>,
-  supported: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+function mergeItems(
+  custom: IExtensionCollection<IExtension>,
+  supported: IExtensionCollection<IExtension>): IExtensionCollection<IExtension> {
   if (!custom || !custom.supported || !custom.supported.length) { return supported; }
   // start the merge operation
-  let final: IFileExtension[] = _.cloneDeep(supported.supported);
+  let final: IExtension[] = _.cloneDeep(supported.supported);
   custom.supported.forEach(file => {
     const officialFiles = final.filter(x => x.icon === file.icon);
     if (officialFiles.length) {
@@ -66,11 +66,4 @@ function mergeFiles(
     final.push(file);
  });
   return { supported: final };
-}
-
-function mergeFolders(
-  custom: IExtensionCollection<IFolderExtension>,
-  supported: IExtensionCollection<IFolderExtension>): IExtensionCollection<IFolderExtension> {
-  if (!custom || !custom.supported || !custom.supported.length) { return supported; }
-  return supported;
 }
