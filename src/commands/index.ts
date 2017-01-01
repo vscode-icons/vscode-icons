@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { getConfig } from '../utils/vscode-extensions';
+import { messages as msg } from '../messages';
 import {
   mergeConfig,
   toggleAngular2Preset,
@@ -29,38 +30,52 @@ function registerCommand(
   return command;
 }
 
-function applyCustomizationCommand() {
+function applyCustomization() {
   const conf = getConfig().vsicons;
   const customFiles = { supported: conf.associations.files };
   const customFolders = { supported: conf.associations.folders };
   generateManifest(customFiles, customFolders);
-  vscode.window.showInformationMessage('Customization applied. Restart the app.');
+}
+
+function applyCustomizationCommand() {
+  applyCustomization();
+  showCustomizationMessage(msg.iconCustomizationMessage);
 }
 
 function restoreDefaultManifestCommand() {
   generateManifest(null, null);
-  vscode.window.showInformationMessage('Icons restored to its factory state. Restart the app.');
+  showCustomizationMessage(msg.iconRestoreMessage);
 }
 
 function toggleAngular2PresetCommand() {
-  togglePreset('angular2', false);
-  vscode.window.showInformationMessage('toggleAngular2PresetCommand');
+  const val = togglePreset('angular2', false);
+  showCustomizationMessage(`${msg.ng2PresetMessage} ${val}`, applyCustomization);
 }
 
 function toggleJsPresetCommand() {
-  togglePreset('jsOfficial');
-  vscode.window.showInformationMessage('toggleJsPresetCommand');
+  const val = togglePreset('jsOfficial');
+  showCustomizationMessage(`${msg.jsOfficialPresetMessage} ${val}`, applyCustomization);
 }
 
 function toggleTsPresetCommand() {
-  togglePreset('tsOfficial');
-  vscode.window.showInformationMessage('toggleTsPresetCommand');
+  const val = togglePreset('tsOfficial');
+  showCustomizationMessage(`${msg.tsOfficialPresetMessage} ${val}`, applyCustomization);
 }
 
-function togglePreset(preset: string, global: boolean = true) {
+function togglePreset(preset: string, global: boolean = true): boolean {
   const conf = getConfig();
   const currentValue = conf.vsicons.presets[preset];
   conf.update(`vsicons.presets.${preset}`, !currentValue, global);
+  return !currentValue;
+}
+
+function showCustomizationMessage(message: string, callback: Function = null) {
+  vscode.window.showInformationMessage(message,
+    { title: msg.reload })
+    .then(btn => {
+      if (callback) { callback(); }
+      vscode.commands.executeCommand('workbench.action.reloadWindow');
+    });
 }
 
 function generateManifest(
