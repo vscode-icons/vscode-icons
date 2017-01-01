@@ -41,7 +41,7 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
 
 function showNewVersionMessage(settingsManager: ISettingsManager) {
   const vars = settingsManager.getSettings();
-  vscode.window.showInformationMessage(msg.newVersionMessage + ' v.' + vars.extVersion,
+  vscode.window.showInformationMessage(`${msg.newVersionMessage} v.${vars.extVersion}`,
     { title: msg.seeReleaseNotes }, { title: msg.dontshowthis })
     .then(btn => {
       settingsManager.setStatus(settingsManager.status.disabled);

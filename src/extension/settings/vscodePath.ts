@@ -6,7 +6,7 @@ export function vscodePath () {
     if (process.platform === 'darwin') {
       appPath = process.env.HOME + '/Library/Application Support';
     } else if (process.platform === 'linux') {
-      appPath = os.homedir() + '/.config';
+      appPath = `${os.homedir()}/.config`;
     } else {
       appPath = '/var/local';
     }
