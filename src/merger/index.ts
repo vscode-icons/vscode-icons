@@ -21,7 +21,6 @@ export function mergeConfig(
   const files = mergeItems(customFiles, supportedFiles);
   const folders = mergeItems(customFolders, supportedFolders);
   const json = iconGenerator.generateJson(outDir, files, folders);
-  iconGenerator.persist('icons.json', outDir, json); // TODO remove
   return json;
 }
 
