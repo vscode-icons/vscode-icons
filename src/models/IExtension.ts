@@ -20,9 +20,7 @@ export interface IFileExtension extends IExtension {
   languages?: ILanguage[]; // collection of languages associated to the icon.
 }
 
-export interface IFolderExtension extends IExtension {
-  dot?: boolean; // does the folder begin with a dot?
-}
+export interface IFolderExtension extends IExtension { }
 
 export enum FileFormat {
   svg,

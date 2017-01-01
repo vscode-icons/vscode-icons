@@ -73,7 +73,7 @@ export class IconGenerator {
         }
 
         current.extensions.forEach(extension => {
-          const key = current.dot ? '.' + extension : extension;
+          const key = extension;
           names.folderNames[key] = iconFolderDefinition;
           names.folderNamesExpanded[key] = iconOpenFolderDefinition;
 

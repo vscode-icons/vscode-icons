@@ -7,9 +7,7 @@ const supportedFlags = ['--all', '--folders', '--files'];
 const folderNames = folders.supported.reduce((init, current) => {
   const obj = init;
   if (current.extensions[0]) {
-    obj[current.icon] = current.dot
-      ? '.' + current.extensions[0]
-      : current.extensions[0];
+    obj[current.icon] = current.extensions[0];
   }
   return obj;
 }, {});

@@ -291,8 +291,7 @@ describe('generating icons', function () {
         .forEach(folder => {
           const definition = '_fd_' + folder.icon;
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
-            expect(folderNames[extensionName]).equals(definition);
+            expect(folderNames[extension]).equals(definition);
           });
         });
     });
@@ -307,8 +306,7 @@ describe('generating icons', function () {
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon;
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
-            expect(folderNames[extensionName]).equal(definition);
+            expect(folderNames[extension]).equal(definition);
           });
         });
     });
@@ -322,8 +320,7 @@ describe('generating icons', function () {
         .forEach(folder => {
           const definition = '_fd_' + folder.icon + '_open';
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
-            expect(folderNamesExpanded[extensionName]).equal(definition);
+            expect(folderNamesExpanded[extension]).equal(definition);
           });
         });
     });
@@ -338,8 +335,7 @@ describe('generating icons', function () {
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon + '_open';
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
-            expect(folderNamesExpanded[extensionName]).equal(definition);
+            expect(folderNamesExpanded[extension]).equal(definition);
           });
         });
     });
@@ -479,8 +475,7 @@ describe('generating icons', function () {
         .forEach(folder => {
           const definition = '_fd_' + folder.icon;
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
-            expect(folderNames[extensionName]).equals(definition);
+            expect(folderNames[extension]).equals(definition);
           });
         });
     });
@@ -496,8 +491,7 @@ describe('generating icons', function () {
         .forEach(folder => {
           const definition = '_fd_' + folder.icon + '_open';
           folder.extensions.forEach(function (extension) {
-            const extensionName = (folder.dot ? '.' : '') + extension;
-            expect(folderNamesExpanded[extensionName]).equals(definition);
+            expect(folderNamesExpanded[extension]).equals(definition);
           });
         });
     });
