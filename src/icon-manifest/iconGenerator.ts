@@ -8,6 +8,7 @@ import { IExtensionCollection, IFileExtension, IFolderExtension, FileFormat, IEx
 import { IIconSchema } from '../models/IIconSchema';
 import { IVSCode } from '../models/IVSCode';
 import { IIconGenerator } from '../models/IIconGenerator';
+import { pathUnixJoin } from '../utils';
 
 // tslint:disable-next-line no-var-requires
 const packageJson = require('../../../package.json');
@@ -22,7 +23,6 @@ export class IconGenerator implements IIconGenerator {
     // relative to this file
     this.iconsFolderPath = path.join(__dirname, '../../../icons');
     this.manifestFolderPath = path.join(__dirname, '../../../out/src');
-    // this.manifestFolderPath = './out/src';
   }
 
   public getDefaultSchema(iconsFolderBasePath?: string): IIconSchema {
@@ -106,8 +106,8 @@ export class IconGenerator implements IIconGenerator {
         const iconFolderType = `folder_type_${icon}`;
         const iconFolderLightType = `folder_type_light_${icon}`;
         const fPath = this.getIconPath(current, iconsFolderBasePath);
-        const folderPath = path.join(fPath, iconFolderType);
-        const folderLightPath = path.join(fPath, iconFolderLightType);
+        const folderPath = pathUnixJoin(fPath, iconFolderType);
+        const folderLightPath = pathUnixJoin(fPath, iconFolderLightType);
         const openFolderPath = `${folderPath}_opened`;
         const openFolderLightPath = `${folderLightPath}_opened`;
         const iconFolderDefinition = `_fd_${icon}`;
@@ -183,8 +183,8 @@ export class IconGenerator implements IIconGenerator {
         const iconFileType = `file_type_${icon}`;
         const iconFileLightType = `file_type_light_${icon}`;
         const fPath = this.getIconPath(current, iconsFolderBasePath);
-        const filePath = path.join(fPath, iconFileType);
-        const fileLightPath = path.join(fPath, iconFileLightType);
+        const filePath = pathUnixJoin(fPath, iconFileType);
+        const fileLightPath = pathUnixJoin(fPath, iconFileLightType);
         const iconFileDefinition = `_f_${icon}`;
         const iconFileLightDefinition = `_f_light_${icon}`;
         const iconFileExtension = `.${typeof current.format === 'string' ?
