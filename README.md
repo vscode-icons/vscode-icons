@@ -130,7 +130,7 @@ But before you can even use them you will have to go to your `settings` and make
 
 Each item of the array represents a file or a folder icon. The functionality is the same for `files` and `folders`.
 
-Note that will important to know what the currently [supported file extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts) and [supported folder extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts) are.
+Note that it's important to know what the current [supported file extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts) and [supported folder extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts) are.
 
 **Some examples**
 ```json
@@ -168,7 +168,7 @@ Note that will important to know what the currently [supported file extensions /
 ```
 
 **Custom Icons**
-Unfortunately, `VSCode` doesn't support absolute paths when generating the icons css. I'm willing to raise an issue in their repo and submit a PR but in the meantime we've come up with a simple solution.
+Unfortunately, `VSCode` doesn't support absolute paths when generating the icons `css`. I'm willing to raise an issue in their repo and submit a PR but in the meantime we've come up with a simple solution.
 
 The idea is that you have to look for your `User folder`:
 
