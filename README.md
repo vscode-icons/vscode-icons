@@ -176,7 +176,7 @@ The idea is that you have to look for your `User folder`:
 - Linux: `/home/<your_user>/.vscode/extensions`
 - Mac: `/Users/roberto/.vscode/extensions/`
 
-and then create a folder there named like this: `robertohuertasm.vscode-icons.custom-icons`. Then, there you can put all your custom icons but, again, they have to follow `vscode-icons` conventions:
+and then create a folder there named like this: `robertohuertasm.vscode-icons.custom-icons`. Then, there you can put all your custom icons but, again, they have to follow `vscode-icons` naming conventions:
 
 - Files: `file_type_<value_of_icon_property>@2x.svg`
 - Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x`
