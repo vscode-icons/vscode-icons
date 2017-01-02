@@ -130,7 +130,7 @@ But before you can even use them you will have to go to your `settings` and make
 
 Each item of the array represents a file or a folder icon. The functionality is the same for `files` and `folders`.
 
-Note that will important to know what are the currently [supported file extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts) and [supported folder extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts)
+Note that will important to know what the currently [supported file extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts) and [supported folder extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts) are.
 
 **Some examples**
 ```json
