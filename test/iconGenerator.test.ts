@@ -2,32 +2,22 @@
 /* tslint:disable only-arrow-functions */
 import * as fs from 'fs';
 import * as path from 'path';
+import * as _ from 'lodash';
 import { expect } from 'chai';
-import { schema as defaultSchema } from '../src/icon-manifest/defaultSchema';
+import { schema as defaultSchema, schema } from '../src/icon-manifest/defaultSchema';
 import { IconGenerator } from '../src/icon-manifest/iconGenerator';
 import { extensions as files } from '../src/icon-manifest/supportedExtensions';
 import { extensions as folders } from '../src/icon-manifest/supportedFolders';
 import { FileFormat } from '../src/models/IExtension';
 import { vscode } from '../src/utils';
+import { iconSuffix } from '../src/settings/extSettings';
 
 const iconsFolderPath = path.join(__dirname, '../../icons');
 const iconGenerator = new IconGenerator(vscode);
 
-describe('generating icons', function () {
-  it('removes first dot from text', function () {
-    const text = '.test';
-    const noDottedText = 'test';
-    expect(iconGenerator.removeFirstDot(text)).equal(noDottedText);
-  });
+describe('IconGenerator: icon generation test', function () {
 
-  it('resolves path from one directory to another', function () {
-    const fromDirPath = __dirname;
-    const toDirName = iconsFolderPath;
-    const pathTo = './../../icons/';
-    expect(iconGenerator.getRelativePath(fromDirPath, toDirName)).equals(pathTo);
-  });
-
-  it('file extension should not have a leading dot', function () {
+  it('filename extension should not have a leading dot', function () {
     files.supported
       .filter(file => !file.filename && !file.disabled)
       .forEach(file => {
@@ -52,246 +42,208 @@ describe('generating icons', function () {
     expect(json.iconDefinitions._folder_open.iconPath).not.to.be.equal('');
   });
 
-  it('ensures each supported file extension has an associated icon file', function () {
-    const suffix = '@2x';
-    const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
+  it('ensures icons schema is vscode default schema for icons', function () {
+    expect(iconGenerator.getDefaultSchema()).to.deep.equal(defaultSchema);
+  });
 
+  it('ensures each supported file extension has an associated icon file', function () {
     files.supported
-      .filter(file => !file.disabled)
       .forEach(file => {
-        const iconFileExtension = '.' + FileFormat[file.format];
-        const iconFilePath = iconDirPath + 'file_type_' +
-          file.icon + suffix + iconFileExtension;
-        expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
+        const filename = `file_type_${file.icon}${iconSuffix}.${FileFormat[file.format]}`;
+        const iconFilePath = path.join(iconsFolderPath, filename);
+        expect(fs.existsSync(iconFilePath)).to.be.true;
       });
   });
 
   it('ensures each supported file extension that has a light theme version ' +
-    'has an associated icon file',
-    function () {
-      const suffix = '@2x';
-      const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
-
+    'has an associated icon file', function () {
       files.supported
-        .filter(file => file.light && !file.disabled)
+        .filter(file => file.light)
         .forEach(file => {
-          const iconFileExtension = '.' + FileFormat[file.format];
-          const iconFilePath = iconDirPath + 'file_type_light_' +
-            file.icon + suffix + iconFileExtension;
-
-          expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
+          const filename = `file_type_light_${file.icon}${iconSuffix}.${FileFormat[file.format]}`;
+          const iconFilePath = path.join(iconsFolderPath, filename);
+          expect(fs.existsSync(iconFilePath)).to.be.true;
         });
     });
 
   it('ensures each supported folder has an associated icon file', function () {
-    const suffix = '@2x';
-    const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
-
     folders.supported
-    .filter(folder => !folder.disabled)
-    .forEach(folder => {
-      const iconFileExtension = '.' + FileFormat[folder.format];
-      const iconFilePath = iconDirPath + 'folder_type_' +
-        folder.icon + suffix + iconFileExtension;
-      expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
-    });
+      .forEach(folder => {
+        const filename = `folder_type_${folder.icon}${iconSuffix}.${FileFormat[folder.format]}`;
+        const iconFilePath = path.join(iconsFolderPath, filename);
+        expect(fs.existsSync(iconFilePath)).to.be.true;
+      });
   });
 
   it('ensures each supported folder that has a light theme version ' +
     'has an associated icon file',
     function () {
-      const suffix = '@2x';
-      const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
-
       folders.supported
-        .filter(folder => folder.light && !folder.disabled)
+        .filter(folder => folder.light)
         .forEach(folder => {
-          const iconFileExtension = '.' + FileFormat[folder.format];
-          const iconFilePath = iconDirPath + 'folder_type_light_' +
-            folder.icon + suffix + iconFileExtension;
-          expect(fs.existsSync(path.join(__dirname, iconFilePath))).to.be.true;
+          const filename = `folder_type_light_${folder.icon}${iconSuffix}.${FileFormat[folder.format]}`;
+          const iconFilePath = path.join(iconsFolderPath, filename);
+          expect(fs.existsSync(iconFilePath)).to.be.true;
         });
     });
 
   it('ensures each supported folder has an associated opened icon file', function () {
-    const suffix = '@2x';
-    const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
-
     folders.supported
-    .filter(folder => !folder.disabled)
-    .forEach(folder => {
-      const iconFileExtension = '.' + FileFormat[folder.format];
-      const iconOpenFilePath = iconDirPath + 'folder_type_' +
-        folder.icon + '_opened' + suffix + iconFileExtension;
-      expect(fs.existsSync(path.join(__dirname, iconOpenFilePath))).to.be.true;
-    });
+      .forEach(folder => {
+        const filename = `folder_type_${folder.icon}_opened${iconSuffix}.${FileFormat[folder.format]}`;
+        const iconFilePath = path.join(iconsFolderPath, filename);
+        expect(fs.existsSync(iconFilePath)).to.be.true;
+      });
   });
 
   it('ensures each supported folder that has a light theme version ' +
     'has an associated opened icon file',
     function () {
-      const suffix = '@2x';
-      const iconDirPath = iconGenerator.getRelativePath(__dirname, iconsFolderPath);
-
       folders.supported
-        .filter(folder => folder.light && !folder.disabled)
+        .filter(folder => folder.light)
         .forEach(folder => {
-          const iconFileExtension = '.' + FileFormat[folder.format];
-          const iconOpenFilePath = iconDirPath + 'folder_type_light_' +
-            folder.icon + '_opened' + suffix + iconFileExtension;
-          expect(fs.existsSync(path.join(__dirname, iconOpenFilePath))).to.be.true;
+          const filename = `folder_type_light_${folder.icon}_opened${iconSuffix}.${FileFormat[folder.format]}`;
+          const iconFilePath = path.join(iconsFolderPath, filename);
+          expect(fs.existsSync(iconFilePath)).to.be.true;
         });
     });
 
   it('ensures each supported file extension has a definition', function () {
-    const fileDefinitions = iconGenerator.buildFiles(files).defs;
-
+    const schema = iconGenerator.generateJson(files, { supported: [] });
     files.supported
       .filter(file => !file.disabled)
       .forEach(file => {
         const definition = '_f_' + file.icon;
-        expect(fileDefinitions[definition]).not.to.be.undefined;
+        expect(schema.iconDefinitions[definition]).exist;
       });
   });
 
   it('ensures each supported file extension that has a light theme version' +
     ' has a \'light\' definition',
     function () {
-      const fileDefinitions = iconGenerator.buildFiles(files).defs;
-
+      const schema = iconGenerator.generateJson(files, { supported: [] });
       files.supported
         .filter(file => file.light && !file.disabled)
         .forEach(file => {
           const definition = '_f_light_' + file.icon;
-          expect(fileDefinitions[definition]).not.to.be.undefined;
+          expect(schema.iconDefinitions[definition]).exist;
         });
     });
 
   it('ensures each supported file extension has an icon path', function () {
-    const fileDefinitions = iconGenerator.buildFiles(files).defs;
-
+    const schema = iconGenerator.generateJson(files, { supported: [] });
     files.supported
       .filter(file => !file.disabled)
       .forEach(file => {
         const definition = '_f_' + file.icon;
-        expect(fileDefinitions[definition].iconPath).not.to.be.equal('');
+        expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
       });
   });
 
   it('ensures each supported file extension that has a light theme version has an icon path',
     function () {
-      const fileDefinitions = iconGenerator.buildFiles(files).defs;
-
+      const schema = iconGenerator.generateJson(files, { supported: [] });
       files.supported
         .filter(file => file.light && !file.disabled)
         .forEach(file => {
           const definition = '_f_light_' + file.icon;
-          expect(fileDefinitions[definition].iconPath).not.to.be.equal('');
+          expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
 
   it('ensures each supported folder has a definition', function () {
-    const folderDefinitions = iconGenerator.buildFolders(folders).defs;
-
+    const schema = iconGenerator.generateJson({ supported: [] }, folders);
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
         const definition = '_fd_' + folder.icon;
-        expect(folderDefinitions[definition]).not.to.be.undefined;
+        expect(schema.iconDefinitions[definition]).exist;
       });
   });
 
   it('ensures each supported folder that has a light theme version has a \'light\' definition',
     function () {
-      const folderDefinitions = iconGenerator.buildFolders(folders).defs;
-
+      const schema = iconGenerator.generateJson({ supported: [] }, folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon;
-          expect(folderDefinitions[definition]).not.to.be.undefined;
+          expect(schema.iconDefinitions[definition]).exist;
         });
     });
 
   it('ensures each supported folder has an open definition', function () {
-    const folderDefinitions = iconGenerator.buildFolders(folders).defs;
-
+    const schema = iconGenerator.generateJson({ supported: [] }, folders);
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
         const definition = '_fd_' + folder.icon + '_open';
-        expect(folderDefinitions[definition]).not.to.be.undefined;
+        expect(schema.iconDefinitions[definition]).exist;
       });
   });
 
   it('ensures each supported folder that has a light theme version has a open \'light\' definition',
     function () {
-      const folderDefinitions = iconGenerator.buildFolders(folders).defs;
-
+      const schema = iconGenerator.generateJson({ supported: [] }, folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon + '_open';
-          expect(folderDefinitions[definition]).not.to.be.undefined;
+          expect(schema.iconDefinitions[definition]).exist;
         });
     });
 
   it('ensures each supported folder has an icon path', function () {
-    const folderDefinitions = iconGenerator.buildFolders(folders).defs;
-
+    const schema = iconGenerator.generateJson({ supported: [] }, folders);
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
         const definition = '_fd_' + folder.icon;
-        expect(folderDefinitions[definition].iconPath).not.to.be.equal('');
+        expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
       });
   });
 
   it('ensures each supported folder that has a light theme version has an icon path',
     function () {
-      const folderDefinitions = iconGenerator.buildFolders(folders).defs;
-
+      const schema = iconGenerator.generateJson({ supported: [] }, folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon;
-          expect(folderDefinitions[definition].iconPath).not.to.be.equal('');
+          expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
 
   it('ensures each supported folder has an open icon path', function () {
-    const folderDefinitions = iconGenerator.buildFolders(folders).defs;
-
+    const schema = iconGenerator.generateJson({ supported: [] }, folders);
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
         const definition = '_fd_' + folder.icon + '_open';
-        expect(folderDefinitions[definition].iconPath).not.to.be.equal('');
+        expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
       });
   });
 
   it('ensures each supported folder that has a light theme version has an open icon path',
     function () {
-      const folderDefinitions = iconGenerator.buildFolders(folders).defs;
-
+      const schema = iconGenerator.generateJson({ supported: [] }, folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon + '_open';
-          expect(folderDefinitions[definition].iconPath).not.to.be.equal('');
+          expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
 
   it('ensures each supported folder has a folder name referencing its definition',
     function () {
-      const folderNames = iconGenerator.buildFolders(folders).names.folderNames;
-
+      const schema = iconGenerator.generateJson({ supported: [] }, folders);
       folders.supported
         .filter(folder => !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_' + folder.icon;
           folder.extensions.forEach(function (extension) {
-            expect(folderNames[extension]).equals(definition);
+            expect(schema.folderNames[extension]).equals(definition);
           });
         });
     });
@@ -299,28 +251,26 @@ describe('generating icons', function () {
   it('ensures each supported folder that has a light theme version ' +
     'has a folder name referencing its \'light\' definition',
     function () {
-      const folderNames = iconGenerator.buildFolders(folders).light.folderNames;
-
+      const schema = iconGenerator.generateJson({ supported: [] }, folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon;
           folder.extensions.forEach(function (extension) {
-            expect(folderNames[extension]).equal(definition);
+            expect(schema.light.folderNames[extension]).equal(definition);
           });
         });
     });
 
   it('ensures each supported folder has a folder name expanded referencing its definition',
     function () {
-      const folderNamesExpanded = iconGenerator.buildFolders(folders).names.folderNamesExpanded;
-
+      const schema = iconGenerator.generateJson({ supported: [] }, folders);
       folders.supported
         .filter(folder => !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_' + folder.icon + '_open';
           folder.extensions.forEach(function (extension) {
-            expect(folderNamesExpanded[extension]).equal(definition);
+            expect(schema.folderNamesExpanded[extension]).equal(definition);
           });
         });
     });
@@ -328,14 +278,13 @@ describe('generating icons', function () {
   it('ensures each supported folder that has a light theme version ' +
     'has a folder name expanded referencing its open \'light\' definition',
     function () {
-      const folderNamesExpanded = iconGenerator.buildFolders(folders).light.folderNamesExpanded;
-
+      const schema = iconGenerator.generateJson({ supported: [] }, folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon + '_open';
           folder.extensions.forEach(function (extension) {
-            expect(folderNamesExpanded[extension]).equal(definition);
+            expect(schema.light.folderNamesExpanded[extension]).equal(definition);
           });
         });
     });
@@ -343,15 +292,13 @@ describe('generating icons', function () {
   it('ensures each supported file extension that is not a filename ' +
     'has a file extension referencing its definition',
     function () {
-      const fileExtensions = iconGenerator.buildFiles(files).names.fileExtensions;
-
+      const schema = iconGenerator.generateJson(files, { supported: [] });
       files.supported
         .filter(file => !file.filename && !file.disabled)
         .forEach(file => {
           const definition = '_f_' + file.icon;
           file.extensions.forEach(function (extension) {
-            const extensionName = iconGenerator.removeFirstDot(extension);
-            expect(fileExtensions[extensionName]).equal(definition);
+            expect(schema.fileExtensions[extension]).equal(definition);
           });
         });
     });
@@ -359,15 +306,13 @@ describe('generating icons', function () {
   it('ensures each supported file extension that is not a filename ' +
     'and has a light theme version has a file extension referencing its \'light\' definition',
     function () {
-      const fileExtensions = iconGenerator.buildFiles(files).light.fileExtensions;
-
+      const schema = iconGenerator.generateJson(files, { supported: [] });
       files.supported
         .filter(file => !file.filename && file.light && !file.disabled)
         .forEach(file => {
           const definition = '_f_light_' + file.icon;
           file.extensions.forEach(function (extension) {
-            const extensionName = iconGenerator.removeFirstDot(extension);
-            expect(fileExtensions[extensionName]).equal(definition);
+            expect(schema.light.fileExtensions[extension]).equal(definition);
           });
         });
     });
@@ -375,14 +320,13 @@ describe('generating icons', function () {
   it('ensures each supported file extension that is a filename ' +
     'has a file name referencing its definition',
     function () {
-      const fileNames = iconGenerator.buildFiles(files).names.fileNames;
-
+      const schema = iconGenerator.generateJson(files, { supported: [] });
       files.supported
         .filter(file => file.filename && !file.languages && !file.disabled)
         .forEach(file => {
           const definition = '_f_' + file.icon;
           file.extensions.forEach(function (extension) {
-            expect(fileNames[extension]).equal(definition);
+            expect(schema.fileNames[extension]).equal(definition);
           });
         });
     });
@@ -390,14 +334,13 @@ describe('generating icons', function () {
   it('ensures each supported file extension that is a filename ' +
     'and has a light theme version has a file name referencing its \'light\' definition',
     function () {
-      const fileNames = iconGenerator.buildFiles(files).light.fileNames;
-
+      const schema = iconGenerator.generateJson(files, { supported: [] });
       files.supported
         .filter(file => file.filename && !file.languages && file.light && !file.disabled)
         .forEach(file => {
           const definition = '_f_light_' + file.icon;
           file.extensions.forEach(function (extension) {
-            expect(fileNames[extension]).equal(definition);
+            expect(schema.light.fileNames[extension]).equal(definition);
           });
         });
     });
@@ -405,14 +348,13 @@ describe('generating icons', function () {
   it('ensures each supported file extension that is supported by language ids ' +
     'has a language id referencing its definition',
     function () {
-      const languageIds = iconGenerator.buildFiles(files).languageIds;
-
+      const schema = iconGenerator.generateJson(files, { supported: [] });
       files.supported
         .filter(file => file.languages && !file.disabled)
         .forEach(file => {
           const definition = '_f_' + file.icon;
           const assertLanguage = function (language) {
-            expect(languageIds[language]).equal(definition);
+            expect(schema.languageIds[language]).equal(definition);
           };
 
           file.languages.forEach(function (langIds) {
@@ -428,39 +370,42 @@ describe('generating icons', function () {
   it('ensures each supported file extension that has not a light theme version ' +
     'if a default file icon for light theme is specified, has a \'light\' definition',
     function () {
-      const fileDefinitions = iconGenerator.buildFiles(files, null, true).defs;
-
+      const dSchema = iconGenerator.getDefaultSchema();
+      dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
+      const schema = iconGenerator.generateJson(files, { supported: [] }, dSchema);
       files.supported
         .filter(file => !file.light && !file.disabled)
         .forEach(file => {
           const definition = '_f_light_' + file.icon;
-          expect(fileDefinitions[definition]).not.to.be.undefined;
+          expect(schema.iconDefinitions[definition]).exist;
         });
     });
 
   it('ensures each supported folder that has not a light theme version ' +
     'if a default folder icon for light theme is specified, has a \'light\' definition',
     function () {
-      const folderDefinitions = iconGenerator.buildFolders(folders, null, true).defs;
-
+      const dSchema = iconGenerator.getDefaultSchema();
+      dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
+      const schema = iconGenerator.generateJson({ supported: [] }, folders, dSchema);
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon;
-          expect(folderDefinitions[definition]).not.to.be.undefined;
+          expect(schema.iconDefinitions[definition]).exist;
         });
     });
 
   it('ensures each supported folder that has not a light theme version ' +
     'if a default folder open icon for light theme is specified, has an open \'light\' definition',
     function () {
-      const folderDefinitions = iconGenerator.buildFolders(folders, null, true).defs;
-
+      const dSchema = iconGenerator.getDefaultSchema();
+      dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
+      const schema = iconGenerator.generateJson({ supported: [] }, folders, dSchema);
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_light_' + folder.icon + '_open';
-          expect(folderDefinitions[definition]).not.to.be.undefined;
+          expect(schema.iconDefinitions[definition]).exist;
         });
     });
 
@@ -468,14 +413,15 @@ describe('generating icons', function () {
     'if a default folder icon for light theme is specified, ' +
     'has a folder name referencing its inherited definition',
     function () {
-      const folderNames = iconGenerator.buildFolders(folders, null, true).light.folderNames;
-
+      const dSchema = iconGenerator.getDefaultSchema();
+      dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
+      const schema = iconGenerator.generateJson({ supported: [] }, folders, dSchema);
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_' + folder.icon;
           folder.extensions.forEach(function (extension) {
-            expect(folderNames[extension]).equals(definition);
+            expect(schema.light.folderNames[extension]).equals(definition);
           });
         });
     });
@@ -484,14 +430,15 @@ describe('generating icons', function () {
     'if a default folder icon for light theme is specified, ' +
     'has a folder name expanded referencing its inherited definition',
     function () {
-      const folderNamesExpanded = iconGenerator.buildFolders(folders, null, true).light.folderNamesExpanded;
-
+      const dSchema = iconGenerator.getDefaultSchema();
+      dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
+      const schema = iconGenerator.generateJson({ supported: [] }, folders, dSchema);
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
           const definition = '_fd_' + folder.icon + '_open';
           folder.extensions.forEach(function (extension) {
-            expect(folderNamesExpanded[extension]).equals(definition);
+            expect(schema.light.folderNamesExpanded[extension]).equals(definition);
           });
         });
     });
@@ -499,15 +446,15 @@ describe('generating icons', function () {
   it('ensures each supported file extension that is not a filename ' +
     'and has not a light theme version, has a file extension referencing its inherited definition',
     function () {
-      const fileExtensions = iconGenerator.buildFiles(files, null, true).light.fileExtensions;
-
+      const dSchema = iconGenerator.getDefaultSchema();
+      dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
+      const schema = iconGenerator.generateJson(files, { supported: [] }, dSchema);
       files.supported
         .filter(file => !file.filename && !file.light && !file.disabled)
         .forEach(file => {
           const definition = '_f_' + file.icon;
           file.extensions.forEach(function (extension) {
-            const extensionName = iconGenerator.removeFirstDot(extension);
-            expect(fileExtensions[extensionName]).equals(definition);
+            expect(schema.light.fileExtensions[extension]).equals(definition);
           });
         });
     });
@@ -515,19 +462,17 @@ describe('generating icons', function () {
   it('ensures each supported file extension that is a filename ' +
     'and has a light theme version has a file name referencing its inherited definition',
     function () {
-      const fileNames = iconGenerator.buildFiles(files, null, true).light.fileNames;
-
+      const dSchema = iconGenerator.getDefaultSchema();
+      dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
+      const schema = iconGenerator.generateJson(files, { supported: [] }, dSchema);
       files.supported
         .filter(file => file.filename && !file.languages && !file.light && !file.disabled)
         .forEach(file => {
           const definition = '_f_' + file.icon;
           file.extensions.forEach(function (extension) {
-            expect(fileNames[extension]).equals(definition);
+            expect(schema.light.fileNames[extension]).equals(definition);
           });
         });
     });
 
-  it('ensures icons schema is vscode default schema for icons', function () {
-    expect(iconGenerator.getDefaultSchema()).to.deep.equal(defaultSchema);
-  });
 });

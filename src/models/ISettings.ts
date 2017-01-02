@@ -7,4 +7,5 @@ export interface ISettings {
   extVersion: string; // version number of the extension
   version: string; // version number of vscode
   isGt160: boolean; // true if vscode version is greater than 1.6.0
+  iconSuffix: string; // suffix used to build the icons
 }

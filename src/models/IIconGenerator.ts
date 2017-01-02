@@ -6,6 +6,7 @@ export interface IIconGenerator {
   generateJson(
     files: IExtensionCollection<IFileExtension>,
     folders: IExtensionCollection<IFolderExtension>,
+    defaultSchema?: IIconSchema,
     outDir?: string): IIconSchema;
   persist(
     iconsFilename: string,

@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as semver from 'semver';
 import { vscodePath as getAppPath } from './vscodePath';
-import { version as extVersion } from './extVersion';
+import { version as extVersion, iconSuffix } from './extSettings';
 import { ISettings } from '../models/ISettings';
 import { IState } from '../models/IState';
 import { IVSCode } from '../models/IVSCode';
@@ -55,6 +55,7 @@ export class SettingsManager {
       extVersion,
       version,
       isGt160,
+      iconSuffix,
     };
     return this.settings;
   }

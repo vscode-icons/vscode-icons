@@ -3,10 +3,10 @@ import * as path from 'path';
 import * as _ from 'lodash';
 
 import { schema as defaultSchema } from './defaultSchema';
+import { ISettingsManager, SettingsManager } from '../settings';
 import { IExtensionCollection, IFileExtension, IFolderExtension, FileFormat, IExtension } from '../models/IExtension';
 import { IIconSchema } from '../models/IIconSchema';
 import { IVSCode } from '../models/IVSCode';
-import { ISettingsManager, SettingsManager } from '../settings';
 import { IIconGenerator } from '../models/IIconGenerator';
 
 // tslint:disable-next-line no-var-requires
@@ -55,11 +55,12 @@ export class IconGenerator implements IIconGenerator {
   public generateJson(
     files: IExtensionCollection<IFileExtension>,
     folders: IExtensionCollection<IFolderExtension>,
+    defaultSchema: IIconSchema = null,
     outDir: string = null): IIconSchema {
 
     const outputDir = this.cleanOutDir(outDir || this.manifestFolderPath);
     const iconsFolderBasePath = this.getRelativePath(outputDir, this.iconsFolderPath);
-    const json = this.getDefaultSchema(iconsFolderBasePath);
+    const json = defaultSchema || this.getDefaultSchema(iconsFolderBasePath);
     const res = this.buildJsonStructure(files, folders, iconsFolderBasePath, json);
 
     json.iconDefinitions = Object.assign({}, json.iconDefinitions, res.folders.defs, res.files.defs);
@@ -89,7 +90,7 @@ export class IconGenerator implements IIconGenerator {
     this.updatePackageJson(rel + iconsFilename);
   }
 
-  public buildFolders(
+  private buildFolders(
     folders: IExtensionCollection<IFolderExtension>,
     iconsFolderBasePath: string = '',
     hasDefaultLightFolder: boolean = false,
@@ -165,7 +166,7 @@ export class IconGenerator implements IIconGenerator {
       });
   }
 
-  public buildFiles(
+  private buildFiles(
     files: IExtensionCollection<IFileExtension>,
     iconsFolderBasePath: string = '',
     hasDefaultLightFile: boolean = false,
@@ -253,7 +254,7 @@ export class IconGenerator implements IIconGenerator {
       });
   }
 
-  public getRelativePath(fromDirPath, toDirName) {
+  private getRelativePath(fromDirPath, toDirName) {
     if (toDirName == null) {
       throw new Error('toDirName not defined.');
     }
@@ -270,7 +271,7 @@ export class IconGenerator implements IIconGenerator {
       (toDirName.endsWith('/') ? '' : '/');
   }
 
-  public removeFirstDot(txt: string): string {
+  private removeFirstDot(txt: string): string {
     if (txt.indexOf('.') === 0) {
       return txt.substring(1, txt.length);
     }
@@ -280,19 +281,19 @@ export class IconGenerator implements IIconGenerator {
   private buildJsonStructure(
     files: IExtensionCollection<IFileExtension>,
     folders: IExtensionCollection<IFolderExtension>,
-    iconsFolderBasePath, json) {
-    const suffix = '@2x';
+    iconsFolderBasePath: string,
+    json: IIconSchema) {
 
     const hasDefaultLightFolder = json.iconDefinitions._folder_light.iconPath != null &&
       json.iconDefinitions._folder_light.iconPath !== '';
     const hasDefaultLightFile = json.iconDefinitions._file_light.iconPath != null &&
       json.iconDefinitions._file_light.iconPath !== '';
-
+    const iconSuffix = this.settingsManager.getSettings().iconSuffix;
     return {
       // folders section
-      folders: this.buildFolders(folders, iconsFolderBasePath, hasDefaultLightFolder, suffix),
+      folders: this.buildFolders(folders, iconsFolderBasePath, hasDefaultLightFolder, iconSuffix),
       //  files section 
-      files: this.buildFiles(files, iconsFolderBasePath, hasDefaultLightFile, suffix),
+      files: this.buildFiles(files, iconsFolderBasePath, hasDefaultLightFile, iconSuffix),
     };
   }
 
