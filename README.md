@@ -183,7 +183,7 @@ and then create a folder there named like this: `robertohuertasm.vscode-icons.cu
 
 Note that folders must have two icons!
 
-See [here the supported icon extensions]((https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/IExtension.ts#L24))
+See [here the supported icon extensions]((https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/IExtension.ts#L24)).
 
 ## Contributing with icons
 
