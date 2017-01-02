@@ -90,7 +90,95 @@ If you're a designer and you're willing to collaborate by showing your icons to 
 If you want to check which folder icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/robertohuertasm/vscode-icons/issues).
 
 ## Customizing the extension
-- TBD
+The extension gives you the ability to change how the icons look or even what icons are associated to each extension.
+
+We have exposed the internal API that we are using to build the `icon manifest` so you can also use it in your `vscode settings` and generate it in runtime. This will allow you to customize all the icons, add new ones and so on.
+
+Although you now have this power, we're encouraging everyone to raise an issue in [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues) in case you find any of your customizations valuable to the rest of the community so we can implement them out of the box.
+
+But, how does this work?
+
+The extension now provides some specific commands for you to use. Let's talk first about the `presets` and then we're going to talk about how you can fine tune the extension.
+
+### Presets
+You have 3 different presets at the moment:
+
+- `vsicons.presets.angular2` (true by default)
+- `vsicons.presets.jsOfficial` (false by default)
+- `vsicons.presets.tsOfficial` (false by default)
+
+These 3 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set this presets, or for whatever matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `project's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular2` preset.
+
+This presets can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing `icons`. You will be presented with some new commands:
+
+- `Toggle Angular2 Preset (Project Level)`: This command will enable/disable the `Angular 2 icons`.
+- `Toggle Official JS Preset (User Level)`: This command will enable/disable the `Official JS icon`.
+- `Toggle Official TS Preset (User Level)`: This command will enable/disable the `Official TS icon`.
+
+Note that some of the `preset commands` will modify your `settings` at a different level. If you choose to modify them manually then you can also choose what `setting` are you going to use.
+
+### Fine tuning
+Along with the commands we introduced before you will find two more (just press `F1` and type `icons`):
+
+- `Apply Icons Customization`: This command will regenerate the `Icons manifest` with your customizations and restart the IDE for the changes to take effect.
+- `Restore Default Icon Manifest`: This command will revert any changes you may have applied and restore the extension to its default state.
+
+But before you can even use them you will have to go to your `settings` and make your magic. The settings will provide you 2 different `array items`:
+
+- `vsicons.associations.files`: [IFileExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/IExtension.ts#L18)
+- `vsicons.associations.folders`: [IFolderExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/IExtension.ts#L23)
+
+Each item of the array represents a file or a folder icon. The functionality is the same for `files` and `folders`.
+
+Note that will important to know what are the currently [supported file extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts) and [supported folder extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts)
+
+**Some examples**
+```json
+// Adding new extensions to an already supported icon.
+// note: the format must match the existing one. If not, it will use the extension you provide.
+"vsicons.associations.files": [
+  { "icon": "js", "extensions": ["myExt1", "myExt2.custom.js"], "format": "svg" }
+]
+
+// Disabling an already supported icon.
+// note: this is, indeed, the functionality that presets are leveraging.
+"vsicons.associations.files": [
+  { "icon": "js", "extensions": [], "format": "svg", "disable": true }
+]
+
+// Adding a new extension.
+// note: see instructions below on custom icons.
+"vsicons.associations.files": [
+  { "icon": "custom", "extensions": ["custom", "my.custom"], "format": "svg" }
+]
+
+// Changing the icon to an already supported icon.
+"vsicons.associations.files": [
+  { "icon": "newIcon", "extensions": [""], "format": "svg", "extends": "js" }
+]
+
+// Overriding an already supported icon.
+// note: the difference between overrides and extends is that overrides will completely
+// remove the older icon functionality while extends will keep older settings by 
+// putting yours on top.
+"vsicons.associations.files": [
+  { "icon": "myJs", "extensions": ["js", "custom.js"], "format": "svg", "overrides": "js" }
+]
+
+```
+
+**Custom Icons**
+Unfortunately, `VSCode` doesn't support absolute paths when generating the icons css. I'm willing to raise an issue in their repo and submit a PR but in the meantime we've come up with a simple solution.
+
+At the moment, it's only been tested in Windows. We'll run tests in Linux and Mac too asap.
+
+The idea is that you have to search your `User folder` (i.e. `C:\Users\<your_user>\.vscode\extensions`) and create a folder there named like this: `robertohuertasm.vscode-icons.custom-icons`. Then, there you can put all your custom icons but, again, they have to follow `vscode-icons` conventions:
+
+- Files: `file_type_<value_of_icon_property>@2x.svg`
+- Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x`
+
+Note that folders must have to icons!
+
 
 ## Contributing with icons
 

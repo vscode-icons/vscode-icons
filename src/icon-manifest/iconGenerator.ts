@@ -304,7 +304,7 @@ export class IconGenerator implements IIconGenerator {
       // VSCode doesn't allow absolute paths...
       // return path.join(this.settingsManager.getSettings().vscodeAppData, 'vsicons-custom-icons');
       // HACK: temporary solution... 
-      return defaultPath.replace('../icons', '../../robertohuertasm.vscode-icons.custom-icons');
+      return defaultPath.replace('../icons', `../../${this.settingsManager.getSettings().customIconFolderName}`);
     }
     return defaultPath;
   }

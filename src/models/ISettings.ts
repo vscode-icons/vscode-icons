@@ -8,4 +8,5 @@ export interface ISettings {
   version: string; // version number of vscode
   isGt160: boolean; // true if vscode version is greater than 1.6.0
   iconSuffix: string; // suffix used to build the icons
+  customIconFolderName: string; // temporary folder that we're using to store users' custom icons.
 }
