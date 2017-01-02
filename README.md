@@ -179,10 +179,11 @@ The idea is that you have to look for your `User folder`:
 and then create a folder there named like this: `robertohuertasm.vscode-icons.custom-icons`. Then, there you can put all your custom icons but, again, they have to follow `vscode-icons` naming conventions:
 
 - Files: `file_type_<value_of_icon_property>@2x.svg`
-- Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x`
+- Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x.svg`
 
-Note that folders must have to icons!
+Note that folders must have two icons!
 
+See [here the supported icon extensions]((https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/IExtension.ts#L24))
 
 ## Contributing with icons
 
