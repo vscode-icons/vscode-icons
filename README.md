@@ -172,7 +172,12 @@ Unfortunately, `VSCode` doesn't support absolute paths when generating the icons
 
 At the moment, it's only been tested in Windows. We'll run tests in Linux and Mac too asap.
 
-The idea is that you have to search your `User folder` (i.e. `C:\Users\<your_user>\.vscode\extensions`) and create a folder there named like this: `robertohuertasm.vscode-icons.custom-icons`. Then, there you can put all your custom icons but, again, they have to follow `vscode-icons` conventions:
+The idea is that you have to look for your `User folder`:
+
+- Windows: `C:\Users\<your_user>\.vscode\extensions`
+- Linux: `/home/<your_user>/.vscode/extensions`
+
+and then create a folder there named like this: `robertohuertasm.vscode-icons.custom-icons`. Then, there you can put all your custom icons but, again, they have to follow `vscode-icons` conventions:
 
 - Files: `file_type_<value_of_icon_property>@2x.svg`
 - Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x`
