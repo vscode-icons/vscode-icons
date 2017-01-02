@@ -10,7 +10,7 @@ import {
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
 import { IconGenerator } from '../icon-manifest/iconGenerator';
-import { IExtensionCollection, IFileExtension, IFolderExtension } from '../models/IExtension';
+import { IExtensionCollection, IFileExtension, IFolderExtension } from '../models/';
 
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);

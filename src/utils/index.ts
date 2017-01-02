@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { IVSCode } from '../models/IVSCode';
+import { IVSCode } from '../models';
 
 export const vscode: IVSCode = {
   env: { appName: 'Code' },

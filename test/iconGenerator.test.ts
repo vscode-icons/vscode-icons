@@ -8,7 +8,7 @@ import { schema as defaultSchema, schema } from '../src/icon-manifest/defaultSch
 import { IconGenerator } from '../src/icon-manifest/iconGenerator';
 import { extensions as files } from '../src/icon-manifest/supportedExtensions';
 import { extensions as folders } from '../src/icon-manifest/supportedFolders';
-import { FileFormat } from '../src/models/IExtension';
+import { FileFormat } from '../src/models';
 import { vscode } from '../src/utils';
 import { iconSuffix } from '../src/settings/extSettings';
 

@@ -1,4 +1,4 @@
-import { ILanguage } from './ILanguage';
+import { FileFormat } from './FileFormat';
 
 export interface IExtension {
   icon: string; // name of the icon.
@@ -9,25 +9,4 @@ export interface IExtension {
   overrides?: string; // user customization: disables the specified extension.
   extends?: string; // user customization: extends the specified extension.
   _custom?: boolean; // user customization: flag for the icon generator.
-}
-
-export interface IExtensionCollection<T> {
-  supported: T[];
-}
-
-export interface IFileExtension extends IExtension {
-  filename?: boolean; // set to true if the extension represents the whole file name.
-  languages?: ILanguage[]; // collection of languages associated to the icon.
-}
-
-export interface IFolderExtension extends IExtension { }
-
-export enum FileFormat {
-  svg,
-  png,
-  jpg,
-  gif,
-  bmp,
-  tiff,
-  ico,
 }

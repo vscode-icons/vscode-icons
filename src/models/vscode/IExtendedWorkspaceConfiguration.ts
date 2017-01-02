@@ -1,4 +1,4 @@
-import { IVSIcons } from './IVSIcons';
+import { IVSIcons } from '../contributions';
 
 export interface IExtendedWorkspaceConfiguration {
   vsicons: IVSIcons;

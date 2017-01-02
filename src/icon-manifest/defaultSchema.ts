@@ -1,4 +1,4 @@
-import { IIconSchema } from '../models/IIconSchema';
+import { IIconSchema } from '../models';
 export const schema: IIconSchema = {
   iconDefinitions: {
     _file: {

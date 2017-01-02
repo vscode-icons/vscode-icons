@@ -1,5 +1,5 @@
-import { IIconSchema } from './IIconSchema';
-import { IExtensionCollection, IFolderExtension, IFileExtension } from './IExtension';
+import { IIconSchema } from '../iconSchema';
+import { IExtensionCollection, IFileExtension, IFolderExtension } from '../extensions';
 
 export interface IIconGenerator {
   getDefaultSchema(iconsFolderBasePath?: string): IIconSchema;

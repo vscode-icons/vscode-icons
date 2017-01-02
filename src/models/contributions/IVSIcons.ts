@@ -1,4 +1,4 @@
-import { IFileExtension, IFolderExtension } from './IExtension';
+import { IFileExtension, IFolderExtension } from '../extensions';
 
 export interface IVSIcons {
   dontShowNewVersionMessage?: boolean;

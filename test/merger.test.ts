@@ -15,7 +15,7 @@ import {
   IFileExtension,
   FileFormat,
   IFolderExtension,
-} from '../src/models/IExtension';
+} from '../src/models';
 
 let iconGenerator: IconGenerator;
 

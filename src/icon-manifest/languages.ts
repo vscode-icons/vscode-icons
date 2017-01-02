@@ -1,4 +1,4 @@
-import { ILanguageCollection } from '../models/ILanguage';
+import { ILanguageCollection } from '../models';
 
 export const languages: ILanguageCollection = {
   bat: { ids: 'bat', defaultExtension: 'bat' },

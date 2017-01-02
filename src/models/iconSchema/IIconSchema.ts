@@ -1,17 +1,5 @@
-export interface IIconPath {
-  iconPath: string;
-}
-
-export interface ISchemaSettings {
-  file: string;
-  folder: string;
-  folderExpanded: string;
-  folderNames: {};
-  folderNamesExpanded: {};
-  fileExtensions: {};
-  fileNames: {};
-  languageIds: {};
-}
+import { ISchemaSettings } from './ISchemaSettings';
+import { IIconPath } from './IIconPath';
 
 export interface IIconSchema extends ISchemaSettings {
   iconDefinitions: {

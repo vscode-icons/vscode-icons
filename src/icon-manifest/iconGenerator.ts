@@ -4,11 +4,17 @@ import * as _ from 'lodash';
 
 import { schema as defaultSchema } from './defaultSchema';
 import { ISettingsManager, SettingsManager } from '../settings';
-import { IExtensionCollection, IFileExtension, IFolderExtension, FileFormat, IExtension } from '../models/IExtension';
-import { IIconSchema } from '../models/IIconSchema';
-import { IVSCode } from '../models/IVSCode';
-import { IIconGenerator } from '../models/IIconGenerator';
 import { pathUnixJoin } from '../utils';
+import {
+  IExtensionCollection,
+  IFileExtension,
+  IFolderExtension,
+  FileFormat,
+  IExtension,
+  IIconGenerator,
+  IVSCode,
+  IIconSchema,
+} from '../models';
 
 // tslint:disable-next-line no-var-requires
 const packageJson = require('../../../package.json');

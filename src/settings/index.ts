@@ -3,9 +3,7 @@ import * as path from 'path';
 import * as semver from 'semver';
 import { vscodePath as getAppPath } from './vscodePath';
 import { version as extVersion, iconSuffix, customIconFolderName } from './extSettings';
-import { ISettings } from '../models/ISettings';
-import { IState } from '../models/IState';
-import { IVSCode } from '../models/IVSCode';
+import { ISettings, IState, IVSCode } from '../models';
 
 export interface IExtensionStatus {
   enabled: string;

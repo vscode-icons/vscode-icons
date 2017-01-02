@@ -1,10 +1,16 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 import { IconGenerator } from '../icon-manifest/iconGenerator';
-import { IExtensionCollection, IFileExtension, IFolderExtension, IExtension, FileFormat } from '../models/IExtension';
 import { extensions } from '../icon-manifest/supportedExtensions';
-import { IIconSchema } from '../models/IIconSchema';
-import { IIconGenerator } from '../models/IIconGenerator';
+import {
+  IExtensionCollection,
+  IFileExtension,
+  IFolderExtension,
+  IExtension,
+  FileFormat,
+  IIconSchema,
+  IIconGenerator,
+} from '../models';
 
 export function mergeConfig(
   customFiles: IExtensionCollection<IFileExtension>,
