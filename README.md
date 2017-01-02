@@ -41,9 +41,9 @@ Finally, I also would like to ask you to raise the possible issues that you may 
 
 ----
 ## New Year release
-We're happy to annouce that the extension now **provides custom icons and some icon presets** like `Angular2`, `Official JS Logo` and `Official TS Logo`.
+We're happy to annouce that the extension now **provides custom icons and some icon presets** like `Angular2`, `Official JS Logo` and `Official TS Logo`. With this release you will be able to completely tune the way the icons look! Please, take a look at the corresponding section to know more about how to make this work.
 
-With this release you will be able to completely tune the way the icons look! Please, take a look at the corresponding section to know more about how to make this work.
+Besides that, [@JimiC](https;//github.com/JimiC) along with [@ginfuru](https://github.com/ginfuru) are continuing to contribute to the massive `svg` icon conversion and providing new quality icons.
 
 ----
 ## Main Contributors
@@ -125,8 +125,8 @@ Along with the commands we introduced before you will find two more (just press 
 
 But before you can even use them you will have to go to your `settings` and make your magic. The settings will provide you 2 different `array items`:
 
-- `vsicons.associations.files`: [IFileExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/IExtension.ts#L18)
-- `vsicons.associations.folders`: [IFolderExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/IExtension.ts#L23)
+- `vsicons.associations.files`: [IFileExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/IFileExtension.ts)
+- `vsicons.associations.folders`: [IFolderExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/IFolderExtension.ts)
 
 Each item of the array represents a file or a folder icon. The functionality is the same for `files` and `folders`.
 
@@ -183,7 +183,7 @@ and then create a folder there named like this: `robertohuertasm.vscode-icons.cu
 
 Note that folders must have two icons!
 
-See [here the supported icon extensions]((https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/IExtension.ts#L24)).
+See [here the supported icon extensions]((https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/FileFormat.ts)).
 
 ## Contributing with icons
 
