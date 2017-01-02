@@ -39,17 +39,11 @@ Finally, I also would like to ask you to raise the possible issues that you may 
 
 **Thank you all for your kind support. Finally icons are here to stay (that was the main purpose of this extension). Now let's hope they get even better :D**
 
-## Christmas release
-@JimiC has been working hard and has built some **very cool folder icons** for this Christmas! Besides that, he has also transformed a **huge quantity of our `png icons` into nicer `svg icons`**.
+----
+## New Year release
+We're happy to annouce that the extension now **provides custom icons and some icon presets** like `Angular2`, `Official JS Logo` and `Official TS Logo`.
 
-As you may have notice we did a **regresion regarding `js and ts` icons**. Some of you were not happy with the official logos so we decided to keep the old ones until we can provide with the ability to customize some of the icons. 
-
-You may know that the `VSCode API` is not really very flexible, but the team has been thinking on a few ways to make the **icon customization** possible without tampering the original VSCode code.
-
-Please, stay tuned, because we may deliver a first version of this feature soon.
-
-Thank you all for your support!
-Merry Christmas!
+With this release you will be able to completely tune the way the icons look! Please, take a look at the corresponding section to know more about how to make this work.
 
 ----
 ## Main Contributors
@@ -94,6 +88,9 @@ If you're a designer and you're willing to collaborate by showing your icons to 
 
 ## List of supported folder icons
 If you want to check which folder icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/robertohuertasm/vscode-icons/issues).
+
+## Customizing the extension
+- TBD
 
 ## Contributing with icons
 
