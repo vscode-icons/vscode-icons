@@ -1,2 +1,2 @@
-export * from './ILanguage';
-export * from './ILanguageCollection';
+export * from './language';
+export * from './languageCollection';

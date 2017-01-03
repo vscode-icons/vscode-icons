@@ -1,3 +1,3 @@
-import { IExtension } from './IExtension';
+import { IExtension } from './extension';
 
 export interface IFolderExtension extends IExtension { }

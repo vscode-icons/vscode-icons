@@ -1,4 +1,4 @@
-import { IExtensionSettings } from './IExtensionSettings';
+import { IExtensionSettings } from './extensionSettings';
 
 export interface ISettings {
   vscodeAppData: string; // path to the vscode app data folder

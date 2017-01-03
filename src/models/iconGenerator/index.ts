@@ -1,1 +1,1 @@
-export * from './IIconGenerator';
+export * from './iconGenerator';

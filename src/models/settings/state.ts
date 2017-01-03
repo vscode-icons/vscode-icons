@@ -1,4 +1,4 @@
-import { ExtensionStatus } from '../../settings/';
+import { ExtensionStatus } from './extensionStatus';
 
 export interface IState {
   version: string;

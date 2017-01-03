@@ -1,4 +1,4 @@
-import { IconGenerator } from './IconGenerator';
+import { IconGenerator } from './iconGenerator';
 import { extensions as files } from './supportedExtensions';
 import { extensions as folders } from './supportedFolders';
 import { vscode } from '../utils';

@@ -1,4 +1,4 @@
-import { FileFormat } from './FileFormat';
+import { FileFormat } from './fileFormat';
 
 export interface IExtension {
   icon: string; // name of the icon.

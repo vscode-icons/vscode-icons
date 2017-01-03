@@ -1,5 +1,5 @@
-import { SpecialExtensionType } from './SpecialExtensionType';
-import { FileFormat } from './FileFormat';
+import { SpecialExtensionType } from './specialExtensionType';
+import { FileFormat } from './fileFormat';
 export interface ISpecialExtension {
   icon: string; // name of the icon
   type: SpecialExtensionType | string; // type of the special extension

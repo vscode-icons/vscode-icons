@@ -1,5 +1,6 @@
-import { ISettings, IState } from '../models';
-import { ExtensionStatus } from './ExtensionStatus';
+import { ISettings } from './settings';
+import { IState } from './state';
+import { ExtensionStatus } from './extensionStatus';
 
 export interface ISettingsManager {
   getSettings: () => ISettings;

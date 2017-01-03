@@ -1,4 +1,4 @@
-import { ISpecialExtension } from './ISpecialExtension';
+import { ISpecialExtension } from './specialExtension';
 
 export interface ISpecialFileCollection {
   special: {

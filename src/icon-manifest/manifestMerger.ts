@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as path from 'path';
-import { IconGenerator } from './IconGenerator';
+import { IconGenerator } from './iconGenerator';
 import { extensions } from './supportedExtensions';
 import {
   IExtensionCollection,

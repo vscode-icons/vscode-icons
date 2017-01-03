@@ -1,4 +1,4 @@
-import { ILanguage } from './ILanguage';
+import { ILanguage } from './language';
 
 export interface ILanguageCollection {
   bat: ILanguage;

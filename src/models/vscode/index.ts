@@ -1,2 +1,2 @@
-export *  from './IExtendedWorkspaceConfiguration';
-export *  from './IVSCode';
+export *  from './extendedWorkspaceConfiguration';
+export *  from './vscode';

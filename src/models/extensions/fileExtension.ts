@@ -1,4 +1,4 @@
-import { IExtension } from './IExtension';
+import { IExtension } from './extension';
 import { ILanguage } from '../language';
 
 export interface IFileExtension extends IExtension {

@@ -1,4 +1,4 @@
 export * from './defaultSchema';
-export * from './IconGenerator';
+export * from './iconGenerator';
 export * from './languages';
 export * from './manifestMerger';

@@ -1,1 +1,1 @@
-export * from './IVSIcons';
+export * from './vsicons';

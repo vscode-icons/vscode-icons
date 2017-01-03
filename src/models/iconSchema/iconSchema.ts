@@ -1,5 +1,5 @@
-import { ISchemaSettings } from './ISchemaSettings';
-import { IIconPath } from './IIconPath';
+import { ISchemaSettings } from './schemaSettings';
+import { IIconPath } from './iconPath';
 
 export interface IIconSchema extends ISchemaSettings {
   iconDefinitions: {
