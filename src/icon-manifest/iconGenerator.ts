@@ -14,6 +14,7 @@ import {
   IIconGenerator,
   IVSCode,
   IIconSchema,
+  ISettings,
 } from '../models';
 
 // tslint:disable-next-line no-var-requires
@@ -23,9 +24,11 @@ export class IconGenerator implements IIconGenerator {
   private settingsManager: ISettingsManager;
   private iconsFolderPath: string;
   private manifestFolderPath: string;
+  private settings: ISettings;
 
   constructor(private vscode: IVSCode) {
     this.settingsManager = new SettingsManager(vscode);
+    this.settings = this.settingsManager.getSettings();
     // relative to this file
     this.iconsFolderPath = path.join(__dirname, '../../../icons');
     this.manifestFolderPath = path.join(__dirname, '../../../out/src');
@@ -102,6 +105,7 @@ export class IconGenerator implements IIconGenerator {
     hasDefaultLightFolder: boolean = false,
     suffix: string = '') {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
+    const sts = this.settings.extensionSettings;
     return _.sortBy(folders.supported.filter(x => !x.disabled), item => item.icon)
       .reduce((old, current) => {
         const defs = old.defs;
@@ -109,15 +113,15 @@ export class IconGenerator implements IIconGenerator {
         const light = old.light;
         const icon = current.icon;
         const hasLightVersion = current.light;
-        const iconFolderType = `folder_type_${icon}`;
-        const iconFolderLightType = `folder_type_light_${icon}`;
+        const iconFolderType = `${sts.folderPrefix}${icon}`;
+        const iconFolderLightType = `${sts.folderLightPrefix}${icon}`;
         const fPath = this.getIconPath(current, iconsFolderBasePath);
         const folderPath = pathUnixJoin(fPath, iconFolderType);
         const folderLightPath = pathUnixJoin(fPath, iconFolderLightType);
         const openFolderPath = `${folderPath}_opened`;
         const openFolderLightPath = `${folderLightPath}_opened`;
-        const iconFolderDefinition = `_fd_${icon}`;
-        const iconFolderLightDefinition = `_fd_light_${icon}`;
+        const iconFolderDefinition = `${sts.manifestFolderPrefix}${icon}`;
+        const iconFolderLightDefinition = `${sts.manifestFolderLightPrefix}${icon}`;
         const iconOpenFolderDefinition = `${iconFolderDefinition}_open`;
         const iconOpenFolderLightDefinition = `${iconFolderLightDefinition}_open`;
         const iconFileExtension = `.${typeof current.format === 'string' ?
@@ -178,6 +182,7 @@ export class IconGenerator implements IIconGenerator {
     hasDefaultLightFile: boolean = false,
     suffix: string = '') {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
+    const sts = this.settings.extensionSettings;
     return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled), item => item.icon))
       .reduce((old, current) => {
         const defs = old.defs;
@@ -186,13 +191,13 @@ export class IconGenerator implements IIconGenerator {
         const light = old.light;
         const icon = current.icon;
         const hasLightVersion = current.light;
-        const iconFileType = `file_type_${icon}`;
-        const iconFileLightType = `file_type_light_${icon}`;
+        const iconFileType = `${sts.filePrefix}${icon}`;
+        const iconFileLightType = `${sts.fileLightPrefix}${icon}`;
         const fPath = this.getIconPath(current, iconsFolderBasePath);
         const filePath = pathUnixJoin(fPath, iconFileType);
         const fileLightPath = pathUnixJoin(fPath, iconFileLightType);
-        const iconFileDefinition = `_f_${icon}`;
-        const iconFileLightDefinition = `_f_light_${icon}`;
+        const iconFileDefinition = `${sts.manifestFilePrefix}${icon}`;
+        const iconFileLightDefinition = `${sts.manifestFileLightPrefix}${icon}`;
         const iconFileExtension = `.${typeof current.format === 'string' ?
           current.format.trim() : FileFormat[current.format]}`;
         const isFilename = current.filename;
@@ -294,7 +299,7 @@ export class IconGenerator implements IIconGenerator {
       json.iconDefinitions._folder_light.iconPath !== '';
     const hasDefaultLightFile = json.iconDefinitions._file_light.iconPath != null &&
       json.iconDefinitions._file_light.iconPath !== '';
-    const iconSuffix = this.settingsManager.getSettings().iconSuffix;
+    const iconSuffix = this.settings.extensionSettings.iconSuffix;
     return {
       // folders section
       folders: this.buildFolders(folders, iconsFolderBasePath, hasDefaultLightFolder, iconSuffix),
@@ -310,7 +315,7 @@ export class IconGenerator implements IIconGenerator {
       // VSCode doesn't allow absolute paths...
       // return path.join(this.settingsManager.getSettings().vscodeAppData, 'vsicons-custom-icons');
       // HACK: temporary solution... 
-      return defaultPath.replace('../icons', `../../${this.settingsManager.getSettings().customIconFolderName}`);
+      return defaultPath.replace('../icons', `../../${this.settings.extensionSettings.customIconFolderName}`);
     }
     return defaultPath;
   }

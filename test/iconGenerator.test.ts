@@ -4,12 +4,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as _ from 'lodash';
 import { expect } from 'chai';
-import { schema as defaultSchema, schema, IconGenerator } from '../src/icon-manifest';
-import { extensions as files } from '../src/icon-manifest/supportedExtensions';
+import { schema as defaultSchema, IconGenerator } from '../src/icon-manifest';
+import { extensions as files, extensions } from '../src/icon-manifest/supportedExtensions';
 import { extensions as folders } from '../src/icon-manifest/supportedFolders';
 import { FileFormat } from '../src/models';
 import { vscode } from '../src/utils';
-import { iconSuffix } from '../src/settings/extSettings';
+import { extensionSettings as settings } from '../src/settings';
 
 const iconsFolderPath = path.join(__dirname, '../../icons');
 const iconGenerator = new IconGenerator(vscode);
@@ -48,7 +48,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension has an associated icon file', function () {
     files.supported
       .forEach(file => {
-        const filename = `file_type_${file.icon}${iconSuffix}.${FileFormat[file.format]}`;
+        const filename = `${settings.filePrefix}${file.icon}${settings.iconSuffix}.${FileFormat[file.format]}`;
         const iconFilePath = path.join(iconsFolderPath, filename);
         expect(fs.existsSync(iconFilePath)).to.be.true;
       });
@@ -59,7 +59,8 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => file.light)
         .forEach(file => {
-          const filename = `file_type_light_${file.icon}${iconSuffix}.${FileFormat[file.format]}`;
+          const filename =
+          `${settings.fileLightPrefix}${file.icon}${settings.iconSuffix}.${FileFormat[file.format]}`;
           const iconFilePath = path.join(iconsFolderPath, filename);
           expect(fs.existsSync(iconFilePath)).to.be.true;
         });
@@ -68,7 +69,8 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported folder has an associated icon file', function () {
     folders.supported
       .forEach(folder => {
-        const filename = `folder_type_${folder.icon}${iconSuffix}.${FileFormat[folder.format]}`;
+        const filename =
+        `${settings.folderPrefix}${folder.icon}${settings.iconSuffix}.${FileFormat[folder.format]}`;
         const iconFilePath = path.join(iconsFolderPath, filename);
         expect(fs.existsSync(iconFilePath)).to.be.true;
       });
@@ -80,7 +82,8 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => folder.light)
         .forEach(folder => {
-          const filename = `folder_type_light_${folder.icon}${iconSuffix}.${FileFormat[folder.format]}`;
+          const filename =
+          `${settings.folderLightPrefix}${folder.icon}${settings.iconSuffix}.${FileFormat[folder.format]}`;
           const iconFilePath = path.join(iconsFolderPath, filename);
           expect(fs.existsSync(iconFilePath)).to.be.true;
         });
@@ -89,7 +92,8 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported folder has an associated opened icon file', function () {
     folders.supported
       .forEach(folder => {
-        const filename = `folder_type_${folder.icon}_opened${iconSuffix}.${FileFormat[folder.format]}`;
+        const filename =
+        `${settings.folderPrefix}${folder.icon}_opened${settings.iconSuffix}.${FileFormat[folder.format]}`;
         const iconFilePath = path.join(iconsFolderPath, filename);
         expect(fs.existsSync(iconFilePath)).to.be.true;
       });
@@ -101,7 +105,8 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => folder.light)
         .forEach(folder => {
-          const filename = `folder_type_light_${folder.icon}_opened${iconSuffix}.${FileFormat[folder.format]}`;
+          const filename =
+          `${settings.folderLightPrefix}${folder.icon}_opened${settings.iconSuffix}.${FileFormat[folder.format]}`;
           const iconFilePath = path.join(iconsFolderPath, filename);
           expect(fs.existsSync(iconFilePath)).to.be.true;
         });
@@ -112,7 +117,7 @@ describe('IconGenerator: icon generation test', function () {
     files.supported
       .filter(file => !file.disabled)
       .forEach(file => {
-        const definition = '_f_' + file.icon;
+        const definition = `${settings.manifestFilePrefix}${file.icon}`;
         expect(schema.iconDefinitions[definition]).exist;
       });
   });
@@ -124,7 +129,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => file.light && !file.disabled)
         .forEach(file => {
-          const definition = '_f_light_' + file.icon;
+          const definition = `${settings.manifestFileLightPrefix}${file.icon}`;
           expect(schema.iconDefinitions[definition]).exist;
         });
     });
@@ -134,7 +139,7 @@ describe('IconGenerator: icon generation test', function () {
     files.supported
       .filter(file => !file.disabled)
       .forEach(file => {
-        const definition = '_f_' + file.icon;
+        const definition = `${settings.manifestFilePrefix}${file.icon}`;
         expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
       });
   });
@@ -145,7 +150,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => file.light && !file.disabled)
         .forEach(file => {
-          const definition = '_f_light_' + file.icon;
+          const definition = `${settings.manifestFileLightPrefix}${file.icon}`;
           expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
@@ -155,7 +160,7 @@ describe('IconGenerator: icon generation test', function () {
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
-        const definition = '_fd_' + folder.icon;
+        const definition = `${settings.manifestFolderPrefix}${folder.icon}`;
         expect(schema.iconDefinitions[definition]).exist;
       });
   });
@@ -166,7 +171,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_light_' + folder.icon;
+          const definition = `${settings.manifestFolderLightPrefix}${folder.icon}`;
           expect(schema.iconDefinitions[definition]).exist;
         });
     });
@@ -176,7 +181,7 @@ describe('IconGenerator: icon generation test', function () {
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
-        const definition = '_fd_' + folder.icon + '_open';
+        const definition = `${settings.manifestFolderPrefix}${folder.icon}_open`;
         expect(schema.iconDefinitions[definition]).exist;
       });
   });
@@ -187,7 +192,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_light_' + folder.icon + '_open';
+          const definition = `${settings.manifestFolderLightPrefix}${folder.icon}_open`;
           expect(schema.iconDefinitions[definition]).exist;
         });
     });
@@ -197,7 +202,7 @@ describe('IconGenerator: icon generation test', function () {
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
-        const definition = '_fd_' + folder.icon;
+        const definition = `${settings.manifestFolderPrefix}${folder.icon}`;
         expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
       });
   });
@@ -208,7 +213,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_light_' + folder.icon;
+          const definition = `${settings.manifestFolderLightPrefix}${folder.icon}`;
           expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
@@ -218,7 +223,7 @@ describe('IconGenerator: icon generation test', function () {
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
-        const definition = '_fd_' + folder.icon + '_open';
+        const definition = `${settings.manifestFolderPrefix}${folder.icon}_open`;
         expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
       });
   });
@@ -229,7 +234,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_light_' + folder.icon + '_open';
+          const definition = `${settings.manifestFolderLightPrefix}${folder.icon}_open`;
           expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
         });
     });
@@ -240,7 +245,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_' + folder.icon;
+          const definition = `${settings.manifestFolderPrefix}${folder.icon}`;
           folder.extensions.forEach(function (extension) {
             expect(schema.folderNames[extension]).equals(definition);
           });
@@ -254,7 +259,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_light_' + folder.icon;
+          const definition = `${settings.manifestFolderLightPrefix}${folder.icon}`;
           folder.extensions.forEach(function (extension) {
             expect(schema.light.folderNames[extension]).equal(definition);
           });
@@ -267,7 +272,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_' + folder.icon + '_open';
+          const definition = `${settings.manifestFolderPrefix}${folder.icon}_open`;
           folder.extensions.forEach(function (extension) {
             expect(schema.folderNamesExpanded[extension]).equal(definition);
           });
@@ -281,7 +286,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_light_' + folder.icon + '_open';
+          const definition = `${settings.manifestFolderLightPrefix}${folder.icon}_open`;
           folder.extensions.forEach(function (extension) {
             expect(schema.light.folderNamesExpanded[extension]).equal(definition);
           });
@@ -295,7 +300,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => !file.filename && !file.disabled)
         .forEach(file => {
-          const definition = '_f_' + file.icon;
+          const definition = `${settings.manifestFilePrefix}${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(schema.fileExtensions[extension]).equal(definition);
           });
@@ -309,7 +314,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => !file.filename && file.light && !file.disabled)
         .forEach(file => {
-          const definition = '_f_light_' + file.icon;
+          const definition = `${settings.manifestFileLightPrefix}${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(schema.light.fileExtensions[extension]).equal(definition);
           });
@@ -323,7 +328,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => file.filename && !file.languages && !file.disabled)
         .forEach(file => {
-          const definition = '_f_' + file.icon;
+          const definition = `${settings.manifestFilePrefix}${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(schema.fileNames[extension]).equal(definition);
           });
@@ -337,7 +342,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => file.filename && !file.languages && file.light && !file.disabled)
         .forEach(file => {
-          const definition = '_f_light_' + file.icon;
+          const definition = `${settings.manifestFileLightPrefix}${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(schema.light.fileNames[extension]).equal(definition);
           });
@@ -351,7 +356,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => file.languages && !file.disabled)
         .forEach(file => {
-          const definition = '_f_' + file.icon;
+          const definition = `${settings.manifestFilePrefix}${file.icon}`;
           const assertLanguage = function (language) {
             expect(schema.languageIds[language]).equal(definition);
           };
@@ -375,7 +380,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => !file.light && !file.disabled)
         .forEach(file => {
-          const definition = '_f_light_' + file.icon;
+          const definition = `${settings.manifestFileLightPrefix}${file.icon}`;
           expect(schema.iconDefinitions[definition]).exist;
         });
     });
@@ -389,7 +394,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_light_' + folder.icon;
+          const definition = `${settings.manifestFolderLightPrefix}${folder.icon}`;
           expect(schema.iconDefinitions[definition]).exist;
         });
     });
@@ -403,7 +408,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_light_' + folder.icon + '_open';
+          const definition = `${settings.manifestFolderLightPrefix}${folder.icon}_open`;
           expect(schema.iconDefinitions[definition]).exist;
         });
     });
@@ -418,7 +423,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_' + folder.icon;
+          const definition = `${settings.manifestFolderPrefix}${folder.icon}`;
           folder.extensions.forEach(function (extension) {
             expect(schema.light.folderNames[extension]).equals(definition);
           });
@@ -435,7 +440,7 @@ describe('IconGenerator: icon generation test', function () {
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
-          const definition = '_fd_' + folder.icon + '_open';
+          const definition = `${settings.manifestFolderPrefix}${folder.icon}_open`;
           folder.extensions.forEach(function (extension) {
             expect(schema.light.folderNamesExpanded[extension]).equals(definition);
           });
@@ -451,7 +456,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => !file.filename && !file.light && !file.disabled)
         .forEach(file => {
-          const definition = '_f_' + file.icon;
+          const definition = `${settings.manifestFilePrefix}${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(schema.light.fileExtensions[extension]).equals(definition);
           });
@@ -467,7 +472,7 @@ describe('IconGenerator: icon generation test', function () {
       files.supported
         .filter(file => file.filename && !file.languages && !file.light && !file.disabled)
         .forEach(file => {
-          const definition = '_f_' + file.icon;
+          const definition = `${settings.manifestFilePrefix}${file.icon}`;
           file.extensions.forEach(function (extension) {
             expect(schema.light.fileNames[extension]).equals(definition);
           });

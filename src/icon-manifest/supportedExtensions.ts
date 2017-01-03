@@ -1,8 +1,17 @@
 /* tslint:disable max-line-length */
-import { languages } from './languages';
-import { IExtensionCollection, IFileExtension, FileFormat } from '../models';
+import { languages } from '../../src/icon-manifest/languages';
+import {
+  IExtensionCollection,
+  IFileExtension,
+  FileFormat,
+  ISpecialFileCollection,
+  SpecialExtensionType,
+} from '../../src/models';
 
-export const extensions: IExtensionCollection<IFileExtension> = {
+export const extensions: (IExtensionCollection<IFileExtension> & ISpecialFileCollection) = {
+  special: {
+    file: { icon: 'file', type: SpecialExtensionType.file, format: FileFormat.svg },
+  },
   supported: [
     { icon: 'actionscript', extensions: ['as'], format: FileFormat.svg },
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },

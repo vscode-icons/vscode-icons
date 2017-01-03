@@ -1,5 +1,7 @@
+import { ExtensionStatus } from '../../settings/';
+
 export interface IState {
   version: string;
-  status: string;
+  status: ExtensionStatus;
   welcomeShown: boolean;
 }

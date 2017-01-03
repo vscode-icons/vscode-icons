@@ -3,12 +3,12 @@ import * as open from 'open';
 import { messages as msg } from '../messages';
 import { getConfig } from '../utils/vscode-extensions';
 import { IState, ISettings } from '../models';
-import { ISettingsManager, status } from '../settings';
+import { ISettingsManager, ExtensionStatus } from '../settings';
 
 export function manageWelcomeMessage(settingsManager: ISettingsManager) {
   const state = settingsManager.getState();
   const vars = settingsManager.getSettings();
-  const isNewVersion = state.version !== vars.extVersion;
+  const isNewVersion = state.version !== vars.extensionSettings.version;
 
   if (!state.welcomeShown) {
     // show welcome message
@@ -25,7 +25,7 @@ export function manageWelcomeMessage(settingsManager: ISettingsManager) {
 }
 
 function showWelcomeMessage(settingsManager: ISettingsManager) {
-  settingsManager.setStatus(status.notInstalled);
+  settingsManager.setStatus(ExtensionStatus.notInstalled);
   vscode.window.showInformationMessage(msg.welcomeMessage,
     { title: msg.aboutOfficialApi }, { title: msg.seeReadme })
     .then(btn => {
@@ -40,10 +40,10 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
 
 function showNewVersionMessage(settingsManager: ISettingsManager) {
   const vars = settingsManager.getSettings();
-  vscode.window.showInformationMessage(msg.newVersionMessage + ' v.' + vars.extVersion,
+  vscode.window.showInformationMessage(msg.newVersionMessage + ' v.' + vars.extensionSettings.version,
     { title: msg.seeReleaseNotes }, { title: msg.dontshowthis })
     .then(btn => {
-      settingsManager.setStatus(status.disabled);
+      settingsManager.setStatus(ExtensionStatus.disabled);
       if (!btn) { return; }
       if (btn.title === msg.seeReleaseNotes) {
         open(msg.urlReleaseNote);

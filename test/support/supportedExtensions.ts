@@ -1,8 +1,17 @@
 /* tslint:disable max-line-length */
 import { languages } from '../../src/icon-manifest/languages';
-import { IExtensionCollection, IFileExtension, FileFormat } from '../../src/models';
+import {
+  IExtensionCollection,
+  IFileExtension,
+  FileFormat,
+  ISpecialFileCollection,
+  SpecialExtensionType,
+} from '../../src/models';
 
-export const extensions: IExtensionCollection<IFileExtension> = {
+export const extensions: (IExtensionCollection<IFileExtension> & ISpecialFileCollection) = {
+  special: {
+    file: { icon: 'file', type: SpecialExtensionType.file, format: FileFormat.svg },
+  },
   supported: [
     { icon: 'actionscript', extensions: ['as'], format: FileFormat.svg },
     { icon: 'ng2_component_ts', extensions: ['component.ts'], format: FileFormat.svg },

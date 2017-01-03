@@ -3,3 +3,7 @@ export * from './IExtension';
 export * from './IExtensionCollection';
 export * from './IFileExtension';
 export * from './IFolderExtension';
+export * from './ISpecialExtension';
+export * from './ISpecialFileCollection';
+export * from './ISpecialFolderCollection';
+export * from './SpecialExtensionType';
