@@ -65,7 +65,7 @@ export const extensions: IExtensionCollection<IFileExtension> = {
     { icon: 'delphi', extensions: ['pas', 'dfm', 'dpr'], format: FileFormat.png },
     { icon: 'dlang', extensions: ['d'], format: FileFormat.png },
     { icon: 'diff', extensions: [], languages: [languages.diff], format: FileFormat.svg },
-    { icon: 'docker', extensions: ['.dockerignore', 'docker-compose.yml'], filename: true, languages: [languages.dockerfile], format: FileFormat.png },
+    { icon: 'docker', extensions: ['.dockerignore', 'docker-compose.yml', 'docker-cloud.yml'], filename: true, languages: [languages.dockerfile], format: FileFormat.png },
     { icon: 'editorconfig', extensions: ['.editorconfig'], filename: true, format: FileFormat.png },
     { icon: 'ejs', extensions: ['ejs'], format: FileFormat.png },
     { icon: 'elixir', extensions: ['ex', 'exs', 'eex'], format: FileFormat.png },
