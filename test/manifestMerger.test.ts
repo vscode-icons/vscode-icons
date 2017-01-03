@@ -3,13 +3,13 @@ import { expect } from 'chai';
 import { extensions as fileExtensions } from './support/supportedExtensions';
 import { extensions as folderExtensions } from './support/supportedFolders';
 import { vscode } from '../src/utils';
-import { IconGenerator } from '../src/icon-manifest/iconGenerator';
 import {
+  IconGenerator,
   mergeConfig,
   toggleAngular2Preset,
   toggleJavascriptOfficialPreset,
   toggleTypescriptOfficialPreset,
-} from '../src/merger';
+} from '../src/icon-manifest';
 import {
   IExtensionCollection,
   IFileExtension,

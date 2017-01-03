@@ -2,14 +2,14 @@ import * as vscode from 'vscode';
 import { getConfig } from '../utils/vscode-extensions';
 import { messages as msg } from '../messages';
 import {
+  IconGenerator,
   mergeConfig,
   toggleAngular2Preset,
   toggleJavascriptOfficialPreset,
   toggleTypescriptOfficialPreset,
-} from '../merger';
+} from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
-import { IconGenerator } from '../icon-manifest/iconGenerator';
 import { IExtensionCollection, IFileExtension, IFolderExtension } from '../models/';
 
 export function registerCommands(context: vscode.ExtensionContext): void {
