@@ -14,7 +14,6 @@ export class SettingsManager implements ISettingsManager {
     if (this.settings) { return this.settings; };
     const isInsiders = /insiders/i.test(this.vscode.env.appName);
     const version = semver(this.vscode.version);
-    const isGt160 = semver.lt(version.major + '.' + version.minor + '.' + version.patch, '1.6.0');
     const isWin = /^win/.test(process.platform);
     const homeDir = isWin ? 'USERPROFILE' : 'HOME';
     const extensionFolder = path.join(homeDir, isInsiders
@@ -31,7 +30,6 @@ export class SettingsManager implements ISettingsManager {
       extensionFolder,
       settingsPath: path.join(vscodeAppData, 'vsicons.settings.json'),
       version,
-      isGt160,
       extensionSettings,
     };
     return this.settings;
