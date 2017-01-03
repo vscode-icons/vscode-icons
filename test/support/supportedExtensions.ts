@@ -4,13 +4,13 @@ import {
   IExtensionCollection,
   IFileExtension,
   FileFormat,
-  ISpecialFileCollection,
-  SpecialExtensionType,
+  IDefaultFileCollection,
+  DefaultExtensionType,
 } from '../../src/models';
 
-export const extensions: (IExtensionCollection<IFileExtension> & ISpecialFileCollection) = {
-  special: {
-    file: { icon: 'file', type: SpecialExtensionType.file, format: FileFormat.svg },
+export const extensions: (IExtensionCollection<IFileExtension> & IDefaultFileCollection) = {
+  default: {
+    file: { icon: 'file', type: DefaultExtensionType.file, format: FileFormat.svg },
   },
   supported: [
     { icon: 'actionscript', extensions: ['as'], format: FileFormat.svg },

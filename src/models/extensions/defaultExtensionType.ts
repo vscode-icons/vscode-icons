@@ -1,4 +1,4 @@
-export enum SpecialExtensionType {
+export enum DefaultExtensionType {
   file,
   folder,
   folder_open,
