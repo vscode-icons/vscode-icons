@@ -1,4 +1,4 @@
-import { IFileExtension, IFolderExtension } from '../extensions';
+import { IFileExtension, IFolderExtension, IFileDefault, IFolderDefault} from '../extensions';
 
 export interface IVSIcons {
   dontShowNewVersionMessage?: boolean;
@@ -10,5 +10,7 @@ export interface IVSIcons {
   associations: {
     files: IFileExtension[];
     folders: IFolderExtension[];
+    fileDefault: IFileDefault;
+    folderDefault: IFolderDefault;
   };
 }

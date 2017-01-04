@@ -7,7 +7,7 @@ export const extensionSettings: IExtensionSettings = {
   fileLightPrefix: 'file_type_light_',
   folderPrefix: 'folder_type_',
   folderLightPrefix: 'folder_type_light_',
-  specialExtensionPrefix: 'special_',
+  defaultExtensionPrefix: 'default_',
   manifestFilePrefix: '_f_',
   manifestFileLightPrefix: '_f_light_',
   manifestFolderPrefix: '_fd_',

@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as os from 'os';
-import { IVSCode } from '../models';
+import { IVSCode, FileFormat } from '../models';
 
 export const vscode: IVSCode = {
   env: { appName: 'Code' },
@@ -29,3 +29,7 @@ export function vscodePath () {
   }
   return appPath;
 };
+
+export function fileFormatToString(extension: FileFormat | string): string {
+  return `.${typeof extension === 'string' ? extension.trim() : FileFormat[extension]}`;
+}

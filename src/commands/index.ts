@@ -10,7 +10,8 @@ import {
 } from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
-import { IExtensionCollection, IFileExtension, IFolderExtension } from '../models/';
+import { IFileCollection, IFolderCollection, IVSIcons, IFileDefault, IFolderDefault } from '../models/';
+import { schema } from '../icon-manifest';
 
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
@@ -32,8 +33,14 @@ function registerCommand(
 
 function applyCustomization() {
   const conf = getConfig().vsicons;
-  const customFiles = { supported: conf.associations.files };
-  const customFolders = { supported: conf.associations.folders };
+  const customFiles: IFileCollection = {
+    default: conf.associations.fileDefault,
+    supported: conf.associations.files,
+  };
+  const customFolders: IFolderCollection = {
+    default: conf.associations.folderDefault,
+    supported: conf.associations.folders,
+  };
   generateManifest(customFiles, customFolders);
 }
 
@@ -79,9 +86,9 @@ function showCustomizationMessage(message: string, callback: Function = null) {
 }
 
 function generateManifest(
-  customFiles: IExtensionCollection<IFileExtension>,
-  customFolders: IExtensionCollection<IFolderExtension>) {
-  const iconGenerator = new IconGenerator(vscode);
+  customFiles: IFileCollection,
+  customFolders: IFolderCollection) {
+  const iconGenerator = new IconGenerator(vscode, schema);
   let workingCustomFiles = customFiles;
   if (customFiles && customFolders) {
     // check presets...

@@ -1,14 +1,12 @@
 /* tslint:disable max-line-length */
 import { languages } from '../../src/icon-manifest/languages';
 import {
-  IExtensionCollection,
-  IFileExtension,
   FileFormat,
-  IDefaultFileCollection,
+  IFileCollection,
   DefaultExtensionType,
 } from '../../src/models';
 
-export const extensions: (IExtensionCollection<IFileExtension> & IDefaultFileCollection) = {
+export const extensions: IFileCollection = {
   default: {
     file: { icon: 'file', type: DefaultExtensionType.file, format: FileFormat.svg },
   },

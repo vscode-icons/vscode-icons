@@ -108,6 +108,16 @@
           "type": "array",
           "default": [],
           "description": "These custom associations will override the folder icon associations defined by default."
+        },
+        "vsicons.associations.fileDefault": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default file icons (dark & light theme)."
+        },
+        "vsicons.associations.folderDefault": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default folder icons (dark & light theme)."
         }
       }
     }

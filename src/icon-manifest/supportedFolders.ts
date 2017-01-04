@@ -1,13 +1,11 @@
 /* tslint:disable max-line-length */
 import {
-  IExtensionCollection,
-  IFolderExtension,
   FileFormat,
-  IDefaultFolderCollection,
+  IFolderCollection,
   DefaultExtensionType,
 } from '../../src/models';
 
-export const extensions: (IExtensionCollection<IFolderExtension> & IDefaultFolderCollection) = {
+export const extensions: IFolderCollection = {
   default: {
     folder: { icon: 'folder', type: DefaultExtensionType.folder, format: FileFormat.svg },
   },

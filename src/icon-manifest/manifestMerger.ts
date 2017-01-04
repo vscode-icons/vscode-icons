@@ -2,37 +2,61 @@ import * as _ from 'lodash';
 import * as path from 'path';
 import { IconGenerator } from './iconGenerator';
 import { extensions } from './supportedExtensions';
+import { fileFormatToString } from '../utils/index';
 import {
+  IFileCollection,
+  IFolderCollection,
   IExtensionCollection,
   IFileExtension,
-  IFolderExtension,
   IExtension,
   FileFormat,
   IIconSchema,
   IIconGenerator,
+  IFileDefault,
+  IFolderDefault,
 } from '../models';
 
 export function mergeConfig(
-  customFiles: IExtensionCollection<IFileExtension>,
-  supportedFiles: IExtensionCollection<IFileExtension>,
-  customFolders: IExtensionCollection<IFolderExtension>,
-  supportedFolders: IExtensionCollection<IFolderExtension>,
+  customFiles: IFileCollection,
+  supportedFiles: IFileCollection,
+  customFolders: IFolderCollection,
+  supportedFolders: IFolderCollection,
   iconGenerator: IIconGenerator): IIconSchema {
 
-  const files = mergeItems(customFiles, supportedFiles);
-  const folders = mergeItems(customFolders, supportedFolders);
+  const dFiles = customFiles ? customFiles.default : null;
+  const dFolders = customFolders ? customFolders.default : null;
+  const sFiles = customFiles ? customFiles.supported : null;
+  const sFolders = customFolders ? customFolders.supported : null;
+  const files: IFileCollection = {
+    default: mergeDefaultFiles(dFiles, supportedFiles.default),
+    supported: mergeSupported(sFiles, supportedFiles.supported),
+  };
+
+  const folders: IFolderCollection = {
+    default: mergeDefaultFolders(dFolders, supportedFolders.default),
+    supported: mergeSupported(sFolders, supportedFolders.supported),
+  };
+
   const json = iconGenerator.generateJson(files, folders);
   // iconGenerator.persist('icons2.json', json);
   return json;
 }
 
-function mergeItems(
-  custom: IExtensionCollection<IExtension>,
-  supported: IExtensionCollection<IExtension>): IExtensionCollection<IExtension> {
-  if (!custom || !custom.supported || !custom.supported.length) { return supported; }
+// TODO implement these funcs
+function mergeDefaultFiles(custom: IFileDefault, supported: IFileDefault): IFileDefault {
+  return supported;
+}
+function mergeDefaultFolders(custom: IFolderDefault, supported: IFolderDefault): IFolderDefault {
+  return supported;
+}
+
+function mergeSupported(
+  custom: IExtension[],
+  supported: IExtension[]): IExtension[] {
+  if (!custom || !custom.length) { return supported; }
   // start the merge operation
-  let final: IExtension[] = _.cloneDeep(supported.supported);
-  custom.supported.forEach(file => {
+  let final: IExtension[] = _.cloneDeep(supported);
+  custom.forEach(file => {
     const officialFiles = final.filter(x => x.icon === file.icon);
     if (officialFiles.length) {
       // existing icon
@@ -66,12 +90,12 @@ function mergeItems(
     });
     final.push(file);
   });
-  return { supported: final };
+  return final;
 }
 
 export function toggleAngular2Preset(
   disable: boolean,
-  customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+  customFiles: IFileCollection): IFileCollection {
   const icons = [
     'ng2_component_ts',
     'ng2_component_js',
@@ -91,14 +115,14 @@ export function toggleAngular2Preset(
 
 export function toggleTypescriptOfficialPreset(
   disable: boolean,
-  customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+  customFiles: IFileCollection): IFileCollection {
   const temp = togglePreset(disable, ['typescript_official'], customFiles);
   return togglePreset(!disable, ['typescript'], temp);
 }
 
 export function toggleJavascriptOfficialPreset(
   disable: boolean,
-  customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+  customFiles: IFileCollection): IFileCollection {
   const temp = togglePreset(disable, ['js_official'], customFiles);
   return togglePreset(!disable, ['js'], temp);
 }
@@ -106,7 +130,7 @@ export function toggleJavascriptOfficialPreset(
 function togglePreset(
   disable: boolean,
   icons: string[],
-  customFiles: IExtensionCollection<IFileExtension>): IExtensionCollection<IFileExtension> {
+  customFiles: IFileCollection): IFileCollection {
   const workingCopy = _.cloneDeep(customFiles);
   icons.forEach(icon => {
     const existing = workingCopy.supported.filter(x => x.icon === icon);

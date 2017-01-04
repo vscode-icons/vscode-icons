@@ -1,12 +1,16 @@
 import { IIconSchema } from '../iconSchema';
-import { IExtensionCollection, IFileExtension, IFolderExtension } from '../extensions';
+import {
+  IExtensionCollection,
+  IFileExtension,
+  IFolderExtension,
+  IFileCollection,
+  IFolderCollection,
+} from '../extensions';
 
 export interface IIconGenerator {
-  getDefaultSchema(iconsFolderBasePath?: string): IIconSchema;
   generateJson(
-    files: IExtensionCollection<IFileExtension>,
-    folders: IExtensionCollection<IFolderExtension>,
-    defaultSchema?: IIconSchema,
+    files: IFileCollection,
+    folders: IFolderCollection,
     outDir?: string): IIconSchema;
   persist(
     iconsFilename: string,

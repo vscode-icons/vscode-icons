@@ -5,7 +5,7 @@ export interface IExtensionSettings {
    fileLightPrefix: string;
   folderPrefix: string;
   folderLightPrefix: string;
-  specialExtensionPrefix: string;
+  defaultExtensionPrefix: string;
   manifestFilePrefix: string;
   manifestFileLightPrefix: string;
   manifestFolderPrefix: string;

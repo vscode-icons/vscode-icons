@@ -7,12 +7,23 @@ import { expect } from 'chai';
 import { schema as defaultSchema, IconGenerator } from '../src/icon-manifest';
 import { extensions as files, extensions } from '../src/icon-manifest/supportedExtensions';
 import { extensions as folders } from '../src/icon-manifest/supportedFolders';
-import { FileFormat } from '../src/models';
+import { FileFormat, IFileCollection, IFolderCollection, IIconSchema } from '../src/models';
 import { vscode } from '../src/utils';
 import { extensionSettings as settings } from '../src/settings';
+import { DefaultExtensionType } from '../src/models/extensions/defaultExtensionType';
 
 const iconsFolderPath = path.join(__dirname, '../../icons');
-const iconGenerator = new IconGenerator(vscode);
+
+function getIconGenerator(schema?: IIconSchema) {
+  return new IconGenerator(vscode, schema || defaultSchema);
+}
+function getEmptyFileCollection(): IFileCollection {
+  return { default: { file: { icon: 'file', format: 'svg', type: DefaultExtensionType.file } }, supported: [] };
+}
+
+function getEmptyFolderCollection() {
+  return { default: { folder: { icon: 'folder', format: 'svg', type: DefaultExtensionType.folder } }, supported: [] };
+}
 
 describe('IconGenerator: icon generation test', function () {
 
@@ -27,22 +38,18 @@ describe('IconGenerator: icon generation test', function () {
   });
 
   it('ensures default file has an icon path', function () {
-    const json = iconGenerator.getDefaultSchema();
-    expect(json.iconDefinitions._file.iconPath).not.to.be.equal('');
+    const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
+    expect(schema.iconDefinitions._file.iconPath).not.to.be.empty;
   });
 
   it('ensures default folder has an icon path', function () {
-    const json = iconGenerator.getDefaultSchema();
-    expect(json.iconDefinitions._folder.iconPath).not.to.be.equal('');
+    const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
+    expect(schema.iconDefinitions._folder.iconPath).not.to.be.empty;
   });
 
   it('ensures default folder has an open icon path', function () {
-    const json = iconGenerator.getDefaultSchema();
-    expect(json.iconDefinitions._folder_open.iconPath).not.to.be.equal('');
-  });
-
-  it('ensures icons schema is vscode default schema for icons', function () {
-    expect(iconGenerator.getDefaultSchema()).to.deep.equal(defaultSchema);
+    const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
+    expect(schema.iconDefinitions._folder_open.iconPath).not.to.be.equal('');
   });
 
   it('ensures each supported file extension has an associated icon file', function () {
@@ -60,7 +67,7 @@ describe('IconGenerator: icon generation test', function () {
         .filter(file => file.light)
         .forEach(file => {
           const filename =
-          `${settings.fileLightPrefix}${file.icon}${settings.iconSuffix}.${FileFormat[file.format]}`;
+            `${settings.fileLightPrefix}${file.icon}${settings.iconSuffix}.${FileFormat[file.format]}`;
           const iconFilePath = path.join(iconsFolderPath, filename);
           expect(fs.existsSync(iconFilePath)).to.be.true;
         });
@@ -70,7 +77,7 @@ describe('IconGenerator: icon generation test', function () {
     folders.supported
       .forEach(folder => {
         const filename =
-        `${settings.folderPrefix}${folder.icon}${settings.iconSuffix}.${FileFormat[folder.format]}`;
+          `${settings.folderPrefix}${folder.icon}${settings.iconSuffix}.${FileFormat[folder.format]}`;
         const iconFilePath = path.join(iconsFolderPath, filename);
         expect(fs.existsSync(iconFilePath)).to.be.true;
       });
@@ -83,7 +90,7 @@ describe('IconGenerator: icon generation test', function () {
         .filter(folder => folder.light)
         .forEach(folder => {
           const filename =
-          `${settings.folderLightPrefix}${folder.icon}${settings.iconSuffix}.${FileFormat[folder.format]}`;
+            `${settings.folderLightPrefix}${folder.icon}${settings.iconSuffix}.${FileFormat[folder.format]}`;
           const iconFilePath = path.join(iconsFolderPath, filename);
           expect(fs.existsSync(iconFilePath)).to.be.true;
         });
@@ -93,7 +100,7 @@ describe('IconGenerator: icon generation test', function () {
     folders.supported
       .forEach(folder => {
         const filename =
-        `${settings.folderPrefix}${folder.icon}_opened${settings.iconSuffix}.${FileFormat[folder.format]}`;
+          `${settings.folderPrefix}${folder.icon}_opened${settings.iconSuffix}.${FileFormat[folder.format]}`;
         const iconFilePath = path.join(iconsFolderPath, filename);
         expect(fs.existsSync(iconFilePath)).to.be.true;
       });
@@ -106,14 +113,14 @@ describe('IconGenerator: icon generation test', function () {
         .filter(folder => folder.light)
         .forEach(folder => {
           const filename =
-          `${settings.folderLightPrefix}${folder.icon}_opened${settings.iconSuffix}.${FileFormat[folder.format]}`;
+            `${settings.folderLightPrefix}${folder.icon}_opened${settings.iconSuffix}.${FileFormat[folder.format]}`;
           const iconFilePath = path.join(iconsFolderPath, filename);
           expect(fs.existsSync(iconFilePath)).to.be.true;
         });
     });
 
   it('ensures each supported file extension has a definition', function () {
-    const schema = iconGenerator.generateJson(files, { supported: [] });
+    const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
     files.supported
       .filter(file => !file.disabled)
       .forEach(file => {
@@ -125,7 +132,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that has a light theme version' +
     ' has a \'light\' definition',
     function () {
-      const schema = iconGenerator.generateJson(files, { supported: [] });
+      const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => file.light && !file.disabled)
         .forEach(file => {
@@ -135,7 +142,7 @@ describe('IconGenerator: icon generation test', function () {
     });
 
   it('ensures each supported file extension has an icon path', function () {
-    const schema = iconGenerator.generateJson(files, { supported: [] });
+    const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
     files.supported
       .filter(file => !file.disabled)
       .forEach(file => {
@@ -146,7 +153,7 @@ describe('IconGenerator: icon generation test', function () {
 
   it('ensures each supported file extension that has a light theme version has an icon path',
     function () {
-      const schema = iconGenerator.generateJson(files, { supported: [] });
+      const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => file.light && !file.disabled)
         .forEach(file => {
@@ -156,7 +163,7 @@ describe('IconGenerator: icon generation test', function () {
     });
 
   it('ensures each supported folder has a definition', function () {
-    const schema = iconGenerator.generateJson({ supported: [] }, folders);
+    const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
@@ -167,7 +174,7 @@ describe('IconGenerator: icon generation test', function () {
 
   it('ensures each supported folder that has a light theme version has a \'light\' definition',
     function () {
-      const schema = iconGenerator.generateJson({ supported: [] }, folders);
+      const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
@@ -177,7 +184,7 @@ describe('IconGenerator: icon generation test', function () {
     });
 
   it('ensures each supported folder has an open definition', function () {
-    const schema = iconGenerator.generateJson({ supported: [] }, folders);
+    const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
@@ -188,7 +195,7 @@ describe('IconGenerator: icon generation test', function () {
 
   it('ensures each supported folder that has a light theme version has a open \'light\' definition',
     function () {
-      const schema = iconGenerator.generateJson({ supported: [] }, folders);
+      const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
@@ -198,7 +205,7 @@ describe('IconGenerator: icon generation test', function () {
     });
 
   it('ensures each supported folder has an icon path', function () {
-    const schema = iconGenerator.generateJson({ supported: [] }, folders);
+    const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
@@ -209,7 +216,7 @@ describe('IconGenerator: icon generation test', function () {
 
   it('ensures each supported folder that has a light theme version has an icon path',
     function () {
-      const schema = iconGenerator.generateJson({ supported: [] }, folders);
+      const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
@@ -219,7 +226,7 @@ describe('IconGenerator: icon generation test', function () {
     });
 
   it('ensures each supported folder has an open icon path', function () {
-    const schema = iconGenerator.generateJson({ supported: [] }, folders);
+    const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
     folders.supported
       .filter(folder => !folder.disabled)
       .forEach(folder => {
@@ -230,7 +237,7 @@ describe('IconGenerator: icon generation test', function () {
 
   it('ensures each supported folder that has a light theme version has an open icon path',
     function () {
-      const schema = iconGenerator.generateJson({ supported: [] }, folders);
+      const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
@@ -241,7 +248,7 @@ describe('IconGenerator: icon generation test', function () {
 
   it('ensures each supported folder has a folder name referencing its definition',
     function () {
-      const schema = iconGenerator.generateJson({ supported: [] }, folders);
+      const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => !folder.disabled)
         .forEach(folder => {
@@ -255,7 +262,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported folder that has a light theme version ' +
     'has a folder name referencing its \'light\' definition',
     function () {
-      const schema = iconGenerator.generateJson({ supported: [] }, folders);
+      const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
@@ -268,7 +275,7 @@ describe('IconGenerator: icon generation test', function () {
 
   it('ensures each supported folder has a folder name expanded referencing its definition',
     function () {
-      const schema = iconGenerator.generateJson({ supported: [] }, folders);
+      const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => !folder.disabled)
         .forEach(folder => {
@@ -282,7 +289,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported folder that has a light theme version ' +
     'has a folder name expanded referencing its open \'light\' definition',
     function () {
-      const schema = iconGenerator.generateJson({ supported: [] }, folders);
+      const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => folder.light && !folder.disabled)
         .forEach(folder => {
@@ -296,7 +303,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that is not a filename ' +
     'has a file extension referencing its definition',
     function () {
-      const schema = iconGenerator.generateJson(files, { supported: [] });
+      const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => !file.filename && !file.disabled)
         .forEach(file => {
@@ -310,7 +317,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that is not a filename ' +
     'and has a light theme version has a file extension referencing its \'light\' definition',
     function () {
-      const schema = iconGenerator.generateJson(files, { supported: [] });
+      const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => !file.filename && file.light && !file.disabled)
         .forEach(file => {
@@ -324,7 +331,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that is a filename ' +
     'has a file name referencing its definition',
     function () {
-      const schema = iconGenerator.generateJson(files, { supported: [] });
+      const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => file.filename && !file.languages && !file.disabled)
         .forEach(file => {
@@ -338,7 +345,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that is a filename ' +
     'and has a light theme version has a file name referencing its \'light\' definition',
     function () {
-      const schema = iconGenerator.generateJson(files, { supported: [] });
+      const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => file.filename && !file.languages && file.light && !file.disabled)
         .forEach(file => {
@@ -352,7 +359,7 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that is supported by language ids ' +
     'has a language id referencing its definition',
     function () {
-      const schema = iconGenerator.generateJson(files, { supported: [] });
+      const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => file.languages && !file.disabled)
         .forEach(file => {
@@ -374,9 +381,9 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that has not a light theme version ' +
     'if a default file icon for light theme is specified, has a \'light\' definition',
     function () {
-      const dSchema = iconGenerator.getDefaultSchema();
+      const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
-      const schema = iconGenerator.generateJson(files, { supported: [] }, dSchema);
+      const schema = getIconGenerator(dSchema).generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => !file.light && !file.disabled)
         .forEach(file => {
@@ -388,9 +395,9 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported folder that has not a light theme version ' +
     'if a default folder icon for light theme is specified, has a \'light\' definition',
     function () {
-      const dSchema = iconGenerator.getDefaultSchema();
+      const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
-      const schema = iconGenerator.generateJson({ supported: [] }, folders, dSchema);
+      const schema = getIconGenerator(dSchema).generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
@@ -402,9 +409,9 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported folder that has not a light theme version ' +
     'if a default folder open icon for light theme is specified, has an open \'light\' definition',
     function () {
-      const dSchema = iconGenerator.getDefaultSchema();
+      const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
-      const schema = iconGenerator.generateJson({ supported: [] }, folders, dSchema);
+      const schema = getIconGenerator(dSchema).generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
@@ -417,9 +424,9 @@ describe('IconGenerator: icon generation test', function () {
     'if a default folder icon for light theme is specified, ' +
     'has a folder name referencing its inherited definition',
     function () {
-      const dSchema = iconGenerator.getDefaultSchema();
+      const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
-      const schema = iconGenerator.generateJson({ supported: [] }, folders, dSchema);
+      const schema = getIconGenerator(dSchema).generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
@@ -434,9 +441,9 @@ describe('IconGenerator: icon generation test', function () {
     'if a default folder icon for light theme is specified, ' +
     'has a folder name expanded referencing its inherited definition',
     function () {
-      const dSchema = iconGenerator.getDefaultSchema();
+      const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
-      const schema = iconGenerator.generateJson({ supported: [] }, folders, dSchema);
+      const schema = getIconGenerator(dSchema).generateJson(getEmptyFileCollection(), folders);
       folders.supported
         .filter(folder => !folder.light && !folder.disabled)
         .forEach(folder => {
@@ -450,9 +457,9 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that is not a filename ' +
     'and has not a light theme version, has a file extension referencing its inherited definition',
     function () {
-      const dSchema = iconGenerator.getDefaultSchema();
+      const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
-      const schema = iconGenerator.generateJson(files, { supported: [] }, dSchema);
+      const schema = getIconGenerator(dSchema).generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => !file.filename && !file.light && !file.disabled)
         .forEach(file => {
@@ -466,9 +473,9 @@ describe('IconGenerator: icon generation test', function () {
   it('ensures each supported file extension that is a filename ' +
     'and has a light theme version has a file name referencing its inherited definition',
     function () {
-      const dSchema = iconGenerator.getDefaultSchema();
+      const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
-      const schema = iconGenerator.generateJson(files, { supported: [] }, dSchema);
+      const schema = getIconGenerator(dSchema).generateJson(files, getEmptyFolderCollection());
       files.supported
         .filter(file => file.filename && !file.languages && !file.light && !file.disabled)
         .forEach(file => {

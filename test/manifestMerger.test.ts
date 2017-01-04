@@ -9,24 +9,25 @@ import {
   toggleAngular2Preset,
   toggleJavascriptOfficialPreset,
   toggleTypescriptOfficialPreset,
+  schema,
 } from '../src/icon-manifest';
 import {
-  IExtensionCollection,
-  IFileExtension,
   FileFormat,
-  IFolderExtension,
+  IFileCollection,
+  IFolderCollection,
 } from '../src/models';
 
 let iconGenerator: IconGenerator;
 
 beforeEach(() => {
-  iconGenerator = new IconGenerator(vscode);
+  iconGenerator = new IconGenerator(vscode, schema);
 });
 
 describe('FileExtensions: merging configuration documents', function () {
 
   it('ensures new extensions are added to existing file extension and respect the extension type', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         { icon: 'actionscript', extensions: ['as2'], format: 'svg' },
       ],
@@ -40,7 +41,8 @@ describe('FileExtensions: merging configuration documents', function () {
   });
 
   it('ensures overrides removes the specified extension', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         { icon: 'actionscript2', extensions: ['as2'], overrides: 'actionscript', format: 'svg' },
       ],
@@ -54,7 +56,8 @@ describe('FileExtensions: merging configuration documents', function () {
   });
 
   it('ensures extends replaces the extension', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         { icon: 'newExt', extensions: ['mynew'], extends: 'actionscript', format: 'png' },
       ],
@@ -71,7 +74,8 @@ describe('FileExtensions: merging configuration documents', function () {
   });
 
   it('ensures disabled extensions are not included into the manifest', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         { icon: 'actionscript', extensions: [], disabled: true, format: 'svg' },
       ],
@@ -83,7 +87,8 @@ describe('FileExtensions: merging configuration documents', function () {
   });
 
   it('ensures existing extensions are removed from the original Extension', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         { icon: 'newExt', extensions: ['bin', 'o'], format: 'svg' },
       ],
@@ -95,7 +100,8 @@ describe('FileExtensions: merging configuration documents', function () {
   });
 
   it('ensures existing extensions accept languageId', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         {
           icon: 'actionscript',
@@ -111,7 +117,8 @@ describe('FileExtensions: merging configuration documents', function () {
   });
 
   it('ensures _custom icon keeps the correct extension', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         {
           icon: 'custom_icon',
@@ -128,7 +135,8 @@ describe('FileExtensions: merging configuration documents', function () {
 
   // vscode doesn't allow absolute paths in icon css for the moment.
   it.skip('ensures _custom icons have an absolute path', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         {
           icon: 'custom_icon',
@@ -145,7 +153,8 @@ describe('FileExtensions: merging configuration documents', function () {
   });
 
   it('ensures _custom icons have a custom path', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         {
           icon: 'custom_icon',
@@ -166,7 +175,8 @@ describe('FileExtensions: merging configuration documents', function () {
 describe('FolderExtensions: merging configuration documents', function () {
 
   it('ensures new extensions are added to existing file extension and respect the extension type', function () {
-    const custom: IExtensionCollection<IFolderExtension> = {
+    const custom: IFolderCollection = {
+      default: null,
       supported: [
         { icon: 'aws', extensions: ['aws3'], format: 'svg' },
       ],
@@ -182,7 +192,8 @@ describe('FolderExtensions: merging configuration documents', function () {
   });
 
   it('ensures overrides removes the specified extension', function () {
-    const custom: IExtensionCollection<IFolderExtension> = {
+    const custom: IFolderCollection = {
+      default: null,
       supported: [
         { icon: 'aws2', extensions: ['aws2'], overrides: 'aws', format: 'svg' },
       ],
@@ -196,7 +207,8 @@ describe('FolderExtensions: merging configuration documents', function () {
   });
 
   it('ensures extends replaces the extension', function () {
-    const custom: IExtensionCollection<IFolderExtension> = {
+    const custom: IFolderCollection = {
+      default: null,
       supported: [
         { icon: 'newExt', extensions: ['mynew'], extends: 'aws', format: 'png' },
       ],
@@ -215,7 +227,8 @@ describe('FolderExtensions: merging configuration documents', function () {
   });
 
   it('ensures disabled extensions are not included into the manifest', function () {
-    const custom: IExtensionCollection<IFolderExtension> = {
+    const custom: IFolderCollection = {
+      default: null,
       supported: [
         { icon: 'aws', extensions: [], disabled: true, format: 'svg' },
       ],
@@ -227,7 +240,8 @@ describe('FolderExtensions: merging configuration documents', function () {
   });
 
   it('ensures existing extensions are removed from the original Extension', function () {
-    const custom: IExtensionCollection<IFolderExtension> = {
+    const custom: IFolderCollection = {
+      default: null,
       supported: [
         { icon: 'newExt', extensions: ['aws'], format: 'svg' },
       ],
@@ -238,7 +252,8 @@ describe('FolderExtensions: merging configuration documents', function () {
   });
 
   it('ensures _custom icon keeps the correct extension', function () {
-    const custom: IExtensionCollection<IFolderExtension> = {
+    const custom: IFolderCollection = {
+      default: null,
       supported: [
         {
           icon: 'custom_icon',
@@ -255,7 +270,8 @@ describe('FolderExtensions: merging configuration documents', function () {
 
   // vscode doesn't allow absolute paths in icon css for the moment.
   it.skip('ensures _custom icons have an absolute path', function () {
-    const custom: IExtensionCollection<IFolderExtension> = {
+    const custom: IFolderCollection = {
+      default: null,
       supported: [
         {
           icon: 'custom_icon',
@@ -272,7 +288,8 @@ describe('FolderExtensions: merging configuration documents', function () {
   });
 
   it('ensures _custom icons have a custom path', function () {
-    const custom: IExtensionCollection<IFolderExtension> = {
+    const custom: IFolderCollection = {
+      default: null,
       supported: [
         {
           icon: 'custom_icon',
@@ -294,7 +311,8 @@ describe('FolderExtensions: merging configuration documents', function () {
 describe('Presets: merging configuration documents', function () {
 
   it('ensures angular2 extensions are disabled', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [],
     };
     const result = toggleAngular2Preset(true, custom);
@@ -307,7 +325,8 @@ describe('Presets: merging configuration documents', function () {
   });
 
   it('ensures angular2 extensions are disabled even if custom icon is present', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         { icon: 'ng2_component_ts', extensions: ['mycomponent.ts'], format: FileFormat.svg },
       ],
@@ -323,7 +342,8 @@ describe('Presets: merging configuration documents', function () {
   });
 
   it('ensures all angular2 extensions are disabled even if duplicity is present', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [
         { icon: 'ng2_routing_ts', extensions: ['routing.ts'], format: FileFormat.svg },
         { icon: 'ng2_routing_js', extensions: ['routing.js'], format: FileFormat.svg },
@@ -342,7 +362,8 @@ describe('Presets: merging configuration documents', function () {
   });
 
   it('ensures js official extension is enabled', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [],
     };
     const result = toggleJavascriptOfficialPreset(false, custom);
@@ -353,7 +374,8 @@ describe('Presets: merging configuration documents', function () {
   });
 
   it('ensures ts official extension is enabled', function () {
-    const custom: IExtensionCollection<IFileExtension> = {
+    const custom: IFileCollection = {
+      default: null,
       supported: [],
     };
     const result = toggleTypescriptOfficialPreset(false, custom);
