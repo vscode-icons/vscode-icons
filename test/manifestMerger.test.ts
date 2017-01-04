@@ -387,7 +387,6 @@ describe('Presets: merging configuration documents', function () {
 
 });
 
-// TODO
 describe('DefaultExtensions: merging configuration documents', function () {
 
   it('ensures default file icons can be added', function () {

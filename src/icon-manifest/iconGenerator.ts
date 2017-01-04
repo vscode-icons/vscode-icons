@@ -65,7 +65,7 @@ export class IconGenerator implements IIconGenerator {
     suffix: string = '') {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
-    return _.sortBy(folders.supported.filter(x => !x.disabled), item => item.icon)
+    return _.sortBy(folders.supported.filter(x => !x.disabled && x.icon), item => item.icon)
       .reduce((old, current) => {
         const defs = old.defs;
         const names = old.names;
@@ -142,7 +142,7 @@ export class IconGenerator implements IIconGenerator {
     suffix: string = '') {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
-    return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled), item => item.icon))
+    return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled && x.icon), item => item.icon))
       .reduce((old, current) => {
         const defs = old.defs;
         const names = old.names;

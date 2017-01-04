@@ -5,7 +5,7 @@ import * as path from 'path';
 import * as _ from 'lodash';
 import { expect } from 'chai';
 import { schema as defaultSchema, IconGenerator } from '../src/icon-manifest';
-import { extensions as files, extensions } from '../src/icon-manifest/supportedExtensions';
+import { extensions as files } from '../src/icon-manifest/supportedExtensions';
 import { extensions as folders } from '../src/icon-manifest/supportedFolders';
 import { FileFormat, IFileCollection, IFolderCollection, IIconSchema } from '../src/models';
 import { vscode } from '../src/utils';
@@ -20,7 +20,7 @@ function getEmptyFileCollection(): IFileCollection {
   return { default: { file: { icon: 'file', format: 'svg' } }, supported: [] };
 }
 
-function getEmptyFolderCollection() {
+function getEmptyFolderCollection(): IFolderCollection {
   return { default: { folder: { icon: 'folder', format: 'svg' } }, supported: [] };
 }
 
@@ -484,5 +484,131 @@ describe('IconGenerator: icon generation test', function () {
           });
         });
     });
+
+});
+
+describe('IconGenerator: functionality', function () {
+
+  it('ensures disabled file extensions are not included into the manifest', function () {
+    const custom = getEmptyFileCollection();
+    custom.supported.push({ icon: 'actionscript', extensions: [], disabled: true, format: 'svg' });
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const extendedPath = json.iconDefinitions['_f_actionscript'];
+    expect(extendedPath).not.to.exist;
+  });
+
+  it('ensures disabled folder extensions are not included into the manifest', function () {
+    const custom = getEmptyFolderCollection();
+    custom.supported.push({ icon: 'aws', extensions: ['aws'], disabled: true, format: 'svg' });
+    const json = getIconGenerator().generateJson(getEmptyFileCollection(), custom);
+    const extendedPath = json.iconDefinitions['_fd_aws'];
+    expect(extendedPath).not.to.exist;
+  });
+
+  it('ensures default file icon paths are always defined when disabled', function () {
+    const custom = getEmptyFileCollection();
+    custom.default.file.disabled = true;
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const ext = json.iconDefinitions._file;
+    expect(ext).to.exist;
+    expect(ext.iconPath).to.exist;
+    expect(ext.iconPath).to.be.empty;
+  });
+
+  it('ensures default folder icon paths are always defined when disabled', function () {
+    const custom = getEmptyFolderCollection();
+    custom.default.folder.disabled = true;
+    const json = getIconGenerator().generateJson(getEmptyFileCollection(), custom);
+    const ext = json.iconDefinitions._folder;
+    expect(ext).to.exist;
+    expect(ext.iconPath).to.exist;
+    expect(ext.iconPath).to.be.empty;
+  });
+
+  it('ensures file extensions are not included into the manifest when no icon is provided', function () {
+    const custom = getEmptyFileCollection();
+    custom.supported.push({ icon: '', extensions: ['as'], format: 'svg' });
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const ext = json.iconDefinitions[settings.manifestFilePrefix];
+    expect(ext).not.to.exist;
+  });
+
+  it('ensures folder extensions are not included into the manifest when no icon is provided', function () {
+    const custom = getEmptyFolderCollection();
+    custom.supported.push({ icon: '', extensions: ['aws'], format: 'svg' });
+    const json = getIconGenerator().generateJson(getEmptyFileCollection(), custom);
+    const ext = json.iconDefinitions[settings.manifestFolderPrefix];
+    expect(ext).not.to.exist;
+  });
+
+  it('ensures new file extensions are included into the manifest', function () {
+    const custom = getEmptyFileCollection();
+    custom.supported.push({ icon: 'actionscript', extensions: ['as'], format: 'svg' });
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const def = `${settings.manifestFilePrefix}actionscript`;
+    const ext = json.iconDefinitions[def];
+    expect(ext).to.exist;
+    expect(ext.iconPath).not.to.be.empty;
+    expect(json.fileExtensions['as']).to.be.equal(def);
+  });
+
+  it('ensures new folder extensions are included into the manifest', function () {
+    const custom = getEmptyFolderCollection();
+    custom.supported.push({ icon: 'aws', extensions: ['aws'], format: 'svg' });
+    const json = getIconGenerator().generateJson(getEmptyFileCollection(), custom);
+    const def = `${settings.manifestFolderPrefix}aws`;
+    const ext = json.iconDefinitions[def];
+    expect(ext).to.exist;
+    expect(ext.iconPath).not.to.be.empty;
+    expect(json.folderNames['aws']).to.be.equal(def);
+    expect(json.folderNamesExpanded['aws']).to.be.equal(`${def}_open`);
+  });
+
+  it('ensures filenames extensions are included into the manifest', function () {
+    const custom = getEmptyFileCollection();
+    custom.supported.push({
+      icon: 'webpack',
+      extensions: ['webpack.config.js'],
+      filename: true,
+      format: 'svg',
+    });
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const def = `${settings.manifestFilePrefix}webpack`;
+    const ext = json.iconDefinitions[def];
+    expect(ext).to.exist;
+    expect(ext.iconPath).not.to.be.empty;
+    expect(json.fileNames['webpack.config.js']).to.be.equal(def);
+  });
+
+  it('ensures languageIds extensions are included into the manifest', function () {
+    const custom = getEmptyFileCollection();
+    custom.supported.push({
+      icon: 'c',
+      extensions: [],
+      languages: [{ ids: 'c', defaultExtension: 'c' }],
+      format: 'svg',
+    });
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const def = `${settings.manifestFilePrefix}c`;
+    const ext = json.iconDefinitions[def];
+    expect(ext).to.exist;
+    expect(ext.iconPath).not.to.be.empty;
+    expect(json.languageIds['c']).to.be.equal(def);
+  });
+
+  it('ensures icon paths are always using Unix style', function () {
+    const custom = getEmptyFileCollection();
+    custom.supported.push({
+      icon: 'c',
+      extensions: ['c'],
+      format: 'svg',
+    });
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const def = `${settings.manifestFilePrefix}c`;
+    const ext = json.iconDefinitions[def];
+    expect(ext).to.exist;
+    expect(ext.iconPath).not.to.be.empty;
+    expect(ext.iconPath).not.contain('\\');
+  });
 
 });
