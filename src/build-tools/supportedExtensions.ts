@@ -145,7 +145,7 @@ export const extensions: IExtensionCollection<IFileExtension> = {
     { icon: 'nim', extensions: ['nim', 'nims'], format: FileFormat.png },
     { icon: 'node', extensions: ['.nvmrc'], filename: true, format: FileFormat.svg },
     { icon: 'npm', extensions: ['.npmignore', '.npmrc', 'package.json'], filename: true, format: FileFormat.svg },
-    { icon: 'nsi', extensions: ['nsi', 'nsh'], format: FileFormat.svg },
+    { icon: 'nsi', extensions: ['nsi', 'nsh', 'bbnsi', 'bbnsh'], format: FileFormat.svg },
     { icon: 'nuget', extensions: ['nupkg', 'nuspec', 'psmdcp'], format: FileFormat.png },
     { icon: 'nunjucks', extensions: ['njk', 'nunjucks', 'nunjs', 'nunj', 'njs', 'nj'], format: FileFormat.png },
     { icon: 'ocaml', extensions: ['ml', 'mll', 'mli', 'mly', 'ocamlmakefile', 'merlin'], format: FileFormat.png },
