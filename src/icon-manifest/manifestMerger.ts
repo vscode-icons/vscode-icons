@@ -44,18 +44,24 @@ export function mergeConfig(
 
 function mergeDefaultFiles(custom: IFileDefault, supported: IFileDefault): IFileDefault {
   if (!custom) { return supported; }
-  return {
+  const res = {
     file: custom.file || supported.file,
     file_light: custom.file_light || supported.file_light,
   };
+  res.file._custom = !!custom.file;
+  res.file_light._custom = !!custom.file_light;
+  return res;
 }
 
 function mergeDefaultFolders(custom: IFolderDefault, supported: IFolderDefault): IFolderDefault {
   if (!custom) { return supported; }
-  return {
+  const res = {
     folder: custom.folder || supported.folder,
     folder_light: custom.folder_light || supported.folder_light,
   };
+  res.folder._custom = !!custom.folder;
+  res.folder_light._custom = !!custom.folder_light;
+  return res;
 }
 
 function mergeSupported(

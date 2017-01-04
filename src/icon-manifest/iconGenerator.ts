@@ -257,7 +257,8 @@ export class IconGenerator implements IIconGenerator {
     const suffix = isFolder ? '_opened' : '';
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
-    return pathUnixJoin(path, `${defPrefix}${icon}${suffix}${fileFormatToString(format)}`);
+    const fPath = this.getIconPath(defaultExtension, path);
+    return pathUnixJoin(fPath, `${defPrefix}${icon}${suffix}${fileFormatToString(format)}`);
   }
 
   private fillDefaultSchema(
@@ -325,7 +326,7 @@ export class IconGenerator implements IIconGenerator {
     return schema;
   }
 
-  private getIconPath(ext: IExtension, defaultPath: string): string {
+  private getIconPath(ext: IExtension | IDefaultExtension, defaultPath: string): string {
     if (ext._custom) {
       // this option is not allowed for the moment.
       // VSCode doesn't allow absolute paths...
