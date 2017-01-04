@@ -42,12 +42,20 @@ export function mergeConfig(
   return json;
 }
 
-// TODO implement these funcs
 function mergeDefaultFiles(custom: IFileDefault, supported: IFileDefault): IFileDefault {
-  return supported;
+  if (!custom) { return supported; }
+  return {
+    file: custom.file || supported.file,
+    file_light: custom.file_light || supported.file_light,
+  };
 }
+
 function mergeDefaultFolders(custom: IFolderDefault, supported: IFolderDefault): IFolderDefault {
-  return supported;
+  if (!custom) { return supported; }
+  return {
+    folder: custom.folder || supported.folder,
+    folder_light: custom.folder_light || supported.folder_light,
+  };
 }
 
 function mergeSupported(
