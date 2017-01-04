@@ -252,7 +252,7 @@ export class IconGenerator implements IIconGenerator {
     schemaExtension: IIconPath,
     path: string,
     isFolder: boolean): string {
-    if (!defaultExtension) { return schemaExtension.iconPath || ''; }
+    if (!defaultExtension || defaultExtension.disabled) { return schemaExtension.iconPath || ''; }
     const defPrefix = this.settings.extensionSettings.defaultExtensionPrefix;
     const suffix = isFolder ? '_opened' : '';
     const icon = defaultExtension.icon;
