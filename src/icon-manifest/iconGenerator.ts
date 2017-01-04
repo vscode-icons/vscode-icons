@@ -4,7 +4,6 @@ import * as _ from 'lodash';
 
 import { SettingsManager } from '../settings';
 import { pathUnixJoin, fileFormatToString } from '../utils';
-import { DefaultExtensionType } from '../models/extensions/defaultExtensionType';
 import { schema } from './defaultSchema';
 import {
   FileFormat,
@@ -252,11 +251,10 @@ export class IconGenerator implements IIconGenerator {
     defaultExtension: IDefaultExtension,
     schemaExtension: IIconPath,
     path: string,
-    type: DefaultExtensionType): string {
+    isFolder: boolean): string {
     if (!defaultExtension) { return schemaExtension.iconPath || ''; }
     const defPrefix = this.settings.extensionSettings.defaultExtensionPrefix;
-    const suffix =
-      (type === DefaultExtensionType.folder_open || type === DefaultExtensionType.folder_open_light) ? '_opened' : '';
+    const suffix = isFolder ? '_opened' : '';
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
     return pathUnixJoin(path, `${defPrefix}${icon}${suffix}${fileFormatToString(format)}`);
@@ -271,23 +269,11 @@ export class IconGenerator implements IIconGenerator {
     const defs = schema.iconDefinitions;
     // set default icons
     defs._file.iconPath =
-      this.buildIconPath(
-        files.default.file,
-        defs._file,
-        iconsFolderBasePath,
-        DefaultExtensionType.file);
+      this.buildIconPath(files.default.file, defs._file, iconsFolderBasePath, false);
     defs._folder.iconPath =
-      this.buildIconPath(
-        folders.default.folder,
-        defs._folder,
-        iconsFolderBasePath,
-        DefaultExtensionType.folder);
+      this.buildIconPath(folders.default.folder, defs._folder, iconsFolderBasePath, true);
     defs._folder_open.iconPath =
-      this.buildIconPath(
-        folders.default.folder,
-        defs._folder_open,
-        iconsFolderBasePath,
-        DefaultExtensionType.folder_open);
+      this.buildIconPath(folders.default.folder, defs._folder_open, iconsFolderBasePath, true);
     // light theme
     // default file and folder related icon paths if not set,
     // inherit their icons from dark theme.
@@ -297,21 +283,11 @@ export class IconGenerator implements IIconGenerator {
     // and populate the light section, otherwise they inherit from dark theme
     // and only those in 'light' section get overriden.
     defs._file_light.iconPath =
-      this.buildIconPath(
-        files.default.file_light,
-        defs._file_light,
-        iconsFolderBasePath,
-        DefaultExtensionType.file_light);
+      this.buildIconPath(files.default.file_light, defs._file_light, iconsFolderBasePath, false);
     defs._folder_light.iconPath =
-      this.buildIconPath(folders.default.folder_light,
-      defs._folder_light,
-      iconsFolderBasePath,
-      DefaultExtensionType.folder_light);
+      this.buildIconPath(folders.default.folder_light, defs._folder_light, iconsFolderBasePath, true);
     defs._folder_light_open.iconPath =
-      this.buildIconPath(folders.default.folder_light,
-      defs._folder_light_open,
-      iconsFolderBasePath,
-      DefaultExtensionType.folder_light);
+      this.buildIconPath(folders.default.folder_light, defs._folder_light_open, iconsFolderBasePath, true);
     // set the rest of the schema
     return this.buildJsonStructure(files, folders, iconsFolderBasePath, schema);
   }

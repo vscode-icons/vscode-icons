@@ -1,5 +1,4 @@
 export * from './defaultExtension';
-export * from './defaultExtensionType';
 export * from './extension';
 export * from './extensionCollection';
 export * from './fileCollection';

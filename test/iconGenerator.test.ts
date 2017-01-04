@@ -10,7 +10,6 @@ import { extensions as folders } from '../src/icon-manifest/supportedFolders';
 import { FileFormat, IFileCollection, IFolderCollection, IIconSchema } from '../src/models';
 import { vscode } from '../src/utils';
 import { extensionSettings as settings } from '../src/settings';
-import { DefaultExtensionType } from '../src/models/extensions/defaultExtensionType';
 
 const iconsFolderPath = path.join(__dirname, '../../icons');
 
@@ -18,11 +17,11 @@ function getIconGenerator(schema?: IIconSchema) {
   return new IconGenerator(vscode, schema || defaultSchema);
 }
 function getEmptyFileCollection(): IFileCollection {
-  return { default: { file: { icon: 'file', format: 'svg', type: DefaultExtensionType.file } }, supported: [] };
+  return { default: { file: { icon: 'file', format: 'svg' } }, supported: [] };
 }
 
 function getEmptyFolderCollection() {
-  return { default: { folder: { icon: 'folder', format: 'svg', type: DefaultExtensionType.folder } }, supported: [] };
+  return { default: { folder: { icon: 'folder', format: 'svg' } }, supported: [] };
 }
 
 describe('IconGenerator: icon generation test', function () {
