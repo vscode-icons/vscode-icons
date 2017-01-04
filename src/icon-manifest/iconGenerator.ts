@@ -251,10 +251,10 @@ export class IconGenerator implements IIconGenerator {
     defaultExtension: IDefaultExtension,
     schemaExtension: IIconPath,
     path: string,
-    isFolder: boolean): string {
+    isOpenFolder: boolean): string {
     if (!defaultExtension || defaultExtension.disabled) { return schemaExtension.iconPath || ''; }
     const defPrefix = this.settings.extensionSettings.defaultExtensionPrefix;
-    const suffix = isFolder ? '_opened' : '';
+    const suffix = isOpenFolder ? '_opened' : '';
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
     const fPath = this.getIconPath(defaultExtension, path);
@@ -266,13 +266,13 @@ export class IconGenerator implements IIconGenerator {
     folders: IFolderCollection,
     iconsFolderBasePath: string,
     defaultSchema: IIconSchema): IIconSchema {
-    const schema = Object.assign({}, defaultSchema);
+    const schema = _.cloneDeep(defaultSchema);
     const defs = schema.iconDefinitions;
     // set default icons
     defs._file.iconPath =
       this.buildIconPath(files.default.file, defs._file, iconsFolderBasePath, false);
     defs._folder.iconPath =
-      this.buildIconPath(folders.default.folder, defs._folder, iconsFolderBasePath, true);
+      this.buildIconPath(folders.default.folder, defs._folder, iconsFolderBasePath, false);
     defs._folder_open.iconPath =
       this.buildIconPath(folders.default.folder, defs._folder_open, iconsFolderBasePath, true);
     // light theme
@@ -286,7 +286,7 @@ export class IconGenerator implements IIconGenerator {
     defs._file_light.iconPath =
       this.buildIconPath(files.default.file_light, defs._file_light, iconsFolderBasePath, false);
     defs._folder_light.iconPath =
-      this.buildIconPath(folders.default.folder_light, defs._folder_light, iconsFolderBasePath, true);
+      this.buildIconPath(folders.default.folder_light, defs._folder_light, iconsFolderBasePath, false);
     defs._folder_light_open.iconPath =
       this.buildIconPath(folders.default.folder_light, defs._folder_light_open, iconsFolderBasePath, true);
     // set the rest of the schema
