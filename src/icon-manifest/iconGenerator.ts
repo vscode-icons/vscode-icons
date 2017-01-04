@@ -254,11 +254,12 @@ export class IconGenerator implements IIconGenerator {
     isOpenFolder: boolean): string {
     if (!defaultExtension || defaultExtension.disabled) { return schemaExtension.iconPath || ''; }
     const defPrefix = this.settings.extensionSettings.defaultExtensionPrefix;
-    const suffix = isOpenFolder ? '_opened' : '';
+    const openSuffix = isOpenFolder ? '_opened' : '';
+    const iconSuffix = this.settings.extensionSettings.iconSuffix;
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
     const fPath = this.getIconPath(defaultExtension, path);
-    return pathUnixJoin(fPath, `${defPrefix}${icon}${suffix}${fileFormatToString(format)}`);
+    return pathUnixJoin(fPath, `${defPrefix}${icon}${openSuffix}${iconSuffix}${fileFormatToString(format)}`);
   }
 
   private fillDefaultSchema(

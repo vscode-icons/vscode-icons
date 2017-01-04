@@ -611,4 +611,28 @@ describe('IconGenerator: functionality', function () {
     expect(ext.iconPath).not.contain('\\');
   });
 
+  it('ensures extensions always use the iconSuffix', function () {
+    const custom = getEmptyFileCollection();
+    custom.supported.push({
+      icon: 'c',
+      extensions: ['c'],
+      format: 'svg',
+    });
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const def = `${settings.manifestFilePrefix}c`;
+    const ext = json.iconDefinitions[def];
+    expect(ext).to.exist;
+    expect(ext.iconPath).not.to.be.empty;
+    expect(ext.iconPath).contains(settings.iconSuffix);
+  });
+
+  it('ensures default always use the iconSuffix', function () {
+    const custom = getEmptyFileCollection();
+    const json = getIconGenerator().generateJson(custom, getEmptyFolderCollection());
+    const ext = json.iconDefinitions._file;
+    expect(ext).to.exist;
+    expect(ext.iconPath).not.to.be.empty;
+    expect(ext.iconPath).contains(settings.iconSuffix);
+  });
+
 });

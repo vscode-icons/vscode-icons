@@ -398,7 +398,8 @@ describe('DefaultExtensions: merging configuration documents', function () {
     };
     const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const def = json.iconDefinitions._file_light;
-    const iconName = `${extensionSettings.defaultExtensionPrefix}customIconLight.svg`;
+    const iconSuffix = extensionSettings.iconSuffix;
+    const iconName = `${extensionSettings.defaultExtensionPrefix}customIconLight${iconSuffix}.svg`;
     expect(def).exist;
     expect(def.iconPath).exist;
     expect(def.iconPath).contain(iconName);
@@ -415,8 +416,10 @@ describe('DefaultExtensions: merging configuration documents', function () {
     const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const def = json.iconDefinitions._folder_light;
     const defOpen = json.iconDefinitions._folder_light_open;
-    const iconName = `${extensionSettings.defaultExtensionPrefix}customIconLight.svg`;
-    const iconNameOpen = `${extensionSettings.defaultExtensionPrefix}customIconLight_opened.svg`;
+    const iconSuffix = extensionSettings.iconSuffix;
+    const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
+    const iconName = `${defaultExtensionPrefix}customIconLight${iconSuffix}.svg`;
+    const iconNameOpen = `${defaultExtensionPrefix}customIconLight_opened${iconSuffix}.svg`;
     expect(def).exist;
     expect(defOpen).exist;
     expect(def.iconPath).exist;
@@ -436,7 +439,9 @@ describe('DefaultExtensions: merging configuration documents', function () {
     };
     const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const def = json.iconDefinitions._file;
-    const iconName = `${extensionSettings.defaultExtensionPrefix}customIcon.svg`;
+    const iconSuffix = extensionSettings.iconSuffix;
+    const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
+    const iconName = `${defaultExtensionPrefix}customIcon${iconSuffix}.svg`;
     expect(def).exist;
     expect(def.iconPath).exist;
     expect(def.iconPath).contain(iconName);
@@ -453,8 +458,10 @@ describe('DefaultExtensions: merging configuration documents', function () {
     const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const def = json.iconDefinitions._folder;
     const defOpen = json.iconDefinitions._folder_open;
-    const iconName = `${extensionSettings.defaultExtensionPrefix}customIcon.svg`;
-    const iconNameOpen = `${extensionSettings.defaultExtensionPrefix}customIcon_opened.svg`;
+    const iconSuffix = extensionSettings.iconSuffix;
+    const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
+    const iconName = `${defaultExtensionPrefix}customIcon${iconSuffix}.svg`;
+    const iconNameOpen = `${defaultExtensionPrefix}customIcon_opened${iconSuffix}.svg`;
     expect(def).exist;
     expect(defOpen).exist;
     expect(def.iconPath).exist;
