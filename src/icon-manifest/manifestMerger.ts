@@ -123,8 +123,8 @@ export function toggleAngularPreset(
 export function toggleTypescriptOfficialPreset(
   disable: boolean,
   customFiles: IFileCollection): IFileCollection {
-  const temp = togglePreset(disable, ['typescript_official'], customFiles);
-  return togglePreset(!disable, ['typescript'], temp);
+  const temp = togglePreset(disable, ['typescript_official', 'typescriptdef_official'], customFiles);
+  return togglePreset(!disable, ['typescript', 'typescriptdef'], temp);
 }
 
 export function toggleJavascriptOfficialPreset(

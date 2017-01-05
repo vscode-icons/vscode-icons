@@ -365,8 +365,12 @@ describe('Presets: merging configuration documents', function () {
     const result = toggleTypescriptOfficialPreset(false, custom);
     const official = result.supported.find(x => x.icon === 'typescript_official');
     const unofficial = result.supported.find(x => x.icon === 'typescript');
+    const officialDef = result.supported.find(x => x.icon === 'typescriptdef_official');
+    const unofficialDef = result.supported.find(x => x.icon === 'typescriptdef');
     expect(official.disabled).to.be.false;
     expect(unofficial.disabled).to.be.true;
+    expect(officialDef.disabled).to.be.false;
+    expect(unofficialDef.disabled).to.be.true;
   });
 
   it('ensures hide folders preset hides all folders', function () {
