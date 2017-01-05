@@ -61,10 +61,10 @@ export class IconGenerator implements IIconGenerator {
   private buildFolders(
     folders: IFolderCollection,
     iconsFolderBasePath: string = '',
-    hasDefaultLightFolder: boolean = false,
-    suffix: string = '') {
+    hasDefaultLightFolder: boolean = false) {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
+    const suffix = sts.iconSuffix;
     return _.sortBy(folders.supported.filter(x => !x.disabled && x.icon), item => item.icon)
       .reduce((old, current) => {
         const defs = old.defs;
@@ -138,10 +138,10 @@ export class IconGenerator implements IIconGenerator {
   private buildFiles(
     files: IFileCollection,
     iconsFolderBasePath: string = '',
-    hasDefaultLightFile: boolean = false,
-    suffix: string = '') {
+    hasDefaultLightFile: boolean = false) {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
+    const suffix = sts.iconSuffix;
     return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled && x.icon), item => item.icon))
       .reduce((old, current) => {
         const defs = old.defs;
@@ -299,7 +299,6 @@ export class IconGenerator implements IIconGenerator {
     folders: IFolderCollection,
     iconsFolderBasePath: string,
     schema: IIconSchema): IIconSchema {
-    const iconSuffix = this.settings.extensionSettings.iconSuffix;
      // check for light files & folders
     const hasDefaultLightFolder =
       schema.iconDefinitions._folder_light.iconPath != null &&
@@ -309,9 +308,9 @@ export class IconGenerator implements IIconGenerator {
       schema.iconDefinitions._file_light.iconPath !== '';
     const res = {
       // folders section
-      folders: this.buildFolders(folders, iconsFolderBasePath, hasDefaultLightFolder, iconSuffix),
+      folders: this.buildFolders(folders, iconsFolderBasePath, hasDefaultLightFolder),
       //  files section 
-      files: this.buildFiles(files, iconsFolderBasePath, hasDefaultLightFile, iconSuffix),
+      files: this.buildFiles(files, iconsFolderBasePath, hasDefaultLightFile),
     };
     // map structure to the schema
     schema.iconDefinitions = Object.assign({}, schema.iconDefinitions, res.folders.defs, res.files.defs);
