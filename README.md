@@ -177,15 +177,18 @@ Along with the previous arrays you will have 4 more settings available that will
 ```
 
 #### Custom Icons
-Unfortunately, `VSCode` doesn't support absolute paths when generating the icons `css`. I'm willing to raise an issue in their repo and submit a PR but in the meantime we've come up with a simple solution.
+In order to place your custom icons you will have to create the a specific folder. Depending on your OS the path will be:
 
-The idea is that you have to look for your `User folder`:
+- Windows: `C:\Users\<your_user>\AppData\Roaming\<Code Folder>\extensions`
+- Linux: `/home/<your_user>/.config/<Code Folder>/User/vsicons-custom-icons`
+- Mac: `/Users/<your_user>/.config/<Code Folder>/User/vsicons-custom-icons`
 
-- Windows: `C:\Users\<your_user>\.vscode\extensions`
-- Linux: `/home/<your_user>/.vscode/extensions`
-- Mac: `/Users/<your_user>/.vscode/extensions/`
+```
+<Code Folder> refers to the name of the folder of VSCode depending on the version:
+- `Code` for the stable version.
+- `Code - Insiders` for the insiders version.
 
-and then create a folder there named like this: `robertohuertasm.vscode-icons.custom-icons`. Then, there you can put all your custom icons but, again, they have to follow `vscode-icons` naming conventions:
+Once you have created the folder you can put all your custom icons there but, again, they have to follow `vscode-icons` naming conventions:
 
 - Files: `file_type_<value_of_icon_property>@2x.svg`
 - Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x.svg`

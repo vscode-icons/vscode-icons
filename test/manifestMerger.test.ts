@@ -167,7 +167,7 @@ describe('FileExtensions: merging configuration documents', function () {
     const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
     const icon = json.iconDefinitions['_f_custom_icon'];
     expect(icon).exist;
-    expect(icon.iconPath.indexOf('robertohuertasm.vscode-icons.custom-icons')).to.be.greaterThan(-1);
+    expect(icon.iconPath).contains(extensionSettings.customIconFolderName);
     expect(json.fileExtensions['custom']).equals('_f_custom_icon');
   });
 
@@ -302,7 +302,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
     const icon = json.iconDefinitions['_fd_custom_icon'];
     expect(icon).exist;
-    expect(icon.iconPath.indexOf('robertohuertasm.vscode-icons.custom-icons')).to.be.greaterThan(-1);
+    expect(icon.iconPath).contains(extensionSettings.customIconFolderName);
     expect(json.folderNames['custom']).equals('_fd_custom_icon');
     expect(json.folderNamesExpanded['custom']).equals('_fd_custom_icon_open');
   });

@@ -12,5 +12,5 @@ export const extensionSettings: IExtensionSettings = {
   manifestFileLightPrefix: '_f_light_',
   manifestFolderPrefix: '_fd_',
   manifestFolderLightPrefix: '_fd_light_',
-  customIconFolderName: 'robertohuertasm.vscode-icons.custom-icons',
+  customIconFolderName: 'vsicons-custom-icons',
 };

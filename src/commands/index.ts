@@ -106,7 +106,7 @@ function generateManifest(
     workingCustomFiles = toggleTypescriptOfficialPreset(!conf.presets.tsOfficial, workingCustomFiles);
   }
   if (customFolders) {
-     workingCustomFolders = toggleHideFoldersPreset(!conf.presets.hideFolders, workingCustomFolders);
+     workingCustomFolders = toggleHideFoldersPreset(conf.presets.hideFolders, workingCustomFolders);
   }
   // presets affecting  default icons
   const workingFolders = toggleHideFoldersPreset(conf.presets.hideFolders, folders);

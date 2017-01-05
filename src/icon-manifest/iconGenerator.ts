@@ -223,7 +223,7 @@ export class IconGenerator implements IIconGenerator {
       });
   }
 
-  private getRelativePath(fromDirPath, toDirName) {
+  private getRelativePath(fromDirPath: string, toDirName: string, checkDirectory: boolean = true): string {
     if (toDirName == null) {
       throw new Error('toDirName not defined.');
     }
@@ -232,7 +232,7 @@ export class IconGenerator implements IIconGenerator {
       throw new Error('fromDirPath not defined.');
     }
 
-    if (!fs.existsSync(toDirName)) {
+    if (checkDirectory && !fs.existsSync(toDirName)) {
       throw new Error('Directory \'' + toDirName + '\' not found.');
     }
     return './' +
@@ -328,11 +328,8 @@ export class IconGenerator implements IIconGenerator {
 
   private getIconPath(ext: IExtension | IDefaultExtension, defaultPath: string): string {
     if (ext._custom) {
-      // this option is not allowed for the moment.
-      // VSCode doesn't allow absolute paths...
-      // return path.join(this.settingsManager.getSettings().vscodeAppData, 'vsicons-custom-icons');
-      // HACK: temporary solution... 
-      return defaultPath.replace('../icons', `../../${this.settings.extensionSettings.customIconFolderName}`);
+      const absPath = path.join(this.settingsManager.getSettings().vscodeAppData, 'vsicons-custom-icons');
+      return this.getRelativePath(this.manifestFolderPath, absPath, false);
     }
     return defaultPath;
   }
