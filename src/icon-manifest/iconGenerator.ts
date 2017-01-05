@@ -250,7 +250,7 @@ export class IconGenerator implements IIconGenerator {
   private buildIconPath(
     defaultExtension: IDefaultExtension,
     schemaExtension: IIconPath,
-    path: string,
+    iconsFolderBasePath: string,
     isOpenFolder: boolean): string {
     if (!defaultExtension || defaultExtension.disabled) { return schemaExtension.iconPath || ''; }
     const defPrefix = this.settings.extensionSettings.defaultExtensionPrefix;
@@ -258,7 +258,7 @@ export class IconGenerator implements IIconGenerator {
     const iconSuffix = this.settings.extensionSettings.iconSuffix;
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
-    const fPath = this.getIconPath(defaultExtension, path);
+    const fPath = this.getIconPath(defaultExtension, iconsFolderBasePath);
     return pathUnixJoin(fPath, `${defPrefix}${icon}${openSuffix}${iconSuffix}${fileFormatToString(format)}`);
   }
 
