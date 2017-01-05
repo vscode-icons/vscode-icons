@@ -19,25 +19,13 @@ I would also like to thank the whole community for their support: bringing in id
 
 ### State of the extension
 
-**With the release of 4.0.0 version, support for old functionality has completely been removed for VSCode**.
+** Release 5.0.0 introduces the ability for users to customize the icons without having to inject anything into the `Visual Studio Code's code`.** 
 
-#### Why is this happening?
+This is a huge step again to allow the users to fully customize how the icons look like and how they can be associated to any extension at will.
 
-There are several motives that have led me to take this decision:
+`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it. More information in [#328](https://github.com/robertohuertasm/vscode-icons/issues/328).
 
-1. The main goal of this extension has been completely achieved, which was to point out the importance of having icons in VSCode.
-2. VSCode 1.6.0 supports icons beyond the file explorer. [See vscode#11751](https://github.com/Microsoft/vscode/issues/11751#issuecomment-248634495) 
-3. Code Injection has its drawbacks both for the VSCode team and for me. Having to keep up with the Insiders build has become a nightmare and from time to time new recurrent issues are being created in VSCode's Github project about something being broken.
-4. Code injection will be eventually not allowed.
-5. Support from VSCode team is great and they're willing to hear all the suggestions from the community regarding icon themes.
-
-Still, there's one missing point: `Custom Icon associations` is still not supported. They're not convinced of the value that this would bring to VSCode, so again, it's up to all of us to make the difference. I suggest that you create a Github issue with your opinions on this matter, so that the VSCode team can have a clear vision about importance of `Custom Icon associations` to the community (us). [This is a starting point](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649). Provide a +1 if you want the VSCode team to support this feature.
-
-More information in [#328](https://github.com/robertohuertasm/vscode-icons/issues/328)
-
-Finally, I also would like to ask you to raise the possible issues that you may find while using this extension into the [extension's repository](https://github.com/robertohuertasm/vscode-icons/issues), not the VSCode one ;D
-
-**Thank you all for your kind support. Finally icons are here to stay (that was the main purpose of this extension). Now let's hope they get even better :D**
+**Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
 
 ----
 ## New Year release
