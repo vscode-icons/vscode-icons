@@ -37,9 +37,7 @@ export function mergeConfig(
     supported: mergeSupported(sFolders, supportedFolders.supported),
   };
 
-  const json = iconGenerator.generateJson(files, folders);
-  // iconGenerator.persist('icons2.json', json);
-  return json;
+  return iconGenerator.generateJson(files, folders);
 }
 
 function mergeDefaultFiles(custom: IFileDefault, supported: IFileDefault): IFileDefault {
