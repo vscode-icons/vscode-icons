@@ -56,8 +56,8 @@
         "category": "Icons"
       },
       {
-        "command": "extension.ng2Preset",
-        "title": "Toggle Angular2 Preset (Project Level)",
+        "command": "extension.ngPreset",
+        "title": "Toggle Angular Preset (Project Level)",
         "category": "Icons"
       },
       {
@@ -89,10 +89,10 @@
           "default": false,
           "description": "If set to true the new version message won't be shown anymore."
         },
-        "vsicons.presets.angular2": {
+        "vsicons.presets.angular": {
           "type": "boolean",
           "default": true,
-          "description": "If set to true the extension will match some of the common Angular 2 patterns"
+          "description": "If set to true the extension will match some of the common Angular patterns"
         },
         "vsicons.presets.jsOfficial": {
           "type": "boolean",

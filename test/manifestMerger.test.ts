@@ -7,7 +7,7 @@ import { extensionSettings } from '../src/settings';
 import {
   IconGenerator,
   mergeConfig,
-  toggleAngular2Preset,
+  toggleAngularPreset,
   toggleJavascriptOfficialPreset,
   toggleTypescriptOfficialPreset,
   toggleHideFoldersPreset,
@@ -311,53 +311,36 @@ describe('FolderExtensions: merging configuration documents', function () {
 
 describe('Presets: merging configuration documents', function () {
 
-  it('ensures angular2 extensions are disabled', function () {
+  it('ensures angular extensions are disabled', function () {
     const custom: IFileCollection = {
       default: null,
       supported: [],
     };
-    const result = toggleAngular2Preset(true, custom);
-    const ng2group = result.supported
-      .filter(x => x.icon.startsWith('ng2_'));
-    expect(ng2group.length).equals(12);
-    ng2group.forEach(x => {
+    const result = toggleAngularPreset(true, fileExtensions);
+    const nggroup = result.supported
+      .filter(x => x.icon.startsWith('ng_'));
+    expect(nggroup.length).equals(14);
+    nggroup.forEach(x => {
       expect(x.disabled).to.be.true;
     });
   });
 
-  it('ensures angular2 extensions are disabled even if custom icon is present', function () {
+  it('ensures all angular extensions are disabled even if duplicity is present', function () {
     const custom: IFileCollection = {
       default: null,
       supported: [
-        { icon: 'ng2_component_ts', extensions: ['mycomponent.ts'], format: 'svg' },
+        { icon: 'ng_routing_ts', extensions: ['routing.ts'], format: 'svg' },
+        { icon: 'ng_routing_js', extensions: ['routing.js'], format: 'svg' },
+        { icon: 'ng_routing_ts', extensions: ['app-routing.module.ts'], filename: true, format: 'svg' },
+        { icon: 'ng_routing_js', extensions: ['app-routing.module.js'], filename: true, format: 'svg' },
       ],
     };
 
-    const result = toggleAngular2Preset(true, custom);
-    const ng2group = result.supported
-      .filter(x => x.icon.startsWith('ng2_'));
-    expect(ng2group.length).equals(12);
-    ng2group.forEach(x => {
-      expect(x.disabled).to.be.true;
-    });
-  });
-
-  it('ensures all angular2 extensions are disabled even if duplicity is present', function () {
-    const custom: IFileCollection = {
-      default: null,
-      supported: [
-        { icon: 'ng2_routing_ts', extensions: ['routing.ts'], format: 'svg' },
-        { icon: 'ng2_routing_js', extensions: ['routing.js'], format: 'svg' },
-        { icon: 'ng2_routing_ts', extensions: ['app-routing.module.ts'], filename: true, format: 'svg' },
-        { icon: 'ng2_routing_js', extensions: ['app-routing.module.js'], filename: true, format: 'svg' },
-      ],
-    };
-
-    const result = toggleAngular2Preset(true, custom);
-    const ng2group = result.supported
-      .filter(x => x.icon.startsWith('ng2_'));
-    expect(ng2group.length).equals(14);
-    ng2group.forEach(x => {
+    const result = toggleAngularPreset(true, custom);
+    const ngGroup = result.supported
+      .filter(x => x.icon.startsWith('ng_'));
+    expect(ngGroup.length).equals(4);
+    ngGroup.forEach(x => {
       expect(x.disabled).to.be.true;
     });
   });

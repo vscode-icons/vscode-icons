@@ -13,7 +13,7 @@ export const messages = {
   reload: 'Restart to see changes',
   iconCustomizationMessage: 'The icon manifest has been regenerated. Restart for changes to take effect.',
   iconRestoreMessage: 'The icon manifest has been restored. Restart for changes to take effect.',
-  ng2PresetMessage: 'Angular2 support has been set to:',
+  ngPresetMessage: 'Angular2 support has been set to:',
   jsOfficialPresetMessage: 'Official JS icon support has been set to:',
   tsOfficialPresetMessage: 'Official TS icon support has been set to:',
   hideFoldersPresetMessage: 'Folders\' visibility has been set to:',

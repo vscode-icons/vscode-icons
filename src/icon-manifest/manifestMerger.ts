@@ -113,24 +113,11 @@ function mergeSupported(
   return final;
 }
 
-export function toggleAngular2Preset(
+export function toggleAngularPreset(
   disable: boolean,
-  customFiles: IFileCollection): IFileCollection {
-  const icons = [
-    'ng2_component_ts',
-    'ng2_component_js',
-    'ng2_directive_ts',
-    'ng2_directive_js',
-    'ng2_pipe_ts',
-    'ng2_pipe_js',
-    'ng2_service_ts',
-    'ng2_service_js',
-    'ng2_module_ts',
-    'ng2_module_js',
-    'ng2_routing_ts',
-    'ng2_routing_js',
-  ];
-  return togglePreset(disable, icons, customFiles);
+  files: IFileCollection): IFileCollection {
+  const icons = files.supported.filter(x => x.icon.startsWith('ng_')).map(x => x.icon);
+  return togglePreset(disable, icons, files);
 }
 
 export function toggleTypescriptOfficialPreset(

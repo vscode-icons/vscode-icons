@@ -4,7 +4,7 @@ import { messages as msg } from '../messages';
 import {
   IconGenerator,
   mergeConfig,
-  toggleAngular2Preset,
+  toggleAngularPreset,
   toggleJavascriptOfficialPreset,
   toggleTypescriptOfficialPreset,
 } from '../icon-manifest';
@@ -17,7 +17,7 @@ import { toggleHideFoldersPreset } from '../icon-manifest/manifestMerger';
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
   registerCommand(context, 'restoreIcons', restoreDefaultManifestCommand);
-  registerCommand(context, 'ng2Preset', toggleAngular2PresetCommand);
+  registerCommand(context, 'ngPreset', toggleAngularPresetCommand);
   registerCommand(context, 'jsPreset', toggleJsPresetCommand);
   registerCommand(context, 'tsPreset', toggleTsPresetCommand);
   registerCommand(context, 'hideFoldersPreset', toggleHideFoldersCommand);
@@ -52,13 +52,13 @@ function applyCustomizationCommand() {
 }
 
 function restoreDefaultManifestCommand() {
-  generateManifest(null, null);
+  restorManifest();
   showCustomizationMessage(msg.iconRestoreMessage);
 }
 
-function toggleAngular2PresetCommand() {
-  const val = togglePreset('angular2', false);
-  showCustomizationMessage(`${msg.ng2PresetMessage} ${val}`, applyCustomization);
+function toggleAngularPresetCommand() {
+  const val = togglePreset('angular', false);
+  showCustomizationMessage(`${msg.ngPresetMessage} ${val}`, applyCustomization);
 }
 
 function toggleJsPresetCommand() {
@@ -99,19 +99,35 @@ function generateManifest(
   const conf = getConfig().vsicons;
   let workingCustomFiles = customFiles;
   let workingCustomFolders = customFolders;
-  if (customFiles && customFolders) {
+  if (customFiles) {
     // check presets...
-    workingCustomFiles = toggleAngular2Preset(!conf.presets.angular2, customFiles);
+    workingCustomFiles = toggleAngularPreset(!conf.presets.angular, customFiles);
     workingCustomFiles = toggleJavascriptOfficialPreset(!conf.presets.jsOfficial, workingCustomFiles);
     workingCustomFiles = toggleTypescriptOfficialPreset(!conf.presets.tsOfficial, workingCustomFiles);
-    workingCustomFolders = toggleHideFoldersPreset(!conf.presets.hideFolders, workingCustomFolders);
   }
+  if (customFolders) {
+     workingCustomFolders = toggleHideFoldersPreset(!conf.presets.hideFolders, workingCustomFolders);
+  }
+  // presets affecting  default icons
   const workingFolders = toggleHideFoldersPreset(conf.presets.hideFolders, folders);
+  const workingFiles = toggleAngularPreset(!conf.presets.angular, files);
   const json = mergeConfig(
     workingCustomFiles,
-    files,
+    workingFiles,
     workingCustomFolders,
     workingFolders,
+    iconGenerator);
+  iconGenerator.persist('icons.json', json);
+}
+
+function restorManifest() {
+  const iconGenerator = new IconGenerator(vscode, schema);
+  const conf = getConfig().vsicons;
+  const json = mergeConfig(
+    null,
+    files,
+    null,
+    folders,
     iconGenerator);
   iconGenerator.persist('icons.json', json);
 }

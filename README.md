@@ -29,7 +29,7 @@ This is a huge step again to allow the users to fully customize how the icons lo
 
 ----
 ## New Year release
-We're happy to annouce that the extension now **provides custom icons and some icon presets** like `Angular2`, `Official JS Logo`, `Official TS Logo` and `Hide Folders`. With this release you will be able to completely tune the way the icons look! Please, take a look at the corresponding section to know more about how to make this work.
+We're happy to annouce that the extension now **provides custom icons and some icon presets** like `Angular`, `Official JS Logo`, `Official TS Logo` and `Hide Folders`. With this release you will be able to completely tune the way the icons look! Please, take a look at the corresponding section to know more about how to make this work.
 
 Besides that, [@JimiC](https;//github.com/JimiC) along with [@ginfuru](https://github.com/ginfuru) are continuing to contribute to the massive `svg` icon conversion and providing new quality icons.
 
@@ -91,16 +91,16 @@ The extension now provides some specific commands for you to use. Let's talk fir
 ### Presets
 You have 4 different presets at the moment:
 
-- `vsicons.presets.angular2` (true by default)
+- `vsicons.presets.angular` (true by default)
 - `vsicons.presets.jsOfficial` (false by default)
 - `vsicons.presets.tsOfficial` (false by default)
 - `vsicons.presets.hideFolders` (false by default)
 
-These 4 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `project's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular2` preset, for example.
+These 4 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `project's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
 
 These presets can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing down `icons`. You will be presented with some new commands:
 
-- `Toggle Angular2 Preset (Project Level)`: This command will enable/disable the `Angular 2 icons`.
+- `Toggle Angular Preset (Project Level)`: This command will enable/disable the `Angular 2 icons`.
 - `Toggle Official JS Preset (User Level)`: This command will enable/disable the `Official JS icon`.
 - `Toggle Official TS Preset (User Level)`: This command will enable/disable the `Official TS icon`.
 - `Toggle Folder Icons Visibility (User Level)`: This command will enable/disable the `Visibility of the folder icons`.
@@ -108,6 +108,8 @@ These presets can also be automatically set by leveraging a new set of commands 
 Note that some of the `preset commands` will modify your `settings` at a different level. If you choose to modify them manually then you can also choose what `setting` are you going to use.
 
 It's also important to say that if you choose to make a manual modification you will have to execute the `Apply Icons Customization` command *(see below)*.
+
+The `Angular Preset` will affect all icons beginning with `ng_` so you'd better name your custom icons accordingly if you want it to work flawlessly. ;P
 
 ### Fine tuning
 Along with the commands we introduced before you will find two more (just press `F1` and type `icons`):

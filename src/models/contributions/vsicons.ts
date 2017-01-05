@@ -3,7 +3,7 @@ import { IFileExtension, IFolderExtension, IFileDefault, IFolderDefault} from '.
 export interface IVSIcons {
   dontShowNewVersionMessage?: boolean;
   presets: {
-    angular2: boolean;
+    angular: boolean;
     jsOfficial: boolean;
     tsOfficial: boolean;
     hideFolders: boolean;
