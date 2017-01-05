@@ -71,6 +71,11 @@
         "category": "Icons"
       },
       {
+        "command": "extension.hideFoldersPreset",
+        "title": "Toggle Folder Icons Visibility (User Level)",
+        "category": "Icons"
+      },
+      {
         "command": "extension.restoreIcons",
         "title": "Restore Default Icon Manifest",
         "category": "Icons"
@@ -98,6 +103,11 @@
           "type": "boolean",
           "default": false,
           "description": "If set to true the extension will use the official TS icon"
+        },
+        "vsicons.presets.hideFolders": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true all folders will be hidden"
         },
         "vsicons.associations.files": {
           "type": "array",

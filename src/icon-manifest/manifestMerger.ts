@@ -149,11 +149,27 @@ export function toggleJavascriptOfficialPreset(
   return togglePreset(!disable, ['js'], temp);
 }
 
-function togglePreset(
+export function toggleHideFoldersPreset(
+  disable: boolean,
+  folders: IFolderCollection): IFolderCollection {
+  const folderIcons = folders.supported.map(x => x.icon);
+  const collection = togglePreset<IFolderCollection>(disable, folderIcons, folders);
+  if (folders.default.folder) {
+   collection.default.folder.disabled = disable;
+  }
+  if (folders.default.folder_light) {
+    collection.default.folder_light.disabled = disable;
+  }
+  return collection;
+}
+
+// HACK: generics an union types don't work very well :(
+// that's why we had to use IExtensionCollection<> instead of T 
+function togglePreset<T extends IFileCollection | IFolderCollection>(
   disable: boolean,
   icons: string[],
-  customFiles: IFileCollection): IFileCollection {
-  const workingCopy = _.cloneDeep(customFiles);
+  customItems: IExtensionCollection<IExtension>): T {
+  const workingCopy = _.cloneDeep(customItems);
   icons.forEach(icon => {
     const existing = workingCopy.supported.filter(x => x.icon === icon);
     if (!existing.length) {
@@ -162,5 +178,5 @@ function togglePreset(
       existing.forEach(x => { x.disabled = disable; });
     }
   });
-  return workingCopy;
+  return <T> workingCopy;
 }

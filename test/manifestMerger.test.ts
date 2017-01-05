@@ -10,6 +10,7 @@ import {
   toggleAngular2Preset,
   toggleJavascriptOfficialPreset,
   toggleTypescriptOfficialPreset,
+  toggleHideFoldersPreset,
   schema,
 } from '../src/icon-manifest';
 import {
@@ -383,6 +384,13 @@ describe('Presets: merging configuration documents', function () {
     const unofficial = result.supported.find(x => x.icon === 'typescript');
     expect(official.disabled).to.be.false;
     expect(unofficial.disabled).to.be.true;
+  });
+
+  it('ensures hide folders preset hides all folders', function () {
+    const result = toggleHideFoldersPreset(true, folderExtensions);
+    const supported = result.supported.find(x => x.icon === 'aws');
+    expect(supported.disabled).to.be.true;
+    expect(result.default.folder.disabled).to.be.true;
   });
 
 });

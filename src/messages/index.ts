@@ -16,4 +16,5 @@ export const messages = {
   ng2PresetMessage: 'Angular2 support has been set to:',
   jsOfficialPresetMessage: 'Official JS icon support has been set to:',
   tsOfficialPresetMessage: 'Official TS icon support has been set to:',
+  hideFoldersPresetMessage: 'Folders\' visibility has been set to:',
 };

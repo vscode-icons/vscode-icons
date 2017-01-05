@@ -6,6 +6,7 @@ export interface IVSIcons {
     angular2: boolean;
     jsOfficial: boolean;
     tsOfficial: boolean;
+    hideFolders: boolean;
   };
   associations: {
     files: IFileExtension[];
