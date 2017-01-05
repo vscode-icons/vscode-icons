@@ -177,16 +177,17 @@ Along with the previous arrays you will have 4 more settings available that will
 ```
 
 #### Custom Icons
-In order to place your custom icons you will have to create the a specific folder. Depending on your OS the path will be:
+In order to place your custom icons you will have to create a specific folder. Depending on your OS the path will be:
 
 - Windows: `C:\Users\<your_user>\AppData\Roaming\<Code Folder>\vsicons-custom-icons`
 - Linux: `/home/<your_user>/.config/<Code Folder>/User/vsicons-custom-icons`
-- Mac: `/Users/<your_user>/.config/<Code Folder>/User/vsicons-custom-icons`
+- Mac: `/Users/<your_user>/Library/Application Support/<Code Folder>/User/vsicons-custom-icons`
 
+`<Code Folder>` refers to the name of the folder of VSCode depending on the version:
 ```
-<Code Folder> refers to the name of the folder of VSCode depending on the version:
 - `Code` for the stable version.
 - `Code - Insiders` for the insiders version.
+```
 
 Once you have created the folder you can put all your custom icons there. But, again, they have to follow `vscode-icons` naming conventions:
 
