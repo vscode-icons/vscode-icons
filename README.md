@@ -179,7 +179,7 @@ Along with the previous arrays you will have 4 more settings available that will
 #### Custom Icons
 In order to place your custom icons you will have to create the a specific folder. Depending on your OS the path will be:
 
-- Windows: `C:\Users\<your_user>\AppData\Roaming\<Code Folder>\extensions`
+- Windows: `C:\Users\<your_user>\AppData\Roaming\<Code Folder>\vsicons-custom-icons`
 - Linux: `/home/<your_user>/.config/<Code Folder>/User/vsicons-custom-icons`
 - Mac: `/Users/<your_user>/.config/<Code Folder>/User/vsicons-custom-icons`
 

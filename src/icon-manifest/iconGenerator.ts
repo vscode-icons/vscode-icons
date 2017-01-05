@@ -326,7 +326,7 @@ export class IconGenerator implements IIconGenerator {
     return schema;
   }
 
-  private getIconPath(ext: IExtension | IDefaultExtension, defaultPath: string): string {
+  private getIconPath(ext: IDefaultExtension, defaultPath: string): string {
     if (ext._custom) {
       const absPath = path.join(this.settingsManager.getSettings().vscodeAppData, 'vsicons-custom-icons');
       return this.getRelativePath(this.manifestFolderPath, absPath, false);
