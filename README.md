@@ -41,7 +41,7 @@ Finally, I also would like to ask you to raise the possible issues that you may 
 
 ----
 ## New Year release
-We're happy to annouce that the extension now **provides custom icons and some icon presets** like `Angular2`, `Official JS Logo` and `Official TS Logo`. With this release you will be able to completely tune the way the icons look! Please, take a look at the corresponding section to know more about how to make this work.
+We're happy to annouce that the extension now **provides custom icons and some icon presets** like `Angular2`, `Official JS Logo`, `Official TS Logo` and `Hide Folders`. With this release you will be able to completely tune the way the icons look! Please, take a look at the corresponding section to know more about how to make this work.
 
 Besides that, [@JimiC](https;//github.com/JimiC) along with [@ginfuru](https://github.com/ginfuru) are continuing to contribute to the massive `svg` icon conversion and providing new quality icons.
 
@@ -92,7 +92,7 @@ If you want to check which folder icons are currently supported take a look [her
 ## Customizing the extension
 The extension gives you the ability to change how the icons look or even what icons are associated to each extension.
 
-We have exposed the internal API that we are using to build the `icon manifest` so you can also use it in your `vscode settings` and generate it in runtime. This will allow you to customize all the icons, add new ones and so on.
+We have exposed the internal API that we are using to build the `icon manifest` so you can also use it in your `vscode settings` and generate it at runtime. This will allow you to customize all the icons, add new ones and so on.
 
 Although you now have this power, we're encouraging everyone to raise an issue in [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues) in case you find any of your customizations valuable to the rest of the community so we can implement them out of the box.
 
@@ -101,21 +101,25 @@ But, how does this work?
 The extension now provides some specific commands for you to use. Let's talk first about the `presets` and then we're going to talk about how you can fine tune the extension.
 
 ### Presets
-You have 3 different presets at the moment:
+You have 4 different presets at the moment:
 
 - `vsicons.presets.angular2` (true by default)
 - `vsicons.presets.jsOfficial` (false by default)
 - `vsicons.presets.tsOfficial` (false by default)
+- `vsicons.presets.hideFolders` (false by default)
 
-These 3 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set this presets, or for whatever matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `project's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular2` preset.
+These 4 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `project's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular2` preset, for example.
 
-This presets can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing `icons`. You will be presented with some new commands:
+These presets can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing down `icons`. You will be presented with some new commands:
 
 - `Toggle Angular2 Preset (Project Level)`: This command will enable/disable the `Angular 2 icons`.
 - `Toggle Official JS Preset (User Level)`: This command will enable/disable the `Official JS icon`.
 - `Toggle Official TS Preset (User Level)`: This command will enable/disable the `Official TS icon`.
+- `Toggle Folder Icons Visibility (User Level)`: This command will enable/disable the `Visibility of the folder icons`.
 
 Note that some of the `preset commands` will modify your `settings` at a different level. If you choose to modify them manually then you can also choose what `setting` are you going to use.
+
+It's also important to say that if you choose to make a manual modification you will have to execute the `Apply Icons Customization` command *(see below)*.
 
 ### Fine tuning
 Along with the commands we introduced before you will find two more (just press `F1` and type `icons`):
@@ -125,14 +129,29 @@ Along with the commands we introduced before you will find two more (just press 
 
 But before you can even use them you will have to go to your `settings` and make your magic. The settings will provide you 2 different `array items`:
 
-- `vsicons.associations.files`: [IFileExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/IFileExtension.ts)
-- `vsicons.associations.folders`: [IFolderExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/IFolderExtension.ts)
+- `vsicons.associations.files`: [IFileExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/fileExtension.ts)
+- `vsicons.associations.folders`: [IFolderExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/folderExtension.ts)
 
 Each item of the array represents a file or a folder icon. The functionality is the same for `files` and `folders`.
 
 Note that it's important to know what the current [supported file extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts) and [supported folder extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts) are.
 
-**Some examples**
+Along with the previous arrays you will have 4 more settings available that will help you customize how the default icons for files and folders look like:
+
+- `vsicons.associations.fileDefault.file`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
+- `vsicons.associations.fileDefault.file_light`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
+- `vsicons.associations.fileDefault.folder`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
+- `vsicons.associations.fileDefault.folder_light`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
+
+```json
+// this is a very simple interface.
+// your configuration will simply replace the default icon. See Custom Icons sections below.
+"vsicons.associations.fileDefault.file": { "icon": "myfile", "format": "svg" },
+// if you want to disable default icons for folders that will do the trick
+"vsicons.associations.folderDefault.folder": { "icon": "myfile", "format": "svg", "disabled": true }
+```
+
+####  Some examples
 ```json
 // Adding new extensions to an already supported icon.
 // note: the format must match the existing one. If not, it will use the extension you provide.
@@ -167,7 +186,7 @@ Note that it's important to know what the current [supported file extensions / i
 
 ```
 
-**Custom Icons**
+#### Custom Icons
 Unfortunately, `VSCode` doesn't support absolute paths when generating the icons `css`. I'm willing to raise an issue in their repo and submit a PR but in the meantime we've come up with a simple solution.
 
 The idea is that you have to look for your `User folder`:
@@ -180,10 +199,11 @@ and then create a folder there named like this: `robertohuertasm.vscode-icons.cu
 
 - Files: `file_type_<value_of_icon_property>@2x.svg`
 - Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x.svg`
+- Default Files & Folders: `default_<value_of_icon_property>@2x.svg`
 
-Note that folders must have two icons!
+**Note that folders must have two icons!!**
 
-See [here the supported icon extensions]((https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/FileFormat.ts)).
+See [here the supported icon extensions]((https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/fileFormat.ts)).
 
 ## Contributing with icons
 
