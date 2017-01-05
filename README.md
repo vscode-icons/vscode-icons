@@ -188,7 +188,7 @@ In order to place your custom icons you will have to create the a specific folde
 - `Code` for the stable version.
 - `Code - Insiders` for the insiders version.
 
-Once you have created the folder you can put all your custom icons there but, again, they have to follow `vscode-icons` naming conventions:
+Once you have created the folder you can put all your custom icons there. But, again, they have to follow `vscode-icons` naming conventions:
 
 - Files: `file_type_<value_of_icon_property>@2x.svg`
 - Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x.svg`

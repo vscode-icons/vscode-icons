@@ -12,8 +12,7 @@ export function isCodeContext() {
 }
 
 export function pathUnixJoin(...paths: string[]) {
-  const p = path.join(...paths).replace(/\\/g, '/');
-  return p;
+  return path.posix.join(...paths);
 }
 
 export function vscodePath () {
