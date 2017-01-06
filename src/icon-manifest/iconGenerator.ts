@@ -67,7 +67,6 @@ export class IconGenerator implements IIconGenerator {
     hasDefaultLightFolder: boolean = false) {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
-    const suffix = sts.iconSuffix;
     return _.sortBy(folders.supported.filter(x => !x.disabled && x.icon), item => item.icon)
       .reduce((old, current) => {
         const defs = old.defs;
@@ -77,7 +76,18 @@ export class IconGenerator implements IIconGenerator {
         const hasLightVersion = current.light;
         const iconFolderType = `${sts.folderPrefix}${icon}`;
         const iconFolderLightType = `${sts.folderLightPrefix}${icon}`;
-        const fPath = this.getIconPath(current, iconsFolderBasePath);
+        const iconFileExtension = fileFormatToString(current.format);
+        const foldername =
+          `${hasLightVersion
+            ? iconFolderLightType
+            : iconFolderType}
+            ${sts.iconSuffix}${iconFileExtension}`;
+        const openfoldername =
+          `${hasLightVersion
+            ? iconFolderLightType
+            : iconFolderType}_opened${sts.iconSuffix}${iconFileExtension}`;
+        const fPath = this.getIconPath(iconsFolderBasePath, foldername) &&
+          this.getIconPath(iconsFolderBasePath, openfoldername);
         const folderPath = pathUnixJoin(fPath, iconFolderType);
         const folderLightPath = pathUnixJoin(fPath, iconFolderLightType);
         const openFolderPath = `${folderPath}_opened`;
@@ -86,31 +96,29 @@ export class IconGenerator implements IIconGenerator {
         const iconFolderLightDefinition = `${sts.manifestFolderLightPrefix}${icon}`;
         const iconOpenFolderDefinition = `${iconFolderDefinition}_open`;
         const iconOpenFolderLightDefinition = `${iconFolderLightDefinition}_open`;
-        const iconFileExtension = `.${typeof current.format === 'string' ?
-          current.format.trim() : FileFormat[current.format]}`;
 
         defs[iconFolderDefinition] = {
-          iconPath: folderPath + suffix + iconFileExtension,
+          iconPath: folderPath + sts.iconSuffix + iconFileExtension,
         };
         defs[iconOpenFolderDefinition] = {
-          iconPath: openFolderPath + suffix + iconFileExtension,
+          iconPath: openFolderPath + sts.iconSuffix + iconFileExtension,
         };
 
         if (hasDefaultLightFolder && !hasLightVersion) {
           defs[iconFolderLightDefinition] = {
-            iconPath: folderPath + suffix + iconFileExtension,
+            iconPath: folderPath + sts.iconSuffix + iconFileExtension,
           };
           defs[iconOpenFolderLightDefinition] = {
-            iconPath: openFolderPath + suffix + iconFileExtension,
+            iconPath: openFolderPath + sts.iconSuffix + iconFileExtension,
           };
         }
 
         if (hasLightVersion) {
           defs[iconFolderLightDefinition] = {
-            iconPath: folderLightPath + suffix + iconFileExtension,
+            iconPath: folderLightPath + sts.iconSuffix + iconFileExtension,
           };
           defs[iconOpenFolderLightDefinition] = {
-            iconPath: openFolderLightPath + suffix + iconFileExtension,
+            iconPath: openFolderLightPath + sts.iconSuffix + iconFileExtension,
           };
         }
 
@@ -155,27 +163,29 @@ export class IconGenerator implements IIconGenerator {
         const hasLightVersion = current.light;
         const iconFileType = `${sts.filePrefix}${icon}`;
         const iconFileLightType = `${sts.fileLightPrefix}${icon}`;
-        const fPath = this.getIconPath(current, iconsFolderBasePath);
+        const iconFileExtension = fileFormatToString(current.format);
+        const filename =
+          `${hasLightVersion ? iconFileLightType : iconFileType}${sts.iconSuffix}${iconFileExtension}`;
+        const fPath = this.getIconPath(iconsFolderBasePath, filename);
         const filePath = pathUnixJoin(fPath, iconFileType);
         const fileLightPath = pathUnixJoin(fPath, iconFileLightType);
         const iconFileDefinition = `${sts.manifestFilePrefix}${icon}`;
         const iconFileLightDefinition = `${sts.manifestFileLightPrefix}${icon}`;
-        const iconFileExtension = fileFormatToString(current.format);
         const isFilename = current.filename;
 
         defs[iconFileDefinition] = {
-          iconPath: filePath + suffix + iconFileExtension,
+          iconPath: filePath + sts.iconSuffix + iconFileExtension,
         };
 
         if (hasDefaultLightFile && !hasLightVersion) {
           defs[iconFileLightDefinition] = {
-            iconPath: filePath + suffix + iconFileExtension,
+            iconPath: filePath + sts.iconSuffix + iconFileExtension,
           };
         }
 
         if (hasLightVersion) {
           defs[iconFileLightDefinition] = {
-            iconPath: fileLightPath + suffix + iconFileExtension,
+            iconPath: fileLightPath + sts.iconSuffix + iconFileExtension,
           };
         }
 
@@ -238,16 +248,14 @@ export class IconGenerator implements IIconGenerator {
     if (checkDirectory && !fs.existsSync(toDirName)) {
       throw new Error('Directory \'' + toDirName + '\' not found.');
     }
-    return './' +
-      path.relative(fromDirPath, toDirName).replace(/\\/g, '/') +
-      (toDirName.endsWith('/') ? '' : '/');
+
+    const relativePath = path.relative(fromDirPath, toDirName).replace(/\\/g, '/');
+
+    return './' + relativePath + (toDirName.endsWith('/') ? '' : '/');
   }
 
   private removeFirstDot(txt: string): string {
-    if (txt.indexOf('.') === 0) {
-      return txt.substring(1, txt.length);
-    }
-    return txt;
+    return txt.indexOf('.') === 0 ? txt.substring(1, txt.length) : txt;
   }
 
   private buildIconPath(
@@ -261,8 +269,16 @@ export class IconGenerator implements IIconGenerator {
     const iconSuffix = this.settings.extensionSettings.iconSuffix;
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
-    const fPath = this.getIconPath(defaultExtension, iconsFolderBasePath);
-    return pathUnixJoin(fPath, `${defPrefix}${icon}${openSuffix}${iconSuffix}${fileFormatToString(format)}`);
+    const filename = `${defPrefix}${icon}${openSuffix}${iconSuffix}${fileFormatToString(format)}`;
+    const fPath = this.getIconPath(iconsFolderBasePath, filename);
+
+    return pathUnixJoin(fPath, filename);
+  }
+
+  private hasCustomIcon(filename: string): boolean {
+    const relativePath = this.getRelativePath('.', this.settings.extensionSettings.customIconFolderName, false);
+    const fpath = path.posix.join(relativePath, filename);
+    return fs.existsSync(fpath);
   }
 
   private fillDefaultSchema(
@@ -302,7 +318,7 @@ export class IconGenerator implements IIconGenerator {
     folders: IFolderCollection,
     iconsFolderBasePath: string,
     schema: IIconSchema): IIconSchema {
-     // check for light files & folders
+    // check for light files & folders
     const hasDefaultLightFolder =
       schema.iconDefinitions._folder_light.iconPath != null &&
       schema.iconDefinitions._folder_light.iconPath !== '';
@@ -329,8 +345,9 @@ export class IconGenerator implements IIconGenerator {
     return schema;
   }
 
-  private getIconPath(ext: IDefaultExtension, defaultPath: string): string {
-    if (ext._custom) {
+  private getIconPath(defaultPath: string, filename: string): string {
+    const isCustom = this.hasCustomIcon(filename);
+    if (isCustom) {
       const absPath = path.join(this.settingsManager.getSettings().vscodeAppData,
         this.settings.extensionSettings.customIconFolderName);
       return this.getRelativePath(this.manifestFolderPath, absPath, false);

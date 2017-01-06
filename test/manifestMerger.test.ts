@@ -1,4 +1,6 @@
 // tslint:disable only-arrow-functions
+import * as fs from 'fs';
+import * as path from 'path';
 import { expect } from 'chai';
 import { extensions as fileExtensions } from './support/supportedExtensions';
 import { extensions as folderExtensions } from './support/supportedFolders';
@@ -17,8 +19,23 @@ import {
   IFileCollection,
   IFolderCollection,
 } from '../src/models';
+import { deleteDirectoryRecursively, tempPath } from '../src/utils';
 
 let iconGenerator: IconGenerator;
+
+before(() => {
+  // ensure the tests write to the temp folder
+  process.chdir(tempPath());
+  if (fs.existsSync(extensionSettings.customIconFolderName)) {
+    return;
+  }
+
+  fs.mkdir(extensionSettings.customIconFolderName);
+});
+
+after(() => {
+  deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+});
 
 beforeEach(() => {
   iconGenerator = new IconGenerator(vscode, schema);
@@ -38,7 +55,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(def).exist;
     expect(def.iconPath).exist;
     expect(json.fileExtensions['as2']).equals('_f_actionscript');
-    expect(def.iconPath.substr(def.iconPath.length - 3, 3)).equal('svg');
+    expect(path.extname(def.iconPath)).equal('.svg');
   });
 
   it('ensures overrides removes the specified extension', function () {
@@ -117,7 +134,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(json.languageIds['newlang']).equals('_f_actionscript');
   });
 
-  it('ensures _custom icon keeps the correct extension', function () {
+  it('ensures custom icon keeps the correct extension', function () {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -134,7 +151,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
   });
 
-  it('ensures _custom icons have a custom path', function () {
+  it('ensures custom icons have a custom path', function () {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -145,11 +162,21 @@ describe('FileExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-    const icon = json.iconDefinitions['_f_custom_icon'];
-    expect(icon).exist;
-    expect(icon.iconPath).contains(extensionSettings.customIconFolderName);
-    expect(json.fileExtensions['custom']).equals('_f_custom_icon');
+    const iconName =
+      `${extensionSettings.filePrefix}${custom.supported[0].icon}` +
+      `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+
+    try {
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
+
+      const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
+      const icon = json.iconDefinitions['_f_custom_icon'];
+      expect(icon).exist;
+      expect(icon.iconPath).contains(extensionSettings.customIconFolderName);
+      expect(json.fileExtensions['custom']).equals('_f_custom_icon');
+    } finally {
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
+    }
   });
 
 });
@@ -233,7 +260,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(json.folderNames['aws']).equals('_fd_newExt');
   });
 
-  it('ensures _custom icon keeps the correct extension', function () {
+  it('ensures custom icon keeps the correct extension', function () {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -250,7 +277,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
   });
 
-  it('ensures _custom icons have a custom path', function () {
+  it('ensures custom icons have a custom path', function () {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -261,12 +288,27 @@ describe('FolderExtensions: merging configuration documents', function () {
         },
       ],
     };
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
-    const icon = json.iconDefinitions['_fd_custom_icon'];
-    expect(icon).exist;
-    expect(icon.iconPath).contains(extensionSettings.customIconFolderName);
-    expect(json.folderNames['custom']).equals('_fd_custom_icon');
-    expect(json.folderNamesExpanded['custom']).equals('_fd_custom_icon_open');
+    const iconName =
+      `${extensionSettings.folderPrefix}${custom.supported[0].icon}` +
+      `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+    const iconNameOpen =
+      `${extensionSettings.folderPrefix}${custom.supported[0].icon}_opened` +
+      `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+
+    try {
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconNameOpen), '');
+
+      const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
+      const icon = json.iconDefinitions['_fd_custom_icon'];
+      expect(icon).exist;
+      expect(icon.iconPath).contains(extensionSettings.customIconFolderName);
+      expect(json.folderNames['custom']).equals('_fd_custom_icon');
+      expect(json.folderNamesExpanded['custom']).equals('_fd_custom_icon_open');
+    } finally {
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconNameOpen));
+    }
   });
 
 });
@@ -347,20 +389,29 @@ describe('Presets: merging configuration documents', function () {
 describe('DefaultExtensions: merging configuration documents', function () {
 
   it('ensures default file icons can be added', function () {
+
     const custom: IFileCollection = {
       default: {
         file_light: { icon: 'customIconLight', format: 'svg' },
       },
       supported: [],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-    const def = json.iconDefinitions._file_light;
-    const iconSuffix = extensionSettings.iconSuffix;
-    const iconName = `${extensionSettings.defaultExtensionPrefix}customIconLight${iconSuffix}.svg`;
-    expect(def).exist;
-    expect(def.iconPath).exist;
-    expect(def.iconPath).contain(iconName);
-    expect(def.iconPath).contain(extensionSettings.customIconFolderName);
+    const iconName =
+      `${extensionSettings.defaultExtensionPrefix}${custom.default.file_light.icon}` +
+      `${extensionSettings.iconSuffix}.${custom.default.file_light.format}`;
+
+    try {
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
+
+      const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
+      const def = json.iconDefinitions._file_light;
+      expect(def).exist;
+      expect(def.iconPath).exist;
+      expect(def.iconPath).contain(iconName);
+      expect(def.iconPath).contain(extensionSettings.customIconFolderName);
+    } finally {
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
+    }
   });
 
   it('ensures default folder icons can be added', function () {
@@ -370,21 +421,34 @@ describe('DefaultExtensions: merging configuration documents', function () {
       },
       supported: [],
     };
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
-    const def = json.iconDefinitions._folder_light;
-    const defOpen = json.iconDefinitions._folder_light_open;
-    const iconSuffix = extensionSettings.iconSuffix;
-    const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
-    const iconName = `${defaultExtensionPrefix}customIconLight${iconSuffix}.svg`;
-    const iconNameOpen = `${defaultExtensionPrefix}customIconLight_opened${iconSuffix}.svg`;
-    expect(def).exist;
-    expect(defOpen).exist;
-    expect(def.iconPath).exist;
-    expect(defOpen.iconPath).exist;
-    expect(def.iconPath).contain(iconName);
-    expect(defOpen.iconPath).contain(iconNameOpen);
-    expect(def.iconPath).contain(extensionSettings.customIconFolderName);
-    expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
+    const iconName =
+      `${extensionSettings.defaultExtensionPrefix}${custom.default.folder_light.icon}` +
+      `${extensionSettings.iconSuffix}.${custom.default.folder_light.format}`;
+    const iconNameOpen =
+      `${extensionSettings.defaultExtensionPrefix}${custom.default.folder_light.icon}_opened` +
+      `${extensionSettings.iconSuffix}.${custom.default.folder_light.format}`;
+
+    try {
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconNameOpen), '');
+
+      const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
+      const def = json.iconDefinitions._folder_light;
+      const defOpen = json.iconDefinitions._folder_light_open;
+      const iconSuffix = extensionSettings.iconSuffix;
+      const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
+      expect(def).exist;
+      expect(defOpen).exist;
+      expect(def.iconPath).exist;
+      expect(defOpen.iconPath).exist;
+      expect(def.iconPath).contain(iconName);
+      expect(defOpen.iconPath).contain(iconNameOpen);
+      expect(def.iconPath).contain(extensionSettings.customIconFolderName);
+      expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
+    } finally {
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconNameOpen));
+    }
   });
 
   it('ensures default file icons can be overriden', function () {
@@ -394,15 +458,24 @@ describe('DefaultExtensions: merging configuration documents', function () {
       },
       supported: [],
     };
-    const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-    const def = json.iconDefinitions._file;
-    const iconSuffix = extensionSettings.iconSuffix;
-    const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
-    const iconName = `${defaultExtensionPrefix}customIcon${iconSuffix}.svg`;
-    expect(def).exist;
-    expect(def.iconPath).exist;
-    expect(def.iconPath).contain(iconName);
-    expect(def.iconPath).contain(extensionSettings.customIconFolderName);
+    const iconName =
+      `${extensionSettings.defaultExtensionPrefix}${custom.default.file.icon}` +
+      `${extensionSettings.iconSuffix}.${custom.default.file.format}`;
+
+    try {
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
+
+      const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
+      const def = json.iconDefinitions._file;
+      const iconSuffix = extensionSettings.iconSuffix;
+      const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
+      expect(def).exist;
+      expect(def.iconPath).exist;
+      expect(def.iconPath).contain(iconName);
+      expect(def.iconPath).contain(extensionSettings.customIconFolderName);
+    } finally {
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
+    }
   });
 
   it('ensures default folder icons can be overriden', function () {
@@ -412,21 +485,34 @@ describe('DefaultExtensions: merging configuration documents', function () {
       },
       supported: [],
     };
-    const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
-    const def = json.iconDefinitions._folder;
-    const defOpen = json.iconDefinitions._folder_open;
-    const iconSuffix = extensionSettings.iconSuffix;
-    const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
-    const iconName = `${defaultExtensionPrefix}customIcon${iconSuffix}.svg`;
-    const iconNameOpen = `${defaultExtensionPrefix}customIcon_opened${iconSuffix}.svg`;
-    expect(def).exist;
-    expect(defOpen).exist;
-    expect(def.iconPath).exist;
-    expect(defOpen.iconPath).exist;
-    expect(def.iconPath).contain(iconName);
-    expect(defOpen.iconPath).contain(iconNameOpen);
-    expect(def.iconPath).contain(extensionSettings.customIconFolderName);
-    expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
+    const iconName =
+      `${extensionSettings.defaultExtensionPrefix}${custom.default.folder.icon}` +
+      `${extensionSettings.iconSuffix}.${custom.default.folder.format}`;
+    const iconNameOpen =
+      `${extensionSettings.defaultExtensionPrefix}${custom.default.folder.icon}_opened` +
+      `${extensionSettings.iconSuffix}.${custom.default.folder.format}`;
+
+    try {
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
+      fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconNameOpen), '');
+
+      const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
+      const def = json.iconDefinitions._folder;
+      const defOpen = json.iconDefinitions._folder_open;
+      const iconSuffix = extensionSettings.iconSuffix;
+      const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
+      expect(def).exist;
+      expect(defOpen).exist;
+      expect(def.iconPath).exist;
+      expect(defOpen.iconPath).exist;
+      expect(def.iconPath).contain(iconName);
+      expect(defOpen.iconPath).contain(iconNameOpen);
+      expect(def.iconPath).contain(extensionSettings.customIconFolderName);
+      expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
+    } finally {
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
+      fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconNameOpen));
+    }
   });
 
   it('ensures default file icons can be disabled', function () {

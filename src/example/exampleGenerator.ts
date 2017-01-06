@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
+import { deleteDirectoryRecursively } from '../utils';
 
 const supportedFlags = ['--all', '--folders', '--files'];
 
@@ -28,25 +29,6 @@ const fileNames = files.supported.reduce((init, current) => {
 
   return obj;
 }, {});
-
-/**
- * Deletes a directory and all subdirectories
- *
- * @param {any} path The directory's path
- */
-function deleteDirectoryRecursively(path) {
-  if (fs.existsSync(path)) {
-    fs.readdirSync(path).forEach(file => {
-      const curPath = path + '/' + file;
-      if (fs.lstatSync(curPath).isDirectory()) { // recurse
-        deleteDirectoryRecursively(curPath);
-      } else { // delete file
-        fs.unlinkSync(curPath);
-      }
-    });
-    fs.rmdirSync(path);
-  }
-}
 
 /**
  * Creates a directory if it doesn't exists.
