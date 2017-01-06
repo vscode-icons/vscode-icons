@@ -122,7 +122,6 @@ function generateManifest(
 
 function restorManifest() {
   const iconGenerator = new IconGenerator(vscode, schema);
-  const conf = getConfig().vsicons;
   const json = mergeConfig(
     null,
     files,

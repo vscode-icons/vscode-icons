@@ -239,7 +239,7 @@ export class IconGenerator implements IIconGenerator {
       throw new Error('Directory \'' + toDirName + '\' not found.');
     }
     return './' +
-      path.relative(fromDirPath, toDirName).replace(/\\/g, '/') +
+      path.posix.relative(fromDirPath, toDirName) +
       (toDirName.endsWith('/') ? '' : '/');
   }
 
@@ -331,7 +331,8 @@ export class IconGenerator implements IIconGenerator {
 
   private getIconPath(ext: IDefaultExtension, defaultPath: string): string {
     if (ext._custom) {
-      const absPath = path.join(this.settingsManager.getSettings().vscodeAppData, 'vsicons-custom-icons');
+      const absPath = path.join(this.settingsManager.getSettings().vscodeAppData,
+        this.settings.extensionSettings.customIconFolderName);
       return this.getRelativePath(this.manifestFolderPath, absPath, false);
     }
     return defaultPath;
