@@ -10,4 +10,4 @@ import { schema } from './defaultSchema';
 // Default directory is the 'root' directory
 const iconGenerator = new IconGenerator(vscode, schema);
 const json = iconGenerator.generateJson(files, folders);
-iconGenerator.persist('icons.json', json);
+iconGenerator.persist('icons.json', json, null, true);

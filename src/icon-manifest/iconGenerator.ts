@@ -48,14 +48,17 @@ export class IconGenerator implements IIconGenerator {
   public persist(
     iconsFilename: string,
     json: IIconSchema,
-    outDir: string = null): void {
+    outDir?: string,
+    updatePackageJson?: boolean): void {
     const outputDir = this.cleanOutDir(outDir || this.manifestFolderPath);
     if (iconsFilename == null) {
       throw new Error('iconsFilename not defined.');
     }
     this.writeJsonToFile(json, iconsFilename, outputDir);
-    const pathForPackageJson = `${this.cleanOutDir(this.getRelativePath('.', outputDir))}${iconsFilename}`;
-    this.updatePackageJson(pathForPackageJson);
+    if (updatePackageJson) {
+      const pathForPackageJson = `${this.cleanOutDir(this.getRelativePath('.', outputDir))}${iconsFilename}`;
+      this.updatePackageJson(pathForPackageJson);
+    }
   }
 
   private buildFolders(

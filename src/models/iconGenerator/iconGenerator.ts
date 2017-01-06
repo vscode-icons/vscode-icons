@@ -15,5 +15,6 @@ export interface IIconGenerator {
   persist(
     iconsFilename: string,
     json: IIconSchema,
-    outDir?: string): void;
+    outDir?: string,
+    updatePackageJson?: boolean): void;
 }
