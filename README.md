@@ -19,7 +19,7 @@ I would also like to thank the whole community for their support: bringing in id
 
 ### State of the extension
 
-** Release 5.0.0 introduces the ability for users to customize the icons without having to inject anything into the `Visual Studio Code's code`.** 
+**Release 5.0.0 introduces the ability for users to customize the icons without having to inject anything into the `Visual Studio Code's code`.** 
 
 This is a huge step again to allow the users to fully customize how the icons look like and how they can be associated to any extension at will.
 
@@ -96,11 +96,11 @@ You have 4 different presets at the moment:
 - `vsicons.presets.tsOfficial` (false by default)
 - `vsicons.presets.hideFolders` (false by default)
 
-These 4 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `project's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
+These 4 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `workspace's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
 
 These presets can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing down `icons`. You will be presented with some new commands:
 
-- `Toggle Angular Preset (Project Level)`: This command will enable/disable the `Angular 2 icons`.
+- `Toggle Angular Preset (Workspace Level)`: This command will enable/disable the `Angular icons`.
 - `Toggle Official JS Preset (User Level)`: This command will enable/disable the `Official JS icon`.
 - `Toggle Official TS Preset (User Level)`: This command will enable/disable the `Official TS icon`.
 - `Toggle Folder Icons Visibility (User Level)`: This command will enable/disable the `Visibility of the folder icons`.
@@ -179,7 +179,7 @@ Along with the previous arrays you will have 4 more settings available that will
 #### Custom Icons
 In order to place your custom icons you will have to create a specific folder. Depending on your OS the path will be:
 
-- Windows: `C:\Users\<your_user>\AppData\Roaming\<Code Folder>\vsicons-custom-icons`
+- Windows: `C:\Users\<your_user>\AppData\Roaming\<Code Folder>\User\vsicons-custom-icons`
 - Linux: `/home/<your_user>/.config/<Code Folder>/User/vsicons-custom-icons`
 - Mac: `/Users/<your_user>/Library/Application Support/<Code Folder>/User/vsicons-custom-icons`
 

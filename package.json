@@ -57,7 +57,7 @@
       },
       {
         "command": "extension.ngPreset",
-        "title": "Toggle Angular Preset (Project Level)",
+        "title": "Toggle Angular Preset (Workspace Level)",
         "category": "Icons"
       },
       {
