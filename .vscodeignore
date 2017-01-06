@@ -5,6 +5,7 @@ test/**
 src/**
 **/*.map
 out/test/**
+out/src/example/**
 typings/**
 examples/**
 images/*.psd
