@@ -239,7 +239,7 @@ export class IconGenerator implements IIconGenerator {
       throw new Error('Directory \'' + toDirName + '\' not found.');
     }
     return './' +
-      path.posix.relative(fromDirPath, toDirName) +
+      path.relative(fromDirPath, toDirName).replace(/\\/g, '/') +
       (toDirName.endsWith('/') ? '' : '/');
   }
 
