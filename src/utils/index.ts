@@ -15,7 +15,7 @@ export function pathUnixJoin(...paths: string[]) {
   return path.posix.join(...paths);
 }
 
-export function vscodePath () {
+export function vscodePath() {
   let appPath = process.env.APPDATA;
   if (!appPath) {
     if (process.platform === 'darwin') {
