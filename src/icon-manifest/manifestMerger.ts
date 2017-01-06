@@ -67,7 +67,7 @@ function mergeSupported(
     if (officialFiles.length) {
       // existing icon
       // checking if the icon is disabled
-      if (file.disabled != null) {
+      if (file.disabled !== null || file.disabled !== undefined) {
         officialFiles.forEach(x => { x.disabled = file.disabled; });
         if (file.disabled) { return; }
       }

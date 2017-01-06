@@ -88,7 +88,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(newPath).exist;
     expect(json.fileExtensions['as']).equal('_f_newExt');
     expect(json.fileExtensions['mynew']).equal('_f_newExt');
-    expect(newPath.substr(newPath.length - 3, 3)).not.equals('svg');
+    expect(path.extname(newPath)).not.equals('.svg');
   });
 
   it('ensures disabled extensions are not included into the manifest', function () {
