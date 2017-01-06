@@ -4,9 +4,8 @@
 test/**
 src/**
 **/*.map
-out/src/build-tools/**
-out/src/models/**
 out/test/**
+out/src/example/**
 typings/**
 examples/**
 images/*.psd
