@@ -39,7 +39,7 @@ export class SettingsManager implements ISettingsManager {
     const vars = this.getSettings();
     try {
       const state = fs.readFileSync(vars.settingsPath, 'utf8');
-      return <IState> JSON.parse(state);
+      return JSON.parse(state) as IState;
     } catch (error) {
       return {
         version: '0',

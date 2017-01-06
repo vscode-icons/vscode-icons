@@ -24,9 +24,9 @@ beforeEach(() => {
   iconGenerator = new IconGenerator(vscode, schema);
 });
 
-describe('FileExtensions: merging configuration documents', function () {
+describe('FileExtensions: merging configuration documents', function() {
 
-  it('ensures new extensions are added to existing file extension and respect the extension type', function () {
+  it('ensures new extensions are added to existing file extension and respect the extension type', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -41,7 +41,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(def.iconPath.substr(def.iconPath.length - 3, 3)).equal('svg');
   });
 
-  it('ensures overrides removes the specified extension', function () {
+  it('ensures overrides removes the specified extension', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -56,7 +56,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(newPath).exist;
   });
 
-  it('ensures extends replaces the extension', function () {
+  it('ensures extends replaces the extension', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -74,7 +74,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(newPath.substr(newPath.length - 3, 3)).not.equals('svg');
   });
 
-  it('ensures disabled extensions are not included into the manifest', function () {
+  it('ensures disabled extensions are not included into the manifest', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -87,7 +87,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(json.iconDefinitions['_f_newExt']).not.to.exist;
   });
 
-  it('ensures existing extensions are removed from the original Extension', function () {
+  it('ensures existing extensions are removed from the original Extension', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -100,7 +100,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(json.fileExtensions['o']).equals('_f_newExt');
   });
 
-  it('ensures existing extensions accept languageId', function () {
+  it('ensures existing extensions accept languageId', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -117,7 +117,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(json.languageIds['newlang']).equals('_f_actionscript');
   });
 
-  it('ensures _custom icon keeps the correct extension', function () {
+  it('ensures _custom icon keeps the correct extension', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -134,7 +134,7 @@ describe('FileExtensions: merging configuration documents', function () {
     expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
   });
 
-  it('ensures _custom icons have a custom path', function () {
+  it('ensures _custom icons have a custom path', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -154,9 +154,9 @@ describe('FileExtensions: merging configuration documents', function () {
 
 });
 
-describe('FolderExtensions: merging configuration documents', function () {
+describe('FolderExtensions: merging configuration documents', function() {
 
-  it('ensures new extensions are added to existing file extension and respect the extension type', function () {
+  it('ensures new extensions are added to existing file extension and respect the extension type', function() {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -173,7 +173,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(def.iconPath.substr(def.iconPath.length - 3, 3)).equal('svg');
   });
 
-  it('ensures overrides removes the specified extension', function () {
+  it('ensures overrides removes the specified extension', function() {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -188,7 +188,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(newPath).exist;
   });
 
-  it('ensures extends replaces the extension', function () {
+  it('ensures extends replaces the extension', function() {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -208,7 +208,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(newPath.substr(newPath.length - 3, 3)).not.equals('svg');
   });
 
-  it('ensures disabled extensions are not included into the manifest', function () {
+  it('ensures disabled extensions are not included into the manifest', function() {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -221,7 +221,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(json.iconDefinitions['_fd_newExt']).not.to.exist;
   });
 
-  it('ensures existing extensions are removed from the original Extension', function () {
+  it('ensures existing extensions are removed from the original Extension', function() {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -233,7 +233,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(json.folderNames['aws']).equals('_fd_newExt');
   });
 
-  it('ensures _custom icon keeps the correct extension', function () {
+  it('ensures _custom icon keeps the correct extension', function() {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -250,7 +250,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
   });
 
-  it('ensures _custom icons have a custom path', function () {
+  it('ensures _custom icons have a custom path', function() {
     const custom: IFolderCollection = {
       default: null,
       supported: [
@@ -271,9 +271,9 @@ describe('FolderExtensions: merging configuration documents', function () {
 
 });
 
-describe('Presets: merging configuration documents', function () {
+describe('Presets: merging configuration documents', function() {
 
-  it('ensures angular extensions are disabled', function () {
+  it('ensures angular extensions are disabled', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [],
@@ -287,7 +287,7 @@ describe('Presets: merging configuration documents', function () {
     });
   });
 
-  it('ensures all angular extensions are disabled even if duplicity is present', function () {
+  it('ensures all angular extensions are disabled even if duplicity is present', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [
@@ -307,7 +307,7 @@ describe('Presets: merging configuration documents', function () {
     });
   });
 
-  it('ensures js official extension is enabled', function () {
+  it('ensures js official extension is enabled', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [],
@@ -319,7 +319,7 @@ describe('Presets: merging configuration documents', function () {
     expect(unofficial.disabled).to.be.true;
   });
 
-  it('ensures ts official extension is enabled', function () {
+  it('ensures ts official extension is enabled', function() {
     const custom: IFileCollection = {
       default: null,
       supported: [],
@@ -335,7 +335,7 @@ describe('Presets: merging configuration documents', function () {
     expect(unofficialDef.disabled).to.be.true;
   });
 
-  it('ensures hide folders preset hides all folders', function () {
+  it('ensures hide folders preset hides all folders', function() {
     const result = toggleHideFoldersPreset(true, folderExtensions);
     const supported = result.supported.find(x => x.icon === 'aws');
     expect(supported.disabled).to.be.true;
@@ -344,9 +344,9 @@ describe('Presets: merging configuration documents', function () {
 
 });
 
-describe('DefaultExtensions: merging configuration documents', function () {
+describe('DefaultExtensions: merging configuration documents', function() {
 
-  it('ensures default file icons can be added', function () {
+  it('ensures default file icons can be added', function() {
     const custom: IFileCollection = {
       default: {
         file_light: { icon: 'customIconLight', format: 'svg' },
@@ -363,7 +363,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
     expect(def.iconPath).contain(extensionSettings.customIconFolderName);
   });
 
-  it('ensures default folder icons can be added', function () {
+  it('ensures default folder icons can be added', function() {
     const custom: IFolderCollection = {
       default: {
         folder_light: { icon: 'customIconLight', format: 'svg' },
@@ -387,7 +387,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
     expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
   });
 
-  it('ensures default file icons can be overriden', function () {
+  it('ensures default file icons can be overriden', function() {
     const custom: IFileCollection = {
       default: {
         file: { icon: 'customIcon', format: 'svg' },
@@ -405,7 +405,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
     expect(def.iconPath).contain(extensionSettings.customIconFolderName);
   });
 
-  it('ensures default folder icons can be overriden', function () {
+  it('ensures default folder icons can be overriden', function() {
     const custom: IFolderCollection = {
       default: {
         folder: { icon: 'customIcon', format: 'svg' },
@@ -429,7 +429,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
     expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
   });
 
-  it('ensures default file icons can be disabled', function () {
+  it('ensures default file icons can be disabled', function() {
     const custom: IFileCollection = {
       default: {
         file: { icon: '', format: 'svg', disabled: true },
@@ -442,7 +442,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
     expect(def.iconPath).to.be.empty;
   });
 
-  it('ensures default folder icons can be disabled', function () {
+  it('ensures default folder icons can be disabled', function() {
     const custom: IFolderCollection = {
       default: {
         folder: { icon: 'customIcon', format: 'svg', disabled: true },

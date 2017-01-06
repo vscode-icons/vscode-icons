@@ -163,5 +163,5 @@ function togglePreset<T extends IFileCollection | IFolderCollection>(
       existing.forEach(x => { x.disabled = disable; });
     }
   });
-  return <T> workingCopy;
+  return workingCopy as T;
 }
