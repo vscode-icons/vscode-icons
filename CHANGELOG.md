@@ -1,5 +1,19 @@
 # Change Log
 
+## 5.0.0 (January 10, 2016)
+  - Enhancement: new batch of svg icons. ([@ginfuru](https://github.com/ginfuru) in [#602](https://github.com/robertohuertasm/vscode-icons/pull/602))
+  - Enhancement: BridleNSIS support. ([@idleberg](https://github.com/idleberg) in [#599](https://github.com/robertohuertasm/vscode-icons/pull/599))
+  - Enhancement: `docker-cloud.yml` support. ([@patrikulus](https://github.com/patrikulus) in [#597](https://github.com/robertohuertasm/vscode-icons/pull/597))
+  - Feature: Support for user customization. ([@robertohuertasm](https://github.com/robertohuertasm) in [#596](https://github.com/robertohuertasm/vscode-icons/pull/596))
+  - Enhancement: min.map and js folder support. ([@JimiC](https://github.com/JimiC) in [#595](https://github.com/robertohuertasm/vscode-icons/pull/595))
+  - Enhancement: new batch of svg icons. ([@JimiC](https://github.com/JimiC) in [#594](https://github.com/robertohuertasm/vscode-icons/pull/594))
+  - Enhancement: new test case. ([@JimiC](https://github.com/JimiC) in [#590](https://github.com/robertohuertasm/vscode-icons/pull/590))
+  - Feature: extending icon format support for `jpg`, `gif`, `bmp`, `tiff` and `ico`. ([@JimiC](https://github.com/JimiC) in [#589](https://github.com/robertohuertasm/vscode-icons/pull/589))
+  - Enhancement: new batch of svg icons. ([@JimiC](https://github.com/JimiC) in [#588](https://github.com/robertohuertasm/vscode-icons/pull/588))
+  - Enhancement: npm test script now forces compilation before testing. ([@JimiC](https://github.com/JimiC) in [#587](https://github.com/robertohuertasm/vscode-icons/pull/587))
+  - Feature: aws and ealstibeanstalk support. ([@JimiC](https://github.com/JimiC) in [#586](https://github.com/robertohuertasm/vscode-icons/pull/586))
+  - Fix: Readme bad links corrected. ([@dustinsanders](https://github.com/dustinsanders) in [#582](https://github.com/robertohuertasm/vscode-icons/pull/582))
+
 ## 4.3.0 (December 25, 2016)
   - Enhancement: Typescript is now used in the project. ([@robertohuertasm](https://github.com/robertohuertasm) in [#578](https://github.com/robertohuertasm/vscode-icons/pull/578), [#579](https://github.com/robertohuertasm/vscode-icons/pull/579) & [#580](https://github.com/robertohuertasm/vscode-icons/pull/580))
   - Fix: Angular2 icons restored. ([@robertohuertasm](https://github.com/robertohuertasm) in [#577](https://github.com/robertohuertasm/vscode-icons/pull/577))
