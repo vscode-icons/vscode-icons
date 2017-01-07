@@ -4,15 +4,16 @@ import { messages as msg } from '../messages';
 import {
   IconGenerator,
   mergeConfig,
+  schema,
   toggleAngularPreset,
   toggleJavascriptOfficialPreset,
   toggleTypescriptOfficialPreset,
+  toggleHideFoldersPreset,
 } from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
 import { IFileCollection, IFolderCollection, IVSIcons, IFileDefault, IFolderDefault } from '../models/';
-import { schema } from '../icon-manifest';
-import { toggleHideFoldersPreset } from '../icon-manifest/manifestMerger';
+import { extensionSettings } from '../settings';
 
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
@@ -131,7 +132,7 @@ function generateManifest(
     workingCustomFolders,
     workingFolders,
     iconGenerator);
-  iconGenerator.persist('icons.json', json);
+  iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }
 
 function restoreManifest() {
@@ -142,5 +143,5 @@ function restoreManifest() {
     null,
     folders,
     iconGenerator);
-  iconGenerator.persist('icons.json', json);
+  iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }

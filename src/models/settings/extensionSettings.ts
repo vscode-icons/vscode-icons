@@ -1,5 +1,6 @@
 export interface IExtensionSettings {
   version: string;
+  iconJsonFileName: string;
   iconSuffix: string;
   filePrefix: string;
    fileLightPrefix: string;
