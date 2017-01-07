@@ -46,7 +46,7 @@
       {
         "id": "vscode-icons",
         "label": "VSCode Icons",
-        "path": "./out/src/icons.json"
+        "path": "out/src/icons.json"
       }
     ],
     "commands": [

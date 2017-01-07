@@ -30,31 +30,27 @@ export class IconGenerator implements IIconGenerator {
   constructor(private vscode: IVSCode, private defaultSchema: IIconSchema) {
     this.settings = new SettingsManager(vscode).getSettings();
     // relative to this file
-    this.iconsFolderPath = path.join(__dirname, '../../../icons');
-    this.manifestFolderPath = path.join(__dirname, '../../../out/src');
+    this.iconsFolderPath = path.join(__dirname, '../../../', 'icons');
+    this.manifestFolderPath = path.join(__dirname, '../../../', 'out/src');
   }
 
   public generateJson(
     files: IFileCollection,
-    folders: IFolderCollection,
-    outDir: string = null): IIconSchema {
-    const outputDir = this.cleanOutDir(outDir || this.manifestFolderPath);
-    const iconsFolderBasePath = this.getRelativePath(outputDir, this.iconsFolderPath);
+    folders: IFolderCollection): IIconSchema {
+    const iconsFolderBasePath = this.getRelativePath(this.manifestFolderPath, this.iconsFolderPath);
     return this.fillDefaultSchema(files, folders, iconsFolderBasePath, this.defaultSchema);
   }
 
   public persist(
     iconsFilename: string,
     json: IIconSchema,
-    outDir?: string,
     updatePackageJson?: boolean): void {
-    const outputDir = this.cleanOutDir(outDir || this.manifestFolderPath);
     if (iconsFilename == null) {
       throw new Error('iconsFilename not defined.');
     }
-    this.writeJsonToFile(json, iconsFilename, outputDir);
+    this.writeJsonToFile(json, iconsFilename, this.manifestFolderPath);
     if (updatePackageJson) {
-      const pathForPackageJson = `${this.cleanOutDir(this.getRelativePath('.', outputDir))}${iconsFilename}`;
+      const pathForPackageJson = `${this.getRelativePath('.', this.manifestFolderPath)}${iconsFilename}`;
       this.updatePackageJson(pathForPackageJson);
     }
   }
@@ -256,7 +252,7 @@ export class IconGenerator implements IIconGenerator {
 
     const relativePath = path.relative(fromDirPath, toDirName).replace(/\\/g, '/');
 
-    return './' + relativePath + (toDirName.endsWith('/') ? '' : '/');
+    return `${relativePath}${(relativePath.endsWith('/') ? '' : '/')}`;
   }
 
   private removeFirstDot(txt: string): string {
