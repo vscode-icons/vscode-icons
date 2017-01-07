@@ -78,22 +78,25 @@ export class IconGenerator implements IIconGenerator {
         const foldername =
           `${hasLightVersion
             ? iconFolderLightType
-            : iconFolderType}
-            ${sts.iconSuffix}${iconFileExtension}`;
+            : iconFolderType}${sts.iconSuffix}${iconFileExtension}`;
         const openfoldername =
           `${hasLightVersion
             ? iconFolderLightType
             : iconFolderType}_opened${sts.iconSuffix}${iconFileExtension}`;
-        const fPath = this.getIconPath(iconsFolderBasePath, foldername) &&
-          this.getIconPath(iconsFolderBasePath, openfoldername);
-        const folderPath = pathUnixJoin(fPath, iconFolderType);
-        const folderLightPath = pathUnixJoin(fPath, iconFolderLightType);
+        const folderIconPath = this.getIconPath(iconsFolderBasePath, foldername);
+        const openFolderIconPath = this.getIconPath(iconsFolderBasePath, openfoldername);
+        const folderPath = pathUnixJoin(folderIconPath, iconFolderType);
+        const folderLightPath = pathUnixJoin(folderIconPath, iconFolderLightType);
         const openFolderPath = `${folderPath}_opened`;
         const openFolderLightPath = `${folderLightPath}_opened`;
         const iconFolderDefinition = `${sts.manifestFolderPrefix}${icon}`;
         const iconFolderLightDefinition = `${sts.manifestFolderLightPrefix}${icon}`;
         const iconOpenFolderDefinition = `${iconFolderDefinition}_open`;
         const iconOpenFolderLightDefinition = `${iconFolderLightDefinition}_open`;
+
+        if (folderIconPath !== openFolderIconPath) {
+          throw new Error(`Folder icons for '${icon}' must be placed in the same directory`);
+        }
 
         defs[iconFolderDefinition] = {
           iconPath: folderPath + sts.iconSuffix + iconFileExtension,
@@ -166,9 +169,9 @@ export class IconGenerator implements IIconGenerator {
           `${hasLightVersion
             ? iconFileLightType
             : iconFileType}${sts.iconSuffix}${iconFileExtension}`;
-        const fPath = this.getIconPath(iconsFolderBasePath, filename);
-        const filePath = pathUnixJoin(fPath, iconFileType);
-        const fileLightPath = pathUnixJoin(fPath, iconFileLightType);
+        const fileIconPath = this.getIconPath(iconsFolderBasePath, filename);
+        const filePath = pathUnixJoin(fileIconPath, iconFileType);
+        const fileLightPath = pathUnixJoin(fileIconPath, iconFileLightType);
         const iconFileDefinition = `${sts.manifestFilePrefix}${icon}`;
         const iconFileLightDefinition = `${sts.manifestFileLightPrefix}${icon}`;
         const isFilename = current.filename;
@@ -260,7 +263,7 @@ export class IconGenerator implements IIconGenerator {
     return txt.indexOf('.') === 0 ? txt.substring(1, txt.length) : txt;
   }
 
-  private buildIconPath(
+  private buildDefaultIconPath(
     defaultExtension: IDefaultExtension,
     schemaExtension: IIconPath,
     iconsFolderBasePath: string,
@@ -286,11 +289,11 @@ export class IconGenerator implements IIconGenerator {
     const defs = schema.iconDefinitions;
     // set default icons
     defs._file.iconPath =
-      this.buildIconPath(files.default.file, defs._file, iconsFolderBasePath, false);
+      this.buildDefaultIconPath(files.default.file, defs._file, iconsFolderBasePath, false);
     defs._folder.iconPath =
-      this.buildIconPath(folders.default.folder, defs._folder, iconsFolderBasePath, false);
+      this.buildDefaultIconPath(folders.default.folder, defs._folder, iconsFolderBasePath, false);
     defs._folder_open.iconPath =
-      this.buildIconPath(folders.default.folder, defs._folder_open, iconsFolderBasePath, true);
+      this.buildDefaultIconPath(folders.default.folder, defs._folder_open, iconsFolderBasePath, true);
     // light theme
     // default file and folder related icon paths if not set,
     // inherit their icons from dark theme.
@@ -300,11 +303,11 @@ export class IconGenerator implements IIconGenerator {
     // and populate the light section, otherwise they inherit from dark theme
     // and only those in 'light' section get overriden.
     defs._file_light.iconPath =
-      this.buildIconPath(files.default.file_light, defs._file_light, iconsFolderBasePath, false);
+      this.buildDefaultIconPath(files.default.file_light, defs._file_light, iconsFolderBasePath, false);
     defs._folder_light.iconPath =
-      this.buildIconPath(folders.default.folder_light, defs._folder_light, iconsFolderBasePath, false);
+      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light, iconsFolderBasePath, false);
     defs._folder_light_open.iconPath =
-      this.buildIconPath(folders.default.folder_light, defs._folder_light_open, iconsFolderBasePath, true);
+      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light_open, iconsFolderBasePath, true);
     // set the rest of the schema
     return this.buildJsonStructure(files, folders, iconsFolderBasePath, schema);
   }
@@ -349,12 +352,9 @@ export class IconGenerator implements IIconGenerator {
 
   private getIconPath(defaultPath: string, filename: string): string {
     const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
-    const isCustom = this.hasCustomIcon(absPath, filename);
-
-    if (isCustom) {
-      return this.getRelativePath(this.manifestFolderPath, absPath, false);
-    }
-    return defaultPath;
+    return this.hasCustomIcon(absPath, filename)
+      ? this.getRelativePath(this.manifestFolderPath, absPath, false)
+      : defaultPath;
   }
 
   private cleanOutDir(outDir: string) {
