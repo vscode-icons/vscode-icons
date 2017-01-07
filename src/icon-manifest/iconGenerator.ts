@@ -372,9 +372,9 @@ export class IconGenerator implements IIconGenerator {
         fs.mkdir(outDir);
       }
 
-      fs.writeFileSync(outDir + iconsFilename, JSON.stringify(json, null, 2));
+      fs.writeFileSync(path.join(outDir, iconsFilename), JSON.stringify(json, null, 2));
       // tslint:disable-next-line no-console
-      console.log('Icon contribution file successfully generated!');
+      console.log('Icons manifest file successfully generated!');
     } catch (error) {
       console.error('Something went wrong while generating the icon contribution file:', error);
     }
