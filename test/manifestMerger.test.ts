@@ -22,10 +22,12 @@ import {
 import { deleteDirectoryRecursively, tempPath } from '../src/utils';
 
 let iconGenerator: IconGenerator;
+const tempFolderPath = tempPath();
 
 before(() => {
   // ensure the tests write to the temp folder
-  process.chdir(tempPath());
+  process.chdir(tempFolderPath);
+
   if (fs.existsSync(extensionSettings.customIconFolderName)) {
     return;
   }
@@ -39,6 +41,11 @@ after(() => {
 
 beforeEach(() => {
   iconGenerator = new IconGenerator(vscode, schema);
+  iconGenerator.settings.vscodeAppData = tempFolderPath;
+});
+
+afterEach(() => {
+  iconGenerator = null;
 });
 
 describe('FileExtensions: merging configuration documents', function () {

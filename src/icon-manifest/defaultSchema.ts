@@ -1,4 +1,5 @@
 import { IIconSchema } from '../models';
+
 export const schema: IIconSchema = {
   iconDefinitions: {
     _file: {

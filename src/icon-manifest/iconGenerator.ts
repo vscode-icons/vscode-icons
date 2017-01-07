@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as _ from 'lodash';
-
 import { SettingsManager } from '../settings';
 import { pathUnixJoin, fileFormatToString } from '../utils';
 import { schema } from './defaultSchema';
@@ -23,14 +22,13 @@ import {
 const packageJson = require('../../../package.json');
 
 export class IconGenerator implements IIconGenerator {
-  private settingsManager: ISettingsManager;
+  public settings: ISettings;
+
   private iconsFolderPath: string;
   private manifestFolderPath: string;
-  private settings: ISettings;
 
   constructor(private vscode: IVSCode, private defaultSchema: IIconSchema) {
-    this.settingsManager = new SettingsManager(vscode);
-    this.settings = this.settingsManager.getSettings();
+    this.settings = new SettingsManager(vscode).getSettings();
     // relative to this file
     this.iconsFolderPath = path.join(__dirname, '../../../icons');
     this.manifestFolderPath = path.join(__dirname, '../../../out/src');
@@ -63,7 +61,7 @@ export class IconGenerator implements IIconGenerator {
 
   private buildFolders(
     folders: IFolderCollection,
-    iconsFolderBasePath: string = '',
+    iconsFolderBasePath: string,
     hasDefaultLightFolder: boolean = false) {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
@@ -165,7 +163,9 @@ export class IconGenerator implements IIconGenerator {
         const iconFileLightType = `${sts.fileLightPrefix}${icon}`;
         const iconFileExtension = fileFormatToString(current.format);
         const filename =
-          `${hasLightVersion ? iconFileLightType : iconFileType}${sts.iconSuffix}${iconFileExtension}`;
+          `${hasLightVersion
+            ? iconFileLightType
+            : iconFileType}${sts.iconSuffix}${iconFileExtension}`;
         const fPath = this.getIconPath(iconsFolderBasePath, filename);
         const filePath = pathUnixJoin(fPath, iconFileType);
         const fileLightPath = pathUnixJoin(fPath, iconFileLightType);
@@ -215,14 +215,16 @@ export class IconGenerator implements IIconGenerator {
               light.fileNames[extension] = iconFileLightDefinition;
             }
           } else {
-            names.fileExtensions[this.removeFirstDot(extension)] = iconFileDefinition;
+            const noDotExtension = this.removeFirstDot(extension);
+
+            names.fileExtensions[noDotExtension] = iconFileDefinition;
 
             if (hasDefaultLightFile && !hasLightVersion) {
-              light.fileExtensions[this.removeFirstDot(extension)] = iconFileDefinition;
+              light.fileExtensions[noDotExtension] = iconFileDefinition;
             }
 
             if (hasLightVersion) {
-              light.fileExtensions[this.removeFirstDot(extension)] = iconFileLightDefinition;
+              light.fileExtensions[noDotExtension] = iconFileLightDefinition;
             }
           }
         });
@@ -237,12 +239,12 @@ export class IconGenerator implements IIconGenerator {
   }
 
   private getRelativePath(fromDirPath: string, toDirName: string, checkDirectory: boolean = true): string {
-    if (toDirName == null) {
-      throw new Error('toDirName not defined.');
-    }
-
     if (fromDirPath == null) {
       throw new Error('fromDirPath not defined.');
+    }
+
+    if (toDirName == null) {
+      throw new Error('toDirName not defined.');
     }
 
     if (checkDirectory && !fs.existsSync(toDirName)) {
@@ -273,12 +275,6 @@ export class IconGenerator implements IIconGenerator {
     const fPath = this.getIconPath(iconsFolderBasePath, filename);
 
     return pathUnixJoin(fPath, filename);
-  }
-
-  private hasCustomIcon(filename: string): boolean {
-    const relativePath = this.getRelativePath('.', this.settings.extensionSettings.customIconFolderName, false);
-    const fpath = path.posix.join(relativePath, filename);
-    return fs.existsSync(fpath);
   }
 
   private fillDefaultSchema(
@@ -345,11 +341,17 @@ export class IconGenerator implements IIconGenerator {
     return schema;
   }
 
+  private hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
+    const relativePath = this.getRelativePath('.', customIconFolderPath, false);
+    const fpath = path.posix.join(relativePath, filename);
+    return fs.existsSync(fpath);
+  }
+
   private getIconPath(defaultPath: string, filename: string): string {
-    const isCustom = this.hasCustomIcon(filename);
+    const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
+    const isCustom = this.hasCustomIcon(absPath, filename);
+
     if (isCustom) {
-      const absPath = path.join(this.settingsManager.getSettings().vscodeAppData,
-        this.settings.extensionSettings.customIconFolderName);
       return this.getRelativePath(this.manifestFolderPath, absPath, false);
     }
     return defaultPath;
