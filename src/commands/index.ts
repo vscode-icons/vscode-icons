@@ -34,61 +34,75 @@ function registerCommand(
 }
 
 function applyCustomization() {
-  const conf = getConfig().vsicons;
+  const conf = getConfig().vsicons.associations;
   const customFiles: IFileCollection = {
-    default: conf.associations.fileDefault,
-    supported: conf.associations.files,
+    default: conf.fileDefault,
+    supported: conf.files,
   };
   const customFolders: IFolderCollection = {
-    default: conf.associations.folderDefault,
-    supported: conf.associations.folders,
+    default: conf.folderDefault,
+    supported: conf.folders,
   };
   generateManifest(customFiles, customFolders);
 }
 
 function applyCustomizationCommand() {
-  applyCustomization();
-  showCustomizationMessage(msg.iconCustomizationMessage);
+  const message = `${msg.iconCustomizationMessage} ${msg.restart}`;
+  showCustomizationMessage(message, applyCustomization);
 }
 
 function restoreDefaultManifestCommand() {
-  restorManifest();
-  showCustomizationMessage(msg.iconRestoreMessage);
+  const message = `${msg.iconRestoreMessage} ${msg.restart}`;
+  showCustomizationMessage(message, restoreManifest);
 }
 
 function toggleAngularPresetCommand() {
-  const val = togglePreset('angular', false);
-  showCustomizationMessage(`${msg.ngPresetMessage} ${val}`, applyCustomization);
+  const preset = 'angular';
+  const value = getToggleValue('angular');
+  const message = `${msg.ngPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
+  showCustomizationMessage(message, togglePreset, preset, value, false);
 }
 
 function toggleJsPresetCommand() {
-  const val = togglePreset('jsOfficial');
-  showCustomizationMessage(`${msg.jsOfficialPresetMessage} ${val}`, applyCustomization);
+  const preset = 'jsOfficial';
+  const value = getToggleValue(preset);
+  const message = `${msg.jsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
+  showCustomizationMessage(message, togglePreset, preset, value);
 }
 
 function toggleTsPresetCommand() {
-  const val = togglePreset('tsOfficial');
-  showCustomizationMessage(`${msg.tsOfficialPresetMessage} ${val}`, applyCustomization);
+  const preset = 'tsOfficial';
+  const value = getToggleValue(preset);
+  const message = `${msg.tsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
+  showCustomizationMessage(message, togglePreset, preset, value);
 }
 
 function toggleHideFoldersCommand() {
-  const val = togglePreset('hideFolders');
-  showCustomizationMessage(`${msg.hideFoldersPresetMessage} ${!val}`, applyCustomization);
+  const preset = 'hideFolders';
+  const value = getToggleValue(preset);
+  const message = `${msg.hideFoldersPresetMessage} ${value ? msg.disabled : msg.enabled}. ${msg.restart}`;
+  showCustomizationMessage(message, togglePreset, preset, value);
 }
 
-function togglePreset(preset: string, global: boolean = true): boolean {
+function getToggleValue(preset: string): boolean {
+  return !getConfig().vsicons.presets[preset];
+}
+
+function togglePreset(preset: string, newvalue: boolean, global: boolean = true): void {
   const conf = getConfig();
-  const currentValue = conf.vsicons.presets[preset];
-  conf.update(`vsicons.presets.${preset}`, !currentValue, global);
-  return !currentValue;
+  // configuration updates doesn't get presisted until the app restarts
+  conf.update(`vsicons.presets.${preset}`, newvalue, global);
+  applyCustomization();
 }
 
-function showCustomizationMessage(message: string, callback: Function = null) {
-  vscode.window.showInformationMessage(message,
-    { title: msg.reload })
-    .then(btn => {
-      if (callback) { callback(); }
+function showCustomizationMessage(message: string, callback?: (...args: any[]) => void, ...args: any[]) {
+  vscode.window.showInformationMessage(message, { title: msg.reload })
+    .then(value => {
+      if (!value) { return; }
+      if (callback) { callback(...args); }
       vscode.commands.executeCommand('workbench.action.reloadWindow');
+    }, (reason) => {
+      return;
     });
 }
 
@@ -106,11 +120,11 @@ function generateManifest(
     workingCustomFiles = toggleTypescriptOfficialPreset(!conf.presets.tsOfficial, workingCustomFiles);
   }
   if (customFolders) {
-     workingCustomFolders = toggleHideFoldersPreset(conf.presets.hideFolders, workingCustomFolders);
+    workingCustomFolders = toggleHideFoldersPreset(!conf.presets.hideFolders, workingCustomFolders);
   }
-  // presets affecting  default icons
-  const workingFolders = toggleHideFoldersPreset(conf.presets.hideFolders, folders);
+  // presets affecting default icons
   const workingFiles = toggleAngularPreset(!conf.presets.angular, files);
+  const workingFolders = toggleHideFoldersPreset(!conf.presets.hideFolders, folders);
   const json = mergeConfig(
     workingCustomFiles,
     workingFiles,
@@ -120,7 +134,7 @@ function generateManifest(
   iconGenerator.persist('icons.json', json);
 }
 
-function restorManifest() {
+function restoreManifest() {
   const iconGenerator = new IconGenerator(vscode, schema);
   const json = mergeConfig(
     null,

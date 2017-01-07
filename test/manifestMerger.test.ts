@@ -328,8 +328,7 @@ describe('Presets: merging configuration documents', function () {
       supported: [],
     };
     const result = toggleAngularPreset(true, fileExtensions);
-    const nggroup = result.supported
-      .filter(x => x.icon.startsWith('ng_'));
+    const nggroup = result.supported.filter(x => x.icon.startsWith('ng_'));
     expect(nggroup.length).equals(14);
     nggroup.forEach(x => {
       expect(x.disabled).to.be.true;
