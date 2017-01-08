@@ -39,7 +39,7 @@ function registerCommand(
   return command;
 }
 
-function applyCustomizationCommand() {
+export function applyCustomizationCommand() {
   const message = `${msg.iconCustomizationMessage} ${msg.restart}`;
   showCustomizationMessage(message, applyCustomization);
 }
