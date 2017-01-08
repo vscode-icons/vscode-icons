@@ -3,7 +3,7 @@ import { IExtensionSettings } from '../models';
 export const extensionSettings: IExtensionSettings = {
   version: '5.0.0',
   iconJsonFileName: 'icons.json',
-  iconSuffix: '@2x',
+  iconSuffix: '',
   filePrefix: 'file_type_',
   fileLightPrefix: 'file_type_light_',
   folderPrefix: 'folder_type_',
