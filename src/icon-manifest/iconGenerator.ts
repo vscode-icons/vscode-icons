@@ -95,27 +95,27 @@ export class IconGenerator implements IIconGenerator {
         }
 
         defs[iconFolderDefinition] = {
-          iconPath: folderPath + sts.iconSuffix + iconFileExtension,
+          iconPath: `${folderPath}${sts.iconSuffix}${iconFileExtension}`,
         };
         defs[iconOpenFolderDefinition] = {
-          iconPath: openFolderPath + sts.iconSuffix + iconFileExtension,
+          iconPath: `${openFolderPath}${sts.iconSuffix}${iconFileExtension}`,
         };
 
         if (hasDefaultLightFolder && !hasLightVersion) {
           defs[iconFolderLightDefinition] = {
-            iconPath: folderPath + sts.iconSuffix + iconFileExtension,
+            iconPath: `${folderPath}${sts.iconSuffix}${iconFileExtension}`,
           };
           defs[iconOpenFolderLightDefinition] = {
-            iconPath: openFolderPath + sts.iconSuffix + iconFileExtension,
+            iconPath: `${openFolderPath}${sts.iconSuffix}${iconFileExtension}`,
           };
         }
 
         if (hasLightVersion) {
           defs[iconFolderLightDefinition] = {
-            iconPath: folderLightPath + sts.iconSuffix + iconFileExtension,
+            iconPath: `${folderLightPath}${sts.iconSuffix}${iconFileExtension}`,
           };
           defs[iconOpenFolderLightDefinition] = {
-            iconPath: openFolderLightPath + sts.iconSuffix + iconFileExtension,
+            iconPath: `${openFolderLightPath}${sts.iconSuffix}${iconFileExtension}`,
           };
         }
 
@@ -173,18 +173,18 @@ export class IconGenerator implements IIconGenerator {
         const isFilename = current.filename;
 
         defs[iconFileDefinition] = {
-          iconPath: filePath + sts.iconSuffix + iconFileExtension,
+          iconPath: `${filePath}${sts.iconSuffix}${iconFileExtension}`,
         };
 
         if (hasDefaultLightFile && !hasLightVersion) {
           defs[iconFileLightDefinition] = {
-            iconPath: filePath + sts.iconSuffix + iconFileExtension,
+            iconPath: `${filePath}${sts.iconSuffix}${iconFileExtension}`,
           };
         }
 
         if (hasLightVersion) {
           defs[iconFileLightDefinition] = {
-            iconPath: fileLightPath + sts.iconSuffix + iconFileExtension,
+            iconPath: `${fileLightPath}${sts.iconSuffix}${iconFileExtension}`,
           };
         }
 
@@ -247,7 +247,7 @@ export class IconGenerator implements IIconGenerator {
     }
 
     if (checkDirectory && !fs.existsSync(toDirName)) {
-      throw new Error('Directory \'' + toDirName + '\' not found.');
+      throw new Error(`Directory '${toDirName}' not found.`);
     }
 
     const relativePath = path.relative(fromDirPath, toDirName).replace(/\\/g, '/');

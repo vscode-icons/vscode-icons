@@ -39,7 +39,7 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
 
 function showNewVersionMessage(settingsManager: ISettingsManager) {
   const vars = settingsManager.getSettings();
-  vscode.window.showInformationMessage(msg.newVersionMessage + ' v.' + vars.extensionSettings.version,
+  vscode.window.showInformationMessage(`${msg.newVersionMessage} v.${vars.extensionSettings.version}`,
     { title: msg.seeReleaseNotes }, { title: msg.dontshowthis })
     .then(btn => {
       settingsManager.setStatus(ExtensionStatus.disabled);
