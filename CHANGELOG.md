@@ -13,7 +13,7 @@
   - Feature: extending icon format support for `jpg`, `gif`, `bmp`, `tiff` and `ico`. ([@JimiC](https://github.com/JimiC) in [#589](https://github.com/robertohuertasm/vscode-icons/pull/589))
   - Enhancement: new batch of svg icons. ([@JimiC](https://github.com/JimiC) in [#588](https://github.com/robertohuertasm/vscode-icons/pull/588))
   - Enhancement: npm test script now forces compilation before testing. ([@JimiC](https://github.com/JimiC) in [#587](https://github.com/robertohuertasm/vscode-icons/pull/587))
-  - Feature: aws and ealstibeanstalk support. ([@JimiC](https://github.com/JimiC) in [#586](https://github.com/robertohuertasm/vscode-icons/pull/586))
+  - Feature: aws and elastibeanstalk support. ([@JimiC](https://github.com/JimiC) in [#586](https://github.com/robertohuertasm/vscode-icons/pull/586))
   - Fix: Readme bad links corrected. ([@dustinsanders](https://github.com/dustinsanders) in [#582](https://github.com/robertohuertasm/vscode-icons/pull/582))
 
 ## 4.3.0 (December 25, 2016)

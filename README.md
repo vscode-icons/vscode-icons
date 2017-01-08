@@ -19,7 +19,7 @@ I would also like to thank the whole community for their support: bringing in id
 
 ### State of the extension
 
-**Release 5.0.0 introduces the ability for users to customize the icons without having to inject anything into the `Visual Studio Code's code`.** 
+**Release 5.0.0 introduces the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.** 
 
 This is a huge step again to allow the users to fully customize how the icons look like and how they can be associated to any extension at will.
 
@@ -191,9 +191,9 @@ In order to place your custom icons you will have to create a specific folder. D
 
 Once you have created the folder you can put all your custom icons there. But, again, they have to follow `vscode-icons` naming conventions:
 
-- Files: `file_type_<value_of_icon_property>@2x.svg`
-- Folders: `folder_type_<value_of_icon_property>@2x.svg` & `folder_type_<value_of_icon_property>_opened@2x.svg`
-- Default Files & Folders: `default_<value_of_icon_property>@2x.svg`
+- Files: `file_type_<value_of_icon_property>.svg`
+- Folders: `folder_type_<value_of_icon_property>.svg` & `folder_type_<value_of_icon_property>_opened.svg`
+- Default Files & Folders: `default_<value_of_icon_property>.svg`
 
 **Note that folders must have two icons!!**
 
