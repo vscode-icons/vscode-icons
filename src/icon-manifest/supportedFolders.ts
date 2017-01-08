@@ -30,6 +30,7 @@ export const extensions: IFolderCollection = {
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
     { icon: 'test', extensions: ['tests', 'test', '__tests__', '__test__', 'spec', 'specs'], format: FileFormat.svg },
     { icon: 'typings', extensions: ['typings'], format: FileFormat.svg },
+    { icon: 'typings2', extensions: ['typings'], format: FileFormat.svg, disabled: true },
     { icon: 'view', extensions: ['view', 'views'], format: FileFormat.svg },
     { icon: 'vscode', extensions: ['.vscode'], format: FileFormat.svg },
     { icon: 'webpack', extensions: ['webpack'], format: FileFormat.svg },
