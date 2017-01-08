@@ -1,10 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as semver from 'semver';
-
 import { vscodePath as getAppPath } from '../utils';
 import { ISettings, IState, IVSCode, ISettingsManager, ExtensionStatus } from '../models';
 import { extensionSettings } from './extensionSettings';
+
 export class SettingsManager implements ISettingsManager {
   private settings: ISettings;
 

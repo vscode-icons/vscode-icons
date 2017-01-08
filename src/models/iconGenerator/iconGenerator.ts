@@ -10,11 +10,9 @@ import {
 export interface IIconGenerator {
   generateJson(
     files: IFileCollection,
-    folders: IFolderCollection,
-    outDir?: string): IIconSchema;
+    folders: IFolderCollection): IIconSchema;
   persist(
     iconsFilename: string,
     json: IIconSchema,
-    outDir?: string,
     updatePackageJson?: boolean): void;
 }
