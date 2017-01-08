@@ -23,7 +23,7 @@ I would also like to thank the whole community for their support: bringing in id
 
 This is a huge step again to allow the users to fully customize how the icons look like and how they can be associated to any extension at will.
 
-`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it. More information in [#328](https://github.com/robertohuertasm/vscode-icons/issues/328).
+`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/robertohuertasm/vscode-icons/issues/328).
 
 **Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
 

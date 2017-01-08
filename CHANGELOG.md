@@ -1,10 +1,12 @@
 # Change Log
 
 ## 5.0.0 (January 10, 2016)
+  - Fix: using more contrast in `typings` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#604](https://github.com/robertohuertasm/vscode-icons/pull/604))
   - Enhancement: new batch of svg icons. ([@ginfuru](https://github.com/ginfuru) in [#602](https://github.com/robertohuertasm/vscode-icons/pull/602))
+  - Feature: file checking and cancellation option added to the user customization functionality. ([@JimiC](https://github.com/JimiC) in [#601](https://github.com/robertohuertasm/vscode-icons/pull/601))
   - Enhancement: BridleNSIS support. ([@idleberg](https://github.com/idleberg) in [#599](https://github.com/robertohuertasm/vscode-icons/pull/599))
   - Enhancement: `docker-cloud.yml` support. ([@patrikulus](https://github.com/patrikulus) in [#597](https://github.com/robertohuertasm/vscode-icons/pull/597))
-  - Feature: Support for user customization. ([@robertohuertasm](https://github.com/robertohuertasm) in [#596](https://github.com/robertohuertasm/vscode-icons/pull/596))
+  - Feature: support for user customization. ([@robertohuertasm](https://github.com/robertohuertasm) in [#596](https://github.com/robertohuertasm/vscode-icons/pull/596))
   - Enhancement: min.map and js folder support. ([@JimiC](https://github.com/JimiC) in [#595](https://github.com/robertohuertasm/vscode-icons/pull/595))
   - Enhancement: new batch of svg icons. ([@JimiC](https://github.com/JimiC) in [#594](https://github.com/robertohuertasm/vscode-icons/pull/594))
   - Enhancement: new test case. ([@JimiC](https://github.com/JimiC) in [#590](https://github.com/robertohuertasm/vscode-icons/pull/590))
