@@ -23,7 +23,7 @@ function getUserConfig() {
   return userConfig;
 }
 
-describe('manageAutoApplyCustomizations tests', function () {
+describe('autoApplyCustomizations: tests', function () {
 
   it('ensures that if the extension has not been updated the callback will not be called', function () {
     const spy = sinon.spy();
