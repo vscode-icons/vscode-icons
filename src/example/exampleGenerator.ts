@@ -23,9 +23,7 @@ const fileNames = files.supported.reduce((init, current) => {
     return obj;
   }
 
-  obj[current.icon] = current.filename
-    ? extension
-    : 'file.' + extension;
+  obj[current.icon] = `${(current.filename ? '' : 'file.')}${extension}`;
 
   return obj;
 }, {});
@@ -51,16 +49,16 @@ function buildFiles(icons) {
     const fileName = fileNames[icon];
 
     if (!fileName) {
-      console.error('Unsupported file: ' + icon);
+      console.error(`Unsupported file: ${icon}`);
       return;
     }
 
     try {
       fs.writeFileSync(fileName, null);
       // tslint:disable-next-line no-console
-      console.log('Example file for \'' + icon + '\' successfully created!');
+      console.log(`Example file for '${icon}' successfully created!`);
     } catch (error) {
-      console.error('Something went wrong while creating the file for \'' + icon + '\' :\n', error);
+      console.error(`Something went wrong while creating the file for '${icon}' :\n${error}`);
     }
   });
 }
@@ -75,17 +73,16 @@ function buildFolders(icons) {
     const dirName = folderNames[icon];
 
     if (!dirName) {
-      console.error('Unsupported folder: ' + icon);
+      console.error(`Unsupported folder: ${icon}`);
       return;
     }
 
     try {
       fs.mkdirSync(dirName);
       // tslint:disable-next-line no-console
-      console.log('Example folder for \'' + icon + '\' successfully created!');
+      console.log(`Example folder for '${icon}' successfully created!`);
     } catch (error) {
-      console.error('Something went wrong while creating the folder for \''
-        + icon + '\' :\n', error);
+      console.error(`Something went wrong while creating the folder for '${icon}' :\n${error}`);
     }
   });
 }
@@ -132,10 +129,10 @@ function buildExample(flag, icons) {
  * @returns 'true' if the check fails, otherwise 'false'
  */
 function assertFlags(args) {
-  const supportedFlagsMsg = 'Supported flags are ' + supportedFlags.join(', ') + '.';
+  const supportedFlagsMsg = `Supported flags are ${supportedFlags.join(', ')}.`;
 
   if (args.length <= 2) {
-    console.error('Please provide a valid flag. ' + supportedFlagsMsg);
+    console.error(`Please provide a valid flag. ${supportedFlagsMsg}`);
     return true;
   }
 
