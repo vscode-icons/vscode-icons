@@ -1,11 +1,14 @@
 import * as vscode from 'vscode';
 import { SettingsManager } from './settings';
-import { manageWelcomeMessage } from './welcome';
-import { registerCommands } from './commands';
+import { manageWelcomeMessage, manageAutoApplyCustomizations } from './init';
+import { registerCommands, applyCustomizationCommand } from './commands';
+import { getConfig } from './utils/vscode-extensions';
 
 function Initialize(context: vscode.ExtensionContext) {
   registerCommands(context);
-  manageWelcomeMessage(new SettingsManager(vscode));
+  const settingsManager = new SettingsManager(vscode);
+  manageWelcomeMessage(settingsManager);
+  manageAutoApplyCustomizations(settingsManager.isNewVersion(), getConfig().vsicons, applyCustomizationCommand);
 }
 
 export function activate(context: vscode.ExtensionContext) {

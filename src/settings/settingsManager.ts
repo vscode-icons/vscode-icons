@@ -8,7 +8,9 @@ import { extensionSettings } from './extensionSettings';
 export class SettingsManager implements ISettingsManager {
   private settings: ISettings;
 
-  constructor(private vscode: IVSCode) { }
+  constructor(private vscode: IVSCode) {
+    this.getSettings();
+   }
 
   public getSettings(): ISettings {
     if (this.settings) { return this.settings; };
@@ -36,9 +38,8 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public getState(): IState {
-    const vars = this.getSettings();
     try {
-      const state = fs.readFileSync(vars.settingsPath, 'utf8');
+      const state = fs.readFileSync(this.settings.settingsPath, 'utf8');
       return JSON.parse(state) as IState;
     } catch (error) {
       return {
@@ -50,8 +51,7 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public setState(state: IState): void {
-    const vars = this.getSettings();
-    fs.writeFileSync(vars.settingsPath, JSON.stringify(state));
+    fs.writeFileSync(this.settings.settingsPath, JSON.stringify(state));
   }
 
   public setStatus(sts: ExtensionStatus): void {
@@ -63,7 +63,11 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public deleteState() {
-    const vars = this.getSettings();
-    fs.unlinkSync(vars.settingsPath);
+    fs.unlinkSync(this.settings.settingsPath);
+  }
+
+  public isNewVersion(): boolean {
+    const state = this.getState();
+    return state.version !== this.settings.extensionSettings.version;
   }
 }

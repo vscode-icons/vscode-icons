@@ -6,16 +6,12 @@ import { IState, ISettings, ISettingsManager, ExtensionStatus } from '../models'
 
 export function manageWelcomeMessage(settingsManager: ISettingsManager) {
   const state = settingsManager.getState();
-  const vars = settingsManager.getSettings();
-  const isNewVersion = state.version !== vars.extensionSettings.version;
-
   if (!state.welcomeShown) {
-    // show welcome message
     showWelcomeMessage(settingsManager);
     return;
   }
 
-  if (isNewVersion) {
+  if (settingsManager.isNewVersion()) {
     settingsManager.setStatus(state.status);
     if (!getConfig().vsicons.dontShowNewVersionMessage) {
       showNewVersionMessage(settingsManager);
