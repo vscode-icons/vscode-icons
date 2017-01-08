@@ -1,4 +1,3 @@
-import { getConfig } from '../utils/vscode-extensions';
 import { ISettingsManager, IVSIcons } from '../models';
 
 // tslint:disable-next-line no-var-requires
@@ -6,20 +5,23 @@ const packageJson = require('../../../package.json');
 
 export function manageAutoApplyCustomizations(
   isNewVersion: boolean,
+  userConfig: IVSIcons,
   applyCustomizationCommand: () => void): void {
   if (!isNewVersion) { return; }
-  const userConfig = getConfig().vsicons;
-  const defaultConfig = packageJson.contributes.configuration.properties.vsicons as IVSIcons;
-  if (!areEqual(userConfig, defaultConfig)) {
-    applyCustomizationCommand();
-  }
-}
-
-function areEqual(user: IVSIcons, extension: IVSIcons): boolean {
-  for (const key in user) {
-    if (user.hasOwnProperty(key)) {
-      return user[key] === extension[key];
+  const propObj = packageJson.contributes.configuration.properties as Object;
+  for (const key in propObj) {
+    if (propObj.hasOwnProperty(key) && key !== 'dontShowNewVersionMessage') {
+      const defaultValue = propObj[key].default;
+      const parts = key.split('.').filter(x => x !== 'vsicons');
+      const userValue = parts.reduce((prev, current) => prev[current], userConfig);
+      const cond1 = Array.isArray(defaultValue) && Array.isArray(userValue) && userValue.length;
+      // this is to equal null == undefined as vscode doesn't respect null defaults
+      // tslint:disable-next-line triple-equals
+      const cond2 = !Array.isArray(defaultValue) && defaultValue != userValue;
+      if (cond1 || cond2) {
+        applyCustomizationCommand();
+        return;
+      }
     }
   }
-  return true;
 }
