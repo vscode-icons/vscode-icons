@@ -19,7 +19,7 @@ I would also like to thank the whole community for their support: bringing in id
 
 ### State of the extension
 
-**Release 5.0.0 introduces the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.** 
+**Release 6.0.0 introduces the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.** 
 
 This is a huge step again to allow the users to fully customize how the icons look like and how they can be associated to any extension at will.
 
