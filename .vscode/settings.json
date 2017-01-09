@@ -1,11 +1,14 @@
 {
-  "tslint.enable": true,
-  "editor.tabSize": 2,
-  "files.exclude": {
-        "out": false 
+    "tslint.enable": true,
+    "editor.tabSize": 2,
+    "files.exclude": {
+        "out": false
     },
     "search.exclude": {
-        "out": true
+        "out": true,
+        "images": true,
+        "icons": true,
+        "examples": true
     },
     "typescript.tsdk": "./node_modules/typescript/lib"
 }
