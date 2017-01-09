@@ -7,7 +7,7 @@
   - Enhancement: we're getting rid of the `@2x` suffix. ([@JimiC](https://github.com/JimiC) in [#608](https://github.com/robertohuertasm/vscode-icons/pull/608))
   - Enhancement: string interpolation everywhere. ([@JimiC](https://github.com/JimiC) in [#607](https://github.com/robertohuertasm/vscode-icons/pull/607))
 
-## 5.0.0 (January 8, 2016)
+## 5.0.0 (January 8, 2017)
   - Fix: using more contrast in `typings` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#604](https://github.com/robertohuertasm/vscode-icons/pull/604))
   - Enhancement: new batch of svg icons. ([@ginfuru](https://github.com/ginfuru) in [#602](https://github.com/robertohuertasm/vscode-icons/pull/602))
   - Feature: file checking and cancellation option added to the user customization functionality. ([@JimiC](https://github.com/JimiC) in [#601](https://github.com/robertohuertasm/vscode-icons/pull/601))
