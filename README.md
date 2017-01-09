@@ -149,6 +149,11 @@ Along with the previous arrays you will have 4 more settings available that will
   { "icon": "js", "extensions": ["myExt1", "myExt2.custom.js"], "format": "svg" }
 ]
 
+// Adding new filename extensions to an already supported icon.
+// note: the format must match the existing one. If not, it will use the extension you provide.
+,"vsicons.associations.files": [
+    { "icon": "webpack",  "extensions": ["webpack.config.test.js"], "filename": true, "format": "svg" }
+
 // Disabling an already supported icon.
 // note: this is, indeed, the functionality that presets are leveraging.
 "vsicons.associations.files": [
