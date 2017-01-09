@@ -133,7 +133,7 @@ Along with the previous arrays you will have 4 more settings available that will
 - `vsicons.associations.fileDefault.folder`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
 - `vsicons.associations.fileDefault.folder_light`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
 
-```json
+```js
 // this is a very simple interface.
 // your configuration will simply replace the default icon. See Custom Icons sections below.
 "vsicons.associations.fileDefault.file": { "icon": "myfile", "format": "svg" },
@@ -178,7 +178,6 @@ Along with the previous arrays you will have 4 more settings available that will
 "vsicons.associations.files": [
   { "icon": "myJs", "extensions": ["js", "custom.js"], "format": "svg", "overrides": "js" }
 ]
-
 ```
 
 #### Custom Icons
@@ -189,10 +188,9 @@ In order to place your custom icons you will have to create a specific folder. D
 - Mac: `/Users/<your_user>/Library/Application Support/<Code Folder>/User/vsicons-custom-icons`
 
 `<Code Folder>` refers to the name of the folder of VSCode depending on the version:
-```
-- `Code` for the stable version.
-- `Code - Insiders` for the insiders version.
-```
+
+>- `Code` for the stable version.
+>- `Code - Insiders` for the insiders version.
 
 Once you have created the folder you can put all your custom icons there. But, again, they have to follow `vscode-icons` naming conventions:
 
@@ -219,26 +217,26 @@ If you're willing to create an icon just follow this few conventions:
 In order to help you preview how the icon you are contributing will look in the editor, we are providing you with a tool that generates dummy folders or files of the provided icon. 
 
 The syntax follows the pattern:
-```js
+```
 npm run example -- [flag] [space separated file names | space separated folder names]
 ```
 
 Supported flags are `--all`, `--folders`, `--files`.
 
 #### Syntax examples:
-```js
+```
 npm run example -- --folders bower css
 ```
 
 **Hint:** By omitting the use of the space separated folder names, the tool will create examples for all supported folders. 
 
-```js
+```
 npm run example -- --files actionscript angular
 ```
 
 **Hint:** By omitting the use of the space separated file names, the tool will create examples for all supported files.
 
-```js
+```
 npm run example -- --all
 ```
 
@@ -254,7 +252,7 @@ If you don't want to see the `new version` message every time the extension upda
 
 ## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:
-```js
+```
 npm install -d
 npm run build
 ```
