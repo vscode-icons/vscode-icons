@@ -31,7 +31,7 @@
     "icons",
     "vscode-icons"
   ],
-  "preview": false,
+  "preview": true,
   "homepage": "https://github.com/robertohuertasm/vscode-icons",
   "icon": "images/logo.png",
   "galleryBanner": {
