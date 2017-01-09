@@ -142,7 +142,7 @@ Along with the previous arrays you will have 4 more settings available that will
 ```
 
 ####  Some examples
-```json
+```js
 // Adding new extensions to an already supported icon.
 // note: the format must match the existing one. If not, it will use the extension you provide.
 "vsicons.associations.files": [
