@@ -1,6 +1,6 @@
 # Change Log
 
-## 6.0.0 (January 9, 2016)
+## 6.0.0 (January 9, 2017)
   - Fix: lodash dependency added. ([@robertohuertasm](https://github.com/robertohuertasm) in [#613](https://github.com/robertohuertasm/vscode-icons/pull/613))
   - Feature: customizations are applied on extension update. ([@robertohuertasm](https://github.com/robertohuertasm) in [#612](https://github.com/robertohuertasm/vscode-icons/pull/612))
   - Fix: bringing TS tests back. ([@robertohuertasm](https://github.com/robertohuertasm) in [#611](https://github.com/robertohuertasm/vscode-icons/pull/611))
