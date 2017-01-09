@@ -1,6 +1,7 @@
 # Change Log
 
 ## 6.0.0 (January 9, 2016)
+  - Fix: lodash dependency added. ([@robertohuertasm](https://github.com/robertohuertasm) in [#613](https://github.com/robertohuertasm/vscode-icons/pull/613))
   - Feature: customizations are applied on extension update. ([@robertohuertasm](https://github.com/robertohuertasm) in [#612](https://github.com/robertohuertasm/vscode-icons/pull/612))
   - Fix: bringing TS tests back. ([@robertohuertasm](https://github.com/robertohuertasm) in [#611](https://github.com/robertohuertasm/vscode-icons/pull/611))
   - Enhancement: we're getting rid of the `@2x` suffix. ([@JimiC](https://github.com/JimiC) in [#608](https://github.com/robertohuertasm/vscode-icons/pull/608))
