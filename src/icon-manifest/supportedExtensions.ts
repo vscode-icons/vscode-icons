@@ -270,6 +270,7 @@ export const extensions: IFileCollection = {
     { icon: 'tex', extensions: ['texi', 'tex'], light: true, format: FileFormat.svg },
     { icon: 'text', extensions: ['csv'], languages: [languages.plaintext], format: FileFormat.svg },
     { icon: 'textile', extensions: ['textile'], format: FileFormat.svg },
+    { icon: 'tfs', extensions: ['.tfignore'], filename: true, format: FileFormat.svg },
     { icon: 'todo', extensions: ['todo'], format: FileFormat.png },
     { icon: 'toml', extensions: ['toml'], format: FileFormat.svg },
     { icon: 'travis', extensions: ['.travis.yml'], filename: true, format: FileFormat.svg },
