@@ -268,7 +268,7 @@ export const extensions: IFileCollection = {
     { icon: 'testjs', extensions: ['test.js', 'spec.js'], format: FileFormat.svg },
     { icon: 'testts', extensions: ['test.ts', 'spec.ts'], format: FileFormat.svg },
     { icon: 'tex', extensions: ['texi', 'tex'], light: true, format: FileFormat.svg },
-    { icon: 'text', extensions: ['csv'], languages: [languages.plaintext], format: FileFormat.png },
+    { icon: 'text', extensions: ['csv'], languages: [languages.plaintext], format: FileFormat.svg },
     { icon: 'textile', extensions: ['textile'], format: FileFormat.svg },
     { icon: 'todo', extensions: ['todo'], format: FileFormat.png },
     { icon: 'toml', extensions: ['toml'], format: FileFormat.svg },
