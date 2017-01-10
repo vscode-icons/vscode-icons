@@ -103,6 +103,7 @@ These presets can also be automatically set by leveraging a new set of commands 
 - `Toggle Angular Preset (Workspace Level)`: This command will enable/disable the `Angular icons`.
 - `Toggle Official JS Preset (User Level)`: This command will enable/disable the `Official JS icon`.
 - `Toggle Official TS Preset (User Level)`: This command will enable/disable the `Official TS icon`.
+- `Toggle Official JSON Preset (User Level)`: This command will enable/disable the `Official JSON icon`.
 - `Toggle Folder Icons Visibility (User Level)`: This command will enable/disable the `Visibility of the folder icons`.
 
 Note that some of the `preset commands` will modify your `settings` at a different level. If you choose to modify them manually then you can also choose what `setting` are you going to use.
