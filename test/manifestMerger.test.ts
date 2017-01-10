@@ -10,8 +10,7 @@ import {
   IconGenerator,
   mergeConfig,
   toggleAngularPreset,
-  toggleJavascriptOfficialPreset,
-  toggleTypescriptOfficialPreset,
+  toggleOfficialIconsPreset,
   toggleHideFoldersPreset,
   schema,
 } from '../src/icon-manifest';
@@ -360,7 +359,7 @@ describe('Presets: merging configuration documents', function () {
       default: null,
       supported: [],
     };
-    const result = toggleJavascriptOfficialPreset(false, custom);
+    const result = toggleOfficialIconsPreset(false, custom, ['js_official'], ['js']);
     const official = result.supported.find(x => x.icon === 'js_official');
     const unofficial = result.supported.find(x => x.icon === 'js');
     expect(official.disabled).to.be.false;
@@ -372,7 +371,8 @@ describe('Presets: merging configuration documents', function () {
       default: null,
       supported: [],
     };
-    const result = toggleTypescriptOfficialPreset(false, custom);
+    const result = toggleOfficialIconsPreset(false, custom,
+      ['typescript_official', 'typescriptdef_official'], ['typescript', 'typescriptdef']);
     const official = result.supported.find(x => x.icon === 'typescript_official');
     const unofficial = result.supported.find(x => x.icon === 'typescript');
     const officialDef = result.supported.find(x => x.icon === 'typescriptdef_official');
@@ -381,6 +381,18 @@ describe('Presets: merging configuration documents', function () {
     expect(unofficial.disabled).to.be.true;
     expect(officialDef.disabled).to.be.false;
     expect(unofficialDef.disabled).to.be.true;
+  });
+
+  it('ensures json official extension is enabled', function () {
+    const custom: IFileCollection = {
+      default: null,
+      supported: [],
+    };
+    const result = toggleOfficialIconsPreset(false, custom, ['json_official'], ['json']);
+    const official = result.supported.find(x => x.icon === 'json_official');
+    const unofficial = result.supported.find(x => x.icon === 'json');
+    expect(official.disabled).to.be.false;
+    expect(unofficial.disabled).to.be.true;
   });
 
   it('ensures hide folders preset hides all folders', function () {

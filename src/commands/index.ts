@@ -6,8 +6,7 @@ import {
   mergeConfig,
   schema,
   toggleAngularPreset,
-  toggleJavascriptOfficialPreset,
-  toggleTypescriptOfficialPreset,
+  toggleOfficialIconsPreset,
   toggleHideFoldersPreset,
 } from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
@@ -26,6 +25,7 @@ export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'ngPreset', toggleAngularPresetCommand);
   registerCommand(context, 'jsPreset', toggleJsPresetCommand);
   registerCommand(context, 'tsPreset', toggleTsPresetCommand);
+  registerCommand(context, 'jsonPreset', toggleJsonPresetCommand);
   registerCommand(context, 'hideFoldersPreset', toggleHideFoldersCommand);
 }
 
@@ -73,6 +73,14 @@ function toggleTsPresetCommand() {
   showCustomizationMessage(message, applyCustomization, cancel, preset, !value);
 }
 
+function toggleJsonPresetCommand() {
+  const preset = 'jsonOfficial';
+  const value = getToggleValue(preset);
+  const message = `${msg.jsonOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
+  togglePreset(preset, value);
+  showCustomizationMessage(message, applyCustomization, cancel, preset, !value);
+}
+
 function toggleHideFoldersCommand() {
   const preset = 'hideFolders';
   const value = getToggleValue(preset);
@@ -95,8 +103,8 @@ function showCustomizationMessage(
   cancel?: (...args: any[]) => void,
   ...args: any[]) {
   vscode.window.showInformationMessage(message, { title: msg.reload })
-    .then(value => {
-      if (!value) {
+    .then(btn => {
+      if (!btn) {
         if (cancel) { cancel(...args); }
         return;
       }
@@ -136,8 +144,12 @@ function generateManifest(
   if (customFiles) {
     // check presets...
     workingCustomFiles = toggleAngularPreset(!presets.angular, customFiles);
-    workingCustomFiles = toggleJavascriptOfficialPreset(!presets.jsOfficial, workingCustomFiles);
-    workingCustomFiles = toggleTypescriptOfficialPreset(!presets.tsOfficial, workingCustomFiles);
+    workingCustomFiles = toggleOfficialIconsPreset(!presets.jsOfficial, workingCustomFiles,
+      ['js_official'], ['js']);
+    workingCustomFiles = toggleOfficialIconsPreset(!presets.tsOfficial, workingCustomFiles,
+      ['typescript_official', 'typescriptdef_official'], ['typescript', 'typescriptdef']);
+    workingCustomFiles = toggleOfficialIconsPreset(!presets.jsonOfficial, workingCustomFiles,
+      ['json_official'], ['json']);
   }
   if (customFolders) {
     workingCustomFolders = toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);

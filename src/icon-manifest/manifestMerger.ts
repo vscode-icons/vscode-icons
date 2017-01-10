@@ -104,18 +104,14 @@ export function toggleAngularPreset(
   return togglePreset(disable, icons, files);
 }
 
-export function toggleTypescriptOfficialPreset(
+export function toggleOfficialIconsPreset(
   disable: boolean,
-  customFiles: IFileCollection): IFileCollection {
-  const temp = togglePreset(disable, ['typescript_official', 'typescriptdef_official'], customFiles);
-  return togglePreset(!disable, ['typescript', 'typescriptdef'], temp);
-}
-
-export function toggleJavascriptOfficialPreset(
-  disable: boolean,
-  customFiles: IFileCollection): IFileCollection {
-  const temp = togglePreset(disable, ['js_official'], customFiles);
-  return togglePreset(!disable, ['js'], temp);
+  customFiles: IFileCollection,
+  officialIcons: string[],
+  defaultIcons: string[],
+  ): IFileCollection {
+  const temp = togglePreset(disable, officialIcons, customFiles);
+  return togglePreset(!disable, defaultIcons, temp);
 }
 
 export function toggleHideFoldersPreset(
@@ -133,7 +129,7 @@ export function toggleHideFoldersPreset(
 }
 
 // HACK: generics an union types don't work very well :(
-// that's why we had to use IExtensionCollection<> instead of T 
+// that's why we had to use IExtensionCollection<> instead of T
 function togglePreset<T extends IFileCollection | IFolderCollection>(
   disable: boolean,
   icons: string[],

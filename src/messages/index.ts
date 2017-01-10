@@ -16,6 +16,7 @@ export const messages = {
   ngPresetMessage: 'Angular icons will be ',
   jsOfficialPresetMessage: 'Official JS icon will be',
   tsOfficialPresetMessage: 'Official TS icon will be',
+  jsonOfficialPresetMessage: 'Official JSON icon will be',
   hideFoldersPresetMessage: 'Folders\' visibility will be',
   enabled: 'enabled',
   disabled: 'disabled',

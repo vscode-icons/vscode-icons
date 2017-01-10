@@ -137,6 +137,7 @@ Along with the previous arrays you will have 4 more settings available that will
 // this is a very simple interface.
 // your configuration will simply replace the default icon. See Custom Icons sections below.
 "vsicons.associations.fileDefault.file": { "icon": "myfile", "format": "svg" },
+
 // if you want to disable default icons for folders that will do the trick
 "vsicons.associations.folderDefault.folder": { "icon": "myfile", "format": "svg", "disabled": true }
 ```
@@ -151,7 +152,7 @@ Along with the previous arrays you will have 4 more settings available that will
 
 // Adding new filename extensions to an already supported icon.
 // note: the format must match the existing one. If not, it will use the extension you provide.
-,"vsicons.associations.files": [
+"vsicons.associations.files": [
     { "icon": "webpack",  "extensions": ["webpack.config.test.js"], "filename": true, "format": "svg" }
 
 // Disabling an already supported icon.

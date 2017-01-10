@@ -30,6 +30,10 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
       } else if (btn.title === msg.seeReadme) {
         open(msg.urlReadme);
       }
+    }, (reason) => {
+      // tslint:disable-next-line:no-console
+      console.log('Rejected because: ', reason);
+      return;
     });
 }
 
@@ -46,5 +50,9 @@ function showNewVersionMessage(settingsManager: ISettingsManager) {
         getConfig()
           .update('vsicons.dontShowNewVersionMessage', true, true);
       }
+    }, (reason) => {
+      // tslint:disable-next-line:no-console
+      console.log('Rejected because: ', reason);
+      return;
     });
 }
