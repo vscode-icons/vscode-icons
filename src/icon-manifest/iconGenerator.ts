@@ -17,9 +17,7 @@ import {
   IDefaultExtension,
   IIconPath,
 } from '../models';
-
-// tslint:disable-next-line no-var-requires
-const packageJson = require('../../../package.json');
+import * as packageJson from '../../../package.json';
 
 export class IconGenerator implements IIconGenerator {
   public settings: ISettings;
@@ -323,7 +321,7 @@ export class IconGenerator implements IIconGenerator {
     const res = {
       // folders section
       folders: this.buildFolders(folders, iconsFolderBasePath, hasDefaultLightFolder),
-      //  files section 
+      //  files section
       files: this.buildFiles(files, iconsFolderBasePath, hasDefaultLightFile),
     };
     // map structure to the schema
@@ -381,16 +379,17 @@ export class IconGenerator implements IIconGenerator {
   }
 
   private updatePackageJson(newIconThemesPath) {
-    const oldIconThemesPath = packageJson.contributes.iconThemes[0].path;
+    const packJson = packageJson as any;
+    const oldIconThemesPath = packJson.contributes.iconThemes[0].path;
 
     if (!oldIconThemesPath || (oldIconThemesPath === newIconThemesPath)) {
       return;
     }
 
-    packageJson.contributes.iconThemes[0].path = newIconThemesPath;
+    packJson.contributes.iconThemes[0].path = newIconThemesPath;
 
     try {
-      fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
+      fs.writeFileSync('./package.json', JSON.stringify(packJson, null, 2));
       // tslint:disable-next-line no-console
       console.log('package.json updated');
     } catch (err) {
