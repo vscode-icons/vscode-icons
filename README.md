@@ -44,7 +44,7 @@ Please, meet the team behind this extension:
  - [@JimiC](https://github.com/JimiC)
  - [@robertohuertasm](https://github.com/robertohuertasm)
 
-If you're willing to collaborate with us feel free to join our [Github repository](https://github.com/robertohuertasm/vscode-icons/). ;)
+If you're willing to collaborate with us feel free to join our [Github repository](https://github.com/vscode-icons/vscode-icons/). ;)
 
 ----
 
