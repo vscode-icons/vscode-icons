@@ -1,14 +1,12 @@
 import { ISettingsManager, IVSIcons } from '../models';
-
-// tslint:disable-next-line no-var-requires
-const packageJson = require('../../../package.json');
+import * as packageJson from '../../../package.json';
 
 export function manageAutoApplyCustomizations(
   isNewVersion: boolean,
   userConfig: IVSIcons,
   applyCustomizationCommand: () => void): void {
   if (!isNewVersion) { return; }
-  const propObj = packageJson.contributes.configuration.properties as Object;
+  const propObj = (packageJson as any).contributes.configuration.properties as Object;
   for (const key in propObj) {
     if (propObj.hasOwnProperty(key) && key !== 'dontShowNewVersionMessage') {
       const defaultValue = propObj[key].default;
