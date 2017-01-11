@@ -89,14 +89,15 @@ But, how does this work?
 The extension now provides some specific commands for you to use. Let's talk first about the `presets` and then we're going to talk about how you can fine tune the extension.
 
 ### Presets
-You have 4 different presets at the moment:
+You have 5 different presets at the moment:
 
 - `vsicons.presets.angular` (true by default)
 - `vsicons.presets.jsOfficial` (false by default)
 - `vsicons.presets.tsOfficial` (false by default)
+- `vsicons.presets.jsonOfficial` (false by default)
 - `vsicons.presets.hideFolders` (false by default)
 
-These 4 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `workspace's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
+These 5 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `workspace's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
 
 These presets can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing down `icons`. You will be presented with some new commands:
 
