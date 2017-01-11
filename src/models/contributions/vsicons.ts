@@ -6,6 +6,7 @@ export interface IVSIcons {
     angular: boolean;
     jsOfficial: boolean;
     tsOfficial: boolean;
+    jsonOfficial: boolean,
     hideFolders: boolean;
   };
   associations: {

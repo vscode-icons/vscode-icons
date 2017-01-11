@@ -89,20 +89,22 @@ But, how does this work?
 The extension now provides some specific commands for you to use. Let's talk first about the `presets` and then we're going to talk about how you can fine tune the extension.
 
 ### Presets
-You have 4 different presets at the moment:
+You have 5 different presets at the moment:
 
 - `vsicons.presets.angular` (true by default)
 - `vsicons.presets.jsOfficial` (false by default)
 - `vsicons.presets.tsOfficial` (false by default)
+- `vsicons.presets.jsonOfficial` (false by default)
 - `vsicons.presets.hideFolders` (false by default)
 
-These 4 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `workspace's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
+These 5 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `workspace's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
 
 These presets can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing down `icons`. You will be presented with some new commands:
 
 - `Toggle Angular Preset (Workspace Level)`: This command will enable/disable the `Angular icons`.
 - `Toggle Official JS Preset (User Level)`: This command will enable/disable the `Official JS icon`.
 - `Toggle Official TS Preset (User Level)`: This command will enable/disable the `Official TS icon`.
+- `Toggle Official JSON Preset (User Level)`: This command will enable/disable the `Official JSON icon`.
 - `Toggle Folder Icons Visibility (User Level)`: This command will enable/disable the `Visibility of the folder icons`.
 
 Note that some of the `preset commands` will modify your `settings` at a different level. If you choose to modify them manually then you can also choose what `setting` are you going to use.
@@ -137,6 +139,7 @@ Along with the previous arrays you will have 4 more settings available that will
 // this is a very simple interface.
 // your configuration will simply replace the default icon. See Custom Icons sections below.
 "vsicons.associations.fileDefault.file": { "icon": "myfile", "format": "svg" },
+
 // if you want to disable default icons for folders that will do the trick
 "vsicons.associations.folderDefault.folder": { "icon": "myfile", "format": "svg", "disabled": true }
 ```
@@ -151,7 +154,7 @@ Along with the previous arrays you will have 4 more settings available that will
 
 // Adding new filename extensions to an already supported icon.
 // note: the format must match the existing one. If not, it will use the extension you provide.
-,"vsicons.associations.files": [
+"vsicons.associations.files": [
     { "icon": "webpack",  "extensions": ["webpack.config.test.js"], "filename": true, "format": "svg" }
 
 // Disabling an already supported icon.

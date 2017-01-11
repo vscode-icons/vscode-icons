@@ -71,6 +71,11 @@
         "category": "Icons"
       },
       {
+        "command": "extension.jsonPreset",
+        "title": "Toggle Official JSON Preset (User Level)",
+        "category": "Icons"
+      },
+      {
         "command": "extension.hideFoldersPreset",
         "title": "Toggle Folder Icons Visibility (User Level)",
         "category": "Icons"
@@ -103,6 +108,11 @@
           "type": "boolean",
           "default": false,
           "description": "If set to true the extension will use the official TS icon"
+        },
+        "vsicons.presets.jsonOfficial": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will use the official JSON icon"
         },
         "vsicons.presets.hideFolders": {
           "type": "boolean",

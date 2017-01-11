@@ -11,6 +11,7 @@ function getUserConfig() {
       angular: true,
       jsOfficial: false,
       tsOfficial: false,
+      jsonOfficial: false,
       hideFolders: false,
     },
     associations: {
@@ -31,14 +32,14 @@ describe('autoApplyCustomizations: tests', function () {
     expect(spy.called).to.not.be.true;
   });
 
-  it('ensures that if the extension has been updated but there are no changes'
+  it('ensures that if the extension has been updated but there are no changes '
     + 'in package.json the callback will not be called', function () {
       const spy = sinon.spy();
       manageAutoApplyCustomizations(true, getUserConfig(), spy);
       expect(spy.called).to.not.be.true;
     });
 
-  it('ensures that if the extension has been updated and there are changes'
+  it('ensures that if the extension has been updated and there are changes '
     + 'in package.json the callback will be called', function () {
       const spy = sinon.spy();
       const config = getUserConfig();
