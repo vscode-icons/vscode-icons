@@ -23,7 +23,7 @@ I would also like to thank the whole community for their support: bringing in id
 
 This is a huge step again to allow the users to fully customize how the icons look like and how they can be associated to any extension at will.
 
-`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/robertohuertasm/vscode-icons/issues/328).
+`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
 
 **Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
 
@@ -70,19 +70,19 @@ Go to **File > Preferences > File Icon Theme > VSCode Icons**.
 
 
 ## List of supported icons
-The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues).
+The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/vscode-icons/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/vscode-icons/vscode-icons/issues).
 
 If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template, so any help will be really appreciated and credit will be given to you ;D
 
 ## List of supported folder icons
-If you want to check which folder icons are currently supported take a look [here](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/robertohuertasm/vscode-icons/issues).
+If you want to check which folder icons are currently supported take a look [here](https://github.com/vscode-icons/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/vscode-icons/vscode-icons/issues).
 
 ## Customizing the extension
 The extension gives you the ability to change how the icons look or even what icons are associated to each extension.
 
 We have exposed the internal API that we are using to build the `icon manifest` so you can also use it in your `vscode settings` and generate it at runtime. This will allow you to customize all the icons, add new ones and so on.
 
-Although you now have this power, we're encouraging everyone to raise an issue in [the issues section of the Github's repo](https://github.com/robertohuertasm/vscode-icons/issues) in case you find any of your customizations valuable to the rest of the community so we can implement them out of the box.
+Although you now have this power, we're encouraging everyone to raise an issue in [the issues section of the Github's repo](https://github.com/vscode-icons/vscode-icons/issues) in case you find any of your customizations valuable to the rest of the community so we can implement them out of the box.
 
 But, how does this work?
 
@@ -121,19 +121,19 @@ Along with the commands we introduced before you will find two more (just press 
 
 But before you can even use them you will have to go to your `settings` and make your magic. The settings will provide you 2 different `array items`:
 
-- `vsicons.associations.files`: [IFileExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/fileExtension.ts)
-- `vsicons.associations.folders`: [IFolderExtension[]](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/folderExtension.ts)
+- `vsicons.associations.files`: [IFileExtension[]](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileExtension.ts)
+- `vsicons.associations.folders`: [IFolderExtension[]](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/folderExtension.ts)
 
 Each item of the array represents a file or a folder icon. The functionality is the same for `files` and `folders`.
 
-Note that it's important to know what the current [supported file extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts) and [supported folder extensions / icons](https://github.com/robertohuertasm/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts) are.
+Note that it's important to know what the current [supported file extensions / icons](https://github.com/vscode-icons/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts) and [supported folder extensions / icons](https://github.com/vscode-icons/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts) are.
 
 Along with the previous arrays you will have 4 more settings available that will help you customize how the default icons for files and folders look like:
 
-- `vsicons.associations.fileDefault.file`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
-- `vsicons.associations.fileDefault.file_light`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
-- `vsicons.associations.fileDefault.folder`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
-- `vsicons.associations.fileDefault.folder_light`: [IDefaultExtension](https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
+- `vsicons.associations.fileDefault.file`: [IDefaultExtension](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
+- `vsicons.associations.fileDefault.file_light`: [IDefaultExtension](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
+- `vsicons.associations.fileDefault.folder`: [IDefaultExtension](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
+- `vsicons.associations.fileDefault.folder_light`: [IDefaultExtension](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/defaultExtension.ts)
 
 ```js
 // this is a very simple interface.
@@ -203,7 +203,7 @@ Once you have created the folder you can put all your custom icons there. But, a
 
 **Note that folders must have two icons!!**
 
-See [here the supported icon extensions]((https://github.com/robertohuertasm/vscode-icons/blob/master/src/models/extensions/fileFormat.ts)).
+See [here the supported icon extensions]((https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts)).
 
 ## Contributing with icons
 
@@ -211,7 +211,7 @@ If you're willing to create an icon just follow this few conventions:
 
 1. We're using SVG or PNG-24 but we prefer SVG if possible.
 2. 32x32
-3. 2px margin (but see [#195](https://github.com/robertohuertasm/vscode-icons/pull/195))
+3. 2px margin (but see [#195](https://github.com/vscode-icons/vscode-icons/pull/195))
 4. Center the icon, but lower it a pixel.
 5. It must be transparent.
 
@@ -269,7 +269,7 @@ docker run --rm -it -v $PWD/dist:/app/dist vscode-icons
 All of the files will be generated in the `dist` folder.
 
 ## Change log 
-You can checkout all our changes in our [change log](https://github.com/robertohuertasm/vscode-icons/blob/master/CHANGELOG.md)
+You can checkout all our changes in our [change log](https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md)
 
 If you feel that there's some icon missing please report it to the Github repository!
 
