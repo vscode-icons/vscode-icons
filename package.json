@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/robertohuertasm/vscode-icons"
+    "url": "https://github.com/vscode-icons/vscode-icons"
   },
   "bugs": {
-    "url": "https://github.com/robertohuertasm/vscode-icons/issues",
+    "url": "https://github.com/vscode-icons/vscode-icons/issues",
     "email": "roberto.huertas@outlook.com"
   },
   "engines": {
@@ -32,7 +32,7 @@
     "vscode-icons"
   ],
   "preview": true,
-  "homepage": "https://github.com/robertohuertasm/vscode-icons",
+  "homepage": "https://github.com/vscode-icons/vscode-icons",
   "icon": "images/logo.png",
   "galleryBanner": {
     "color": "#ffdd00"
