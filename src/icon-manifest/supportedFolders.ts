@@ -16,6 +16,7 @@ export const extensions: IFolderCollection = {
     { icon: 'docs', extensions: ['docs'], format: FileFormat.svg },
     { icon: 'elasticbeanstalk', extensions: ['.elasticbeanstalk', '.ebextensions'], format: FileFormat.svg },
     { icon: 'flow', extensions: ['flow'], format: FileFormat.svg },
+    { icon: 'fonts', extensions: ['fonts', 'font', 'fnt'], light: true, format: FileFormat.svg },
     { icon: 'git', extensions: ['.github', '.git'], format: FileFormat.svg },
     { icon: 'haxelib', extensions: ['haxelib'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
