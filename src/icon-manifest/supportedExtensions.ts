@@ -302,7 +302,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'vsix', extensions: ['vsix'], format: FileFormat.svg },
+    { icon: 'vsix', extensions: ['vsix'], light: true, format: FileFormat.svg },
     { icon: 'vue', extensions: ['vue'], format: FileFormat.svg },
     {
       icon: 'webpack',
