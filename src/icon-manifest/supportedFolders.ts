@@ -19,7 +19,7 @@ export const extensions: IFolderCollection = {
     { icon: 'git', extensions: ['.github', '.git'], format: FileFormat.svg },
     { icon: 'haxelib', extensions: ['haxelib'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
-    { icon: 'images', extensions: ['images', 'img'], format: FileFormat.svg },
+    { icon: 'images', extensions: ['images', 'image', 'img', 'icons', 'icon', 'ico'], format: FileFormat.svg },
     { icon: 'less', extensions: ['less'], format: FileFormat.svg },
     { icon: 'locale', extensions: ['locale', 'locales'], format: FileFormat.svg },
     { icon: 'node', extensions: ['node_modules'], light: true, format: FileFormat.svg },
