@@ -190,12 +190,37 @@ export class IconGenerator implements IIconGenerator {
           const assignLanguages = langId => {
             languageIds[langId] = iconFileDefinition;
           };
+          const assignLanguagesLightWhenDefaultLight = langId => {
+            light.languageIds[langId] = iconFileDefinition;
+          };
+          const assignLanguagesLight = langId => {
+            light.languageIds[langId] = iconFileLightDefinition;
+          };
 
           current.languages.forEach(langIds => {
             if (Array.isArray(langIds.ids)) {
-              langIds.ids.forEach(id => { assignLanguages(id); });
+              langIds.ids.forEach(id => {
+                assignLanguages(id);
+
+                if (hasDefaultLightFile && !hasLightVersion) {
+                  assignLanguagesLightWhenDefaultLight(id);
+                }
+
+                if (hasLightVersion) {
+                  assignLanguagesLight(id);
+                }
+              });
             } else {
               assignLanguages(langIds.ids);
+
+              if (hasDefaultLightFile && !hasLightVersion) {
+                assignLanguagesLightWhenDefaultLight(langIds.ids);
+              }
+
+              if (hasLightVersion) {
+                assignLanguagesLight(langIds.ids);
+              }
+
             }
           });
         }
@@ -230,7 +255,7 @@ export class IconGenerator implements IIconGenerator {
       }, {
         defs: {},
         names: { fileExtensions: {}, fileNames: {} },
-        light: { fileExtensions: {}, fileNames: {} },
+        light: { fileExtensions: {}, fileNames: {}, languageIds: {} },
         languageIds: {},
       });
   }
@@ -335,6 +360,7 @@ export class IconGenerator implements IIconGenerator {
     schema.light.folderNamesExpanded = res.folders.light.folderNamesExpanded;
     schema.light.fileExtensions = res.files.light.fileExtensions;
     schema.light.fileNames = res.files.light.fileNames;
+    schema.light.languageIds = res.files.light.languageIds;
     return schema;
   }
 
