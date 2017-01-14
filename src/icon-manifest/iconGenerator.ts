@@ -28,7 +28,7 @@ export class IconGenerator implements IIconGenerator {
   constructor(
     private vscode: IVSCode,
     private defaultSchema: IIconSchema,
-    private isDevMode: boolean = false) {
+    private avoidCustomDetection: boolean = false) {
     this.settings = new SettingsManager(vscode).getSettings();
     // relative to this file
     this.iconsFolderPath = path.join(__dirname, '../../../', 'icons');
@@ -375,7 +375,7 @@ export class IconGenerator implements IIconGenerator {
 
   private getIconPath(defaultPath: string, filename: string): string {
     const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
-    return !this.isDevMode && this.hasCustomIcon(absPath, filename)
+    return !this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)
       ? this.getRelativePath(this.manifestFolderPath, absPath, false)
       : defaultPath;
   }
