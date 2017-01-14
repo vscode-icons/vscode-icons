@@ -167,7 +167,7 @@ function generateManifest(
 }
 
 function restoreManifest() {
-  const iconGenerator = new IconGenerator(vscode, schema);
+  const iconGenerator = new IconGenerator(vscode, schema, true);
   const json = mergeConfig(
     null,
     files,
