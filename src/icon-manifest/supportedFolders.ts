@@ -22,7 +22,7 @@ export const extensions: IFolderCollection = {
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
     { icon: 'images', extensions: ['images', 'image', 'img', 'icons', 'icon', 'ico'], format: FileFormat.svg },
     { icon: 'less', extensions: ['less'], format: FileFormat.svg },
-    { icon: 'locale', extensions: ['locale', 'locales'], format: FileFormat.svg },
+    { icon: 'locale', extensions: ['locale', 'locales', 'i18n', 'g11n'], format: FileFormat.svg },
     { icon: 'node', extensions: ['node_modules'], light: true, format: FileFormat.svg },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
     { icon: 'paket', extensions: ['.paket'], format: FileFormat.svg },
