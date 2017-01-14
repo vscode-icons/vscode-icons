@@ -60,7 +60,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported file extension that has a light theme version ' +
+  it('ensures each supported file extension that has a light theme version, ' +
     'has an associated icon file', function () {
       files.supported
         .filter(file => file.light)
@@ -82,7 +82,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported folder that has a light theme version ' +
+  it('ensures each supported folder that has a light theme version, ' +
     'has an associated icon file',
     function () {
       folders.supported
@@ -105,7 +105,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported folder that has a light theme version ' +
+  it('ensures each supported folder that has a light theme version, ' +
     'has an associated opened icon file',
     function () {
       folders.supported
@@ -128,8 +128,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported file extension that has a light theme version' +
-    ' has a \'light\' definition',
+  it('ensures each supported file extension that has a light theme version, has a \'light\' definition',
     function () {
       const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
@@ -150,7 +149,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported file extension that has a light theme version has an icon path',
+  it('ensures each supported file extension that has a light theme version, has an icon path',
     function () {
       const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
@@ -171,7 +170,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported folder that has a light theme version has a \'light\' definition',
+  it('ensures each supported folder that has a light theme version, has a \'light\' definition',
     function () {
       const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
@@ -192,7 +191,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported folder that has a light theme version has a open \'light\' definition',
+  it('ensures each supported folder that has a light theme version, has a open \'light\' definition',
     function () {
       const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
@@ -213,7 +212,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported folder that has a light theme version has an icon path',
+  it('ensures each supported folder that has a light theme version, has an icon path',
     function () {
       const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
@@ -234,7 +233,7 @@ describe('IconGenerator: icon generation test', function () {
       });
   });
 
-  it('ensures each supported folder that has a light theme version has an open icon path',
+  it('ensures each supported folder that has a light theme version, has an open icon path',
     function () {
       const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
       folders.supported
@@ -258,7 +257,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported folder that has a light theme version ' +
+  it('ensures each supported folder that has a light theme version, ' +
     'has a folder name referencing its \'light\' definition',
     function () {
       const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
@@ -285,7 +284,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported folder that has a light theme version ' +
+  it('ensures each supported folder that has a light theme version, ' +
     'has a folder name expanded referencing its open \'light\' definition',
     function () {
       const schema = getIconGenerator().generateJson(getEmptyFileCollection(), folders);
@@ -299,7 +298,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported file extension that is not a filename ' +
+  it('ensures each supported file extension that is not a filename, ' +
     'has a file extension referencing its definition',
     function () {
       const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
@@ -313,8 +312,8 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported file extension that is not a filename ' +
-    'and has a light theme version has a file extension referencing its \'light\' definition',
+  it('ensures each supported file extension that is not a filename and has a light theme version, ' +
+    'has a file extension referencing its \'light\' definition',
     function () {
       const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
@@ -327,7 +326,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported file extension that is a filename ' +
+  it('ensures each supported file extension that is a filename, ' +
     'has a file name referencing its definition',
     function () {
       const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
@@ -341,8 +340,8 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported file extension that is a filename ' +
-    'and has a light theme version has a file name referencing its \'light\' definition',
+  it('ensures each supported file extension that is a filename and has a light theme version, ' +
+    'has a file name referencing its \'light\' definition',
     function () {
       const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
       files.supported
@@ -355,7 +354,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported file extension that is supported by language ids ' +
+  it('ensures each supported file extension that is supported by language ids, ' +
     'has a language id referencing its definition',
     function () {
       const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
@@ -377,7 +376,54 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported file extension that has not a light theme version ' +
+  it('ensures each supported file extension that is supported by language ids and has a light theme version, ' +
+    'has a language id referencing its \'light\' definition',
+    function () {
+      const schema = getIconGenerator().generateJson(files, getEmptyFolderCollection());
+      files.supported
+        .filter(file => file.languages && file.light && !file.disabled)
+        .forEach(file => {
+          const definition = `${settings.manifestFileLightPrefix}${file.icon}`;
+          const assertLanguageLight = function (language) {
+            expect(schema.light.languageIds[language]).equal(definition);
+          };
+
+          file.languages.forEach(function (langIds) {
+            if (Array.isArray(langIds.ids)) {
+              langIds.ids.forEach(function (id) { assertLanguageLight(id); });
+            } else {
+              assertLanguageLight(langIds.ids);
+            }
+          });
+        });
+    });
+
+  it('ensures each supported file extension that is supported by language ids and has not a light theme version, ' +
+    'if a default file icon for light theme is specified, ' +
+    'has a \'light\' language id referencing its inherited definition',
+    function () {
+      const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+      dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
+      const schema = getIconGenerator(dSchema).generateJson(files, getEmptyFolderCollection());
+      files.supported
+        .filter(file => file.languages && !file.light && !file.disabled)
+        .forEach(file => {
+          const definition = `${settings.manifestFilePrefix}${file.icon}`;
+          const assignLanguagesLightWhenDefaultLight = function (language) {
+            expect(schema.light.languageIds[language]).equal(definition);
+          };
+
+          file.languages.forEach(function (langIds) {
+            if (Array.isArray(langIds.ids)) {
+              langIds.ids.forEach(function (id) { assignLanguagesLightWhenDefaultLight(id); });
+            } else {
+              assignLanguagesLightWhenDefaultLight(langIds.ids);
+            }
+          });
+        });
+    });
+
+  it('ensures each supported file extension that has not a light theme version, ' +
     'if a default file icon for light theme is specified, has a \'light\' definition',
     function () {
       const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
@@ -391,7 +437,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported folder that has not a light theme version ' +
+  it('ensures each supported folder that has not a light theme version, ' +
     'if a default folder icon for light theme is specified, has a \'light\' definition',
     function () {
       const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
@@ -405,7 +451,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported folder that has not a light theme version ' +
+  it('ensures each supported folder that has not a light theme version, ' +
     'if a default folder open icon for light theme is specified, has an open \'light\' definition',
     function () {
       const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
@@ -419,7 +465,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported folder that has not a light theme version ' +
+  it('ensures each supported folder that has not a light theme version, ' +
     'if a default folder icon for light theme is specified, ' +
     'has a folder name referencing its inherited definition',
     function () {
@@ -436,7 +482,7 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported folder that has not a light theme version ' +
+  it('ensures each supported folder that has not a light theme version, ' +
     'if a default folder icon for light theme is specified, ' +
     'has a folder name expanded referencing its inherited definition',
     function () {
@@ -453,8 +499,8 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported file extension that is not a filename ' +
-    'and has not a light theme version, has a file extension referencing its inherited definition',
+  it('ensures each supported file extension that is not a filename and has not a light theme version, ' +
+    'has a file extension referencing its inherited definition',
     function () {
       const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
@@ -469,8 +515,8 @@ describe('IconGenerator: icon generation test', function () {
         });
     });
 
-  it('ensures each supported file extension that is a filename ' +
-    'and has a light theme version has a file name referencing its inherited definition',
+  it('ensures each supported file extension that is a filename and has a light theme version, ' +
+    'has a file name referencing its inherited definition',
     function () {
       const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
       dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
