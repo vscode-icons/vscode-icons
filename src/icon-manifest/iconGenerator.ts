@@ -378,8 +378,8 @@ export class IconGenerator implements IIconGenerator {
     if (!this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)) {
       const sanitizedFolderPath =
         this.belongToSameDrive(absPath, this.manifestFolderPath) ?
-        this.manifestFolderPath :
-        this.overwriteDrive(absPath,  this.manifestFolderPath);
+          this.manifestFolderPath :
+          this.overwriteDrive(absPath, this.manifestFolderPath);
       return this.getRelativePath(sanitizedFolderPath, absPath, false);
     } else {
       return defaultPath;
@@ -387,17 +387,18 @@ export class IconGenerator implements IIconGenerator {
   }
 
   private belongToSameDrive(path1: string, path2: string): boolean {
-    const rx = new RegExp('^[a-zA-Z]:');
-    const val1 = (rx.exec(path1) || [])[0];
-    const val2 = (rx.exec(path2) || [])[0];
+    const [val1, val2] = this.getDrives(path1, path2);
     return val1 === val2;
   }
 
   private overwriteDrive(sourcePath: string, destPath: string): string {
-    const rx = new RegExp('^[a-zA-Z]:');
-    const val1 = (rx.exec(sourcePath) || [])[0];
-    const val2 = (rx.exec(destPath) || [])[0];
+    const [val1, val2] = this.getDrives(sourcePath, destPath);
     return destPath.replace(val2, val1);
+  }
+
+  private getDrives(...paths: string[]): string[] {
+    const rx = new RegExp('^[a-zA-Z]:');
+    return paths.map(x => (rx.exec(x) || [])[0]);
   }
 
   private cleanOutDir(outDir: string) {
