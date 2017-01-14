@@ -375,9 +375,30 @@ export class IconGenerator implements IIconGenerator {
 
   private getIconPath(defaultPath: string, filename: string): string {
     const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
-    return !this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)
-      ? this.getRelativePath(this.manifestFolderPath, absPath, false)
-      : defaultPath;
+    if (!this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)) {
+      const sanitizedFolderPath =
+        this.belongToSameDrive(absPath, this.manifestFolderPath) ?
+          this.manifestFolderPath :
+          this.overwriteDrive(absPath, this.manifestFolderPath);
+      return this.getRelativePath(sanitizedFolderPath, absPath, false);
+    } else {
+      return defaultPath;
+    }
+  }
+
+  private belongToSameDrive(path1: string, path2: string): boolean {
+    const [val1, val2] = this.getDrives(path1, path2);
+    return val1 === val2;
+  }
+
+  private overwriteDrive(sourcePath: string, destPath: string): string {
+    const [val1, val2] = this.getDrives(sourcePath, destPath);
+    return destPath.replace(val2, val1);
+  }
+
+  private getDrives(...paths: string[]): string[] {
+    const rx = new RegExp('^[a-zA-Z]:');
+    return paths.map(x => (rx.exec(x) || [])[0]);
   }
 
   private cleanOutDir(outDir: string) {
