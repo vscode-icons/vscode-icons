@@ -18,4 +18,5 @@ Dockerfile
 tsconfig.json
 tslint.json
 npm-debug.log
+yarn.lock
 
