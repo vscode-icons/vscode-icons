@@ -204,3 +204,21 @@ function resetProjectDetectDefaults() {
   conf.update('vsicons.projectDetection.autoReload', false, true);
   conf.update('vsicons.projectDetection.disableDetect', false, true);
 }
+
+export function applyDetection(message: string, presetText: string, value: boolean) {
+  return togglePreset(presetText, value, false)
+    .then(() => {
+      // Add a delay in order for vscode to persist the toggle of the preset
+      setTimeout(() => {
+        if (getConfig().vsicons.projectDetection.autoReload) {
+          applyCustomization();
+          reload();
+          return;
+        }
+
+        showCustomizationMessage(message,
+          [{ title: msg.reload }, { title: msg.autoReload }, { title: msg.disableDetect }],
+          applyCustomization, cancel, presetText, !value, false);
+      }, 500);
+    });
+}

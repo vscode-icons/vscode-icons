@@ -1,17 +1,18 @@
 import * as vscode from 'vscode';
 import { SettingsManager } from './settings';
 import { manageWelcomeMessage, manageAutoApplyCustomizations, detectProject } from './init';
-import { registerCommands, applyCustomizationCommand } from './commands';
-import { getConfig } from './utils/vscode-extensions';
+import { registerCommands, applyCustomizationCommand, applyDetection } from './commands';
+import { getConfig, findFiles } from './utils/vscode-extensions';
 
 function initialize(context: vscode.ExtensionContext) {
   const conf = getConfig().vsicons;
   const settingsManager = new SettingsManager(vscode);
   registerCommands(context);
   manageWelcomeMessage(settingsManager);
-  detectProject(conf)
+  detectProject(findFiles, conf)
     .then((res) => {
-      if (res) {
+      if (res.isProject) {
+        applyDetection(res.message, res.presetText, res.value);
         return;
       }
       manageAutoApplyCustomizations(settingsManager.isNewVersion(), conf, applyCustomizationCommand);
