@@ -1,7 +1,8 @@
 # Change Log
 
-## 7.0.0 (January 15, 2017)
+## 7.0.1 (January 15, 2017)
   - Fix: Solved publication issue. ([@robertohuertasm](https://github.com/robertohuertasm) in [#643](https://github.com/vscode-icons/vscode-icons/pull/643))
+
 ## 7.0.0 (January 15, 2017)
   - Feature: Dependencies status badges added to the project. ([@JimiC](https://github.com/JimiC) in [#642](https://github.com/vscode-icons/vscode-icons/pull/642))
   - Enhancement: `out folder` gets cleaned before compilation. ([@JimiC](https://github.com/JimiC) in [#641](https://github.com/vscode-icons/vscode-icons/pull/641))
