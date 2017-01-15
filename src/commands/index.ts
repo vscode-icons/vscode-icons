@@ -22,6 +22,7 @@ import { extensionSettings } from '../settings';
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
   registerCommand(context, 'restoreIcons', restoreDefaultManifestCommand);
+  registerCommand(context, 'resetProjectDetectDefaults', resetProjectDetectDefaultsCommand);
   registerCommand(context, 'ngPreset', toggleAngularPresetCommand);
   registerCommand(context, 'jsPreset', toggleJsPresetCommand);
   registerCommand(context, 'tsPreset', toggleTsPresetCommand);
@@ -41,12 +42,17 @@ function registerCommand(
 
 export function applyCustomizationCommand() {
   const message = `${msg.iconCustomizationMessage} ${msg.restart}`;
-  showCustomizationMessage(message, applyCustomization);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization);
 }
 
 function restoreDefaultManifestCommand() {
   const message = `${msg.iconRestoreMessage} ${msg.restart}`;
-  showCustomizationMessage(message, restoreManifest);
+  showCustomizationMessage(message, [{ title: msg.reload }], restoreManifest);
+}
+
+function resetProjectDetectDefaultsCommand() {
+  const message = `${msg.projectDetecticonResetMessage}`;
+  showCustomizationMessage(message, [{ title: msg.reload }], resetProjectDetectDefaults);
 }
 
 function toggleAngularPresetCommand() {
@@ -54,7 +60,7 @@ function toggleAngularPresetCommand() {
   const value = getToggleValue(preset);
   const message = `${msg.ngPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
   togglePreset(preset, value, false);
-  showCustomizationMessage(message, applyCustomization, cancel, preset, !value, false);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, false);
 }
 
 function toggleJsPresetCommand() {
@@ -62,7 +68,7 @@ function toggleJsPresetCommand() {
   const value = getToggleValue(preset);
   const message = `${msg.jsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
   togglePreset(preset, value);
-  showCustomizationMessage(message, applyCustomization, cancel, preset, !value);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value);
 }
 
 function toggleTsPresetCommand() {
@@ -70,7 +76,7 @@ function toggleTsPresetCommand() {
   const value = getToggleValue(preset);
   const message = `${msg.tsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
   togglePreset(preset, value);
-  showCustomizationMessage(message, applyCustomization, cancel, preset, !value);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value);
 }
 
 function toggleJsonPresetCommand() {
@@ -78,7 +84,7 @@ function toggleJsonPresetCommand() {
   const value = getToggleValue(preset);
   const message = `${msg.jsonOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
   togglePreset(preset, value);
-  showCustomizationMessage(message, applyCustomization, cancel, preset, !value);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value);
 }
 
 function toggleHideFoldersCommand() {
@@ -86,30 +92,42 @@ function toggleHideFoldersCommand() {
   const value = getToggleValue(preset);
   const message = `${msg.hideFoldersPresetMessage} ${value ? msg.disabled : msg.enabled}. ${msg.restart}`;
   togglePreset(preset, value);
-  showCustomizationMessage(message, applyCustomization, cancel, preset, !value);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value);
 }
 
 function getToggleValue(preset: string): boolean {
   return !getConfig().vsicons.presets[preset];
 }
 
-function togglePreset(preset: string, newvalue: boolean, global: boolean = true): void {
-  getConfig().update(`vsicons.presets.${preset}`, newvalue, global);
+export function togglePreset(preset: string, newvalue: boolean, global: boolean = true): Thenable<void> {
+  return getConfig().update(`vsicons.presets.${preset}`, newvalue, global);
 }
 
-function showCustomizationMessage(
+export function showCustomizationMessage(
   message: string,
+  items: vscode.MessageItem[],
   callback?: Function,
   cancel?: (...args: any[]) => void,
   ...args: any[]) {
-  vscode.window.showInformationMessage(message, { title: msg.reload })
+  vscode.window.showInformationMessage(message, ...items)
     .then(btn => {
       if (!btn) {
         if (cancel) { cancel(...args); }
         return;
       }
+
+      if (btn.title === msg.disableDetect) {
+        getConfig().update('vsicons.projectDetection.disableDetect', true, true);
+        return;
+      }
+
+      if (btn.title === msg.autoReload) {
+        getConfig().update('vsicons.projectDetection.autoReload', true, true);
+      }
+
       if (callback) { callback(...args); }
-      vscode.commands.executeCommand('workbench.action.reloadWindow');
+
+      reload();
     }, (reason) => {
       // tslint:disable-next-line:no-console
       console.log('Rejected because: ', reason);
@@ -117,11 +135,15 @@ function showCustomizationMessage(
     });
 }
 
-function cancel(preset: string, value: boolean, global: boolean = true): void {
+export function reload() {
+  vscode.commands.executeCommand('workbench.action.reloadWindow');
+}
+
+export function cancel(preset: string, value: boolean, global: boolean = true): void {
   togglePreset(preset, value, global);
 }
 
-function applyCustomization() {
+export function applyCustomization() {
   const associations = getConfig().vsicons.associations;
   const customFiles: IFileCollection = {
     default: associations.fileDefault,
@@ -175,4 +197,10 @@ function restoreManifest() {
     folders,
     iconGenerator);
   iconGenerator.persist(extensionSettings.iconJsonFileName, json);
+}
+
+function resetProjectDetectDefaults() {
+  const conf = getConfig();
+  conf.update('vsicons.projectDetection.autoReload', false, true);
+  conf.update('vsicons.projectDetection.disableDetect', false, true);
 }

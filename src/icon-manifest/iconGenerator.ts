@@ -377,13 +377,12 @@ export class IconGenerator implements IIconGenerator {
     const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
     if (!this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)) {
       const sanitizedFolderPath =
-        this.belongToSameDrive(absPath, this.manifestFolderPath) ?
-          this.manifestFolderPath :
-          this.overwriteDrive(absPath, this.manifestFolderPath);
+        this.belongToSameDrive(absPath, this.manifestFolderPath)
+          ? this.manifestFolderPath
+          : this.overwriteDrive(absPath, this.manifestFolderPath);
       return this.getRelativePath(sanitizedFolderPath, absPath, false);
-    } else {
-      return defaultPath;
     }
+    return defaultPath;
   }
 
   private belongToSameDrive(path1: string, path2: string): boolean {

@@ -7,6 +7,10 @@ import { IVSIcons } from '../src/models';
 function getUserConfig() {
   const userConfig: IVSIcons = {
     dontShowNewVersionMessage: false,
+    projectDetection: {
+      autoReload: false,
+      disableDetect: false,
+    },
     presets: {
       angular: true,
       jsOfficial: false,

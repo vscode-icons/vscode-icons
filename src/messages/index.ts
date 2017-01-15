@@ -11,6 +11,8 @@ export const messages = {
   urlReadme: 'https://github.com/robertohuertasm/vscode-icons/blob/master/README.md',
   urlOfficialApi: 'http://code.visualstudio.com/docs/customization/themes#_select-an-icon-theme',
   reload: 'Restart',
+  autoReload: 'Auto-Restart',
+  disableDetect: 'Disable Detection',
   iconCustomizationMessage: 'The icons manifest will be regenerated.',
   iconRestoreMessage: 'The icons manifest will be restored.',
   ngPresetMessage: 'Angular icons will be ',
@@ -21,4 +23,9 @@ export const messages = {
   enabled: 'enabled',
   disabled: 'disabled',
   restart: '\'Restart\' for changes to take effect.',
+  ng2Detected: 'VSCode-Icons has detected an Angular 2 project. ' +
+  '\'Restart\' to enable the Angular icons.',
+  nonNg2Detected: 'VSCode-Icons has detected a non Angular 2 project. ' +
+  '\'Restart\' to disable the Angular icons.',
+  projectDetecticonResetMessage: 'Project Detection defaults will be reset. \'Restart\' for changes to take effect.',
 };

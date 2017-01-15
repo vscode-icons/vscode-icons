@@ -25,131 +25,120 @@
         "Other",
         "Themes"
     ],
-    "keywords": [
-        "icon-theme",
-        "theme",
-        "icons",
-        "vscode-icons"
+    "commands": [
+      {
+        "command": "extension.regenerateIcons",
+        "title": "Apply Icons Customization",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.ngPreset",
+        "title": "Toggle Angular Preset (Workspace Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.jsPreset",
+        "title": "Toggle Official JS Preset (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.tsPreset",
+        "title": "Toggle Official TS Preset (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.jsonPreset",
+        "title": "Toggle Official JSON Preset (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.hideFoldersPreset",
+        "title": "Toggle Folder Icons Visibility (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.restoreIcons",
+        "title": "Restore Default Icon Manifest",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.resetProjectDetectDefaults",
+        "title": "Reset Project Detection Defaults",
+        "category": "Icons"
+      }
     ],
-    "preview": true,
-    "homepage": "https://github.com/vscode-icons/vscode-icons",
-    "icon": "images/logo.png",
-    "galleryBanner": {
-        "color": "#ffdd00"
-    },
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./out/src/",
-    "contributes": {
-        "iconThemes": [
-            {
-                "id": "vscode-icons",
-                "label": "VSCode Icons",
-                "path": "out/src/icons.json"
-            }
-        ],
-        "commands": [
-            {
-                "command": "extension.regenerateIcons",
-                "title": "Apply Icons Customization",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.ngPreset",
-                "title": "Toggle Angular Preset (Workspace Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.jsPreset",
-                "title": "Toggle Official JS Preset (User Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.tsPreset",
-                "title": "Toggle Official TS Preset (User Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.jsonPreset",
-                "title": "Toggle Official JSON Preset (User Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.hideFoldersPreset",
-                "title": "Toggle Folder Icons Visibility (User Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.restoreIcons",
-                "title": "Restore Default Icon Manifest",
-                "category": "Icons"
-            }
-        ],
-        "configuration": {
-            "title": "vscode-icons configuration",
-            "properties": {
-                "vsicons.dontShowNewVersionMessage": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the new version message won't be shown anymore."
-                },
-                "vsicons.presets.angular": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "If set to true the extension will match some of the common Angular patterns"
-                },
-                "vsicons.presets.jsOfficial": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the extension will use the official JS icon"
-                },
-                "vsicons.presets.tsOfficial": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the extension will use the official TS icon"
-                },
-                "vsicons.presets.jsonOfficial": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the extension will use the official JSON icon"
-                },
-                "vsicons.presets.hideFolders": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true all folders will be hidden"
-                },
-                "vsicons.associations.files": {
-                    "type": "array",
-                    "default": [],
-                    "description": "These custom associations will override the file icon associations defined by default."
-                },
-                "vsicons.associations.folders": {
-                    "type": "array",
-                    "default": [],
-                    "description": "These custom associations will override the folder icon associations defined by default."
-                },
-                "vsicons.associations.fileDefault.file": {
-                    "type": "object",
-                    "default": null,
-                    "description": "This setting will let you change default dark file icon."
-                },
-                "vsicons.associations.fileDefault.file_light": {
-                    "type": "object",
-                    "default": null,
-                    "description": "This setting will let you change default light file icon."
-                },
-                "vsicons.associations.folderDefault.folder": {
-                    "type": "object",
-                    "default": null,
-                    "description": "This setting will let you change default dark folder icon."
-                },
-                "vsicons.associations.folderDefault.folder_light": {
-                    "type": "object",
-                    "default": null,
-                    "description": "This setting will let you change default light folder icon."
-                }
-            }
+    "configuration": {
+      "title": "vscode-icons configuration",
+      "properties": {
+        "vsicons.dontShowNewVersionMessage": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the new version message won't be shown anymore."
+        },
+        "vsicons.projectDetection.autoReload": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will restart automatically on project detection"
+        },
+        "vsicons.projectDetection.disableDetect": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will disable the project detection"
+        },
+        "vsicons.presets.angular": {
+          "type": "boolean",
+          "default": true,
+          "description": "If set to true the extension will match some of the common Angular patterns"
+        },
+        "vsicons.presets.jsOfficial": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will use the official JS icon"
+        },
+        "vsicons.presets.tsOfficial": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will use the official TS icon"
+        },
+        "vsicons.presets.jsonOfficial": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will use the official JSON icon"
+        },
+        "vsicons.presets.hideFolders": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true all folders will be hidden"
+        },
+        "vsicons.associations.files": {
+          "type": "array",
+          "default": [],
+          "description": "These custom associations will override the file icon associations defined by default."
+        },
+        "vsicons.associations.folders": {
+          "type": "array",
+          "default": [],
+          "description": "These custom associations will override the folder icon associations defined by default."
+        },
+        "vsicons.associations.fileDefault.file": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default dark file icon."
+        },
+        "vsicons.associations.fileDefault.file_light": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default light file icon."
+        },
+        "vsicons.associations.folderDefault.folder": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default dark folder icon."
+        },
+        "vsicons.associations.folderDefault.folder_light": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default light folder icon."
         }
     },
     "scripts": {
