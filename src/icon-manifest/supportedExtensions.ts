@@ -166,7 +166,7 @@ export const extensions: IFileCollection = {
     { icon: 'julia2', extensions: ['jl'], format: FileFormat.svg, disabled: true },
     { icon: 'karma', extensions: ['karma.conf.js', 'karma.conf.coffee'], filename: true, format: FileFormat.svg },
     { icon: 'kotlin', extensions: ['kt'], format: FileFormat.svg },
-    { icon: 'lerna', extensions: ['lerna.json'], filename: true, format: FileFormat.svg },
+    { icon: 'lerna', extensions: ['lerna.json'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'less', extensions: [], languages: [languages.less], format: FileFormat.svg },
     { icon: 'license', extensions: ['enc'], format: FileFormat.svg },
     { icon: 'license', extensions: ['license', 'licence', 'license.md', 'licence.md'], filename: true, format: FileFormat.svg },
