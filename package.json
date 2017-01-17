@@ -1,29 +1,53 @@
 {
-    "name": "vscode-icons",
-    "displayName": "vscode-icons",
-    "description": "Icons for Visual Studio Code",
-    "version": "7.0.1",
-    "publisher": "robertohuertasm",
-    "license": "MIT",
-    "author": {
-        "email": "roberto.huertas@outlook.com",
-        "name": "Roberto Huertas",
-        "url": "http://codecoding.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/vscode-icons/vscode-icons"
-    },
-    "bugs": {
-        "url": "https://github.com/vscode-icons/vscode-icons/issues",
-        "email": "roberto.huertas@outlook.com"
-    },
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Other",
-        "Themes"
+  "name": "vscode-icons",
+  "displayName": "vscode-icons",
+  "description": "Icons for Visual Studio Code",
+  "version": "7.0.1",
+  "publisher": "robertohuertasm",
+  "license": "MIT",
+  "author": {
+    "email": "roberto.huertas@outlook.com",
+    "name": "Roberto Huertas",
+    "url": "http://codecoding.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vscode-icons/vscode-icons"
+  },
+  "bugs": {
+    "url": "https://github.com/vscode-icons/vscode-icons/issues",
+    "email": "roberto.huertas@outlook.com"
+  },
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other",
+    "Themes"
+  ],
+  "keywords": [
+    "icon-theme",
+    "theme",
+    "icons",
+    "vscode-icons"
+  ],
+  "preview": true,
+  "homepage": "https://github.com/vscode-icons/vscode-icons",
+  "icon": "images/logo.png",
+  "galleryBanner": {
+    "color": "#ffdd00"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/src/",
+  "contributes": {
+    "iconThemes": [
+      {
+        "id": "vscode-icons",
+        "label": "VSCode Icons",
+        "path": "out/src/icons.json"
+      }
     ],
     "commands": [
       {
@@ -62,7 +86,7 @@
         "category": "Icons"
       },
       {
-        "command": "extension.resetProjectDetectDefaults",
+        "command": "extension.resetProjectDetectionDefaults",
         "title": "Reset Project Detection Defaults",
         "category": "Icons"
       }
@@ -140,37 +164,41 @@
           "default": null,
           "description": "This setting will let you change default light folder icon."
         }
-    },
-    "scripts": {
-        "prebuild": "npm run lint && npm run test",
-        "build": "node ./out/src/icon-manifest/build.js",
-        "example": "node ./out/src/example/example.js ",
-        "pretest": "npm run compile",
-        "test": "mocha ./out/test",
-        "lint": "tslint src/**/*.ts test/**/*.ts",
-        "test:vs": "node ./node_modules/vscode/bin/test",
-        "vscode:prepublish": "rimraf ./out && npm run build",
-        "compile:w": "rimraf ./out && tsc -watch -p ./",
-        "compile": "rimraf ./out && tsc -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "@types/chai": "^3.4.34",
-        "@types/lodash": "^4.14.44",
-        "@types/mocha": "^2.2.33",
-        "@types/node": "^6.0.40",
-        "@types/sinon": "^1.16.34",
-        "chai": "^3.5.0",
-        "mocha": "^3.2.0",
-        "rimraf": "^2.5.4",
-        "sinon": "^1.17.7",
-        "tslint": "^4.2.0",
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0"
-    },
-    "dependencies": {
-        "lodash": "^4.17.2",
-        "open": "0.0.5",
-        "semver": "^5.3.0"
+      }
     }
+  },
+  "scripts": {
+    "prebuild": "npm run lint && npm run test",
+    "build": "node ./out/src/icon-manifest/build.js",
+    "example": "node ./out/src/example/example.js ",
+    "pretest": "npm run compile",
+    "test": "mocha ./out/test",
+    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "test:vs": "node ./node_modules/vscode/bin/test",
+    "vscode:prepublish": "rimraf ./out && npm run build",
+    "compile:w": "rimraf ./out && tsc -watch -p ./",
+    "compile": "rimraf ./out && tsc -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/chai-as-promised": "^0.0.29",
+    "@types/lodash": "^4.14.44",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "^6.0.40",
+    "@types/sinon": "^1.16.34",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.5.4",
+    "sinon": "^1.17.7",
+    "tslint": "^4.2.0",
+    "typescript": "^2.0.3",
+    "vscode": "^1.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.2",
+    "open": "0.0.5",
+    "semver": "^5.3.0"
+  }
 }

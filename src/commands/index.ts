@@ -22,7 +22,7 @@ import { extensionSettings } from '../settings';
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
   registerCommand(context, 'restoreIcons', restoreDefaultManifestCommand);
-  registerCommand(context, 'resetProjectDetectDefaults', resetProjectDetectDefaultsCommand);
+  registerCommand(context, 'resetProjectDetectionDefaults', resetProjectDetectionDefaultsCommand);
   registerCommand(context, 'ngPreset', toggleAngularPresetCommand);
   registerCommand(context, 'jsPreset', toggleJsPresetCommand);
   registerCommand(context, 'tsPreset', toggleTsPresetCommand);
@@ -50,9 +50,9 @@ function restoreDefaultManifestCommand() {
   showCustomizationMessage(message, [{ title: msg.reload }], restoreManifest);
 }
 
-function resetProjectDetectDefaultsCommand() {
+function resetProjectDetectionDefaultsCommand() {
   const message = `${msg.projectDetecticonResetMessage}`;
-  showCustomizationMessage(message, [{ title: msg.reload }], resetProjectDetectDefaults);
+  showCustomizationMessage(message, [{ title: msg.reload }], resetProjectDetectionDefaults);
 }
 
 function toggleAngularPresetCommand() {
@@ -199,8 +199,12 @@ function restoreManifest() {
   iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }
 
-function resetProjectDetectDefaults() {
+function resetProjectDetectionDefaults() {
   const conf = getConfig();
-  conf.update('vsicons.projectDetection.autoReload', false, true);
-  conf.update('vsicons.projectDetection.disableDetect', false, true);
+  if (conf.vsicons.projectDetection.autoReload) {
+    conf.update('vsicons.projectDetection.autoReload', false, true);
+  }
+  if (conf.vsicons.projectDetection.disableDetect) {
+    conf.update('vsicons.projectDetection.disableDetect', false, true);
+  }
 }

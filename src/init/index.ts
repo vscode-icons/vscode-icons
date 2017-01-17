@@ -1,3 +1,3 @@
 export * from './welcome';
 export * from './autoApplyCustomizations';
-export * from './detectProject';
+export * from './autoDetectProject';

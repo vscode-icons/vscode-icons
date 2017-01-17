@@ -1,20 +1,48 @@
 import * as vscode from 'vscode';
+import * as fs from 'fs';
 import { SettingsManager } from './settings';
-import { manageWelcomeMessage, manageAutoApplyCustomizations, detectProject } from './init';
-import { registerCommands, applyCustomizationCommand } from './commands';
-import { getConfig } from './utils/vscode-extensions';
+import {
+  manageWelcomeMessage,
+  manageAutoApplyCustomizations,
+  detectProject,
+  checkForAngularProject,
+  iconsDisabled,
+  isProject,
+  applyDetection,
+} from './init';
+import {
+  registerCommands,
+  applyCustomizationCommand,
+  applyCustomization,
+  reload,
+  togglePreset,
+  cancel,
+  showCustomizationMessage,
+} from './commands';
+import { getConfig, findFiles } from './utils/vscode-extensions';
 
 function initialize(context: vscode.ExtensionContext) {
-  const conf = getConfig().vsicons;
+  const config = getConfig().vsicons;
   const settingsManager = new SettingsManager(vscode);
   registerCommands(context);
   manageWelcomeMessage(settingsManager);
-  detectProject(conf)
-    .then((res) => {
-      if (res) {
-        return;
+  detectProject(findFiles, config)
+    .then((path) => {
+      if (path != null) {
+        const project = fs.readFileSync(path, "utf8");
+        const projectJson = (typeof project === "string") ? JSON.parse(project) : null;
+        if (projectJson) {
+          const ngIconsDisabled = iconsDisabled('ng');
+          const isNgProject = isProject(projectJson, 'ng');
+          const toggle = checkForAngularProject(projectJson, config.presets.angular, ngIconsDisabled, isNgProject);
+          if (toggle.apply) {
+            applyDetection(toggle.message, 'angular', toggle.value, config.projectDetection.autoReload,
+             togglePreset, applyCustomization, reload, cancel, showCustomizationMessage);
+          }
+          return;
+        }
       }
-      manageAutoApplyCustomizations(settingsManager.isNewVersion(), conf, applyCustomizationCommand);
+      manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, applyCustomizationCommand);
     });
 }
 

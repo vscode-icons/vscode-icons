@@ -23,9 +23,9 @@ export const messages = {
   enabled: 'enabled',
   disabled: 'disabled',
   restart: '\'Restart\' for changes to take effect.',
-  ng2Detected: 'VSCode-Icons has detected an Angular 2 project. ' +
+  ngDetected: 'VSCode-Icons has detected an Angular project. ' +
   '\'Restart\' to enable the Angular icons.',
-  nonNg2Detected: 'VSCode-Icons has detected a non Angular 2 project. ' +
+  nonNgDetected: 'VSCode-Icons has detected a non Angular project. ' +
   '\'Restart\' to disable the Angular icons.',
   projectDetecticonResetMessage: 'Project Detection defaults will be reset. \'Restart\' for changes to take effect.',
 };
