@@ -80,6 +80,14 @@ If you're a designer and you're willing to collaborate by showing your icons to 
 ## List of supported folder icons
 If you want to check which folder icons are currently supported take a look [here](https://github.com/vscode-icons/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/vscode-icons/vscode-icons/issues).
 
+## Configuration
+If you don't want to see the `new version` message every time the extension updates, then you can modify this configuration setting:
+```json
+{
+  "vsicons.dontShowNewVersionMessage": false
+}
+```
+
 ## Customizing the extension
 The extension gives you the ability to change how the icons look or even what icons are associated to each extension.
 
@@ -247,14 +255,6 @@ npm run example -- --all
 ```
 
 The above syntax will create examples for all supported files and folders.
-
-## Configuration
-If you don't want to see the `new version` message every time the extension updates, then you can modify this configuration setting:
-```json
-{
-  "vsicons.dontShowNewVersionMessage": false
-}
-```
 
 ## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:
