@@ -49,6 +49,7 @@ export interface ILanguageCollection {
   swift: ILanguage;
   typescript: ILanguage;
   vb: ILanguage;
+  vhdl: ILanguage;
   xml: ILanguage;
   xsl: ILanguage;
   yaml: ILanguage;

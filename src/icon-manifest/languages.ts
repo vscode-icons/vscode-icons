@@ -49,6 +49,7 @@ export const languages: ILanguageCollection = {
   swift: { ids: 'swift', defaultExtension: 'swift' },
   typescript: { ids: 'typescript', defaultExtension: 'ts' },
   vb: { ids: 'vb', defaultExtension: 'vb' },
+  vhdl: { ids: 'vhdl', defaultExtension: 'vhdl' },
   xml: { ids: 'xml', defaultExtension: 'xml' },
   xsl: { ids: 'xsl', defaultExtension: 'xsl' },
   yaml: { ids: 'yaml', defaultExtension: 'yaml' },
