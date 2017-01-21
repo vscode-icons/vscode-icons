@@ -4,9 +4,13 @@ import * as sinon from 'sinon';
 import { manageAutoApplyCustomizations } from '../src/init/autoApplyCustomizations';
 import { IVSIcons } from '../src/models';
 
-function getUserConfig() {
-  const userConfig: IVSIcons = {
+function getUserConfig(): IVSIcons {
+  return {
     dontShowNewVersionMessage: false,
+    projectDetection: {
+      autoReload: false,
+      disableDetect: false,
+    },
     presets: {
       angular: true,
       jsOfficial: false,
@@ -21,26 +25,26 @@ function getUserConfig() {
       folderDefault: { folder: undefined, folder_light: undefined },
     },
   };
-  return userConfig;
 }
 
-describe('autoApplyCustomizations: tests', function () {
+describe('AutoApplyCustomizations: tests', function () {
 
-  it('ensures that if the extension has not been updated the callback will not be called', function () {
-    const spy = sinon.spy();
-    manageAutoApplyCustomizations(false, getUserConfig(), spy);
-    expect(spy.called).to.not.be.true;
-  });
+  it('ensures that if the extension has not been updated the callback will not be called',
+    function () {
+      const spy = sinon.spy();
+      manageAutoApplyCustomizations(false, getUserConfig(), spy);
+      expect(spy.called).to.not.be.true;
+    });
 
-  it('ensures that if the extension has been updated but there are no changes '
-    + 'in package.json the callback will not be called', function () {
+  it('ensures that if the extension has been updated but there are no changes ' +
+    'in package.json the callback will not be called', function () {
       const spy = sinon.spy();
       manageAutoApplyCustomizations(true, getUserConfig(), spy);
       expect(spy.called).to.not.be.true;
     });
 
-  it('ensures that if the extension has been updated and there are changes '
-    + 'in package.json the callback will be called', function () {
+  it('ensures that if the extension has been updated and there are changes ' +
+    'in package.json the callback will be called', function () {
       const spy = sinon.spy();
       const config = getUserConfig();
       config.presets.angular = false;

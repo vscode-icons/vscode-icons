@@ -100,7 +100,7 @@ But, how does this work?
 The extension now provides some specific commands for you to use. Let's talk first about the `presets` and then we're going to talk about how you can fine tune the extension.
 
 ### Presets
-You have 5 different presets at the moment:
+There are several different `presets`:
 
 - `vsicons.presets.angular` (true by default)
 - `vsicons.presets.jsOfficial` (false by default)
@@ -108,9 +108,9 @@ You have 5 different presets at the moment:
 - `vsicons.presets.jsonOfficial` (false by default)
 - `vsicons.presets.hideFolders` (false by default)
 
-These 5 different presets can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `workspace's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
+These `presets` can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `workspace's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
 
-These presets can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing down `icons`. You will be presented with some new commands:
+These `presets` can also be automatically set by leveraging a new set of commands that can be found by pressing `F1` and then writing down `icons`. You will be presented with some new commands:
 
 - `Toggle Angular Preset (Workspace Level)`: This command will enable/disable the `Angular icons`.
 - `Toggle Official JS Preset (User Level)`: This command will enable/disable the `Official JS icon`.
@@ -124,10 +124,26 @@ It's also important to say that if you choose to make a manual modification you 
 
 The `Angular Preset` will affect all icons beginning with `ng_` so you'd better name your custom icons accordingly if you want it to work flawlessly. ;P
 
+### Project detection
+With the introduction of the project specific icons toggling feature, we also introduced the auto project detection feature, that will automatically detect what type of project you have opened in your workspace and prompt you to toggle the icons accordingly.
+
+You will be presented with four choices:
+
+- `Restart`: Will apply the changes and restart your workspace.
+- `Auto-Restart`: Will always automatically apply the changes and restart your workspace. You will not be prompt again.
+- `Disable Detection`: Disables the auto project detection. You will not be prompt again.
+- `Close`: Cancels your action.
+
+There are two different `projectDetection` settings associated with this feature, that modify your `settings` at the `User Level`:
+
+- `vsicons.projectDetection.autoReload` (false by default)
+- `vsicons.projectDetection.disableDetect` (false by default)
+
 ### Fine tuning
-Along with the commands we introduced before you will find two more (just press `F1` and type `icons`):
+Along with the commands we introduced above, you will find some more (just press `F1` and type `icons`):
 
 - `Apply Icons Customization`: This command will regenerate the `Icons manifest` with your customizations and restart the IDE for the changes to take effect.
+- `Reset Project Detection Defaults`: This command will reset the project detection settings to their default values.
 - `Restore Default Icon Manifest`: This command will revert any changes you may have applied and restore the extension to its default state.
 
 But before you can even use them you will have to go to your `settings` and make your magic. The settings will provide you 2 different `array items`:

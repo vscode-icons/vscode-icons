@@ -1,187 +1,204 @@
 {
-    "name": "vscode-icons",
-    "displayName": "vscode-icons",
-    "description": "Icons for Visual Studio Code",
-    "version": "7.0.1",
-    "publisher": "robertohuertasm",
-    "license": "MIT",
-    "author": {
-        "email": "roberto.huertas@outlook.com",
-        "name": "Roberto Huertas",
-        "url": "http://codecoding.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/vscode-icons/vscode-icons"
-    },
-    "bugs": {
-        "url": "https://github.com/vscode-icons/vscode-icons/issues",
-        "email": "roberto.huertas@outlook.com"
-    },
-    "engines": {
-        "vscode": "^1.0.0"
-    },
-    "categories": [
-        "Other",
-        "Themes"
+  "name": "vscode-icons",
+  "displayName": "vscode-icons",
+  "description": "Icons for Visual Studio Code",
+  "version": "7.0.1",
+  "publisher": "robertohuertasm",
+  "license": "MIT",
+  "author": {
+    "email": "roberto.huertas@outlook.com",
+    "name": "Roberto Huertas",
+    "url": "http://codecoding.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vscode-icons/vscode-icons"
+  },
+  "bugs": {
+    "url": "https://github.com/vscode-icons/vscode-icons/issues",
+    "email": "roberto.huertas@outlook.com"
+  },
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other",
+    "Themes"
+  ],
+  "keywords": [
+    "icon-theme",
+    "theme",
+    "icons",
+    "vscode-icons"
+  ],
+  "preview": true,
+  "homepage": "https://github.com/vscode-icons/vscode-icons",
+  "icon": "images/logo.png",
+  "galleryBanner": {
+    "color": "#ffdd00"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/src/",
+  "contributes": {
+    "iconThemes": [
+      {
+        "id": "vscode-icons",
+        "label": "VSCode Icons",
+        "path": "out/src/icons.json"
+      }
     ],
-    "keywords": [
-        "icon-theme",
-        "theme",
-        "icons",
-        "vscode-icons"
+    "commands": [
+      {
+        "command": "extension.regenerateIcons",
+        "title": "Apply Icons Customization",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.ngPreset",
+        "title": "Toggle Angular Preset (Workspace Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.jsPreset",
+        "title": "Toggle Official JS Preset (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.tsPreset",
+        "title": "Toggle Official TS Preset (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.jsonPreset",
+        "title": "Toggle Official JSON Preset (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.hideFoldersPreset",
+        "title": "Toggle Folder Icons Visibility (User Level)",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.restoreIcons",
+        "title": "Restore Default Icon Manifest",
+        "category": "Icons"
+      },
+      {
+        "command": "extension.resetProjectDetectionDefaults",
+        "title": "Reset Project Detection Defaults",
+        "category": "Icons"
+      }
     ],
-    "preview": true,
-    "homepage": "https://github.com/vscode-icons/vscode-icons",
-    "icon": "images/logo.png",
-    "galleryBanner": {
-        "color": "#ffdd00"
-    },
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./out/src/",
-    "contributes": {
-        "iconThemes": [
-            {
-                "id": "vscode-icons",
-                "label": "VSCode Icons",
-                "path": "out/src/icons.json"
-            }
-        ],
-        "commands": [
-            {
-                "command": "extension.regenerateIcons",
-                "title": "Apply Icons Customization",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.ngPreset",
-                "title": "Toggle Angular Preset (Workspace Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.jsPreset",
-                "title": "Toggle Official JS Preset (User Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.tsPreset",
-                "title": "Toggle Official TS Preset (User Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.jsonPreset",
-                "title": "Toggle Official JSON Preset (User Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.hideFoldersPreset",
-                "title": "Toggle Folder Icons Visibility (User Level)",
-                "category": "Icons"
-            },
-            {
-                "command": "extension.restoreIcons",
-                "title": "Restore Default Icon Manifest",
-                "category": "Icons"
-            }
-        ],
-        "configuration": {
-            "title": "vscode-icons configuration",
-            "properties": {
-                "vsicons.dontShowNewVersionMessage": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the new version message won't be shown anymore."
-                },
-                "vsicons.presets.angular": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "If set to true the extension will match some of the common Angular patterns"
-                },
-                "vsicons.presets.jsOfficial": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the extension will use the official JS icon"
-                },
-                "vsicons.presets.tsOfficial": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the extension will use the official TS icon"
-                },
-                "vsicons.presets.jsonOfficial": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true the extension will use the official JSON icon"
-                },
-                "vsicons.presets.hideFolders": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "If set to true all folders will be hidden"
-                },
-                "vsicons.associations.files": {
-                    "type": "array",
-                    "default": [],
-                    "description": "These custom associations will override the file icon associations defined by default."
-                },
-                "vsicons.associations.folders": {
-                    "type": "array",
-                    "default": [],
-                    "description": "These custom associations will override the folder icon associations defined by default."
-                },
-                "vsicons.associations.fileDefault.file": {
-                    "type": "object",
-                    "default": null,
-                    "description": "This setting will let you change default dark file icon."
-                },
-                "vsicons.associations.fileDefault.file_light": {
-                    "type": "object",
-                    "default": null,
-                    "description": "This setting will let you change default light file icon."
-                },
-                "vsicons.associations.folderDefault.folder": {
-                    "type": "object",
-                    "default": null,
-                    "description": "This setting will let you change default dark folder icon."
-                },
-                "vsicons.associations.folderDefault.folder_light": {
-                    "type": "object",
-                    "default": null,
-                    "description": "This setting will let you change default light folder icon."
-                }
-            }
+    "configuration": {
+      "title": "vscode-icons configuration",
+      "properties": {
+        "vsicons.dontShowNewVersionMessage": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the new version message won't be shown anymore."
+        },
+        "vsicons.projectDetection.autoReload": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will restart automatically on project detection"
+        },
+        "vsicons.projectDetection.disableDetect": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will disable the project detection"
+        },
+        "vsicons.presets.angular": {
+          "type": "boolean",
+          "default": true,
+          "description": "If set to true the extension will match some of the common Angular patterns"
+        },
+        "vsicons.presets.jsOfficial": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will use the official JS icon"
+        },
+        "vsicons.presets.tsOfficial": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will use the official TS icon"
+        },
+        "vsicons.presets.jsonOfficial": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true the extension will use the official JSON icon"
+        },
+        "vsicons.presets.hideFolders": {
+          "type": "boolean",
+          "default": false,
+          "description": "If set to true all folders will be hidden"
+        },
+        "vsicons.associations.files": {
+          "type": "array",
+          "default": [],
+          "description": "These custom associations will override the file icon associations defined by default."
+        },
+        "vsicons.associations.folders": {
+          "type": "array",
+          "default": [],
+          "description": "These custom associations will override the folder icon associations defined by default."
+        },
+        "vsicons.associations.fileDefault.file": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default dark file icon."
+        },
+        "vsicons.associations.fileDefault.file_light": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default light file icon."
+        },
+        "vsicons.associations.folderDefault.folder": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default dark folder icon."
+        },
+        "vsicons.associations.folderDefault.folder_light": {
+          "type": "object",
+          "default": null,
+          "description": "This setting will let you change default light folder icon."
         }
-    },
-    "scripts": {
-        "prebuild": "npm run lint && npm run test",
-        "build": "node ./out/src/icon-manifest/build.js",
-        "example": "node ./out/src/example/example.js ",
-        "pretest": "npm run compile",
-        "test": "mocha ./out/test",
-        "lint": "tslint src/**/*.ts test/**/*.ts",
-        "test:vs": "node ./node_modules/vscode/bin/test",
-        "vscode:prepublish": "rimraf ./out && npm run build",
-        "compile:w": "rimraf ./out && tsc -watch -p ./",
-        "compile": "rimraf ./out && tsc -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install"
-    },
-    "devDependencies": {
-        "@types/chai": "^3.4.34",
-        "@types/lodash": "^4.14.44",
-        "@types/mocha": "^2.2.33",
-        "@types/node": "^6.0.40",
-        "@types/sinon": "^1.16.34",
-        "chai": "^3.5.0",
-        "mocha": "^3.2.0",
-        "rimraf": "^2.5.4",
-        "sinon": "^1.17.7",
-        "tslint": "^4.2.0",
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0"
-    },
-    "dependencies": {
-        "lodash": "^4.17.2",
-        "open": "0.0.5",
-        "semver": "^5.3.0"
+      }
     }
+  },
+  "scripts": {
+    "prebuild": "npm run lint && npm run test",
+    "build": "node ./out/src/icon-manifest/build.js",
+    "example": "node ./out/src/example/example.js ",
+    "pretest": "npm run compile",
+    "test": "mocha ./out/test",
+    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "test:vs": "node ./node_modules/vscode/bin/test",
+    "vscode:prepublish": "rimraf ./out && npm run build",
+    "compile:w": "rimraf ./out && tsc -watch -p ./",
+    "compile": "rimraf ./out && tsc -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/chai-as-promised": "^0.0.29",
+    "@types/lodash": "^4.14.44",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "^6.0.40",
+    "@types/sinon": "^1.16.34",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.5.4",
+    "sinon": "^1.17.7",
+    "tslint": "^4.2.0",
+    "typescript": "^2.0.3",
+    "vscode": "^1.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.2",
+    "open": "0.0.5",
+    "semver": "^5.3.0"
+  }
 }
