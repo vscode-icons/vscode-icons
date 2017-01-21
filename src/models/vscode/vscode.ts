@@ -1,4 +1,4 @@
 export interface IVSCode {
-  env: { appName?: string};
+  env: { appName?: string };
   version: string;
 }

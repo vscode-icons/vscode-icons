@@ -3,7 +3,7 @@ import { expect, use } from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
 import * as fs from 'fs';
-import { IVSIcons } from '../src/models';
+import { IVSIcons, IVSCodeUri } from '../src/models';
 import {
   detectProject,
   checkForAngularProject,
@@ -50,7 +50,7 @@ describe('AutoDetectProject: tests', function () {
     function () {
       const config = getUserConfig();
       config.projectDetection.disableDetect = true;
-      return expect(detectProject(null, config)).to.eventually.be.null;
+      return expect(detectProject(null, config)).to.eventually.be.an('array');
     });
 
   it('ensures that the extension can detect a project when detection is enabled, ' +
@@ -59,17 +59,37 @@ describe('AutoDetectProject: tests', function () {
       const findFiles = sinon.stub().returns(Promise.resolve([]));
       const config = getUserConfig();
       config.projectDetection.disableDetect = false;
-      return expect(detectProject(findFiles, config)).to.eventually.be.null;
+      return expect(detectProject(findFiles, config)).to.eventually.be.an('array').with.lengthOf(0);
     });
 
   it('ensures that the extension can detect a project when detection is enabled ' +
     'and has detected a \'package.json\' file',
     function () {
-      const path = './package.json';
-      const findFiles = sinon.stub().returns(Promise.resolve([{ fsPath: path }]));
+      const path = 'package.json';
+      const findFiles = sinon.stub().returns(Promise.resolve([{ fsPath: path }] as IVSCodeUri[]));
       const config = getUserConfig();
       config.projectDetection.disableDetect = false;
-      return expect(detectProject(findFiles, config)).to.eventually.be.equal(path);
+      return detectProject(findFiles, config)
+        .then((res) => {
+          expect(res).to.be.an('array').with.length.greaterThan(0);
+          expect(res[0]).to.have.property('fsPath').that.equals(path);
+        });
+    });
+
+  it('ensures that the extension can detect a sub project when detection is enabled ' +
+    'and has detected a \'package.json\' file in a sub folder',
+    function () {
+      const path1 = 'package.json';
+      const path2 = 'f1/f2/f3/package.json';
+      const findFiles = sinon.stub().returns(Promise.resolve([{ fsPath: path1 }, { fsPath: path2 }] as IVSCodeUri[]));
+      const config = getUserConfig();
+      config.projectDetection.disableDetect = false;
+      return detectProject(findFiles, config)
+        .then((res) => {
+          expect(res).to.be.an('array').with.length.greaterThan(0);
+          expect(res[0]).to.have.property('fsPath').that.equals(path1);
+          expect(res[1]).to.have.property('fsPath').that.equals(path2);
+        });
     });
 
   it('ensures that the extension can detect an Angular project',
@@ -83,7 +103,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = false;
       const ngIconsDisabled = true;
-      const res = checkForAngularProject(packageJson, angularPreset, ngIconsDisabled, isNgProject);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.true;
     });
@@ -94,7 +114,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = true;
       const ngIconsDisabled = true;
-      const res = checkForAngularProject(packageJson, angularPreset, ngIconsDisabled, isNgProject);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.true;
     });
@@ -105,7 +125,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = true;
       const ngIconsDisabled = false;
-      const res = checkForAngularProject(packageJson, angularPreset, ngIconsDisabled, isNgProject);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.false;
     });
@@ -116,7 +136,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = false;
       const ngIconsDisabled = false;
-      const res = checkForAngularProject(packageJson, angularPreset, ngIconsDisabled, isNgProject);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.false;
     });
@@ -127,7 +147,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = true;
       const ngIconsDisabled = false;
-      expect(checkForAngularProject(packageJson, angularPreset, ngIconsDisabled, isNgProject))
+      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject))
         .to.have.property('apply').that.is.false;
     });
 
@@ -137,7 +157,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = false;
       const ngIconsDisabled = true;
-      expect(checkForAngularProject(packageJson, angularPreset, ngIconsDisabled, isNgProject))
+      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject))
         .to.have.property('apply').that.is.false;
     });
 

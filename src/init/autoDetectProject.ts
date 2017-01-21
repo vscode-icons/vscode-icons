@@ -1,26 +1,24 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { IVSIcons, IProjectDetectionResult } from '../models';
+import { IVSIcons, IVSCodeUri, IProjectDetectionResult } from '../models';
 import { extensionSettings } from '../settings';
 import { messages as msg } from '../messages';
 
-export function detectProject(findFiles: Function, config: IVSIcons): PromiseLike<string> {
-
+export function detectProject(findFiles: Function, config: IVSIcons): PromiseLike<IVSCodeUri[]> {
   if (config.projectDetection.disableDetect) {
-    return Promise.resolve(null) as PromiseLike<string>;
+    return Promise.resolve([]) as PromiseLike<IVSCodeUri[]>;
   }
 
-  return findFiles('package.json', '**/node_modules/**', 1)
-    .then((res) => {
-      return res && res.length ? res[0].fsPath as string : null;
+  return findFiles('**/package.json', '**/node_modules/**')
+    .then((results) => {
+      return results && results.length ? results as IVSCodeUri[] : [];
     },
     (rej) => {
-      return rej;
+      return [rej];
     });
 }
 
 export function checkForAngularProject(
-  projectJson: any,
   angularPreset: boolean,
   ngIconsDisabled: boolean,
   isNgProject: boolean): IProjectDetectionResult {
