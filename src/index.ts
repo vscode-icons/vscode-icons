@@ -19,7 +19,8 @@ import {
   cancel,
   showCustomizationMessage,
 } from './commands';
-import { getConfig, findFiles } from './utils/vscode-extensions';
+import { getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
+import { parseJSON } from './utils';
 
 function initialize(context: vscode.ExtensionContext) {
   const config = getConfig().vsicons;
@@ -27,21 +28,29 @@ function initialize(context: vscode.ExtensionContext) {
   registerCommands(context);
   manageWelcomeMessage(settingsManager);
   detectProject(findFiles, config)
-    .then((path) => {
-      if (path != null) {
-        const project = fs.readFileSync(path, "utf8");
-        const projectJson = (typeof project === "string") ? JSON.parse(project) : null;
-        if (projectJson) {
+    .then((results) => {
+      if (results != null && results.length) {
+        const isInRootFolder = !asRelativePath(results[0].fsPath).includes('/');
+        if (isInRootFolder) {
           const ngIconsDisabled = iconsDisabled('ng');
-          const isNgProject = isProject(projectJson, 'ng');
-          const toggle = checkForAngularProject(projectJson, config.presets.angular, ngIconsDisabled, isNgProject);
+          let isNgProject: boolean;
+          for (const result of results) {
+            const content = fs.readFileSync(result.fsPath, "utf8");
+            const projectJson = parseJSON(content);
+            isNgProject = projectJson && isProject(projectJson, 'ng');
+            if (isNgProject) {
+              break;
+            }
+          }
+          const toggle = checkForAngularProject(config.presets.angular, ngIconsDisabled, isNgProject);
           if (toggle.apply) {
             applyDetection(toggle.message, 'angular', toggle.value, config.projectDetection.autoReload,
-             togglePreset, applyCustomization, reload, cancel, showCustomizationMessage);
+              togglePreset, applyCustomization, reload, cancel, showCustomizationMessage);
           }
           return;
         }
       }
+
       manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, applyCustomizationCommand);
     });
 }
