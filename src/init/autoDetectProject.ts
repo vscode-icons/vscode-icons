@@ -3,6 +3,7 @@ import * as path from 'path';
 import { IVSIcons, IVSCodeUri, IProjectDetectionResult } from '../models';
 import { extensionSettings } from '../settings';
 import { messages as msg } from '../messages';
+import { parseJSON } from '../utils';
 
 export function detectProject(findFiles: Function, config: IVSIcons): PromiseLike<IVSCodeUri[]> {
   if (config.projectDetection.disableDetect) {
@@ -41,7 +42,7 @@ export function checkForAngularProject(
 export function iconsDisabled(name: string): boolean {
   const manifestFilePath = path.join(__dirname, '..', extensionSettings.iconJsonFileName);
   const iconManifest = fs.readFileSync(manifestFilePath, 'utf8');
-  const iconsJson = (typeof iconManifest === "string") ? JSON.parse(iconManifest) : null;
+  const iconsJson = parseJSON(iconManifest);
 
   if (!iconsJson) {
     return true;

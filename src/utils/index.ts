@@ -55,3 +55,17 @@ export function deleteDirectoryRecursively(path): void {
     fs.rmdirSync(path);
   }
 }
+
+/**
+ * Converts a JavaScript Object Notation (JSON) string into an object
+ * without throwing an exception.
+ *
+ * @param {string} text A valid JSON string.
+ */
+export function parseJSON(text: string): any {
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    return null;
+  }
+}

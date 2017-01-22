@@ -20,6 +20,7 @@ import {
   showCustomizationMessage,
 } from './commands';
 import { getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
+import { parseJSON } from './utils';
 
 function initialize(context: vscode.ExtensionContext) {
   const config = getConfig().vsicons;
@@ -29,13 +30,13 @@ function initialize(context: vscode.ExtensionContext) {
   detectProject(findFiles, config)
     .then((results) => {
       if (results != null && results.length) {
-        const isInRootFolder = asRelativePath(results[0].fsPath).includes('/');
+        const isInRootFolder = !asRelativePath(results[0].fsPath).includes('/');
         if (isInRootFolder) {
           const ngIconsDisabled = iconsDisabled('ng');
           let isNgProject: boolean;
           for (const result of results) {
-            const project = fs.readFileSync(result.fsPath, "utf8");
-            const projectJson = (typeof project === "string") ? JSON.parse(project) : null;
+            const content = fs.readFileSync(result.fsPath, "utf8");
+            const projectJson = parseJSON(content);
             isNgProject = projectJson && isProject(projectJson, 'ng');
             if (isNgProject) {
               break;
