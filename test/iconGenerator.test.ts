@@ -409,15 +409,15 @@ describe('IconGenerator: icon generation test', function () {
         .filter(file => file.languages && !file.light && !file.disabled)
         .forEach(file => {
           const definition = `${settings.manifestFilePrefix}${file.icon}`;
-          const assignLanguagesLightWhenDefaultLight = function (language) {
+          const assignLanguagesLight = function (language) {
             expect(schema.light.languageIds[language]).equal(definition);
           };
 
           file.languages.forEach(function (langIds) {
             if (Array.isArray(langIds.ids)) {
-              langIds.ids.forEach(function (id) { assignLanguagesLightWhenDefaultLight(id); });
+              langIds.ids.forEach(function (id) { assignLanguagesLight(id); });
             } else {
-              assignLanguagesLightWhenDefaultLight(langIds.ids);
+              assignLanguagesLight(langIds.ids);
             }
           });
         });

@@ -59,7 +59,7 @@ export class IconGenerator implements IIconGenerator {
   private buildFolders(
     folders: IFolderCollection,
     iconsFolderBasePath: string,
-    hasDefaultLightFolder: boolean = false) {
+    hasDefaultLightFolder: boolean) {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
     return _.sortBy(folders.supported.filter(x => !x.disabled && x.icon), item => item.icon)
@@ -124,16 +124,8 @@ export class IconGenerator implements IIconGenerator {
           const key = extension;
           names.folderNames[key] = iconFolderDefinition;
           names.folderNamesExpanded[key] = iconOpenFolderDefinition;
-
-          if (hasDefaultLightFolder && !hasLightVersion) {
-            light.folderNames[key] = iconFolderDefinition;
-            light.folderNamesExpanded[key] = iconOpenFolderDefinition;
-          }
-
-          if (hasLightVersion) {
-            light.folderNames[key] = iconFolderLightDefinition;
-            light.folderNamesExpanded[key] = iconOpenFolderLightDefinition;
-          }
+          light.folderNames[key] = hasLightVersion ? iconFolderLightDefinition : iconFolderDefinition;
+          light.folderNamesExpanded[key] = hasLightVersion ? iconOpenFolderLightDefinition : iconOpenFolderDefinition;
         });
 
         return old;
@@ -146,8 +138,8 @@ export class IconGenerator implements IIconGenerator {
 
   private buildFiles(
     files: IFileCollection,
-    iconsFolderBasePath: string = '',
-    hasDefaultLightFile: boolean = false) {
+    iconsFolderBasePath: string,
+    hasDefaultLightFile: boolean) {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
     const suffix = sts.iconSuffix;
@@ -193,37 +185,19 @@ export class IconGenerator implements IIconGenerator {
           const assignLanguages = langId => {
             languageIds[langId] = iconFileDefinition;
           };
-          const assignLanguagesLightWhenDefaultLight = langId => {
-            light.languageIds[langId] = iconFileDefinition;
-          };
           const assignLanguagesLight = langId => {
-            light.languageIds[langId] = iconFileLightDefinition;
+            light.languageIds[langId] = hasLightVersion ? iconFileLightDefinition : iconFileDefinition;
           };
 
           current.languages.forEach(langIds => {
             if (Array.isArray(langIds.ids)) {
               langIds.ids.forEach(id => {
                 assignLanguages(id);
-
-                if (hasDefaultLightFile && !hasLightVersion) {
-                  assignLanguagesLightWhenDefaultLight(id);
-                }
-
-                if (hasLightVersion) {
-                  assignLanguagesLight(id);
-                }
+                assignLanguagesLight(id);
               });
             } else {
               assignLanguages(langIds.ids);
-
-              if (hasDefaultLightFile && !hasLightVersion) {
-                assignLanguagesLightWhenDefaultLight(langIds.ids);
-              }
-
-              if (hasLightVersion) {
-                assignLanguagesLight(langIds.ids);
-              }
-
+              assignLanguagesLight(langIds.ids);
             }
           });
         }
@@ -231,26 +205,11 @@ export class IconGenerator implements IIconGenerator {
         current.extensions.forEach(extension => {
           if (isFilename) {
             names.fileNames[extension] = iconFileDefinition;
-
-            if (hasDefaultLightFile && !hasLightVersion) {
-              light.fileNames[extension] = iconFileDefinition;
-            }
-
-            if (hasLightVersion) {
-              light.fileNames[extension] = iconFileLightDefinition;
-            }
+            light.fileNames[extension] = hasLightVersion ? iconFileLightDefinition : iconFileDefinition;
           } else {
             const noDotExtension = this.removeFirstDot(extension);
-
             names.fileExtensions[noDotExtension] = iconFileDefinition;
-
-            if (hasDefaultLightFile && !hasLightVersion) {
-              light.fileExtensions[noDotExtension] = iconFileDefinition;
-            }
-
-            if (hasLightVersion) {
-              light.fileExtensions[noDotExtension] = iconFileLightDefinition;
-            }
+            light.fileExtensions[noDotExtension] = hasLightVersion ? iconFileLightDefinition : iconFileDefinition;
           }
         });
 
@@ -309,14 +268,14 @@ export class IconGenerator implements IIconGenerator {
     defaultSchema: IIconSchema): IIconSchema {
     const schema = _.cloneDeep(defaultSchema);
     const defs = schema.iconDefinitions;
-    // set default icons
+    // set default icons for dark theme
     defs._file.iconPath =
       this.buildDefaultIconPath(files.default.file, defs._file, iconsFolderBasePath, false);
     defs._folder.iconPath =
       this.buildDefaultIconPath(folders.default.folder, defs._folder, iconsFolderBasePath, false);
     defs._folder_open.iconPath =
       this.buildDefaultIconPath(folders.default.folder, defs._folder_open, iconsFolderBasePath, true);
-    // light theme
+    // set default icons for light theme
     // default file and folder related icon paths if not set,
     // inherit their icons from dark theme.
     // The icon paths should not be set unless there is a specific icon for them.
