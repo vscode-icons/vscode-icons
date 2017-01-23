@@ -16,11 +16,11 @@ Bring icons to your VS Code.
 
 As you all know, VSCode currently supports File and Folder icons but this was not like this from the beginning. Read this great article by [@chrisdias](https://twitter.com/chrisdias): ["Rebellion. Mutiny. Revolt. Uprising."](https://code.visualstudio.com/blogs/2016/09/08/icon-themes) if you want to learn the history about this plugin and how finally icons landed in VSCode.
 
-During the summer of 2016 I had great support from the community and the VSCode team. It's alsow worth mentioning the tremendous help that I received from [@aeschli](https://github.com/aeschli) (VSCode Team) and specially from [@jens1o](https://github.com/jens1o) (community member), which turned out to be a 14 years old amazing coder!
+During the summer of 2016, I had great support from the community and the VSCode team. It's also worth mentioning the tremendous help that I received from [@aeschli](https://github.com/aeschli) (VSCode Team) and especially from [@jens1o](https://github.com/jens1o) (community member), which turned out to be a 14-year-old amazing coder!
 
-Later on, until the present moment, [@JimiC](https://github.com/JimiC) entered into the scene and I have to say that he's been a real revolution to this project. With his incredible insight, precision and determination he's improving this extension way beyond it was initially intended.
+Later on, until the present moment, [@JimiC](https://github.com/JimiC) entered the scene and I have to say that he's been a real revolution to this project. With his incredible insight, precision and determination, he's improving this extension way beyond it was initially intended.
 
-I'm very happy to be part of this team along with [@jens1o](https://github.com/jens1o) and [@JimiC](https://github.com/JimiC). It's really a present to work with you guys. Much of the credit of this extension is theirs. It's also community's. And remember that if you want to be a contributor or even become a regular into our team, you'll be more than welcome! :D
+I'm very happy to be part of this team, along with [@jens1o](https://github.com/jens1o) and [@JimiC](https://github.com/JimiC). It's really a gift to work with you guys. Most of the credits of this extension are theirs. It's also community's. And remember that if you want to be a contributor or even become a regular of our team, you'll are more than welcome to join! :D
 
 ## Main Contributors
 
