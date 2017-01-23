@@ -12,31 +12,16 @@ Bring icons to your VS Code.
 
 <img src="https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/images/screenshot_folders.png" >
 
-## IMPORTANT NOTE
+## A little bit of history about this extension
 
-As you all know, VSCode finally supports File and Folder icons in an official way. Read this great article by [@chrisdias](https://twitter.com/chrisdias): ["Rebellion. Mutiny. Revolt. Uprising."](https://code.visualstudio.com/blogs/2016/09/08/icon-themes) if you want to learn the history about this plugin and how finally icons landed in VSCode.
+As you all know, VSCode currently supports File and Folder icons but this was not like this from the beginning. Read this great article by [@chrisdias](https://twitter.com/chrisdias): ["Rebellion. Mutiny. Revolt. Uprising."](https://code.visualstudio.com/blogs/2016/09/08/icon-themes) if you want to learn the history about this plugin and how finally icons landed in VSCode.
 
-I would like to thank the VSCode team for their support during this summer (2016) in terms of migrating this extension and preparing the new contribution point (especially [@aeschli](https://github.com/aeschli) for his good disposition).
+During the summer of 2016 I had great support from the community and the VSCode team. It's alsow worth mentioning the tremendous help that I received from [@aeschli](https://github.com/aeschli) (VSCode Team) and specially from [@jens1o](https://github.com/jens1o) (community member), which turned out to be a 14 years old amazing coder!
 
-I would also like to thank the whole community for their support: bringing in ideas, collaborating and making this path easy. And I would also like to stress the great help that [@jens1o](https://github.com/jens1o) has provided to the project. He's amazing! And he's only 14!! :D Thanks, truly!
+Later on, until the present moment, [@JimiC](https://github.com/JimiC) entered into the scene and I have to say that he's been a real revolution to this project. With his incredible insight, precision and determination he's improving this extension way beyond it was initially intended.
 
-### State of the extension
+I'm very happy to be part of this team along with [@jens1o](https://github.com/jens1o) and [@JimiC](https://github.com/JimiC). It's really a present to work with you guys. Much of the credit of this extension is theirs. It's also community's. And remember that if you want to be a contributor or even become a regular into our team, you'll be more than welcome! :D
 
-**Release 6.0.0 introduces the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.** 
-
-This is a huge step again to allow the users to fully customize how the icons look like and how they can be associated to any extension at will.
-
-`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
-
-**Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
-
-----
-## New Year release
-We're happy to annouce that the extension now **provides custom icons and some icon presets** like `Angular`, `Official JS Logo`, `Official TS Logo` and `Hide Folders`. With this release you will be able to completely tune the way the icons look! Please, take a look at the corresponding section to know more about how to make this work.
-
-Besides that, [@JimiC](https;//github.com/JimiC) along with [@ginfuru](https://github.com/ginfuru) are continuing to contribute to the massive `svg` icon conversion and providing new quality icons.
-
-----
 ## Main Contributors
 
 This project has gone far beyond it's main purpose, which was to provide icons for VSCode when the platform didn't still support them, and now it tries to provide the most complete set of icons you can find. I began this journey alone but this wouldn't have been possible without the help of many of you. Some members of the community have been strongly committed to the project and now they are part of the core team of mantainers.
@@ -48,6 +33,20 @@ Please, meet the team behind this extension:
  - [@robertohuertasm](https://github.com/robertohuertasm)
 
 If you're willing to collaborate with us feel free to join our [Github repository](https://github.com/vscode-icons/vscode-icons/). ;)
+
+---
+
+## State of the extension
+
+**Release 6.0.0 introduced the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.** 
+
+This was a huge step to allow the users to fully customize how the icons looked like and how they could be associated to any extension at will.
+
+`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
+
+On the other hand, [@JimiC](https;//github.com/JimiC) continues his massive `svg` icon conversion and keeps on providing new quality icons. He's also the creator of the new `Angular project auto-detector` feature released with **v7.1.0**. I'm sure you will like it!
+
+**Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
 
 ----
 

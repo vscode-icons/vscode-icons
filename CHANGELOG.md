@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.1.0 (January 23, 2017)
+  - Fix: Light version icons now work as expected. ([@JimiC](https://github.com/JimiC) in [#660](https://github.com/vscode-icons/vscode-icons/pull/660))
+  - Feature: Angular smart components support (`*.page.ts|js` & `*.container.ts|js`). ([@robertohuertasm](https://github.com/robertohuertasm) in [#657](https://github.com/vscode-icons/vscode-icons/pull/657))
+  - Enhancement: Angular auto-detection improved. ([@JimiC](https://github.com/JimiC) in [#656](https://github.com/vscode-icons/vscode-icons/pull/656))
+  - Feature: `.idea` and `.vs` folders support. ([@JimiC](https://github.com/JimiC) in [#655](https://github.com/vscode-icons/vscode-icons/pull/655))
+  - Enhancement: new batch of svg icons. ([@JimiC](https://github.com/JimiC) in [#654](https://github.com/vscode-icons/vscode-icons/pull/654))
+  - Enhancement: Changed readme composition. ([@JimiC](https://github.com/JimiC) in [#648](https://github.com/vscode-icons/vscode-icons/pull/648))
+  - Enhancement: Lerna icon for dark theme. ([@JimiC](https://github.com/JimiC) in [#647](https://github.com/vscode-icons/vscode-icons/pull/647))
+  - Feature: Angular project auto-detection. ([@JimiC](https://github.com/JimiC) in [#645](https://github.com/vscode-icons/vscode-icons/pull/645))
+
 ## 7.0.1 (January 15, 2017)
   - Fix: Solved publication issue. ([@robertohuertasm](https://github.com/robertohuertasm) in [#643](https://github.com/vscode-icons/vscode-icons/pull/643))
 
