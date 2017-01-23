@@ -100,7 +100,7 @@ function mergeSupported(
 export function toggleAngularPreset(
   disable: boolean,
   files: IFileCollection): IFileCollection {
-  const icons = files.supported.filter(x => x.icon.startsWith('ng_')).map(x => x.icon);
+  const icons = files.supported.filter(x => x.icon.startsWith('ng_') && !x.disabled).map(x => x.icon);
   return togglePreset(disable, icons, files);
 }
 
