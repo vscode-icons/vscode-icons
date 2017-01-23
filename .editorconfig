@@ -12,3 +12,7 @@ indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = false
+
+# Due to vsce formatting it with 4 spaces no matter what we set here.
+[package.json]
+indent_size = 4
