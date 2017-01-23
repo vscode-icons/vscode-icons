@@ -20,7 +20,7 @@ During the summer of 2016, I had great support from the community and the VSCode
 
 Later on, until the present moment, [@JimiC](https://github.com/JimiC) entered the scene and I have to say that he's been a real revolution to this project. With his incredible insight, precision and determination, he's improving this extension way beyond it was initially intended.
 
-I'm very happy to be part of this team, along with [@jens1o](https://github.com/jens1o) and [@JimiC](https://github.com/JimiC). It's really a gift to work with you guys. Most of the credits of this extension are theirs. It's also community's. And remember that if you want to be a contributor or even become a regular of our team, you'll are more than welcome to join! :D
+I'm very happy to be part of this team, along with [@jens1o](https://github.com/jens1o) and [@JimiC](https://github.com/JimiC). It's really a gift to work with you guys. Most of the credits of this extension are theirs. It's also community's. And remember that if you want to be a contributor or even become a regular of our team, you are more than welcome to join! :D
 
 ## Main Contributors
 
