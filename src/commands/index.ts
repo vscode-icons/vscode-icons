@@ -59,48 +59,58 @@ function toggleAngularPresetCommand() {
   const preset = 'angular';
   const value = getToggleValue(preset);
   const message = `${msg.ngPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  togglePreset(preset, value, false);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, false);
+  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).defaultValue as boolean;
+  togglePreset(preset, value, initValue, false);
+  showCustomizationMessage(message, [{ title: msg.reload }],
+    applyCustomization, cancel, preset, !value, initValue, false);
 }
 
 function toggleJsPresetCommand() {
   const preset = 'jsOfficial';
   const value = getToggleValue(preset);
   const message = `${msg.jsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  togglePreset(preset, value);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value);
+  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).defaultValue as boolean;
+  togglePreset(preset, value, initValue);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
 }
 
 function toggleTsPresetCommand() {
   const preset = 'tsOfficial';
   const value = getToggleValue(preset);
   const message = `${msg.tsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  togglePreset(preset, value);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value);
+  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).defaultValue as boolean;
+  togglePreset(preset, value, initValue);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
 }
 
 function toggleJsonPresetCommand() {
   const preset = 'jsonOfficial';
   const value = getToggleValue(preset);
   const message = `${msg.jsonOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  togglePreset(preset, value);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value);
+  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).defaultValue as boolean;
+  togglePreset(preset, value, initValue);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
 }
 
 function toggleHideFoldersCommand() {
   const preset = 'hideFolders';
   const value = getToggleValue(preset);
   const message = `${msg.hideFoldersPresetMessage} ${value ? msg.disabled : msg.enabled}. ${msg.restart}`;
-  togglePreset(preset, value);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value);
+  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).defaultValue as boolean;
+  togglePreset(preset, value, initValue);
+  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
 }
 
 function getToggleValue(preset: string): boolean {
   return !getConfig().vsicons.presets[preset];
 }
 
-export function togglePreset(preset: string, newvalue: boolean, global: boolean = true): Thenable<void> {
-  return getConfig().update(`vsicons.presets.${preset}`, newvalue, global);
+export function togglePreset(
+  preset: string,
+  newvalue: boolean,
+  initValue: boolean,
+  global: boolean = true): Thenable<void> {
+  return getConfig().update(`vsicons.presets.${preset}`, initValue === undefined ? initValue : newvalue, global);
 }
 
 export function showCustomizationMessage(
@@ -139,8 +149,8 @@ export function reload() {
   vscode.commands.executeCommand('workbench.action.reloadWindow');
 }
 
-export function cancel(preset: string, value: boolean, global: boolean = true): void {
-  togglePreset(preset, value, global);
+export function cancel(preset: string, value: boolean, initValue: boolean, global: boolean = true): void {
+  togglePreset(preset, value, initValue, global);
 }
 
 export function applyCustomization() {

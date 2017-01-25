@@ -70,13 +70,14 @@ export function applyDetection(
   message: string,
   presetText: string,
   value: boolean,
+  initValue: boolean,
   autoReload: boolean,
   togglePreset: Function,
   applyCustomization: Function,
   reload: Function,
   cancel: Function,
   showCustomizationMessage: Function): Thenable<void> {
-  return togglePreset(presetText, value, false)
+  return togglePreset(presetText, value, false, false)
     .then(() => {
       // Add a delay in order for vscode to persist the toggle of the preset
       if (autoReload) {
@@ -89,6 +90,6 @@ export function applyDetection(
 
       showCustomizationMessage(message,
         [{ title: msg.reload }, { title: msg.autoReload }, { title: msg.disableDetect }],
-        applyCustomization, cancel, presetText, !value, false);
+        applyCustomization, cancel, presetText, !value, initValue, false);
     });
 }
