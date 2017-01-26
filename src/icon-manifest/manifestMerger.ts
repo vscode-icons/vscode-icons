@@ -117,7 +117,7 @@ export function toggleOfficialIconsPreset(
 export function toggleHideFoldersPreset(
   disable: boolean,
   folders: IFolderCollection): IFolderCollection {
-  const folderIcons = folders.supported.map(x => x.icon);
+  const folderIcons = folders.supported.filter(x => !x.disabled).map(x => x.icon);
   const collection = togglePreset<IFolderCollection>(disable, folderIcons, folders);
   if (folders.default.folder) {
    collection.default.folder.disabled = disable;
