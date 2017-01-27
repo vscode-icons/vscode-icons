@@ -60,7 +60,7 @@ export function iconsDisabled(name: string): boolean {
 export function isProject(projectJson: any, name: string): boolean {
   switch (name) {
     case 'ng':
-      return (projectJson.dependencies && (projectJson.dependencies['@angular/core'] != null)) || false;
+      return (projectJson.dependencies && (projectJson.dependencies['@angular/core'] != null || projectJson.dependencies['angular'] != null)) || false;
     default:
       return false;
   }
