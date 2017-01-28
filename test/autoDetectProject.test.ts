@@ -173,7 +173,7 @@ describe('AutoDetectProject: tests', function () {
       const cancel = sinon.stub();
       const showCustomizationMessage = sinon.spy();
 
-      return applyDetection('', '', undefined, undefined, autoReload,
+      return applyDetection('', '', undefined, undefined, undefined, autoReload,
         togglePreset, applyCustomization, reload, cancel, showCustomizationMessage)
         .then(() => {
           // No functions should have been called before 1s
@@ -202,7 +202,7 @@ describe('AutoDetectProject: tests', function () {
       const cancel = sinon.spy();
       const showCustomizationMessage = sinon.spy();
 
-      return applyDetection('', '', undefined, undefined, autoReload,
+      return applyDetection('', '', undefined, undefined, undefined, autoReload,
         togglePreset, applyCustomization, reload, cancel, showCustomizationMessage)
         .then(() => {
           expect(showCustomizationMessage.called).to.be.true;

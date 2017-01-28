@@ -59,8 +59,10 @@ function toggleAngularPresetCommand() {
   const preset = 'angular';
   const value = getToggleValue(preset);
   const message = `${msg.ngPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).workspaceValue as boolean;
-  togglePreset(preset, value, false, false);
+  const values = getConfig().inspect(`vsicons.presets.${preset}`);
+  const defaultValue = values.defaultValue as boolean;
+  const initValue = values.workspaceValue as boolean;
+  togglePreset(preset, value, defaultValue, false);
   showCustomizationMessage(message, [{ title: msg.reload }],
     applyCustomization, cancel, preset, !value, initValue, false);
 }
@@ -69,8 +71,10 @@ function toggleJsPresetCommand() {
   const preset = 'jsOfficial';
   const value = getToggleValue(preset);
   const message = `${msg.jsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).globalValue as boolean;
-  togglePreset(preset, value, true);
+  const values = getConfig().inspect(`vsicons.presets.${preset}`);
+  const defaultValue = values.defaultValue as boolean;
+  const initValue = values.globalValue as boolean;
+  togglePreset(preset, value, defaultValue);
   showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
 }
 
@@ -78,8 +82,10 @@ function toggleTsPresetCommand() {
   const preset = 'tsOfficial';
   const value = getToggleValue(preset);
   const message = `${msg.tsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).globalValue as boolean;
-  togglePreset(preset, value, true);
+  const values = getConfig().inspect(`vsicons.presets.${preset}`);
+  const defaultValue = values.defaultValue as boolean;
+  const initValue = values.globalValue as boolean;
+  togglePreset(preset, value, defaultValue);
   showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
 }
 
@@ -87,8 +93,10 @@ function toggleJsonPresetCommand() {
   const preset = 'jsonOfficial';
   const value = getToggleValue(preset);
   const message = `${msg.jsonOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).globalValue as boolean;
-  togglePreset(preset, value, true);
+  const values = getConfig().inspect(`vsicons.presets.${preset}`);
+  const defaultValue = values.defaultValue as boolean;
+  const initValue = values.globalValue as boolean;
+  togglePreset(preset, value, defaultValue);
   showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
 }
 
@@ -96,8 +104,10 @@ function toggleHideFoldersCommand() {
   const preset = 'hideFolders';
   const value = getToggleValue(preset);
   const message = `${msg.hideFoldersPresetMessage} ${value ? msg.disabled : msg.enabled}. ${msg.restart}`;
-  const initValue = getConfig().inspect(`vsicons.presets.${preset}`).globalValue as boolean;
-  togglePreset(preset, value, true);
+  const values = getConfig().inspect(`vsicons.presets.${preset}`);
+  const defaultValue = values.defaultValue as boolean;
+  const initValue = values.globalValue as boolean;
+  togglePreset(preset, value, defaultValue);
   showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
 }
 

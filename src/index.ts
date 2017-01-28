@@ -45,9 +45,12 @@ function initialize(context: vscode.ExtensionContext) {
           const toggle = checkForAngularProject(config.presets.angular, ngIconsDisabled, isNgProject);
           if (toggle.apply) {
             const presetText = 'angular';
-            const initValue = getConfig().inspect(`vsicons.presets.${presetText}`).workspaceValue as boolean;
-            applyDetection(toggle.message, presetText, toggle.value, initValue, config.projectDetection.autoReload,
-              togglePreset, applyCustomization, reload, cancel, showCustomizationMessage);
+            const values = getConfig().inspect(`vsicons.presets.${presetText}`);
+            const defaultValue = values.defaultValue as boolean;
+            const initValue = values.workspaceValue as boolean;
+            applyDetection(toggle.message, presetText, toggle.value, initValue, defaultValue,
+              config.projectDetection.autoReload, togglePreset, applyCustomization,
+              reload, cancel, showCustomizationMessage);
           }
           return;
         }
