@@ -9,6 +9,7 @@ export const extensions: IFolderCollection = {
     folder: { icon: 'folder', format: FileFormat.svg },
   },
   supported: [
+    { icon: 'aurelia', extensions: ['aurelia_project'], format: FileFormat.svg },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'css', extensions: ['css'], format: FileFormat.svg },
