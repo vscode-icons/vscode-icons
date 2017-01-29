@@ -33,7 +33,7 @@
     ],
     "preview": true,
     "homepage": "https://github.com/vscode-icons/vscode-icons",
-    "icon": "images/logo.png",
+    "icon": "images/logo.svg",
     "galleryBanner": {
         "color": "#ffdd00"
     },
