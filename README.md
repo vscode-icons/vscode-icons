@@ -229,7 +229,7 @@ Once you have created the folder you can put all your custom icons there. But, a
 
 **Note that folders must have two icons!!**
 
-See [here the supported icon extensions]((https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts)).
+See [here the supported file extensions for an icon](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts).
 
 ## Contributing with icons
 
