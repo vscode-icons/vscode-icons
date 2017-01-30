@@ -167,14 +167,14 @@ describe('AutoDetectProject: tests', function () {
       const clock = sinon.useFakeTimers();
 
       const autoReload = true;
-      const togglePreset = sinon.stub().returns(Promise.resolve());
+      const updatePreset = sinon.stub().returns(Promise.resolve());
       const applyCustomization = sinon.spy();
       const reload = sinon.spy();
       const cancel = sinon.stub();
       const showCustomizationMessage = sinon.spy();
 
-      return applyDetection('', '', undefined, autoReload,
-        togglePreset, applyCustomization, reload, cancel, showCustomizationMessage)
+      return applyDetection('', '', undefined, undefined, undefined, autoReload,
+        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage)
         .then(() => {
           // No functions should have been called before 1s
           clock.tick(999);
@@ -196,14 +196,14 @@ describe('AutoDetectProject: tests', function () {
     'shows the customization message',
     function () {
       const autoReload = false;
-      const togglePreset = sinon.stub().returns(Promise.resolve());
+      const updatePreset = sinon.stub().returns(Promise.resolve());
       const applyCustomization = sinon.spy();
       const reload = sinon.spy();
       const cancel = sinon.spy();
       const showCustomizationMessage = sinon.spy();
 
-      return applyDetection('', '', undefined, autoReload,
-        togglePreset, applyCustomization, reload, cancel, showCustomizationMessage)
+      return applyDetection('', '', undefined, undefined, undefined, autoReload,
+        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage)
         .then(() => {
           expect(showCustomizationMessage.called).to.be.true;
         });
