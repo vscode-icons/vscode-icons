@@ -35,91 +35,81 @@ function registerCommand(
   name: string,
   callback: (...args: any[]) => any,
   thisArg?: any): vscode.Disposable {
+
   const command = vscode.commands.registerCommand(`extension.${name}`, callback);
   context.subscriptions.push(command);
   return command;
 }
 
-export function applyCustomizationCommand() {
+export function applyCustomizationCommand(): void {
   const message = `${msg.iconCustomizationMessage} ${msg.restart}`;
   showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization);
 }
 
-function restoreDefaultManifestCommand() {
+function restoreDefaultManifestCommand(): void {
   const message = `${msg.iconRestoreMessage} ${msg.restart}`;
   showCustomizationMessage(message, [{ title: msg.reload }], restoreManifest);
 }
 
-function resetProjectDetectionDefaultsCommand() {
+function resetProjectDetectionDefaultsCommand(): void {
   const message = `${msg.projectDetecticonResetMessage}`;
   showCustomizationMessage(message, [{ title: msg.reload }], resetProjectDetectionDefaults);
 }
 
-function toggleAngularPresetCommand() {
-  const preset = 'angular';
+function togglePreset(
+  preset: string,
+  presetMessage: string,
+  reverseAction: boolean = false,
+  global: boolean = true): void {
+
   const value = getToggleValue(preset);
-  const message = `${msg.ngPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  const values = getConfig().inspect(`vsicons.presets.${preset}`);
-  const defaultValue = values.defaultValue as boolean;
-  const initValue = values.workspaceValue as boolean;
-  togglePreset(preset, value, defaultValue, false);
+
+  let actionMessage: string;
+  if (reverseAction) {
+    actionMessage = value ? msg.disabled : msg.enabled;
+  } else {
+    actionMessage = value ? msg.enabled : msg.disabled;
+  }
+
+  const message = `${presetMessage} ${actionMessage}. ${msg.restart}`;
+  const { defaultValue, globalValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${preset}`);
+  const initValue = (global ? globalValue : workspaceValue) as boolean;
+
+  updatePreset(preset, value, defaultValue as boolean, global);
   showCustomizationMessage(message, [{ title: msg.reload }],
-    applyCustomization, cancel, preset, !value, initValue, false);
+    applyCustomization, cancel, preset, !value, initValue, global);
 }
 
-function toggleJsPresetCommand() {
-  const preset = 'jsOfficial';
-  const value = getToggleValue(preset);
-  const message = `${msg.jsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  const values = getConfig().inspect(`vsicons.presets.${preset}`);
-  const defaultValue = values.defaultValue as boolean;
-  const initValue = values.globalValue as boolean;
-  togglePreset(preset, value, defaultValue);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
+function toggleAngularPresetCommand(): void {
+  togglePreset('angular', msg.ngPresetMessage, false, false);
 }
 
-function toggleTsPresetCommand() {
-  const preset = 'tsOfficial';
-  const value = getToggleValue(preset);
-  const message = `${msg.tsOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  const values = getConfig().inspect(`vsicons.presets.${preset}`);
-  const defaultValue = values.defaultValue as boolean;
-  const initValue = values.globalValue as boolean;
-  togglePreset(preset, value, defaultValue);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
+function toggleJsPresetCommand(): void {
+  togglePreset('jsOfficial', msg.jsOfficialPresetMessage);
 }
 
-function toggleJsonPresetCommand() {
-  const preset = 'jsonOfficial';
-  const value = getToggleValue(preset);
-  const message = `${msg.jsonOfficialPresetMessage} ${value ? msg.enabled : msg.disabled}. ${msg.restart}`;
-  const values = getConfig().inspect(`vsicons.presets.${preset}`);
-  const defaultValue = values.defaultValue as boolean;
-  const initValue = values.globalValue as boolean;
-  togglePreset(preset, value, defaultValue);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
+function toggleTsPresetCommand(): void {
+  togglePreset('tsOfficial', msg.tsOfficialPresetMessage);
 }
 
-function toggleHideFoldersCommand() {
-  const preset = 'hideFolders';
-  const value = getToggleValue(preset);
-  const message = `${msg.hideFoldersPresetMessage} ${value ? msg.disabled : msg.enabled}. ${msg.restart}`;
-  const values = getConfig().inspect(`vsicons.presets.${preset}`);
-  const defaultValue = values.defaultValue as boolean;
-  const initValue = values.globalValue as boolean;
-  togglePreset(preset, value, defaultValue);
-  showCustomizationMessage(message, [{ title: msg.reload }], applyCustomization, cancel, preset, !value, initValue);
+function toggleJsonPresetCommand(): void {
+  togglePreset('jsonOfficial', msg.jsonOfficialPresetMessage);
+}
+
+function toggleHideFoldersCommand(): void {
+  togglePreset('hideFolders', msg.hideFoldersPresetMessage, true);
 }
 
 function getToggleValue(preset: string): boolean {
   return !getConfig().vsicons.presets[preset];
 }
 
-export function togglePreset(
+export function updatePreset(
   preset: string,
   newvalue: boolean,
   initValue: boolean,
   global: boolean = true): Thenable<void> {
+
   return getConfig().update(`vsicons.presets.${preset}`, initValue === undefined ? initValue : newvalue, global);
 }
 
@@ -128,7 +118,8 @@ export function showCustomizationMessage(
   items: vscode.MessageItem[],
   callback?: Function,
   cancel?: (...args: any[]) => void,
-  ...args: any[]) {
+  ...args: any[]): void {
+
   vscode.window.showInformationMessage(message, ...items)
     .then(btn => {
       if (!btn) {
@@ -155,15 +146,15 @@ export function showCustomizationMessage(
     });
 }
 
-export function reload() {
+export function reload(): void {
   vscode.commands.executeCommand('workbench.action.reloadWindow');
 }
 
 export function cancel(preset: string, value: boolean, initValue: boolean, global: boolean = true): void {
-  togglePreset(preset, value, initValue, global);
+  updatePreset(preset, value, initValue, global);
 }
 
-export function applyCustomization() {
+export function applyCustomization(): void {
   const associations = getConfig().vsicons.associations;
   const customFiles: IFileCollection = {
     default: associations.fileDefault,
@@ -178,7 +169,8 @@ export function applyCustomization() {
 
 function generateManifest(
   customFiles: IFileCollection,
-  customFolders: IFolderCollection) {
+  customFolders: IFolderCollection): void {
+
   const iconGenerator = new IconGenerator(vscode, schema);
   const presets = getConfig().vsicons.presets;
   let workingCustomFiles = customFiles;
@@ -208,7 +200,7 @@ function generateManifest(
   iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }
 
-function restoreManifest() {
+function restoreManifest(): void {
   const iconGenerator = new IconGenerator(vscode, schema, true);
   const json = mergeConfig(
     null,
@@ -219,7 +211,7 @@ function restoreManifest() {
   iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }
 
-function resetProjectDetectionDefaults() {
+function resetProjectDetectionDefaults(): void {
   const conf = getConfig();
   if (conf.vsicons.projectDetection.autoReload) {
     conf.update('vsicons.projectDetection.autoReload', false, true);

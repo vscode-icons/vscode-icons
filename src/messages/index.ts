@@ -19,7 +19,7 @@ export const messages = {
   jsOfficialPresetMessage: 'Official JS icon will be',
   tsOfficialPresetMessage: 'Official TS icon will be',
   jsonOfficialPresetMessage: 'Official JSON icon will be',
-  hideFoldersPresetMessage: 'Folders\' visibility will be',
+  hideFoldersPresetMessage: 'Folder icons visibility will be',
   enabled: 'enabled',
   disabled: 'disabled',
   restart: '\'Restart\' for changes to take effect.',

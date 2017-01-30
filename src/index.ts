@@ -15,7 +15,7 @@ import {
   applyCustomizationCommand,
   applyCustomization,
   reload,
-  togglePreset,
+  updatePreset,
   cancel,
   showCustomizationMessage,
 } from './commands';
@@ -49,7 +49,7 @@ function initialize(context: vscode.ExtensionContext) {
             const defaultValue = values.defaultValue as boolean;
             const initValue = values.workspaceValue as boolean;
             applyDetection(toggle.message, presetText, toggle.value, initValue, defaultValue,
-              config.projectDetection.autoReload, togglePreset, applyCustomization,
+              config.projectDetection.autoReload, updatePreset, applyCustomization,
               reload, cancel, showCustomizationMessage);
           }
           return;
