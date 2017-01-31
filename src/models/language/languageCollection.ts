@@ -12,6 +12,7 @@ export interface ILanguageCollection {
   fsharp: ILanguage;
   diff: ILanguage;
   dockerfile: ILanguage;
+  freemarker: ILanguage;
   git: ILanguage;
   go: ILanguage;
   groovy: ILanguage;

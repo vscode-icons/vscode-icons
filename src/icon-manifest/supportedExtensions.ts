@@ -134,6 +134,7 @@ export const extensions: IFileCollection = {
     { icon: 'fortran', extensions: ['f90', 'mod', 'f'], format: FileFormat.svg },
     { icon: 'fsharp', extensions: [], languages: [languages.fsharp], format: FileFormat.svg },
     { icon: 'fsproj', extensions: ['fsproj'], format: FileFormat.svg },
+    { icon: 'freemarker', extensions: [], languages: [languages.freemarker], format: FileFormat.svg },
     { icon: 'git', extensions: ['.gitattributes', '.gitconfig', '.gitignore', '.gitmodules', '.gitkeep'], filename: true, languages: [languages.git], format: FileFormat.svg },
     { icon: 'gitlab', extensions: ['.gitlab-ci.yml'], filename: true, format: FileFormat.svg },
     { icon: 'go', extensions: [], languages: [languages.go], format: FileFormat.svg },

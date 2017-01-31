@@ -12,6 +12,7 @@ export const languages: ILanguageCollection = {
   fsharp: { ids: 'fsharp', defaultExtension: 'fs' },
   diff: { ids: 'diff', defaultExtension: 'diff' },
   dockerfile: { ids: 'dockerfile', defaultExtension: 'dockerfile' },
+  freemarker: { ids: 'ftl', defaultExtension: 'ftl' },
   git: { ids: ['git-commit', 'git-rebase'], defaultExtension: 'git' },
   go: { ids: 'go', defaultExtension: 'go' },
   groovy: { ids: 'groovy', defaultExtension: 'groovy' },
