@@ -61,7 +61,7 @@ export const extensions: IFileCollection = {
     { icon: 'aws', extensions: [], format: FileFormat.svg },
     { icon: 'babel', extensions: ['.babelrc'], filename: true, format: FileFormat.svg },
     { icon: 'bat', extensions: [], languages: [languages.bat], format: FileFormat.svg },
-    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'so', 'pyc', 'pyd', 'pyo', 'n', 'ndll', 'pdb', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi'], format: FileFormat.svg }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: 'binary', extensions: ['bin', 'o', 'a', 'exe', 'obj', 'lib', 'dll', 'so', 'pyc', 'pyd', 'pyo', 'n', 'ndll', 'hl', 'pdb', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi'], format: FileFormat.svg }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'bithound', extensions: ['.bithoundrc'], filename: true, format: FileFormat.svg },
     { icon: 'blade', extensions: ['blade.php'], format: FileFormat.svg },
     { icon: 'bower', extensions: ['.bowerrc', 'bower.json'], filename: true, format: FileFormat.svg },
