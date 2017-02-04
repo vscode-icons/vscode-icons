@@ -2,7 +2,7 @@
 import {
   FileFormat,
   IFolderCollection,
-} from '../../src/models';
+} from '../models';
 
 export const extensions: IFolderCollection = {
   default: {
