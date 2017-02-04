@@ -61,7 +61,7 @@ export const extensions: IFileCollection = {
     { icon: 'aws', extensions: [], format: FileFormat.svg },
     { icon: 'babel', extensions: ['.babelrc'], filename: true, format: FileFormat.svg },
     { icon: 'bat', extensions: [], languages: [languages.bat], format: FileFormat.svg },
-    { icon: 'binary', extensions: ['a', 'app', 'bin', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi', 'dll', 'exe', 'lib', 'n', 'ndll', 'o', 'obj', 'pyc', 'pyd', 'pyo', 'pdb', 'scpt', 'scptd', 'so'], format: FileFormat.svg }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: 'binary', extensions: ['a', 'app', 'bin', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi', 'dll', 'exe', 'hl', 'lib', 'n', 'ndll', 'o', 'obj', 'pyc', 'pyd', 'pyo', 'pdb', 'scpt', 'scptd', 'so'], format: FileFormat.svg }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'bithound', extensions: ['.bithoundrc'], filename: true, format: FileFormat.svg },
     { icon: 'blade', extensions: [], languages: [languages.blade], format: FileFormat.svg },
     { icon: 'bower', extensions: ['.bowerrc', 'bower.json'], filename: true, format: FileFormat.svg },
@@ -352,9 +352,9 @@ export const extensions: IFileCollection = {
     { icon: 'xcode', extensions: ['xcodeproj'], format: FileFormat.svg },
     { icon: 'xib', extensions: ['xib'], format: FileFormat.svg },
     { icon: 'xliff', extensions: ['xliff', 'xlf'], format: FileFormat.svg },
-    { icon: 'xml', extensions: ['pex'], languages: [languages.xml], format: FileFormat.svg },
+    { icon: 'xml', extensions: ['pex', 'tmLanguage'], languages: [languages.xml], format: FileFormat.svg },
     { icon: 'xsl', extensions: [], languages: [languages.xsl], format: FileFormat.svg },
-    { icon: 'yaml', extensions: ['yml'], languages: [languages.yaml], format: FileFormat.svg },
+    { icon: 'yaml', extensions: ['yml', 'YAML-tmLanguage'], languages: [languages.yaml], format: FileFormat.svg },
     { icon: 'yarn', extensions: ['yarn.lock', '.yarnrc', '.yarnclean', '.yarn-integrity', '.yarn-metadata.json'], filename: true, format: FileFormat.svg },
     { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'], format: FileFormat.svg },
     { icon: 'zip2', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'], format: FileFormat.svg, disabled: true },
