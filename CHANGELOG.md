@@ -13,7 +13,7 @@
   - Enhancement: New batch of svg icons. ([@JimiC](https://github.com/JimiC) in [#687](https://github.com/vscode-icons/vscode-icons/pull/687))
   - Enhancement: Angular autodetection cancellation improved.  ([@JimiC](https://github.com/JimiC) in [#679](https://github.com/vscode-icons/vscode-icons/pull/679))
   - Fix: Disabled folders are never shown.  ([@robertohuertasm](https://github.com/robertohuertasm) in [#678](https://github.com/vscode-icons/vscode-icons/pull/678))
-  - Enhancement: `package.json`update to use vscode engine <=1.5.0.  ([@JimiC](https://github.com/JimiC) in [#675](https://github.com/vscode-icons/vscode-icons/pull/675))
+  - Enhancement: `package.json`update to use vscode engine >=1.5.0.  ([@JimiC](https://github.com/JimiC) in [#675](https://github.com/vscode-icons/vscode-icons/pull/675))
   - Enhancement: Disable Angular auto-detection in a specific workspace.  ([@JimiC](https://github.com/JimiC) in [#672](https://github.com/vscode-icons/vscode-icons/pull/672))
   - Fix: Fix grammar error. ([@JimiC](https://github.com/JimiC) in [#670](https://github.com/vscode-icons/vscode-icons/pull/670))
 
