@@ -73,6 +73,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   terraform: ILanguage;
   tex: ILanguage;
   textile: ILanguage;
+  textmatejson: ILanguage;
+  textmateyaml: ILanguage;
   toml: ILanguage;
   twig: ILanguage;
   vba: ILanguage;

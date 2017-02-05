@@ -111,6 +111,8 @@ export const languages: ILanguageCollection = {
   terraform: { ids: ['terraform'], defaultExtension: 'tf' },
   tex: { ids: 'tex', defaultExtension: 'sty' },
   textile: { ids: ['textile'], defaultExtension: 'textile' },
+  textmatejson: { ids: ['json-tmlanguage'], defaultExtension: 'JSON-tmLanguage' },
+  textmateyaml: { ids: ['yaml-tmlanguage'], defaultExtension: 'YAML-tmLanguage' },
   toml: { ids: ['toml'], defaultExtension: 'toml' },
   twig: { ids: ['twig'], defaultExtension: 'twig' },
   typescript: { ids: 'typescript', defaultExtension: 'ts' },
