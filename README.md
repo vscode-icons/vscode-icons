@@ -10,7 +10,7 @@
 
 Bring icons to your VS Code.
 
-![demo](/images/screenshot890x486.gif)
+![demo](https://raw.githubusercontent.com/robertohuertasm/vscode-icons/master/images/screenshot.gif)
 
 ## A little bit of history about this extension
 
