@@ -8,9 +8,7 @@ out/test/**
 out/src/example/**
 typings/**
 examples/**
-images/*.psd
-images/*.ai
-images/screenshot_folders.png
+images/screenshot.gif
 Dockerfile
 .editorconfig
 .gitignore

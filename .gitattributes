@@ -9,3 +9,5 @@
 *.psd binary
 *.ai binary
 *.png binary
+*.gif binary
+*.jpg binary
