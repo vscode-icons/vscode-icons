@@ -1,6 +1,10 @@
 # Change Log
 
 ## 7.2.0 (February 4, 2017)
+  - Enhancement: `textmate`support. ([@JimiC](https://github.com/JimiC) in [#723](https://github.com/vscode-icons/vscode-icons/pull/723))
+  - Fix: `.editorconfig` instructed not to modify images. ([@JimiC](https://github.com/JimiC) in [#722](https://github.com/vscode-icons/vscode-icons/pull/722))
+  - Fix: exclude npm logs, vim support, fix example generator and supportedExtensions file optimization. ([@JimiC](https://github.com/JimiC) in [#721](https://github.com/vscode-icons/vscode-icons/pull/721))
+  - Enhancement: Animated gif in the readme. ([@robertohuertasm](https://github.com/robertohuertasm) in [#720](https://github.com/vscode-icons/vscode-icons/pull/720))
   - Enhancement: `Hashlink` associated to binary extensions. ([@Gama11](https://github.com/Gama11) in [#715](https://github.com/vscode-icons/vscode-icons/pull/715))
   - Enhancement: More language id support. ([@JimiC](https://github.com/JimiC) in [#712](https://github.com/vscode-icons/vscode-icons/pull/712))
   - Enhancement: `.editorconfig` removed from distributable. ([@JimiC](https://github.com/JimiC) in [#710](https://github.com/vscode-icons/vscode-icons/pull/710))
