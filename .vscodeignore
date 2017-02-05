@@ -11,7 +11,7 @@ examples/**
 images/*.psd
 images/*.ai
 images/screenshot_folders.png
-images/screenshot890*486.gif
+images/screenshot890x486.gif
 Dockerfile
 .editorconfig
 .gitignore
