@@ -17,6 +17,8 @@ export const extensions: IFileCollection = {
     { icon: 'angular', extensions: ['angular-cli.json'], filename: true, format: FileFormat.svg },
     { icon: 'ng_component_ts', extensions: ['component.ts'], format: FileFormat.svg },
     { icon: 'ng_component_js', extensions: ['component.js'], format: FileFormat.svg },
+    { icon: 'ng_controller_ts', extensions: ['controller.ts'], format: FileFormat.svg },
+    { icon: 'ng_controller_js', extensions: ['controller.js'], format: FileFormat.svg },
     { icon: 'ng_smart_component_ts', extensions: ['page.ts', 'container.ts'], format: FileFormat.svg },
     { icon: 'ng_smart_component_js', extensions: ['page.js', 'container.js'], format: FileFormat.svg },
     { icon: 'ng_directive_ts', extensions: ['directive.ts'], format: FileFormat.svg },
