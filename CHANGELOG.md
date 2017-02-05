@@ -1,6 +1,7 @@
 # Change Log
 
 ## 7.2.0 (February 5, 2017)
+  - Enhancement: Angular 1 controller support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#724](https://github.com/vscode-icons/vscode-icons/pull/724))
   - Enhancement: `textmate` support. ([@JimiC](https://github.com/JimiC) in [#723](https://github.com/vscode-icons/vscode-icons/pull/723))
   - Fix: `.editorconfig` instructed to not modify images. ([@JimiC](https://github.com/JimiC) in [#722](https://github.com/vscode-icons/vscode-icons/pull/722))
   - Fix: Excluded npm logs, vim support, fixed example generator and supportedExtensions file optimization. ([@JimiC](https://github.com/JimiC) in [#721](https://github.com/vscode-icons/vscode-icons/pull/721))
