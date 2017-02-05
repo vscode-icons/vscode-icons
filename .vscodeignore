@@ -18,6 +18,6 @@ Dockerfile
 .travis.yml
 tsconfig.json
 tslint.json
-npm-debug.log
+npm-debug.*
 yarn.lock
 
