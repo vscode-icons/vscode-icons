@@ -1,7 +1,7 @@
 node_modules
 out
 examples
-npm-debug.log
+npm-debug.*
 .vscode-test/**
 .DS_Store
 *.vsix

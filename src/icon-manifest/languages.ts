@@ -119,6 +119,7 @@ export const languages: ILanguageCollection = {
   vba: { ids: ['vba'], defaultExtension: 'cls' },
   vbscript: { ids: ['vbscript'], defaultExtension: 'wsf' },
   vhdl: { ids: ['vhdl'], defaultExtension: 'vhdl' },
+  viml: { ids: ['viml'], defaultExtension: 'vim' },
   vue: { ids: ['vue'], defaultExtension: 'vue' },
   wxml: { ids: ['wxml'], defaultExtension: 'wxml' },
   xml: { ids: 'xml', defaultExtension: 'xml' },

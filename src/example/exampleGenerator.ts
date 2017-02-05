@@ -5,28 +5,32 @@ import { deleteDirectoryRecursively } from '../utils';
 
 const supportedFlags = ['--all', '--folders', '--files'];
 
-const folderNames = folders.supported.reduce((init, current) => {
-  const obj = init;
-  if (current.extensions[0]) {
-    obj[current.icon] = current.extensions[0];
-  }
-  return obj;
-}, {});
-
-const fileNames = files.supported.reduce((init, current) => {
-  const obj = init;
-  const extension = current.languages && current.languages[0]
-    ? current.languages[0].defaultExtension
-    : current.extensions[0];
-
-  if (!extension) {
+const folderNames = folders.supported
+  .filter((folder) => !folder.disabled)
+  .reduce((init, current) => {
+    const obj = init;
+    if (current.extensions.length) {
+      obj[current.icon] = current.extensions[0];
+    }
     return obj;
-  }
+  }, {});
 
-  obj[current.icon] = `${(current.filename ? '' : 'file.')}${extension}`;
+const fileNames = files.supported
+  .filter((file) => !file.disabled)
+  .reduce((init, current) => {
+    const obj = init;
+    const extension = !current.filename && current.languages && current.languages.length
+      ? current.languages[0].defaultExtension
+      : current.extensions[0];
 
-  return obj;
-}, {});
+    if (!extension) {
+      return obj;
+    }
+
+    obj[current.icon] = `${(current.filename ? '' : 'file.')}${extension}`;
+
+    return obj;
+  }, {});
 
 /**
  * Creates a directory if it doesn't exists.
