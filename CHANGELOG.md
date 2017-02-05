@@ -2,8 +2,8 @@
 
 ## 7.2.0 (February 4, 2017)
   - Enhancement: `textmate`support. ([@JimiC](https://github.com/JimiC) in [#723](https://github.com/vscode-icons/vscode-icons/pull/723))
-  - Fix: `.editorconfig` instructed not to modify images. ([@JimiC](https://github.com/JimiC) in [#722](https://github.com/vscode-icons/vscode-icons/pull/722))
-  - Fix: exclude npm logs, vim support, fix example generator and supportedExtensions file optimization. ([@JimiC](https://github.com/JimiC) in [#721](https://github.com/vscode-icons/vscode-icons/pull/721))
+  - Fix: `.editorconfig` instructed to not modify images. ([@JimiC](https://github.com/JimiC) in [#722](https://github.com/vscode-icons/vscode-icons/pull/722))
+  - Fix: Excluded npm logs, vim support, fixed example generator and supportedExtensions file optimization. ([@JimiC](https://github.com/JimiC) in [#721](https://github.com/vscode-icons/vscode-icons/pull/721))
   - Enhancement: Animated gif in the readme. ([@robertohuertasm](https://github.com/robertohuertasm) in [#720](https://github.com/vscode-icons/vscode-icons/pull/720))
   - Enhancement: `Hashlink` associated to binary extensions. ([@Gama11](https://github.com/Gama11) in [#715](https://github.com/vscode-icons/vscode-icons/pull/715))
   - Enhancement: More language id support. ([@JimiC](https://github.com/JimiC) in [#712](https://github.com/vscode-icons/vscode-icons/pull/712))
@@ -17,9 +17,9 @@
   - Enhancement: New batch of svg icons. ([@JimiC](https://github.com/JimiC) in [#687](https://github.com/vscode-icons/vscode-icons/pull/687))
   - Enhancement: Angular autodetection cancellation improved.  ([@JimiC](https://github.com/JimiC) in [#679](https://github.com/vscode-icons/vscode-icons/pull/679))
   - Fix: Disabled folders are never shown.  ([@robertohuertasm](https://github.com/robertohuertasm) in [#678](https://github.com/vscode-icons/vscode-icons/pull/678))
-  - Enhancement: `package.json` update to use vscode engine >=1.5.0.  ([@JimiC](https://github.com/JimiC) in [#675](https://github.com/vscode-icons/vscode-icons/pull/675))
-  - Enhancement: Disable Angular auto-detection in a specific workspace.  ([@JimiC](https://github.com/JimiC) in [#672](https://github.com/vscode-icons/vscode-icons/pull/672))
-  - Fix: Fix grammar error. ([@JimiC](https://github.com/JimiC) in [#670](https://github.com/vscode-icons/vscode-icons/pull/670))
+  - Enhancement: `package.json` updated to use vscode engine >=1.5.0.  ([@JimiC](https://github.com/JimiC) in [#675](https://github.com/vscode-icons/vscode-icons/pull/675))
+  - Enhancement: Angular auto-detection disabled in a specific workspace.  ([@JimiC](https://github.com/JimiC) in [#672](https://github.com/vscode-icons/vscode-icons/pull/672))
+  - Fix: Grammar error . ([@JimiC](https://github.com/JimiC) in [#670](https://github.com/vscode-icons/vscode-icons/pull/670))
 
 ## 7.1.2 (January 23, 2017)
   - Patch: Proper Angular icon version was not correctly applied when autodetection took place.  ([@JimiC](https://github.com/JimiC) in [#667](https://github.com/vscode-icons/vscode-icons/pull/667))
