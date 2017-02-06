@@ -252,7 +252,7 @@ export const extensions: IFileCollection = {
     { icon: 'registry', extensions: ['reg'], format: FileFormat.svg },
     { icon: 'riot', extensions: [], languages: [languages.riot], format: FileFormat.svg },
     { icon: 'robotframework', extensions: [], languages: [languages.robot], format: FileFormat.svg },
-    { icon: 'rollup', extensions: ['rollup.config.js'], filename: true, format: FileFormat.svg },
+    { icon: 'rollup', extensions: ['rollup.config.js', 'rollup.config.ts'], filename: true, format: FileFormat.svg },
     { icon: 'rspec', extensions: ['.rspec'], filename: true, format: FileFormat.svg },
     { icon: 'ruby', extensions: [], languages: [languages.ruby], format: FileFormat.svg },
     { icon: 'rust', extensions: [], languages: [languages.rust], format: FileFormat.svg },
