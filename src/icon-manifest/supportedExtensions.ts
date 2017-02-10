@@ -86,7 +86,7 @@ export const extensions: IFileCollection = {
     { icon: 'clojure', extensions: ['cjm', 'cljc'], languages: [languages.clojure], format: FileFormat.svg },
     { icon: 'cmake', extensions: [], languages: [languages.cmake, languages.cmakecache], format: FileFormat.svg },
     { icon: 'cobol', extensions: [], languages: [languages.cobol], format: FileFormat.svg },
-    { icon: 'codeclimate', extensions: ['codeclimate.yml'], light: true, filename: true, format: FileFormat.svg },
+    { icon: 'codeclimate', extensions: ['.codeclimate.yml'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'codekit', extensions: ['kit'], format: FileFormat.svg },
     { icon: 'codekit', extensions: ['config.codekit', 'config.codekit2', 'config.codekit3'], filename: true, format: FileFormat.svg },
     { icon: 'coffeescript', extensions: [], languages: [languages.coffeescript], format: FileFormat.svg },
