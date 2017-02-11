@@ -47,12 +47,12 @@ export class LanguageResourceManager {
       }
 
       stringifiedKey.split('').forEach((char) => {
-        if (char.match(/[a-zA-Z0-9!@%&\(\)-;:"'\[\]\.,<>\?\s]/g)) {
-          msg += char;
-          return;
+        if (char.match(/[#^*|\\/{}+=]/g)) {
+          throw new Error(`${char} is not valid`);
         }
 
-        throw new Error(`${char} is not valid`);
+        msg += char;
+        return;
       });
     });
 
