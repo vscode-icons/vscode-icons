@@ -5,6 +5,8 @@ import { extensionSettings } from '../settings';
 import { parseJSON } from '../utils';
 import { LanguageResourceManager } from '../i18n';
 
+const i18nManager = new LanguageResourceManager();
+
 export function detectProject(findFiles: Function, config: IVSIcons): PromiseLike<IVSCodeUri[]> {
   if (config.projectDetection.disableDetect) {
     return Promise.resolve([]) as PromiseLike<IVSCodeUri[]>;
@@ -23,8 +25,7 @@ export function checkForAngularProject(
   angularPreset: boolean,
   ngIconsDisabled: boolean,
   isNgProject: boolean,
-  language: string,
-  i18nManager: LanguageResourceManager): IProjectDetectionResult {
+  language: string): IProjectDetectionResult {
 
   // We need to mandatory check the following:
   // 1. The 'preset'
@@ -82,8 +83,7 @@ export function applyDetection(
   reload: Function,
   cancel: Function,
   showCustomizationMessage: Function,
-  language: string,
-  i18nManager: LanguageResourceManager): Thenable<void> {
+  language: string): Thenable<void> {
   return updatePreset(presetText, value, defaultValue, false)
     .then(() => {
       // Add a delay in order for vscode to persist the toggle of the preset

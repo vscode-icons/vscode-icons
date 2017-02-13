@@ -9,7 +9,6 @@ import {
   isProject,
   applyDetection,
 } from '../src/init/autoDetectProject';
-import { LanguageResourceManager } from './../src/i18n';
 
 use(chaiAsPromised);
 
@@ -103,8 +102,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = false;
       const ngIconsDisabled = true;
-      const i18nManager = new LanguageResourceManager();
-      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined, i18nManager);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.true;
     });
@@ -115,8 +113,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = true;
       const ngIconsDisabled = true;
-      const i18nManager = new LanguageResourceManager();
-      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined, i18nManager);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.true;
     });
@@ -127,8 +124,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = true;
       const ngIconsDisabled = false;
-      const i18nManager = new LanguageResourceManager();
-      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined, i18nManager);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.false;
     });
@@ -139,8 +135,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = false;
       const ngIconsDisabled = false;
-      const i18nManager = new LanguageResourceManager();
-      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined, i18nManager);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.false;
     });
@@ -151,8 +146,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = true;
       const ngIconsDisabled = false;
-      const i18nManager = new LanguageResourceManager();
-      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined, i18nManager))
+      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined))
         .to.have.property('apply').that.is.false;
     });
 
@@ -162,8 +156,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = false;
       const ngIconsDisabled = true;
-      const i18nManager = new LanguageResourceManager();
-      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined, i18nManager))
+      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined))
         .to.have.property('apply').that.is.false;
     });
 
@@ -178,10 +171,9 @@ describe('AutoDetectProject: tests', function () {
       const reload = sinon.spy();
       const cancel = sinon.stub();
       const showCustomizationMessage = sinon.spy();
-      const i18nManager = new LanguageResourceManager();
 
       return applyDetection(undefined, undefined, undefined, undefined, undefined, autoReload,
-        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage, undefined, i18nManager)
+        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage, undefined)
         .then(() => {
           // No functions should have been called before 1s
           clock.tick(999);
@@ -208,10 +200,9 @@ describe('AutoDetectProject: tests', function () {
       const reload = sinon.spy();
       const cancel = sinon.spy();
       const showCustomizationMessage = sinon.spy();
-      const i18nManager = new LanguageResourceManager();
 
       return applyDetection(undefined, undefined, undefined, undefined, undefined, autoReload,
-        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage, undefined, i18nManager)
+        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage, undefined)
         .then(() => {
           expect(showCustomizationMessage.called).to.be.true;
         });
