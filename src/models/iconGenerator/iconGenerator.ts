@@ -1,8 +1,5 @@
 import { IIconSchema } from '../iconSchema';
 import {
-  IExtensionCollection,
-  IFileExtension,
-  IFolderExtension,
   IFileCollection,
   IFolderCollection,
 } from '../extensions';

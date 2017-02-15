@@ -2,7 +2,6 @@
 /* tslint:disable only-arrow-functions */
 import * as fs from 'fs';
 import * as path from 'path';
-import * as _ from 'lodash';
 import { expect } from 'chai';
 import { schema as defaultSchema, IconGenerator } from '../src/icon-manifest';
 import { extensions as files } from '../src/icon-manifest/supportedExtensions';

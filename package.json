@@ -183,21 +183,21 @@
     "devDependencies": {
         "@types/chai": "^3.4.34",
         "@types/chai-as-promised": "^0.0.29",
-        "@types/lodash": "^4.14.44",
-        "@types/mocha": "^2.2.33",
-        "@types/node": "^6.0.40",
-        "@types/sinon": "^1.16.34",
+        "@types/lodash": "^4.14.52",
+        "@types/mocha": "^2.2.39",
+        "@types/node": "^7.0.5",
+        "@types/sinon": "^1.16.35",
         "chai": "^3.5.0",
         "chai-as-promised": "^6.0.0",
         "mocha": "^3.2.0",
         "rimraf": "^2.5.4",
         "sinon": "^1.17.7",
-        "tslint": "^4.2.0",
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0"
+        "tslint": "^4.4.2",
+        "typescript": "^2.1.6",
+        "vscode": "^1.0.3"
     },
     "dependencies": {
-        "lodash": "^4.17.2",
+        "lodash": "^4.17.4",
         "open": "0.0.5",
         "semver": "^5.3.0"
     }

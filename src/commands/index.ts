@@ -14,8 +14,6 @@ import { extensions as folders } from '../icon-manifest/supportedFolders';
 import {
   IFileCollection,
   IFolderCollection,
-  IVSIcons, IFileDefault,
-  IFolderDefault,
 } from '../models';
 import { extensionSettings } from '../settings';
 
@@ -33,8 +31,7 @@ export function registerCommands(context: vscode.ExtensionContext): void {
 function registerCommand(
   context: vscode.ExtensionContext,
   name: string,
-  callback: (...args: any[]) => any,
-  thisArg?: any): vscode.Disposable {
+  callback: (...args: any[]) => any): vscode.Disposable {
 
   const command = vscode.commands.registerCommand(`extension.${name}`, callback);
   context.subscriptions.push(command);

@@ -2,7 +2,6 @@
 import { expect, use } from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
-import * as fs from 'fs';
 import { IVSIcons, IVSCodeUri } from '../src/models';
 import {
   detectProject,
