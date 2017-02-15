@@ -14,8 +14,6 @@ import { extensions as folders } from '../icon-manifest/supportedFolders';
 import {
   IFileCollection,
   IFolderCollection,
-  IVSIcons, IFileDefault,
-  IFolderDefault,
 } from '../models';
 import { extensionSettings } from '../settings';
 

@@ -322,10 +322,6 @@ describe('FolderExtensions: merging configuration documents', function () {
 describe('Presets: merging configuration documents', function () {
 
   it('ensures angular extensions are disabled', function () {
-    const custom: IFileCollection = {
-      default: null,
-      supported: [],
-    };
     const result = toggleAngularPreset(true, fileExtensions);
     const nggroup = result.supported.filter(x => x.icon.startsWith('ng_'));
     expect(nggroup.length).equals(14);
@@ -453,8 +449,6 @@ describe('DefaultExtensions: merging configuration documents', function () {
       const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
       const def = json.iconDefinitions._folder_light;
       const defOpen = json.iconDefinitions._folder_light_open;
-      const iconSuffix = extensionSettings.iconSuffix;
-      const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
       expect(def).exist;
       expect(defOpen).exist;
       expect(def.iconPath).exist;
@@ -485,8 +479,6 @@ describe('DefaultExtensions: merging configuration documents', function () {
 
       const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
       const def = json.iconDefinitions._file;
-      const iconSuffix = extensionSettings.iconSuffix;
-      const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
       expect(def).exist;
       expect(def.iconPath).exist;
       expect(def.iconPath).contain(iconName);
@@ -517,8 +509,6 @@ describe('DefaultExtensions: merging configuration documents', function () {
       const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
       const def = json.iconDefinitions._folder;
       const defOpen = json.iconDefinitions._folder_open;
-      const iconSuffix = extensionSettings.iconSuffix;
-      const defaultExtensionPrefix = extensionSettings.defaultExtensionPrefix;
       expect(def).exist;
       expect(defOpen).exist;
       expect(def.iconPath).exist;

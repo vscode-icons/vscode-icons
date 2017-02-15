@@ -1,4 +1,4 @@
-import { ISettingsManager, IVSIcons } from '../models';
+import { IVSIcons } from '../models';
 import * as packageJson from '../../../package.json';
 
 export function manageAutoApplyCustomizations(

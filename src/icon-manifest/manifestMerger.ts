@@ -1,13 +1,8 @@
 import * as _ from 'lodash';
-import * as path from 'path';
-import { IconGenerator } from './iconGenerator';
-import { extensions } from './supportedExtensions';
-import { fileFormatToString } from '../utils/index';
 import {
   IFileCollection,
   IFolderCollection,
   IExtensionCollection,
-  IFileExtension,
   IExtension,
   FileFormat,
   IIconSchema,

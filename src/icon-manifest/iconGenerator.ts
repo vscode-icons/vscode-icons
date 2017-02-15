@@ -3,15 +3,11 @@ import * as path from 'path';
 import * as _ from 'lodash';
 import { SettingsManager } from '../settings';
 import { pathUnixJoin, fileFormatToString } from '../utils';
-import { schema } from './defaultSchema';
 import {
-  FileFormat,
-  IExtension,
   IIconGenerator,
   IVSCode,
   IIconSchema,
   ISettings,
-  ISettingsManager,
   IFolderCollection,
   IFileCollection,
   IDefaultExtension,
@@ -26,7 +22,7 @@ export class IconGenerator implements IIconGenerator {
   private manifestFolderPath: string;
 
   constructor(
-    private vscode: IVSCode,
+    vscode: IVSCode,
     private defaultSchema: IIconSchema,
     private avoidCustomDetection: boolean = false) {
     this.settings = new SettingsManager(vscode).getSettings();
@@ -142,7 +138,6 @@ export class IconGenerator implements IIconGenerator {
     hasDefaultLightFile: boolean) {
     if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
-    const suffix = sts.iconSuffix;
     return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled && x.icon), item => item.icon))
       .reduce((old, current) => {
         const defs = old.defs;
@@ -357,19 +352,6 @@ export class IconGenerator implements IIconGenerator {
   private getDrives(...paths: string[]): string[] {
     const rx = new RegExp('^[a-zA-Z]:');
     return paths.map(x => (rx.exec(x) || [])[0]);
-  }
-
-  private cleanOutDir(outDir: string) {
-    let outputDir = outDir;
-
-    if (outputDir == null) {
-      outputDir = './';
-    }
-
-    if (!outputDir.endsWith('/')) {
-      outputDir += '/';
-    }
-    return outputDir;
   }
 
   private writeJsonToFile(json, iconsFilename, outDir) {

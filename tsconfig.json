@@ -2,6 +2,8 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
     "target": "es6",
     "outDir": "out",
     "lib": [

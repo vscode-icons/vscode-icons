@@ -1,4 +1,3 @@
-import { FileFormat } from './fileFormat';
 import { IDefaultExtension } from './defaultExtension';
 
 export interface IExtension extends IDefaultExtension {
