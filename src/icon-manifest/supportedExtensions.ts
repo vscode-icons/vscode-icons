@@ -63,7 +63,7 @@ export const extensions: IFileCollection = {
     { icon: 'aws', extensions: [], format: FileFormat.svg },
     { icon: 'babel', extensions: ['.babelrc'], filename: true, format: FileFormat.svg },
     { icon: 'bat', extensions: [], languages: [languages.bat], format: FileFormat.svg },
-    { icon: 'binary', extensions: ['a', 'app', 'bin', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi', 'dll', 'exe', 'hl', 'lib', 'n', 'ndll', 'o', 'obj', 'pyc', 'pyd', 'pyo', 'pdb', 'scpt', 'scptd', 'so'], format: FileFormat.svg }, // http://www.file-extensions.org/filetype/extension/name/binary-files
+    { icon: 'binary', extensions: ['a', 'app', 'bin', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi', 'dll', 'exe', 'hl', 'ilk', 'lib', 'n', 'ndll', 'o', 'obj', 'pyc', 'pyd', 'pyo', 'pdb', 'scpt', 'scptd', 'so'], format: FileFormat.svg }, // http://www.file-extensions.org/filetype/extension/name/binary-files
     { icon: 'bithound', extensions: ['.bithoundrc'], filename: true, format: FileFormat.svg },
     { icon: 'blade', extensions: [], languages: [languages.blade], format: FileFormat.svg },
     { icon: 'bower', extensions: ['.bowerrc', 'bower.json'], filename: true, format: FileFormat.svg },
