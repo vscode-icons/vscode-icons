@@ -3,6 +3,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "skipLibCheck": true,
     "target": "es6",
     "outDir": "out",
