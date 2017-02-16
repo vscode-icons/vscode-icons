@@ -308,8 +308,10 @@ export const extensions: IFileCollection = {
       icon: 'vscode',
       extensions: [
         'vscodeignore.json',
+        'settings.json',
         'launch.json',
         'tasks.json',
+        'extensions.json',
         'jsconfig.json',
         'tsconfig.json',
         '.vscodeignore',
