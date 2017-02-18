@@ -152,7 +152,7 @@ export const extensions: IFileCollection = {
     { icon: 'haxe', extensions: ['haxelib.json'], filename: true, languages: [languages.haxe], format: FileFormat.svg },
     { icon: 'haxecheckstyle', extensions: ['checkstyle.json'], filename: true, format: FileFormat.svg },
     { icon: 'haxedevelop', extensions: ['hxproj'], format: FileFormat.svg },
-    { icon: 'html', extensions: [], languages: [languages.html], format: FileFormat.svg },
+    { icon: 'html', extensions: ['eco'], languages: [languages.html], format: FileFormat.svg },
     { icon: 'idris', extensions: ['idr', 'lidr', 'ibc'], format: FileFormat.svg },
     { icon: 'image', extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'tiff', 'ico'], format: FileFormat.svg },
     { icon: 'ini', extensions: [], languages: [languages.ini], light: true, format: FileFormat.svg },
