@@ -10,5 +10,3 @@ Thanks for helping out! :smile:
 1. Use the present tense.
 2. Reference issues whenever possible.
 3. Try to make your code clean and observe the ESLint Rules.
-4. Build the extension by yourself using this: ```npm install -d ``` and ```npm run build``` when possible.
-5. Only commit built files.

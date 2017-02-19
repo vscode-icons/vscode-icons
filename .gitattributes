@@ -1,0 +1,13 @@
+###############################################################################
+# Set default behavior to automatically normalize line endings.
+###############################################################################
+* text eol=lf
+
+###############################################################################
+# Denote all files that are truly binary and should not be modified.
+###############################################################################
+*.psd binary
+*.ai binary
+*.png binary
+*.gif binary
+*.jpg binary

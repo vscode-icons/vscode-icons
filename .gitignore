@@ -1,5 +1,7 @@
 node_modules
-test
-dist
+out
 examples
-npm-debug.log
+npm-debug.*
+.vscode-test/**
+.DS_Store
+*.vsix

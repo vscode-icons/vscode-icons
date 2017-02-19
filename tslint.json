@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "tslint:latest"
+  ],
+  "rules": {
+    "quotemark": [
+      "single"
+    ],
+    "eofline": true,
+    "variable-name": [
+      true,
+      "allow-pascal-case",
+      "allow-leading-underscore"
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "ignore"
+      }
+    ],
+    "object-literal-sort-keys": false,
+    "no-string-literal": false,
+    "ordered-imports": [
+      false
+    ],
+    "arrow-parens": false
+  },
+  "jsRules": {
+    "quotemark": [
+      "single"
+    ],
+    "object-literal-sort-keys": false
+  }
+}
