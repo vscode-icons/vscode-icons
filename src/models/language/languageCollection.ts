@@ -33,6 +33,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erlang: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
+  godot: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
@@ -41,12 +42,14 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   haxe: ILanguage;
   jinja: ILanguage;
   julia: ILanguage;
+  kos: ILanguage;
   kotlin: ILanguage;
   latex: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
   marko: ILanguage;
   matlab: ILanguage;
+  mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;
   nunjucks: ILanguage;
@@ -68,7 +71,9 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   slim: ILanguage;
   smarty: ILanguage;
   solidity: ILanguage;
+  sqf: ILanguage;
   stylus: ILanguage;
+  swagger: ILanguage;
   swig: ILanguage;
   terraform: ILanguage;
   tex: ILanguage;
@@ -81,6 +86,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   vbscript: ILanguage;
   vhdl: ILanguage;
   viml: ILanguage;
+  volt: ILanguage;
   vue: ILanguage;
   wxml: ILanguage;
   yang: ILanguage;
