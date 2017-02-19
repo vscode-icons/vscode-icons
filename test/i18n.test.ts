@@ -39,7 +39,7 @@ describe('i18n: tests', function () {
             },
           },
         };
-        const msg = new LanguageResourceManager(resourceCollection).getMessage('test', LangResourceKeys.activationPath);
+        const msg = new LanguageResourceManager('test', resourceCollection).getMessage(LangResourceKeys.activationPath);
         expect(msg).to.equal(resourceCollection.test.activationPath[process.platform]);
       });
 
@@ -53,8 +53,8 @@ describe('i18n: tests', function () {
 
         const literalString1 = '10 ';
         const literalString2 = '!';
-        const msg = new LanguageResourceManager(resourceCollection)
-          .getMessage('en', literalString1, LangResourceKeys.newVersionMessage, literalString2);
+        const msg = new LanguageResourceManager('en', resourceCollection)
+          .getMessage(literalString1, LangResourceKeys.newVersionMessage, literalString2);
         expect(msg).to.equal(`${literalString1}${resourceCollection.en.newVersionMessage}${literalString2}`);
       });
 
@@ -66,18 +66,18 @@ describe('i18n: tests', function () {
           },
         };
 
-        const msg = new LanguageResourceManager(resourceCollection).getMessage(undefined, LangResourceKeys.enabled);
+        const msg = new LanguageResourceManager('en', resourceCollection).getMessage(LangResourceKeys.enabled);
         expect(msg).to.equal(resourceCollection.en.enabled);
       });
 
     it('if no resource collection is provided, an empty string is returned',
       function () {
-        const msg = new LanguageResourceManager({}).getMessage(undefined, undefined);
+        const msg = new LanguageResourceManager('en', {}).getMessage(undefined);
         expect(msg).to.equal('');
       });
 
     describe('the message is properly shown for', function () {
-      let resourceCollection;
+      let resourceCollection: ILangResourceCollection | {};
 
       before(() => {
         resourceCollection = {
@@ -88,14 +88,14 @@ describe('i18n: tests', function () {
       it('a literal string',
         function () {
           const literalString = 'test';
-          const msg = new LanguageResourceManager(resourceCollection).getMessage('en', literalString);
+          const msg = new LanguageResourceManager('en', resourceCollection).getMessage(literalString);
           expect(msg).to.equal(literalString);
         });
 
       it('a literal string with punctuation marks',
         function () {
           const literalString = 'test\'s can often fail. Or do they?';
-          const msg = new LanguageResourceManager(resourceCollection).getMessage('en', literalString);
+          const msg = new LanguageResourceManager('en', resourceCollection).getMessage(literalString);
           expect(msg).to.equal(literalString);
         });
 
@@ -104,8 +104,8 @@ describe('i18n: tests', function () {
           const literalString1 = '10';
           const literalString2 = ' brave flees jumped over the fence';
           const literalString3 = '. ';
-          const msg = new LanguageResourceManager(resourceCollection)
-            .getMessage('en', literalString1, literalString2, literalString3);
+          const msg = new LanguageResourceManager('en', resourceCollection)
+            .getMessage(literalString1, literalString2, literalString3);
           expect(msg).to.equal(`${literalString1}${literalString2}${literalString3}`);
         });
 
@@ -113,16 +113,16 @@ describe('i18n: tests', function () {
 
         it('resource keys',
           function () {
-            const i18nManager = new LanguageResourceManager(resourceCollection);
-            expect(i18nManager.getMessage.bind(i18nManager, 'en', LangResourceKeys.enabled))
+            const i18nManager = new LanguageResourceManager('en', resourceCollection);
+            expect(i18nManager.getMessage.bind(i18nManager, LangResourceKeys.enabled))
               .to.throw(Error, /is not valid/);
           });
 
         it('characters',
           function () {
             const literalString = '#';
-            const i18nManager = new LanguageResourceManager(resourceCollection);
-            expect(i18nManager.getMessage.bind(i18nManager, 'en', literalString)).to.throw(Error, /is not valid/);
+            const i18nManager = new LanguageResourceManager('en', resourceCollection);
+            expect(i18nManager.getMessage.bind(i18nManager, literalString)).to.throw(Error, /is not valid/);
           });
 
       });

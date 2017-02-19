@@ -1,24 +1,19 @@
-import { langDe, langEn, langEs } from './langResources';
-
 import { ILangResource, ILangResourceCollection, IOSSpecific, LangResourceKeys } from '../models/i18n';
-
-const langResourceCollection: ILangResourceCollection = {
-  de: langDe,
-  en: langEn,
-  es: langEs,
-};
+import { langResourceCollection } from './langResourceCollection';
 
 export class LanguageResourceManager {
 
-  constructor(private resourceCollection?: ILangResourceCollection | {}) {
+  private messages: ILangResource;
+
+  constructor(private language: string, private resourceCollection?: ILangResourceCollection | {}) {
     if (!this.resourceCollection) {
       this.resourceCollection = langResourceCollection;
     }
+    this.messages = this.resourceCollection[this.language] || this.resourceCollection['en'];
   }
 
-  public getMessage(language: string, ...keys: Array<LangResourceKeys | string>): string {
-    const messages: ILangResource = this.resourceCollection[language] || this.resourceCollection['en'];
-    if (!messages) {
+  public getMessage(...keys: Array<LangResourceKeys | string>): string {
+    if (!this.messages) {
       return '';
     }
 
@@ -28,8 +23,8 @@ export class LanguageResourceManager {
       const stringifiedKey = typeof key === "number" ? LangResourceKeys[key] : key;
 
       if (typeof key === "number") {
-        if (Reflect.has(messages, stringifiedKey)) {
-          let message: string | IOSSpecific = messages[stringifiedKey];
+        if (Reflect.has(this.messages, stringifiedKey)) {
+          let message: string | IOSSpecific = this.messages[stringifiedKey];
           // If no message is found fallback to english message
           if (!message) {
             message = this.resourceCollection['en'][stringifiedKey];

@@ -14,14 +14,11 @@ import { extensions as folders } from '../icon-manifest/supportedFolders';
 import {
   IFileCollection,
   IFolderCollection,
-  IVSIcons,
-  IFileDefault,
-  IFolderDefault,
   LangResourceKeys,
 } from '../models';
 import { extensionSettings } from '../settings';
 
-const i18nManager = new LanguageResourceManager();
+const i18nManager = new LanguageResourceManager(vscode.env.language);
 
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
@@ -45,26 +42,23 @@ function registerCommand(
 }
 
 export function applyCustomizationCommand(): void {
-  const message = i18nManager.getMessage(vscode.env.language,
-    LangResourceKeys.iconCustomizationMessage, LangResourceKeys.restart);
+  const message = i18nManager.getMessage(LangResourceKeys.iconCustomizationMessage, LangResourceKeys.restart);
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(vscode.env.language, LangResourceKeys.reload) }], applyCustomization);
+    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }], applyCustomization);
 }
 
 function restoreDefaultManifestCommand(): void {
-  const message = i18nManager.getMessage(vscode.env.language,
-    LangResourceKeys.iconRestoreMessage, LangResourceKeys.restart);
+  const message = i18nManager.getMessage(LangResourceKeys.iconRestoreMessage, LangResourceKeys.restart);
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(vscode.env.language, LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
     restoreManifest);
 }
 
 function resetProjectDetectionDefaultsCommand(): void {
-  const message = i18nManager.getMessage(vscode.env.language,
-    LangResourceKeys.projectDetecticonResetMessage, LangResourceKeys.restart);
+  const message = i18nManager.getMessage(LangResourceKeys.projectDetecticonResetMessage, LangResourceKeys.restart);
   showCustomizationMessage(
     message,
-    [{ title: i18nManager.getMessage(vscode.env.language, LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
     resetProjectDetectionDefaults);
 }
 
@@ -79,48 +73,43 @@ function togglePreset(
   let actionMessage: string;
   if (reverseAction) {
     actionMessage = value
-      ? i18nManager.getMessage(vscode.env.language, LangResourceKeys.disabled)
-      : i18nManager.getMessage(vscode.env.language, LangResourceKeys.enabled);
+      ? i18nManager.getMessage(LangResourceKeys.disabled)
+      : i18nManager.getMessage(LangResourceKeys.enabled);
   } else {
     actionMessage = value
-      ? i18nManager.getMessage(vscode.env.language, LangResourceKeys.enabled)
-      : i18nManager.getMessage(vscode.env.language, LangResourceKeys.disabled);
+      ? i18nManager.getMessage(LangResourceKeys.enabled)
+      : i18nManager.getMessage(LangResourceKeys.disabled);
   }
 
   const message =
-    `${presetMessage} ${actionMessage}. ${i18nManager.getMessage(vscode.env.language, LangResourceKeys.restart)}`;
+    `${presetMessage} ${actionMessage}. ${i18nManager.getMessage(LangResourceKeys.restart)}`;
   const { defaultValue, globalValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${preset}`);
   const initValue = (global ? globalValue : workspaceValue) as boolean;
 
   updatePreset(preset, value, defaultValue as boolean, global);
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(vscode.env.language, LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
     applyCustomization, cancel, preset, !value, initValue, global);
 }
 
 function toggleAngularPresetCommand(): void {
-  togglePreset('angular', i18nManager.getMessage(vscode.env.language,
-    LangResourceKeys.ngPresetMessage), false, false);
+  togglePreset('angular', i18nManager.getMessage(LangResourceKeys.ngPresetMessage), false, false);
 }
 
 function toggleJsPresetCommand(): void {
-  togglePreset('jsOfficial', i18nManager.getMessage(vscode.env.language,
-    LangResourceKeys.jsOfficialPresetMessage));
+  togglePreset('jsOfficial', i18nManager.getMessage(LangResourceKeys.jsOfficialPresetMessage));
 }
 
 function toggleTsPresetCommand(): void {
-  togglePreset('tsOfficial', i18nManager.getMessage(vscode.env.language,
-    LangResourceKeys.tsOfficialPresetMessage));
+  togglePreset('tsOfficial', i18nManager.getMessage(LangResourceKeys.tsOfficialPresetMessage));
 }
 
 function toggleJsonPresetCommand(): void {
-  togglePreset('jsonOfficial', i18nManager.getMessage(vscode.env.language,
-    LangResourceKeys.jsonOfficialPresetMessage));
+  togglePreset('jsonOfficial', i18nManager.getMessage(LangResourceKeys.jsonOfficialPresetMessage));
 }
 
 function toggleHideFoldersCommand(): void {
-  togglePreset('hideFolders', i18nManager.getMessage(vscode.env.language,
-    LangResourceKeys.hideFoldersPresetMessage), true);
+  togglePreset('hideFolders', i18nManager.getMessage(LangResourceKeys.hideFoldersPresetMessage), true);
 }
 
 function getToggleValue(preset: string): boolean {
@@ -150,12 +139,12 @@ export function showCustomizationMessage(
         return;
       }
 
-      if (btn.title === i18nManager.getMessage(vscode.env.language, LangResourceKeys.disableDetect)) {
+      if (btn.title === i18nManager.getMessage(LangResourceKeys.disableDetect)) {
         getConfig().update('vsicons.projectDetection.disableDetect', true, true);
         return;
       }
 
-      if (btn.title === i18nManager.getMessage(vscode.env.language, LangResourceKeys.autoReload)) {
+      if (btn.title === i18nManager.getMessage(LangResourceKeys.autoReload)) {
         getConfig().update('vsicons.projectDetection.autoReload', true, true);
       }
 

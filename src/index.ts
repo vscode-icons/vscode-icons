@@ -21,10 +21,13 @@ import {
 } from './commands';
 import { getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
 import { parseJSON } from './utils';
+import { LanguageResourceManager } from './i18n';
 
 function initialize(context: vscode.ExtensionContext) {
   const config = getConfig().vsicons;
   const settingsManager = new SettingsManager(vscode);
+  const i18nManager = new LanguageResourceManager(vscode.env.language);
+
   registerCommands(context);
   manageWelcomeMessage(settingsManager);
   detectProject(findFiles, config)
@@ -47,7 +50,7 @@ function initialize(context: vscode.ExtensionContext) {
             config.presets.angular,
             ngIconsDisabled,
             isNgProject,
-            vscode.env.language);
+            i18nManager);
 
           if (toggle.apply) {
             const presetText = 'angular';
@@ -56,7 +59,7 @@ function initialize(context: vscode.ExtensionContext) {
             const initValue = values.workspaceValue as boolean;
             applyDetection(toggle.message, presetText, toggle.value, initValue, defaultValue,
               config.projectDetection.autoReload, updatePreset, applyCustomization,
-              reload, cancel, showCustomizationMessage, vscode.env.language);
+              reload, cancel, showCustomizationMessage, i18nManager);
           }
           return;
         }

@@ -3,9 +3,7 @@ import * as path from 'path';
 import { IVSIcons, IVSCodeUri, IProjectDetectionResult, LangResourceKeys } from '../models';
 import { extensionSettings } from '../settings';
 import { parseJSON } from '../utils';
-import { LanguageResourceManager } from '../i18n';
-
-const i18nManager = new LanguageResourceManager();
+import { LanguageResourceManager } from './../i18n';
 
 export function detectProject(findFiles: Function, config: IVSIcons): PromiseLike<IVSCodeUri[]> {
   if (config.projectDetection.disableDetect) {
@@ -25,7 +23,7 @@ export function checkForAngularProject(
   angularPreset: boolean,
   ngIconsDisabled: boolean,
   isNgProject: boolean,
-  language: string): IProjectDetectionResult {
+  i18nManager: LanguageResourceManager): IProjectDetectionResult {
 
   // We need to mandatory check the following:
   // 1. The 'preset'
@@ -36,8 +34,8 @@ export function checkForAngularProject(
 
   if (enableIcons || disableIcons) {
     const message = enableIcons
-      ? i18nManager.getMessage(language, LangResourceKeys.ngDetected)
-      : i18nManager.getMessage(language, LangResourceKeys.nonNgDetected);
+      ? i18nManager.getMessage(LangResourceKeys.ngDetected)
+      : i18nManager.getMessage(LangResourceKeys.nonNgDetected);
     return { apply: true, message, value: enableIcons || !disableIcons };
   }
 
@@ -83,7 +81,7 @@ export function applyDetection(
   reload: Function,
   cancel: Function,
   showCustomizationMessage: Function,
-  language: string): Thenable<void> {
+  i18nManager: LanguageResourceManager): Thenable<void> {
   return updatePreset(presetText, value, defaultValue, false)
     .then(() => {
       // Add a delay in order for vscode to persist the toggle of the preset
@@ -97,9 +95,9 @@ export function applyDetection(
 
       showCustomizationMessage(
         message,
-        [{ title: i18nManager.getMessage(language, LangResourceKeys.reload) },
-        { title: i18nManager.getMessage(language, LangResourceKeys.autoReload) },
-        { title: i18nManager.getMessage(language, LangResourceKeys.disableDetect) }],
+        [{ title: i18nManager.getMessage(LangResourceKeys.reload) },
+        { title: i18nManager.getMessage(LangResourceKeys.autoReload) },
+        { title: i18nManager.getMessage(LangResourceKeys.disableDetect) }],
         applyCustomization, cancel, presetText, !value, initValue, false);
     });
 }
