@@ -336,8 +336,8 @@ describe('Presets: merging configuration documents', function () {
       supported: [
         { icon: 'ng_routing_ts', extensions: ['routing.ts'], format: 'svg' },
         { icon: 'ng_routing_js', extensions: ['routing.js'], format: 'svg' },
-        { icon: 'ng_routing_ts', extensions: ['app-routing.module.ts'], filename: true, format: 'svg' },
-        { icon: 'ng_routing_js', extensions: ['app-routing.module.js'], filename: true, format: 'svg' },
+        { icon: 'ng_routing_ts', extensions: ['-routing.module.ts'], format: 'svg' },
+        { icon: 'ng_routing_js', extensions: ['-routing.module.js'], format: 'svg' },
       ],
     };
 
