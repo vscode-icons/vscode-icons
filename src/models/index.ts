@@ -1,5 +1,6 @@
 export * from './contributions';
 export * from './extensions';
+export * from './i18n';
 export * from './iconGenerator';
 export * from './iconSchema';
 export * from './language';

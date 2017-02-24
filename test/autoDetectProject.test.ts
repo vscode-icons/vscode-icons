@@ -9,6 +9,7 @@ import {
   isProject,
   applyDetection,
 } from '../src/init/autoDetectProject';
+import { LanguageResourceManager } from '../src/i18n';
 
 use(chaiAsPromised);
 
@@ -102,7 +103,8 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = false;
       const ngIconsDisabled = true;
-      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject);
+      const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, i18nManager);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.true;
     });
@@ -113,7 +115,8 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = true;
       const ngIconsDisabled = true;
-      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject);
+      const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, i18nManager);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.true;
     });
@@ -124,7 +127,8 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = true;
       const ngIconsDisabled = false;
-      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject);
+      const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, i18nManager);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.false;
     });
@@ -135,7 +139,8 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = false;
       const ngIconsDisabled = false;
-      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject);
+      const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+      const res = checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, i18nManager);
       expect(res).to.have.property('apply').that.is.true;
       expect(res).to.have.property('value').that.is.false;
     });
@@ -146,7 +151,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = true;
       const angularPreset = true;
       const ngIconsDisabled = false;
-      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject))
+      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined))
         .to.have.property('apply').that.is.false;
     });
 
@@ -156,7 +161,7 @@ describe('AutoDetectProject: tests', function () {
       const isNgProject = false;
       const angularPreset = false;
       const ngIconsDisabled = true;
-      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject))
+      expect(checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined))
         .to.have.property('apply').that.is.false;
     });
 
@@ -172,8 +177,8 @@ describe('AutoDetectProject: tests', function () {
       const cancel = sinon.stub();
       const showCustomizationMessage = sinon.spy();
 
-      return applyDetection('', '', undefined, undefined, undefined, autoReload,
-        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage)
+      return applyDetection(undefined, undefined, undefined, undefined, undefined, autoReload,
+        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage, undefined)
         .then(() => {
           // No functions should have been called before 1s
           clock.tick(999);
@@ -200,9 +205,10 @@ describe('AutoDetectProject: tests', function () {
       const reload = sinon.spy();
       const cancel = sinon.spy();
       const showCustomizationMessage = sinon.spy();
+      const i18nManager = sinon.createStubInstance(LanguageResourceManager);
 
-      return applyDetection('', '', undefined, undefined, undefined, autoReload,
-        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage)
+      return applyDetection(undefined, undefined, undefined, undefined, undefined, autoReload,
+        updatePreset, applyCustomization, reload, cancel, showCustomizationMessage, i18nManager)
         .then(() => {
           expect(showCustomizationMessage.called).to.be.true;
         });

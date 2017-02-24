@@ -13,7 +13,6 @@ export function findFiles(
   return vscode.workspace.findFiles(include, exclude, maxResults, token);
 }
 
-export function asRelativePath(
-  pathOrUri: string | IVSCodeUri): string {
+export function asRelativePath(pathOrUri: string | IVSCodeUri): string {
   return vscode.workspace.asRelativePath(pathOrUri);
 }
