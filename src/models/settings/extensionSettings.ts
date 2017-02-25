@@ -3,7 +3,7 @@ export interface IExtensionSettings {
   iconJsonFileName: string;
   iconSuffix: string;
   filePrefix: string;
-   fileLightPrefix: string;
+  fileLightPrefix: string;
   folderPrefix: string;
   folderLightPrefix: string;
   defaultExtensionPrefix: string;

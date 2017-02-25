@@ -1,9 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { IVSIcons, IVSCodeUri, IProjectDetectionResult } from '../models';
+import { IVSIcons, IVSCodeUri, IProjectDetectionResult, LangResourceKeys } from '../models';
 import { extensionSettings } from '../settings';
-import { messages as msg } from '../messages';
 import { parseJSON } from '../utils';
+import { LanguageResourceManager } from './../i18n';
 
 export function detectProject(findFiles: Function, config: IVSIcons): PromiseLike<IVSCodeUri[]> {
   if (config.projectDetection.disableDetect) {
@@ -22,7 +22,8 @@ export function detectProject(findFiles: Function, config: IVSIcons): PromiseLik
 export function checkForAngularProject(
   angularPreset: boolean,
   ngIconsDisabled: boolean,
-  isNgProject: boolean): IProjectDetectionResult {
+  isNgProject: boolean,
+  i18nManager: LanguageResourceManager): IProjectDetectionResult {
 
   // We need to mandatory check the following:
   // 1. The 'preset'
@@ -32,7 +33,9 @@ export function checkForAngularProject(
   const disableIcons = (angularPreset || !ngIconsDisabled) && !isNgProject;
 
   if (enableIcons || disableIcons) {
-    const message = enableIcons ? msg.ngDetected : msg.nonNgDetected;
+    const message = enableIcons
+      ? i18nManager.getMessage(LangResourceKeys.ngDetected)
+      : i18nManager.getMessage(LangResourceKeys.nonNgDetected);
     return { apply: true, message, value: enableIcons || !disableIcons };
   }
 
@@ -77,7 +80,8 @@ export function applyDetection(
   applyCustomization: Function,
   reload: Function,
   cancel: Function,
-  showCustomizationMessage: Function): Thenable<void> {
+  showCustomizationMessage: Function,
+  i18nManager: LanguageResourceManager): Thenable<void> {
   return updatePreset(presetText, value, defaultValue, false)
     .then(() => {
       // Add a delay in order for vscode to persist the toggle of the preset
@@ -89,8 +93,11 @@ export function applyDetection(
         return;
       }
 
-      showCustomizationMessage(message,
-        [{ title: msg.reload }, { title: msg.autoReload }, { title: msg.disableDetect }],
+      showCustomizationMessage(
+        message,
+        [{ title: i18nManager.getMessage(LangResourceKeys.reload) },
+        { title: i18nManager.getMessage(LangResourceKeys.autoReload) },
+        { title: i18nManager.getMessage(LangResourceKeys.disableDetect) }],
         applyCustomization, cancel, presetText, !value, initValue, false);
     });
 }

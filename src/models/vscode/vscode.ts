@@ -1,4 +1,6 @@
+import { IVSCodeEnv } from './vscodeEnv';
+
 export interface IVSCode {
-  env: { appName?: string };
+  env: IVSCodeEnv;
   version: string;
 }
