@@ -32,7 +32,7 @@ export const langEs: ILangResource = {
   restart: 'Pulsa \'Reiniciar\' para que los cambios tengan efecto.',
   ngDetected: 'vscode-icons ha detectado un proyecto Angular. ' +
   'Pulsa \'Reiniciar\' para activar los iconos de Angular.',
-  nonNgDetected: 'vscode-icons ha detectado un proyecto no Angular.' +
+  nonNgDetected: 'vscode-icons ha detectado un proyecto no Angular. ' +
   'Pulsa \'Reiniciar\' para desactivar los iconos de Angular.',
   projectDetecticonResetMessage: 'Se van a resetear los valores por defecto de la Detección de Proyectos',
 };
