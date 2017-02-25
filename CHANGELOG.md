@@ -1,6 +1,7 @@
 # Change Log
 
 ## 7.3.0 (February 25, 2017)
+  - Fix: Translations consistency fix. ([@JimiC](https://github.com/JimiC) in [#766](https://github.com/vscode-icons/vscode-icons/pull/766))
   - Feature: Spanish translations. ([@robertohuertasm](https://github.com/robertohuertasm) in [#765](https://github.com/vscode-icons/vscode-icons/pull/765))
   - Feature: Support for `bithound` analysis. ([@JimiC](https://github.com/JimiC) in [#764](https://github.com/vscode-icons/vscode-icons/pull/764))
   - Enhancement: `.jshintignore` association added. ([@JimiC](https://github.com/JimiC) in [#763](https://github.com/vscode-icons/vscode-icons/pull/763))
