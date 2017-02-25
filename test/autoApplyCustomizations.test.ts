@@ -6,7 +6,7 @@ import { IVSIcons } from '../src/models';
 
 describe('AutoApplyCustomizations: tests', function () {
 
-  describe('ensures that', function () {
+  context('ensures that', function () {
 
     let userConfig: IVSIcons;
 
@@ -33,7 +33,7 @@ describe('AutoApplyCustomizations: tests', function () {
       };
     });
 
-    describe('if the extension has been updated', function () {
+    context('if the extension has been updated', function () {
 
       it('but there are no changes in package.json the callback will not be called', function () {
         const spy = sinon.spy();

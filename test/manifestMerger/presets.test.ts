@@ -11,7 +11,7 @@ import { IFileCollection } from '../../src/models';
 
 describe('Presets: merging configuration documents', function () {
 
-  describe('ensures', function () {
+  context('ensures', function () {
 
     it('angular extensions are disabled', function () {
       const result = toggleAngularPreset(true, fileExtensions);

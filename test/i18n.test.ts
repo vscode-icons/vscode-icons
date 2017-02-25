@@ -6,7 +6,7 @@ import { LangResourceKeys, ILangResourceCollection } from '../src/models/i18n';
 
 describe('i18n: tests', function () {
 
-  describe('ensure that', function () {
+  context('ensure that', function () {
 
     it('LangResourceKeys properties match ILangResource properties',
       function () {
@@ -75,7 +75,7 @@ describe('i18n: tests', function () {
         expect(msg).to.equal('');
       });
 
-    describe('the message is properly shown for', function () {
+    context('the message is properly shown for', function () {
 
       let resourceCollection: ILangResourceCollection | {};
 
@@ -109,7 +109,7 @@ describe('i18n: tests', function () {
           expect(msg).to.equal(`${literalString1}${literalString2}${literalString3}`);
         });
 
-      describe('otherwise an error is thrown for invalid', function () {
+      context('otherwise an error is thrown for invalid', function () {
 
         it('resource keys',
           function () {

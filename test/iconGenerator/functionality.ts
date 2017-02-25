@@ -7,7 +7,7 @@ import { extensionSettings as settings } from '../../src/settings';
 
 describe('IconGenerator: functionality test', function () {
 
-  describe('ensures', function () {
+  context('ensures', function () {
 
     let iconGenerator: IconGenerator;
     let emptyFileCollection: IFileCollection;

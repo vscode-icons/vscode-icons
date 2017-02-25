@@ -40,7 +40,7 @@ describe('FolderExtensions: merging configuration documents', function () {
     iconGenerator = null;
   });
 
-  describe('ensures', function () {
+  context('ensures', function () {
 
     it('new extensions are added to existing file extension and respect the extension type', function () {
       const custom: IFolderCollection = {
@@ -119,7 +119,7 @@ describe('FolderExtensions: merging configuration documents', function () {
       expect(json.folderNames['aws']).equals('_fd_newExt');
     });
 
-    describe('custom icon', function () {
+    context('custom icon', function () {
 
       it('keeps the correct extension', function () {
         const custom: IFolderCollection = {

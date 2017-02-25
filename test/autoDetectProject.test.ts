@@ -15,9 +15,9 @@ use(chaiAsPromised);
 
 describe('AutoDetectProject: tests', function () {
 
-  describe('ensures that the extension', function () {
+  context('ensures that the extension', function () {
 
-    describe('can', function () {
+    context('can', function () {
 
       let userConfig: IVSIcons;
 
@@ -44,7 +44,7 @@ describe('AutoDetectProject: tests', function () {
         };
       });
 
-      describe('detect a project when detection is enabled', function () {
+      context('detect a project when detection is enabled', function () {
 
         it('but it has not detected a \'package.json\' file',
           function () {
@@ -102,7 +102,7 @@ describe('AutoDetectProject: tests', function () {
 
     });
 
-    describe('enables the Angular icons when the workspace is an Angular project and Angular icons are disabled',
+    context('enables the Angular icons when the workspace is an Angular project and Angular icons are disabled',
       function () {
 
         it('or Angular preset is false',
@@ -129,7 +129,7 @@ describe('AutoDetectProject: tests', function () {
 
       });
 
-    describe('disables the Angular icons when the workspace is not an Angular project and Angular icons are enabled',
+    context('disables the Angular icons when the workspace is not an Angular project and Angular icons are enabled',
       function () {
 
         it('or Angular preset is true',
@@ -156,7 +156,7 @@ describe('AutoDetectProject: tests', function () {
 
       });
 
-    describe('does not toggle the Angular icons when the workspace is', function () {
+    context('does not toggle the Angular icons when the workspace is', function () {
 
       it('an Angular project and the Angular preset is true or Angular icons are enabled',
         function () {
@@ -178,7 +178,7 @@ describe('AutoDetectProject: tests', function () {
 
     });
 
-    describe('when user has selected', function () {
+    context('when user has selected', function () {
 
       it('to auto restart, applies the changes and restarts',
         function () {

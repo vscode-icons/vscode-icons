@@ -40,9 +40,9 @@ describe('DefaultExtensions: merging configuration documents', function () {
     iconGenerator = null;
   });
 
-  describe('ensures', function () {
+  context('ensures', function () {
 
-    describe('default file icons can be', function () {
+    context('default file icons can be', function () {
 
       it('added', function () {
 
@@ -110,7 +110,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
 
     });
 
-    describe('default folder icons can be', function () {
+    context('default folder icons can be', function () {
 
       it('added', function () {
         const custom: IFolderCollection = {

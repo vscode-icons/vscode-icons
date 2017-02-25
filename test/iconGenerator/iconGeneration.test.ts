@@ -11,7 +11,7 @@ import { extensionSettings as settings } from '../../src/settings';
 
 describe('IconGenerator: icon generation test', function () {
 
-  describe('ensures', function () {
+  context('ensures', function () {
 
     let emptyFileCollection: IFileCollection;
     let emptyFolderCollection: IFolderCollection;
@@ -32,7 +32,7 @@ describe('IconGenerator: icon generation test', function () {
 
     });
 
-    describe('default', function () {
+    context('default', function () {
 
       let iconGenerator: IconGenerator;
 
@@ -59,13 +59,13 @@ describe('IconGenerator: icon generation test', function () {
         expect(schema.iconDefinitions._folder_open.iconPath).not.to.be.equal('');
       });
 
-      describe('if a default \'light\' icon is NOT defined', function () {
+      context('if a default \'light\' icon is NOT defined', function () {
 
-        describe('each supported', function () {
+        context('each supported', function () {
 
           const iconsFolderPath = path.join(__dirname, '../../../icons');
 
-          describe('file extension', function () {
+          context('file extension', function () {
 
             it('has an associated icon file', function () {
               files.supported
@@ -229,7 +229,7 @@ describe('IconGenerator: icon generation test', function () {
 
           });
 
-          describe('folder', function () {
+          context('folder', function () {
 
             it('has an associated icon file', function () {
               folders.supported
@@ -317,7 +317,7 @@ describe('IconGenerator: icon generation test', function () {
                   });
               });
 
-            describe('that has a light theme version', function () {
+            context('that has a light theme version', function () {
 
               it('has an associated icon file',
                 function () {
@@ -425,13 +425,13 @@ describe('IconGenerator: icon generation test', function () {
 
     });
 
-    describe('if a default \'light\' icon is defined', function () {
+    context('if a default \'light\' icon is defined', function () {
 
-      describe('each supported', function () {
+      context('each supported', function () {
 
-        describe('file extension', function () {
+        context('file extension', function () {
 
-          describe('that has not a light theme version', function () {
+          context('that has not a light theme version', function () {
 
             it('and is supported by language ids, has a \'light\' language id referencing its inherited definition',
               function () {
@@ -504,9 +504,9 @@ describe('IconGenerator: icon generation test', function () {
 
         });
 
-        describe('folder that has not a light theme version', function () {
+        context('folder that has not a light theme version', function () {
 
-          describe('if a default folder icon for light theme is specified', function () {
+          context('if a default folder icon for light theme is specified', function () {
 
             it('has a \'light\' definition',
               function () {
@@ -538,7 +538,7 @@ describe('IconGenerator: icon generation test', function () {
 
           });
 
-          describe('if a default folder open icon for light theme is specified', function () {
+          context('if a default folder open icon for light theme is specified', function () {
 
             it('has an open \'light\' definition',
               function () {

@@ -40,7 +40,7 @@ describe('FileExtensions: merging configuration documents', function () {
     iconGenerator = null;
   });
 
-  describe('ensures', function () {
+  context('ensures', function () {
 
     it('new extensions are added to existing file extension and respect the extension type', function () {
       const custom: IFileCollection = {
@@ -103,7 +103,7 @@ describe('FileExtensions: merging configuration documents', function () {
       expect(json.iconDefinitions['_f_newExt']).not.to.exist;
     });
 
-    describe('existing extensions ', function () {
+    context('existing extensions ', function () {
 
       it('are removed from the original Extension', function () {
         const custom: IFileCollection = {
@@ -137,7 +137,7 @@ describe('FileExtensions: merging configuration documents', function () {
 
     });
 
-    describe('custom icon', function () {
+    context('custom icon', function () {
 
       it('keeps the correct extension', function () {
         const custom: IFileCollection = {
