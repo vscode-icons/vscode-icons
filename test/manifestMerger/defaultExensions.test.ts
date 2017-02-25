@@ -48,7 +48,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
 
         const custom: IFileCollection = {
           default: {
-            file_light: { icon: 'customIconLight', format: 'svg' },
+            file_light: { icon: 'customFileIconLight', format: 'svg' },
           },
           supported: [],
         };
@@ -73,7 +73,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
       it('overriden', function () {
         const custom: IFileCollection = {
           default: {
-            file: { icon: 'customIcon', format: 'svg' },
+            file: { icon: 'customFileIcon', format: 'svg' },
           },
           supported: [],
         };
@@ -115,7 +115,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
       it('added', function () {
         const custom: IFolderCollection = {
           default: {
-            folder_light: { icon: 'customIconLight', format: 'svg' },
+            folder_light: { icon: 'customFolderIconLight', format: 'svg' },
           },
           supported: [],
         };
@@ -150,7 +150,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
       it('overriden', function () {
         const custom: IFolderCollection = {
           default: {
-            folder: { icon: 'customIcon', format: 'svg' },
+            folder: { icon: 'customFolderIcon', format: 'svg' },
           },
           supported: [],
         };
@@ -185,7 +185,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
       it('disabled', function () {
         const custom: IFolderCollection = {
           default: {
-            folder: { icon: 'customIcon', format: 'svg', disabled: true },
+            folder: { icon: '', format: 'svg', disabled: true },
           },
           supported: [],
         };
