@@ -173,7 +173,7 @@
         "example": "node ./out/src/example/example.js ",
         "pretest": "npm run compile",
         "test": "mocha ./out/test --recursive",
-        "lint": "tslint src/**/*.ts test/**/*.ts",
+        "lint": "tslint 'src/**/*.ts' 'test/**/*.ts'",
         "test:vs": "node ./node_modules/vscode/bin/test",
         "vscode:prepublish": "rimraf ./out && npm run build",
         "compile:w": "rimraf ./out && tsc -watch -p ./",
