@@ -4,7 +4,7 @@ export const langDe: ILangResource = {
   newVersionMessage: 'Willkommen zur neuen Version von vscode-icons!',
   seeReleaseNotes: 'Was wurde geändert? (Englisch)',
   dontShowThis: 'Diese Nachricht beim nächsten Update nicht mehr anzeigen',
-  seeReadme: 'Etwas über die Erweiterung lernen',
+  seeReadme: 'Etwas über die Erweiterung lernen (Englisch)',
   welcomeMessageBegin: 'vscode-icons benutzt nun die offizielle API. Aktiviere die Icons unter ',
   welcomeMessageEnd: ' und wähle VSCode Icons aus.',
   activationPath: {
