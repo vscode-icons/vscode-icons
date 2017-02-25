@@ -1,12 +1,11 @@
 /* tslint:disable only-arrow-functions */
-
 import { expect } from 'chai';
-
 import { LanguageResourceManager } from '../src/i18n';
 import { langEn } from '../src/i18n/langResources';
 import { LangResourceKeys, ILangResourceCollection } from '../src/models/i18n';
 
 describe('i18n: tests', function () {
+
   describe('ensure that', function () {
 
     it('LangResourceKeys properties match ILangResource properties',
@@ -77,6 +76,7 @@ describe('i18n: tests', function () {
       });
 
     describe('the message is properly shown for', function () {
+
       let resourceCollection: ILangResourceCollection | {};
 
       before(() => {
@@ -126,6 +126,9 @@ describe('i18n: tests', function () {
           });
 
       });
+
     });
+
   });
+
 });
