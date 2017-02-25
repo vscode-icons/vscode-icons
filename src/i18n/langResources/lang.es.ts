@@ -23,16 +23,16 @@ export const langEs: ILangResource = {
   iconCustomizationMessage: 'El manifiesto de iconos se va a regenerar.',
   iconRestoreMessage: 'El manifiesto de iconos se va a restaurar.',
   ngPresetMessage: 'Los iconos de Angular se van a ',
-  jsOfficialPresetMessage: 'El icono oficial de JS se va a ',
+  jsOfficialPresetMessage: 'El icono oficial de JS se va a',
   tsOfficialPresetMessage: 'El icono oficial de TS se va a',
   jsonOfficialPresetMessage: 'El icono oficial de JSON se va a',
   hideFoldersPresetMessage: 'La visibilidad de los iconos de Carpeta se va a',
   enabled: 'activar',
   disabled: 'desactivar',
   restart: 'Pulsa \'Reiniciar\' para que los cambios tengan efecto.',
-  ngDetected: 'vscode-icons ha detectado un proyecto Angular.' +
-    ' Pulsa \'Reiniciar\' para activar los iconos de Angular.',
-  nonNgDetected: 'vscode-icons ha detectado un proyecto no Angular.'
-    +  'Pulsa \'Reiniciar\' para desactivar los iconos de Angular.',
+  ngDetected: 'vscode-icons ha detectado un proyecto Angular. ' +
+  'Pulsa \'Reiniciar\' para activar los iconos de Angular.',
+  nonNgDetected: 'vscode-icons ha detectado un proyecto no Angular.' +
+  'Pulsa \'Reiniciar\' para desactivar los iconos de Angular.',
   projectDetecticonResetMessage: 'Se van a resetear los valores por defecto de la Detección de Proyectos',
 };
