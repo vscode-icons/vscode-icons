@@ -1,6 +1,12 @@
 # Change Log
 
 ## 7.3.0 (February 25, 2017)
+  - Feature: Spanish translations. ([@robertohuertasm](https://github.com/robertohuertasm) in [#765](https://github.com/vscode-icons/vscode-icons/pull/765))
+  - Feature: Support for `bithound` analysis. ([@JimiC](https://github.com/JimiC) in [#764](https://github.com/vscode-icons/vscode-icons/pull/764))
+  - Enhancement: `.jshintignore` association added. ([@JimiC](https://github.com/JimiC) in [#763](https://github.com/vscode-icons/vscode-icons/pull/763))
+  - Fix: Linting for Unix systems. ([@JimiC](https://github.com/JimiC) in [#762](https://github.com/vscode-icons/vscode-icons/pull/762))
+  - Enhancement: Refactored tests into groups. ([@JimiC](https://github.com/JimiC) in [#761](https://github.com/vscode-icons/vscode-icons/pull/761))
+  - Feature: German translations. ([@jens1o](https://github.com/jens1o) in [#758](https://github.com/vscode-icons/vscode-icons/pull/758) & [#759](https://github.com/vscode-icons/vscode-icons/pull/759))
   - Fix: `ts` icons size normalized to `js` icon size. ([@robertohuertasm](https://github.com/robertohuertasm) in [#756](https://github.com/vscode-icons/vscode-icons/pull/756))
   - Feature: New languages Ids and icons for `apache`, `audio`, `godot`, `jenkins`, `solidity`, `sqf`, `swagger`, `video` & `yang`. ([@JimiC](https://github.com/JimiC) in [#753](https://github.com/vscode-icons/vscode-icons/pull/753))
   - Enhancement: Support for new versions of `angular-cli`. ([@ulic75](https://github.com/ulic75) in [#750](https://github.com/vscode-icons/vscode-icons/pull/750))
