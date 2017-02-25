@@ -178,7 +178,8 @@
         "vscode:prepublish": "rimraf ./out && npm run build",
         "compile:w": "rimraf ./out && tsc -watch -p ./",
         "compile": "rimraf ./out && tsc -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install"
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "analysis": "bithound check git@github.com:vscode-icons/vscode-icons.git"
     },
     "devDependencies": {
         "@types/chai": "^3.4.34",
@@ -187,6 +188,7 @@
         "@types/mocha": "^2.2.39",
         "@types/node": "^7.0.5",
         "@types/sinon": "^1.16.35",
+        "bithound": "1.7.0",
         "chai": "^3.5.0",
         "chai-as-promised": "^6.0.0",
         "mocha": "^3.2.0",
