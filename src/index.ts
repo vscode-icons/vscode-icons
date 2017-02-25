@@ -71,8 +71,6 @@ function initialize(context: vscode.ExtensionContext) {
 
 export function activate(context: vscode.ExtensionContext) {
   initialize(context);
-  // tslint:disable-next-line no-console
-  console.log('vscode-icons is active!');
 }
 
 // this method is called when your vscode is closed
