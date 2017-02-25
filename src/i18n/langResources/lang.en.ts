@@ -29,8 +29,10 @@ export const langEn: ILangResource = {
   hideFoldersPresetMessage: 'Folder icons visibility will be',
   enabled: 'enabled',
   disabled: 'disabled',
-  restart: '\'Restart\' for changes to take effect.',
-  ngDetected: 'vscode-icons has detected an Angular project. \'Restart\' to enable the Angular icons.',
-  nonNgDetected: 'vscode-icons has detected a non Angular project. \'Restart\' to disable the Angular icons.',
+  restart: 'Select \'Restart\' for changes to take effect.',
+  ngDetected: 'vscode-icons has detected an Angular project. ' +
+  'Select \'Restart\' to enable the Angular icons.',
+  nonNgDetected: 'vscode-icons has detected a non Angular project. ' +
+  'Select \'Restart\' to disable the Angular icons.',
   projectDetecticonResetMessage: 'Project Detection defaults will be reset.',
 };
