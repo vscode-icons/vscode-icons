@@ -180,7 +180,7 @@ export const extensions: IFileCollection = {
     { icon: 'js', extensions: [], languages: [languages.javascript], format: FileFormat.svg },
     { icon: 'js_official', extensions: [], languages: [languages.javascript], format: FileFormat.svg, disabled: true },
     { icon: 'jsconfig', extensions: ['jsconfig.json'], filename: true, format: FileFormat.svg },
-    { icon: 'jshint', extensions: ['.jshintrc'], filename: true, format: FileFormat.svg },
+    { icon: 'jshint', extensions: ['.jshintrc', '.jshintignore'], filename: true, format: FileFormat.svg },
     { icon: 'jsmap', extensions: ['js.map'], format: FileFormat.svg },
     { icon: 'json', extensions: [], languages: [languages.json, languages.textmatejson], format: FileFormat.svg },
     { icon: 'json_official', extensions: [], languages: [languages.json, languages.textmatejson], format: FileFormat.svg, disabled: true },
