@@ -29,7 +29,7 @@ export const langDe: ILangResource = {
   hideFoldersPresetMessage: 'Ordner Icons werden',
   enabled: 'aktiviert',
   disabled: 'deaktiviert',
-  restart: 'Starte neu, damit die Änderungen übernommen werden',
+  restart: 'Drücke \'Neu starten\ um die Änderungen zu übernehmen',
   ngDetected: 'vscode-icons hat ein Angular Projekt erkannt! Starte neu, damit die Angular Icons übernommen werden.',
   nonNgDetected: 'vscode-icons hat ein nicht Angular Projekt erkannt!  Starte neu, damit die Angular Icons deaktiviert werden.',
   projectDetecticonResetMessage: 'Projekterkennung wird zurückgesetzt.',
