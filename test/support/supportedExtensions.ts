@@ -22,7 +22,7 @@ export const extensions: IFileCollection = {
     { icon: 'ng_module_js', extensions: ['module.js'], format: FileFormat.svg },
     { icon: 'ng_routing_ts', extensions: ['routing.ts'], format: FileFormat.svg },
     { icon: 'ng_routing_js', extensions: ['routing.js'], format: FileFormat.svg },
-    { icon: 'ng_routing_ts', extensions: ['app-routing.module.ts'], filename: true, format: FileFormat.svg },
-    { icon: 'ng_routing_js', extensions: ['app-routing.module.js'], filename: true, format: FileFormat.svg },
+    { icon: 'ng_routing_ts', extensions: ['-routing.module.ts'], format: FileFormat.svg },
+    { icon: 'ng_routing_js', extensions: ['-routing.module.js'], format: FileFormat.svg },
   ],
 };
