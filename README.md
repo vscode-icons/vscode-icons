@@ -18,7 +18,6 @@ Bring icons to your VS Code.
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
 ## A little bit of history about this extension
-
 As you all know, VSCode currently supports File and Folder icons but this was not like this from the beginning. Read this great article by [@chrisdias](https://twitter.com/chrisdias): ["Rebellion. Mutiny. Revolt. Uprising."](https://code.visualstudio.com/blogs/2016/09/08/icon-themes) if you want to learn the history about this plugin and how finally icons landed in VSCode.
 
 During the summer of 2016, I had great support from the community and the VSCode team. It's also worth mentioning the tremendous help that I received from [@aeschli](https://github.com/aeschli) (VSCode Team) and especially from [@jens1o](https://github.com/jens1o) (community member), which turned out to be a 14-year-old amazing coder!
@@ -28,7 +27,6 @@ Later on, until the present moment, [@JimiC](https://github.com/JimiC) entered t
 I'm very happy to be part of this team, along with [@jens1o](https://github.com/jens1o) and [@JimiC](https://github.com/JimiC). It's really a gift to work with you guys. Most of the credits of this extension are theirs. It's also community's. And remember that if you want to be a contributor or even become a regular of our team, you are more than welcome to join! :D
 
 ## Main Contributors
-
 This project has gone far beyond it's main purpose, which was to provide icons for VSCode when the platform didn't still support them, and now it tries to provide the most complete set of icons you can find. I began this journey alone but this wouldn't have been possible without the help of many of you. Some members of the community have been strongly committed to the project and now they are part of the core team of mantainers.
 
 Please, meet the team behind this extension: 
@@ -42,7 +40,6 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 ---
 
 ## State of the extension
-
 **Release 6.0.0 introduced the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.** 
 
 This was a huge step to allow the users to fully customize how the icons looked like and how they could be associated to any extension at will.
@@ -56,7 +53,6 @@ On the other hand, [@JimiC](https;//github.com/JimiC) continues his massive `svg
 ----
 
 ## Installation
-
 Some people have reported that they cannot find the extension when they insert the installation command:
 ```
 ext install vscode-icons
@@ -70,7 +66,6 @@ ext install "vscode-icons"
 ```
 
 ## Enable the extension
-
 Go to **File > Preferences > File Icon Theme > VSCode Icons**. 
 
 (Note on OSX it is **Code > Preferences > File Icon Theme > VSCode Icons**.)
@@ -237,7 +232,6 @@ Once you have created the folder you can put all your custom icons there. But, a
 See [here the supported file extensions for an icon](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts).
 
 ## Contributing with icons
-
 If you're willing to create an icon just follow this few conventions:
 
 1. We're using SVG or PNG-24 but we prefer SVG if possible.
@@ -247,7 +241,6 @@ If you're willing to create an icon just follow this few conventions:
 5. It must be transparent.
 
 ## Preview of icons
-
 In order to help you preview how the icon you are contributing will look in the editor, we are providing you with a tool that generates dummy folders or files of the provided icon. 
 
 The syntax follows the pattern:
@@ -275,6 +268,11 @@ npm run example -- --all
 ```
 
 The above syntax will create examples for all supported files and folders.
+
+## Contributing with translations
+We're looking for people willing to help us translate the extension's messages into [all the languages that `vscode` supports.](https://code.visualstudio.com/docs/customization/locales).
+
+We're currently supporting English, German and Spanish. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
 
 ## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:
