@@ -31,7 +31,7 @@ export const langDe: ILangResource = {
   disabled: 'deaktiviert',
   restart: 'Drücke \'Neu starten\' um die Änderungen zu übernehmen',
   ngDetected: 'vscode-icons hat ein Angular Projekt erkannt! Starte neu, damit die Angular Icons übernommen werden.',
-  nonNgDetected: 'vscode-icons hat ein nicht Angular Projekt erkannt! ' +
-  'Starte neu, damit die Angular Icons deaktiviert werden.',
+  nonNgDetected: 'vscode-icons hat ein nicht Angular Projekt erkannt!' +
+    ' Starte neu, damit die Angular Icons deaktiviert werden.',
   projectDetecticonResetMessage: 'Projekterkennung wird zurückgesetzt.',
 };
