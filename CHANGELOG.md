@@ -1,5 +1,18 @@
 # Change Log
 
+## 7.3.0 (February 25, 2017)
+  - Fix: `ts` icons size normalized to `js` icon size. ([@robertohuertasm](https://github.com/robertohuertasm) in [#756](https://github.com/vscode-icons/vscode-icons/pull/756))
+  - Feature: New languages Ids and icons for `apache`, `audio`, `godot`, `jenkins`, `solidity`, `sqf`, `swagger`, `video` & `yang`. ([@JimiC](https://github.com/JimiC) in [#753](https://github.com/vscode-icons/vscode-icons/pull/753))
+  - Enhancement: Support for new versions of `angular-cli`. ([@ulic75](https://github.com/ulic75) in [#750](https://github.com/vscode-icons/vscode-icons/pull/750))
+  - Enhancement: Regular json icon for `launch.json` and `tasks.json`. ([@Gama11](https://github.com/Gama11) in [#747](https://github.com/vscode-icons/vscode-icons/pull/747))
+  - Enhancement: New icons for `jsconfig.json` and `tsconfig.json`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#745](https://github.com/vscode-icons/vscode-icons/pull/745))
+  - Enhancement: Unused local variables removed. ([@robertohuertasm](https://github.com/robertohuertasm) in [#744](https://github.com/vscode-icons/vscode-icons/pull/744))
+  - Enhancement: `ilk` associated to binary. ([@Gama11](https://github.com/Gama11) in [#741](https://github.com/vscode-icons/vscode-icons/pull/741))
+  - Feature: Support for i18n messages. ([@JimiC](https://github.com/JimiC) in [#734](https://github.com/vscode-icons/vscode-icons/pull/734))
+  - Fix: Added missing dot for `.codeclimate.yml`. ([@Gama11](https://github.com/Gama11) in [#733](https://github.com/vscode-icons/vscode-icons/pull/733))
+  - Enhancement: Added new associations to `terraform`. ([@supergibbs](https://github.com/supergibbs) in [#730](https://github.com/vscode-icons/vscode-icons/pull/730))
+  - Enhancement: `Rollup.ts` is now supported. ([@zackschuster](https://github.com/zackschuster) in [#727](https://github.com/vscode-icons/vscode-icons/pull/727))
+
 ## 7.2.0 (February 5, 2017)
   - Enhancement: Angular 1 controller support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#724](https://github.com/vscode-icons/vscode-icons/pull/724))
   - Enhancement: `textmate` support. ([@JimiC](https://github.com/JimiC) in [#723](https://github.com/vscode-icons/vscode-icons/pull/723))
