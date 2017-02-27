@@ -9,4 +9,4 @@ Thanks for helping out! :smile:
 ##Pull Request:
 1. Use the present tense.
 2. Reference issues whenever possible.
-3. Try to make your code clean and observe the ESLint Rules.
+3. Try to make your code clean and observe the TSLint Rules.
