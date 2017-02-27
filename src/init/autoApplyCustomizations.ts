@@ -4,11 +4,11 @@ import * as packageJson from '../../../package.json';
 export function manageAutoApplyCustomizations(
   isNewVersion: boolean,
   userConfig: IVSIcons,
-  applyCustomizationCommand: () => void): void {
+  applyCustomizationCommand: Function): void {
   if (!isNewVersion) { return; }
   const propObj = (packageJson as any).contributes.configuration.properties as Object;
   for (const key in propObj) {
-    if (propObj.hasOwnProperty(key) && key !== 'dontShowNewVersionMessage') {
+    if (Reflect.has(propObj, key) && key !== 'vsicons.dontShowNewVersionMessage') {
       const defaultValue = propObj[key].default;
       const parts = key.split('.').filter(x => x !== 'vsicons');
       const userValue = parts.reduce((prev, current) => prev[current], userConfig);

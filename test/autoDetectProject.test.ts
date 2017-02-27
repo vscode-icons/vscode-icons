@@ -189,10 +189,11 @@ describe('AutoDetectProject: tests', function () {
           const applyCustomization = sinon.spy();
           const reload = sinon.spy();
           const cancel = sinon.stub();
+          const handleVSCodeDir = sinon.stub();
           const showCustomizationMessage = sinon.spy();
 
-          return applyDetection(undefined, undefined, undefined, undefined, undefined, autoReload,
-            updatePreset, applyCustomization, reload, cancel, showCustomizationMessage, undefined)
+          return applyDetection(undefined, undefined, undefined, undefined, undefined, undefined, autoReload,
+            updatePreset, applyCustomization, showCustomizationMessage, reload, cancel, handleVSCodeDir)
             .then(() => {
               // No functions should have been called before 1s
               clock.tick(999);
@@ -217,11 +218,12 @@ describe('AutoDetectProject: tests', function () {
           const applyCustomization = sinon.spy();
           const reload = sinon.spy();
           const cancel = sinon.spy();
+          const handleVSCodeDir = sinon.stub();
           const showCustomizationMessage = sinon.spy();
           const i18nManager = sinon.createStubInstance(LanguageResourceManager);
 
-          return applyDetection(undefined, undefined, undefined, undefined, undefined, autoReload,
-            updatePreset, applyCustomization, reload, cancel, showCustomizationMessage, i18nManager)
+          return applyDetection(i18nManager, undefined, undefined, undefined, undefined, undefined, autoReload,
+            updatePreset, applyCustomization, showCustomizationMessage, reload, cancel, handleVSCodeDir)
             .then(() => {
               expect(showCustomizationMessage.called).to.be.true;
             });

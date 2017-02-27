@@ -41,7 +41,6 @@ export function checkForAngularProject(
 
   return { apply: false };
 }
-
 export function iconsDisabled(name: string): boolean {
   const manifestFilePath = path.join(__dirname, '..', extensionSettings.iconJsonFileName);
   const iconManifest = fs.readFileSync(manifestFilePath, 'utf8');
@@ -59,7 +58,6 @@ export function iconsDisabled(name: string): boolean {
 
   return true;
 }
-
 export function isProject(projectJson: any, name: string): boolean {
   switch (name) {
     case 'ng':
@@ -70,6 +68,7 @@ export function isProject(projectJson: any, name: string): boolean {
 }
 
 export function applyDetection(
+  i18nManager: LanguageResourceManager,
   message: string,
   presetText: string,
   value: boolean,
@@ -78,10 +77,10 @@ export function applyDetection(
   autoReload: boolean,
   updatePreset: Function,
   applyCustomization: Function,
+  showCustomizationMessage: Function,
   reload: Function,
   cancel: Function,
-  showCustomizationMessage: Function,
-  i18nManager: LanguageResourceManager): Thenable<void> {
+  handleVSCodeDir: Function): Thenable<void> {
   return updatePreset(presetText, value, defaultValue, false)
     .then(() => {
       // Add a delay in order for vscode to persist the toggle of the preset
@@ -98,6 +97,6 @@ export function applyDetection(
         [{ title: i18nManager.getMessage(LangResourceKeys.reload) },
         { title: i18nManager.getMessage(LangResourceKeys.autoReload) },
         { title: i18nManager.getMessage(LangResourceKeys.disableDetect) }],
-        applyCustomization, cancel, presetText, !value, initValue, false);
+        applyCustomization, cancel, presetText, !value, initValue, false, handleVSCodeDir);
     });
 }

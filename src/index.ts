@@ -22,51 +22,76 @@ import {
 import { getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
 import { parseJSON } from './utils';
 import { LanguageResourceManager } from './i18n';
+import { IVSCodeUri, IVSIcons } from './models';
+
+let vscodeDirExisted: boolean;
+let userSettingsExisted: boolean;
 
 function initialize(context: vscode.ExtensionContext) {
   const config = getConfig().vsicons;
   const settingsManager = new SettingsManager(vscode);
-  const i18nManager = new LanguageResourceManager(vscode.env.language);
+
+  vscodeDirExisted = fs.existsSync(`${vscode.workspace.rootPath}/.vscode`);
+  userSettingsExisted = fs.existsSync(`${vscode.workspace.rootPath}/.vscode/settings.json`);
 
   registerCommands(context);
   manageWelcomeMessage(settingsManager);
+
+  manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, applyCustomizationCommand);
+
   detectProject(findFiles, config)
     .then((results) => {
-      if (results != null && results.length) {
-        const isInRootFolder = !asRelativePath(results[0].fsPath).includes('/');
-        if (isInRootFolder) {
-          const ngIconsDisabled = iconsDisabled('ng');
-          let isNgProject: boolean;
-          for (const result of results) {
-            const content = fs.readFileSync(result.fsPath, "utf8");
-            const projectJson = parseJSON(content);
-            isNgProject = projectJson && isProject(projectJson, 'ng');
-            if (isNgProject) {
-              break;
-            }
-          }
-
-          const toggle = checkForAngularProject(
-            config.presets.angular,
-            ngIconsDisabled,
-            isNgProject,
-            i18nManager);
-
-          if (toggle.apply) {
-            const presetText = 'angular';
-            const values = getConfig().inspect(`vsicons.presets.${presetText}`);
-            const defaultValue = values.defaultValue as boolean;
-            const initValue = values.workspaceValue as boolean;
-            applyDetection(toggle.message, presetText, toggle.value, initValue, defaultValue,
-              config.projectDetection.autoReload, updatePreset, applyCustomization,
-              reload, cancel, showCustomizationMessage, i18nManager);
-          }
-          return;
-        }
+      if (results && results.length && !asRelativePath(results[0].fsPath).includes('/')) {
+        detectAngular(config, results);
       }
-
-      manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, applyCustomizationCommand);
     });
+}
+
+function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
+  let isNgProject: boolean;
+  for (const result of results) {
+    const content = fs.readFileSync(result.fsPath, "utf8");
+    const projectJson = parseJSON(content);
+    isNgProject = projectJson && isProject(projectJson, 'ng');
+    if (isNgProject) {
+      break;
+    }
+  }
+
+  const i18nManager = new LanguageResourceManager(vscode.env.language);
+  const toggle = checkForAngularProject(
+    config.presets.angular,
+    iconsDisabled('ng'),
+    isNgProject,
+    i18nManager);
+
+  if (!toggle.apply) {
+    return;
+  }
+
+  const presetText = 'angular';
+  const values = getConfig().inspect(`vsicons.presets.${presetText}`);
+  const defaultValue = values.defaultValue as boolean;
+  const initValue = values.workspaceValue as boolean;
+
+  applyDetection(i18nManager, toggle.message, presetText, toggle.value, initValue, defaultValue,
+    config.projectDetection.autoReload, updatePreset, applyCustomization, showCustomizationMessage,
+    reload, cancel, handleVSCodeDir);
+}
+
+function handleVSCodeDir(): void {
+  const vscodeDirPath = `${vscode.workspace.rootPath}/.vscode`;
+  const userSettingsPath = `${vscodeDirPath}/settings.json`;
+
+  // In case we created the 'settings.json' file remove it
+  if (!userSettingsExisted && fs.existsSync(userSettingsPath)) {
+    fs.unlinkSync(userSettingsPath);
+  }
+
+  // In case we created the '.vscode' directory remove it
+  if (!vscodeDirExisted && fs.existsSync(vscodeDirPath)) {
+    fs.rmdirSync(vscodeDirPath);
+  }
 }
 
 export function activate(context: vscode.ExtensionContext) {
