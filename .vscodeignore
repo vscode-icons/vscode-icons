@@ -10,6 +10,7 @@ typings/**
 examples/**
 images/screenshot.gif
 Dockerfile
+.bithoundrc
 .editorconfig
 .gitignore
 .gitattributes
@@ -18,4 +19,3 @@ tsconfig.json
 tslint.json
 npm-debug.*
 yarn.lock
-
