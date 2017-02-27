@@ -19,7 +19,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
     process.chdir(tempFolderPath);
 
     if (!fs.existsSync(extensionSettings.customIconFolderName)) {
-      fs.mkdir(extensionSettings.customIconFolderName);
+      fs.mkdirSync(extensionSettings.customIconFolderName);
     }
   });
 
