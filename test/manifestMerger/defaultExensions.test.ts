@@ -18,11 +18,9 @@ describe('DefaultExtensions: merging configuration documents', function () {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
 
-    if (fs.existsSync(extensionSettings.customIconFolderName)) {
-      return;
+    if (!fs.existsSync(extensionSettings.customIconFolderName)) {
+      fs.mkdir(extensionSettings.customIconFolderName);
     }
-
-    fs.mkdir(extensionSettings.customIconFolderName);
   });
 
   after(() => {
@@ -55,9 +53,10 @@ describe('DefaultExtensions: merging configuration documents', function () {
         const iconName =
           `${extensionSettings.defaultExtensionPrefix}${custom.default.file_light.icon}` +
           `${extensionSettings.iconSuffix}.${custom.default.file_light.format}`;
+        const iconNamePath = path.join(extensionSettings.customIconFolderName, iconName);
 
         try {
-          fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
+          fs.writeFileSync(iconNamePath, '');
 
           const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
           const def = json.iconDefinitions._file_light;
@@ -66,7 +65,9 @@ describe('DefaultExtensions: merging configuration documents', function () {
           expect(def.iconPath).contain(iconName);
           expect(def.iconPath).contain(extensionSettings.customIconFolderName);
         } finally {
-          fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
+          if (fs.existsSync(iconNamePath)) {
+            fs.unlinkSync(iconNamePath);
+          }
         }
       });
 
@@ -80,9 +81,10 @@ describe('DefaultExtensions: merging configuration documents', function () {
         const iconName =
           `${extensionSettings.defaultExtensionPrefix}${custom.default.file.icon}` +
           `${extensionSettings.iconSuffix}.${custom.default.file.format}`;
+        const iconNamePath = path.join(extensionSettings.customIconFolderName, iconName);
 
         try {
-          fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
+          fs.writeFileSync(iconNamePath, '');
 
           const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
           const def = json.iconDefinitions._file;
@@ -91,7 +93,9 @@ describe('DefaultExtensions: merging configuration documents', function () {
           expect(def.iconPath).contain(iconName);
           expect(def.iconPath).contain(extensionSettings.customIconFolderName);
         } finally {
-          fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
+          if (fs.existsSync(iconNamePath)) {
+            fs.unlinkSync(iconNamePath);
+          }
         }
       });
 
@@ -125,10 +129,12 @@ describe('DefaultExtensions: merging configuration documents', function () {
         const iconNameOpen =
           `${extensionSettings.defaultExtensionPrefix}${custom.default.folder_light.icon}_opened` +
           `${extensionSettings.iconSuffix}.${custom.default.folder_light.format}`;
+        const iconNamePath = path.join(extensionSettings.customIconFolderName, iconName);
+        const iconNameOpenPath = path.join(extensionSettings.customIconFolderName, iconNameOpen);
 
         try {
-          fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
-          fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconNameOpen), '');
+          fs.writeFileSync(iconNamePath, '');
+          fs.writeFileSync(iconNameOpenPath, '');
 
           const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
           const def = json.iconDefinitions._folder_light;
@@ -142,8 +148,12 @@ describe('DefaultExtensions: merging configuration documents', function () {
           expect(def.iconPath).contain(extensionSettings.customIconFolderName);
           expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
         } finally {
-          fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
-          fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconNameOpen));
+          if (fs.existsSync(iconNamePath)) {
+            fs.unlinkSync(iconNamePath);
+          }
+          if (fs.existsSync(iconNamePath)) {
+            fs.unlinkSync(iconNameOpenPath);
+          }
         }
       });
 
@@ -160,10 +170,12 @@ describe('DefaultExtensions: merging configuration documents', function () {
         const iconNameOpen =
           `${extensionSettings.defaultExtensionPrefix}${custom.default.folder.icon}_opened` +
           `${extensionSettings.iconSuffix}.${custom.default.folder.format}`;
+        const iconNamePath = path.join(extensionSettings.customIconFolderName, iconName);
+        const iconNameOpenPath = path.join(extensionSettings.customIconFolderName, iconNameOpen);
 
         try {
-          fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
-          fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconNameOpen), '');
+          fs.writeFileSync(iconNamePath, '');
+          fs.writeFileSync(iconNameOpenPath, '');
 
           const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
           const def = json.iconDefinitions._folder;
@@ -177,8 +189,12 @@ describe('DefaultExtensions: merging configuration documents', function () {
           expect(def.iconPath).contain(extensionSettings.customIconFolderName);
           expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
         } finally {
-          fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
-          fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconNameOpen));
+          if (fs.existsSync(iconNamePath)) {
+            fs.unlinkSync(iconNamePath);
+          }
+          if (fs.existsSync(iconNamePath)) {
+            fs.unlinkSync(iconNameOpenPath);
+          }
         }
       });
 
