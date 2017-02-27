@@ -18,11 +18,9 @@ describe('FolderExtensions: merging configuration documents', function () {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
 
-    if (fs.existsSync(extensionSettings.customIconFolderName)) {
-      return;
+    if (!fs.existsSync(extensionSettings.customIconFolderName)) {
+      fs.mkdirSync(extensionSettings.customIconFolderName);
     }
-
-    fs.mkdir(extensionSettings.customIconFolderName);
   });
 
   after(() => {
@@ -135,7 +133,7 @@ describe('FolderExtensions: merging configuration documents', function () {
         const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
         const icon = json.iconDefinitions['_fd_custom_icon'];
         expect(icon).exist;
-        expect(icon.iconPath.substr(icon.iconPath.length - 3, 3)).equals('svg');
+        expect(path.extname(icon.iconPath)).equals('.svg');
       });
 
       it('has a custom path', function () {
@@ -155,10 +153,12 @@ describe('FolderExtensions: merging configuration documents', function () {
         const iconNameOpen =
           `${extensionSettings.folderPrefix}${custom.supported[0].icon}_opened` +
           `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+        const iconNamePath = path.join(extensionSettings.customIconFolderName, iconName);
+        const iconNameOpenPath = path.join(extensionSettings.customIconFolderName, iconNameOpen);
 
         try {
-          fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconName), '');
-          fs.writeFileSync(path.join(extensionSettings.customIconFolderName, iconNameOpen), '');
+          fs.writeFileSync(iconNamePath, '');
+          fs.writeFileSync(iconNameOpenPath, '');
 
           const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
           const icon = json.iconDefinitions['_fd_custom_icon'];
@@ -167,8 +167,12 @@ describe('FolderExtensions: merging configuration documents', function () {
           expect(json.folderNames['custom']).equals('_fd_custom_icon');
           expect(json.folderNamesExpanded['custom']).equals('_fd_custom_icon_open');
         } finally {
-          fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconName));
-          fs.unlinkSync(path.join(extensionSettings.customIconFolderName, iconNameOpen));
+          if (fs.existsSync(iconNamePath)) {
+            fs.unlinkSync(iconNamePath);
+          }
+          if (fs.existsSync(iconNamePath)) {
+            fs.unlinkSync(iconNameOpenPath);
+          }
         }
       });
 
