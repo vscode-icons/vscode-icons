@@ -103,8 +103,7 @@ export function toggleOfficialIconsPreset(
   disable: boolean,
   customFiles: IFileCollection,
   officialIcons: string[],
-  defaultIcons: string[],
-  ): IFileCollection {
+  defaultIcons: string[]): IFileCollection {
   const temp = togglePreset(disable, officialIcons, customFiles);
   return togglePreset(!disable, defaultIcons, temp);
 }

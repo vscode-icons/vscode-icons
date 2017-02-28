@@ -44,7 +44,8 @@ function registerCommand(
 export function applyCustomizationCommand(): void {
   const message = i18nManager.getMessage(LangResourceKeys.iconCustomizationMessage, LangResourceKeys.restart);
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }], applyCustomization);
+    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
+    applyCustomization);
 }
 
 function restoreDefaultManifestCommand(): void {
@@ -118,11 +119,11 @@ function getToggleValue(preset: string): boolean {
 
 export function updatePreset(
   preset: string,
-  newvalue: boolean,
+  newValue: boolean,
   initValue: boolean,
   global: boolean = true): Thenable<void> {
 
-  return getConfig().update(`vsicons.presets.${preset}`, initValue === undefined ? initValue : newvalue, global);
+  return getConfig().update(`vsicons.presets.${preset}`, initValue === undefined ? initValue : newValue, global);
 }
 
 export function showCustomizationMessage(
@@ -148,7 +149,7 @@ export function showCustomizationMessage(
         getConfig().update('vsicons.projectDetection.autoReload', true, true);
       }
 
-      if (callback) { callback(...args); }
+      if (callback) { callback(); }
 
       reload();
     }, (reason) => {
@@ -162,8 +163,20 @@ export function reload(): void {
   vscode.commands.executeCommand('workbench.action.reloadWindow');
 }
 
-export function cancel(preset: string, value: boolean, initValue: boolean, global: boolean = true): void {
-  updatePreset(preset, value, initValue, global);
+export function cancel(
+  preset: string,
+  value: boolean,
+  initValue: boolean,
+  global: boolean = true,
+  callback?: Function): void {
+  updatePreset(preset, value, initValue, global)
+    .then(() => {
+      setTimeout(() => {
+        if (callback) {
+          callback();
+        }
+      }, 1000);
+    });
 }
 
 export function applyCustomization(): void {
