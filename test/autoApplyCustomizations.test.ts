@@ -18,7 +18,7 @@ describe('AutoApplyCustomizations: tests', function () {
           disableDetect: false,
         },
         presets: {
-          angular: true,
+          angular: false,
           jsOfficial: false,
           tsOfficial: false,
           jsonOfficial: false,
@@ -43,7 +43,7 @@ describe('AutoApplyCustomizations: tests', function () {
 
       it('and there are changes in package.json the callback will be called', function () {
         const spy = sinon.spy();
-        userConfig.presets.angular = false;
+        userConfig.presets.angular = true;
         manageAutoApplyCustomizations(true, userConfig, spy);
         expect(spy.called).to.be.true;
       });

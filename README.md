@@ -101,7 +101,7 @@ The extension now provides some specific commands for you to use. Let's talk fir
 ### Presets
 There are several different `presets`:
 
-- `vsicons.presets.angular` (true by default)
+- `vsicons.presets.angular` (false by default)
 - `vsicons.presets.jsOfficial` (false by default)
 - `vsicons.presets.tsOfficial` (false by default)
 - `vsicons.presets.jsonOfficial` (false by default)

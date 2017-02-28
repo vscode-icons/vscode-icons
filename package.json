@@ -111,7 +111,7 @@
                 },
                 "vsicons.presets.angular": {
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "If set to true the extension will match some of the common Angular patterns"
                 },
                 "vsicons.presets.jsOfficial": {
