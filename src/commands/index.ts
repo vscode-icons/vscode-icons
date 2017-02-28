@@ -71,19 +71,13 @@ function togglePreset(
   global: boolean = true): void {
 
   const value = getToggleValue(preset);
+  const action = reverseAction ? value ? 'Disabled' : 'Enabled' : value ? 'Enabled' : 'Disabled';
 
-  let presetKeyAction: string;
-  if (reverseAction) {
-    presetKeyAction = value
-      ? `${presetKey}Disabled`
-      : `${presetKey}Enabled`;
-  } else {
-    presetKeyAction = value
-      ? `${presetKey}Enabled`
-      : `${presetKey}Disabled`;
+  if (!Reflect.has(LangResourceKeys, `${presetKey}${action}`)) {
+    throw Error(`${presetKey}${action} is not valid`);
   }
 
-  const message = `${i18nManager.getMessage(LangResourceKeys[presetKeyAction], ' ', LangResourceKeys.restart)}`;
+  const message = `${i18nManager.getMessage(LangResourceKeys[`${presetKey}${action}`], ' ', LangResourceKeys.restart)}`;
   const { defaultValue, globalValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${preset}`);
   const initValue = (global ? globalValue : workspaceValue) as boolean;
 
