@@ -43,21 +43,21 @@ function registerCommand(
 }
 
 export function applyCustomizationCommand(): void {
-  const message = i18nManager.getMessage(LangResourceKeys.iconCustomizationMessage, LangResourceKeys.restart);
+  const message = i18nManager.getMessage(LangResourceKeys.iconCustomization, ' ', LangResourceKeys.restart);
   showCustomizationMessage(message,
     [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
     applyCustomization);
 }
 
 function restoreDefaultManifestCommand(): void {
-  const message = i18nManager.getMessage(LangResourceKeys.iconRestoreMessage, LangResourceKeys.restart);
+  const message = i18nManager.getMessage(LangResourceKeys.iconRestore, ' ', LangResourceKeys.restart);
   showCustomizationMessage(message,
     [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
     restoreManifest);
 }
 
 function resetProjectDetectionDefaultsCommand(): void {
-  const message = i18nManager.getMessage(LangResourceKeys.projectDetecticonResetMessage, LangResourceKeys.restart);
+  const message = i18nManager.getMessage(LangResourceKeys.projectDetecticonReset, ' ', LangResourceKeys.restart);
   showCustomizationMessage(
     message,
     [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
@@ -66,25 +66,24 @@ function resetProjectDetectionDefaultsCommand(): void {
 
 function togglePreset(
   preset: string,
-  presetMessage: string,
+  presetKey: string,
   reverseAction: boolean = false,
   global: boolean = true): void {
 
   const value = getToggleValue(preset);
 
-  let actionMessage: string;
+  let presetKeyAction: string;
   if (reverseAction) {
-    actionMessage = value
-      ? i18nManager.getMessage(LangResourceKeys.disabled)
-      : i18nManager.getMessage(LangResourceKeys.enabled);
+    presetKeyAction = value
+      ? `${presetKey}Disabled`
+      : `${presetKey}Enabled`;
   } else {
-    actionMessage = value
-      ? i18nManager.getMessage(LangResourceKeys.enabled)
-      : i18nManager.getMessage(LangResourceKeys.disabled);
+    presetKeyAction = value
+      ? `${presetKey}Enabled`
+      : `${presetKey}Disabled`;
   }
 
-  const message =
-    `${presetMessage} ${actionMessage}. ${i18nManager.getMessage(LangResourceKeys.restart)}`;
+  const message = `${i18nManager.getMessage(LangResourceKeys[presetKeyAction], ' ', LangResourceKeys.restart)}`;
   const { defaultValue, globalValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${preset}`);
   const initValue = (global ? globalValue : workspaceValue) as boolean;
 
@@ -95,23 +94,23 @@ function togglePreset(
 }
 
 function toggleAngularPresetCommand(): void {
-  togglePreset('angular', i18nManager.getMessage(LangResourceKeys.ngPresetMessage), false, false);
+  togglePreset('angular', 'ngPreset', false, false);
 }
 
 function toggleJsPresetCommand(): void {
-  togglePreset('jsOfficial', i18nManager.getMessage(LangResourceKeys.jsOfficialPresetMessage));
+  togglePreset('jsOfficial', 'jsOfficialPreset');
 }
 
 function toggleTsPresetCommand(): void {
-  togglePreset('tsOfficial', i18nManager.getMessage(LangResourceKeys.tsOfficialPresetMessage));
+  togglePreset('tsOfficial', 'tsOfficialPreset');
 }
 
 function toggleJsonPresetCommand(): void {
-  togglePreset('jsonOfficial', i18nManager.getMessage(LangResourceKeys.jsonOfficialPresetMessage));
+  togglePreset('jsonOfficial', 'jsonOfficialPreset');
 }
 
 function toggleHideFoldersCommand(): void {
-  togglePreset('hideFolders', i18nManager.getMessage(LangResourceKeys.hideFoldersPresetMessage), true);
+  togglePreset('hideFolders', 'hideFoldersPreset', true);
 }
 
 function getToggleValue(preset: string): boolean {

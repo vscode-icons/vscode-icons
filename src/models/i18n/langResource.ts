@@ -1,12 +1,12 @@
 import { IOSSpecific } from './';
 
 export interface ILangResource {
-  newVersionMessage: string | IOSSpecific;
+  newVersion: string | IOSSpecific;
   seeReleaseNotes: string | IOSSpecific;
   dontShowThis: string | IOSSpecific;
   seeReadme: string | IOSSpecific;
-  welcomeMessageBegin: string | IOSSpecific;
-  welcomeMessageEnd: string | IOSSpecific;
+  welcomeBegin: string | IOSSpecific;
+  welcomeEnd: string | IOSSpecific;
   activationPath: string | IOSSpecific;
   aboutOfficialApi: string | IOSSpecific;
   learnMore: string | IOSSpecific;
@@ -16,17 +16,20 @@ export interface ILangResource {
   reload: string | IOSSpecific;
   autoReload: string | IOSSpecific;
   disableDetect: string | IOSSpecific;
-  iconCustomizationMessage: string | IOSSpecific;
-  iconRestoreMessage: string | IOSSpecific;
-  ngPresetMessage: string | IOSSpecific;
-  jsOfficialPresetMessage: string | IOSSpecific;
-  tsOfficialPresetMessage: string | IOSSpecific;
-  jsonOfficialPresetMessage: string | IOSSpecific;
-  hideFoldersPresetMessage: string | IOSSpecific;
-  enabled: string | IOSSpecific;
-  disabled: string | IOSSpecific;
+  iconCustomization: string | IOSSpecific;
+  iconRestore: string | IOSSpecific;
+  ngPresetEnabled: string | IOSSpecific;
+  ngPresetDisabled: string | IOSSpecific;
+  jsOfficialPresetEnabled: string | IOSSpecific;
+  jsOfficialPresetDisabled: string | IOSSpecific;
+  tsOfficialPresetEnabled: string | IOSSpecific;
+  tsOfficialPresetDisabled: string | IOSSpecific;
+  jsonOfficialPresetEnabled: string | IOSSpecific;
+  jsonOfficialPresetDisabled: string | IOSSpecific;
+  hideFoldersPresetEnabled: string | IOSSpecific;
+  hideFoldersPresetDisabled: string | IOSSpecific;
   restart: string | IOSSpecific;
   ngDetected: string | IOSSpecific;
   nonNgDetected: string | IOSSpecific;
-  projectDetecticonResetMessage: string | IOSSpecific;
+  projectDetecticonReset: string | IOSSpecific;
 }

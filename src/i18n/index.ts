@@ -35,7 +35,7 @@ export class LanguageResourceManager {
               message = message[process.platform];
             }
           }
-          msg += message;
+          msg += message as string;
           return;
         }
         throw new Error(`${stringifiedKey} is not valid`);
@@ -51,6 +51,6 @@ export class LanguageResourceManager {
       });
     });
 
-    return msg;
+    return msg.trim();
   }
 }

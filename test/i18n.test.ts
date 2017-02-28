@@ -2,7 +2,7 @@
 import { expect } from 'chai';
 import { LanguageResourceManager } from '../src/i18n';
 import { langEn } from '../src/i18n/langResources';
-import { LangResourceKeys, ILangResourceCollection } from '../src/models/i18n';
+import { LangResourceKeys } from '../src/models/i18n';
 
 describe('i18n: tests', function () {
 
@@ -21,7 +21,7 @@ describe('i18n: tests', function () {
     it('ILangResource properties match LangResourceKeys properties',
       function () {
         for (const key in langEn) {
-          if (langEn.hasOwnProperty(key)) {
+          if (Reflect.has(langEn, key)) {
             expect(LangResourceKeys[key]).to.exist;
           }
         }
@@ -46,27 +46,35 @@ describe('i18n: tests', function () {
       function () {
         const resourceCollection = {
           en: {
-            newVersionMessage: 'brave flees jumped over the fence',
+            newVersion: 'brave flees',
+            restart: 'jumped over the fence',
           },
         };
-
-        const literalString1 = '10 ';
-        const literalString2 = '!';
-        const msg = new LanguageResourceManager('en', resourceCollection)
-          .getMessage(literalString1, LangResourceKeys.newVersionMessage, literalString2);
-        expect(msg).to.equal(`${literalString1}${resourceCollection.en.newVersionMessage}${literalString2}`);
+        const literalString1 = '10';
+        const literalString2 = ' ';
+        const literalString3 = '!';
+        const msg = new LanguageResourceManager('en', resourceCollection).getMessage(
+          literalString1,
+          literalString2,
+          LangResourceKeys.newVersion,
+          literalString2,
+          LangResourceKeys.restart,
+          literalString3);
+        const expectedMsg = `${literalString1}${literalString2}${resourceCollection.en.newVersion}` +
+          `${literalString2}${resourceCollection.en.restart}${literalString3}`;
+        expect(msg).to.equal(expectedMsg);
       });
 
     it('if a language resource does not exist, the English resource is used',
       function () {
         const resourceCollection = {
           en: {
-            enabled: 'Test',
+            restart: 'Test',
           },
         };
 
-        const msg = new LanguageResourceManager('en', resourceCollection).getMessage(LangResourceKeys.enabled);
-        expect(msg).to.equal(resourceCollection.en.enabled);
+        const msg = new LanguageResourceManager('en', resourceCollection).getMessage(LangResourceKeys.restart);
+        expect(msg).to.equal(resourceCollection.en.restart);
       });
 
     it('if no resource collection is provided, an empty string is returned',
@@ -77,11 +85,14 @@ describe('i18n: tests', function () {
 
     context('the message is properly shown for', function () {
 
-      let resourceCollection: ILangResourceCollection | {};
+      let resourceCollection: any;
 
       before(() => {
         resourceCollection = {
-          en: {},
+          en: {
+            newVersion: '10 brave flees jumped ',
+            activationPath: 'over the fence',
+          },
         };
       });
 
@@ -102,11 +113,18 @@ describe('i18n: tests', function () {
       it('an array of literal strings',
         function () {
           const literalString1 = '10';
-          const literalString2 = ' brave flees jumped over the fence';
-          const literalString3 = '. ';
+          const literalString2 = ' brave flees jumped ';
+          const literalString3 = 'over the fence.';
           const msg = new LanguageResourceManager('en', resourceCollection)
             .getMessage(literalString1, literalString2, literalString3);
           expect(msg).to.equal(`${literalString1}${literalString2}${literalString3}`);
+        });
+
+      it('an array of LangResourceKeys',
+        function () {
+          const msg = new LanguageResourceManager('en', resourceCollection)
+            .getMessage(LangResourceKeys.newVersion, ' ', LangResourceKeys.activationPath);
+          expect(msg).to.equal(`${resourceCollection.en.newVersion} ${resourceCollection.en.activationPath}`);
         });
 
       context('otherwise an error is thrown for invalid', function () {
@@ -114,7 +132,7 @@ describe('i18n: tests', function () {
         it('resource keys',
           function () {
             const i18nManager = new LanguageResourceManager('en', resourceCollection);
-            expect(i18nManager.getMessage.bind(i18nManager, LangResourceKeys.enabled))
+            expect(i18nManager.getMessage.bind(i18nManager, LangResourceKeys.restart))
               .to.throw(Error, /is not valid/);
           });
 
