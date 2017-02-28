@@ -306,7 +306,7 @@ export const extensions: IFileCollection = {
     { icon: 'todo', extensions: ['todo'], light: true, format: FileFormat.svg },
     { icon: 'toml', extensions: [], languages: [languages.toml], format: FileFormat.svg },
     { icon: 'travis', extensions: ['.travis.yml'], filename: true, format: FileFormat.svg },
-    { icon: 'tsconfig', extensions: ['tsconfig.json', 'tsconfig.app.json', 'tsconfig.spec.json'], filename: true, format: FileFormat.svg },
+    { icon: 'tsconfig', extensions: ['tsconfig.json', 'tsconfig.app.json', 'tsconfig.spec.json', 'tsconfig.e2e.json'], filename: true, format: FileFormat.svg },
     { icon: 'tslint', extensions: ['tslint.json'], filename: true, format: FileFormat.svg },
     { icon: 'twig', extensions: [], languages: [languages.twig], format: FileFormat.svg },
     { icon: 'typescript', extensions: [], languages: [languages.typescript], format: FileFormat.svg },
