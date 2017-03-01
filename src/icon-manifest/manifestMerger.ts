@@ -82,12 +82,14 @@ function mergeSupported(
     // remove overrides
     final = final.filter(x => x.icon !== file.overrides);
     // check if file extensions are already in use and remove them
-    file.extensions.forEach(ext => {
-      final
-        .filter(x => x.extensions.find(y => y === ext))
-        .forEach(x => _.remove(x.extensions, ext));
-    });
-    final.push(file);
+    if (file.extensions) {
+      file.extensions.forEach(ext => {
+        final
+          .filter(x => x.extensions.find(y => y === ext))
+          .forEach(x => _.remove(x.extensions, ext));
+      });
+      final.push(file);
+    }
   });
   return final;
 }
@@ -114,7 +116,7 @@ export function toggleHideFoldersPreset(
   const folderIcons = folders.supported.filter(x => !x.disabled).map(x => x.icon);
   const collection = togglePreset<IFolderCollection>(disable, folderIcons, folders);
   if (folders.default.folder) {
-   collection.default.folder.disabled = disable;
+    collection.default.folder.disabled = disable;
   }
   if (folders.default.folder_light) {
     collection.default.folder_light.disabled = disable;
