@@ -17,6 +17,7 @@ import {
   LangResourceKeys,
 } from '../models';
 import { extensionSettings } from '../settings';
+import { handleVSCodeDir } from '../';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
 
@@ -90,7 +91,7 @@ function togglePreset(
   updatePreset(preset, value, defaultValue as boolean, global);
   showCustomizationMessage(message,
     [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
-    applyCustomization, cancel, preset, !value, initValue, global);
+    applyCustomization, cancel, preset, !value, initValue, global, handleVSCodeDir);
 }
 
 function toggleAngularPresetCommand(): void {
