@@ -297,7 +297,7 @@ export const extensions: IFileCollection = {
     { icon: 'swift', extensions: ['package.pins'], filename: true, languages: [languages.swift], format: FileFormat.svg },
     { icon: 'tcl', extensions: ['tcl', 'exp'], format: FileFormat.svg },
     { icon: 'terraform', extensions: ['tfstate'], languages: [languages.terraform], format: FileFormat.svg },
-    { icon: 'testjs', extensions: ['test.js', 'spec.js'], format: FileFormat.svg },
+    { icon: 'testjs', extensions: ['test.js', 'spec.js', 'test.jsx', 'spec.jsx'], format: FileFormat.svg },
     { icon: 'testts', extensions: ['test.ts', 'test.tsx', 'spec.ts', 'spec.tsx'], format: FileFormat.svg },
     { icon: 'tex', extensions: ['texi'], languages: [languages.tex, languages.latex], light: true, format: FileFormat.svg },
     { icon: 'text', extensions: ['csv'], languages: [languages.plaintext], format: FileFormat.svg },
