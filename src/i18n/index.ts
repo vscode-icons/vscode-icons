@@ -5,7 +5,10 @@ export class LanguageResourceManager {
 
   private messages: ILangResource;
 
-  constructor(private language: string, private resourceCollection?: ILangResourceCollection | {}) {
+  constructor(
+    private language: string,
+    private resourceCollection?: ILangResourceCollection |
+      { [key: string]: { [key: string]: string | IOSSpecific; } }) {
     if (!this.resourceCollection) {
       this.resourceCollection = langResourceCollection;
     }
