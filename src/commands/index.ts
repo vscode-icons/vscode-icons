@@ -71,7 +71,13 @@ function togglePreset(
   global: boolean = true): void {
 
   const value = getToggleValue(preset);
-  const action = reverseAction ? value ? 'Disabled' : 'Enabled' : value ? 'Enabled' : 'Disabled';
+  const action = reverseAction
+    ? value
+      ? 'Disabled'
+      : 'Enabled'
+    : value
+      ? 'Enabled'
+      : 'Disabled';
 
   if (!Reflect.has(LangResourceKeys, `${presetKey}${action}`)) {
     throw Error(`${presetKey}${action} is not valid`);
