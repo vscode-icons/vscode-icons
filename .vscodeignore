@@ -15,6 +15,7 @@ Dockerfile
 .gitignore
 .gitattributes
 .travis.yml
+package.nls.template.json
 tsconfig.json
 tslint.json
 npm-debug.*
