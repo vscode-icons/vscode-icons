@@ -79,7 +79,7 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
     reload, cancel, handleVSCodeDir);
 }
 
-function handleVSCodeDir(): void {
+export function handleVSCodeDir(): void {
   const vscodeDirPath = `${vscode.workspace.rootPath}/.vscode`;
   const userSettingsPath = `${vscodeDirPath}/settings.json`;
 
