@@ -299,7 +299,7 @@ export const extensions: IFileCollection = {
     { icon: 'terraform', extensions: ['tfstate'], languages: [languages.terraform], format: FileFormat.svg },
     { icon: 'testjs', extensions: ['test.js', 'spec.js'], format: FileFormat.svg },
     { icon: 'testts', extensions: ['test.ts', 'spec.ts'], format: FileFormat.svg },
-    { icon: 'tex', extensions: ['texi'], languages: [languages.tex, languages.latex], light: true, format: FileFormat.svg },
+    { icon: 'tex', extensions: ['texi', 'tex'], languages: [languages.tex, languages.latex], light: true, format: FileFormat.svg },
     { icon: 'text', extensions: ['csv'], languages: [languages.plaintext], format: FileFormat.svg },
     { icon: 'textile', extensions: [], languages: [languages.textile], format: FileFormat.svg },
     { icon: 'tfs', extensions: ['.tfignore'], filename: true, format: FileFormat.svg },
