@@ -24,8 +24,8 @@ export function manageWelcomeMessage(settingsManager: ISettingsManager) {
 function showWelcomeMessage(settingsManager: ISettingsManager) {
   settingsManager.setStatus(ExtensionStatus.notInstalled);
   vscode.window.showInformationMessage(
-    i18nManager.getMessage(LangResourceKeys.welcomeMessageBegin,
-      LangResourceKeys.activationPath, LangResourceKeys.welcomeMessageEnd),
+    i18nManager.getMessage(LangResourceKeys.welcomeBegin, ' ',
+      LangResourceKeys.activationPath, ' ', LangResourceKeys.welcomeEnd),
     { title: i18nManager.getMessage(LangResourceKeys.aboutOfficialApi) },
     { title: i18nManager.getMessage(LangResourceKeys.seeReadme) })
     .then(btn => {
@@ -45,7 +45,7 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
 function showNewVersionMessage(settingsManager: ISettingsManager) {
   const vars = settingsManager.getSettings();
   vscode.window.showInformationMessage(
-    `${i18nManager.getMessage(LangResourceKeys.newVersionMessage)} v.${vars.extensionSettings.version}`,
+    `${i18nManager.getMessage(LangResourceKeys.newVersion)} v.${vars.extensionSettings.version}`,
     { title: i18nManager.getMessage(LangResourceKeys.seeReleaseNotes) },
     { title: i18nManager.getMessage(LangResourceKeys.dontShowThis) })
     .then(btn => {

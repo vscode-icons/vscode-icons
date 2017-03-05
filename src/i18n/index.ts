@@ -5,7 +5,10 @@ export class LanguageResourceManager {
 
   private messages: ILangResource;
 
-  constructor(private language: string, private resourceCollection?: ILangResourceCollection | {}) {
+  constructor(
+    private language: string,
+    private resourceCollection?: ILangResourceCollection |
+      { [key: string]: { [key: string]: string | IOSSpecific; } }) {
     if (!this.resourceCollection) {
       this.resourceCollection = langResourceCollection;
     }
@@ -35,7 +38,7 @@ export class LanguageResourceManager {
               message = message[process.platform];
             }
           }
-          msg += message;
+          msg += message as string;
           return;
         }
         throw new Error(`${stringifiedKey} is not valid`);
@@ -51,6 +54,6 @@ export class LanguageResourceManager {
       });
     });
 
-    return msg;
+    return msg.trim();
   }
 }
