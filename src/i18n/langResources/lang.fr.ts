@@ -32,6 +32,8 @@ export const langFr: ILangResource = {
   jsonOfficialPresetDisabled: 'L\'icône officielle JSON sera désactivée.',
   hideFoldersPresetEnabled: 'La visibilité des icônes des dossiers sera activée.',
   hideFoldersPresetDisabled: 'La visibilité des icônes des dossiers sera désactivée.',
+  foldersAllDefaultIconPresetEnabled: 'Les icônes de dossiers spécifiques seront activées.',
+  foldersAllDefaultIconPresetDisabled: 'Les icônes de dossiers spécifiques seront désactivées.',
   restart: 'Sélectionnez \'Redémarrer\' pour que les modifications prennent effet.',
   ngDetected: 'vscode-icons a détecté un projet Angular. ' +
   'Sélectionnez \'Redémarrer\' pour activer les icônes Angular.',

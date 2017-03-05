@@ -32,6 +32,8 @@ export const langEn: ILangResource = {
   jsonOfficialPresetDisabled: 'Official JSON icon will be disabled.',
   hideFoldersPresetEnabled: 'Folder icons visibility will be enabled.',
   hideFoldersPresetDisabled: 'Folder icons visibility will be disabled.',
+  foldersAllDefaultIconPresetEnabled: 'Specific folder icons will be enabled.',
+  foldersAllDefaultIconPresetDisabled: 'Specific folder icons will be disabled.',
   restart: 'Select \'Restart\' for changes to take effect.',
   ngDetected: 'vscode-icons has detected an Angular project. ' +
   'Select \'Restart\' to enable the Angular icons.',

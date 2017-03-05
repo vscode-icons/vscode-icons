@@ -28,6 +28,8 @@ export interface ILangResource {
   jsonOfficialPresetDisabled: string | IOSSpecific;
   hideFoldersPresetEnabled: string | IOSSpecific;
   hideFoldersPresetDisabled: string | IOSSpecific;
+  foldersAllDefaultIconPresetEnabled: string | IOSSpecific;
+  foldersAllDefaultIconPresetDisabled: string | IOSSpecific;
   restart: string | IOSSpecific;
   ngDetected: string | IOSSpecific;
   nonNgDetected: string | IOSSpecific;
