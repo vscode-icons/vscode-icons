@@ -26,6 +26,8 @@ export enum LangResourceKeys {
   jsonOfficialPresetDisabled,
   hideFoldersPresetEnabled,
   hideFoldersPresetDisabled,
+  foldersAllDefaultIconPresetEnabled,
+  foldersAllDefaultIconPresetDisabled,
   restart,
   ngDetected,
   nonNgDetected,

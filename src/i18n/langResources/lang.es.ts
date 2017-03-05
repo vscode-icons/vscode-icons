@@ -32,6 +32,8 @@ export const langEs: ILangResource = {
   jsonOfficialPresetDisabled: 'El icono oficial de JSON se va a desactivar.',
   hideFoldersPresetEnabled: 'La visibilidad de los iconos de Carpeta se va a activar.',
   hideFoldersPresetDisabled: 'La visibilidad de los iconos de Carpeta se va a desactivar.',
+  foldersAllDefaultIconPresetEnabled: 'Los iconos de Carpeta específicos se van a activar.',
+  foldersAllDefaultIconPresetDisabled: 'Los iconos de Carpeta específicos se van a desactivar.',
   restart: 'Pulsa \'Reiniciar\' para que los cambios tengan efecto.',
   ngDetected: 'vscode-icons ha detectado un proyecto Angular. ' +
   'Pulsa \'Reiniciar\' para activar los iconos de Angular.',

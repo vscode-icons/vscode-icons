@@ -2,11 +2,7 @@
 import { expect } from 'chai';
 import { extensions as fileExtensions } from '../support/supportedExtensions';
 import { extensions as folderExtensions } from '../support/supportedFolders';
-import {
-  toggleAngularPreset,
-  toggleOfficialIconsPreset,
-  toggleHideFoldersPreset,
-} from '../../src/icon-manifest';
+import * as iconManifest from '../../src/icon-manifest';
 import { IFileCollection } from '../../src/models';
 
 describe('Presets: merging configuration documents', function () {
@@ -14,7 +10,7 @@ describe('Presets: merging configuration documents', function () {
   context('ensures', function () {
 
     it('angular extensions are disabled', function () {
-      const result = toggleAngularPreset(true, fileExtensions);
+      const result = iconManifest.toggleAngularPreset(true, fileExtensions);
       const nggroup = result.supported.filter(x => x.icon.startsWith('ng_'));
       expect(nggroup.length).equals(14);
       nggroup.forEach(x => {
@@ -33,7 +29,7 @@ describe('Presets: merging configuration documents', function () {
         ],
       };
 
-      const result = toggleAngularPreset(true, custom);
+      const result = iconManifest.toggleAngularPreset(true, custom);
       const ngGroup = result.supported
         .filter(x => x.icon.startsWith('ng_'));
       expect(ngGroup.length).equals(4);
@@ -47,7 +43,7 @@ describe('Presets: merging configuration documents', function () {
         default: null,
         supported: [],
       };
-      const result = toggleOfficialIconsPreset(false, custom, ['js_official'], ['js']);
+      const result = iconManifest.toggleOfficialIconsPreset(false, custom, ['js_official'], ['js']);
       const official = result.supported.find(x => x.icon === 'js_official');
       const unofficial = result.supported.find(x => x.icon === 'js');
       expect(official.disabled).to.be.false;
@@ -59,7 +55,7 @@ describe('Presets: merging configuration documents', function () {
         default: null,
         supported: [],
       };
-      const result = toggleOfficialIconsPreset(false, custom,
+      const result = iconManifest.toggleOfficialIconsPreset(false, custom,
         ['typescript_official', 'typescriptdef_official'], ['typescript', 'typescriptdef']);
       const official = result.supported.find(x => x.icon === 'typescript_official');
       const unofficial = result.supported.find(x => x.icon === 'typescript');
@@ -76,7 +72,7 @@ describe('Presets: merging configuration documents', function () {
         default: null,
         supported: [],
       };
-      const result = toggleOfficialIconsPreset(false, custom, ['json_official'], ['json']);
+      const result = iconManifest.toggleOfficialIconsPreset(false, custom, ['json_official'], ['json']);
       const official = result.supported.find(x => x.icon === 'json_official');
       const unofficial = result.supported.find(x => x.icon === 'json');
       expect(official.disabled).to.be.false;
@@ -84,10 +80,17 @@ describe('Presets: merging configuration documents', function () {
     });
 
     it('hide folders preset hides all folders', function () {
-      const result = toggleHideFoldersPreset(true, folderExtensions);
+      const result = iconManifest.toggleHideFoldersPreset(true, folderExtensions);
       const supported = result.supported.find(x => x.icon === 'aws');
       expect(supported.disabled).to.be.true;
       expect(result.default.folder.disabled).to.be.true;
+    });
+
+    it('folders all default icon preset shows all folders with the default folder icon', function () {
+      const result = iconManifest.toggleFoldersAllDefaultIconPreset(true, folderExtensions);
+      const supported = result.supported.find(x => x.icon === 'aws');
+      expect(supported.disabled).to.be.true;
+      expect(result.default.folder.disabled).to.be.false;
     });
 
   });

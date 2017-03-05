@@ -1,21 +1,10 @@
 import * as vscode from 'vscode';
 import { getConfig } from '../utils/vscode-extensions';
 import { LanguageResourceManager } from '../i18n';
-import {
-  IconGenerator,
-  mergeConfig,
-  schema,
-  toggleAngularPreset,
-  toggleOfficialIconsPreset,
-  toggleHideFoldersPreset,
-} from '../icon-manifest';
+import * as iconManifest from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
-import {
-  IFileCollection,
-  IFolderCollection,
-  LangResourceKeys,
-} from '../models';
+import { IFileCollection, IFolderCollection, LangResourceKeys } from '../models';
 import { extensionSettings } from '../settings';
 import { handleVSCodeDir } from '../';
 
@@ -29,7 +18,8 @@ export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'jsPreset', toggleJsPresetCommand);
   registerCommand(context, 'tsPreset', toggleTsPresetCommand);
   registerCommand(context, 'jsonPreset', toggleJsonPresetCommand);
-  registerCommand(context, 'hideFoldersPreset', toggleHideFoldersCommand);
+  registerCommand(context, 'hideFoldersPreset', toggleHideFoldersPresetCommand);
+  registerCommand(context, 'foldersAllDefaultIconPreset', toggleFoldersAllDefaultIconPresetCommand);
 }
 
 function registerCommand(
@@ -37,7 +27,7 @@ function registerCommand(
   name: string,
   callback: (...args: any[]) => any): vscode.Disposable {
 
-  const command = vscode.commands.registerCommand(`extension.${name}`, callback);
+  const command = vscode.commands.registerCommand(`vscode-icons.${name}`, callback);
   context.subscriptions.push(command);
   return command;
 }
@@ -109,8 +99,13 @@ function toggleJsonPresetCommand(): void {
   togglePreset('jsonOfficial', 'jsonOfficialPreset');
 }
 
-function toggleHideFoldersCommand(): void {
+function toggleHideFoldersPresetCommand(): void {
   togglePreset('hideFolders', 'hideFoldersPreset', true);
+}
+
+function toggleFoldersAllDefaultIconPresetCommand(): void {
+  togglePreset(
+    'foldersAllDefaultIcon', 'foldersAllDefaultIconPreset', true);
 }
 
 function getToggleValue(preset: string): boolean {
@@ -196,27 +191,31 @@ function generateManifest(
   customFiles: IFileCollection,
   customFolders: IFolderCollection): void {
 
-  const iconGenerator = new IconGenerator(vscode, schema);
+  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
   const presets = getConfig().vsicons.presets;
   let workingCustomFiles = customFiles;
   let workingCustomFolders = customFolders;
   if (customFiles) {
     // check presets...
-    workingCustomFiles = toggleAngularPreset(!presets.angular, customFiles);
-    workingCustomFiles = toggleOfficialIconsPreset(!presets.jsOfficial, workingCustomFiles,
+    workingCustomFiles = iconManifest.toggleAngularPreset(!presets.angular, customFiles);
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!presets.jsOfficial, workingCustomFiles,
       ['js_official'], ['js']);
-    workingCustomFiles = toggleOfficialIconsPreset(!presets.tsOfficial, workingCustomFiles,
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!presets.tsOfficial, workingCustomFiles,
       ['typescript_official', 'typescriptdef_official'], ['typescript', 'typescriptdef']);
-    workingCustomFiles = toggleOfficialIconsPreset(!presets.jsonOfficial, workingCustomFiles,
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!presets.jsonOfficial, workingCustomFiles,
       ['json_official'], ['json']);
   }
   if (customFolders) {
-    workingCustomFolders = toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);
+    workingCustomFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);
+    workingCustomFolders = iconManifest.toggleFoldersAllDefaultIconPreset(
+      presets.foldersAllDefaultIcon, workingCustomFolders);
   }
   // presets affecting default icons
-  const workingFiles = toggleAngularPreset(!presets.angular, files);
-  const workingFolders = toggleHideFoldersPreset(presets.hideFolders, folders);
-  const json = mergeConfig(
+  const workingFiles = iconManifest.toggleAngularPreset(!presets.angular, files);
+  let workingFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, folders);
+  workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(presets.foldersAllDefaultIcon, workingFolders);
+
+  const json = iconManifest.mergeConfig(
     workingCustomFiles,
     workingFiles,
     workingCustomFolders,
@@ -226,8 +225,8 @@ function generateManifest(
 }
 
 function restoreManifest(): void {
-  const iconGenerator = new IconGenerator(vscode, schema, true);
-  const json = mergeConfig(
+  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema, true);
+  const json = iconManifest.mergeConfig(
     null,
     files,
     null,

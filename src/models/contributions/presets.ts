@@ -4,4 +4,5 @@ export interface IPresets {
   tsOfficial: boolean;
   jsonOfficial: boolean;
   hideFolders: boolean;
+  foldersAllDefaultIcon: boolean;
 }

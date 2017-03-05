@@ -1,24 +1,8 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { SettingsManager } from './settings';
-import {
-  manageWelcomeMessage,
-  manageAutoApplyCustomizations,
-  detectProject,
-  checkForAngularProject,
-  iconsDisabled,
-  isProject,
-  applyDetection,
-} from './init';
-import {
-  registerCommands,
-  applyCustomizationCommand,
-  applyCustomization,
-  reload,
-  updatePreset,
-  cancel,
-  showCustomizationMessage,
-} from './commands';
+import * as init from './init';
+import * as commands from './commands';
 import { getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
 import { parseJSON } from './utils';
 import { LanguageResourceManager } from './i18n';
@@ -34,12 +18,12 @@ function initialize(context: vscode.ExtensionContext) {
   vscodeDirExisted = fs.existsSync(`${vscode.workspace.rootPath}/.vscode`);
   userSettingsExisted = fs.existsSync(`${vscode.workspace.rootPath}/.vscode/settings.json`);
 
-  registerCommands(context);
-  manageWelcomeMessage(settingsManager);
+  commands.registerCommands(context);
+  init.manageWelcomeMessage(settingsManager);
 
-  manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, applyCustomizationCommand);
+  init.manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, commands.applyCustomizationCommand);
 
-  detectProject(findFiles, config)
+  init.detectProject(findFiles, config)
     .then((results) => {
       if (results && results.length && !asRelativePath(results[0].fsPath).includes('/')) {
         detectAngular(config, results);
@@ -52,16 +36,16 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
   for (const result of results) {
     const content = fs.readFileSync(result.fsPath, "utf8");
     const projectJson = parseJSON(content);
-    isNgProject = projectJson && isProject(projectJson, 'ng');
+    isNgProject = projectJson && init.isProject(projectJson, 'ng');
     if (isNgProject) {
       break;
     }
   }
 
   const i18nManager = new LanguageResourceManager(vscode.env.language);
-  const toggle = checkForAngularProject(
+  const toggle = init.checkForAngularProject(
     config.presets.angular,
-    iconsDisabled('ng'),
+    init.iconsDisabled('ng'),
     isNgProject,
     i18nManager);
 
@@ -74,9 +58,10 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
   const defaultValue = values.defaultValue as boolean;
   const initValue = values.workspaceValue as boolean;
 
-  applyDetection(i18nManager, toggle.message, presetText, toggle.value, initValue, defaultValue,
-    config.projectDetection.autoReload, updatePreset, applyCustomization, showCustomizationMessage,
-    reload, cancel, handleVSCodeDir);
+  init.applyDetection(i18nManager, toggle.message, presetText, toggle.value, initValue, defaultValue,
+    config.projectDetection.autoReload, commands.updatePreset,
+    commands.applyCustomization, commands.showCustomizationMessage,
+    commands.reload, commands.cancel, handleVSCodeDir);
 }
 
 export function handleVSCodeDir(): void {

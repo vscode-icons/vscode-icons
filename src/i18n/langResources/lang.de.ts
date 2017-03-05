@@ -30,8 +30,10 @@ export const langDe: ILangResource = {
   tsOfficialPresetDisabled: 'Offizielles TS Icon wird deaktiviert.',
   jsonOfficialPresetEnabled: 'Offizielles JSON Icon wird aktiviert.',
   jsonOfficialPresetDisabled: 'Offizielles JSON Icon wird deaktiviert.',
-  hideFoldersPresetEnabled: 'Ordner Icons werden aktiviert.',
-  hideFoldersPresetDisabled: 'Ordner Icons werden deaktiviert.',
+  hideFoldersPresetEnabled: 'Ordner-Icons werden aktiviert.',
+  hideFoldersPresetDisabled: 'Ordner-Icons werden deaktiviert.',
+  foldersAllDefaultIconPresetEnabled: 'Spezifischer Ordner-Icons werden aktiviert.',
+  foldersAllDefaultIconPresetDisabled: 'Spezifischer Ordner-Icons werden deaktiviert.',
   restart: 'Drücken Sie \'Neu starten\' um die Änderungen zu übernehmen',
   ngDetected: 'vscode-icons hat ein Angular Projekt erkannt! ' +
   'Drücken Sie \'Neu starten\', damit die Angular Icons übernommen werden.',

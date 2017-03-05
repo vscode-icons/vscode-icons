@@ -4,6 +4,10 @@ import { LanguageResourceManager } from '../src/i18n';
 import { langEn } from '../src/i18n/langResources';
 import { LangResourceKeys } from '../src/models/i18n';
 
+import * as packageJson from '../../package.json';
+import * as nls from '../../package.nls.json';
+import * as nlsTemplate from '../../package.nls.template.json';
+
 describe('i18n: tests', function () {
 
   context('ensure that', function () {
@@ -144,6 +148,79 @@ describe('i18n: tests', function () {
           });
 
       });
+
+    });
+
+    context('each', function () {
+
+      it('command title has an nls entry',
+        function () {
+          const json = packageJson as any;
+          expect(json.contributes).to.exist;
+          expect(json.contributes.commands).to.exist;
+          expect(json.contributes.commands).to.be.an.instanceOf(Array);
+          json.contributes.commands.forEach((command) => {
+            const title = command.title as string;
+            const nlsEntry = title.replace(/%/g, '');
+            expect(title).to.exist;
+            expect(title).to.be.a('string');
+            expect(nls[nlsEntry]).to.exist;
+          });
+        });
+
+      it('configuration title has an nls entry',
+        function () {
+          const json = packageJson as any;
+          expect(json.contributes).to.exist;
+          expect(json.contributes.configuration).to.exist;
+          const title = json.contributes.configuration.title as string;
+          const nlsEntry = title.replace(/%/g, '');
+          expect(title).to.exist;
+          expect(title).to.be.a('string');
+          expect(nls[nlsEntry]).to.exist;
+        });
+
+      it('configuration description has an nls entry',
+        function () {
+          const json = packageJson as any;
+          expect(json.contributes).to.exist;
+          expect(json.contributes.configuration).to.exist;
+          const properties = json.contributes.configuration.properties;
+          expect(properties).to.exist;
+          expect(properties).to.be.an.instanceOf(Object);
+          for (const prop in properties) {
+            if (!Reflect.has(properties, prop)) {
+              continue;
+            }
+            const description = properties[prop].description as string;
+            const nlsEntry = description.replace(/%/g, '');
+            expect(description).to.exist;
+            expect(description).to.be.a('string');
+            expect(nls[nlsEntry]).to.exist;
+          }
+        });
+
+    });
+
+    context('nls', function () {
+
+      it('match nls template',
+        function () {
+          for (const key in nls) {
+            if (Reflect.has(nls, key)) {
+              expect(nlsTemplate[key]).to.exist;
+            }
+          }
+        });
+
+      it('template match nls',
+        function () {
+          for (const key in nlsTemplate) {
+            if (Reflect.has(nlsTemplate, key)) {
+              expect(nls[key]).to.exist;
+            }
+          }
+        });
 
     });
 
