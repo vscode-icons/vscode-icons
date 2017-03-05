@@ -105,7 +105,7 @@ describe('FolderExtensions: merging configuration documents', function () {
       expect(json.iconDefinitions['_fd_newExt']).not.to.exist;
     });
 
-    it('existing extensions are removed from the original Extension', function () {
+    it('existing extensions are removed from the original extension', function () {
       const custom: IFolderCollection = {
         default: null,
         supported: [

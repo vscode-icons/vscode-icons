@@ -42,51 +42,53 @@
     ],
     "main": "./out/src/",
     "contributes": {
-        "iconThemes": [
-            {
-                "id": "vscode-icons",
-                "label": "VSCode Icons",
-                "path": "out/src/icons.json"
-            }
-        ],
-        "commands": [
-            {
-                "command": "extension.regenerateIcons",
+        "iconThemes": [{
+            "id": "vscode-icons",
+            "label": "VSCode Icons",
+            "path": "out/src/icons.json"
+        }],
+        "commands": [{
+                "command": "vscode-icons.regenerateIcons",
                 "title": "%command.regenerateIcons.title%",
                 "category": "Icons"
             },
             {
-                "command": "extension.ngPreset",
+                "command": "vscode-icons.ngPreset",
                 "title": "%command.ngPreset.title%",
                 "category": "Icons"
             },
             {
-                "command": "extension.jsPreset",
+                "command": "vscode-icons.jsPreset",
                 "title": "%command.jsPreset.title%",
                 "category": "Icons"
             },
             {
-                "command": "extension.tsPreset",
+                "command": "vscode-icons.tsPreset",
                 "title": "%command.tsPreset.title%",
                 "category": "Icons"
             },
             {
-                "command": "extension.jsonPreset",
+                "command": "vscode-icons.jsonPreset",
                 "title": "%command.jsonPreset.title%",
                 "category": "Icons"
             },
             {
-                "command": "extension.hideFoldersPreset",
+                "command": "vscode-icons.hideFoldersPreset",
                 "title": "%command.hideFoldersPreset.title%",
                 "category": "Icons"
             },
             {
-                "command": "extension.restoreIcons",
+                "command": "vscode-icons.foldersAllDefaultIconPreset",
+                "title": "%command.foldersAllDefaultIconPreset.title%",
+                "category": "Icons"
+            },
+            {
+                "command": "vscode-icons.restoreIcons",
                 "title": "%command.restoreIcons.title%",
                 "category": "Icons"
             },
             {
-                "command": "extension.resetProjectDetectionDefaults",
+                "command": "vscode-icons.resetProjectDetectionDefaults",
                 "title": "%command.resetProjectDetectionDefaults.title%",
                 "category": "Icons"
             }
@@ -133,6 +135,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "%configuration.presets.hideFolders.description%"
+                },
+                "vsicons.presets.foldersAllDefaultIcon": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "configuration.presets.foldersAllDefaultIcon.description"
                 },
                 "vsicons.associations.files": {
                     "type": "array",

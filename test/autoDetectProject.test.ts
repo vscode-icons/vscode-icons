@@ -34,6 +34,7 @@ describe('AutoDetectProject: tests', function () {
             tsOfficial: false,
             jsonOfficial: false,
             hideFolders: false,
+            foldersAllDefaultIcon: false,
           },
           associations: {
             files: [],

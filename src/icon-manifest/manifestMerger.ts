@@ -124,7 +124,21 @@ export function toggleHideFoldersPreset(
   return collection;
 }
 
-// HACK: generics an union types don't work very well :(
+export function toggleFoldersAllDefaultIconPreset(
+  disable: boolean,
+  folders: IFolderCollection): IFolderCollection {
+  const folderIcons = folders.supported.filter(x => !x.disabled).map(x => x.icon);
+  const collection = togglePreset<IFolderCollection>(disable, folderIcons, folders);
+  if (folders.default.folder) {
+   collection.default.folder.disabled = false;
+  }
+  if (folders.default.folder_light) {
+    collection.default.folder_light.disabled = false;
+  }
+  return collection;
+}
+
+// Note: generics and union types don't work very well :(
 // that's why we had to use IExtensionCollection<> instead of T
 function togglePreset<T extends IFileCollection | IFolderCollection>(
   disable: boolean,

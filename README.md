@@ -106,6 +106,7 @@ There are several different `presets`:
 - `vsicons.presets.tsOfficial` (false by default)
 - `vsicons.presets.jsonOfficial` (false by default)
 - `vsicons.presets.hideFolders` (false by default)
+- `vsicons.presets.foldersAllDefaultIcon` (false by default)
 
 These `presets` can be changed manually by using a `settings.json` file inside your project's `.vscode` folder or by changing `vscode user settings`. Take into account that the place where you set these presets, or for that matter, any configuration, will be very important. `User settings` are global so all your projects will be affected by them while `workspace's settings` are specific to the project and you will be able to switch presets by project. This can be interesting for the `angular` preset, for example.
 
@@ -116,10 +117,11 @@ These `presets` can also be automatically set by leveraging a new set of command
 - `Toggle Official TS Preset (User Level)`: This command will enable/disable the `Official TS icon`.
 - `Toggle Official JSON Preset (User Level)`: This command will enable/disable the `Official JSON icon`.
 - `Toggle Folder Icons Visibility (User Level)`: This command will enable/disable the `Visibility of the folder icons`.
+- `Toggle Specific Folder Icons (User Level)`: This command will enable/disable the `Specific folder icons`.
 
 Note that some of the `preset commands` will modify your `settings` at a different level. If you choose to modify them manually then you can also choose what `setting` are you going to use.
 
-It's also important to say that if you choose to make a manual modification you will have to execute the `Apply Icons Customization` command *(see below)*.
+**It's also important to say that if you choose to make a manual modification you will have to execute the `Apply Icons Customization` command *(see below)*.**
 
 The `Angular Preset` will affect all icons beginning with `ng_` so you'd better name your custom icons accordingly if you want it to work flawlessly. ;P
 
