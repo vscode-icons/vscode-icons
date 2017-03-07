@@ -166,11 +166,9 @@ export function cancel(
   callback?: Function): void {
   updatePreset(preset, value, initValue, global)
     .then(() => {
-      setTimeout(() => {
-        if (callback) {
-          callback();
-        }
-      }, 1000);
+      if (callback) {
+        callback();
+      }
     });
 }
 
