@@ -122,7 +122,7 @@ export const extensions: IFileCollection = {
     { icon: 'diff', extensions: [], languages: [languages.diff], format: FileFormat.svg },
     { icon: 'docker', extensions: ['.dockerignore', 'docker-compose.yml', 'docker-cloud.yml'], filename: true, languages: [languages.dockerfile], format: FileFormat.svg },
     { icon: 'docker2', extensions: ['.dockerignore', 'docker-compose.yml', 'docker-cloud.yml'], filename: true, languages: [languages.dockerfile], format: FileFormat.svg, disabled: true },
-    { icon: 'drone', extensions: ['.drone.yml'], light: true, filename: true, format: FileFormat.svg },
+    { icon: 'drone', extensions: ['.drone.yml', '.drone.yml.sig'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'editorconfig', extensions: ['.editorconfig'], filename: true, format: FileFormat.svg },
     { icon: 'ejs', extensions: ['ejs'], format: FileFormat.svg },
     { icon: 'elasticbeanstalk', extensions: [], format: FileFormat.svg },
