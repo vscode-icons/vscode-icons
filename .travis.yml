@@ -1,5 +1,11 @@
 language: node_js
-node_js: "6"
+os:
+  - linux
+  - osx
+node_js:
+  - "node"
+  - "6"
+cache: yarn
 script: npm run build
-# See this if we need to test the extension via vscode: 
+# See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines
