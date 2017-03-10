@@ -1,18 +1,23 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { IVSIcons, IVSCodeUri, IProjectDetectionResult, LangResourceKeys } from '../models';
+import * as model from '../models';
 import { extensionSettings } from '../settings';
 import { parseJSON } from '../utils';
 import { LanguageResourceManager } from './../i18n';
 
-export function detectProject(findFiles: Function, config: IVSIcons): PromiseLike<IVSCodeUri[]> {
+export function detectProject(
+  findFiles: (include: string,
+    exclude: string,
+    maxResults?: number,
+    token?: model.IVSCodeCancellationToken) => Thenable<model.IVSCodeUri[]>,
+  config: model.IVSIcons): PromiseLike<model.IVSCodeUri[]> {
   if (config.projectDetection.disableDetect) {
-    return Promise.resolve([]) as PromiseLike<IVSCodeUri[]>;
+    return Promise.resolve([]) as PromiseLike<model.IVSCodeUri[]>;
   }
 
   return findFiles('**/package.json', '**/node_modules/**')
     .then((results) => {
-      return results && results.length ? results as IVSCodeUri[] : [];
+      return results && results.length ? results as model.IVSCodeUri[] : [];
     },
     (rej) => {
       return [rej];
@@ -23,7 +28,7 @@ export function checkForAngularProject(
   angularPreset: boolean,
   ngIconsDisabled: boolean,
   isNgProject: boolean,
-  i18nManager: LanguageResourceManager): IProjectDetectionResult {
+  i18nManager: LanguageResourceManager): model.IProjectDetectionResult {
 
   // We need to mandatory check the following:
   // 1. The 'preset'
@@ -34,8 +39,8 @@ export function checkForAngularProject(
 
   if (enableIcons || disableIcons) {
     const message = enableIcons
-      ? i18nManager.getMessage(LangResourceKeys.ngDetected)
-      : i18nManager.getMessage(LangResourceKeys.nonNgDetected);
+      ? i18nManager.getMessage(model.LangResourceKeys.ngDetected)
+      : i18nManager.getMessage(model.LangResourceKeys.nonNgDetected);
     return { apply: true, message, value: enableIcons || !disableIcons };
   }
 
@@ -75,12 +80,26 @@ export function applyDetection(
   initValue: boolean,
   defaultValue: boolean,
   autoReload: boolean,
-  updatePreset: Function,
-  applyCustomization: Function,
-  showCustomizationMessage: Function,
-  reload: Function,
-  cancel: Function,
-  handleVSCodeDir: Function): Thenable<void> {
+  updatePreset: (
+    preset: string,
+    newValue: boolean,
+    initValue: boolean,
+    global: boolean) => Thenable<void>,
+  applyCustomization: () => void,
+  showCustomizationMessage: (
+    message: string,
+    items: model.IVSCodeMessageItem[],
+    callback?: () => void,
+    cancel?: (...args: any[]) => void,
+    ...args: any[]) => void,
+  reload: () => void,
+  cancel: (
+    preset: string,
+    value: boolean,
+    initValue: boolean,
+    global: boolean,
+    callback?: () => void) => void,
+  handleVSCodeDir: () => void): Thenable<void> {
   return updatePreset(presetText, value, defaultValue, false)
     .then(() => {
       // Add a delay in order for vscode to persist the toggle of the preset
@@ -94,9 +113,9 @@ export function applyDetection(
 
       showCustomizationMessage(
         message,
-        [{ title: i18nManager.getMessage(LangResourceKeys.reload) },
-        { title: i18nManager.getMessage(LangResourceKeys.autoReload) },
-        { title: i18nManager.getMessage(LangResourceKeys.disableDetect) }],
+        [{ title: i18nManager.getMessage(model.LangResourceKeys.reload) },
+        { title: i18nManager.getMessage(model.LangResourceKeys.autoReload) },
+        { title: i18nManager.getMessage(model.LangResourceKeys.disableDetect) }],
         applyCustomization, cancel, presetText, !value, initValue, false, handleVSCodeDir);
     });
 }
