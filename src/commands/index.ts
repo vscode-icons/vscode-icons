@@ -204,14 +204,14 @@ function generateManifest(
       ['json_official'], ['json']);
   }
   if (customFolders) {
-    workingCustomFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);
     workingCustomFolders = iconManifest.toggleFoldersAllDefaultIconPreset(
       presets.foldersAllDefaultIcon, workingCustomFolders);
+    workingCustomFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);
   }
   // presets affecting default icons
   const workingFiles = iconManifest.toggleAngularPreset(!presets.angular, files);
-  let workingFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, folders);
-  workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(presets.foldersAllDefaultIcon, workingFolders);
+  let workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(presets.foldersAllDefaultIcon, folders);
+  workingFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingFolders);
 
   const json = iconManifest.mergeConfig(
     workingCustomFiles,
