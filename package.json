@@ -42,12 +42,15 @@
     ],
     "main": "./out/src/",
     "contributes": {
-        "iconThemes": [{
-            "id": "vscode-icons",
-            "label": "VSCode Icons",
-            "path": "out/src/icons.json"
-        }],
-        "commands": [{
+        "iconThemes": [
+            {
+                "id": "vscode-icons",
+                "label": "VSCode Icons",
+                "path": "out/src/icons.json"
+            }
+        ],
+        "commands": [
+            {
                 "command": "vscode-icons.regenerateIcons",
                 "title": "%command.regenerateIcons.title%",
                 "category": "Icons"
@@ -180,30 +183,30 @@
         "example": "node ./out/src/example/example.js ",
         "pretest": "npm run compile",
         "test": "mocha ./out/test --recursive",
-        "lint": "tslint 'src/**/*.ts' 'test/**/*.ts'",
+        "lint": "tslint --project tsconfig.json",
         "test:vs": "node ./node_modules/vscode/bin/test",
         "vscode:prepublish": "rimraf ./out && npm run build",
-        "compile:w": "rimraf ./out && tsc -watch -p ./",
-        "compile": "rimraf ./out && tsc -p ./",
+        "compile:w": "rimraf ./out && tsc -w",
+        "compile": "rimraf ./out && tsc",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "analysis": "bithound check git@github.com:vscode-icons/vscode-icons.git"
     },
     "devDependencies": {
-        "@types/chai": "^3.4.34",
-        "@types/chai-as-promised": "^0.0.29",
-        "@types/lodash": "^4.14.52",
+        "@types/chai": "^3.4.35",
+        "@types/chai-as-promised": "^0.0.30",
+        "@types/lodash": "^4.14.55",
         "@types/mocha": "^2.2.39",
-        "@types/node": "^7.0.5",
+        "@types/node": "^7.0.8",
         "@types/sinon": "^1.16.35",
         "bithound": "1.7.0",
         "chai": "^3.5.0",
         "chai-as-promised": "^6.0.0",
         "mocha": "^3.2.0",
-        "rimraf": "^2.5.4",
+        "rimraf": "^2.6.1",
         "sinon": "^1.17.7",
-        "tslint": "^4.4.2",
-        "typescript": "^2.1.6",
-        "vscode": "^1.0.3"
+        "tslint": "^4.5.1",
+        "typescript": "^2.2.1",
+        "vscode": "^1.1.0"
     },
     "dependencies": {
         "lodash": "^4.17.4",
