@@ -101,9 +101,34 @@ describe('FileExtensions: merging configuration documents', function () {
       expect(json.iconDefinitions['_f_newExt']).not.to.exist;
     });
 
-    context('existing extensions ', function () {
+    context('existing extensions', function () {
 
-      it('are removed from the original Extension', function () {
+      it('of second set are getting enabled', function () {
+        const custom: IFileCollection = {
+          default: null,
+          supported: [
+            { icon: 'ng_component_ts2', extensions: ['component.ts'], format: 'svg' },
+            { icon: 'ng_component_js2', extensions: ['component.js'], format: 'svg' },
+            { icon: 'ng_smart_component_ts2', extensions: ['page.ts', 'container.ts'], format: 'svg' },
+            { icon: 'ng_smart_component_js2', extensions: ['page.js', 'container.js'], format: 'svg' },
+            { icon: 'ng_directive_ts2', extensions: ['directive.ts'], format: 'svg' },
+            { icon: 'ng_directive_js2', extensions: ['directive.js'], format: 'svg' },
+            { icon: 'ng_pipe_ts2', extensions: ['pipe.ts'], format: 'svg' },
+            { icon: 'ng_pipe_js2', extensions: ['pipe.js'], format: 'svg' },
+            { icon: 'ng_service_ts2', extensions: ['service.ts'], format: 'svg' },
+            { icon: 'ng_service_js2', extensions: ['service.js'], format: 'svg' },
+            { icon: 'ng_module_ts2', extensions: ['module.ts'], format: 'svg' },
+            { icon: 'ng_module_js2', extensions: ['module.js'], format: 'svg' },
+            { icon: 'ng_routing_ts2', extensions: ['routing.ts'], format: 'svg' },
+            { icon: 'ng_routing_js2', extensions: ['routing.js'], format: 'svg' },
+          ],
+        };
+        const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
+        const ngGroup = Object.keys(json.iconDefinitions).filter(x => x.startsWith('_f_ng_') && x.endsWith('2'));
+        expect(ngGroup.length).equals(14);
+      });
+
+      it('are removed from the original extension', function () {
         const custom: IFileCollection = {
           default: null,
           supported: [

@@ -102,12 +102,9 @@ export function applyDetection(
   handleVSCodeDir: () => void): Thenable<void> {
   return updatePreset(presetText, value, defaultValue, false)
     .then(() => {
-      // Add a delay in order for vscode to persist the toggle of the preset
       if (autoReload) {
-        setTimeout(() => {
-          applyCustomization();
-          reload();
-        }, 1000);
+        applyCustomization();
+        reload();
         return;
       }
 
