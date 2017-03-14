@@ -124,7 +124,7 @@ export function updatePreset(
 export function showCustomizationMessage(
   message: string,
   items: vscode.MessageItem[],
-  callback?: Function,
+  callback?: () => void,
   cancel?: (...args: any[]) => void,
   ...args: any[]): void {
 
@@ -163,7 +163,7 @@ export function cancel(
   value: boolean,
   initValue: boolean,
   global: boolean = true,
-  callback?: Function): void {
+  callback?: () => void): void {
   updatePreset(preset, value, initValue, global)
     .then(() => {
       setTimeout(() => {

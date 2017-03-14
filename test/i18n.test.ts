@@ -155,11 +155,10 @@ describe('i18n: tests', function () {
 
       it('command title has an nls entry',
         function () {
-          const json = packageJson as any;
-          expect(json.contributes).to.exist;
-          expect(json.contributes.commands).to.exist;
-          expect(json.contributes.commands).to.be.an.instanceOf(Array);
-          json.contributes.commands.forEach((command) => {
+          expect(packageJson.contributes).to.exist;
+          expect(packageJson.contributes.commands).to.exist;
+          expect(packageJson.contributes.commands).to.be.an.instanceOf(Array);
+          packageJson.contributes.commands.forEach((command) => {
             const title = command.title as string;
             const nlsEntry = title.replace(/%/g, '');
             expect(title).to.exist;
@@ -170,10 +169,9 @@ describe('i18n: tests', function () {
 
       it('configuration title has an nls entry',
         function () {
-          const json = packageJson as any;
-          expect(json.contributes).to.exist;
-          expect(json.contributes.configuration).to.exist;
-          const title = json.contributes.configuration.title as string;
+          expect(packageJson.contributes).to.exist;
+          expect(packageJson.contributes.configuration).to.exist;
+          const title = packageJson.contributes.configuration.title as string;
           const nlsEntry = title.replace(/%/g, '');
           expect(title).to.exist;
           expect(title).to.be.a('string');
@@ -182,10 +180,9 @@ describe('i18n: tests', function () {
 
       it('configuration description has an nls entry',
         function () {
-          const json = packageJson as any;
-          expect(json.contributes).to.exist;
-          expect(json.contributes.configuration).to.exist;
-          const properties = json.contributes.configuration.properties;
+          expect(packageJson.contributes).to.exist;
+          expect(packageJson.contributes.configuration).to.exist;
+          const properties = packageJson.contributes.configuration.properties;
           expect(properties).to.exist;
           expect(properties).to.be.an.instanceOf(Object);
           for (const prop in properties) {
