@@ -54,11 +54,10 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
   }
 
   const presetText = 'angular';
-  const values = getConfig().inspect(`vsicons.presets.${presetText}`);
-  const defaultValue = values.defaultValue as boolean;
-  const initValue = values.workspaceValue as boolean;
+  const { defaultValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${presetText}`);
 
-  init.applyDetection(i18nManager, toggle.message, presetText, toggle.value, initValue, defaultValue,
+  init.applyDetection(i18nManager, toggle.message, presetText, toggle.value,
+    workspaceValue as boolean, defaultValue as boolean,
     config.projectDetection.autoReload, commands.updatePreset,
     commands.applyCustomization, commands.showCustomizationMessage,
     commands.reload, commands.cancel, handleVSCodeDir);

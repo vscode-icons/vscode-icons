@@ -9,13 +9,44 @@ describe('Presets: merging configuration documents', function () {
 
   context('ensures', function () {
 
-    it('angular extensions are disabled', function () {
+    it('all angular extensions get disabled', function () {
       const result = iconManifest.toggleAngularPreset(true, fileExtensions);
-      const nggroup = result.supported.filter(x => x.icon.startsWith('ng_'));
-      expect(nggroup.length).equals(14);
-      nggroup.forEach(x => {
-        expect(x.disabled).to.be.true;
-      });
+      const nggroup = result.supported.filter(x => x.icon.startsWith('ng_') && x.disabled);
+      expect(nggroup.length).equals(34);
+    });
+
+    it('only first set of angular extensions get enabled', function () {
+      const result = iconManifest.toggleAngularPreset(false, fileExtensions);
+      const nggroup = result.supported.filter(x => x.icon.startsWith('ng_') && !x.disabled);
+      expect(nggroup.length).equals(18);
+    });
+
+    it('only second set of angular extensions get enabled', function () {
+      const custom: IFileCollection = {
+        default: null,
+        supported: [
+          { icon: 'ng_component_ts2', extensions: ['component.ts'], format: 'svg' },
+          { icon: 'ng_component_js2', extensions: ['component.js'], format: 'svg' },
+          { icon: 'ng_smart_component_ts2', extensions: ['page.ts', 'container.ts'], format: 'svg' },
+          { icon: 'ng_smart_component_js2', extensions: ['page.js', 'container.js'], format: 'svg' },
+          { icon: 'ng_directive_ts2', extensions: ['directive.ts'], format: 'svg' },
+          { icon: 'ng_directive_js2', extensions: ['directive.js'], format: 'svg' },
+          { icon: 'ng_pipe_ts2', extensions: ['pipe.ts'], format: 'svg' },
+          { icon: 'ng_pipe_js2', extensions: ['pipe.js'], format: 'svg' },
+          { icon: 'ng_service_ts2', extensions: ['service.ts'], format: 'svg' },
+          { icon: 'ng_service_js2', extensions: ['service.js'], format: 'svg' },
+          { icon: 'ng_module_ts2', extensions: ['module.ts'], format: 'svg' },
+          { icon: 'ng_module_js2', extensions: ['module.js'], format: 'svg' },
+          { icon: 'ng_routing_ts2', extensions: ['routing.ts'], format: 'svg' },
+          { icon: 'ng_routing_js2', extensions: ['routing.js'], format: 'svg' },
+          { icon: 'ng_routing_ts2', extensions: ['app-routing.module.ts'], filename: true, format: 'svg' },
+          { icon: 'ng_routing_js2', extensions: ['app-routing.module.js'], filename: true, format: 'svg' },
+        ],
+      };
+
+      const result = iconManifest.toggleAngularPreset(false, custom);
+      const ngGroup = result.supported.filter(x => x.icon.startsWith('ng_') && !x.disabled && x.icon.endsWith('2'));
+      expect(ngGroup.length).equals(16);
     });
 
     it('all angular extensions are disabled even if duplicity is present', function () {
@@ -30,12 +61,8 @@ describe('Presets: merging configuration documents', function () {
       };
 
       const result = iconManifest.toggleAngularPreset(true, custom);
-      const ngGroup = result.supported
-        .filter(x => x.icon.startsWith('ng_'));
+      const ngGroup = result.supported.filter(x => x.icon.startsWith('ng_') && x.disabled);
       expect(ngGroup.length).equals(4);
-      ngGroup.forEach(x => {
-        expect(x.disabled).to.be.true;
-      });
     });
 
     it('js official extension is enabled', function () {
