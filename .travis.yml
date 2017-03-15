@@ -3,9 +3,11 @@ os:
   - linux
   - osx
 node_js:
-  - "node"
-  - "6"
+  - node
+  - 6
 cache: yarn
 script: npm run build
+after_success:
+  - codecov
 # See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines

@@ -6,6 +6,7 @@
 [![Build Status](https://travis-ci.org/vscode-icons/vscode-icons.svg?branch=master)](https://travis-ci.org/vscode-icons/vscode-icons)
 [![Dependencies Status](https://david-dm.org/vscode-icons/vscode-icons/status.svg)](https://david-dm.org/vscode-icons/vscode-icons)
 [![DevDependencies Status](https://david-dm.org/vscode-icons/vscode-icons/dev-status.svg)](https://david-dm.org/vscode-icons/vscode-icons?type=dev)
+[![codecov](https://codecov.io/gh/vscode-icons/vscode-icons/branch/master/graph/badge.svg)](https://codecov.io/gh/vscode-icons/vscode-icons)
 [![Known Vulnerabilities](https://snyk.io/test/github/vscode-icons/vscode-icons/badge.svg)](https://snyk.io/test/github/vscode-icons/vscode-icons)
 
 [![bitHound Overall Score](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/score.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons)
