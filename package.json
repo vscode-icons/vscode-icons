@@ -19,7 +19,8 @@
         "email": "roberto.huertas@outlook.com"
     },
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.6.0",
+        "node": ">6.0.0"
     },
     "categories": [
         "Other",
@@ -178,30 +179,34 @@
         }
     },
     "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
         "prebuild": "npm run lint && npm run test",
         "build": "node ./out/src/icon-manifest/build.js",
-        "example": "node ./out/src/example/example.js ",
-        "pretest": "npm run compile",
-        "test": "mocha ./out/test --recursive",
-        "lint": "tslint --project tsconfig.json",
+        "pretest": "rimraf ./.nyc_output ./coverage && npm run compile",
+        "test": "nyc -c -x '' mocha ./out/test --recursive",
+        "posttest": "nyc report -r lcov",
         "test:vs": "node ./node_modules/vscode/bin/test",
-        "vscode:prepublish": "rimraf ./out && npm run build",
-        "compile:w": "rimraf ./out && tsc -w",
-        "compile": "rimraf ./out && tsc",
-        "postinstall": "node ./node_modules/vscode/bin/install",
+        "vscode:prepublish": "npm run precompile && npm run build",
+        "precompile": "rimraf ./out",
+        "compile": "tsc",
+        "compile:w": "npm run compile -- -w",
+        "lint": "tslint --project tsconfig.json",
+        "example": "node ./out/src/example/example.js ",
         "analysis": "bithound check git@github.com:vscode-icons/vscode-icons.git"
     },
     "devDependencies": {
         "@types/chai": "^3.4.35",
         "@types/chai-as-promised": "^0.0.30",
         "@types/lodash": "^4.14.55",
-        "@types/mocha": "^2.2.39",
+        "@types/mocha": "^2.2.40",
         "@types/node": "^7.0.8",
         "@types/sinon": "^1.16.35",
-        "bithound": "1.7.0",
+        "bithound": "^1.7.0",
         "chai": "^3.5.0",
         "chai-as-promised": "^6.0.0",
+        "codecov": "^1.0.1",
         "mocha": "^3.2.0",
+        "nyc": "^10.1.2",
         "rimraf": "^2.6.1",
         "sinon": "^1.17.7",
         "tslint": "^4.5.1",
