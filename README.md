@@ -14,6 +14,12 @@
 [![bitHound Dev Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/devDependencies.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/code.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons)
 
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
+[![Issue Stats](http://issuestats.com/github/vscode-icons/vscode-icons/badge/issue?style=flat)](http://issuestats.com/github/vscode-icons/vscode-icons)
+[![Issue Stats](http://issuestats.com/github/vscode-icons/vscode-icons/badge/pr?style=flat)](http://issuestats.com/github/vscode-icons/vscode-icons)
+
+
 Bring icons to your VS Code.
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
@@ -47,7 +53,7 @@ This was a huge step to allow the users to fully customize how the icons looked 
 
 `Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
 
-On the other hand, [@JimiC](https;//github.com/JimiC) continues his massive `svg` icon conversion and keeps on providing new quality icons. He's also the creator of the new `Angular project auto-detector` feature released with **v7.1.0**. I'm sure you will like it!
+On the other hand, [@JimiC](https://github.com/JimiC) continues his massive `svg` icon conversion and keeps on providing new quality icons. He's also the creator of the new `Angular project auto-detector` feature released with **v7.1.0**. I'm sure you will like it!
 
 **Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
 
