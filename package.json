@@ -2,7 +2,7 @@
     "name": "vscode-icons",
     "displayName": "vscode-icons",
     "description": "Icons for Visual Studio Code",
-    "version": "7.3.0",
+    "version": "7.4.0",
     "publisher": "robertohuertasm",
     "license": "MIT",
     "author": {
@@ -10,6 +10,17 @@
         "name": "Roberto Huertas",
         "url": "http://codecoding.com"
     },
+    "contributors": [
+        {
+            "email": "jimikar@gmail.com",
+            "name": "Jimi (Dimitris) Charalampidis"
+        },
+        {
+            "email": "jenshausdorf@gmail.com",
+            "name": "Jens Hausdorf",
+            "url": "http://www.jens-hausdorf.de"
+        }
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/vscode-icons/vscode-icons"
@@ -186,7 +197,7 @@
         "test": "nyc -c -x '' mocha ./out/test --recursive",
         "posttest": "nyc report -r lcov",
         "test:vs": "node ./node_modules/vscode/bin/test",
-        "vscode:prepublish": "npm run precompile && npm run build",
+        "vscode:prepublish": "npm run build",
         "precompile": "rimraf ./out",
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",

@@ -47,13 +47,16 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 ---
 
 ## State of the extension
-**Release 6.0.0 introduced the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.** 
+
+With **release 7.4.0**, as a result of hearing you out, we've revised how the `project detection` works. Now `Angular` icons are disabled by default. So if you want to enable them you will have to actively set the preset to true or rely on the `project detection` functionality.
+
+[@JimiC](https://github.com/JimiC) has improved and further optimized this functionality specifically for this release. But he also has provided the extension with the ability to support multi-language! Take a look at the translation's section if you want to know more or contribute.
+
+We still support the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code. 
 
 This was a huge step to allow the users to fully customize how the icons looked like and how they could be associated to any extension at will.
 
-`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
-
-On the other hand, [@JimiC](https://github.com/JimiC) continues his massive `svg` icon conversion and keeps on providing new quality icons. He's also the creator of the new `Angular project auto-detector` feature released with **v7.1.0**. I'm sure you will like it!
+`Custom Icon association` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
 
 **Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
 
