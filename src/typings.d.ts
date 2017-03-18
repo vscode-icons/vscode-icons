@@ -1,3 +1,1 @@
-declare module "*.json" {
-  export const json: any;
-}
+declare module "*.json";

@@ -1,7 +1,10 @@
 node_modules
 out
 examples
-npm-debug.*
-.vscode-test/**
+coverage
+.vscode-test
+.nyc_output
 .DS_Store
+npm-debug.*
 *.vsix
+*.lcov

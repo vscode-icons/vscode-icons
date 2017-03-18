@@ -29,7 +29,7 @@ describe('AutoDetectProject: tests', function () {
             disableDetect: false,
           },
           presets: {
-            angular: true,
+            angular: false,
             jsOfficial: false,
             tsOfficial: false,
             jsonOfficial: false,
@@ -183,8 +183,6 @@ describe('AutoDetectProject: tests', function () {
 
       it('to auto restart, applies the changes and restarts',
         function () {
-          const clock = sinon.useFakeTimers();
-
           const autoReload = true;
           const updatePreset = sinon.stub().returns(Promise.resolve());
           const applyCustomization = sinon.spy();
@@ -196,19 +194,9 @@ describe('AutoDetectProject: tests', function () {
           return applyDetection(undefined, undefined, undefined, undefined, undefined, undefined, autoReload,
             updatePreset, applyCustomization, showCustomizationMessage, reload, cancel, handleVSCodeDir)
             .then(() => {
-              // No functions should have been called before 1s
-              clock.tick(999);
-              expect(applyCustomization.called).to.be.false;
-              expect(reload.called).to.be.false;
-              expect(showCustomizationMessage.called).to.be.false;
-
-              // Only 'applyCustomization' and 'reload' functions should have been called on 1s
-              clock.tick(1);
               expect(applyCustomization.called).to.be.true;
               expect(reload.called).to.be.true;
               expect(showCustomizationMessage.called).to.be.false;
-
-              clock.restore();
             });
         });
 

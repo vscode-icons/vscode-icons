@@ -369,17 +369,16 @@ export class IconGenerator implements IIconGenerator {
   }
 
   private updatePackageJson(newIconThemesPath) {
-    const packJson = packageJson as any;
-    const oldIconThemesPath = packJson.contributes.iconThemes[0].path;
+    const oldIconThemesPath = packageJson.contributes.iconThemes[0].path;
 
     if (!oldIconThemesPath || (oldIconThemesPath === newIconThemesPath)) {
       return;
     }
 
-    packJson.contributes.iconThemes[0].path = newIconThemesPath;
+    packageJson.contributes.iconThemes[0].path = newIconThemesPath;
 
     try {
-      fs.writeFileSync('./package.json', JSON.stringify(packJson, null, 2));
+      fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
       // tslint:disable-next-line no-console
       console.log('package.json updated');
     } catch (err) {

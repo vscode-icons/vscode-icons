@@ -97,7 +97,9 @@ function mergeSupported(
 export function toggleAngularPreset(
   disable: boolean,
   files: IFileCollection): IFileCollection {
-  const icons = files.supported.filter(x => x.icon.startsWith('ng_') && !x.disabled).map(x => x.icon);
+  const icons = files.supported
+    .filter(x => x.icon.startsWith('ng_') && (x.icon.endsWith('_js') || x.icon.endsWith('_ts')))
+    .map(x => x.icon);
   return togglePreset(disable, icons, files);
 }
 
@@ -130,7 +132,7 @@ export function toggleFoldersAllDefaultIconPreset(
   const folderIcons = folders.supported.filter(x => !x.disabled).map(x => x.icon);
   const collection = togglePreset<IFolderCollection>(disable, folderIcons, folders);
   if (folders.default.folder) {
-   collection.default.folder.disabled = false;
+    collection.default.folder.disabled = false;
   }
   if (folders.default.folder_light) {
     collection.default.folder_light.disabled = false;
