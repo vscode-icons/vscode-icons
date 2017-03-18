@@ -10,6 +10,17 @@
         "name": "Roberto Huertas",
         "url": "http://codecoding.com"
     },
+    "contributors": [
+        {
+            "email": "jimikar@gmail.com",
+            "name": "Jimi (Dimitris) Charalampidis"
+        },
+        {
+            "email": "jenshausdorf@gmail.com",
+            "name": "Jens Hausdorf",
+            "url": "http://www.jens-hausdorf.de"
+        }
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/vscode-icons/vscode-icons"
