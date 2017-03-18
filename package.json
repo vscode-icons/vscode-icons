@@ -197,7 +197,7 @@
         "test": "nyc -c -x '' mocha ./out/test --recursive",
         "posttest": "nyc report -r lcov",
         "test:vs": "node ./node_modules/vscode/bin/test",
-        "vscode:prepublish": "npm run precompile && npm run build",
+        "vscode:prepublish": "npm run build",
         "precompile": "rimraf ./out",
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
