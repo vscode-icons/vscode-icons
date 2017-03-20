@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as semver from 'semver';
-import { vscodePath as getAppPath } from '../utils';
+import { vscodePath as getAppPath, parseJSON } from '../utils';
 import { ISettings, IState, IVSCode, ISettingsManager, ExtensionStatus } from '../models';
 import { extensionSettings } from './extensionSettings';
 
@@ -10,7 +10,7 @@ export class SettingsManager implements ISettingsManager {
 
   constructor(private vscode: IVSCode) {
     this.getSettings();
-   }
+  }
 
   public getSettings(): ISettings {
     if (this.settings) { return this.settings; };
@@ -38,28 +38,27 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public getState(): IState {
-    try {
-      const state = fs.readFileSync(this.settings.settingsPath, 'utf8');
-      return JSON.parse(state) as IState;
-    } catch (error) {
-      return {
+    const state = fs.readFileSync(this.settings.settingsPath, 'utf8');
+    const json = parseJSON(state) as IState;
+    return json ||
+      {
         version: '0',
         status: ExtensionStatus.notInstalled,
         welcomeShown: false,
       };
-    }
   }
 
   public setState(state: IState): void {
     fs.writeFileSync(this.settings.settingsPath, JSON.stringify(state));
   }
 
-  public setStatus(sts: ExtensionStatus): void {
+  public updateStatus(sts: ExtensionStatus): IState {
     const state = this.getState();
     state.version = extensionSettings.version;
     state.status = sts;
     state.welcomeShown = true;
     this.setState(state);
+    return state;
   }
 
   public deleteState() {
@@ -67,7 +66,6 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public isNewVersion(): boolean {
-    const state = this.getState();
-    return state.version !== this.settings.extensionSettings.version;
+    return semver.lt(this.getState().version, this.settings.extensionSettings.version);
   }
 }

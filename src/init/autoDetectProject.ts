@@ -16,12 +16,7 @@ export function detectProject(
   }
 
   return findFiles('**/package.json', '**/node_modules/**')
-    .then((results) => {
-      return results && results.length ? results as model.IVSCodeUri[] : [];
-    },
-    (rej) => {
-      return [rej];
-    });
+    .then((results) => results && results.length ? results as model.IVSCodeUri[] : [], (rej) => [rej]);
 }
 
 export function checkForAngularProject(
@@ -66,7 +61,9 @@ export function iconsDisabled(name: string): boolean {
 export function isProject(projectJson: any, name: string): boolean {
   switch (name) {
     case 'ng':
-      return (projectJson.dependencies && (projectJson.dependencies['@angular/core'] != null)) || false;
+      return (projectJson.dependencies && (projectJson.dependencies['@angular/core'] != null)) ||
+        (projectJson.devDependencies && (projectJson.devDependencies['@angular/core'] != null)) ||
+        false;
     default:
       return false;
   }

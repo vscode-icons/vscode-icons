@@ -6,7 +6,7 @@ export interface ISettingsManager {
   getSettings: () => ISettings;
   getState: () => IState;
   setState: (state: IState) => void;
-  setStatus: (sts: ExtensionStatus) => void;
+  updateStatus: (sts: ExtensionStatus) => void;
   deleteState: () => void;
   isNewVersion: () => boolean;
 }

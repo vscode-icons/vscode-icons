@@ -9,9 +9,7 @@ export class LanguageResourceManager {
     private language: string,
     private resourceCollection?: ILangResourceCollection |
       { [key: string]: { [key: string]: string | IOSSpecific; } }) {
-    if (!this.resourceCollection) {
-      this.resourceCollection = langResourceCollection;
-    }
+    this.resourceCollection = this.resourceCollection || langResourceCollection;
     this.messages = this.resourceCollection[this.language] || this.resourceCollection['en'];
   }
 
@@ -27,15 +25,16 @@ export class LanguageResourceManager {
 
       if (typeof key === "number") {
         if (Reflect.has(this.messages, stringifiedKey)) {
-          let message: string | IOSSpecific = this.messages[stringifiedKey];
           // If no message is found fallback to english message
-          if (!message) {
-            message = this.resourceCollection['en'][stringifiedKey];
-          }
+          let message: string | IOSSpecific =
+            this.messages[stringifiedKey] || langResourceCollection['en'][stringifiedKey];
+
           // If not a string then it's of type IOSSpecific
           if (typeof message !== 'string') {
             if (Reflect.has(message as IOSSpecific, process.platform)) {
               message = message[process.platform];
+            } else {
+              throw new Error(`Not Implemented: ${process.platform}`);
             }
           }
           msg += message as string;

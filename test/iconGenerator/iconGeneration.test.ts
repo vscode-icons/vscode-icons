@@ -11,7 +11,7 @@ import { extensionSettings as settings } from '../../src/settings';
 
 describe('IconGenerator: icon generation test', function () {
 
-  context('ensures', function () {
+  context('ensures that', function () {
 
     let emptyFileCollection: IFileCollection;
     let emptyFolderCollection: IFolderCollection;
@@ -21,16 +21,17 @@ describe('IconGenerator: icon generation test', function () {
       emptyFolderCollection = { default: { folder: { icon: 'folder', format: 'svg' } }, supported: [] };
     });
 
-    it('filename extension should not have a leading dot', function () {
-      files.supported
-        .filter(file => !file.filename && !file.disabled)
-        .forEach(file => {
-          file.extensions.forEach(extension => {
-            expect(extension.startsWith('.')).to.be.false;
+    it('filename extension should not have a leading dot',
+      function () {
+        files.supported
+          .filter(file => !file.filename && !file.disabled)
+          .forEach(file => {
+            file.extensions.forEach(extension => {
+              expect(extension.startsWith('.')).to.be.false;
+            });
           });
-        });
 
-    });
+      });
 
     context('default', function () {
 
@@ -44,20 +45,23 @@ describe('IconGenerator: icon generation test', function () {
         iconGenerator = null;
       });
 
-      it('file has an icon path', function () {
-        const schema = iconGenerator.generateJson(files, emptyFolderCollection);
-        expect(schema.iconDefinitions._file.iconPath).not.to.be.empty;
-      });
+      it('file has an icon path',
+        function () {
+          const schema = iconGenerator.generateJson(files, emptyFolderCollection);
+          expect(schema.iconDefinitions._file.iconPath).not.to.be.empty;
+        });
 
-      it('folder has an icon path', function () {
-        const schema = iconGenerator.generateJson(emptyFileCollection, folders);
-        expect(schema.iconDefinitions._folder.iconPath).not.to.be.empty;
-      });
+      it('folder has an icon path',
+        function () {
+          const schema = iconGenerator.generateJson(emptyFileCollection, folders);
+          expect(schema.iconDefinitions._folder.iconPath).not.to.be.empty;
+        });
 
-      it('folder has an open icon path', function () {
-        const schema = iconGenerator.generateJson(emptyFileCollection, folders);
-        expect(schema.iconDefinitions._folder_open.iconPath).not.to.be.equal('');
-      });
+      it('folder has an open icon path',
+        function () {
+          const schema = iconGenerator.generateJson(emptyFileCollection, folders);
+          expect(schema.iconDefinitions._folder_open.iconPath).not.to.be.equal('');
+        });
 
       context('if a default \'light\' icon is NOT defined', function () {
 
@@ -77,36 +81,39 @@ describe('IconGenerator: icon generation test', function () {
                 });
             });
 
-            it('has a definition', function () {
-              const schema = iconGenerator.generateJson(files, emptyFolderCollection);
-              files.supported
-                .filter(file => !file.disabled)
-                .forEach(file => {
-                  const definition = `${settings.manifestFilePrefix}${file.icon}`;
-                  expect(schema.iconDefinitions[definition]).exist;
-                });
-            });
+            it('has a definition',
+              function () {
+                const schema = iconGenerator.generateJson(files, emptyFolderCollection);
+                files.supported
+                  .filter(file => !file.disabled)
+                  .forEach(file => {
+                    const definition = `${settings.manifestFilePrefix}${file.icon}`;
+                    expect(schema.iconDefinitions[definition]).exist;
+                  });
+              });
 
-            it('has an icon path', function () {
-              const schema = iconGenerator.generateJson(files, emptyFolderCollection);
-              files.supported
-                .filter(file => !file.disabled)
-                .forEach(file => {
-                  const definition = `${settings.manifestFilePrefix}${file.icon}`;
-                  expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
-                });
-            });
+            it('has an icon path',
+              function () {
+                const schema = iconGenerator.generateJson(files, emptyFolderCollection);
+                files.supported
+                  .filter(file => !file.disabled)
+                  .forEach(file => {
+                    const definition = `${settings.manifestFilePrefix}${file.icon}`;
+                    expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
+                  });
+              });
 
-            it('that has a light theme version, has an associated icon file', function () {
-              files.supported
-                .filter(file => file.light)
-                .forEach(file => {
-                  const filename =
-                    `${settings.fileLightPrefix}${file.icon}${settings.iconSuffix}.${FileFormat[file.format]}`;
-                  const iconFilePath = path.join(iconsFolderPath, filename);
-                  expect(fs.existsSync(iconFilePath)).to.be.true;
-                });
-            });
+            it('that has a light theme version, has an associated icon file',
+              function () {
+                files.supported
+                  .filter(file => file.light)
+                  .forEach(file => {
+                    const filename =
+                      `${settings.fileLightPrefix}${file.icon}${settings.iconSuffix}.${FileFormat[file.format]}`;
+                    const iconFilePath = path.join(iconsFolderPath, filename);
+                    expect(fs.existsSync(iconFilePath)).to.be.true;
+                  });
+              });
 
             it('that has a light theme version, has a \'light\' definition',
               function () {
@@ -231,65 +238,72 @@ describe('IconGenerator: icon generation test', function () {
 
           context('folder', function () {
 
-            it('has an associated icon file', function () {
-              folders.supported
-                .forEach(folder => {
-                  const filename =
-                    `${settings.folderPrefix}${folder.icon}${settings.iconSuffix}.${FileFormat[folder.format]}`;
-                  const iconFilePath = path.join(iconsFolderPath, filename);
-                  expect(fs.existsSync(iconFilePath)).to.be.true;
-                });
-            });
+            it('has an associated icon file',
+              function () {
+                folders.supported
+                  .forEach(folder => {
+                    const filename =
+                      `${settings.folderPrefix}${folder.icon}${settings.iconSuffix}.${FileFormat[folder.format]}`;
+                    const iconFilePath = path.join(iconsFolderPath, filename);
+                    expect(fs.existsSync(iconFilePath)).to.be.true;
+                  });
+              });
 
-            it('has an associated opened icon file', function () {
-              folders.supported
-                .forEach(folder => {
-                  const filename =
-                    `${settings.folderPrefix}${folder.icon}_opened${settings.iconSuffix}.${FileFormat[folder.format]}`;
-                  const iconFilePath = path.join(iconsFolderPath, filename);
-                  expect(fs.existsSync(iconFilePath)).to.be.true;
-                });
-            });
+            it('has an associated opened icon file',
+              function () {
+                folders.supported
+                  .forEach(folder => {
+                    const filename =
+                      `${settings.folderPrefix}${folder.icon}_opened` +
+                      `${settings.iconSuffix}.${FileFormat[folder.format]}`;
+                    const iconFilePath = path.join(iconsFolderPath, filename);
+                    expect(fs.existsSync(iconFilePath)).to.be.true;
+                  });
+              });
 
-            it('has a definition', function () {
-              const schema = iconGenerator.generateJson(emptyFileCollection, folders);
-              folders.supported
-                .filter(folder => !folder.disabled)
-                .forEach(folder => {
-                  const definition = `${settings.manifestFolderPrefix}${folder.icon}`;
-                  expect(schema.iconDefinitions[definition]).exist;
-                });
-            });
+            it('has a definition',
+              function () {
+                const schema = iconGenerator.generateJson(emptyFileCollection, folders);
+                folders.supported
+                  .filter(folder => !folder.disabled)
+                  .forEach(folder => {
+                    const definition = `${settings.manifestFolderPrefix}${folder.icon}`;
+                    expect(schema.iconDefinitions[definition]).exist;
+                  });
+              });
 
-            it('has an open definition', function () {
-              const schema = iconGenerator.generateJson(emptyFileCollection, folders);
-              folders.supported
-                .filter(folder => !folder.disabled)
-                .forEach(folder => {
-                  const definition = `${settings.manifestFolderPrefix}${folder.icon}_open`;
-                  expect(schema.iconDefinitions[definition]).exist;
-                });
-            });
+            it('has an open definition',
+              function () {
+                const schema = iconGenerator.generateJson(emptyFileCollection, folders);
+                folders.supported
+                  .filter(folder => !folder.disabled)
+                  .forEach(folder => {
+                    const definition = `${settings.manifestFolderPrefix}${folder.icon}_open`;
+                    expect(schema.iconDefinitions[definition]).exist;
+                  });
+              });
 
-            it('has an icon path', function () {
-              const schema = iconGenerator.generateJson(emptyFileCollection, folders);
-              folders.supported
-                .filter(folder => !folder.disabled)
-                .forEach(folder => {
-                  const definition = `${settings.manifestFolderPrefix}${folder.icon}`;
-                  expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
-                });
-            });
+            it('has an icon path',
+              function () {
+                const schema = iconGenerator.generateJson(emptyFileCollection, folders);
+                folders.supported
+                  .filter(folder => !folder.disabled)
+                  .forEach(folder => {
+                    const definition = `${settings.manifestFolderPrefix}${folder.icon}`;
+                    expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
+                  });
+              });
 
-            it('has an open icon path', function () {
-              const schema = iconGenerator.generateJson(emptyFileCollection, folders);
-              folders.supported
-                .filter(folder => !folder.disabled)
-                .forEach(folder => {
-                  const definition = `${settings.manifestFolderPrefix}${folder.icon}_open`;
-                  expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
-                });
-            });
+            it('has an open icon path',
+              function () {
+                const schema = iconGenerator.generateJson(emptyFileCollection, folders);
+                folders.supported
+                  .filter(folder => !folder.disabled)
+                  .forEach(folder => {
+                    const definition = `${settings.manifestFolderPrefix}${folder.icon}_open`;
+                    expect(schema.iconDefinitions[definition].iconPath).not.to.be.equal('');
+                  });
+              });
 
             it('has a folder name expanded referencing its definition',
               function () {
