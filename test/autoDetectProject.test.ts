@@ -89,7 +89,7 @@ describe('AutoDetectProject: tests', function () {
           expect(adp.isProject(packageJson, 'ng')).to.be.true;
         });
 
-      it('detects a non Angular project  from dependencies',
+      it('detects a non Angular project from dependencies',
         function () {
           const packageJson = {
             dependencies: {
@@ -152,7 +152,13 @@ describe('AutoDetectProject: tests', function () {
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
             expect(adp.iconsDisabled('ng')).to.be.true;
           });
-      });
+
+        it('assumed disabled if icon manifest file fails to be loaded',
+          function () {
+            sandbox.stub(fs, 'readFileSync').throws(Error);
+            expect(adp.iconsDisabled('ng')).to.be.true;
+          });
+ });
 
       context('detect a project when detection is enabled', function () {
 

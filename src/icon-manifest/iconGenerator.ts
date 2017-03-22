@@ -3,18 +3,18 @@ import * as path from 'path';
 import * as _ from 'lodash';
 import { SettingsManager } from '../settings';
 import * as utils from '../utils';
-import * as model from '../models';
+import * as models from '../models';
 import * as packageJson from '../../../package.json';
 
-export class IconGenerator implements model.IIconGenerator {
-  public settings: model.ISettings;
+export class IconGenerator implements models.IIconGenerator {
+  public settings: models.ISettings;
 
   private iconsFolderPath: string;
   private manifestFolderPath: string;
 
   constructor(
-    vscode: model.IVSCode,
-    private defaultSchema: model.IIconSchema,
+    vscode: models.IVSCode,
+    private defaultSchema: models.IIconSchema,
     private avoidCustomDetection: boolean = false) {
     this.settings = new SettingsManager(vscode).getSettings();
     // relative to this file
@@ -23,15 +23,15 @@ export class IconGenerator implements model.IIconGenerator {
   }
 
   public generateJson(
-    files: model.IFileCollection,
-    folders: model.IFolderCollection): model.IIconSchema {
+    files: models.IFileCollection,
+    folders: models.IFolderCollection): models.IIconSchema {
     const iconsFolderBasePath = utils.getRelativePath(this.manifestFolderPath, this.iconsFolderPath);
     return this.fillDefaultSchema(files, folders, iconsFolderBasePath, this.defaultSchema);
   }
 
   public persist(
     iconsFilename: string,
-    json: model.IIconSchema,
+    json: models.IIconSchema,
     updatePackageJson: boolean = false): void {
     if (iconsFilename == null) {
       throw new Error('iconsFilename not defined.');
@@ -44,7 +44,7 @@ export class IconGenerator implements model.IIconGenerator {
   }
 
   private buildFolders(
-    folders: model.IFolderCollection,
+    folders: models.IFolderCollection,
     iconsFolderBasePath: string,
     hasDefaultLightFolder: boolean) {
     const sts = this.settings.extensionSettings;
@@ -123,7 +123,7 @@ export class IconGenerator implements model.IIconGenerator {
   }
 
   private buildFiles(
-    files: model.IFileCollection,
+    files: models.IFileCollection,
     iconsFolderBasePath: string,
     hasDefaultLightFile: boolean) {
     const sts = this.settings.extensionSettings;
@@ -207,8 +207,8 @@ export class IconGenerator implements model.IIconGenerator {
   }
 
   private buildDefaultIconPath(
-    defaultExtension: model.IDefaultExtension,
-    schemaExtension: model.IIconPath,
+    defaultExtension: models.IDefaultExtension,
+    schemaExtension: models.IIconPath,
     iconsFolderBasePath: string,
     isOpenFolder: boolean): string {
     if (!defaultExtension || defaultExtension.disabled) { return schemaExtension.iconPath || ''; }
@@ -224,10 +224,10 @@ export class IconGenerator implements model.IIconGenerator {
   }
 
   private fillDefaultSchema(
-    files: model.IFileCollection,
-    folders: model.IFolderCollection,
+    files: models.IFileCollection,
+    folders: models.IFolderCollection,
     iconsFolderBasePath: string,
-    defaultSchema: model.IIconSchema): model.IIconSchema {
+    defaultSchema: models.IIconSchema): models.IIconSchema {
     const schema = _.cloneDeep(defaultSchema);
     const defs = schema.iconDefinitions;
     // set default icons for dark theme
@@ -256,10 +256,10 @@ export class IconGenerator implements model.IIconGenerator {
   }
 
   private buildJsonStructure(
-    files: model.IFileCollection,
-    folders: model.IFolderCollection,
+    files: models.IFileCollection,
+    folders: models.IFolderCollection,
     iconsFolderBasePath: string,
-    schema: model.IIconSchema): model.IIconSchema {
+    schema: models.IIconSchema): models.IIconSchema {
     // check for light files & folders
     const hasDefaultLightFolder =
       schema.iconDefinitions._folder_light.iconPath != null &&

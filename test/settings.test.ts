@@ -145,6 +145,15 @@ describe('SettingsManager: tests', function () {
           expect(state.version).to.be.equal('0');
         });
 
+      it('returns a default state if reading the file fails',
+        function () {
+          sandbox.stub(fs, 'readFileSync').throws(Error);
+          sandbox.stub(console, 'error');
+          const state = settingsManager.getState();
+          expect(state).to.be.instanceOf(Object);
+          expect(state.version).to.be.equal('0');
+        });
+
     });
 
     context('the \'isNewVersion\' function is', function () {

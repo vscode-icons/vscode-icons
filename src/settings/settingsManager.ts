@@ -38,14 +38,22 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public getState(): IState {
-    const state = fs.readFileSync(this.settings.settingsPath, 'utf8');
+    const defaultState = {
+      version: '0',
+      status: ExtensionStatus.notInstalled,
+      welcomeShown: false,
+    } as IState;
+
+    let state;
+    try {
+      state = fs.readFileSync(this.settings.settingsPath, 'utf8');
+    } catch (error) {
+      console.error(error);
+      return defaultState;
+    }
+
     const json = parseJSON(state) as IState;
-    return json ||
-      {
-        version: '0',
-        status: ExtensionStatus.notInstalled,
-        welcomeShown: false,
-      };
+    return json || defaultState;
   }
 
   public setState(state: IState): void {
