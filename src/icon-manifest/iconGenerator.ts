@@ -2,28 +2,19 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as _ from 'lodash';
 import { SettingsManager } from '../settings';
-import { pathUnixJoin, fileFormatToString } from '../utils';
-import {
-  IIconGenerator,
-  IVSCode,
-  IIconSchema,
-  ISettings,
-  IFolderCollection,
-  IFileCollection,
-  IDefaultExtension,
-  IIconPath,
-} from '../models';
+import * as utils from '../utils';
+import * as models from '../models';
 import * as packageJson from '../../../package.json';
 
-export class IconGenerator implements IIconGenerator {
-  public settings: ISettings;
+export class IconGenerator implements models.IIconGenerator {
+  public settings: models.ISettings;
 
   private iconsFolderPath: string;
   private manifestFolderPath: string;
 
   constructor(
-    vscode: IVSCode,
-    private defaultSchema: IIconSchema,
+    vscode: models.IVSCode,
+    private defaultSchema: models.IIconSchema,
     private avoidCustomDetection: boolean = false) {
     this.settings = new SettingsManager(vscode).getSettings();
     // relative to this file
@@ -32,31 +23,30 @@ export class IconGenerator implements IIconGenerator {
   }
 
   public generateJson(
-    files: IFileCollection,
-    folders: IFolderCollection): IIconSchema {
-    const iconsFolderBasePath = this.getRelativePath(this.manifestFolderPath, this.iconsFolderPath);
+    files: models.IFileCollection,
+    folders: models.IFolderCollection): models.IIconSchema {
+    const iconsFolderBasePath = utils.getRelativePath(this.manifestFolderPath, this.iconsFolderPath);
     return this.fillDefaultSchema(files, folders, iconsFolderBasePath, this.defaultSchema);
   }
 
   public persist(
     iconsFilename: string,
-    json: IIconSchema,
-    updatePackageJson?: boolean): void {
+    json: models.IIconSchema,
+    updatePackageJson: boolean = false): void {
     if (iconsFilename == null) {
       throw new Error('iconsFilename not defined.');
     }
     this.writeJsonToFile(json, iconsFilename, this.manifestFolderPath);
     if (updatePackageJson) {
-      const pathForPackageJson = `${this.getRelativePath('.', this.manifestFolderPath)}${iconsFilename}`;
-      this.updatePackageJson(pathForPackageJson);
+      const iconsFolderPath = `${utils.getRelativePath('.', this.manifestFolderPath)}${iconsFilename}`;
+      this.updatePackageJson(iconsFolderPath);
     }
   }
 
   private buildFolders(
-    folders: IFolderCollection,
+    folders: models.IFolderCollection,
     iconsFolderBasePath: string,
     hasDefaultLightFolder: boolean) {
-    if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
     return _.sortBy(folders.supported.filter(x => !x.disabled && x.icon), item => item.icon)
       .reduce((old, current) => {
@@ -67,19 +57,19 @@ export class IconGenerator implements IIconGenerator {
         const hasLightVersion = current.light;
         const iconFolderType = `${sts.folderPrefix}${icon}`;
         const iconFolderLightType = `${sts.folderLightPrefix}${icon}`;
-        const iconFileExtension = fileFormatToString(current.format);
-        const foldername =
+        const iconFileExtension = utils.fileFormatToString(current.format);
+        const folderName =
           `${hasLightVersion
             ? iconFolderLightType
             : iconFolderType}${sts.iconSuffix}${iconFileExtension}`;
-        const openfoldername =
+        const openFolderName =
           `${hasLightVersion
             ? iconFolderLightType
             : iconFolderType}_opened${sts.iconSuffix}${iconFileExtension}`;
-        const folderIconPath = this.getIconPath(iconsFolderBasePath, foldername);
-        const openFolderIconPath = this.getIconPath(iconsFolderBasePath, openfoldername);
-        const folderPath = pathUnixJoin(folderIconPath, iconFolderType);
-        const folderLightPath = pathUnixJoin(folderIconPath, iconFolderLightType);
+        const folderIconPath = this.getIconPath(iconsFolderBasePath, folderName);
+        const openFolderIconPath = this.getIconPath(iconsFolderBasePath, openFolderName);
+        const folderPath = utils.pathUnixJoin(folderIconPath, iconFolderType);
+        const folderLightPath = utils.pathUnixJoin(folderIconPath, iconFolderLightType);
         const openFolderPath = `${folderPath}_opened`;
         const openFolderLightPath = `${folderLightPath}_opened`;
         const iconFolderDefinition = `${sts.manifestFolderPrefix}${icon}`;
@@ -133,10 +123,9 @@ export class IconGenerator implements IIconGenerator {
   }
 
   private buildFiles(
-    files: IFileCollection,
+    files: models.IFileCollection,
     iconsFolderBasePath: string,
     hasDefaultLightFile: boolean) {
-    if (!iconsFolderBasePath) { iconsFolderBasePath = ''; }
     const sts = this.settings.extensionSettings;
     return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled && x.icon), item => item.icon))
       .reduce((old, current) => {
@@ -148,14 +137,14 @@ export class IconGenerator implements IIconGenerator {
         const hasLightVersion = current.light;
         const iconFileType = `${sts.filePrefix}${icon}`;
         const iconFileLightType = `${sts.fileLightPrefix}${icon}`;
-        const iconFileExtension = fileFormatToString(current.format);
+        const iconFileExtension = utils.fileFormatToString(current.format);
         const filename =
           `${hasLightVersion
             ? iconFileLightType
             : iconFileType}${sts.iconSuffix}${iconFileExtension}`;
         const fileIconPath = this.getIconPath(iconsFolderBasePath, filename);
-        const filePath = pathUnixJoin(fileIconPath, iconFileType);
-        const fileLightPath = pathUnixJoin(fileIconPath, iconFileLightType);
+        const filePath = utils.pathUnixJoin(fileIconPath, iconFileType);
+        const fileLightPath = utils.pathUnixJoin(fileIconPath, iconFileLightType);
         const iconFileDefinition = `${sts.manifestFilePrefix}${icon}`;
         const iconFileLightDefinition = `${sts.manifestFileLightPrefix}${icon}`;
         const isFilename = current.filename;
@@ -202,7 +191,7 @@ export class IconGenerator implements IIconGenerator {
             names.fileNames[extension] = iconFileDefinition;
             light.fileNames[extension] = hasLightVersion ? iconFileLightDefinition : iconFileDefinition;
           } else {
-            const noDotExtension = this.removeFirstDot(extension);
+            const noDotExtension = utils.removeFirstDot(extension);
             names.fileExtensions[noDotExtension] = iconFileDefinition;
             light.fileExtensions[noDotExtension] = hasLightVersion ? iconFileLightDefinition : iconFileDefinition;
           }
@@ -217,31 +206,9 @@ export class IconGenerator implements IIconGenerator {
       });
   }
 
-  private getRelativePath(fromDirPath: string, toDirName: string, checkDirectory: boolean = true): string {
-    if (fromDirPath == null) {
-      throw new Error('fromDirPath not defined.');
-    }
-
-    if (toDirName == null) {
-      throw new Error('toDirName not defined.');
-    }
-
-    if (checkDirectory && !fs.existsSync(toDirName)) {
-      throw new Error(`Directory '${toDirName}' not found.`);
-    }
-
-    const relativePath = path.relative(fromDirPath, toDirName).replace(/\\/g, '/');
-
-    return `${relativePath}${(relativePath.endsWith('/') ? '' : '/')}`;
-  }
-
-  private removeFirstDot(txt: string): string {
-    return txt.indexOf('.') === 0 ? txt.substring(1, txt.length) : txt;
-  }
-
   private buildDefaultIconPath(
-    defaultExtension: IDefaultExtension,
-    schemaExtension: IIconPath,
+    defaultExtension: models.IDefaultExtension,
+    schemaExtension: models.IIconPath,
     iconsFolderBasePath: string,
     isOpenFolder: boolean): string {
     if (!defaultExtension || defaultExtension.disabled) { return schemaExtension.iconPath || ''; }
@@ -250,17 +217,17 @@ export class IconGenerator implements IIconGenerator {
     const iconSuffix = this.settings.extensionSettings.iconSuffix;
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
-    const filename = `${defPrefix}${icon}${openSuffix}${iconSuffix}${fileFormatToString(format)}`;
+    const filename = `${defPrefix}${icon}${openSuffix}${iconSuffix}${utils.fileFormatToString(format)}`;
     const fPath = this.getIconPath(iconsFolderBasePath, filename);
 
-    return pathUnixJoin(fPath, filename);
+    return utils.pathUnixJoin(fPath, filename);
   }
 
   private fillDefaultSchema(
-    files: IFileCollection,
-    folders: IFolderCollection,
+    files: models.IFileCollection,
+    folders: models.IFolderCollection,
     iconsFolderBasePath: string,
-    defaultSchema: IIconSchema): IIconSchema {
+    defaultSchema: models.IIconSchema): models.IIconSchema {
     const schema = _.cloneDeep(defaultSchema);
     const defs = schema.iconDefinitions;
     // set default icons for dark theme
@@ -289,10 +256,10 @@ export class IconGenerator implements IIconGenerator {
   }
 
   private buildJsonStructure(
-    files: IFileCollection,
-    folders: IFolderCollection,
+    files: models.IFileCollection,
+    folders: models.IFolderCollection,
     iconsFolderBasePath: string,
-    schema: IIconSchema): IIconSchema {
+    schema: models.IIconSchema): models.IIconSchema {
     // check for light files & folders
     const hasDefaultLightFolder =
       schema.iconDefinitions._folder_light.iconPath != null &&
@@ -322,65 +289,50 @@ export class IconGenerator implements IIconGenerator {
   }
 
   private hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
-    const relativePath = this.getRelativePath('.', customIconFolderPath, false);
-    const fpath = path.posix.join(relativePath, filename);
-    return fs.existsSync(fpath);
+    const relativePath = utils.getRelativePath('.', customIconFolderPath, false);
+    const filePath = path.posix.join(relativePath, filename);
+    return fs.existsSync(filePath);
   }
 
   private getIconPath(defaultPath: string, filename: string): string {
     const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
     if (!this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)) {
       const sanitizedFolderPath =
-        this.belongToSameDrive(absPath, this.manifestFolderPath)
+        utils.belongToSameDrive(absPath, this.manifestFolderPath)
           ? this.manifestFolderPath
-          : this.overwriteDrive(absPath, this.manifestFolderPath);
-      return this.getRelativePath(sanitizedFolderPath, absPath, false);
+          : utils.overwriteDrive(absPath, this.manifestFolderPath);
+      return utils.getRelativePath(sanitizedFolderPath, absPath, false);
     }
     return defaultPath;
-  }
-
-  private belongToSameDrive(path1: string, path2: string): boolean {
-    const [val1, val2] = this.getDrives(path1, path2);
-    return val1 === val2;
-  }
-
-  private overwriteDrive(sourcePath: string, destPath: string): string {
-    const [val1, val2] = this.getDrives(sourcePath, destPath);
-    return destPath.replace(val2, val1);
-  }
-
-  private getDrives(...paths: string[]): string[] {
-    const rx = new RegExp('^[a-zA-Z]:');
-    return paths.map(x => (rx.exec(x) || [])[0]);
   }
 
   private writeJsonToFile(json, iconsFilename, outDir) {
     try {
       if (!fs.existsSync(outDir)) {
-        fs.mkdir(outDir);
+        fs.mkdirSync(outDir);
       }
 
       fs.writeFileSync(path.join(outDir, iconsFilename), JSON.stringify(json, null, 2));
       // tslint:disable-next-line no-console
-      console.log('Icons manifest file successfully generated!');
+      console.info('Icons manifest file successfully generated!');
     } catch (error) {
       console.error('Something went wrong while generating the icon contribution file:', error);
     }
   }
 
-  private updatePackageJson(newIconThemesPath) {
-    const oldIconThemesPath = packageJson.contributes.iconThemes[0].path;
+  private updatePackageJson(iconsFolderPath) {
+    const oldIconsThemesFolderPath = packageJson.contributes.iconThemes[0].path;
 
-    if (!oldIconThemesPath || (oldIconThemesPath === newIconThemesPath)) {
+    if (!oldIconsThemesFolderPath || (oldIconsThemesFolderPath === iconsFolderPath)) {
       return;
     }
 
-    packageJson.contributes.iconThemes[0].path = newIconThemesPath;
+    packageJson.contributes.iconThemes[0].path = iconsFolderPath;
 
     try {
       fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
       // tslint:disable-next-line no-console
-      console.log('package.json updated');
+      console.info('package.json updated');
     } catch (err) {
       console.error(err);
     }

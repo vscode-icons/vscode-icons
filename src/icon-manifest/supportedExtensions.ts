@@ -1,9 +1,6 @@
 /* tslint:disable max-line-length */
 import { languages } from './languages';
-import {
-  FileFormat,
-  IFileCollection,
-} from '../models';
+import { FileFormat, IFileCollection } from '../models';
 
 export const extensions: IFileCollection = {
   default: {
@@ -29,7 +26,7 @@ export const extensions: IFileCollection = {
     { icon: 'ng_service_js', extensions: ['service.js'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_module_ts', extensions: ['module.ts'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_module_js', extensions: ['module.js'], format: FileFormat.svg, disabled: true },
-    { icon: 'ng_routing_ts', extensions: ['routing.ts'], format: FileFormat.svg, disabled: true},
+    { icon: 'ng_routing_ts', extensions: ['routing.ts'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_routing_js', extensions: ['routing.js'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_routing_ts', extensions: ['app-routing.module.ts'], filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'ng_routing_js', extensions: ['app-routing.module.js'], filename: true, format: FileFormat.svg, disabled: true },

@@ -14,7 +14,7 @@ export function manageWelcomeMessage(settingsManager: ISettingsManager) {
   }
 
   if (settingsManager.isNewVersion()) {
-    settingsManager.setStatus(state.status);
+    settingsManager.updateStatus(state.status);
     if (!getConfig().vsicons.dontShowNewVersionMessage) {
       showNewVersionMessage(settingsManager);
     }
@@ -22,7 +22,7 @@ export function manageWelcomeMessage(settingsManager: ISettingsManager) {
 }
 
 function showWelcomeMessage(settingsManager: ISettingsManager) {
-  settingsManager.setStatus(ExtensionStatus.notInstalled);
+  settingsManager.updateStatus(ExtensionStatus.notInstalled);
   vscode.window.showInformationMessage(
     i18nManager.getMessage(LangResourceKeys.welcomeBegin, ' ',
       LangResourceKeys.activationPath, ' ', LangResourceKeys.welcomeEnd),
@@ -37,7 +37,7 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
       }
     }, (reason) => {
       // tslint:disable-next-line:no-console
-      console.log('Rejected because: ', reason);
+      console.info('Rejected because: ', reason);
       return;
     });
 }
@@ -49,7 +49,7 @@ function showNewVersionMessage(settingsManager: ISettingsManager) {
     { title: i18nManager.getMessage(LangResourceKeys.seeReleaseNotes) },
     { title: i18nManager.getMessage(LangResourceKeys.dontShowThis) })
     .then(btn => {
-      settingsManager.setStatus(ExtensionStatus.disabled);
+      settingsManager.updateStatus(ExtensionStatus.disabled);
       if (!btn) { return; }
       if (btn.title === i18nManager.getMessage(LangResourceKeys.seeReleaseNotes)) {
         open(i18nManager.getMessage(LangResourceKeys.urlReleaseNote));
@@ -58,7 +58,7 @@ function showNewVersionMessage(settingsManager: ISettingsManager) {
       }
     }, (reason) => {
       // tslint:disable-next-line:no-console
-      console.log('Rejected because: ', reason);
+      console.info('Rejected because: ', reason);
       return;
     });
 }

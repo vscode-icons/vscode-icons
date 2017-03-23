@@ -149,7 +149,7 @@ export function showCustomizationMessage(
       reload();
     }, (reason) => {
       // tslint:disable-next-line:no-console
-      console.log('Rejected because: ', reason);
+      console.info('Rejected because: ', reason);
       return;
     });
 }

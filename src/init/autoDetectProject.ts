@@ -1,34 +1,29 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as model from '../models';
+import * as models from '../models';
 import { extensionSettings } from '../settings';
 import { parseJSON } from '../utils';
-import { LanguageResourceManager } from './../i18n';
+import { LanguageResourceManager } from '../i18n';
 
 export function detectProject(
   findFiles: (include: string,
     exclude: string,
     maxResults?: number,
-    token?: model.IVSCodeCancellationToken) => Thenable<model.IVSCodeUri[]>,
-  config: model.IVSIcons): PromiseLike<model.IVSCodeUri[]> {
+    token?: models.IVSCodeCancellationToken) => Thenable<models.IVSCodeUri[]>,
+  config: models.IVSIcons): PromiseLike<models.IVSCodeUri[]> {
   if (config.projectDetection.disableDetect) {
-    return Promise.resolve([]) as PromiseLike<model.IVSCodeUri[]>;
+    return Promise.resolve([]) as PromiseLike<models.IVSCodeUri[]>;
   }
 
   return findFiles('**/package.json', '**/node_modules/**')
-    .then((results) => {
-      return results && results.length ? results as model.IVSCodeUri[] : [];
-    },
-    (rej) => {
-      return [rej];
-    });
+    .then(results => results, rej => [rej]);
 }
 
 export function checkForAngularProject(
   angularPreset: boolean,
   ngIconsDisabled: boolean,
   isNgProject: boolean,
-  i18nManager: LanguageResourceManager): model.IProjectDetectionResult {
+  i18nManager: LanguageResourceManager): models.IProjectDetectionResult {
 
   // We need to mandatory check the following:
   // 1. The 'preset'
@@ -38,9 +33,11 @@ export function checkForAngularProject(
   const disableIcons = (angularPreset || !ngIconsDisabled) && !isNgProject;
 
   if (enableIcons || disableIcons) {
-    const message = enableIcons
-      ? i18nManager.getMessage(model.LangResourceKeys.ngDetected)
-      : i18nManager.getMessage(model.LangResourceKeys.nonNgDetected);
+    const langResourceKey = enableIcons
+      ? models.LangResourceKeys.ngDetected
+      : models.LangResourceKeys.nonNgDetected;
+    const message = i18nManager.getMessage(langResourceKey);
+
     return { apply: true, message, value: enableIcons || !disableIcons };
   }
 
@@ -48,9 +45,15 @@ export function checkForAngularProject(
 }
 export function iconsDisabled(name: string): boolean {
   const manifestFilePath = path.join(__dirname, '..', extensionSettings.iconJsonFileName);
-  const iconManifest = fs.readFileSync(manifestFilePath, 'utf8');
-  const iconsJson = parseJSON(iconManifest);
 
+  let iconManifest: string;
+  try {
+    iconManifest = fs.readFileSync(manifestFilePath, 'utf8');
+  } catch (err) {
+    return true;
+  }
+
+  const iconsJson = parseJSON(iconManifest);
   if (!iconsJson) {
     return true;
   }
@@ -66,7 +69,9 @@ export function iconsDisabled(name: string): boolean {
 export function isProject(projectJson: any, name: string): boolean {
   switch (name) {
     case 'ng':
-      return (projectJson.dependencies && (projectJson.dependencies['@angular/core'] != null)) || false;
+      return (projectJson.dependencies && (projectJson.dependencies['@angular/core'] != null)) ||
+        (projectJson.devDependencies && (projectJson.devDependencies['@angular/core'] != null)) ||
+        false;
     default:
       return false;
   }
@@ -80,21 +85,18 @@ export function applyDetection(
   initValue: boolean,
   defaultValue: boolean,
   autoReload: boolean,
-  updatePreset: (
-    preset: string,
+  updatePreset: (preset: string,
     newValue: boolean,
     initValue: boolean,
     global: boolean) => Thenable<void>,
   applyCustomization: () => void,
-  showCustomizationMessage: (
-    message: string,
-    items: model.IVSCodeMessageItem[],
+  showCustomizationMessage: (message: string,
+    items: models.IVSCodeMessageItem[],
     callback?: () => void,
     cancel?: (...args: any[]) => void,
     ...args: any[]) => void,
   reload: () => void,
-  cancel: (
-    preset: string,
+  cancel: (preset: string,
     value: boolean,
     initValue: boolean,
     global: boolean,
@@ -110,9 +112,9 @@ export function applyDetection(
 
       showCustomizationMessage(
         message,
-        [{ title: i18nManager.getMessage(model.LangResourceKeys.reload) },
-        { title: i18nManager.getMessage(model.LangResourceKeys.autoReload) },
-        { title: i18nManager.getMessage(model.LangResourceKeys.disableDetect) }],
+        [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) },
+        { title: i18nManager.getMessage(models.LangResourceKeys.autoReload) },
+        { title: i18nManager.getMessage(models.LangResourceKeys.disableDetect) }],
         applyCustomization, cancel, presetText, !value, initValue, false, handleVSCodeDir);
     });
 }
