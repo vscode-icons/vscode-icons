@@ -64,6 +64,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   purescript: ILanguage;
   qlik: ILanguage;
   raml: ILanguage;
+  reason: ILanguage;
   restructuredtext: ILanguage;
   riot: ILanguage;
   robot: ILanguage;
