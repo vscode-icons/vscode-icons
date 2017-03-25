@@ -262,6 +262,7 @@ export const extensions: IFileCollection = {
     { icon: 'reactjs', extensions: [], languages: [languages.javascriptreact], format: FileFormat.svg },
     { icon: 'reacttemplate', extensions: ['rt'], format: FileFormat.svg },
     { icon: 'reactts', extensions: [], languages: [languages.typescriptreact], format: FileFormat.svg },
+    { icon: 'reason', extensions: [], languages: [languages.reason], format: FileFormat.svg },
     { icon: 'rest', extensions: [], languages: [languages.restructuredtext], format: FileFormat.svg },
     { icon: 'registry', extensions: ['reg'], format: FileFormat.svg },
     { icon: 'riot', extensions: [], languages: [languages.riot], format: FileFormat.svg },
