@@ -362,6 +362,8 @@ export const extensions: IFileCollection = {
         'webpack.config.ts',
         'webpack.config.coffee',
         "webpack.config.test.js",
+        "webpack.config.base.js",
+        "webpack.config.development.js",
       ],
       filename: true,
       format: FileFormat.svg,
