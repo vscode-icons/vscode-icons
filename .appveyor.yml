@@ -1,0 +1,25 @@
+version: #{build}
+environment:
+  # Define versions of Node.js
+  matrix:
+    - node_js: ''
+    - node_js: 6
+# Define platforms
+platform:
+  - x64
+install:
+  # Install the platform version of Node.js
+  - ps: Install-Product node $env:node_js $env:platform
+  # Output useful info for debugging
+  - node --version
+  - npm --version
+  - ps: $PSVersionTable.PSVersion
+  # Install modules
+  - yarn install
+cache:
+# - node_modules
+  - '%LOCALAPPDATA%\Yarn'
+test_script:
+  # run build script
+  - npm run build
+build: off
