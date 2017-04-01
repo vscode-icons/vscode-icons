@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.5.0 (April 03, 2017)
+- Feature: `Fusebox`, `CircleCi`, `Codecov`, `Firebase`, `.yarnignore` and more `webpack` support. ([@JimiC](https://github.com/JimiC) in [#842](https://github.com/vscode-icons/vscode-icons/pull/842))
+- Enhancement: Support for `.scssm`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#841](https://github.com/vscode-icons/vscode-icons/pull/841))
+- Enhancement: Appveyor CI. ([@JimiC](https://github.com/JimiC) in [#839](https://github.com/vscode-icons/vscode-icons/pull/839) && [#840](https://github.com/vscode-icons/vscode-icons/pull/840))
+- Enhancement: More default `Webpack` extensions supported. ([@AntonYaskevich](https://github.com/AntonYaskevich) in [#836](https://github.com/vscode-icons/vscode-icons/pull/836))
+- Feature: `Reason` support. ([@wyze](https://github.com/wyze) in [#832](https://github.com/vscode-icons/vscode-icons/pull/832))
+- Enhancement: New `Idris` icons. ([@zjhmale](https://github.com/zjhmale) in [#830](https://github.com/vscode-icons/vscode-icons/pull/830))
+- Enhancement: `.jestrc` extension support. ([@Thiht](https://github.com/Thiht) in [#829](https://github.com/vscode-icons/vscode-icons/pull/829))
+- Enhancement: Improved code coverage. ([@JimiC](https://github.com/JimiC) in [#821](https://github.com/vscode-icons/vscode-icons/pull/821))
+
 ## 7.4.0 (March 18, 2017)
   - Fix: Excluding some folders from distribution. ([@robertohuertasm](https://github.com/robertohuertasm) in [#816](https://github.com/vscode-icons/vscode-icons/pull/816))
   - Feature: New issue and PR badges. ([@JimiC](https://github.com/JimiC) in [#814](https://github.com/vscode-icons/vscode-icons/pull/814))
