@@ -275,7 +275,7 @@ export const extensions: IFileCollection = {
     { icon: 'sass', extensions: ['sass'], format: FileFormat.svg },
     { icon: 'scala', extensions: [], languages: [languages.scala], format: FileFormat.svg },
     { icon: 'script', extensions: [], languages: [languages.vbscript], format: FileFormat.svg },
-    { icon: 'scss', extensions: [], languages: [languages.scss], format: FileFormat.svg },
+    { icon: 'scss', extensions: ['scssm'], languages: [languages.scss], format: FileFormat.svg },
     { icon: 'shaderlab', extensions: [], languages: [languages.shaderlab], light: true, format: FileFormat.svg },
     { icon: 'shell', extensions: ['fish'], languages: [languages.shellscript], format: FileFormat.svg },
     { icon: 'slim', extensions: [], languages: [languages.slim], format: FileFormat.svg },
