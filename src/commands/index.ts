@@ -124,7 +124,7 @@ export function updatePreset(
 export function showCustomizationMessage(
   message: string,
   items: vscode.MessageItem[],
-  callback?: Function,
+  callback?: () => void,
   cancel?: (...args: any[]) => void,
   ...args: any[]): void {
 
@@ -149,7 +149,7 @@ export function showCustomizationMessage(
       reload();
     }, (reason) => {
       // tslint:disable-next-line:no-console
-      console.log('Rejected because: ', reason);
+      console.info('Rejected because: ', reason);
       return;
     });
 }
@@ -163,14 +163,12 @@ export function cancel(
   value: boolean,
   initValue: boolean,
   global: boolean = true,
-  callback?: Function): void {
+  callback?: () => void): void {
   updatePreset(preset, value, initValue, global)
     .then(() => {
-      setTimeout(() => {
-        if (callback) {
-          callback();
-        }
-      }, 1000);
+      if (callback) {
+        callback();
+      }
     });
 }
 
@@ -206,14 +204,14 @@ function generateManifest(
       ['json_official'], ['json']);
   }
   if (customFolders) {
-    workingCustomFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);
     workingCustomFolders = iconManifest.toggleFoldersAllDefaultIconPreset(
       presets.foldersAllDefaultIcon, workingCustomFolders);
+    workingCustomFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);
   }
   // presets affecting default icons
   const workingFiles = iconManifest.toggleAngularPreset(!presets.angular, files);
-  let workingFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, folders);
-  workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(presets.foldersAllDefaultIcon, workingFolders);
+  let workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(presets.foldersAllDefaultIcon, folders);
+  workingFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingFolders);
 
   const json = iconManifest.mergeConfig(
     workingCustomFiles,

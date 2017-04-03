@@ -10,7 +10,7 @@ import * as nlsTemplate from '../../package.nls.template.json';
 
 describe('i18n: tests', function () {
 
-  context('ensure that', function () {
+  context('ensures that', function () {
 
     it('LangResourceKeys properties match ILangResource properties',
       function () {
@@ -24,16 +24,19 @@ describe('i18n: tests', function () {
 
     it('ILangResource properties match LangResourceKeys properties',
       function () {
-        for (const key in langEn) {
-          if (Reflect.has(langEn, key)) {
-            expect(LangResourceKeys[key]).to.exist;
-          }
+        for (const key of Reflect.ownKeys(langEn)) {
+          expect(LangResourceKeys[key]).to.exist;
         }
       });
 
-    it('OS specific messages are properly shown',
-      function () {
-        const resourceCollection = {
+    context('OS specific messages', function () {
+
+      let resourceCollection: any;
+      let originalPlatform: any;
+
+      before(() => {
+        originalPlatform = process.platform;
+        resourceCollection = {
           test: {
             activationPath: {
               darwin: 'Macintosh',
@@ -42,9 +45,49 @@ describe('i18n: tests', function () {
             },
           },
         };
-        const msg = new LanguageResourceManager('test', resourceCollection).getMessage(LangResourceKeys.activationPath);
-        expect(msg).to.equal(resourceCollection.test.activationPath[process.platform]);
       });
+
+      after(() => {
+        Object.defineProperty(process, 'platform', { value: originalPlatform });
+      });
+
+      context('are properly shown for', function () {
+
+        it('osx (darwin)',
+          function () {
+            Object.defineProperty(process, 'platform', { value: 'darwin' });
+            const msg = new LanguageResourceManager('test', resourceCollection)
+              .getMessage(LangResourceKeys.activationPath);
+            expect(msg).to.equal(resourceCollection.test.activationPath[process.platform]);
+          });
+
+        it('linux',
+          function () {
+            Object.defineProperty(process, 'platform', { value: 'linux' });
+            const msg = new LanguageResourceManager('test', resourceCollection)
+              .getMessage(LangResourceKeys.activationPath);
+            expect(msg).to.equal(resourceCollection.test.activationPath[process.platform]);
+          });
+
+        it('win32 (windows)',
+          function () {
+            Object.defineProperty(process, 'platform', { value: 'win32' });
+            const msg = new LanguageResourceManager('test', resourceCollection)
+              .getMessage(LangResourceKeys.activationPath);
+            expect(msg).to.equal(resourceCollection.test.activationPath[process.platform]);
+          });
+
+      });
+
+      it('will throw an error for not implemented platforms',
+        function () {
+          Object.defineProperty(process, 'platform', { value: 'freebsd' });
+          const i18nManager = new LanguageResourceManager('test', resourceCollection);
+          expect(i18nManager.getMessage.bind(i18nManager, LangResourceKeys.activationPath))
+            .to.throw(Error, /Not Implemented/);
+        });
+
+    });
 
     it('a combination of resource and literal messages are properly shown',
       function () {
@@ -81,10 +124,27 @@ describe('i18n: tests', function () {
         expect(msg).to.equal(resourceCollection.en.restart);
       });
 
-    it('if no resource collection is provided, an empty string is returned',
+    it('if no message exists for the provided resource, the message of the English resource is used',
+      function () {
+        const resourceCollection = {
+          lang: {
+            reload: '',
+          },
+        };
+        const msg = new LanguageResourceManager('lang', resourceCollection).getMessage(LangResourceKeys.reload);
+        expect(msg).to.equal('Restart');
+      });
+
+    it('if an empty resource collection is provided, an empty string is returned',
       function () {
         const msg = new LanguageResourceManager('en', {}).getMessage(undefined);
         expect(msg).to.equal('');
+      });
+
+    it('if no resource collection is provided, the default language resource collection is used',
+      function () {
+        const msg = new LanguageResourceManager('en', null).getMessage('Test');
+        expect(msg).to.equal('Test');
       });
 
     context('the message is properly shown for', function () {
@@ -155,11 +215,10 @@ describe('i18n: tests', function () {
 
       it('command title has an nls entry',
         function () {
-          const json = packageJson as any;
-          expect(json.contributes).to.exist;
-          expect(json.contributes.commands).to.exist;
-          expect(json.contributes.commands).to.be.an.instanceOf(Array);
-          json.contributes.commands.forEach((command) => {
+          expect(packageJson.contributes).to.exist;
+          expect(packageJson.contributes.commands).to.exist;
+          expect(packageJson.contributes.commands).to.be.an.instanceOf(Array);
+          packageJson.contributes.commands.forEach((command) => {
             const title = command.title as string;
             const nlsEntry = title.replace(/%/g, '');
             expect(title).to.exist;
@@ -170,10 +229,9 @@ describe('i18n: tests', function () {
 
       it('configuration title has an nls entry',
         function () {
-          const json = packageJson as any;
-          expect(json.contributes).to.exist;
-          expect(json.contributes.configuration).to.exist;
-          const title = json.contributes.configuration.title as string;
+          expect(packageJson.contributes).to.exist;
+          expect(packageJson.contributes.configuration).to.exist;
+          const title = packageJson.contributes.configuration.title as string;
           const nlsEntry = title.replace(/%/g, '');
           expect(title).to.exist;
           expect(title).to.be.a('string');
@@ -182,16 +240,12 @@ describe('i18n: tests', function () {
 
       it('configuration description has an nls entry',
         function () {
-          const json = packageJson as any;
-          expect(json.contributes).to.exist;
-          expect(json.contributes.configuration).to.exist;
-          const properties = json.contributes.configuration.properties;
+          expect(packageJson.contributes).to.exist;
+          expect(packageJson.contributes.configuration).to.exist;
+          const properties = packageJson.contributes.configuration.properties;
           expect(properties).to.exist;
           expect(properties).to.be.an.instanceOf(Object);
-          for (const prop in properties) {
-            if (!Reflect.has(properties, prop)) {
-              continue;
-            }
+          for (const prop of Reflect.ownKeys(properties)) {
             const description = properties[prop].description as string;
             const nlsEntry = description.replace(/%/g, '');
             expect(description).to.exist;
@@ -206,19 +260,15 @@ describe('i18n: tests', function () {
 
       it('match nls template',
         function () {
-          for (const key in nls) {
-            if (Reflect.has(nls, key)) {
-              expect(nlsTemplate[key]).to.exist;
-            }
+          for (const key of Reflect.ownKeys(nls)) {
+            expect(nlsTemplate[key]).to.exist;
           }
         });
 
       it('template match nls',
         function () {
-          for (const key in nlsTemplate) {
-            if (Reflect.has(nlsTemplate, key)) {
-              expect(nls[key]).to.exist;
-            }
+          for (const key of Reflect.ownKeys(nlsTemplate)) {
+            expect(nls[key]).to.exist;
           }
         });
 

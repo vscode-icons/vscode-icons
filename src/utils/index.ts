@@ -8,10 +8,6 @@ export const vscode: IVSCode = {
   version: '1000.0.0',
 };
 
-export function isCodeContext(): boolean {
-  return process.execPath.indexOf('code.exe') >= 0;
-}
-
 export function pathUnixJoin(...paths: string[]): string {
   return path.posix.join(...paths);
 }
@@ -27,11 +23,11 @@ export function vscodePath(): string {
     default:
       return '/var/local';
   }
-};
+}
 
 export function tempPath(): string {
   return os.tmpdir();
-};
+}
 
 export function fileFormatToString(extension: FileFormat | string): string {
   return `.${typeof extension === 'string' ? extension.trim() : FileFormat[extension]}`;
@@ -68,4 +64,39 @@ export function parseJSON(text: string): any {
   } catch (err) {
     return null;
   }
+}
+
+export function getRelativePath(fromDirPath: string, toDirName: string, checkDirectory: boolean = true): string {
+  if (fromDirPath == null) {
+    throw new Error('fromDirPath not defined.');
+  }
+
+  if (toDirName == null) {
+    throw new Error('toDirName not defined.');
+  }
+
+  if (checkDirectory && !fs.existsSync(toDirName)) {
+    throw new Error(`Directory '${toDirName}' not found.`);
+  }
+
+  return path.relative(fromDirPath, toDirName).replace(/\\/g, '/').concat('/');
+}
+
+export function removeFirstDot(txt: string): string {
+  return txt.indexOf('.') === 0 ? txt.substring(1, txt.length) : txt;
+}
+
+export function belongToSameDrive(path1: string, path2: string): boolean {
+  const [val1, val2] = this.getDrives(path1, path2);
+  return val1 === val2;
+}
+
+export function overwriteDrive(sourcePath: string, destPath: string): string {
+  const [val1, val2] = this.getDrives(sourcePath, destPath);
+  return destPath.replace(val2, val1);
+}
+
+export function getDrives(...paths: string[]): string[] {
+  const rx = new RegExp('^[a-zA-Z]:');
+  return paths.map(x => (rx.exec(x) || [])[0]);
 }

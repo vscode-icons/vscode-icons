@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as semver from 'semver';
-import { vscodePath as getAppPath } from '../utils';
+import { vscodePath as getAppPath, parseJSON } from '../utils';
 import { ISettings, IState, IVSCode, ISettingsManager, ExtensionStatus } from '../models';
 import { extensionSettings } from './extensionSettings';
 
@@ -10,10 +10,10 @@ export class SettingsManager implements ISettingsManager {
 
   constructor(private vscode: IVSCode) {
     this.getSettings();
-   }
+  }
 
   public getSettings(): ISettings {
-    if (this.settings) { return this.settings; };
+    if (this.settings) { return this.settings; }
     const isInsiders = /insiders/i.test(this.vscode.env.appName);
     const version = semver(this.vscode.version);
     const isWin = /^win/.test(process.platform);
@@ -38,28 +38,35 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public getState(): IState {
+    const defaultState = {
+      version: '0',
+      status: ExtensionStatus.notInstalled,
+      welcomeShown: false,
+    } as IState;
+
+    let state;
     try {
-      const state = fs.readFileSync(this.settings.settingsPath, 'utf8');
-      return JSON.parse(state) as IState;
+      state = fs.readFileSync(this.settings.settingsPath, 'utf8');
     } catch (error) {
-      return {
-        version: '0',
-        status: ExtensionStatus.notInstalled,
-        welcomeShown: false,
-      };
+      console.error(error);
+      return defaultState;
     }
+
+    const json = parseJSON(state) as IState;
+    return json || defaultState;
   }
 
   public setState(state: IState): void {
     fs.writeFileSync(this.settings.settingsPath, JSON.stringify(state));
   }
 
-  public setStatus(sts: ExtensionStatus): void {
+  public updateStatus(sts: ExtensionStatus): IState {
     const state = this.getState();
     state.version = extensionSettings.version;
     state.status = sts;
     state.welcomeShown = true;
     this.setState(state);
+    return state;
   }
 
   public deleteState() {
@@ -67,7 +74,6 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public isNewVersion(): boolean {
-    const state = this.getState();
-    return state.version !== this.settings.extensionSettings.version;
+    return semver.lt(this.getState().version, this.settings.extensionSettings.version);
   }
 }

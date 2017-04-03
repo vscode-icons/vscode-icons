@@ -2,7 +2,7 @@
     "name": "vscode-icons",
     "displayName": "vscode-icons",
     "description": "Icons for Visual Studio Code",
-    "version": "7.3.0",
+    "version": "7.5.0",
     "publisher": "robertohuertasm",
     "license": "MIT",
     "author": {
@@ -10,6 +10,17 @@
         "name": "Roberto Huertas",
         "url": "http://codecoding.com"
     },
+    "contributors": [
+        {
+            "email": "jimikar@gmail.com",
+            "name": "Jimi (Dimitris) Charalampidis"
+        },
+        {
+            "email": "jenshausdorf@gmail.com",
+            "name": "Jens Hausdorf",
+            "url": "http://www.jens-hausdorf.de"
+        }
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/vscode-icons/vscode-icons"
@@ -19,7 +30,8 @@
         "email": "roberto.huertas@outlook.com"
     },
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.6.0",
+        "node": ">6.0.0"
     },
     "categories": [
         "Other",
@@ -42,12 +54,15 @@
     ],
     "main": "./out/src/",
     "contributes": {
-        "iconThemes": [{
-            "id": "vscode-icons",
-            "label": "VSCode Icons",
-            "path": "out/src/icons.json"
-        }],
-        "commands": [{
+        "iconThemes": [
+            {
+                "id": "vscode-icons",
+                "label": "VSCode Icons",
+                "path": "out/src/icons.json"
+            }
+        ],
+        "commands": [
+            {
                 "command": "vscode-icons.regenerateIcons",
                 "title": "%command.regenerateIcons.title%",
                 "category": "Icons"
@@ -175,35 +190,39 @@
         }
     },
     "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
         "prebuild": "npm run lint && npm run test",
         "build": "node ./out/src/icon-manifest/build.js",
-        "example": "node ./out/src/example/example.js ",
-        "pretest": "npm run compile",
-        "test": "mocha ./out/test --recursive",
-        "lint": "tslint 'src/**/*.ts' 'test/**/*.ts'",
+        "pretest": "rimraf ./.nyc_output ./coverage && npm run compile",
+        "test": "nyc -c -x '' mocha ./out/test --recursive",
+        "posttest": "nyc report -r lcov",
         "test:vs": "node ./node_modules/vscode/bin/test",
-        "vscode:prepublish": "rimraf ./out && npm run build",
-        "compile:w": "rimraf ./out && tsc -watch -p ./",
-        "compile": "rimraf ./out && tsc -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
+        "vscode:prepublish": "npm run build",
+        "precompile": "rimraf ./out",
+        "compile": "tsc",
+        "compile:w": "npm run compile -- -w",
+        "lint": "tslint --project tsconfig.json",
+        "example": "node ./out/src/example/example.js ",
         "analysis": "bithound check git@github.com:vscode-icons/vscode-icons.git"
     },
     "devDependencies": {
-        "@types/chai": "^3.4.34",
-        "@types/chai-as-promised": "^0.0.29",
-        "@types/lodash": "^4.14.52",
-        "@types/mocha": "^2.2.39",
-        "@types/node": "^7.0.5",
-        "@types/sinon": "^1.16.35",
-        "bithound": "1.7.0",
+        "@types/chai": "^3.4.35",
+        "@types/chai-as-promised": "^0.0.30",
+        "@types/lodash": "^4.14.61",
+        "@types/mocha": "^2.2.40",
+        "@types/node": "^7.0.12",
+        "@types/sinon": "^2.1.1",
+        "bithound": "^1.7.0",
         "chai": "^3.5.0",
         "chai-as-promised": "^6.0.0",
+        "codecov": "^2.1.0",
         "mocha": "^3.2.0",
-        "rimraf": "^2.5.4",
-        "sinon": "^1.17.7",
-        "tslint": "^4.4.2",
-        "typescript": "^2.1.6",
-        "vscode": "^1.0.3"
+        "nyc": "^10.2.0",
+        "rimraf": "^2.6.1",
+        "sinon": "^2.1.0",
+        "tslint": "^4.5.1",
+        "typescript": "^2.2.2",
+        "vscode": "^1.1.0"
     },
     "dependencies": {
         "lodash": "^4.17.4",

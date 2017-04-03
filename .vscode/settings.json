@@ -12,4 +12,4 @@
     },
     "typescript.tsdk": "./node_modules/typescript/lib",
     "vsicons.projectDetection.disableDetect": true
-  }
+}

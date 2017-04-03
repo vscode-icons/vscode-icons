@@ -95,6 +95,7 @@ export const languages: ILanguageCollection = {
   r: { ids: 'r', defaultExtension: 'r' },
   razor: { ids: 'razor', defaultExtension: 'cshtml' },
   raml: { ids: ['raml'], defaultExtension: 'raml' },
+  reason: { ids: 'reason', defaultExtension: 're' },
   restructuredtext: { ids: ['restructuredtext'], defaultExtension: 'rst' },
   riot: { ids: ['riot'], defaultExtension: 'tag' },
   robot: { ids: ['robot'], defaultExtension: 'robot' },

@@ -60,7 +60,7 @@ function buildFiles(icons) {
     try {
       fs.writeFileSync(fileName, null);
       // tslint:disable-next-line no-console
-      console.log(`Example file for '${icon}' successfully created!`);
+      console.info(`Example file for '${icon}' successfully created!`);
     } catch (error) {
       console.error(`Something went wrong while creating the file for '${icon}' :\n${error}`);
     }
@@ -84,7 +84,7 @@ function buildFolders(icons) {
     try {
       fs.mkdirSync(dirName);
       // tslint:disable-next-line no-console
-      console.log(`Example folder for '${icon}' successfully created!`);
+      console.info(`Example folder for '${icon}' successfully created!`);
     } catch (error) {
       console.error(`Something went wrong while creating the folder for '${icon}' :\n${error}`);
     }

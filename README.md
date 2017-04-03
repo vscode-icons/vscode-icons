@@ -4,14 +4,22 @@
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 
 [![Build Status](https://travis-ci.org/vscode-icons/vscode-icons.svg?branch=master)](https://travis-ci.org/vscode-icons/vscode-icons)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/vscode-icons/vscode-icons?branch=master&svg=true)](https://ci.appveyor.com/project/robertohuertasm/vscode-icons)
 [![Dependencies Status](https://david-dm.org/vscode-icons/vscode-icons/status.svg)](https://david-dm.org/vscode-icons/vscode-icons)
 [![DevDependencies Status](https://david-dm.org/vscode-icons/vscode-icons/dev-status.svg)](https://david-dm.org/vscode-icons/vscode-icons?type=dev)
+[![codecov](https://codecov.io/gh/vscode-icons/vscode-icons/branch/master/graph/badge.svg)](https://codecov.io/gh/vscode-icons/vscode-icons)
 [![Known Vulnerabilities](https://snyk.io/test/github/vscode-icons/vscode-icons/badge.svg)](https://snyk.io/test/github/vscode-icons/vscode-icons)
 
 [![bitHound Overall Score](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/score.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons)
 [![bitHound Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/dependencies.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
 [![bitHound Dev Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/devDependencies.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/code.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons)
+
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
+[![Issue Stats](http://issuestats.com/github/vscode-icons/vscode-icons/badge/issue?style=flat)](http://issuestats.com/github/vscode-icons/vscode-icons)
+[![Issue Stats](http://issuestats.com/github/vscode-icons/vscode-icons/badge/pr?style=flat)](http://issuestats.com/github/vscode-icons/vscode-icons)
+
 
 Bring icons to your VS Code.
 
@@ -40,13 +48,16 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 ---
 
 ## State of the extension
-**Release 6.0.0 introduced the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.** 
+
+With **release 7.4.0**, as a result of hearing you out, we've revised how the `project detection` works. Now `Angular` icons are disabled by default. So if you want to enable them you will have to actively set the preset to true or rely on the `project detection` functionality.
+
+[@JimiC](https://github.com/JimiC) has improved and further optimized this functionality specifically for this release. But he also has provided the extension with the ability to support multi-language! Take a look at the translation's section if you want to know more or contribute.
+
+We still support the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code. 
 
 This was a huge step to allow the users to fully customize how the icons looked like and how they could be associated to any extension at will.
 
-`Custom Icon associations` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
-
-On the other hand, [@JimiC](https;//github.com/JimiC) continues his massive `svg` icon conversion and keeps on providing new quality icons. He's also the creator of the new `Angular project auto-detector` feature released with **v7.1.0**. I'm sure you will like it!
+`Custom Icon association` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
 
 **Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
 
@@ -274,7 +285,7 @@ The above syntax will create examples for all supported files and folders.
 ## Contributing with translations
 We're looking for people willing to help us translate the extension's messages into [all the languages that `vscode` supports](https://code.visualstudio.com/docs/customization/locales).
 
-We're currently supporting English, French, German and Spanish. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
+We're currently supporting English, German and Spanish. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
 
 ## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:

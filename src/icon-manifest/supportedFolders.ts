@@ -1,8 +1,5 @@
 /* tslint:disable max-line-length */
-import {
-  FileFormat,
-  IFolderCollection,
-} from '../models';
+import { FileFormat, IFolderCollection } from '../models';
 
 export const extensions: IFolderCollection = {
   default: {
@@ -13,7 +10,7 @@ export const extensions: IFolderCollection = {
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'css', extensions: ['css'], format: FileFormat.svg },
-    { icon: 'dist', extensions: ['dist', 'out', 'export', 'build'], format: FileFormat.svg },
+    { icon: 'dist', extensions: ['dist', 'out', 'export', 'build', 'release'], format: FileFormat.svg },
     { icon: 'docs', extensions: ['docs'], format: FileFormat.svg },
     { icon: 'elasticbeanstalk', extensions: ['.elasticbeanstalk', '.ebextensions'], format: FileFormat.svg },
     { icon: 'flow', extensions: ['flow'], format: FileFormat.svg },
