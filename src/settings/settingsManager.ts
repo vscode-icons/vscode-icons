@@ -13,7 +13,7 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public getSettings(): ISettings {
-    if (this.settings) { return this.settings; };
+    if (this.settings) { return this.settings; }
     const isInsiders = /insiders/i.test(this.vscode.env.appName);
     const version = semver(this.vscode.version);
     const isWin = /^win/.test(process.platform);

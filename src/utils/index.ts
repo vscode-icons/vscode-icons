@@ -23,11 +23,11 @@ export function vscodePath(): string {
     default:
       return '/var/local';
   }
-};
+}
 
 export function tempPath(): string {
   return os.tmpdir();
-};
+}
 
 export function fileFormatToString(extension: FileFormat | string): string {
   return `.${typeof extension === 'string' ? extension.trim() : FileFormat[extension]}`;
