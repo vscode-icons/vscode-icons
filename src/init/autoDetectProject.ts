@@ -6,7 +6,8 @@ import { parseJSON } from '../utils';
 import { LanguageResourceManager } from '../i18n';
 
 export function detectProject(
-  findFiles: (include: string,
+  findFiles: (
+    include: string,
     exclude: string,
     maxResults?: number,
     token?: models.IVSCodeCancellationToken) => Thenable<models.IVSCodeUri[]>,
@@ -43,6 +44,7 @@ export function checkForAngularProject(
 
   return { apply: false };
 }
+
 export function iconsDisabled(name: string): boolean {
   const manifestFilePath = path.join(__dirname, '..', extensionSettings.iconJsonFileName);
 
@@ -66,6 +68,7 @@ export function iconsDisabled(name: string): boolean {
 
   return true;
 }
+
 export function isProject(projectJson: any, name: string): boolean {
   switch (name) {
     case 'ng':
@@ -85,18 +88,21 @@ export function applyDetection(
   initValue: boolean,
   defaultValue: boolean,
   autoReload: boolean,
-  updatePreset: (preset: string,
+  updatePreset: (
+    preset: string,
     newValue: boolean,
     initValue: boolean,
     global: boolean) => Thenable<void>,
   applyCustomization: () => void,
-  showCustomizationMessage: (message: string,
+  showCustomizationMessage: (
+    message: string,
     items: models.IVSCodeMessageItem[],
     callback?: () => void,
     cancel?: (...args: any[]) => void,
     ...args: any[]) => void,
   reload: () => void,
-  cancel: (preset: string,
+  cancel: (
+    preset: string,
     value: boolean,
     initValue: boolean,
     global: boolean,
