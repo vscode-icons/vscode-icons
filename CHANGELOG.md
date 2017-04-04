@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.5.1 (April 04, 2017)
+- Fix: Default folder not showing in light theme after applying customization. ([@JimiC](https://github.com/JimiC) in [#854](https://github.com/vscode-icons/vscode-icons/pull/854))
+- Fix: Appveyor config file excluded from distribution. ([@JimiC](https://github.com/JimiC) in [#851](https://github.com/vscode-icons/vscode-icons/pull/851))
+- Fix: Changelog fixed. ([@jens1o](https://github.com/jens1o) in [#847](https://github.com/vscode-icons/vscode-icons/pull/847))
+- Enhancement: Dependencies updated. ([@JimiC](https://github.com/JimiC) in [#844](https://github.com/vscode-icons/vscode-icons/pull/844))
+
 ## 7.5.0 (April 03, 2017)
 - Feature: `Fusebox`, `CircleCi`, `Codecov`, `Firebase`, `.yarnignore` and more `webpack` support. ([@JimiC](https://github.com/JimiC) in [#842](https://github.com/vscode-icons/vscode-icons/pull/842))
 - Enhancement: Support for `.scssm`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#841](https://github.com/vscode-icons/vscode-icons/pull/841))
