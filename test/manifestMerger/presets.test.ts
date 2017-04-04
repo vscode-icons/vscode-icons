@@ -134,8 +134,8 @@ describe('Presets: merging configuration documents', function () {
         const result = iconManifest.toggleHideFoldersPreset(true, custom);
         const supported = result.supported.find(x => x.icon === 'newExt');
         expect(supported.disabled).to.be.true;
-        expect(result.default.folder.disabled).to.be.true;
-        expect(result.default.folder_light.disabled).to.be.true;
+        expect(result.default.folder).to.be.null;
+        expect(result.default.folder_light).to.be.null;
       });
 
     it('folders all default icon preset shows all folders with the default folder icon',
@@ -159,8 +159,8 @@ describe('Presets: merging configuration documents', function () {
         const result = iconManifest.toggleFoldersAllDefaultIconPreset(true, custom);
         const supported = result.supported.find(x => x.icon === 'newExt');
         expect(supported.disabled).to.be.true;
-        expect(result.default.folder.disabled).to.be.false;
-        expect(result.default.folder_light.disabled).to.be.false;
+        expect(result.default.folder).to.be.null;
+        expect(result.default.folder_light).to.be.null;
       });
 
   });

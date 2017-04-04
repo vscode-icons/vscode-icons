@@ -8,18 +8,18 @@ export function mergeConfig(
   supportedFolders: models.IFolderCollection,
   iconGenerator: models.IIconGenerator): models.IIconSchema {
 
-  const dFiles = customFiles ? customFiles.default : null;
-  const dFolders = customFolders ? customFolders.default : null;
-  const sFiles = customFiles ? customFiles.supported : null;
-  const sFolders = customFolders ? customFolders.supported : null;
+  const defaultCustomFiles = customFiles ? customFiles.default : null;
+  const defaultCustomFolders = customFolders ? customFolders.default : null;
+  const supportedCustomFiles = customFiles ? customFiles.supported : null;
+  const supportedCustomFolders = customFolders ? customFolders.supported : null;
   const files: models.IFileCollection = {
-    default: mergeDefaultFiles(dFiles, supportedFiles.default),
-    supported: mergeSupported(sFiles, supportedFiles.supported),
+    default: mergeDefaultFiles(defaultCustomFiles, supportedFiles.default),
+    supported: mergeSupported(supportedCustomFiles, supportedFiles.supported),
   };
 
   const folders: models.IFolderCollection = {
-    default: mergeDefaultFolders(dFolders, supportedFolders.default),
-    supported: mergeSupported(sFolders, supportedFolders.supported),
+    default: mergeDefaultFolders(defaultCustomFolders, supportedFolders.default),
+    supported: mergeSupported(supportedCustomFolders, supportedFolders.supported),
   };
 
   return iconGenerator.generateJson(files, folders);
@@ -108,13 +108,9 @@ export function toggleHideFoldersPreset(
   const collection = togglePreset<models.IFolderCollection>(disable, folderIcons, folders);
   if (folders.default.folder) {
     collection.default.folder.disabled = disable;
-  } else {
-    collection.default.folder = { icon: 'folder', format: 0, disabled: disable };
   }
   if (folders.default.folder_light) {
     collection.default.folder_light.disabled = disable;
-  } else {
-    collection.default.folder_light = { icon: 'folder_light', format: 0, disabled: disable };
   }
   return collection;
 }
@@ -126,13 +122,9 @@ export function toggleFoldersAllDefaultIconPreset(
   const collection = togglePreset<models.IFolderCollection>(disable, folderIcons, folders);
   if (folders.default.folder) {
     collection.default.folder.disabled = false;
-  } else {
-    collection.default.folder = { icon: 'folder', format: 0, disabled: false };
   }
   if (folders.default.folder_light) {
     collection.default.folder_light.disabled = false;
-  } else {
-    collection.default.folder_light = { icon: 'folder_light', format: 0, disabled: false };
   }
   return collection;
 }
