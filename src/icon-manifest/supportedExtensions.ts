@@ -188,6 +188,7 @@ export const extensions: IFileCollection = {
     { icon: 'json', extensions: [], languages: [languages.json, languages.textmatejson], format: FileFormat.svg },
     { icon: 'json_official', extensions: [], languages: [languages.json, languages.textmatejson], format: FileFormat.svg, disabled: true },
     { icon: 'json2', extensions: [], languages: [languages.json, languages.textmatejson], format: FileFormat.svg, disabled: true },
+    { icon: 'jsonld', extensions: ['jsonld', 'json-ld'], light: true, format: FileFormat.svg},
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
     { icon: 'julia', extensions: [], languages: [languages.julia], format: FileFormat.svg },
     { icon: 'julia2', extensions: [], languages: [languages.julia], format: FileFormat.svg, disabled: true },
