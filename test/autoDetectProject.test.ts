@@ -159,7 +159,7 @@ describe('AutoDetectProject: tests', function () {
             sandbox.stub(fs, 'readFileSync').throws(Error);
             expect(adp.iconsDisabled('ng')).to.be.true;
           });
- });
+      });
 
       context('detect a project when detection is enabled', function () {
 

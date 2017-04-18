@@ -54,35 +54,6 @@ function resetProjectDetectionDefaultsCommand(): void {
     resetProjectDetectionDefaults);
 }
 
-function togglePreset(
-  preset: string,
-  presetKey: string,
-  reverseAction: boolean = false,
-  global: boolean = true): void {
-
-  const value = getToggleValue(preset);
-  const action = reverseAction
-    ? value
-      ? 'Disabled'
-      : 'Enabled'
-    : value
-      ? 'Enabled'
-      : 'Disabled';
-
-  if (!Reflect.has(LangResourceKeys, `${presetKey}${action}`)) {
-    throw Error(`${presetKey}${action} is not valid`);
-  }
-
-  const message = `${i18nManager.getMessage(LangResourceKeys[`${presetKey}${action}`], ' ', LangResourceKeys.restart)}`;
-  const { defaultValue, globalValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${preset}`);
-  const initValue = (global ? globalValue : workspaceValue) as boolean;
-
-  updatePreset(preset, value, defaultValue as boolean, global);
-  showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
-    applyCustomization, cancel, preset, !value, initValue, global, handleVSCodeDir);
-}
-
 function toggleAngularPresetCommand(): void {
   togglePreset('angular', 'ngPreset', false, false);
 }
@@ -104,12 +75,36 @@ function toggleHideFoldersPresetCommand(): void {
 }
 
 function toggleFoldersAllDefaultIconPresetCommand(): void {
-  togglePreset(
-    'foldersAllDefaultIcon', 'foldersAllDefaultIconPreset', true);
+  togglePreset('foldersAllDefaultIcon', 'foldersAllDefaultIconPreset', true);
 }
 
-function getToggleValue(preset: string): boolean {
-  return !getConfig().vsicons.presets[preset];
+function togglePreset(
+  preset: string,
+  presetKey: string,
+  reverseAction: boolean = false,
+  global: boolean = true): void {
+
+  const value = !getConfig().vsicons.presets[preset];
+  const action = reverseAction
+    ? value
+      ? 'Disabled'
+      : 'Enabled'
+    : value
+      ? 'Enabled'
+      : 'Disabled';
+
+  if (!Reflect.has(LangResourceKeys, `${presetKey}${action}`)) {
+    throw Error(`${presetKey}${action} is not valid`);
+  }
+
+  const message = `${i18nManager.getMessage(LangResourceKeys[`${presetKey}${action}`], ' ', LangResourceKeys.restart)}`;
+  const { defaultValue, globalValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${preset}`);
+  const initValue = (global ? globalValue : workspaceValue) as boolean;
+
+  updatePreset(preset, value, defaultValue as boolean, global);
+  showCustomizationMessage(message,
+    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
+    applyCustomization, cancel, preset, !value, initValue, global, handleVSCodeDir);
 }
 
 export function updatePreset(
