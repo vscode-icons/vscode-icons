@@ -1,6 +1,6 @@
 import { ILangResource } from '../../models/i18n';
 
-export const langzhCN: ILangResource = {
+export const langZhCn: ILangResource = {
   newVersion: '欢迎使用最新版本的 vscode-icons.',
   seeReleaseNotes: '关于最新版本的改动',
   dontShowThis: '下次不再显示这条消息',
@@ -35,9 +35,7 @@ export const langzhCN: ILangResource = {
   foldersAllDefaultIconPresetEnabled: '现在使用指定的文件夹图标',
   foldersAllDefaultIconPresetDisabled: '现在取消使用指定的文件夹图标',
   restart: '选择 \'重启\' 使改变生效',
-  ngDetected: 'vscode-icons 发现当前工程是Angular' +
-  '选择 \'重启\' 使用Angular的图标',
-  nonNgDetected: 'vscode-icons 发现当前工程不是Angular' +
-  '选择 \'重启\' 取消使用Angular的图标',
+  ngDetected: 'vscode-icons 发现当前工程是Angular选择 \'重启\' 使用Angular的图标',
+  nonNgDetected: 'vscode-icons 发现当前工程不是Angular选择 \'重启\' 取消使用Angular的图标',
   projectDetecticonReset: '重设自动检测工程文件到默认设置',
 };

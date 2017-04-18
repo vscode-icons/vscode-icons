@@ -10,7 +10,8 @@ export class LanguageResourceManager {
     private resourceCollection?: ILangResourceCollection |
       { [key: string]: { [key: string]: string | IOSSpecific; } }) {
     this.resourceCollection = this.resourceCollection || langResourceCollection;
-    this.messages = this.resourceCollection[this.language] || this.resourceCollection['en'];
+    this.messages = (this.language && this.resourceCollection[this.language.toLowerCase()]) ||
+      this.resourceCollection['en'];
   }
 
   public getMessage(...keys: Array<LangResourceKeys | string>): string {
