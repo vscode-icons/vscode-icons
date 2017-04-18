@@ -6,7 +6,6 @@ import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
 import { IFileCollection, IFolderCollection, LangResourceKeys } from '../models';
 import { extensionSettings } from '../settings';
-import { handleVSCodeDir } from '../';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
 
@@ -84,12 +83,14 @@ function togglePreset(
   reverseAction: boolean = false,
   global: boolean = true): void {
 
-  const value = !getConfig().vsicons.presets[preset];
+  // Actually here we should detect the present of the icons references in the icon-manifest
+  // instead of the preset, as it can be manipulatedby the user resulting in showing the wrong action message
+  const toggledValue = !getConfig().vsicons.presets[preset];
   const action = reverseAction
-    ? value
+    ? toggledValue
       ? 'Disabled'
       : 'Enabled'
-    : value
+    : toggledValue
       ? 'Enabled'
       : 'Disabled';
 
@@ -98,55 +99,88 @@ function togglePreset(
   }
 
   const message = `${i18nManager.getMessage(LangResourceKeys[`${presetKey}${action}`], ' ', LangResourceKeys.restart)}`;
-  const { defaultValue, globalValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${preset}`);
-  const initValue = (global ? globalValue : workspaceValue) as boolean;
 
-  updatePreset(preset, value, defaultValue as boolean, global);
   showCustomizationMessage(message,
     [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
-    applyCustomization, cancel, preset, !value, initValue, global, handleVSCodeDir);
+    applyCustomization, preset, toggledValue, global);
 }
 
 export function updatePreset(
   preset: string,
-  newValue: boolean,
-  initValue: boolean,
+  toggledValue: boolean,
   global: boolean = true): Thenable<void> {
 
-  return getConfig().update(`vsicons.presets.${preset}`, initValue === undefined ? initValue : newValue, global);
+  const removePreset = getConfig().inspect(`vsicons.presets.${preset}`).defaultValue === toggledValue;
+  return getConfig().update(`vsicons.presets.${preset}`, removePreset ? undefined : toggledValue, global);
 }
 
 export function showCustomizationMessage(
   message: string,
   items: vscode.MessageItem[],
   callback?: () => void,
-  cancel?: (...args: any[]) => void,
-  ...args: any[]): void {
+  ...args: any[]): Thenable<void> {
 
-  vscode.window.showInformationMessage(message, ...items)
-    .then(btn => {
-      if (!btn) {
-        if (cancel) { cancel(...args); }
-        return;
-      }
+  return vscode.window.showInformationMessage(message, ...items)
+    .then((btn) => handleAction(btn, callback, ...args),
+    // tslint:disable-next-line:no-console
+    (reason) => console.info('Rejected because: ', reason));
+}
 
-      if (btn.title === i18nManager.getMessage(LangResourceKeys.disableDetect)) {
+function handleAction(btn: vscode.MessageItem, callback?: () => void, ...args: any[]): void {
+  let doReload: boolean;
+
+  vscode.workspace.onDidChangeConfiguration(() => {
+    if (doReload) {
+      executeAndReload(callback);
+    }
+  });
+
+  if (!btn) {
+    return;
+  }
+
+  switch (btn.title) {
+    case i18nManager.getMessage(LangResourceKeys.disableDetect):
+      {
+        doReload = false;
         getConfig().update('vsicons.projectDetection.disableDetect', true, true);
-        return;
       }
-
-      if (btn.title === i18nManager.getMessage(LangResourceKeys.autoReload)) {
-        getConfig().update('vsicons.projectDetection.autoReload', true, true);
+      break;
+    case i18nManager.getMessage(LangResourceKeys.autoReload):
+      {
+        getConfig().update('vsicons.projectDetection.autoReload', true, true)
+          .then(() => {
+            if (args.length !== 3) {
+              throw new Error('Arguments mismatch');
+            }
+            doReload = true;
+            updatePreset(args[0], args[1], args[2]);
+          });
       }
+      break;
+    case i18nManager.getMessage(LangResourceKeys.reload):
+      {
+        if (!args || !args.length) {
+          executeAndReload(callback);
+          break;
+        }
+        if (args.length !== 3) {
+          throw new Error('Arguments mismatch');
+        }
+        doReload = true;
+        updatePreset(args[0], args[1], args[2]);
+      }
+      break;
+    default:
+      break;
+  }
+}
 
-      if (callback) { callback(); }
-
-      reload();
-    }, reason => {
-      // tslint:disable-next-line:no-console
-      console.info('Rejected because: ', reason);
-      return;
-    });
+function executeAndReload(callback?: () => void) {
+  if (callback) {
+    callback();
+  }
+  reload();
 }
 
 export function reload(): void {
@@ -156,10 +190,9 @@ export function reload(): void {
 export function cancel(
   preset: string,
   value: boolean,
-  initValue: boolean,
   global: boolean = true,
   callback?: () => void): void {
-  updatePreset(preset, value, initValue, global)
+  updatePreset(preset, value, global)
     .then(() => {
       if (callback) {
         callback();

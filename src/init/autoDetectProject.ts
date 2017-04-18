@@ -104,7 +104,6 @@ export function applyDetection(
   cancel: (
     preset: string,
     value: boolean,
-    initValue: boolean,
     global: boolean,
     callback?: () => void) => void,
   handleVSCodeDir: () => void): Thenable<void> {
