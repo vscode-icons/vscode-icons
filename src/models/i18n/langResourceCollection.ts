@@ -9,6 +9,6 @@ export interface ILangResourceCollection {
   ja?: ILangResource;
   ko?: ILangResource;
   ru?: ILangResource;
-  "zh-CN"?: ILangResource;
+  zhCN?: ILangResource;
   "zh-TW"?: ILangResource;
 }

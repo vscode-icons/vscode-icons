@@ -5,4 +5,5 @@ export const langResourceCollection: ILangResourceCollection = {
   de: resources.langDe,
   en: resources.langEn,
   es: resources.langEs,
+  zhCN: resources.langzhCN,
 };
