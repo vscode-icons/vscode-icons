@@ -4,9 +4,9 @@ import { expect, use } from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
-import { IVSIcons, IVSCodeUri } from '../src/models';
-import * as adp from '../src/init/autoDetectProject';
-import { LanguageResourceManager } from '../src/i18n';
+import { IVSIcons, IVSCodeUri } from '../../src/models';
+import * as adp from '../../src/init/autoDetectProject';
+import { LanguageResourceManager } from '../../src/i18n';
 
 use(chaiAsPromised);
 
