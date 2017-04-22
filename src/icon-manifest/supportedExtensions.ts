@@ -157,7 +157,7 @@ export const extensions: IFileCollection = {
     { icon: 'groovy', extensions: [], languages: [languages.groovy], format: FileFormat.svg },
     { icon: 'groovy2', extensions: [], languages: [languages.groovy], format: FileFormat.svg, disabled: true },
     { icon: 'grunt', extensions: ['gruntfile.js'], filename: true, format: FileFormat.svg },
-    { icon: 'gulp', extensions: ['gulpfile.js'], filename: true, format: FileFormat.svg },
+    { icon: 'gulp', extensions: ['gulpfile.js', 'gulpfile.babel.js'], filename: true, format: FileFormat.svg },
     { icon: 'haml', extensions: [], languages: [languages.haml], format: FileFormat.svg },
     { icon: 'handlebars', extensions: [], languages: [languages.handlebars], format: FileFormat.svg },
     { icon: 'handlebars2', extensions: [], languages: [languages.handlebars], format: FileFormat.svg, disabled: true },
