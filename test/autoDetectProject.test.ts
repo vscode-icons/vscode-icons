@@ -193,10 +193,9 @@ describe('AutoDetectProject: tests', function () {
         it('or Angular preset is false',
           function () {
             const isNgProject = true;
-            const angularPreset = false;
             const ngIconsDisabled = true;
             const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-            const res = adp.checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, i18nManager);
+            const res = adp.checkForAngularProject(ngIconsDisabled, isNgProject, i18nManager);
             expect(res).to.have.property('apply').that.is.true;
             expect(res).to.have.property('value').that.is.true;
           });
@@ -204,10 +203,9 @@ describe('AutoDetectProject: tests', function () {
         it('or Angular preset is true',
           function () {
             const isNgProject = true;
-            const angularPreset = true;
             const ngIconsDisabled = true;
             const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-            const res = adp.checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, i18nManager);
+            const res = adp.checkForAngularProject(ngIconsDisabled, isNgProject, i18nManager);
             expect(res).to.have.property('apply').that.is.true;
             expect(res).to.have.property('value').that.is.true;
           });
@@ -220,10 +218,9 @@ describe('AutoDetectProject: tests', function () {
         it('or Angular preset is true',
           function () {
             const isNgProject = false;
-            const angularPreset = true;
             const ngIconsDisabled = false;
             const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-            const res = adp.checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, i18nManager);
+            const res = adp.checkForAngularProject(ngIconsDisabled, isNgProject, i18nManager);
             expect(res).to.have.property('apply').that.is.true;
             expect(res).to.have.property('value').that.is.false;
           });
@@ -231,10 +228,9 @@ describe('AutoDetectProject: tests', function () {
         it('or Angular preset is false',
           function () {
             const isNgProject = false;
-            const angularPreset = false;
             const ngIconsDisabled = false;
             const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-            const res = adp.checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, i18nManager);
+            const res = adp.checkForAngularProject(ngIconsDisabled, isNgProject, i18nManager);
             expect(res).to.have.property('apply').that.is.true;
             expect(res).to.have.property('value').that.is.false;
           });
@@ -246,18 +242,16 @@ describe('AutoDetectProject: tests', function () {
       it('an Angular project and the Angular preset is true or Angular icons are enabled',
         function () {
           const isNgProject = true;
-          const angularPreset = true;
           const ngIconsDisabled = false;
-          expect(adp.checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined))
+          expect(adp.checkForAngularProject(ngIconsDisabled, isNgProject, undefined))
             .to.have.property('apply').that.is.false;
         });
 
       it('not an Angular project and the Angular preset is false or Angular icons are disabled',
         function () {
           const isNgProject = false;
-          const angularPreset = false;
           const ngIconsDisabled = true;
-          expect(adp.checkForAngularProject(angularPreset, ngIconsDisabled, isNgProject, undefined))
+          expect(adp.checkForAngularProject(ngIconsDisabled, isNgProject, undefined))
             .to.have.property('apply').that.is.false;
         });
 
@@ -265,40 +259,63 @@ describe('AutoDetectProject: tests', function () {
 
     context('when user has selected', function () {
 
-      it('to auto restart, applies the changes and restarts',
+      it('to auto restart, does updates the preset, applies the changes and restarts',
+        function () {
+          const clock = sinon.useFakeTimers();
+
+          const autoReload = true;
+          const doUpdatePreset = true;
+          const updatePresetFn = sinon.stub().returns(Promise.resolve());
+          const applyCustomizationFn = sinon.spy();
+          const reloadFn = sinon.spy();
+          const showCustomizationMessageFn = sinon.spy();
+
+          return adp.applyDetection(undefined, undefined, undefined, undefined, autoReload, doUpdatePreset,
+            updatePresetFn, applyCustomizationFn, showCustomizationMessageFn, reloadFn)
+            .then(() => {
+              clock.tick(500);
+              expect(updatePresetFn.called).to.be.true;
+              expect(applyCustomizationFn.called).to.be.true;
+              expect(reloadFn.called).to.be.true;
+              expect(showCustomizationMessageFn.called).to.be.false;
+              clock.restore();
+            });
+        });
+
+      it('to auto restart, does not updates the preset, applies the changes and restarts',
         function () {
           const autoReload = true;
-          const updatePreset = sinon.stub().returns(Promise.resolve());
-          const applyCustomization = sinon.spy();
-          const reload = sinon.spy();
-          const cancel = sinon.stub();
-          const handleVSCodeDir = sinon.stub();
-          const showCustomizationMessage = sinon.spy();
+          const doUpdatePreset = false;
+          const updatePresetFn = sinon.stub().returns(Promise.resolve());
+          const applyCustomizationFn = sinon.spy();
+          const reloadFn = sinon.spy();
+          const showCustomizationMessageFn = sinon.spy();
 
-          return adp.applyDetection(undefined, undefined, undefined, undefined, undefined, undefined, autoReload,
-            updatePreset, applyCustomization, showCustomizationMessage, reload, cancel, handleVSCodeDir)
+          return adp.applyDetection(undefined, undefined, undefined, undefined, autoReload, doUpdatePreset,
+            updatePresetFn, applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
-              expect(applyCustomization.called).to.be.true;
-              expect(reload.called).to.be.true;
-              expect(showCustomizationMessage.called).to.be.false;
+              expect(updatePresetFn.called).to.be.false;
+              expect(applyCustomizationFn.called).to.be.true;
+              expect(reloadFn.called).to.be.true;
+              expect(showCustomizationMessageFn.called).to.be.false;
             });
         });
 
       it('not to auto restart, shows the customization message',
         function () {
           const autoReload = false;
-          const updatePreset = sinon.stub().returns(Promise.resolve());
-          const applyCustomization = sinon.spy();
-          const reload = sinon.spy();
-          const cancel = sinon.spy();
-          const handleVSCodeDir = sinon.stub();
-          const showCustomizationMessage = sinon.spy();
+          const updatePresetFn = sinon.stub().returns(Promise.resolve());
+          const applyCustomizationFn = sinon.spy();
+          const reloadFn = sinon.spy();
+          const showCustomizationMessageFn = sinon.spy();
           const i18nManager = sinon.createStubInstance(LanguageResourceManager);
 
-          return adp.applyDetection(i18nManager, undefined, undefined, undefined, undefined, undefined, autoReload,
-            updatePreset, applyCustomization, showCustomizationMessage, reload, cancel, handleVSCodeDir)
+          return adp.applyDetection(i18nManager, undefined, undefined, undefined, autoReload, undefined,
+            updatePresetFn, applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
-              expect(showCustomizationMessage.called).to.be.true;
+              expect(applyCustomizationFn.called).to.be.false;
+              expect(reloadFn.called).to.be.false;
+              expect(showCustomizationMessageFn.called).to.be.true;
             });
         });
 

@@ -22,17 +22,16 @@ export function detectProject(
 }
 
 export function checkForAngularProject(
-  angularPreset: boolean,
   ngIconsDisabled: boolean,
   isNgProject: boolean,
   i18nManager: LanguageResourceManager): models.IProjectDetectionResult {
 
+  // NOTE: We don't rely on the angular preset as it can be manipulated and produce false states
   // We need to mandatory check the following:
-  // 1. The 'preset'
-  // 2. The project releated icons are present in the manifest file
-  // 3. It's a detectable project
-  const enableIcons = (!angularPreset || ngIconsDisabled) && isNgProject;
-  const disableIcons = (angularPreset || !ngIconsDisabled) && !isNgProject;
+  // 1. The project related icons are present in the manifest file
+  // 2. It's a detectable project
+  const enableIcons = ngIconsDisabled && isNgProject;
+  const disableIcons = !ngIconsDisabled && !isNgProject;
 
   if (enableIcons || disableIcons) {
     const langResourceKey = enableIcons
@@ -85,41 +84,45 @@ export function applyDetection(
   message: string,
   presetText: string,
   value: boolean,
-  initValue: boolean,
-  defaultValue: boolean,
   autoReload: boolean,
-  updatePreset: (
+  doUpdatePreset: boolean,
+  updatePresetFn: (
     preset: string,
     newValue: boolean,
-    initValue: boolean,
     global: boolean) => Thenable<void>,
-  applyCustomization: () => void,
-  showCustomizationMessage: (
+  applyCustomizationFn: () => void,
+  showCustomizationMessageFn: (
     message: string,
     items: models.IVSCodeMessageItem[],
-    callback?: () => void,
-    cancel?: (...args: any[]) => void,
+    cb?: () => void,
     ...args: any[]) => void,
-  reload: () => void,
-  cancel: (
-    preset: string,
-    value: boolean,
-    global: boolean,
-    callback?: () => void) => void,
-  handleVSCodeDir: () => void): Thenable<void> {
-  return updatePreset(presetText, value, defaultValue, false)
-    .then(() => {
-      if (autoReload) {
-        applyCustomization();
-        reload();
-        return;
-      }
-
-      showCustomizationMessage(
+  reloadFn: () => void): Thenable<void> {
+  if (autoReload) {
+    if (doUpdatePreset) {
+      return updatePresetFn(presetText, value, false)
+        .then(() => {
+          // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
+          // a delay needs to be introduced in order for the preset change to get updated.
+          setTimeout(() => {
+            applyCustomizationFn();
+            reloadFn();
+          }, 500);
+        });
+    }
+    return new Promise<void>((resolve) => {
+      applyCustomizationFn();
+      reloadFn();
+      resolve();
+    });
+  } else {
+    return new Promise<void>((resolve) => {
+      showCustomizationMessageFn(
         message,
         [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.autoReload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.disableDetect) }],
-        applyCustomization, cancel, presetText, !value, initValue, false, handleVSCodeDir);
+        applyCustomizationFn, presetText, value, false);
+      resolve();
     });
+  }
 }

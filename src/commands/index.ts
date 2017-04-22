@@ -25,9 +25,9 @@ export function registerCommands(context: vscode.ExtensionContext): void {
 function registerCommand(
   context: vscode.ExtensionContext,
   name: string,
-  cb: (...args: any[]) => any): vscode.Disposable {
+  callback: (...args: any[]) => any): vscode.Disposable {
 
-  const command = vscode.commands.registerCommand(`vscode-icons.${name}`, cb);
+  const command = vscode.commands.registerCommand(`vscode-icons.${name}`, callback);
   context.subscriptions.push(command);
   return command;
 }
@@ -156,31 +156,44 @@ export function updatePreset(
 export function showCustomizationMessage(
   message: string,
   items: models.IVSCodeMessageItem[],
-  cb?: () => void,
+  callback?: () => void,
   ...args: any[]): Thenable<void> {
 
   return vscode.window.showInformationMessage(message, ...items)
-    .then((btn) => handleAction(btn, cb, ...args),
+    .then((btn) => handleAction(btn, callback, ...args),
     // tslint:disable-next-line:no-console
     (reason) => console.info('Rejected because: ', reason));
 }
 
-let doReload: boolean;
-let callback: () => void;
-
-vscode.workspace.onDidChangeConfiguration(() => {
-  if (doReload) {
-    doReload = false;
-    executeAndReload(callback);
-  }
-});
-
-function handleAction(btn: models.IVSCodeMessageItem, cb?: () => void, ...args: any[]): void {
-  callback = cb;
-
+function handleAction(btn: models.IVSCodeMessageItem, callback?: () => void, ...args: any[]): void {
   if (!btn) {
     return;
   }
+
+  let doReload: boolean;
+  vscode.workspace.onDidChangeConfiguration(() => {
+    if (doReload) {
+      // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
+      // a delay needs to be introduced in order for the preset change to get updated.
+      setTimeout(() => {
+        doReload = false;
+        executeAndReload(callback);
+      }, 500);
+    }
+  });
+
+  const handlePreset = (): void => {
+    if (args.length !== 3) {
+      throw new Error('Arguments mismatch');
+    }
+    // If the preset is the same as the toggle value then trigger an explicit reload
+    if (getConfig().vsicons.presets[args[0]] === args[1]) {
+      executeAndReload(callback);
+    } else {
+      doReload = true;
+      updatePreset(args[0], args[1], args[2]);
+    }
+  };
 
   switch (btn.title) {
     case i18nManager.getMessage(models.LangResourceKeys.disableDetect):
@@ -192,16 +205,16 @@ function handleAction(btn: models.IVSCodeMessageItem, cb?: () => void, ...args: 
     case i18nManager.getMessage(models.LangResourceKeys.autoReload):
       {
         getConfig().update('vsicons.projectDetection.autoReload', true, true)
-          .then(() => handleReload(args, cb));
+          .then(() => handlePreset());
       }
       break;
     case i18nManager.getMessage(models.LangResourceKeys.reload):
       {
         if (!args || !args.length) {
-          executeAndReload(cb);
+          executeAndReload(callback);
           break;
         }
-        handleReload(args, cb);
+        handlePreset();
       }
       break;
     default:
@@ -209,41 +222,15 @@ function handleAction(btn: models.IVSCodeMessageItem, cb?: () => void, ...args: 
   }
 }
 
-function handleReload(args: any[], cb: () => any): void {
-  if (args.length !== 3) {
-    throw new Error('Arguments mismatch');
-  }
-  // If the preset is the same as the toggle value then trigger an explicit reload
-  if (getConfig().vsicons.presets[args[0]] === args[1]) {
-    executeAndReload(cb);
-  } else {
-    doReload = true;
-    updatePreset(args[0], args[1], args[2]);
-  }
-}
-
-function executeAndReload(cb?: () => void) {
-  if (cb) {
-    cb();
+function executeAndReload(callback?: () => void) {
+  if (callback) {
+    callback();
   }
   reload();
 }
 
 export function reload(): void {
   vscode.commands.executeCommand('workbench.action.reloadWindow');
-}
-
-export function cancel(
-  preset: string,
-  value: boolean,
-  global: boolean = true,
-  cb?: () => void): void {
-  updatePreset(preset, value, global)
-    .then(() => {
-      if (cb) {
-        cb();
-      }
-    });
 }
 
 export function applyCustomization(): void {
