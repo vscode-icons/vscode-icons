@@ -47,6 +47,7 @@ export const extensions: IFileCollection = {
     { icon: 'ng_routing_ts2', extensions: ['app-routing.module.ts'], filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'ng_routing_js2', extensions: ['app-routing.module.js'], filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'ansible', extensions: [], languages: [languages.ansible], format: FileFormat.svg },
+    { icon: 'anyscript', extensions: [], languages: [languages.anyscript], format: FileFormat.svg },
     { icon: 'apache', extensions: [], languages: [languages.apache], format: FileFormat.svg },
     { icon: 'apib', extensions: [], languages: [languages.apib], format: FileFormat.svg },
     { icon: 'applescript', extensions: [], languages: [languages.applescript], format: FileFormat.svg },
