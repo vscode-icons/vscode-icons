@@ -259,42 +259,17 @@ describe('AutoDetectProject: tests', function () {
 
     context('when user has selected', function () {
 
-      it('to auto restart, does updates the preset, applies the changes and restarts',
+      it('to auto restart, applies the changes and restarts',
         function () {
-          const clock = sinon.useFakeTimers();
 
           const autoReload = true;
-          const doUpdatePreset = true;
-          const updatePresetFn = sinon.stub().returns(Promise.resolve());
           const applyCustomizationFn = sinon.spy();
           const reloadFn = sinon.spy();
           const showCustomizationMessageFn = sinon.spy();
 
-          return adp.applyDetection(undefined, undefined, undefined, undefined, autoReload, doUpdatePreset,
-            updatePresetFn, applyCustomizationFn, showCustomizationMessageFn, reloadFn)
+          return adp.applyDetection(undefined, undefined, undefined, undefined, autoReload,
+            applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
-              clock.tick(500);
-              expect(updatePresetFn.called).to.be.true;
-              expect(applyCustomizationFn.called).to.be.true;
-              expect(reloadFn.called).to.be.true;
-              expect(showCustomizationMessageFn.called).to.be.false;
-              clock.restore();
-            });
-        });
-
-      it('to auto restart, does not updates the preset, applies the changes and restarts',
-        function () {
-          const autoReload = true;
-          const doUpdatePreset = false;
-          const updatePresetFn = sinon.stub().returns(Promise.resolve());
-          const applyCustomizationFn = sinon.spy();
-          const reloadFn = sinon.spy();
-          const showCustomizationMessageFn = sinon.spy();
-
-          return adp.applyDetection(undefined, undefined, undefined, undefined, autoReload, doUpdatePreset,
-            updatePresetFn, applyCustomizationFn, showCustomizationMessageFn, reloadFn)
-            .then(() => {
-              expect(updatePresetFn.called).to.be.false;
               expect(applyCustomizationFn.called).to.be.true;
               expect(reloadFn.called).to.be.true;
               expect(showCustomizationMessageFn.called).to.be.false;
@@ -304,14 +279,13 @@ describe('AutoDetectProject: tests', function () {
       it('not to auto restart, shows the customization message',
         function () {
           const autoReload = false;
-          const updatePresetFn = sinon.stub().returns(Promise.resolve());
           const applyCustomizationFn = sinon.spy();
           const reloadFn = sinon.spy();
           const showCustomizationMessageFn = sinon.spy();
           const i18nManager = sinon.createStubInstance(LanguageResourceManager);
 
-          return adp.applyDetection(i18nManager, undefined, undefined, undefined, autoReload, undefined,
-            updatePresetFn, applyCustomizationFn, showCustomizationMessageFn, reloadFn)
+          return adp.applyDetection(i18nManager, undefined, undefined, undefined, autoReload,
+            applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
               expect(applyCustomizationFn.called).to.be.false;
               expect(reloadFn.called).to.be.false;

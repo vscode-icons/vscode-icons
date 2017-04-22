@@ -85,11 +85,6 @@ export function applyDetection(
   presetText: string,
   value: boolean,
   autoReload: boolean,
-  doUpdatePreset: boolean,
-  updatePresetFn: (
-    preset: string,
-    newValue: boolean,
-    global: boolean) => Thenable<void>,
   applyCustomizationFn: () => void,
   showCustomizationMessageFn: (
     message: string,
@@ -97,32 +92,18 @@ export function applyDetection(
     cb?: () => void,
     ...args: any[]) => void,
   reloadFn: () => void): Thenable<void> {
-  if (autoReload) {
-    if (doUpdatePreset) {
-      return updatePresetFn(presetText, value, false)
-        .then(() => {
-          // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
-          // a delay needs to be introduced in order for the preset change to get updated.
-          setTimeout(() => {
-            applyCustomizationFn();
-            reloadFn();
-          }, 500);
-        });
-    }
-    return new Promise<void>((resolve) => {
+  return new Promise<void>((resolve) => {
+    if (autoReload) {
       applyCustomizationFn();
       reloadFn();
-      resolve();
-    });
-  } else {
-    return new Promise<void>((resolve) => {
+    } else {
       showCustomizationMessageFn(
         message,
         [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.autoReload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.disableDetect) }],
         applyCustomizationFn, presetText, value, false);
-      resolve();
-    });
-  }
+    }
+    resolve();
+  });
 }

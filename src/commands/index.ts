@@ -250,28 +250,29 @@ function generateManifest(
   customFiles: models.IFileCollection,
   customFolders: models.IFolderCollection): void {
   const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
-  const presets = getConfig().vsicons.presets;
+  const vsicons = getConfig().vsicons;
+  const angularPreset = vsicons.projectDetection.autoReload ? iconsDisabled('ng') : vsicons.presets.angular;
   let workingCustomFiles = customFiles;
   let workingCustomFolders = customFolders;
   if (customFiles) {
     // check presets...
-    workingCustomFiles = iconManifest.toggleAngularPreset(!presets.angular, customFiles);
-    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!presets.jsOfficial, workingCustomFiles,
+    workingCustomFiles = iconManifest.toggleAngularPreset(!angularPreset, customFiles);
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.jsOfficial, workingCustomFiles,
       ['js_official'], ['js']);
-    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!presets.tsOfficial, workingCustomFiles,
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.tsOfficial, workingCustomFiles,
       ['typescript_official', 'typescriptdef_official'], ['typescript', 'typescriptdef']);
-    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!presets.jsonOfficial, workingCustomFiles,
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.jsonOfficial, workingCustomFiles,
       ['json_official'], ['json']);
   }
   if (customFolders) {
     workingCustomFolders = iconManifest.toggleFoldersAllDefaultIconPreset(
-      presets.foldersAllDefaultIcon, customFolders);
-    workingCustomFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);
+      vsicons.presets.foldersAllDefaultIcon, customFolders);
+    workingCustomFolders = iconManifest.toggleHideFoldersPreset(vsicons.presets.hideFolders, workingCustomFolders);
   }
   // presets affecting default icons
-  const workingFiles = iconManifest.toggleAngularPreset(!presets.angular, files);
-  let workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(presets.foldersAllDefaultIcon, folders);
-  workingFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingFolders);
+  const workingFiles = iconManifest.toggleAngularPreset(!angularPreset, files);
+  let workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(vsicons.presets.foldersAllDefaultIcon, folders);
+  workingFolders = iconManifest.toggleHideFoldersPreset(vsicons.presets.hideFolders, workingFolders);
 
   const json = iconManifest.mergeConfig(
     workingCustomFiles,

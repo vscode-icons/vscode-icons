@@ -44,11 +44,8 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
   }
 
   const presetText = 'angular';
-  const doUpdatePreset = config.presets[presetText] !== toggle.value;
-  init.applyDetection(i18nManager, toggle.message, presetText, toggle.value,
-    config.projectDetection.autoReload, doUpdatePreset, commands.updatePreset,
-    commands.applyCustomization, commands.showCustomizationMessage,
-    commands.reload);
+  init.applyDetection(i18nManager, toggle.message, presetText, toggle.value, config.projectDetection.autoReload,
+    commands.applyCustomization, commands.showCustomizationMessage, commands.reload);
 }
 
 export function activate(context: vscode.ExtensionContext) {
