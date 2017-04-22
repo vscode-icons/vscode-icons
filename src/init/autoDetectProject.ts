@@ -63,7 +63,6 @@ function getIconManifest(): string {
   try {
     return fs.readFileSync(manifestFilePath, 'utf8');
   } catch (err) {
-    console.error(err);
     return null;
   }
 }

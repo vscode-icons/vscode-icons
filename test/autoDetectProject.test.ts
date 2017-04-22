@@ -142,7 +142,7 @@ describe('AutoDetectProject: tests', function () {
 
         it('disabled',
           function () {
-            const iconManifest = '{ "iconDefinitions": { "_f_codecov_": {} } }';
+            const iconManifest = '{ "iconDefinitions": { "_f_codecov": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
             expect(adp.iconsDisabled('ng')).to.be.true;
           });
@@ -158,6 +158,90 @@ describe('AutoDetectProject: tests', function () {
           function () {
             sandbox.stub(fs, 'readFileSync').throws(Error);
             expect(adp.iconsDisabled('ng')).to.be.true;
+          });
+      });
+
+      context('detects that special folder icons are', function () {
+
+        let sandbox: sinon.SinonSandbox;
+
+        beforeEach(() => {
+          sandbox = sinon.sandbox.create();
+        });
+
+        afterEach(() => {
+          sandbox.restore();
+        });
+
+        it('enabled',
+          function () {
+            const iconManifest = '{ "iconDefinitions": { "_fd_aws": {} } }';
+            sandbox.stub(fs, 'readFileSync').returns(iconManifest);
+            expect(adp.iconsDisabled('aws', false)).to.be.false;
+          });
+
+        it('disabled',
+          function () {
+            const iconManifest = '{ "iconDefinitions": { "_fd_git": {} } }';
+            sandbox.stub(fs, 'readFileSync').returns(iconManifest);
+            expect(adp.iconsDisabled('aws', false)).to.be.true;
+          });
+
+        it('disabled if they do not exist',
+          function () {
+            const iconManifest = '';
+            sandbox.stub(fs, 'readFileSync').returns(iconManifest);
+            expect(adp.iconsDisabled('aws', false)).to.be.true;
+          });
+
+        it('assumed disabled if icon manifest file fails to be loaded',
+          function () {
+            sandbox.stub(fs, 'readFileSync').throws(Error);
+            expect(adp.iconsDisabled('aws', false)).to.be.true;
+          });
+      });
+
+      context('detects that specific folders icons are', function () {
+
+        let sandbox: sinon.SinonSandbox;
+
+        beforeEach(() => {
+          sandbox = sinon.sandbox.create();
+        });
+
+        afterEach(() => {
+          sandbox.restore();
+        });
+
+        it('enabled',
+          function () {
+            const iconManifest = '{ "iconDefinitions": { "_fd_aws": {} } }';
+            const func = sinon.stub().returns(true);
+            sandbox.stub(fs, 'readFileSync').returns(iconManifest);
+            expect(adp.folderIconsDisabled(func)).to.be.false;
+          });
+
+        it('disabled',
+          function () {
+            const iconManifest = '{ "iconDefinitions": { "_fd_git": {} } }';
+            const func = sinon.stub().returns(false);
+            sandbox.stub(fs, 'readFileSync').returns(iconManifest);
+            expect(adp.folderIconsDisabled(func)).to.be.true;
+          });
+
+        it('disabled if they do not exist',
+          function () {
+            const iconManifest = '';
+            const func = sinon.stub();
+            sandbox.stub(fs, 'readFileSync').returns(iconManifest);
+            expect(adp.folderIconsDisabled(func)).to.be.true;
+          });
+
+        it('assumed disabled if icon manifest file fails to be loaded',
+          function () {
+            const func = sinon.stub();
+            sandbox.stub(fs, 'readFileSync').throws(Error);
+            expect(adp.folderIconsDisabled(func)).to.be.true;
           });
       });
 
