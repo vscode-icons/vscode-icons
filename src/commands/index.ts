@@ -4,8 +4,9 @@ import { LanguageResourceManager } from '../i18n';
 import * as iconManifest from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
-import { IFileCollection, IFolderCollection, LangResourceKeys } from '../models';
+import * as models from '../models';
 import { extensionSettings } from '../settings';
+import { folderIconsDisabled, iconsDisabled } from '../init';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
 
@@ -24,32 +25,35 @@ export function registerCommands(context: vscode.ExtensionContext): void {
 function registerCommand(
   context: vscode.ExtensionContext,
   name: string,
-  callback: (...args: any[]) => any): vscode.Disposable {
+  cb: (...args: any[]) => any): vscode.Disposable {
 
-  const command = vscode.commands.registerCommand(`vscode-icons.${name}`, callback);
+  const command = vscode.commands.registerCommand(`vscode-icons.${name}`, cb);
   context.subscriptions.push(command);
   return command;
 }
 
 export function applyCustomizationCommand(): void {
-  const message = i18nManager.getMessage(LangResourceKeys.iconCustomization, ' ', LangResourceKeys.restart);
+  const message = i18nManager.getMessage(
+    models.LangResourceKeys.iconCustomization, ' ', models.LangResourceKeys.restart);
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
     applyCustomization);
 }
 
 function restoreDefaultManifestCommand(): void {
-  const message = i18nManager.getMessage(LangResourceKeys.iconRestore, ' ', LangResourceKeys.restart);
+  const message = i18nManager.getMessage(
+    models.LangResourceKeys.iconRestore, ' ', models.LangResourceKeys.restart);
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
     restoreManifest);
 }
 
 function resetProjectDetectionDefaultsCommand(): void {
-  const message = i18nManager.getMessage(LangResourceKeys.projectDetecticonReset, ' ', LangResourceKeys.restart);
+  const message = i18nManager.getMessage(
+    models.LangResourceKeys.projectDetecticonReset, ' ', models.LangResourceKeys.restart);
   showCustomizationMessage(
     message,
-    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
     resetProjectDetectionDefaults);
 }
 
@@ -83,9 +87,9 @@ function togglePreset(
   reverseAction: boolean = false,
   global: boolean = true): void {
 
-  // Actually here we should detect the present of the icons references in the icon-manifest
-  // instead of the preset, as it can be manipulatedby the user resulting in showing the wrong action message
-  const toggledValue = !getConfig().vsicons.presets[preset];
+  const toggledValue = isFolders(preset)
+    ? folderIconsDisabled(getFunc(preset))
+    : iconsDisabled(getIconName(preset));
   const action = reverseAction
     ? toggledValue
       ? 'Disabled'
@@ -94,15 +98,50 @@ function togglePreset(
       ? 'Enabled'
       : 'Disabled';
 
-  if (!Reflect.has(LangResourceKeys, `${presetKey}${action}`)) {
+  if (!Reflect.has(models.LangResourceKeys, `${presetKey}${action}`)) {
     throw Error(`${presetKey}${action} is not valid`);
   }
 
-  const message = `${i18nManager.getMessage(LangResourceKeys[`${presetKey}${action}`], ' ', LangResourceKeys.restart)}`;
+  const message = `${i18nManager.getMessage(
+    models.LangResourceKeys[`${presetKey}${action}`], ' ', models.LangResourceKeys.restart)}`;
 
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
     applyCustomization, preset, toggledValue, global);
+}
+
+function isFolders(preset: string): boolean {
+  return preset.toLowerCase().includes('folders');
+}
+
+function getFunc(preset: string): (iconsJson: models.IIconSchema) => boolean {
+  switch (preset) {
+    case 'hideFolders':
+      return (iconsJson: models.IIconSchema) =>
+        Object.keys(iconsJson.folderNames).length === 0 &&
+        iconsJson.iconDefinitions._folder.iconPath === '';
+    case 'foldersAllDefaultIcon':
+      return (iconsJson: models.IIconSchema) =>
+        Object.keys(iconsJson.folderNames).length === 0 &&
+        iconsJson.iconDefinitions._folder.iconPath !== '';
+    default:
+      throw new Error('Not implemented');
+  }
+}
+
+function getIconName(preset: string): string {
+  switch (preset) {
+    case 'angular':
+      return 'ng';
+    case 'jsOfficial':
+      return 'js_official';
+    case 'tsOfficial':
+      return 'typescript_official';
+    case 'jsonOfficial':
+      return 'json_official';
+    default:
+      throw new Error('Not implemented');
+  }
 }
 
 export function updatePreset(
@@ -116,59 +155,53 @@ export function updatePreset(
 
 export function showCustomizationMessage(
   message: string,
-  items: vscode.MessageItem[],
-  callback?: () => void,
+  items: models.IVSCodeMessageItem[],
+  cb?: () => void,
   ...args: any[]): Thenable<void> {
 
   return vscode.window.showInformationMessage(message, ...items)
-    .then((btn) => handleAction(btn, callback, ...args),
+    .then((btn) => handleAction(btn, cb, ...args),
     // tslint:disable-next-line:no-console
     (reason) => console.info('Rejected because: ', reason));
 }
 
-function handleAction(btn: vscode.MessageItem, callback?: () => void, ...args: any[]): void {
-  let doReload: boolean;
+let doReload: boolean;
+let callback: () => void;
 
-  vscode.workspace.onDidChangeConfiguration(() => {
-    if (doReload) {
-      executeAndReload(callback);
-    }
-  });
+vscode.workspace.onDidChangeConfiguration(() => {
+  if (doReload) {
+    doReload = false;
+    executeAndReload(callback);
+  }
+});
+
+function handleAction(btn: models.IVSCodeMessageItem, cb?: () => void, ...args: any[]): void {
+  callback = cb;
 
   if (!btn) {
     return;
   }
 
   switch (btn.title) {
-    case i18nManager.getMessage(LangResourceKeys.disableDetect):
+    case i18nManager.getMessage(models.LangResourceKeys.disableDetect):
       {
         doReload = false;
         getConfig().update('vsicons.projectDetection.disableDetect', true, true);
       }
       break;
-    case i18nManager.getMessage(LangResourceKeys.autoReload):
+    case i18nManager.getMessage(models.LangResourceKeys.autoReload):
       {
         getConfig().update('vsicons.projectDetection.autoReload', true, true)
-          .then(() => {
-            if (args.length !== 3) {
-              throw new Error('Arguments mismatch');
-            }
-            doReload = true;
-            updatePreset(args[0], args[1], args[2]);
-          });
+          .then(() => handleReload(args, cb));
       }
       break;
-    case i18nManager.getMessage(LangResourceKeys.reload):
+    case i18nManager.getMessage(models.LangResourceKeys.reload):
       {
         if (!args || !args.length) {
-          executeAndReload(callback);
+          executeAndReload(cb);
           break;
         }
-        if (args.length !== 3) {
-          throw new Error('Arguments mismatch');
-        }
-        doReload = true;
-        updatePreset(args[0], args[1], args[2]);
+        handleReload(args, cb);
       }
       break;
     default:
@@ -176,9 +209,22 @@ function handleAction(btn: vscode.MessageItem, callback?: () => void, ...args: a
   }
 }
 
-function executeAndReload(callback?: () => void) {
-  if (callback) {
-    callback();
+function handleReload(args: any[], cb: () => any): void {
+  if (args.length !== 3) {
+    throw new Error('Arguments mismatch');
+  }
+  // If the preset is the same as the toggle value then trigger an explicit reload
+  if (getConfig().vsicons.presets[args[0]] === args[1]) {
+    executeAndReload(cb);
+  } else {
+    doReload = true;
+    updatePreset(args[0], args[1], args[2]);
+  }
+}
+
+function executeAndReload(cb?: () => void) {
+  if (cb) {
+    cb();
   }
   reload();
 }
@@ -191,22 +237,22 @@ export function cancel(
   preset: string,
   value: boolean,
   global: boolean = true,
-  callback?: () => void): void {
+  cb?: () => void): void {
   updatePreset(preset, value, global)
     .then(() => {
-      if (callback) {
-        callback();
+      if (cb) {
+        cb();
       }
     });
 }
 
 export function applyCustomization(): void {
   const associations = getConfig().vsicons.associations;
-  const customFiles: IFileCollection = {
+  const customFiles: models.IFileCollection = {
     default: associations.fileDefault,
     supported: associations.files,
   };
-  const customFolders: IFolderCollection = {
+  const customFolders: models.IFolderCollection = {
     default: associations.folderDefault,
     supported: associations.folders,
   };
@@ -214,8 +260,8 @@ export function applyCustomization(): void {
 }
 
 function generateManifest(
-  customFiles: IFileCollection,
-  customFolders: IFolderCollection): void {
+  customFiles: models.IFileCollection,
+  customFolders: models.IFolderCollection): void {
   const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
   const presets = getConfig().vsicons.presets;
   let workingCustomFiles = customFiles;

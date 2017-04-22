@@ -4,6 +4,7 @@ import * as models from '../models';
 import { extensionSettings } from '../settings';
 import { parseJSON } from '../utils';
 import { LanguageResourceManager } from '../i18n';
+import { IIconSchema } from '../models/iconSchema/iconSchema';
 
 export function detectProject(
   findFiles: (
@@ -45,28 +46,27 @@ export function checkForAngularProject(
   return { apply: false };
 }
 
-export function iconsDisabled(name: string): boolean {
+export function iconsDisabled(name: string, isFile = true): boolean {
+  const iconManifest = getIconManifest();
+  const iconsJson = iconManifest && parseJSON(iconManifest) as IIconSchema;
+  return !iconsJson || !Reflect.ownKeys(iconsJson.iconDefinitions)
+    .filter((key) => key.toString().startsWith(`_${isFile ? 'f' : 'fd'}_${name}`)).length;
+}
+
+export function folderIconsDisabled(func: (iconsJson: IIconSchema) => boolean): boolean {
+  const iconManifest = getIconManifest();
+  const iconsJson = iconManifest && parseJSON(iconManifest) as IIconSchema;
+  return !iconsJson || !func(iconsJson);
+}
+
+function getIconManifest(): string {
   const manifestFilePath = path.join(__dirname, '..', extensionSettings.iconJsonFileName);
-
-  let iconManifest: string;
   try {
-    iconManifest = fs.readFileSync(manifestFilePath, 'utf8');
+    return fs.readFileSync(manifestFilePath, 'utf8');
   } catch (err) {
-    return true;
+    console.error(err);
+    return null;
   }
-
-  const iconsJson = parseJSON(iconManifest);
-  if (!iconsJson) {
-    return true;
-  }
-
-  for (const key in iconsJson.iconDefinitions) {
-    if (key.startsWith(`_f_${name}_`)) {
-      return false;
-    }
-  }
-
-  return true;
 }
 
 export function isProject(projectJson: any, name: string): boolean {
