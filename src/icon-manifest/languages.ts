@@ -12,7 +12,7 @@ export const languages: ILanguageCollection = {
   autohotkey: { ids: ['ahk'], defaultExtension: 'ahk' },
   autoit: { ids: ['autoit'], defaultExtension: 'au3' },
   bat: { ids: 'bat', defaultExtension: 'bat' },
-  blade: { ids: ['blade'], defaultExtension: 'blade.php' },
+  blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
   c: { ids: 'c', defaultExtension: 'c' },
   cabal: { ids: ['cabal'], defaultExtension: 'cabal' },
   cake: { ids: ['cake'], defaultExtension: 'cake' },
