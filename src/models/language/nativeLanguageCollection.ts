@@ -14,6 +14,7 @@ export interface INativeLanguageCollection {
   go: ILanguage;
   groovy: ILanguage;
   handlebars: ILanguage;
+  hlsl: ILanguage;
   html: ILanguage;
   ini: ILanguage;
   java: ILanguage;
