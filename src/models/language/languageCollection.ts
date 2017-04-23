@@ -35,6 +35,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   fortran: ILanguage;
   freemarker: ILanguage;
   godot: ILanguage;
+  glsl: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
