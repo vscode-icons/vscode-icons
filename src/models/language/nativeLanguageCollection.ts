@@ -25,6 +25,7 @@ export interface INativeLanguageCollection {
   makefile: ILanguage;
   markdown: ILanguage;
   objectivec: ILanguage;
+  objectivecpp: ILanguage;
   perl: ILanguage;
   php: ILanguage;
   plaintext: ILanguage;

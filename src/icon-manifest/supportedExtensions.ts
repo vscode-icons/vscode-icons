@@ -248,6 +248,7 @@ export const extensions: IFileCollection = {
     { icon: 'nuget', extensions: ['nupkg', 'nuspec', 'psmdcp'], format: FileFormat.svg },
     { icon: 'nunjucks', extensions: ['nunj', 'njs'], languages: [languages.nunjucks], format: FileFormat.svg },
     { icon: 'objectivec', extensions: [], languages: [languages.objectivec], format: FileFormat.svg },
+    { icon: 'objectivecpp', extensions: [], languages: [languages.objectivecpp], format: FileFormat.svg },
     { icon: 'ocaml', extensions: ['.merlin'], filename: true, languages: [languages.ocaml], format: FileFormat.svg },
     { icon: 'onenote', extensions: ['one', 'onepkg', 'onetoc', 'onetoc2', 'sig'], format: FileFormat.svg },
     { icon: 'opencl', extensions: ['cl', 'opencl'], format: FileFormat.svg },
