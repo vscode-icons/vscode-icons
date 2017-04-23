@@ -6,18 +6,21 @@
     "quotemark": [
       "single"
     ],
-    "eofline": true,
     "variable-name": [
       true,
+      "ban-keywords",
+      "check-format",
       "allow-pascal-case",
       "allow-leading-underscore"
     ],
     "space-before-function-paren": [
-      "error",
+      true,
       {
         "anonymous": "always",
         "named": "never",
-        "asyncArrow": "ignore"
+        "asyncArrow": "always",
+        "method": "never",
+        "constructor": "never"
       }
     ],
     "object-literal-sort-keys": false,
@@ -25,12 +28,9 @@
     "ordered-imports": [
       false
     ],
-    "arrow-parens": false
-  },
-  "jsRules": {
-    "quotemark": [
-      "single"
-    ],
-    "object-literal-sort-keys": false
+    "arrow-parens": [
+      true,
+      "ban-single-arg-parens"
+    ]
   }
 }

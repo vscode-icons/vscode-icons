@@ -218,7 +218,7 @@ describe('i18n: tests', function () {
           expect(packageJson.contributes).to.exist;
           expect(packageJson.contributes.commands).to.exist;
           expect(packageJson.contributes.commands).to.be.an.instanceOf(Array);
-          packageJson.contributes.commands.forEach((command) => {
+          packageJson.contributes.commands.forEach(command => {
             const title = command.title as string;
             const nlsEntry = title.replace(/%/g, '');
             expect(title).to.exist;
