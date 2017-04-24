@@ -24,7 +24,7 @@ function initialize(context: vscode.ExtensionContext) {
   init.manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, commands.applyCustomizationCommand);
 
   init.detectProject(findFiles, config)
-    .then((results) => {
+    .then(results => {
       if (results && results.length && !asRelativePath(results[0].fsPath).includes('/')) {
         detectAngular(config, results);
       }
