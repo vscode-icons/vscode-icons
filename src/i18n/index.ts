@@ -20,7 +20,7 @@ export class LanguageResourceManager {
     }
 
     let msg = '';
-    keys.forEach((key) => {
+    keys.forEach(key => {
       // If key is of type 'number' it's a LangResourceKeys
       const stringifiedKey = typeof key === "number" ? LangResourceKeys[key] : key;
 
@@ -44,7 +44,7 @@ export class LanguageResourceManager {
         throw new Error(`${stringifiedKey} is not valid`);
       }
 
-      stringifiedKey.split('').forEach((char) => {
+      stringifiedKey.split('').forEach(char => {
         if (char.match(/[#^*|\\/{}+=]/g)) {
           throw new Error(`${char} is not valid`);
         }
