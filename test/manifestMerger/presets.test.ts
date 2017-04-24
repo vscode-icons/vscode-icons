@@ -1,4 +1,5 @@
 // tslint:disable only-arrow-functions
+// tslint:disable no-unused-expression
 import { expect } from 'chai';
 import { extensions as fileExtensions } from '../support/supportedExtensions';
 import { extensions as folderExtensions } from '../support/supportedFolders';

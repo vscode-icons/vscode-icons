@@ -220,8 +220,8 @@
         "nyc": "^10.2.0",
         "rimraf": "^2.6.1",
         "sinon": "^2.1.0",
-        "tslint": "^5.0.0",
-        "typescript": "^2.2.2",
+        "tslint": "^5.1.0",
+        "typescript": "^2.3.0",
         "vscode": "^1.1.0"
     },
     "dependencies": {
