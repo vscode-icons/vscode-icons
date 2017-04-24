@@ -10,9 +10,6 @@ export interface ILangResource {
   activationPath: string | IOSSpecific;
   aboutOfficialApi: string | IOSSpecific;
   learnMore: string | IOSSpecific;
-  urlReleaseNote: string | IOSSpecific;
-  urlReadme: string | IOSSpecific;
-  urlOfficialApi: string | IOSSpecific;
   reload: string | IOSSpecific;
   autoReload: string | IOSSpecific;
   disableDetect: string | IOSSpecific;
