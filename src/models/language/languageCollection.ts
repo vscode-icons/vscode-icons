@@ -39,6 +39,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   graphviz: ILanguage;
   groovy: ILanguage;
   haml: ILanguage;
+  harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
   jinja: ILanguage;

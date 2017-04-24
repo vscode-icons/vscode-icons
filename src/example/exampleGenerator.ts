@@ -6,7 +6,7 @@ import { deleteDirectoryRecursively } from '../utils';
 const supportedFlags = ['--all', '--folders', '--files'];
 
 const folderNames = folders.supported
-  .filter((folder) => !folder.disabled)
+  .filter(folder => !folder.disabled)
   .reduce((init, current) => {
     const obj = init;
     if (current.extensions.length) {
@@ -16,7 +16,7 @@ const folderNames = folders.supported
   }, {});
 
 const fileNames = files.supported
-  .filter((file) => !file.disabled)
+  .filter(file => !file.disabled)
   .reduce((init, current) => {
     const obj = init;
     const extension = !current.filename && current.languages && current.languages.length

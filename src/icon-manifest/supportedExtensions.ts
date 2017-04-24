@@ -182,6 +182,7 @@ export const extensions: IFileCollection = {
     { icon: 'haml', extensions: [], languages: [languages.haml], format: FileFormat.svg },
     { icon: 'handlebars', extensions: [], languages: [languages.handlebars], format: FileFormat.svg },
     { icon: 'handlebars2', extensions: [], languages: [languages.handlebars], format: FileFormat.svg, disabled: true },
+    { icon: 'harbour', extensions: [], languages: [languages.harbour], format: FileFormat.svg },
     { icon: 'haskell', extensions: [], languages: [languages.haskell, languages.literatehaskell], format: FileFormat.svg },
     { icon: 'haskell2', extensions: [], languages: [languages.haskell, languages.literatehaskell], format: FileFormat.svg, disabled: true },
     { icon: 'haxe', extensions: ['haxelib.json'], filename: true, languages: [languages.haxe], format: FileFormat.svg },
