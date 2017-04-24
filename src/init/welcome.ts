@@ -3,6 +3,7 @@ import * as open from 'open';
 import { LanguageResourceManager } from '../i18n';
 import { getConfig } from '../utils/vscode-extensions';
 import { ISettingsManager, ExtensionStatus, LangResourceKeys } from '../models';
+import { constants } from '../constants';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
 
@@ -31,9 +32,9 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
     .then(btn => {
       if (!btn) { return; }
       if (btn.title === i18nManager.getMessage(LangResourceKeys.aboutOfficialApi)) {
-        open(i18nManager.getMessage(LangResourceKeys.urlOfficialApi));
+        open(i18nManager.getMessage(constants.urlOfficialApi));
       } else if (btn.title === i18nManager.getMessage(LangResourceKeys.seeReadme)) {
-        open(i18nManager.getMessage(LangResourceKeys.urlReadme));
+        open(i18nManager.getMessage(constants.urlReadme));
       }
     }, reason => {
       // tslint:disable-next-line:no-console
@@ -52,7 +53,7 @@ function showNewVersionMessage(settingsManager: ISettingsManager) {
       settingsManager.updateStatus(ExtensionStatus.disabled);
       if (!btn) { return; }
       if (btn.title === i18nManager.getMessage(LangResourceKeys.seeReleaseNotes)) {
-        open(i18nManager.getMessage(LangResourceKeys.urlReleaseNote));
+        open(i18nManager.getMessage(constants.urlReleaseNote));
       } else if (btn.title === i18nManager.getMessage(LangResourceKeys.dontShowThis)) {
         getConfig().update('vsicons.dontShowNewVersionMessage', true, true);
       }
