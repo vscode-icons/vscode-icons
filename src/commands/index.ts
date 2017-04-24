@@ -127,9 +127,9 @@ export function showCustomizationMessage(
   ...args: any[]): Thenable<void> {
 
   return vscode.window.showInformationMessage(message, ...items)
-    .then((btn) => handleAction(btn, callback, ...args),
+    .then(btn => handleAction(btn, callback, ...args),
     // tslint:disable-next-line:no-console
-    (reason) => console.info('Rejected because: ', reason));
+    reason => console.info('Rejected because: ', reason));
 }
 
 function handleAction(btn: models.IVSCodeMessageItem, callback?: () => void, ...args: any[]): void {

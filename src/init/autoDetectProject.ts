@@ -49,7 +49,7 @@ export function iconsDisabled(name: string, isFile = true): boolean {
   const iconManifest = getIconManifest();
   const iconsJson = iconManifest && parseJSON(iconManifest) as IIconSchema;
   return !iconsJson || !Reflect.ownKeys(iconsJson.iconDefinitions)
-    .filter((key) => key.toString().startsWith(`_${isFile ? 'f' : 'fd'}_${name}`)).length;
+    .filter(key => key.toString().startsWith(`_${isFile ? 'f' : 'fd'}_${name}`)).length;
 }
 
 export function folderIconsDisabled(func: (iconsJson: IIconSchema) => boolean): boolean {
@@ -91,7 +91,7 @@ export function applyDetection(
     cb?: () => void,
     ...args: any[]) => void,
   reloadFn: () => void): Thenable<void> {
-  return new Promise<void>((resolve) => {
+  return new Promise<void>(resolve => {
     if (autoReload) {
       applyCustomizationFn();
       reloadFn();

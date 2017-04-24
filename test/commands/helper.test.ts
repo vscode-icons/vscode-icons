@@ -1,4 +1,5 @@
-/* tslint:disable only-arrow-functions */
+// tslint:disable only-arrow-functions
+// tslint:disable no-unused-expression
 import { expect } from 'chai';
 import * as helper from '../../src/commands/helper';
 import { IIconSchema } from "../../src/models/index";
