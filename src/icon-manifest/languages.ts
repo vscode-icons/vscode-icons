@@ -50,6 +50,7 @@ export const languages: ILanguageCollection = {
   groovy: { ids: 'groovy', defaultExtension: 'groovy' },
   haml: { ids: ['haml'], defaultExtension: 'haml' },
   handlebars: { ids: 'handlebars', defaultExtension: 'hbs' },
+  harbour: { ids: 'harbour', defaultExtension: 'prg' },
   haskell: { ids: ['haskell'], defaultExtension: 'hs' },
   haxe: { ids: ['haxe', 'hxml', 'Haxe AST dump'], defaultExtension: 'haxe' },
   html: { ids: 'html', defaultExtension: 'html' },
