@@ -35,7 +35,7 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
       } else if (btn.title === i18nManager.getMessage(LangResourceKeys.seeReadme)) {
         open(i18nManager.getMessage(LangResourceKeys.urlReadme));
       }
-    }, (reason) => {
+    }, reason => {
       // tslint:disable-next-line:no-console
       console.info('Rejected because: ', reason);
       return;
@@ -56,7 +56,7 @@ function showNewVersionMessage(settingsManager: ISettingsManager) {
       } else if (btn.title === i18nManager.getMessage(LangResourceKeys.dontShowThis)) {
         getConfig().update('vsicons.dontShowNewVersionMessage', true, true);
       }
-    }, (reason) => {
+    }, reason => {
       // tslint:disable-next-line:no-console
       console.info('Rejected because: ', reason);
       return;
