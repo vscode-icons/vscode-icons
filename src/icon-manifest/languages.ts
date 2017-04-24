@@ -77,6 +77,7 @@ export const languages: ILanguageCollection = {
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], defaultExtension: 'nsi' },
   nunjucks: { ids: ['nunjucks'], defaultExtension: 'nunjucks' },
   objectivec: { ids: 'objective-c', defaultExtension: 'm' },
+  objectivecpp: { ids: 'objective-cpp', defaultExtension: 'mm' },
   ocaml: { ids: ['ocaml', 'ocamllex', 'menhir'], defaultExtension: 'ml' },
   pascal: { ids: ['pascal', 'objectpascal'], defaultExtension: 'pas' },
   perl: { ids: ['perl', 'perl6'], defaultExtension: 'pl' },
