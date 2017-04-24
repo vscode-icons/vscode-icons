@@ -1,14 +1,16 @@
 # vscode-icons
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/vscode-icons/vscode-icons.svg)](https://greenkeeper.io/)
 [![Version](http://vsmarketplacebadge.apphb.com/version/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 [![Installs](http://vsmarketplacebadge.apphb.com/installs/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 
 [![Build Status](https://travis-ci.org/vscode-icons/vscode-icons.svg?branch=master)](https://travis-ci.org/vscode-icons/vscode-icons)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/vscode-icons/vscode-icons?branch=master&svg=true)](https://ci.appveyor.com/project/robertohuertasm/vscode-icons)
+
 [![Dependencies Status](https://david-dm.org/vscode-icons/vscode-icons/status.svg)](https://david-dm.org/vscode-icons/vscode-icons)
 [![DevDependencies Status](https://david-dm.org/vscode-icons/vscode-icons/dev-status.svg)](https://david-dm.org/vscode-icons/vscode-icons?type=dev)
+[![Greenkeeper badge](https://badges.greenkeeper.io/vscode-icons/vscode-icons.svg)](https://greenkeeper.io/)
+
 [![codecov](https://codecov.io/gh/vscode-icons/vscode-icons/branch/master/graph/badge.svg)](https://codecov.io/gh/vscode-icons/vscode-icons)
 [![Known Vulnerabilities](https://snyk.io/test/github/vscode-icons/vscode-icons/badge.svg)](https://snyk.io/test/github/vscode-icons/vscode-icons)
 
