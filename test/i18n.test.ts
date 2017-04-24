@@ -1,4 +1,5 @@
-/* tslint:disable only-arrow-functions */
+// tslint:disable only-arrow-functions
+// tslint:disable no-unused-expression
 import { expect } from 'chai';
 import { LanguageResourceManager } from '../src/i18n';
 import { langEn } from '../src/i18n/langResources';

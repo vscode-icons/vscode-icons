@@ -1,4 +1,5 @@
 // tslint:disable only-arrow-functions
+// tslint:disable no-unused-expression
 import { expect, use } from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as fs from 'fs';
