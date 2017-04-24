@@ -147,7 +147,7 @@ export function showCustomizationMessage(
       if (callback) { callback(); }
 
       reload();
-    }, (reason) => {
+    }, reason => {
       // tslint:disable-next-line:no-console
       console.info('Rejected because: ', reason);
       return;
