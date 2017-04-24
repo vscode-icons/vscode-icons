@@ -47,7 +47,7 @@ describe('AutoDetectProject: tests', function () {
           const reason = 'failure';
           const findFiles = sinon.stub().returns(Promise.reject(reason));
           return adp.detectProject(findFiles, userConfig)
-            .then((rej) => expect(rej).to.be.an('array').with.members([reason]));
+            .then(rej => expect(rej).to.be.an('array').with.members([reason]));
         });
 
       it('detects a sub project when detection is enabled and has detected a \'package.json\' file in a sub folder',
@@ -57,7 +57,7 @@ describe('AutoDetectProject: tests', function () {
           const findFiles = sinon.stub()
             .returns(Promise.resolve([{ fsPath: path1 }, { fsPath: path2 }] as IVSCodeUri[]));
           return adp.detectProject(findFiles, userConfig)
-            .then((res) => {
+            .then(res => {
               expect(res).to.be.an('array').with.length.greaterThan(0);
               expect(res[0]).to.have.property('fsPath').that.equals(path1);
               expect(res[1]).to.have.property('fsPath').that.equals(path2);
@@ -177,7 +177,7 @@ describe('AutoDetectProject: tests', function () {
             const findFiles = sinon.stub().returns(Promise.resolve([{ fsPath: path }] as IVSCodeUri[]));
             userConfig.projectDetection.disableDetect = false;
             return adp.detectProject(findFiles, userConfig)
-              .then((res) => {
+              .then(res => {
                 expect(res).to.be.an('array').with.length.greaterThan(0);
                 expect(res[0]).to.have.property('fsPath').that.equals(path);
               });

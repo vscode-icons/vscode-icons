@@ -63,9 +63,9 @@ describe('utils: tests', function () {
         function () {
           const directoryPath = '/path/to';
           const sandbox = sinon.sandbox.create();
-          const fileCheck = sandbox.stub(fs, 'existsSync').callsFake((path) => path === directoryPath);
+          const fileCheck = sandbox.stub(fs, 'existsSync').callsFake(path => path === directoryPath);
           const readDirectory = sandbox.stub(fs, 'readdirSync').callsFake(() => ['dir', 'file.txt']);
-          const stats = sandbox.stub(fs, 'lstatSync').callsFake((path) => ({
+          const stats = sandbox.stub(fs, 'lstatSync').callsFake(path => ({
             isDirectory: () => path !== '/path/to/file.txt',
           }));
           const deleteFile = sandbox.stub(fs, 'unlinkSync');
