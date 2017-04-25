@@ -45,7 +45,7 @@ export function checkForAngularProject(
   return { apply: false };
 }
 
-export function iconsDisabled(name: string, isFile = true): boolean {
+export function iconsDisabled(name: string, isFile: boolean = true): boolean {
   const iconManifest = getIconManifest();
   const iconsJson = iconManifest && parseJSON(iconManifest) as IIconSchema;
   return !iconsJson || !Reflect.ownKeys(iconsJson.iconDefinitions)
@@ -81,19 +81,18 @@ export function isProject(projectJson: any, name: string): boolean {
 export function applyDetection(
   i18nManager: LanguageResourceManager,
   message: string,
-  presetText: string,
-  value: boolean,
   autoReload: boolean,
-  applyCustomizationFn: () => void,
+  applyCustomizationFn: (isProjectDetection?: boolean) => void,
   showCustomizationMessageFn: (
     message: string,
     items: models.IVSCodeMessageItem[],
-    cb?: () => void,
+    callback?: (...args: any[]) => void,
     ...args: any[]) => void,
   reloadFn: () => void): Thenable<void> {
   return new Promise<void>(resolve => {
+    const isProjectDetection = true;
     if (autoReload) {
-      applyCustomizationFn();
+      applyCustomizationFn(isProjectDetection);
       reloadFn();
     } else {
       showCustomizationMessageFn(
@@ -101,7 +100,7 @@ export function applyDetection(
         [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.autoReload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.disableDetect) }],
-        applyCustomizationFn, presetText, value, false);
+        applyCustomizationFn, isProjectDetection);
     }
     resolve();
   });

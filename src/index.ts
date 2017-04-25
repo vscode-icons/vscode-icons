@@ -43,8 +43,7 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
     return;
   }
 
-  const presetText = 'angular';
-  init.applyDetection(i18nManager, toggle.message, presetText, toggle.value, config.projectDetection.autoReload,
+  init.applyDetection(i18nManager, toggle.message, config.projectDetection.autoReload,
     commands.applyCustomization, commands.showCustomizationMessage, commands.reload);
 }
 

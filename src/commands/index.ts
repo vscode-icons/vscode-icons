@@ -123,7 +123,7 @@ export function updatePreset(
 export function showCustomizationMessage(
   message: string,
   items: models.IVSCodeMessageItem[],
-  callback?: () => void,
+  callback?: (...args: any[]) => void,
   ...args: any[]): Thenable<void> {
 
   return vscode.window.showInformationMessage(message, ...items)
@@ -132,22 +132,19 @@ export function showCustomizationMessage(
     reason => console.info('Rejected because: ', reason));
 }
 
-function handleAction(btn: models.IVSCodeMessageItem, callback?: () => void, ...args: any[]): void {
+function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]) => void, ...args: any[]): void {
   if (!btn) {
     return;
   }
 
   let doReload: boolean;
-  vscode.workspace.onDidChangeConfiguration(() => {
-    if (doReload) {
-      // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
-      // a delay needs to be introduced in order for the preset change to get updated.
-      setTimeout(() => {
-        doReload = false;
-        executeAndReload(callback);
-      }, 500);
+
+  const executeAndReload = (): void => {
+    if (callback) {
+      callback(args);
     }
-  });
+    reload();
+  };
 
   const handlePreset = (): void => {
     if (args.length !== 3) {
@@ -155,12 +152,23 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: () => void, ...
     }
     // If the preset is the same as the toggle value then trigger an explicit reload
     if (getConfig().vsicons.presets[args[0]] === args[1]) {
-      executeAndReload(callback);
+      executeAndReload();
     } else {
       doReload = true;
       updatePreset(args[0], args[1], args[2]);
     }
   };
+
+  vscode.workspace.onDidChangeConfiguration(() => {
+    if (doReload) {
+      // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
+      // a delay needs to be introduced in order for the preset change to get updated.
+      setTimeout(() => {
+        doReload = false;
+        executeAndReload();
+      }, 500);
+    }
+  });
 
   switch (btn.title) {
     case i18nManager.getMessage(models.LangResourceKeys.disableDetect):
@@ -177,8 +185,8 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: () => void, ...
       break;
     case i18nManager.getMessage(models.LangResourceKeys.reload):
       {
-        if (!args || !args.length) {
-          executeAndReload(callback);
+        if (!args || args.length !== 3) {
+          executeAndReload();
           break;
         }
         handlePreset();
@@ -189,18 +197,11 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: () => void, ...
   }
 }
 
-function executeAndReload(callback?: () => void) {
-  if (callback) {
-    callback();
-  }
-  reload();
-}
-
 export function reload(): void {
   vscode.commands.executeCommand('workbench.action.reloadWindow');
 }
 
-export function applyCustomization(): void {
+export function applyCustomization(isProjectDetection: boolean = false): void {
   const associations = getConfig().vsicons.associations;
   const customFiles: models.IFileCollection = {
     default: associations.fileDefault,
@@ -210,15 +211,18 @@ export function applyCustomization(): void {
     default: associations.folderDefault,
     supported: associations.folders,
   };
-  generateManifest(customFiles, customFolders);
+  generateManifest(customFiles, customFolders, isProjectDetection);
 }
 
 function generateManifest(
   customFiles: models.IFileCollection,
-  customFolders: models.IFolderCollection): void {
+  customFolders: models.IFolderCollection,
+  isProjectDetection: boolean = false): void {
   const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
   const vsicons = getConfig().vsicons;
-  const angularPreset = vsicons.projectDetection.autoReload ? iconsDisabled('ng') : vsicons.presets.angular;
+  const angularPreset = vsicons.projectDetection.autoReload || isProjectDetection
+    ? iconsDisabled('ng')
+    : vsicons.presets.angular;
   let workingCustomFiles = customFiles;
   let workingCustomFolders = customFolders;
   if (customFiles) {

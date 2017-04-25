@@ -351,7 +351,7 @@ describe('AutoDetectProject: tests', function () {
           const reloadFn = sinon.spy();
           const showCustomizationMessageFn = sinon.spy();
 
-          return adp.applyDetection(undefined, undefined, undefined, undefined, autoReload,
+          return adp.applyDetection(undefined, undefined, autoReload,
             applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
               expect(applyCustomizationFn.called).to.be.true;
@@ -368,7 +368,7 @@ describe('AutoDetectProject: tests', function () {
           const showCustomizationMessageFn = sinon.spy();
           const i18nManager = sinon.createStubInstance(LanguageResourceManager);
 
-          return adp.applyDetection(i18nManager, undefined, undefined, undefined, autoReload,
+          return adp.applyDetection(i18nManager, undefined, autoReload,
             applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
               expect(applyCustomizationFn.called).to.be.false;
