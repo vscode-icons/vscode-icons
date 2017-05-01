@@ -206,7 +206,7 @@
         "analysis": "bithound check git@github.com:vscode-icons/vscode-icons.git"
     },
     "devDependencies": {
-        "@types/chai": "^3.5.1",
+        "@types/chai": "^3.5.2",
         "@types/chai-as-promised": "^0.0.30",
         "@types/lodash": "^4.14.63",
         "@types/mocha": "^2.2.41",
