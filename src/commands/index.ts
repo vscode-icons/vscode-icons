@@ -147,7 +147,7 @@ export function showCustomizationMessage(
       if (callback) { callback(); }
 
       reload();
-    }, (reason) => {
+    }, reason => {
       // tslint:disable-next-line:no-console
       console.info('Rejected because: ', reason);
       return;
@@ -188,7 +188,6 @@ export function applyCustomization(): void {
 function generateManifest(
   customFiles: IFileCollection,
   customFolders: IFolderCollection): void {
-
   const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
   const presets = getConfig().vsicons.presets;
   let workingCustomFiles = customFiles;
@@ -205,7 +204,7 @@ function generateManifest(
   }
   if (customFolders) {
     workingCustomFolders = iconManifest.toggleFoldersAllDefaultIconPreset(
-      presets.foldersAllDefaultIcon, workingCustomFolders);
+      presets.foldersAllDefaultIcon, customFolders);
     workingCustomFolders = iconManifest.toggleHideFoldersPreset(presets.hideFolders, workingCustomFolders);
   }
   // presets affecting default icons

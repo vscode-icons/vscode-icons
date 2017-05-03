@@ -1,4 +1,5 @@
-/* tslint:disable only-arrow-functions */
+// tslint:disable only-arrow-functions
+// tslint:disable no-unused-expression
 import { expect } from 'chai';
 import * as fs from 'fs';
 import * as os from 'os';
@@ -62,9 +63,9 @@ describe('utils: tests', function () {
         function () {
           const directoryPath = '/path/to';
           const sandbox = sinon.sandbox.create();
-          const fileCheck = sandbox.stub(fs, 'existsSync').callsFake((path) => path === directoryPath);
+          const fileCheck = sandbox.stub(fs, 'existsSync').callsFake(path => path === directoryPath);
           const readDirectory = sandbox.stub(fs, 'readdirSync').callsFake(() => ['dir', 'file.txt']);
-          const stats = sandbox.stub(fs, 'lstatSync').callsFake((path) => ({
+          const stats = sandbox.stub(fs, 'lstatSync').callsFake(path => ({
             isDirectory: () => path !== '/path/to/file.txt',
           }));
           const deleteFile = sandbox.stub(fs, 'unlinkSync');

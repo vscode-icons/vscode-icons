@@ -4,6 +4,7 @@ import { INativeLanguageCollection } from './nativeLanguageCollection';
 export interface ILanguageCollection extends INativeLanguageCollection {
   actionscript: ILanguage;
   ansible: ILanguage;
+  anyscript: ILanguage;
   apache: ILanguage;
   apib: ILanguage;
   applescript: ILanguage;
@@ -34,10 +35,12 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   fortran: ILanguage;
   freemarker: ILanguage;
   godot: ILanguage;
+  glsl: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
   haml: ILanguage;
+  harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
   jinja: ILanguage;

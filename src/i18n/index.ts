@@ -10,7 +10,8 @@ export class LanguageResourceManager {
     private resourceCollection?: ILangResourceCollection |
       { [key: string]: { [key: string]: string | IOSSpecific; } }) {
     this.resourceCollection = this.resourceCollection || langResourceCollection;
-    this.messages = this.resourceCollection[this.language] || this.resourceCollection['en'];
+    this.messages = (this.language && this.resourceCollection[this.language.toLowerCase()]) ||
+      this.resourceCollection['en'];
   }
 
   public getMessage(...keys: Array<LangResourceKeys | string>): string {
@@ -19,7 +20,7 @@ export class LanguageResourceManager {
     }
 
     let msg = '';
-    keys.forEach((key) => {
+    keys.forEach(key => {
       // If key is of type 'number' it's a LangResourceKeys
       const stringifiedKey = typeof key === "number" ? LangResourceKeys[key] : key;
 
@@ -43,7 +44,7 @@ export class LanguageResourceManager {
         throw new Error(`${stringifiedKey} is not valid`);
       }
 
-      stringifiedKey.split('').forEach((char) => {
+      stringifiedKey.split('').forEach(char => {
         if (char.match(/[#^*|\\/{}+=]/g)) {
           throw new Error(`${char} is not valid`);
         }

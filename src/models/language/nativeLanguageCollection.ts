@@ -14,6 +14,7 @@ export interface INativeLanguageCollection {
   go: ILanguage;
   groovy: ILanguage;
   handlebars: ILanguage;
+  hlsl: ILanguage;
   html: ILanguage;
   ini: ILanguage;
   java: ILanguage;
@@ -25,6 +26,7 @@ export interface INativeLanguageCollection {
   makefile: ILanguage;
   markdown: ILanguage;
   objectivec: ILanguage;
+  objectivecpp: ILanguage;
   perl: ILanguage;
   php: ILanguage;
   plaintext: ILanguage;
