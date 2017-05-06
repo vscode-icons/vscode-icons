@@ -31,6 +31,13 @@
     "arrow-parens": [
       true,
       "ban-single-arg-parens"
+    ],
+    "no-console": [
+      true,
+      "log",
+      "debug",
+      "info",
+      "warn"
     ]
   }
 }
