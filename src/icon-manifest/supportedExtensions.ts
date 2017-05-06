@@ -380,6 +380,9 @@ export const extensions: IFileCollection = {
     {
       icon: 'webpack',
       extensions: [
+        'webpack.common.coffee',
+        'webpack.common.js',
+        'webpack.common.ts',
         'webpack.config.coffee',
         'webpack.config.base.coffee',
         'webpack.config.common.coffee',
@@ -416,6 +419,12 @@ export const extensions: IFileCollection = {
         'webpack.config.test.babel.js',
         'webpack.config.prod.babel.js',
         'webpack.config.production.babel.js',
+        'webpack.dev.coffee',
+        'webpack.dev.js',
+        'webpack.dev.ts',
+        'webpack.prod.coffee',
+        'webpack.prod.js',
+        'webpack.prod.ts',
         'webpack.mix.coffee',
         'webpack.mix.js',
         'webpack.mix.ts',
