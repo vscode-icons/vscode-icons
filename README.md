@@ -57,7 +57,7 @@ As from **release 7.7.0**, the `project detection` feature has become smarter an
 
 From **release 7.4.0**, as a result of hearing you out, we've revised how the `project detection` works. Now `Angular` icons are disabled by default. So if you want to enable them you will have to actively set the preset to true or rely on the `project detection` functionality.
 
-We support ***localization*** of the extension! We intend to expand the supported languages as the `Visual Studio Code` adds them. Take a look at the translation's section if you want to know more or contribute.
+We support ***localization*** of the extension! We intend to expand the supported languages as the `Visual Studio Code` adds them. Take a look at the [translation's section](https://github.com/vscode-icons/vscode-icons#contributing-with-translations) if you want to know more or contribute.
 
 We keep supporting the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code. 
 
