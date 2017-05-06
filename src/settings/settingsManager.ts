@@ -38,11 +38,11 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public getState(): IState {
-    const defaultState = {
+    const defaultState: IState = {
       version: '0',
       status: ExtensionStatus.notInstalled,
       welcomeShown: false,
-    } as IState;
+    };
 
     let state;
     try {

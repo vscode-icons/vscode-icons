@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
 import { schema as defaultSchema, IconGenerator } from '../../src/icon-manifest';
-import { IFileCollection, IFolderCollection, IIconSchema } from '../../src/models';
+import { IFileCollection, IFolderCollection } from '../../src/models';
 import * as utils from '../../src/utils';
 import { extensionSettings as settings } from '../../src/settings';
 import { extensions as folderExtensions } from '../support/supportedFolders';
@@ -201,7 +201,7 @@ describe('IconGenerator: functionality test', function () {
 
       it('throws an Error if the icons filename is not provided',
         function () {
-          expect(iconGenerator.persist.bind(iconGenerator, null, {} as IIconSchema))
+          expect(iconGenerator.persist.bind(iconGenerator, null, defaultSchema))
             .to.throw(Error, /iconsFilename not defined./);
         });
 
@@ -209,7 +209,7 @@ describe('IconGenerator: functionality test', function () {
         function () {
           const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
           const updatePackageJson = sandbox.stub(iconGenerator, 'updatePackageJson');
-          iconGenerator.persist('path/to/file', {} as IIconSchema, true);
+          iconGenerator.persist('path/to/file', defaultSchema, true);
           expect(writeJsonToFile.called).to.be.true;
           expect(updatePackageJson.called).to.be.true;
         });
@@ -218,7 +218,7 @@ describe('IconGenerator: functionality test', function () {
         function () {
           const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
           const updatePackageJson = sandbox.stub(iconGenerator, 'updatePackageJson');
-          iconGenerator.persist('path/to/file', {} as IIconSchema);
+          iconGenerator.persist('path/to/file', defaultSchema);
           expect(writeJsonToFile.called).to.be.true;
           expect(updatePackageJson.called).to.be.false;
         });
@@ -231,7 +231,7 @@ describe('IconGenerator: functionality test', function () {
             sandbox.stub(fs, 'writeFileSync').throws(new Error());
             const errorLog = sandbox.stub(console, 'error');
             packageJson.contributes.iconThemes[0].path = 'path/to/icons.json';
-            iconGenerator.persist('path/to/file', {} as IIconSchema, true);
+            iconGenerator.persist('path/to/file', defaultSchema, true);
             expect(errorLog.called).to.be.true;
           });
 
@@ -243,7 +243,7 @@ describe('IconGenerator: functionality test', function () {
               const writeFileSync = sandbox.stub(fs, 'writeFileSync');
               sandbox.stub(console, 'info');
               packageJson.contributes.iconThemes[0].path = 'path/to/icons.json';
-              iconGenerator.persist('path/to/file', {} as IIconSchema, true);
+              iconGenerator.persist('path/to/file', defaultSchema, true);
               expect(writeJsonToFile.called).to.be.true;
               expect(writeFileSync.called).to.be.true;
             });
@@ -257,7 +257,7 @@ describe('IconGenerator: functionality test', function () {
               const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
               const writeFileSync = sandbox.stub(fs, 'writeFileSync');
               sandbox.stub(console, 'info');
-              iconGenerator.persist('path/to/file', {} as IIconSchema, true);
+              iconGenerator.persist('path/to/file', defaultSchema, true);
               expect(writeJsonToFile.called).to.be.true;
               expect(writeFileSync.called).to.be.false;
             });
@@ -268,7 +268,7 @@ describe('IconGenerator: functionality test', function () {
               const writeFileSync = sandbox.stub(fs, 'writeFileSync');
               sandbox.stub(console, 'info');
               packageJson.contributes.iconThemes[0].path = '';
-              iconGenerator.persist('path/to/file', {} as IIconSchema, true);
+              iconGenerator.persist('path/to/file', defaultSchema, true);
               expect(writeJsonToFile.called).to.be.true;
               expect(writeFileSync.called).to.be.false;
             });
@@ -285,7 +285,7 @@ describe('IconGenerator: functionality test', function () {
             const mkdirSync = sandbox.stub(fs, 'mkdirSync');
             const writeFileSync = sandbox.stub(fs, 'writeFileSync');
             sandbox.stub(console, 'info');
-            iconGenerator.persist('path/to/file', {} as IIconSchema);
+            iconGenerator.persist('path/to/file', defaultSchema);
             expect(existsSync.called).to.be.true;
             expect(mkdirSync.called).to.be.true;
             expect(writeFileSync.called).to.be.true;
@@ -297,7 +297,7 @@ describe('IconGenerator: functionality test', function () {
             const mkdirSync = sandbox.stub(fs, 'mkdirSync');
             const writeFileSync = sandbox.stub(fs, 'writeFileSync');
             sandbox.stub(console, 'info');
-            iconGenerator.persist('path/to/file', {} as IIconSchema);
+            iconGenerator.persist('path/to/file', defaultSchema);
             expect(existsSync.called).to.be.true;
             expect(mkdirSync.called).to.be.false;
             expect(writeFileSync.called).to.be.true;
@@ -307,7 +307,7 @@ describe('IconGenerator: functionality test', function () {
           function () {
             sandbox.stub(fs, 'writeFileSync').throws(new Error());
             const errorLog = sandbox.stub(console, 'error');
-            iconGenerator.persist('path/to/file', {} as IIconSchema);
+            iconGenerator.persist('path/to/file', defaultSchema);
             expect(errorLog.called).to.be.true;
           });
 
