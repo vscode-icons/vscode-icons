@@ -4,7 +4,7 @@ import { expect, use } from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
-import { IVSIcons, IVSCodeUri } from '../../src/models';
+import { IVSIcons, IVSCodeUri, IProjectDetectionResult } from '../../src/models';
 import * as adp from '../../src/init/autoDetectProject';
 import { LanguageResourceManager } from '../../src/i18n';
 
@@ -271,73 +271,183 @@ describe('AutoDetectProject: tests', function () {
 
     });
 
-    context('enables the Angular icons when the workspace is an Angular project and Angular icons are disabled',
-      function () {
+    context('enables the Angular icons when', function () {
 
-        it('or Angular preset is false',
-          function () {
-            const isNgProject = true;
-            const ngIconsDisabled = true;
-            const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-            const res = adp.checkForAngularProject(ngIconsDisabled, isNgProject, i18nManager);
-            expect(res).to.have.property('apply').that.is.true;
-            expect(res).to.have.property('value').that.is.true;
-          });
+      context('Angular icons are disabled and the workspace is', function () {
 
-        it('or Angular preset is true',
-          function () {
-            const isNgProject = true;
-            const ngIconsDisabled = true;
-            const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-            const res = adp.checkForAngularProject(ngIconsDisabled, isNgProject, i18nManager);
-            expect(res).to.have.property('apply').that.is.true;
-            expect(res).to.have.property('value').that.is.true;
-          });
+        context('an Angular project and', function () {
+
+          it('Angular preset is true',
+            function () {
+              const preset = true;
+              const isNgProject = true;
+              const ngIconsDisabled = true;
+              const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              expect(res).to.have.property('apply').that.is.true;
+              expect(res).to.have.property('value').that.is.true;
+            });
+
+          it('Angular preset is undefined',
+            function () {
+              const preset = undefined;
+              const isNgProject = true;
+              const ngIconsDisabled = true;
+              const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              expect(res).to.have.property('apply').that.is.true;
+              expect(res).to.have.property('value').that.is.true;
+            });
+
+        });
+
+        context('not an Angular project and', function () {
+
+          it('Angular preset is true',
+            function () {
+              const preset = true;
+              const isNgProject = false;
+              const ngIconsDisabled = true;
+              const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              expect(res).to.have.property('apply').that.is.true;
+              expect(res).to.have.property('value').that.is.true;
+            });
+
+        });
 
       });
 
-    context('disables the Angular icons when the workspace is not an Angular project and Angular icons are enabled',
-      function () {
+    });
 
-        it('or Angular preset is true',
-          function () {
-            const isNgProject = false;
-            const ngIconsDisabled = false;
-            const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-            const res = adp.checkForAngularProject(ngIconsDisabled, isNgProject, i18nManager);
-            expect(res).to.have.property('apply').that.is.true;
-            expect(res).to.have.property('value').that.is.false;
-          });
+    context('disables the Angular icons when', function () {
 
-        it('or Angular preset is false',
-          function () {
-            const isNgProject = false;
-            const ngIconsDisabled = false;
-            const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-            const res = adp.checkForAngularProject(ngIconsDisabled, isNgProject, i18nManager);
-            expect(res).to.have.property('apply').that.is.true;
-            expect(res).to.have.property('value').that.is.false;
-          });
+      context('Angular icons are enabled and the workspace is', function () {
+
+        context('not an Angular project and', function () {
+
+          it('Angular preset is false',
+            function () {
+              const preset = false;
+              const isNgProject = false;
+              const ngIconsDisabled = false;
+              const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              expect(res).to.have.property('apply').that.is.true;
+              expect(res).to.have.property('value').that.is.false;
+            });
+
+          it('Angular preset is undefined',
+            function () {
+              const preset = undefined;
+              const isNgProject = false;
+              const ngIconsDisabled = false;
+              const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              expect(res).to.have.property('apply').that.is.true;
+              expect(res).to.have.property('value').that.is.false;
+            });
+
+        });
+
+        context('an Angular project and', function () {
+
+          it('Angular preset is false',
+            function () {
+              const preset = false;
+              const isNgProject = true;
+              const ngIconsDisabled = false;
+              const i18nManager = sinon.createStubInstance(LanguageResourceManager);
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              expect(res).to.have.property('apply').that.is.true;
+              expect(res).to.have.property('value').that.is.false;
+            });
+
+        });
 
       });
 
-    context('does not toggle the Angular icons when the workspace is', function () {
+    });
 
-      it('an Angular project and the Angular preset is true or Angular icons are enabled',
-        function () {
-          const isNgProject = true;
-          const ngIconsDisabled = false;
-          expect(adp.checkForAngularProject(ngIconsDisabled, isNgProject, undefined))
-            .to.have.property('apply').that.is.false;
+    context('does not toggle the Angular icons when', function () {
+
+      context('Angular icons are enabled and the workspace is', function () {
+
+        context('an Angular project and', function () {
+
+          it('Angular preset is true',
+            function () {
+              const preset = true;
+              const isNgProject = true;
+              const ngIconsDisabled = false;
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+              expect(res).to.have.property('apply').that.is.false;
+            });
+
+          it('Angular preset is undefined',
+            function () {
+              const preset = undefined;
+              const isNgProject = true;
+              const ngIconsDisabled = false;
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+              expect(res).to.have.property('apply').that.is.false;
+            });
+
         });
 
-      it('not an Angular project and the Angular preset is false or Angular icons are disabled',
-        function () {
-          const isNgProject = false;
-          const ngIconsDisabled = true;
-          expect(adp.checkForAngularProject(ngIconsDisabled, isNgProject, undefined))
-            .to.have.property('apply').that.is.false;
+        context('not an Angular project and', function () {
+
+          it('Angular preset is true',
+            function () {
+              const preset = true;
+              const isNgProject = false;
+              const ngIconsDisabled = false;
+              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+              expect(res).to.have.property('apply').that.is.false;
+            });
+
         });
+
+        context('Angular icons are disabled and the workspace is', function () {
+
+          context('not an Angular project and', function () {
+
+            it('Angular preset is false',
+              function () {
+                const preset = false;
+                const isNgProject = false;
+                const ngIconsDisabled = true;
+                const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+                expect(res).to.have.property('apply').that.is.false;
+              });
+
+            it('Angular preset is undefined',
+              function () {
+                const preset = undefined;
+                const isNgProject = false;
+                const ngIconsDisabled = true;
+                const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+                expect(res).to.have.property('apply').that.is.false;
+              });
+
+            context('an Angular project and', function () {
+
+              it('Angular preset is false',
+                function () {
+                  const preset = false;
+                  const isNgProject = true;
+                  const ngIconsDisabled = true;
+                  const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+                  expect(res).to.have.property('apply').that.is.false;
+                });
+
+            });
+
+          });
+
+        });
+
+      });
 
     });
 
@@ -364,11 +474,16 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const autoReload = false;
           const applyCustomizationFn = sinon.spy();
+          const projectDetectionResult: IProjectDetectionResult = {
+            apply: undefined,
+            message: undefined,
+            value: undefined,
+          };
           const reloadFn = sinon.spy();
           const showCustomizationMessageFn = sinon.spy();
           const i18nManager = sinon.createStubInstance(LanguageResourceManager);
 
-          return adp.applyDetection(i18nManager, undefined, autoReload,
+          return adp.applyDetection(i18nManager, projectDetectionResult, autoReload,
             applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
               expect(applyCustomizationFn.called).to.be.false;

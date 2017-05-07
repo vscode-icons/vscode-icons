@@ -141,19 +141,20 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
 
   const executeAndReload = (): void => {
     if (callback) {
-      callback(args);
+      callback(...args);
     }
     reload();
   };
 
   const handlePreset = (): void => {
-    if (args.length !== 3) {
-      throw new Error('Arguments mismatch');
-    }
     // If the preset is the same as the toggle value then trigger an explicit reload
+    // Note: This condition works also for auto-reload handling
     if (getConfig().vsicons.presets[args[0]] === args[1]) {
       executeAndReload();
     } else {
+      if (args.length !== 3) {
+        throw new Error('Arguments mismatch');
+      }
       doReload = true;
       updatePreset(args[0], args[1], args[2]);
     }
@@ -201,7 +202,7 @@ export function reload(): void {
   vscode.commands.executeCommand('workbench.action.reloadWindow');
 }
 
-export function applyCustomization(isProjectDetection: boolean = false): void {
+export function applyCustomization(projectDetectionResult: models.IProjectDetectionResult = null): void {
   const associations = getConfig().vsicons.associations;
   const customFiles: models.IFileCollection = {
     default: associations.fileDefault,
@@ -211,17 +212,18 @@ export function applyCustomization(isProjectDetection: boolean = false): void {
     default: associations.folderDefault,
     supported: associations.folders,
   };
-  generateManifest(customFiles, customFolders, isProjectDetection);
+  generateManifest(customFiles, customFolders, projectDetectionResult);
 }
 
 function generateManifest(
   customFiles: models.IFileCollection,
   customFolders: models.IFolderCollection,
-  isProjectDetection: boolean = false): void {
+  projectDetectionResult: models.IProjectDetectionResult = null): void {
   const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
   const vsicons = getConfig().vsicons;
-  const angularPreset = vsicons.projectDetection.autoReload || isProjectDetection
-    ? iconsDisabled('ng')
+  const angularPreset = vsicons.projectDetection.autoReload ||
+    (projectDetectionResult && typeof projectDetectionResult === 'object' && 'value' in projectDetectionResult)
+    ? projectDetectionResult.value
     : vsicons.presets.angular;
   let workingCustomFiles = customFiles;
   let workingCustomFolders = customFolders;

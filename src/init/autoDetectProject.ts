@@ -22,27 +22,36 @@ export function detectProject(
 }
 
 export function checkForAngularProject(
+  preset: boolean,
   ngIconsDisabled: boolean,
   isNgProject: boolean,
   i18nManager: LanguageResourceManager): models.IProjectDetectionResult {
 
-  // NOTE: We don't rely on the angular preset as it can be manipulated and produce false states
+  // NOTE: User setting (preset) bypasses detection in the following cases:
+  // 1. Preset is set to 'false' and icons are not present in the manifest file
+  // 2. Preset is set to 'true' and icons are present in the manifest file
+  // For this cases PAD will not display a message
+
+  const bypass = (preset != null) && ((!preset && ngIconsDisabled) || (preset && !ngIconsDisabled));
+
   // We need to mandatory check the following:
   // 1. The project related icons are present in the manifest file
   // 2. It's a detectable project
-  const enableIcons = ngIconsDisabled && isNgProject;
-  const disableIcons = !ngIconsDisabled && !isNgProject;
+  // 3. The preset (when it's defined)
 
-  if (enableIcons || disableIcons) {
-    const langResourceKey = enableIcons
-      ? models.LangResourceKeys.ngDetected
-      : models.LangResourceKeys.nonNgDetected;
-    const message = i18nManager.getMessage(langResourceKey);
+  const enableIcons = ngIconsDisabled && (isNgProject || (preset === true));
+  const disableIcons = !ngIconsDisabled && (!isNgProject || (preset === false));
 
-    return { apply: true, message, value: enableIcons || !disableIcons };
+  if (bypass || (!enableIcons && !disableIcons)) {
+    return { apply: false };
   }
 
-  return { apply: false };
+  const langResourceKey = enableIcons
+    ? models.LangResourceKeys.ngDetected
+    : models.LangResourceKeys.nonNgDetected;
+  const message = i18nManager.getMessage(langResourceKey);
+
+  return { apply: true, message, value: enableIcons || !disableIcons };
 }
 
 export function iconsDisabled(name: string, isFile: boolean = true): boolean {
@@ -80,9 +89,9 @@ export function isProject(projectJson: any, name: string): boolean {
 
 export function applyDetection(
   i18nManager: LanguageResourceManager,
-  message: string,
+  projectDetectionResult: models.IProjectDetectionResult,
   autoReload: boolean,
-  applyCustomizationFn: (isProjectDetection?: boolean) => void,
+  applyCustomizationFn: (projectDetectionResult?: models.IProjectDetectionResult) => void,
   showCustomizationMessageFn: (
     message: string,
     items: models.IVSCodeMessageItem[],
@@ -90,17 +99,16 @@ export function applyDetection(
     ...args: any[]) => void,
   reloadFn: () => void): Thenable<void> {
   return new Promise<void>(resolve => {
-    const isProjectDetection = true;
     if (autoReload) {
-      applyCustomizationFn(isProjectDetection);
+      applyCustomizationFn(projectDetectionResult);
       reloadFn();
     } else {
       showCustomizationMessageFn(
-        message,
+        projectDetectionResult.message,
         [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.autoReload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.disableDetect) }],
-        applyCustomizationFn, isProjectDetection);
+        applyCustomizationFn, projectDetectionResult);
     }
     resolve();
   });
