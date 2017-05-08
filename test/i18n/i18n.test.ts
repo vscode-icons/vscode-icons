@@ -1,13 +1,12 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
-import { LanguageResourceManager } from '../src/i18n';
-import { langEn } from '../src/i18n/langResources';
-import { LangResourceKeys } from '../src/models/i18n';
-
-import * as packageJson from '../../package.json';
-import * as nls from '../../package.nls.json';
-import * as nlsTemplate from '../../package.nls.template.json';
+import { LanguageResourceManager } from '../../src/i18n';
+import { langEn } from '../../src/i18n/langResources';
+import { LangResourceKeys } from '../../src/models/i18n';
+import * as packageJson from '../../../package.json';
+import * as nls from '../../../package.nls.json';
+import * as nlsTemplate from '../../../package.nls.template.json';
 
 describe('i18n: tests', function () {
 

@@ -8,15 +8,9 @@ import { parseJSON } from './utils';
 import { LanguageResourceManager } from './i18n';
 import { IVSCodeUri, IVSIcons } from './models';
 
-let vscodeDirExisted: boolean;
-let userSettingsExisted: boolean;
-
 function initialize(context: vscode.ExtensionContext) {
   const config = getConfig().vsicons;
   const settingsManager = new SettingsManager(vscode);
-
-  vscodeDirExisted = fs.existsSync(`${vscode.workspace.rootPath}/.vscode`);
-  userSettingsExisted = fs.existsSync(`${vscode.workspace.rootPath}/.vscode/settings.json`);
 
   commands.registerCommands(context);
   init.manageWelcomeMessage(settingsManager);
@@ -43,39 +37,16 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
   }
 
   const i18nManager = new LanguageResourceManager(vscode.env.language);
-  const toggle = init.checkForAngularProject(
-    config.presets.angular,
-    init.iconsDisabled('ng'),
-    isNgProject,
-    i18nManager);
+  const presetValue = getConfig().inspect(`vsicons.presets.angular`).workspaceValue as boolean;
+  const result = init.checkForAngularProject(
+    presetValue, init.iconsDisabled('ng'), isNgProject, i18nManager);
 
-  if (!toggle.apply) {
+  if (!result.apply) {
     return;
   }
 
-  const presetText = 'angular';
-  const { defaultValue, workspaceValue } = getConfig().inspect(`vsicons.presets.${presetText}`);
-
-  init.applyDetection(i18nManager, toggle.message, presetText, toggle.value,
-    workspaceValue as boolean, defaultValue as boolean,
-    config.projectDetection.autoReload, commands.updatePreset,
-    commands.applyCustomization, commands.showCustomizationMessage,
-    commands.reload, commands.cancel, handleVSCodeDir);
-}
-
-export function handleVSCodeDir(): void {
-  const vscodeDirPath = `${vscode.workspace.rootPath}/.vscode`;
-  const userSettingsPath = `${vscodeDirPath}/settings.json`;
-
-  // In case we created the 'settings.json' file remove it
-  if (!userSettingsExisted && fs.existsSync(userSettingsPath)) {
-    fs.unlinkSync(userSettingsPath);
-  }
-
-  // In case we created the '.vscode' directory remove it
-  if (!vscodeDirExisted && fs.existsSync(vscodeDirPath)) {
-    fs.rmdirSync(vscodeDirPath);
-  }
+  init.applyDetection(i18nManager, result, config.projectDetection.autoReload,
+    commands.applyCustomization, commands.showCustomizationMessage, commands.reload);
 }
 
 export function activate(context: vscode.ExtensionContext) {

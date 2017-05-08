@@ -3,9 +3,9 @@
 import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
-import { vscode } from '../src/utils';
-import { extensionSettings, SettingsManager } from '../src/settings';
-import { ExtensionStatus, IState } from '../src/models';
+import { vscode } from '../../src/utils';
+import { extensionSettings, SettingsManager } from '../../src/settings';
+import { ExtensionStatus, IState } from '../../src/models';
 
 describe('SettingsManager: tests', function () {
 
