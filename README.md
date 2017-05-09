@@ -59,13 +59,6 @@ We're talking about a major improvement over this feature. It will help you to e
 
 We support ***localization*** of the extension, too! We intend to expand the supported languages as the `Visual Studio Code` adds them. Take a look at the [translation's section](https://github.com/vscode-icons/vscode-icons#contributing-with-translations) if you want to know more or contribute.
 
-We're currently supporting (listed by implementation order):
-- English
-- German
-- Spanish
-- Mandarin
-- Italian
-
 We also keep supporting the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code. 
 
 This was a huge step to allow the users to fully customize how the icons looked like and how they could be associated to any extension at will.
