@@ -55,7 +55,7 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 
 As from **release 7.7.0**, the `project detection` feature has become smarter and is totally unobtrusive. If you have it disabled, because you found it annoying for any reason, **we urge you to re-enable it** and check out its new functionality.
 
-We're talking about a major improvement over this feature. It will help you to enable and disable your `Angular` icons whenever you switch different projects without messing around with your worskpace settings. Forget about having to deal with your source control every time the workspace setting was changed. [@JimiC](https://github.com/JimiC) has done a really good work and we're pretty sure that you're going to love it! As usual, any feedback will be more than welcome. ;)
+We're talking about a major improvement over this feature. It will help you to enable and disable your `Angular` icons whenever you switch different projects without messing around with your workspace settings. Forget about having to deal with your source control every time the workspace setting was changed. [@JimiC](https://github.com/JimiC) has done a really good work and we're pretty sure that you're going to love it! As usual, any feedback will be more than welcome. ;)
 
 We support ***localization*** of the extension, too! We intend to expand the supported languages as the `Visual Studio Code` adds them. Take a look at the [translation's section](https://github.com/vscode-icons/vscode-icons#contributing-with-translations) if you want to know more or contribute.
 
