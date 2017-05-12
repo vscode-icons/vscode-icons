@@ -3,9 +3,9 @@
 import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
-import { vscode } from '../src/utils';
-import { extensionSettings, SettingsManager } from '../src/settings';
-import { ExtensionStatus, IState } from '../src/models';
+import { vscode } from '../../src/utils';
+import { extensionSettings, SettingsManager } from '../../src/settings';
+import { ExtensionStatus, IState } from '../../src/models';
 
 describe('SettingsManager: tests', function () {
 
@@ -102,7 +102,11 @@ describe('SettingsManager: tests', function () {
     it('the state gets written to a settings file',
       function () {
         const writeToFile = sandbox.stub(fs, 'writeFileSync');
-        const state = {} as IState;
+        const state: IState = {
+          version: '0',
+          status: ExtensionStatus.notInstalled,
+          welcomeShown: false,
+        };
         settingsManager.setState(state);
         expect(writeToFile.called).to.be.true;
       });

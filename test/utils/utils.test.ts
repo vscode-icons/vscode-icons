@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import * as fs from 'fs';
 import * as os from 'os';
 import * as sinon from 'sinon';
-import * as utils from '../src/utils';
+import * as utils from '../../src/utils';
 
 describe('utils: tests', function () {
 

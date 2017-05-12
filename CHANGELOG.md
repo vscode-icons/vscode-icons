@@ -1,6 +1,15 @@
 # Change Log
 
+## 7.7.0 (May 9, 2017)
+- Enhancement: Support for `phpunit.xml.dist`. ([@jens1o](https://github.com/jens1o) in [#918](https://github.com/vscode-icons/vscode-icons/pull/918))
+- Feature: Italian support. ([@sabinrimni](https://github.com/sabinrimni) in [#915](https://github.com/vscode-icons/vscode-icons/pull/915))
+- Enhancement: More `webpack` extensions. ([@jens1o](https://github.com/jens1o) in [#910](https://github.com/vscode-icons/vscode-icons/pull/910))
+- Enhancement: Updated project's dependencies and fixed linting issues. ([@JimiC](https://github.com/JimiC) in [#901](https://github.com/vscode-icons/vscode-icons/pull/901), [#902](https://github.com/vscode-icons/vscode-icons/pull/902), [#903](https://github.com/vscode-icons/vscode-icons/pull/903) & [#912](https://github.com/vscode-icons/vscode-icons/pull/912))
+- Feature: Angular guard support. ([@robertohuertasm](https://github.com/robertohuertasm) in [#900](https://github.com/vscode-icons/vscode-icons/pull/900))
+- Enhancement: Project detection improvement. ([@JimiC](https://github.com/JimiC) in [#896](https://github.com/vscode-icons/vscode-icons/pull/896))
+
 ## 7.6.0 (April 24, 2017)
+- Enhancement: Move constant values to its own file. ([@JimiC](https://github.com/JimiC) in [#894](https://github.com/vscode-icons/vscode-icons/pull/894))
 - Enhancement: @types/sinon updated. ([@JimiC](https://github.com/JimiC) in [#893](https://github.com/vscode-icons/vscode-icons/pull/893))
 - Enhancement: Badges arranged by category. ([@JimiC](https://github.com/JimiC) in [#891](https://github.com/vscode-icons/vscode-icons/pull/891))
 - Enhancement: Objective-cpp language id support. ([@JimiC](https://github.com/JimiC) in [#888](https://github.com/vscode-icons/vscode-icons/pull/888))

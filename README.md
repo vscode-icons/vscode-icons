@@ -53,11 +53,13 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 
 ## State of the extension
 
-With **release 7.4.0**, as a result of hearing you out, we've revised how the `project detection` works. Now `Angular` icons are disabled by default. So if you want to enable them you will have to actively set the preset to true or rely on the `project detection` functionality.
+As from **release 7.7.0**, the `project detection` feature has become smarter and is totally unobtrusive. If you have it disabled, because you found it annoying for any reason, **we urge you to re-enable it** and check out its new functionality.
 
-[@JimiC](https://github.com/JimiC) has improved and further optimized this functionality specifically for this release. But he also has provided the extension with the ability to support multi-language! Take a look at the translation's section if you want to know more or contribute.
+We're talking about a major improvement over this feature. It will help you to enable and disable your `Angular` icons whenever you switch different projects without messing around with your workspace settings. Forget about having to deal with your source control every time the workspace setting was changed. [@JimiC](https://github.com/JimiC) has done a really good work and we're pretty sure that you're going to love it! As usual, any feedback will be more than welcome. ;)
 
-We still support the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code. 
+We support ***localization*** of the extension, too! We intend to expand the supported languages as the `Visual Studio Code` adds them. Take a look at the [translation's section](https://github.com/vscode-icons/vscode-icons#contributing-with-translations) if you want to know more or contribute.
+
+We also keep supporting the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code. 
 
 This was a huge step to allow the users to fully customize how the icons looked like and how they could be associated to any extension at will.
 
@@ -289,7 +291,7 @@ The above syntax will create examples for all supported files and folders.
 ## Contributing with translations
 We're looking for people willing to help us translate the extension's messages into [all the languages that `vscode` supports](https://code.visualstudio.com/docs/customization/locales).
 
-We're currently supporting `English`, `German`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
+We're currently supporting `English`, `German`, `Italian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
 
 ## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:

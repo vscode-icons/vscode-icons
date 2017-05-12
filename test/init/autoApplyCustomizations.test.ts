@@ -2,8 +2,8 @@
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { manageAutoApplyCustomizations } from '../src/init/autoApplyCustomizations';
-import { IVSIcons } from '../src/models';
+import { manageAutoApplyCustomizations } from '../../src/init/autoApplyCustomizations';
+import { IVSIcons } from '../../src/models';
 
 describe('AutoApplyCustomizations: tests', function () {
 

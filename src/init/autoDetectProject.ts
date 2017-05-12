@@ -4,6 +4,7 @@ import * as models from '../models';
 import { extensionSettings } from '../settings';
 import { parseJSON } from '../utils';
 import { LanguageResourceManager } from '../i18n';
+import { IIconSchema } from '../models/iconSchema/iconSchema';
 
 export function detectProject(
   findFiles: (
@@ -21,52 +22,58 @@ export function detectProject(
 }
 
 export function checkForAngularProject(
-  angularPreset: boolean,
+  preset: boolean,
   ngIconsDisabled: boolean,
   isNgProject: boolean,
   i18nManager: LanguageResourceManager): models.IProjectDetectionResult {
 
+  // NOTE: User setting (preset) bypasses detection in the following cases:
+  // 1. Preset is set to 'false' and icons are not present in the manifest file
+  // 2. Preset is set to 'true' and icons are present in the manifest file
+  // For this cases PAD will not display a message
+
+  const bypass = (preset != null) && ((!preset && ngIconsDisabled) || (preset && !ngIconsDisabled));
+
   // We need to mandatory check the following:
-  // 1. The 'preset'
-  // 2. The project releated icons are present in the manifest file
-  // 3. It's a detectable project
-  const enableIcons = (!angularPreset || ngIconsDisabled) && isNgProject;
-  const disableIcons = (angularPreset || !ngIconsDisabled) && !isNgProject;
+  // 1. The project related icons are present in the manifest file
+  // 2. It's a detectable project
+  // 3. The preset (when it's defined)
 
-  if (enableIcons || disableIcons) {
-    const langResourceKey = enableIcons
-      ? models.LangResourceKeys.ngDetected
-      : models.LangResourceKeys.nonNgDetected;
-    const message = i18nManager.getMessage(langResourceKey);
+  const enableIcons = ngIconsDisabled && (isNgProject || (preset === true));
+  const disableIcons = !ngIconsDisabled && (!isNgProject || (preset === false));
 
-    return { apply: true, message, value: enableIcons || !disableIcons };
+  if (bypass || (!enableIcons && !disableIcons)) {
+    return { apply: false };
   }
 
-  return { apply: false };
+  const langResourceKey = enableIcons
+    ? models.LangResourceKeys.ngDetected
+    : models.LangResourceKeys.nonNgDetected;
+  const message = i18nManager.getMessage(langResourceKey);
+
+  return { apply: true, message, value: enableIcons || !disableIcons };
 }
 
-export function iconsDisabled(name: string): boolean {
+export function iconsDisabled(name: string, isFile: boolean = true): boolean {
+  const iconManifest = getIconManifest();
+  const iconsJson = iconManifest && parseJSON(iconManifest) as IIconSchema;
+  return !iconsJson || !Reflect.ownKeys(iconsJson.iconDefinitions)
+    .filter(key => key.toString().startsWith(`_${isFile ? 'f' : 'fd'}_${name}`)).length;
+}
+
+export function folderIconsDisabled(func: (iconsJson: IIconSchema) => boolean): boolean {
+  const iconManifest = getIconManifest();
+  const iconsJson = iconManifest && parseJSON(iconManifest) as IIconSchema;
+  return !iconsJson || !func(iconsJson);
+}
+
+function getIconManifest(): string {
   const manifestFilePath = path.join(__dirname, '..', extensionSettings.iconJsonFileName);
-
-  let iconManifest: string;
   try {
-    iconManifest = fs.readFileSync(manifestFilePath, 'utf8');
+    return fs.readFileSync(manifestFilePath, 'utf8');
   } catch (err) {
-    return true;
+    return null;
   }
-
-  const iconsJson = parseJSON(iconManifest);
-  if (!iconsJson) {
-    return true;
-  }
-
-  for (const key in iconsJson.iconDefinitions) {
-    if (key.startsWith(`_f_${name}_`)) {
-      return false;
-    }
-  }
-
-  return true;
 }
 
 export function isProject(projectJson: any, name: string): boolean {
@@ -82,45 +89,27 @@ export function isProject(projectJson: any, name: string): boolean {
 
 export function applyDetection(
   i18nManager: LanguageResourceManager,
-  message: string,
-  presetText: string,
-  value: boolean,
-  initValue: boolean,
-  defaultValue: boolean,
+  projectDetectionResult: models.IProjectDetectionResult,
   autoReload: boolean,
-  updatePreset: (
-    preset: string,
-    newValue: boolean,
-    initValue: boolean,
-    global: boolean) => Thenable<void>,
-  applyCustomization: () => void,
-  showCustomizationMessage: (
+  applyCustomizationFn: (projectDetectionResult?: models.IProjectDetectionResult) => void,
+  showCustomizationMessageFn: (
     message: string,
     items: models.IVSCodeMessageItem[],
-    callback?: () => void,
-    cancel?: (...args: any[]) => void,
+    callback?: (...args: any[]) => void,
     ...args: any[]) => void,
-  reload: () => void,
-  cancel: (
-    preset: string,
-    value: boolean,
-    initValue: boolean,
-    global: boolean,
-    callback?: () => void) => void,
-  handleVSCodeDir: () => void): Thenable<void> {
-  return updatePreset(presetText, value, defaultValue, false)
-    .then(() => {
-      if (autoReload) {
-        applyCustomization();
-        reload();
-        return;
-      }
-
-      showCustomizationMessage(
-        message,
+  reloadFn: () => void): Thenable<void> {
+  return new Promise<void>(resolve => {
+    if (autoReload) {
+      applyCustomizationFn(projectDetectionResult);
+      reloadFn();
+    } else {
+      showCustomizationMessageFn(
+        projectDetectionResult.message,
         [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.autoReload) },
         { title: i18nManager.getMessage(models.LangResourceKeys.disableDetect) }],
-        applyCustomization, cancel, presetText, !value, initValue, false, handleVSCodeDir);
-    });
+        applyCustomizationFn, projectDetectionResult);
+    }
+    resolve();
+  });
 }
