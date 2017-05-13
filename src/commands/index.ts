@@ -221,8 +221,10 @@ function generateManifest(
   projectDetectionResult: models.IProjectDetectionResult = null): void {
   const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
   const vsicons = getConfig().vsicons;
-  const angularPreset = vsicons.projectDetection.autoReload ||
-    (projectDetectionResult && typeof projectDetectionResult === 'object' && 'value' in projectDetectionResult)
+  const hasProjectDetectionResult = projectDetectionResult &&
+    typeof projectDetectionResult === 'object' &&
+    'value' in projectDetectionResult;
+  const angularPreset = hasProjectDetectionResult
     ? projectDetectionResult.value
     : vsicons.presets.angular;
   let workingCustomFiles = customFiles;
