@@ -450,7 +450,7 @@ describe('IconGenerator: icon generation test', function () {
 
             it('and is supported by language ids, has a \'light\' language id referencing its inherited definition',
               function () {
-                const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+                const dSchema: IIconSchema = { ...defaultSchema };
                 dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
                 const schema = new IconGenerator(vscode, dSchema).generateJson(files, emptyFolderCollection);
                 files.supported
@@ -473,7 +473,7 @@ describe('IconGenerator: icon generation test', function () {
 
             it('and is not a filename, has a file extension referencing its inherited definition',
               function () {
-                const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+                const dSchema: IIconSchema = { ...defaultSchema };
                 dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
                 const schema = new IconGenerator(vscode, dSchema).generateJson(files, emptyFolderCollection);
                 files.supported
@@ -488,7 +488,7 @@ describe('IconGenerator: icon generation test', function () {
 
             it('has a \'light\' definition',
               function () {
-                const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+                const dSchema: IIconSchema = { ...defaultSchema };
                 dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
                 const schema = new IconGenerator(vscode, dSchema).generateJson(files, emptyFolderCollection);
                 files.supported
@@ -504,7 +504,7 @@ describe('IconGenerator: icon generation test', function () {
           it('that has a light theme version and is a filename, ' +
             'has a file name referencing its inherited definition',
             function () {
-              const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+              const dSchema: IIconSchema = { ...defaultSchema };
               dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
               const schema = new IconGenerator(vscode, dSchema).generateJson(files, emptyFolderCollection);
               files.supported
@@ -525,7 +525,7 @@ describe('IconGenerator: icon generation test', function () {
 
             it('has a \'light\' definition',
               function () {
-                const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+                const dSchema: IIconSchema = {...defaultSchema};
                 dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
                 const schema = new IconGenerator(vscode, dSchema).generateJson(emptyFileCollection, folders);
                 folders.supported
@@ -538,7 +538,7 @@ describe('IconGenerator: icon generation test', function () {
 
             it('has a folder name referencing its inherited definition',
               function () {
-                const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+                const dSchema: IIconSchema = {...defaultSchema};
                 dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
                 const schema = new IconGenerator(vscode, dSchema).generateJson(emptyFileCollection, folders);
                 folders.supported
@@ -557,7 +557,7 @@ describe('IconGenerator: icon generation test', function () {
 
             it('has an open \'light\' definition',
               function () {
-                const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+                const dSchema: IIconSchema = {...defaultSchema};
                 dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
                 const schema = new IconGenerator(vscode, dSchema).generateJson(emptyFileCollection, folders);
                 folders.supported
@@ -570,7 +570,7 @@ describe('IconGenerator: icon generation test', function () {
 
             it('has a folder name expanded referencing its inherited definition',
               function () {
-                const dSchema = Object.assign({}, defaultSchema) as IIconSchema;
+                const dSchema: IIconSchema = {...defaultSchema};
                 dSchema.iconDefinitions._folder_light.iconPath = 'light_icon';
                 const schema = new IconGenerator(vscode, dSchema).generateJson(emptyFileCollection, folders);
                 folders.supported

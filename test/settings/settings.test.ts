@@ -29,7 +29,7 @@ describe('SettingsManager: tests', function () {
         let originalPlatform: any;
 
         beforeEach(() => {
-          env = Object.assign({}, process.env);
+          env = {...process.env};
           originalPlatform = process.platform;
         });
 
