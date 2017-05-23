@@ -24,7 +24,7 @@
             ],
             "stopOnEntry": false,
             "sourceMaps": true,
-            "outFiles": [
+            "outFiles": [ 
                 "${workspaceRoot}/out/test/**/*.js",
                 "${workspaceRoot}/out/src/**/*.js"
             ],
