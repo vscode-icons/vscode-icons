@@ -210,8 +210,8 @@
         "@types/chai-as-promised": "^0.0.30",
         "@types/lodash": "^4.14.64",
         "@types/mocha": "^2.2.41",
-        "@types/node": "^7.0.18",
-        "@types/sinon": "^2.2.1",
+        "@types/node": "^7.0.22",
+        "@types/sinon": "^2.2.2",
         "bithound": "^1.7.0",
         "chai": "^3.5.0",
         "chai-as-promised": "^6.0.0",
@@ -219,9 +219,9 @@
         "mocha": "^3.4.1",
         "nyc": "^10.3.2",
         "rimraf": "^2.6.1",
-        "sinon": "^2.2.0",
-        "tslint": "^5.2.0",
-        "typescript": "^2.3.2",
+        "sinon": "^2.3.1",
+        "tslint": "^5.3.2",
+        "typescript": "^2.3.3",
         "vscode": "^1.1.0"
     },
     "dependencies": {
