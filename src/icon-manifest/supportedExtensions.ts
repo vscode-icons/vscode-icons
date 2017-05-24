@@ -11,7 +11,7 @@ export const extensions: IFileCollection = {
     { icon: 'actionscript', extensions: [], languages: [languages.actionscript], format: FileFormat.svg },
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
-    { icon: 'org', extensions: ['org'], format: FileFormat.png},
+    { icon: 'org', extensions: ['org'], format: FileFormat.svg},
     { icon: 'angular', extensions: ['.angular-cli.json', 'angular-cli.json'], filename: true, format: FileFormat.svg },
     { icon: 'ng_component_ts', extensions: ['component.ts'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_component_js', extensions: ['component.js'], format: FileFormat.svg, disabled: true },
