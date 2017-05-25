@@ -16,7 +16,7 @@ describe('utils: tests', function () {
       let originalPlatform: any;
 
       before(() => {
-        env = Object.assign({}, process.env);
+        env = { ...process.env };
         originalPlatform = process.platform;
       });
 

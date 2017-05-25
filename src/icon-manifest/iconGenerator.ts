@@ -274,7 +274,7 @@ export class IconGenerator implements models.IIconGenerator {
       files: this.buildFiles(files, iconsFolderBasePath, hasDefaultLightFile),
     };
     // map structure to the schema
-    schema.iconDefinitions = Object.assign({}, schema.iconDefinitions, res.folders.defs, res.files.defs);
+    schema.iconDefinitions = {...schema.iconDefinitions, ...res.folders.defs, ...res.files.defs};
     schema.folderNames = res.folders.names.folderNames;
     schema.folderNamesExpanded = res.folders.names.folderNamesExpanded;
     schema.fileExtensions = res.files.names.fileExtensions;

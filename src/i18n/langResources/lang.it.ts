@@ -2,7 +2,7 @@ import { ILangResource } from '../../models/i18n';
 
 export const langIt: ILangResource = {
   newVersion: 'Benvenuto alla nuova versione di vscode-icons.',
-  seeReleaseNotes: 'Informazioni sui ultimi cambiamenti (in inglese)',
+  seeReleaseNotes: 'Informazioni sugli ultimi cambiamenti (in inglese)',
   dontShowThis: 'Non mostrare più questo messaggio',
   seeReadme: 'Sapere di più sull\'estensione',
   welcomeBegin: 'vscode-icons ora usa la API ufficiale. Vai a',
@@ -18,7 +18,7 @@ export const langIt: ILangResource = {
   autoReload: 'Riavvio Automatico',
   disableDetect: 'Disabilita Rilevazione',
   iconCustomization: 'Il manifesto delle icone sarà rigenerato.',
-  iconRestore: 'Il manifesto delle icone sarà restaurato.',
+  iconRestore: 'Il manifesto delle icone sarà ripristinato.',
   ngPresetEnabled: 'Le icone Angular saranno abilitate.',
   ngPresetDisabled: 'Le icone Angular saranno disabilitate.',
   jsOfficialPresetEnabled: 'Icone ufficiali JS saranno abilitate.',
