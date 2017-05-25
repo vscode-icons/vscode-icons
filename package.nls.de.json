@@ -11,7 +11,7 @@
   "configuration.title": "vscode-icons Konfiguration",
   "configuration.dontShowNewVersionMessage.description": "Wenn auf 'true' gesetzt, zeigt die Erweiterung keine Benachrichtigung nach dem Installieren einer neuen Version an",
   "configuration.projectDetection.autoReload.description": "Wenn auf 'true' gesetzt, wird die Erweiterung nach Erkennen eines Projektes Code automatisch neu starten.",
-  "configuration.projectDetection.disableDetect.description": "Wenn auf 'true' gesetzt, wird die Erweiterung nach zukünftigen Projekte, für die es optimierte Icons gibt, nicht weiter suchen.",
+  "configuration.projectDetection.disableDetect.description": "Wenn auf 'true' gesetzt, wird die Erweiterung nach zukünftigen Projekten, für die es optimierte Icons gibt, nicht weiter suchen.",
   "configuration.presets.angular.description": "Wenn auf 'true' gesetzt, wird die Erweiterung die gängigsten Angular-Patterns anwenden.",
   "configuration.presets.jsOfficial.description": "Wenn auf 'true' gesetzt, wird die Erweiterung das offizielle JS Icon benutzen.",
   "configuration.presets.tsOfficial.description": "Wenn auf 'true' gesetzt, wird die Erweiterung das offizielle TS Icon benutzen.",
