@@ -20,8 +20,8 @@
   "configuration.presets.foldersAllDefaultIcon.description": "Wenn auf 'true' gesetzt, werden keine speziellen Ordner-Icons angezeigt.",
   "configuration.associations.files.description": "Diese benutzerdefinierten Datei-Icon-Zuweisungen werden die standardmäßigen Zuweisungen überschreiben.",
   "configuration.associations.folders.description": "Diese benutzerdefinierten Ordner-Icon-Zuweisungen werden die standardmäßigen Zuweisungen überschreiben.",
-  "configuration.associations.fileDefault.file.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges dunkleres Datei-Icon zuzuweisen.",
-  "configuration.associations.fileDefault.file_light.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges helleres Datei-Icon zuzuweisen.",
-  "configuration.associations.folderDefault.folder.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges dunkleres Ordner-Icon zuzuweisen.",
+  "configuration.associations.fileDefault.file.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, dunkleres Datei-Icon zuzuweisen.",
+  "configuration.associations.fileDefault.file_light.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, helleres Datei-Icon zuzuweisen.",
+  "configuration.associations.folderDefault.folder.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, dunkleres Ordner-Icon zuzuweisen.",
   "configuration.associations.folderDefault.folder_light.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, helleres Ordner-Icon zu benutzen."
 }
