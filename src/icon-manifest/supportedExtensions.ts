@@ -157,7 +157,7 @@ export const extensions: IFileCollection = {
     { icon: 'go', extensions: [], languages: [languages.go], format: FileFormat.svg },
     { icon: 'godot', extensions: [], languages: [languages.godot], format: FileFormat.svg },
     { icon: 'gradle', extensions: ['gradle'], format: FileFormat.svg },
-    { icon: 'graphql', extensions: [], languages: [languages.graphql], format: FileFormat.svg },
+    { icon: 'graphql', extensions: ['.gqlconfig'], filename: true, languages: [languages.graphql], format: FileFormat.svg },
     { icon: 'graphviz', extensions: [], languages: [languages.graphviz], format: FileFormat.svg },
     { icon: 'groovy', extensions: [], languages: [languages.groovy], format: FileFormat.svg },
     { icon: 'groovy2', extensions: [], languages: [languages.groovy], format: FileFormat.svg, disabled: true },
