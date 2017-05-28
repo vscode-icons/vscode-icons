@@ -250,7 +250,7 @@ export const extensions: IFileCollection = {
     { icon: 'njsproj', extensions: ['njsproj'], format: FileFormat.svg },
     { icon: 'node', extensions: ['.nvmrc'], filename: true, format: FileFormat.svg },
     { icon: 'node2', extensions: [], format: FileFormat.svg, disabled: true },
-    { icon: 'npm', extensions: ['.npmignore', '.npmrc', 'package.json'], filename: true, format: FileFormat.svg },
+    { icon: 'npm', extensions: ['.npmignore', '.npmrc', 'package.json', 'package-lock.json'], filename: true, format: FileFormat.svg },
     { icon: 'nsi', extensions: [], languages: [languages.nsis], format: FileFormat.svg },
     { icon: 'nuget', extensions: ['nupkg', 'nuspec', 'psmdcp'], format: FileFormat.svg },
     { icon: 'nunjucks', extensions: ['nunj', 'njs'], languages: [languages.nunjucks], format: FileFormat.svg },
