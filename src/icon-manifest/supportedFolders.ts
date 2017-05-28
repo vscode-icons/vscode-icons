@@ -24,6 +24,7 @@ export const extensions: IFolderCollection = {
     { icon: 'locale', extensions: ['locale', 'locales', 'i18n', 'g11n'], format: FileFormat.svg },
     { icon: 'node', extensions: ['node_modules'], light: true, format: FileFormat.svg },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
+    { icon: 'package', extensions: ['package', 'packages', '.package', '.packages'], format: FileFormat.svg },
     { icon: 'paket', extensions: ['.paket'], format: FileFormat.svg },
     { icon: 'meteor', extensions: ['.meteor'], light: true, format: FileFormat.svg },
     { icon: 'sass', extensions: ['sass', 'scss'], light: true, format: FileFormat.svg },
