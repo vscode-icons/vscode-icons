@@ -1,8 +1,10 @@
 # Change Log
 
-## 7.8.0 (May 29, 2017)
+## 7.8.1 (May 29, 2017)
 - Enhancement: Support for `html` folder. ([@JimiC](https://github.com/JimiC) in [#962](https://github.com/vscode-icons/vscode-icons/pull/962))
 - Enhancement: `.gqlconfig` support. ([@JimiC](https://github.com/JimiC) in [#961](https://github.com/vscode-icons/vscode-icons/pull/961))
+
+## 7.8.0 (May 29, 2017)
 - Enhancement: Improved `liquid` icon. ([@JimiC](https://github.com/JimiC) in [#960](https://github.com/vscode-icons/vscode-icons/pull/960))
 - Feature: Support for `package`. ([@JimiC](https://github.com/JimiC) in [#959](https://github.com/vscode-icons/vscode-icons/pull/959))
 - Enhancement: `paket` icon updated. ([@JimiC](https://github.com/JimiC) in [#958](https://github.com/vscode-icons/vscode-icons/pull/958))
