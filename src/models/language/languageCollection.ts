@@ -34,8 +34,10 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erlang: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
-  godot: ILanguage;
+  gamemaker: ILanguage;
+  gamemaker2: ILanguage;
   glsl: ILanguage;
+  godot: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
