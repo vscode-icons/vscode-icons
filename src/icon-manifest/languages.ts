@@ -46,6 +46,7 @@ export const languages: ILanguageCollection = {
   glsl: { ids: 'glsl', defaultExtension: 'glsl' },
   go: { ids: 'go', defaultExtension: 'go' },
   godot: { ids: 'gdscript', defaultExtension: 'gd' },
+  glsl: { ids: 'glsl', defaultExtension: 'glsl' },
   graphql: { ids: ['graphql'], defaultExtension: 'gql' },
   graphviz: { ids: ['dot'], defaultExtension: 'gv' },
   groovy: { ids: 'groovy', defaultExtension: 'groovy' },
