@@ -275,7 +275,7 @@ export const extensions: IFileCollection = {
     { icon: 'plantuml', extensions: ['pu', 'plantuml', 'iuml', 'puml'], format: FileFormat.svg },
     { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
     { icon: 'polymer', extensions: [], languages: [languages.polymer], format: FileFormat.svg },
-    { icon: 'postcss', extensions: ['postcss.config.js'], filename: true, languages: [languages.postcss], format: FileFormat.svg },
+    { icon: 'postcss', extensions: ['.postcssrc.js', 'postcss.config.js'], filename: true, languages: [languages.postcss], format: FileFormat.svg },
     { icon: 'powerpoint', extensions: ['pot', 'potx', 'potm', 'pps', 'ppsx', 'ppsm', 'ppt', 'pptx', 'pptm', 'pa', 'ppa', 'ppam', 'sldm', 'sldx'], format: FileFormat.svg },
     { icon: 'powershell', extensions: [], languages: [languages.powershell], format: FileFormat.svg },
     { icon: 'procfile', extensions: ['procfile'], filename: true, format: FileFormat.svg },
