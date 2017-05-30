@@ -154,6 +154,7 @@ export const extensions: IFileCollection = {
     { icon: 'git', extensions: ['.gitattributes', '.gitconfig', '.gitignore', '.gitmodules', '.gitkeep'], filename: true, languages: [languages.git], format: FileFormat.svg },
     { icon: 'gamemaker', extensions: [], languages: [languages.gamemaker], format: FileFormat.svg },
     { icon: 'gamemaker2', extensions: [], light: true, languages: [languages.gamemaker2], format: FileFormat.svg },
+    { icon: 'gamemaker81', extensions: [], languages: [languages.gamemaker81], format: FileFormat.svg },
     { icon: 'gitlab', extensions: ['.gitlab-ci.yml'], filename: true, format: FileFormat.svg },
     { icon: 'glsl', extensions: [], languages: [languages.glsl], format: FileFormat.svg },
     { icon: 'go', extensions: [], languages: [languages.go], format: FileFormat.svg },

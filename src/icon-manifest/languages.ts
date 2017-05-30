@@ -44,6 +44,7 @@ export const languages: ILanguageCollection = {
   fsharp: { ids: 'fsharp', defaultExtension: 'fs' },
   gamemaker: { ids: 'gml-gms', defaultExtension: 'gml' },
   gamemaker2: { ids: 'gml-gms2', defaultExtension: 'gml' },
+  gamemaker81: { ids: 'gml-gm81', defaultExtension: 'gml' },
   git: { ids: ['git-commit', 'git-rebase'], defaultExtension: 'git' },
   glsl: { ids: 'glsl', defaultExtension: 'glsl' },
   go: { ids: 'go', defaultExtension: 'go' },
