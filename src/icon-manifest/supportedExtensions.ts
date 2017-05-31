@@ -311,6 +311,7 @@ export const extensions: IFileCollection = {
     { icon: 'rust', extensions: [], languages: [languages.rust], format: FileFormat.svg },
     { icon: 'saltstack', extensions: ['sls'], format: FileFormat.svg },
     { icon: 'sass', extensions: ['sass'], format: FileFormat.svg },
+    { icon: 'sbt', extensions: [], languages: [languages.sbt], format: FileFormat.svg },
     { icon: 'scala', extensions: [], languages: [languages.scala], format: FileFormat.svg },
     { icon: 'script', extensions: [], languages: [languages.vbscript], format: FileFormat.svg },
     { icon: 'scss', extensions: ['scssm'], languages: [languages.scss], format: FileFormat.svg },

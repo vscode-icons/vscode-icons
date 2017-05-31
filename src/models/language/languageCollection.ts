@@ -74,6 +74,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   restructuredtext: ILanguage;
   riot: ILanguage;
   robot: ILanguage;
+  sbt: ILanguage;
   scala: ILanguage;
   slim: ILanguage;
   smarty: ILanguage;
