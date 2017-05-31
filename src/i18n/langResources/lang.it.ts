@@ -36,5 +36,5 @@ export const langIt: ILangResource = {
   'Seleziona \'Riavvia\' per abilitare le icone Angular.',
   nonNgDetected: 'vscode-icons ha rilevato un progetto non Angular. ' +
   'Seleziona \'Riavvia\' per disabilitare le icone Angular.',
-  projectDetecticonReset: 'Impostazioni Rilevazione Progetto Predefinite saranno ripristinate.',
+  projectDetectionReset: 'Impostazioni Rilevazione Progetto Predefinite saranno ripristinate.',
 };

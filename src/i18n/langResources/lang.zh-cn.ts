@@ -34,5 +34,5 @@ export const langZhCn: ILangResource = {
   restart: '选择「重启」使改变生效',
   ngDetected: 'vscode-icons 发现当前工程是 Angular。选择「重启」使用 Angular 的图标',
   nonNgDetected: 'vscode-icons 发现当前工程不是 Angular。选择「重启」取消使用 Angular 的图标',
-  projectDetecticonReset: '重设自动检测工程文件为默认设置',
+  projectDetectionReset: '重设自动检测工程文件为默认设置',
 };
