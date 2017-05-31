@@ -28,5 +28,5 @@ export enum LangResourceKeys {
   restart,
   ngDetected,
   nonNgDetected,
-  projectDetecticonReset,
+  projectDetectionReset,
 }
