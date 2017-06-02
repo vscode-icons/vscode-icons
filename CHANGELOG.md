@@ -485,7 +485,7 @@
   - Enhancement: jshint support. ([@jens1o](https://github.com/jens1o) in [#196](https://github.com/vscode-icons/vscode-icons/pull/196))
   - Enhancement: travis support. ([@jens1o](https://github.com/jens1o) in [#195](https://github.com/vscode-icons/vscode-icons/pull/195))
   - Enhancement: dart support. ([@jens1o](https://github.com/jens1o) in [#194](https://github.com/vscode-icons/vscode-icons/pull/194))
-  - Enhancement: dart support. ([@jens1o](https://github.com/jens1o) in [#193](https://github.com/vscode-icons/vscode-icons/pull/193))
+  - Enhancement: photoshop support. ([@jens1o](https://github.com/jens1o) in [#193](https://github.com/vscode-icons/vscode-icons/pull/193))
   - Enhancement: paket support. ([@jens1o](https://github.com/jens1o) in [#192](https://github.com/vscode-icons/vscode-icons/pull/192))
   - Enhancement: .config files and pdb supported. ([@MarcosMeli](https://github.com/MarcosMeli) in [#190](https://github.com/vscode-icons/vscode-icons/pull/190))
   - Build process recreates icons.zip so it's no longer needed to mantain this file in PRs.
