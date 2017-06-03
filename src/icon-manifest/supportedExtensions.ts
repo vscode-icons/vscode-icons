@@ -266,6 +266,7 @@ export const extensions: IFileCollection = {
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
     { icon: 'paket', extensions: ['paket.dependencies', 'paket.lock', 'paket.references', 'paket.template', 'paket.local'], filename: true, format: FileFormat.svg },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
+    { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
     { icon: 'pdf', extensions: ['pdf'], format: FileFormat.svg },
     { icon: 'pdf2', extensions: ['pdf'], format: FileFormat.svg, disabled: true },
     { icon: 'perl', extensions: [], languages: [languages.perl], format: FileFormat.svg },
