@@ -13,6 +13,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   autohotkey: ILanguage;
   autoit: ILanguage;
   blade: ILanguage;
+  bolt: ILanguage;
   cabal: ILanguage;
   cake: ILanguage;
   cfc: ILanguage;
@@ -55,6 +56,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   literatehaskell: ILanguage;
   marko: ILanguage;
   matlab: ILanguage;
+  mjml: ILanguage;
   mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;
