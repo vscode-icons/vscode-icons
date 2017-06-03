@@ -13,6 +13,7 @@ export const languages: ILanguageCollection = {
   autoit: { ids: ['autoit'], defaultExtension: 'au3' },
   bat: { ids: 'bat', defaultExtension: 'bat' },
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
+  bolt: { ids: ['bolt'], defaultExtension: 'bolt' },
   c: { ids: 'c', defaultExtension: 'c' },
   cabal: { ids: ['cabal'], defaultExtension: 'cabal' },
   cake: { ids: ['cake'], defaultExtension: 'cake' },
