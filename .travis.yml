@@ -3,8 +3,13 @@ os:
   - linux
   - osx
 node_js:
-  - node
-  - 6
+  - node # latest node
+  - 7.4.0 # vscode latest insiders
+  - 6 # vscode > 1.6.1
+  - 6.5.0 # vscode 1.6.1
+matrix:
+  allow_failures:
+    - node_js: node
 cache: yarn
 script: npm run build
 after_success:

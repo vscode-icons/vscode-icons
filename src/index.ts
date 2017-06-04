@@ -14,15 +14,17 @@ function initialize(context: vscode.ExtensionContext) {
 
   commands.registerCommands(context);
   init.manageWelcomeMessage(settingsManager);
-
   init.manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, commands.applyCustomizationCommand);
-
   init.detectProject(findFiles, config)
     .then(results => {
       if (results && results.length && !asRelativePath(results[0].fsPath).includes('/')) {
         detectAngular(config, results);
       }
     });
+
+  if (settingsManager.isNewVersion()) {
+    settingsManager.updateStatus(settingsManager.getState().status);
+  }
 }
 
 function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {

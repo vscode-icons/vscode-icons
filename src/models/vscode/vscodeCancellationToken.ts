@@ -1,9 +1,9 @@
 export interface IVSCodeCancellationToken {
   readonly isCancellationRequested: boolean;
-	/**
-	 * An event emitted when cancellation is requested
-	 * @event
-	 */
+  /**
+   * An event emitted when cancellation is requested
+   * @event
+   */
   readonly onCancellationRequested: IEvent<any>;
 }
 

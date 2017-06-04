@@ -36,5 +36,5 @@ export const langEn: ILangResource = {
   'Select \'Restart\' to enable the Angular icons.',
   nonNgDetected: 'vscode-icons has detected a non Angular project. ' +
   'Select \'Restart\' to disable the Angular icons.',
-  projectDetecticonReset: 'Project Detection defaults will be reset.',
+  projectDetectionReset: 'Project Detection defaults will be reset.',
 };

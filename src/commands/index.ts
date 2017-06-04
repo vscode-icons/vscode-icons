@@ -51,7 +51,7 @@ function restoreDefaultManifestCommand(): void {
 
 function resetProjectDetectionDefaultsCommand(): void {
   const message = i18nManager.getMessage(
-    models.LangResourceKeys.projectDetecticonReset, ' ', models.LangResourceKeys.restart);
+    models.LangResourceKeys.projectDetectionReset, ' ', models.LangResourceKeys.restart);
   showCustomizationMessage(
     message,
     [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],

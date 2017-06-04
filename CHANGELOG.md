@@ -1,5 +1,25 @@
 # Change Log
 
+## 7.8.1 (May 29, 2017)
+- Enhancement: Support for `html` folder. ([@JimiC](https://github.com/JimiC) in [#962](https://github.com/vscode-icons/vscode-icons/pull/962))
+- Enhancement: `.gqlconfig` support. ([@JimiC](https://github.com/JimiC) in [#961](https://github.com/vscode-icons/vscode-icons/pull/961))
+
+## 7.8.0 (May 29, 2017)
+- Enhancement: Improved `liquid` icon. ([@JimiC](https://github.com/JimiC) in [#960](https://github.com/vscode-icons/vscode-icons/pull/960))
+- Feature: Support for `package`. ([@JimiC](https://github.com/JimiC) in [#959](https://github.com/vscode-icons/vscode-icons/pull/959))
+- Enhancement: `paket` icon updated. ([@JimiC](https://github.com/JimiC) in [#958](https://github.com/vscode-icons/vscode-icons/pull/958))
+- Enhancement: Even more `webpack` extensions. ([@g-plane](https://github.com/g-plane) in [#957](https://github.com/vscode-icons/vscode-icons/pull/957))
+- Enhancement: Removed `chai-as-promised` dependency and moved to `Chai v4`. ([@JimiC](https://github.com/JimiC) in [#956](https://github.com/vscode-icons/vscode-icons/pull/956))
+- Enhancement: `package-lock.json` support. ([@jens1o](https://github.com/jens1o) in [#954](https://github.com/vscode-icons/vscode-icons/pull/954))
+- Fix: New version check flow fixed. ([@JimiC](https://github.com/JimiC) in [#948](https://github.com/vscode-icons/vscode-icons/pull/948))
+- Enhancement: German translation improved. ([@jens1o](https://github.com/jens1o) in [#945](https://github.com/vscode-icons/vscode-icons/pull/945))
+- Enhancement: Puppet logo updated. ([@glennsarti](https://github.com/glennsarti) in [#943](https://github.com/vscode-icons/vscode-icons/pull/943))
+- Feature: Org Mode support. ([@zacherybohon](https://github.com/zacherybohon) in [#941](https://github.com/vscode-icons/vscode-icons/pull/941))
+- Enhancement: Project's dependencies updated. ([@JimiC](https://github.com/JimiC) in [#939](https://github.com/vscode-icons/vscode-icons/pull/939) & [#952](https://github.com/vscode-icons/vscode-icons/pull/952))
+- Enhancement: Added default config name for Jest. ([@nfour](https://github.com/nfour) in [#928](https://github.com/vscode-icons/vscode-icons/pull/928))
+- Fix: Fixed null reference of PAD result. ([@JimiC](https://github.com/JimiC) in [#927](https://github.com/vscode-icons/vscode-icons/pull/927))
+- Enhancement: Support for `phpunit`. ([@jens1o](https://github.com/jens1o) in [#926](https://github.com/vscode-icons/vscode-icons/pull/926))
+
 ## 7.7.0 (May 9, 2017)
 - Enhancement: Support for `phpunit.xml.dist`. ([@jens1o](https://github.com/jens1o) in [#918](https://github.com/vscode-icons/vscode-icons/pull/918))
 - Feature: Italian support. ([@sabinrimni](https://github.com/sabinrimni) in [#915](https://github.com/vscode-icons/vscode-icons/pull/915))
@@ -465,7 +485,7 @@
   - Enhancement: jshint support. ([@jens1o](https://github.com/jens1o) in [#196](https://github.com/vscode-icons/vscode-icons/pull/196))
   - Enhancement: travis support. ([@jens1o](https://github.com/jens1o) in [#195](https://github.com/vscode-icons/vscode-icons/pull/195))
   - Enhancement: dart support. ([@jens1o](https://github.com/jens1o) in [#194](https://github.com/vscode-icons/vscode-icons/pull/194))
-  - Enhancement: dart support. ([@jens1o](https://github.com/jens1o) in [#193](https://github.com/vscode-icons/vscode-icons/pull/193))
+  - Enhancement: photoshop support. ([@jens1o](https://github.com/jens1o) in [#193](https://github.com/vscode-icons/vscode-icons/pull/193))
   - Enhancement: paket support. ([@jens1o](https://github.com/jens1o) in [#192](https://github.com/vscode-icons/vscode-icons/pull/192))
   - Enhancement: .config files and pdb supported. ([@MarcosMeli](https://github.com/MarcosMeli) in [#190](https://github.com/vscode-icons/vscode-icons/pull/190))
   - Build process recreates icons.zip so it's no longer needed to mantain this file in PRs.
