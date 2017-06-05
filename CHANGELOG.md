@@ -1,5 +1,22 @@
 # Change Log
 
+## 7.9.0 (June 6, 2017)
+- Enhancement: The extension works with `npm5`. ([@JimiC](https://github.com/JimiC) in [#997](https://github.com/vscode-icons/vscode-icons/pull/997))
+- Enhancement: Minimum node versions for CI and vscode. ([@JimiC](https://github.com/JimiC) in [#994](https://github.com/vscode-icons/vscode-icons/pull/994))
+- Feature: Support for `mjml`. ([@JimiC](https://github.com/JimiC) in [#993](https://github.com/vscode-icons/vscode-icons/pull/993))
+- Feature: Support for `Point Cloud Library`. ([@JimiC](https://github.com/JimiC) in [#992](https://github.com/vscode-icons/vscode-icons/pull/992))
+- Feature: Support for `Bolt`. ([@JimiC](https://github.com/JimiC) in [#991](https://github.com/vscode-icons/vscode-icons/pull/991))
+- Enhancement: Update dependencies. ([@JimiC](https://github.com/JimiC) in [#990](https://github.com/vscode-icons/vscode-icons/pull/990) & [#1000](https://github.com/vscode-icons/vscode-icons/pull/1000))
+- Enhancement: Changelog update. ([@LaurentTreguier](https://github.com/LaurentTreguier) in [#983](https://github.com/vscode-icons/vscode-icons/pull/983))
+- Enhancement: Properly support `PLSQL` extensions. ([@JimiC](https://github.com/JimiC) in [#982](https://github.com/vscode-icons/vscode-icons/pull/982))
+- Enhancement: `zh-cn` translations improved. ([@g-plane](https://github.com/g-plane) in [#980](https://github.com/vscode-icons/vscode-icons/pull/980))
+- Feature: Support for `SBT`. ([@JimiC](https://github.com/JimiC) in [#979](https://github.com/vscode-icons/vscode-icons/pull/979))
+- Feature: New folder icons added. ([@JimiC](https://github.com/JimiC) in [#978](https://github.com/vscode-icons/vscode-icons/pull/978) & [#981](https://github.com/vscode-icons/vscode-icons/pull/981))
+- Feature: Support for `Game Maker`. ([@JimiC](https://github.com/JimiC) in [#971](https://github.com/vscode-icons/vscode-icons/pull/971))
+- Feature: Support for `.sequelizerc`. ([@JimiC](https://github.com/JimiC) in [#971](https://github.com/vscode-icons/vscode-icons/pull/971))
+- Feature: Support for `tst`. ([@JimiC](https://github.com/JimiC) in [#968](https://github.com/vscode-icons/vscode-icons/pull/968))
+- Fix: Condition check for user configuration settings. ([@JimiC](https://github.com/JimiC) in [#967](https://github.com/vscode-icons/vscode-icons/pull/967))
+
 ## 7.8.1 (May 29, 2017)
 - Enhancement: Support for `html` folder. ([@JimiC](https://github.com/JimiC) in [#962](https://github.com/vscode-icons/vscode-icons/pull/962))
 - Enhancement: `.gqlconfig` support. ([@JimiC](https://github.com/JimiC) in [#961](https://github.com/vscode-icons/vscode-icons/pull/961))
