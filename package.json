@@ -154,7 +154,7 @@
                 "vsicons.presets.foldersAllDefaultIcon": {
                     "type": "boolean",
                     "default": false,
-                    "description": "configuration.presets.foldersAllDefaultIcon.description"
+                    "description": "%configuration.presets.foldersAllDefaultIcon.description%"
                 },
                 "vsicons.associations.files": {
                     "type": "array",
