@@ -15,7 +15,7 @@ export const extensions: IFolderCollection = {
     { icon: 'config', extensions: ['config', '.config', 'ini', '.ini', 'initializers', '.initializers'], format: FileFormat.svg },
     { icon: 'css', extensions: ['css', '_css'], format: FileFormat.svg },
     { icon: 'dist', extensions: ['dist', 'out', 'export', 'build', 'release'], format: FileFormat.svg },
-    { icon: 'docker', extensions: ['docker', 'docker'], format: FileFormat.svg },
+    { icon: 'docker', extensions: ['docker', '.docker'], format: FileFormat.svg },
     { icon: 'docs', extensions: ['docs'], format: FileFormat.svg },
     { icon: 'elasticbeanstalk', extensions: ['.elasticbeanstalk', '.ebextensions'], format: FileFormat.svg },
     { icon: 'flow', extensions: ['flow'], format: FileFormat.svg },
