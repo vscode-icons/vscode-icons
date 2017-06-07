@@ -76,7 +76,7 @@ function mergeSupported(
     file.extensions.forEach(ext => {
       final
         .filter(x => x.extensions.find(y => y === ext))
-        .forEach(x => _.remove(x.extensions, ext));
+        .forEach(x => _.remove(x.extensions, el => el === ext));
     });
     final.push(file);
   });
