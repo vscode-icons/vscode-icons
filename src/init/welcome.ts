@@ -14,11 +14,8 @@ export function manageWelcomeMessage(settingsManager: ISettingsManager) {
     return;
   }
 
-  if (settingsManager.isNewVersion()) {
-    settingsManager.updateStatus(state.status);
-    if (!getConfig().vsicons.dontShowNewVersionMessage) {
-      showNewVersionMessage(settingsManager);
-    }
+  if (settingsManager.isNewVersion() && !getConfig().vsicons.dontShowNewVersionMessage) {
+    showNewVersionMessage(settingsManager);
   }
 }
 

@@ -13,6 +13,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   autohotkey: ILanguage;
   autoit: ILanguage;
   blade: ILanguage;
+  bolt: ILanguage;
   cabal: ILanguage;
   cake: ILanguage;
   cfc: ILanguage;
@@ -34,8 +35,11 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erlang: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
-  godot: ILanguage;
+  gamemaker: ILanguage;
+  gamemaker2: ILanguage;
+  gamemaker81: ILanguage;
   glsl: ILanguage;
+  godot: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
@@ -52,6 +56,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   literatehaskell: ILanguage;
   marko: ILanguage;
   matlab: ILanguage;
+  mjml: ILanguage;
   mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;
@@ -71,6 +76,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   restructuredtext: ILanguage;
   riot: ILanguage;
   robot: ILanguage;
+  sbt: ILanguage;
   scala: ILanguage;
   slim: ILanguage;
   smarty: ILanguage;
