@@ -135,6 +135,7 @@ export const extensions: IFileCollection = {
     { icon: 'elm2', extensions: ['elm-package.json'], filename: true, languages: [languages.elm], format: FileFormat.svg, disabled: true },
     { icon: 'emacs', extensions: ['el', 'elc'], format: FileFormat.svg },
     { icon: 'ember', extensions: ['.ember-cli'], filename: true, format: FileFormat.svg },
+    { icon: 'ensime', extensions: ['ensime'], format: FileFormat.svg },
     { icon: 'eps', extensions: ['eps'], format: FileFormat.svg },
     { icon: 'erb', extensions: [], languages: [languages.erb], format: FileFormat.svg },
     { icon: 'erlang', extensions: ['emakefile', '.emakerfile'], filename: true, languages: [languages.erlang], format: FileFormat.svg },
