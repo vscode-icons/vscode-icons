@@ -235,7 +235,7 @@ Along with the previous arrays you will have 4 more settings available that will
 // and the other defined icons. You may be tempted to use the `disabled` property but `overrides`
 // is your friend here. Just remember that `overrides` will remove the older entry and add yours.
 "vsicons.associations.folders": [
-    { "extensions": ["src"], "icon": "src", "format": "svg", "disabled": false, "overrides": "src" }
+    { "icon": "src", "extensions": ["src"], "format": "svg", "overrides": "src" }
 ]
 ```
 
