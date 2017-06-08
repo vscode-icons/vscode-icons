@@ -204,6 +204,9 @@ Along with the previous arrays you will have 4 more settings available that will
 
 // Disabling an already supported icon.
 // note: this is, indeed, the functionality that presets are leveraging.
+// Take into account that the disable property will hide all the icon occurrences.
+// So it's an all or nothing toggle. If you want to enable the icon for just a few
+// extensions instead of all the defined extensions take a look at the Overrides example below.
 "vsicons.associations.files": [
   { "icon": "js", "extensions": [], "format": "svg", "disable": true }
 ]
@@ -225,6 +228,14 @@ Along with the previous arrays you will have 4 more settings available that will
 // putting yours on top.
 "vsicons.associations.files": [
   { "icon": "myJs", "extensions": ["js", "custom.js"], "format": "svg", "overrides": "js" }
+]
+
+// Partially disabling an icon
+// In this case, you only want to show the `src` icon for `src` folders, not `sources, source`
+// and the other defined icons. You may be tempted to use the `disabled` property but `overrides`
+// is your friend here. Just remember that `overrides` will remove the older entry and add yours.
+"vsicons.associations.folders": [
+    { "icon": "src", "extensions": ["src"], "format": "svg", "overrides": "src" }
 ]
 ```
 
