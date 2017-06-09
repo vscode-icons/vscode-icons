@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
-import { IExtendedWorkspaceConfiguration, IVSCodeUri } from '../models';
+import {  IVSCodeUri } from '../models';
 
-export function getConfig(): IExtendedWorkspaceConfiguration {
-  return vscode.workspace.getConfiguration() as IExtendedWorkspaceConfiguration;
+export function getConfig(): vscode.WorkspaceConfiguration {
+  return vscode.workspace.getConfiguration();
 }
 
 export function findFiles(
