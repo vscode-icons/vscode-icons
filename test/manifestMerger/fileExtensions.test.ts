@@ -155,7 +155,7 @@ describe('FileExtensions: merging configuration documents', function () {
             ],
           };
           const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-          const ngGroup = Object.keys(json.iconDefinitions).filter(x => x.startsWith('_f_ng_') && x.endsWith('2'));
+          const ngGroup = Object.keys(json.iconDefinitions).filter(x => /^_f_ng_.*2$/.test(x));
           expect(ngGroup.length).equals(14);
         });
 

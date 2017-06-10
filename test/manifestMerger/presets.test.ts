@@ -51,7 +51,7 @@ describe('Presets: merging configuration documents', function () {
           { icon: 'ng_routing_ts2', extensions: ['app-routing.module.ts'], filename: true, format: 'svg' },
           { icon: 'ng_routing_js2', extensions: ['app-routing.module.js'], filename: true, format: 'svg' });
         const result = iconManifest.toggleAngularPreset(false, custom);
-        const ngGroup = result.supported.filter(x => x.icon.startsWith('ng_') && !x.disabled && x.icon.endsWith('2'));
+        const ngGroup = result.supported.filter(x => /^ng_.*2$/.test(x.icon) && !x.disabled);
         expect(ngGroup.length).equals(16);
       });
 
