@@ -1,5 +1,5 @@
 import { WorkspaceConfiguration } from 'vscode';
-import { IVSIcons } from '../contributions';
+import { IVSIcons } from './models/contributions';
 
 declare module 'vscode' {
   interface WorkspaceConfiguration {
