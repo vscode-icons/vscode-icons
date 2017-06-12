@@ -87,7 +87,7 @@ export function toggleAngularPreset(
   disable: boolean,
   files: models.IFileCollection): models.IFileCollection {
   const icons = files.supported
-    .filter(x => x.icon.startsWith('ng_') && (x.icon.endsWith('_js') || x.icon.endsWith('_ts')))
+    .filter(x => /^ng_.*\D$/.test(x.icon))
     .map(x => x.icon);
   return togglePreset(disable, icons, files);
 }
