@@ -7,53 +7,54 @@ describe('vscode-extensions: tests', function () {
 
   context('ensures that', function () {
 
-    context('getVsiconsConfig returns', function () {
-      let vsMock;
-      let vsExt;
+    const config = {
+      files: {
+        workspaceValue: undefined,
+        globalValue: undefined,
+      },
+      folders: {
+        workspaceValue: undefined,
+        globalValue: undefined,
+      },
+      inspect: key => {
+        switch (key) {
+          case 'vsicons.associations.files':
+            return config.files;
+          case 'vsicons.associations.folders':
+            return config.folders;
+          default:
+            return null;
+        }
+      },
+      vsicons: {
+        associations: {
+          files: [],
+          folders: [],
+        },
+      },
+    };
 
-      const config = {
-        files: {
-          workspaceValue: undefined,
-          globalValue: undefined,
-        },
-        folders: {
-          workspaceValue: undefined,
-          globalValue: undefined,
-        },
-        inspect: key => {
-          switch (key) {
-            case 'vsicons.associations.files':
-              return config.files;
-            case 'vsicons.associations.folders':
-              return config.folders;
-            default:
-              return null;
-          }
-        },
-        vsicons: {
-          associations: {
-            files: [],
-            folders: [],
-          },
-        },
+    let vsMock;
+    let vsExt;
+
+    before(() => {
+      mockery.enable({
+        warnOnUnregistered: false,
+      });
+      mockery.registerAllowable('../../src/utils/vscode-extensions');
+      vsMock = {};
+      mockery.registerMock('vscode', vsMock);
+      vsExt = require('../../src/utils/vscode-extensions');
+      vsMock.workspace = {
+        getConfiguration: () => config,
       };
+    });
 
-      before(() => {
-        mockery.enable({
-          warnOnUnregistered: false,
-        });
-        mockery.registerAllowable('../../src/utils/vscode-extensions');
-        vsMock = {};
-        mockery.registerMock('vscode', vsMock);
-        vsExt = require('../../src/utils/vscode-extensions');
-        vsMock.workspace = {
-          getConfiguration: () => config,
-        };
-      });
+    after(() => {
+      mockery.disable();
+    });
 
-      after(() => {
-        mockery.disable();
-      });
+    context('getVsiconsConfig returns', function () {
 
       context('for files:', function () {
         it('the configuration\'s vsicons property if no workspaceValue present',
@@ -163,6 +164,29 @@ describe('vscode-extensions: tests', function () {
           });
       });
 
+    });
+
+    it('getConfig calls vscode.workspace.getConfiguration', function () {
+      const cfg = vsExt.getConfig();
+      expect(cfg).to.be.equal(config);
+    });
+
+    it('findFiles calls vscode.workspace.findFiles', function () {
+      const params = ['include', 'exclude', 10, { token: 'token' }];
+      vsMock.workspace.findFiles = (include, exclude, maxResults, vsToken) => [
+        include,
+        exclude,
+        maxResults,
+        vsToken,
+      ];
+      const result = vsExt.findFiles(...params);
+      expect(result).to.be.deep.equal(params);
+    });
+
+    it('asRelativePath calls vscode.workspace.asRelativePath', function () {
+      vsMock.workspace.asRelativePath = path => path;
+      const result = vsExt.asRelativePath('testPath');
+      expect(result).to.be.equal('testPath');
     });
 
   });
