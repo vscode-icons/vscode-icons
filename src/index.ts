@@ -3,13 +3,13 @@ import * as fs from 'fs';
 import { SettingsManager } from './settings';
 import * as init from './init';
 import * as commands from './commands';
-import { getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
+import { getVsiconsConfig, getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
 import { parseJSON } from './utils';
 import { LanguageResourceManager } from './i18n';
 import { IVSCodeUri, IVSIcons } from './models';
 
 function initialize(context: vscode.ExtensionContext) {
-  const config = getConfig().vsicons;
+  const config = getVsiconsConfig();
   const settingsManager = new SettingsManager(vscode);
 
   commands.registerCommands(context);

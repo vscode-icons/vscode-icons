@@ -1,8 +1,26 @@
+import * as _ from 'lodash';
 import * as vscode from 'vscode';
-import { IExtendedWorkspaceConfiguration, IVSCodeUri } from '../models';
+import {  IVSCodeUri, IVSIcons, IFileExtension } from '../models';
 
-export function getConfig(): IExtendedWorkspaceConfiguration {
-  return vscode.workspace.getConfiguration() as IExtendedWorkspaceConfiguration;
+export function getConfig(): vscode.WorkspaceConfiguration {
+  return vscode.workspace.getConfiguration();
+}
+
+export function getVsiconsConfig(): IVSIcons {
+  const config = vscode.workspace.getConfiguration();
+  const mergedConfig = config.vsicons;
+  const files = config.inspect<IFileExtension[]>('vsicons.associations.files');
+  const folders = config.inspect<IFileExtension[]>('vsicons.associations.folders');
+
+  if (files.workspaceValue && files.globalValue) {
+    mergedConfig.associations.files = _.unionWith(files.workspaceValue, files.globalValue, _.isEqual);
+  }
+
+  if (folders.workspaceValue && folders.globalValue) {
+    mergedConfig.associations.folders = _.unionWith(folders.workspaceValue, folders.globalValue, _.isEqual);
+  }
+
+  return mergedConfig;
 }
 
 export function findFiles(
