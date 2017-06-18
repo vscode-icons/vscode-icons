@@ -2,11 +2,13 @@ _**Instruction Template**_
 
 **THIS IS AN EXAMPLE TEMPLATE**
 
-**Make sure the following boxes are checked out(and the vars replaced) *BEFORE* you're submitting this issue**
+**Make sure the following boxes are checked (and the placeholders replaced) *BEFORE* submitting this issue**
 
 **Screenshots are more than welcome!**
 
 **Please remove any unused content (including these instructions) before submitting your issue.**
+
+***IMPORTANT:* For folder icon requests please first see issue #650**
 
 **Thanks :smile:**
 
