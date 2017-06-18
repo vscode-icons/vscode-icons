@@ -14,6 +14,10 @@
   version "2.2.41"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.41.tgz#e27cf0817153eb9f2713b2d3f6c68f1e1c3ca608"
 
+"@types/mockery@^1.4.29":
+  version "1.4.29"
+  resolved "https://registry.yarnpkg.com/@types/mockery/-/mockery-1.4.29.tgz#9ba22df37f07e3780fff8531d1a38e633f9457a5"
+
 "@types/node@^7.0.27":
   version "7.0.27"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.27.tgz#ba5e1a87aca2b4f5817289615ffe56472927687e"
@@ -1545,6 +1549,10 @@ mocha@^3.2.0, mocha@^3.4.2:
     lodash.create "3.1.1"
     mkdirp "0.5.1"
     supports-color "3.1.2"
+
+mockery@^2.0.0:
+  version "2.0.0"
+  resolved "http://npm.valudio.com/mockery/-/mockery-2.0.0.tgz#0569a11a1848461fdc347cf8cca2df2f3129bc03"
 
 ms@0.7.2:
   version "0.7.2"

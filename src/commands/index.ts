@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { getConfig } from '../utils/vscode-extensions';
+import { getConfig, getVsiconsConfig } from '../utils/vscode-extensions';
 import { LanguageResourceManager } from '../i18n';
 import * as iconManifest from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
@@ -203,7 +203,7 @@ export function reload(): void {
 }
 
 export function applyCustomization(projectDetectionResult: models.IProjectDetectionResult = null): void {
-  const associations = getConfig().vsicons.associations;
+  const associations = getVsiconsConfig().associations;
   const customFiles: models.IFileCollection = {
     default: associations.fileDefault,
     supported: associations.files,
@@ -220,7 +220,7 @@ function generateManifest(
   customFolders: models.IFolderCollection,
   projectDetectionResult: models.IProjectDetectionResult = null): void {
   const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
-  const vsicons = getConfig().vsicons;
+  const vsicons = getVsiconsConfig();
   const hasProjectDetectionResult = projectDetectionResult &&
     typeof projectDetectionResult === 'object' &&
     'value' in projectDetectionResult;
