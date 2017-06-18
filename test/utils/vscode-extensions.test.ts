@@ -54,6 +54,10 @@ describe('vscode-extensions: tests', function () {
       mockery.disable();
     });
 
+    it('config returns null if the keys are not correct', function () {
+      expect(config.inspect('failing-string')).to.be.null;
+    });
+
     context('getVsiconsConfig returns', function () {
 
       context('for files:', function () {
