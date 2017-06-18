@@ -54,13 +54,41 @@ describe('vscode-extensions: tests', function () {
       mockery.disable();
     });
 
-    it('config returns null if the keys are not correct', function () {
-      expect(config.inspect('failing-string')).to.be.null;
-    });
+    it('config returns null, if the key is not correct',
+      function () {
+        expect(config.inspect('failing-string')).to.be.null;
+      });
 
-    context('getVsiconsConfig returns', function () {
+    it('function \'getConfig\' calls function \'vscode.workspace.getConfiguration\'',
+      function () {
+        const cfg = vsExt.getConfig();
+        expect(cfg).to.be.equal(config);
+      });
+
+    it('function \'findFiles\' calls function \'vscode.workspace.findFiles\'',
+      function () {
+        const params = ['include', 'exclude', 10, { token: 'token' }];
+        vsMock.workspace.findFiles = (include, exclude, maxResults, vsToken) => [
+          include,
+          exclude,
+          maxResults,
+          vsToken,
+        ];
+        const result = vsExt.findFiles(...params);
+        expect(result).to.be.deep.equal(params);
+      });
+
+    it('function \'asRelativePath\' calls function \'vscode.workspace.asRelativePath\'',
+      function () {
+        vsMock.workspace.asRelativePath = path => path;
+        const result = vsExt.asRelativePath('testPath');
+        expect(result).to.be.equal('testPath');
+      });
+
+    context('function \'getVsiconsConfig\' returns', function () {
 
       context('for files:', function () {
+
         it('the configuration\'s vsicons property if no workspaceValue present',
           function () {
             config.files.globalValue = [
@@ -112,9 +140,11 @@ describe('vscode-extensions: tests', function () {
               { icon: "js", extensions: ["myExt", "myExt2.custom.js"], format: "svg" },
             ]);
           });
+
       });
 
       context('for folders:', function () {
+
         it('the configuration\'s vsicons property if no workspaceValue present',
           function () {
             config.folders.globalValue = [
@@ -168,29 +198,6 @@ describe('vscode-extensions: tests', function () {
           });
       });
 
-    });
-
-    it('getConfig calls vscode.workspace.getConfiguration', function () {
-      const cfg = vsExt.getConfig();
-      expect(cfg).to.be.equal(config);
-    });
-
-    it('findFiles calls vscode.workspace.findFiles', function () {
-      const params = ['include', 'exclude', 10, { token: 'token' }];
-      vsMock.workspace.findFiles = (include, exclude, maxResults, vsToken) => [
-        include,
-        exclude,
-        maxResults,
-        vsToken,
-      ];
-      const result = vsExt.findFiles(...params);
-      expect(result).to.be.deep.equal(params);
-    });
-
-    it('asRelativePath calls vscode.workspace.asRelativePath', function () {
-      vsMock.workspace.asRelativePath = path => path;
-      const result = vsExt.asRelativePath('testPath');
-      expect(result).to.be.equal('testPath');
     });
 
   });
