@@ -10,6 +10,7 @@
   "command.resetProjectDetectionDefaults.title": "重置工程文件侦测模式为默认设置",
   "configuration.title": "vscode-icons 设置",
   "configuration.dontShowNewVersionMessage.description": "如果设置成 true，关于新的版本消息将不再显示",
+  "configuration.dontShowConfigManuallyChangedMessage.description": "",
   "configuration.projectDetection.autoReload.description": "如果设置成 true，检测工程文件后自动重启插件",
   "configuration.projectDetection.disableDetect.description": "如果设置成 true，插件不再自动检测工程文件",
   "configuration.presets.angular.description": "如果设置成 true，插件会自动匹配 Angular 模式",

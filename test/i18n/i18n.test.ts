@@ -8,7 +8,7 @@ import * as packageJson from '../../../package.json';
 import * as nls from '../../../package.nls.json';
 import * as nlsTemplate from '../../../package.nls.template.json';
 
-describe('i18n: tests', function () {
+describe('I18n: tests', function () {
 
   context('ensures that', function () {
 

@@ -10,6 +10,7 @@
   "command.resetProjectDetectionDefaults.title": "Восстановить настройки определения проекта по-умолчанию",
   "configuration.title": "Настройки vscode-icons",
   "configuration.dontShowNewVersionMessage.description": "Если установлено значение true, сообщения о новой версии больше не будут отображаться",
+  "configuration.dontShowConfigManuallyChangedMessage.description": "",
   "configuration.projectDetection.autoReload.description": "Если установлено значение true, расширение автоматически перезапустится при определении типа проекта",
   "configuration.projectDetection.disableDetect.description": "Если установлено значение true, расширение не будет определять тип проекта",
   "configuration.presets.angular.description": "Если установлено значение true, расширение будет определять стандартные шаблоны файлов Angular",
