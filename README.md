@@ -52,7 +52,7 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 ---
 
 ## State of the extension
-With the release of **7.10.0**, we improved the way the extension is handling your manually changes to a `presets` or `associations` configuration. By default, every time you change any of the aforementioned configurations, you will be presented with the message to `Restart` the editor, for the changes to take effect. Of course, you can always disable this behavior. See the [Configuration](https://github.com/vscode-icons/vscode-icons#configuration) section for more details.
+With the release of **7.10.0**, we improved the way the extension is handling your manual changes to a `presets` or `associations` configuration. By default, every time you change any of the aforementioned configurations, you will be presented with the message to `Restart` the editor, for the changes to take effect. Of course, you can always disable this behavior. See the [Configuration](https://github.com/vscode-icons/vscode-icons#configuration) section for more details.
 
 As from **release 7.7.0**, the `project detection` feature has become smarter and is totally unobtrusive. If you have it disabled, because you found it annoying for any reason, **we urge you to re-enable it** and check out its new functionality.
 
