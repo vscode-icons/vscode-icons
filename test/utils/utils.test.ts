@@ -6,7 +6,7 @@ import * as os from 'os';
 import * as sinon from 'sinon';
 import * as utils from '../../src/utils';
 
-describe('utils: tests', function () {
+describe('Utils: tests', function () {
 
   context('ensures that', function () {
 
@@ -201,6 +201,50 @@ describe('utils: tests', function () {
       it('Array of undefined drives, if provided paths are not actual drives',
         function () {
           expect(utils.getDrives('/', 'file:///')).to.be.an.instanceOf(Array).and.include.members([undefined]);
+        });
+
+    });
+
+    context('the \'flatten\' function', function () {
+
+      it('converts an object with nested objects to a flat object',
+        function () {
+          const obj = {
+            I: {
+              wonna: {
+                have: {
+                  more: 'stuff', // duplicate key
+                  other: 'stuff',
+                  all: {
+                    the: 'world',
+                  },
+                },
+              },
+              aint: {
+                last: 'one',
+              },
+              am: 'bored',
+              known: {
+                nothing: null,
+              },
+            },
+            more: 'stuff', // duplicate key
+            ipsum: {
+              lorem: 'latin',
+            },
+          };
+          const flatObjKeys = [
+            'I.wonna.have.more',
+            'I.wonna.have.other',
+            'I.wonna.have.all.the',
+            'I.aint.last',
+            'I.am',
+            'I.known.nothing',
+            'more',
+            'ipsum.lorem',
+          ];
+          const flatObj = utils.flatten(obj);
+          expect(flatObj).to.be.an('object').that.has.all.keys(flatObjKeys);
         });
 
     });

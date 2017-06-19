@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
 import { IVSIcons, IVSCodeUri, IProjectDetectionResult } from '../../src/models';
-import * as adp from '../../src/init/autoDetectProject';
+import * as adp from '../../src/init/projectAutoDetection';
 import { LanguageResourceManager } from '../../src/i18n';
 
 describe('AutoDetectProject: tests', function () {
@@ -18,6 +18,7 @@ describe('AutoDetectProject: tests', function () {
       beforeEach(() => {
         userConfig = {
           dontShowNewVersionMessage: false,
+          dontShowConfigManuallyChangedMessage: false,
           projectDetection: {
             autoReload: false,
             disableDetect: false,
@@ -33,8 +34,8 @@ describe('AutoDetectProject: tests', function () {
           associations: {
             files: [],
             folders: [],
-            fileDefault: { file: undefined, file_light: undefined },
-            folderDefault: { folder: undefined, folder_light: undefined },
+            fileDefault: { file: null, file_light: null },
+            folderDefault: { folder: null, folder_light: null },
           },
         };
       });
