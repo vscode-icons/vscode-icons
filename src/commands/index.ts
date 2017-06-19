@@ -28,7 +28,11 @@ function didChangeConfigurationListener(): void {
       executeAndReload(cb, ...argms);
     }, 500);
   } else if (!customMsgShown) {
-    manageApplyCustomizations(initVSIconsConfig, getConfig().vsicons, applyCustomizationCommand);
+    manageApplyCustomizations(
+      initVSIconsConfig,
+      getConfig().vsicons,
+      applyCustomizationCommand,
+      [{ title: i18nManager.getMessage(models.LangResourceKeys.dontShowThis) }]);
   }
 }
 
@@ -54,11 +58,11 @@ function registerCommand(
   return command;
 }
 
-export function applyCustomizationCommand(): void {
+export function applyCustomizationCommand(additionalTitles: models.IVSCodeMessageItem[] = []): void {
   const message = i18nManager.getMessage(
     models.LangResourceKeys.iconCustomization, ' ', models.LangResourceKeys.restart);
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }, ...additionalTitles],
     applyCustomization);
 }
 
@@ -185,6 +189,22 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
   };
 
   switch (btn.title) {
+    case i18nManager.getMessage(models.LangResourceKeys.dontShowThis):
+      {
+        doReload = false;
+        if (!callback) {
+          break;
+        }
+        switch (callback.name) {
+          case 'applyCustomization':
+            {
+              customMsgShown = false;
+              getConfig().update('vsicons.dontShowConfigManuallyChangedMessage', true, true);
+            }
+            break;
+        }
+      }
+      break;
     case i18nManager.getMessage(models.LangResourceKeys.disableDetect):
       {
         doReload = false;
@@ -205,8 +225,6 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
         }
         handlePreset();
       }
-      break;
-    default:
       break;
   }
 }

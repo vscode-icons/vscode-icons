@@ -1,24 +1,25 @@
-import { IVSIcons } from '../models';
+import { IVSIcons, IVSCodeMessageItem } from '../models';
 import * as packageJson from '../../../package.json';
 import * as utils from '../utils';
 
 export function manageAutoApplyCustomizations(
   isNewVersion: boolean,
   userConfig: IVSIcons,
-  applyCustomizationCommand: () => void): void {
+  applyCustomizationCommandFn: () => void): void {
   if (!isNewVersion) { return; }
   const propObj = packageJson.contributes.configuration.properties as object;
   if (configChanged(propObj, userConfig)) {
-    applyCustomizationCommand();
+    applyCustomizationCommandFn();
   }
 }
 
 export function manageApplyCustomizations(
   oldConfig: IVSIcons,
   newConfig: IVSIcons,
-  applyCustomizationCommand: () => void): void {
+  applyCustomizationCommandFn: (additionalTitles: IVSCodeMessageItem[]) => void,
+  additionalTitles?: IVSCodeMessageItem[]): void {
   if (!newConfig.dontShowConfigManuallyChangedMessage && configChanged(utils.flatten(oldConfig), newConfig)) {
-    applyCustomizationCommand();
+    applyCustomizationCommandFn(additionalTitles);
   }
 }
 
