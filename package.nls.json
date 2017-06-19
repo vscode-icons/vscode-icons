@@ -10,6 +10,7 @@
   "command.resetProjectDetectionDefaults.title": "Reset Project Detection Defaults",
   "configuration.title": "vscode-icons configuration",
   "configuration.dontShowNewVersionMessage.description": "If set to true, the new version message won't be shown anymore.",
+  "configuration.dontShowConfigManuallyChangedMessage.description": "If set to true, when manually changing the configurations, the 'restart' message won't be shown.",
   "configuration.projectDetection.autoReload.description": "If set to true, the extension will restart automatically on project detection.",
   "configuration.projectDetection.disableDetect.description": "If set to true, the extension will disable the project detection.",
   "configuration.presets.angular.description": "If set to true, the extension will match some of the common Angular patterns.",

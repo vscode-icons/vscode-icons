@@ -100,3 +100,21 @@ export function getDrives(...paths: string[]): string[] {
   const rx = new RegExp('^[a-zA-Z]:');
   return paths.map(x => (rx.exec(x) || [])[0]);
 }
+
+export function flatten(obj: object, separator = '.'): object {
+  const isValidObject = (value: any): boolean => {
+    if (!value) { return false; }
+    const isArray = Array.isArray(value);
+    const isBuffer = Buffer.isBuffer(value);
+    const isΟbject = Object.prototype.toString.call(value) === "[object Object]";
+    const hasKeys = !!Object.keys(value).length;
+    return !isArray && !isBuffer && isΟbject && hasKeys;
+  };
+  const _flatten = (child: any, path = []): object[] => {
+    return [].concat(...Object.keys(child)
+      .map(key => isValidObject(child[key])
+        ? _flatten(child[key], [...path, key])
+        : { [[...path, key].join(separator)]: child[key] }));
+  };
+  return Object.assign({}, ..._flatten(obj));
+}

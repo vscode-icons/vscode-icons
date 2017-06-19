@@ -10,6 +10,7 @@
   "command.resetProjectDetectionDefaults.title": "",
   "configuration.title": "",
   "configuration.dontShowNewVersionMessage.description": "",
+  "configuration.dontShowConfigManuallyChangedMessage.description": "",
   "configuration.projectDetection.autoReload.description": "",
   "configuration.projectDetection.disableDetect.description": "",
   "configuration.presets.angular.description": "",

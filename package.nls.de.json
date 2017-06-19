@@ -10,6 +10,7 @@
   "command.resetProjectDetectionDefaults.title": "Projekterkennung auf Standardwerte zurücksetzen",
   "configuration.title": "vscode-icons Konfiguration",
   "configuration.dontShowNewVersionMessage.description": "Wenn auf 'true' gesetzt, zeigt die Erweiterung keine Benachrichtigung nach dem Installieren einer neuen Version an",
+  "configuration.dontShowConfigManuallyChangedMessage.description": "Wenn auf 'true' gesetzt, wird bei manuellen Änderungen an der Konfiguration keine 'Neu starten'-Nachricht angezeigt.",
   "configuration.projectDetection.autoReload.description": "Wenn auf 'true' gesetzt, wird die Erweiterung nach Erkennen eines Projektes Code automatisch neu starten.",
   "configuration.projectDetection.disableDetect.description": "Wenn auf 'true' gesetzt, wird die Erweiterung nach zukünftigen Projekten, für die es optimierte Icons gibt, nicht weiter suchen.",
   "configuration.presets.angular.description": "Wenn auf 'true' gesetzt, wird die Erweiterung die gängigsten Angular-Patterns anwenden.",

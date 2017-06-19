@@ -116,6 +116,11 @@
                     "default": false,
                     "description": "%configuration.dontShowNewVersionMessage.description%"
                 },
+                "vsicons.dontShowConfigManuallyChangedMessage": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "%configuration.dontShowConfigManuallyChangedMessage.description%"
+                },
                 "vsicons.projectDetection.autoReload": {
                     "type": "boolean",
                     "default": false,

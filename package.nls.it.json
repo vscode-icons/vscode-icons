@@ -10,6 +10,7 @@
   "command.resetProjectDetectionDefaults.title": "Ripristina Impostazioni Rilevazione Progetto Predefinite",
   "configuration.title": "configurazione vscode-icons",
   "configuration.dontShowNewVersionMessage.description": "Se 'true', il messaggio di nuova versione non sarà più visualizato.",
+  "configuration.dontShowConfigManuallyChangedMessage.description": "Se 'true', il messaggio di 'riavvio' non verrà mostrato quando si cambiano le configurazioni manualmente.",
   "configuration.projectDetection.autoReload.description": "Se 'true', l'estensione sara automaticamente riavviata a rilevazione progetto.",
   "configuration.projectDetection.disableDetect.description": "Se 'true', l'estensione disabiliterà la rilevazione progetto.",
   "configuration.presets.angular.description": "Se 'true', l'estensione confronterà alcuni dei più comuni modelli Angular.",
