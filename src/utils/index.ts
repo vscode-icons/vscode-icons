@@ -101,8 +101,8 @@ export function getDrives(...paths: string[]): string[] {
   return paths.map(x => (rx.exec(x) || [])[0]);
 }
 
-export function flatten(object: object, separator = '.'): object {
-  const isValidObject = (value): boolean => {
+export function flatten(obj: object, separator = '.'): object {
+  const isValidObject = (value: any): boolean => {
     if (!value) { return false; }
     const isArray = Array.isArray(value);
     const isBuffer = Buffer.isBuffer(value);
@@ -110,10 +110,11 @@ export function flatten(object: object, separator = '.'): object {
     const hasKeys = !!Object.keys(value).length;
     return !isArray && !isBuffer && isΟbject && hasKeys;
   };
-  return Object.assign({}, ...function _flatten(child, path = []) {
+  const _flatten = (child: any, path = []): object[] => {
     return [].concat(...Object.keys(child)
       .map(key => isValidObject(child[key])
-        ? _flatten(child[key], path.concat([key]))
-        : { [path.concat([key]).join(separator)]: child[key] }));
-  }(object));
+        ? _flatten(child[key], [...path, key])
+        : { [[...path, key].join(separator)]: child[key] }));
+  };
+  return Object.assign({}, ..._flatten(obj));
 }
