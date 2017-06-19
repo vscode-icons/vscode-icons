@@ -202,6 +202,8 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
               getConfig().update('vsicons.dontShowConfigManuallyChangedMessage', true, true);
             }
             break;
+          default:
+            break;
         }
       }
       break;
@@ -225,6 +227,8 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
         }
         handlePreset();
       }
+      break;
+    default:
       break;
   }
 }
