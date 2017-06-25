@@ -216,7 +216,7 @@ Along with the previous arrays you will have 4 more settings available that will
 // So it's an all or nothing toggle. If you want to enable the icon for just a few
 // extensions instead of all the defined extensions take a look at the Overrides example below.
 "vsicons.associations.files": [
-  { "icon": "js", "extensions": [], "format": "svg", "disable": true }
+  { "icon": "js", "extensions": [], "format": "svg", "disabled": true }
 ]
 
 // Adding a new extension.
@@ -276,11 +276,11 @@ In order to enable them just add this to your settings:
 
 ```js
 
-{ icon: 'ng_component_html', extensions: ['component.html', '.component.htm'], format: FileFormat.svg, disabled: true },
-{ icon: 'ng_component_css', extensions: ['component.css'], format: FileFormat.svg, disabled: true },
-{ icon: 'ng_component_less', extensions: ['component.less'], format: FileFormat.svg, disabled: true },
-{ icon: 'ng_component_sass', extensions: ['component.sass'], format: FileFormat.svg, disabled: true },
-{ icon: 'ng_component_scss', extensions: ['component.scss'], format: FileFormat.svg, disabled: true }
+{ "icon": "ng_component_html", "extensions": ["component.html", ".component.htm"], "format": "svg", "disabled": true },
+{ "icon": "ng_component_css", "extensions": ["component.css"], "format": "svg", "disabled": true },
+{ "icon": "ng_component_less", "extensions": ["component.less"], "format": "svg", "disabled": true },
+{ "icon": "ng_component_sass", "extensions": ["component.sass"], "format": "svg", "disabled": true },
+{ "icon": "ng_component_scss", "extensions": ["component.scss"], "format": "svg", "disabled": true }
 
 ```
 
