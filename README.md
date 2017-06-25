@@ -269,6 +269,21 @@ Once you have created the folder you can put all your custom icons there. But, a
 
 See [here the supported file extensions for an icon](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts).
 
+#### Optional Angular icons
+Since **7.10.0**, along with the usual `Angular` icons, we shipped some optional icons for users wanting to have some specific icons for `component templates` and `component styles`.
+
+In order to enable them just add this to your settings:
+
+```js
+
+{ icon: 'ng_component_html', extensions: ['component.html', '.component.htm'], format: FileFormat.svg, disabled: true },
+{ icon: 'ng_component_css', extensions: ['component.css'], format: FileFormat.svg, disabled: true },
+{ icon: 'ng_component_less', extensions: ['component.less'], format: FileFormat.svg, disabled: true },
+{ icon: 'ng_component_sass', extensions: ['component.sass'], format: FileFormat.svg, disabled: true },
+{ icon: 'ng_component_scss', extensions: ['component.scss'], format: FileFormat.svg, disabled: true }
+
+```
+
 ## Contributing with icons
 If you're willing to create an icon just follow this few conventions:
 
