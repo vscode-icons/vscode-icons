@@ -212,10 +212,10 @@
     },
     "devDependencies": {
         "@types/chai": "^4.0.0",
-        "@types/lodash": "^4.14.65",
+        "@types/lodash": "^4.14.66",
         "@types/mocha": "^2.2.41",
         "@types/mockery": "^1.4.29",
-        "@types/node": "^7.0.27",
+        "@types/node": "^7.0.31",
         "@types/sinon": "^2.3.1",
         "bithound": "^1.7.0",
         "chai": "^4.0.2",
@@ -224,8 +224,8 @@
         "mockery": "^2.0.0",
         "nyc": "^11.0.2",
         "rimraf": "^2.6.1",
-        "sinon": "^2.3.2",
-        "tslint": "^5.4.2",
+        "sinon": "^2.3.4",
+        "tslint": "^5.4.3",
         "typescript": "^2.3.4",
         "vscode": "^1.1.0"
     },
