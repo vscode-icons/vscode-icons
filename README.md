@@ -276,13 +276,15 @@ In order to enable them just add this to your settings:
 
 ```js
 
-{ "icon": "ng_component_html", "extensions": ["component.html", ".component.htm"], "format": "svg", "disabled": true },
+{ "icon": "ng_component_html", "extensions": ["component.html", "component.htm"], "format": "svg", "disabled": true },
 { "icon": "ng_component_css", "extensions": ["component.css"], "format": "svg", "disabled": true },
 { "icon": "ng_component_less", "extensions": ["component.less"], "format": "svg", "disabled": true },
 { "icon": "ng_component_sass", "extensions": ["component.sass"], "format": "svg", "disabled": true },
 { "icon": "ng_component_scss", "extensions": ["component.scss"], "format": "svg", "disabled": true }
 
 ```
+
+**Note**: The `disabled` attribute is set to true to allow the `Project Auto Detection` system to decide if they must be enabled or not. In our case, we want these icons to be disabled by default but to be enabled whenever we are working with an `Angular` project.
 
 ## Contributing with icons
 If you're willing to create an icon just follow this few conventions:
