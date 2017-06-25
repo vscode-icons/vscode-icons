@@ -52,12 +52,13 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 ---
 
 ## State of the extension
+With the release of **7.10.0**, we improved the way the extension is handling your manual changes to a `presets` or `associations` configuration. By default, every time you change any of the aforementioned configurations, you will be presented with the message to `Restart` the editor, for the changes to take effect. Of course, you can always disable this behavior. See the [Configuration](https://github.com/vscode-icons/vscode-icons#configuration) section for more details.
 
 As from **release 7.7.0**, the `project detection` feature has become smarter and is totally unobtrusive. If you have it disabled, because you found it annoying for any reason, **we urge you to re-enable it** and check out its new functionality.
 
 We're talking about a major improvement over this feature. It will help you to enable and disable your `Angular` icons whenever you switch different projects without messing around with your workspace settings. Forget about having to deal with your source control every time the workspace setting was changed. [@JimiC](https://github.com/JimiC) has done a really good work and we're pretty sure that you're going to love it! As usual, any feedback will be more than welcome. ;)
 
-We support ***localization*** of the extension, too! We intend to expand the supported languages as the `Visual Studio Code` adds them. Take a look at the [translation's section](https://github.com/vscode-icons/vscode-icons#contributing-with-translations) if you want to know more or contribute.
+We support ***localization*** of the extension, too! We intend to expand the supported languages as the `Visual Studio Code` adds them. Take a look at the [translation's](https://github.com/vscode-icons/vscode-icons#contributing-with-translations) section if you want to know more or contribute.
 
 We also keep supporting the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code. 
 
@@ -97,10 +98,17 @@ If you're a designer and you're willing to collaborate by showing your icons to 
 If you want to check which folder icons are currently supported take a look [here](https://github.com/vscode-icons/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/vscode-icons/vscode-icons/issues).
 
 ## Configuration
-If you don't want to see the `new version` message every time the extension updates, then you can modify this configuration setting:
+If you don't want to see the `new version` message every time the extension updates, then set this configuration setting:
 ```json
 {
-  "vsicons.dontShowNewVersionMessage": false
+  "vsicons.dontShowNewVersionMessage": true
+}
+```
+
+If you don't want to see the `Restart` message every time you manually change the extension's `presets` and `associations` configurations, then set this configuration setting:
+```json
+{
+  "vsicons.dontShowConfigManuallyChangedMessage": true
 }
 ```
 
@@ -204,6 +212,9 @@ Along with the previous arrays you will have 4 more settings available that will
 
 // Disabling an already supported icon.
 // note: this is, indeed, the functionality that presets are leveraging.
+// Take into account that the disable property will hide all the icon occurrences.
+// So it's an all or nothing toggle. If you want to enable the icon for just a few
+// extensions instead of all the defined extensions take a look at the Overrides example below.
 "vsicons.associations.files": [
   { "icon": "js", "extensions": [], "format": "svg", "disable": true }
 ]
@@ -225,6 +236,14 @@ Along with the previous arrays you will have 4 more settings available that will
 // putting yours on top.
 "vsicons.associations.files": [
   { "icon": "myJs", "extensions": ["js", "custom.js"], "format": "svg", "overrides": "js" }
+]
+
+// Partially disabling an icon
+// In this case, you only want to show the `src` icon for `src` folders, not `sources, source`
+// and the other defined icons. You may be tempted to use the `disabled` property but `overrides`
+// is your friend here. Just remember that `overrides` will remove the older entry and add yours.
+"vsicons.associations.folders": [
+    { "icon": "src", "extensions": ["src"], "format": "svg", "overrides": "src" }
 ]
 ```
 
@@ -291,7 +310,7 @@ The above syntax will create examples for all supported files and folders.
 ## Contributing with translations
 We're looking for people willing to help us translate the extension's messages into [all the languages that `vscode` supports](https://code.visualstudio.com/docs/customization/locales).
 
-We're currently supporting `English`, `German`, `Italian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
+We're currently supporting `English`, `German`, `Italian`, `Russian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
 
 ## Building the extension's source code
 If you're willing to explore the extension source code and want to make it work you should run this:

@@ -1,15 +1,40 @@
 import * as vscode from 'vscode';
-import { getConfig } from '../utils/vscode-extensions';
+import { getConfig, getVsiconsConfig } from '../utils/vscode-extensions';
 import { LanguageResourceManager } from '../i18n';
 import * as iconManifest from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
 import * as models from '../models';
 import { extensionSettings } from '../settings';
-import { folderIconsDisabled, iconsDisabled } from '../init';
+import { folderIconsDisabled, iconsDisabled, manageApplyCustomizations } from '../init';
 import * as helper from './helper';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
+const initVSIconsConfig: models.IVSIcons = getConfig().vsicons;
+
+let doReload: boolean;
+let customMsgShown: boolean;
+let cb: (...args: any[]) => void;
+let argms: any[];
+
+vscode.workspace.onDidChangeConfiguration(didChangeConfigurationListener);
+
+function didChangeConfigurationListener(): void {
+  if (doReload) {
+    doReload = false;
+    // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
+    // a delay needs to be introduced in order for the preset change to get persisted on disk.
+    setTimeout(() => {
+      executeAndReload(cb, ...argms);
+    }, 500);
+  } else if (!customMsgShown) {
+    manageApplyCustomizations(
+      initVSIconsConfig,
+      getConfig().vsicons,
+      applyCustomizationCommand,
+      [{ title: i18nManager.getMessage(models.LangResourceKeys.dontShowThis) }]);
+  }
+}
 
 export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
@@ -33,11 +58,11 @@ function registerCommand(
   return command;
 }
 
-export function applyCustomizationCommand(): void {
+export function applyCustomizationCommand(additionalTitles: models.IVSCodeMessageItem[] = []): void {
   const message = i18nManager.getMessage(
     models.LangResourceKeys.iconCustomization, ' ', models.LangResourceKeys.restart);
   showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
+    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }, ...additionalTitles],
     applyCustomization);
 }
 
@@ -51,7 +76,7 @@ function restoreDefaultManifestCommand(): void {
 
 function resetProjectDetectionDefaultsCommand(): void {
   const message = i18nManager.getMessage(
-    models.LangResourceKeys.projectDetecticonReset, ' ', models.LangResourceKeys.restart);
+    models.LangResourceKeys.projectDetectionReset, ' ', models.LangResourceKeys.restart);
   showCustomizationMessage(
     message,
     [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
@@ -126,31 +151,34 @@ export function showCustomizationMessage(
   callback?: (...args: any[]) => void,
   ...args: any[]): Thenable<void> {
 
+  customMsgShown = true;
   return vscode.window.showInformationMessage(message, ...items)
     .then(btn => handleAction(btn, callback, ...args),
     // tslint:disable-next-line:no-console
     reason => console.info('Rejected because: ', reason));
 }
 
+function executeAndReload(callback: any, ...args: any[]): void {
+  if (callback) {
+    callback(...args);
+  }
+  reload();
+}
+
 function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]) => void, ...args: any[]): void {
   if (!btn) {
+    customMsgShown = false;
     return;
   }
 
-  let doReload: boolean;
-
-  const executeAndReload = (): void => {
-    if (callback) {
-      callback(...args);
-    }
-    reload();
-  };
+  cb = callback;
+  argms = args;
 
   const handlePreset = (): void => {
     // If the preset is the same as the toggle value then trigger an explicit reload
     // Note: This condition works also for auto-reload handling
     if (getConfig().vsicons.presets[args[0]] === args[1]) {
-      executeAndReload();
+      executeAndReload(callback, ...args);
     } else {
       if (args.length !== 3) {
         throw new Error('Arguments mismatch');
@@ -160,18 +188,23 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
     }
   };
 
-  vscode.workspace.onDidChangeConfiguration(() => {
-    if (doReload) {
-      // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
-      // a delay needs to be introduced in order for the preset change to get updated.
-      setTimeout(() => {
-        doReload = false;
-        executeAndReload();
-      }, 500);
-    }
-  });
-
   switch (btn.title) {
+    case i18nManager.getMessage(models.LangResourceKeys.dontShowThis):
+      {
+        doReload = false;
+        if (!callback) {
+          break;
+        }
+        switch (callback.name) {
+          case 'applyCustomization':
+            {
+              customMsgShown = false;
+              getConfig().update('vsicons.dontShowConfigManuallyChangedMessage', true, true);
+            }
+            break;
+        }
+      }
+      break;
     case i18nManager.getMessage(models.LangResourceKeys.disableDetect):
       {
         doReload = false;
@@ -187,13 +220,11 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
     case i18nManager.getMessage(models.LangResourceKeys.reload):
       {
         if (!args || args.length !== 3) {
-          executeAndReload();
+          executeAndReload(callback, ...args);
           break;
         }
         handlePreset();
       }
-      break;
-    default:
       break;
   }
 }
@@ -203,7 +234,7 @@ export function reload(): void {
 }
 
 export function applyCustomization(projectDetectionResult: models.IProjectDetectionResult = null): void {
-  const associations = getConfig().vsicons.associations;
+  const associations = getVsiconsConfig().associations;
   const customFiles: models.IFileCollection = {
     default: associations.fileDefault,
     supported: associations.files,
@@ -220,7 +251,7 @@ function generateManifest(
   customFolders: models.IFolderCollection,
   projectDetectionResult: models.IProjectDetectionResult = null): void {
   const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
-  const vsicons = getConfig().vsicons;
+  const vsicons = getVsiconsConfig();
   const hasProjectDetectionResult = projectDetectionResult &&
     typeof projectDetectionResult === 'object' &&
     'value' in projectDetectionResult;

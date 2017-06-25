@@ -30,5 +30,5 @@ export interface ILangResource {
   restart: string | IOSSpecific;
   ngDetected: string | IOSSpecific;
   nonNgDetected: string | IOSSpecific;
-  projectDetecticonReset: string | IOSSpecific;
+  projectDetectionReset: string | IOSSpecific;
 }

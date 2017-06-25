@@ -36,5 +36,5 @@ export const langDe: ILangResource = {
   'Drücken Sie \'Neu starten\', damit die Angular Icons übernommen werden.',
   nonNgDetected: 'vscode-icons hat ein nicht Angular Projekt erkannt! ' +
   'Drücken Sie \'Neu starten\', damit die Angular Icons deaktiviert werden.',
-  projectDetecticonReset: 'Projekterkennung wird zurückgesetzt.',
+  projectDetectionReset: 'Projekterkennung wird zurückgesetzt.',
 };

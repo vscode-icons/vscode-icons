@@ -2,7 +2,7 @@
     "name": "vscode-icons",
     "displayName": "vscode-icons",
     "description": "Icons for Visual Studio Code",
-    "version": "7.7.0",
+    "version": "7.9.0",
     "publisher": "robertohuertasm",
     "license": "MIT",
     "author": {
@@ -30,8 +30,8 @@
         "email": "roberto.huertas@outlook.com"
     },
     "engines": {
-        "vscode": "^1.6.0",
-        "node": ">6.0.0"
+        "vscode": "^1.6.1",
+        "node": ">=6.5.0"
     },
     "categories": [
         "Other",
@@ -116,6 +116,11 @@
                     "default": false,
                     "description": "%configuration.dontShowNewVersionMessage.description%"
                 },
+                "vsicons.dontShowConfigManuallyChangedMessage": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "%configuration.dontShowConfigManuallyChangedMessage.description%"
+                },
                 "vsicons.projectDetection.autoReload": {
                     "type": "boolean",
                     "default": false,
@@ -154,7 +159,7 @@
                 "vsicons.presets.foldersAllDefaultIcon": {
                     "type": "boolean",
                     "default": false,
-                    "description": "configuration.presets.foldersAllDefaultIcon.description"
+                    "description": "%configuration.presets.foldersAllDefaultIcon.description%"
                 },
                 "vsicons.associations.files": {
                     "type": "array",
@@ -206,22 +211,22 @@
         "analysis": "bithound check git@github.com:vscode-icons/vscode-icons.git"
     },
     "devDependencies": {
-        "@types/chai": "^3.5.2",
-        "@types/chai-as-promised": "^0.0.30",
-        "@types/lodash": "^4.14.64",
+        "@types/chai": "^4.0.0",
+        "@types/lodash": "^4.14.65",
         "@types/mocha": "^2.2.41",
-        "@types/node": "^7.0.22",
-        "@types/sinon": "^2.2.2",
+        "@types/mockery": "^1.4.29",
+        "@types/node": "^7.0.27",
+        "@types/sinon": "^2.3.1",
         "bithound": "^1.7.0",
-        "chai": "^3.5.0",
-        "chai-as-promised": "^6.0.0",
+        "chai": "^4.0.2",
         "codecov": "^2.2.0",
-        "mocha": "^3.4.1",
-        "nyc": "^10.3.2",
+        "mocha": "^3.4.2",
+        "mockery": "^2.0.0",
+        "nyc": "^11.0.2",
         "rimraf": "^2.6.1",
-        "sinon": "^2.3.1",
-        "tslint": "^5.3.2",
-        "typescript": "^2.3.3",
+        "sinon": "^2.3.2",
+        "tslint": "^5.4.2",
+        "typescript": "^2.3.4",
         "vscode": "^1.1.0"
     },
     "dependencies": {

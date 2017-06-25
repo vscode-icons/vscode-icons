@@ -1,14 +1,11 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
-import { expect, use } from 'chai';
-import * as chaiAsPromised from 'chai-as-promised';
+import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
 import { IVSIcons, IVSCodeUri, IProjectDetectionResult } from '../../src/models';
-import * as adp from '../../src/init/autoDetectProject';
+import * as adp from '../../src/init/projectAutoDetection';
 import { LanguageResourceManager } from '../../src/i18n';
-
-use(chaiAsPromised);
 
 describe('AutoDetectProject: tests', function () {
 
@@ -21,6 +18,7 @@ describe('AutoDetectProject: tests', function () {
       beforeEach(() => {
         userConfig = {
           dontShowNewVersionMessage: false,
+          dontShowConfigManuallyChangedMessage: false,
           projectDetection: {
             autoReload: false,
             disableDetect: false,
@@ -36,8 +34,8 @@ describe('AutoDetectProject: tests', function () {
           associations: {
             files: [],
             folders: [],
-            fileDefault: { file: undefined, file_light: undefined },
-            folderDefault: { folder: undefined, folder_light: undefined },
+            fileDefault: { file: null, file_light: null },
+            folderDefault: { folder: null, folder_light: null },
           },
         };
       });
@@ -67,7 +65,8 @@ describe('AutoDetectProject: tests', function () {
       it('does not detect a project when detection is disabled',
         function () {
           userConfig.projectDetection.disableDetect = true;
-          return expect(adp.detectProject(null, userConfig)).to.eventually.be.an('array');
+          return adp.detectProject(null, userConfig)
+            .then(res => expect(res).to.be.an('array'));
         });
 
       it('detects an Angular project from dependencies',
@@ -251,8 +250,8 @@ describe('AutoDetectProject: tests', function () {
           function () {
             const findFiles = sinon.stub().returns(Promise.resolve([]));
             userConfig.projectDetection.disableDetect = false;
-            return expect(adp.detectProject(findFiles, userConfig))
-              .to.eventually.be.an('array').with.lengthOf(0);
+            return adp.detectProject(findFiles, userConfig)
+              .then(res => expect(res).to.be.an('array').with.lengthOf(0));
           });
 
         it('and has detected a \'package.json\' file',

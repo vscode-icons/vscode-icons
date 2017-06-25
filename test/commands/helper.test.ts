@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import * as helper from '../../src/commands/helper';
 import { IIconSchema } from "../../src/models/index";
 
-describe('helper: tests', function () {
+describe('Helper: tests', function () {
 
   context('ensures that', function () {
 
