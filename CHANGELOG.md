@@ -1,5 +1,23 @@
 # Change Log
 
+## 7.10.0 (June 25, 2017)
+- Enhancement: Support for more `docker-compose` file names. ([@jens1o](https://github.com/jens1o) in [#1039](https://github.com/vscode-icons/vscode-icons/pull/1039))
+- Enhancement: `solidity` icon has been updated. ([@JimiC](https://github.com/JimiC) in [#1027](https://github.com/vscode-icons/vscode-icons/pull/1027))
+- Enhancement: Manual changes in settings are now automatically detected. ([@JimiC](https://github.com/JimiC) in [#1026](https://github.com/vscode-icons/vscode-icons/pull/1026))
+- Enhancement: Removed `package-lock.json` from distribution. ([@JimiC](https://github.com/JimiC) in [#1025](https://github.com/vscode-icons/vscode-icons/pull/1025))
+- Enhancement: Improved issue template. ([@JimiC](https://github.com/JimiC) in [#1024](https://github.com/vscode-icons/vscode-icons/pull/1024))
+- Enhancement: Russian support. ([@ksvitkovsky](https://github.com/ksvitkovsky) in [#1020](https://github.com/vscode-icons/vscode-icons/pull/1020))
+- Fix: Workspace settings were completely overriding the user settings. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1018](https://github.com/vscode-icons/vscode-icons/pull/1018))
+- Enhancement: Added some optional `Angular` icons. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1017](https://github.com/vscode-icons/vscode-icons/pull/1017))
+- Enhancement: Added new customizations examples in Readme. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1014](https://github.com/vscode-icons/vscode-icons/pull/1014))
+- Enhancement: Support for `.gmx`, `.yy` & `.yyp` extensions. ([@jens1o](https://github.com/jens1o) in [#1011](https://github.com/vscode-icons/vscode-icons/pull/1011))
+- Enhancement: Support for `ensime`. ([@JimiC](https://github.com/JimiC) in [#1008](https://github.com/vscode-icons/vscode-icons/pull/1008))
+- Enhancement: Update dependencies. ([@JimiC](https://github.com/JimiC) in [#1007](https://github.com/vscode-icons/vscode-icons/pull/1007))
+- Enhancement: Support for `_sass`, `_css`, `_scss`, `_less` & `.docker` folders. ([@jens1o](https://github.com/jens1o) in [#1006](https://github.com/vscode-icons/vscode-icons/pull/1006))
+- Enhancement: Improved `iconGeneration` test file maintainability. ([@JimiC](https://github.com/JimiC) in [#1005](https://github.com/vscode-icons/vscode-icons/pull/1005))
+- Fix: Remove function was expecting a predicate parameter. ([@JimiC](https://github.com/JimiC) in [#1004](https://github.com/vscode-icons/vscode-icons/pull/1004))
+- Fix: Missing i18n configuration. ([@g-plane](https://github.com/g-plane) in [#1001](https://github.com/vscode-icons/vscode-icons/pull/1001))
+
 ## 7.9.0 (June 6, 2017)
 - Enhancement: The extension works with `npm5`. ([@JimiC](https://github.com/JimiC) in [#997](https://github.com/vscode-icons/vscode-icons/pull/997))
 - Enhancement: Minimum node versions for CI and vscode. ([@JimiC](https://github.com/JimiC) in [#994](https://github.com/vscode-icons/vscode-icons/pull/994))
