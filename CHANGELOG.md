@@ -1,7 +1,7 @@
 # Change Log
 
 ## 7.10.1 (June 27, 2017)
-- Fix: Manual change detection feature was not taking merged configuration into account. ([@JimiC](https://github.com/JimiC) in [#1043](https://github.com/vscode-icons/vscode-icons/pull/1043))
+- Fix: Manual change detection feature was not taking merged configuration into account. ([@JimiC](https://github.com/JimiC) in [#1043](https://github.com/vscode-icons/vscode-icons/pull/1043)& [@robertohuertasm](https://github.com/robertohuertasm) in [#1045](https://github.com/vscode-icons/vscode-icons/pull/1045))
 
 ## 7.10.0 (June 26, 2017)
 - Fix: Extension's logo has been transformed to `png`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1041](https://github.com/vscode-icons/vscode-icons/pull/1041))
