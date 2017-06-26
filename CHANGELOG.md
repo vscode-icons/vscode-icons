@@ -1,6 +1,7 @@
 # Change Log
 
 ## 7.10.0 (June 26, 2017)
+- Fix: Extension's logo has been transformed to `png`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1041](https://github.com/vscode-icons/vscode-icons/pull/1041))
 - Enhancement: Support for more `docker-compose` file names. ([@jens1o](https://github.com/jens1o) in [#1039](https://github.com/vscode-icons/vscode-icons/pull/1039))
 - Enhancement: `solidity` icon has been updated. ([@JimiC](https://github.com/JimiC) in [#1027](https://github.com/vscode-icons/vscode-icons/pull/1027))
 - Enhancement: Manual changes in settings are now automatically detected. ([@JimiC](https://github.com/JimiC) in [#1026](https://github.com/vscode-icons/vscode-icons/pull/1026))
