@@ -10,7 +10,7 @@ import { folderIconsDisabled, iconsDisabled, manageApplyCustomizations } from '.
 import * as helper from './helper';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
-const initVSIconsConfig: models.IVSIcons = getConfig().vsicons;
+const initVSIconsConfig: models.IVSIcons = getVsiconsConfig();
 
 let doReload: boolean;
 let customMsgShown: boolean;
@@ -30,7 +30,7 @@ function didChangeConfigurationListener(): void {
   } else if (!customMsgShown) {
     manageApplyCustomizations(
       initVSIconsConfig,
-      getConfig().vsicons,
+      getVsiconsConfig(),
       applyCustomizationCommand,
       [{ title: i18nManager.getMessage(models.LangResourceKeys.dontShowThis) }]);
   }
