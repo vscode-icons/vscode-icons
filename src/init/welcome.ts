@@ -43,7 +43,7 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
 function showNewVersionMessage(settingsManager: ISettingsManager) {
   const vars = settingsManager.getSettings();
   vscode.window.showInformationMessage(
-    `${i18nManager.getMessage(LangResourceKeys.newVersion)} v.${vars.extensionSettings.version}`,
+    `${i18nManager.getMessage(LangResourceKeys.newVersion)} v${vars.extensionSettings.version}`,
     { title: i18nManager.getMessage(LangResourceKeys.seeReleaseNotes) },
     { title: i18nManager.getMessage(LangResourceKeys.dontShowThis) })
     .then(btn => {
