@@ -1,6 +1,6 @@
 # vscode-icons
 
-[![Version](http://vsmarketplacebadge.apphb.com/version/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
+[![Version](https://vsmarketplacebadge.apphb.com/version/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
 
@@ -19,8 +19,8 @@
 [![bitHound Dev Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/devDependencies.svg?=1)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/code.svg?=1)](https://www.bithound.io/github/vscode-icons/vscode-icons)
 
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg?=1)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg?=1)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg?=1)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
+[![Percentage of issues still open](https://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg?=1)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
 
 [![Issue Stats](http://issuestats.com/github/vscode-icons/vscode-icons/badge/issue?style=flat)](http://issuestats.com/github/vscode-icons/vscode-icons)
 [![Issue Stats](http://issuestats.com/github/vscode-icons/vscode-icons/badge/pr?style=flat)](http://issuestats.com/github/vscode-icons/vscode-icons)
