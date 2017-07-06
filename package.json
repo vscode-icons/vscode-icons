@@ -215,7 +215,7 @@
         "@types/lodash": "^4.14.66",
         "@types/mocha": "^2.2.41",
         "@types/mockery": "^1.4.29",
-        "@types/node": "^7.0.31",
+        "@types/node": "^8.0.8",
         "@types/sinon": "^2.3.1",
         "bithound": "^1.7.0",
         "chai": "^4.0.2",
