@@ -28,6 +28,7 @@ export interface INativeLanguageCollection {
   objectivec: ILanguage;
   objectivecpp: ILanguage;
   perl: ILanguage;
+  perl6: ILanguage;
   php: ILanguage;
   plaintext: ILanguage;
   powershell: ILanguage;
