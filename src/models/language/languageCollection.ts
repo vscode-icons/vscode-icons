@@ -27,6 +27,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cucumber: ILanguage;
   dart: ILanguage;
   dlang: ILanguage;
+  doxygen: ILanguage;
   dylanlang: ILanguage;
   dustjs: ILanguage;
   elixir: ILanguage;
