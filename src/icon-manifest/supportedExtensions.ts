@@ -121,6 +121,7 @@ export const extensions: IFileCollection = {
     { icon: 'cssmap', extensions: ['css.map'], format: FileFormat.svg },
     { icon: 'cucumber', extensions: [], languages: [languages.cucumber], format: FileFormat.svg },
     { icon: 'dartlang', extensions: [], languages: [languages.dart], format: FileFormat.svg },
+    { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     { icon: 'delphi', extensions: [], languages: [languages.pascal], format: FileFormat.svg },
     { icon: 'dlang', extensions: [], languages: [languages.dlang], format: FileFormat.svg },
     { icon: 'diff', extensions: [], languages: [languages.diff], format: FileFormat.svg },
