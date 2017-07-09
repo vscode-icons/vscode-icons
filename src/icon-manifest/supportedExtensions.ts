@@ -291,6 +291,7 @@ export const extensions: IFileCollection = {
     { icon: 'powerpoint', extensions: ['pot', 'potx', 'potm', 'pps', 'ppsx', 'ppsm', 'ppt', 'pptx', 'pptm', 'pa', 'ppa', 'ppam', 'sldm', 'sldx'], format: FileFormat.svg },
     { icon: 'powershell', extensions: [], languages: [languages.powershell], format: FileFormat.svg },
     { icon: 'procfile', extensions: ['procfile'], filename: true, format: FileFormat.svg },
+    { icon: 'progress', extensions: [], languages: [languages.openEdge], format: FileFormat.svg },
     { icon: 'prolog', extensions: ['pro', 'P'], languages: [languages.prolog], format: FileFormat.svg },
     { icon: 'protobuf', extensions: [], languages: [languages.protobuf], format: FileFormat.svg },
     { icon: 'protractor', extensions: ['protractor.conf.js'], filename: true, format: FileFormat.svg },
