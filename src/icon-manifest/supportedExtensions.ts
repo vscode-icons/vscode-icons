@@ -276,6 +276,7 @@ export const extensions: IFileCollection = {
     { icon: 'pdf2', extensions: ['pdf'], format: FileFormat.svg, disabled: true },
     { icon: 'perl', extensions: [], languages: [languages.perl], format: FileFormat.svg },
     { icon: 'perl2', extensions: [], languages: [languages.perl], format: FileFormat.svg, disabled: true },
+    { icon: 'perl6', extensions: [], languages: [languages.perl6], format: FileFormat.svg },
     { icon: 'photoshop', extensions: ['psd'], format: FileFormat.svg },
     { icon: 'photoshop2', extensions: ['psd'], format: FileFormat.svg, disabled: true },
     { icon: 'php', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg },
