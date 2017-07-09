@@ -225,6 +225,7 @@ export const extensions: IFileCollection = {
     { icon: 'julia', extensions: [], languages: [languages.julia], format: FileFormat.svg },
     { icon: 'julia2', extensions: [], languages: [languages.julia], format: FileFormat.svg, disabled: true },
     { icon: 'karma', extensions: ['karma.conf.js', 'karma.conf.coffee'], filename: true, format: FileFormat.svg },
+    { icon: 'kite', extensions: ['.kiteignore'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'kitchenci', extensions: ['.kitchen.yml'], filename: true, format: FileFormat.svg },
     { icon: 'kotlin', extensions: [], languages: [languages.kotlin], format: FileFormat.svg },
     { icon: 'layout', extensions: ['master', 'layout.html', 'layout.htm'], format: FileFormat.svg },
