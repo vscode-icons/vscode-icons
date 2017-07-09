@@ -63,6 +63,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   nsis: ILanguage;
   nunjucks: ILanguage;
   ocaml: ILanguage;
+  openEdge: ILanguage;
   pascal: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;
