@@ -40,14 +40,14 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
 
   const i18nManager = new LanguageResourceManager(vscode.env.language);
   const presetValue = getConfig().inspect(`vsicons.presets.angular`).workspaceValue as boolean;
-  const result = init.checkForAngularProject(
+  const detectionResult = init.checkForAngularProject(
     presetValue, init.iconsDisabled('ng'), isNgProject, i18nManager);
 
-  if (!result.apply) {
+  if (!detectionResult.apply) {
     return;
   }
 
-  init.applyDetection(i18nManager, result, config.projectDetection.autoReload,
+  init.applyDetection(i18nManager, detectionResult, config.projectDetection.autoReload,
     commands.applyCustomization, commands.showCustomizationMessage, commands.reload);
 }
 
