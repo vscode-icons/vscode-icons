@@ -281,6 +281,7 @@ export const extensions: IFileCollection = {
     { icon: 'photoshop2', extensions: ['psd'], format: FileFormat.svg, disabled: true },
     { icon: 'php', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg },
     { icon: 'php2', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg, disabled: true },
+    { icon: 'php3', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg, disabled: true },
     { icon: 'phpunit', extensions: ['phpunit', 'phpunit.xml', 'phpunit.xml.dist'], filename: true, format: FileFormat.svg },
     { icon: 'plantuml', extensions: ['pu', 'plantuml', 'iuml', 'puml'], format: FileFormat.svg },
     { icon: 'plsql', extensions: [], languages: [languages.plsql], format: FileFormat.svg },
