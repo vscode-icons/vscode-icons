@@ -36,19 +36,19 @@ export function fileFormatToString(extension: FileFormat | string): string {
 /**
  * Deletes a directory and all subdirectories
  *
- * @param {any} path The directory's path
+ * @param {any} dirPath The directory's path
  */
-export function deleteDirectoryRecursively(path): void {
-  if (fs.existsSync(path)) {
-    fs.readdirSync(path).forEach(file => {
-      const curPath = `${path}/${file}`;
+export function deleteDirectoryRecursively(dirPath: string): void {
+  if (fs.existsSync(dirPath)) {
+    fs.readdirSync(dirPath).forEach(file => {
+      const curPath = `${dirPath}/${file}`;
       if (fs.lstatSync(curPath).isDirectory()) { // recurse
         deleteDirectoryRecursively(curPath);
       } else { // delete file
         fs.unlinkSync(curPath);
       }
     });
-    fs.rmdirSync(path);
+    fs.rmdirSync(dirPath);
   }
 }
 
@@ -110,11 +110,11 @@ export function flatten(obj: object, separator = '.'): object {
     const hasKeys = !!Object.keys(value).length;
     return !isArray && !isBuffer && isΟbject && hasKeys;
   };
-  const _flatten = (child: any, path = []): object[] => {
+  const _flatten = (child: any, paths = []): object[] => {
     return [].concat(...Object.keys(child)
       .map(key => isValidObject(child[key])
-        ? _flatten(child[key], [...path, key])
-        : { [[...path, key].join(separator)]: child[key] }));
+        ? _flatten(child[key], [...paths, key])
+        : { [[...paths, key].join(separator)]: child[key] }));
   };
   return Object.assign({}, ..._flatten(obj));
 }
