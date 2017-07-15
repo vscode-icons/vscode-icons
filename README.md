@@ -22,9 +22,6 @@
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
 
-[![Issue Stats](https://issuestats.com/github/vscode-icons/vscode-icons/badge/issue?style=flat)](https://issuestats.com/github/vscode-icons/vscode-icons)
-[![Issue Stats](https://issuestats.com/github/vscode-icons/vscode-icons/badge/pr?style=flat)](https://issuestats.com/github/vscode-icons/vscode-icons)
-
 
 Bring icons to your VS Code.
 
