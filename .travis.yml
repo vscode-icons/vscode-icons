@@ -5,8 +5,8 @@ os:
 node_js:
   - node # latest node
   - 7.4.0 # vscode latest insiders
-  - 6 # vscode > 1.6.1
-  - 6.5.0 # vscode 1.6.1
+  - 6 # vscode > 1.8.1
+  - 6.5.0 # vscode 1.8.1
 matrix:
   allow_failures:
     - node_js: node

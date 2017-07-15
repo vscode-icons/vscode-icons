@@ -22,8 +22,7 @@
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
 
-
-Bring icons to your VS Code.
+Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**minimum supported version: `1.8.1`**) 
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
