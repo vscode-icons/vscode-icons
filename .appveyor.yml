@@ -3,9 +3,9 @@ environment:
   # Define versions of Node.js
   matrix:
     - node_js: ''
-    - node_js: 7.4.0 # vscode 1.13.-insiders
-    - node_js: 6 # vscode > 1.6.1
-    - node_js: 6.5.0 # vscode 1.6.1
+    - node_js: 7.4.0 # vscode latest insiders
+    - node_js: 6 # vscode > 1.8.1
+    - node_js: 6.5.0 # vscode 1.8.1
 matrix:
   fast_finish: true
   allow_failures:
