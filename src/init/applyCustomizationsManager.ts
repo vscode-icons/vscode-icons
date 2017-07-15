@@ -35,13 +35,7 @@ function configChanged(prevConfig, currentConfig) {
       : prevConfig[key];
     const parts = key.split('.').filter(x => x !== 'vsicons');
     const newValue = parts.reduce((prev, current) => prev[current], currentConfig);
-    const cond1 = Array.isArray(oldValue)
-                  && Array.isArray(newValue)
-                  && (newValue.length !== _.intersectionWith(oldValue, newValue, _.isEqual).length);
-    // this is to equal null == undefined as vscode doesn't respect null defaults
-    // tslint:disable-next-line triple-equals
-    const cond2 = !Array.isArray(oldValue) && oldValue != newValue;
-    if (cond1 || cond2) {
+    if (!_.isEqual(oldValue, newValue)) {
       return true;
     }
   }
