@@ -29,9 +29,9 @@ function showWelcomeMessage(settingsManager: ISettingsManager) {
     .then(btn => {
       if (!btn) { return; }
       if (btn.title === i18nManager.getMessage(LangResourceKeys.aboutOfficialApi)) {
-        open(i18nManager.getMessage(constants.urlOfficialApi));
+        open(constants.urlOfficialApi);
       } else if (btn.title === i18nManager.getMessage(LangResourceKeys.seeReadme)) {
-        open(i18nManager.getMessage(constants.urlReadme));
+        open(constants.urlReadme);
       }
     }, reason => {
       // tslint:disable-next-line:no-console
@@ -50,7 +50,7 @@ function showNewVersionMessage(settingsManager: ISettingsManager) {
       settingsManager.updateStatus(ExtensionStatus.disabled);
       if (!btn) { return; }
       if (btn.title === i18nManager.getMessage(LangResourceKeys.seeReleaseNotes)) {
-        open(i18nManager.getMessage(constants.urlReleaseNote));
+        open(constants.urlReleaseNote);
       } else if (btn.title === i18nManager.getMessage(LangResourceKeys.dontShowThis)) {
         getConfig().update('vsicons.dontShowNewVersionMessage', true, true);
       }
