@@ -130,8 +130,7 @@ describe('ApplyCustomizations: tests', function () {
         const newConfig = { ...userConfig, associations: { ...userConfig.associations } };
         newConfig.associations.files = [...userConfig.associations.files];
         newConfig.associations.files.reverse();
-        const initConfig = JSON.parse(JSON.stringify(newConfig));
-        manageApplyCustomizations(initConfig, userConfig, spy);
+        manageApplyCustomizations(newConfig, userConfig, spy);
         expect(spy.called).to.not.be.true;
       });
 
