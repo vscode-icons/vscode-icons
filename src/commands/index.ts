@@ -8,6 +8,7 @@ import * as models from '../models';
 import { extensionSettings } from '../settings';
 import { folderIconsDisabled, iconsDisabled, manageApplyCustomizations } from '../init';
 import * as helper from './helper';
+import { initialized } from '../';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
 const initVSIconsConfig: models.IVSIcons = getVsiconsConfig();
@@ -20,6 +21,7 @@ let argms: any[];
 vscode.workspace.onDidChangeConfiguration(didChangeConfigurationListener);
 
 function didChangeConfigurationListener(): void {
+  if (!initialized) { return; }
   if (doReload) {
     doReload = false;
     // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created

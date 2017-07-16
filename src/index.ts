@@ -8,6 +8,8 @@ import { parseJSON } from './utils';
 import { LanguageResourceManager } from './i18n';
 import { IVSCodeUri, IVSIcons } from './models';
 
+export let initialized: boolean;
+
 function initialize(context: vscode.ExtensionContext) {
   const config = getVsiconsConfig();
   const settingsManager = new SettingsManager(vscode);
@@ -55,6 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
   initialize(context);
   // tslint:disable-next-line no-console
   console.info('vscode-icons is active!');
+  initialized = true;
 }
 
 // this method is called when your vscode is closed
