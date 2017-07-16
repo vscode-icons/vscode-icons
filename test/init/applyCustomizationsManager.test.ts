@@ -127,10 +127,10 @@ describe('ApplyCustomizations: tests', function () {
           { icon: "js", extensions: ["myExt1", "myExt2.custom.js"], format: "svg" },
           { icon: "js2", extensions: ["myExt1", "myExt2.custom.js"], format: "svg" },
         ];
-        const newConfig = { ...userConfig, associations: { ...userConfig.associations } };
-        newConfig.associations.files = [...userConfig.associations.files];
-        newConfig.associations.files.reverse();
-        manageApplyCustomizations(newConfig, userConfig, spy);
+        const initConfig = { ...userConfig, associations: { ...userConfig.associations } };
+        initConfig.associations.files = [...userConfig.associations.files];
+        userConfig.associations.files.reverse();
+        manageApplyCustomizations(initConfig, userConfig, spy);
         expect(spy.called).to.not.be.true;
       });
 
