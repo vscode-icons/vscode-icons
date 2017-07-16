@@ -120,6 +120,20 @@ describe('ApplyCustomizations: tests', function () {
         expect(spy.called).to.not.be.true;
       });
 
+    it('if the configuration has only moved its elements, the callback will not be called',
+      function () {
+        const spy = sinon.spy();
+        userConfig.associations.files = [
+          { icon: "js", extensions: ["myExt1", "myExt2.custom.js"], format: "svg" },
+          { icon: "js2", extensions: ["myExt1", "myExt2.custom.js"], format: "svg" },
+        ];
+        const initConfig = { ...userConfig, associations: { ...userConfig.associations } };
+        initConfig.associations.files = [...userConfig.associations.files];
+        userConfig.associations.files.reverse();
+        manageApplyCustomizations(initConfig, userConfig, spy);
+        expect(spy.called).to.not.be.true;
+      });
+
     it('if the user disables the showing of the manually changed configuration message, ' +
       'the callback will not be called',
       function () {
