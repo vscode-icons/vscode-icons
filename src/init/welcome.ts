@@ -62,7 +62,7 @@ function showNewVersionMessage(settingsManager: ISettingsManager): void {
     .then(btn => {
       if (!btn) { return; }
       if (btn.title === i18nManager.getMessage(LangResourceKeys.seeReleaseNotes)) {
-        open(i18nManager.getMessage(constants.urlReleaseNote));
+        open(constants.urlReleaseNote);
       } else if (btn.title === i18nManager.getMessage(LangResourceKeys.dontShowThis)) {
         getConfig().update('vsicons.dontShowNewVersionMessage', true, true);
       }
