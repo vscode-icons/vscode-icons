@@ -7,7 +7,7 @@ export const langEs: ILangResource = {
   dontShowThis: 'No mostrar la próxima vez',
   seeReadme: 'Sobre esta extensión (en inglés)',
   welcome: `${constants.extensionName} ahora usa la API official.`,
-  activate: '',
+  activate: 'Activar',
   aboutOfficialApi: 'Aprenda más sobre los iconos de archivos y carpetas (en inglés)',
   learnMore: '¿Quiere saber más?',
   reload: 'Reiniciar',
