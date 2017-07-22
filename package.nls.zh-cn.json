@@ -1,4 +1,5 @@
 {
+  "command.activateIcons.title": "",
   "command.regenerateIcons.title": "开始使用自定义图标",
   "command.ngPreset.title": "切换成 Angular 模式（工作区级别）",
   "command.jsPreset.title": "切换成官方 JS 模式（用户级别）",

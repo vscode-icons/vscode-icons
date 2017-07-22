@@ -5,12 +5,14 @@ import * as iconManifest from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
 import * as models from '../models';
-import { extensionSettings } from '../settings';
+import { SettingsManager, extensionSettings } from '../settings';
 import { folderIconsDisabled, iconsDisabled, manageApplyCustomizations } from '../init';
 import * as helper from './helper';
 import { initialized } from '../';
+import { constants } from '../constants';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
+const settingsManager = new SettingsManager(vscode);
 const initVSIconsConfig: models.IVSIcons = getVsiconsConfig();
 
 let doReload: boolean;
@@ -22,6 +24,15 @@ vscode.workspace.onDidChangeConfiguration(didChangeConfigurationListener);
 
 function didChangeConfigurationListener(): void {
   if (!initialized) { return; }
+
+  // Update the status in settings
+  const status = getConfig().inspect(constants.vscode.iconThemeSetting).globalValue === constants.extensionName
+    ? models.ExtensionStatus.enabled
+    : models.ExtensionStatus.notActivated;
+  if (settingsManager.getState().status !== status) {
+    settingsManager.updateStatus(status);
+  }
+
   if (doReload) {
     doReload = false;
     // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
@@ -39,6 +50,7 @@ function didChangeConfigurationListener(): void {
 }
 
 export function registerCommands(context: vscode.ExtensionContext): void {
+  registerCommand(context, 'activateIcons', activationCommand);
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
   registerCommand(context, 'restoreIcons', restoreDefaultManifestCommand);
   registerCommand(context, 'resetProjectDetectionDefaults', resetProjectDetectionDefaultsCommand);
@@ -55,9 +67,13 @@ function registerCommand(
   name: string,
   callback: (...args: any[]) => any): vscode.Disposable {
 
-  const command = vscode.commands.registerCommand(`vscode-icons.${name}`, callback);
+  const command = vscode.commands.registerCommand(`${constants.extensionName}.${name}`, callback);
   context.subscriptions.push(command);
   return command;
+}
+
+export function activationCommand(): void {
+  getConfig().update(constants.vscode.iconThemeSetting, constants.extensionName, true);
 }
 
 export function applyCustomizationCommand(additionalTitles: models.IVSCodeMessageItem[] = []): void {
@@ -201,7 +217,7 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
           case 'applyCustomization':
             {
               customMsgShown = false;
-              getConfig().update('vsicons.dontShowConfigManuallyChangedMessage', true, true);
+              getConfig().update(constants.vsicons.dontShowConfigManuallyChangedMessageSetting, true, true);
             }
             break;
           default:
@@ -212,12 +228,12 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
     case i18nManager.getMessage(models.LangResourceKeys.disableDetect):
       {
         doReload = false;
-        getConfig().update('vsicons.projectDetection.disableDetect', true, true);
+        getConfig().update(constants.vsicons.projectDetectionDisableDetectSetting, true, true);
       }
       break;
     case i18nManager.getMessage(models.LangResourceKeys.autoReload):
       {
-        getConfig().update('vsicons.projectDetection.autoReload', true, true)
+        getConfig().update(constants.vsicons.projectDetectionAutoReloadSetting, true, true)
           .then(() => handlePreset());
       }
       break;
@@ -236,7 +252,7 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
 }
 
 export function reload(): void {
-  vscode.commands.executeCommand('workbench.action.reloadWindow');
+  vscode.commands.executeCommand(constants.vscode.reloadWindowActionSetting);
 }
 
 export function applyCustomization(projectDetectionResult: models.IProjectDetectionResult = null): void {
@@ -309,9 +325,9 @@ function restoreManifest(): void {
 function resetProjectDetectionDefaults(): void {
   const conf = getConfig();
   if (conf.vsicons.projectDetection.autoReload) {
-    conf.update('vsicons.projectDetection.autoReload', false, true);
+    conf.update(constants.vsicons.projectDetectionAutoReloadSetting, false, true);
   }
   if (conf.vsicons.projectDetection.disableDetect) {
-    conf.update('vsicons.projectDetection.disableDetect', false, true);
+    conf.update(constants.vsicons.projectDetectionDisableDetectSetting, false, true);
   }
 }

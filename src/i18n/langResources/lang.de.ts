@@ -1,17 +1,13 @@
 import { ILangResource } from '../../models/i18n';
+import { constants } from '../../constants';
 
 export const langDe: ILangResource = {
-  newVersion: 'Willkommen zur neuen Version von vscode-icons.',
+  newVersion: `Willkommen zur neuen Version von ${constants.extensionName}.`,
   seeReleaseNotes: 'Informationen über die letzten Änderungen (Englisch)',
   dontShowThis: 'Zeige mir diese Nachricht nicht das nächste Mal',
   seeReadme: 'Erfahren Sie mehr über diese Erweiterung (Englisch)',
-  welcomeBegin: 'vscode-icons benutzt nun die offizielle API. Gehen Sie zu',
-  welcomeEnd: 'und wählen Sie VSCode Icons, um zu aktivieren.',
-  activationPath: {
-    darwin: 'Code > Einstellungen > Datei-Symboldesign',
-    linux: 'Datei > Einstellungen > Datei-Symboldesign',
-    win32: 'Datei > Einstellungen > Datei-Symboldesign',
-  },
+  welcome: `${constants.extensionName} benutzt nun die offizielle API.`,
+  activate: '',
   aboutOfficialApi: 'Erfahren Sie mehr über Datei und Ordner Icons (Englisch)',
   learnMore: 'Wollen Sie mehr erfahren?',
   reload: 'Neu starten',
@@ -32,9 +28,9 @@ export const langDe: ILangResource = {
   foldersAllDefaultIconPresetEnabled: 'Spezifischer Ordner-Icons werden aktiviert.',
   foldersAllDefaultIconPresetDisabled: 'Spezifischer Ordner-Icons werden deaktiviert.',
   restart: 'Drücken Sie \'Neu starten\' um die Änderungen zu übernehmen',
-  ngDetected: 'vscode-icons hat ein Angular Projekt erkannt! ' +
+  ngDetected: `${constants.extensionName} hat ein Angular Projekt erkannt! ` +
   'Drücken Sie \'Neu starten\', damit die Angular Icons übernommen werden.',
-  nonNgDetected: 'vscode-icons hat ein nicht Angular Projekt erkannt! ' +
+  nonNgDetected: `${constants.extensionName} hat ein nicht Angular Projekt erkannt! ` +
   'Drücken Sie \'Neu starten\', damit die Angular Icons deaktiviert werden.',
   projectDetectionReset: 'Projekterkennung wird zurückgesetzt.',
 };

@@ -1,17 +1,13 @@
 import { ILangResource } from '../../models/i18n';
+import { constants } from '../../constants';
 
 export const langZhCn: ILangResource = {
-  newVersion: '欢迎使用最新版本的 vscode-icons',
+  newVersion: `欢迎使用最新版本的 ${constants.extensionName}`,
   seeReleaseNotes: '关于最新版本的改动',
   dontShowThis: '下次不再显示这条消息',
   seeReadme: '了解关于此插件的更多信息',
-  welcomeBegin: 'vscode-icons 现在支持官方 API，可前往',
-  welcomeEnd: '并选择 VSCode Icons',
-  activationPath: {
-    darwin: 'Code > 首选项 > 文件图标主题',
-    linux: '文件 > 首选项 > 文件图标主题',
-    win32: '文件 > 首选项 > 文件图标主题',
-  },
+  welcome: `${constants.extensionName} 现在支持官方 API`,
+  activate: '',
   aboutOfficialApi: '查看更多关于文件和文件夹的图标',
   learnMore: '想要了解更多信息？',
   reload: '重启',
@@ -32,7 +28,7 @@ export const langZhCn: ILangResource = {
   foldersAllDefaultIconPresetEnabled: '现在使用指定的文件夹图标',
   foldersAllDefaultIconPresetDisabled: '现在取消使用指定的文件夹图标',
   restart: '选择「重启」使改变生效',
-  ngDetected: 'vscode-icons 发现当前工程是 Angular。选择「重启」使用 Angular 的图标',
-  nonNgDetected: 'vscode-icons 发现当前工程不是 Angular。选择「重启」取消使用 Angular 的图标',
+  ngDetected: `${constants.extensionName} 发现当前工程是 Angular。选择「重启」使用 Angular 的图标`,
+  nonNgDetected: `${constants.extensionName} 发现当前工程不是 Angular。选择「重启」取消使用 Angular 的图标`,
   projectDetectionReset: '重设自动检测工程文件为默认设置',
 };

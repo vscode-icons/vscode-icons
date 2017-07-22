@@ -1,17 +1,13 @@
 import { ILangResource } from '../../models/i18n';
+import { constants } from '../../constants';
 
 export const langRu: ILangResource = {
-  newVersion: 'Добро пожаловать в новую версию vscode-icons.',
+  newVersion: `Добро пожаловать в новую версию ${constants.extensionName}.`,
   seeReleaseNotes: 'Информация о последних изменениях',
   dontShowThis: 'Не показывать это сообщение в следующий раз',
   seeReadme: 'Узнать больше об этом расширении',
-  welcomeBegin: 'vscode-icons теперь поддерживает официальный API. Перейдите в',
-  welcomeEnd: 'и выберите VSCode Icons, чтобы активировать расширение.',
-  activationPath: {
-    darwin: 'Code > Параметры > Тема значка файла',
-    linux: 'Файл > Параметры > Тема значка файла',
-    win32: 'Файл > Параметры > Тема значка файла',
-  },
+  welcome: `${constants.extensionName} теперь поддерживает официальный API.`,
+  activate: '',
   aboutOfficialApi: 'Узнать больше о значках файлов и папок',
   learnMore: 'Хотите узнать больше?',
   reload: 'Перезапустить',
@@ -32,9 +28,9 @@ export const langRu: ILangResource = {
   foldersAllDefaultIconPresetEnabled: 'Нестандартные значки папок будут включены.',
   foldersAllDefaultIconPresetDisabled: 'Нестандартные значки папок будут отключены.',
   restart: 'Нажмите \'Перезапустить\' чтобы изменения вступили в силу.',
-  ngDetected: 'vscode-icons обнаружил проект Angular. ' +
+  ngDetected: `${constants.extensionName} обнаружил проект Angular. ` +
   'Нажмите \'Перезапустить\' чтобы включить значки Angular.',
-  nonNgDetected: 'vscode-icons обнаружил проект отличный от Angular. ' +
+  nonNgDetected: `${constants.extensionName} обнаружил проект отличный от Angular. ` +
   'Нажмите \'Перезапустить\' чтобы отключить значки Angular.',
   projectDetectionReset: 'Определение проекта будет установлено по-умолчанию.',
 };

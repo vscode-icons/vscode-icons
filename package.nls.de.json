@@ -1,4 +1,5 @@
 {
+  "command.activateIcons.title": "",
   "command.regenerateIcons.title": "Icon-Anpassungen anwenden",
   "command.ngPreset.title": "Angular Preset umschalten (Workspace Level)",
   "command.jsPreset.title": "Offizielles JS Preset umschalten (User Level)",
