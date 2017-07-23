@@ -37,6 +37,7 @@ describe('AutoDetectProject: tests', function () {
             fileDefault: { file: null, file_light: null },
             folderDefault: { folder: null, folder_light: null },
           },
+          customIconFolderPath: '',
         };
       });
 

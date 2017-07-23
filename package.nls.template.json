@@ -19,6 +19,7 @@
   "configuration.presets.jsonOfficial.description": "",
   "configuration.presets.hideFolders.description": "",
   "configuration.presets.foldersAllDefaultIcon.description": "",
+  "configuration.customIconFolderPath.description": "",
   "configuration.associations.files.description": "",
   "configuration.associations.folders.description": "",
   "configuration.associations.fileDefault.file.description": "",

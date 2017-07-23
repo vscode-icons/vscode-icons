@@ -57,9 +57,35 @@ describe('Utils: tests', function () {
 
     });
 
-    context('the \'deleteDirectoryRecursively\' function', function () {
+    context('the \'createDirectoryRecursivelySync\' function', function () {
 
-      it('deletes a directory recursively',
+      it('creates a directory and all subdirectories synchronously',
+        function () {
+          const testCase = (directoryPath: string, expectedCounts: number) => {
+            const sandbox = sinon.sandbox.create();
+            const fileCheck = sandbox.stub(fs, 'existsSync')
+              .callsFake(path => directoryPath.split('/').indexOf(path) !== -1);
+            const createDirectory = sandbox.stub(fs, 'mkdirSync');
+
+            utils.createDirectoryRecursivelySync(directoryPath);
+
+            expect(fileCheck.called).to.be.true;
+            expect(createDirectory.callCount).to.equals(expectedCounts);
+
+            sandbox.restore();
+          };
+
+          // Absolute path
+          testCase('/path/to', 3);
+          // Relative path
+          testCase('path/to', 2);
+        });
+
+    });
+
+    context('the \'deleteDirectoryRecursivelySync\' function', function () {
+
+      it('deletes a directory and all subdirectories synchronously',
         function () {
           const directoryPath = '/path/to';
           const sandbox = sinon.sandbox.create();
@@ -70,12 +96,15 @@ describe('Utils: tests', function () {
           }));
           const deleteFile = sandbox.stub(fs, 'unlinkSync');
           const removeDirectory = sandbox.stub(fs, 'rmdirSync');
-          utils.deleteDirectoryRecursively(directoryPath);
+
+          utils.deleteDirectoryRecursivelySync(directoryPath);
+
           expect(fileCheck.called).to.be.true;
           expect(readDirectory.called).to.be.true;
           expect(stats.called).to.be.true;
           expect(deleteFile.called).to.be.true;
           expect(removeDirectory.called).to.be.true;
+
           sandbox.restore();
         });
 

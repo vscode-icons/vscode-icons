@@ -161,6 +161,11 @@
                     "default": false,
                     "description": "%configuration.presets.foldersAllDefaultIcon.description%"
                 },
+                "vsicons.customIconFolderPath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "%configuration.customIconFolderPath.description%"
+                },
                 "vsicons.associations.files": {
                     "type": "array",
                     "default": [],

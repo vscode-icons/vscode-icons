@@ -34,16 +34,29 @@ export function fileFormatToString(extension: FileFormat | string): string {
 }
 
 /**
- * Deletes a directory and all subdirectories
+ * Creates a directory and all subdirectories synchronously
  *
  * @param {any} dirPath The directory's path
  */
-export function deleteDirectoryRecursively(dirPath: string): void {
+export function createDirectoryRecursivelySync(dirPath: string): void {
+  dirPath.split(path.posix.sep).reduce((parentDir, childDir) => {
+    const curDir = path.resolve(parentDir, childDir);
+    if (!fs.existsSync(curDir)) { fs.mkdirSync(curDir); }
+    return curDir;
+  }, path.isAbsolute(dirPath) ? path.posix.sep : '');
+}
+
+/**
+ * Deletes a directory and all subdirectories synchronously
+ *
+ * @param {any} dirPath The directory's path
+ */
+export function deleteDirectoryRecursivelySync(dirPath: string): void {
   if (fs.existsSync(dirPath)) {
     fs.readdirSync(dirPath).forEach(file => {
       const curPath = `${dirPath}/${file}`;
       if (fs.lstatSync(curPath).isDirectory()) { // recurse
-        deleteDirectoryRecursively(curPath);
+        deleteDirectoryRecursivelySync(curPath);
       } else { // delete file
         fs.unlinkSync(curPath);
       }

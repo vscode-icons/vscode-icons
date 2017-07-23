@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
-import { deleteDirectoryRecursively } from '../utils';
+import { deleteDirectoryRecursivelySync } from '../utils';
 
 const supportedFlags = ['--all', '--folders', '--files'];
 
@@ -38,7 +38,7 @@ const fileNames = files.supported
  * @param {any} dirName The directory name
  */
 function createDirectory(dirName) {
-  deleteDirectoryRecursively(dirName);
+  deleteDirectoryRecursivelySync(dirName);
   fs.mkdirSync(dirName);
   process.chdir(dirName);
 }

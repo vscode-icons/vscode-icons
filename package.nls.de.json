@@ -19,6 +19,7 @@
   "configuration.presets.jsonOfficial.description": "Wenn auf 'true' gesetzt, wird die Erweiterung das offizielle JSON Icon benutzen.",
   "configuration.presets.hideFolders.description": "Wenn auf 'true' gesetzt, werden keine Ordner-Icons angezeigt.",
   "configuration.presets.foldersAllDefaultIcon.description": "Wenn auf 'true' gesetzt, werden keine speziellen Ordner-Icons angezeigt.",
+  "configuration.customIconFolderPath.description": "",
   "configuration.associations.files.description": "Diese benutzerdefinierten Datei-Icon-Zuweisungen werden die standardmäßigen Zuweisungen überschreiben.",
   "configuration.associations.folders.description": "Diese benutzerdefinierten Ordner-Icon-Zuweisungen werden die standardmäßigen Zuweisungen überschreiben.",
   "configuration.associations.fileDefault.file.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, dunkleres Datei-Icon zuzuweisen.",

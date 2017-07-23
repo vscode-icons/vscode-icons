@@ -5,5 +5,6 @@ export interface IVSIcons {
   dontShowConfigManuallyChangedMessage: boolean;
   projectDetection: IProjectDetection;
   presets: IPresets;
+  customIconFolderPath: string;
   associations: IAssociations;
 }
