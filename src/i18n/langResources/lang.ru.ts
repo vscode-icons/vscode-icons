@@ -7,7 +7,7 @@ export const langRu: ILangResource = {
   dontShowThis: 'Не показывать это сообщение в следующий раз',
   seeReadme: 'Узнать больше об этом расширении',
   welcome: `${constants.extensionName} теперь поддерживает официальный API.`,
-  activate: '',
+  activate: 'Активировать',
   aboutOfficialApi: 'Узнать больше о значках файлов и папок',
   learnMore: 'Хотите узнать больше?',
   reload: 'Перезапустить',
