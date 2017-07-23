@@ -1,17 +1,13 @@
 import { ILangResource } from '../../models/i18n';
+import { constants } from '../../constants';
 
 export const langIt: ILangResource = {
-  newVersion: 'Benvenuto alla nuova versione di vscode-icons.',
+  newVersion: `Benvenuto alla nuova versione di ${constants.extensionName}.`,
   seeReleaseNotes: 'Informazioni sugli ultimi cambiamenti (in inglese)',
   dontShowThis: 'Non mostrare più questo messaggio',
   seeReadme: 'Sapere di più sull\'estensione',
-  welcomeBegin: 'vscode-icons ora usa la API ufficiale. Vai a',
-  welcomeEnd: 'e seleziona VSCode Icons per attivarla.',
-  activationPath: {
-    darwin: 'Code > Preferenze > Tema Icona File',
-    linux: 'File > Preferenze > Tema Icona File',
-    win32: 'File > Preferenze > Tema Icona File',
-  },
+  welcome: `${constants.extensionName} ora usa la API ufficiale.`,
+  activate: 'Attiva',
   aboutOfficialApi: 'Sapere di più su icone per File & Cartelle (in inglese)',
   learnMore: 'Vuoi saperne di più?',
   reload: 'Riavvia',
@@ -32,9 +28,9 @@ export const langIt: ILangResource = {
   foldersAllDefaultIconPresetEnabled: 'Icone specifiche per cartelle saranno abilitate.',
   foldersAllDefaultIconPresetDisabled: 'Icone specifiche per cartelle saranno disabilitate.',
   restart: 'Seleziona \'Riavvia\' affinché le modifiche abbiano effetto.',
-  ngDetected: 'vscode-icons ha rilevato un progetto Angular. ' +
+  ngDetected: `${constants.extensionName} ha rilevato un progetto Angular. ` +
   'Seleziona \'Riavvia\' per abilitare le icone Angular.',
-  nonNgDetected: 'vscode-icons ha rilevato un progetto non Angular. ' +
+  nonNgDetected: `${constants.extensionName} ha rilevato un progetto non Angular. ` +
   'Seleziona \'Riavvia\' per disabilitare le icone Angular.',
   projectDetectionReset: 'Impostazioni Rilevazione Progetto Predefinite saranno ripristinate.',
 };

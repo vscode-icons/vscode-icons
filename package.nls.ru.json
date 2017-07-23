@@ -1,4 +1,5 @@
 {
+  "command.activateIcons.title": "Активировать VSCode Icons",
   "command.regenerateIcons.title": "Применить пользовательские настройки значков",
   "command.ngPreset.title": "Переключить значки файлов Angular (для рабочей области)",
   "command.jsPreset.title": "Переключить официальный значок JS файлов (для пользователя)",

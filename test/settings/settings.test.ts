@@ -29,7 +29,7 @@ describe('SettingsManager: tests', function () {
         let originalPlatform: any;
 
         beforeEach(() => {
-          env = {...process.env};
+          env = { ...process.env };
           originalPlatform = process.platform;
         });
 
@@ -102,18 +102,22 @@ describe('SettingsManager: tests', function () {
     it('the state gets written to a settings file',
       function () {
         const writeToFile = sandbox.stub(fs, 'writeFileSync');
-        const state: IState = {
+        const stateMock: IState = {
           version: '0',
-          status: ExtensionStatus.notInstalled,
+          status: ExtensionStatus.notActivated,
           welcomeShown: false,
         };
-        settingsManager.setState(state);
+        settingsManager.setState(stateMock);
         expect(writeToFile.called).to.be.true;
       });
 
     it('the settings status gets updated',
       function () {
-        const stateMock = { version: "1.0.0", status: 2, welcomeShown: true };
+        const stateMock: IState = {
+          version: "1.0.0",
+          status: ExtensionStatus.notActivated,
+          welcomeShown: false,
+        };
         const getState = sinon.stub(settingsManager, 'getState').returns(stateMock);
         const setState = sinon.stub(settingsManager, 'setState');
         const status = ExtensionStatus.enabled;

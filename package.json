@@ -63,6 +63,11 @@
         ],
         "commands": [
             {
+                "command": "vscode-icons.activateIcons",
+                "title": "%command.activateIcons.title%",
+                "category": "Icons"
+            },
+            {
                 "command": "vscode-icons.regenerateIcons",
                 "title": "%command.regenerateIcons.title%",
                 "category": "Icons"

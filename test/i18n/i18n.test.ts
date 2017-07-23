@@ -38,7 +38,7 @@ describe('I18n: tests', function () {
         originalPlatform = process.platform;
         resourceCollection = {
           test: {
-            activationPath: {
+            welcome: {
               darwin: 'Macintosh',
               linux: 'Linux',
               win32: 'Windows',
@@ -57,24 +57,24 @@ describe('I18n: tests', function () {
           function () {
             Object.defineProperty(process, 'platform', { value: 'darwin' });
             const msg = new LanguageResourceManager('test', resourceCollection)
-              .getMessage(LangResourceKeys.activationPath);
-            expect(msg).to.equal(resourceCollection.test.activationPath[process.platform]);
+              .getMessage(LangResourceKeys.welcome);
+            expect(msg).to.equal(resourceCollection.test.welcome[process.platform]);
           });
 
         it('linux',
           function () {
             Object.defineProperty(process, 'platform', { value: 'linux' });
             const msg = new LanguageResourceManager('test', resourceCollection)
-              .getMessage(LangResourceKeys.activationPath);
-            expect(msg).to.equal(resourceCollection.test.activationPath[process.platform]);
+              .getMessage(LangResourceKeys.welcome);
+            expect(msg).to.equal(resourceCollection.test.welcome[process.platform]);
           });
 
         it('win32 (windows)',
           function () {
             Object.defineProperty(process, 'platform', { value: 'win32' });
             const msg = new LanguageResourceManager('test', resourceCollection)
-              .getMessage(LangResourceKeys.activationPath);
-            expect(msg).to.equal(resourceCollection.test.activationPath[process.platform]);
+              .getMessage(LangResourceKeys.welcome);
+            expect(msg).to.equal(resourceCollection.test.welcome[process.platform]);
           });
 
       });
@@ -83,7 +83,7 @@ describe('I18n: tests', function () {
         function () {
           Object.defineProperty(process, 'platform', { value: 'freebsd' });
           const i18nManager = new LanguageResourceManager('test', resourceCollection);
-          expect(i18nManager.getMessage.bind(i18nManager, LangResourceKeys.activationPath))
+          expect(i18nManager.getMessage.bind(i18nManager, LangResourceKeys.welcome))
             .to.throw(Error, /Not Implemented/);
         });
 
@@ -155,7 +155,7 @@ describe('I18n: tests', function () {
         resourceCollection = {
           en: {
             newVersion: '10 brave flees jumped ',
-            activationPath: 'over the fence',
+            welcome: 'over the fence',
           },
         };
       });
@@ -187,8 +187,8 @@ describe('I18n: tests', function () {
       it('an array of LangResourceKeys',
         function () {
           const msg = new LanguageResourceManager('en', resourceCollection)
-            .getMessage(LangResourceKeys.newVersion, ' ', LangResourceKeys.activationPath);
-          expect(msg).to.equal(`${resourceCollection.en.newVersion} ${resourceCollection.en.activationPath}`);
+            .getMessage(LangResourceKeys.newVersion, ' ', LangResourceKeys.welcome);
+          expect(msg).to.equal(`${resourceCollection.en.newVersion} ${resourceCollection.en.welcome}`);
         });
 
       context('otherwise an error is thrown for invalid', function () {
