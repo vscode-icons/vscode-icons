@@ -312,13 +312,8 @@ function generateManifest(
 }
 
 function restoreManifest(): void {
-  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema, '', true);
-  const json = iconManifest.mergeConfig(
-    null,
-    files,
-    null,
-    folders,
-    iconGenerator);
+  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema, '', /*avoidCustomDetection*/ true);
+  const json = iconGenerator.generateJson(files, folders);
   iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }
 
