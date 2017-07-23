@@ -19,7 +19,7 @@
   "configuration.presets.jsonOfficial.description": "如果设置成 true，插件会自动使用官方 JSON 图标",
   "configuration.presets.hideFolders.description": "如果设置成 true，所有文件夹会隐藏",
   "configuration.presets.foldersAllDefaultIcon.description": "如果设置成 true，所有文件夹会恢复成默认图标",
-  "configuration.customIconFolderPath.description": "",
+  "configuration.customIconFolderPath.description": "指向位于您的计算机上含自定义图标的文件夹的父文件夹的物理路径",
   "configuration.associations.files.description": "这些自定义设置会覆盖掉系统默认的文件图标设置",
   "configuration.associations.folders.description": "这些自定义设置会覆盖掉系统默认的文件夹图标设置",
   "configuration.associations.fileDefault.file.description": "这个设置会改变默认的深色文件图标",
