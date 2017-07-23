@@ -40,7 +40,7 @@ export class SettingsManager implements ISettingsManager {
   public getState(): IState {
     const defaultState: IState = {
       version: '0',
-      status: ExtensionStatus.notInstalled,
+      status: ExtensionStatus.notActivated,
       welcomeShown: false,
     };
 
@@ -52,7 +52,7 @@ export class SettingsManager implements ISettingsManager {
       return defaultState;
     }
 
-    const json = parseJSON(state) as IState;
+    const json: IState = parseJSON(state);
     return json || defaultState;
   }
 

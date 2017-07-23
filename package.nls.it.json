@@ -1,4 +1,5 @@
 {
+  "command.activateIcons.title": "Attiva VSCode Icons",
   "command.regenerateIcons.title": "Applica Personalizzazione Icone",
   "command.ngPreset.title": "Attiva Preimpostazione Angular (a livello Area di Lavoro)",
   "command.jsPreset.title": "Attiva Preimpostazione ufficiale JS (a livello Utente)",

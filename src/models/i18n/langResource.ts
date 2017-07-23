@@ -5,9 +5,8 @@ export interface ILangResource {
   seeReleaseNotes: string | IOSSpecific;
   dontShowThis: string | IOSSpecific;
   seeReadme: string | IOSSpecific;
-  welcomeBegin: string | IOSSpecific;
-  welcomeEnd: string | IOSSpecific;
-  activationPath: string | IOSSpecific;
+  welcome: string | IOSSpecific;
+  activate: string | IOSSpecific;
   aboutOfficialApi: string | IOSSpecific;
   learnMore: string | IOSSpecific;
   reload: string | IOSSpecific;
