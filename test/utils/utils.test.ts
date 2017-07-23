@@ -67,7 +67,7 @@ describe('Utils: tests', function () {
               .callsFake(path => directoryPath.split('/').indexOf(path) !== -1);
             const createDirectory = sandbox.stub(fs, 'mkdirSync');
 
-            utils.createDirectoryRecursivelySync(directoryPath);
+            utils.createDirectoryRecursively(directoryPath);
 
             expect(fileCheck.called).to.be.true;
             expect(createDirectory.callCount).to.equals(expectedCounts);
@@ -97,7 +97,7 @@ describe('Utils: tests', function () {
           const deleteFile = sandbox.stub(fs, 'unlinkSync');
           const removeDirectory = sandbox.stub(fs, 'rmdirSync');
 
-          utils.deleteDirectoryRecursivelySync(directoryPath);
+          utils.deleteDirectoryRecursively(directoryPath);
 
           expect(fileCheck.called).to.be.true;
           expect(readDirectory.called).to.be.true;

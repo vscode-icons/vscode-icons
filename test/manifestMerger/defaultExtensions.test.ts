@@ -9,7 +9,7 @@ import { vscode } from '../../src/utils';
 import { extensionSettings } from '../../src/settings';
 import { IconGenerator, mergeConfig, schema } from '../../src/icon-manifest';
 import { IFileCollection, IFolderCollection } from '../../src/models';
-import { deleteDirectoryRecursivelySync, tempPath } from '../../src/utils';
+import { createDirectoryRecursively, deleteDirectoryRecursively, tempPath } from '../../src/utils';
 
 describe('DefaultExtensions: merging configuration documents', function () {
 
@@ -19,11 +19,11 @@ describe('DefaultExtensions: merging configuration documents', function () {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
 
-    fs.mkdirSync(extensionSettings.customIconFolderName);
+    createDirectoryRecursively(extensionSettings.customIconFolderName);
   });
 
   after(() => {
-    deleteDirectoryRecursivelySync(extensionSettings.customIconFolderName);
+    deleteDirectoryRecursively(extensionSettings.customIconFolderName);
   });
 
   let iconGenerator: IconGenerator;

@@ -8,7 +8,7 @@ import { extensions as folderExtensions } from '../support/supportedFolders';
 import { pathUnixJoin, vscode } from '../../src/utils';
 import { extensionSettings } from '../../src/settings';
 import { IconGenerator, mergeConfig, schema } from '../../src/icon-manifest';
-import { createDirectoryRecursivelySync, deleteDirectoryRecursivelySync, tempPath } from '../../src/utils';
+import { createDirectoryRecursively, deleteDirectoryRecursively, tempPath } from '../../src/utils';
 
 describe('FileExtensions: merging configuration documents', function () {
 
@@ -19,13 +19,13 @@ describe('FileExtensions: merging configuration documents', function () {
   before(() => {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
-    createDirectoryRecursivelySync(extensionSettings.customIconFolderName);
-    createDirectoryRecursivelySync(customIconFolderPathFull);
+    createDirectoryRecursively(extensionSettings.customIconFolderName);
+    createDirectoryRecursively(customIconFolderPathFull);
   });
 
   after(() => {
-    deleteDirectoryRecursivelySync(extensionSettings.customIconFolderName);
-    deleteDirectoryRecursivelySync(customIconFolderPathFull);
+    deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+    deleteDirectoryRecursively(customIconFolderPathFull);
   });
 
   let iconGenerator: IconGenerator;
