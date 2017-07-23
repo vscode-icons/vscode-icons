@@ -296,11 +296,9 @@ export class IconGenerator implements models.IIconGenerator {
     if (this.avoidCustomDetection) {
       return this.iconsFolderBasePath;
     }
-    const customIconFolderPath = this.configCustomIconFolderPath && this.configCustomIconFolderPath !== ''
-      ? this.configCustomIconFolderPath
-      : this.settings.vscodeAppData;
+    const customIconFolderPath = (this.configCustomIconFolderPath && this.configCustomIconFolderPath.trim()) ||
+      this.settings.vscodeAppData;
     const absPath = path.join(customIconFolderPath, this.settings.extensionSettings.customIconFolderName);
-
     if (!this.hasCustomIcon(absPath, filename)) {
       return this.iconsFolderBasePath;
     }

@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as vscode from 'vscode';
-import {  IVSCodeUri, IVSIcons, IFileExtension } from '../models';
+import { IVSCodeUri, IVSIcons, IFileExtension } from '../models';
 
 export function getConfig(): vscode.WorkspaceConfiguration {
   return vscode.workspace.getConfiguration();
