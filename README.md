@@ -49,6 +49,8 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 ---
 
 ## State of the extension
+[@JimiC](https://github.com/JimiC) has brought most of **7.11.0** which comes with some brand new icons and a really new cool feature: the ability to customize the `custom icons folder` path. With this, you will be able to ship your custom icons along your repository and share them with your team. If you want to know just read the [custom icons section](https://github.com/vscode-icons/vscode-icons/blob/master/README.md#custom-icons).
+
 With the release of **7.10.0**, we improved the way the extension is handling your manual changes to a `presets` or `associations` configuration. By default, every time you change any of the aforementioned configurations, you will be presented with the message to `Restart` the editor, for the changes to take effect. Of course, you can always disable this behavior. See the [Configuration](https://github.com/vscode-icons/vscode-icons#configuration) section for more details.
 
 As from **release 7.7.0**, the `project detection` feature has become smarter and is totally unobtrusive. If you have it disabled, because you found it annoying for any reason, **we urge you to re-enable it** and check out its new functionality.
@@ -265,6 +267,12 @@ Once you have created the folder you can put all your custom icons there. But, a
 **Note that folders must have two icons!!**
 
 See [here the supported file extensions for an icon](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts).
+
+With **7.11.0**, we shipped a new feature allowing you to provide your own specific `custom icons folder` path. This can be useful if you have a network share with your team or you want to delivery your own icons along your own repository.
+
+If you want to take advantadge of this feature, just go to your settings and set `vsicons.customIconFolderPath` with the path of the folder containing the `vscode-custom-icons` folder. 
+
+**Note that the name of the folder containing the icons must be `vscode-custom-icons`**. You're only allowed to choose the folder where this folder is going to be placed, not the name of the folder itself. This is very important as it may lead to confusion. 
 
 #### Optional Angular icons
 Since **7.10.0**, along with the usual `Angular` icons, we shipped some optional icons for users wanting to have some specific icons for `component templates` and `component styles`.
