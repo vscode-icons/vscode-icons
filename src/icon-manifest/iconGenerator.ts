@@ -43,6 +43,56 @@ export class IconGenerator implements models.IIconGenerator {
     }
   }
 
+  public writeJsonToFile(json, iconsFilename, outDir) {
+    try {
+      if (!fs.existsSync(outDir)) {
+        fs.mkdirSync(outDir);
+      }
+
+      fs.writeFileSync(path.join(outDir, iconsFilename), JSON.stringify(json, null, 2));
+      // tslint:disable-next-line no-console
+      console.info('Icons manifest file successfully generated!');
+    } catch (error) {
+      console.error('Something went wrong while generating the icon contribution file:', error);
+    }
+  }
+
+  public hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
+    const relativePath = utils.getRelativePath('.', customIconFolderPath, false);
+    const filePath = path.posix.join(relativePath, filename);
+    return fs.existsSync(filePath);
+  }
+
+  public getIconPath(defaultPath: string, filename: string): string {
+    const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
+    if (!this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)) {
+      const sanitizedFolderPath =
+        utils.belongToSameDrive(absPath, this.manifestFolderPath)
+          ? this.manifestFolderPath
+          : utils.overwriteDrive(absPath, this.manifestFolderPath);
+      return utils.getRelativePath(sanitizedFolderPath, absPath, false);
+    }
+    return defaultPath;
+  }
+
+  public updatePackageJson(iconsFolderPath) {
+    const oldIconsThemesFolderPath = packageJson.contributes.iconThemes[0].path;
+
+    if (!oldIconsThemesFolderPath || (oldIconsThemesFolderPath === iconsFolderPath)) {
+      return;
+    }
+
+    packageJson.contributes.iconThemes[0].path = iconsFolderPath;
+
+    try {
+      fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
+      // tslint:disable-next-line no-console
+      console.info('package.json updated');
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   private buildFolders(
     folders: models.IFolderCollection,
     iconsFolderBasePath: string,
@@ -286,55 +336,5 @@ export class IconGenerator implements models.IIconGenerator {
     schema.light.fileNames = res.files.light.fileNames;
     schema.light.languageIds = res.files.light.languageIds;
     return schema;
-  }
-
-  private hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
-    const relativePath = utils.getRelativePath('.', customIconFolderPath, false);
-    const filePath = path.posix.join(relativePath, filename);
-    return fs.existsSync(filePath);
-  }
-
-  private getIconPath(defaultPath: string, filename: string): string {
-    const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
-    if (!this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)) {
-      const sanitizedFolderPath =
-        utils.belongToSameDrive(absPath, this.manifestFolderPath)
-          ? this.manifestFolderPath
-          : utils.overwriteDrive(absPath, this.manifestFolderPath);
-      return utils.getRelativePath(sanitizedFolderPath, absPath, false);
-    }
-    return defaultPath;
-  }
-
-  private writeJsonToFile(json, iconsFilename, outDir) {
-    try {
-      if (!fs.existsSync(outDir)) {
-        fs.mkdirSync(outDir);
-      }
-
-      fs.writeFileSync(path.join(outDir, iconsFilename), JSON.stringify(json, null, 2));
-      // tslint:disable-next-line no-console
-      console.info('Icons manifest file successfully generated!');
-    } catch (error) {
-      console.error('Something went wrong while generating the icon contribution file:', error);
-    }
-  }
-
-  private updatePackageJson(iconsFolderPath) {
-    const oldIconsThemesFolderPath = packageJson.contributes.iconThemes[0].path;
-
-    if (!oldIconsThemesFolderPath || (oldIconsThemesFolderPath === iconsFolderPath)) {
-      return;
-    }
-
-    packageJson.contributes.iconThemes[0].path = iconsFolderPath;
-
-    try {
-      fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
-      // tslint:disable-next-line no-console
-      console.info('package.json updated');
-    } catch (err) {
-      console.error(err);
-    }
   }
 }
