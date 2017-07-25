@@ -46,6 +46,61 @@ export class IconGenerator implements models.IIconGenerator {
     }
   }
 
+  public hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
+    const relativePath = utils.getRelativePath('.', customIconFolderPath, false);
+    const filePath = utils.pathUnixJoin(relativePath, filename);
+    return fs.existsSync(filePath);
+  }
+
+  public getIconPath(filename: string): string {
+    if (this.avoidCustomDetection) {
+      return this.iconsFolderBasePath;
+    }
+    const customIconFolderPath = (this.configCustomIconFolderPath && this.configCustomIconFolderPath.trim()) ||
+      this.settings.vscodeAppData;
+    const absPath = path.join(customIconFolderPath, this.settings.extensionSettings.customIconFolderName);
+    if (!this.hasCustomIcon(absPath, filename)) {
+      return this.iconsFolderBasePath;
+    }
+    const sanitizedFolderPath =
+      utils.belongToSameDrive(absPath, this.manifestFolderPath)
+        ? this.manifestFolderPath
+        : utils.overwriteDrive(absPath, this.manifestFolderPath);
+    return utils.getRelativePath(sanitizedFolderPath, absPath, false);
+  }
+
+  public writeJsonToFile(json, iconsFilename, outDir) {
+    try {
+      if (!fs.existsSync(outDir)) {
+        fs.mkdirSync(outDir);
+      }
+
+      fs.writeFileSync(path.join(outDir, iconsFilename), JSON.stringify(json, null, 2));
+      // tslint:disable-next-line no-console
+      console.info('Icons manifest file successfully generated!');
+    } catch (error) {
+      console.error('Something went wrong while generating the icon contribution file:', error);
+    }
+  }
+
+  public updatePackageJson(iconsFolderPath) {
+    const oldIconsThemesFolderPath = packageJson.contributes.iconThemes[0].path;
+
+    if (!oldIconsThemesFolderPath || (oldIconsThemesFolderPath === iconsFolderPath)) {
+      return;
+    }
+
+    packageJson.contributes.iconThemes[0].path = iconsFolderPath;
+
+    try {
+      fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
+      // tslint:disable-next-line no-console
+      console.info('package.json updated');
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   private buildFolders(
     folders: models.IFolderCollection,
     hasDefaultLightFolder: boolean) {
@@ -284,60 +339,5 @@ export class IconGenerator implements models.IIconGenerator {
     schema.light.fileNames = res.files.light.fileNames;
     schema.light.languageIds = res.files.light.languageIds;
     return schema;
-  }
-
-  private hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
-    const relativePath = utils.getRelativePath('.', customIconFolderPath, false);
-    const filePath = utils.pathUnixJoin(relativePath, filename);
-    return fs.existsSync(filePath);
-  }
-
-  private getIconPath(filename: string): string {
-    if (this.avoidCustomDetection) {
-      return this.iconsFolderBasePath;
-    }
-    const customIconFolderPath = (this.configCustomIconFolderPath && this.configCustomIconFolderPath.trim()) ||
-      this.settings.vscodeAppData;
-    const absPath = path.join(customIconFolderPath, this.settings.extensionSettings.customIconFolderName);
-    if (!this.hasCustomIcon(absPath, filename)) {
-      return this.iconsFolderBasePath;
-    }
-    const sanitizedFolderPath =
-      utils.belongToSameDrive(absPath, this.manifestFolderPath)
-        ? this.manifestFolderPath
-        : utils.overwriteDrive(absPath, this.manifestFolderPath);
-    return utils.getRelativePath(sanitizedFolderPath, absPath, false);
-  }
-
-  private writeJsonToFile(json, iconsFilename, outDir) {
-    try {
-      if (!fs.existsSync(outDir)) {
-        fs.mkdirSync(outDir);
-      }
-
-      fs.writeFileSync(path.join(outDir, iconsFilename), JSON.stringify(json, null, 2));
-      // tslint:disable-next-line no-console
-      console.info('Icons manifest file successfully generated!');
-    } catch (error) {
-      console.error('Something went wrong while generating the icon contribution file:', error);
-    }
-  }
-
-  private updatePackageJson(iconsFolderPath) {
-    const oldIconsThemesFolderPath = packageJson.contributes.iconThemes[0].path;
-
-    if (!oldIconsThemesFolderPath || (oldIconsThemesFolderPath === iconsFolderPath)) {
-      return;
-    }
-
-    packageJson.contributes.iconThemes[0].path = iconsFolderPath;
-
-    try {
-      fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
-      // tslint:disable-next-line no-console
-      console.info('package.json updated');
-    } catch (err) {
-      console.error(err);
-    }
   }
 }
