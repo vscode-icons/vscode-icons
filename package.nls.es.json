@@ -20,6 +20,7 @@
   "configuration.presets.jsonOfficial.description": "Si 'true', la extensión usará el icono oficial de JSON.",
   "configuration.presets.hideFolders.description": "Si 'true', los iconos de carpeta no serán visibles.",
   "configuration.presets.foldersAllDefaultIcon.description": "Si 'true', todas las carpetas tendrán el mismo icono genérico.",
+  "configuration.customIconFolderPath.description": "La ruta física del directorio padre del directorio de iconos personalizados que reside en la máquina local.",
   "configuration.associations.files.description": "Estas asociaciones personalizadas sobrescribirán las asosociaciones de archivo definidas por defecto.",
   "configuration.associations.folders.description": "Estas asociaciones personalizadas sobrescribirán las asosociaciones de carpeta definidas por defecto.",
   "configuration.associations.fileDefault.file.description": "Este ajuste permite cambiar el icono de archivo por defecto para los temas oscuros.",

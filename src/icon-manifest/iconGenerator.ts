@@ -9,12 +9,15 @@ import * as packageJson from '../../../package.json';
 export class IconGenerator implements models.IIconGenerator {
   public settings: models.ISettings;
 
+  public iconsFolderBasePath: string;
+
   private iconsFolderPath: string;
   private manifestFolderPath: string;
 
   constructor(
     vscode: models.IVSCode,
     private defaultSchema: models.IIconSchema,
+    private configCustomIconFolderPath?: string,
     private avoidCustomDetection: boolean = false) {
     this.settings = new SettingsManager(vscode).getSettings();
     // relative to this file
@@ -25,8 +28,8 @@ export class IconGenerator implements models.IIconGenerator {
   public generateJson(
     files: models.IFileCollection,
     folders: models.IFolderCollection): models.IIconSchema {
-    const iconsFolderBasePath = utils.getRelativePath(this.manifestFolderPath, this.iconsFolderPath);
-    return this.fillDefaultSchema(files, folders, iconsFolderBasePath, this.defaultSchema);
+    this.iconsFolderBasePath = utils.getRelativePath(this.manifestFolderPath, this.iconsFolderPath);
+    return this.fillDefaultSchema(files, folders, this.defaultSchema);
   }
 
   public persist(
@@ -38,12 +41,35 @@ export class IconGenerator implements models.IIconGenerator {
     }
     this.writeJsonToFile(json, iconsFilename, this.manifestFolderPath);
     if (updatePackageJson) {
-      const iconsFolderPath = `${utils.getRelativePath('.', this.manifestFolderPath)}${iconsFilename}`;
-      this.updatePackageJson(iconsFolderPath);
+      const iconsFolderRelativePath = `${utils.getRelativePath('.', this.manifestFolderPath)}${iconsFilename}`;
+      this.updatePackageJson(iconsFolderRelativePath);
     }
   }
 
-  public writeJsonToFile(json, iconsFilename, outDir) {
+  public hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
+    const relativePath = utils.getRelativePath('.', customIconFolderPath, false);
+    const filePath = utils.pathUnixJoin(relativePath, filename);
+    return fs.existsSync(filePath);
+  }
+
+  public getIconPath(filename: string): string {
+    if (this.avoidCustomDetection) {
+      return this.iconsFolderBasePath;
+    }
+    const customIconFolderPath = (this.configCustomIconFolderPath && this.configCustomIconFolderPath.trim()) ||
+      this.settings.vscodeAppData;
+    const absPath = path.join(customIconFolderPath, this.settings.extensionSettings.customIconFolderName);
+    if (!this.hasCustomIcon(absPath, filename)) {
+      return this.iconsFolderBasePath;
+    }
+    const sanitizedFolderPath =
+      utils.belongToSameDrive(absPath, this.manifestFolderPath)
+        ? this.manifestFolderPath
+        : utils.overwriteDrive(absPath, this.manifestFolderPath);
+    return utils.getRelativePath(sanitizedFolderPath, absPath, false);
+  }
+
+  public writeJsonToFile(json: models.IIconSchema, iconsFilename: string, outDir: string) {
     try {
       if (!fs.existsSync(outDir)) {
         fs.mkdirSync(outDir);
@@ -57,25 +83,7 @@ export class IconGenerator implements models.IIconGenerator {
     }
   }
 
-  public hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
-    const relativePath = utils.getRelativePath('.', customIconFolderPath, false);
-    const filePath = path.posix.join(relativePath, filename);
-    return fs.existsSync(filePath);
-  }
-
-  public getIconPath(defaultPath: string, filename: string): string {
-    const absPath = path.join(this.settings.vscodeAppData, this.settings.extensionSettings.customIconFolderName);
-    if (!this.avoidCustomDetection && this.hasCustomIcon(absPath, filename)) {
-      const sanitizedFolderPath =
-        utils.belongToSameDrive(absPath, this.manifestFolderPath)
-          ? this.manifestFolderPath
-          : utils.overwriteDrive(absPath, this.manifestFolderPath);
-      return utils.getRelativePath(sanitizedFolderPath, absPath, false);
-    }
-    return defaultPath;
-  }
-
-  public updatePackageJson(iconsFolderPath) {
+  public updatePackageJson(iconsFolderPath: string) {
     const oldIconsThemesFolderPath = packageJson.contributes.iconThemes[0].path;
 
     if (!oldIconsThemesFolderPath || (oldIconsThemesFolderPath === iconsFolderPath)) {
@@ -95,7 +103,6 @@ export class IconGenerator implements models.IIconGenerator {
 
   private buildFolders(
     folders: models.IFolderCollection,
-    iconsFolderBasePath: string,
     hasDefaultLightFolder: boolean) {
     const sts = this.settings.extensionSettings;
     return _.sortBy(folders.supported.filter(x => !x.disabled && x.icon), item => item.icon)
@@ -116,8 +123,8 @@ export class IconGenerator implements models.IIconGenerator {
           `${hasLightVersion
             ? iconFolderLightType
             : iconFolderType}_opened${sts.iconSuffix}${iconFileExtension}`;
-        const folderIconPath = this.getIconPath(iconsFolderBasePath, folderName);
-        const openFolderIconPath = this.getIconPath(iconsFolderBasePath, openFolderName);
+        const folderIconPath = this.getIconPath(folderName);
+        const openFolderIconPath = this.getIconPath(openFolderName);
         const folderPath = utils.pathUnixJoin(folderIconPath, iconFolderType);
         const folderLightPath = utils.pathUnixJoin(folderIconPath, iconFolderLightType);
         const openFolderPath = `${folderPath}_opened`;
@@ -174,7 +181,6 @@ export class IconGenerator implements models.IIconGenerator {
 
   private buildFiles(
     files: models.IFileCollection,
-    iconsFolderBasePath: string,
     hasDefaultLightFile: boolean) {
     const sts = this.settings.extensionSettings;
     return _.sortedUniq(_.sortBy(files.supported.filter(x => !x.disabled && x.icon), item => item.icon))
@@ -192,7 +198,7 @@ export class IconGenerator implements models.IIconGenerator {
           `${hasLightVersion
             ? iconFileLightType
             : iconFileType}${sts.iconSuffix}${iconFileExtension}`;
-        const fileIconPath = this.getIconPath(iconsFolderBasePath, filename);
+        const fileIconPath = this.getIconPath(filename);
         const filePath = utils.pathUnixJoin(fileIconPath, iconFileType);
         const fileLightPath = utils.pathUnixJoin(fileIconPath, iconFileLightType);
         const iconFileDefinition = `${sts.manifestFilePrefix}${icon}`;
@@ -259,7 +265,6 @@ export class IconGenerator implements models.IIconGenerator {
   private buildDefaultIconPath(
     defaultExtension: models.IDefaultExtension,
     schemaExtension: models.IIconPath,
-    iconsFolderBasePath: string,
     isOpenFolder: boolean): string {
     if (!defaultExtension || defaultExtension.disabled) { return schemaExtension.iconPath || ''; }
     const defPrefix = this.settings.extensionSettings.defaultExtensionPrefix;
@@ -268,7 +273,7 @@ export class IconGenerator implements models.IIconGenerator {
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
     const filename = `${defPrefix}${icon}${openSuffix}${iconSuffix}${utils.fileFormatToString(format)}`;
-    const fPath = this.getIconPath(iconsFolderBasePath, filename);
+    const fPath = this.getIconPath(filename);
 
     return utils.pathUnixJoin(fPath, filename);
   }
@@ -276,17 +281,16 @@ export class IconGenerator implements models.IIconGenerator {
   private fillDefaultSchema(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
-    iconsFolderBasePath: string,
     defaultSchema: models.IIconSchema): models.IIconSchema {
     const schema = _.cloneDeep(defaultSchema);
     const defs = schema.iconDefinitions;
     // set default icons for dark theme
     defs._file.iconPath =
-      this.buildDefaultIconPath(files.default.file, defs._file, iconsFolderBasePath, false);
+      this.buildDefaultIconPath(files.default.file, defs._file, false);
     defs._folder.iconPath =
-      this.buildDefaultIconPath(folders.default.folder, defs._folder, iconsFolderBasePath, false);
+      this.buildDefaultIconPath(folders.default.folder, defs._folder, false);
     defs._folder_open.iconPath =
-      this.buildDefaultIconPath(folders.default.folder, defs._folder_open, iconsFolderBasePath, true);
+      this.buildDefaultIconPath(folders.default.folder, defs._folder_open, true);
     // set default icons for light theme
     // default file and folder related icon paths if not set,
     // inherit their icons from dark theme.
@@ -296,19 +300,18 @@ export class IconGenerator implements models.IIconGenerator {
     // and populate the light section, otherwise they inherit from dark theme
     // and only those in 'light' section get overriden.
     defs._file_light.iconPath =
-      this.buildDefaultIconPath(files.default.file_light, defs._file_light, iconsFolderBasePath, false);
+      this.buildDefaultIconPath(files.default.file_light, defs._file_light, false);
     defs._folder_light.iconPath =
-      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light, iconsFolderBasePath, false);
+      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light, false);
     defs._folder_light_open.iconPath =
-      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light_open, iconsFolderBasePath, true);
+      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light_open, true);
     // set the rest of the schema
-    return this.buildJsonStructure(files, folders, iconsFolderBasePath, schema);
+    return this.buildJsonStructure(files, folders, schema);
   }
 
   private buildJsonStructure(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
-    iconsFolderBasePath: string,
     schema: models.IIconSchema): models.IIconSchema {
     // check for light files & folders
     const hasDefaultLightFolder =
@@ -319,12 +322,12 @@ export class IconGenerator implements models.IIconGenerator {
       schema.iconDefinitions._file_light.iconPath !== '';
     const res = {
       // folders section
-      folders: this.buildFolders(folders, iconsFolderBasePath, hasDefaultLightFolder),
+      folders: this.buildFolders(folders, hasDefaultLightFolder),
       //  files section
-      files: this.buildFiles(files, iconsFolderBasePath, hasDefaultLightFile),
+      files: this.buildFiles(files, hasDefaultLightFile),
     };
     // map structure to the schema
-    schema.iconDefinitions = {...schema.iconDefinitions, ...res.folders.defs, ...res.files.defs};
+    schema.iconDefinitions = { ...schema.iconDefinitions, ...res.folders.defs, ...res.files.defs };
     schema.folderNames = res.folders.names.folderNames;
     schema.folderNamesExpanded = res.folders.names.folderNamesExpanded;
     schema.fileExtensions = res.files.names.fileExtensions;

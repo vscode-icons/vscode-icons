@@ -33,6 +33,7 @@ describe('AutoApplyCustomizations: tests', function () {
           fileDefault: { file: null, file_light: null },
           folderDefault: { folder: null, folder_light: null },
         },
+        customIconFolderPath: '',
       };
     });
 
@@ -99,6 +100,7 @@ describe('ApplyCustomizations: tests', function () {
           fileDefault: { file: null, file_light: null },
           folderDefault: { folder: null, folder_light: null },
         },
+        customIconFolderPath: '',
       };
     });
 

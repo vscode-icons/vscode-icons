@@ -272,8 +272,8 @@ function generateManifest(
   customFiles: models.IFileCollection,
   customFolders: models.IFolderCollection,
   projectDetectionResult: models.IProjectDetectionResult = null): void {
-  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema);
   const vsicons = getVsiconsConfig();
+  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema, vsicons.customIconFolderPath);
   const hasProjectDetectionResult = projectDetectionResult &&
     typeof projectDetectionResult === 'object' &&
     'value' in projectDetectionResult;
@@ -312,13 +312,8 @@ function generateManifest(
 }
 
 function restoreManifest(): void {
-  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema, true);
-  const json = iconManifest.mergeConfig(
-    null,
-    files,
-    null,
-    folders,
-    iconGenerator);
+  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema, '', /*avoidCustomDetection*/ true);
+  const json = iconGenerator.generateJson(files, folders);
   iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }
 
