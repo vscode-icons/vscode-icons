@@ -1,8 +1,8 @@
 {
   "ignore": [
-    "**/.vscode/**",
     "**/node_modules/**",
-    "**/out/**"
+    "**/out/**",
+    "**/src/*.d.ts"
   ],
   "test": [
     "**/test/**"
