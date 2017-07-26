@@ -22,6 +22,10 @@
   version "7.0.39"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.39.tgz#8aced4196387038113f6f9aa4014ab4c51edab3c"
 
+"@types/semver@^5.3.32":
+  version "5.3.32"
+  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-5.3.32.tgz#a7afdc4bee713c081114cd811b51be10907d7bae"
+
 "@types/sinon@^2.3.3":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-2.3.3.tgz#1f20b96f954b4997a09c1c0a20264aaba6b00147"

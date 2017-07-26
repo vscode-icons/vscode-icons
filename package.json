@@ -226,6 +226,7 @@
         "@types/mocha": "^2.2.41",
         "@types/mockery": "^1.4.29",
         "@types/node": "^7.0.39",
+        "@types/semver": "^5.3.32",
         "@types/sinon": "^2.3.3",
         "bithound": "^1.7.0",
         "chai": "^4.1.0",
