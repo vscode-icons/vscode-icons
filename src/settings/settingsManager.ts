@@ -39,21 +39,20 @@ export class SettingsManager implements ISettingsManager {
 
   public getState(): IState {
     const defaultState: IState = {
-      version: '0',
+      version: '0.0.0',
       status: ExtensionStatus.notActivated,
       welcomeShown: false,
     };
-
-    let state;
+    if (!fs.existsSync(this.settings.settingsPath)) {
+      return defaultState;
+    }
     try {
-      state = fs.readFileSync(this.settings.settingsPath, 'utf8');
+      const state = fs.readFileSync(this.settings.settingsPath, 'utf8');
+      return (parseJSON(state) as IState) || defaultState;
     } catch (error) {
       console.error(error);
       return defaultState;
     }
-
-    const json: IState = parseJSON(state);
-    return json || defaultState;
   }
 
   public setState(state: IState): void {
