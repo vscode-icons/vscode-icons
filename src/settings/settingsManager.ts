@@ -14,6 +14,8 @@ export class SettingsManager implements ISettingsManager {
 
   public getSettings(): ISettings {
     if (this.settings) { return this.settings; }
+    const isDev = /dev/i.test(this.vscode.env.appName);
+    const isOSS = !isDev && /oss/i.test(this.vscode.env.appName);
     const isInsiders = /insiders/i.test(this.vscode.env.appName);
     const vscodeVersion = new semver.SemVer(this.vscode.version).version;
     const isWin = /^win/.test(process.platform);
@@ -21,14 +23,16 @@ export class SettingsManager implements ISettingsManager {
     const extensionFolder = path.join(homeDir, isInsiders
       ? '.vscode-insiders'
       : '.vscode', 'extensions');
-    const codePath = isInsiders ? '/Code - Insiders' : '/Code';
+    const vscodeAppName = isInsiders ? 'Code - Insiders' : isOSS ? 'Code - OSS' : isDev ? 'code-oss-dev' : 'Code';
     const appPath = getAppPath();
-    const vscodeAppData = path.join(appPath, codePath, 'User');
+    const vscodeAppData = path.join(appPath, vscodeAppName, 'User');
 
     this.settings = {
       vscodeAppData,
       isWin,
       isInsiders,
+      isOSS,
+      isDev,
       extensionFolder,
       settingsPath: path.join(vscodeAppData, 'vsicons.settings.json'),
       vscodeVersion,
