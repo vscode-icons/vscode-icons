@@ -76,6 +76,22 @@ describe('SettingsManager: tests', function () {
             vscode.env.appName = 'Visual Studio Code';
             const settings = new SettingsManager(vscode).getSettings();
             expect(settings.isInsiders).to.be.false;
+            expect(settings.isOSS).to.be.false;
+            expect(settings.isDev).to.be.false;
+          });
+
+        it('\'Code - OSS\'',
+          function () {
+            vscode.env.appName = 'VSCode OSS';
+            const settings = new SettingsManager(vscode).getSettings();
+            expect(settings.isOSS).to.be.true;
+          });
+
+        it('\'Code - OSS Dev\'',
+          function () {
+            vscode.env.appName = 'VSCode OSS Dev';
+            const settings = new SettingsManager(vscode).getSettings();
+            expect(settings.isDev).to.be.true;
           });
 
       });
