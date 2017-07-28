@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.12.0 (July 28, 2017)
+
+- Feature: Added support for `VSCode OSS` version. ([@JimiC](https://github.com/JimiC) in [#1102](https://github.com/vscode-icons/vscode-icons/pull/1102))
+- Enhancement: Added types for `semver`. ([@JimiC](https://github.com/JimiC) in [#1099](https://github.com/vscode-icons/vscode-icons/pull/1099))
+- Fix: Default state format corrected. ([@JimiC](https://github.com/JimiC) in [#1098](https://github.com/vscode-icons/vscode-icons/pull/1098))
+
 ## 7.11.0 (July 25, 2017)
 
 - Feature: Added ability to customize the `custom icons folder` path. ([@JimiC](https://github.com/JimiC) in [#1087](https://github.com/vscode-icons/vscode-icons/pull/1087))
