@@ -64,7 +64,7 @@
 - Enhancement: `zh-cn` translations improved. ([@g-plane](https://github.com/g-plane) in [#980](https://github.com/vscode-icons/vscode-icons/pull/980))
 - Feature: Support for `SBT`. ([@JimiC](https://github.com/JimiC) in [#979](https://github.com/vscode-icons/vscode-icons/pull/979))
 - Feature: New folder icons added. ([@JimiC](https://github.com/JimiC) in [#978](https://github.com/vscode-icons/vscode-icons/pull/978) & [#981](https://github.com/vscode-icons/vscode-icons/pull/981))
-- Feature: Support for `Game Maker`. ([@JimiC](https://github.com/JimiC) in [#971](https://github.com/vscode-icons/vscode-icons/pull/971))
+- Feature: Support for `Game Maker`. ([@JimiC](https://github.com/JimiC) in [#972](https://github.com/vscode-icons/vscode-icons/pull/972))
 - Feature: Support for `.sequelizerc`. ([@JimiC](https://github.com/JimiC) in [#971](https://github.com/vscode-icons/vscode-icons/pull/971))
 - Feature: Support for `tst`. ([@JimiC](https://github.com/JimiC) in [#968](https://github.com/vscode-icons/vscode-icons/pull/968))
 - Fix: Condition check for user configuration settings. ([@JimiC](https://github.com/JimiC) in [#967](https://github.com/vscode-icons/vscode-icons/pull/967))
