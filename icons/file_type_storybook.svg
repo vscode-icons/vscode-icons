@@ -1,0 +1,31 @@
+<svg width="760" height="760" viewBox="0 0 760 760" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>storybook-avatar</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="matrix(2 0 0 2 -3278 -374)">
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M 1639 187L 2019 187L 2019 567L 1639 567L 1639 187Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="storybook-avatar" clip-path="url(#clip-0)">
+<g id="Group">
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(1717 251.182)" fill="#B57EE5"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(1730.82 236.92)" fill="#F1618C"/>
+</g>
+<g id="Vector 2">
+<use xlink:href="#path2_fill" transform="translate(1874.92 237.938)" fill="#FFFFFF"/>
+</g>
+<g id="S">
+<use xlink:href="#path3_fill" transform="translate(1770.3 276.652)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 20.7273 250.617L 8.88312 0L 0 0L 8.88312 250.617L 20.7273 250.617Z"/>
+<path id="path1_fill" d="M 11.8442 264.879L 0 14.2627L 193.455 0L 193.455 274.048L 11.8442 264.879Z"/>
+<path id="path2_fill" d="M 0 36.6756L 1.97403 1.52815L 25.6623 0L 25.6623 36.6756L 13.9976 25.7841L 0 36.6756Z"/>
+<path id="path3_fill" d="M 74.64 65.28L 113.28 64.32C 114.24 26.88 94.8 8.40001 60.96 8.40001C 27.12 8.40001 8.16 27.6 8.16 56.4C 8.16 106.56 72.96 107.52 72.96 134.88C 72.96 142.56 69.36 147.12 61.44 147.12C 51.12 147.12 47.04 140.4 47.52 121.68L 6.96 121.68C 3.84 168 30.96 178.56 61.92 178.56C 91.92 178.56 115.44 164.64 115.44 134.4C 115.44 80.64 49.68 82.08 49.68 55.44C 49.68 44.64 57.36 43.2 61.92 43.2C 66.72 43.2 75.36 45.12 74.64 65.28Z"/>
+</defs>
+</svg>
