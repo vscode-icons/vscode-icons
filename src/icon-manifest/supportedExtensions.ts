@@ -483,6 +483,7 @@ export const extensions: IFileCollection = {
     { icon: 'yaml', extensions: ['yml'], light: true, languages: [languages.yaml, languages.textmateyaml], format: FileFormat.svg },
     { icon: 'yang', extensions: [], languages: [languages.yang], format: FileFormat.svg },
     { icon: 'yarn', extensions: ['yarn.lock', '.yarnrc', '.yarnclean', '.yarn-integrity', '.yarn-metadata.json', '.yarnignore'], filename: true, format: FileFormat.svg },
+    { icon: 'yeoman', extensions: ['.yo-rc.json'], filename: true, format: FileFormat.svg },
     { icon: 'zip', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'], format: FileFormat.svg },
     { icon: 'zip2', extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'], format: FileFormat.svg, disabled: true },
   ],
