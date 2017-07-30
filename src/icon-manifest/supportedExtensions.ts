@@ -69,8 +69,8 @@ export const extensions: IFileCollection = {
     { icon: 'autohotkey', extensions: [], languages: [languages.autohotkey], format: FileFormat.svg },
     { icon: 'autoit', extensions: [], languages: [languages.autoit], format: FileFormat.svg },
     { icon: 'aws', extensions: [], format: FileFormat.svg },
-    { icon: 'babel', extensions: ['.babelrc'], light: true, filename: true, format: FileFormat.svg },
-    { icon: 'babel2', extensions: ['.babelrc'], light: true, filename: true, format: FileFormat.svg, disabled: true },
+    { icon: 'babel', extensions: ['.babelrc', 'babelrc.js'], light: true, filename: true, format: FileFormat.svg },
+    { icon: 'babel2', extensions: ['.babelrc', 'babelrc.js'], light: true, filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'bat', extensions: [], languages: [languages.bat], format: FileFormat.svg },
     { // http://www.file-extensions.org/filetype/extension/name/binary-files
       icon: 'binary',
