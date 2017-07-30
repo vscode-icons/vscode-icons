@@ -69,7 +69,8 @@ export const extensions: IFileCollection = {
     { icon: 'autohotkey', extensions: [], languages: [languages.autohotkey], format: FileFormat.svg },
     { icon: 'autoit', extensions: [], languages: [languages.autoit], format: FileFormat.svg },
     { icon: 'aws', extensions: [], format: FileFormat.svg },
-    { icon: 'babel', extensions: ['.babelrc'], light: true, filename: true, format: FileFormat.svg },
+    { icon: 'babel', extensions: ['.babelrc', 'babelrc.js'], light: true, filename: true, format: FileFormat.svg },
+    { icon: 'babel2', extensions: ['.babelrc', 'babelrc.js'], light: true, filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'bat', extensions: [], languages: [languages.bat], format: FileFormat.svg },
     { // http://www.file-extensions.org/filetype/extension/name/binary-files
       icon: 'binary',
@@ -251,6 +252,7 @@ export const extensions: IFileCollection = {
     { icon: 'makefile', extensions: [], languages: [languages.makefile], format: FileFormat.svg },
     { icon: 'map', extensions: ['map'], format: FileFormat.svg },
     { icon: 'markdown', extensions: ['mdown', 'markdown'], languages: [languages.markdown], format: FileFormat.svg },
+    { icon: 'markdownlint', extensions: ['.markdownlint.json'], filename: true, format: FileFormat.svg },
     { icon: 'marko', extensions: [], languages: [languages.marko], format: FileFormat.svg },
     { icon: 'markojs', extensions: ['marko.js'], format: FileFormat.svg },
     { icon: 'matlab', extensions: ['fig', 'mex', 'mexn', 'mexrs6', 'mn', 'mum', 'mx', 'mx3', 'rwd', 'slx', 'slddc', 'smv', 'tikz', 'xvc'], languages: [languages.matlab], format: FileFormat.png },
