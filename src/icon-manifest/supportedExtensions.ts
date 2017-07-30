@@ -157,6 +157,8 @@ export const extensions: IFileCollection = {
     { icon: 'fsproj', extensions: ['fsproj'], format: FileFormat.svg },
     { icon: 'freemarker', extensions: [], languages: [languages.freemarker], format: FileFormat.svg },
     { icon: 'fusebox', extensions: ['fuse.js'], filename: true, format: FileFormat.svg },
+    { icon: 'galen', extensions: [], languages: [languages.galen], format: FileFormat.svg },
+    { icon: 'galen2', extensions: [], languages: [languages.galen], format: FileFormat.svg, disabled: true },
     { icon: 'git', extensions: ['.gitattributes', '.gitconfig', '.gitignore', '.gitmodules', '.gitkeep'], filename: true, languages: [languages.git], format: FileFormat.svg },
     { icon: 'gamemaker', extensions: ['gmx'], languages: [languages.gamemaker], format: FileFormat.svg },
     { icon: 'gamemaker2', extensions: ['yy', 'yyp'], light: true, languages: [languages.gamemaker2], format: FileFormat.svg },

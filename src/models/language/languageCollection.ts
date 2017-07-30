@@ -36,6 +36,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erlang: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
+  galen: ILanguage;
   gamemaker: ILanguage;
   gamemaker2: ILanguage;
   gamemaker81: ILanguage;

@@ -44,6 +44,7 @@ export const languages: ILanguageCollection = {
   fortran: { ids: ['fortran', 'fortran-modern'], defaultExtension: 'f' },
   freemarker: { ids: ['ftl'], defaultExtension: 'ftl' },
   fsharp: { ids: 'fsharp', defaultExtension: 'fs' },
+  galen: { ids: 'galen', defaultExtension: 'gspec' },
   gamemaker: { ids: 'gml-gms', defaultExtension: 'gml' },
   gamemaker2: { ids: 'gml-gms2', defaultExtension: 'gml' },
   gamemaker81: { ids: 'gml-gm81', defaultExtension: 'gml' },
