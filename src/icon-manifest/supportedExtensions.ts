@@ -252,6 +252,7 @@ export const extensions: IFileCollection = {
     { icon: 'makefile', extensions: [], languages: [languages.makefile], format: FileFormat.svg },
     { icon: 'map', extensions: ['map'], format: FileFormat.svg },
     { icon: 'markdown', extensions: ['mdown', 'markdown'], languages: [languages.markdown], format: FileFormat.svg },
+    { icon: 'markdownlint', extensions: ['.markdownlint.json'], filename: true, format: FileFormat.svg },
     { icon: 'marko', extensions: [], languages: [languages.marko], format: FileFormat.svg },
     { icon: 'markojs', extensions: ['marko.js'], format: FileFormat.svg },
     { icon: 'matlab', extensions: ['fig', 'mex', 'mexn', 'mexrs6', 'mn', 'mum', 'mx', 'mx3', 'rwd', 'slx', 'slddc', 'smv', 'tikz', 'xvc'], languages: [languages.matlab], format: FileFormat.png },
