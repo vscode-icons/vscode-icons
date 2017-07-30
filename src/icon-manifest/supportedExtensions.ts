@@ -351,6 +351,7 @@ export const extensions: IFileCollection = {
     { icon: 'stylelint', extensions: ['.stylelintrc', 'stylelint.config.js', '.stylelintignore'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'stylus', extensions: [], languages: [languages.stylus], format: FileFormat.svg },
     { icon: 'storyboard', extensions: ['storyboard'], format: FileFormat.svg },
+    { icon: 'storybook', extensions: ['story.js', 'stories.js'], format: FileFormat.svg },
     { icon: 'svg', extensions: ['svg'], format: FileFormat.svg },
     { icon: 'swagger', extensions: [], languages: [languages.swagger], format: FileFormat.svg },
     { icon: 'swift', extensions: ['package.pins'], filename: true, languages: [languages.swift], format: FileFormat.svg },
