@@ -9,7 +9,8 @@ import { activationCommand } from '../commands';
 const i18nManager = new LanguageResourceManager(vscode.env.language);
 
 export function manageWelcomeMessage(settingsManager: ISettingsManager): void {
-  if (!settingsManager.getState().welcomeShown) {
+  const themeName = getConfig().inspect(constants.vscode.iconThemeSetting).globalValue;
+  if (!settingsManager.getState().welcomeShown || themeName !== constants.extensionName) {
     showWelcomeMessage();
     return;
   }
