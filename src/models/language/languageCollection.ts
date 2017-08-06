@@ -8,6 +8,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   apache: ILanguage;
   apib: ILanguage;
   applescript: ILanguage;
+  arduino: ILanguage;
   asp: ILanguage;
   assembly: ILanguage;
   autohotkey: ILanguage;
