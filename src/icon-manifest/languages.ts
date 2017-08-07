@@ -7,7 +7,6 @@ export const languages: ILanguageCollection = {
   apache: { ids: ['apacheconf'], defaultExtension: 'htaccess' },
   apib: { ids: ['apiblueprint'], defaultExtension: 'apib' },
   applescript: { ids: ['applescript'], defaultExtension: 'applescript' },
-  arduino: { ids: ['arduino'], defaultExtension: 'asp' },
   asp: { ids: ['asp', 'asp (html)'], defaultExtension: 'asp' },
   assembly: { ids: ['arm'], defaultExtension: 'asm' },
   autohotkey: { ids: ['ahk'], defaultExtension: 'ahk' },
