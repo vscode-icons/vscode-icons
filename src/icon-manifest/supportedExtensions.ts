@@ -132,6 +132,8 @@ export const extensions: IFileCollection = {
     { icon: 'doxygen', extensions: [], languages: [languages.doxygen], format: FileFormat.svg },
     { icon: 'drone', extensions: ['.drone.yml', '.drone.yml.sig'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'editorconfig', extensions: ['.editorconfig'], filename: true, format: FileFormat.svg },
+    { icon: 'edge', extensions: [], languages: [languages.edge], format: FileFormat.svg },
+    { icon: 'edge2', extensions: [], languages: [languages.edge], format: FileFormat.svg, disabled: true },
     { icon: 'ejs', extensions: ['ejs'], format: FileFormat.svg },
     { icon: 'elasticbeanstalk', extensions: [], format: FileFormat.svg },
     { icon: 'elixir', extensions: [], languages: [languages.elixir], format: FileFormat.svg },
