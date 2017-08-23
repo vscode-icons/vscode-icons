@@ -49,6 +49,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
+  http: ILanguage;
   jinja: ILanguage;
   julia: ILanguage;
   kos: ILanguage;

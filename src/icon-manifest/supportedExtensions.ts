@@ -205,6 +205,7 @@ export const extensions: IFileCollection = {
     { icon: 'haxedevelop', extensions: ['hxproj'], format: FileFormat.svg },
     { icon: 'hlsl', extensions: [], languages: [languages.hlsl], format: FileFormat.svg },
     { icon: 'html', extensions: [], languages: [languages.html], format: FileFormat.svg },
+    { icon: 'http', extensions: [], languages: [languages.http], format: FileFormat.svg },
     { icon: 'idris', extensions: ['idr', 'lidr'], format: FileFormat.svg },
     { icon: 'idrisbin', extensions: ['ibc'], format: FileFormat.svg },
     { icon: 'idrispkg', extensions: ['ipkg'], format: FileFormat.svg },
