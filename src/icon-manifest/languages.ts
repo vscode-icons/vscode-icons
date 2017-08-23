@@ -11,6 +11,7 @@ export const languages: ILanguageCollection = {
   assembly: { ids: ['arm'], defaultExtension: 'asm' },
   autohotkey: { ids: ['ahk'], defaultExtension: 'ahk' },
   autoit: { ids: ['autoit'], defaultExtension: 'au3' },
+  avro: { ids: ['avro'], defaultExtension: 'avcs' },
   bat: { ids: 'bat', defaultExtension: 'bat' },
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
   bolt: { ids: ['bolt'], defaultExtension: 'bolt' },

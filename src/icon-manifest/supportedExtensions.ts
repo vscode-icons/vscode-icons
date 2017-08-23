@@ -68,6 +68,7 @@ export const extensions: IFileCollection = {
     { icon: 'aurelia', extensions: ['aurelia.json'], filename: true, format: FileFormat.svg },
     { icon: 'autohotkey', extensions: [], languages: [languages.autohotkey], format: FileFormat.svg },
     { icon: 'autoit', extensions: [], languages: [languages.autoit], format: FileFormat.svg },
+    { icon: 'avro', extensions: [], languages: [languages.avro], format: FileFormat.svg },
     { icon: 'aws', extensions: [], format: FileFormat.svg },
     { icon: 'babel', extensions: ['.babelrc', 'babelrc.js'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'babel2', extensions: ['.babelrc', 'babelrc.js'], light: true, filename: true, format: FileFormat.svg, disabled: true },
