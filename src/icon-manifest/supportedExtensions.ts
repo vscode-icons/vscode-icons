@@ -269,7 +269,7 @@ export const extensions: IFileCollection = {
     { icon: 'mustache', extensions: ['mustache', 'mst'], light: true, format: FileFormat.svg },
     { icon: 'nim', extensions: [], languages: [languages.nim], format: FileFormat.svg },
     { icon: 'njsproj', extensions: ['njsproj'], format: FileFormat.svg },
-    { icon: 'node', extensions: ['.nvmrc'], filename: true, format: FileFormat.svg },
+    { icon: 'node', extensions: ['.node-version', '.nvmrc'], filename: true, format: FileFormat.svg },
     { icon: 'node2', extensions: [], format: FileFormat.svg, disabled: true },
     { icon: 'npm', extensions: ['.npmignore', '.npmrc', 'package.json', 'package-lock.json'], filename: true, format: FileFormat.svg },
     { icon: 'nsi', extensions: [], languages: [languages.nsis], format: FileFormat.svg },
