@@ -30,6 +30,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   doxygen: ILanguage;
   dylanlang: ILanguage;
   dustjs: ILanguage;
+  edge: ILanguage;
   elixir: ILanguage;
   elm: ILanguage;
   erb: ILanguage;
@@ -49,6 +50,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
+  http: ILanguage;
   jinja: ILanguage;
   julia: ILanguage;
   kos: ILanguage;
