@@ -3,6 +3,7 @@ import { ILanguageCollection } from '../models';
 export const languages: ILanguageCollection = {
   actionscript: { ids: ['nextgenas'], defaultExtension: 'as' },
   ansible: { ids: ['ansible'], defaultExtension: 'ansible' },
+  antlr: { ids: ['antlr'], defaultExtension: 'g4' },
   anyscript: { ids: ['anyscript'], defaultExtension: 'any'},
   apache: { ids: ['apacheconf'], defaultExtension: 'htaccess' },
   apib: { ids: ['apiblueprint'], defaultExtension: 'apib' },
