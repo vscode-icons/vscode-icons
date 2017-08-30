@@ -385,6 +385,7 @@ export const extensions: IFileCollection = {
     { icon: 'vagrant', extensions: ['vagrantfile'], filename: true, format: FileFormat.svg },
     { icon: 'vash', extensions: ['vash'], light: true, format: FileFormat.svg },
     { icon: 'vb', extensions: [], languages: [languages.vb], format: FileFormat.svg },
+    { icon: 'vba', extensions: [], languages: [languages.vba], format: FileFormat.svg },
     { icon: 'vbhtml', extensions: ['vbhtml'], format: FileFormat.svg },
     { icon: 'vbproj', extensions: ['vbproj'], format: FileFormat.svg },
     { icon: 'vcxproj', extensions: ['vcxproj'], format: FileFormat.svg },
