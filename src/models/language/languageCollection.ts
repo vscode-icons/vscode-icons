@@ -13,6 +13,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   assembly: ILanguage;
   autohotkey: ILanguage;
   autoit: ILanguage;
+  avro: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
   cabal: ILanguage;
