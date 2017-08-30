@@ -3,6 +3,7 @@ import { ILanguageCollection } from '../models';
 export const languages: ILanguageCollection = {
   actionscript: { ids: ['nextgenas'], defaultExtension: 'as' },
   ansible: { ids: ['ansible'], defaultExtension: 'ansible' },
+  antlr: { ids: ['antlr'], defaultExtension: 'g4' },
   anyscript: { ids: ['anyscript'], defaultExtension: 'any'},
   apache: { ids: ['apacheconf'], defaultExtension: 'htaccess' },
   apib: { ids: ['apiblueprint'], defaultExtension: 'apib' },
@@ -37,6 +38,7 @@ export const languages: ILanguageCollection = {
   doxygen: { ids: 'doxygen', defaultExtension: 'dox' },
   dylanlang: { ids: ['dylan', 'dylan-lid'], defaultExtension: 'dylan' },
   dustjs: { ids: ['dustjs'], defaultExtension: 'dust' },
+  edge: { ids: ['edge'], defaultExtension: 'edge' },
   elixir: { ids: ['elixir', 'Eex', 'HTML (Eex)'], defaultExtension: 'ex' },
   elm: { ids: ['elm'], defaultExtension: 'elm' },
   erb: { ids: ['erb'], defaultExtension: 'erb' },
@@ -62,6 +64,7 @@ export const languages: ILanguageCollection = {
   haxe: { ids: ['haxe', 'hxml', 'Haxe AST dump'], defaultExtension: 'haxe' },
   hlsl: { ids: 'hlsl', defaultExtension: 'hlsl' },
   html: { ids: 'html', defaultExtension: 'html' },
+  http: { ids: 'http', defaultExtension: 'http' },
   ini: { ids: 'ini', defaultExtension: 'ini' },
   latex: { ids: ['latex'], defaultExtension: 'tex' },
   java: { ids: 'java', defaultExtension: 'java' },
