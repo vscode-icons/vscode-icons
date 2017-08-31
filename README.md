@@ -363,6 +363,15 @@ We're looking for people willing to help us translate the extension's messages i
 
 We're currently supporting `English`, `German`, `Italian`, `Russian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
 
+Special thanks to the following contributors for providing the translations:
+
+- French: [@MonsieurMan](https://github.com/MonsieurMan)
+- German: [@jens1o](https://github.com/jens1o)
+- Italian: [@mariotsi](https://github.com/mariotsi) [@sabinrimni](https://github.com/sabinrimni)
+- Russian: [@ksvitkovsky](https://github.com/ksvitkovsky)
+- Simplified Chinese: [@iFun](https://github.com/iFun) [@g-plane](https://github.com/g-plane)
+- Spanish: [@robertohuertasm](https://github.com/robertohuertasm)
+
 ## Building the extension's source code
 
 If you're willing to explore the extension source code and want to make it work you should run this:
