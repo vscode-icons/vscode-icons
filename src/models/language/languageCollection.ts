@@ -4,6 +4,7 @@ import { INativeLanguageCollection } from './nativeLanguageCollection';
 export interface ILanguageCollection extends INativeLanguageCollection {
   actionscript: ILanguage;
   ansible: ILanguage;
+  antlr: ILanguage;
   anyscript: ILanguage;
   apache: ILanguage;
   apib: ILanguage;
@@ -12,6 +13,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   assembly: ILanguage;
   autohotkey: ILanguage;
   autoit: ILanguage;
+  avro: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
   cabal: ILanguage;
@@ -30,6 +32,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   doxygen: ILanguage;
   dylanlang: ILanguage;
   dustjs: ILanguage;
+  edge: ILanguage;
   elixir: ILanguage;
   elm: ILanguage;
   erb: ILanguage;
@@ -49,6 +52,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
+  http: ILanguage;
   jinja: ILanguage;
   julia: ILanguage;
   kos: ILanguage;
