@@ -23,8 +23,8 @@
   "configuration.customIconFolderPath.description": "Il percorso fisico alla cartella padre, dove la cartella delle icone personalizzate risiede sulla macchina locale.",
   "configuration.associations.files.description": "Queste associazioni personalizzate sovrascriveranno le associazioni delle icone per file predefinite.",
   "configuration.associations.folders.description": "Queste associazioni personalizzate sovrascriveranno le associazioni delle icone per cartelle predefinite.",
-  "configuration.associations.fileDefault.file.description": "Questa impostazione ti premetterà di cambiare l'icona oscura per file predefinita.",
-  "configuration.associations.fileDefault.file_light.description": "Questa impostazione ti premetterà di cambiare l'icona chiara per file predefinita.",
-  "configuration.associations.folderDefault.folder.description": "Questa impostazione ti premetterà di cambiare l'icona oscura per cartelle predefinita.",
-  "configuration.associations.folderDefault.folder_light.description": "Questa impostazione ti premetterà di cambiare l'icona chiara per cartelle predefinita."
+  "configuration.associations.fileDefault.file.description": "Questa impostazione ti permette di cambiare l'icona predefinita per i file nei temi scuri.",
+  "configuration.associations.fileDefault.file_light.description": "Questa impostazione ti permette di cambiare l'icona predefinita per i file nei temi chiari.",
+  "configuration.associations.folderDefault.folder.description": "Questa impostazione ti permette di cambiare l'icona predefinita per le cartelle nei temi scuri.",
+  "configuration.associations.folderDefault.folder_light.description": "Questa impostazione ti permette di cambiare l'icona predefinita per le cartelle nei temi chiari."
 }
