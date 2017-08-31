@@ -23,8 +23,8 @@
   "configuration.customIconFolderPath.description": "Le chemin du dossier contenant les icônes personnalisées sur votre ordinateur.",
   "configuration.associations.files.description": "Associations personnalisées pour les icônes de fichier. (Ecrase les associations par défaut)",
   "configuration.associations.folders.description": "Associations personnalisées pour les icônes de dossier. (Ecrase les associations par défaut)",
-  "configuration.associations.fileDefault.file.description": "Définir l'icône de fichier sombre par défaut.",
-  "configuration.associations.fileDefault.file_light.description": "Définir l'icône de fichier clair par défaut.",
-  "configuration.associations.folderDefault.folder.description": "Définir l'icône de dossier sombre par défaut.",
-  "configuration.associations.folderDefault.folder_light.description": "Définir l'icône de dossier clair par défaut."
+  "configuration.associations.fileDefault.file.description": "Définir l'icône de fichier par défaut pour le thème sombre.",
+  "configuration.associations.fileDefault.file_light.description": "Définir l'icône de fichier par défaut pour le thème clair.",
+  "configuration.associations.folderDefault.folder.description": "Définir l'icône de dossier par défaut pour le thème sombre.",
+  "configuration.associations.folderDefault.folder_light.description": "Définir l'icône de dossier par défaut pour le thème clair."
 }
