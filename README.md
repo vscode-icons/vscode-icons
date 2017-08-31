@@ -361,7 +361,7 @@ The above syntax will create examples for all supported files and folders.
 
 We're looking for people willing to help us translate the extension's messages into [all the languages that `vscode` supports](https://code.visualstudio.com/docs/customization/locales).
 
-We're currently supporting `English`, `German`, `Italian`, `Russian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
+We're currently supporting `English`, `French`, `German`, `Italian`, `Russian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
 
 Special thanks to the following contributors for providing the translations:
 
