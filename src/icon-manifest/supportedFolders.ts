@@ -67,7 +67,9 @@ export const extensions: IFolderCollection = {
     { icon: 'view', extensions: ['html', 'view', 'views'], format: FileFormat.svg },
     { icon: 'vs', extensions: ['.vs'], format: FileFormat.svg },
     { icon: 'vscode', extensions: ['.vscode'], format: FileFormat.svg },
+    { icon: 'vscode2', extensions: ['.vscode'], format: FileFormat.svg, disabled: true },
     { icon: 'vscode_test', extensions: ['.vscode-test'], format: FileFormat.svg },
+    { icon: 'vscode_test2', extensions: ['.vscode-test'], format: FileFormat.svg, disabled: true },
     { icon: 'webpack', extensions: ['webpack'], format: FileFormat.svg },
   ],
 };
