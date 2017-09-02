@@ -280,6 +280,7 @@ export const extensions: IFileCollection = {
     { icon: 'ocaml', extensions: ['.merlin'], filename: true, languages: [languages.ocaml], format: FileFormat.svg },
     { icon: 'onenote', extensions: ['one', 'onepkg', 'onetoc', 'onetoc2', 'sig'], format: FileFormat.svg },
     { icon: 'opencl', extensions: ['cl', 'opencl'], format: FileFormat.svg },
+    { icon: 'openHAB', extensions: [], languages: [languages.openHAB], format: FileFormat.svg },
     { icon: 'org', extensions: ['org'], format: FileFormat.svg },
     { icon: 'outlook', extensions: ['pst', 'bcmx', 'otm', 'msg', 'oft'], format: FileFormat.svg },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
