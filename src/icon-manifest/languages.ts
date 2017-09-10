@@ -96,6 +96,7 @@ export const languages: ILanguageCollection = {
   objectivecpp: { ids: 'objective-cpp', defaultExtension: 'mm' },
   ocaml: { ids: ['ocaml', 'ocamllex', 'menhir'], defaultExtension: 'ml' },
   openEdge: { ids: ['abl'], defaultExtension: 'w' },
+  openHAB: { ids: ['openhab'], defaultExtension: 'things' },
   pascal: { ids: ['pascal', 'objectpascal'], defaultExtension: 'pas' },
   perl: { ids: ['perl'], defaultExtension: 'pl' },
   perl6: { ids: ['perl6'], defaultExtension: 'pl6' },
