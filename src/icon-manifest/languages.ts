@@ -2,6 +2,7 @@ import { ILanguageCollection } from '../models';
 
 export const languages: ILanguageCollection = {
   actionscript: { ids: ['nextgenas'], defaultExtension: 'as' },
+  al: { ids: ['al'], defaultExtension: 'al' },
   ansible: { ids: ['ansible'], defaultExtension: 'ansible' },
   antlr: { ids: ['antlr'], defaultExtension: 'g4' },
   anyscript: { ids: ['anyscript'], defaultExtension: 'any'},
@@ -17,6 +18,7 @@ export const languages: ILanguageCollection = {
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
   bolt: { ids: ['bolt'], defaultExtension: 'bolt' },
   c: { ids: 'c', defaultExtension: 'c' },
+  c_al: { ids: ['c-al'], defaultExtension: 'cal' },
   cabal: { ids: ['cabal'], defaultExtension: 'cabal' },
   cake: { ids: ['cake'], defaultExtension: 'cake' },
   cfc: { ids: ['cfc'], defaultExtension: 'cfc' },
@@ -32,6 +34,7 @@ export const languages: ILanguageCollection = {
   csharp: { ids: ['csharp'], defaultExtension: 'cs' },
   css: { ids: 'css', defaultExtension: 'css' },
   cucumber: { ids: ['feature'], defaultExtension: 'feature' },
+  dal: { ids: ['dal'], defaultExtension: 'dal' },
   dart: { ids: ['dart'], defaultExtension: 'dart' },
   diff: { ids: 'diff', defaultExtension: 'diff' },
   dlang: { ids: ['d', 'dscript', 'dml', 'sdl', 'diet'], defaultExtension: 'd' },
@@ -93,6 +96,7 @@ export const languages: ILanguageCollection = {
   objectivecpp: { ids: 'objective-cpp', defaultExtension: 'mm' },
   ocaml: { ids: ['ocaml', 'ocamllex', 'menhir'], defaultExtension: 'ml' },
   openEdge: { ids: ['abl'], defaultExtension: 'w' },
+  openHAB: { ids: ['openhab'], defaultExtension: 'things' },
   pascal: { ids: ['pascal', 'objectpascal'], defaultExtension: 'pas' },
   perl: { ids: ['perl'], defaultExtension: 'pl' },
   perl6: { ids: ['perl6'], defaultExtension: 'pl6' },

@@ -3,6 +3,7 @@ import { INativeLanguageCollection } from './nativeLanguageCollection';
 
 export interface ILanguageCollection extends INativeLanguageCollection {
   actionscript: ILanguage;
+  al: ILanguage;
   ansible: ILanguage;
   antlr: ILanguage;
   anyscript: ILanguage;
@@ -16,6 +17,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   avro: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
+  c_al: ILanguage;
   cabal: ILanguage;
   cake: ILanguage;
   cfc: ILanguage;
@@ -27,6 +29,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   crystal: ILanguage;
   csharp: ILanguage;
   cucumber: ILanguage;
+  dal: ILanguage;
   dart: ILanguage;
   dlang: ILanguage;
   doxygen: ILanguage;
@@ -69,6 +72,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   nunjucks: ILanguage;
   ocaml: ILanguage;
   openEdge: ILanguage;
+  openHAB: ILanguage;
   pascal: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;
