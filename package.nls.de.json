@@ -23,8 +23,8 @@
   "configuration.customIconFolderPath.description": "Der absolute Pfad zu dem Oberverzeichnis wo die benutzerdefinierten Icons in einem Unterordner liegen.",
   "configuration.associations.files.description": "Diese benutzerdefinierten Datei-Icon-Zuweisungen werden die standardmäßigen Zuweisungen überschreiben.",
   "configuration.associations.folders.description": "Diese benutzerdefinierten Ordner-Icon-Zuweisungen werden die standardmäßigen Zuweisungen überschreiben.",
-  "configuration.associations.fileDefault.file.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, dunkleres Datei-Icon zuzuweisen.",
-  "configuration.associations.fileDefault.file_light.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, helleres Datei-Icon zuzuweisen.",
-  "configuration.associations.folderDefault.folder.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, dunkleres Ordner-Icon zuzuweisen.",
-  "configuration.associations.folderDefault.folder_light.description": "Mittels dieser Einstellung ist es dir möglich, ein anderes standardmäßiges, helleres Ordner-Icon zu benutzen."
+  "configuration.associations.fileDefault.file.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes Datei-Icon für dunkle Themes zu verwenden.",
+  "configuration.associations.fileDefault.file_light.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes Datei-Icon für helle Themes zu verwenden.",
+  "configuration.associations.folderDefault.folder.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes Ordner-Icon für dunkle Themes zu verwenden.",
+  "configuration.associations.folderDefault.folder_light.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes Ordner-Icon für helle Themes zu verwenden."
 }
