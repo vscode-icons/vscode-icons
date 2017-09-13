@@ -126,8 +126,8 @@ describe('ApplyCustomizations: tests', function () {
       function () {
         const spy = sinon.spy();
         userConfig.associations.files = [
-          { icon: "js", extensions: ["myExt1", "myExt2.custom.js"], format: "svg" },
-          { icon: "js2", extensions: ["myExt1", "myExt2.custom.js"], format: "svg" },
+          { icon: 'js', extensions: ['myExt1', 'myExt2.custom.js'], format: 'svg' },
+          { icon: 'js2', extensions: ['myExt1', 'myExt2.custom.js'], format: 'svg' },
         ];
         const initConfig = JSON.parse(JSON.stringify(userConfig));
         userConfig.associations.files.reverse();

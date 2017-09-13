@@ -2,7 +2,7 @@
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
 import * as helper from '../../src/commands/helper';
-import { IIconSchema } from "../../src/models/index";
+import { IIconSchema } from '../../src/models/index';
 
 describe('Helper: tests', function () {
 

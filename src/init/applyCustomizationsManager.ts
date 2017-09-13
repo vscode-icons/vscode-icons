@@ -29,7 +29,7 @@ function configChanged(prevConfig, currentConfig) {
     if (!key.includes('presets') && !key.includes('associations')) {
       continue;
     }
-    const oldValue = Object.prototype.toString.call(prevConfig[key]) === "[object Object]" &&
+    const oldValue = Object.prototype.toString.call(prevConfig[key]) === '[object Object]' &&
       Reflect.has(prevConfig[key], 'default')
       ? prevConfig[key].default
       : prevConfig[key];
