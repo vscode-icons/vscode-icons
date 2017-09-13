@@ -5,31 +5,30 @@ import * as path from 'path';
 import { expect } from 'chai';
 import { extensions as fileExtensions } from '../support/supportedExtensions';
 import { extensions as folderExtensions } from '../support/supportedFolders';
-import { vscode } from '../../src/utils';
 import { extensionSettings } from '../../src/settings';
 import { IconGenerator, mergeConfig, schema } from '../../src/icon-manifest';
 import { IFileCollection, IFolderCollection } from '../../src/models';
-import { createDirectoryRecursively, deleteDirectoryRecursively, tempPath } from '../../src/utils';
+import * as utils from '../../src/utils';
 
 describe('DefaultExtensions: merging configuration documents', function () {
 
-  const tempFolderPath = tempPath();
+  const tempFolderPath = utils.tempPath();
 
   before(() => {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
 
-    createDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.createDirectoryRecursively(extensionSettings.customIconFolderName);
   });
 
   after(() => {
-    deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.deleteDirectoryRecursively(extensionSettings.customIconFolderName);
   });
 
   let iconGenerator: IconGenerator;
 
   beforeEach(() => {
-    iconGenerator = new IconGenerator(vscode, schema);
+    iconGenerator = new IconGenerator(utils.vscode, schema);
     iconGenerator.settings.vscodeAppData = tempFolderPath;
   });
 
