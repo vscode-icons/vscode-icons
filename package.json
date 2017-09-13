@@ -216,7 +216,7 @@
         "precompile": "rimraf ./out",
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
-        "lint": "tslint --project tsconfig.json --type-check true",
+        "lint": "tslint --project tsconfig.json --type-check",
         "example": "node ./out/src/example/example.js ",
         "analysis": "bithound check git@github.com:vscode-icons/vscode-icons.git"
     },
