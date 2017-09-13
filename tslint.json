@@ -13,7 +13,9 @@
       "allow-pascal-case",
       "allow-leading-underscore"
     ],
-    "no-submodule-imports": false,
+    "no-submodule-imports": [
+      true, "vscode"
+    ],
     "space-before-function-paren": [
       true,
       {
