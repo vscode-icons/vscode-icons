@@ -11,7 +11,7 @@
 // a possible error to the callback or null if none.
 
 // const testRunner = require('vscode/lib/testrunner');
-// tslint:disable-next-line:no-submodule-imports
+
 import * as testRunner from 'vscode/lib/testrunner';
 
 // You can directly control Mocha options by uncommenting the following lines

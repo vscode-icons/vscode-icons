@@ -130,7 +130,7 @@ describe('SettingsManager: tests', function () {
     it('the settings status gets updated',
       function () {
         const stateMock: IState = {
-          version: "1.0.0",
+          version: '1.0.0',
           status: ExtensionStatus.notActivated,
           welcomeShown: false,
         };
@@ -155,7 +155,7 @@ describe('SettingsManager: tests', function () {
       it('returns the state from the settings file',
         function () {
           const stateMock: IState = {
-            version: "1.0.0",
+            version: '1.0.0',
             status: ExtensionStatus.enabled,
             welcomeShown: true,
           };
@@ -201,7 +201,7 @@ describe('SettingsManager: tests', function () {
       it('truthy for a new extension version',
         function () {
           const stateMock: IState = {
-            version: "1.0.0",
+            version: '1.0.0',
             status: ExtensionStatus.notActivated,
             welcomeShown: true,
           };
@@ -227,7 +227,7 @@ describe('SettingsManager: tests', function () {
       it('falsy for an older extension version',
         function () {
           const stateMock: IState = {
-            version: "100.0.0",
+            version: '100.0.0',
             status: ExtensionStatus.notActivated,
             welcomeShown: true,
           };
