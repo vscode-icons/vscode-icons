@@ -4,7 +4,7 @@
   ],
   "rules": {
     "quotemark": [
-      "single"
+      true, "single"
     ],
     "variable-name": [
       true,
@@ -12,6 +12,9 @@
       "check-format",
       "allow-pascal-case",
       "allow-leading-underscore"
+    ],
+    "no-submodule-imports": [
+      true, "vscode"
     ],
     "space-before-function-paren": [
       true,
