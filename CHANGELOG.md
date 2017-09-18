@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.13.0 (September 17, 2017)
+## 7.13.0 (September 18, 2017)
 
 - Fix: Fixed `tslint` configuration. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1169](https://github.com/vscode-icons/vscode-icons/pull/1169))
 - Enhancement: Updated project dependencies. ([@JimiC](https://github.com/JimiC) in [#1167](https://github.com/vscode-icons/vscode-icons/pull/1167))
