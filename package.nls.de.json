@@ -26,7 +26,7 @@
   "configuration.associations.fileDefault.file.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes Datei-Icon für dunkle Themes zu verwenden.",
   "configuration.associations.fileDefault.file_light.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes Datei-Icon für helle Themes zu verwenden.",
   "configuration.associations.folderDefault.folder.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes Ordner-Icon für dunkle Themes zu verwenden.",
-  "configuration.associations.folderDefault.root_folder.description": "",
+  "configuration.associations.folderDefault.root_folder.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes dunkles Ordner-Icon für Wurzelverzeichnisse festzulegen.",
   "configuration.associations.folderDefault.folder_light.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes Ordner-Icon für helle Themes zu verwenden.",
-  "configuration.associations.folderDefault.root_folder_light.description": ""
+  "configuration.associations.folderDefault.root_folder_light.description": "Diese Einstellung macht es dir möglich, ein benutzerdefiniertes helles Ordner-Icon für Wurzelverzeichnisse festzulegen."
 }
