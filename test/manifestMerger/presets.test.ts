@@ -12,9 +12,9 @@ describe('Presets: merging configuration documents', function () {
     let custom: any;
     beforeEach(() => {
       custom = {
-          default: null,
-          supported: [],
-        };
+        default: null,
+        supported: [],
+      };
     });
 
     it('all angular extensions get disabled',
@@ -58,10 +58,10 @@ describe('Presets: merging configuration documents', function () {
     it('all angular extensions are disabled even if duplicity is present',
       function () {
         custom.supported.push(
-            { icon: 'ng_routing_ts', extensions: ['routing.ts'], format: 'svg' },
-            { icon: 'ng_routing_js', extensions: ['routing.js'], format: 'svg' },
-            { icon: 'ng_routing_ts', extensions: ['app-routing.module.ts'], filename: true, format: 'svg' },
-            { icon: 'ng_routing_js', extensions: ['app-routing.module.js'], filename: true, format: 'svg' });
+          { icon: 'ng_routing_ts', extensions: ['routing.ts'], format: 'svg' },
+          { icon: 'ng_routing_js', extensions: ['routing.js'], format: 'svg' },
+          { icon: 'ng_routing_ts', extensions: ['app-routing.module.ts'], filename: true, format: 'svg' },
+          { icon: 'ng_routing_js', extensions: ['app-routing.module.js'], filename: true, format: 'svg' });
         const result = iconManifest.toggleAngularPreset(true, custom);
         const ngGroup = result.supported.filter(x => x.icon.startsWith('ng_') && x.disabled);
         expect(ngGroup.length).to.equals(4);
@@ -159,85 +159,113 @@ describe('Presets: merging configuration documents', function () {
         expect(unofficial.disabled).to.be.false;
       });
 
-    it('hide folders preset hides all folders',
-      function () {
-        folderExtensions.default.folder_light = { icon: 'folderIconLight', format: 'svg' };
-        const result = iconManifest.toggleHideFoldersPreset(true, folderExtensions);
-        const supported = result.supported.find(x => x.icon === 'aws');
-        expect(supported.disabled).to.be.true;
-        expect(result.default.folder.disabled).to.be.true;
-        expect(result.default.folder_light.disabled).to.be.true;
-      });
+    context('hide folders preset', function () {
 
-    it('hide folders preset toggling forth and back is working properly',
-      function () {
-        folderExtensions.default.folder_light = { icon: 'folderIconLight', format: 'svg' };
-        let result;
-        let supported;
-        const toggle = (disable: boolean) => {
-          result = iconManifest.toggleHideFoldersPreset(disable, folderExtensions);
-          supported = result.supported.find(x => x.icon === 'aws');
-        };
-        toggle(true);
-        expect(supported.disabled).to.be.true;
-        expect(result.default.folder.disabled).to.be.true;
-        expect(result.default.folder_light.disabled).to.be.true;
-        toggle(false);
-        expect(supported.disabled).to.be.false;
-        expect(result.default.folder.disabled).to.be.false;
-        expect(result.default.folder_light.disabled).to.be.false;
-      });
+      it('hides all folders',
+        function () {
+          folderExtensions.default.folder_light = { icon: 'folderIconLight', format: 'svg' };
+          folderExtensions.default.root_folder_light = { icon: 'rootFolderIconLight', format: 'svg' };
+          const result = iconManifest.toggleHideFoldersPreset(true, folderExtensions);
+          const supported = result.supported.find(x => x.icon === 'aws');
+          expect(supported.disabled).to.be.true;
+          expect(result.default.folder.disabled).to.be.true;
+          expect(result.default.folder_light.disabled).to.be.true;
+          expect(result.default.root_folder.disabled).to.be.true;
+          expect(result.default.root_folder_light.disabled).to.be.true;
+        });
 
-    it('hide folders preset hides all folders even custom ones',
-      function () {
-        custom.default = { folder: null, folder_light: null };
-        custom.supported.push({ icon: 'newExt', extensions: ['aws'], format: 'svg' });
-        const result = iconManifest.toggleHideFoldersPreset(true, custom);
-        const supported = result.supported.find(x => x.icon === 'newExt');
-        expect(supported.disabled).to.be.true;
-        expect(result.default.folder).to.be.null;
-        expect(result.default.folder_light).to.be.null;
-      });
+      it('toggling forth and back is working properly',
+        function () {
+          folderExtensions.default.folder_light = { icon: 'folderIconLight', format: 'svg' };
+          folderExtensions.default.root_folder_light = { icon: 'rootFolderIconLight', format: 'svg' };
+          let result;
+          let supported;
+          const toggle = (disable: boolean) => {
+            result = iconManifest.toggleHideFoldersPreset(disable, folderExtensions);
+            supported = result.supported.find(x => x.icon === 'aws');
+          };
+          toggle(true);
+          expect(supported.disabled).to.be.true;
+          expect(result.default.folder.disabled).to.be.true;
+          expect(result.default.folder_light.disabled).to.be.true;
+          expect(result.default.root_folder.disabled).to.be.true;
+          expect(result.default.root_folder_light.disabled).to.be.true;
+          toggle(false);
+          expect(supported.disabled).to.be.false;
+          expect(result.default.folder.disabled).to.be.false;
+          expect(result.default.folder_light.disabled).to.be.false;
+          expect(result.default.root_folder.disabled).to.be.false;
+          expect(result.default.root_folder_light.disabled).to.be.false;
+        });
 
-    it('folders all default icon preset shows all folders with the default folder icon',
-      function () {
-        folderExtensions.default.folder_light = { icon: 'folderIconLight', format: 'svg' };
-        const result = iconManifest.toggleFoldersAllDefaultIconPreset(true, folderExtensions);
-        const supported = result.supported.find(x => x.icon === 'aws');
-        expect(supported.disabled).to.be.true;
-        expect(result.default.folder.disabled).to.be.false;
-        expect(result.default.folder_light.disabled).to.be.false;
-      });
+      it('hides all folders even custom ones',
+        function () {
+          custom.default = { folder: null, folder_light: null, root_folder: null, root_folder_light: null };
+          custom.supported.push({ icon: 'newExt', extensions: ['aws'], format: 'svg' });
+          const result = iconManifest.toggleHideFoldersPreset(true, custom);
+          const supported = result.supported.find(x => x.icon === 'newExt');
+          expect(supported.disabled).to.be.true;
+          expect(result.default.folder).to.be.null;
+          expect(result.default.folder_light).to.be.null;
+          expect(result.default.root_folder).to.be.null;
+          expect(result.default.root_folder_light).to.be.null;
+        });
+    });
 
-    it('folders all default icon preset toggling forth and back is working properly',
-      function () {
-        folderExtensions.default.folder_light = { icon: 'folderIconLight', format: 'svg' };
-        let result;
-        let supported;
-        const toggle = (disable: boolean) => {
-          result = iconManifest.toggleFoldersAllDefaultIconPreset(disable, folderExtensions);
-          supported = result.supported.find(x => x.icon === 'aws');
-        };
-        toggle(true);
-        expect(supported.disabled).to.be.true;
-        expect(result.default.folder.disabled).to.be.false;
-        expect(result.default.folder_light.disabled).to.be.false;
-        toggle(false);
-        expect(supported.disabled).to.be.false;
-        expect(result.default.folder.disabled).to.be.false;
-        expect(result.default.folder_light.disabled).to.be.false;
-      });
+    context('folders all default icon preset', function () {
 
-    it('folders all default icon preset shows all folders with the default folder icon even custom ones',
-      function () {
-        custom.default = { folder: null, folder_light: null };
-        custom.supported.push({ icon: 'newExt', extensions: ['aws'], format: 'svg' });
-        const result = iconManifest.toggleFoldersAllDefaultIconPreset(true, custom);
-        const supported = result.supported.find(x => x.icon === 'newExt');
-        expect(supported.disabled).to.be.true;
-        expect(result.default.folder).to.be.null;
-        expect(result.default.folder_light).to.be.null;
-      });
+      it('shows all folders with the default folder icon',
+        function () {
+          folderExtensions.default.folder_light = { icon: 'folderIconLight', format: 'svg' };
+          folderExtensions.default.root_folder_light = { icon: 'rootFolderIconLight', format: 'svg' };
+          const result = iconManifest.toggleFoldersAllDefaultIconPreset(true, folderExtensions);
+          const supported = result.supported.find(x => x.icon === 'aws');
+          expect(supported.disabled).to.be.true;
+          expect(result.default.root_folder.disabled).to.be.false;
+          expect(result.default.root_folder_light.disabled).to.be.false;
+          expect(result.default.folder.disabled).to.be.false;
+          expect(result.default.folder_light.disabled).to.be.false;
+        });
+
+      it('toggling forth and back is working properly',
+        function () {
+          folderExtensions.default.folder_light = { icon: 'folderIconLight', format: 'svg' };
+          folderExtensions.default.root_folder_light = { icon: 'rootFolderIconLight', format: 'svg' };
+          let result;
+          let supported;
+          const toggle = (disable: boolean) => {
+            result = iconManifest.toggleFoldersAllDefaultIconPreset(disable, folderExtensions);
+            supported = result.supported.find(x => x.icon === 'aws');
+          };
+          toggle(true);
+          expect(supported.disabled).to.be.true;
+          expect(result.default.root_folder.disabled).to.be.false;
+          expect(result.default.root_folder_light.disabled).to.be.false;
+          expect(result.default.folder.disabled).to.be.false;
+          expect(result.default.folder_light.disabled).to.be.false;
+
+          toggle(false);
+          expect(supported.disabled).to.be.false;
+          expect(result.default.root_folder.disabled).to.be.false;
+          expect(result.default.root_folder_light.disabled).to.be.false;
+          expect(result.default.folder.disabled).to.be.false;
+          expect(result.default.folder_light.disabled).to.be.false;
+        });
+
+      it('shows all folders with the default folder icon even custom ones',
+        function () {
+          custom.default = { folder: null, folder_light: null, root_folder: null, root_folder_light: null };
+          custom.supported.push({ icon: 'newExt', extensions: ['aws'], format: 'svg' });
+          const result = iconManifest.toggleFoldersAllDefaultIconPreset(true, custom);
+          const supported = result.supported.find(x => x.icon === 'newExt');
+          expect(supported.disabled).to.be.true;
+          expect(result.default.folder).to.be.null;
+          expect(result.default.folder_light).to.be.null;
+          expect(result.default.root_folder).to.be.null;
+          expect(result.default.root_folder_light).to.be.null;
+        });
+
+    });
 
   });
 

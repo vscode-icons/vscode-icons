@@ -4,6 +4,7 @@ import { FileFormat, IFolderCollection } from '../models';
 export const extensions: IFolderCollection = {
   default: {
     folder: { icon: 'folder', format: FileFormat.svg },
+    root_folder: { icon: 'root_folder', format: FileFormat.svg },
   },
   supported: [
     { icon: 'aurelia', extensions: ['aurelia_project'], format: FileFormat.svg },

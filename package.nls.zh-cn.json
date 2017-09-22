@@ -26,5 +26,7 @@
   "configuration.associations.fileDefault.file.description": "这项设置会更改深色主题默认的文件图标",
   "configuration.associations.fileDefault.file_light.description": "这项设置会更改浅色主题默认的文件图标",
   "configuration.associations.folderDefault.folder.description": "这项设置会更改深色主题默认的文件夹图标",
-  "configuration.associations.folderDefault.folder_light.description": "这项设置会更改浅色主题默认的文件夹图标"
+  "configuration.associations.folderDefault.root_folder.description": "",
+  "configuration.associations.folderDefault.folder_light.description": "这项设置会更改浅色主题默认的文件夹图标",
+  "configuration.associations.folderDefault.root_folder_light.description": ""
 }

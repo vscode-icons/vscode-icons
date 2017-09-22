@@ -23,13 +23,48 @@ export class IconGenerator implements models.IIconGenerator {
     // relative to this file
     this.iconsFolderPath = path.join(__dirname, '../../../', 'icons');
     this.manifestFolderPath = path.join(__dirname, '../../../', 'out/src');
+    this.iconsFolderBasePath = utils.getRelativePath(this.manifestFolderPath, this.iconsFolderPath);
   }
 
   public generateJson(
     files: models.IFileCollection,
     folders: models.IFolderCollection): models.IIconSchema {
-    this.iconsFolderBasePath = utils.getRelativePath(this.manifestFolderPath, this.iconsFolderPath);
-    return this.fillDefaultSchema(files, folders, this.defaultSchema);
+    const schema = _.cloneDeep(this.defaultSchema);
+    const defs = schema.iconDefinitions;
+
+    // set default icons for dark theme
+    defs._file.iconPath =
+      this.buildDefaultIconPath(files.default.file, defs._file, false);
+    defs._folder.iconPath =
+      this.buildDefaultIconPath(folders.default.folder, defs._folder, false);
+    defs._folder_open.iconPath =
+      this.buildDefaultIconPath(folders.default.folder, defs._folder_open, true);
+    defs._root_folder.iconPath =
+      this.buildDefaultIconPath(folders.default.root_folder, defs._root_folder, false);
+    defs._root_folder_open.iconPath =
+      this.buildDefaultIconPath(folders.default.root_folder, defs._root_folder_open, true);
+
+    // set default icons for light theme
+    // default file and folder related icon paths if not set,
+    // inherit their icons from dark theme.
+    // The icon paths should not be set unless there is a specific icon for them.
+    // If the icon paths get set then they override the dark theme section
+    // and light icons definitions have to be specified for each extension
+    // and populate the light section, otherwise they inherit from dark theme
+    // and only those in 'light' section get overriden.
+    defs._file_light.iconPath =
+      this.buildDefaultIconPath(files.default.file_light, defs._file_light, false);
+    defs._folder_light.iconPath =
+      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light, false);
+    defs._folder_light_open.iconPath =
+      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light_open, true);
+    defs._root_folder_light.iconPath =
+      this.buildDefaultIconPath(folders.default.root_folder_light, defs._root_folder_light, false);
+    defs._root_folder_light_open.iconPath =
+      this.buildDefaultIconPath(folders.default.root_folder_light, defs._root_folder_light_open, true);
+
+    // set the rest of the schema
+    return this.buildJsonStructure(files, folders, schema);
   }
 
   public persist(
@@ -276,37 +311,6 @@ export class IconGenerator implements models.IIconGenerator {
     const fPath = this.getIconPath(filename);
 
     return utils.pathUnixJoin(fPath, filename);
-  }
-
-  private fillDefaultSchema(
-    files: models.IFileCollection,
-    folders: models.IFolderCollection,
-    defaultSchema: models.IIconSchema): models.IIconSchema {
-    const schema = _.cloneDeep(defaultSchema);
-    const defs = schema.iconDefinitions;
-    // set default icons for dark theme
-    defs._file.iconPath =
-      this.buildDefaultIconPath(files.default.file, defs._file, false);
-    defs._folder.iconPath =
-      this.buildDefaultIconPath(folders.default.folder, defs._folder, false);
-    defs._folder_open.iconPath =
-      this.buildDefaultIconPath(folders.default.folder, defs._folder_open, true);
-    // set default icons for light theme
-    // default file and folder related icon paths if not set,
-    // inherit their icons from dark theme.
-    // The icon paths should not be set unless there is a specific icon for them.
-    // If the icon paths get set then they override the dark theme section
-    // and light icons definitions have to be specified for each extension
-    // and populate the light section, otherwise they inherit from dark theme
-    // and only those in 'light' section get overriden.
-    defs._file_light.iconPath =
-      this.buildDefaultIconPath(files.default.file_light, defs._file_light, false);
-    defs._folder_light.iconPath =
-      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light, false);
-    defs._folder_light_open.iconPath =
-      this.buildDefaultIconPath(folders.default.folder_light, defs._folder_light_open, true);
-    // set the rest of the schema
-    return this.buildJsonStructure(files, folders, schema);
   }
 
   private buildJsonStructure(

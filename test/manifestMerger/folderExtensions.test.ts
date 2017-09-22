@@ -294,6 +294,7 @@ describe('FolderExtensions: merging configuration documents', function () {
         });
 
     });
+
   });
 
 });

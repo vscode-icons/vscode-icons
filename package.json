@@ -196,10 +196,20 @@
                     "default": null,
                     "description": "%configuration.associations.folderDefault.folder.description%"
                 },
+                "vsicons.associations.folderDefault.root_folder": {
+                    "type": "object",
+                    "default": null,
+                    "description": "%configuration.associations.folderDefault.root_folder.description%"
+                },
                 "vsicons.associations.folderDefault.folder_light": {
                     "type": "object",
                     "default": null,
                     "description": "%configuration.associations.folderDefault.folder_light.description%"
+                },
+                "vsicons.associations.folderDefault.root_folder_light": {
+                    "type": "object",
+                    "default": null,
+                    "description": "%configuration.associations.folderDefault.root_folder_light.description%"
                 }
             }
         }

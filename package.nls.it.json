@@ -26,5 +26,7 @@
   "configuration.associations.fileDefault.file.description": "Questa impostazione ti permette di cambiare l'icona predefinita per i file nei temi scuri.",
   "configuration.associations.fileDefault.file_light.description": "Questa impostazione ti permette di cambiare l'icona predefinita per i file nei temi chiari.",
   "configuration.associations.folderDefault.folder.description": "Questa impostazione ti permette di cambiare l'icona predefinita per le cartelle nei temi scuri.",
-  "configuration.associations.folderDefault.folder_light.description": "Questa impostazione ti permette di cambiare l'icona predefinita per le cartelle nei temi chiari."
+  "configuration.associations.folderDefault.root_folder.description": "",
+  "configuration.associations.folderDefault.folder_light.description": "Questa impostazione ti permette di cambiare l'icona predefinita per le cartelle nei temi chiari.",
+  "configuration.associations.folderDefault.root_folder_light.description": ""
 }
