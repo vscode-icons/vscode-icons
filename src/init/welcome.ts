@@ -10,8 +10,9 @@ const i18nManager = new LanguageResourceManager(vscode.env.language);
 
 export function manageWelcomeMessage(settingsManager: ISettingsManager): void {
   const extensionVersion = settingsManager.getSettings().extensionSettings.version;
+  const themeName = getConfig().inspect(constants.vscode.iconThemeSetting).globalValue;
 
-  if (!settingsManager.getState().welcomeShown) {
+  if (!settingsManager.getState().welcomeShown && themeName !== constants.extensionName) {
     showWelcomeMessage(extensionVersion);
     return;
   }
