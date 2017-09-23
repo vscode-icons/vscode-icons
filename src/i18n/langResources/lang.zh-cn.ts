@@ -6,7 +6,7 @@ export const langZhCn: ILangResource = {
   seeReleaseNotes: '关于最新版本的改动',
   dontShowThis: '下次不再显示这条消息',
   seeReadme: '了解关于此插件的更多信息',
-  welcome: `${constants.extensionName} 现在支持官方 API`,
+  welcome: `感谢安装 ${constants.extensionName}`,
   activate: '激活',
   aboutOfficialApi: '查看更多关于文件和文件夹的图标',
   learnMore: '想要了解更多信息？',
