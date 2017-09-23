@@ -76,14 +76,37 @@ function getIconManifest(): string {
   }
 }
 
-export function isProject(projectJson: any, name: string): boolean {
+export function getProjectInfo(results: models.IVSCodeUri[], name: string): models.IProjectInfo {
+  let projectInfo: models.IProjectInfo = null;
+  results.forEach(result => {
+    const content = fs.readFileSync(result.fsPath, 'utf8');
+    const projectJson = parseJSON(content);
+    projectInfo = getInfo(projectJson, name);
+    if (!!projectInfo) { return; }
+  });
+  return projectInfo;
+}
+
+export function getInfo(projectJson: any, name: string): models.IProjectInfo {
+  if (!projectJson) { return null; }
+
+  const getInfoFn = (key: string, infoName?: string): models.IProjectInfo => {
+    const depExists = projectJson.dependencies && (projectJson.dependencies[key] != null);
+    if (depExists) {
+      return { name: infoName, version: projectJson.dependencies[key] };
+    }
+    const devDepExists = (projectJson.devDependencies && (projectJson.devDependencies[key] != null));
+    if (devDepExists) {
+      return { name: infoName, version: projectJson.devDependencies[key] };
+    }
+    return null;
+  };
+
   switch (name) {
     case 'ng':
-      return (projectJson.dependencies && (projectJson.dependencies['@angular/core'] != null)) ||
-        (projectJson.devDependencies && (projectJson.devDependencies['@angular/core'] != null)) ||
-        false;
+      return getInfoFn('@angular/core', 'Angular');
     default:
-      return false;
+      return null;
   }
 }
 
