@@ -1,5 +1,10 @@
 # Change Log
 
+## 7.13.1 (September 25, 2017)
+
+- Enhancement: Improve Github project's templates. ([@JimiC](https://github.com/JimiC) in [#1182](https://github.com/vscode-icons/vscode-icons/pull/1182))
+- Fix: Typo found and `yarn.lock` update. ([@robertohuertasm](https://github.com/robertohuertasm) & [@JimiC](https://github.com/JimiC) in [#1172](https://github.com/vscode-icons/vscode-icons/pull/1172))
+
 ## 7.13.0 (September 18, 2017)
 
 - Fix: Fixed `tslint` configuration. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1169](https://github.com/vscode-icons/vscode-icons/pull/1169))
