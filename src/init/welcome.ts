@@ -13,6 +13,7 @@ export function manageWelcomeMessage(settingsManager: ISettingsManager): void {
   const themeName = getConfig().inspect(constants.vscode.iconThemeSetting).globalValue;
 
   if (!settingsManager.getState().welcomeShown && themeName !== constants.extensionName) {
+    settingsManager.setWelcomeShownToTrue();
     showWelcomeMessage();
     return;
   }
