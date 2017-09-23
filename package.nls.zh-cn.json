@@ -1,4 +1,5 @@
 {
+  "command.activateIcons.title": "激活 VSCode Icons",
   "command.regenerateIcons.title": "开始使用自定义图标",
   "command.ngPreset.title": "切换成 Angular 模式（工作区级别）",
   "command.jsPreset.title": "切换成官方 JS 模式（用户级别）",
@@ -19,10 +20,11 @@
   "configuration.presets.jsonOfficial.description": "如果设置成 true，插件会自动使用官方 JSON 图标",
   "configuration.presets.hideFolders.description": "如果设置成 true，所有文件夹会隐藏",
   "configuration.presets.foldersAllDefaultIcon.description": "如果设置成 true，所有文件夹会恢复成默认图标",
+  "configuration.customIconFolderPath.description": "指向位于您的计算机上含自定义图标的文件夹的父文件夹的物理路径",
   "configuration.associations.files.description": "这些自定义设置会覆盖掉系统默认的文件图标设置",
   "configuration.associations.folders.description": "这些自定义设置会覆盖掉系统默认的文件夹图标设置",
-  "configuration.associations.fileDefault.file.description": "这个设置会改变默认的深色文件图标",
-  "configuration.associations.fileDefault.file_light.description": "这个设置会改变默认的浅色文件图标",
-  "configuration.associations.folderDefault.folder.description": "这个设置会改变默认的深色文件夹图标",
-  "configuration.associations.folderDefault.folder_light.description": "这个设置会改变默认的浅色文件夹图标"
+  "configuration.associations.fileDefault.file.description": "这项设置会更改深色主题默认的文件图标",
+  "configuration.associations.fileDefault.file_light.description": "这项设置会更改浅色主题默认的文件图标",
+  "configuration.associations.folderDefault.folder.description": "这项设置会更改深色主题默认的文件夹图标",
+  "configuration.associations.folderDefault.folder_light.description": "这项设置会更改浅色主题默认的文件夹图标"
 }

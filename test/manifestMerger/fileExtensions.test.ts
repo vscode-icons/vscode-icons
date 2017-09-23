@@ -5,30 +5,32 @@ import * as path from 'path';
 import { expect } from 'chai';
 import { extensions as fileExtensions } from '../support/supportedExtensions';
 import { extensions as folderExtensions } from '../support/supportedFolders';
-import { vscode } from '../../src/utils';
 import { extensionSettings } from '../../src/settings';
 import { IconGenerator, mergeConfig, schema } from '../../src/icon-manifest';
-import { deleteDirectoryRecursively, tempPath } from '../../src/utils';
+import * as utils from '../../src/utils';
 
 describe('FileExtensions: merging configuration documents', function () {
 
-  const tempFolderPath = tempPath();
+  const tempFolderPath = utils.tempPath();
+  const customIconFolderPath = 'some/custom/icons/folder/path';
+  const customIconFolderPathFull = utils.pathUnixJoin(customIconFolderPath, extensionSettings.customIconFolderName);
 
   before(() => {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
-
-    fs.mkdirSync(extensionSettings.customIconFolderName);
+    utils.createDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.createDirectoryRecursively(customIconFolderPathFull);
   });
 
   after(() => {
-    deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.deleteDirectoryRecursively(customIconFolderPathFull);
   });
 
   let iconGenerator: IconGenerator;
 
   beforeEach(() => {
-    iconGenerator = new IconGenerator(vscode, schema);
+    iconGenerator = new IconGenerator(utils.vscode, schema);
     iconGenerator.settings.vscodeAppData = tempFolderPath;
   });
 
@@ -50,8 +52,8 @@ describe('FileExtensions: merging configuration documents', function () {
         const def = json.iconDefinitions['_f_actionscript'];
         expect(def).exist;
         expect(def.iconPath).exist;
-        expect(json.fileExtensions['as2']).equals('_f_actionscript');
-        expect(path.extname(def.iconPath)).equal('.svg');
+        expect(json.fileExtensions['as2']).to.equals('_f_actionscript');
+        expect(path.extname(def.iconPath)).to.equals('.svg');
       });
 
     it('overrides removes the specified extension',
@@ -64,9 +66,9 @@ describe('FileExtensions: merging configuration documents', function () {
         };
 
         const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-        const overridenPath = json.iconDefinitions['_f_actionscript'];
-        const newPath: string = json.iconDefinitions['_f_actionscript2'].iconPath;
-        expect(overridenPath).to.not.exist;
+        const overridenDef = json.iconDefinitions['_f_actionscript'];
+        const newPath = json.iconDefinitions['_f_actionscript2'].iconPath;
+        expect(overridenDef).to.not.exist;
         expect(newPath).exist;
       });
 
@@ -80,13 +82,13 @@ describe('FileExtensions: merging configuration documents', function () {
         };
 
         const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-        const extendedPath = json.iconDefinitions['_f_actionscript'];
-        const newPath: string = json.iconDefinitions['_f_newExt'].iconPath;
-        expect(extendedPath).not.to.exist;
+        const extendedDef = json.iconDefinitions['_f_actionscript'];
+        const newPath = json.iconDefinitions['_f_newExt'].iconPath;
+        expect(extendedDef).not.to.exist;
         expect(newPath).exist;
-        expect(json.fileExtensions['as']).equal('_f_newExt');
-        expect(json.fileExtensions['mynew']).equal('_f_newExt');
-        expect(path.extname(newPath)).not.equals('.svg');
+        expect(json.fileExtensions['as']).to.equals('_f_newExt');
+        expect(json.fileExtensions['mynew']).to.equals('_f_newExt');
+        expect(path.extname(newPath)).not.to.equals('.svg');
       });
 
     it('disabled extensions are not included into the manifest',
@@ -98,9 +100,8 @@ describe('FileExtensions: merging configuration documents', function () {
           ],
         };
         const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-        const extendedPath = json.iconDefinitions['_f_actionscript'];
-        expect(extendedPath).not.to.exist;
-        expect(json.iconDefinitions['_f_newExt']).not.to.exist;
+        const def = json.iconDefinitions['_f_actionscript'];
+        expect(def).not.to.exist;
       });
 
     it('not disabled extensions are included into the manifest',
@@ -112,9 +113,8 @@ describe('FileExtensions: merging configuration documents', function () {
           ],
         };
         const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-        const extendedPath = json.iconDefinitions['_f_actionscript'];
-        expect(extendedPath).to.exist;
-        expect(json.iconDefinitions['_f_newExt']).not.to.exist;
+        const def = json.iconDefinitions['_f_actionscript'];
+        expect(def).to.exist;
       });
 
     it('if extensions is not defined, it gets added internally',
@@ -126,9 +126,8 @@ describe('FileExtensions: merging configuration documents', function () {
           ],
         };
         const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-        const extendedPath = json.iconDefinitions['_f_actionscript'];
-        expect(extendedPath).to.exist;
-        expect(json.iconDefinitions['_f_newExt']).not.to.exist;
+        const def = json.iconDefinitions['_f_actionscript'];
+        expect(def).to.exist;
       });
 
     context('existing extensions', function () {
@@ -156,7 +155,7 @@ describe('FileExtensions: merging configuration documents', function () {
           };
           const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
           const ngGroup = Object.keys(json.iconDefinitions).filter(x => /^_f_ng_.*2$/.test(x));
-          expect(ngGroup.length).equals(14);
+          expect(ngGroup.length).to.equals(14);
         });
 
       it('are removed from the original extension',
@@ -169,8 +168,8 @@ describe('FileExtensions: merging configuration documents', function () {
           };
           const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
           expect(json.iconDefinitions['_f_newExt']).exist;
-          expect(json.fileExtensions['bin']).equals('_f_newExt');
-          expect(json.fileExtensions['o']).equals('_f_newExt');
+          expect(json.fileExtensions['bin']).to.equals('_f_newExt');
+          expect(json.fileExtensions['o']).to.equals('_f_newExt');
         });
 
       it('accept languageId',
@@ -188,7 +187,7 @@ describe('FileExtensions: merging configuration documents', function () {
           };
           const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
           expect(json.iconDefinitions['_f_actionscript']).exist;
-          expect(json.languageIds['newlang']).equals('_f_actionscript');
+          expect(json.languageIds['newlang']).to.equals('_f_actionscript');
         });
 
     });
@@ -208,9 +207,9 @@ describe('FileExtensions: merging configuration documents', function () {
             ],
           };
           const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-          const icon = json.iconDefinitions['_f_custom_icon'];
-          expect(icon).exist;
-          expect(path.extname(icon.iconPath)).equals('.svg');
+          const customDef = json.iconDefinitions['_f_custom_icon'];
+          expect(customDef).exist;
+          expect(path.extname(customDef.iconPath)).to.equals('.svg');
         });
 
       it('has a custom path',
@@ -234,10 +233,80 @@ describe('FileExtensions: merging configuration documents', function () {
             fs.writeFileSync(iconNamePath, '');
 
             const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
-            const icon = json.iconDefinitions['_f_custom_icon'];
-            expect(icon).exist;
-            expect(icon.iconPath).contains(extensionSettings.customIconFolderName);
-            expect(json.fileExtensions['custom']).equals('_f_custom_icon');
+            const customDef = json.iconDefinitions['_f_custom_icon'];
+            expect(customDef).exist;
+            expect(customDef.iconPath).to.contain(extensionSettings.customIconFolderName);
+            expect(json.fileExtensions['custom']).to.equals('_f_custom_icon');
+          } finally {
+            fs.unlinkSync(iconNamePath);
+          }
+        });
+
+    });
+
+    context('the manifest generator', function () {
+
+      it('uses the custom icon folder path, when provided',
+        function () {
+          const custom: any = {
+            default: null,
+            supported: [
+              {
+                icon: 'custom_icon',
+                extensions: ['custom'],
+                format: 'svg',
+              },
+            ],
+          };
+
+          iconGenerator = new IconGenerator(utils.vscode, schema, customIconFolderPath);
+          iconGenerator.settings.vscodeAppData = tempFolderPath;
+
+          const iconName =
+            `${extensionSettings.filePrefix}${custom.supported[0].icon}` +
+            `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+          const iconNamePath = path.join(customIconFolderPathFull, iconName);
+
+          try {
+            fs.writeFileSync(iconNamePath, '');
+
+            const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
+            const customDef = json.iconDefinitions['_f_custom_icon'];
+            expect(customDef).exist;
+            expect(customDef.iconPath).to.contain(customIconFolderPathFull);
+          } finally {
+            fs.unlinkSync(iconNamePath);
+          }
+        });
+
+      it('avoids custom icons detection',
+        function () {
+          const custom: any = {
+            default: null,
+            supported: [
+              {
+                icon: 'custom_icon',
+                extensions: ['custom'],
+                format: 'svg',
+              },
+            ],
+          };
+
+          iconGenerator = new IconGenerator(utils.vscode, schema, customIconFolderPath, /*avoidCustomDetection*/ true);
+          iconGenerator.settings.vscodeAppData = tempFolderPath;
+
+          const iconName =
+            `${extensionSettings.filePrefix}${custom.supported[0].icon}` +
+            `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+          const iconNamePath = path.join(customIconFolderPathFull, iconName);
+
+          try {
+            fs.writeFileSync(iconNamePath, '');
+
+            const json = mergeConfig(custom, fileExtensions, null, folderExtensions, iconGenerator);
+            const customDef = json.iconDefinitions['_f_custom_icon'];
+            expect(customDef).exist;
+            expect(customDef.iconPath.startsWith(iconGenerator.iconsFolderBasePath)).to.be.true;
           } finally {
             fs.unlinkSync(iconNamePath);
           }

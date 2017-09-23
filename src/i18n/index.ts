@@ -22,9 +22,9 @@ export class LanguageResourceManager {
     let msg = '';
     keys.forEach(key => {
       // If key is of type 'number' it's a LangResourceKeys
-      const stringifiedKey = typeof key === "number" ? LangResourceKeys[key] : key;
+      const stringifiedKey = typeof key === 'number' ? LangResourceKeys[key] : key;
 
-      if (typeof key === "number") {
+      if (typeof key === 'number') {
         if (Reflect.has(this.messages, stringifiedKey)) {
           // If no message is found fallback to english message
           let message: string | IOSSpecific =

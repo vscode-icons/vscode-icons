@@ -1,4 +1,5 @@
 {
+  "command.activateIcons.title": "Attiva VSCode Icons",
   "command.regenerateIcons.title": "Applica Personalizzazione Icone",
   "command.ngPreset.title": "Attiva Preimpostazione Angular (a livello Area di Lavoro)",
   "command.jsPreset.title": "Attiva Preimpostazione ufficiale JS (a livello Utente)",
@@ -19,10 +20,11 @@
   "configuration.presets.jsonOfficial.description": "Se 'true', l'estensione userà l'icona ufficiale JSON.",
   "configuration.presets.hideFolders.description": "Se 'true', tutte le icone delle cartelle saranno nascoste.",
   "configuration.presets.foldersAllDefaultIcon.description": "Se 'true', tutte le cartelle avranno l'icona predefinita.",
+  "configuration.customIconFolderPath.description": "Il percorso fisico alla cartella padre, dove la cartella delle icone personalizzate risiede sulla macchina locale.",
   "configuration.associations.files.description": "Queste associazioni personalizzate sovrascriveranno le associazioni delle icone per file predefinite.",
   "configuration.associations.folders.description": "Queste associazioni personalizzate sovrascriveranno le associazioni delle icone per cartelle predefinite.",
-  "configuration.associations.fileDefault.file.description": "Questa impostazione ti premetterà di cambiare l'icona oscura per file predefinita.",
-  "configuration.associations.fileDefault.file_light.description": "Questa impostazione ti premetterà di cambiare l'icona chiara per file predefinita.",
-  "configuration.associations.folderDefault.folder.description": "Questa impostazione ti premetterà di cambiare l'icona oscura per cartelle predefinita.",
-  "configuration.associations.folderDefault.folder_light.description": "Questa impostazione ti premetterà di cambiare l'icona chiara per cartelle predefinita."
+  "configuration.associations.fileDefault.file.description": "Questa impostazione ti permette di cambiare l'icona predefinita per i file nei temi scuri.",
+  "configuration.associations.fileDefault.file_light.description": "Questa impostazione ti permette di cambiare l'icona predefinita per i file nei temi chiari.",
+  "configuration.associations.folderDefault.folder.description": "Questa impostazione ti permette di cambiare l'icona predefinita per le cartelle nei temi scuri.",
+  "configuration.associations.folderDefault.folder_light.description": "Questa impostazione ti permette di cambiare l'icona predefinita per le cartelle nei temi chiari."
 }

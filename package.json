@@ -2,7 +2,7 @@
     "name": "vscode-icons",
     "displayName": "vscode-icons",
     "description": "Icons for Visual Studio Code",
-    "version": "7.10.1",
+    "version": "7.13.0",
     "publisher": "robertohuertasm",
     "license": "MIT",
     "author": {
@@ -30,7 +30,7 @@
         "email": "roberto.huertas@outlook.com"
     },
     "engines": {
-        "vscode": "^1.6.1",
+        "vscode": "^1.8.1",
         "node": ">=6.5.0"
     },
     "categories": [
@@ -62,6 +62,11 @@
             }
         ],
         "commands": [
+            {
+                "command": "vscode-icons.activateIcons",
+                "title": "%command.activateIcons.title%",
+                "category": "Icons"
+            },
             {
                 "command": "vscode-icons.regenerateIcons",
                 "title": "%command.regenerateIcons.title%",
@@ -161,6 +166,11 @@
                     "default": false,
                     "description": "%configuration.presets.foldersAllDefaultIcon.description%"
                 },
+                "vsicons.customIconFolderPath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "%configuration.customIconFolderPath.description%"
+                },
                 "vsicons.associations.files": {
                     "type": "array",
                     "default": [],
@@ -206,32 +216,33 @@
         "precompile": "rimraf ./out",
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
-        "lint": "tslint --project tsconfig.json",
+        "lint": "tslint --project tsconfig.json --type-check",
         "example": "node ./out/src/example/example.js ",
         "analysis": "bithound check git@github.com:vscode-icons/vscode-icons.git"
     },
     "devDependencies": {
-        "@types/chai": "^4.0.1",
-        "@types/lodash": "^4.14.68",
-        "@types/mocha": "^2.2.41",
+        "@types/chai": "^4.0.4",
+        "@types/lodash": "^4.14.74",
+        "@types/mocha": "^2.2.43",
         "@types/mockery": "^1.4.29",
-        "@types/node": "^7.0.33",
-        "@types/sinon": "^2.3.2",
+        "@types/node": "^8.0.28",
+        "@types/semver": "^5.4.0",
+        "@types/sinon": "^2.3.4",
         "bithound": "^1.7.0",
-        "chai": "^4.0.2",
-        "codecov": "^2.2.0",
-        "mocha": "^3.4.2",
+        "chai": "^4.1.2",
+        "codecov": "^2.3.0",
+        "mocha": "^3.5.3",
         "mockery": "^2.1.0",
-        "nyc": "^11.0.3",
-        "rimraf": "^2.6.1",
-        "sinon": "^2.3.6",
-        "tslint": "^5.5.0",
-        "typescript": "^2.4.1",
-        "vscode": "^1.1.2"
+        "nyc": "^11.2.1",
+        "rimraf": "^2.6.2",
+        "sinon": "^3.2.1",
+        "tslint": "^5.7.0",
+        "typescript": "^2.5.2",
+        "vscode": "^1.1.5"
     },
     "dependencies": {
         "lodash": "^4.17.4",
         "open": "0.0.5",
-        "semver": "^5.3.0"
+        "semver": "^5.4.1"
     }
 }

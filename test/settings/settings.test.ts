@@ -29,7 +29,7 @@ describe('SettingsManager: tests', function () {
         let originalPlatform: any;
 
         beforeEach(() => {
-          env = {...process.env};
+          env = { ...process.env };
           originalPlatform = process.platform;
         });
 
@@ -76,6 +76,22 @@ describe('SettingsManager: tests', function () {
             vscode.env.appName = 'Visual Studio Code';
             const settings = new SettingsManager(vscode).getSettings();
             expect(settings.isInsiders).to.be.false;
+            expect(settings.isOSS).to.be.false;
+            expect(settings.isDev).to.be.false;
+          });
+
+        it('\'Code - OSS\'',
+          function () {
+            vscode.env.appName = 'VSCode OSS';
+            const settings = new SettingsManager(vscode).getSettings();
+            expect(settings.isOSS).to.be.true;
+          });
+
+        it('\'Code - OSS Dev\'',
+          function () {
+            vscode.env.appName = 'VSCode OSS Dev';
+            const settings = new SettingsManager(vscode).getSettings();
+            expect(settings.isDev).to.be.true;
           });
 
       });
@@ -102,18 +118,22 @@ describe('SettingsManager: tests', function () {
     it('the state gets written to a settings file',
       function () {
         const writeToFile = sandbox.stub(fs, 'writeFileSync');
-        const state: IState = {
-          version: '0',
-          status: ExtensionStatus.notInstalled,
+        const stateMock: IState = {
+          version: '0.0.0',
+          status: ExtensionStatus.notActivated,
           welcomeShown: false,
         };
-        settingsManager.setState(state);
+        settingsManager.setState(stateMock);
         expect(writeToFile.called).to.be.true;
       });
 
     it('the settings status gets updated',
       function () {
-        const stateMock = { version: "1.0.0", status: 2, welcomeShown: true };
+        const stateMock: IState = {
+          version: '1.0.0',
+          status: ExtensionStatus.notActivated,
+          welcomeShown: false,
+        };
         const getState = sinon.stub(settingsManager, 'getState').returns(stateMock);
         const setState = sinon.stub(settingsManager, 'setState');
         const status = ExtensionStatus.enabled;
@@ -134,8 +154,13 @@ describe('SettingsManager: tests', function () {
 
       it('returns the state from the settings file',
         function () {
-          const stateMock = '{ "version": "1.0.0", "status": 0, "welcomeShown": true}';
-          sandbox.stub(fs, 'readFileSync').returns(stateMock);
+          const stateMock: IState = {
+            version: '1.0.0',
+            status: ExtensionStatus.enabled,
+            welcomeShown: true,
+          };
+          sandbox.stub(fs, 'existsSync').returns(true);
+          sandbox.stub(fs, 'readFileSync').returns(JSON.stringify(stateMock));
           const state = settingsManager.getState();
           expect(state).to.be.an.instanceOf(Object);
           expect(state).to.have.all.keys('version', 'status', 'welcomeShown');
@@ -144,19 +169,29 @@ describe('SettingsManager: tests', function () {
 
       it('returns a default state if no settings file exists',
         function () {
-          sandbox.stub(fs, 'readFileSync').returns('test');
+          sandbox.stub(fs, 'existsSync').returns(false);
           const state = settingsManager.getState();
           expect(state).to.be.instanceOf(Object);
-          expect(state.version).to.be.equal('0');
+          expect(state.version).to.be.equal('0.0.0');
         });
 
       it('returns a default state if reading the file fails',
         function () {
+          sandbox.stub(fs, 'existsSync').returns(true);
           sandbox.stub(fs, 'readFileSync').throws(Error);
           sandbox.stub(console, 'error');
           const state = settingsManager.getState();
           expect(state).to.be.instanceOf(Object);
-          expect(state.version).to.be.equal('0');
+          expect(state.version).to.be.equal('0.0.0');
+        });
+
+      it('returns a default state if parsing the file content fails',
+        function () {
+          sandbox.stub(fs, 'existsSync').returns(true);
+          sandbox.stub(fs, 'readFileSync').returns('test');
+          const state = settingsManager.getState();
+          expect(state).to.be.instanceOf(Object);
+          expect(state.version).to.be.equal('0.0.0');
         });
 
     });
@@ -165,7 +200,11 @@ describe('SettingsManager: tests', function () {
 
       it('truthy for a new extension version',
         function () {
-          const stateMock = { version: "1.0.0", status: 2, welcomeShown: true };
+          const stateMock: IState = {
+            version: '1.0.0',
+            status: ExtensionStatus.notActivated,
+            welcomeShown: true,
+          };
           const getState = sinon.stub(settingsManager, 'getState').returns(stateMock);
           settingsManager.getSettings();
           expect(settingsManager.isNewVersion()).to.be.true;
@@ -174,7 +213,11 @@ describe('SettingsManager: tests', function () {
 
       it('falsy for the same extension version',
         function () {
-          const stateMock = { version: extensionSettings.version, status: 2, welcomeShown: true };
+          const stateMock: IState = {
+            version: extensionSettings.version,
+            status: ExtensionStatus.notActivated,
+            welcomeShown: true,
+          };
           const getState = sinon.stub(settingsManager, 'getState').returns(stateMock);
           settingsManager.getSettings();
           expect(settingsManager.isNewVersion()).to.be.false;
@@ -183,7 +226,11 @@ describe('SettingsManager: tests', function () {
 
       it('falsy for an older extension version',
         function () {
-          const stateMock = { version: "100.0.0", status: 2, welcomeShown: true };
+          const stateMock: IState = {
+            version: '100.0.0',
+            status: ExtensionStatus.notActivated,
+            welcomeShown: true,
+          };
           const getState = sinon.stub(settingsManager, 'getState').returns(stateMock);
           settingsManager.getSettings();
           expect(settingsManager.isNewVersion()).to.be.false;

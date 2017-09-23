@@ -34,7 +34,20 @@ export function fileFormatToString(extension: FileFormat | string): string {
 }
 
 /**
- * Deletes a directory and all subdirectories
+ * Creates a directory and all subdirectories synchronously
+ *
+ * @param {any} dirPath The directory's path
+ */
+export function createDirectoryRecursively(dirPath: string): void {
+  dirPath.split(path.posix.sep).reduce((parentDir, childDir) => {
+    const curDir = path.resolve(parentDir, childDir);
+    if (!fs.existsSync(curDir)) { fs.mkdirSync(curDir); }
+    return curDir;
+  }, path.isAbsolute(dirPath) ? path.posix.sep : '');
+}
+
+/**
+ * Deletes a directory and all subdirectories synchronously
  *
  * @param {any} dirPath The directory's path
  */
@@ -106,7 +119,7 @@ export function flatten(obj: object, separator = '.'): object {
     if (!value) { return false; }
     const isArray = Array.isArray(value);
     const isBuffer = Buffer.isBuffer(value);
-    const isΟbject = Object.prototype.toString.call(value) === "[object Object]";
+    const isΟbject = Object.prototype.toString.call(value) === '[object Object]';
     const hasKeys = !!Object.keys(value).length;
     return !isArray && !isBuffer && isΟbject && hasKeys;
   };

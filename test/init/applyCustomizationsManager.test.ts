@@ -33,6 +33,7 @@ describe('AutoApplyCustomizations: tests', function () {
           fileDefault: { file: null, file_light: null },
           folderDefault: { folder: null, folder_light: null },
         },
+        customIconFolderPath: '',
       };
     });
 
@@ -99,6 +100,7 @@ describe('ApplyCustomizations: tests', function () {
           fileDefault: { file: null, file_light: null },
           folderDefault: { folder: null, folder_light: null },
         },
+        customIconFolderPath: '',
       };
     });
 
@@ -116,6 +118,19 @@ describe('ApplyCustomizations: tests', function () {
         const spy = sinon.spy();
         const initConfig = JSON.parse(JSON.stringify(userConfig));
         userConfig.presets.tsOfficial = false;
+        manageApplyCustomizations(initConfig, userConfig, spy);
+        expect(spy.called).to.not.be.true;
+      });
+
+    it('if the configuration has only moved its elements, the callback will not be called',
+      function () {
+        const spy = sinon.spy();
+        userConfig.associations.files = [
+          { icon: 'js', extensions: ['myExt1', 'myExt2.custom.js'], format: 'svg' },
+          { icon: 'js2', extensions: ['myExt1', 'myExt2.custom.js'], format: 'svg' },
+        ];
+        const initConfig = JSON.parse(JSON.stringify(userConfig));
+        userConfig.associations.files.reverse();
         manageApplyCustomizations(initConfig, userConfig, spy);
         expect(spy.called).to.not.be.true;
       });

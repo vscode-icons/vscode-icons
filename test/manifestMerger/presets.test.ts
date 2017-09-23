@@ -21,14 +21,14 @@ describe('Presets: merging configuration documents', function () {
       function () {
         const result = iconManifest.toggleAngularPreset(true, fileExtensions);
         const nggroup = result.supported.filter(x => x.icon.startsWith('ng_') && x.disabled);
-        expect(nggroup.length).equals(34);
+        expect(nggroup.length).to.equals(34);
       });
 
     it('only first set of angular extensions get enabled',
       function () {
         const result = iconManifest.toggleAngularPreset(false, fileExtensions);
         const nggroup = result.supported.filter(x => x.icon.startsWith('ng_') && !x.disabled);
-        expect(nggroup.length).equals(18);
+        expect(nggroup.length).to.equals(18);
       });
 
     it('only second set of angular extensions get enabled',
@@ -52,7 +52,7 @@ describe('Presets: merging configuration documents', function () {
           { icon: 'ng_routing_js2', extensions: ['app-routing.module.js'], filename: true, format: 'svg' });
         const result = iconManifest.toggleAngularPreset(false, custom);
         const ngGroup = result.supported.filter(x => /^ng_.*2$/.test(x.icon) && !x.disabled);
-        expect(ngGroup.length).equals(16);
+        expect(ngGroup.length).to.equals(16);
       });
 
     it('all angular extensions are disabled even if duplicity is present',
@@ -64,7 +64,7 @@ describe('Presets: merging configuration documents', function () {
             { icon: 'ng_routing_js', extensions: ['app-routing.module.js'], filename: true, format: 'svg' });
         const result = iconManifest.toggleAngularPreset(true, custom);
         const ngGroup = result.supported.filter(x => x.icon.startsWith('ng_') && x.disabled);
-        expect(ngGroup.length).equals(4);
+        expect(ngGroup.length).to.equals(4);
       });
 
     it('JS official extension is enabled',

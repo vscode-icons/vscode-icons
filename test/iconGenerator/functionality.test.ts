@@ -164,11 +164,7 @@ describe('IconGenerator: functionality test', function () {
     it('extensions always use the iconSuffix',
       function () {
         const custom = emptyFileCollection;
-        custom.supported.push({
-          icon: 'c',
-          extensions: ['c'],
-          format: 'svg',
-        });
+        custom.supported.push({ icon: 'c', extensions: ['c'], format: 'svg' });
         const json = iconGenerator.generateJson(custom, emptyFolderCollection);
         const def = `${settings.manifestFilePrefix}c`;
         const ext = json.iconDefinitions[def];
@@ -320,7 +316,7 @@ describe('IconGenerator: functionality test', function () {
       it('throws an Error if the paths for the folder and open folder icons do not match',
         function () {
           sinon.stub(iconGenerator, 'getIconPath')
-            .callsFake((defaultPath: string, filename: string): string => /opened/g.test(filename) ? '' : defaultPath);
+            .callsFake((filename: string): string => /opened/g.test(filename) ? '' : iconGenerator.iconsFolderBasePath);
           expect(iconGenerator.generateJson
             .bind(iconGenerator, emptyFileCollection, folderExtensions))
             .to.throw(Error, /Folder icons for '.*' must be placed in the same directory/);

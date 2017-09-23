@@ -5,30 +5,32 @@ import * as path from 'path';
 import { expect } from 'chai';
 import { extensions as fileExtensions } from '../support/supportedExtensions';
 import { extensions as folderExtensions } from '../support/supportedFolders';
-import { vscode } from '../../src/utils';
 import { extensionSettings } from '../../src/settings';
 import { IconGenerator, mergeConfig, schema } from '../../src/icon-manifest';
-import { deleteDirectoryRecursively, tempPath } from '../../src/utils';
+import * as utils from '../../src/utils';
 
 describe('FolderExtensions: merging configuration documents', function () {
 
-  const tempFolderPath = tempPath();
+  const tempFolderPath = utils.tempPath();
+  const customIconFolderPath = 'some/custom/icons/folder/path';
+  const customIconFolderPathFull = utils.pathUnixJoin(customIconFolderPath, extensionSettings.customIconFolderName);
 
   before(() => {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
-
-    fs.mkdirSync(extensionSettings.customIconFolderName);
+    utils.createDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.createDirectoryRecursively(customIconFolderPathFull);
   });
 
   after(() => {
-    deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.deleteDirectoryRecursively(customIconFolderPathFull);
   });
 
   let iconGenerator: IconGenerator;
 
   beforeEach(() => {
-    iconGenerator = new IconGenerator(vscode, schema);
+    iconGenerator = new IconGenerator(utils.vscode, schema);
     iconGenerator.settings.vscodeAppData = tempFolderPath;
   });
 
@@ -51,9 +53,9 @@ describe('FolderExtensions: merging configuration documents', function () {
         const def = json.iconDefinitions['_fd_aws'];
         expect(def).exist;
         expect(def.iconPath).exist;
-        expect(json.folderNames['aws3']).equals('_fd_aws');
-        expect(json.folderNamesExpanded['aws3']).equals('_fd_aws_open');
-        expect(path.extname(def.iconPath)).equal('.svg');
+        expect(json.folderNames['aws3']).to.equals('_fd_aws');
+        expect(json.folderNamesExpanded['aws3']).to.equals('_fd_aws_open');
+        expect(path.extname(def.iconPath)).to.equals('.svg');
       });
 
     it('overrides removes the specified extension',
@@ -67,7 +69,7 @@ describe('FolderExtensions: merging configuration documents', function () {
 
         const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
         const overridenPath = json.iconDefinitions['_fd_aws'];
-        const newPath: string = json.iconDefinitions['_fd_aws2'].iconPath;
+        const newPath = json.iconDefinitions['_fd_aws2'].iconPath;
         expect(overridenPath).to.not.exist;
         expect(newPath).exist;
       });
@@ -83,14 +85,14 @@ describe('FolderExtensions: merging configuration documents', function () {
 
         const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
         const extendedPath = json.iconDefinitions['_fd_aws'];
-        const newPath: string = json.iconDefinitions['_fd_newExt'].iconPath;
+        const newPath = json.iconDefinitions['_fd_newExt'].iconPath;
         expect(extendedPath).not.to.exist;
         expect(newPath).exist;
-        expect(json.folderNames['aws']).equal('_fd_newExt');
-        expect(json.folderNamesExpanded['aws']).equal('_fd_newExt_open');
-        expect(json.folderNames['mynew']).equal('_fd_newExt');
-        expect(json.folderNamesExpanded['mynew']).equal('_fd_newExt_open');
-        expect(path.extname(newPath)).not.equals('.svg');
+        expect(json.folderNames['aws']).to.equals('_fd_newExt');
+        expect(json.folderNamesExpanded['aws']).to.equals('_fd_newExt_open');
+        expect(json.folderNames['mynew']).to.equals('_fd_newExt');
+        expect(json.folderNamesExpanded['mynew']).to.equals('_fd_newExt_open');
+        expect(path.extname(newPath)).not.to.equals('.svg');
       });
 
     it('disabled extensions are not included into the manifest',
@@ -102,8 +104,8 @@ describe('FolderExtensions: merging configuration documents', function () {
           ],
         };
         const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
-        const extendedPath = json.iconDefinitions['_fd_aws'];
-        expect(extendedPath).not.to.exist;
+        const def = json.iconDefinitions['_fd_aws'];
+        expect(def).not.to.exist;
         expect(json.iconDefinitions['_fd_newExt']).not.to.exist;
       });
 
@@ -116,8 +118,8 @@ describe('FolderExtensions: merging configuration documents', function () {
           ],
         };
         const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
-        const extendedPath = json.iconDefinitions['_fd_aws'];
-        expect(extendedPath).to.exist;
+        const def = json.iconDefinitions['_fd_aws'];
+        expect(def).to.exist;
         expect(json.iconDefinitions['_fd_newExt']).not.to.exist;
       });
 
@@ -130,8 +132,8 @@ describe('FolderExtensions: merging configuration documents', function () {
           ],
         };
         const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
-        const extendedPath = json.iconDefinitions['_fd_aws'];
-        expect(extendedPath).to.exist;
+        const def = json.iconDefinitions['_fd_aws'];
+        expect(def).to.exist;
         expect(json.iconDefinitions['_fd_newExt']).not.to.exist;
       });
 
@@ -145,7 +147,7 @@ describe('FolderExtensions: merging configuration documents', function () {
         };
         const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
         expect(json.iconDefinitions['_fd_newExt']).exist;
-        expect(json.folderNames['aws']).equals('_fd_newExt');
+        expect(json.folderNames['aws']).to.equals('_fd_newExt');
       });
 
     context('custom icon', function () {
@@ -163,9 +165,9 @@ describe('FolderExtensions: merging configuration documents', function () {
             ],
           };
           const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
-          const icon = json.iconDefinitions['_fd_custom_icon'];
-          expect(icon).exist;
-          expect(path.extname(icon.iconPath)).equals('.svg');
+          const customDef = json.iconDefinitions['_fd_custom_icon'];
+          expect(customDef).exist;
+          expect(path.extname(customDef.iconPath)).to.equals('.svg');
         });
 
       it('has a custom path',
@@ -194,11 +196,11 @@ describe('FolderExtensions: merging configuration documents', function () {
             fs.writeFileSync(iconNameOpenPath, '');
 
             const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
-            const icon = json.iconDefinitions['_fd_custom_icon'];
-            expect(icon).exist;
-            expect(icon.iconPath).contains(extensionSettings.customIconFolderName);
-            expect(json.folderNames['custom']).equals('_fd_custom_icon');
-            expect(json.folderNamesExpanded['custom']).equals('_fd_custom_icon_open');
+            const customDef = json.iconDefinitions['_fd_custom_icon'];
+            expect(customDef).exist;
+            expect(customDef.iconPath).contains(extensionSettings.customIconFolderName);
+            expect(json.folderNames['custom']).to.equals('_fd_custom_icon');
+            expect(json.folderNamesExpanded['custom']).to.equals('_fd_custom_icon_open');
           } finally {
             fs.unlinkSync(iconNamePath);
             fs.unlinkSync(iconNameOpenPath);
@@ -207,6 +209,91 @@ describe('FolderExtensions: merging configuration documents', function () {
 
     });
 
+    context('the manifest generator', function () {
+
+      it('uses the custom icon folder path, when provided',
+        function () {
+          const custom: any = {
+            default: null,
+            supported: [
+              {
+                icon: 'custom_icon',
+                extensions: ['custom'],
+                format: 'svg',
+              },
+            ],
+          };
+
+          iconGenerator = new IconGenerator(utils.vscode, schema, customIconFolderPath);
+          iconGenerator.settings.vscodeAppData = tempFolderPath;
+
+          const iconName =
+            `${extensionSettings.folderPrefix}${custom.supported[0].icon}` +
+            `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+          const iconNameOpen =
+            `${extensionSettings.folderPrefix}${custom.supported[0].icon}_opened` +
+            `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+          const iconNamePath = path.join(customIconFolderPathFull, iconName);
+          const iconNameOpenPath = path.join(customIconFolderPathFull, iconNameOpen);
+
+          try {
+            fs.writeFileSync(iconNamePath, '');
+            fs.writeFileSync(iconNameOpenPath, '');
+
+            const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
+            const customDef = json.iconDefinitions['_fd_custom_icon'];
+            expect(customDef).exist;
+            expect(customDef.iconPath).to.contain(customIconFolderPathFull);
+            expect(json.folderNames['custom']).to.equals('_fd_custom_icon');
+            expect(json.folderNamesExpanded['custom']).to.equals('_fd_custom_icon_open');
+          } finally {
+            fs.unlinkSync(iconNamePath);
+            fs.unlinkSync(iconNameOpenPath);
+          }
+        });
+
+      it('avoids custom icons detection',
+        function () {
+          const custom: any = {
+            default: null,
+            supported: [
+              {
+                icon: 'custom_icon',
+                extensions: ['custom'],
+                format: 'svg',
+              },
+            ],
+          };
+
+          iconGenerator = new IconGenerator(utils.vscode, schema, customIconFolderPath, /*avoidCustomDetection*/ true);
+          iconGenerator.settings.vscodeAppData = tempFolderPath;
+
+          const iconName =
+            `${extensionSettings.folderPrefix}${custom.supported[0].icon}` +
+            `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+          const iconNameOpen =
+            `${extensionSettings.folderPrefix}${custom.supported[0].icon}_opened` +
+            `${extensionSettings.iconSuffix}.${custom.supported[0].format}`;
+          const iconNamePath = path.join(customIconFolderPathFull, iconName);
+          const iconNameOpenPath = path.join(customIconFolderPathFull, iconNameOpen);
+
+          try {
+            fs.writeFileSync(iconNamePath, '');
+            fs.writeFileSync(iconNameOpenPath, '');
+
+            const json = mergeConfig(null, fileExtensions, custom, folderExtensions, iconGenerator);
+            const customDef = json.iconDefinitions['_fd_custom_icon'];
+            expect(customDef).exist;
+            expect(customDef.iconPath.startsWith(iconGenerator.iconsFolderBasePath)).to.be.true;
+            expect(json.folderNames['custom']).to.equals('_fd_custom_icon');
+            expect(json.folderNamesExpanded['custom']).to.equals('_fd_custom_icon_open');
+          } finally {
+            fs.unlinkSync(iconNamePath);
+            fs.unlinkSync(iconNameOpenPath);
+          }
+        });
+
+    });
   });
 
 });

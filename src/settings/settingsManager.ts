@@ -14,24 +14,28 @@ export class SettingsManager implements ISettingsManager {
 
   public getSettings(): ISettings {
     if (this.settings) { return this.settings; }
+    const isDev = /dev/i.test(this.vscode.env.appName);
+    const isOSS = !isDev && /oss/i.test(this.vscode.env.appName);
     const isInsiders = /insiders/i.test(this.vscode.env.appName);
-    const version = semver(this.vscode.version);
+    const vscodeVersion = new semver.SemVer(this.vscode.version).version;
     const isWin = /^win/.test(process.platform);
     const homeDir = isWin ? 'USERPROFILE' : 'HOME';
     const extensionFolder = path.join(homeDir, isInsiders
       ? '.vscode-insiders'
       : '.vscode', 'extensions');
-    const codePath = isInsiders ? '/Code - Insiders' : '/Code';
+    const vscodeAppName = isInsiders ? 'Code - Insiders' : isOSS ? 'Code - OSS' : isDev ? 'code-oss-dev' : 'Code';
     const appPath = getAppPath();
-    const vscodeAppData = path.join(appPath, codePath, 'User');
+    const vscodeAppData = path.join(appPath, vscodeAppName, 'User');
 
     this.settings = {
       vscodeAppData,
       isWin,
       isInsiders,
+      isOSS,
+      isDev,
       extensionFolder,
       settingsPath: path.join(vscodeAppData, 'vsicons.settings.json'),
-      version,
+      vscodeVersion,
       extensionSettings,
     };
     return this.settings;
@@ -39,21 +43,20 @@ export class SettingsManager implements ISettingsManager {
 
   public getState(): IState {
     const defaultState: IState = {
-      version: '0',
-      status: ExtensionStatus.notInstalled,
+      version: '0.0.0',
+      status: ExtensionStatus.notActivated,
       welcomeShown: false,
     };
-
-    let state;
+    if (!fs.existsSync(this.settings.settingsPath)) {
+      return defaultState;
+    }
     try {
-      state = fs.readFileSync(this.settings.settingsPath, 'utf8');
+      const state = fs.readFileSync(this.settings.settingsPath, 'utf8');
+      return (parseJSON(state) as IState) || defaultState;
     } catch (error) {
       console.error(error);
       return defaultState;
     }
-
-    const json = parseJSON(state) as IState;
-    return json || defaultState;
   }
 
   public setState(state: IState): void {

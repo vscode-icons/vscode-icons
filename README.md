@@ -7,30 +7,27 @@
 [![Build Status](https://travis-ci.org/vscode-icons/vscode-icons.svg?branch=master)](https://travis-ci.org/vscode-icons/vscode-icons)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/vscode-icons/vscode-icons?branch=master&svg=true)](https://ci.appveyor.com/project/robertohuertasm/vscode-icons)
 
-[![Dependencies Status](https://david-dm.org/vscode-icons/vscode-icons/status.svg?=1)](https://david-dm.org/vscode-icons/vscode-icons)
-[![DevDependencies Status](https://david-dm.org/vscode-icons/vscode-icons/dev-status.svg?=1)](https://david-dm.org/vscode-icons/vscode-icons?type=dev)
-[![Greenkeeper badge](https://badges.greenkeeper.io/vscode-icons/vscode-icons.svg?=1)](https://greenkeeper.io/)
+[![Dependencies Status](https://david-dm.org/vscode-icons/vscode-icons/status.svg)](https://david-dm.org/vscode-icons/vscode-icons)
+[![DevDependencies Status](https://david-dm.org/vscode-icons/vscode-icons/dev-status.svg)](https://david-dm.org/vscode-icons/vscode-icons?type=dev)
+[![Greenkeeper badge](https://badges.greenkeeper.io/vscode-icons/vscode-icons.svg)](https://greenkeeper.io/)
 
-[![codecov](https://codecov.io/gh/vscode-icons/vscode-icons/branch/master/graph/badge.svg?=1)](https://codecov.io/gh/vscode-icons/vscode-icons)
-[![Known Vulnerabilities](https://snyk.io/test/github/vscode-icons/vscode-icons/badge.svg?=1)](https://snyk.io/test/github/vscode-icons/vscode-icons)
+[![codecov](https://codecov.io/gh/vscode-icons/vscode-icons/branch/master/graph/badge.svg)](https://codecov.io/gh/vscode-icons/vscode-icons)
+[![Known Vulnerabilities](https://snyk.io/test/github/vscode-icons/vscode-icons/badge.svg)](https://snyk.io/test/github/vscode-icons/vscode-icons)
 
-[![bitHound Overall Score](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/score.svg?=1)](https://www.bithound.io/github/vscode-icons/vscode-icons)
-[![bitHound Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/dependencies.svg?=1)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
-[![bitHound Dev Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/devDependencies.svg?=1)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
-[![bitHound Code](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/code.svg?=1)](https://www.bithound.io/github/vscode-icons/vscode-icons)
+[![bitHound Overall Score](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/score.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons)
+[![bitHound Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/dependencies.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/devDependencies.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
+[![bitHound Code](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/code.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons)
 
-[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg?=1)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
-[![Percentage of issues still open](https://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg?=1)](http://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
+[![Percentage of issues still open](https://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
 
-[![Issue Stats](http://issuestats.com/github/vscode-icons/vscode-icons/badge/issue?style=flat)](http://issuestats.com/github/vscode-icons/vscode-icons)
-[![Issue Stats](http://issuestats.com/github/vscode-icons/vscode-icons/badge/pr?style=flat)](http://issuestats.com/github/vscode-icons/vscode-icons)
-
-
-Bring icons to your VS Code.
+Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**minimum supported version: `1.8.1`**)
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
 ## A little bit of history about this extension
+
 As you all know, VSCode currently supports File and Folder icons but this was not like this from the beginning. Read this great article by [@chrisdias](https://twitter.com/chrisdias): ["Rebellion. Mutiny. Revolt. Uprising."](https://code.visualstudio.com/blogs/2016/09/08/icon-themes) if you want to learn the history about this plugin and how finally icons landed in VSCode.
 
 During the summer of 2016, I had great support from the community and the VSCode team. It's also worth mentioning the tremendous help that I received from [@aeschli](https://github.com/aeschli) (VSCode Team) and especially from [@jens1o](https://github.com/jens1o) (community member), which turned out to be a 14-year-old amazing coder!
@@ -40,19 +37,23 @@ Later on, until the present moment, [@JimiC](https://github.com/JimiC) entered t
 I'm very happy to be part of this team, along with [@jens1o](https://github.com/jens1o) and [@JimiC](https://github.com/JimiC). It's really a gift to work with you guys. Most of the credits of this extension are theirs. It's also community's. And remember that if you want to be a contributor or even become a regular of our team, you are more than welcome to join! :D
 
 ## Main Contributors
+
 This project has gone far beyond it's main purpose, which was to provide icons for VSCode when the platform didn't still support them, and now it tries to provide the most complete set of icons you can find. I began this journey alone but this wouldn't have been possible without the help of many of you. Some members of the community have been strongly committed to the project and now they are part of the core team of mantainers.
 
-Please, meet the team behind this extension: 
+Please, meet the team behind this extension:
 
- - [@jens1o](https://github.com/jens1o)
- - [@JimiC](https://github.com/JimiC)
- - [@robertohuertasm](https://github.com/robertohuertasm)
+- [@jens1o](https://github.com/jens1o)
+- [@JimiC](https://github.com/JimiC)
+- [@robertohuertasm](https://github.com/robertohuertasm)
 
 If you're willing to collaborate with us feel free to join our [Github repository](https://github.com/vscode-icons/vscode-icons/). ;)
 
 ---
 
 ## State of the extension
+
+[@JimiC](https://github.com/JimiC) has brought most of **7.11.0** which comes with some brand new icons and a really new cool feature, the ability to customize the `custom icons folder` path. With this, you will be able to ship your own custom icons along your repository and share them with your team. Or even store them in the cloud and have them available everywhere. If you want to know more about how it works, just read the [custom icons section](https://github.com/vscode-icons/vscode-icons/blob/master/README.md#custom-icons).
+
 With the release of **7.10.0**, we improved the way the extension is handling your manual changes to a `presets` or `associations` configuration. By default, every time you change any of the aforementioned configurations, you will be presented with the message to `Restart` the editor, for the changes to take effect. Of course, you can always disable this behavior. See the [Configuration](https://github.com/vscode-icons/vscode-icons#configuration) section for more details.
 
 As from **release 7.7.0**, the `project detection` feature has become smarter and is totally unobtrusive. If you have it disabled, because you found it annoying for any reason, **we urge you to re-enable it** and check out its new functionality.
@@ -61,23 +62,28 @@ We're talking about a major improvement over this feature. It will help you to e
 
 We support ***localization*** of the extension, too! We intend to expand the supported languages as the `Visual Studio Code` adds them. Take a look at the [translation's](https://github.com/vscode-icons/vscode-icons#contributing-with-translations) section if you want to know more or contribute.
 
-We also keep supporting the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code. 
+We also keep supporting the ability for users to customize the icons without having to inject anything into the `Visual Studio Code`'s code.
 
 This was a huge step to allow the users to fully customize how the icons looked like and how they could be associated to any extension at will.
 
 `Custom Icon association` is still not supported by `VSCode API` but we thought that it was a very demanded feature and thought of a way to make it work for you. Remember that there's still an [open issue in VSCode's repo](https://github.com/Microsoft/vscode/issues/12493#issuecomment-249117649) talking about how they could provide official support for this feature. Provide a +1 if you want the VSCode team to support it out of the box. More information in [#328](https://github.com/vscode-icons/vscode-icons/issues/328).
 
+<!-- markdownlint-disable MD036 -->
 **Thank you all for your kind support. We will continue to try to improve the extension to make it more user friendly :D**
+<!-- markdownlint-enable MD036 -->
 
-----
+---
 
 ## Installation
+
 Some people have reported that they cannot find the extension when they insert the installation command:
-```
+
+```sh
 ext install vscode-icons
 ```
 
 If you're in the same position try this:
+
 ```sh
 ext install icons
 # or
@@ -85,21 +91,25 @@ ext install "vscode-icons"
 ```
 
 ## Enable the extension
-Go to **File > Preferences > File Icon Theme > VSCode Icons**. 
+
+Go to **File > Preferences > File Icon Theme > VSCode Icons**.
 
 (Note on OSX it is **Code > Preferences > File Icon Theme > VSCode Icons**.)
 
-
 ## List of supported icons
+
 The list is slowly growing. If you want to check what icons are currently supported take a look [here](https://github.com/vscode-icons/vscode-icons/blob/master/src/icon-manifest/supportedExtensions.ts). If you feel that there's some icon missing please let me know through [the issues section of the Github's repo](https://github.com/vscode-icons/vscode-icons/issues).
 
 If you're a designer and you're willing to collaborate by showing your icons to the world you're more than welcome!! Currently, we don't have icons for the light template, so any help will be really appreciated and credit will be given to you ;D
 
 ## List of supported folder icons
+
 If you want to check which folder icons are currently supported take a look [here](https://github.com/vscode-icons/vscode-icons/blob/master/src/icon-manifest/supportedFolders.ts). As usual, if you want to add an icon submit a PR or [raise a Github issue](https://github.com/vscode-icons/vscode-icons/issues).
 
 ## Configuration
+
 If you don't want to see the `new version` message every time the extension updates, then set this configuration setting:
+
 ```json
 {
   "vsicons.dontShowNewVersionMessage": true
@@ -107,6 +117,7 @@ If you don't want to see the `new version` message every time the extension upda
 ```
 
 If you don't want to see the `Restart` message every time you manually change the extension's `presets` and `associations` configurations, then set this configuration setting:
+
 ```json
 {
   "vsicons.dontShowConfigManuallyChangedMessage": true
@@ -114,6 +125,7 @@ If you don't want to see the `Restart` message every time you manually change th
 ```
 
 ## Customizing the extension
+
 The extension gives you the ability to change how the icons look or even what icons are associated to each extension.
 
 We have exposed the internal API that we are using to build the `icon manifest` so you can also use it in your `vscode settings` and generate it at runtime. This will allow you to customize all the icons, add new ones and so on.
@@ -125,6 +137,7 @@ But, how does this work?
 The extension now provides some specific commands for you to use. Let's talk first about the `presets` and then we're going to talk about how you can fine tune the extension.
 
 ### Presets
+
 There are several different `presets`:
 
 - `vsicons.presets.angular` (false by default)
@@ -152,6 +165,7 @@ Note that some of the `preset commands` will modify your `settings` at a differe
 The `Angular Preset` will affect all icons beginning with `ng_` so you'd better name your custom icons accordingly if you want it to work flawlessly. ;P
 
 ### Project detection
+
 With the introduction of the project specific icons toggling feature, we also introduced the auto project detection feature, that will automatically detect what type of project you have opened in your workspace and prompt you to toggle the icons accordingly.
 
 You will be presented with four choices:
@@ -167,6 +181,7 @@ There are two different `projectDetection` settings associated with this feature
 - `vsicons.projectDetection.disableDetect` (false by default)
 
 ### Fine tuning
+
 Along with the commands we introduced above, you will find some more (just press `F1` and type `icons`):
 
 - `Apply Icons Customization`: This command will regenerate the `Icons manifest` with your customizations and restart the IDE for the changes to take effect.
@@ -198,7 +213,8 @@ Along with the previous arrays you will have 4 more settings available that will
 "vsicons.associations.folderDefault.folder": { "icon": "myfile", "format": "svg", "disabled": true }
 ```
 
-####  Some examples
+#### Some examples
+
 ```js
 // Adding new extensions to an already supported icon.
 // note: the format must match the existing one. If not, it will use the extension you provide.
@@ -233,7 +249,7 @@ Along with the previous arrays you will have 4 more settings available that will
 
 // Overriding an already supported icon.
 // note: the difference between overrides and extends is that overrides will completely
-// remove the older icon functionality while extends will keep older settings by 
+// remove the older icon functionality while extends will keep older settings by
 // putting yours on top.
 "vsicons.associations.files": [
   { "icon": "myJs", "extensions": ["js", "custom.js"], "format": "svg", "overrides": "js" }
@@ -249,6 +265,7 @@ Along with the previous arrays you will have 4 more settings available that will
 ```
 
 #### Custom Icons
+
 In order to place your custom icons you will have to create a specific folder. Depending on your OS the path will be:
 
 - Windows: `C:\Users\<your_user>\AppData\Roaming\<Code Folder>\User\vsicons-custom-icons`
@@ -257,8 +274,8 @@ In order to place your custom icons you will have to create a specific folder. D
 
 `<Code Folder>` refers to the name of the folder of VSCode depending on the version:
 
->- `Code` for the stable version.
->- `Code - Insiders` for the insiders version.
+- `Code` for the stable version.
+- `Code - Insiders` for the insiders version.
 
 Once you have created the folder you can put all your custom icons there. But, again, they have to follow `vscode-icons` naming conventions:
 
@@ -270,7 +287,18 @@ Once you have created the folder you can put all your custom icons there. But, a
 
 See [here the supported file extensions for an icon](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts).
 
+With **7.11.0**, we shipped a new feature allowing you to provide your own specific `custom icons folder` path. This can be useful if you have a network share with your team or you want to deliver your own icons along your own repository.
+
+If you want to take advantadge of this feature, just go to your settings and set `vsicons.customIconFolderPath` with the path to the folder containing the `vscode-custom-icons` folder.
+
+**Note that the name of the folder containing the icons must be `vscode-custom-icons`**.
+
+You have to specifically set the path, to the folder where this folder is going to be placed, not the folder itself. This is very important as it may lead to confusion.
+
+i.e. If the path to the above folder is `/path/to/custom/icons/folder/vsicons-custom-icons/`, then the path set in the configuration has to be `/path/to/custom/icons/folder/`.
+
 #### Optional Angular icons
+
 Since **7.10.0**, along with the usual `Angular` icons, we shipped some optional icons for users wanting to have some specific icons for `component templates` and `component styles`.
 
 In order to enable them just add this to your settings:
@@ -288,69 +316,90 @@ In order to enable them just add this to your settings:
 **Note**: The `disabled` attribute is set to true to allow the `Project Auto Detection` system to decide if they must be enabled or not. In our case, we want these icons to be disabled by default but to be enabled whenever we are working with an `Angular` project.
 
 ## Contributing with icons
+
 If you're willing to create an icon just follow this few conventions:
 
 1. We're using SVG or PNG-24 but we prefer SVG if possible.
-2. 32x32
-3. 2px margin (but see [#195](https://github.com/vscode-icons/vscode-icons/pull/195))
-4. Center the icon, but lower it a pixel.
-5. It must be transparent.
+1. 32x32
+1. 2px margin (but see [#195](https://github.com/vscode-icons/vscode-icons/pull/195))
+1. Center the icon, but lower it a pixel.
+1. It must be transparent.
 
 ## Preview of icons
-In order to help you preview how the icon you are contributing will look in the editor, we are providing you with a tool that generates dummy folders or files of the provided icon. 
+
+In order to help you preview how the icon you are contributing will look in the editor, we are providing you with a tool that generates dummy folders or files of the provided icon.
 
 The syntax follows the pattern:
-```
+
+```sh
 npm run example -- [flag] [space separated file names | space separated folder names]
 ```
 
 Supported flags are `--all`, `--folders`, `--files`.
 
-#### Syntax examples:
-```
+### Syntax examples
+
+```sh
 npm run example -- --folders bower css
 ```
 
-**Hint:** By omitting the use of the space separated folder names, the tool will create examples for all supported folders. 
+**Hint:** By omitting the use of the space separated folder names, the tool will create examples for all supported folders.
 
-```
+```sh
 npm run example -- --files actionscript angular
 ```
 
 **Hint:** By omitting the use of the space separated file names, the tool will create examples for all supported files.
 
-```
+```sh
 npm run example -- --all
 ```
 
 The above syntax will create examples for all supported files and folders.
 
 ## Contributing with translations
+
 We're looking for people willing to help us translate the extension's messages into [all the languages that `vscode` supports](https://code.visualstudio.com/docs/customization/locales).
 
-We're currently supporting `English`, `German`, `Italian`, `Russian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
+We're currently supporting `English`, `French`, `German`, `Italian`, `Russian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
+
+Special thanks to the following contributors for providing the translations:
+
+- French: [@MonsieurMan](https://github.com/MonsieurMan)
+- German: [@jens1o](https://github.com/jens1o)
+- Italian: [@mariotsi](https://github.com/mariotsi) [@sabinrimni](https://github.com/sabinrimni)
+- Russian: [@ksvitkovsky](https://github.com/ksvitkovsky)
+- Simplified Chinese: [@iFun](https://github.com/iFun) [@g-plane](https://github.com/g-plane)
+- Spanish: [@robertohuertasm](https://github.com/robertohuertasm)
 
 ## Building the extension's source code
+
 If you're willing to explore the extension source code and want to make it work you should run this:
-```
+
+```sh
 npm install -d
 npm run build
 ```
 
 ### Building the extension's source code via docker
+
 Make sure that you have docker installed.
-```
+
+```sh
 docker build -t vscode-icons .
 docker run --rm -it -v $PWD/dist:/app/dist vscode-icons
 ```
+
 All of the files will be generated in the `dist` folder.
 
-## Change log 
+## Change log
+
 You can checkout all our changes in our [change log](https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md).
 
 If you feel that there's some icon missing please report it to the Github repository!
 
 ## Versioning
+
 vscode-icons follows [Semantic Versioning 2.0.0](http://semver.org/).
 
 **Enjoy!**

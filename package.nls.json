@@ -1,4 +1,5 @@
 {
+  "command.activateIcons.title": "Activate VSCode Icons",
   "command.regenerateIcons.title": "Apply Icons Customization",
   "command.ngPreset.title": "Toggle Angular Preset (Workspace Level)",
   "command.jsPreset.title": "Toggle Official JS Preset (User Level)",
@@ -19,10 +20,11 @@
   "configuration.presets.jsonOfficial.description": "If set to true, the extension will use the official JSON icon.",
   "configuration.presets.hideFolders.description": "If set to true, all folders will be hidden.",
   "configuration.presets.foldersAllDefaultIcon.description": "If set to true, all folders will have the default folder icon.",
+  "configuration.customIconFolderPath.description": "The physical path to the parent folder where the custom icons folder resides on your local machine",
   "configuration.associations.files.description": "These custom associations will override the file icon associations defined by default.",
   "configuration.associations.folders.description": "These custom associations will override the folder icon associations defined by default.",
-  "configuration.associations.fileDefault.file.description": "This setting will let you change default dark file icon.",
-  "configuration.associations.fileDefault.file_light.description": "This setting will let you change default light file icon.",
-  "configuration.associations.folderDefault.folder.description": "This setting will let you change default dark folder icon.",
-  "configuration.associations.folderDefault.folder_light.description": "This setting will let you change default light folder icon."
+  "configuration.associations.fileDefault.file.description": "This setting will let you change the default file icon for dark themes.",
+  "configuration.associations.fileDefault.file_light.description": "This setting will let you change the default file icon for light themes.",
+  "configuration.associations.folderDefault.folder.description": "This setting will let you change the default folder icon for dark themes.",
+  "configuration.associations.folderDefault.folder_light.description": "This setting will let you change the default folder icon for dark themes."
 }

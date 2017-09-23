@@ -3,7 +3,9 @@ import { INativeLanguageCollection } from './nativeLanguageCollection';
 
 export interface ILanguageCollection extends INativeLanguageCollection {
   actionscript: ILanguage;
+  al: ILanguage;
   ansible: ILanguage;
+  antlr: ILanguage;
   anyscript: ILanguage;
   apache: ILanguage;
   apib: ILanguage;
@@ -12,8 +14,10 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   assembly: ILanguage;
   autohotkey: ILanguage;
   autoit: ILanguage;
+  avro: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
+  c_al: ILanguage;
   cabal: ILanguage;
   cake: ILanguage;
   cfc: ILanguage;
@@ -25,17 +29,20 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   crystal: ILanguage;
   csharp: ILanguage;
   cucumber: ILanguage;
+  dal: ILanguage;
   dart: ILanguage;
   dlang: ILanguage;
   doxygen: ILanguage;
   dylanlang: ILanguage;
   dustjs: ILanguage;
+  edge: ILanguage;
   elixir: ILanguage;
   elm: ILanguage;
   erb: ILanguage;
   erlang: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
+  galen: ILanguage;
   gamemaker: ILanguage;
   gamemaker2: ILanguage;
   gamemaker81: ILanguage;
@@ -48,6 +55,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
+  http: ILanguage;
   jinja: ILanguage;
   julia: ILanguage;
   kos: ILanguage;
@@ -64,6 +72,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   nunjucks: ILanguage;
   ocaml: ILanguage;
   openEdge: ILanguage;
+  openHAB: ILanguage;
   pascal: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;

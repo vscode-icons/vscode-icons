@@ -7,6 +7,9 @@ import { getVsiconsConfig, getConfig, findFiles, asRelativePath } from './utils/
 import { parseJSON } from './utils';
 import { LanguageResourceManager } from './i18n';
 import { IVSCodeUri, IVSIcons } from './models';
+import { constants } from './constants';
+
+export let initialized: boolean;
 
 function initialize(context: vscode.ExtensionContext) {
   const config = getVsiconsConfig();
@@ -22,6 +25,7 @@ function initialize(context: vscode.ExtensionContext) {
       }
     });
 
+  // Update the version in settings
   if (settingsManager.isNewVersion()) {
     settingsManager.updateStatus(settingsManager.getState().status);
   }
@@ -30,7 +34,7 @@ function initialize(context: vscode.ExtensionContext) {
 function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
   let isNgProject: boolean;
   for (const result of results) {
-    const content = fs.readFileSync(result.fsPath, "utf8");
+    const content = fs.readFileSync(result.fsPath, 'utf8');
     const projectJson = parseJSON(content);
     isNgProject = projectJson && init.isProject(projectJson, 'ng');
     if (isNgProject) {
@@ -54,7 +58,8 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
 export function activate(context: vscode.ExtensionContext) {
   initialize(context);
   // tslint:disable-next-line no-console
-  console.info('vscode-icons is active!');
+  console.info(`${constants.extensionName} is active!`);
+  initialized = true;
 }
 
 // this method is called when your vscode is closed

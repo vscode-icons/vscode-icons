@@ -5,31 +5,30 @@ import * as path from 'path';
 import { expect } from 'chai';
 import { extensions as fileExtensions } from '../support/supportedExtensions';
 import { extensions as folderExtensions } from '../support/supportedFolders';
-import { vscode } from '../../src/utils';
 import { extensionSettings } from '../../src/settings';
 import { IconGenerator, mergeConfig, schema } from '../../src/icon-manifest';
 import { IFileCollection, IFolderCollection } from '../../src/models';
-import { deleteDirectoryRecursively, tempPath } from '../../src/utils';
+import * as utils from '../../src/utils';
 
 describe('DefaultExtensions: merging configuration documents', function () {
 
-  const tempFolderPath = tempPath();
+  const tempFolderPath = utils.tempPath();
 
   before(() => {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
 
-    fs.mkdirSync(extensionSettings.customIconFolderName);
+    utils.createDirectoryRecursively(extensionSettings.customIconFolderName);
   });
 
   after(() => {
-    deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.deleteDirectoryRecursively(extensionSettings.customIconFolderName);
   });
 
   let iconGenerator: IconGenerator;
 
   beforeEach(() => {
-    iconGenerator = new IconGenerator(vscode, schema);
+    iconGenerator = new IconGenerator(utils.vscode, schema);
     iconGenerator.settings.vscodeAppData = tempFolderPath;
   });
 
@@ -62,8 +61,8 @@ describe('DefaultExtensions: merging configuration documents', function () {
             const def = json.iconDefinitions._file_light;
             expect(def).exist;
             expect(def.iconPath).exist;
-            expect(def.iconPath).contain(iconName);
-            expect(def.iconPath).contain(extensionSettings.customIconFolderName);
+            expect(def.iconPath).to.contain(iconName);
+            expect(def.iconPath).to.contain(extensionSettings.customIconFolderName);
           } finally {
             fs.unlinkSync(iconNamePath);
           }
@@ -89,8 +88,8 @@ describe('DefaultExtensions: merging configuration documents', function () {
             const def = json.iconDefinitions._file;
             expect(def).exist;
             expect(def.iconPath).exist;
-            expect(def.iconPath).contain(iconName);
-            expect(def.iconPath).contain(extensionSettings.customIconFolderName);
+            expect(def.iconPath).to.contain(iconName);
+            expect(def.iconPath).to.contain(extensionSettings.customIconFolderName);
           } finally {
             fs.unlinkSync(iconNamePath);
           }
@@ -142,10 +141,10 @@ describe('DefaultExtensions: merging configuration documents', function () {
             expect(defOpen).exist;
             expect(def.iconPath).exist;
             expect(defOpen.iconPath).exist;
-            expect(def.iconPath).contain(iconName);
-            expect(defOpen.iconPath).contain(iconNameOpen);
-            expect(def.iconPath).contain(extensionSettings.customIconFolderName);
-            expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
+            expect(def.iconPath).to.contain(iconName);
+            expect(defOpen.iconPath).to.contain(iconNameOpen);
+            expect(def.iconPath).to.contain(extensionSettings.customIconFolderName);
+            expect(defOpen.iconPath).to.contain(extensionSettings.customIconFolderName);
           } finally {
             fs.unlinkSync(iconNamePath);
             fs.unlinkSync(iconNameOpenPath);
@@ -180,10 +179,10 @@ describe('DefaultExtensions: merging configuration documents', function () {
             expect(defOpen).exist;
             expect(def.iconPath).exist;
             expect(defOpen.iconPath).exist;
-            expect(def.iconPath).contain(iconName);
-            expect(defOpen.iconPath).contain(iconNameOpen);
-            expect(def.iconPath).contain(extensionSettings.customIconFolderName);
-            expect(defOpen.iconPath).contain(extensionSettings.customIconFolderName);
+            expect(def.iconPath).to.contain(iconName);
+            expect(defOpen.iconPath).to.contain(iconNameOpen);
+            expect(def.iconPath).to.contain(extensionSettings.customIconFolderName);
+            expect(defOpen.iconPath).to.contain(extensionSettings.customIconFolderName);
           } finally {
             fs.unlinkSync(iconNamePath);
             fs.unlinkSync(iconNameOpenPath);
