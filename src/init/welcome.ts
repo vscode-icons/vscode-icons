@@ -9,21 +9,22 @@ import { activationCommand } from '../commands';
 const i18nManager = new LanguageResourceManager(vscode.env.language);
 
 export function manageWelcomeMessage(settingsManager: ISettingsManager): void {
-  const themeName = getConfig().inspect(constants.vscode.iconThemeSetting).globalValue;
-  if (!settingsManager.getState().welcomeShown || themeName !== constants.extensionName) {
-    showWelcomeMessage();
+  const extensionVersion = settingsManager.getSettings().extensionSettings.version;
+
+  if (!settingsManager.getState().welcomeShown) {
+    showWelcomeMessage(extensionVersion);
     return;
   }
 
   if (settingsManager.isNewVersion() && !getConfig().vsicons.dontShowNewVersionMessage) {
-    showNewVersionMessage(settingsManager);
+    showNewVersionMessage(extensionVersion);
   }
 }
 
-function showWelcomeMessage(): void {
+function showWelcomeMessage(extensionVersion: string): void {
   const displayMessage = () => {
     vscode.window.showInformationMessage(
-      i18nManager.getMessage(LangResourceKeys.welcome),
+      `${i18nManager.getMessage(LangResourceKeys.welcome)} v${extensionVersion}`,
       { title: i18nManager.getMessage(LangResourceKeys.activate) },
       { title: i18nManager.getMessage(LangResourceKeys.aboutOfficialApi) },
       { title: i18nManager.getMessage(LangResourceKeys.seeReadme) })
@@ -54,10 +55,9 @@ function showWelcomeMessage(): void {
   displayMessage();
 }
 
-function showNewVersionMessage(settingsManager: ISettingsManager): void {
-  const settings = settingsManager.getSettings().extensionSettings;
+function showNewVersionMessage(extensionVersion: string): void {
   vscode.window.showInformationMessage(
-    `${i18nManager.getMessage(LangResourceKeys.newVersion)} v${settings.version}`,
+    `${i18nManager.getMessage(LangResourceKeys.newVersion)} v${extensionVersion}`,
     { title: i18nManager.getMessage(LangResourceKeys.seeReleaseNotes) },
     { title: i18nManager.getMessage(LangResourceKeys.dontShowThis) })
     .then(btn => {
