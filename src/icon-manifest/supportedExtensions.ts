@@ -151,6 +151,7 @@ export const extensions: IFileCollection = {
     { icon: 'eps', extensions: ['eps'], format: FileFormat.svg },
     { icon: 'erb', extensions: [], languages: [languages.erb], format: FileFormat.svg },
     { icon: 'erlang', extensions: ['emakefile', '.emakerfile'], filename: true, languages: [languages.erlang], format: FileFormat.svg },
+    { icon: 'erlang2', extensions: ['emakefile', '.emakerfile'], filename: true, languages: [languages.erlang], format: FileFormat.svg, disabled: true },
     { icon: 'eslint', extensions: ['.eslintrc', '.eslintignore', '.eslintcache', '.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml', '.eslintrc.yml'], filename: true, format: FileFormat.svg },
     { icon: 'eslint2', extensions: ['.eslintrc', '.eslintignore', '.eslintcache', '.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml', '.eslintrc.yml'], filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'excel', extensions: ['xls', 'xlsx', 'xlsm', 'ods'], format: FileFormat.svg },
