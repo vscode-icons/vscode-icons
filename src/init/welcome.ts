@@ -24,8 +24,7 @@ export function manageWelcomeMessage(settingsManager: ISettingsManager): void {
 
 function showWelcomeMessage(): void {
   const displayMessage = () => {
-    vscode.window.showInformationMessage(
-      `${i18nManager.getMessage(LangResourceKeys.welcome)} v${extensionSettings.version}`,
+    vscode.window.showInformationMessage(i18nManager.getMessage(LangResourceKeys.welcome),
       { title: i18nManager.getMessage(LangResourceKeys.activate) },
       { title: i18nManager.getMessage(LangResourceKeys.aboutOfficialApi) },
       { title: i18nManager.getMessage(LangResourceKeys.seeReadme) })
