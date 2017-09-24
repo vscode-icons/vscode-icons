@@ -119,7 +119,7 @@ export function flatten(obj: object, separator = '.'): object {
     if (!value) { return false; }
     const isArray = Array.isArray(value);
     const isBuffer = Buffer.isBuffer(value);
-    const isΟbject = Object.prototype.toString.call(value) === "[object Object]";
+    const isΟbject = Object.prototype.toString.call(value) === '[object Object]';
     const hasKeys = !!Object.keys(value).length;
     return !isArray && !isBuffer && isΟbject && hasKeys;
   };

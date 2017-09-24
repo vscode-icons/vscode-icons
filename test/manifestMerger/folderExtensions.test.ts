@@ -5,33 +5,32 @@ import * as path from 'path';
 import { expect } from 'chai';
 import { extensions as fileExtensions } from '../support/supportedExtensions';
 import { extensions as folderExtensions } from '../support/supportedFolders';
-import { pathUnixJoin, vscode } from '../../src/utils';
 import { extensionSettings } from '../../src/settings';
 import { IconGenerator, mergeConfig, schema } from '../../src/icon-manifest';
-import { createDirectoryRecursively, deleteDirectoryRecursively, tempPath } from '../../src/utils';
+import * as utils from '../../src/utils';
 
 describe('FolderExtensions: merging configuration documents', function () {
 
-  const tempFolderPath = tempPath();
+  const tempFolderPath = utils.tempPath();
   const customIconFolderPath = 'some/custom/icons/folder/path';
-  const customIconFolderPathFull = pathUnixJoin(customIconFolderPath, extensionSettings.customIconFolderName);
+  const customIconFolderPathFull = utils.pathUnixJoin(customIconFolderPath, extensionSettings.customIconFolderName);
 
   before(() => {
     // ensure the tests write to the temp folder
     process.chdir(tempFolderPath);
-    createDirectoryRecursively(extensionSettings.customIconFolderName);
-    createDirectoryRecursively(customIconFolderPathFull);
+    utils.createDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.createDirectoryRecursively(customIconFolderPathFull);
   });
 
   after(() => {
-    deleteDirectoryRecursively(extensionSettings.customIconFolderName);
-    deleteDirectoryRecursively(customIconFolderPathFull);
+    utils.deleteDirectoryRecursively(extensionSettings.customIconFolderName);
+    utils.deleteDirectoryRecursively(customIconFolderPathFull);
   });
 
   let iconGenerator: IconGenerator;
 
   beforeEach(() => {
-    iconGenerator = new IconGenerator(vscode, schema);
+    iconGenerator = new IconGenerator(utils.vscode, schema);
     iconGenerator.settings.vscodeAppData = tempFolderPath;
   });
 
@@ -225,7 +224,7 @@ describe('FolderExtensions: merging configuration documents', function () {
             ],
           };
 
-          iconGenerator = new IconGenerator(vscode, schema, customIconFolderPath);
+          iconGenerator = new IconGenerator(utils.vscode, schema, customIconFolderPath);
           iconGenerator.settings.vscodeAppData = tempFolderPath;
 
           const iconName =
@@ -266,7 +265,7 @@ describe('FolderExtensions: merging configuration documents', function () {
             ],
           };
 
-          iconGenerator = new IconGenerator(vscode, schema, customIconFolderPath, /*avoidCustomDetection*/ true);
+          iconGenerator = new IconGenerator(utils.vscode, schema, customIconFolderPath, /*avoidCustomDetection*/ true);
           iconGenerator.settings.vscodeAppData = tempFolderPath;
 
           const iconName =

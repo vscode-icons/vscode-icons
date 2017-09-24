@@ -34,7 +34,7 @@ function initialize(context: vscode.ExtensionContext) {
 function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
   let isNgProject: boolean;
   for (const result of results) {
-    const content = fs.readFileSync(result.fsPath, "utf8");
+    const content = fs.readFileSync(result.fsPath, 'utf8');
     const projectJson = parseJSON(content);
     isNgProject = projectJson && init.isProject(projectJson, 'ng');
     if (isNgProject) {

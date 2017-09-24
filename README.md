@@ -287,7 +287,7 @@ Once you have created the folder you can put all your custom icons there. But, a
 
 See [here the supported file extensions for an icon](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts).
 
-With **7.11.0**, we shipped a new feature allowing you to provide your own specific `custom icons folder` path. This can be useful if you have a network share with your team or you want to delivery your own icons along your own repository.
+With **7.11.0**, we shipped a new feature allowing you to provide your own specific `custom icons folder` path. This can be useful if you have a network share with your team or you want to deliver your own icons along your own repository.
 
 If you want to take advantadge of this feature, just go to your settings and set `vsicons.customIconFolderPath` with the path to the folder containing the `vscode-custom-icons` folder.
 
@@ -362,6 +362,18 @@ The above syntax will create examples for all supported files and folders.
 We're looking for people willing to help us translate the extension's messages into [all the languages that `vscode` supports](https://code.visualstudio.com/docs/customization/locales).
 
 We're currently supporting `English`, `French`, `German`, `Italian`, `Russian`, `Simplified Chinese` and `Spanish`. If you're willing to help with the translations of the missing languages take a look at [#526](https://github.com/vscode-icons/vscode-icons/issues/526) and get your hands dirty. We'll really appreciate it! ;P
+<<<<<<< HEAD
+=======
+
+Special thanks to the following contributors for providing the translations:
+
+- French: [@MonsieurMan](https://github.com/MonsieurMan)
+- German: [@jens1o](https://github.com/jens1o)
+- Italian: [@mariotsi](https://github.com/mariotsi) [@sabinrimni](https://github.com/sabinrimni)
+- Russian: [@ksvitkovsky](https://github.com/ksvitkovsky)
+- Simplified Chinese: [@iFun](https://github.com/iFun) [@g-plane](https://github.com/g-plane)
+- Spanish: [@robertohuertasm](https://github.com/robertohuertasm)
+>>>>>>> upstream/master
 
 ## Building the extension's source code
 

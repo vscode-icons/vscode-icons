@@ -74,7 +74,7 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const packageJson = {
             dependencies: {
-              '@angular/core': "",
+              '@angular/core': '',
             },
           };
           expect(adp.isProject(packageJson, 'ng')).to.be.true;
@@ -84,7 +84,7 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const packageJson = {
             devDependencies: {
-              '@angular/core': "",
+              '@angular/core': '',
             },
           };
           expect(adp.isProject(packageJson, 'ng')).to.be.true;
@@ -94,7 +94,7 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const packageJson = {
             dependencies: {
-              vscode: "",
+              vscode: '',
             },
           };
           expect(adp.isProject(packageJson, 'ng')).to.be.false;
@@ -104,7 +104,7 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const packageJson = {
             devDependencies: {
-              vscode: "",
+              vscode: '',
             },
           };
           expect(adp.isProject(packageJson, 'ng')).to.be.false;
@@ -114,8 +114,8 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const packageJson = {
             dependencies: {
-              '@angular/core': "",
-              'vscode': "",
+              '@angular/core': '',
+              'vscode': '',
             },
           };
           expect(adp.isProject(packageJson, 'meteor')).to.be.false;

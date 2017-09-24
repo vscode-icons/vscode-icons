@@ -15,9 +15,15 @@
   "configuration.projectDetection.autoReload.description": "Recharger automatiquement l'extension après la détection automatique du type de projet.",
   "configuration.projectDetection.disableDetect.description": "Détecter automatiquent le type de projet.",
   "configuration.presets.angular.description": "Afficher des icône pour les fichiers Angular communs.",
+<<<<<<< HEAD
   "configuration.presets.jsOfficial.description": "Afficher l'icône JS officielle.",
   "configuration.presets.tsOfficial.description": "Afficher l'icône TS officielle.",
   "configuration.presets.jsonOfficial.description": "Afficher l'icône JSON officielle.",
+=======
+  "configuration.presets.jsOfficial.description": "Afficher les icônes JS officielles.",
+  "configuration.presets.tsOfficial.description": "Afficher les icônes TS officielles.",
+  "configuration.presets.jsonOfficial.description": "Afficher les icônes JSON officielles.",
+>>>>>>> upstream/master
   "configuration.presets.hideFolders.description": "Cacher les icônes de dossier.",
   "configuration.presets.foldersAllDefaultIcon.description": "Utiliser une seule icône pour tout les dossier.",
   "configuration.customIconFolderPath.description": "Le chemin du dossier contenant les icônes personnalisées sur votre ordinateur.",
