@@ -26,7 +26,7 @@
   "configuration.associations.fileDefault.file.description": "Este ajuste permite cambiar el icono de archivo por defecto para los temas oscuros.",
   "configuration.associations.fileDefault.file_light.description": "Este ajuste permite cambiar el icono de archivo por defecto para los temas claros.",
   "configuration.associations.folderDefault.folder.description": "Este ajuste permite cambiar el icono de carpeta por defecto para los temas oscuros.",
-  "configuration.associations.folderDefault.root_folder.description": "",
+  "configuration.associations.folderDefault.root_folder.description": "Este ajuste permite cambiar el icono de carpeta raíz por defecto para los temas oscuros.",
   "configuration.associations.folderDefault.folder_light.description": "Este ajuste permite cambiar el icono de carpeta por defecto para los temas claros.",
-  "configuration.associations.folderDefault.root_folder_light.description": ""
+  "configuration.associations.folderDefault.root_folder_light.description": "Este ajuste permite cambiar el icono de carpeta raíz por defecto para los temas claros."
 }
