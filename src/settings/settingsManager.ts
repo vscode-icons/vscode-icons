@@ -67,14 +67,9 @@ export class SettingsManager implements ISettingsManager {
     const state = this.getState();
     state.version = extensionSettings.version;
     state.status = sts;
-    this.setState(state);
-    return state;
-  }
-
-  public setWelcomeShownToTrue() {
-    const state = this.getState();
     state.welcomeShown = true;
     this.setState(state);
+    return state;
   }
 
   public deleteState() {

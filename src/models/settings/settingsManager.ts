@@ -9,5 +9,4 @@ export interface ISettingsManager {
   updateStatus: (sts: ExtensionStatus) => IState;
   deleteState: () => void;
   isNewVersion: () => boolean;
-  setWelcomeShownToTrue: () => void;
 }
