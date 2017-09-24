@@ -287,7 +287,7 @@ Once you have created the folder you can put all your custom icons there. But, a
 
 See [here the supported file extensions for an icon](https://github.com/vscode-icons/vscode-icons/blob/master/src/models/extensions/fileFormat.ts).
 
-With **7.11.0**, we shipped a new feature allowing you to provide your own specific `custom icons folder` path. This can be useful if you have a network share with your team or you want to delivery your own icons along your own repository.
+With **7.11.0**, we shipped a new feature allowing you to provide your own specific `custom icons folder` path. This can be useful if you have a network share with your team or you want to deliver your own icons along your own repository.
 
 If you want to take advantadge of this feature, just go to your settings and set `vsicons.customIconFolderPath` with the path to the folder containing the `vscode-custom-icons` folder.
 
