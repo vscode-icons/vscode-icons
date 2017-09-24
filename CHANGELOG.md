@@ -2,6 +2,8 @@
 
 ## 7.13.1 (September 25, 2017)
 
+- Enhancement: Added white background `Erlang` as a custom icon. ([@mkaput](https://github.com/mkaput) in [#1067](https://github.com/vscode-icons/vscode-icons/pull/1067))
+- Fix: Fixed French translations. ([@MonsieurMan](https://github.com/MonsieurMan) in [#1185](https://github.com/vscode-icons/vscode-icons/pull/1185))
 - Enhancement: Improve Github project's templates. ([@JimiC](https://github.com/JimiC) in [#1182](https://github.com/vscode-icons/vscode-icons/pull/1182))
 - Fix: Typo found and `yarn.lock` update. ([@robertohuertasm](https://github.com/robertohuertasm) & [@JimiC](https://github.com/JimiC) in [#1172](https://github.com/vscode-icons/vscode-icons/pull/1172))
 
