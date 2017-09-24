@@ -116,6 +116,7 @@ export const extensions: IFileCollection = {
     { icon: 'config', extensions: ['.env.example'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'compass', extensions: [], format: FileFormat.svg },
     { icon: 'composer', extensions: ['composer.json', 'composer.lock'], filename: true, format: FileFormat.svg },
+    { icon: 'coveralls', extensions: ['.coveralls.yml'], filename: true, format: FileFormat.svg },
     { icon: 'cpp', extensions: [], languages: [languages.cpp], format: FileFormat.svg },
     { icon: 'cpp2', extensions: [], languages: [languages.cpp], format: FileFormat.svg, disabled: true },
     { icon: 'cppheader', extensions: ['hpp'], format: FileFormat.svg },
