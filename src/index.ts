@@ -4,7 +4,7 @@ import * as init from './init';
 import * as commands from './commands';
 import { getVsiconsConfig, getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
 import { LanguageResourceManager } from './i18n';
-import { IVSCodeUri, IVSIcons } from './models';
+import { IVSCodeUri, IVSIcons, Projects } from './models';
 import { constants } from './constants';
 
 export let initialized: boolean;
@@ -30,11 +30,11 @@ function initialize(context: vscode.ExtensionContext) {
 }
 
 function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
-  const projectInfo = init.getProjectInfo(results, 'ng');
+  const projectInfo = init.getProjectInfo(results, Projects.angular);
   const i18nManager = new LanguageResourceManager(vscode.env.language);
   const presetValue = getConfig().inspect(`vsicons.presets.angular`).workspaceValue as boolean;
   const detectionResult = init.checkForAngularProject(
-    presetValue, init.iconsDisabled('ng'), !!projectInfo, i18nManager);
+    presetValue, init.iconsDisabled(Projects.angular), !!projectInfo, i18nManager);
 
   if (!detectionResult.apply) {
     return;

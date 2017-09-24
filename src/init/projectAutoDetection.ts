@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as models from '../models';
 import { extensionSettings } from '../settings';
-import { parseJSON } from '../utils';
+import { parseJSON, getEnumMember } from '../utils';
 import { LanguageResourceManager } from '../i18n';
 import { IIconSchema } from '../models/iconSchema/iconSchema';
 
@@ -103,8 +103,8 @@ export function getInfo(projectJson: any, name: string): models.IProjectInfo {
   };
 
   switch (name) {
-    case 'ng':
-      return getInfoFn('@angular/core', 'Angular');
+    case models.Projects.angular:
+      return getInfoFn('@angular/core', getEnumMember(models.Projects, models.Projects.angular));
     default:
       return null;
   }

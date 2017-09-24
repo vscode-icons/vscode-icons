@@ -231,7 +231,6 @@ describe('Utils: tests', function () {
         function () {
           expect(utils.getDrives('/', 'file:///')).to.be.an.instanceOf(Array).and.include.members([undefined]);
         });
-
     });
 
     context('the \'flatten\' function', function () {
@@ -274,6 +273,24 @@ describe('Utils: tests', function () {
           ];
           const flatObj = utils.flatten(obj);
           expect(flatObj).to.be.an('object').that.has.all.keys(flatObjKeys);
+        });
+
+    });
+
+    context('the \'getEnumMember\' function', function () {
+
+      it('returns the enum member',
+        function () {
+          const Enum = { angular: 'ng' };
+          expect(utils.getEnumMember(Enum, Enum.angular)).to.be.equal('angular');
+        });
+
+      it('throws an Error when a non Enum object is provided',
+        function () {
+          const Enum = 'ng';
+          expect(utils.getEnumMember.bind(utils.getEnumMember, Enum, Enum))
+            .to.throw(Error, /Only Enum allowed/);
+
         });
 
     });

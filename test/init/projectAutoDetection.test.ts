@@ -77,7 +77,7 @@ describe('AutoDetectProject: tests', function () {
               '@angular/core': '',
             },
           };
-          expect(adp.getInfo(packageJson, 'ng')).to.not.be.null;
+          expect(adp.getInfo(packageJson, models.Projects.angular)).to.not.be.null;
         });
 
       it('detects an Angular project from devDependencies',
@@ -87,7 +87,7 @@ describe('AutoDetectProject: tests', function () {
               '@angular/core': '',
             },
           };
-          expect(adp.getInfo(packageJson, 'ng')).to.not.be.null;
+          expect(adp.getInfo(packageJson, models.Projects.angular)).to.not.be.null;
         });
 
       it('detects a non Angular project from dependencies',
@@ -97,7 +97,7 @@ describe('AutoDetectProject: tests', function () {
               vscode: '',
             },
           };
-          expect(adp.getInfo(packageJson, 'ng')).to.be.null;
+          expect(adp.getInfo(packageJson, models.Projects.angular)).to.be.null;
         });
 
       it('detects a non Angular project from devDependencies',
@@ -107,7 +107,7 @@ describe('AutoDetectProject: tests', function () {
               vscode: '',
             },
           };
-          expect(adp.getInfo(packageJson, 'ng')).to.be.null;
+          expect(adp.getInfo(packageJson, models.Projects.angular)).to.be.null;
         });
 
       it('does not detect a project when it does not exist',
@@ -133,9 +133,9 @@ describe('AutoDetectProject: tests', function () {
               '@angular/core': '0.0.0',
             },
           };
-          const projectInfo: models.IProjectInfo = adp.getInfo(packageJson, 'ng');
+          const projectInfo: models.IProjectInfo = adp.getInfo(packageJson, models.Projects.angular);
           expect(projectInfo).to.not.be.null;
-          expect(projectInfo.name).to.equal('Angular');
+          expect(projectInfo.name).to.equal('angular');
           expect(projectInfo.version).to.equal('0.0.0');
         });
 
@@ -154,9 +154,9 @@ describe('AutoDetectProject: tests', function () {
           function () {
             sandbox.stub(fs, 'readFileSync').returns('{ "dependencies": { "@angular/core": "0.0.0" } }');
             const results = [{ fsPath: '' }] as models.IVSCodeUri[];
-            const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, 'ng');
+            const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, models.Projects.angular);
             expect(projectInfo).to.not.be.null;
-            expect(projectInfo.name).to.equal('Angular');
+            expect(projectInfo.name).to.equal('angular');
             expect(projectInfo.version).to.equal('0.0.0');
           });
 
@@ -164,7 +164,7 @@ describe('AutoDetectProject: tests', function () {
           function () {
             sandbox.stub(fs, 'readFileSync').returns('{ "dependencies": { "meteor": "0.0.0" } }');
             const results = [{ fsPath: '' }] as models.IVSCodeUri[];
-            const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, 'ng');
+            const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, models.Projects.angular);
             expect(projectInfo).to.be.null;
           });
       });
@@ -185,27 +185,27 @@ describe('AutoDetectProject: tests', function () {
           function () {
             const iconManifest = '{ "iconDefinitions": { "_f_ng_": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('ng')).to.be.false;
+            expect(adp.iconsDisabled(models.Projects.angular)).to.be.false;
           });
 
         it('disabled',
           function () {
             const iconManifest = '{ "iconDefinitions": { "_f_codecov": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('ng')).to.be.true;
+            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
           });
 
         it('disabled if they do not exist',
           function () {
             const iconManifest = '';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('ng')).to.be.true;
+            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
           });
 
         it('assumed disabled if icon manifest file fails to be loaded',
           function () {
             sandbox.stub(fs, 'readFileSync').throws(Error);
-            expect(adp.iconsDisabled('ng')).to.be.true;
+            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
           });
       });
 
