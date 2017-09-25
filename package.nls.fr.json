@@ -26,7 +26,7 @@
   "configuration.associations.fileDefault.file.description": "Définir l'icône de fichier par défaut pour le thème sombre.",
   "configuration.associations.fileDefault.file_light.description": "Définir l'icône de fichier par défaut pour le thème clair.",
   "configuration.associations.folderDefault.folder.description": "Définir l'icône de dossier par défaut pour le thème sombre.",
-  "configuration.associations.folderDefault.root_folder.description": "Définir l'icone par défaut du dossier racine pour le thème sombre.",
   "configuration.associations.folderDefault.folder_light.description": "Définir l'icône de dossier par défaut pour le thème clair.",
+  "configuration.associations.folderDefault.root_folder.description": "Définir l'icone par défaut du dossier racine pour le thème sombre.",
   "configuration.associations.folderDefault.root_folder_light.description": "Définir l'icone par défaut du dossier racine pour le thème clair."
 }
