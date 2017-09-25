@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as models from '../models';
 import { extensionSettings } from '../settings';
-import { parseJSON, getEnumMember } from '../utils';
+import { parseJSON } from '../utils';
 import { LanguageResourceManager } from '../i18n';
 import { IIconSchema } from '../models/iconSchema/iconSchema';
 
@@ -76,7 +76,7 @@ function getIconManifest(): string {
   }
 }
 
-export function getProjectInfo(results: models.IVSCodeUri[], name: string): models.IProjectInfo {
+export function getProjectInfo(results: models.IVSCodeUri[], name: models.Projects): models.IProjectInfo {
   let projectInfo: models.IProjectInfo = null;
   results.forEach(result => {
     const content = fs.readFileSync(result.fsPath, 'utf8');
@@ -87,24 +87,24 @@ export function getProjectInfo(results: models.IVSCodeUri[], name: string): mode
   return projectInfo;
 }
 
-export function getInfo(projectJson: any, name: string): models.IProjectInfo {
+export function getInfo(projectJson: any, name: models.Projects): models.IProjectInfo {
   if (!projectJson) { return null; }
 
-  const getInfoFn = (key: string, infoName?: string): models.IProjectInfo => {
+  const getInfoFn = (key: string): models.IProjectInfo => {
     const depExists = projectJson.dependencies && (projectJson.dependencies[key] != null);
     if (depExists) {
-      return { name: infoName, version: projectJson.dependencies[key] };
+      return { name, version: projectJson.dependencies[key] };
     }
     const devDepExists = (projectJson.devDependencies && (projectJson.devDependencies[key] != null));
     if (devDepExists) {
-      return { name: infoName, version: projectJson.devDependencies[key] };
+      return { name, version: projectJson.devDependencies[key] };
     }
     return null;
   };
 
   switch (name) {
     case models.Projects.angular:
-      return getInfoFn('@angular/core', getEnumMember(models.Projects, models.Projects.angular));
+      return getInfoFn('@angular/core');
     default:
       return null;
   }

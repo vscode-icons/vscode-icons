@@ -102,35 +102,36 @@ function resetProjectDetectionDefaultsCommand(): void {
 }
 
 function toggleAngularPresetCommand(): void {
-  togglePreset(models.PresetNames[models.PresetNames.angular], 'ngPreset', false, false);
+  togglePreset(models.PresetNames.angular, 'ngPreset', false, false);
 }
 
 function toggleJsPresetCommand(): void {
-  togglePreset(models.PresetNames[models.PresetNames.jsOfficial], 'jsOfficialPreset');
+  togglePreset(models.PresetNames.jsOfficial, 'jsOfficialPreset');
 }
 
 function toggleTsPresetCommand(): void {
-  togglePreset(models.PresetNames[models.PresetNames.tsOfficial], 'tsOfficialPreset');
+  togglePreset(models.PresetNames.tsOfficial, 'tsOfficialPreset');
 }
 
 function toggleJsonPresetCommand(): void {
-  togglePreset(models.PresetNames[models.PresetNames.jsonOfficial], 'jsonOfficialPreset');
+  togglePreset(models.PresetNames.jsonOfficial, 'jsonOfficialPreset');
 }
 
 function toggleHideFoldersPresetCommand(): void {
-  togglePreset(models.PresetNames[models.PresetNames.hideFolders], 'hideFoldersPreset', true);
+  togglePreset(models.PresetNames.hideFolders, 'hideFoldersPreset', true);
 }
 
 function toggleFoldersAllDefaultIconPresetCommand(): void {
-  togglePreset(models.PresetNames[models.PresetNames.foldersAllDefaultIcon], 'foldersAllDefaultIconPreset', true);
+  togglePreset(models.PresetNames.foldersAllDefaultIcon, 'foldersAllDefaultIconPreset', true);
 }
 
 function togglePreset(
-  preset: string,
+  presetName: models.PresetNames,
   presetKey: string,
   reverseAction: boolean = false,
   global: boolean = true): void {
 
+  const preset = models.PresetNames[presetName];
   const toggledValue = helper.isFolders(preset)
     ? folderIconsDisabled(helper.getFunc(preset))
     : iconsDisabled(helper.getIconName(preset));

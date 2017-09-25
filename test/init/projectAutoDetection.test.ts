@@ -118,12 +118,12 @@ describe('AutoDetectProject: tests', function () {
               'vscode': '',
             },
           };
-          expect(adp.getInfo(packageJson, 'meteor')).to.be.null;
+          expect(adp.getInfo(packageJson, models.Projects.angularjs)).to.be.null;
         });
 
-      it('does not detect a project when not project json is provided',
+      it('does not detect a project when no project json is provided',
         function () {
-          expect(adp.getInfo(null, '')).to.be.null;
+          expect(adp.getInfo(null, null)).to.be.null;
         });
 
       it('gets the project info version correctly',
@@ -135,7 +135,7 @@ describe('AutoDetectProject: tests', function () {
           };
           const projectInfo: models.IProjectInfo = adp.getInfo(packageJson, models.Projects.angular);
           expect(projectInfo).to.not.be.null;
-          expect(projectInfo.name).to.equal('angular');
+          expect(projectInfo.name).to.equal(models.Projects.angular);
           expect(projectInfo.version).to.equal('0.0.0');
         });
 
@@ -156,7 +156,7 @@ describe('AutoDetectProject: tests', function () {
             const results = [{ fsPath: '' }] as models.IVSCodeUri[];
             const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, models.Projects.angular);
             expect(projectInfo).to.not.be.null;
-            expect(projectInfo.name).to.equal('angular');
+            expect(projectInfo.name).to.equal(models.Projects.angular);
             expect(projectInfo.version).to.equal('0.0.0');
           });
 

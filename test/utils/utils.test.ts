@@ -282,13 +282,13 @@ describe('Utils: tests', function () {
       it('returns the enum member',
         function () {
           const Enum = { angular: 'ng' };
-          expect(utils.getEnumMember(Enum, Enum.angular)).to.be.equal('angular');
+          expect(utils.getEnumMemberByValue(Enum, Enum.angular)).to.be.equal('angular');
         });
 
       it('throws an Error when a non Enum object is provided',
         function () {
           const Enum = 'ng';
-          expect(utils.getEnumMember.bind(utils.getEnumMember, Enum, Enum))
+          expect(utils.getEnumMemberByValue.bind(utils.getEnumMemberByValue, Enum, Enum))
             .to.throw(Error, /Only Enum allowed/);
 
         });

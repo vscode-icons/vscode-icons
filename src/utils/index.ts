@@ -132,7 +132,7 @@ export function flatten(obj: object, separator = '.'): object {
   return Object.assign({}, ..._flatten(obj));
 }
 
-export function getEnumMember(obj: object, enumValue: string): string {
+export function getEnumMemberByValue(obj: object, enumValue: string): string {
   if (typeof obj !== 'object') { throw new Error('Only Enum allowed'); }
   return Object.keys(obj).find(key => obj[key] === enumValue);
 }

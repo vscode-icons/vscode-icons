@@ -1,4 +1,6 @@
+import { Projects } from './projects';
+
 export interface IProjectInfo {
-  name?: string;
+  name?: Projects;
   version?: string;
 }
