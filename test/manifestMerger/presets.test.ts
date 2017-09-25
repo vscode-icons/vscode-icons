@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import { extensions as fileExtensions } from '../support/supportedExtensions';
 import { extensions as folderExtensions } from '../support/supportedFolders';
 import * as iconManifest from '../../src/icon-manifest';
+import { IconNames } from '../../src/models';
 
 describe('Presets: merging configuration documents', function () {
 
@@ -69,8 +70,8 @@ describe('Presets: merging configuration documents', function () {
 
     it('JS official extension is enabled',
       function () {
-        const result = iconManifest.toggleOfficialIconsPreset(false, custom, ['js_official'], ['js']);
-        const official = result.supported.find(x => x.icon === 'js_official');
+        const result = iconManifest.toggleOfficialIconsPreset(false, custom, [IconNames.jsOfficial], ['js']);
+        const official = result.supported.find(x => x.icon === IconNames.jsOfficial);
         const unofficial = result.supported.find(x => x.icon === 'js');
         expect(official.disabled).to.be.false;
         expect(unofficial.disabled).to.be.true;
@@ -81,8 +82,8 @@ describe('Presets: merging configuration documents', function () {
         let official;
         let unofficial;
         const toggle = (disable: boolean) => {
-          const result = iconManifest.toggleOfficialIconsPreset(disable, custom, ['js_official'], ['js']);
-          official = result.supported.find(x => x.icon === 'js_official');
+          const result = iconManifest.toggleOfficialIconsPreset(disable, custom, [IconNames.jsOfficial], ['js']);
+          official = result.supported.find(x => x.icon === IconNames.jsOfficial);
           unofficial = result.supported.find(x => x.icon === 'js');
         };
         toggle(false);
@@ -96,8 +97,8 @@ describe('Presets: merging configuration documents', function () {
     it('TS official extension is enabled',
       function () {
         const result = iconManifest.toggleOfficialIconsPreset(false, custom,
-          ['typescript_official', 'typescriptdef_official'], ['typescript', 'typescriptdef']);
-        const official = result.supported.find(x => x.icon === 'typescript_official');
+          [IconNames.tsOfficial, 'typescriptdef_official'], ['typescript', 'typescriptdef']);
+        const official = result.supported.find(x => x.icon === IconNames.tsOfficial);
         const unofficial = result.supported.find(x => x.icon === 'typescript');
         const officialDef = result.supported.find(x => x.icon === 'typescriptdef_official');
         const unofficialDef = result.supported.find(x => x.icon === 'typescriptdef');
@@ -115,8 +116,8 @@ describe('Presets: merging configuration documents', function () {
         let unofficialDef;
         const toggle = (disable: boolean) => {
           const result = iconManifest.toggleOfficialIconsPreset(disable, custom,
-            ['typescript_official', 'typescriptdef_official'], ['typescript', 'typescriptdef']);
-          official = result.supported.find(x => x.icon === 'typescript_official');
+            [IconNames.tsOfficial, 'typescriptdef_official'], ['typescript', 'typescriptdef']);
+          official = result.supported.find(x => x.icon === IconNames.tsOfficial);
           unofficial = result.supported.find(x => x.icon === 'typescript');
           officialDef = result.supported.find(x => x.icon === 'typescriptdef_official');
           unofficialDef = result.supported.find(x => x.icon === 'typescriptdef');
@@ -135,8 +136,8 @@ describe('Presets: merging configuration documents', function () {
 
     it('JSON official extension is enabled',
       function () {
-        const result = iconManifest.toggleOfficialIconsPreset(false, custom, ['json_official'], ['json']);
-        const official = result.supported.find(x => x.icon === 'json_official');
+        const result = iconManifest.toggleOfficialIconsPreset(false, custom, [IconNames.jsonOfficial], ['json']);
+        const official = result.supported.find(x => x.icon === IconNames.jsonOfficial);
         const unofficial = result.supported.find(x => x.icon === 'json');
         expect(official.disabled).to.be.false;
         expect(unofficial.disabled).to.be.true;
@@ -147,8 +148,8 @@ describe('Presets: merging configuration documents', function () {
         let official;
         let unofficial;
         const toggle = (disable: boolean) => {
-          const result = iconManifest.toggleOfficialIconsPreset(disable, custom, ['json_official'], ['json']);
-          official = result.supported.find(x => x.icon === 'json_official');
+          const result = iconManifest.toggleOfficialIconsPreset(disable, custom, [IconNames.jsonOfficial], ['json']);
+          official = result.supported.find(x => x.icon === IconNames.jsonOfficial);
           unofficial = result.supported.find(x => x.icon === 'json');
         };
         toggle(false);

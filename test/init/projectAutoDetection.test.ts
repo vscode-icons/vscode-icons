@@ -3,7 +3,7 @@
 import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
-import { IVSIcons, IVSCodeUri, IProjectDetectionResult } from '../../src/models';
+import * as models from '../../src/models';
 import * as adp from '../../src/init/projectAutoDetection';
 import { LanguageResourceManager } from '../../src/i18n';
 
@@ -13,7 +13,7 @@ describe('AutoDetectProject: tests', function () {
 
     context('the extension', function () {
 
-      let userConfig: IVSIcons;
+      let userConfig: models.IVSIcons;
 
       beforeEach(() => {
         userConfig = {
@@ -54,7 +54,7 @@ describe('AutoDetectProject: tests', function () {
           const path1 = 'package.json';
           const path2 = 'f1/f2/f3/package.json';
           const findFiles = sinon.stub()
-            .returns(Promise.resolve([{ fsPath: path1 }, { fsPath: path2 }] as IVSCodeUri[]));
+            .returns(Promise.resolve([{ fsPath: path1 }, { fsPath: path2 }] as models.IVSCodeUri[]));
           return adp.detectProject(findFiles, userConfig)
             .then(res => {
               expect(res).to.be.an('array').with.length.greaterThan(0);
@@ -77,7 +77,7 @@ describe('AutoDetectProject: tests', function () {
               '@angular/core': '',
             },
           };
-          expect(adp.isProject(packageJson, 'ng')).to.be.true;
+          expect(adp.getInfo(packageJson, models.Projects.angular)).to.not.be.null;
         });
 
       it('detects an Angular project from devDependencies',
@@ -87,7 +87,7 @@ describe('AutoDetectProject: tests', function () {
               '@angular/core': '',
             },
           };
-          expect(adp.isProject(packageJson, 'ng')).to.be.true;
+          expect(adp.getInfo(packageJson, models.Projects.angular)).to.not.be.null;
         });
 
       it('detects a non Angular project from dependencies',
@@ -97,7 +97,7 @@ describe('AutoDetectProject: tests', function () {
               vscode: '',
             },
           };
-          expect(adp.isProject(packageJson, 'ng')).to.be.false;
+          expect(adp.getInfo(packageJson, models.Projects.angular)).to.be.null;
         });
 
       it('detects a non Angular project from devDependencies',
@@ -107,7 +107,7 @@ describe('AutoDetectProject: tests', function () {
               vscode: '',
             },
           };
-          expect(adp.isProject(packageJson, 'ng')).to.be.false;
+          expect(adp.getInfo(packageJson, models.Projects.angular)).to.be.null;
         });
 
       it('does not detect a project when it does not exist',
@@ -118,8 +118,56 @@ describe('AutoDetectProject: tests', function () {
               'vscode': '',
             },
           };
-          expect(adp.isProject(packageJson, 'meteor')).to.be.false;
+          expect(adp.getInfo(packageJson, models.Projects.angularjs)).to.be.null;
         });
+
+      it('does not detect a project when no project json is provided',
+        function () {
+          expect(adp.getInfo(null, null)).to.be.null;
+        });
+
+      it('gets the project info version correctly',
+        function () {
+          const packageJson = {
+            dependencies: {
+              '@angular/core': '0.0.0',
+            },
+          };
+          const projectInfo: models.IProjectInfo = adp.getInfo(packageJson, models.Projects.angular);
+          expect(projectInfo).to.not.be.null;
+          expect(projectInfo.name).to.equal(models.Projects.angular);
+          expect(projectInfo.version).to.equal('0.0.0');
+        });
+
+      context('gets from search result', function () {
+        let sandbox: sinon.SinonSandbox;
+
+        beforeEach(() => {
+          sandbox = sinon.sandbox.create();
+        });
+
+        afterEach(() => {
+          sandbox.restore();
+        });
+
+        it('the project info if it matches',
+          function () {
+            sandbox.stub(fs, 'readFileSync').returns('{ "dependencies": { "@angular/core": "0.0.0" } }');
+            const results = [{ fsPath: '' }] as models.IVSCodeUri[];
+            const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, models.Projects.angular);
+            expect(projectInfo).to.not.be.null;
+            expect(projectInfo.name).to.equal(models.Projects.angular);
+            expect(projectInfo.version).to.equal('0.0.0');
+          });
+
+        it('no project info if it does not match',
+          function () {
+            sandbox.stub(fs, 'readFileSync').returns('{ "dependencies": { "meteor": "0.0.0" } }');
+            const results = [{ fsPath: '' }] as models.IVSCodeUri[];
+            const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, models.Projects.angular);
+            expect(projectInfo).to.be.null;
+          });
+      });
 
       context('detects that special icons are', function () {
 
@@ -137,27 +185,27 @@ describe('AutoDetectProject: tests', function () {
           function () {
             const iconManifest = '{ "iconDefinitions": { "_f_ng_": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('ng')).to.be.false;
+            expect(adp.iconsDisabled(models.Projects.angular)).to.be.false;
           });
 
         it('disabled',
           function () {
             const iconManifest = '{ "iconDefinitions": { "_f_codecov": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('ng')).to.be.true;
+            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
           });
 
         it('disabled if they do not exist',
           function () {
             const iconManifest = '';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('ng')).to.be.true;
+            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
           });
 
         it('assumed disabled if icon manifest file fails to be loaded',
           function () {
             sandbox.stub(fs, 'readFileSync').throws(Error);
-            expect(adp.iconsDisabled('ng')).to.be.true;
+            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
           });
       });
 
@@ -258,7 +306,7 @@ describe('AutoDetectProject: tests', function () {
         it('and has detected a \'package.json\' file',
           function () {
             const path = 'package.json';
-            const findFiles = sinon.stub().returns(Promise.resolve([{ fsPath: path }] as IVSCodeUri[]));
+            const findFiles = sinon.stub().returns(Promise.resolve([{ fsPath: path }] as models.IVSCodeUri[]));
             userConfig.projectDetection.disableDetect = false;
             return adp.detectProject(findFiles, userConfig)
               .then(res => {
@@ -474,7 +522,7 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const autoReload = false;
           const applyCustomizationFn = sinon.spy();
-          const projectDetectionResult: IProjectDetectionResult = {
+          const projectDetectionResult: models.IProjectDetectionResult = {
             apply: undefined,
             message: undefined,
             value: undefined,
