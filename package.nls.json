@@ -20,7 +20,7 @@
   "configuration.presets.jsonOfficial.description": "If set to true, the extension will use the official JSON icon.",
   "configuration.presets.hideFolders.description": "If set to true, all folders will be hidden.",
   "configuration.presets.foldersAllDefaultIcon.description": "If set to true, all folders will have the default folder icon.",
-  "configuration.customIconFolderPath.description": "The physical path to the parent folder where the custom icons folder resides on your local machine",
+  "configuration.customIconFolderPath.description": "The physical path to the parent folder where the custom icons folder resides on your local machine.",
   "configuration.associations.files.description": "These custom associations will override the file icon associations defined by default.",
   "configuration.associations.folders.description": "These custom associations will override the folder icon associations defined by default.",
   "configuration.associations.fileDefault.file.description": "This setting will let you change the default file icon for dark themes.",
