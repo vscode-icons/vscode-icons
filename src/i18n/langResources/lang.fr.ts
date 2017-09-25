@@ -6,7 +6,7 @@ export const langFr: ILangResource = {
   seeReleaseNotes: 'Information à propos des derniers changement',
   dontShowThis: 'Ne pas afficher ce message la prochaine fois',
   seeReadme: 'A propos de l\'extension (rédigé en anglais)',
-  welcome: `${constants.extensionName} supporte désormais l'API officielle.`,
+  welcome: `Merci d'avoir installé ${constants.extensionName}`,
   activate: 'Activer',
   aboutOfficialApi: 'Plus à propos des icônes de fichier & dossier. (rédigé en anglais)',
   learnMore: 'Envie d\'en apprendre plus?',
