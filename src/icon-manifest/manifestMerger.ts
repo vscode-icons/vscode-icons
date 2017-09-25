@@ -38,6 +38,8 @@ function mergeDefaultFolders(custom: models.IFolderDefault, supported: models.IF
   return {
     folder: custom.folder || supported.folder,
     folder_light: custom.folder_light || supported.folder_light,
+    root_folder: custom.root_folder || supported.root_folder,
+    root_folder_light: custom.root_folder_light || supported.root_folder_light,
   };
 }
 
@@ -112,6 +114,12 @@ export function toggleHideFoldersPreset(
   if (folders.default.folder_light) {
     collection.default.folder_light.disabled = disable;
   }
+  if (folders.default.root_folder) {
+    collection.default.root_folder.disabled = disable;
+  }
+  if (folders.default.root_folder_light) {
+    collection.default.root_folder_light.disabled = disable;
+  }
   return collection;
 }
 
@@ -125,6 +133,12 @@ export function toggleFoldersAllDefaultIconPreset(
   }
   if (folders.default.folder_light) {
     collection.default.folder_light.disabled = false;
+  }
+  if (folders.default.root_folder) {
+    collection.default.root_folder.disabled = false;
+  }
+  if (folders.default.root_folder_light) {
+    collection.default.root_folder_light.disabled = false;
   }
   return collection;
 }

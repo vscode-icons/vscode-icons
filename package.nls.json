@@ -26,5 +26,7 @@
   "configuration.associations.fileDefault.file.description": "This setting will let you change the default file icon for dark themes.",
   "configuration.associations.fileDefault.file_light.description": "This setting will let you change the default file icon for light themes.",
   "configuration.associations.folderDefault.folder.description": "This setting will let you change the default folder icon for dark themes.",
-  "configuration.associations.folderDefault.folder_light.description": "This setting will let you change the default folder icon for light themes."
+  "configuration.associations.folderDefault.folder_light.description": "This setting will let you change the default folder icon for light themes.",
+  "configuration.associations.folderDefault.root_folder.description": "This setting will let you change the default root folder icon for dark themes.",
+  "configuration.associations.folderDefault.root_folder_light.description": "This setting will let you change the default root folder icon for light themes."
 }
