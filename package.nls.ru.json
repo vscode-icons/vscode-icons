@@ -26,7 +26,7 @@
   "configuration.associations.fileDefault.file.description": "Настройка позволяет переопределить значок файла по-умолчанию для темной темы",
   "configuration.associations.fileDefault.file_light.description": "Настройка позволяет переопределить значок файла по-умолчанию для светлой темы",
   "configuration.associations.folderDefault.folder.description": "Настройка позволяет переопределить значок папки по-умолчанию для темной темы",
-  "configuration.associations.folderDefault.root_folder.description": "",
+  "configuration.associations.folderDefault.root_folder.description": "Настройка позволяет переопределить значок корневой папки по-умолчанию для темной темы",
   "configuration.associations.folderDefault.folder_light.description": "Настройка позволяет переопределить значок папки по-умолчанию для светлой темы",
-  "configuration.associations.folderDefault.root_folder_light.description": ""
+  "configuration.associations.folderDefault.root_folder_light.description": "Настройка позволяет переопределить значок корневой папки по-умолчанию для светлой темы"
 }
