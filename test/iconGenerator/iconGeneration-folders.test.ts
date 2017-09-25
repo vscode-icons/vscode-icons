@@ -43,6 +43,17 @@ describe('IconGenerator: folders icon generation test', function () {
           expect(schema.iconDefinitions._folder_open.iconPath).not.to.be.equal('');
         });
 
+      it('root folder has an icon path',
+        function () {
+          // tslint:disable-next-line:no-unused-expression
+          expect(schema.iconDefinitions._root_folder.iconPath).not.to.be.empty;
+        });
+
+      it('root folder has an open icon path',
+        function () {
+          expect(schema.iconDefinitions._root_folder_open.iconPath).not.to.be.equal('');
+        });
+
       context('if a default \'light\' icon is NOT defined', function () {
 
         context('each supported', function () {

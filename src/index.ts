@@ -9,7 +9,7 @@ import { constants } from './constants';
 
 export let initialized: boolean;
 
-function initialize(context: vscode.ExtensionContext) {
+function initialize(context: vscode.ExtensionContext): void {
   const config = getVsiconsConfig();
   const settingsManager = new SettingsManager(vscode);
 
@@ -44,7 +44,7 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
     commands.applyCustomization, commands.showCustomizationMessage, commands.reload);
 }
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
   initialize(context);
   // tslint:disable-next-line no-console
   console.info(`${constants.extensionName} is active!`);
@@ -52,6 +52,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your vscode is closed
-export function deactivate() {
+export function deactivate(): void {
   // no code here at the moment
 }
