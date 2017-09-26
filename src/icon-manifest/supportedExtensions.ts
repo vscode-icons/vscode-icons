@@ -330,6 +330,7 @@ export const extensions: IFileCollection = {
     { icon: 'pug', extensions: ['.jade-lintrc', '.pug-lintrc', '.jade-lint.json', '.pug-lintrc.js', '.pug-lintrc.json'], filename: true, languages: [languages.pug], format: FileFormat.svg },
     { icon: 'purescript', extensions: [], light: true, languages: [languages.purescript], format: FileFormat.svg },
     { icon: 'python', extensions: [], languages: [languages.python], format: FileFormat.svg },
+    { icon: 'q', extensions: ['q'], format: FileFormat.svg },
     { icon: 'qlikview', extensions: ['qvd', 'qvw'], languages: [languages.qlik], format: FileFormat.svg },
     { icon: 'r', extensions: [], languages: [languages.r], format: FileFormat.svg },
     { icon: 'rails', extensions: [], format: FileFormat.svg },
