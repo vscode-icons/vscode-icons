@@ -1,7 +1,7 @@
 import { IExtensionSettings } from '../models';
 
 export const extensionSettings: IExtensionSettings = {
-  version: '7.13.0',
+  version: '7.14.0',
   iconJsonFileName: 'icons.json',
   iconSuffix: '',
   filePrefix: 'file_type_',

@@ -20,16 +20,7 @@ export function getFunc(preset: string): (iconsJson: models.IIconSchema) => bool
 }
 
 export function getIconName(preset: string): string {
-  switch (preset) {
-    case 'angular':
-      return 'ng';
-    case 'jsOfficial':
-      return 'js_official';
-    case 'tsOfficial':
-      return 'typescript_official';
-    case 'jsonOfficial':
-      return 'json_official';
-    default:
-      throw new Error('Not Implemented');
-  }
+  const iconName = models.IconNames[preset];
+  if (!iconName) { throw new Error('Not Implemented'); }
+  return iconName;
 }

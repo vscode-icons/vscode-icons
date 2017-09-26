@@ -102,35 +102,36 @@ function resetProjectDetectionDefaultsCommand(): void {
 }
 
 function toggleAngularPresetCommand(): void {
-  togglePreset('angular', 'ngPreset', false, false);
+  togglePreset(models.PresetNames.angular, 'ngPreset', false, false);
 }
 
 function toggleJsPresetCommand(): void {
-  togglePreset('jsOfficial', 'jsOfficialPreset');
+  togglePreset(models.PresetNames.jsOfficial, 'jsOfficialPreset');
 }
 
 function toggleTsPresetCommand(): void {
-  togglePreset('tsOfficial', 'tsOfficialPreset');
+  togglePreset(models.PresetNames.tsOfficial, 'tsOfficialPreset');
 }
 
 function toggleJsonPresetCommand(): void {
-  togglePreset('jsonOfficial', 'jsonOfficialPreset');
+  togglePreset(models.PresetNames.jsonOfficial, 'jsonOfficialPreset');
 }
 
 function toggleHideFoldersPresetCommand(): void {
-  togglePreset('hideFolders', 'hideFoldersPreset', true);
+  togglePreset(models.PresetNames.hideFolders, 'hideFoldersPreset', true);
 }
 
 function toggleFoldersAllDefaultIconPresetCommand(): void {
-  togglePreset('foldersAllDefaultIcon', 'foldersAllDefaultIconPreset', true);
+  togglePreset(models.PresetNames.foldersAllDefaultIcon, 'foldersAllDefaultIconPreset', true);
 }
 
 function togglePreset(
-  preset: string,
+  presetName: models.PresetNames,
   presetKey: string,
   reverseAction: boolean = false,
   global: boolean = true): void {
 
+  const preset = models.PresetNames[presetName];
   const toggledValue = helper.isFolders(preset)
     ? folderIconsDisabled(helper.getFunc(preset))
     : iconsDisabled(helper.getIconName(preset));
@@ -286,11 +287,11 @@ function generateManifest(
     // check presets...
     workingCustomFiles = iconManifest.toggleAngularPreset(!angularPreset, customFiles);
     workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.jsOfficial, workingCustomFiles,
-      ['js_official'], ['js']);
+      [models.IconNames.jsOfficial], [models.IconNames.js]);
     workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.tsOfficial, workingCustomFiles,
-      ['typescript_official', 'typescriptdef_official'], ['typescript', 'typescriptdef']);
+      [models.IconNames.tsOfficial, models.IconNames.tsDefOfficial], [models.IconNames.ts, models.IconNames.tsDef]);
     workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.jsonOfficial, workingCustomFiles,
-      ['json_official'], ['json']);
+      [models.IconNames.jsonOfficial], [models.IconNames.json]);
   }
   if (customFolders) {
     workingCustomFolders = iconManifest.toggleFoldersAllDefaultIconPreset(

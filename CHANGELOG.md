@@ -1,6 +1,19 @@
 # Change Log
 
-## 7.13.0 (September 17, 2017)
+## 7.14.0 (September 25, 2017)
+
+- Enhancement: Improved welcome message flow. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1184](https://github.com/vscode-icons/vscode-icons/pull/1184))
+- Feature: Added support for `Coveralls`. ([@JimiC](https://github.com/JimiC) in [#1190](https://github.com/vscode-icons/vscode-icons/pull/1190))
+- Feature: Added support for `Crowdin`. ([@JimiC](https://github.com/JimiC) in [#1189](https://github.com/vscode-icons/vscode-icons/pull/1189))
+- Fix: Fixed English tranlation. ([@JimiC](https://github.com/JimiC) in [#1187](https://github.com/vscode-icons/vscode-icons/pull/1187))
+- Fix: Fixed French translations. ([@MonsieurMan](https://github.com/MonsieurMan) in [#1185](https://github.com/vscode-icons/vscode-icons/pull/1185))
+- Enhancement: Added ability to retrieve project info. ([@JimiC](https://github.com/JimiC) in [#1183](https://github.com/vscode-icons/vscode-icons/pull/1183))
+- Enhancement: Improve Github project's templates. ([@JimiC](https://github.com/JimiC) in [#1182](https://github.com/vscode-icons/vscode-icons/pull/1182))
+- Feature: Added support for root folder icons. ([@JimiC](https://github.com/JimiC) in [#1179](https://github.com/vscode-icons/vscode-icons/pull/1179))
+- Fix: Typo found and `yarn.lock` update. ([@robertohuertasm](https://github.com/robertohuertasm) & [@JimiC](https://github.com/JimiC) in [#1172](https://github.com/vscode-icons/vscode-icons/pull/1172))
+- Enhancement: Added white background `Erlang` as a custom icon. ([@mkaput](https://github.com/mkaput) in [#1067](https://github.com/vscode-icons/vscode-icons/pull/1067))
+
+## 7.13.0 (September 18, 2017)
 
 - Fix: Fixed `tslint` configuration. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1169](https://github.com/vscode-icons/vscode-icons/pull/1169))
 - Enhancement: Updated project dependencies. ([@JimiC](https://github.com/JimiC) in [#1167](https://github.com/vscode-icons/vscode-icons/pull/1167))

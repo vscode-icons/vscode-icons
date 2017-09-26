@@ -1,17 +1,15 @@
 import * as vscode from 'vscode';
-import * as fs from 'fs';
 import { SettingsManager } from './settings';
 import * as init from './init';
 import * as commands from './commands';
 import { getVsiconsConfig, getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
-import { parseJSON } from './utils';
 import { LanguageResourceManager } from './i18n';
-import { IVSCodeUri, IVSIcons } from './models';
+import { IVSCodeUri, IVSIcons, Projects } from './models';
 import { constants } from './constants';
 
 export let initialized: boolean;
 
-function initialize(context: vscode.ExtensionContext) {
+function initialize(context: vscode.ExtensionContext): void {
   const config = getVsiconsConfig();
   const settingsManager = new SettingsManager(vscode);
 
@@ -32,20 +30,11 @@ function initialize(context: vscode.ExtensionContext) {
 }
 
 function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
-  let isNgProject: boolean;
-  for (const result of results) {
-    const content = fs.readFileSync(result.fsPath, 'utf8');
-    const projectJson = parseJSON(content);
-    isNgProject = projectJson && init.isProject(projectJson, 'ng');
-    if (isNgProject) {
-      break;
-    }
-  }
-
+  const projectInfo = init.getProjectInfo(results, Projects.angular);
   const i18nManager = new LanguageResourceManager(vscode.env.language);
   const presetValue = getConfig().inspect(`vsicons.presets.angular`).workspaceValue as boolean;
   const detectionResult = init.checkForAngularProject(
-    presetValue, init.iconsDisabled('ng'), isNgProject, i18nManager);
+    presetValue, init.iconsDisabled(Projects.angular), !!projectInfo, i18nManager);
 
   if (!detectionResult.apply) {
     return;
@@ -55,7 +44,7 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
     commands.applyCustomization, commands.showCustomizationMessage, commands.reload);
 }
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
   initialize(context);
   // tslint:disable-next-line no-console
   console.info(`${constants.extensionName} is active!`);
@@ -63,6 +52,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your vscode is closed
-export function deactivate() {
+export function deactivate(): void {
   // no code here at the moment
 }

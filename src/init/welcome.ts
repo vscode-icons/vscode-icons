@@ -5,25 +5,26 @@ import { getConfig } from '../utils/vscode-extensions';
 import { ISettingsManager, LangResourceKeys } from '../models';
 import { constants } from '../constants';
 import { activationCommand } from '../commands';
+import { extensionSettings } from '../settings/extensionSettings';
 
 const i18nManager = new LanguageResourceManager(vscode.env.language);
 
 export function manageWelcomeMessage(settingsManager: ISettingsManager): void {
   const themeName = getConfig().inspect(constants.vscode.iconThemeSetting).globalValue;
-  if (!settingsManager.getState().welcomeShown || themeName !== constants.extensionName) {
+
+  if (!settingsManager.getState().welcomeShown && themeName !== constants.extensionName) {
     showWelcomeMessage();
     return;
   }
 
   if (settingsManager.isNewVersion() && !getConfig().vsicons.dontShowNewVersionMessage) {
-    showNewVersionMessage(settingsManager);
+    showNewVersionMessage();
   }
 }
 
 function showWelcomeMessage(): void {
   const displayMessage = () => {
-    vscode.window.showInformationMessage(
-      i18nManager.getMessage(LangResourceKeys.welcome),
+    vscode.window.showInformationMessage(i18nManager.getMessage(LangResourceKeys.welcome),
       { title: i18nManager.getMessage(LangResourceKeys.activate) },
       { title: i18nManager.getMessage(LangResourceKeys.aboutOfficialApi) },
       { title: i18nManager.getMessage(LangResourceKeys.seeReadme) })
@@ -54,10 +55,9 @@ function showWelcomeMessage(): void {
   displayMessage();
 }
 
-function showNewVersionMessage(settingsManager: ISettingsManager): void {
-  const settings = settingsManager.getSettings().extensionSettings;
+function showNewVersionMessage(): void {
   vscode.window.showInformationMessage(
-    `${i18nManager.getMessage(LangResourceKeys.newVersion)} v${settings.version}`,
+    `${i18nManager.getMessage(LangResourceKeys.newVersion)} v${extensionSettings.version}`,
     { title: i18nManager.getMessage(LangResourceKeys.seeReleaseNotes) },
     { title: i18nManager.getMessage(LangResourceKeys.dontShowThis) })
     .then(btn => {

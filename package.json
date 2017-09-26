@@ -2,7 +2,7 @@
     "name": "vscode-icons",
     "displayName": "vscode-icons",
     "description": "Icons for Visual Studio Code",
-    "version": "7.12.0",
+    "version": "7.14.0",
     "publisher": "robertohuertasm",
     "license": "MIT",
     "author": {
@@ -196,10 +196,20 @@
                     "default": null,
                     "description": "%configuration.associations.folderDefault.folder.description%"
                 },
+                "vsicons.associations.folderDefault.root_folder": {
+                    "type": "object",
+                    "default": null,
+                    "description": "%configuration.associations.folderDefault.root_folder.description%"
+                },
                 "vsicons.associations.folderDefault.folder_light": {
                     "type": "object",
                     "default": null,
                     "description": "%configuration.associations.folderDefault.folder_light.description%"
+                },
+                "vsicons.associations.folderDefault.root_folder_light": {
+                    "type": "object",
+                    "default": null,
+                    "description": "%configuration.associations.folderDefault.root_folder_light.description%"
                 }
             }
         }

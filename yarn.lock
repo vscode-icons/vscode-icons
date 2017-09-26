@@ -26,9 +26,9 @@
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-5.4.0.tgz#f3658535af7f1f502acd6da7daf405ffeb1f7ee4"
 
-"@types/sinon@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-2.3.3.tgz#1f20b96f954b4997a09c1c0a20264aaba6b00147"
+"@types/sinon@^2.3.4":
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-2.3.5.tgz#68f1e0ac15f2eb6cc682b7af87cd517acc77b589"
 
 ajv@^4.9.1:
   version "4.11.8"
@@ -1580,9 +1580,9 @@ mocha@^3.2.0:
     mkdirp "0.5.1"
     supports-color "3.1.2"
 
-mocha@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/mocha/-/mocha-3.5.1.tgz#9b6d13ac1ccf957edd16f2e439055734b1b60391"
+mocha@^3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/mocha/-/mocha-3.5.3.tgz#1e0480fe36d2da5858d1eb6acc38418b26eaa20d"
   dependencies:
     browser-stdout "1.3.0"
     commander "2.9.0"
@@ -2101,6 +2101,12 @@ right-align@^0.1.1:
 rimraf@2, rimraf@^2.3.3, rimraf@^2.5.4, rimraf@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.1.tgz#c2338ec643df7a1b7fe5c54fa86f57428a55f33d"
+  dependencies:
+    glob "^7.0.5"
+
+rimraf@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.2.tgz#2ed8150d24a16ea8651e6d6ef0f47c4158ce7a36"
   dependencies:
     glob "^7.0.5"
 
