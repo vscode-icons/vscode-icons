@@ -63,10 +63,10 @@ export class SettingsManager implements ISettingsManager {
     fs.writeFileSync(this.settings.settingsPath, JSON.stringify(state));
   }
 
-  public updateStatus(sts: ExtensionStatus): IState {
+  public updateStatus(sts?: ExtensionStatus): IState {
     const state = this.getState();
     state.version = extensionSettings.version;
-    state.status = sts;
+    state.status = sts == null ? state.status : sts;
     state.welcomeShown = true;
     this.setState(state);
     return state;
