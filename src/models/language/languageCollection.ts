@@ -105,6 +105,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   twig: ILanguage;
   vba: ILanguage;
   vbscript: ILanguage;
+  velocity: ILanguage;
   vhdl: ILanguage;
   viml: ILanguage;
   volt: ILanguage;
