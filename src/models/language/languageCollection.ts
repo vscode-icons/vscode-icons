@@ -82,6 +82,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   puppet: ILanguage;
   purescript: ILanguage;
   qlik: ILanguage;
+  racket: ILanguage;
   raml: ILanguage;
   reason: ILanguage;
   restructuredtext: ILanguage;

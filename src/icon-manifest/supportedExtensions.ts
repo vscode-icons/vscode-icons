@@ -332,6 +332,7 @@ export const extensions: IFileCollection = {
     { icon: 'python', extensions: [], languages: [languages.python], format: FileFormat.svg },
     { icon: 'qlikview', extensions: ['qvd', 'qvw'], languages: [languages.qlik], format: FileFormat.svg },
     { icon: 'r', extensions: [], languages: [languages.r], format: FileFormat.svg },
+    { icon: 'racket', extensions: [], languages: [languages.racket], format: FileFormat.svg },
     { icon: 'rails', extensions: [], format: FileFormat.svg },
     { icon: 'rake', extensions: ['rake'], format: FileFormat.svg },
     { icon: 'rake', extensions: ['rakefile'], filename: true, format: FileFormat.svg },

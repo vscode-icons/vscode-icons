@@ -115,6 +115,7 @@ export const languages: ILanguageCollection = {
   python: { ids: 'python', defaultExtension: 'py' },
   qlik: { ids: ['qlik'], defaultExtension: 'qvs' },
   r: { ids: 'r', defaultExtension: 'r' },
+  racket: { ids: 'racket', defaultExtension: 'rkt' },
   razor: { ids: 'razor', defaultExtension: 'cshtml' },
   raml: { ids: ['raml'], defaultExtension: 'raml' },
   reason: { ids: 'reason', defaultExtension: 're' },
