@@ -82,6 +82,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   puppet: ILanguage;
   purescript: ILanguage;
   qlik: ILanguage;
+  racket: ILanguage;
   raml: ILanguage;
   reason: ILanguage;
   restructuredtext: ILanguage;
@@ -105,10 +106,12 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   twig: ILanguage;
   vba: ILanguage;
   vbscript: ILanguage;
+  velocity: ILanguage;
   vhdl: ILanguage;
   viml: ILanguage;
   volt: ILanguage;
   vue: ILanguage;
+  wolfram: ILanguage;
   wxml: ILanguage;
   yang: ILanguage;
 }
