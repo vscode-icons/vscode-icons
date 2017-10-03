@@ -1,5 +1,6 @@
 import { ILangResource, ILangResourceCollection, IOSSpecific, LangResourceKeys } from '../models/i18n';
 import { langResourceCollection } from './langResourceCollection';
+import { constants } from '../constants';
 
 export class LanguageResourceManager {
 
@@ -54,6 +55,6 @@ export class LanguageResourceManager {
       });
     });
 
-    return msg.trim();
+    return msg.replace(/%extensionName%/gi, constants.extensionName).trim();
   }
 }

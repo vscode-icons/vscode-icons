@@ -154,6 +154,7 @@ export const languages: ILanguageCollection = {
   viml: { ids: ['viml'], defaultExtension: 'vim' },
   volt: { ids: ['volt'], defaultExtension: 'volt' },
   vue: { ids: ['vue'], defaultExtension: 'vue' },
+  wolfram: { ids: ['wolfram'], defaultExtension: 'wl' },
   wxml: { ids: ['wxml'], defaultExtension: 'wxml' },
   xml: { ids: 'xml', defaultExtension: 'xml' },
   xsl: { ids: 'xsl', defaultExtension: 'xsl' },
