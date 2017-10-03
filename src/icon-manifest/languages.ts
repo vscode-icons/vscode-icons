@@ -150,6 +150,7 @@ export const languages: ILanguageCollection = {
   vb: { ids: 'vb', defaultExtension: 'vb' },
   vba: { ids: ['vba'], defaultExtension: 'cls' },
   vbscript: { ids: ['vbscript'], defaultExtension: 'wsf' },
+  velocity: { ids: ['velocity'], defaultExtension: 'vm' },
   vhdl: { ids: ['vhdl'], defaultExtension: 'vhdl' },
   viml: { ids: ['viml'], defaultExtension: 'vim' },
   volt: { ids: ['volt'], defaultExtension: 'volt' },
