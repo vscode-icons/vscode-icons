@@ -2,7 +2,7 @@
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
 import { LanguageResourceManager } from '../../src/i18n';
-import { langEn } from '../../src/i18n/langResources';
+import { langResourceCollection } from '../../src/i18n/langResourceCollection';
 import { LangResourceKeys } from '../../src/models/i18n';
 import * as packageJson from '../../../package.json';
 import * as nls from '../../../package.nls.json';
@@ -17,14 +17,14 @@ describe('I18n: tests', function () {
         for (const key in LangResourceKeys) {
           // We only care about the enum members not the values
           if (isNaN(parseInt(key, 10))) {
-            expect(Reflect.has(langEn, key)).to.be.true;
+            expect(Reflect.has(langResourceCollection.en, key)).to.be.true;
           }
         }
       });
 
     it('ILangResource properties match LangResourceKeys properties',
       function () {
-        for (const key of Reflect.ownKeys(langEn)) {
+        for (const key of Reflect.ownKeys(langResourceCollection.en)) {
           expect(LangResourceKeys[key]).to.exist;
         }
       });
