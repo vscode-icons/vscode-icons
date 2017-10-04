@@ -71,7 +71,7 @@ export const extensions: IFolderCollection = {
         '.specs'],
       format: FileFormat.svg,
     },
-    { icon: 'tools', extensions: ['tools', '.tools'], format: FileFormat.svg },
+    { icon: 'tools', extensions: ['tools', '.tools', 'util', 'utils'], format: FileFormat.svg },
     { icon: 'typescript', extensions: ['typescript', 'ts'], format: FileFormat.svg },
     { icon: 'typings', extensions: ['typings'], format: FileFormat.svg },
     { icon: 'typings2', extensions: ['typings'], format: FileFormat.svg, disabled: true },
