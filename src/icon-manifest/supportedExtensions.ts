@@ -137,6 +137,7 @@ export const extensions: IFileCollection = {
     { icon: 'diff', extensions: [], languages: [languages.diff], format: FileFormat.svg },
     { icon: 'docker', extensions: ['.dockerignore', 'docker-compose.yml', 'docker-compose.ci-build.yml', 'docker-compose.override.yml', 'docker-compose.vs.debug.yml', 'docker-compose.vs.release.yml', 'docker-cloud.yml'], filename: true, languages: [languages.dockerfile], format: FileFormat.svg },
     { icon: 'docker2', extensions: ['.dockerignore', 'docker-compose.yml', 'docker-compose.ci-build.yml', 'docker-compose.override.yml', 'docker-compose.vs.debug.yml', 'docker-compose.vs.release.yml', 'docker-cloud.yml'], filename: true, languages: [languages.dockerfile], format: FileFormat.svg, disabled: true },
+    { icon: 'docpad', extensions: ['eco'], light: true, format: FileFormat.svg },
     { icon: 'doxygen', extensions: [], languages: [languages.doxygen], format: FileFormat.svg },
     { icon: 'drone', extensions: ['.drone.yml', '.drone.yml.sig'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'dylan', extensions: [], languages: [languages.dylanlang], format: FileFormat.svg },
