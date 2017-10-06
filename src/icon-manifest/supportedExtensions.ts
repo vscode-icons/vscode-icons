@@ -111,6 +111,7 @@ export const extensions: IFileCollection = {
     { icon: 'codecov', extensions: ['codecov.yml', '.codecov.yml'], filename: true, format: FileFormat.svg },
     { icon: 'codekit', extensions: ['kit'], format: FileFormat.svg },
     { icon: 'codekit', extensions: ['config.codekit', 'config.codekit2', 'config.codekit3'], filename: true, format: FileFormat.svg },
+    { icon: 'coffeelint', extensions: ['coffeelint.json', '.coffeelintignore'], filename: true, format: FileFormat.svg },
     { icon: 'coffeescript', extensions: [], languages: [languages.coffeescript], format: FileFormat.svg },
     { icon: 'config', extensions: ['env'], light: true, languages: [languages.properties], format: FileFormat.svg },
     { icon: 'config', extensions: ['.env.example'], light: true, filename: true, format: FileFormat.svg },
