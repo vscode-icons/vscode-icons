@@ -249,6 +249,7 @@ export const extensions: IFileCollection = {
     { icon: 'key', extensions: ['key', 'pem'], format: FileFormat.svg },
     { icon: 'kite', extensions: ['.kiteignore'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'kitchenci', extensions: ['.kitchen.yml'], filename: true, format: FileFormat.svg },
+    { icon: 'kos', extensions: ['ks'], languages: [languages.kos], format: FileFormat.svg },
     { icon: 'kotlin', extensions: [], languages: [languages.kotlin], format: FileFormat.svg },
     { icon: 'layout', extensions: ['master', 'layout.html', 'layout.htm'], format: FileFormat.svg },
     { icon: 'layout', extensions: ['layout.html', 'layout.htm'], filename: true, format: FileFormat.svg },
