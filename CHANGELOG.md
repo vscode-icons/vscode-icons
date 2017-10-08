@@ -1,5 +1,30 @@
 # Change Log
 
+## 7.15.0 (October 8, 2017)
+
+- Feature: Support for `Autodesk FBX`. ([@JimiC](https://github.com/JimiC) in [#1224](https://github.com/vscode-icons/vscode-icons/pull/1224))
+- Feature: Support for `KOS`. ([@JimiC](https://github.com/JimiC) in [#1223](https://github.com/vscode-icons/vscode-icons/pull/1223))
+- Feature: Support for `jsbeautifier`. ([@JimiC](https://github.com/JimiC) in [#1222](https://github.com/vscode-icons/vscode-icons/pull/1222))
+- Feature: Support for `robots.txt`. ([@JimiC](https://github.com/JimiC) in [#1221](https://github.com/vscode-icons/vscode-icons/pull/1221))
+- Feature: Support for `Darcs`, `Bazaar`, `Cloud Foundry`, `Mercurial`, `Floobits`, `Subversion`, `Perforce Helix`, `Fossil`, `CVS`, `Mozilla Jetpack` & `Monotone`. ([@JimiC](https://github.com/JimiC) in [#1220](https://github.com/vscode-icons/vscode-icons/pull/1220))
+- Enhancement: Added `.ts` extension to `karma` & `protractor` icons. ([@rfrancisco](https://github.com/rfrancisco) in [#1219](https://github.com/vscode-icons/vscode-icons/pull/1219))
+- Enhancement: Project's dependencies updated. ([@JimiC](https://github.com/JimiC) in [#1217](https://github.com/vscode-icons/vscode-icons/pull/1217))
+- Feature: Support for `Processing Lang`. ([@JimiC](https://github.com/JimiC) in [#1216](https://github.com/vscode-icons/vscode-icons/pull/1216))
+- Feature: Support for `SDLang`. ([@JimiC](https://github.com/JimiC) in [#1215](https://github.com/vscode-icons/vscode-icons/pull/1215))
+- Feature: Support for `CoffeeLint`. ([@JimiC](https://github.com/JimiC) in [#1214](https://github.com/vscode-icons/vscode-icons/pull/1214))
+- Feature: Support for `DocPad`. ([@JimiC](https://github.com/JimiC) in [#1212](https://github.com/vscode-icons/vscode-icons/pull/1212))
+- Enhancement: Improved `Coffeescript` icon color for dark themes. ([@JimiC](https://github.com/JimiC) in [#1210](https://github.com/vscode-icons/vscode-icons/pull/1210))
+- Feature: Support for `nyc`. ([@JimiC](https://github.com/JimiC) in [#1209](https://github.com/vscode-icons/vscode-icons/pull/1209))
+- Enhancement: Added `util(s)` to `tools` icon. ([@jens1o](https://github.com/jens1o) in [#1204](https://github.com/vscode-icons/vscode-icons/pull/1204))
+- Feature: Support for `Dylan-lang`. ([@JimiC](https://github.com/JimiC) in [#1203](https://github.com/vscode-icons/vscode-icons/pull/1203))
+- Feature: Support for `Sketch`. ([@JimiC](https://github.com/JimiC) in [#1202](https://github.com/vscode-icons/vscode-icons/pull/1202))
+- Feature: Support for `Velocity`. ([@JimiC](https://github.com/JimiC) in [#1199](https://github.com/vscode-icons/vscode-icons/pull/1199))
+- Feature: Support for `Q`. ([@JimiC](https://github.com/JimiC) in [#1198](https://github.com/vscode-icons/vscode-icons/pull/1198))
+- Feature: Support for `Prettier`. ([@JimiC](https://github.com/JimiC) in [#1197](https://github.com/vscode-icons/vscode-icons/pull/1197))
+- Feature: Support for `Raket`. ([@JimiC](https://github.com/JimiC) in [#1196](https://github.com/vscode-icons/vscode-icons/pull/1196))
+- Feature: Support for `Wolfram`. ([@JimiC](https://github.com/JimiC) in [#1195](https://github.com/vscode-icons/vscode-icons/pull/1195))
+- Feature: Changed locale structure to support translation service. ([@JimiC](https://github.com/JimiC) in [#1193](https://github.com/vscode-icons/vscode-icons/pull/1193))
+
 ## 7.14.0 (September 25, 2017)
 
 - Enhancement: Improved welcome message flow. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1184](https://github.com/vscode-icons/vscode-icons/pull/1184))
