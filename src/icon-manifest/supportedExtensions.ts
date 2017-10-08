@@ -450,6 +450,18 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'vscode2',
+      extensions: [
+        'vscodeignore.json',
+        'launch.json',
+        'tasks.json',
+        '.vscodeignore',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
     { icon: 'vsix', extensions: ['vsix'], light: true, format: FileFormat.svg },
     { icon: 'vue', extensions: [], languages: [languages.vue], format: FileFormat.svg },
     { icon: 'watchmanconfig', extensions: ['.watchmanconfig'], filename: true, format: FileFormat.svg },
