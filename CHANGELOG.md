@@ -2,6 +2,7 @@
 
 ## 7.15.0 (October 8, 2017)
 
+- Feature: Support for `JSON5`. ([@JimiC](https://github.com/JimiC) in [#1226](https://github.com/vscode-icons/vscode-icons/pull/1226))
 - Feature: Support for `Autodesk FBX`. ([@JimiC](https://github.com/JimiC) in [#1224](https://github.com/vscode-icons/vscode-icons/pull/1224))
 - Feature: Support for `KOS`. ([@JimiC](https://github.com/JimiC) in [#1223](https://github.com/vscode-icons/vscode-icons/pull/1223))
 - Feature: Support for `jsbeautifier`. ([@JimiC](https://github.com/JimiC) in [#1222](https://github.com/vscode-icons/vscode-icons/pull/1222))
