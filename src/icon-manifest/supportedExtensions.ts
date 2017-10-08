@@ -165,6 +165,7 @@ export const extensions: IFileCollection = {
     { icon: 'eslint2', extensions: ['.eslintrc', '.eslintignore', '.eslintcache', '.eslintrc.js', '.eslintrc.json', '.eslintrc.yaml', '.eslintrc.yml'], filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'excel', extensions: ['xls', 'xlsx', 'xlsm', 'ods'], format: FileFormat.svg },
     { icon: 'favicon', extensions: ['favicon.ico'], filename: true, format: FileFormat.svg },
+    { icon: 'fbx', extensions: ['fbx'], format: FileFormat.svg },
     { icon: 'firebase', extensions: ['.firebaserc'], filename: true, format: FileFormat.svg },
     { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     { icon: 'floobits', extensions: ['.flooignore'], filename: true, format: FileFormat.svg },
