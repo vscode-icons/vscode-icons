@@ -52,6 +52,8 @@ If you're willing to collaborate with us feel free to join our [Github repositor
 
 ## State of the extension
 
+Our main core maintainer, [@JimiC](https://github.com/JimiC), has worked a lot for **7.15.0** and there are a lot of new cool icons in this new version. We hope that you enjoy them!
+
 [@JimiC](https://github.com/JimiC) has brought most of **7.11.0** which comes with some brand new icons and a really new cool feature, the ability to customize the `custom icons folder` path. With this, you will be able to ship your own custom icons along your repository and share them with your team. Or even store them in the cloud and have them available everywhere. If you want to know more about how it works, just read the [custom icons section](https://github.com/vscode-icons/vscode-icons/blob/master/README.md#custom-icons).
 
 With the release of **7.10.0**, we improved the way the extension is handling your manual changes to a `presets` or `associations` configuration. By default, every time you change any of the aforementioned configurations, you will be presented with the message to `Restart` the editor, for the changes to take effect. Of course, you can always disable this behavior. See the [Configuration](https://github.com/vscode-icons/vscode-icons#configuration) section for more details.
