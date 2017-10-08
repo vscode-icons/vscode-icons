@@ -106,6 +106,7 @@ export const languages: ILanguageCollection = {
   polymer: { ids: ['polymer'], defaultExtension: 'polymer' },
   postcss: { ids: ['postcss'], defaultExtension: 'pcss' },
   powershell: { ids: 'powershell', defaultExtension: 'ps1' },
+  processinglang: { ids: ['pde'], defaultExtension: 'pde' },
   prolog: { ids: ['prolog'], defaultExtension: 'pro' },
   properties: { ids: 'properties', defaultExtension: 'properties' },
   protobuf: { ids: ['proto3', 'proto'], defaultExtension: 'proto' },
