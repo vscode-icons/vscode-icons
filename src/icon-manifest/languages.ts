@@ -88,6 +88,7 @@ export const languages: ILanguageCollection = {
   markdown: { ids: 'markdown', defaultExtension: 'md' },
   marko: { ids: ['marko'], defaultExtension: 'marko' },
   matlab: { ids: ['matlab'], defaultExtension: 'mat' },
+  maxscript: { ids: ['maxscript'], defaultExtension: 'ms' },
   mjml: { ids: ['mjml'], defaultExtension: 'mjml' },
   mson: { ids: ['mson'], defaultExtension: 'mson' },
   nim: { ids: ['nim', 'nimble'], defaultExtension: 'nim' },
