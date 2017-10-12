@@ -396,7 +396,7 @@ export const extensions: IFileCollection = {
     { icon: 'sqlite', extensions: ['sqlite', 'sqlite3', 'db3'], format: FileFormat.svg },
     { icon: 'sss', extensions: ['sss'], format: FileFormat.svg },
     { icon: 'style', extensions: [], format: FileFormat.svg },
-    { icon: 'stylelint', extensions: ['.stylelintrc', 'stylelint.config.js', '.stylelintignore'], light: true, filename: true, format: FileFormat.svg },
+    { icon: 'stylelint', extensions: ['.stylelintrc', 'stylelint.config.js', '.stylelintignore', '.stylelintrc.json', '.stylelintrc.yaml', '.stylelintrc.yml', '.stylelintrc.js'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'stylus', extensions: [], languages: [languages.stylus], format: FileFormat.svg },
     { icon: 'storyboard', extensions: ['storyboard'], format: FileFormat.svg },
     { icon: 'storybook', extensions: ['story.js', 'stories.js'], format: FileFormat.svg },
