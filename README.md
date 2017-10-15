@@ -385,14 +385,10 @@ npm run build
 
 ### Building the extension's source code via docker
 
-Make sure that you have docker installed.
+Make sure that you have docker installed and follow one of the links below:
 
-```sh
-docker build -t vscode-icons .
-docker run --rm -it -v $PWD/dist:/app/dist vscode-icons
-```
-
-All of the files will be generated in the `dist` folder.
+[If you want to develop or build the app](https://github.com/vscode-icons/vscode-icons/blob/master/docker/development/README.md).
+[If you want to get the result of the latest published build](https://github.com/vscode-icons/vscode-icons/blob/master/docker/remote-builder/README.md)
 
 ## Change log
 
@@ -402,6 +398,10 @@ If you feel that there's some icon missing please report it to the Github reposi
 
 ## Versioning
 
-vscode-icons follows [Semantic Versioning 2.0.0](http://semver.org/).
+`vscode-icons` follows [Semantic Versioning 2.0.0](http://semver.org/).
+
+## Related extensions
+
+- [vscode-icons for GitHub](https://github.com/dderevjanik/github-vscode-icons) by [@dderevjanik](https://github.com/dderevjanik) will allow you to see all `Github`'s files with `vscode-icons` icons.
 
 **Enjoy!**
