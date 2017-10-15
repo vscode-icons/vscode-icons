@@ -136,3 +136,8 @@ export function getEnumMemberByValue(obj: object, enumValue: string): string {
   if (typeof obj !== 'object') { throw new Error('Only Enum allowed'); }
   return Object.keys(obj).find(key => obj[key] === enumValue);
 }
+
+export function combine(array1: any[], array2: any[], separator = '.'): any[] {
+  return array1.reduce((previous: string[], current: string) =>
+    previous.concat(array2.map(value => [current, value].join(separator))), []);
+}
