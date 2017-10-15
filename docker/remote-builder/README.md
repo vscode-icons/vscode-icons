@@ -16,10 +16,9 @@ Assuming you're in the root folder:
 docker build -t vsi docker/remote-builder
 
 # Then run it.
-# Note that we're using a volume to have access to the artifact in our host.
-# Here we're using a Docker for Windows mapping. If you're using other OS then take a look at https://docs.docker.com/engine/admin/volumes/volumes/.
+# Note that we're using a volume to have access to the artifact in our host (https://docs.docker.com/engine/admin/volumes/volumes/).
 # Once the container is done it will automatically be removed and the artifact will be in your mapped folder.
-docker run --rm -it -v c:/Users/Roberto/Desktop/s/shared:/app-out vsi
+docker run --rm -it -v <your-host-path-here>:/app-out vsi
 
 # Finally, if you want to clean the stale volumes you can run this.
 docker volume rm $(docker volume ls -qf dangling=true)
