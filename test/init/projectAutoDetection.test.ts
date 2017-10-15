@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
 import * as models from '../../src/models';
-import * as adp from '../../src/init/projectAutoDetection';
+import { ProjectAutoDetection  as pad} from '../../src/init/projectAutoDetection';
 import { LanguageResourceManager } from '../../src/i18n';
 
 describe('AutoDetectProject: tests', function () {
@@ -45,7 +45,7 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const reason = 'failure';
           const findFiles = sinon.stub().returns(Promise.reject(reason));
-          return adp.detectProject(findFiles, userConfig)
+          return pad.detectProject(findFiles, userConfig)
             .then(rej => expect(rej).to.be.an('array').with.members([reason]));
         });
 
@@ -55,7 +55,7 @@ describe('AutoDetectProject: tests', function () {
           const path2 = 'f1/f2/f3/package.json';
           const findFiles = sinon.stub()
             .returns(Promise.resolve([{ fsPath: path1 }, { fsPath: path2 }] as models.IVSCodeUri[]));
-          return adp.detectProject(findFiles, userConfig)
+          return pad.detectProject(findFiles, userConfig)
             .then(res => {
               expect(res).to.be.an('array').with.length.greaterThan(0);
               expect(res[0]).to.have.property('fsPath').that.equals(path1);
@@ -66,7 +66,7 @@ describe('AutoDetectProject: tests', function () {
       it('does not detect a project when detection is disabled',
         function () {
           userConfig.projectDetection.disableDetect = true;
-          return adp.detectProject(null, userConfig)
+          return pad.detectProject(null, userConfig)
             .then(res => expect(res).to.be.an('array'));
         });
 
@@ -74,20 +74,20 @@ describe('AutoDetectProject: tests', function () {
         function () {
           const packageJson = {
             dependencies: {
-              '@angular/core': '',
+              '@angular/core': '1.0.0',
             },
           };
-          expect(adp.getInfo(packageJson, models.Projects.angular)).to.not.be.null;
+          expect(pad.getInfo(packageJson, models.Projects.angular)).to.not.be.null;
         });
 
       it('detects an Angular project from devDependencies',
         function () {
           const packageJson = {
             devDependencies: {
-              '@angular/core': '',
+              '@angular/core': '1.0.0',
             },
           };
-          expect(adp.getInfo(packageJson, models.Projects.angular)).to.not.be.null;
+          expect(pad.getInfo(packageJson, models.Projects.angular)).to.not.be.null;
         });
 
       it('detects a non Angular project from dependencies',
@@ -97,7 +97,7 @@ describe('AutoDetectProject: tests', function () {
               vscode: '',
             },
           };
-          expect(adp.getInfo(packageJson, models.Projects.angular)).to.be.null;
+          expect(pad.getInfo(packageJson, models.Projects.angular)).to.be.null;
         });
 
       it('detects a non Angular project from devDependencies',
@@ -107,7 +107,7 @@ describe('AutoDetectProject: tests', function () {
               vscode: '',
             },
           };
-          expect(adp.getInfo(packageJson, models.Projects.angular)).to.be.null;
+          expect(pad.getInfo(packageJson, models.Projects.angular)).to.be.null;
         });
 
       it('does not detect a project when it does not exist',
@@ -118,12 +118,12 @@ describe('AutoDetectProject: tests', function () {
               'vscode': '',
             },
           };
-          expect(adp.getInfo(packageJson, models.Projects.angularjs)).to.be.null;
+          expect(pad.getInfo(packageJson, models.Projects.angularjs)).to.be.null;
         });
 
       it('does not detect a project when no project json is provided',
         function () {
-          expect(adp.getInfo(null, null)).to.be.null;
+          expect(pad.getInfo(null, null)).to.be.null;
         });
 
       it('gets the project info version correctly',
@@ -133,7 +133,7 @@ describe('AutoDetectProject: tests', function () {
               '@angular/core': '0.0.0',
             },
           };
-          const projectInfo: models.IProjectInfo = adp.getInfo(packageJson, models.Projects.angular);
+          const projectInfo: models.IProjectInfo = pad.getInfo(packageJson, models.Projects.angular);
           expect(projectInfo).to.not.be.null;
           expect(projectInfo.name).to.equal(models.Projects.angular);
           expect(projectInfo.version).to.equal('0.0.0');
@@ -154,7 +154,7 @@ describe('AutoDetectProject: tests', function () {
           function () {
             sandbox.stub(fs, 'readFileSync').returns('{ "dependencies": { "@angular/core": "0.0.0" } }');
             const results = [{ fsPath: '' }] as models.IVSCodeUri[];
-            const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, models.Projects.angular);
+            const projectInfo: models.IProjectInfo = pad.getProjectInfo(results, models.Projects.angular);
             expect(projectInfo).to.not.be.null;
             expect(projectInfo.name).to.equal(models.Projects.angular);
             expect(projectInfo.version).to.equal('0.0.0');
@@ -164,7 +164,7 @@ describe('AutoDetectProject: tests', function () {
           function () {
             sandbox.stub(fs, 'readFileSync').returns('{ "dependencies": { "meteor": "0.0.0" } }');
             const results = [{ fsPath: '' }] as models.IVSCodeUri[];
-            const projectInfo: models.IProjectInfo = adp.getProjectInfo(results, models.Projects.angular);
+            const projectInfo: models.IProjectInfo = pad.getProjectInfo(results, models.Projects.angular);
             expect(projectInfo).to.be.null;
           });
       });
@@ -185,27 +185,27 @@ describe('AutoDetectProject: tests', function () {
           function () {
             const iconManifest = '{ "iconDefinitions": { "_f_ng_": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled(models.Projects.angular)).to.be.false;
+            expect(pad.iconsDisabled(models.Projects.angular)).to.be.false;
           });
 
         it('disabled',
           function () {
             const iconManifest = '{ "iconDefinitions": { "_f_codecov": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
+            expect(pad.iconsDisabled(models.Projects.angular)).to.be.true;
           });
 
         it('disabled if they do not exist',
           function () {
             const iconManifest = '';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
+            expect(pad.iconsDisabled(models.Projects.angular)).to.be.true;
           });
 
         it('assumed disabled if icon manifest file fails to be loaded',
           function () {
             sandbox.stub(fs, 'readFileSync').throws(Error);
-            expect(adp.iconsDisabled(models.Projects.angular)).to.be.true;
+            expect(pad.iconsDisabled(models.Projects.angular)).to.be.true;
           });
       });
 
@@ -225,27 +225,27 @@ describe('AutoDetectProject: tests', function () {
           function () {
             const iconManifest = '{ "iconDefinitions": { "_fd_aws": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('aws', false)).to.be.false;
+            expect(pad.iconsDisabled('aws', false)).to.be.false;
           });
 
         it('disabled',
           function () {
             const iconManifest = '{ "iconDefinitions": { "_fd_git": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('aws', false)).to.be.true;
+            expect(pad.iconsDisabled('aws', false)).to.be.true;
           });
 
         it('disabled if they do not exist',
           function () {
             const iconManifest = '';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.iconsDisabled('aws', false)).to.be.true;
+            expect(pad.iconsDisabled('aws', false)).to.be.true;
           });
 
         it('assumed disabled if icon manifest file fails to be loaded',
           function () {
             sandbox.stub(fs, 'readFileSync').throws(Error);
-            expect(adp.iconsDisabled('aws', false)).to.be.true;
+            expect(pad.iconsDisabled('aws', false)).to.be.true;
           });
       });
 
@@ -266,7 +266,7 @@ describe('AutoDetectProject: tests', function () {
             const iconManifest = '{ "iconDefinitions": { "_fd_aws": {} } }';
             const func = sinon.stub().returns(true);
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.folderIconsDisabled(func)).to.be.false;
+            expect(pad.folderIconsDisabled(func)).to.be.false;
           });
 
         it('disabled',
@@ -274,7 +274,7 @@ describe('AutoDetectProject: tests', function () {
             const iconManifest = '{ "iconDefinitions": { "_fd_git": {} } }';
             const func = sinon.stub().returns(false);
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.folderIconsDisabled(func)).to.be.true;
+            expect(pad.folderIconsDisabled(func)).to.be.true;
           });
 
         it('disabled if they do not exist',
@@ -282,14 +282,14 @@ describe('AutoDetectProject: tests', function () {
             const iconManifest = '';
             const func = sinon.stub();
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(adp.folderIconsDisabled(func)).to.be.true;
+            expect(pad.folderIconsDisabled(func)).to.be.true;
           });
 
         it('assumed disabled if icon manifest file fails to be loaded',
           function () {
             const func = sinon.stub();
             sandbox.stub(fs, 'readFileSync').throws(Error);
-            expect(adp.folderIconsDisabled(func)).to.be.true;
+            expect(pad.folderIconsDisabled(func)).to.be.true;
           });
       });
 
@@ -299,7 +299,7 @@ describe('AutoDetectProject: tests', function () {
           function () {
             const findFiles = sinon.stub().returns(Promise.resolve([]));
             userConfig.projectDetection.disableDetect = false;
-            return adp.detectProject(findFiles, userConfig)
+            return pad.detectProject(findFiles, userConfig)
               .then(res => expect(res).to.be.an('array').with.lengthOf(0));
           });
 
@@ -308,7 +308,7 @@ describe('AutoDetectProject: tests', function () {
             const path = 'package.json';
             const findFiles = sinon.stub().returns(Promise.resolve([{ fsPath: path }] as models.IVSCodeUri[]));
             userConfig.projectDetection.disableDetect = false;
-            return adp.detectProject(findFiles, userConfig)
+            return pad.detectProject(findFiles, userConfig)
               .then(res => {
                 expect(res).to.be.an('array').with.length.greaterThan(0);
                 expect(res[0]).to.have.property('fsPath').that.equals(path);
@@ -331,7 +331,7 @@ describe('AutoDetectProject: tests', function () {
               const isNgProject = true;
               const ngIconsDisabled = true;
               const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
               expect(res).to.have.property('apply').that.is.true;
               expect(res).to.have.property('value').that.is.true;
             });
@@ -342,7 +342,7 @@ describe('AutoDetectProject: tests', function () {
               const isNgProject = true;
               const ngIconsDisabled = true;
               const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
               expect(res).to.have.property('apply').that.is.true;
               expect(res).to.have.property('value').that.is.true;
             });
@@ -357,7 +357,7 @@ describe('AutoDetectProject: tests', function () {
               const isNgProject = false;
               const ngIconsDisabled = true;
               const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
               expect(res).to.have.property('apply').that.is.true;
               expect(res).to.have.property('value').that.is.true;
             });
@@ -380,7 +380,7 @@ describe('AutoDetectProject: tests', function () {
               const isNgProject = false;
               const ngIconsDisabled = false;
               const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
               expect(res).to.have.property('apply').that.is.true;
               expect(res).to.have.property('value').that.is.false;
             });
@@ -391,7 +391,7 @@ describe('AutoDetectProject: tests', function () {
               const isNgProject = false;
               const ngIconsDisabled = false;
               const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
               expect(res).to.have.property('apply').that.is.true;
               expect(res).to.have.property('value').that.is.false;
             });
@@ -406,7 +406,7 @@ describe('AutoDetectProject: tests', function () {
               const isNgProject = true;
               const ngIconsDisabled = false;
               const i18nManager = sinon.createStubInstance(LanguageResourceManager);
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, i18nManager);
               expect(res).to.have.property('apply').that.is.true;
               expect(res).to.have.property('value').that.is.false;
             });
@@ -428,7 +428,7 @@ describe('AutoDetectProject: tests', function () {
               const preset = true;
               const isNgProject = true;
               const ngIconsDisabled = false;
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
               expect(res).to.have.property('apply').that.is.false;
             });
 
@@ -437,7 +437,7 @@ describe('AutoDetectProject: tests', function () {
               const preset = undefined;
               const isNgProject = true;
               const ngIconsDisabled = false;
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
               expect(res).to.have.property('apply').that.is.false;
             });
 
@@ -450,7 +450,7 @@ describe('AutoDetectProject: tests', function () {
               const preset = true;
               const isNgProject = false;
               const ngIconsDisabled = false;
-              const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+              const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
               expect(res).to.have.property('apply').that.is.false;
             });
 
@@ -465,7 +465,7 @@ describe('AutoDetectProject: tests', function () {
                 const preset = false;
                 const isNgProject = false;
                 const ngIconsDisabled = true;
-                const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+                const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
                 expect(res).to.have.property('apply').that.is.false;
               });
 
@@ -474,7 +474,7 @@ describe('AutoDetectProject: tests', function () {
                 const preset = undefined;
                 const isNgProject = false;
                 const ngIconsDisabled = true;
-                const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+                const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
                 expect(res).to.have.property('apply').that.is.false;
               });
 
@@ -485,7 +485,7 @@ describe('AutoDetectProject: tests', function () {
                   const preset = false;
                   const isNgProject = true;
                   const ngIconsDisabled = true;
-                  const res = adp.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
+                  const res = pad.checkForAngularProject(preset, ngIconsDisabled, isNgProject, undefined);
                   expect(res).to.have.property('apply').that.is.false;
                 });
 
@@ -509,7 +509,7 @@ describe('AutoDetectProject: tests', function () {
           const reloadFn = sinon.spy();
           const showCustomizationMessageFn = sinon.spy();
 
-          return adp.applyDetection(undefined, undefined, autoReload,
+          return pad.applyDetection(undefined, undefined, autoReload,
             applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
               expect(applyCustomizationFn.called).to.be.true;
@@ -531,7 +531,7 @@ describe('AutoDetectProject: tests', function () {
           const showCustomizationMessageFn = sinon.spy();
           const i18nManager = sinon.createStubInstance(LanguageResourceManager);
 
-          return adp.applyDetection(i18nManager, projectDetectionResult, autoReload,
+          return pad.applyDetection(i18nManager, projectDetectionResult, autoReload,
             applyCustomizationFn, showCustomizationMessageFn, reloadFn)
             .then(() => {
               expect(applyCustomizationFn.called).to.be.false;
