@@ -277,7 +277,7 @@ export class IconGenerator implements models.IIconGenerator {
           });
         }
 
-        current.extensions.forEach(extension => {
+        const populateFn = (extension: string) => {
           if (isFilename) {
             names.fileNames[extension] = iconFileDefinition;
             light.fileNames[extension] = hasLightVersion ? iconFileLightDefinition : iconFileDefinition;
@@ -286,7 +286,16 @@ export class IconGenerator implements models.IIconGenerator {
             names.fileExtensions[noDotExtension] = iconFileDefinition;
             light.fileExtensions[noDotExtension] = hasLightVersion ? iconFileLightDefinition : iconFileDefinition;
           }
-        });
+        };
+
+        current.extensions.forEach(populateFn);
+
+        const hasGlobDefinitions = current.filenamesGlob && !!current.filenamesGlob.length &&
+          current.extensionsGlob && !!current.extensionsGlob.length;
+
+        if (hasGlobDefinitions) {
+          utils.combine(current.filenamesGlob, current.extensionsGlob).forEach(populateFn);
+        }
 
         return old;
       }, {

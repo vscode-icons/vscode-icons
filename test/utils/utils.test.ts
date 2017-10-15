@@ -290,7 +290,19 @@ describe('Utils: tests', function () {
           const Enum = 'ng';
           expect(utils.getEnumMemberByValue.bind(utils.getEnumMemberByValue, Enum, Enum))
             .to.throw(Error, /Only Enum allowed/);
+        });
 
+    });
+
+    context('the \'combine\' function', function () {
+
+      it('returns an array combining the elements of the provided arrays',
+        function () {
+          const array1 = ['webpack.base.conf', 'webpack.common'];
+          const array2 = ['js', 'coffee', 'ts'];
+          const combinedArray = ['webpack.base.conf.js', 'webpack.base.conf.coffee', 'webpack.base.conf.ts',
+            'webpack.common.js', 'webpack.common.coffee', 'webpack.common.ts'];
+          expect(utils.combine(array1, array2)).to.be.an.instanceOf(Array).and.have.deep.members(combinedArray);
         });
 
     });
