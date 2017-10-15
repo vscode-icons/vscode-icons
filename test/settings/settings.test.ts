@@ -143,6 +143,23 @@ describe('SettingsManager: tests', function () {
         expect(state.status).to.be.equal(status);
       });
 
+    it('the settings status does not get updated if no status is provided',
+      function () {
+        const stateMock: IState = {
+          version: extensionSettings.version,
+          status: ExtensionStatus.notActivated,
+          welcomeShown: false,
+        };
+        const getState = sinon.stub(settingsManager, 'getState').returns(stateMock);
+        const setState = sinon.stub(settingsManager, 'setState');
+        const state = settingsManager.updateStatus();
+        expect(getState.called).to.be.true;
+        expect(setState.called).to.be.true;
+        expect(state.version).to.be.equal(stateMock.version);
+        expect(state.status).to.be.equal(stateMock.status);
+        expect(state.welcomeShown).to.be.true;
+      });
+
     it('the settings file gets deleted',
       function () {
         const deleteFile = sandbox.stub(fs, 'unlinkSync');

@@ -25,7 +25,7 @@ function initialize(context: vscode.ExtensionContext): void {
 
   // Update the version in settings
   if (settingsManager.isNewVersion()) {
-    settingsManager.updateStatus(settingsManager.getState().status);
+    settingsManager.updateStatus();
   }
 }
 
