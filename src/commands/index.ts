@@ -6,7 +6,7 @@ import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
 import * as models from '../models';
 import { SettingsManager, extensionSettings } from '../settings';
-import { folderIconsDisabled, iconsDisabled, manageApplyCustomizations } from '../init';
+import { ProjectAutoDetection as pad, manageApplyCustomizations } from '../init';
 import * as helper from './helper';
 import { initialized } from '../';
 import { constants } from '../constants';
@@ -133,8 +133,8 @@ function togglePreset(
 
   const preset = models.PresetNames[presetName];
   const toggledValue = helper.isFolders(preset)
-    ? folderIconsDisabled(helper.getFunc(preset))
-    : iconsDisabled(helper.getIconName(preset));
+    ? pad.folderIconsDisabled(helper.getFunc(preset))
+    : pad.iconsDisabled(helper.getIconName(preset));
   const action = reverseAction
     ? toggledValue
       ? 'Disabled'
