@@ -64,6 +64,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   latex: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
+  lsl: ILanguage;
   marko: ILanguage;
   matlab: ILanguage;
   maxscript: ILanguage;
