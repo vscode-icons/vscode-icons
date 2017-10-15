@@ -47,7 +47,7 @@ export const extensions: IFolderCollection = {
     { icon: 'package', extensions: ['package', 'packages', '.package', '.packages'], format: FileFormat.svg },
     { icon: 'paket', extensions: ['.paket'], format: FileFormat.svg },
     { icon: 'php', extensions: ['php'], format: FileFormat.svg },
-    { icon: 'plugin', extensions: ['plugin', '.plugin', 'plugins', '.plugins'], format: FileFormat.svg },
+    { icon: 'plugin', extensions: ['plugin', '.plugin', 'plugins', '.plugins', 'extension', '.extension', 'extensions', '.extensions'], format: FileFormat.svg },
     { icon: 'private', extensions: ['private', '.private'], format: FileFormat.svg },
     { icon: 'public', extensions: ['public', '.public'], format: FileFormat.svg },
     { icon: 'redis', extensions: ['redis'], format: FileFormat.svg },
