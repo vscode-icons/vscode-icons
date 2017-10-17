@@ -95,6 +95,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   sbt: ILanguage;
   scala: ILanguage;
   sdlang: ILanguage;
+  slice: ILanguage;
   slim: ILanguage;
   smarty: ILanguage;
   solidity: ILanguage;

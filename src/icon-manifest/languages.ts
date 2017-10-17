@@ -134,6 +134,7 @@ export const languages: ILanguageCollection = {
   sdlang: { ids: 'sdl', defaultExtension: 'sdl' },
   shaderlab: { ids: 'shaderlab', defaultExtension: 'shader' },
   shellscript: { ids: 'shellscript', defaultExtension: 'sh' },
+  slice: { ids: ['slice'], defaultExtension: 'ice' },
   slim: { ids: ['slim'], defaultExtension: 'slim' },
   smarty: { ids: ['smarty'], defaultExtension: 'tpl' },
   solidity: { ids: ['solidity'], defaultExtension: 'sol' },
