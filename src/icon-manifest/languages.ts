@@ -136,6 +136,7 @@ export const languages: ILanguageCollection = {
   shellscript: { ids: 'shellscript', defaultExtension: 'sh' },
   slice: { ids: ['slice'], defaultExtension: 'ice' },
   slim: { ids: ['slim'], defaultExtension: 'slim' },
+  silverstripe: { ids: 'silverstripe', defaultExtension: 'ss' },
   smarty: { ids: ['smarty'], defaultExtension: 'tpl' },
   solidity: { ids: ['solidity'], defaultExtension: 'sol' },
   sqf: { ids: 'sqf', defaultExtension: 'sqf' },
