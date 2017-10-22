@@ -1,5 +1,25 @@
 # Change Log
 
+## 7.16.0 (October 22, 2017)
+
+- Feature: Support for `API`, `app`, `temp`, `components`, `templates`, `models`, `assets` & `helpers` folder. ([@JimiC](https://github.com/JimiC) in [#1278](https://github.com/vscode-icons/vscode-icons/pull/1278))
+- Feature: Support for `Slice`. ([@JimiC](https://github.com/JimiC) in [#1277](https://github.com/vscode-icons/vscode-icons/pull/1277))
+- Feature: Support for `SilverStripe`. ([@JimiC](https://github.com/JimiC) in [#1276](https://github.com/vscode-icons/vscode-icons/pull/1276))
+- Fix: Fixed language ids syntax. ([@JimiC](https://github.com/JimiC) in [#1273](https://github.com/vscode-icons/vscode-icons/pull/1273))
+- Enhancement: Expanded supportExtensions API. ([@JimiC](https://github.com/JimiC) in [#1272](https://github.com/vscode-icons/vscode-icons/pull/1272))
+- Enhancement: PAD support for multiroot projects. ([@JimiC](https://github.com/JimiC) in [#1269](https://github.com/vscode-icons/vscode-icons/pull/1269))
+- Enhancement: Update `openHub` icon. ([@JimiC](https://github.com/JimiC) in [#1268](https://github.com/vscode-icons/vscode-icons/pull/1268))
+- Enhancement: `LSL` is now supported by language id. ([@JimiC](https://github.com/JimiC) in [#1267](https://github.com/vscode-icons/vscode-icons/pull/1267))
+- Feature: Added `Crowdin` config file. ([@JimiC](https://github.com/JimiC) in [#1266](https://github.com/vscode-icons/vscode-icons/pull/1266))
+- Enhancement: Added `extension folders` to plugin folder icon. ([@JimiC](https://github.com/JimiC) in [#1239](https://github.com/vscode-icons/vscode-icons/pull/1239))
+- Feature: Support for `db` folder. ([@JimiC](https://github.com/JimiC) in [#1238](https://github.com/vscode-icons/vscode-icons/pull/1238))
+- Enhancement: Improved `updateStatus` method from `settingsManager`. ([@JimiC](https://github.com/JimiC) in [#1237](https://github.com/vscode-icons/vscode-icons/pull/1237))
+- Feature: Added new Docker images in order to get artifacts and develop the extension. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1235](https://github.com/vscode-icons/vscode-icons/pull/1235))
+- Enhancement: Added additional `stylelintrc` filenames. ([@tdmalone](https://github.com/tdmalone) in [#1233](https://github.com/vscode-icons/vscode-icons/pull/1233))
+- Fix: Updated `urlOfficalApi` link. ([@torn4dom4n](https://github.com/torn4dom4n) in [#1231](https://github.com/vscode-icons/vscode-icons/pull/1231))
+- Feature: Support for `Dust.js`. ([@JimiC](https://github.com/JimiC) in [#1229](https://github.com/vscode-icons/vscode-icons/pull/1229))
+- Feature: Support for `Maxscript`. ([@JimiC](https://github.com/JimiC) in [#1228](https://github.com/vscode-icons/vscode-icons/pull/1228))
+
 ## 7.15.0 (October 8, 2017)
 
 - Feature: Support for `JSON5`. ([@JimiC](https://github.com/JimiC) in [#1226](https://github.com/vscode-icons/vscode-icons/pull/1226))
