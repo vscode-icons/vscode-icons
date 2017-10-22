@@ -2,6 +2,7 @@
 
 ## 7.16.0 (October 22, 2017)
 
+- Feature: Support for `API`, `app`, `temp`, `components`, `templates`, `models`, `assets` & `helpers` folder. ([@JimiC](https://github.com/JimiC) in [#1278](https://github.com/vscode-icons/vscode-icons/pull/1278))
 - Feature: Support for `Slice`. ([@JimiC](https://github.com/JimiC) in [#1277](https://github.com/vscode-icons/vscode-icons/pull/1277))
 - Feature: Support for `SilverStripe`. ([@JimiC](https://github.com/JimiC) in [#1276](https://github.com/vscode-icons/vscode-icons/pull/1276))
 - Fix: Fixed language ids syntax. ([@JimiC](https://github.com/JimiC) in [#1273](https://github.com/vscode-icons/vscode-icons/pull/1273))
