@@ -15,6 +15,7 @@ export const languages: ILanguageCollection = {
   autoit: { ids: 'autoit', defaultExtension: 'au3' },
   avro: { ids: 'avro', defaultExtension: 'avcs' },
   bat: { ids: 'bat', defaultExtension: 'bat' },
+  bibtex: { ids: 'bibtex', defaultExtension: 'bib' },
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
   bolt: { ids: 'bolt', defaultExtension: 'bolt' },
   c: { ids: 'c', defaultExtension: 'c' },
