@@ -310,6 +310,7 @@ export const extensions: IFileCollection = {
     { icon: 'lime', extensions: ['hxp'], format: FileFormat.svg },
     { icon: 'lime', extensions: ['include.xml'], filename: true, format: FileFormat.svg },
     { icon: 'liquid', extensions: ['liquid'], format: FileFormat.svg },
+    { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
     { icon: 'locale', extensions: [], format: FileFormat.svg },
     { icon: 'log', extensions: ['log'], format: FileFormat.svg },
     { icon: 'lsl', extensions: [], languages: [languages.lsl], format: FileFormat.svg },
