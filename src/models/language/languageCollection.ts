@@ -94,6 +94,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   robot: ILanguage;
   sbt: ILanguage;
   scala: ILanguage;
+  scilab: ILanguage;
   sdlang: ILanguage;
   slice: ILanguage;
   slim: ILanguage;

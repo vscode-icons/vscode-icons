@@ -130,6 +130,7 @@ export const languages: ILanguageCollection = {
   rust: { ids: 'rust', defaultExtension: 'rs' },
   sbt: { ids: 'sbt', defaultExtension: 'sbt' },
   scala: { ids: 'scala', defaultExtension: 'scala' },
+  scilab: { ids: 'scilab', defaultExtension: 'sce' },
   scss: { ids: 'scss', defaultExtension: 'scss' },
   sdlang: { ids: 'sdl', defaultExtension: 'sdl' },
   shaderlab: { ids: 'shaderlab', defaultExtension: 'shader' },
