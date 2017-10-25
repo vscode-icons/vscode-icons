@@ -432,6 +432,7 @@ export const extensions: IFileCollection = {
     { icon: 'sqf', extensions: [], languages: [languages.sqf], format: FileFormat.svg },
     { icon: 'sql', extensions: [], languages: [languages.sql], format: FileFormat.svg },
     { icon: 'sqlite', extensions: ['sqlite', 'sqlite3', 'db3'], format: FileFormat.svg },
+    { icon: 'squirrel', extensions: [], languages: [languages.squirrel], format: FileFormat.svg },
     { icon: 'sss', extensions: ['sss'], format: FileFormat.svg },
     { icon: 'style', extensions: [], format: FileFormat.svg },
     {

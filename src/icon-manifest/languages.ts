@@ -141,6 +141,7 @@ export const languages: ILanguageCollection = {
   solidity: { ids: ['solidity'], defaultExtension: 'sol' },
   sqf: { ids: 'sqf', defaultExtension: 'sqf' },
   sql: { ids: 'sql', defaultExtension: 'sql' },
+  squirrel: { ids: 'squirrel', defaultExtension: 'nut' },
   stylus: { ids: 'stylus', defaultExtension: 'styl' },
   swagger: { ids: ['Swagger', 'swagger'], defaultExtension: 'swagger' },
   swift: { ids: 'swift', defaultExtension: 'swift' },
