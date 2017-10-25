@@ -70,6 +70,7 @@ export const languages: ILanguageCollection = {
   html: { ids: 'html', defaultExtension: 'html' },
   http: { ids: 'http', defaultExtension: 'http' },
   ini: { ids: 'ini', defaultExtension: 'ini' },
+  io: { ids: 'io', defaultExtension: 'io' },
   latex: { ids: 'latex', defaultExtension: 'tex' },
   java: { ids: 'java', defaultExtension: 'java' },
   javascript: { ids: 'javascript', defaultExtension: 'js' },
