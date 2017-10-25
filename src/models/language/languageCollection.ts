@@ -56,6 +56,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   haskell: ILanguage;
   haxe: ILanguage;
   http: ILanguage;
+  jekyll: ILanguage;
   jinja: ILanguage;
   json5: ILanguage;
   julia: ILanguage;

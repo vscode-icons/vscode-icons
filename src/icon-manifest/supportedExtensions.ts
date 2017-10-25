@@ -278,6 +278,7 @@ export const extensions: IFileCollection = {
     { icon: 'jbuilder', extensions: ['jbuilder'], format: FileFormat.svg },
     { icon: 'jenkins', extensions: ['jenkinsfile'], filename: true, format: FileFormat.svg },
     { icon: 'jest', extensions: ['jest.config.js', 'jest.json', 'jest.config.json', '.jestrc'], filename: true, format: FileFormat.svg },
+    { icon: 'jekyll', extensions: [], languages: [languages.jekyll], format: FileFormat.svg },
     { icon: 'jinja', extensions: [], languages: [languages.jinja], format: FileFormat.svg },
     { icon: 'jpm', extensions: ['.jpmignore'], filename: true, format: FileFormat.svg },
     { icon: 'js', extensions: [], light: true, languages: [languages.javascript], format: FileFormat.svg },
