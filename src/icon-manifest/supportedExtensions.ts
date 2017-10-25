@@ -443,7 +443,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'stylus', extensions: [], languages: [languages.stylus], format: FileFormat.svg },
+    { icon: 'stylus', extensions: ['styl'], languages: [languages.stylus], format: FileFormat.svg },
     { icon: 'storyboard', extensions: ['storyboard'], format: FileFormat.svg },
     { icon: 'storybook', extensions: ['story.js', 'stories.js'], format: FileFormat.svg },
     { icon: 'subversion', extensions: ['.svnignore'], filename: true, format: FileFormat.svg },
