@@ -83,6 +83,7 @@ export const languages: ILanguageCollection = {
   less: { ids: 'less', defaultExtension: 'less' },
   lisp: { ids: 'lisp', defaultExtension: 'lisp' },
   literatehaskell: { ids: ['literate haskell'], defaultExtension: 'lhs' },
+  lolcode: { ids: 'lolcode', defaultExtension: 'lol' },
   lsl: { ids: 'lsl', defaultExtension: 'lsl' },
   lua: { ids: 'lua', defaultExtension: 'lua' },
   makefile: { ids: 'makefile', defaultExtension: 'mk' },
