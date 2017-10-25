@@ -98,6 +98,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   slice: ILanguage;
   slim: ILanguage;
   silverstripe: ILanguage;
+  skipper: ILanguage;
   smarty: ILanguage;
   solidity: ILanguage;
   sqf: ILanguage;
