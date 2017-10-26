@@ -43,7 +43,7 @@ export const extensions: IFolderCollection = {
     { icon: 'include', extensions: ['include', 'includes', 'incl'], format: FileFormat.svg },
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     { icon: 'library', extensions: ['lib', '.lib'], format: FileFormat.svg },
-    { icon: 'locale', extensions: ['locale', 'locales', 'i18n', 'g11n'], format: FileFormat.svg },
+    { icon: 'locale', extensions: ['lang', 'language', 'languages', 'locale', 'locales', 'i18n', 'g11n'], format: FileFormat.svg },
     { icon: 'log', extensions: ['log', 'logs'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     { icon: 'model', extensions: ['models', '.models'], format: FileFormat.svg },
