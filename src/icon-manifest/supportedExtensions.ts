@@ -388,6 +388,7 @@ export const extensions: IFileCollection = {
     { icon: 'procfile', extensions: ['procfile'], filename: true, format: FileFormat.svg },
     { icon: 'progress', extensions: [], languages: [languages.openEdge], format: FileFormat.svg },
     { icon: 'prolog', extensions: ['pro', 'P'], languages: [languages.prolog], format: FileFormat.svg },
+    { icon: 'prometheus', extensions: [], languages: [languages.prometheus], format: FileFormat.svg },
     { icon: 'protobuf', extensions: [], languages: [languages.protobuf], format: FileFormat.svg },
     { icon: 'protractor', extensions: [], filenamesGlob: ['protractor.conf'], extensionsGlob: ['js', 'coffee', 'ts'], filename: true, format: FileFormat.svg },
     { icon: 'publisher', extensions: ['pub', 'puz'], format: FileFormat.svg },
