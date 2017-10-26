@@ -80,6 +80,7 @@ export const languages: ILanguageCollection = {
   json: { ids: 'json', defaultExtension: 'json' },
   json5: { ids: 'json5', defaultExtension: 'json5' },
   julia: { ids: ['julia', 'juliamarkdown'], defaultExtension: 'jl' },
+  iodine: { ids: 'iodine', defaultExtension: 'id' },
   kos: { ids: 'kos', defaultExtension: 'ks' },
   kotlin: { ids: 'kotlin', defaultExtension: 'kt' },
   less: { ids: 'less', defaultExtension: 'less' },
