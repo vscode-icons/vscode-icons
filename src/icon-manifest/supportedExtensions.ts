@@ -178,6 +178,7 @@ export const extensions: IFileCollection = {
     { icon: 'edge', extensions: [], languages: [languages.edge], format: FileFormat.svg },
     { icon: 'edge2', extensions: [], languages: [languages.edge], format: FileFormat.svg, disabled: true },
     { icon: 'ejs', extensions: ['ejs'], format: FileFormat.svg },
+    { icon: 'elastic', extensions: [], languages: [languages.elastic], format: FileFormat.svg },
     { icon: 'elasticbeanstalk', extensions: [], format: FileFormat.svg },
     { icon: 'elixir', extensions: [], languages: [languages.elixir], format: FileFormat.svg },
     { icon: 'elm', extensions: ['elm-package.json'], filename: true, languages: [languages.elm], format: FileFormat.svg },
