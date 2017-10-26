@@ -69,6 +69,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   matlab: ILanguage;
   maxscript: ILanguage;
   mjml: ILanguage;
+  mlang: ILanguage;
   mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;
