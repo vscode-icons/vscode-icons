@@ -140,6 +140,7 @@ export const languages: ILanguageCollection = {
   slim: { ids: ['slim'], defaultExtension: 'slim' },
   silverstripe: { ids: 'silverstripe', defaultExtension: 'ss' },
   smarty: { ids: ['smarty'], defaultExtension: 'tpl' },
+  snort: { ids: ['snort'], defaultExtension: 'snort' },
   solidity: { ids: ['solidity'], defaultExtension: 'sol' },
   sqf: { ids: 'sqf', defaultExtension: 'sqf' },
   sql: { ids: 'sql', defaultExtension: 'sql' },
