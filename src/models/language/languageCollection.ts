@@ -64,6 +64,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   jinja: ILanguage;
   json5: ILanguage;
   julia: ILanguage;
+  io: ILanguage;
   iodine: ILanguage;
   kos: ILanguage;
   kotlin: ILanguage;
