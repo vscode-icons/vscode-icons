@@ -69,6 +69,7 @@ export const languages: ILanguageCollection = {
   haskell: { ids: 'haskell', defaultExtension: 'hs' },
   haxe: { ids: ['haxe', 'hxml', 'Haxe AST dump'], defaultExtension: 'haxe' },
   hlsl: { ids: 'hlsl', defaultExtension: 'hlsl' },
+  hosts: { ids: 'hosts', defaultExtension: 'hosts' },
   html: { ids: 'html', defaultExtension: 'html' },
   http: { ids: 'http', defaultExtension: 'http' },
   ini: { ids: 'ini', defaultExtension: 'ini' },
