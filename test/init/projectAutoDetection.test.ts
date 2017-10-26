@@ -67,7 +67,9 @@ describe('AutoDetectProject: tests', function () {
         function () {
           userConfig.projectDetection.disableDetect = true;
           return pad.detectProject(null, userConfig)
-            .then(res => expect(res).to.be.an('array'));
+            .then(res => {
+              expect(res).to.be.null;
+            });
         });
 
       it('detects an Angular project from dependencies',
