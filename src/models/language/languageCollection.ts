@@ -33,9 +33,11 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dart: ILanguage;
   dlang: ILanguage;
   doxygen: ILanguage;
+  drools: ILanguage;
   dylanlang: ILanguage;
   dustjs: ILanguage;
   edge: ILanguage;
+  elastic: ILanguage;
   elixir: ILanguage;
   elm: ILanguage;
   erb: ILanguage;
