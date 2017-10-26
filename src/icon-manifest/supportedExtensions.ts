@@ -471,7 +471,7 @@ export const extensions: IFileCollection = {
     { icon: 'test', extensions: ['tst'], format: FileFormat.svg },
     { icon: 'testjs', extensions: [], filenamesGlob: ['test', 'spec'], extensionsGlob: ['js', 'jsx'], light: true, format: FileFormat.svg },
     { icon: 'testts', extensions: [], filenamesGlob: ['test', 'spec'], extensionsGlob: ['ts', 'tsx'], format: FileFormat.svg },
-    { icon: 'tex', extensions: ['texi'], languages: [languages.tex, languages.latex], light: true, format: FileFormat.svg },
+    { icon: 'tex', extensions: ['texi'], languages: [languages.tex, languages.latex, languages.bibtex], light: true, format: FileFormat.svg },
     { icon: 'text', extensions: ['csv'], languages: [languages.plaintext], format: FileFormat.svg },
     { icon: 'textile', extensions: [], languages: [languages.textile], format: FileFormat.svg },
     { icon: 'tfs', extensions: ['.tfignore'], filename: true, format: FileFormat.svg },
