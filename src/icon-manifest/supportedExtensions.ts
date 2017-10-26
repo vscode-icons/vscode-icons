@@ -33,6 +33,8 @@ export const extensions: IFileCollection = {
     { icon: 'ng_smart_component_js', extensions: ['page.js', 'container.js'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_service_ts', extensions: ['service.ts'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_service_js', extensions: ['service.js'], format: FileFormat.svg, disabled: true },
+    { icon: 'ng_interceptor_ts', extensions: ['interceptor.ts'], format: FileFormat.svg, disabled: true },
+    { icon: 'ng_interceptor_js', extensions: ['interceptor.js'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_component_ts2', extensions: ['component.ts'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_component_js2', extensions: ['component.js'], format: FileFormat.svg, disabled: true },
     { icon: 'ng_directive_ts2', extensions: ['directive.ts'], format: FileFormat.svg, disabled: true },
