@@ -333,6 +333,7 @@ export const extensions: IFileCollection = {
     { icon: 'mercurial', extensions: ['.hgignore'], filename: true, format: FileFormat.svg },
     { icon: 'meteor', extensions: [], format: FileFormat.svg },
     { icon: 'mjml', extensions: [], languages: [languages.mjml], format: FileFormat.svg },
+    { icon: 'mlang', extensions: [], languages: [languages.mlang], light: true, format: FileFormat.svg },
     { icon: 'monotone', extensions: ['.mtn-ignore'], filename: true, format: FileFormat.svg },
     { icon: 'mson', extensions: [], languages: [languages.mson], format: FileFormat.svg },
     { icon: 'mustache', extensions: ['mustache', 'mst'], light: true, format: FileFormat.svg },

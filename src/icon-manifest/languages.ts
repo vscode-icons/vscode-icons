@@ -94,6 +94,7 @@ export const languages: ILanguageCollection = {
   matlab: { ids: 'matlab', defaultExtension: 'mat' },
   maxscript: { ids: 'maxscript', defaultExtension: 'ms' },
   mjml: { ids: 'mjml', defaultExtension: 'mjml' },
+  mlang: { ids: ['mlang', 'powerquerymlanguage'], defaultExtension: 'pq' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
   nim: { ids: ['nim', 'nimble'], defaultExtension: 'nim' },
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], defaultExtension: 'nsi' },
