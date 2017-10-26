@@ -82,6 +82,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   postcss: ILanguage;
   processinglang: ILanguage;
   prolog: ILanguage;
+  prometheus: ILanguage;
   protobuf: ILanguage;
   puppet: ILanguage;
   purescript: ILanguage;
