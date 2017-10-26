@@ -43,6 +43,7 @@ export const languages: ILanguageCollection = {
   dylanlang: { ids: ['dylan', 'dylan-lid'], defaultExtension: 'dylan' },
   dustjs: { ids: 'dustjs', defaultExtension: 'dust' },
   edge: { ids: 'edge', defaultExtension: 'edge' },
+  elastic: { ids: 'es', defaultExtension: 'es' },
   elixir: { ids: ['elixir', 'Eex', 'HTML (Eex)'], defaultExtension: 'ex' },
   elm: { ids: 'elm', defaultExtension: 'elm' },
   erb: { ids: 'erb', defaultExtension: 'erb' },
