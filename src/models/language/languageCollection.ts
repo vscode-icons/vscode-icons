@@ -33,9 +33,11 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dart: ILanguage;
   dlang: ILanguage;
   doxygen: ILanguage;
+  drools: ILanguage;
   dylanlang: ILanguage;
   dustjs: ILanguage;
   edge: ILanguage;
+  elastic: ILanguage;
   elixir: ILanguage;
   elm: ILanguage;
   erb: ILanguage;
@@ -60,6 +62,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   jinja: ILanguage;
   json5: ILanguage;
   julia: ILanguage;
+  iodine: ILanguage;
   kos: ILanguage;
   kotlin: ILanguage;
   latex: ILanguage;
@@ -70,6 +73,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   matlab: ILanguage;
   maxscript: ILanguage;
   mjml: ILanguage;
+  mlang: ILanguage;
   mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;
@@ -83,6 +87,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   postcss: ILanguage;
   processinglang: ILanguage;
   prolog: ILanguage;
+  prometheus: ILanguage;
   protobuf: ILanguage;
   puppet: ILanguage;
   purescript: ILanguage;
@@ -100,6 +105,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   slim: ILanguage;
   silverstripe: ILanguage;
   smarty: ILanguage;
+  snort: ILanguage;
   solidity: ILanguage;
   sqf: ILanguage;
   stylus: ILanguage;
