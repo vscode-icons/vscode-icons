@@ -4,7 +4,8 @@
   ],
   "rules": {
     "quotemark": [
-      true, "single"
+      true,
+      "single"
     ],
     "variable-name": [
       true,
@@ -14,7 +15,8 @@
       "allow-leading-underscore"
     ],
     "no-submodule-imports": [
-      true, "vscode"
+      true,
+      "vscode"
     ],
     "space-before-function-paren": [
       true,
@@ -41,6 +43,10 @@
       "debug",
       "info",
       "warn"
+    ],
+    "no-implicit-dependencies": [
+      true,
+      "dev"
     ]
   }
 }
