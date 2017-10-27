@@ -79,6 +79,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mediawiki: ILanguage;
   mjml: ILanguage;
   mlang: ILanguage;
+  mojolicious: ILanguage;
   mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;
