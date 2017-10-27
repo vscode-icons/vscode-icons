@@ -100,6 +100,7 @@ export const languages: ILanguageCollection = {
   maxscript: { ids: 'maxscript', defaultExtension: 'ms' },
   mjml: { ids: 'mjml', defaultExtension: 'mjml' },
   mlang: { ids: ['mlang', 'powerquerymlanguage'], defaultExtension: 'pq' },
+  mojolicious: { ids: 'mojolicious', defaultExtension: 'ep' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
   nim: { ids: ['nim', 'nimble'], defaultExtension: 'nim' },
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], defaultExtension: 'nsi' },
