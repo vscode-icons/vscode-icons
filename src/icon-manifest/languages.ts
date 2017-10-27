@@ -7,6 +7,7 @@ export const languages: ILanguageCollection = {
   antlr: { ids: 'antlr', defaultExtension: 'g4' },
   anyscript: { ids: 'anyscript', defaultExtension: 'any' },
   apache: { ids: 'apacheconf', defaultExtension: 'htaccess' },
+  apex: { ids: 'apex', defaultExtension: 'cls' },
   apib: { ids: 'apiblueprint', defaultExtension: 'apib' },
   applescript: { ids: 'applescript', defaultExtension: 'applescript' },
   asp: { ids: ['asp', 'asp (html)'], defaultExtension: 'asp' },
