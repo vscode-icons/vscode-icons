@@ -98,6 +98,7 @@ export const languages: ILanguageCollection = {
   marko: { ids: 'marko', defaultExtension: 'marko' },
   matlab: { ids: 'matlab', defaultExtension: 'mat' },
   maxscript: { ids: 'maxscript', defaultExtension: 'ms' },
+  mediawiki: { ids: 'mediawiki', defaultExtension: 'mediawiki' },
   mjml: { ids: 'mjml', defaultExtension: 'mjml' },
   mlang: { ids: ['mlang', 'powerquerymlanguage'], defaultExtension: 'pq' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
