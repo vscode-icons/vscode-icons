@@ -8,6 +8,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   antlr: ILanguage;
   anyscript: ILanguage;
   apache: ILanguage;
+  apex: ILanguage;
   apib: ILanguage;
   applescript: ILanguage;
   asp: ILanguage;

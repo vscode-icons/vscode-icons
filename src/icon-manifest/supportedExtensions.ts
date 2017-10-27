@@ -55,6 +55,7 @@ export const extensions: IFileCollection = {
     { icon: 'antlr', extensions: [], languages: [languages.antlr], format: FileFormat.svg },
     { icon: 'anyscript', extensions: [], languages: [languages.anyscript], format: FileFormat.svg },
     { icon: 'apache', extensions: [], languages: [languages.apache], format: FileFormat.svg },
+    { icon: 'apex', extensions: [], languages: [languages.apex], format: FileFormat.svg },
     { icon: 'apib', extensions: [], languages: [languages.apib], format: FileFormat.svg },
     { icon: 'applescript', extensions: [], languages: [languages.applescript], format: FileFormat.svg },
     { icon: 'appveyor', extensions: ['appveyor.yml', '.appveyor.yml'], filename: true, format: FileFormat.svg },
