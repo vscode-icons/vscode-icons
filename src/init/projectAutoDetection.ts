@@ -15,7 +15,7 @@ export class ProjectAutoDetection {
       token?: models.IVSCodeCancellationToken) => Thenable<models.IVSCodeUri[]>,
     config: models.IVSIcons): PromiseLike<models.IVSCodeUri[]> {
     if (config.projectDetection.disableDetect) {
-      return Promise.resolve([]) as PromiseLike<models.IVSCodeUri[]>;
+      return Promise.resolve(null) as PromiseLike<models.IVSCodeUri[]>;
     }
 
     return findFiles('**/package.json', '**/node_modules/**')
