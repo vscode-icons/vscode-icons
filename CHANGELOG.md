@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.17.0 (October 29, 2017)
+## 7.17.0 (October 28, 2017)
 
 - Fix: Fixed issue with `vscode.nls`. ([@JimiC](https://github.com/JimiC) in [#1319](https://github.com/vscode-icons/vscode-icons/pull/1319))
 - Enhancement: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#1317](https://github.com/vscode-icons/vscode-icons/pull/1317))
