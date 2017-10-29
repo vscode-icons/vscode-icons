@@ -95,7 +95,7 @@ export const extensions: IFileCollection = {
     { icon: 'c2', extensions: [], languages: [languages.c], format: FileFormat.svg, disabled: true },
     { icon: 'c_al', extensions: [], languages: [languages.c_al], format: FileFormat.svg },
     { icon: 'cabal', extensions: [], languages: [languages.cabal], format: FileFormat.svg },
-    { icon: 'cake', extensions: [], languages: [languages.cake], format: FileFormat.svg },
+    { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
     { icon: 'cert', extensions: ['csr', 'crt', 'cer', 'der', 'pfx', 'p12', 'p7b', 'p7r', 'src', 'crl', 'sst', 'stl'], format: FileFormat.svg },
     { icon: 'cf', extensions: ['lucee'], languages: [languages.coldfusion], format: FileFormat.svg },
