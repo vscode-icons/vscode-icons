@@ -41,7 +41,8 @@
         "icon-theme",
         "theme",
         "icons",
-        "vscode-icons"
+        "vscode-icons",
+        "multi-root ready"
     ],
     "preview": true,
     "homepage": "https://github.com/vscode-icons/vscode-icons",
