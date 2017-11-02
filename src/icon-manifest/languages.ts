@@ -22,7 +22,6 @@ export const languages: ILanguageCollection = {
   c: { ids: 'c', defaultExtension: 'c' },
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
   cabal: { ids: 'cabal', defaultExtension: 'cabal' },
-  cake: { ids: 'cake', defaultExtension: 'cake' },
   cfc: { ids: 'cfc', defaultExtension: 'cfc' },
   cfm: { ids: 'cfmhtml', defaultExtension: 'cfm' },
   clojure: { ids: 'clojure', defaultExtension: 'clojure' },
