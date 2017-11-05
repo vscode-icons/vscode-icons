@@ -4,7 +4,7 @@ import * as path from 'path';
 import { expect } from 'chai';
 import { schema as defaultSchema, IconGenerator } from '../../src/icon-manifest';
 import { extensions as folders } from '../../src/icon-manifest/supportedFolders';
-import { FileFormat, IFileCollection, IFolderCollection, IIconSchema } from '../../src/models';
+import { FileFormat, IFileCollection, IIconSchema } from '../../src/models';
 import { vscode } from '../../src/utils';
 import { extensionSettings as settings } from '../../src/settings';
 
@@ -13,11 +13,9 @@ describe('IconGenerator: folders icon generation test', function () {
   context('ensures that', function () {
 
     let emptyFileCollection: IFileCollection;
-    let emptyFolderCollection: IFolderCollection;
 
     beforeEach(() => {
       emptyFileCollection = { default: { file: { icon: 'file', format: 'svg' } }, supported: [] };
-      emptyFolderCollection = { default: { folder: { icon: 'folder', format: 'svg' } }, supported: [] };
     });
 
     context('default', function () {
