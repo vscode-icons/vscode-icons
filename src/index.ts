@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import { SettingsManager } from './settings';
 import * as init from './init';
+import { ProjectAutoDetection as pad } from './init/projectAutoDetection';
 import * as commands from './commands';
-import { getVsiconsConfig, getConfig, findFiles, asRelativePath } from './utils/vscode-extensions';
+import { getVsiconsConfig, getConfig, findFiles } from './utils/vscode-extensions';
 import { LanguageResourceManager } from './i18n';
 import { IVSCodeUri, IVSIcons, Projects } from './models';
 import { constants } from './constants';
@@ -16,31 +17,27 @@ function initialize(context: vscode.ExtensionContext): void {
   commands.registerCommands(context);
   init.manageWelcomeMessage(settingsManager);
   init.manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, commands.applyCustomizationCommand);
-  init.detectProject(findFiles, config)
-    .then(results => {
-      if (results && results.length && !asRelativePath(results[0].fsPath).includes('/')) {
-        detectAngular(config, results);
-      }
-    });
+  pad.detectProject(findFiles, config).then(results => detectAngular(config, results));
 
   // Update the version in settings
   if (settingsManager.isNewVersion()) {
-    settingsManager.updateStatus(settingsManager.getState().status);
+    settingsManager.updateStatus();
   }
 }
 
 function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
-  const projectInfo = init.getProjectInfo(results, Projects.angular);
+  if (!config || !results) { return; }
+  const projectInfo = pad.getProjectInfo(results, Projects.angular);
   const i18nManager = new LanguageResourceManager(vscode.env.language);
   const presetValue = getConfig().inspect(`vsicons.presets.angular`).workspaceValue as boolean;
-  const detectionResult = init.checkForAngularProject(
-    presetValue, init.iconsDisabled(Projects.angular), !!projectInfo, i18nManager);
+  const detectionResult = pad.checkForAngularProject(
+    presetValue, pad.iconsDisabled(Projects.angular), !!projectInfo, i18nManager);
 
   if (!detectionResult.apply) {
     return;
   }
 
-  init.applyDetection(i18nManager, detectionResult, config.projectDetection.autoReload,
+  pad.applyDetection(i18nManager, detectionResult, config.projectDetection.autoReload,
     commands.applyCustomization, commands.showCustomizationMessage, commands.reload);
 }
 
