@@ -5,7 +5,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "taskName": "npm",
+      "label": "npm",
       // the command is a shell script
       "type": "shell",
       // we want to run npm
