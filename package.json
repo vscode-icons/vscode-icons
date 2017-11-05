@@ -10,7 +10,7 @@
         "name": "Roberto Huertas",
         "url": "http://codecoding.com"
     },
-    "contributors": [
+    "maintainers": [
         {
             "email": "jimikar@gmail.com",
             "name": "Jimi (Dimitris) Charalampidis"
@@ -18,7 +18,7 @@
         {
             "email": "jenshausdorf@gmail.com",
             "name": "Jens Hausdorf",
-            "url": "http://www.jens-hausdorf.de"
+            "url": "https://jens-hausdorf.de"
         }
     ],
     "repository": {
@@ -232,7 +232,7 @@
     },
     "devDependencies": {
         "@types/chai": "^4.0.4",
-        "@types/lodash": "^4.14.80",
+        "@types/lodash": "^4.14.81",
         "@types/mocha": "^2.2.44",
         "@types/mockery": "^1.4.29",
         "@types/node": "^8.0.47",
@@ -242,11 +242,11 @@
         "codecov": "^3.0.0",
         "mocha": "^4.0.1",
         "mockery": "^2.1.0",
-        "nyc": "^11.2.1",
+        "nyc": "^11.3.0",
         "rimraf": "^2.6.2",
-        "sinon": "^4.0.2",
+        "sinon": "^4.1.1",
         "tslint": "^5.8.0",
-        "typescript": "^2.5.3",
+        "typescript": "^2.6.1",
         "vscode": "^1.1.6"
     },
     "dependencies": {
