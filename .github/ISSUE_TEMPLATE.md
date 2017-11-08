@@ -1,27 +1,21 @@
-# Issue Template
+<!--
 
-THIS IS AN EXAMPLE TEMPLATE
+Have you read CONTRIBUTING? By filing an issue, you are expected to comply with it.
+**IMPORTANT:** For `folder icon` requests please first see [this issue](https://github.com/vscode-icons/vscode-icons/issues/650)
 
-Make sure the following boxes are checked (and the placeholders replaced) BEFORE submitting this issue.
+-->
 
-Screenshots are more than welcome!
+- [ ] I have [searched](https://github.com/vscode-icons/vscode-icons/issues) the issues of this repo and I'm sure this issue is not a _duplicate_.
 
-Please remove any unused content (including these instructions) before submitting your issue.
+<!-- If you want to create an icon request, put an X between the brackets on the line. If not remove these lines below -->
 
-IMPORTANT: For folder icon requests please first see issue: [650](https://github.com/vscode-icons/vscode-icons/issues/650)
+- [ ] I want to create an icon request:
+  - Type: <!-- Replace with `extension`/`icon name`/`folder name` -->
+  - Icon Name: <!-- Replace with icon's name. Example: `python` -->
+  - Sample original Icon: <!-- Replace with icon's URL or icon size:32x32 whenever possible. Example: https://www.python.org/static/favicon.ico -->
+  - Extensions: <!-- Replace with list of file extensions. Example: `.py`` -->
+  - Filenames: <!--Replace with separated list of filenames`. Example:  -->
+  - Language ids: <!--Replace with separated language ids`. Example: `python` -->
 
-Thanks.
-
-Note: Always remove this line and all above.
-
-- [ ] I'm sure this issue is not a _duplicate_.
-- [ ] I want to create an icon request (if not, remove these lines below):
-  - Type: `extension/filename`
-  - Icon Name: `name`
-  - Sample original Icon (32x32/svg/transparent whenever possible): [url]
-  - Extensions: `comma separated list of file extensions`
-  - Filenames: `comma separated list of filenames`
-  - Language ids: `comma separated language ids`
-
-- More info: [url to documentation, if any]
-- Language Extensions: [url to `vscode` extensions that support language highlighting]
+- More info: <!--Replace with URL to documentation, if any. Example: https://www.python.org-->
+- Language Extensions: <!--Replace with URL to VSCcode's marketplace that support language highlighting. Example: https://marketplace.visualstudio.com/items?itemName=donjayamanne.python -->
