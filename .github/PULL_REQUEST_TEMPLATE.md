@@ -1,20 +1,12 @@
-# Pull Request Template
+# Requirements
 
-THIS IS AN EXAMPLE TEMPLATE
+* Filling out this template.
+* Requires tests to ensure against regressions.
 
-Note: Always remove this line and all above.
+# Changes proposed
 
-**_Fixes #[ISSUE]_**
+<!-- Explain what other alternates were considered and why the proposed was selected `Add`/`Prepare`/`Delete`/`Fix` -->
 
-**Changes proposed:**
+#  Applicable issues
 
-- [ ] Add
-- [ ] Prepare
-- [ ] Delete
-- [ ] Fix
-
-**Things I've done:**
-
-- [ ] My pull request fixes an issue, I referenced the issue.
-
-[short comment, if any, otherwise remove this line]
+<!-- Enter any applicable issues here -->
