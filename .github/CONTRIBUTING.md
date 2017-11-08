@@ -4,7 +4,7 @@
 
 ### Before submit an issue:
 
-1. Perform a [cursory search](https://github.com/vscode-icons/vscode-icons/issues?q=is%3Aopen+is%3Aissue) to see if the issue has already been oppened. If it has and the issue is still open, add a comment to the existing issue instead of opening a new one.
+1. Perform a [cursory search](https://github.com/vscode-icons/vscode-icons/issues?q=is%3Aopen+is%3Aissue) to see if the issue has already been opened. If it has and the issue is still open, add a comment to the existing issue instead of opening a new one.
 
 ### Submit the issue:
 
