@@ -1,5 +1,33 @@
 # Change Log
 
+## 7.17.0 (October 28, 2017)
+
+- Fix: Fixed issue with `vscode.nls`. ([@JimiC](https://github.com/JimiC) in [#1319](https://github.com/vscode-icons/vscode-icons/pull/1319))
+- Enhancement: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#1317](https://github.com/vscode-icons/vscode-icons/pull/1317))
+- Feature: Support for `Apex`. ([@JimiC](https://github.com/JimiC) in [#1316](https://github.com/vscode-icons/vscode-icons/pull/1316))
+- Feature: Support for `Mediawiki`. ([@JimiC](https://github.com/JimiC) in [#1315](https://github.com/vscode-icons/vscode-icons/pull/1315))
+- Feature: Support for `Mojolicious`. ([@JimiC](https://github.com/JimiC) in [#1314](https://github.com/vscode-icons/vscode-icons/pull/1314))
+- Fix: Fixed PAD disabled detection flow. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1312](https://github.com/vscode-icons/vscode-icons/pull/1312))
+- Feature: Support for `Nodemon`. ([@JimiC](https://github.com/JimiC) in [#1310](https://github.com/vscode-icons/vscode-icons/pull/1310))
+- Feature: Support for `Elastic`. ([@JimiC](https://github.com/JimiC) in [#1309](https://github.com/vscode-icons/vscode-icons/pull/1309))
+- Feature: Support for `Drools`. ([@JimiC](https://github.com/JimiC) in [#1308](https://github.com/vscode-icons/vscode-icons/pull/1308))
+- Feature: Support for `Snort`. ([@JimiC](https://github.com/JimiC) in [#1307](https://github.com/vscode-icons/vscode-icons/pull/1307))
+- Feature: Support for `Iodine`. ([@JimiC](https://github.com/JimiC) in [#1306](https://github.com/vscode-icons/vscode-icons/pull/1306))
+- Feature: Support for `MLang`. ([@JimiC](https://github.com/JimiC) in [#1305](https://github.com/vscode-icons/vscode-icons/pull/1305))
+- Feature: Support for `Angular interceptor`. ([@JimiC](https://github.com/JimiC) in [#1304](https://github.com/vscode-icons/vscode-icons/pull/1304))
+- Feature: Support for `Prometheus`. ([@JimiC](https://github.com/JimiC) in [#1303](https://github.com/vscode-icons/vscode-icons/pull/1303))
+- Feature: Support for `Hosts`. ([@JimiC](https://github.com/JimiC) in [#1302](https://github.com/vscode-icons/vscode-icons/pull/1302))
+- Feature: Support for `Skipper`. ([@JimiC](https://github.com/JimiC) in [#1299](https://github.com/vscode-icons/vscode-icons/pull/1299))
+- Feature: Support for `Squirrel`. ([@JimiC](https://github.com/JimiC) in [#1298](https://github.com/vscode-icons/vscode-icons/pull/1298))
+- Feature: Support for `Livescript`. ([@JimiC](https://github.com/JimiC) in [#1297](https://github.com/vscode-icons/vscode-icons/pull/1297))
+- Enhancement: New icon for `Stylus`. ([@JimiC](https://github.com/JimiC) in [#1296](https://github.com/vscode-icons/vscode-icons/pull/1296))
+- Feature: Support for `Io`. ([@JimiC](https://github.com/JimiC) in [#1295](https://github.com/vscode-icons/vscode-icons/pull/1295))
+- Feature: Support for `Scilab`. ([@JimiC](https://github.com/JimiC) in [#1292](https://github.com/vscode-icons/vscode-icons/pull/1292))
+- Feature: Support for `Jeckyll`. ([@JimiC](https://github.com/JimiC) in [#1291](https://github.com/vscode-icons/vscode-icons/pull/1291))
+- Feature: Support for `Lolcode`. ([@JimiC](https://github.com/JimiC) in [#1290](https://github.com/vscode-icons/vscode-icons/pull/1290))
+- Feature: Support for `BibTex`. ([@JimiC](https://github.com/JimiC) in [#1289](https://github.com/vscode-icons/vscode-icons/pull/1289))
+- Enhancement: `language` and `lang` added to `locale` folder. ([@jens1o](https://github.com/jens1o) in [#1283](https://github.com/vscode-icons/vscode-icons/pull/1283))
+
 ## 7.16.0 (October 22, 2017)
 
 - Feature: Support for `API`, `app`, `temp`, `components`, `templates`, `models`, `assets` & `helpers` folder. ([@JimiC](https://github.com/JimiC) in [#1278](https://github.com/vscode-icons/vscode-icons/pull/1278))

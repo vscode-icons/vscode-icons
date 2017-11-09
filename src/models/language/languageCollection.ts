@@ -8,6 +8,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   antlr: ILanguage;
   anyscript: ILanguage;
   apache: ILanguage;
+  apex: ILanguage;
   apib: ILanguage;
   applescript: ILanguage;
   asp: ILanguage;
@@ -20,7 +21,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   bolt: ILanguage;
   c_al: ILanguage;
   cabal: ILanguage;
-  cake: ILanguage;
   cfc: ILanguage;
   cfm: ILanguage;
   cmake: ILanguage;
@@ -76,8 +76,10 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   marko: ILanguage;
   matlab: ILanguage;
   maxscript: ILanguage;
+  mediawiki: ILanguage;
   mjml: ILanguage;
   mlang: ILanguage;
+  mojolicious: ILanguage;
   mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;
