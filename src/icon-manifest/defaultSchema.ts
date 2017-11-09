@@ -1,6 +1,7 @@
 import { IIconSchema } from '../models';
 
 export const schema: IIconSchema = {
+  hidesExplorerArrows: true,
   iconDefinitions: {
     _file: { iconPath: '' },
     _folder: { iconPath: '' },
