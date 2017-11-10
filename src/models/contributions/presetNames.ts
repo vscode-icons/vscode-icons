@@ -5,4 +5,5 @@ export enum PresetNames {
   jsonOfficial,
   hideFolders,
   foldersAllDefaultIcon,
+  hideExplorerArrows,
 }

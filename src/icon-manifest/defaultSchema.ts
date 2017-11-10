@@ -35,4 +35,5 @@ export const schema: IIconSchema = {
     fileNames: {},
     languageIds: {},
   },
+  hidesExplorerArrows: false,
 };

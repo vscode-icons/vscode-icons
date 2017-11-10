@@ -8,10 +8,16 @@ describe('Helper: tests', function () {
 
   context('ensures that', function () {
 
-    it('function \'isFolders\' returns proper state',
+    it('function \'isFoldersRelated\' returns proper state',
       function () {
-        expect(helper.isFolders(PresetNames[PresetNames.hideFolders])).to.be.true;
-        expect(helper.isFolders(PresetNames[PresetNames.jsOfficial])).to.be.false;
+        expect(helper.isFoldersRelated(PresetNames.hideFolders)).to.be.true;
+        expect(helper.isFoldersRelated(PresetNames.jsOfficial)).to.be.false;
+      });
+
+    it('function \'isNonIconsRelatedPreset\' returns proper state',
+      function () {
+        expect(helper.isNonIconsRelatedPreset(PresetNames.hideExplorerArrows)).to.be.true;
+        expect(helper.isNonIconsRelatedPreset(PresetNames.jsOfficial)).to.be.false;
       });
 
     context('function \'getIconName\'', function () {

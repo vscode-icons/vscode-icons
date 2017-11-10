@@ -1,10 +1,7 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import * as models from '../models';
-import { extensionSettings } from '../settings';
 import { parseJSON } from '../utils';
 import { LanguageResourceManager } from '../i18n';
-import { IIconSchema } from '../models/iconSchema/iconSchema';
 
 export class ProjectAutoDetection {
   public static detectProject(
@@ -55,18 +52,6 @@ export class ProjectAutoDetection {
     return { apply: true, message, value: enableIcons || !disableIcons };
   }
 
-  public static iconsDisabled(name: string, isFile: boolean = true): boolean {
-    const iconManifest = this._getIconManifest();
-    const iconsJson = iconManifest && parseJSON(iconManifest) as IIconSchema;
-    return !iconsJson || !Reflect.ownKeys(iconsJson.iconDefinitions)
-      .filter(key => key.toString().startsWith(`_${isFile ? 'f' : 'fd'}_${name}`)).length;
-  }
-
-  public static folderIconsDisabled(func: (iconsJson: IIconSchema) => boolean): boolean {
-    const iconManifest = this._getIconManifest();
-    const iconsJson = iconManifest && parseJSON(iconManifest) as IIconSchema;
-    return !iconsJson || !func(iconsJson);
-  }
   public static getProjectInfo(results: models.IVSCodeUri[], name: models.Projects): models.IProjectInfo {
     let projectInfo: models.IProjectInfo = null;
     results.some(result => {
@@ -125,14 +110,6 @@ export class ProjectAutoDetection {
         return getInfoFn('@angular/core');
       default:
         return null;
-    }
-  }
-  private static _getIconManifest(): string {
-    const manifestFilePath = path.join(__dirname, '..', extensionSettings.iconJsonFileName);
-    try {
-      return fs.readFileSync(manifestFilePath, 'utf8');
-    } catch (err) {
-      return null;
     }
   }
 }

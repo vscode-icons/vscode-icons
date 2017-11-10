@@ -4,7 +4,8 @@ import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
 import * as models from '../../src/models';
-import { ProjectAutoDetection  as pad} from '../../src/init/projectAutoDetection';
+import { ProjectAutoDetection as pad } from '../../src/init/projectAutoDetection';
+import { ManifestReader as mr } from '../../src/icon-manifest';
 import { LanguageResourceManager } from '../../src/i18n';
 
 describe('AutoDetectProject: tests', function () {
@@ -30,6 +31,7 @@ describe('AutoDetectProject: tests', function () {
             jsonOfficial: false,
             hideFolders: false,
             foldersAllDefaultIcon: false,
+            hideExplorerArrows: false,
           },
           associations: {
             files: [],
@@ -185,27 +187,27 @@ describe('AutoDetectProject: tests', function () {
           function () {
             const iconManifest = '{ "iconDefinitions": { "_f_ng_": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.iconsDisabled(models.Projects.angular)).to.be.false;
+            expect(mr.iconsDisabled(models.Projects.angular)).to.be.false;
           });
 
         it('disabled',
           function () {
             const iconManifest = '{ "iconDefinitions": { "_f_codecov": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.iconsDisabled(models.Projects.angular)).to.be.true;
+            expect(mr.iconsDisabled(models.Projects.angular)).to.be.true;
           });
 
         it('disabled if they do not exist',
           function () {
             const iconManifest = '';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.iconsDisabled(models.Projects.angular)).to.be.true;
+            expect(mr.iconsDisabled(models.Projects.angular)).to.be.true;
           });
 
         it('assumed disabled if icon manifest file fails to be loaded',
           function () {
             sandbox.stub(fs, 'readFileSync').throws(Error);
-            expect(pad.iconsDisabled(models.Projects.angular)).to.be.true;
+            expect(mr.iconsDisabled(models.Projects.angular)).to.be.true;
           });
       });
 
@@ -225,27 +227,27 @@ describe('AutoDetectProject: tests', function () {
           function () {
             const iconManifest = '{ "iconDefinitions": { "_fd_aws": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.iconsDisabled('aws', false)).to.be.false;
+            expect(mr.iconsDisabled('aws', false)).to.be.false;
           });
 
         it('disabled',
           function () {
             const iconManifest = '{ "iconDefinitions": { "_fd_git": {} } }';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.iconsDisabled('aws', false)).to.be.true;
+            expect(mr.iconsDisabled('aws', false)).to.be.true;
           });
 
         it('disabled if they do not exist',
           function () {
             const iconManifest = '';
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.iconsDisabled('aws', false)).to.be.true;
+            expect(mr.iconsDisabled('aws', false)).to.be.true;
           });
 
         it('assumed disabled if icon manifest file fails to be loaded',
           function () {
             sandbox.stub(fs, 'readFileSync').throws(Error);
-            expect(pad.iconsDisabled('aws', false)).to.be.true;
+            expect(mr.iconsDisabled('aws', false)).to.be.true;
           });
       });
 
@@ -266,7 +268,7 @@ describe('AutoDetectProject: tests', function () {
             const iconManifest = '{ "iconDefinitions": { "_fd_aws": {} } }';
             const func = sinon.stub().returns(true);
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.folderIconsDisabled(func)).to.be.false;
+            expect(mr.folderIconsDisabled(func)).to.be.false;
           });
 
         it('disabled',
@@ -274,7 +276,7 @@ describe('AutoDetectProject: tests', function () {
             const iconManifest = '{ "iconDefinitions": { "_fd_git": {} } }';
             const func = sinon.stub().returns(false);
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.folderIconsDisabled(func)).to.be.true;
+            expect(mr.folderIconsDisabled(func)).to.be.true;
           });
 
         it('disabled if they do not exist',
@@ -282,14 +284,14 @@ describe('AutoDetectProject: tests', function () {
             const iconManifest = '';
             const func = sinon.stub();
             sandbox.stub(fs, 'readFileSync').returns(iconManifest);
-            expect(pad.folderIconsDisabled(func)).to.be.true;
+            expect(mr.folderIconsDisabled(func)).to.be.true;
           });
 
         it('assumed disabled if icon manifest file fails to be loaded',
           function () {
             const func = sinon.stub();
             sandbox.stub(fs, 'readFileSync').throws(Error);
-            expect(pad.folderIconsDisabled(func)).to.be.true;
+            expect(mr.folderIconsDisabled(func)).to.be.true;
           });
       });
 

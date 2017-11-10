@@ -26,6 +26,7 @@ describe('AutoApplyCustomizations: tests', function () {
           jsonOfficial: false,
           hideFolders: false,
           foldersAllDefaultIcon: false,
+          hideExplorerArrows: false,
         },
         associations: {
           files: [],
@@ -93,6 +94,7 @@ describe('ApplyCustomizations: tests', function () {
           jsonOfficial: false,
           hideFolders: false,
           foldersAllDefaultIcon: false,
+          hideExplorerArrows: false,
         },
         associations: {
           files: [],
