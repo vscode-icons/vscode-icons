@@ -4,9 +4,10 @@ import { LanguageResourceManager } from '../i18n';
 import * as iconManifest from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
+import { ManifestReader as mr } from '../icon-manifest/manifestReader';
 import * as models from '../models';
 import { SettingsManager, extensionSettings } from '../settings';
-import { ProjectAutoDetection as pad, manageApplyCustomizations } from '../init';
+import { manageApplyCustomizations } from '../init';
 import * as helper from './helper';
 import { initialized } from '../';
 import { constants } from '../constants';
@@ -60,6 +61,7 @@ export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'jsonPreset', toggleJsonPresetCommand);
   registerCommand(context, 'hideFoldersPreset', toggleHideFoldersPresetCommand);
   registerCommand(context, 'foldersAllDefaultIconPreset', toggleFoldersAllDefaultIconPresetCommand);
+  registerCommand(context, 'hideExplorerArrowsPreset', toggleHideExplorerArrowsPresetCommand);
 }
 
 function registerCommand(
@@ -125,6 +127,10 @@ function toggleFoldersAllDefaultIconPresetCommand(): void {
   togglePreset(models.PresetNames.foldersAllDefaultIcon, 'foldersAllDefaultIconPreset', true);
 }
 
+function toggleHideExplorerArrowsPresetCommand(): void {
+  togglePreset(models.PresetNames.hideExplorerArrows, 'hideExplorerArrowsPreset', true);
+}
+
 function togglePreset(
   presetName: models.PresetNames,
   presetKey: string,
@@ -132,9 +138,11 @@ function togglePreset(
   global: boolean = true): void {
 
   const preset = models.PresetNames[presetName];
-  const toggledValue = helper.isFolders(preset)
-    ? pad.folderIconsDisabled(helper.getFunc(preset))
-    : pad.iconsDisabled(helper.getIconName(preset));
+  const toggledValue = helper.isNonIconsRelatedPreset(presetName)
+    ? !getVsiconsConfig().presets[preset]
+    : helper.isFoldersRelated(presetName)
+      ? mr.folderIconsDisabled(helper.getFunc(preset))
+      : mr.iconsDisabled(helper.getIconName(preset));
   const action = reverseAction
     ? toggledValue
       ? 'Disabled'
@@ -309,6 +317,10 @@ function generateManifest(
     workingCustomFolders,
     workingFolders,
     iconGenerator);
+
+  // apply non icons related config settings
+  json.hidesExplorerArrows = vsicons.presets.hideExplorerArrows;
+
   iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }
 

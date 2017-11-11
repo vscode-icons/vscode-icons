@@ -104,6 +104,11 @@
                 "category": "Icons"
             },
             {
+                "command": "vscode-icons.hideExplorerArrowsPreset",
+                "title": "%command.hideExplorerArrowsPreset.title%",
+                "category": "Icons"
+            },
+            {
                 "command": "vscode-icons.restoreIcons",
                 "title": "%command.restoreIcons.title%",
                 "category": "Icons"
@@ -166,6 +171,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "%configuration.presets.foldersAllDefaultIcon.description%"
+                },
+                "vsicons.presets.hideExplorerArrows": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "%configuration.presets.hideExplorerArrows.description%"
                 },
                 "vsicons.customIconFolderPath": {
                     "type": "string",

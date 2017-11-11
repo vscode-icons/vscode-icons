@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { SettingsManager } from './settings';
 import * as init from './init';
 import { ProjectAutoDetection as pad } from './init/projectAutoDetection';
+import { ManifestReader as mr } from './icon-manifest';
 import * as commands from './commands';
 import { getVsiconsConfig, getConfig, findFiles } from './utils/vscode-extensions';
 import { LanguageResourceManager } from './i18n';
@@ -31,7 +32,7 @@ function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
   const i18nManager = new LanguageResourceManager(vscode.env.language);
   const presetValue = getConfig().inspect(`vsicons.presets.angular`).workspaceValue as boolean;
   const detectionResult = pad.checkForAngularProject(
-    presetValue, pad.iconsDisabled(Projects.angular), !!projectInfo, i18nManager);
+    presetValue, mr.iconsDisabled(Projects.angular), !!projectInfo, i18nManager);
 
   if (!detectionResult.apply) {
     return;

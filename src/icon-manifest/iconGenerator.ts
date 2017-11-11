@@ -8,7 +8,6 @@ import * as packageJson from '../../../package.json';
 
 export class IconGenerator implements models.IIconGenerator {
   public settings: models.ISettings;
-
   public iconsFolderBasePath: string;
 
   private iconsFolderPath: string;
@@ -322,6 +321,7 @@ export class IconGenerator implements models.IIconGenerator {
     return utils.pathUnixJoin(fPath, filename);
   }
 
+  // Note: Non icons entries are added in 'commands.generateManifest'function
   private buildJsonStructure(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
@@ -351,6 +351,7 @@ export class IconGenerator implements models.IIconGenerator {
     schema.light.fileExtensions = res.files.light.fileExtensions;
     schema.light.fileNames = res.files.light.fileNames;
     schema.light.languageIds = res.files.light.languageIds;
+
     return schema;
   }
 }
