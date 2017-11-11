@@ -465,7 +465,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'stylus', extensions: [], languages: [languages.stylus], light: true, format: FileFormat.svg },
     { icon: 'storyboard', extensions: ['storyboard'], format: FileFormat.svg },
-    { icon: 'storybook', extensions: ['story.js', 'stories.js'], format: FileFormat.svg },
+    { icon: 'storybook', extensions: [], filenamesGlob: ['story', 'stories'], extensionsGlob: ['js', 'jsx', 'ts', 'tsx'], format: FileFormat.svg },
     { icon: 'subversion', extensions: ['.svnignore'], filename: true, format: FileFormat.svg },
     { icon: 'svg', extensions: ['svg'], format: FileFormat.svg },
     { icon: 'swagger', extensions: [], languages: [languages.swagger], format: FileFormat.svg },
