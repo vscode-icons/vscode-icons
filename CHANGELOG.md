@@ -1,5 +1,18 @@
 # Change Log
 
+## 7.18.0 (November 12, 2017)
+
+- Enhancement: Extended `StoryBook` supported extensions. ([@JimiC](https://github.com/JimiC) in [#1343](https://github.com/vscode-icons/vscode-icons/pull/1343))
+- Feature: Added ability to hide folder arrows in explorer. ([@JimiC](https://github.com/JimiC) in [#1342](https://github.com/vscode-icons/vscode-icons/pull/1342))
+- Enhancement: Support for `.prettierignore`. ([@jens1o](https://github.com/jens1o) in [#1339](https://github.com/vscode-icons/vscode-icons/pull/1339))
+- Enhancement: Replaced `taskName` with `label`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1333](https://github.com/vscode-icons/vscode-icons/pull/1333))
+- Enhancement: Replaced `workspaceRoot` with `workspaceFolder`. ([@torn4dom4n](https://github.com/torn4dom4n) in [#1330](https://github.com/vscode-icons/vscode-icons/pull/1330))
+- Enhancement: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#1329](https://github.com/vscode-icons/vscode-icons/pull/1329))
+- Enhancement: Moved content to Wiki. ([@JimiC](https://github.com/JimiC) in [#1328](https://github.com/vscode-icons/vscode-icons/pull/1328))
+- Enhancement: Added `multi-root` ready keyword in package.json. ([@JimiC](https://github.com/JimiC) in [#1326](https://github.com/vscode-icons/vscode-icons/pull/1326))
+- Fix: Removed `bithound` dependency and script. ([@JimiC](https://github.com/JimiC) in [#1325](https://github.com/vscode-icons/vscode-icons/pull/1325))
+- Fix: `cake` extension is not controlled by language id anymore. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1322](https://github.com/vscode-icons/vscode-icons/pull/1322))
+
 ## 7.17.0 (October 28, 2017)
 
 - Fix: Fixed issue with `vscode.nls`. ([@JimiC](https://github.com/JimiC) in [#1319](https://github.com/vscode-icons/vscode-icons/pull/1319))
