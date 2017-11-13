@@ -24,6 +24,8 @@
   "hideFoldersPresetDisabled": "Отображение значка папки будет отключено.",
   "foldersAllDefaultIconPresetEnabled": "Нестандартные значки папок будут включены.",
   "foldersAllDefaultIconPresetDisabled": "Нестандартные значки папок будут отключены.",
+  "hideExplorerArrowsPresetEnabled": "Стрелка возле значка папки будет показываться.",
+  "hideExplorerArrowsPresetDisabled": "Стрелка возле значка папки будет скрыта.",
   "restart": "Нажмите 'Перезапустить' чтобы изменения вступили в силу.",
   "ngDetected": "%extensionName% обнаружил проект Angular. Нажмите 'Перезапустить' чтобы включить значки Angular.",
   "nonNgDetected": "%extensionName% обнаружил проект отличный от Angular. Нажмите 'Перезапустить' чтобы отключить значки Angular.",
