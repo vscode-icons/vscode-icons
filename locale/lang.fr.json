@@ -24,6 +24,8 @@
   "hideFoldersPresetDisabled": "Les icônes de fichier vont êtres désactivées.",
   "foldersAllDefaultIconPresetEnabled": "Les icônes pour dossier vont êtres activées.",
   "foldersAllDefaultIconPresetDisabled": "Les icônes pour dossier vont êtres désactivées.",
+  "hideExplorerArrowsPresetEnabled": "Les flèches de dossier vont êtres activées.",
+  "hideExplorerArrowsPresetDisabled": "Les flèches de dossier vont êtres désactivées.",
   "restart": "Seléctionner 'Recharger' pour que les changements soit effectifs.",
   "ngDetected": "%extensionName% a détécté un projet Angular. Sélectionner 'Recharger' pour activer les icônes Angular.",
   "nonNgDetected": "%extensionName% a détecté un projet non Angular. Sélectionner 'Recharger' pour désactiver les icônes Angular.",
