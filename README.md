@@ -59,7 +59,7 @@ In case this doesn't happen, navigate to:
 
 ## Features
 
-`vscode-icons` is being shiped with a lot of features, like:
+`vscode-icons` is being shipped with a lot of features, like:
 
 * [Icons Customization](https://github.com/vscode-icons/vscode-icons/wiki/Customization)
 * [Project Auto-Detection](https://github.com/vscode-icons/vscode-icons/wiki/Pad)
@@ -71,7 +71,7 @@ In case this doesn't happen, navigate to:
 
 We are looking for translators and proofreaders for all `vscode` supported languages.
 
-If you like to contribute, checkout the [translation section](https://github.com/vscode-icons/vscode-icons/wiki/Translation).
+If you'd like to contribute, checkout the [translation section](https://github.com/vscode-icons/vscode-icons/wiki/Translation).
 
 ## Contributing
 
