@@ -1,6 +1,6 @@
 # Change Log
 
-## 7.18.0 (November 14, 2017)
+## 7.18.1 (November 14, 2017)
 
 - Fix: Fixed some typos in `README.md`. ([@BitYog](https://github.com/BitYog) in [#1351](https://github.com/vscode-icons/vscode-icons/pull/1351))
 - Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#1344](https://github.com/vscode-icons/vscode-icons/pull/1344))
