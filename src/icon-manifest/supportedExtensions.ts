@@ -562,6 +562,7 @@ export const extensions: IFileCollection = {
         'webpack.dev',
         'webpack.dev.conf',
         'webpack.prod',
+        'webpack.prod.conf',
         'webpack.mix',
         'webpack.test.conf',
       ],
