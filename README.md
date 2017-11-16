@@ -54,8 +54,8 @@ Once installed and after reloading `vscode`, you will be presented with a messag
 
 In case this doesn't happen, navigate to:
 
-* `Linux` & `Windows` :arrow_right: **File > Preferences > File Icon Theme > VSCode Icons**.
-* `MacOS` :arrow_right: **Code > Preferences > File Icon Theme > VSCode Icons**.
+* `Linux` & `Windows` `=>` **File > Preferences > File Icon Theme > VSCode Icons**.
+* `MacOS` `=>` **Code > Preferences > File Icon Theme > VSCode Icons**.
 
 ## Features
 
