@@ -238,7 +238,7 @@
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
         "lint": "tslint --project tsconfig.json",
-        "example": "node ./out/src/example/example.js",
+        "example": "cd ./submodules/examples-generator && npm run examples --",
         "wpilgen": "cd ./submodules/wpilgenerator && npm run wpilgen --"
     },
     "devDependencies": {
@@ -259,6 +259,7 @@
         "tslint": "^5.8.0",
         "typescript": "^2.6.1",
         "vscode": "^1.1.6",
+        "examples-generator": "file:submodules/examples-generator",
         "wpilgenerator": "file:submodules/wpilgenerator"
     },
     "dependencies": {
