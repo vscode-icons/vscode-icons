@@ -238,7 +238,8 @@
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
         "lint": "tslint --project tsconfig.json",
-        "example": "node ./out/src/example/example.js "
+        "example": "node ./out/src/example/example.js",
+        "wpilgen": "cd ./submodules/wpilgenerator && npm run wpilgen --"
     },
     "devDependencies": {
         "@types/chai": "^4.0.4",
@@ -257,7 +258,8 @@
         "sinon": "^4.1.1",
         "tslint": "^5.8.0",
         "typescript": "^2.6.1",
-        "vscode": "^1.1.6"
+        "vscode": "^1.1.6",
+        "wpilgenerator": "file:submodules/wpilgenerator"
     },
     "dependencies": {
         "lodash": "^4.17.4",
