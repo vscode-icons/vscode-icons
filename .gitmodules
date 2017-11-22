@@ -1,0 +1,3 @@
+[submodule "submodules/wpilgenerator"]
+	path = submodules/wpilgenerator
+	url = https://github.com/vscode-icons/wpilgenerator
