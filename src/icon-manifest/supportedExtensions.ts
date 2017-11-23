@@ -79,6 +79,7 @@ export const extensions: IFileCollection = {
     { icon: 'babel2', extensions: ['.babelrc', 'babelrc.js'], light: true, filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'bat', extensions: [], languages: [languages.bat], format: FileFormat.svg },
     { icon: 'bazaar', extensions: ['.bzrignore'], filename: true, format: FileFormat.svg },
+    { icon: 'bazel', extensions: [], languages: [languages.bazel], format: FileFormat.svg },
     { // http://www.file-extensions.org/filetype/extension/name/binary-files
       icon: 'binary',
       extensions: ['a', 'app', 'bin', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi', 'dll', 'exe', 'hl', 'ilk',
