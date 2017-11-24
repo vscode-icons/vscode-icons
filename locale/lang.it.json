@@ -24,6 +24,8 @@
   "hideFoldersPresetDisabled": "Visibilità icone cartelle sarà disabilitata.",
   "foldersAllDefaultIconPresetEnabled": "Icone specifiche per cartelle saranno abilitate.",
   "foldersAllDefaultIconPresetDisabled": "Icone specifiche per cartelle saranno disabilitate.",
+  "hideExplorerArrowsPresetEnabled": "Le frecce delle cartelle nell'Explorer saranno visibili.",
+  "hideExplorerArrowsPresetDisabled": "Le frecce delle cartelle nell'Explorer non saranno visibili.",
   "restart": "Seleziona 'Riavvia' affinché le modifiche abbiano effetto.",
   "ngDetected": "%extensionName% ha rilevato un progetto Angular. Seleziona 'Riavvia' per abilitare le icone Angular.",
   "nonNgDetected": "%extensionName% ha rilevato un progetto non Angular. Seleziona 'Riavvia' per disabilitare le icone Angular.",

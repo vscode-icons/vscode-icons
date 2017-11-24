@@ -2,7 +2,7 @@
     "name": "vscode-icons",
     "displayName": "vscode-icons",
     "description": "Icons for Visual Studio Code",
-    "version": "7.17.0",
+    "version": "7.18.1",
     "publisher": "robertohuertasm",
     "license": "MIT",
     "author": {
@@ -104,6 +104,11 @@
                 "category": "Icons"
             },
             {
+                "command": "vscode-icons.hideExplorerArrowsPreset",
+                "title": "%command.hideExplorerArrowsPreset.title%",
+                "category": "Icons"
+            },
+            {
                 "command": "vscode-icons.restoreIcons",
                 "title": "%command.restoreIcons.title%",
                 "category": "Icons"
@@ -167,6 +172,11 @@
                     "default": false,
                     "description": "%configuration.presets.foldersAllDefaultIcon.description%"
                 },
+                "vsicons.presets.hideExplorerArrows": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "%configuration.presets.hideExplorerArrows.description%"
+                },
                 "vsicons.customIconFolderPath": {
                     "type": "string",
                     "default": "",
@@ -228,7 +238,8 @@
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
         "lint": "tslint --project tsconfig.json",
-        "example": "node ./out/src/example/example.js "
+        "example": "cd ./submodules/examples-generator && npm run examples --",
+        "wpilgen": "cd ./submodules/wpilgenerator && npm run wpilgen --"
     },
     "devDependencies": {
         "@types/chai": "^4.0.4",
@@ -247,7 +258,9 @@
         "sinon": "^4.1.1",
         "tslint": "^5.8.0",
         "typescript": "^2.6.1",
-        "vscode": "^1.1.6"
+        "vscode": "^1.1.6",
+        "examples-generator": "file:submodules/examples-generator",
+        "wpilgenerator": "file:submodules/wpilgenerator"
     },
     "dependencies": {
         "lodash": "^4.17.4",

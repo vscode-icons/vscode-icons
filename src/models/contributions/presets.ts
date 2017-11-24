@@ -5,4 +5,5 @@ export interface IPresets {
   jsonOfficial: boolean;
   hideFolders: boolean;
   foldersAllDefaultIcon: boolean;
+  hideExplorerArrows: boolean;
 }

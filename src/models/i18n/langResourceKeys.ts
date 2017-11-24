@@ -24,6 +24,8 @@ export enum LangResourceKeys {
   hideFoldersPresetDisabled,
   foldersAllDefaultIconPresetEnabled,
   foldersAllDefaultIconPresetDisabled,
+  hideExplorerArrowsPresetEnabled,
+  hideExplorerArrowsPresetDisabled,
   restart,
   ngDetected,
   nonNgDetected,

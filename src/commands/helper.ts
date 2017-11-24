@@ -1,7 +1,20 @@
 import * as models from '../models';
 
-export function isFolders(preset: string): boolean {
-  return preset.toLowerCase().includes('folders');
+const foldersRelatedPresets = [
+  models.PresetNames.hideFolders,
+  models.PresetNames.foldersAllDefaultIcon,
+];
+
+const nonIconsRelatedPresets = [
+  models.PresetNames.hideExplorerArrows,
+];
+
+export function isFoldersRelated(presetName: models.PresetNames): boolean {
+  return foldersRelatedPresets.some(preset => preset === presetName);
+}
+
+export function isNonIconsRelatedPreset(presetName: models.PresetNames): boolean {
+  return nonIconsRelatedPresets.some(preset => preset === presetName);
 }
 
 export function getFunc(preset: string): (iconsJson: models.IIconSchema) => boolean {

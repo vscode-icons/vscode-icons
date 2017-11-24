@@ -10,9 +10,21 @@ node_js:
 matrix:
   allow_failures:
     - node_js: node
+  fast_finish: true
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libstdc++-4.9-dev
 cache: yarn
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2
+  - export PATH=$HOME/.yarn/bin:$PATH
 script: npm run build
 after_success:
   - codecov
+  - ./submodules/wpilgenerator/wpilgen.sh
+
 # See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines

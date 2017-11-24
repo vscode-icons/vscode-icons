@@ -16,6 +16,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   autohotkey: ILanguage;
   autoit: ILanguage;
   avro: ILanguage;
+  bazel: ILanguage;
   bibtex: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
@@ -66,6 +67,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   julia: ILanguage;
   io: ILanguage;
   iodine: ILanguage;
+  kivy: ILanguage;
   kos: ILanguage;
   kotlin: ILanguage;
   latex: ILanguage;

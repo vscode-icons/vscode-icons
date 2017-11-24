@@ -24,6 +24,8 @@
   "hideFoldersPresetDisabled": "Folder icons visibility will be disabled.",
   "foldersAllDefaultIconPresetEnabled": "Specific folder icons will be enabled.",
   "foldersAllDefaultIconPresetDisabled": "Specific folder icons will be disabled.",
+  "hideExplorerArrowsPresetEnabled": "Explorer folder arrows visibility will be enabled.",
+  "hideExplorerArrowsPresetDisabled": "Explorer folder arrows visibility will be disabled.",
   "restart": "Select 'Restart' for changes to take effect.",
   "ngDetected": "%extensionName% has detected an Angular project. Select 'Restart' to enable the Angular icons.",
   "nonNgDetected": "%extensionName% has detected a non Angular project. Select 'Restart' to disable the Angular icons.",
