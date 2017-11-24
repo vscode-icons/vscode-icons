@@ -79,6 +79,7 @@ export const extensions: IFileCollection = {
     { icon: 'babel2', extensions: ['.babelrc', 'babelrc.js'], light: true, filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'bat', extensions: [], languages: [languages.bat], format: FileFormat.svg },
     { icon: 'bazaar', extensions: ['.bzrignore'], filename: true, format: FileFormat.svg },
+    { icon: 'bazel', extensions: [], languages: [languages.bazel], format: FileFormat.svg },
     { // http://www.file-extensions.org/filetype/extension/name/binary-files
       icon: 'binary',
       extensions: ['a', 'app', 'bin', 'cmo', 'cmx', 'cma', 'cmxa', 'cmi', 'dll', 'exe', 'hl', 'ilk',
@@ -135,6 +136,7 @@ export const extensions: IFileCollection = {
     { icon: 'csslint', extensions: ['.csslintrc'], filename: true, format: FileFormat.svg },
     { icon: 'cssmap', extensions: ['css.map'], format: FileFormat.svg },
     { icon: 'cucumber', extensions: [], languages: [languages.cucumber], format: FileFormat.svg },
+    { icon: 'cypress', extensions: [`cypress.json`, `cypress.env.json`], filename: true, format: FileFormat.svg },
     { icon: 'cvs', extensions: ['.cvsignore'], filename: true, format: FileFormat.svg },
     { icon: 'dal', extensions: [], languages: [languages.dal], format: FileFormat.svg },
     { icon: 'darcs', extensions: ['.boringignore'], filename: true, format: FileFormat.svg },
@@ -382,6 +384,7 @@ export const extensions: IFileCollection = {
     { icon: 'php2', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg, disabled: true },
     { icon: 'php3', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg, disabled: true },
     { icon: 'phpunit', extensions: ['phpunit', 'phpunit.xml', 'phpunit.xml.dist'], filename: true, format: FileFormat.svg },
+    { icon: 'pip', extensions: ['pipfile', 'pipfile.lock'], filename: true, format: FileFormat.svg },
     { icon: 'plantuml', extensions: ['pu', 'plantuml', 'iuml', 'puml'], format: FileFormat.svg },
     { icon: 'plsql', extensions: [], languages: [languages.plsql], format: FileFormat.svg },
     { icon: 'plsql_package', extensions: ['pck'], format: FileFormat.svg },
