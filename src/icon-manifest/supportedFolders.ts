@@ -22,6 +22,7 @@ export const extensions: IFolderCollection = {
     { icon: 'client', extensions: ['client'], format: FileFormat.svg },
     { icon: 'config', extensions: ['config', '.config', 'ini', '.ini', 'initializers', '.initializers'], format: FileFormat.svg },
     { icon: 'css', extensions: ['css', '_css'], format: FileFormat.svg },
+    { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
     { icon: 'db', extensions: ['db', 'database', 'sql'], format: FileFormat.svg },
     { icon: 'debian', extensions: ['debian'], format: FileFormat.svg },
     { icon: 'dist', extensions: ['dist', 'out', 'export', 'build', 'release'], format: FileFormat.svg },
