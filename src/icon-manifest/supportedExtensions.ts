@@ -491,9 +491,9 @@ export const extensions: IFileCollection = {
       icon: 'tsconfig',
       extensions: [],
       filenamesGlob: [
-        'tsconfig', 
-        'tsconfig.app', 
-        'tsconfig.spec', 
+        'tsconfig',
+        'tsconfig.app',
+        'tsconfig.spec',
         'tsconfig.e2e',
         'tsconfig.base',
         'tsconfig.common',
