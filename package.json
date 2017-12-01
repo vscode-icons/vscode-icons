@@ -226,7 +226,7 @@
         }
     },
     "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
+        "postinstall": "vscode-install",
         "prebuild": "npm run lint && npm run test",
         "build": "node ./out/src/icon-manifest/build.js",
         "pretest": "rimraf ./.nyc_output ./coverage && npm run compile",
@@ -238,8 +238,7 @@
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
         "lint": "tslint --project tsconfig.json",
-        "example": "cd ./submodules/examples-generator && npm run examples --",
-        "wpilgen": "cd ./submodules/wpilgenerator && npm run wpilgen --"
+        "example": "cd ./submodules/examples-generator && npm run examples --"
     },
     "devDependencies": {
         "@types/chai": "^4.0.4",
