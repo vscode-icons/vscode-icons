@@ -238,7 +238,7 @@
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
         "lint": "tslint --project tsconfig.json",
-        "example": "cd ./submodules/examples-generator && npm run examples --"
+        "example": "example"
     },
     "devDependencies": {
         "@types/chai": "^4.0.4",
