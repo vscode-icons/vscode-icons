@@ -120,6 +120,7 @@ export const extensions: IFileCollection = {
     { icon: 'codekit', extensions: ['config.codekit', 'config.codekit2', 'config.codekit3'], filename: true, format: FileFormat.svg },
     { icon: 'coffeelint', extensions: ['coffeelint.json', '.coffeelintignore'], filename: true, format: FileFormat.svg },
     { icon: 'coffeescript', extensions: [], languages: [languages.coffeescript], format: FileFormat.svg },
+    { icon: 'conan', extensions: ['conanfile.txt'], filename: true, format: FileFormat.svg },
     { icon: 'config', extensions: ['env'], light: true, languages: [languages.properties], format: FileFormat.svg },
     { icon: 'config', extensions: ['.env.example'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'compass', extensions: [], format: FileFormat.svg },
@@ -458,6 +459,7 @@ export const extensions: IFileCollection = {
     { icon: 'sqlite', extensions: ['sqlite', 'sqlite3', 'db3'], format: FileFormat.svg },
     { icon: 'squirrel', extensions: [], languages: [languages.squirrel], format: FileFormat.svg },
     { icon: 'sss', extensions: ['sss'], format: FileFormat.svg },
+    { icon: 'stata', extensions: ['dta'], languages: [languages.stata], format: FileFormat.svg },
     { icon: 'style', extensions: [], format: FileFormat.svg },
     {
       icon: 'stylelint',
