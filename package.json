@@ -226,6 +226,7 @@
         }
     },
     "scripts": {
+        "preinstall": "git submodule update --init --recursive",
         "postinstall": "vscode-install",
         "prebuild": "npm run lint && npm run test",
         "build": "node ./out/src/icon-manifest/build.js",
