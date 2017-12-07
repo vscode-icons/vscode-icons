@@ -1,15 +1,23 @@
-# Contribution Guidelines
+# Contributing to VSCode Icons
 
-**Issue:**
+## Open an issue
 
-1. Make sure the issue hasn't been already raised.
-1. Include screenshots or GIFs whenever possible.
-1. Don't be rude, describe your problem cool.
+### Before submit an issue:
 
-**Pull Request:**
+1. Perform a [cursory search](https://github.com/vscode-icons/vscode-icons/issues?q=is%3Aopen+is%3Aissue) to see if the issue has already been opened. If it has and the issue is still open, add a comment to the existing issue instead of opening a new one.
 
-1. Use the present tense.
-1. Reference issues whenever possible.
-1. Try to make your code clean and observe the TSLint Rules.
+### Submit the issue:
 
-Thanks for helping out! :smile:
+1. Fill in [this issue template](ISSUE_TEMPLATE.md).
+2. Use a clear and descriptive title for the issue. Example: [Icon request] Support for Python.
+3. Include screenshots and animated GIFs in your issue whenever possible. You can use [this tool](https://www.cockos.com/licecap) macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) on Linux.
+4. Don't be rude, describe your problem cool.
+
+## Pull Request
+
+1. Fill in [this pull request template](PULL_REQUEST_TEMPLATE.md).
+2. Reference issues whenever possible.
+3. Include screenshots and animated GIFs in your pull request whenever possible.
+4. Try to make your code clean and observe the TSLint Rules.
+
+Finally, thanks for helping out! :smile:
