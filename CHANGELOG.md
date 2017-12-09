@@ -22,7 +22,7 @@
 - Enhancement: Mapped `screenshoot` to image folder icon. ([@jens1o](https://github.com/jens1o) in [#1362](https://github.com/vscode-icons/vscode-icons/pull/1362))
 - Fix: Removed emoji from readme. ([@JimiC](https://github.com/JimiC) in [#1360](https://github.com/vscode-icons/vscode-icons/pull/1360))
 - Enhancement: Updated `yarn` version. ([@JimiC](https://github.com/JimiC) in [#1359](https://github.com/vscode-icons/vscode-icons/pull/1359))
-- Enhancement: `webpack.prod.conf.[js|ts|cofee]` support. ([@erenhatirnaz](https://github.com/erenhatirnaz) in [#1357](https://github.com/vscode-icons/vscode-icons/pull/1357))
+- Enhancement: `webpack.prod.conf.[js|ts|coffee]` support. ([@erenhatirnaz](https://github.com/erenhatirnaz) in [#1357](https://github.com/vscode-icons/vscode-icons/pull/1357))
 - Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#1355](https://github.com/vscode-icons/vscode-icons/pull/1355))
 
 ## 7.18.1 (November 14, 2017)
