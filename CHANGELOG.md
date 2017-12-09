@@ -1,5 +1,30 @@
 # Change Log
 
+## 7.19.0 (December 9, 2017)
+
+- Enhancement: Updated project dependencies. ([@JimiC](https://github.com/JimiC) in [#1394](https://github.com/vscode-icons/vscode-icons/pull/1394))
+- Enhancement: Added script to initialize submodules. ([@JimiC](https://github.com/JimiC) in [#1393](https://github.com/vscode-icons/vscode-icons/pull/1393))
+- Feature: Support for `Conan`. ([@JimiC](https://github.com/JimiC) in [#1390](https://github.com/vscode-icons/vscode-icons/pull/1390))
+- Feature: Support for `Stata`. ([@JimiC](https://github.com/JimiC) in [#1389](https://github.com/vscode-icons/vscode-icons/pull/1389))
+- Enhancement: Updated submodule examples-generator. ([@JimiC](https://github.com/JimiC) in [#1387](https://github.com/vscode-icons/vscode-icons/pull/1387))
+- Enhancement: Added new `tsconfig` extensions. ([@msqaddura](https://github.com/msqaddura) in [#1384](https://github.com/vscode-icons/vscode-icons/pull/1384))
+- Feature: Support for more folder names (`audio, route, travis & video`). ([@JimiC](https://github.com/JimiC) in [#1376](https://github.com/vscode-icons/vscode-icons/pull/1376))
+- Enhancement: Excluded specific folder and files from distribution. ([@JimiC](https://github.com/JimiC) in [#1382](https://github.com/vscode-icons/vscode-icons/pull/1382))
+- Feature: Support for `Kivy`. ([@JimiC](https://github.com/JimiC) in [#1376](https://github.com/vscode-icons/vscode-icons/pull/1376))
+- Feature: Support for `Bazel`. ([@JimiC](https://github.com/JimiC) in [#1375](https://github.com/vscode-icons/vscode-icons/pull/1375))
+- Feature: Support for `Cypress`. ([@JimiC](https://github.com/JimiC) in [#1374](https://github.com/vscode-icons/vscode-icons/pull/1374))
+- Feature: Support for `pip`. ([@JimiC](https://github.com/JimiC) in [#1373](https://github.com/vscode-icons/vscode-icons/pull/1373))
+- Enhancement: Updated submodule wpilgenerator. ([@JimiC](https://github.com/JimiC) in [#1372](https://github.com/vscode-icons/vscode-icons/pull/1372), [#1380](https://github.com/vscode-icons/vscode-icons/pull/1380), [#1386](https://github.com/vscode-icons/vscode-icons/pull/1386) and [#1388](https://github.com/vscode-icons/vscode-icons/pull/1388))
+- Feature: Support for `cargo`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1371](https://github.com/vscode-icons/vscode-icons/pull/1371))
+- Feature: Added examples generator tool as submodule. ([@JimiC](https://github.com/JimiC) in [#1370](https://github.com/vscode-icons/vscode-icons/pull/1370))
+- Enhancement: Support for `.stylelintcache`. ([@eddiemoore](https://github.com/eddiemoore) in [#1369](https://github.com/vscode-icons/vscode-icons/pull/1369))
+- Feature: Added wiki page icons list generator as submodule. ([@JimiC](https://github.com/JimiC) in [#1366](https://github.com/vscode-icons/vscode-icons/pull/1366))
+- Enhancement: Mapped `screenshoot` to image folder icon. ([@jens1o](https://github.com/jens1o) in [#1362](https://github.com/vscode-icons/vscode-icons/pull/1362))
+- Fix: Removed emoji from readme. ([@JimiC](https://github.com/JimiC) in [#1360](https://github.com/vscode-icons/vscode-icons/pull/1360))
+- Enhancement: Updated `yarn` version. ([@JimiC](https://github.com/JimiC) in [#1359](https://github.com/vscode-icons/vscode-icons/pull/1359))
+- Enhancement: `webpack.prod.conf.[js|ts|cofee]` support. ([@erenhatirnaz](https://github.com/erenhatirnaz) in [#1357](https://github.com/vscode-icons/vscode-icons/pull/1357))
+- Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#1355](https://github.com/vscode-icons/vscode-icons/pull/1355))
+
 ## 7.18.1 (November 14, 2017)
 
 - Fix: Fixed some typos in `README.md`. ([@BitYog](https://github.com/BitYog) in [#1351](https://github.com/vscode-icons/vscode-icons/pull/1351))
