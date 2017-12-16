@@ -83,6 +83,7 @@ export const languages: ILanguageCollection = {
   jekyll: { ids: 'jekyll', defaultExtension: 'jekyll' },
   jinja: { ids: 'jinja', defaultExtension: 'jinja' },
   json: { ids: 'json', defaultExtension: 'json' },
+  jsonc: { ids: 'jsonc', defaultExtension: 'json' },
   json5: { ids: 'json5', defaultExtension: 'json5' },
   julia: { ids: ['julia', 'juliamarkdown'], defaultExtension: 'jl' },
   iodine: { ids: 'iodine', defaultExtension: 'id' },

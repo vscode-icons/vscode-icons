@@ -21,6 +21,7 @@ export interface INativeLanguageCollection {
   javascript: ILanguage;
   javascriptreact: ILanguage;
   json: ILanguage;
+  jsonc: ILanguage;
   less: ILanguage;
   lua: ILanguage;
   makefile: ILanguage;
