@@ -81,6 +81,8 @@ For those using [Docker](https://www.docker.com/) checkout the [docker section](
 
 On the other hand, if you want to show the world your artistic side, checkout the [contributing section](https://github.com/vscode-icons/vscode-icons/wiki/Contributing).
 
+On any case, please follow our [contribution guidelines](https://github.com/vscode-icons/vscode-icons/blob/master/.github/CONTRIBUTING.md).
+
 ## Documentation
 
 In our [wiki](https://github.com/vscode-icons/vscode-icons/wiki) you can find info, like:

@@ -24,7 +24,7 @@ before_install:
 script: npm run build
 after_success:
   - codecov
-  - ./submodules/wpilgenerator/wpilgen.sh
+  - wpilgen
 
 # See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines
