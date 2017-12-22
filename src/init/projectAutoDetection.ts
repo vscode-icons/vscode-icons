@@ -54,12 +54,14 @@ export class ProjectAutoDetection {
 
   public static getProjectInfo(results: models.IVSCodeUri[], name: models.Projects): models.IProjectInfo {
     let projectInfo: models.IProjectInfo = null;
-    results.some(result => {
-      const content = fs.readFileSync(result.fsPath, 'utf8');
-      const projectJson = parseJSON(content);
-      projectInfo = this.getInfo(projectJson, name);
-      return !!projectInfo;
-    });
+    results
+      .filter(result => typeof result.fsPath === 'string' || Buffer.isBuffer(result.fsPath))
+      .some(result => {
+        const content = fs.readFileSync(result.fsPath, 'utf8');
+        const projectJson = parseJSON(content);
+        projectInfo = this.getInfo(projectJson, name);
+        return !!projectInfo;
+      });
     return projectInfo;
   }
 
