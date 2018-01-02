@@ -352,6 +352,7 @@ export const extensions: IFileCollection = {
     { icon: 'monotone', extensions: ['.mtn-ignore'], filename: true, format: FileFormat.svg },
     { icon: 'mson', extensions: [], languages: [languages.mson], format: FileFormat.svg },
     { icon: 'mustache', extensions: ['mustache', 'mst'], light: true, format: FileFormat.svg },
+    { icon: 'nginx', extensions: ['nginx.conf'], filename: true, format: FileFormat.svg },
     { icon: 'nim', extensions: [], languages: [languages.nim], format: FileFormat.svg },
     { icon: 'njsproj', extensions: ['njsproj'], format: FileFormat.svg },
     { icon: 'node', extensions: ['.node-version', '.nvmrc'], filename: true, format: FileFormat.svg },
