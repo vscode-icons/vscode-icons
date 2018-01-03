@@ -305,6 +305,7 @@ export const extensions: IFileCollection = {
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
     { icon: 'julia', extensions: [], languages: [languages.julia], format: FileFormat.svg },
     { icon: 'julia2', extensions: [], languages: [languages.julia], format: FileFormat.svg, disabled: true },
+    { icon: 'jupyter', extensions: ['ipynb'], format: FileFormat.svg },
     { icon: 'io', extensions: [], languages: [languages.io], light: true, format: FileFormat.svg },
     { icon: 'iodine', extensions: [], languages: [languages.iodine], format: FileFormat.svg },
     { icon: 'karma', extensions: [], filenamesGlob: ['karma.conf'], extensionsGlob: ['js', 'coffee', 'ts'], filename: true, format: FileFormat.svg },
