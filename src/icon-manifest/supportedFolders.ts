@@ -66,6 +66,7 @@ export const extensions: IFolderCollection = {
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     { icon: 'model', extensions: ['models', '.models'], format: FileFormat.svg },
     { icon: 'mongodb', extensions: ['mongodb'], format: FileFormat.svg },
+    { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
     { icon: 'node', extensions: ['node_modules'], light: true, format: FileFormat.svg },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
     { icon: 'package', extensions: ['package', 'packages', '.package', '.packages'], format: FileFormat.svg },
