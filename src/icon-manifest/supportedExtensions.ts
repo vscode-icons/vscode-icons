@@ -456,6 +456,7 @@ export const extensions: IFileCollection = {
     { icon: 'smarty', extensions: [], languages: [languages.smarty], format: FileFormat.svg },
     { icon: 'snort', extensions: [], languages: [languages.snort], format: FileFormat.svg },
     { icon: 'snyk', extensions: ['.snyk'], filename: true, format: FileFormat.svg },
+    { icon: 'solidarity', extensions: ['.solidarity', '.solidarity.json'], filename: true, format: FileFormat.svg },
     { icon: 'solidity', extensions: [], light: true, languages: [languages.solidity], format: FileFormat.svg },
     { icon: 'source', extensions: [], format: FileFormat.svg },
     { icon: 'sqf', extensions: [], languages: [languages.sqf], format: FileFormat.svg },
