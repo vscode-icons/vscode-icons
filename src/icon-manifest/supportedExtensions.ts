@@ -186,6 +186,7 @@ export const extensions: IFileCollection = {
     { icon: 'editorconfig', extensions: ['.editorconfig'], filename: true, format: FileFormat.svg },
     { icon: 'edge', extensions: [], languages: [languages.edge], format: FileFormat.svg },
     { icon: 'edge2', extensions: [], languages: [languages.edge], format: FileFormat.svg, disabled: true },
+    { icon: 'eex', extensions: [], languages: [languages.eex], format: FileFormat.svg },
     { icon: 'ejs', extensions: ['ejs'], format: FileFormat.svg },
     { icon: 'elastic', extensions: [], languages: [languages.elastic], format: FileFormat.svg },
     { icon: 'elasticbeanstalk', extensions: [], format: FileFormat.svg },
