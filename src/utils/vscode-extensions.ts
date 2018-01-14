@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as vscode from 'vscode';
-import { IVSCodeUri, IVSIcons, IFileExtension } from '../models';
+import { IVSIcons, IFileExtension } from '../models';
 
 export function getConfig(): vscode.WorkspaceConfiguration {
   return vscode.workspace.getConfiguration();
@@ -31,6 +31,6 @@ export function findFiles(
   return vscode.workspace.findFiles(include, exclude, maxResults, token);
 }
 
-export function asRelativePath(pathOrUri: string | IVSCodeUri): string {
+export function asRelativePath(pathOrUri: string | vscode.Uri): string {
   return vscode.workspace.asRelativePath(pathOrUri);
 }
