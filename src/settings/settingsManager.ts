@@ -1,7 +1,6 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import * as semver from 'semver';
-import { vscodePath as getAppPath, parseJSON } from '../utils';
+import { vscodePath as getAppPath, parseJSON, pathUnixJoin } from '../utils';
 import { ISettings, IState, IVSCode, ISettingsManager, ExtensionStatus } from '../models';
 import { extensionSettings } from './extensionSettings';
 
@@ -20,25 +19,40 @@ export class SettingsManager implements ISettingsManager {
     const vscodeVersion = new semver.SemVer(this.vscode.version).version;
     const isWin = /^win/.test(process.platform);
     const homeDir = isWin ? 'USERPROFILE' : 'HOME';
-    const extensionFolder = path.join(homeDir, isInsiders
+    const extensionFolder = pathUnixJoin(homeDir, isInsiders
       ? '.vscode-insiders'
       : '.vscode', 'extensions');
     const vscodeAppName = isInsiders ? 'Code - Insiders' : isOSS ? 'Code - OSS' : isDev ? 'code-oss-dev' : 'Code';
     const appPath = getAppPath();
-    const vscodeAppData = path.join(appPath, vscodeAppName, 'User');
+    const vscodeAppData = pathUnixJoin(appPath, vscodeAppName, 'User');
+    const workspacePath = this.getWorkspacePath();
 
     this.settings = {
       vscodeAppData,
+      workspacePath,
       isWin,
       isInsiders,
       isOSS,
       isDev,
       extensionFolder,
-      settingsPath: path.join(vscodeAppData, 'vsicons.settings.json'),
+      settingsPath: pathUnixJoin(vscodeAppData, 'vsicons.settings.json'),
       vscodeVersion,
       extensionSettings,
     };
     return this.settings;
+  }
+
+  public getWorkspacePath(): string[] {
+    if (this.vscode.workspace.workspaceFolders) {
+      return this.vscode.workspace.workspaceFolders.reduce<string[]>((a, b) => {
+        a.push(b.uri.fsPath);
+        return a;
+      }, []);
+    }
+
+    if (this.vscode.workspace.rootPath) {
+      return [this.vscode.workspace.rootPath];
+    }
   }
 
   public getState(): IState {

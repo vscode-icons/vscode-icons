@@ -9,7 +9,9 @@ export class ManifestReader {
   public static iconsDisabled(name: string, isFile: boolean = true): boolean {
     const iconManifest = this.getIconManifest();
     const iconsJson = iconManifest && parseJSON(iconManifest) as models.IIconSchema;
-    const defNamePattern = `_${isFile ? 'f' : 'fd'}_${name}${isFile ? '_' : ''}`;
+    const prefix = isFile ? extensionSettings.manifestFilePrefix : extensionSettings.manifestFolderPrefix;
+    const suffix = isFile ? '_' : '';
+    const defNamePattern = `${prefix}${name}${suffix}`;
     return !iconsJson || !Reflect.ownKeys(iconsJson.iconDefinitions)
       .filter(key => key.toString().startsWith(defNamePattern)).length;
   }

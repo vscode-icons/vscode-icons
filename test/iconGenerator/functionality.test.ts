@@ -219,7 +219,7 @@ describe('IconGenerator: functionality test', function () {
           expect(updatePackageJson.called).to.be.false;
         });
 
-      context('the \'updatePackageJson\' function', function () {
+      context('function \'updatePackageJson\'', function () {
 
         it('logs an error if something goes wrong',
           function () {
@@ -320,6 +320,32 @@ describe('IconGenerator: functionality test', function () {
           expect(iconGenerator.generateJson
             .bind(iconGenerator, emptyFileCollection, folderExtensions))
             .to.throw(Error, /Folder icons for '.*' must be placed in the same directory/);
+        });
+
+      it('uses the app data path when no custom icon folder path is specified', function () {
+        const folderPath: string = undefined;
+        const customIconFolderPath = iconGenerator.getCustomIconFolderPath(folderPath);
+        expect(customIconFolderPath).to.be.equal(iconGenerator.settings.vscodeAppData);
+      });
+
+      it('uses the provided path when a custom icon folder absolute path is specified', function () {
+        const folderPath: string = '/custom/folder/path';
+        const customIconFolderPath = iconGenerator.getCustomIconFolderPath(folderPath);
+        expect(customIconFolderPath).to.be.equal(folderPath);
+      });
+
+      it('uses the resolved absolute path from the root of the project ' +
+        'when a relative custom icon folder path is specified', function () {
+          const sandbox = sinon.sandbox.create();
+          sandbox.stub(fs, 'existsSync').returns(true);
+
+          iconGenerator.settings.workspacePath = ['/workspace/path'];
+          const folderPath: string = './custom/folder/path';
+          const customIconFolderPath = iconGenerator.getCustomIconFolderPath(folderPath);
+          const joinedPath = utils.pathUnixJoin(iconGenerator.settings.workspacePath[0], folderPath);
+          expect(customIconFolderPath).to.be.equal(joinedPath);
+
+          sandbox.restore();
         });
 
       const testCase = (belongToSameDrive: boolean) => {

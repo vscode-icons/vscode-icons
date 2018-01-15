@@ -2,6 +2,7 @@ import { IExtensionSettings } from './extensionSettings';
 
 export interface ISettings {
   vscodeAppData: string; // path to the vscode app data folder
+  workspacePath: string[]; // path to the workspace folders or root folder
   isWin: boolean;
   isInsiders: boolean;
   isOSS: boolean;
