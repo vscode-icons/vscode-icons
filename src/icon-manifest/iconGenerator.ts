@@ -80,6 +80,18 @@ export class IconGenerator implements models.IIconGenerator {
     }
   }
 
+  public getCustomIconFolderPath(folderPath: string): string {
+    if (!folderPath) { return this.settings.vscodeAppData; }
+
+    const fPath = folderPath.trim();
+    if (path.isAbsolute(fPath) || !this.settings.workspacePath || !this.settings.workspacePath.length) {
+      return fPath;
+    }
+
+    const absPath = this.settings.workspacePath.find(wsp => fs.existsSync(wsp));
+    return utils.pathUnixJoin(absPath, fPath);
+  }
+
   public hasCustomIcon(customIconFolderPath: string, filename: string): boolean {
     const relativePath = utils.getRelativePath('.', customIconFolderPath, false);
     const filePath = utils.pathUnixJoin(relativePath, filename);
@@ -90,9 +102,9 @@ export class IconGenerator implements models.IIconGenerator {
     if (this.avoidCustomDetection) {
       return this.iconsFolderBasePath;
     }
-    const customIconFolderPath = (this.configCustomIconFolderPath && this.configCustomIconFolderPath.trim()) ||
-      this.settings.vscodeAppData;
-    const absPath = path.join(customIconFolderPath, this.settings.extensionSettings.customIconFolderName);
+
+    const customIconFolderPath = this.getCustomIconFolderPath(this.configCustomIconFolderPath);
+    const absPath = utils.pathUnixJoin(customIconFolderPath, this.settings.extensionSettings.customIconFolderName);
     if (!this.hasCustomIcon(absPath, filename)) {
       return this.iconsFolderBasePath;
     }
@@ -109,11 +121,11 @@ export class IconGenerator implements models.IIconGenerator {
         fs.mkdirSync(outDir);
       }
 
-      fs.writeFileSync(path.join(outDir, iconsFilename), JSON.stringify(json, null, 2));
+      fs.writeFileSync(utils.pathUnixJoin(outDir, iconsFilename), JSON.stringify(json, null, 2));
       // tslint:disable-next-line no-console
       console.info('Icons manifest file successfully generated!');
     } catch (error) {
-      console.error('Something went wrong while generating the icon contribution file:', error);
+      console.error('Something went wrong while generating the icon manifest file.\nReason: ', error);
     }
   }
 

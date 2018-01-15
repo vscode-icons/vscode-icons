@@ -5,7 +5,7 @@ import { LanguageResourceManager } from '../i18n';
 
 export class ProjectAutoDetection {
   public static detectProject(
-    findFiles: (
+    findFilesFn: (
       include: string,
       exclude: string,
       maxResults?: number,
@@ -15,7 +15,7 @@ export class ProjectAutoDetection {
       return Promise.resolve(null) as PromiseLike<models.IVSCodeUri[]>;
     }
 
-    return findFiles('**/package.json', '**/node_modules/**')
+    return findFilesFn('**/package.json', '**/node_modules/**')
       .then(results => results, rej => [rej]);
   }
 

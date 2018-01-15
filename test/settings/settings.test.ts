@@ -98,6 +98,35 @@ describe('SettingsManager: tests', function () {
 
     });
 
+    context('function \'getWorkspacePath\ returns', function () {
+
+      it('the workspace root path when \'workspaceFolders\' is not supported',
+        function () {
+          vscode.workspace.workspaceFolders = undefined;
+          vscode.workspace.rootPath = '/path/to/workspace/root';
+          const result = new SettingsManager(vscode).getWorkspacePath();
+          expect(result).to.be.an('array').with.members([vscode.workspace.rootPath]);
+        });
+
+      it('the workspace folders when \'workspaceFolders\' is supported',
+        function () {
+          const paths = ['/path/to/workspace/folder1/root', '/path/to/workspace/folder2/root'];
+          const workspaceFolder: any = { uri: {fsPath: paths[0]}};
+          const workspaceFolder1: any = { uri: {fsPath: paths[1]}};
+          vscode.workspace.workspaceFolders = [workspaceFolder, workspaceFolder1];
+          const result = new SettingsManager(vscode).getWorkspacePath();
+          expect(result).to.be.an('array').with.members(paths);
+        });
+
+      it('\'undefined\' when \'workspaceFolders\' and \'rootPath\' is undefined',
+        function () {
+          vscode.workspace.workspaceFolders = undefined;
+          vscode.workspace.rootPath = undefined;
+          const result = new SettingsManager(vscode).getWorkspacePath();
+          expect(result).to.be.undefined;
+        });
+
+    });
   });
 
   context('ensures that', function () {

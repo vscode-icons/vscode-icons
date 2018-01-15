@@ -6,6 +6,7 @@ import { IVSCode, FileFormat } from '../models';
 export const vscode: IVSCode = {
   env: { appName: 'Code' },
   version: '1000.0.0',
+  workspace: {},
 };
 
 export function pathUnixJoin(...paths: string[]): string {
