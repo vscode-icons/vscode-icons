@@ -40,6 +40,7 @@ describe('vscode-extensions: tests', function () {
     before(() => {
       mockery.enable({
         warnOnUnregistered: false,
+        useCleanCache: true,
       });
       mockery.registerAllowable('../../src/utils/vscode-extensions');
       vsMock = {};
