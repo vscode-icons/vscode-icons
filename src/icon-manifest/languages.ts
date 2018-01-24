@@ -162,6 +162,7 @@ export const languages: ILanguageCollection = {
   sql: { ids: 'sql', defaultExtension: 'sql' },
   squirrel: { ids: 'squirrel', defaultExtension: 'nut' },
   stata: { ids: 'stata', defaultExtension: 'do' },
+  stylable: { ids: 'stylable', defaultExtension: 'st.css' },
   stylus: { ids: 'stylus', defaultExtension: 'styl' },
   swagger: { ids: ['Swagger', 'swagger'], defaultExtension: 'swagger' },
   swift: { ids: 'swift', defaultExtension: 'swift' },
