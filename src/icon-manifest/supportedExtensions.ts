@@ -476,7 +476,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'stylable', extensions: ['.st.css'], languages: [languages.stylable], light: true, format: FileFormat.svg },
+    { icon: 'stylable', extensions: ['.st.css'], languages: [languages.stylable], format: FileFormat.svg },
     { icon: 'stylus', extensions: [], languages: [languages.stylus], light: true, format: FileFormat.svg },
     { icon: 'storyboard', extensions: ['storyboard'], format: FileFormat.svg },
     { icon: 'storybook', extensions: [], filenamesGlob: ['story', 'stories'], extensionsGlob: ['js', 'jsx', 'ts', 'tsx'], format: FileFormat.svg },
