@@ -121,6 +121,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   sqf: ILanguage;
   squirrel: ILanguage;
   stata: ILanguage;
+  stylable: ILanguage;
   stylus: ILanguage;
   swagger: ILanguage;
   swig: ILanguage;
