@@ -1,3 +1,3 @@
 #!/bin/bash
-npm i
+npm i --unsafe-perm
 node node_modules/vscode/bin/install
