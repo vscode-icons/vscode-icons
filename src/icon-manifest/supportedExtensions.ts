@@ -518,7 +518,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'tslint', extensions: ['tslint.json'], filename: true, format: FileFormat.svg },
+    { icon: 'tslint', extensions: ['tslint.json', 'tslint.yaml', 'tslint.yml'], filename: true, format: FileFormat.svg },
     { icon: 'twig', extensions: [], languages: [languages.twig], format: FileFormat.svg },
     { icon: 'typescript', extensions: [], languages: [languages.typescript], format: FileFormat.svg },
     { icon: 'typescript_official', extensions: [], languages: [languages.typescript], format: FileFormat.svg, disabled: true },
