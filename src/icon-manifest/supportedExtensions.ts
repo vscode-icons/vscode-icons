@@ -513,8 +513,6 @@ export const extensions: IFileCollection = {
         'tsconfig.test',
         'tsconfig.prod',
         'tsconfig.production',
-        'tsconfig.yaml',
-        'tsconfig.yml'
       ],
       extensionsGlob: ['json'],
       filename: true,
