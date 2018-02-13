@@ -178,6 +178,8 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    { icon: 'dockertest', extensions: ['docker-compose.test.yml'], filename: true, format: FileFormat.svg },
+    { icon: 'dockertest2', extensions: ['docker-compose.test.yml'], filename: true, format: FileFormat.svg, disabled: true },
     { icon: 'docpad', extensions: ['eco'], light: true, format: FileFormat.svg },
     { icon: 'doxygen', extensions: [], languages: [languages.doxygen], format: FileFormat.svg },
     { icon: 'drone', extensions: ['.drone.yml', '.drone.yml.sig'], light: true, filename: true, format: FileFormat.svg },
