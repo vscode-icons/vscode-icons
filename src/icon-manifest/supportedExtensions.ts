@@ -532,6 +532,7 @@ export const extensions: IFileCollection = {
     { icon: 'vbproj', extensions: ['vbproj'], format: FileFormat.svg },
     { icon: 'vcxproj', extensions: ['vcxproj'], format: FileFormat.svg },
     { icon: 'velocity', extensions: [], languages: [languages.velocity], format: FileFormat.svg },
+    { icon: 'verilog', extensions: [], languages: [languages.verilog], format: FileFormat.svg },
     { icon: 'vhdl', extensions: [], languages: [languages.vhdl], format: FileFormat.svg },
     { // https://en.wikipedia.org/wiki/Video_file_format
       icon: 'video',
