@@ -167,6 +167,7 @@ export const languages: ILanguageCollection = {
   swagger: { ids: ['Swagger', 'swagger'], defaultExtension: 'swagger' },
   swift: { ids: 'swift', defaultExtension: 'swift' },
   swig: { ids: 'swig', defaultExtension: 'swig' },
+  systemverilog: { ids: 'systemverilog', defaultExtension: 'sv' },
   terraform: { ids: 'terraform', defaultExtension: 'tf' },
   tex: { ids: 'tex', defaultExtension: 'sty' },
   textile: { ids: 'textile', defaultExtension: 'textile' },
