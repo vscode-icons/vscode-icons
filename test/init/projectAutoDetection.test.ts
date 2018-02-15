@@ -48,7 +48,7 @@ describe('AutoDetectProject: tests', function () {
           const reason = 'failure';
           const findFiles = sinon.stub().returns(Promise.reject(reason));
           return pad.detectProject(findFiles, userConfig)
-            .then(rej => expect(rej).to.be.an('array').with.members([reason]));
+            .then(null, rej => expect(rej).to.equal(reason));
         });
 
       it('detects a sub project when detection is enabled and has detected a \'package.json\' file in a sub folder',
