@@ -11,7 +11,7 @@ export const languages: ILanguageCollection = {
   apib: { ids: 'apiblueprint', defaultExtension: 'apib' },
   applescript: { ids: 'applescript', defaultExtension: 'applescript' },
   asp: { ids: ['asp', 'asp (html)'], defaultExtension: 'asp' },
-  assembly: { ids: 'arm', defaultExtension: 'asm' },
+  assembly: { ids: ['arm', 'asm'], defaultExtension: 'asm' },
   autohotkey: { ids: 'ahk', defaultExtension: 'ahk' },
   autoit: { ids: 'autoit', defaultExtension: 'au3' },
   avro: { ids: 'avro', defaultExtension: 'avcs' },
