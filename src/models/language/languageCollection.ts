@@ -125,6 +125,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   stylus: ILanguage;
   swagger: ILanguage;
   swig: ILanguage;
+  systemverilog: ILanguage;
   terraform: ILanguage;
   tex: ILanguage;
   textile: ILanguage;
