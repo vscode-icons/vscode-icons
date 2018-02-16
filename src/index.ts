@@ -18,7 +18,7 @@ function initialize(context: vscode.ExtensionContext): void {
   commands.registerCommands(context);
   init.manageWelcomeMessage(settingsManager);
   init.manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, commands.applyCustomizationCommand);
-  pad.detectProject(findFiles, config).then(results => detectAngular(config, results));
+  pad.detectProject(findFiles, config).then(results => detectAngular(config, results), err => err);
 
   // Update the version in settings
   if (settingsManager.isNewVersion()) {
