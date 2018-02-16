@@ -15,8 +15,7 @@ export class ProjectAutoDetection {
       return Promise.resolve(null) as PromiseLike<models.IVSCodeUri[]>;
     }
 
-    return findFilesFn('**/package.json', '**/node_modules/**')
-      .then(results => results, rej => [rej]);
+    return findFilesFn('**/package.json', '**/node_modules/**');
   }
 
   public static checkForAngularProject(
