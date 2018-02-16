@@ -609,7 +609,7 @@ export const extensions: IFileCollection = {
     { icon: 'xliff', extensions: ['xliff', 'xlf'], format: FileFormat.svg },
     { icon: 'xml', extensions: ['pex', 'tmlanguage'], languages: [languages.xml], format: FileFormat.svg },
     { icon: 'xsl', extensions: [], languages: [languages.xsl], format: FileFormat.svg },
-    { icon: 'yaml', extensions: ['yml'], light: true, languages: [languages.yaml, languages.textmateyaml], format: FileFormat.svg },
+    { icon: 'yaml', extensions: [], light: true, languages: [languages.yaml, languages.textmateyaml], format: FileFormat.svg },
     { icon: 'yang', extensions: [], languages: [languages.yang], format: FileFormat.svg },
     { icon: 'yarn', extensions: ['yarn.lock', '.yarnrc', '.yarnclean', '.yarn-integrity', '.yarn-metadata.json', '.yarnignore'], filename: true, format: FileFormat.svg },
     { icon: 'yeoman', extensions: ['.yo-rc.json'], filename: true, format: FileFormat.svg },
