@@ -181,6 +181,7 @@ export const languages: ILanguageCollection = {
   vba: { ids: 'vba', defaultExtension: 'cls' },
   vbscript: { ids: 'vbscript', defaultExtension: 'wsf' },
   velocity: { ids: 'velocity', defaultExtension: 'vm' },
+  verilog: { ids: 'verilog', defaultExtension: 'v' },
   vhdl: { ids: 'vhdl', defaultExtension: 'vhdl' },
   viml: { ids: 'viml', defaultExtension: 'vim' },
   volt: { ids: 'volt', defaultExtension: 'volt' },
