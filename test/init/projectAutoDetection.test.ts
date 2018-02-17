@@ -45,18 +45,17 @@ describe('AutoDetectProject: tests', function () {
 
       it('returns a rejection when searching for a \'package.json\' fails',
         function () {
-          const reason = 'failure';
-          const findFiles = sinon.stub().returns(Promise.reject(reason));
+          const reason = new Error('failure');
+          const findFiles = sinon.stub().rejects(reason);
           return pad.detectProject(findFiles, userConfig)
-            .then(null, rej => expect(rej).to.equal(reason));
+            .then(null, rej => expect(rej).to.be.an.instanceOf(Error).and.have.property('message', reason.message));
         });
 
       it('detects a sub project when detection is enabled and has detected a \'package.json\' file in a sub folder',
         function () {
           const path1 = 'package.json';
           const path2 = 'f1/f2/f3/package.json';
-          const findFiles = sinon.stub()
-            .returns(Promise.resolve([{ fsPath: path1 }, { fsPath: path2 }] as models.IVSCodeUri[]));
+          const findFiles = sinon.stub().resolves([{ fsPath: path1 }, { fsPath: path2 }] as models.IVSCodeUri[]);
           return pad.detectProject(findFiles, userConfig)
             .then(res => {
               expect(res).to.be.an('array').with.length.greaterThan(0);
@@ -299,7 +298,7 @@ describe('AutoDetectProject: tests', function () {
 
         it('but it has not detected a \'package.json\' file',
           function () {
-            const findFiles = sinon.stub().returns(Promise.resolve([]));
+            const findFiles = sinon.stub().resolves([]);
             userConfig.projectDetection.disableDetect = false;
             return pad.detectProject(findFiles, userConfig)
               .then(res => expect(res).to.be.an('array').with.lengthOf(0));
@@ -308,7 +307,7 @@ describe('AutoDetectProject: tests', function () {
         it('and has detected a \'package.json\' file',
           function () {
             const path = 'package.json';
-            const findFiles = sinon.stub().returns(Promise.resolve([{ fsPath: path }] as models.IVSCodeUri[]));
+            const findFiles = sinon.stub().resolves([{ fsPath: path }] as models.IVSCodeUri[]);
             userConfig.projectDetection.disableDetect = false;
             return pad.detectProject(findFiles, userConfig)
               .then(res => {
