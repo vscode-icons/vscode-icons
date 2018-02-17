@@ -2,6 +2,7 @@
 
 ## 7.20.0 (February 18, 2018)
 
+- Enhancement: Added `vscode-icons-js` to related projects in Readme file. ([@dderevjanik](https://github.com/dderevjanik) in [#1464](https://github.com/vscode-icons/vscode-icons/pull/1464))
 - Fix: Fixed rejection handling of `findFiles`. ([@JimiC](https://github.com/JimiC) in [#1463](https://github.com/vscode-icons/vscode-icons/pull/1463))
 - Feature: Support for `Verilog`. ([@JimiC](https://github.com/JimiC) in [#1454](https://github.com/vscode-icons/vscode-icons/pull/1454))
 - Feature: Support for `SystemVerilog`. ([@JimiC](https://github.com/JimiC) in [#1453](https://github.com/vscode-icons/vscode-icons/pull/1453))
