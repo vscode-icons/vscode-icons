@@ -63,7 +63,7 @@ In case this doesn't happen, navigate to:
 
 * [Icons Customization](https://github.com/vscode-icons/vscode-icons/wiki/Customization)
 * [Project Auto-Detection](https://github.com/vscode-icons/vscode-icons/wiki/Pad)
-* [Custom Configuration](https://github.com/vscode-icons/vscode-icons/wiki/Confguration)
+* [Custom Configuration](https://github.com/vscode-icons/vscode-icons/wiki/Configuration)
 
 ## Globalization
 
