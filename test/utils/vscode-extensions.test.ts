@@ -1,7 +1,7 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
+import mockery from 'mockery';
 import { expect } from 'chai';
-import * as mockery from 'mockery';
 
 describe('vscode-extensions: tests', function () {
 

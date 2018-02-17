@@ -1,6 +1,6 @@
-import * as _ from 'lodash';
+import _ = require('lodash');
+import packageJson from '../../../package.json';
 import { IVSIcons, IVSCodeMessageItem } from '../models';
-import * as packageJson from '../../../package.json';
 import * as utils from '../utils';
 
 export function manageAutoApplyCustomizations(

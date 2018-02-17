@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import fs from 'fs';
 import * as models from '../models';
 import { parseJSON } from '../utils';
 import { LanguageResourceManager } from '../i18n';

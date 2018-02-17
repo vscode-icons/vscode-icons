@@ -1,9 +1,9 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
+import fs from 'fs';
+import os from 'os';
+import sinon from 'sinon';
 import { expect } from 'chai';
-import * as fs from 'fs';
-import * as os from 'os';
-import * as sinon from 'sinon';
 import * as utils from '../../src/utils';
 
 describe('Utils: tests', function () {

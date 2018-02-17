@@ -1,8 +1,8 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
+import fs from 'fs';
+import sinon from 'sinon';
 import { expect } from 'chai';
-import * as fs from 'fs';
-import * as sinon from 'sinon';
 import { vscode } from '../../src/utils';
 import { extensionSettings, SettingsManager } from '../../src/settings';
 import { ExtensionStatus, IState } from '../../src/models';

@@ -1,14 +1,14 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
+import fs from 'fs';
+import sinon from 'sinon';
+import packageJson from '../../../package.json';
 import { expect } from 'chai';
-import * as fs from 'fs';
-import * as sinon from 'sinon';
 import { schema as defaultSchema, IconGenerator } from '../../src/icon-manifest';
 import { IFileCollection, IFolderCollection } from '../../src/models';
 import * as utils from '../../src/utils';
 import { extensionSettings as settings } from '../../src/settings';
 import { extensions as folderExtensions } from '../support/supportedFolders';
-import * as packageJson from '../../../package.json';
 
 describe('IconGenerator: functionality test', function () {
 
