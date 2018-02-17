@@ -1,7 +1,10 @@
 # Change Log
 
-## 7.20.0 (February 18, 2018)
+## 7.20.0 (February 17, 2018)
 
+- Fix: Fix package managers lock files. ([@JimiC](https://github.com/JimiC) in [#1468](https://github.com/vscode-icons/vscode-icons/pull/1468))
+- Fix: Fixed typo in README. ([@paulvi](https://github.com/paulvi) in [#1448](https://github.com/vscode-icons/vscode-icons/pull/1448))
+- Enhancement: Updated project dependencies. ([@JimiC](https://github.com/JimiC) in [#1467](https://github.com/vscode-icons/vscode-icons/pull/1467))
 - Enhancement: Added `vscode-icons-js` to related projects in Readme file. ([@dderevjanik](https://github.com/dderevjanik) in [#1464](https://github.com/vscode-icons/vscode-icons/pull/1464))
 - Fix: Fixed rejection handling of `findFiles`. ([@JimiC](https://github.com/JimiC) in [#1463](https://github.com/vscode-icons/vscode-icons/pull/1463))
 - Feature: Support for `Verilog`. ([@JimiC](https://github.com/JimiC) in [#1454](https://github.com/vscode-icons/vscode-icons/pull/1454))
