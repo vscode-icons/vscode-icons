@@ -7,6 +7,8 @@ node_js:
   - 7.9.0 # vscode >= 1.16.0
   - 7.4.0 # vscode >= 1.12.0 < 1.16.0
   - 6.5.0 # vscode >= 1.8.0 < 1.12.0
+git:
+   submodules: false
 matrix:
   allow_failures:
     - node_js: node
@@ -24,7 +26,38 @@ before_install:
 script: npm run build
 after_success:
   - codecov
-  - wpilgen
+jobs:
+  include:
+    - stage: wiki pages icons list update
+      if: repo =~ ^vscode-icons AND branch = master AND type = push
+      os: linux
+      node_js: 7.9.0
+      script: wpilgen
+      after_success:
+    - stage: docker vsi:latest
+      if: repo =~ ^vscode-icons AND branch = master AND type = push
+      sudo: required
+      language: generic
+      node_js:
+      os:
+      addons:
+      cache:
+      before_install:
+      script:
+        - bash ./docker/trigger-docker-vsi.sh --token $TRAVIS_TOKEN
+      after_success:
+    - stage: docker vsi:tag
+      if: repo =~ ^vscode-icons AND tag IS present AND type = push
+      sudo: required
+      language: generic
+      node_js:
+      os:
+      addons:
+      cache:
+      before_install:
+      script:
+        - bash ./docker/trigger-docker-vsi.sh --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
+      after_success:
 
 # See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines
