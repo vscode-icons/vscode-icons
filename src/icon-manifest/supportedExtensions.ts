@@ -437,6 +437,7 @@ export const extensions: IFileCollection = {
     { icon: 'robotframework', extensions: [], languages: [languages.robot], format: FileFormat.svg },
     { icon: 'robots', extensions: ['robots.txt'], filename: true, format: FileFormat.svg },
     { icon: 'rollup', extensions: ['rollup.config.js', 'rollup.config.ts'], filename: true, format: FileFormat.svg },
+    { icon: 'rproj', extensions: ['rproj'], format: FileFormat.svg },
     { icon: 'rspec', extensions: ['.rspec'], filename: true, format: FileFormat.svg },
     { icon: 'rubocop', extensions: ['.rubocop.yml', '.rubocop_todo.yml'], filename: true, light: true, format: FileFormat.svg },
     { icon: 'ruby', extensions: [], languages: [languages.ruby], format: FileFormat.svg },
