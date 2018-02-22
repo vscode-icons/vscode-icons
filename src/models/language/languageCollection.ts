@@ -126,13 +126,13 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   swagger: ILanguage;
   swig: ILanguage;
   systemverilog: ILanguage;
+  t4: ILanguage;
   terraform: ILanguage;
   tex: ILanguage;
   textile: ILanguage;
   textmatejson: ILanguage;
   textmateyaml: ILanguage;
   toml: ILanguage;
-  t4: ILanguage;
   twig: ILanguage;
   vba: ILanguage;
   vbscript: ILanguage;
