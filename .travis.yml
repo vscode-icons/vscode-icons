@@ -32,8 +32,8 @@ jobs:
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       os: linux
       node_js: 7.9.0
-      script: wpilgen
-      after_success:
+      script: npm run compile
+      after_success: wpilgen
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       sudo: required
