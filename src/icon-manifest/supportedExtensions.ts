@@ -90,6 +90,7 @@ export const extensions: IFileCollection = {
     { icon: 'blade', extensions: [], languages: [languages.blade], format: FileFormat.svg },
     { icon: 'bolt', extensions: [], languages: [languages.bolt], filename: true, format: FileFormat.svg },
     { icon: 'bower', extensions: ['.bowerrc', 'bower.json'], filename: true, format: FileFormat.svg },
+    { icon: 'browserslist', extensions: ['.browserslistrc'], filename: true, format: FileFormat.svg },
     { icon: 'buckbuild', extensions: ['.buckconfig'], filename: true, format: FileFormat.svg },
     { icon: 'bundler', extensions: ['gemfile', 'gemfile.lock'], format: FileFormat.svg },
     { icon: 'bundler', extensions: ['gemfile', 'gemfile.lock'], filename: true, format: FileFormat.svg },
