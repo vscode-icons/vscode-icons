@@ -391,6 +391,7 @@ export const extensions: IFileCollection = {
     { icon: 'php', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg },
     { icon: 'php2', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg, disabled: true },
     { icon: 'php3', extensions: ['php1', 'php2', 'php3', 'php4', 'php5', 'php6', 'phps', 'phpsa', 'phpt', 'phtml', 'phar'], languages: [languages.php], format: FileFormat.svg, disabled: true },
+    { icon: 'phpcsfixer', extensions: ['.php_cs', '.php_cs.dist'], filename: true, format: FileFormat.svg },
     { icon: 'phpunit', extensions: ['phpunit', 'phpunit.xml', 'phpunit.xml.dist'], filename: true, format: FileFormat.svg },
     { icon: 'phraseapp', extensions: ['.phraseapp.yml'], filename: true, format: FileFormat.svg },
     { icon: 'pip', extensions: ['pipfile', 'pipfile.lock'], filename: true, format: FileFormat.svg },
