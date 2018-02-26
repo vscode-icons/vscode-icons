@@ -11,7 +11,7 @@
 - Feature: Support for `SystemVerilog`. ([@JimiC](https://github.com/JimiC) in [#1453](https://github.com/vscode-icons/vscode-icons/pull/1453))
 - Feature: Support for `Dockertest`. ([@JimiC](https://github.com/JimiC) in [#1452](https://github.com/vscode-icons/vscode-icons/pull/1452))
 - Enhancement: Remove `yml` file extension declaration. ([@JimiC](https://github.com/JimiC) in [#1451](https://github.com/vscode-icons/vscode-icons/pull/1451))
-- Feature: Added `asm` id to `assembly. ([@JimiC](https://github.com/JimiC) in [#1450](https://github.com/vscode-icons/vscode-icons/pull/1450))
+- Feature: Added `asm` id to `assembly`. ([@JimiC](https://github.com/JimiC) in [#1450](https://github.com/vscode-icons/vscode-icons/pull/1450))
 - Feature: Support for `tslint.yaml` & `tslint.yml`. ([@dderevjanik](https://github.com/dderevjanik) in [#1438](https://github.com/vscode-icons/vscode-icons/pull/1438))
 - Feature: Support for `Rubocop`. ([@JimiC](https://github.com/JimiC) in [#1436](https://github.com/vscode-icons/vscode-icons/pull/1436))
 - Enhancement: Used `Bundler` icon for `.gemfile` extension. ([@artplan1](https://github.com/artplan1) in [#1430](https://github.com/vscode-icons/vscode-icons/pull/1430))
