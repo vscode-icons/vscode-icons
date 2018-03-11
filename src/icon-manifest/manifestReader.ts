@@ -10,7 +10,7 @@ export class ManifestReader {
     const iconManifest = this.getIconManifest();
     const iconsJson = iconManifest && parseJSON(iconManifest) as models.IIconSchema;
     const prefix = isFile ? extensionSettings.manifestFilePrefix : extensionSettings.manifestFolderPrefix;
-    const suffix = isFile ? '_' : '';
+    const suffix = Reflect.ownKeys(models.Projects).some(key => models.Projects[key] === name) ? '_' : '';
     const defNamePattern = `${prefix}${name}${suffix}`;
     return !iconsJson || !Reflect.ownKeys(iconsJson.iconDefinitions)
       .filter(key => key.toString().startsWith(defNamePattern)).length;
