@@ -7,7 +7,7 @@
 - Fix: Fixed issue with `wpilgenerator`. ([@JimiC](https://github.com/JimiC) in [#1501](https://github.com/vscode-icons/vscode-icons/pull/1501))
 - Feature: Support for `conanfile.py`. ([@JimiC](https://github.com/JimiC) in [#1498](https://github.com/vscode-icons/vscode-icons/pull/1498))
 - Fix: Fixed CI Stage for list of icons wiki pages. ([@JimiC](https://github.com/JimiC) in [#1487](https://github.com/vscode-icons/vscode-icons/pull/1487))
-- Fix: Changelog type. ([@torn4dom4n](https://github.com/torn4dom4n) in [#1480](https://github.com/vscode-icons/vscode-icons/pull/1480))
+- Fix: Changelog typo. ([@torn4dom4n](https://github.com/torn4dom4n) in [#1480](https://github.com/vscode-icons/vscode-icons/pull/1480))
 - Enhancement: Added `nyc` icon for `.nycrc.json` file. ([@JimiC](https://github.com/JimiC) in [#1479](https://github.com/vscode-icons/vscode-icons/pull/1479))
 - Feature: Support for `Browserslist`. ([@JimiC](https://github.com/JimiC) in [#1478](https://github.com/vscode-icons/vscode-icons/pull/1478))
 - Feature: Support for `Symfony` lock filename. ([@JimiC](https://github.com/JimiC) in [#1477](https://github.com/vscode-icons/vscode-icons/pull/1477))
