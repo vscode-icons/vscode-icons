@@ -1,5 +1,24 @@
 # Change Log
 
+## 7.21.0 (March 12, 2018)
+
+- Enhancement: Used sinon syntax suger for promises. ([@JimiC](https://github.com/JimiC) in [#1504](https://github.com/vscode-icons/vscode-icons/pull/1504))
+- Fix: Fixed toggling of preset icons. ([@JimiC](https://github.com/JimiC) in [#1503](https://github.com/vscode-icons/vscode-icons/pull/1503))
+- Fix: Fixed issue with `wpilgenerator`. ([@JimiC](https://github.com/JimiC) in [#1501](https://github.com/vscode-icons/vscode-icons/pull/1501))
+- Feature: Support for `conanfile.py`. ([@JimiC](https://github.com/JimiC) in [#1498](https://github.com/vscode-icons/vscode-icons/pull/1498))
+- Fix: Fixed CI Stage for list of icons wiki pages. ([@JimiC](https://github.com/JimiC) in [#1487](https://github.com/vscode-icons/vscode-icons/pull/1487))
+- Fix: Changelog typo. ([@torn4dom4n](https://github.com/torn4dom4n) in [#1480](https://github.com/vscode-icons/vscode-icons/pull/1480))
+- Enhancement: Added `nyc` icon for `.nycrc.json` file. ([@JimiC](https://github.com/JimiC) in [#1479](https://github.com/vscode-icons/vscode-icons/pull/1479))
+- Feature: Support for `Browserslist`. ([@JimiC](https://github.com/JimiC) in [#1478](https://github.com/vscode-icons/vscode-icons/pull/1478))
+- Feature: Support for `Symfony` lock filename. ([@JimiC](https://github.com/JimiC) in [#1477](https://github.com/vscode-icons/vscode-icons/pull/1477))
+- Feature: Support for `Yamllint`. ([@JimiC](https://github.com/JimiC) in [#1476](https://github.com/vscode-icons/vscode-icons/pull/1476))
+- Enhancement: Associated `env.dist` filename to config icon. ([@JimiC](https://github.com/JimiC) in [#1475](https://github.com/vscode-icons/vscode-icons/pull/1475))
+- Feature: Support for `PHP-CS-Fixer` config file. ([@JimiC](https://github.com/JimiC) in [#1474](https://github.com/vscode-icons/vscode-icons/pull/1474))
+- Feature: Support for `PostCSS` config files. ([@JimiC](https://github.com/JimiC) in [#1473](https://github.com/vscode-icons/vscode-icons/pull/1473))
+- Feature: Support for `RStudio` project file. ([@JimiC](https://github.com/JimiC) in [#1472](https://github.com/vscode-icons/vscode-icons/pull/1472))
+- Feature: Support for `Swig`. ([@JimiC](https://github.com/JimiC) in [#1471](https://github.com/vscode-icons/vscode-icons/pull/1471))
+- Enhancement: Change docker image build process. ([@JimiC](https://github.com/JimiC) in [#1470](https://github.com/vscode-icons/vscode-icons/pull/1470))
+
 ## 7.20.0 (February 17, 2018)
 
 - Fix: Fix package managers lock files. ([@JimiC](https://github.com/JimiC) in [#1468](https://github.com/vscode-icons/vscode-icons/pull/1468))
