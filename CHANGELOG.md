@@ -1,7 +1,9 @@
 # Change Log
 
-## 7.21.0 (March 11, 2018)
+## 7.21.0 (March 12, 2018)
 
+- Enhancement: Used sinon syntax suger for promises. ([@JimiC](https://github.com/JimiC) in [#1504](https://github.com/vscode-icons/vscode-icons/pull/1504))
+- Fix: Fixed toggling of preset icons. ([@JimiC](https://github.com/JimiC) in [#1503](https://github.com/vscode-icons/vscode-icons/pull/1503))
 - Fix: Fixed issue with `wpilgenerator`. ([@JimiC](https://github.com/JimiC) in [#1501](https://github.com/vscode-icons/vscode-icons/pull/1501))
 - Feature: Support for `conanfile.py`. ([@JimiC](https://github.com/JimiC) in [#1498](https://github.com/vscode-icons/vscode-icons/pull/1498))
 - Fix: Fixed CI Stage for list of icons wiki pages. ([@JimiC](https://github.com/JimiC) in [#1487](https://github.com/vscode-icons/vscode-icons/pull/1487))
