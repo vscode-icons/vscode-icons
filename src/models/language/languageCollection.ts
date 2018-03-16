@@ -111,6 +111,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   scala: ILanguage;
   scilab: ILanguage;
   sdlang: ILanguage;
+  slang: ILanguage;
   slice: ILanguage;
   slim: ILanguage;
   silverstripe: ILanguage;

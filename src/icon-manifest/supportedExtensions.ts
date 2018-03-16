@@ -457,6 +457,7 @@ export const extensions: IFileCollection = {
     { icon: 'shaderlab', extensions: [], languages: [languages.shaderlab], light: true, format: FileFormat.svg },
     { icon: 'shell', extensions: ['fish'], languages: [languages.shellscript], format: FileFormat.svg },
     { icon: 'sketch', extensions: ['sketch'], format: FileFormat.svg },
+    { icon: 'slang', extensions: [], languages: [languages.slang], format: FileFormat.svg },
     { icon: 'slice', extensions: [], languages: [languages.slice], format: FileFormat.svg },
     { icon: 'slim', extensions: [], languages: [languages.slim], format: FileFormat.svg },
     { icon: 'sln', extensions: ['sln'], format: FileFormat.svg },
