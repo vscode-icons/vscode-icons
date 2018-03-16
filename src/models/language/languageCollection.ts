@@ -91,6 +91,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   openEdge: ILanguage;
   openHAB: ILanguage;
   pascal: ILanguage;
+  pgsql: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;
   postcss: ILanguage;
