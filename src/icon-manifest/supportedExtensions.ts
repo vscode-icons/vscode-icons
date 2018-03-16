@@ -139,6 +139,7 @@ export const extensions: IFileCollection = {
     { icon: 'csslint', extensions: ['.csslintrc'], filename: true, format: FileFormat.svg },
     { icon: 'cssmap', extensions: ['css.map'], format: FileFormat.svg },
     { icon: 'cucumber', extensions: [], languages: [languages.cucumber], format: FileFormat.svg },
+    { icon: 'cython', extensions: [], languages: [languages.cython], format: FileFormat.svg },
     { icon: 'cypress', extensions: [`cypress.json`, `cypress.env.json`], filename: true, format: FileFormat.svg },
     { icon: 'cvs', extensions: ['.cvsignore'], filename: true, format: FileFormat.svg },
     { icon: 'dal', extensions: [], languages: [languages.dal], format: FileFormat.svg },
