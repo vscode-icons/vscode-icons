@@ -134,6 +134,7 @@ export const languages: ILanguageCollection = {
   purescript: { ids: 'purescript', defaultExtension: 'purs' },
   python: { ids: 'python', defaultExtension: 'py' },
   qlik: { ids: 'qlik', defaultExtension: 'qvs' },
+  qsharp: { ids: 'qsharp', defaultExtension: 'qs' },
   r: { ids: 'r', defaultExtension: 'r' },
   racket: { ids: 'racket', defaultExtension: 'rkt' },
   razor: { ids: 'razor', defaultExtension: 'cshtml' },
