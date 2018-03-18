@@ -44,7 +44,7 @@
         "vscode-icons",
         "multi-root ready"
     ],
-    "preview": true,
+    "preview": false,
     "homepage": "https://github.com/vscode-icons/vscode-icons",
     "icon": "images/logo.png",
     "galleryBanner": {
