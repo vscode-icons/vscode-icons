@@ -152,6 +152,7 @@ export const languages: ILanguageCollection = {
   sdlang: { ids: 'sdl', defaultExtension: 'sdl' },
   shaderlab: { ids: 'shaderlab', defaultExtension: 'shader' },
   shellscript: { ids: 'shellscript', defaultExtension: 'sh' },
+  slang: { ids: 'slang', defaultExtension: 'slang' },
   slice: { ids: ['slice'], defaultExtension: 'ice' },
   slim: { ids: ['slim'], defaultExtension: 'slim' },
   silverstripe: { ids: 'silverstripe', defaultExtension: 'ss' },
