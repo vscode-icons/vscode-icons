@@ -137,6 +137,7 @@ export const languages: ILanguageCollection = {
   pyret: { ids: 'pyret', defaultExtension: 'arr' },
   python: { ids: 'python', defaultExtension: 'py' },
   qlik: { ids: 'qlik', defaultExtension: 'qvs' },
+  qsharp: { ids: 'qsharp', defaultExtension: 'qs' },
   r: { ids: 'r', defaultExtension: 'r' },
   racket: { ids: 'racket', defaultExtension: 'rkt' },
   razor: { ids: 'razor', defaultExtension: 'cshtml' },

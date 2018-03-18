@@ -104,6 +104,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   purescript: ILanguage;
   pyret: ILanguage;
   qlik: ILanguage;
+  qsharp: ILanguage;
   racket: ILanguage;
   raml: ILanguage;
   reason: ILanguage;
