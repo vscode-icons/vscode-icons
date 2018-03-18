@@ -203,6 +203,7 @@ describe('IconGenerator: functionality test', function () {
 
       it('calls the \'updatePackageJson\' function when said to',
         function () {
+          sandbox.stub(utils, 'getRelativePath').returns('.');
           const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
           const updatePackageJson = sandbox.stub(iconGenerator, 'updatePackageJson');
           iconGenerator.persist('path/to/file', defaultSchema, true);
@@ -223,6 +224,7 @@ describe('IconGenerator: functionality test', function () {
 
         it('logs an error if something goes wrong',
           function () {
+            sandbox.stub(utils, 'getRelativePath').returns('.');
             sandbox.stub(iconGenerator, 'writeJsonToFile');
             sandbox.stub(fs, 'writeFileSync').throws(new Error());
             const errorLog = sandbox.stub(console, 'error');
@@ -235,6 +237,7 @@ describe('IconGenerator: functionality test', function () {
 
           it('if the icons folder path has changed',
             function () {
+              sandbox.stub(utils, 'getRelativePath').returns('.');
               const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
               const writeFileSync = sandbox.stub(fs, 'writeFileSync');
               sandbox.stub(console, 'info');
@@ -250,6 +253,7 @@ describe('IconGenerator: functionality test', function () {
 
           it('if the icons folder path has not changed',
             function () {
+              sandbox.stub(utils, 'getRelativePath').returns('.');
               const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
               const writeFileSync = sandbox.stub(fs, 'writeFileSync');
               sandbox.stub(console, 'info');
@@ -260,6 +264,7 @@ describe('IconGenerator: functionality test', function () {
 
           it('if the icons theme path does not exists',
             function () {
+              sandbox.stub(utils, 'getRelativePath').returns('.');
               const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
               const writeFileSync = sandbox.stub(fs, 'writeFileSync');
               sandbox.stub(console, 'info');
