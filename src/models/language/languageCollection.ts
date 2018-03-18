@@ -102,6 +102,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   protobuf: ILanguage;
   puppet: ILanguage;
   purescript: ILanguage;
+  pyret: ILanguage;
   qlik: ILanguage;
   racket: ILanguage;
   raml: ILanguage;

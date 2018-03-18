@@ -134,6 +134,7 @@ export const languages: ILanguageCollection = {
   pug: { ids: 'jade', defaultExtension: 'pug' },
   puppet: { ids: 'puppet', defaultExtension: 'pp' },
   purescript: { ids: 'purescript', defaultExtension: 'purs' },
+  pyret: { ids: 'pyret', defaultExtension: 'arr' },
   python: { ids: 'python', defaultExtension: 'py' },
   qlik: { ids: 'qlik', defaultExtension: 'qvs' },
   r: { ids: 'r', defaultExtension: 'r' },
