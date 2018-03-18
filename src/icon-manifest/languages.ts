@@ -118,6 +118,7 @@ export const languages: ILanguageCollection = {
   pascal: { ids: ['pascal', 'objectpascal'], defaultExtension: 'pas' },
   perl: { ids: 'perl', defaultExtension: 'pl' },
   perl6: { ids: 'perl6', defaultExtension: 'pl6' },
+  pgsql: { ids: 'pgsql', defaultExtension: 'pgsql' },
   php: { ids: 'php', defaultExtension: 'php' },
   plaintext: { ids: 'plaintext', defaultExtension: 'txt' },
   plsql: { ids: ['plsql', 'oracle'], defaultExtension: 'ddl' },
