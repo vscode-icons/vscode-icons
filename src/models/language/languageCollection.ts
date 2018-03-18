@@ -31,6 +31,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   crystal: ILanguage;
   csharp: ILanguage;
   cucumber: ILanguage;
+  cython: ILanguage;
   dal: ILanguage;
   dart: ILanguage;
   dlang: ILanguage;
