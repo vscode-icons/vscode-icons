@@ -31,6 +31,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   crystal: ILanguage;
   csharp: ILanguage;
   cucumber: ILanguage;
+  cython: ILanguage;
   dal: ILanguage;
   dart: ILanguage;
   dlang: ILanguage;
@@ -91,6 +92,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   openEdge: ILanguage;
   openHAB: ILanguage;
   pascal: ILanguage;
+  pgsql: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;
   postcss: ILanguage;
@@ -100,6 +102,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   protobuf: ILanguage;
   puppet: ILanguage;
   purescript: ILanguage;
+  pyret: ILanguage;
   qlik: ILanguage;
   racket: ILanguage;
   raml: ILanguage;
@@ -111,6 +114,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   scala: ILanguage;
   scilab: ILanguage;
   sdlang: ILanguage;
+  slang: ILanguage;
   slice: ILanguage;
   slim: ILanguage;
   silverstripe: ILanguage;
@@ -126,6 +130,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   swagger: ILanguage;
   swig: ILanguage;
   systemverilog: ILanguage;
+  t4: ILanguage;
   terraform: ILanguage;
   tex: ILanguage;
   textile: ILanguage;

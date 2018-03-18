@@ -63,6 +63,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'log', extensions: ['log', 'logs'], format: FileFormat.svg },
+    { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     { icon: 'model', extensions: ['models', '.models'], format: FileFormat.svg },
     { icon: 'mongodb', extensions: ['mongodb'], format: FileFormat.svg },
