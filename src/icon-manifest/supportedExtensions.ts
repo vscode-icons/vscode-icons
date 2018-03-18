@@ -497,6 +497,7 @@ export const extensions: IFileCollection = {
     { icon: 'swig', extensions: [], languages: [languages.swig], format: FileFormat.svg },
     { icon: 'symfony', extensions: ['symfony.lock'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'systemverilog', extensions: [], light: true, languages: [languages.systemverilog], format: FileFormat.svg },
+    { icon: 't4tt', extensions: [], languages: [languages.t4], format: FileFormat.svg },
     { icon: 'tcl', extensions: ['tcl', 'exp'], format: FileFormat.svg },
     { icon: 'terraform', extensions: ['tfstate'], languages: [languages.terraform], format: FileFormat.svg },
     { icon: 'test', extensions: ['tst'], format: FileFormat.svg },
