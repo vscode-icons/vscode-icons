@@ -577,6 +577,14 @@ export const extensions: IFileCollection = {
     },
     { icon: 'vsix', extensions: ['vsix'], light: true, format: FileFormat.svg },
     { icon: 'vue', extensions: [], languages: [languages.vue], format: FileFormat.svg },
+    {
+      icon: 'wallaby',
+      extensions: [],
+      filenamesGlob: ['wallaby', 'wallaby.conf', '.wallaby', '.wallaby.conf'],
+      extensionsGlob: ['json', 'js', 'ts', 'coffee'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'watchmanconfig', extensions: ['.watchmanconfig'], filename: true, format: FileFormat.svg },
     {
       icon: 'webpack',
