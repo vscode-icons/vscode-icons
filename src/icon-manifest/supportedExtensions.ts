@@ -232,6 +232,7 @@ export const extensions: IFileCollection = {
     { icon: 'flow', extensions: ['.flowconfig'], filename: true, format: FileFormat.svg },
     { icon: 'font', extensions: ['woff', 'woff2', 'ttf', 'otf', 'eot', 'pfa', 'pfb', 'sfd'], light: true, format: FileFormat.svg },
     { icon: 'fortran', extensions: [], languages: [languages.fortran], format: FileFormat.svg },
+    { icon: 'fossa', extensions: ['.fossaignore'], filename: true, format: FileFormat.svg },
     { icon: 'fossil', extensions: ['ignore-glob'], filename: true, format: FileFormat.svg },
     { icon: 'fsharp', extensions: [], languages: [languages.fsharp], format: FileFormat.svg },
     { icon: 'fsproj', extensions: ['fsproj'], format: FileFormat.svg },
