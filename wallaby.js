@@ -26,8 +26,7 @@ module.exports = (wallaby) => ({
   },
   testFramework: "mocha",
   env: {
-    type: "node",
-    runner: `${require('os').homedir()}/.nvm/versions/node/v7.9.0/bin/node`
+    type: "node"
   },
   delays: {
     run: 500
