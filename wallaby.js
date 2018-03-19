@@ -28,7 +28,7 @@ module.exports = (wallaby) => ({
   env: {
     type: "node",
     runner: process.platform === 'win32'
-      ? `${process.env.APPDATA}\\nvm\\v7.9.0\\${process.arch === 'x64' ? 'node64' : 'node'}`
+      ? `${process.env.APPDATA}\\nvm\\v7.9.0\\node`
       : `${require('os').homedir()}/.nvm/versions/node/v7.9.0/bin/node`
   },
   delays: {
