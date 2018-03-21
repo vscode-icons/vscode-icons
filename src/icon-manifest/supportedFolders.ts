@@ -26,7 +26,7 @@ export const extensions: IFolderCollection = {
     { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
     { icon: 'db', extensions: ['db', 'database', 'sql'], format: FileFormat.svg },
     { icon: 'debian', extensions: ['debian'], format: FileFormat.svg },
-    { icon: 'dist', extensions: ['dist', 'out', 'export', 'build', 'release'], format: FileFormat.svg },
+    { icon: 'dist', extensions: ['dist', 'out', 'export', 'build', 'release', 'target'], format: FileFormat.svg },
     { icon: 'docker', extensions: ['docker', '.docker'], format: FileFormat.svg },
     { icon: 'docs', extensions: ['docs', 'doc'], format: FileFormat.svg },
     { icon: 'elasticbeanstalk', extensions: ['.elasticbeanstalk', '.ebextensions'], format: FileFormat.svg },
