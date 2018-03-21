@@ -1,5 +1,24 @@
 # Change Log
 
+## 7.22.0 (March 21, 2018)
+
+- Fix: Associated `videos` to `video` folder icon. ([@JimiC](https://github.com/JimiC) in [#1531](https://github.com/vscode-icons/vscode-icons/pull/1531))
+- Feature: Associated `target` to `dist` folder icon. ([@JimiC](https://github.com/JimiC) in [#1530](https://github.com/vscode-icons/vscode-icons/pull/1530))
+- Feature: No more `preview` tag. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1527](https://github.com/vscode-icons/vscode-icons/pull/1527))
+- Feature: Support for `Maven`. ([@JimiC](https://github.com/JimiC) in [#1522](https://github.com/vscode-icons/vscode-icons/pull/1522))
+- Feature: Support for `Wallaby`. ([@JimiC](https://github.com/JimiC) in [#1521](https://github.com/vscode-icons/vscode-icons/pull/1521))
+- Feature: Support for `Pyret`. ([@JimiC](https://github.com/JimiC) in [#1519](https://github.com/vscode-icons/vscode-icons/pull/1519) && [#1529](https://github.com/vscode-icons/vscode-icons/pull/1529))
+- Feature: Support for `QSharp`. ([@JimiC](https://github.com/JimiC) in [#1518](https://github.com/vscode-icons/vscode-icons/pull/1518))
+- Feature: Support for `Fossa`. ([@JimiC](https://github.com/JimiC) in [#1517](https://github.com/vscode-icons/vscode-icons/pull/1517))
+- Feature: Support for `Mocha`. ([@JimiC](https://github.com/JimiC) in [#1516](https://github.com/vscode-icons/vscode-icons/pull/1516))
+- Feature: Added `Wallaby` integration. ([@JimiC](https://github.com/JimiC) in [#1515](https://github.com/vscode-icons/vscode-icons/pull/1515))
+- Feature: Added test failure retry. ([@JimiC](https://github.com/JimiC) in [#1514](https://github.com/vscode-icons/vscode-icons/pull/1514))
+- Feature: Support for `Cython`. ([@JimiC](https://github.com/JimiC) in [#1513](https://github.com/vscode-icons/vscode-icons/pull/1513))
+- Feature: Support for `SLang`. ([@JimiC](https://github.com/JimiC) in [#1512](https://github.com/vscode-icons/vscode-icons/pull/1512))
+- Feature: Support for `Quasar Framework`. ([@JimiC](https://github.com/JimiC) in [#1511](https://github.com/vscode-icons/vscode-icons/pull/1511))
+- Feature: Support for `PostgreSQL`. ([@JimiC](https://github.com/JimiC) in [#1510](https://github.com/vscode-icons/vscode-icons/pull/1510))
+- Enhancement: Improve support for `Prettier`. ([@JimiC](https://github.com/JimiC) in [#1509](https://github.com/vscode-icons/vscode-icons/pull/1509))
+
 ## 7.21.0 (March 12, 2018)
 
 - Enhancement: Used sinon syntax suger for promises. ([@JimiC](https://github.com/JimiC) in [#1504](https://github.com/vscode-icons/vscode-icons/pull/1504))
