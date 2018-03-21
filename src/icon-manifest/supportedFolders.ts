@@ -108,7 +108,7 @@ export const extensions: IFolderCollection = {
     { icon: 'typings', extensions: ['typings'], format: FileFormat.svg },
     { icon: 'typings2', extensions: ['typings'], format: FileFormat.svg, disabled: true },
     { icon: 'vagrant', extensions: ['vagrant', '.vagrant'], format: FileFormat.svg },
-    { icon: 'video', extensions: ['video', '.video', 'video', '.video'], format: FileFormat.svg },
+    { icon: 'video', extensions: ['video', '.video', 'videos', '.videos'], format: FileFormat.svg },
     { icon: 'view', extensions: ['html', 'view', 'views', 'layout', 'layouts', '_view', '_views', '_layout', '_layouts'], format: FileFormat.svg },
     { icon: 'vs', extensions: ['.vs'], format: FileFormat.svg },
     { icon: 'vscode', extensions: ['.vscode'], format: FileFormat.svg },
