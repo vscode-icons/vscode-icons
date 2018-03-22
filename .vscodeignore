@@ -28,4 +28,5 @@ package.nls.template.json
 tsconfig.json
 tslint.json
 npm-debug.*
+wallaby.js
 yarn.lock
