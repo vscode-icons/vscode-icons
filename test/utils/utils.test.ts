@@ -42,7 +42,7 @@ describe('Utils: tests', function () {
 
       it('win32 (windows)',
         function () {
-          const path = 'C:\Users\User\AppData\Roaming';
+          const path = 'C:\\Users\\User\\AppData\\Roaming';
           process.env.APPDATA = path;
           Object.defineProperty(process, 'platform', { value: 'win32' });
           expect(utils.vscodePath()).to.be.equal(path);
