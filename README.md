@@ -89,7 +89,7 @@ In any case, please follow our [contribution guidelines](https://github.com/vsco
 
 In our [wiki](https://github.com/vscode-icons/vscode-icons/wiki) you can find info, like:
 
-* [Extension's History](https://github.com/JimiC/vscode-icons/wiki/History)
+* [Extension's History](https://github.com/vscode-icons/vscode-icons/wiki/History)
 * [Supported file icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFiles).
 * [Supported folder icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFolders).
 
