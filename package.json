@@ -235,6 +235,7 @@
         "posttest": "nyc report -r lcov",
         "test:vs": "node ./node_modules/vscode/bin/test",
         "vscode:prepublish": "npm run build",
+        "vscode:uninstall": "node ./out/src/uninstall.js",
         "precompile": "rimraf ./out",
         "compile": "tsc",
         "compile:w": "npm run compile -- -w",
