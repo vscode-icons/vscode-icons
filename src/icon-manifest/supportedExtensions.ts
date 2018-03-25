@@ -335,7 +335,7 @@ export const extensions: IFileCollection = {
     { icon: 'liquid', extensions: ['liquid'], format: FileFormat.svg },
     { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
     { icon: 'locale', extensions: [], format: FileFormat.svg },
-    { icon: 'log', extensions: ['log'], format: FileFormat.svg },
+    { icon: 'log', extensions: ['log', 'tlg'], format: FileFormat.svg },
     { icon: 'lolcode', extensions: [], languages: [languages.lolcode], format: FileFormat.svg },
     { icon: 'lsl', extensions: [], languages: [languages.lsl], format: FileFormat.svg },
     { icon: 'lua', extensions: [], languages: [languages.lua], format: FileFormat.svg },
