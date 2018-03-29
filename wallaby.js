@@ -1,4 +1,4 @@
-module.exports = (wallaby) => ({
+module.exports = {
   files: [
     "src/**/*.ts",
     "test/support/*.ts",
@@ -14,12 +14,8 @@ module.exports = (wallaby) => ({
   filesWithNoCoverageCalculated: [
   ],
   preprocessors: {
-    '**/*.json': (file, done) => {
-      done(file.rename(`../${file.path}`).content)
-    },
-    "icons/*.*": (file, done) => {
-      done(file.rename(`../${file.path}`).content)
-    }
+    "**/*.json": (file, done) => done(file.rename(`../${file.path}`).content),
+    "icons/*.*": (file, done) => done(file.rename(`../${file.path}`).content)
   },
   hints: {
     ignoreCoverage: /\/* wallaby ignore next\/*/
@@ -27,14 +23,12 @@ module.exports = (wallaby) => ({
   testFramework: "mocha",
   env: {
     type: "node",
-    runner: process.platform === 'win32'
-      ? `${process.env.APPDATA}\\nvm\\v7.9.0\\node`
-      : `${require('os').homedir()}/.nvm/versions/node/v7.9.0/bin/node`
+    runner: process.platform === "win32" ? `${process.env.APPDATA}\\nvm\\v7.9.0\\node` : `${require("os").homedir()}/.nvm/versions/node/v7.9.0/bin/node`
   },
   delays: {
     run: 500
   },
   debug: true,
   reportConsoleErrorAsError: true,
-  setup: (wallaby) => wallaby.testFramework.ui('bdd')
-});
+  setup: (wallaby) => wallaby.testFramework.ui("bdd")
+};
