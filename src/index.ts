@@ -1,4 +1,4 @@
-import * as vscode from 'vscode';
+import vscode from 'vscode';
 import { SettingsManager } from './settings';
 import * as init from './init';
 import { ProjectAutoDetection as pad } from './init/projectAutoDetection';

@@ -1,8 +1,8 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
+import fs from 'fs';
+import sinon from 'sinon';
 import { expect } from 'chai';
-import * as fs from 'fs';
-import * as sinon from 'sinon';
 import * as models from '../../src/models';
 import { ProjectAutoDetection as pad } from '../../src/init/projectAutoDetection';
 import { ManifestReader as mr } from '../../src/icon-manifest';

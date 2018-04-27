@@ -4,9 +4,9 @@ import { expect } from 'chai';
 import { LanguageResourceManager } from '../../src/i18n';
 import { langResourceCollection } from '../../src/i18n/langResourceCollection';
 import { LangResourceKeys } from '../../src/models/i18n';
-import * as packageJson from '../../../package.json';
-import * as nls from '../../../package.nls.json';
-import * as nlsTemplate from '../../../package.nls.template.json';
+import packageJson from '../../../package.json';
+import nls from '../../../package.nls.json';
+import nlsTemplate from '../../../package.nls.template.json';
 
 describe('I18n: tests', function () {
 

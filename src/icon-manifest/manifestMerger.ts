@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import _ = require('lodash');
 import * as models from '../models';
 
 export function mergeConfig(

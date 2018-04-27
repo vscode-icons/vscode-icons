@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as semver from 'semver';
+import fs from 'fs';
+import semver from 'semver';
 import { vscodePath as getAppPath, parseJSON, pathUnixJoin } from '../utils';
 import { ISettings, IState, IVSCode, ISettingsManager, ExtensionStatus } from '../models';
 import { extensionSettings } from './extensionSettings';

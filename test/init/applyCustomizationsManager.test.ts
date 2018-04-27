@@ -1,7 +1,7 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
+import sinon from 'sinon';
 import { expect } from 'chai';
-import * as sinon from 'sinon';
 import { manageAutoApplyCustomizations, manageApplyCustomizations } from '../../src/init/applyCustomizationsManager';
 import { IVSIcons } from '../../src/models';
 

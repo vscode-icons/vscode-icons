@@ -1,6 +1,6 @@
 // tslint:disable only-arrow-functions
-import * as fs from 'fs';
-import * as path from 'path';
+import fs from 'fs';
+import path from 'path';
 import { expect } from 'chai';
 import { schema as defaultSchema, IconGenerator } from '../../src/icon-manifest';
 import { extensions as folders } from '../../src/icon-manifest/supportedFolders';

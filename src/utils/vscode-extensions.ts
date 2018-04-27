@@ -1,5 +1,5 @@
-import * as _ from 'lodash';
-import * as vscode from 'vscode';
+import _ = require('lodash');
+import vscode from 'vscode';
 import { IVSIcons, IFileExtension } from '../models';
 
 export function getConfig(): vscode.WorkspaceConfiguration {

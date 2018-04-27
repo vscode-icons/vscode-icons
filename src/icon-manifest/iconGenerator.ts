@@ -1,10 +1,10 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as _ from 'lodash';
+import fs from 'fs';
+import path from 'path';
+import _ = require('lodash');
+import packageJson from '../../../package.json';
 import { SettingsManager } from '../settings';
 import * as utils from '../utils';
 import * as models from '../models';
-import * as packageJson from '../../../package.json';
 
 export class IconGenerator implements models.IIconGenerator {
   public settings: models.ISettings;
