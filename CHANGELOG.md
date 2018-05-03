@@ -1,5 +1,16 @@
 # Change Log
 
+## 7.23.0 (April 26, 2018)
+
+- Enhancement: Added `.angular.json` support. ([@odahcam](https://github.com/odahcam) in [#1558](https://github.com/vscode-icons/vscode-icons/pull/1558))
+- Feature: Added new Angular 6 CLI config file name. ([@maroy1986](https://github.com/maroy1986) in [#1551](https://github.com/vscode-icons/vscode-icons/pull/1551))
+- Enhancement: Updated `yarn` in CI. ([@JimiC](https://github.com/JimiC) in [#1550](https://github.com/vscode-icons/vscode-icons/pull/1550))
+- Enhancement: Lint `wallaby` config file. ([@JimiC](https://github.com/JimiC) in [#1548](https://github.com/vscode-icons/vscode-icons/pull/1548))
+- Fix: Fixed `prettier` config file association. ([@JimiC](https://github.com/JimiC) in [#1547](https://github.com/vscode-icons/vscode-icons/pull/1547))
+- Enhancement: Removed `wallaby.js` from distribution. ([@JimiC](https://github.com/JimiC) in [#1539](https://github.com/vscode-icons/vscode-icons/pull/1539))
+- Feature: Added uninstall hook script (cleanUp). ([@JimiC](https://github.com/JimiC) in [#1537](https://github.com/vscode-icons/vscode-icons/pull/1537))
+- Fix: Fixed link in the readme. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1535](https://github.com/vscode-icons/vscode-icons/pull/1535))
+
 ## 7.22.0 (March 21, 2018)
 
 - Fix: Associated `videos` to `video` folder icon. ([@JimiC](https://github.com/JimiC) in [#1531](https://github.com/vscode-icons/vscode-icons/pull/1531))
