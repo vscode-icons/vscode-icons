@@ -47,7 +47,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   elm: ILanguage;
   erb: ILanguage;
   erlang: ILanguage;
-  expl3: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
   galen: ILanguage;
