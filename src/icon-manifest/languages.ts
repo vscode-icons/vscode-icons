@@ -42,6 +42,7 @@ export const languages: ILanguageCollection = {
   diff: { ids: 'diff', defaultExtension: 'diff' },
   dlang: { ids: ['d', 'dscript', 'dml', 'diet'], defaultExtension: 'd' },
   dockerfile: { ids: 'dockerfile', defaultExtension: 'dockerfile' },
+  doctex: { ids: 'doctex', defaultExtension: 'dtx' },
   doxygen: { ids: 'doxygen', defaultExtension: 'dox' },
   drools: { ids: 'drools', defaultExtension: 'drl' },
   dylanlang: { ids: ['dylan', 'dylan-lid'], defaultExtension: 'dylan' },

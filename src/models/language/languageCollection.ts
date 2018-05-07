@@ -35,6 +35,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dal: ILanguage;
   dart: ILanguage;
   dlang: ILanguage;
+  doctex: ILanguage;
   doxygen: ILanguage;
   drools: ILanguage;
   dylanlang: ILanguage;
