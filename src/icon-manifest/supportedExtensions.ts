@@ -634,7 +634,7 @@ export const extensions: IFileCollection = {
     { icon: 'wercker', extensions: ['wercker.yml'], filename: true, format: FileFormat.svg },
     { icon: 'wolfram', extensions: [], languages: [languages.wolfram], format: FileFormat.svg },
     { icon: 'word', extensions: ['doc', 'docx', 'docm', 'dot', 'dotx', 'dotm', 'wll'], format: FileFormat.svg },
-    { icon: 'wurst', extensions: [], languages: [languages.wurstlang], format: FileFormat.svg },
+    { icon: 'wurst', extensions: [], languages: [languages.wurst], format: FileFormat.svg },
     { icon: 'wxml', extensions: ['wxml'], format: FileFormat.svg },
     { icon: 'wxss', extensions: ['wxss'], format: FileFormat.svg },
     { icon: 'xcode', extensions: ['xcodeproj'], format: FileFormat.svg },
