@@ -136,7 +136,7 @@ describe('SettingsManager: tests', function () {
 
     beforeEach(() => {
       settingsManager = new SettingsManager(vscode);
-      sandbox = sinon.sandbox.create();
+      sandbox = sinon.createSandbox();
     });
 
     afterEach(() => {

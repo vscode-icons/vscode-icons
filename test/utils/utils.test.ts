@@ -62,7 +62,7 @@ describe('Utils: tests', function () {
       it('creates a directory and all subdirectories synchronously',
         function () {
           const testCase = (directoryPath: string, expectedCounts: number) => {
-            const sandbox = sinon.sandbox.create();
+            const sandbox = sinon.createSandbox();
             const fileCheck = sandbox.stub(fs, 'existsSync')
               .callsFake(path => directoryPath.split('/').indexOf(path) !== -1);
             const createDirectory = sandbox.stub(fs, 'mkdirSync');
@@ -88,7 +88,7 @@ describe('Utils: tests', function () {
       it('deletes a directory and all subdirectories synchronously',
         function () {
           const directoryPath = '/path/to';
-          const sandbox = sinon.sandbox.create();
+          const sandbox = sinon.createSandbox();
           const fileCheck = sandbox.stub(fs, 'existsSync').callsFake(path => path === directoryPath);
           const readDirectory = sandbox.stub(fs, 'readdirSync').callsFake(() => ['dir', 'file.txt']);
           const stats = sandbox.stub(fs, 'lstatSync').callsFake(path => ({
