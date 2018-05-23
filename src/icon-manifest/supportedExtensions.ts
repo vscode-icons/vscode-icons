@@ -226,6 +226,7 @@ export const extensions: IFileCollection = {
     { icon: 'favicon', extensions: ['favicon.ico'], filename: true, format: FileFormat.svg },
     { icon: 'fbx', extensions: ['fbx'], format: FileFormat.svg },
     { icon: 'firebase', extensions: ['.firebaserc'], filename: true, format: FileFormat.svg },
+    { icon: 'firestore', extensions: ['firestore.rules'], filename: true, format: FileFormat.svg },
     { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     { icon: 'floobits', extensions: ['.flooignore'], filename: true, format: FileFormat.svg },
     { icon: 'flow', extensions: ['js.flow'], format: FileFormat.svg },
