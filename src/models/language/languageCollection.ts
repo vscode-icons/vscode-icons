@@ -82,6 +82,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   matlab: ILanguage;
   maxscript: ILanguage;
   mediawiki: ILanguage;
+  meson: ILanguage;
   mjml: ILanguage;
   mlang: ILanguage;
   mojolicious: ILanguage;
