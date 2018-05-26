@@ -105,6 +105,7 @@ export const languages: ILanguageCollection = {
   matlab: { ids: 'matlab', defaultExtension: 'mat' },
   maxscript: { ids: 'maxscript', defaultExtension: 'ms' },
   mediawiki: { ids: 'mediawiki', defaultExtension: 'mediawiki' },
+  mel: { ids: 'mel', defaultExtension: 'mel' },
   mjml: { ids: 'mjml', defaultExtension: 'mjml' },
   mlang: { ids: ['mlang', 'powerquerymlanguage'], defaultExtension: 'pq' },
   mojolicious: { ids: 'mojolicious', defaultExtension: 'ep' },
