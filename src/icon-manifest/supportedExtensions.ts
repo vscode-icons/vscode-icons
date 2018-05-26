@@ -547,6 +547,7 @@ export const extensions: IFileCollection = {
     { icon: 'typescript_official', extensions: [], languages: [languages.typescript], format: FileFormat.svg, disabled: true },
     { icon: 'typescriptdef', extensions: ['d.ts'], format: FileFormat.svg },
     { icon: 'typescriptdef_official', extensions: ['d.ts'], format: FileFormat.svg, disabled: true },
+    { icon: 'typo3', extensions: [], languages: [languages.typo3], format: FileFormat.svg },
     { icon: 'vagrant', extensions: ['vagrantfile'], filename: true, format: FileFormat.svg },
     { icon: 'vala', extensions: ['vala'], format: FileFormat.svg },
     { icon: 'vapi', extensions: ['vapi'], format: FileFormat.svg },

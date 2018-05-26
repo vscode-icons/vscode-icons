@@ -184,6 +184,7 @@ export const languages: ILanguageCollection = {
   twig: { ids: 'twig', defaultExtension: 'twig' },
   typescript: { ids: 'typescript', defaultExtension: 'ts' },
   typescriptreact: { ids: 'typescriptreact', defaultExtension: 'tsx' },
+  typo3: { ids: 'typoscript', defaultExtension: 'typoscript' },
   vb: { ids: 'vb', defaultExtension: 'vb' },
   vba: { ids: 'vba', defaultExtension: 'cls' },
   vbscript: { ids: 'vbscript', defaultExtension: 'wsf' },
