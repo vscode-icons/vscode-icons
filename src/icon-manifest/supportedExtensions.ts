@@ -374,6 +374,7 @@ export const extensions: IFileCollection = {
     { icon: 'nsi', extensions: [], languages: [languages.nsis], format: FileFormat.svg },
     { icon: 'nuget', extensions: ['nupkg', 'nuspec', 'psmdcp'], format: FileFormat.svg },
     { icon: 'nunjucks', extensions: ['nunj', 'njs'], languages: [languages.nunjucks], format: FileFormat.svg },
+    { icon: 'nuxt', extensions: [''], filenamesGlob: ['nuxt.config'], extensionsGlob: ['js', 'ts'], filename: true, format: FileFormat.svg },
     { icon: 'nyc', extensions: ['.nycrc', '.nycrc.json'], filename: true, format: FileFormat.svg },
     { icon: 'objectivec', extensions: [], languages: [languages.objectivec], format: FileFormat.svg },
     { icon: 'objectivecpp', extensions: [], languages: [languages.objectivecpp], format: FileFormat.svg },
