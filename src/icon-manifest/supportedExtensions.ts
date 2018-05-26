@@ -292,6 +292,7 @@ export const extensions: IFileCollection = {
     { icon: 'ini', extensions: [], languages: [languages.ini], light: true, format: FileFormat.svg },
     { icon: 'infopath', extensions: ['infopathxml', 'xsn', 'xsf', 'xtp2'], format: FileFormat.svg },
     { icon: 'ionic', extensions: ['ionic.project', 'ionic.config.json'], filename: true, format: FileFormat.svg },
+    { icon: 'jake', extensions: ['jakefile', 'jakefile.js'], filename: true, format: FileFormat.svg },
     { icon: 'jar', extensions: ['jar'], format: FileFormat.svg },
     { icon: 'java', extensions: [], languages: [languages.java], format: FileFormat.svg },
     { icon: 'jbuilder', extensions: ['jbuilder'], format: FileFormat.svg },
