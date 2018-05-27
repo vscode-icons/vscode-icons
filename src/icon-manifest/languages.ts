@@ -195,6 +195,7 @@ export const languages: ILanguageCollection = {
   volt: { ids: 'volt', defaultExtension: 'volt' },
   vue: { ids: 'vue', defaultExtension: 'vue' },
   wolfram: { ids: 'wolfram', defaultExtension: 'wl' },
+  wurst: { ids: ['wurstlang', 'wurst'], defaultExtension: 'wurst' },
   wxml: { ids: 'wxml', defaultExtension: 'wxml' },
   xml: { ids: 'xml', defaultExtension: 'xml' },
   xsl: { ids: 'xsl', defaultExtension: 'xsl' },
