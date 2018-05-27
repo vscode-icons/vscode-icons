@@ -245,6 +245,7 @@ export const extensions: IFileCollection = {
     { icon: 'gamemaker2', extensions: ['yy', 'yyp'], light: true, languages: [languages.gamemaker2], format: FileFormat.svg },
     { icon: 'gamemaker81', extensions: [], languages: [languages.gamemaker81], format: FileFormat.svg },
     { icon: 'gitlab', extensions: ['.gitlab-ci.yml'], filename: true, format: FileFormat.svg },
+    { icon: 'glide', extensions: ['glide.yml'], filename: true, format: FileFormat.svg },
     { icon: 'glsl', extensions: [], languages: [languages.glsl], format: FileFormat.svg },
     { icon: 'go', extensions: [], languages: [languages.go], format: FileFormat.svg },
     { icon: 'godot', extensions: [], languages: [languages.godot], format: FileFormat.svg },
