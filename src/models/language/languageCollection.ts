@@ -36,6 +36,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dart: ILanguage;
   dlang: ILanguage;
   doctex: ILanguage;
+  dotenv: ILanguage;
   doxygen: ILanguage;
   drools: ILanguage;
   dylanlang: ILanguage;
@@ -62,6 +63,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
+  helm: ILanguage;
   hosts: ILanguage;
   http: ILanguage;
   jekyll: ILanguage;
@@ -82,6 +84,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   matlab: ILanguage;
   maxscript: ILanguage;
   mediawiki: ILanguage;
+  mel: ILanguage;
   mjml: ILanguage;
   mlang: ILanguage;
   mojolicious: ILanguage;
@@ -140,6 +143,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   textmateyaml: ILanguage;
   toml: ILanguage;
   twig: ILanguage;
+  typo3: ILanguage;
   vba: ILanguage;
   vbscript: ILanguage;
   velocity: ILanguage;
@@ -149,6 +153,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   volt: ILanguage;
   vue: ILanguage;
   wolfram: ILanguage;
+  wurst: ILanguage;
   wxml: ILanguage;
   yang: ILanguage;
 }
