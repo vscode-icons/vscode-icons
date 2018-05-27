@@ -116,6 +116,7 @@ export const extensions: IFileCollection = {
     { icon: 'cloudfoundry', extensions: ['.cfignore'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'cmake', extensions: [], languages: [languages.cmake, languages.cmakecache], format: FileFormat.svg },
     { icon: 'cobol', extensions: [], languages: [languages.cobol], format: FileFormat.svg },
+    { icon: 'codacy', extensions: ['.codacy.yml', '.codacy.yaml'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'codeclimate', extensions: ['.codeclimate.yml'], light: true, filename: true, format: FileFormat.svg },
     { icon: 'codecov', extensions: ['codecov.yml', '.codecov.yml'], filename: true, format: FileFormat.svg },
     { icon: 'codekit', extensions: ['kit'], format: FileFormat.svg },
