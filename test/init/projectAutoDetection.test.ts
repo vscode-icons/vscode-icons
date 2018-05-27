@@ -144,7 +144,7 @@ describe('AutoDetectProject: tests', function () {
         let sandbox: sinon.SinonSandbox;
 
         beforeEach(() => {
-          sandbox = sinon.sandbox.create();
+          sandbox = sinon.createSandbox();
         });
 
         afterEach(() => {
@@ -175,7 +175,7 @@ describe('AutoDetectProject: tests', function () {
         let sandbox: sinon.SinonSandbox;
 
         beforeEach(() => {
-          sandbox = sinon.sandbox.create();
+          sandbox = sinon.createSandbox();
         });
 
         afterEach(() => {
@@ -215,7 +215,7 @@ describe('AutoDetectProject: tests', function () {
         let sandbox: sinon.SinonSandbox;
 
         beforeEach(() => {
-          sandbox = sinon.sandbox.create();
+          sandbox = sinon.createSandbox();
         });
 
         afterEach(() => {
@@ -255,7 +255,7 @@ describe('AutoDetectProject: tests', function () {
         let sandbox: sinon.SinonSandbox;
 
         beforeEach(() => {
-          sandbox = sinon.sandbox.create();
+          sandbox = sinon.createSandbox();
         });
 
         afterEach(() => {

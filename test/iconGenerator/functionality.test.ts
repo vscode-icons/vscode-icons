@@ -188,7 +188,7 @@ describe('IconGenerator: functionality test', function () {
       let sandbox: sinon.SinonSandbox;
 
       beforeEach(() => {
-        sandbox = sinon.sandbox.create();
+        sandbox = sinon.createSandbox();
       });
 
       afterEach(() => {
@@ -341,7 +341,7 @@ describe('IconGenerator: functionality test', function () {
 
       it('uses the resolved absolute path from the root of the project ' +
         'when a relative custom icon folder path is specified', function () {
-          const sandbox = sinon.sandbox.create();
+          const sandbox = sinon.createSandbox();
           sandbox.stub(fs, 'existsSync').returns(true);
 
           iconGenerator.settings.workspacePath = ['/workspace/path'];
@@ -354,7 +354,7 @@ describe('IconGenerator: functionality test', function () {
         });
 
       const testCase = (belongToSameDrive: boolean) => {
-        const sandbox = sinon.sandbox.create();
+        const sandbox = sinon.createSandbox();
         sinon.stub(iconGenerator, 'hasCustomIcon').returns(true);
         sandbox.stub(utils, 'belongToSameDrive').returns(belongToSameDrive);
         const json = iconGenerator.generateJson(emptyFileCollection, emptyFolderCollection);
