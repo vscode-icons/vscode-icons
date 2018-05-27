@@ -360,6 +360,7 @@ export const extensions: IFileCollection = {
     { icon: 'maya', extensions: [], languages: [languages.mel], format: FileFormat.svg },
     { icon: 'mediawiki', extensions: [], languages: [languages.mediawiki], format: FileFormat.svg },
     { icon: 'mercurial', extensions: ['.hgignore'], filename: true, format: FileFormat.svg },
+    { icon: 'meson', extensions: [], languages: [languages.meson], format: FileFormat.svg },
     { icon: 'meteor', extensions: [], format: FileFormat.svg },
     { icon: 'mjml', extensions: [], languages: [languages.mjml], format: FileFormat.svg },
     { icon: 'mlang', extensions: [], languages: [languages.mlang], light: true, format: FileFormat.svg },
