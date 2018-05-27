@@ -5,6 +5,6 @@ coverage
 .vscode-test
 .nyc_output
 .DS_Store
-npm-debug.*
 *.vsix
 *.lcov
+*.log
