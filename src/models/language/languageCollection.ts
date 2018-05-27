@@ -63,6 +63,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
+  helm: ILanguage;
   hosts: ILanguage;
   http: ILanguage;
   jekyll: ILanguage;
