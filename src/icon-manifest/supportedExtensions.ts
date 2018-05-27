@@ -132,7 +132,7 @@ export const extensions: IFileCollection = {
     { icon: 'cpp2', extensions: [], languages: [languages.cpp], format: FileFormat.svg, disabled: true },
     { icon: 'cppheader', extensions: ['hpp'], format: FileFormat.svg },
     { icon: 'crowdin', extensions: ['crowdin.yml'], filename: true, format: FileFormat.svg },
-    { icon: 'crystal', extensions: [], languages: [languages.crystal], format: FileFormat.svg },
+    { icon: 'crystal', extensions: [], languages: [languages.crystal], light: true, format: FileFormat.svg },
     { icon: 'csharp', extensions: ['csx'], languages: [languages.csharp], format: FileFormat.svg },
     { icon: 'csproj', extensions: ['csproj'], format: FileFormat.svg },
     { icon: 'css', extensions: [], languages: [languages.css], format: FileFormat.svg },
