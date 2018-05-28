@@ -14,50 +14,47 @@ matrix:
   allow_failures:
     - node_js: node
   fast_finish: true
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - libstdc++-4.9-dev
 cache: yarn
 before_install:
   - curl --compressed -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
 script: npm run build
-after_success:
-  - codecov --disable=gcov
+after_success: codecov --disable=gcov
+
 jobs:
   include:
     - stage: wiki pages icons list update
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       os: linux
       node_js: 7.9.0
+      addons:
+        apt:
+          sources: ubuntu-toolchain-r-test
+          packages: libstdc++-4.9-dev
+      before_script: npm i vscode-icons/wpilgenerator --no-save
       script: npm run compile
       after_success: wpilgen
+
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       sudo: required
       language: generic
       node_js:
       os:
-      addons:
       cache:
       before_install:
-      script:
-        - bash ./docker/trigger-docker-vsi.sh --token $TRAVIS_TOKEN
+      script: bash ./docker/trigger-docker-vsi.sh --token $TRAVIS_TOKEN
       after_success:
+
     - stage: docker vsi:tag
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       sudo: required
       language: generic
       node_js:
       os:
-      addons:
       cache:
       before_install:
-      script:
-        - bash ./docker/trigger-docker-vsi.sh --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
+      script: bash ./docker/trigger-docker-vsi.sh --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
       after_success:
 
 # See this if we need to test the extension via vscode:
