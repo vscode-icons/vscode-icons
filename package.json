@@ -249,7 +249,7 @@
         "@types/mockery": "^1.4.29",
         "@types/node": "7",
         "@types/semver": "^5.5.0",
-        "@types/sinon": "^4.3.3",
+        "@types/sinon": "^5.0.1",
         "chai": "^4.1.2",
         "codecov": "^3.0.2",
         "mocha": "^5.2.0",
