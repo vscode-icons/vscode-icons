@@ -231,7 +231,7 @@
         "prebuild": "npm run lint && npm run test",
         "build": "node ./out/src/icon-manifest/build.js",
         "pretest": "rimraf ./.nyc_output ./coverage && npm run compile",
-        "test": "nyc -c -x '' mocha ./out/test --recursive --retries 3",
+        "test": "nyc -x '' mocha",
         "posttest": "nyc report -r lcov",
         "test:vs": "node ./node_modules/vscode/bin/test",
         "vscode:prepublish": "npm run build",
