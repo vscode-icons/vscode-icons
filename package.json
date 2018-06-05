@@ -260,8 +260,7 @@
         "tslint": "^5.10.0",
         "typescript": "^2.8.3",
         "vscode": "^1.1.17",
-        "examples-generator": "file:submodules/examples-generator",
-        "wpilgenerator": "file:submodules/wpilgenerator"
+        "examples-generator": "file:submodules/examples-generator"
     },
     "dependencies": {
         "lodash": "^4.17.10",

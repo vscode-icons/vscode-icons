@@ -23,19 +23,10 @@ init:
   - node --version
   - npm --version
   - yarn --version
-  - ps: $PSVersionTable.PSVersion
+  - ps: $PSVersionTable.PSVersion -f ''
 install:
   # Install the latest version of Yarn
-  - ps: >-
-      Write-Host "Installing Yarn!"
-
-      $webClient = New-Object Net.WebClient
-
-      $latestVersion = $webClient.DownloadString('https://yarnpkg.com/latest-version')
-
-      $webClient.DownloadFile("https://github.com/yarnpkg/yarn/releases/download/v$latestVersion/yarn-$latestVersion.msi", "$env:temp\yarn.msi")
-
-      cmd /c start /wait msiexec.exe /i $env:temp\yarn.msi /quiet /qn /norestart
+  - ps: curl -o $env:temp\install.ps1 https://raw.githubusercontent.com/JimiC/ps-yarn-install/master/install.ps1 | powershell $env:temp\install.ps1
   # Install modules
   - yarn install
 cache:
