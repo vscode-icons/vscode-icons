@@ -231,7 +231,7 @@
         "prebuild": "npm run lint && npm run test",
         "build": "node ./out/src/icon-manifest/build.js",
         "pretest": "rimraf ./.nyc_output ./coverage && npm run compile",
-        "test": "nyc -c -x '' mocha ./out/test --recursive --retries 3",
+        "test": "nyc -x '' mocha",
         "posttest": "nyc report -r lcov",
         "test:vs": "node ./node_modules/vscode/bin/test",
         "vscode:prepublish": "npm run build",
@@ -260,8 +260,7 @@
         "tslint": "^5.10.0",
         "typescript": "^2.8.3",
         "vscode": "^1.1.17",
-        "examples-generator": "file:submodules/examples-generator",
-        "wpilgenerator": "file:submodules/wpilgenerator"
+        "examples-generator": "file:submodules/examples-generator"
     },
     "dependencies": {
         "lodash": "^4.17.10",
