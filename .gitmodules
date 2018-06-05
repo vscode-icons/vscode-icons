@@ -1,6 +1,3 @@
 [submodule "submodules/examples-generator"]
 	path = submodules/examples-generator
 	url = https://github.com/vscode-icons/examples-generator
-[submodule "submodules/wpilgenerator"]
-	path = submodules/wpilgenerator
-	url = https://github.com/vscode-icons/wpilgenerator
