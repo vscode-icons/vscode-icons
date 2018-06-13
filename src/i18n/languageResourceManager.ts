@@ -1,21 +1,21 @@
-import { ILangResource, ILangResourceCollection, IOSSpecific, LangResourceKeys } from '../models/i18n';
+import * as models from '../models/i18n';
 import { langResourceCollection } from './langResourceCollection';
 import { constants } from '../constants';
 
-export class LanguageResourceManager {
+export class LanguageResourceManager implements models.ILanguageResourceManager {
 
-  private messages: ILangResource;
+  private messages: models.ILangResource;
 
   constructor(
     private language: string,
-    private resourceCollection?: ILangResourceCollection |
-      { [key: string]: { [key: string]: string | IOSSpecific; } }) {
+    private resourceCollection?: models.ILangResourceCollection |
+      { [key: string]: { [key: string]: string | models.IOSSpecific; } }) {
     this.resourceCollection = this.resourceCollection || langResourceCollection;
     this.messages = (this.language && this.resourceCollection[this.language.toLowerCase()]) ||
       this.resourceCollection['en'];
   }
 
-  public getMessage(...keys: Array<LangResourceKeys | string>): string {
+  public getMessage(...keys: Array<models.LangResourceKeys | string>): string {
     if (!this.messages) {
       return '';
     }
@@ -23,17 +23,17 @@ export class LanguageResourceManager {
     let msg = '';
     keys.forEach(key => {
       // If key is of type 'number' it's a LangResourceKeys
-      const stringifiedKey = typeof key === 'number' ? LangResourceKeys[key] : key;
+      const stringifiedKey = typeof key === 'number' ? models.LangResourceKeys[key] : key;
 
       if (typeof key === 'number') {
         if (Reflect.has(this.messages, stringifiedKey)) {
           // If no message is found fallback to english message
-          let message: string | IOSSpecific =
+          let message: string | models.IOSSpecific =
             this.messages[stringifiedKey] || langResourceCollection['en'][stringifiedKey];
 
           // If not a string then it's of type IOSSpecific
           if (typeof message !== 'string') {
-            if (Reflect.has(message as IOSSpecific, process.platform)) {
+            if (Reflect.has(message as models.IOSSpecific, process.platform)) {
               message = message[process.platform];
             } else {
               throw new Error(`Not Implemented: ${process.platform}`);

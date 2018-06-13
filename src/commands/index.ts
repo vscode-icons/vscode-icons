@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { getConfig, getVsiconsConfig } from '../utils/vscode-extensions';
-import { LanguageResourceManager } from '../i18n';
+import { LanguageResourceManager } from '../i18n/languageResourceManager';
 import * as iconManifest from '../icon-manifest';
 import { extensions as files } from '../icon-manifest/supportedExtensions';
 import { extensions as folders } from '../icon-manifest/supportedFolders';
