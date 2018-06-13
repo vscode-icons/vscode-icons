@@ -16,7 +16,7 @@ matrix:
   fast_finish: true
 cache: yarn
 before_install:
-  - curl --compressed -L https://yarnpkg.com/install.sh | bash
+  - curl -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
 script: npm run build
 after_success: codecov --disable=gcov
@@ -43,7 +43,7 @@ jobs:
       os:
       cache:
       before_install:
-      script: bash ./docker/trigger-docker-vsi.sh --token $TRAVIS_TOKEN
+      script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
       after_success:
 
     - stage: docker vsi:tag
@@ -54,7 +54,7 @@ jobs:
       os:
       cache:
       before_install:
-      script: bash ./docker/trigger-docker-vsi.sh --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
+      script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
       after_success:
 
 # See this if we need to test the extension via vscode:
