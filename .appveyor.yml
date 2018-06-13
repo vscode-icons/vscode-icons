@@ -32,10 +32,17 @@ install:
 cache:
   # - node_modules
   - '%LOCALAPPDATA%\Yarn'
+before_test:
+  # install coverage reporters
+  - npm i codeclimate-test-reporter --no-save
+  - npm i codecov --no-save
+  # run postinstall again to ensure that 'vscode.d.ts' is installed
+  - npm run postinstall
 test_script:
   # run build script
   - npm run build
 after_test:
   # send coverage report
-  - ps: .\node_modules\.bin\codecov --disable=gcov
+  - ps: If ($env:CODECLIMATE_REPO_TOKEN -ne $null) { gc .\coverage\lcov.info | & .\node_modules\.bin\codeclimate-test-reporter }
+  - ps: If ($env:CODECOV_TOKEN -ne $null) { .\node_modules\.bin\codecov --disable=gcov }
 build: off
