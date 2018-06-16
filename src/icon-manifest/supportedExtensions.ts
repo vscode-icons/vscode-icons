@@ -148,7 +148,7 @@ export const extensions: IFileCollection = {
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     { icon: 'dependencies', extensions: ['dependencies.yml'], filename: true, format: FileFormat.svg },
     { icon: 'delphi', extensions: [], languages: [languages.pascal], format: FileFormat.svg },
-    { icon: 'django', extensions: ['djt'], format: FileFormat.svg },
+    { icon: 'django', extensions: ['djt'], languages: [languages.django], format: FileFormat.svg },
     { icon: 'dlang', extensions: [], languages: [languages.dlang], format: FileFormat.svg },
     { icon: 'diff', extensions: [], languages: [languages.diff], format: FileFormat.svg },
     {
