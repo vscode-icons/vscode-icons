@@ -39,6 +39,7 @@ export const languages: ILanguageCollection = {
   cython: { ids: 'cython', defaultExtension: 'pyx' },
   dal: { ids: 'dal', defaultExtension: 'dal' },
   dart: { ids: 'dart', defaultExtension: 'dart' },
+  django: { ids: ['django-html', 'django-txt'], defaultExtension: 'html' },
   diff: { ids: 'diff', defaultExtension: 'diff' },
   dlang: { ids: ['d', 'dscript', 'dml', 'diet'], defaultExtension: 'd' },
   dockerfile: { ids: 'dockerfile', defaultExtension: 'dockerfile' },
