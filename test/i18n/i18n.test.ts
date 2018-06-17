@@ -1,7 +1,7 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
-import { LanguageResourceManager } from '../../src/i18n';
+import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
 import { langResourceCollection } from '../../src/i18n/langResourceCollection';
 import { LangResourceKeys } from '../../src/models/i18n';
 import * as packageJson from '../../../package.json';
