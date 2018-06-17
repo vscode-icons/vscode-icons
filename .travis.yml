@@ -41,6 +41,14 @@ jobs:
       script: npm run compile
       after_success: wpilgen
 
+    - stage: publish
+      if: repo =~ ^vscode-icons AND tag IS present AND type = push
+      os: linux
+      node_js: 7.9.0
+      before_script: npm i vsce --no-save
+      script: npm run build
+      after_success: vsce publish -p $VSCE_TOKEN
+
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       sudo: required

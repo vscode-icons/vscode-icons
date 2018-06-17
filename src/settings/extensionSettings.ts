@@ -1,7 +1,8 @@
 import { IExtensionSettings } from '../models';
+import * as manifest from '../../../package.json';
 
 export const extensionSettings: IExtensionSettings = {
-  version: '7.23.0',
+  version: manifest.version,
   iconJsonFileName: 'icons.json',
   iconSuffix: '',
   filePrefix: 'file_type_',
