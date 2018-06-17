@@ -57,6 +57,7 @@ jobs:
       os:
       cache:
       before_install:
+      before_script:
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
       after_success:
 
@@ -68,6 +69,7 @@ jobs:
       os:
       cache:
       before_install:
+      before_script:
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
       after_success:
 
