@@ -11,13 +11,10 @@
 [![DevDependencies Status](https://david-dm.org/vscode-icons/vscode-icons/dev-status.svg)](https://david-dm.org/vscode-icons/vscode-icons?type=dev)
 [![Greenkeeper badge](https://badges.greenkeeper.io/vscode-icons/vscode-icons.svg)](https://greenkeeper.io/)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/maintainability)](https://codeclimate.com/github/vscode-icons/vscode-icons/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/test_coverage)](https://codeclimate.com/github/vscode-icons/vscode-icons/test_coverage)
 [![codecov](https://codecov.io/gh/vscode-icons/vscode-icons/branch/master/graph/badge.svg)](https://codecov.io/gh/vscode-icons/vscode-icons)
 [![Known Vulnerabilities](https://snyk.io/test/github/vscode-icons/vscode-icons/badge.svg)](https://snyk.io/test/github/vscode-icons/vscode-icons)
-
-[![bitHound Overall Score](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/score.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons)
-[![bitHound Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/dependencies.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
-[![bitHound Dev Dependencies](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/devDependencies.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons/master/dependencies/npm)
-[![bitHound Code](https://www.bithound.io/github/vscode-icons/vscode-icons/badges/code.svg)](https://www.bithound.io/github/vscode-icons/vscode-icons)
 
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")

@@ -18,8 +18,14 @@ cache: yarn
 before_install:
   - curl -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
+before_script:
+  - npm i codeclimate-test-reporter --no-save
+  - npm i codecov --no-save
+  - npm run postinstall
 script: npm run build
-after_success: codecov --disable=gcov
+after_success:
+  - if [[ $CODECLIMATE_REPO_TOKEN ]] ; then codeclimate-test-reporter < ./coverage/lcov.info ; fi
+  - codecov --disable=gcov
 
 jobs:
   include:

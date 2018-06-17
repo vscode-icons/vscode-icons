@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as models from '../models';
 import { parseJSON } from '../utils';
-import { LanguageResourceManager } from '../i18n';
 
 export class ProjectAutoDetection {
   public static detectProject(
@@ -22,7 +21,7 @@ export class ProjectAutoDetection {
     preset: boolean,
     ngIconsDisabled: boolean,
     isNgProject: boolean,
-    i18nManager: LanguageResourceManager): models.IProjectDetectionResult {
+    i18nManager: models.ILanguageResourceManager): models.IProjectDetectionResult {
 
     // NOTE: User setting (preset) bypasses detection in the following cases:
     // 1. Preset is set to 'false' and icons are not present in the manifest file
@@ -63,7 +62,7 @@ export class ProjectAutoDetection {
   }
 
   public static applyDetection(
-    i18nManager: LanguageResourceManager,
+    i18nManager: models.ILanguageResourceManager,
     projectDetectionResult: models.IProjectDetectionResult,
     autoReload: boolean,
     applyCustomizationFn: (projectDetectionResult?: models.IProjectDetectionResult) => void,

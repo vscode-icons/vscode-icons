@@ -1,0 +1,37 @@
+version: "2"
+checks:
+  file-lines:
+    enabled: false
+  method-complexity:
+    enabled: false
+  method-lines:
+    enabled: false
+  similar-code:
+    enabled: false
+plugins:
+  markdownlint:
+    enabled: true
+    checks:
+      MD013:
+        enabled: false
+      MD036:
+        enabled: false
+  nodesecurity:
+    enabled: true
+  tslint:
+    enabled: true
+exclude_patterns:
+  - "!src/**/*.ts"
+  - "!test/**/*.ts"
+  - "test/support"
+  - "docker/"
+  - "images/"
+  - "icons/"
+  - "locale/"
+  - "submodules/"
+  - "*.json"
+  - "*.yml"
+  - "*.lock"
+  - ".*"
+  - "wallaby.js"
+  - "**/*.d.ts"

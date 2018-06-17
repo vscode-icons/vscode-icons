@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import * as open from 'opn';
-import { LanguageResourceManager } from '../i18n';
+import { LanguageResourceManager } from '../i18n/languageResourceManager';
 import { getConfig } from '../utils/vscode-extensions';
 import { ISettingsManager, LangResourceKeys } from '../models';
 import { constants } from '../constants';
