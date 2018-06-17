@@ -5,7 +5,7 @@ import { ProjectAutoDetection as pad } from './init/projectAutoDetection';
 import { ManifestReader as mr } from './icon-manifest';
 import * as commands from './commands';
 import { getVsiconsConfig, getConfig, findFiles } from './utils/vscode-extensions';
-import { LanguageResourceManager } from './i18n';
+import { LanguageResourceManager } from './i18n/languageResourceManager';
 import { IVSCodeUri, IVSIcons, Projects } from './models';
 import { constants } from './constants';
 

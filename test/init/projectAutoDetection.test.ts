@@ -6,7 +6,7 @@ import * as sinon from 'sinon';
 import * as models from '../../src/models';
 import { ProjectAutoDetection as pad } from '../../src/init/projectAutoDetection';
 import { ManifestReader as mr } from '../../src/icon-manifest';
-import { LanguageResourceManager } from '../../src/i18n';
+import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
 
 describe('AutoDetectProject: tests', function () {
 
