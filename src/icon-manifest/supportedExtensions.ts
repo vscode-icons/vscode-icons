@@ -124,7 +124,7 @@ export const extensions: IFileCollection = {
     { icon: 'coffeelint', extensions: ['coffeelint.json', '.coffeelintignore'], filename: true, format: FileFormat.svg },
     { icon: 'coffeescript', extensions: [], languages: [languages.coffeescript], format: FileFormat.svg },
     { icon: 'conan', extensions: ['conanfile.txt', 'conanfile.py'], filename: true, format: FileFormat.svg },
-    { icon: 'config', extensions: [], light: true, languages: [languages.properties, languages.dotenv], format: FileFormat.svg },
+    { icon: 'config', extensions: ['plist'], light: true, languages: [languages.properties, languages.dotenv], format: FileFormat.svg },
     { icon: 'compass', extensions: [], format: FileFormat.svg },
     { icon: 'composer', extensions: ['composer.json', 'composer.lock'], filename: true, format: FileFormat.svg },
     { icon: 'coveralls', extensions: ['.coveralls.yml'], filename: true, format: FileFormat.svg },
