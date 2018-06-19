@@ -1,6 +1,6 @@
 # Change Log
 
-## Next (June, 2018)
+## 7.24.0 (June 19, 2018)
 
 - Enhancement: Associated `plist` with `config` icon. ([@JimiC](https://github.com/JimiC) in [#1630](https://github.com/vscode-icons/vscode-icons/pull/1630))
 - Misc: Disable `before_script` step in docker stages. ([@JimiC](https://github.com/JimiC) in [#1629](https://github.com/vscode-icons/vscode-icons/pull/1629))
