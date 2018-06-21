@@ -46,8 +46,8 @@ jobs:
       os: linux
       node_js: 7.9.0
       before_script: npm i vsce --no-save
-      script: npm run build
-      after_success: vsce publish -p $VSCE_TOKEN
+      script: vsce publish -p $VSCE_TOKEN
+      after_success:
 
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
