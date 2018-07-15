@@ -1,14 +1,13 @@
 import { IExtensionSettings } from './extensionSettings';
 
 export interface ISettings {
-  vscodeAppData: string; // path to the vscode app data folder
-  workspacePath: string[]; // path to the workspace folders or root folder
+  vscodeAppUserPath: string; // path to the vscode app user directory
+  workspacePath: string[]; // path to the workspace or root directory
   isWin: boolean;
   isInsiders: boolean;
   isOSS: boolean;
   isDev: boolean;
-  extensionFolder: string; // path to the extension folder
-  settingsPath: string; // path to the app's settings file
+  settingsFilePath: string; // path to the app's settings file
   vscodeVersion: string; // version number of vscode
   extensionSettings: IExtensionSettings;
 }

@@ -3,6 +3,7 @@ import * as semver from 'semver';
 import { vscodePath as getAppPath, parseJSON, pathUnixJoin } from '../utils';
 import { ISettings, IState, IVSCode, ISettingsManager, ExtensionStatus } from '../models';
 import { extensionSettings } from './extensionSettings';
+import { constants } from '../constants';
 
 export class SettingsManager implements ISettingsManager {
   private settings: ISettings;
@@ -18,24 +19,27 @@ export class SettingsManager implements ISettingsManager {
     const isInsiders = /insiders/i.test(this.vscode.env.appName);
     const vscodeVersion = new semver.SemVer(this.vscode.version).version;
     const isWin = /^win/.test(process.platform);
-    const homeDir = isWin ? 'USERPROFILE' : 'HOME';
-    const extensionFolder = pathUnixJoin(homeDir, isInsiders
-      ? '.vscode-insiders'
-      : '.vscode', 'extensions');
-    const vscodeAppName = isInsiders ? 'Code - Insiders' : isOSS ? 'Code - OSS' : isDev ? 'code-oss-dev' : 'Code';
-    const appPath = getAppPath();
-    const vscodeAppData = pathUnixJoin(appPath, vscodeAppName, 'User');
+    const vscodeAppName = process.env.VSCODE_PORTABLE
+      ? 'user-data'
+      : isInsiders
+        ? 'Code - Insiders'
+        : isOSS
+          ? 'Code - OSS'
+          : isDev
+            ? 'code-oss-dev'
+            : 'Code';
+    const appPath = process.env.VSCODE_PORTABLE || getAppPath();
+    const vscodeAppUserPath = pathUnixJoin(appPath, vscodeAppName, 'User');
     const workspacePath = this.getWorkspacePath();
 
     this.settings = {
-      vscodeAppData,
+      vscodeAppUserPath,
       workspacePath,
       isWin,
       isInsiders,
       isOSS,
       isDev,
-      extensionFolder,
-      settingsPath: pathUnixJoin(vscodeAppData, 'vsicons.settings.json'),
+      settingsFilePath: pathUnixJoin(vscodeAppUserPath, constants.extensionSettingsFilename),
       vscodeVersion,
       extensionSettings,
     };
@@ -61,11 +65,11 @@ export class SettingsManager implements ISettingsManager {
       status: ExtensionStatus.notActivated,
       welcomeShown: false,
     };
-    if (!fs.existsSync(this.settings.settingsPath)) {
+    if (!fs.existsSync(this.settings.settingsFilePath)) {
       return defaultState;
     }
     try {
-      const state = fs.readFileSync(this.settings.settingsPath, 'utf8');
+      const state = fs.readFileSync(this.settings.settingsFilePath, 'utf8');
       return (parseJSON(state) as IState) || defaultState;
     } catch (error) {
       console.error(error);
@@ -74,7 +78,7 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public setState(state: IState): void {
-    fs.writeFileSync(this.settings.settingsPath, JSON.stringify(state));
+    fs.writeFileSync(this.settings.settingsFilePath, JSON.stringify(state));
   }
 
   public updateStatus(sts?: ExtensionStatus): IState {
@@ -87,7 +91,7 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public deleteState() {
-    fs.unlinkSync(this.settings.settingsPath);
+    fs.unlinkSync(this.settings.settingsFilePath);
   }
 
   public isNewVersion(): boolean {

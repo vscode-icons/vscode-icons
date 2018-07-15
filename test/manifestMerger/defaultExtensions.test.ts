@@ -29,7 +29,7 @@ describe('DefaultExtensions: merging configuration documents', function () {
 
   beforeEach(() => {
     iconGenerator = new IconGenerator(utils.vscode, schema);
-    iconGenerator.settings.vscodeAppData = tempFolderPath;
+    iconGenerator.settings.vscodeAppUserPath = tempFolderPath;
   });
 
   afterEach(() => {

@@ -16,7 +16,7 @@ export function pathUnixJoin(...paths: string[]): string {
 export function vscodePath(): string {
   switch (process.platform) {
     case 'darwin':
-      return `${process.env.HOME}/Library/Application Support`;
+      return `${os.homedir()}/Library/Application Support`;
     case 'linux':
       return `${os.homedir()}/.config`;
     case 'win32':
