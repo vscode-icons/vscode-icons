@@ -1,13 +1,36 @@
-import { readFile, writeFile, unlink } from 'fs';
+import { existsSync, readFile, writeFile, unlink } from 'fs';
 import { constants } from '../constants';
 import { vscodePath as getAppPath, parseJSON, pathUnixJoin } from '../utils';
 
 export function getAppUserPath(dirPath: string): string {
-  const isDev = /oss-dev/i.test(dirPath);
-  const isOSS = !isDev && /oss/i.test(dirPath);
-  const isInsiders = /insiders/i.test(dirPath);
-  const vscodeAppName = isInsiders ? 'Code - Insiders' : isOSS ? 'Code - OSS' : isDev ? 'code-oss-dev' : 'Code';
-  return pathUnixJoin(getAppPath(), vscodeAppName, 'User');
+  const vscodeAppName = /[\\|/]\.vscode-oss-dev/i.test(dirPath)
+    ? 'code-oss-dev'
+    : /[\\|/]\.vscode-oss/i.test(dirPath)
+      ? 'Code - OSS'
+      : /[\\|/]\.vscode-insiders/i.test(dirPath)
+        ? 'Code - Insiders'
+        : /[\\|/]\.vscode/i.test(dirPath)
+          ? 'Code'
+          : 'user-data';
+  // workaround until `process.env.VSCODE_PORTABLE` gets available
+  const vscodePortable = () => {
+    if (vscodeAppName !== 'user-data') {
+      return undefined;
+    }
+    let dataDir: string;
+    switch (process.platform) {
+      case 'darwin':
+        const isInsiders = existsSync(pathUnixJoin(process.env.VSCODE_CWD, 'code-insiders-portable-data'));
+        dataDir = `code-${isInsiders ? 'insiders-' : ''}portable-data`;
+        break;
+      default:
+        dataDir = 'data';
+        break;
+    }
+    return pathUnixJoin(process.env.VSCODE_CWD, dataDir);
+  };
+  const appPath = process.env.VSCODE_PORTABLE || vscodePortable() || getAppPath();
+  return pathUnixJoin(appPath, vscodeAppName, 'User');
 }
 
 export function removeVSIconsSettings(settings: {}): void {
@@ -19,7 +42,7 @@ export function removeVSIconsSettings(settings: {}): void {
 
 export function resetThemeSetting(settings: {}): void {
   if (settings[constants.vscode.iconThemeSetting] === constants.extensionName) {
-    settings[constants.vscode.iconThemeSetting] = null;
+    delete settings[constants.vscode.iconThemeSetting];
   }
 }
 
@@ -47,6 +70,7 @@ export function cleanUpVSCodeSettings(): void {
 }
 
 export function cleanUpVSIconsSettings(): void {
-  unlink(pathUnixJoin(getAppUserPath(__dirname), 'vsicons.settings.json'),
-    err => console.error(err));
+  const extensionSettingsFilePath = pathUnixJoin(getAppUserPath(__dirname),
+    constants.extensionSettingsFilename);
+  unlink(extensionSettingsFilePath, err => console.error(err));
 }

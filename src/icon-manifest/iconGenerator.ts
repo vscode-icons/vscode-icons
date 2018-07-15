@@ -81,7 +81,7 @@ export class IconGenerator implements models.IIconGenerator {
   }
 
   public getCustomIconFolderPath(folderPath: string): string {
-    if (!folderPath) { return this.settings.vscodeAppData; }
+    if (!folderPath) { return this.settings.vscodeAppUserPath; }
 
     const fPath = folderPath.trim();
     if (path.isAbsolute(fPath) || !this.settings.workspacePath || !this.settings.workspacePath.length) {

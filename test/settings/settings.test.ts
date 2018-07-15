@@ -23,44 +23,14 @@ describe('SettingsManager: tests', function () {
           expect(settingsAgain).to.be.deep.equal(settings);
         });
 
-      context('sets the \'Home Directory\' to', function () {
-
-        let env: any;
-        let originalPlatform: any;
-
-        beforeEach(() => {
-          env = { ...process.env };
-          originalPlatform = process.platform;
+      it('detects correctly if it is in portable mode',
+        function () {
+          const sandbox = sinon.createSandbox()
+            .stub(process, 'env').value({ VSCODE_PORTABLE: '/PathToPortableInstallationDir/data' });
+          const settings = new SettingsManager(vscode).getSettings();
+          expect(settings.vscodeAppUserPath).to.match(/user-data/);
+          sandbox.restore();
         });
-
-        afterEach(() => {
-          process.env = env;
-          Object.defineProperty(process, 'platform', { value: originalPlatform });
-        });
-
-        it('\'USERPROFILE\' for win32 (windows)',
-          function () {
-            process.env.APPDATA = 'C:\Users\User\AppData\Roaming';
-            Object.defineProperty(process, 'platform', { value: 'win32' });
-            const settings = new SettingsManager(vscode).getSettings();
-            expect(settings.extensionFolder).to.include('USERPROFILE');
-          });
-
-        it('\'HOME\' for darwin (macOS)',
-          function () {
-            Object.defineProperty(process, 'platform', { value: 'darwin' });
-            const settings = new SettingsManager(vscode).getSettings();
-            expect(settings.extensionFolder).to.include('HOME');
-          });
-
-        it('\'HOME\' for linux',
-          function () {
-            Object.defineProperty(process, 'platform', { value: 'linux' });
-            const settings = new SettingsManager(vscode).getSettings();
-            expect(settings.extensionFolder).to.include('HOME');
-          });
-
-      });
 
       context('returns the correct name when application is the', function () {
 
@@ -69,6 +39,8 @@ describe('SettingsManager: tests', function () {
             vscode.env.appName = 'Visual Studio Code - Insiders';
             const settings = new SettingsManager(vscode).getSettings();
             expect(settings.isInsiders).to.be.true;
+            expect(settings.isOSS).to.be.false;
+            expect(settings.isDev).to.be.false;
           });
 
         it('\'Code\'',
@@ -84,13 +56,17 @@ describe('SettingsManager: tests', function () {
           function () {
             vscode.env.appName = 'VSCode OSS';
             const settings = new SettingsManager(vscode).getSettings();
+            expect(settings.isInsiders).to.be.false;
             expect(settings.isOSS).to.be.true;
+            expect(settings.isDev).to.be.false;
           });
 
         it('\'Code - OSS Dev\'',
           function () {
             vscode.env.appName = 'VSCode OSS Dev';
             const settings = new SettingsManager(vscode).getSettings();
+            expect(settings.isInsiders).to.be.false;
+            expect(settings.isOSS).to.be.false;
             expect(settings.isDev).to.be.true;
           });
 
@@ -111,8 +87,8 @@ describe('SettingsManager: tests', function () {
       it('the workspace folders when \'workspaceFolders\' is supported',
         function () {
           const paths = ['/path/to/workspace/folder1/root', '/path/to/workspace/folder2/root'];
-          const workspaceFolder: any = { uri: {fsPath: paths[0]}};
-          const workspaceFolder1: any = { uri: {fsPath: paths[1]}};
+          const workspaceFolder: any = { uri: { fsPath: paths[0] } };
+          const workspaceFolder1: any = { uri: { fsPath: paths[1] } };
           vscode.workspace.workspaceFolders = [workspaceFolder, workspaceFolder1];
           const result = new SettingsManager(vscode).getWorkspacePath();
           expect(result).to.be.an('array').with.members(paths);
@@ -127,6 +103,7 @@ describe('SettingsManager: tests', function () {
         });
 
     });
+
   });
 
   context('ensures that', function () {

@@ -1,5 +1,6 @@
 export const constants = {
   extensionName: 'vscode-icons',
+  extensionSettingsFilename: 'vsicons.settings.json',
   vscode: {
     iconThemeSetting: 'workbench.iconTheme',
     reloadWindowActionSetting: 'workbench.action.reloadWindow',

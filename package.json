@@ -34,15 +34,14 @@
         "node": ">=6.5.0"
     },
     "categories": [
-        "Other",
         "Themes"
     ],
     "keywords": [
-        "icon-theme",
-        "theme",
         "icons",
-        "vscode-icons",
-        "multi-root ready"
+        "theme",
+        "icon-theme",
+        "multi-root ready",
+        "portable mode ready"
     ],
     "preview": false,
     "homepage": "https://github.com/vscode-icons/vscode-icons",

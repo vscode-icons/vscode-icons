@@ -13,9 +13,11 @@ describe('CleanUp: tests', function () {
   context('ensures that', function () {
 
     let sandbox: sinon.SinonSandbox;
+    let envStub: sinon.SinonStub;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
+      envStub = sandbox.stub(process, 'env');
     });
 
     afterEach(() => {
@@ -40,9 +42,18 @@ describe('CleanUp: tests', function () {
             appPath = '/var/local';
             dirPath = `${appPath}/%appDir%/extensions`;
             platformStub.value('free-bsd');
+            envStub.value({ VSCODE_CWD: '/VSCode/Path/Insiders/To/OSS/Installation/Dev/Dir' });
           });
 
           context('and extension\'s installed directory is', function () {
+
+            it('in portable mode',
+              function () {
+                dirPath = dirPath.replace('%appDir%', 'data');
+                const userPath = utils.pathUnixJoin(process.env.VSCODE_CWD, 'data', 'user-data', 'User');
+                expect(process.platform).to.be.equal('free-bsd');
+                expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
+              });
 
             it('\'.vscode\'',
               function () {
@@ -87,9 +98,18 @@ describe('CleanUp: tests', function () {
             appPath = `${os.homedir()}/.config`;
             dirPath = `${os.homedir()}/%appDir%/extensions`;
             platformStub.value('linux');
+            envStub.value({ VSCODE_CWD: '/VSCode/Path/Insiders/To/OSS/Installation/Dev/Dir' });
           });
 
           context('and extension\'s installed directory is', function () {
+
+            it('in portable mode',
+              function () {
+                dirPath = dirPath.replace('%appDir%', 'data');
+                const userPath = utils.pathUnixJoin(process.env.VSCODE_CWD, 'data', 'user-data', 'User');
+                expect(process.platform).to.be.equal('linux');
+                expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
+              });
 
             it('\'.vscode\'',
               function () {
@@ -130,13 +150,39 @@ describe('CleanUp: tests', function () {
         context('darwin (macOS)', function () {
 
           beforeEach(() => {
-            sandbox.stub(process, 'env').value({ HOME: '/Users/User' });
-            appPath = `${process.env.HOME}/Library/Application Support`;
-            dirPath = `${process.env.HOME}/%appDir%/extensions`;
+            sandbox.stub(os, 'homedir').returns('/Users/User');
+            appPath = `${os.homedir()}/Library/Application Support`;
+            dirPath = `${os.homedir()}/%appDir%/extensions`;
             platformStub.value('darwin');
+            envStub.value({ VSCODE_CWD: '/VSCode/Path/Insiders/To/OSS/Installation/Dev/Dir' });
           });
 
           context('and extension\'s installed directory is', function () {
+
+            context('in portable mode', function () {
+
+              it('of \'vscode\'',
+                function () {
+                  dirPath = dirPath.replace('%appDir%', 'data');
+                  const userPath = utils
+                    .pathUnixJoin(process.env.VSCODE_CWD, 'code-portable-data', 'user-data', 'User');
+                  expect(process.platform).to.be.equal('darwin');
+                  expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
+                });
+
+              it('of \'vscode-insiders\'',
+                function () {
+                  sandbox.stub(process, 'env')
+                    .value({ VSCODE_CWD: '/VSCode/Path/Insiders/To/OSS/Portable/Dev/Installation/Dir' });
+                  sandbox.stub(fs, 'existsSync').returns(true);
+                  dirPath = dirPath.replace('%appDir%', 'data');
+                  const userPath = utils
+                    .pathUnixJoin(process.env.VSCODE_CWD, 'code-insiders-portable-data', 'user-data', 'User');
+                  expect(process.platform).to.be.equal('darwin');
+                  expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
+                });
+
+            });
 
             it('\'.vscode\'',
               function () {
@@ -177,12 +223,23 @@ describe('CleanUp: tests', function () {
         context('win32 (windows)', function () {
 
           beforeEach(() => {
-            sandbox.stub(process, 'env').value({ APPDATA: 'C:\\Users\\User\\AppData\\Roaming' });
             dirPath = 'C:\\Users\\User\\%appDir%\\extensions';
             platformStub.value('win32');
+            envStub.value({
+              APPDATA: 'C:\\Users\\User\\AppData\\Roaming',
+              VSCODE_CWD: 'D:\\VSCode\\Path\\Insiders\\To\\OSS\\Installation\\Dev\\Dir',
+            });
           });
 
           context('and extension\'s installed directory is', function () {
+
+            it('in portable mode',
+              function () {
+                dirPath = dirPath.replace('%appDir%', 'data');
+                const userPath = utils.pathUnixJoin(process.env.VSCODE_CWD, 'data', 'user-data', 'User');
+                expect(process.platform).to.be.equal('win32');
+                expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
+              });
 
             it('\'.vscode\' ',
               function () {
@@ -230,6 +287,7 @@ describe('CleanUp: tests', function () {
 
       beforeEach(() => {
         unlinkStub = sandbox.stub(fs, 'unlink');
+        envStub.value({ VSCODE_CWD: '/VSCode/Path/Insiders/To/OSS/Portable/Dev/Installation/Dir' });
       });
 
       it('deletes the \'vsicons\' settings file',
@@ -256,6 +314,7 @@ describe('CleanUp: tests', function () {
       beforeEach(() => {
         readFileStub = sandbox.stub(fs, 'readFile');
         writeFileStub = sandbox.stub(fs, 'writeFile');
+        envStub.value({ VSCODE_CWD: '/VSCode/Path/Insiders/To/OSS/Portable/Dev/Installation/Dir' });
       });
 
       it('reads the \'vscode\' settings file',
@@ -321,7 +380,7 @@ describe('CleanUp: tests', function () {
       it('to reset the \'iconTheme\' setting, if it was set to \'vscode-icons\'',
         function () {
           cleanUp.resetThemeSetting(settings);
-          expect(settings[constants.vscode.iconThemeSetting]).to.be.null;
+          expect(settings[constants.vscode.iconThemeSetting]).to.be.undefined;
         });
 
       it('to not reset the \'iconTheme\' setting, if it\'s not set to \'vscode-icons\'',

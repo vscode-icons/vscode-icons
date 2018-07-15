@@ -31,7 +31,7 @@ describe('FileExtensions: merging configuration documents', function () {
 
   beforeEach(() => {
     iconGenerator = new IconGenerator(utils.vscode, schema);
-    iconGenerator.settings.vscodeAppData = tempFolderPath;
+    iconGenerator.settings.vscodeAppUserPath = tempFolderPath;
   });
 
   afterEach(() => {
@@ -260,7 +260,7 @@ describe('FileExtensions: merging configuration documents', function () {
           };
 
           iconGenerator = new IconGenerator(utils.vscode, schema, customIconFolderPath);
-          iconGenerator.settings.vscodeAppData = tempFolderPath;
+          iconGenerator.settings.vscodeAppUserPath = tempFolderPath;
 
           const iconName =
             `${extensionSettings.filePrefix}${custom.supported[0].icon}` +
@@ -293,7 +293,7 @@ describe('FileExtensions: merging configuration documents', function () {
           };
 
           iconGenerator = new IconGenerator(utils.vscode, schema, customIconFolderPath, /*avoidCustomDetection*/ true);
-          iconGenerator.settings.vscodeAppData = tempFolderPath;
+          iconGenerator.settings.vscodeAppUserPath = tempFolderPath;
 
           const iconName =
             `${extensionSettings.filePrefix}${custom.supported[0].icon}` +

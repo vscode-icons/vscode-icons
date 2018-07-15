@@ -330,7 +330,7 @@ describe('IconGenerator: functionality test', function () {
       it('uses the app data path when no custom icon folder path is specified', function () {
         const folderPath: string = undefined;
         const customIconFolderPath = iconGenerator.getCustomIconFolderPath(folderPath);
-        expect(customIconFolderPath).to.be.equal(iconGenerator.settings.vscodeAppData);
+        expect(customIconFolderPath).to.be.equal(iconGenerator.settings.vscodeAppUserPath);
       });
 
       it('uses the provided path when a custom icon folder absolute path is specified', function () {
