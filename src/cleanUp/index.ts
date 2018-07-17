@@ -1,6 +1,7 @@
 import { existsSync, readFile, writeFile, unlink } from 'fs';
 import { constants } from '../constants';
 import { vscodePath as getAppPath, parseJSON, pathUnixJoin } from '../utils';
+import { ErrorHandler } from '../errorHandler';
 
 export function getAppUserPath(dirPath: string): string {
   const vscodeAppName = /[\\|/]\.vscode-oss-dev/i.test(dirPath)
@@ -49,11 +50,11 @@ export function resetThemeSetting(settings: {}): void {
 export function cleanUpVSCodeSettings(): void {
   const saveSettings = content => {
     const settings = JSON.stringify(content, null, 4);
-    writeFile(settingsFilePath, settings, err => console.error(err));
+    writeFile(settingsFilePath, settings, error => ErrorHandler.LogError(error));
   };
-  const cleanUpSettings = (err, content) => {
-    if (err) {
-      console.error(err);
+  const cleanUpSettings = (error, content) => {
+    if (error) {
+      ErrorHandler.LogError(error, true);
       return;
     }
     const settings = parseJSON(content);
@@ -72,5 +73,5 @@ export function cleanUpVSCodeSettings(): void {
 export function cleanUpVSIconsSettings(): void {
   const extensionSettingsFilePath = pathUnixJoin(getAppUserPath(__dirname),
     constants.extensionSettingsFilename);
-  unlink(extensionSettingsFilePath, err => console.error(err));
+  unlink(extensionSettingsFilePath, error => ErrorHandler.LogError(error));
 }
