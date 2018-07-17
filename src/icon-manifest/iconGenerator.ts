@@ -5,6 +5,7 @@ import { SettingsManager } from '../settings';
 import * as utils from '../utils';
 import * as models from '../models';
 import * as packageJson from '../../../package.json';
+import { ErrorHandler } from '../errorHandler';
 
 export class IconGenerator implements models.IIconGenerator {
   public settings: models.ISettings;
@@ -125,7 +126,7 @@ export class IconGenerator implements models.IIconGenerator {
       // tslint:disable-next-line no-console
       console.info('Icons manifest file successfully generated!');
     } catch (error) {
-      console.error('Something went wrong while generating the icon manifest file.\nReason: ', error);
+      ErrorHandler.LogError(error);
     }
   }
 
@@ -142,8 +143,8 @@ export class IconGenerator implements models.IIconGenerator {
       fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
       // tslint:disable-next-line no-console
       console.info('package.json updated');
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      ErrorHandler.LogError(error);
     }
   }
 
@@ -219,10 +220,10 @@ export class IconGenerator implements models.IIconGenerator {
 
         return old;
       }, {
-        defs: {},
-        names: { folderNames: {}, folderNamesExpanded: {} },
-        light: { folderNames: {}, folderNamesExpanded: {} },
-      });
+          defs: {},
+          names: { folderNames: {}, folderNamesExpanded: {} },
+          light: { folderNames: {}, folderNamesExpanded: {} },
+        });
   }
 
   private buildFiles(
@@ -310,11 +311,11 @@ export class IconGenerator implements models.IIconGenerator {
 
         return old;
       }, {
-        defs: {},
-        names: { fileExtensions: {}, fileNames: {} },
-        light: { fileExtensions: {}, fileNames: {}, languageIds: {} },
-        languageIds: {},
-      });
+          defs: {},
+          names: { fileExtensions: {}, fileNames: {} },
+          light: { fileExtensions: {}, fileNames: {}, languageIds: {} },
+          languageIds: {},
+        });
   }
 
   private buildDefaultIconPath(

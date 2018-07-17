@@ -4,6 +4,7 @@ import { vscodePath as getAppPath, parseJSON, pathUnixJoin } from '../utils';
 import { ISettings, IState, IVSCode, ISettingsManager, ExtensionStatus } from '../models';
 import { extensionSettings } from './extensionSettings';
 import { constants } from '../constants';
+import { ErrorHandler } from '../errorHandler';
 
 export class SettingsManager implements ISettingsManager {
   private settings: ISettings;
@@ -72,13 +73,17 @@ export class SettingsManager implements ISettingsManager {
       const state = fs.readFileSync(this.settings.settingsFilePath, 'utf8');
       return (parseJSON(state) as IState) || defaultState;
     } catch (error) {
-      console.error(error);
+      ErrorHandler.LogError(error, true);
       return defaultState;
     }
   }
 
   public setState(state: IState): void {
-    fs.writeFileSync(this.settings.settingsFilePath, JSON.stringify(state));
+    try {
+      fs.writeFileSync(this.settings.settingsFilePath, JSON.stringify(state));
+    } catch (error) {
+      ErrorHandler.LogError(error);
+    }
   }
 
   public updateStatus(sts?: ExtensionStatus): IState {
