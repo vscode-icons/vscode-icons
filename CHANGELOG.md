@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.25.0 (August 1, 2018)
+
+- Feature: Added support for `WebAssembly`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1663](https://github.com/vscode-icons/vscode-icons/pull/1663))
+- Enhancement: Improved error handling. ([@JimiC](https://github.com/JimiC) in [#1652](https://github.com/vscode-icons/vscode-icons/pull/1652))
+- Feature: Added support for `protable mode`. ([@JimiC](https://github.com/JimiC) in [#1651](https://github.com/vscode-icons/vscode-icons/pull/1651))
+
 ## 7.24.0 (June 20, 2018)
 
 - Enhancement: Associated `plist` with `config` icon. ([@JimiC](https://github.com/JimiC) in [#1630](https://github.com/vscode-icons/vscode-icons/pull/1630))
