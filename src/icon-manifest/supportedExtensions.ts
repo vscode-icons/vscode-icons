@@ -604,6 +604,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'watchmanconfig', extensions: ['.watchmanconfig'], filename: true, format: FileFormat.svg },
+    { icon: 'wasm', extensions: ['wasm'], languages: [languages.wasm, languages.wat], format: FileFormat.svg },
     {
       icon: 'webpack',
       extensions: [],

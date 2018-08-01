@@ -155,6 +155,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   viml: ILanguage;
   volt: ILanguage;
   vue: ILanguage;
+  wasm: ILanguage;
+  wat: ILanguage;
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;
