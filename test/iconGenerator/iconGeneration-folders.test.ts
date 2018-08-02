@@ -58,7 +58,7 @@ describe('IconGenerator: folders icon generation test', function() {
         ).not.to.be.equal('');
       });
 
-      context("if a default 'light' icon is NOT defined", function() {
+      context(`if a default 'light' icon is NOT defined`, function() {
         context('each supported', function() {
           const iconsFolderPath = path.join(__dirname, '../../../icons');
 
@@ -192,7 +192,7 @@ describe('IconGenerator: folders icon generation test', function() {
                   });
               });
 
-              it("has a 'light' definition", function() {
+              it(`has a 'light' definition`, function() {
                 folders.supported
                   .filter(folder => folder.light && !folder.disabled)
                   .forEach(folder => {
@@ -204,7 +204,7 @@ describe('IconGenerator: folders icon generation test', function() {
                   });
               });
 
-              it("has a open 'light' definition", function() {
+              it(`has a open 'light' definition`, function() {
                 folders.supported
                   .filter(folder => folder.light && !folder.disabled)
                   .forEach(folder => {
@@ -242,7 +242,7 @@ describe('IconGenerator: folders icon generation test', function() {
                   });
               });
 
-              it("has a folder name referencing its 'light' definition", function() {
+              it(`has a folder name referencing its 'light' definition`, function() {
                 folders.supported
                   .filter(folder => folder.light && !folder.disabled)
                   .forEach(folder => {
@@ -257,7 +257,7 @@ describe('IconGenerator: folders icon generation test', function() {
                   });
               });
 
-              it("has a folder name expanded referencing its open 'light' definition", function() {
+              it(`has a folder name expanded referencing its open 'light' definition`, function() {
                 folders.supported
                   .filter(folder => folder.light && !folder.disabled)
                   .forEach(folder => {
@@ -277,7 +277,7 @@ describe('IconGenerator: folders icon generation test', function() {
       });
     });
 
-    context("if a default 'light' icon is defined", function() {
+    context(`if a default 'light' icon is defined`, function() {
       context('each supported', function() {
         context('folder that has not a light theme version', function() {
           let schema: IIconSchema;
@@ -298,7 +298,7 @@ describe('IconGenerator: folders icon generation test', function() {
           context(
             'if a default folder icon for light theme is specified',
             function() {
-              it("has a 'light' definition", function() {
+              it(`has a 'light' definition`, function() {
                 folders.supported
                   .filter(folder => !folder.light && !folder.disabled)
                   .forEach(folder => {
@@ -330,7 +330,7 @@ describe('IconGenerator: folders icon generation test', function() {
           context(
             'if a default folder open icon for light theme is specified',
             function() {
-              it("has an open 'light' definition", function() {
+              it(`has an open 'light' definition`, function() {
                 folders.supported
                   .filter(folder => !folder.light && !folder.disabled)
                   .forEach(folder => {

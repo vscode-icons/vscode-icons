@@ -259,7 +259,7 @@
         "pretty-quick": "^1.6.0",
         "rimraf": "^2.6.2",
         "sinon": "^6.0.0",
-        "tslint": "^5.10.0",
+        "tslint": "^5.11.0",
         "typescript": "^2.9.1",
         "vscode": "^1.1.18"
     },

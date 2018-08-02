@@ -212,7 +212,7 @@ describe('IconGenerator: functionality test', function() {
         ).to.throw(Error, /iconsFilename not defined./);
       });
 
-      it("calls the 'updatePackageJson' function when said to", function() {
+      it(`calls the 'updatePackageJson' function when said to`, function() {
         sandbox.stub(utils, 'getRelativePath').returns('.');
         const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
         const updatePackageJson = sandbox.stub(
@@ -224,7 +224,7 @@ describe('IconGenerator: functionality test', function() {
         expect(updatePackageJson.called).to.be.true;
       });
 
-      it("doesn't call the 'updatePackageJson' function when said not to", function() {
+      it(`doesn't call the 'updatePackageJson' function when said not to`, function() {
         const writeJsonToFile = sandbox.stub(iconGenerator, 'writeJsonToFile');
         const updatePackageJson = sandbox.stub(
           iconGenerator,
@@ -235,7 +235,7 @@ describe('IconGenerator: functionality test', function() {
         expect(updatePackageJson.called).to.be.false;
       });
 
-      context("function 'updatePackageJson'", function() {
+      context(`function 'updatePackageJson'`, function() {
         it('logs an error if something goes wrong', function() {
           sandbox.stub(utils, 'getRelativePath').returns('.');
           sandbox.stub(iconGenerator, 'writeJsonToFile');
@@ -247,7 +247,7 @@ describe('IconGenerator: functionality test', function() {
         });
 
         context(
-          "updates the icon theme path in the 'package.json' file",
+          `updates the icon theme path in the 'package.json' file`,
           function() {
             it('if the icons folder path has changed', function() {
               sandbox.stub(utils, 'getRelativePath').returns('.');
@@ -266,7 +266,7 @@ describe('IconGenerator: functionality test', function() {
         );
 
         context(
-          "does not update the icon theme path in the 'package.json' file",
+          `does not update the icon theme path in the 'package.json' file`,
           function() {
             it('if the icons folder path has not changed', function() {
               sandbox.stub(utils, 'getRelativePath').returns('.');

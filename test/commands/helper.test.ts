@@ -6,12 +6,12 @@ import { IIconSchema, IconNames, PresetNames } from '../../src/models';
 
 describe('Helper: tests', function() {
   context('ensures that', function() {
-    it("function 'isFoldersRelated' returns proper state", function() {
+    it(`function 'isFoldersRelated' returns proper state`, function() {
       expect(helper.isFoldersRelated(PresetNames.hideFolders)).to.be.true;
       expect(helper.isFoldersRelated(PresetNames.jsOfficial)).to.be.false;
     });
 
-    it("function 'isNonIconsRelatedPreset' returns proper state", function() {
+    it(`function 'isNonIconsRelatedPreset' returns proper state`, function() {
       expect(
         helper.isNonIconsRelatedPreset(PresetNames.hideExplorerArrows),
       ).to.be.true;
@@ -20,7 +20,7 @@ describe('Helper: tests', function() {
       ).to.be.false;
     });
 
-    context("function 'getIconName'", function() {
+    context(`function 'getIconName'`, function() {
       it('throws an Error if a preset is not covered', function() {
         expect(helper.getIconName.bind(helper)).to.throw(
           Error,
@@ -44,7 +44,7 @@ describe('Helper: tests', function() {
       });
     });
 
-    context("function 'getFunc'", function() {
+    context(`function 'getFunc'`, function() {
       let iconsJson: IIconSchema;
 
       beforeEach(() => {
@@ -92,20 +92,20 @@ describe('Helper: tests', function() {
         ).to.throw(Error, /Not Implemented/);
       });
 
-      it("return 'true' when folder icons are hidden", function() {
+      it(`return 'true' when folder icons are hidden`, function() {
         const func = helper.getFunc(PresetNames[PresetNames.hideFolders]);
         expect(func).to.be.instanceof(Function);
         expect(func(iconsJson)).to.be.true;
       });
 
-      it("return 'false' when folder icons are visible", function() {
+      it(`return 'false' when folder icons are visible`, function() {
         iconsJson.folderNames = { _fd_folderName: '' };
         const func = helper.getFunc(PresetNames[PresetNames.hideFolders]);
         expect(func).to.be.instanceof(Function);
         expect(func(iconsJson)).to.be.false;
       });
 
-      it("return 'true' when specific folder icons are disabled", function() {
+      it(`return 'true' when specific folder icons are disabled`, function() {
         iconsJson.iconDefinitions._folder.iconPath = 'pathToDefaultFolderIcon';
         const func = helper.getFunc(
           PresetNames[PresetNames.foldersAllDefaultIcon],
@@ -114,7 +114,7 @@ describe('Helper: tests', function() {
         expect(func(iconsJson)).to.be.true;
       });
 
-      it("return 'false' when specific folder icons are enabled", function() {
+      it(`return 'false' when specific folder icons are enabled`, function() {
         iconsJson.folderNames = { _fd_folderName: '' };
         iconsJson.iconDefinitions._folder.iconPath = 'pathToDefaultFolderIcon';
         const func = helper.getFunc(

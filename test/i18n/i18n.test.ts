@@ -181,7 +181,7 @@ describe('I18n: tests', function() {
       });
 
       it('a literal string with punctuation marks', function() {
-        const literalString = "test's can often fail. Or do they?";
+        const literalString = `test's can often fail. Or do they?`;
         const msg = new LanguageResourceManager(
           'en',
           resourceCollection,

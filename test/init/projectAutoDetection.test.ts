@@ -40,7 +40,7 @@ describe('AutoDetectProject: tests', function() {
         };
       });
 
-      it("returns a rejection when searching for a 'package.json' fails", function() {
+      it(`returns a rejection when searching for a 'package.json' fails`, function() {
         const reason = new Error('failure');
         const findFiles = sinon.stub().rejects(reason);
         return pad.detectProject(findFiles, userConfig).then(null, rej =>
@@ -50,7 +50,8 @@ describe('AutoDetectProject: tests', function() {
         );
       });
 
-      it("detects a sub project when detection is enabled and has detected a 'package.json' file in a sub folder", function() {
+      // tslint:disable-next-line:max-line-length
+      it(`detects a sub project when detection is enabled and has detected a 'package.json' file in a sub folder`, function() {
         const path1 = 'package.json';
         const path2 = 'f1/f2/f3/package.json';
         const findFiles = sinon
@@ -296,7 +297,7 @@ describe('AutoDetectProject: tests', function() {
       });
 
       context('detect a project when detection is enabled', function() {
-        it("but it has not detected a 'package.json' file", function() {
+        it(`but it has not detected a 'package.json' file`, function() {
           const findFiles = sinon.stub().resolves([]);
           userConfig.projectDetection.disableDetect = false;
           return pad.detectProject(findFiles, userConfig).then(res =>
@@ -306,7 +307,7 @@ describe('AutoDetectProject: tests', function() {
           );
         });
 
-        it("and has detected a 'package.json' file", function() {
+        it(`and has detected a 'package.json' file`, function() {
           const path = 'package.json';
           const findFiles = sinon
             .stub()

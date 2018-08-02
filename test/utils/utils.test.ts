@@ -9,7 +9,7 @@ import * as utils from '../../src/utils';
 describe('Utils: tests', function() {
   context('ensures that', function() {
     context(
-      "the correct 'vscode' path gets returned when the process platform is",
+      `the correct 'vscode' path gets returned when the process platform is`,
       function() {
         let env: any;
         let originalPlatform: any;
@@ -54,7 +54,7 @@ describe('Utils: tests', function() {
       },
     );
 
-    context("the 'createDirectoryRecursivelySync' function", function() {
+    context(`the 'createDirectoryRecursivelySync' function`, function() {
       it('creates a directory and all subdirectories synchronously', function() {
         const testCase = (directoryPath: string, expectedCounts: number) => {
           const sandbox = sinon.createSandbox();
@@ -78,7 +78,7 @@ describe('Utils: tests', function() {
       });
     });
 
-    context("the 'deleteDirectoryRecursivelySync' function", function() {
+    context(`the 'deleteDirectoryRecursivelySync' function`, function() {
       it('deletes a directory and all subdirectories synchronously', function() {
         const directoryPath = '/path/to';
         const sandbox = sinon.createSandbox();
@@ -106,7 +106,7 @@ describe('Utils: tests', function() {
       });
     });
 
-    context("the 'parseJSON' function", function() {
+    context(`the 'parseJSON' function`, function() {
       it('returns an object when parsing succeeds', function() {
         const json = utils.parseJSON('{"test": "test"}');
         expect(json).to.be.instanceOf(Object);
@@ -114,12 +114,12 @@ describe('Utils: tests', function() {
         expect(json['test']).to.be.equal('test');
       });
 
-      it("returns 'null' when parsing fails", function() {
+      it(`returns 'null' when parsing fails`, function() {
         expect(utils.parseJSON('test')).to.be.null;
       });
     });
 
-    context("the 'getRelativePath' function", function() {
+    context(`the 'getRelativePath' function`, function() {
       it(
         'does not throw an Error, ' +
           'if the destination directory does not exists and a directory check should not be done',
@@ -193,13 +193,13 @@ describe('Utils: tests', function() {
       });
     });
 
-    context("the 'removeFirstDot' function", function() {
+    context(`the 'removeFirstDot' function`, function() {
       it('removes the leading dot', function() {
         expect(utils.removeFirstDot('.test')).to.be.equal('test');
       });
     });
 
-    context("the 'overwriteDrive' function", function() {
+    context(`the 'overwriteDrive' function`, function() {
       it('overwrites the drive', function() {
         const sourcePath = 'C:\\path\\to';
         const destPath = 'D:\\path\\to';
@@ -209,7 +209,7 @@ describe('Utils: tests', function() {
       });
     });
 
-    context("the 'getDrives' function returns an", function() {
+    context(`the 'getDrives' function returns an`, function() {
       it('Array of the provided drives', function() {
         const drive1 = 'C:';
         const drive2 = 'D:';
@@ -232,7 +232,7 @@ describe('Utils: tests', function() {
       });
     });
 
-    context("the 'flatten' function", function() {
+    context(`the 'flatten' function`, function() {
       it('converts an object with nested objects to a flat object', function() {
         const obj = {
           I: {
@@ -275,7 +275,7 @@ describe('Utils: tests', function() {
       });
     });
 
-    context("the 'getEnumMember' function", function() {
+    context(`the 'getEnumMember' function`, function() {
       it('returns the enum member', function() {
         const Enum = { angular: 'ng' };
         expect(utils.getEnumMemberByValue(Enum, Enum.angular)).to.be.equal(
@@ -295,7 +295,7 @@ describe('Utils: tests', function() {
       });
     });
 
-    context("the 'combine' function", function() {
+    context(`the 'combine' function`, function() {
       it('returns an array combining the elements of the provided arrays', function() {
         const array1 = ['webpack.base.conf', 'webpack.common'];
         const array2 = ['js', 'coffee', 'ts'];

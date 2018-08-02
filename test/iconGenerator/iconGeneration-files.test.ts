@@ -50,7 +50,7 @@ describe('IconGenerator: files icon generation test', function() {
         expect(schema.iconDefinitions._file.iconPath).not.to.be.empty;
       });
 
-      context("if a default 'light' icon is NOT defined", function() {
+      context(`if a default 'light' icon is NOT defined`, function() {
         context('each supported', function() {
           const iconsFolderPath = path.join(__dirname, '../../../icons');
 
@@ -102,7 +102,7 @@ describe('IconGenerator: files icon generation test', function() {
               });
             });
 
-            it("that has a light theme version, has a 'light' definition", function() {
+            it(`that has a light theme version, has a 'light' definition`, function() {
               const schema = iconGenerator.generateJson(
                 files,
                 emptyFolderCollection,
@@ -154,7 +154,7 @@ describe('IconGenerator: files icon generation test', function() {
 
             it(
               'that is not a filename and has a light theme version, ' +
-                "has a file extension referencing its 'light' definition",
+                `has a file extension referencing its 'light' definition`,
               function() {
                 const schema = iconGenerator.generateJson(
                   files,
@@ -196,7 +196,8 @@ describe('IconGenerator: files icon generation test', function() {
                 });
             });
 
-            it("that is a filename and has a light theme version, has a file name referencing its 'light' definition", function() {
+            // tslint:disable-next-line:max-line-length
+            it(`that is a filename and has a light theme version, has a file name referencing its 'light' definition`, function() {
               const schema = iconGenerator.generateJson(
                 files,
                 emptyFolderCollection,
@@ -246,7 +247,7 @@ describe('IconGenerator: files icon generation test', function() {
 
             it(
               'that is supported by language ids and has a light theme version, ' +
-                "has a language id referencing its 'light' definition",
+                `has a language id referencing its 'light' definition`,
               function() {
                 const schema = iconGenerator.generateJson(
                   files,
@@ -281,11 +282,12 @@ describe('IconGenerator: files icon generation test', function() {
       });
     });
 
-    context("if a default 'light' icon is defined", function() {
+    context(`if a default 'light' icon is defined`, function() {
       context('each supported', function() {
         context('file extension', function() {
           context('that has not a light theme version', function() {
-            it("and is supported by language ids, has a 'light' language id referencing its inherited definition", function() {
+            // tslint:disable-next-line:max-line-length
+            it(`and is supported by language ids, has a 'light' language id referencing its inherited definition`, function() {
               const dSchema: IIconSchema = { ...defaultSchema };
               dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
               const schema = new IconGenerator(vscode, dSchema).generateJson(
@@ -335,7 +337,7 @@ describe('IconGenerator: files icon generation test', function() {
                 });
             });
 
-            it("has a 'light' definition", function() {
+            it(`has a 'light' definition`, function() {
               const dSchema: IIconSchema = { ...defaultSchema };
               dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
               const schema = new IconGenerator(vscode, dSchema).generateJson(

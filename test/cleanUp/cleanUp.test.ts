@@ -22,7 +22,7 @@ describe('CleanUp: tests', function() {
       sandbox.restore();
     });
 
-    context("function 'getAppUserPath' returns the correct path", function() {
+    context(`function 'getAppUserPath' returns the correct path`, function() {
       context(
         'returns the correct path when the process platform is',
         function() {
@@ -44,7 +44,7 @@ describe('CleanUp: tests', function() {
               });
             });
 
-            context("and extension's installed directory is", function() {
+            context(`and extension's installed directory is`, function() {
               it('in portable mode', function() {
                 dirPath = dirPath.replace('%appDir%', 'data');
                 const userPath = utils.pathUnixJoin(
@@ -57,14 +57,14 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.vscode'", function() {
+              it(`'.vscode'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode');
                 const userPath = utils.pathUnixJoin(appPath, 'Code', 'User');
                 expect(process.platform).to.be.equal('free-bsd');
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.vscode-insiders'", function() {
+              it(`'.vscode-insiders'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-insiders');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -75,7 +75,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.code-oss-dev'", function() {
+              it(`'.code-oss-dev'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-oss-dev');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -86,7 +86,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.code-oss'", function() {
+              it(`'.code-oss'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-oss');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -110,7 +110,7 @@ describe('CleanUp: tests', function() {
               });
             });
 
-            context("and extension's installed directory is", function() {
+            context(`and extension's installed directory is`, function() {
               it('in portable mode', function() {
                 dirPath = dirPath.replace('%appDir%', 'data');
                 const userPath = utils.pathUnixJoin(
@@ -123,14 +123,14 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.vscode'", function() {
+              it(`'.vscode'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode');
                 const userPath = utils.pathUnixJoin(appPath, 'Code', 'User');
                 expect(process.platform).to.be.equal('linux');
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.vscode-insiders'", function() {
+              it(`'.vscode-insiders'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-insiders');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -141,7 +141,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.code-oss-dev'", function() {
+              it(`'.code-oss-dev'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-oss-dev');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -152,7 +152,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.code-oss'", function() {
+              it(`'.code-oss'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-oss');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -176,9 +176,9 @@ describe('CleanUp: tests', function() {
               });
             });
 
-            context("and extension's installed directory is", function() {
+            context(`and extension's installed directory is`, function() {
               context('in portable mode', function() {
-                it("of 'vscode'", function() {
+                it(`of 'vscode'`, function() {
                   dirPath = dirPath.replace('%appDir%', 'data');
                   const userPath = utils.pathUnixJoin(
                     process.env.VSCODE_CWD,
@@ -190,13 +190,11 @@ describe('CleanUp: tests', function() {
                   expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
                 });
 
-                it("of 'vscode-insiders'", function() {
-                  sandbox
-                    .stub(process, 'env')
-                    .value({
-                      VSCODE_CWD:
-                        '/VSCode/Path/Insiders/To/OSS/Portable/Dev/Installation/Dir',
-                    });
+                it(`of 'vscode-insiders'`, function() {
+                  sandbox.stub(process, 'env').value({
+                    VSCODE_CWD:
+                      '/VSCode/Path/Insiders/To/OSS/Portable/Dev/Installation/Dir',
+                  });
                   sandbox.stub(fs, 'existsSync').returns(true);
                   dirPath = dirPath.replace('%appDir%', 'data');
                   const userPath = utils.pathUnixJoin(
@@ -210,14 +208,14 @@ describe('CleanUp: tests', function() {
                 });
               });
 
-              it("'.vscode'", function() {
+              it(`'.vscode'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode');
                 const userPath = utils.pathUnixJoin(appPath, 'Code', 'User');
                 expect(process.platform).to.be.equal('darwin');
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.vscode-insiders'", function() {
+              it(`'.vscode-insiders'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-insiders');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -228,7 +226,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.code-oss-dev'", function() {
+              it(`'.code-oss-dev'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-oss-dev');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -239,7 +237,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.code-oss'", function() {
+              it(`'.code-oss'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-oss');
                 const userPath = utils.pathUnixJoin(
                   appPath,
@@ -263,7 +261,7 @@ describe('CleanUp: tests', function() {
               });
             });
 
-            context("and extension's installed directory is", function() {
+            context(`and extension's installed directory is`, function() {
               it('in portable mode', function() {
                 dirPath = dirPath.replace('%appDir%', 'data');
                 const userPath = utils.pathUnixJoin(
@@ -276,7 +274,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.vscode' ", function() {
+              it(`'.vscode' `, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode');
                 const userPath = utils.pathUnixJoin(
                   process.env.APPDATA,
@@ -287,7 +285,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.vscode-insiders'", function() {
+              it(`'.vscode-insiders'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-insiders');
                 const userPath = utils.pathUnixJoin(
                   process.env.APPDATA,
@@ -298,7 +296,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.code-oss-dev'", function() {
+              it(`'.code-oss-dev'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-oss-dev');
                 const userPath = utils.pathUnixJoin(
                   process.env.APPDATA,
@@ -309,7 +307,7 @@ describe('CleanUp: tests', function() {
                 expect(cleanUp.getAppUserPath(dirPath)).to.be.equal(userPath);
               });
 
-              it("'.code-oss'", function() {
+              it(`'.code-oss'`, function() {
                 dirPath = dirPath.replace('%appDir%', '.vscode-oss');
                 const userPath = utils.pathUnixJoin(
                   process.env.APPDATA,
@@ -325,7 +323,7 @@ describe('CleanUp: tests', function() {
       );
     });
 
-    context("function 'cleanUpVSIconsSettings'", function() {
+    context(`function 'cleanUpVSIconsSettings'`, function() {
       let unlinkStub: sinon.SinonStub;
 
       beforeEach(() => {
@@ -336,7 +334,7 @@ describe('CleanUp: tests', function() {
         });
       });
 
-      it("deletes the 'vsicons' settings file", function() {
+      it(`deletes the 'vsicons' settings file`, function() {
         cleanUp.cleanUpVSIconsSettings();
         expect(unlinkStub.calledOnce).to.be.true;
       });
@@ -349,7 +347,7 @@ describe('CleanUp: tests', function() {
       });
     });
 
-    context("function 'cleanUpVSCodeSettings'", function() {
+    context(`function 'cleanUpVSCodeSettings'`, function() {
       let readFileStub: sinon.SinonStub;
       let writeFileStub: sinon.SinonStub;
 
@@ -362,12 +360,12 @@ describe('CleanUp: tests', function() {
         });
       });
 
-      it("reads the 'vscode' settings file", function() {
+      it(`reads the 'vscode' settings file`, function() {
         cleanUp.cleanUpVSCodeSettings();
         expect(readFileStub.calledOnce).to.be.true;
       });
 
-      it("writes the 'vscode' settings file", function() {
+      it(`writes the 'vscode' settings file`, function() {
         const content = '{ "vsicons.someProperty": true}';
         readFileStub.yields(null, content);
         cleanUp.cleanUpVSCodeSettings();
@@ -406,7 +404,7 @@ describe('CleanUp: tests', function() {
       });
     });
 
-    context("function 'resetThemeSetting'", function() {
+    context(`function 'resetThemeSetting'`, function() {
       let settings: any;
 
       beforeEach(() => {
@@ -416,12 +414,12 @@ describe('CleanUp: tests', function() {
         settings = JSON.parse(content);
       });
 
-      it("to reset the 'iconTheme' setting, if it was set to 'vscode-icons'", function() {
+      it(`to reset the 'iconTheme' setting, if it was set to 'vscode-icons'`, function() {
         cleanUp.resetThemeSetting(settings);
         expect(settings[constants.vscode.iconThemeSetting]).to.be.undefined;
       });
 
-      it("to not reset the 'iconTheme' setting, if it's not set to 'vscode-icons'", function() {
+      it(`to not reset the 'iconTheme' setting, if it's not set to 'vscode-icons'`, function() {
         settings[constants.vscode.iconThemeSetting] = 'someOtherTheme';
         cleanUp.resetThemeSetting(settings);
         expect(settings[constants.vscode.iconThemeSetting]).to.be.equal(
@@ -430,7 +428,7 @@ describe('CleanUp: tests', function() {
       });
     });
 
-    context("function 'removeVSIconsSettings'", function() {
+    context(`function 'removeVSIconsSettings'`, function() {
       let settings: any;
 
       beforeEach(() => {
@@ -438,7 +436,7 @@ describe('CleanUp: tests', function() {
         settings = JSON.parse(content);
       });
 
-      it("to remove only all 'vsicons' settings", function() {
+      it(`to remove only all 'vsicons' settings`, function() {
         cleanUp.removeVSIconsSettings(settings);
         expect(settings).to.eql({ updateChannel: 'none' });
       });

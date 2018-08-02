@@ -57,12 +57,12 @@ describe('vscode-extensions: tests', function() {
       expect(config.inspect('failing-string')).to.be.null;
     });
 
-    it("function 'getConfig' calls function 'vscode.workspace.getConfiguration'", function() {
+    it(`function 'getConfig' calls function 'vscode.workspace.getConfiguration'`, function() {
       const cfg = vsExt.getConfig();
       expect(cfg).to.be.equal(config);
     });
 
-    it("function 'findFiles' calls function 'vscode.workspace.findFiles'", function() {
+    it(`function 'findFiles' calls function 'vscode.workspace.findFiles'`, function() {
       const params = ['include', 'exclude', 10, { token: 'token' }];
       vsMock.workspace.findFiles = (include, exclude, maxResults, vsToken) => [
         include,
@@ -74,15 +74,15 @@ describe('vscode-extensions: tests', function() {
       expect(result).to.be.deep.equal(params);
     });
 
-    it("function 'asRelativePath' calls function 'vscode.workspace.asRelativePath'", function() {
+    it(`function 'asRelativePath' calls function 'vscode.workspace.asRelativePath'`, function() {
       vsMock.workspace.asRelativePath = path => path;
       const result = vsExt.asRelativePath('testPath');
       expect(result).to.be.equal('testPath');
     });
 
-    context("function 'getVsiconsConfig' returns", function() {
+    context(`function 'getVsiconsConfig' returns`, function() {
       context('for files:', function() {
-        it("the configuration's vsicons property if no workspaceValue present", function() {
+        it(`the configuration's vsicons property if no workspaceValue present`, function() {
           config.files.globalValue = [
             {
               icon: 'js',
@@ -94,7 +94,7 @@ describe('vscode-extensions: tests', function() {
           expect(vsExt.getVsiconsConfig()).to.equals(config.vsicons);
         });
 
-        it("the configuration's vsicons property if workspaceValue is an empty array", function() {
+        it(`the configuration's vsicons property if workspaceValue is an empty array`, function() {
           config.files.globalValue = [
             {
               icon: 'js',
@@ -176,7 +176,7 @@ describe('vscode-extensions: tests', function() {
       });
 
       context('for folders:', function() {
-        it("the configuration's vsicons property if no workspaceValue present", function() {
+        it(`the configuration's vsicons property if no workspaceValue present`, function() {
           config.folders.globalValue = [
             {
               icon: 'js',
@@ -188,7 +188,7 @@ describe('vscode-extensions: tests', function() {
           expect(vsExt.getVsiconsConfig()).to.equals(config.vsicons);
         });
 
-        it("the configuration's vsicons property if workspaceValue is an empty array", function() {
+        it(`the configuration's vsicons property if workspaceValue is an empty array`, function() {
           config.folders.globalValue = [
             {
               icon: 'js',

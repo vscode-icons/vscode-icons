@@ -30,7 +30,7 @@ describe('SettingsManager: tests', function() {
       });
 
       context('returns the correct name when application is the', function() {
-        it("'Code - Insiders'", function() {
+        it(`'Code - Insiders'`, function() {
           vscode.env.appName = 'Visual Studio Code - Insiders';
           const settings = new SettingsManager(vscode).getSettings();
           expect(settings.isInsiders).to.be.true;
@@ -38,7 +38,7 @@ describe('SettingsManager: tests', function() {
           expect(settings.isDev).to.be.false;
         });
 
-        it("'Code'", function() {
+        it(`'Code'`, function() {
           vscode.env.appName = 'Visual Studio Code';
           const settings = new SettingsManager(vscode).getSettings();
           expect(settings.isInsiders).to.be.false;
@@ -46,7 +46,7 @@ describe('SettingsManager: tests', function() {
           expect(settings.isDev).to.be.false;
         });
 
-        it("'Code - OSS'", function() {
+        it(`'Code - OSS'`, function() {
           vscode.env.appName = 'VSCode OSS';
           const settings = new SettingsManager(vscode).getSettings();
           expect(settings.isInsiders).to.be.false;
@@ -54,7 +54,7 @@ describe('SettingsManager: tests', function() {
           expect(settings.isDev).to.be.false;
         });
 
-        it("'Code - OSS Dev'", function() {
+        it(`'Code - OSS Dev'`, function() {
           vscode.env.appName = 'VSCode OSS Dev';
           const settings = new SettingsManager(vscode).getSettings();
           expect(settings.isInsiders).to.be.false;
@@ -64,8 +64,8 @@ describe('SettingsManager: tests', function() {
       });
     });
 
-    context("function 'getWorkspacePath returns", function() {
-      it("the workspace root path when 'workspaceFolders' is not supported", function() {
+    context(`function 'getWorkspacePath returns`, function() {
+      it(`the workspace root path when 'workspaceFolders' is not supported`, function() {
         vscode.workspace.workspaceFolders = undefined;
         vscode.workspace.rootPath = '/path/to/workspace/root';
         const result = new SettingsManager(vscode).getWorkspacePath();
@@ -74,7 +74,7 @@ describe('SettingsManager: tests', function() {
           .with.members([vscode.workspace.rootPath]);
       });
 
-      it("the workspace folders when 'workspaceFolders' is supported", function() {
+      it(`the workspace folders when 'workspaceFolders' is supported`, function() {
         const paths = [
           '/path/to/workspace/folder1/root',
           '/path/to/workspace/folder2/root',
@@ -88,7 +88,7 @@ describe('SettingsManager: tests', function() {
           .with.members(paths);
       });
 
-      it("'undefined' when 'workspaceFolders' and 'rootPath' is undefined", function() {
+      it(`'undefined' when 'workspaceFolders' and 'rootPath' is undefined`, function() {
         vscode.workspace.workspaceFolders = undefined;
         vscode.workspace.rootPath = undefined;
         const result = new SettingsManager(vscode).getWorkspacePath();
@@ -203,7 +203,7 @@ describe('SettingsManager: tests', function() {
       });
     });
 
-    context("the 'isNewVersion' function is", function() {
+    context(`the 'isNewVersion' function is`, function() {
       it('truthy for a new extension version', function() {
         const stateMock: IState = {
           version: '1.0.0',
