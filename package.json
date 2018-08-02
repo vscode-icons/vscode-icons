@@ -225,6 +225,7 @@
         }
     },
     "scripts": {
+        "precommit": "pretty-quick --staged",
         "preinstall": "git submodule update --init --recursive",
         "postinstall": "vscode-install",
         "prebuild": "npm run lint && npm run test",
@@ -250,15 +251,17 @@
         "@types/semver": "^5.5.0",
         "@types/sinon": "^5.0.1",
         "chai": "^4.1.2",
+        "examples-generator": "file:submodules/examples-generator",
         "mocha": "^5.2.0",
         "mockery": "^2.1.0",
         "nyc": "^12.0.2",
+        "prettier": "^1.14.0",
+        "pretty-quick": "^1.6.0",
         "rimraf": "^2.6.2",
         "sinon": "^6.0.0",
-        "tslint": "^5.10.0",
+        "tslint": "^5.11.0",
         "typescript": "^2.9.1",
-        "vscode": "^1.1.18",
-        "examples-generator": "file:submodules/examples-generator"
+        "vscode": "^1.1.18"
     },
     "dependencies": {
         "lodash": "^4.17.10",

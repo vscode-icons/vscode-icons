@@ -7,8 +7,12 @@ export interface IVSCodeCancellationToken {
   readonly onCancellationRequested: IEvent<any>;
 }
 
-type IEvent<T> = (listener: (e: T) => any, thisArgs?: any, disposables?: IDisposable[]) => IDisposable;
+type IEvent<T> = (
+  listener: (e: T) => any,
+  thisArgs?: any,
+  disposables?: IDisposable[],
+) => IDisposable;
 
 interface IDisposable {
-    dispose(): void;
-  }
+  dispose(): void;
+}

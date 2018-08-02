@@ -31,7 +31,9 @@ export function tempPath(): string {
 }
 
 export function fileFormatToString(extension: FileFormat | string): string {
-  return `.${typeof extension === 'string' ? extension.trim() : FileFormat[extension]}`;
+  return `.${
+    typeof extension === 'string' ? extension.trim() : FileFormat[extension]
+  }`;
 }
 
 /**
@@ -42,7 +44,9 @@ export function fileFormatToString(extension: FileFormat | string): string {
 export function createDirectoryRecursively(dirPath: string): void {
   dirPath.split(path.posix.sep).reduce((parentDir, childDir) => {
     const curDir = path.resolve(parentDir, childDir);
-    if (!fs.existsSync(curDir)) { fs.mkdirSync(curDir); }
+    if (!fs.existsSync(curDir)) {
+      fs.mkdirSync(curDir);
+    }
     return curDir;
   }, path.isAbsolute(dirPath) ? path.posix.sep : '');
 }
@@ -56,9 +60,11 @@ export function deleteDirectoryRecursively(dirPath: string): void {
   if (fs.existsSync(dirPath)) {
     fs.readdirSync(dirPath).forEach(file => {
       const curPath = `${dirPath}/${file}`;
-      if (fs.lstatSync(curPath).isDirectory()) { // recurse
+      if (fs.lstatSync(curPath).isDirectory()) {
+        // recurse
         deleteDirectoryRecursively(curPath);
-      } else { // delete file
+      } else {
+        // delete file
         fs.unlinkSync(curPath);
       }
     });
@@ -80,7 +86,11 @@ export function parseJSON(text: string): any {
   }
 }
 
-export function getRelativePath(fromDirPath: string, toDirName: string, checkDirectory: boolean = true): string {
+export function getRelativePath(
+  fromDirPath: string,
+  toDirName: string,
+  checkDirectory: boolean = true,
+): string {
   if (fromDirPath == null) {
     throw new Error('fromDirPath not defined.');
   }
@@ -93,7 +103,10 @@ export function getRelativePath(fromDirPath: string, toDirName: string, checkDir
     throw new Error(`Directory '${toDirName}' not found.`);
   }
 
-  return path.relative(fromDirPath, toDirName).replace(/\\/g, '/').concat('/');
+  return path
+    .relative(fromDirPath, toDirName)
+    .replace(/\\/g, '/')
+    .concat('/');
 }
 
 export function removeFirstDot(txt: string): string {
@@ -117,28 +130,40 @@ export function getDrives(...paths: string[]): string[] {
 
 export function flatten(obj: object, separator = '.'): object {
   const isValidObject = (value: any): boolean => {
-    if (!value) { return false; }
+    if (!value) {
+      return false;
+    }
     const isArray = Array.isArray(value);
     const isBuffer = Buffer.isBuffer(value);
-    const isΟbject = Object.prototype.toString.call(value) === '[object Object]';
+    const isΟbject =
+      Object.prototype.toString.call(value) === '[object Object]';
     const hasKeys = !!Object.keys(value).length;
     return !isArray && !isBuffer && isΟbject && hasKeys;
   };
   const _flatten = (child: any, paths = []): object[] => {
-    return [].concat(...Object.keys(child)
-      .map(key => isValidObject(child[key])
-        ? _flatten(child[key], [...paths, key])
-        : { [[...paths, key].join(separator)]: child[key] }));
+    return [].concat(
+      ...Object.keys(child).map(
+        key =>
+          isValidObject(child[key])
+            ? _flatten(child[key], [...paths, key])
+            : { [[...paths, key].join(separator)]: child[key] },
+      ),
+    );
   };
   return Object.assign({}, ..._flatten(obj));
 }
 
 export function getEnumMemberByValue(obj: object, enumValue: string): string {
-  if (typeof obj !== 'object') { throw new Error('Only Enum allowed'); }
+  if (typeof obj !== 'object') {
+    throw new Error('Only Enum allowed');
+  }
   return Object.keys(obj).find(key => obj[key] === enumValue);
 }
 
 export function combine(array1: any[], array2: any[], separator = '.'): any[] {
-  return array1.reduce((previous: string[], current: string) =>
-    previous.concat(array2.map(value => [current, value].join(separator))), []);
+  return array1.reduce(
+    (previous: string[], current: string) =>
+      previous.concat(array2.map(value => [current, value].join(separator))),
+    [],
+  );
 }

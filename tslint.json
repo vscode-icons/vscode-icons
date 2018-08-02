@@ -7,6 +7,8 @@
       true,
       "single"
     ],
+    "object-literal-key-quotes": [true, "as-needed"],
+    "trailing-comma": [true, {"esSpecCompliant": true}],
     "variable-name": [
       true,
       "ban-keywords",
@@ -21,7 +23,7 @@
     "space-before-function-paren": [
       true,
       {
-        "anonymous": "always",
+        "anonymous": "never",
         "named": "never",
         "asyncArrow": "always",
         "method": "never",
