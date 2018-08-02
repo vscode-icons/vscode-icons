@@ -4,6 +4,7 @@
   "recommendations": [
     "eg2.tslint",
     "EditorConfig.EditorConfig",
-    "DavidAnson.vscode-markdownlint"
+    "DavidAnson.vscode-markdownlint",
+    "esbenp.prettier-vscode"
   ]
 }
