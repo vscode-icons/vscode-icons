@@ -1,7 +1,13 @@
 import * as fs from 'fs';
 import * as semver from 'semver';
 import { vscodePath as getAppPath, parseJSON, pathUnixJoin } from '../utils';
-import { ISettings, IState, IVSCode, ISettingsManager, ExtensionStatus } from '../models';
+import {
+  ISettings,
+  IState,
+  IVSCode,
+  ISettingsManager,
+  ExtensionStatus,
+} from '../models';
 import { extensionSettings } from './extensionSettings';
 import { constants } from '../constants';
 import { ErrorHandler } from '../errorHandler';
@@ -14,7 +20,9 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public getSettings(): ISettings {
-    if (this.settings) { return this.settings; }
+    if (this.settings) {
+      return this.settings;
+    }
     const isDev = /dev/i.test(this.vscode.env.appName);
     const isOSS = !isDev && /oss/i.test(this.vscode.env.appName);
     const isInsiders = /insiders/i.test(this.vscode.env.appName);
@@ -40,7 +48,10 @@ export class SettingsManager implements ISettingsManager {
       isInsiders,
       isOSS,
       isDev,
-      settingsFilePath: pathUnixJoin(vscodeAppUserPath, constants.extensionSettingsFilename),
+      settingsFilePath: pathUnixJoin(
+        vscodeAppUserPath,
+        constants.extensionSettingsFilename,
+      ),
       vscodeVersion,
       extensionSettings,
     };
@@ -100,6 +111,9 @@ export class SettingsManager implements ISettingsManager {
   }
 
   public isNewVersion(): boolean {
-    return semver.lt(this.getState().version, this.settings.extensionSettings.version);
+    return semver.lt(
+      this.getState().version,
+      this.settings.extensionSettings.version,
+    );
   }
 }

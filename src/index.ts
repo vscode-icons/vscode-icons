@@ -4,7 +4,11 @@ import * as init from './init';
 import { ProjectAutoDetection as pad } from './init/projectAutoDetection';
 import { ManifestReader as mr } from './icon-manifest';
 import * as commands from './commands';
-import { getVsiconsConfig, getConfig, findFiles } from './utils/vscode-extensions';
+import {
+  getVsiconsConfig,
+  getConfig,
+  findFiles,
+} from './utils/vscode-extensions';
 import { LanguageResourceManager } from './i18n/languageResourceManager';
 import { IVSCodeUri, IVSIcons, Projects } from './models';
 import { constants } from './constants';
@@ -17,8 +21,14 @@ function initialize(context: vscode.ExtensionContext): void {
 
   commands.registerCommands(context);
   init.manageWelcomeMessage(settingsManager);
-  init.manageAutoApplyCustomizations(settingsManager.isNewVersion(), config, commands.applyCustomizationCommand);
-  pad.detectProject(findFiles, config).then(results => detectAngular(config, results), err => err);
+  init.manageAutoApplyCustomizations(
+    settingsManager.isNewVersion(),
+    config,
+    commands.applyCustomizationCommand,
+  );
+  pad
+    .detectProject(findFiles, config)
+    .then(results => detectAngular(config, results), err => err);
 
   // Update the version in settings
   if (settingsManager.isNewVersion()) {
@@ -27,19 +37,32 @@ function initialize(context: vscode.ExtensionContext): void {
 }
 
 function detectAngular(config: IVSIcons, results: IVSCodeUri[]): void {
-  if (!config || !results) { return; }
+  if (!config || !results) {
+    return;
+  }
   const projectInfo = pad.getProjectInfo(results, Projects.angular);
   const i18nManager = new LanguageResourceManager(vscode.env.language);
-  const presetValue = getConfig().inspect(`vsicons.presets.angular`).workspaceValue as boolean;
+  const presetValue = getConfig().inspect(`vsicons.presets.angular`)
+    .workspaceValue as boolean;
   const detectionResult = pad.checkForAngularProject(
-    presetValue, mr.iconsDisabled(Projects.angular), !!projectInfo, i18nManager);
+    presetValue,
+    mr.iconsDisabled(Projects.angular),
+    !!projectInfo,
+    i18nManager,
+  );
 
   if (!detectionResult.apply) {
     return;
   }
 
-  pad.applyDetection(i18nManager, detectionResult, config.projectDetection.autoReload,
-    commands.applyCustomization, commands.showCustomizationMessage, commands.reload);
+  pad.applyDetection(
+    i18nManager,
+    detectionResult,
+    config.projectDetection.autoReload,
+    commands.applyCustomization,
+    commands.showCustomizationMessage,
+    commands.reload,
+  );
 }
 
 export function activate(context: vscode.ExtensionContext): void {

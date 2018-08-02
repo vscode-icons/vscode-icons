@@ -4,41 +4,47 @@ import { expect } from 'chai';
 import * as helper from '../../src/commands/helper';
 import { IIconSchema, IconNames, PresetNames } from '../../src/models';
 
-describe('Helper: tests', function () {
-
-  context('ensures that', function () {
-
-    it('function \'isFoldersRelated\' returns proper state',
-      function () {
-        expect(helper.isFoldersRelated(PresetNames.hideFolders)).to.be.true;
-        expect(helper.isFoldersRelated(PresetNames.jsOfficial)).to.be.false;
-      });
-
-    it('function \'isNonIconsRelatedPreset\' returns proper state',
-      function () {
-        expect(helper.isNonIconsRelatedPreset(PresetNames.hideExplorerArrows)).to.be.true;
-        expect(helper.isNonIconsRelatedPreset(PresetNames.jsOfficial)).to.be.false;
-      });
-
-    context('function \'getIconName\'', function () {
-
-      it('throws an Error if a preset is not covered',
-        function () {
-          expect(helper.getIconName.bind(helper)).to.throw(Error, /Not Implemented/);
-        });
-
-      it('returns expected values',
-        function () {
-          expect(helper.getIconName(PresetNames[PresetNames.angular])).to.be.equal(IconNames.angular);
-          expect(helper.getIconName(PresetNames[PresetNames.jsOfficial])).to.be.equal(IconNames.jsOfficial);
-          expect(helper.getIconName(PresetNames[PresetNames.tsOfficial])).to.be.equal(IconNames.tsOfficial);
-          expect(helper.getIconName(PresetNames[PresetNames.jsonOfficial])).to.be.equal(IconNames.jsonOfficial);
-        });
-
+describe('Helper: tests', function() {
+  context('ensures that', function() {
+    it("function 'isFoldersRelated' returns proper state", function() {
+      expect(helper.isFoldersRelated(PresetNames.hideFolders)).to.be.true;
+      expect(helper.isFoldersRelated(PresetNames.jsOfficial)).to.be.false;
     });
 
-    context('function \'getFunc\'', function () {
+    it("function 'isNonIconsRelatedPreset' returns proper state", function() {
+      expect(
+        helper.isNonIconsRelatedPreset(PresetNames.hideExplorerArrows),
+      ).to.be.true;
+      expect(
+        helper.isNonIconsRelatedPreset(PresetNames.jsOfficial),
+      ).to.be.false;
+    });
 
+    context("function 'getIconName'", function() {
+      it('throws an Error if a preset is not covered', function() {
+        expect(helper.getIconName.bind(helper)).to.throw(
+          Error,
+          /Not Implemented/,
+        );
+      });
+
+      it('returns expected values', function() {
+        expect(
+          helper.getIconName(PresetNames[PresetNames.angular]),
+        ).to.be.equal(IconNames.angular);
+        expect(
+          helper.getIconName(PresetNames[PresetNames.jsOfficial]),
+        ).to.be.equal(IconNames.jsOfficial);
+        expect(
+          helper.getIconName(PresetNames[PresetNames.tsOfficial]),
+        ).to.be.equal(IconNames.tsOfficial);
+        expect(
+          helper.getIconName(PresetNames[PresetNames.jsonOfficial]),
+        ).to.be.equal(IconNames.jsonOfficial);
+      });
+    });
+
+    context("function 'getFunc'", function() {
       let iconsJson: IIconSchema;
 
       beforeEach(() => {
@@ -80,44 +86,43 @@ describe('Helper: tests', function () {
         };
       });
 
-      it('throws an Error if a preset is not covered',
-        function () {
-          expect(helper.getFunc.bind(helper, PresetNames[PresetNames.jsOfficial])).to.throw(Error, /Not Implemented/);
-        });
+      it('throws an Error if a preset is not covered', function() {
+        expect(
+          helper.getFunc.bind(helper, PresetNames[PresetNames.jsOfficial]),
+        ).to.throw(Error, /Not Implemented/);
+      });
 
-      it('return \'true\' when folder icons are hidden',
-        function () {
-          const func = helper.getFunc(PresetNames[PresetNames.hideFolders]);
-          expect(func).to.be.instanceof(Function);
-          expect(func(iconsJson)).to.be.true;
-        });
+      it("return 'true' when folder icons are hidden", function() {
+        const func = helper.getFunc(PresetNames[PresetNames.hideFolders]);
+        expect(func).to.be.instanceof(Function);
+        expect(func(iconsJson)).to.be.true;
+      });
 
-      it('return \'false\' when folder icons are visible',
-        function () {
-          iconsJson.folderNames = { _fd_folderName: '' };
-          const func = helper.getFunc(PresetNames[PresetNames.hideFolders]);
-          expect(func).to.be.instanceof(Function);
-          expect(func(iconsJson)).to.be.false;
-        });
+      it("return 'false' when folder icons are visible", function() {
+        iconsJson.folderNames = { _fd_folderName: '' };
+        const func = helper.getFunc(PresetNames[PresetNames.hideFolders]);
+        expect(func).to.be.instanceof(Function);
+        expect(func(iconsJson)).to.be.false;
+      });
 
-      it('return \'true\' when specific folder icons are disabled',
-        function () {
-          iconsJson.iconDefinitions._folder.iconPath = 'pathToDefaultFolderIcon';
-          const func = helper.getFunc(PresetNames[PresetNames.foldersAllDefaultIcon]);
-          expect(func).to.be.instanceof(Function);
-          expect(func(iconsJson)).to.be.true;
-        });
+      it("return 'true' when specific folder icons are disabled", function() {
+        iconsJson.iconDefinitions._folder.iconPath = 'pathToDefaultFolderIcon';
+        const func = helper.getFunc(
+          PresetNames[PresetNames.foldersAllDefaultIcon],
+        );
+        expect(func).to.be.instanceof(Function);
+        expect(func(iconsJson)).to.be.true;
+      });
 
-      it('return \'false\' when specific folder icons are enabled',
-        function () {
-          iconsJson.folderNames = { _fd_folderName: '' };
-          iconsJson.iconDefinitions._folder.iconPath = 'pathToDefaultFolderIcon';
-          const func = helper.getFunc(PresetNames[PresetNames.foldersAllDefaultIcon]);
-          expect(func).to.be.instanceof(Function);
-          expect(func(iconsJson)).to.be.false;
-        });
+      it("return 'false' when specific folder icons are enabled", function() {
+        iconsJson.folderNames = { _fd_folderName: '' };
+        iconsJson.iconDefinitions._folder.iconPath = 'pathToDefaultFolderIcon';
+        const func = helper.getFunc(
+          PresetNames[PresetNames.foldersAllDefaultIcon],
+        );
+        expect(func).to.be.instanceof(Function);
+        expect(func(iconsJson)).to.be.false;
+      });
     });
-
   });
-
 });

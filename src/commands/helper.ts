@@ -5,19 +5,21 @@ const foldersRelatedPresets = [
   models.PresetNames.foldersAllDefaultIcon,
 ];
 
-const nonIconsRelatedPresets = [
-  models.PresetNames.hideExplorerArrows,
-];
+const nonIconsRelatedPresets = [models.PresetNames.hideExplorerArrows];
 
 export function isFoldersRelated(presetName: models.PresetNames): boolean {
   return foldersRelatedPresets.some(preset => preset === presetName);
 }
 
-export function isNonIconsRelatedPreset(presetName: models.PresetNames): boolean {
+export function isNonIconsRelatedPreset(
+  presetName: models.PresetNames,
+): boolean {
   return nonIconsRelatedPresets.some(preset => preset === presetName);
 }
 
-export function getFunc(preset: string): (iconsJson: models.IIconSchema) => boolean {
+export function getFunc(
+  preset: string,
+): (iconsJson: models.IIconSchema) => boolean {
   switch (preset) {
     case 'hideFolders':
       return (iconsJson: models.IIconSchema) =>
@@ -34,6 +36,8 @@ export function getFunc(preset: string): (iconsJson: models.IIconSchema) => bool
 
 export function getIconName(preset: string): string {
   const iconName = models.IconNames[preset];
-  if (!iconName) { throw new Error('Not Implemented'); }
+  if (!iconName) {
+    throw new Error('Not Implemented');
+  }
   return iconName;
 }

@@ -21,7 +21,9 @@ export function getAppUserPath(dirPath: string): string {
     let dataDir: string;
     switch (process.platform) {
       case 'darwin':
-        const isInsiders = existsSync(pathUnixJoin(process.env.VSCODE_CWD, 'code-insiders-portable-data'));
+        const isInsiders = existsSync(
+          pathUnixJoin(process.env.VSCODE_CWD, 'code-insiders-portable-data'),
+        );
         dataDir = `code-${isInsiders ? 'insiders-' : ''}portable-data`;
         break;
       default:
@@ -30,7 +32,8 @@ export function getAppUserPath(dirPath: string): string {
     }
     return pathUnixJoin(process.env.VSCODE_CWD, dataDir);
   };
-  const appPath = process.env.VSCODE_PORTABLE || vscodePortable() || getAppPath();
+  const appPath =
+    process.env.VSCODE_PORTABLE || vscodePortable() || getAppPath();
   return pathUnixJoin(appPath, vscodeAppName, 'User');
 }
 
@@ -50,7 +53,9 @@ export function resetThemeSetting(settings: {}): void {
 export function cleanUpVSCodeSettings(): void {
   const saveSettings = content => {
     const settings = JSON.stringify(content, null, 4);
-    writeFile(settingsFilePath, settings, error => ErrorHandler.LogError(error));
+    writeFile(settingsFilePath, settings, error =>
+      ErrorHandler.LogError(error),
+    );
   };
   const cleanUpSettings = (error, content) => {
     if (error) {
@@ -58,7 +63,9 @@ export function cleanUpVSCodeSettings(): void {
       return;
     }
     const settings = parseJSON(content);
-    if (!settings) { return; }
+    if (!settings) {
+      return;
+    }
 
     removeVSIconsSettings(settings);
 
@@ -66,12 +73,17 @@ export function cleanUpVSCodeSettings(): void {
 
     saveSettings(settings);
   };
-  const settingsFilePath = pathUnixJoin(getAppUserPath(__dirname), 'settings.json');
+  const settingsFilePath = pathUnixJoin(
+    getAppUserPath(__dirname),
+    'settings.json',
+  );
   readFile(settingsFilePath, 'utf8', cleanUpSettings);
 }
 
 export function cleanUpVSIconsSettings(): void {
-  const extensionSettingsFilePath = pathUnixJoin(getAppUserPath(__dirname),
-    constants.extensionSettingsFilename);
+  const extensionSettingsFilePath = pathUnixJoin(
+    getAppUserPath(__dirname),
+    constants.extensionSettingsFilename,
+  );
   unlink(extensionSettingsFilePath, error => ErrorHandler.LogError(error));
 }

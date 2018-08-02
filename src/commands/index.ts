@@ -24,12 +24,16 @@ let argms: any[];
 vscode.workspace.onDidChangeConfiguration(didChangeConfigurationListener);
 
 function didChangeConfigurationListener(): void {
-  if (!initialized) { return; }
+  if (!initialized) {
+    return;
+  }
 
   // Update the status in settings
-  const status = getConfig().inspect(constants.vscode.iconThemeSetting).globalValue === constants.extensionName
-    ? models.ExtensionStatus.enabled
-    : models.ExtensionStatus.notActivated;
+  const status =
+    getConfig().inspect(constants.vscode.iconThemeSetting).globalValue ===
+    constants.extensionName
+      ? models.ExtensionStatus.enabled
+      : models.ExtensionStatus.notActivated;
   if (settingsManager.getState().status !== status) {
     settingsManager.updateStatus(status);
   }
@@ -46,7 +50,8 @@ function didChangeConfigurationListener(): void {
       initVSIconsConfig,
       getVsiconsConfig(),
       applyCustomizationCommand,
-      [{ title: i18nManager.getMessage(models.LangResourceKeys.dontShowThis) }]);
+      [{ title: i18nManager.getMessage(models.LangResourceKeys.dontShowThis) }],
+    );
   }
 }
 
@@ -54,53 +59,91 @@ export function registerCommands(context: vscode.ExtensionContext): void {
   registerCommand(context, 'activateIcons', activationCommand);
   registerCommand(context, 'regenerateIcons', applyCustomizationCommand);
   registerCommand(context, 'restoreIcons', restoreDefaultManifestCommand);
-  registerCommand(context, 'resetProjectDetectionDefaults', resetProjectDetectionDefaultsCommand);
+  registerCommand(
+    context,
+    'resetProjectDetectionDefaults',
+    resetProjectDetectionDefaultsCommand,
+  );
   registerCommand(context, 'ngPreset', toggleAngularPresetCommand);
   registerCommand(context, 'jsPreset', toggleJsPresetCommand);
   registerCommand(context, 'tsPreset', toggleTsPresetCommand);
   registerCommand(context, 'jsonPreset', toggleJsonPresetCommand);
   registerCommand(context, 'hideFoldersPreset', toggleHideFoldersPresetCommand);
-  registerCommand(context, 'foldersAllDefaultIconPreset', toggleFoldersAllDefaultIconPresetCommand);
-  registerCommand(context, 'hideExplorerArrowsPreset', toggleHideExplorerArrowsPresetCommand);
+  registerCommand(
+    context,
+    'foldersAllDefaultIconPreset',
+    toggleFoldersAllDefaultIconPresetCommand,
+  );
+  registerCommand(
+    context,
+    'hideExplorerArrowsPreset',
+    toggleHideExplorerArrowsPresetCommand,
+  );
 }
 
 function registerCommand(
   context: vscode.ExtensionContext,
   name: string,
-  callback: (...args: any[]) => any): vscode.Disposable {
-
-  const command = vscode.commands.registerCommand(`${constants.extensionName}.${name}`, callback);
+  callback: (...args: any[]) => any,
+): vscode.Disposable {
+  const command = vscode.commands.registerCommand(
+    `${constants.extensionName}.${name}`,
+    callback,
+  );
   context.subscriptions.push(command);
   return command;
 }
 
 export function activationCommand(): void {
-  getConfig().update(constants.vscode.iconThemeSetting, constants.extensionName, true);
+  getConfig().update(
+    constants.vscode.iconThemeSetting,
+    constants.extensionName,
+    true,
+  );
 }
 
-export function applyCustomizationCommand(additionalTitles: models.IVSCodeMessageItem[] = []): void {
+export function applyCustomizationCommand(
+  additionalTitles: models.IVSCodeMessageItem[] = [],
+): void {
   const message = i18nManager.getMessage(
-    models.LangResourceKeys.iconCustomization, ' ', models.LangResourceKeys.restart);
-  showCustomizationMessage(message,
-    [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }, ...additionalTitles],
-    applyCustomization);
+    models.LangResourceKeys.iconCustomization,
+    ' ',
+    models.LangResourceKeys.restart,
+  );
+  showCustomizationMessage(
+    message,
+    [
+      { title: i18nManager.getMessage(models.LangResourceKeys.reload) },
+      ...additionalTitles,
+    ],
+    applyCustomization,
+  );
 }
 
 function restoreDefaultManifestCommand(): void {
   const message = i18nManager.getMessage(
-    models.LangResourceKeys.iconRestore, ' ', models.LangResourceKeys.restart);
-  showCustomizationMessage(message,
+    models.LangResourceKeys.iconRestore,
+    ' ',
+    models.LangResourceKeys.restart,
+  );
+  showCustomizationMessage(
+    message,
     [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
-    restoreManifest);
+    restoreManifest,
+  );
 }
 
 function resetProjectDetectionDefaultsCommand(): void {
   const message = i18nManager.getMessage(
-    models.LangResourceKeys.projectDetectionReset, ' ', models.LangResourceKeys.restart);
+    models.LangResourceKeys.projectDetectionReset,
+    ' ',
+    models.LangResourceKeys.restart,
+  );
   showCustomizationMessage(
     message,
     [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
-    resetProjectDetectionDefaults);
+    resetProjectDetectionDefaults,
+  );
 }
 
 function toggleAngularPresetCommand(): void {
@@ -124,19 +167,27 @@ function toggleHideFoldersPresetCommand(): void {
 }
 
 function toggleFoldersAllDefaultIconPresetCommand(): void {
-  togglePreset(models.PresetNames.foldersAllDefaultIcon, 'foldersAllDefaultIconPreset', true);
+  togglePreset(
+    models.PresetNames.foldersAllDefaultIcon,
+    'foldersAllDefaultIconPreset',
+    true,
+  );
 }
 
 function toggleHideExplorerArrowsPresetCommand(): void {
-  togglePreset(models.PresetNames.hideExplorerArrows, 'hideExplorerArrowsPreset', true);
+  togglePreset(
+    models.PresetNames.hideExplorerArrows,
+    'hideExplorerArrowsPreset',
+    true,
+  );
 }
 
 function togglePreset(
   presetName: models.PresetNames,
   presetKey: string,
   reverseAction: boolean = false,
-  global: boolean = true): void {
-
+  global: boolean = true,
+): void {
   const preset = models.PresetNames[presetName];
   const toggledValue = helper.isNonIconsRelatedPreset(presetName)
     ? !getVsiconsConfig().presets[preset]
@@ -156,33 +207,48 @@ function togglePreset(
   }
 
   const message = `${i18nManager.getMessage(
-    models.LangResourceKeys[`${presetKey}${action}`], ' ', models.LangResourceKeys.restart)}`;
+    models.LangResourceKeys[`${presetKey}${action}`],
+    ' ',
+    models.LangResourceKeys.restart,
+  )}`;
 
-  showCustomizationMessage(message,
+  showCustomizationMessage(
+    message,
     [{ title: i18nManager.getMessage(models.LangResourceKeys.reload) }],
-    applyCustomization, preset, toggledValue, global);
+    applyCustomization,
+    preset,
+    toggledValue,
+    global,
+  );
 }
 
 export function updatePreset(
   preset: string,
   toggledValue: boolean,
-  global: boolean = true): Thenable<void> {
-
-  const removePreset = getConfig().inspect(`vsicons.presets.${preset}`).defaultValue === toggledValue;
-  return getConfig().update(`vsicons.presets.${preset}`, removePreset ? undefined : toggledValue, global);
+  global: boolean = true,
+): Thenable<void> {
+  const removePreset =
+    getConfig().inspect(`vsicons.presets.${preset}`).defaultValue ===
+    toggledValue;
+  return getConfig().update(
+    `vsicons.presets.${preset}`,
+    removePreset ? undefined : toggledValue,
+    global,
+  );
 }
 
 export function showCustomizationMessage(
   message: string,
   items: models.IVSCodeMessageItem[],
   callback?: (...args: any[]) => void,
-  ...args: any[]): Thenable<void> {
-
+  ...args: any[]
+): Thenable<void> {
   customMsgShown = true;
-  return vscode.window.showInformationMessage(message, ...items)
-    .then(btn => handleAction(btn, callback, ...args),
+  return vscode.window.showInformationMessage(message, ...items).then(
+    btn => handleAction(btn, callback, ...args),
     // tslint:disable-next-line:no-console
-    reason => console.info('Rejected because: ', reason));
+    reason => console.info('Rejected because: ', reason),
+  );
 }
 
 function executeAndReload(callback: any, ...args: any[]): void {
@@ -192,7 +258,11 @@ function executeAndReload(callback: any, ...args: any[]): void {
   reload();
 }
 
-function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]) => void, ...args: any[]): void {
+function handleAction(
+  btn: models.IVSCodeMessageItem,
+  callback?: (...args: any[]) => void,
+  ...args: any[]
+): void {
   if (!btn) {
     customMsgShown = false;
     return;
@@ -226,7 +296,11 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
           case 'applyCustomization':
             {
               customMsgShown = false;
-              getConfig().update(constants.vsicons.dontShowConfigManuallyChangedMessageSetting, true, true);
+              getConfig().update(
+                constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
+                true,
+                true,
+              );
             }
             break;
           default:
@@ -237,12 +311,21 @@ function handleAction(btn: models.IVSCodeMessageItem, callback?: (...args: any[]
     case i18nManager.getMessage(models.LangResourceKeys.disableDetect):
       {
         doReload = false;
-        getConfig().update(constants.vsicons.projectDetectionDisableDetectSetting, true, true);
+        getConfig().update(
+          constants.vsicons.projectDetectionDisableDetectSetting,
+          true,
+          true,
+        );
       }
       break;
     case i18nManager.getMessage(models.LangResourceKeys.autoReload):
       {
-        getConfig().update(constants.vsicons.projectDetectionAutoReloadSetting, true, true)
+        getConfig()
+          .update(
+            constants.vsicons.projectDetectionAutoReloadSetting,
+            true,
+            true,
+          )
           .then(() => handlePreset());
       }
       break;
@@ -264,7 +347,9 @@ export function reload(): void {
   vscode.commands.executeCommand(constants.vscode.reloadWindowActionSetting);
 }
 
-export function applyCustomization(projectDetectionResult: models.IProjectDetectionResult = null): void {
+export function applyCustomization(
+  projectDetectionResult: models.IProjectDetectionResult = null,
+): void {
   const associations = getVsiconsConfig().associations;
   const customFiles: models.IFileCollection = {
     default: associations.fileDefault,
@@ -280,10 +365,16 @@ export function applyCustomization(projectDetectionResult: models.IProjectDetect
 function generateManifest(
   customFiles: models.IFileCollection,
   customFolders: models.IFolderCollection,
-  projectDetectionResult: models.IProjectDetectionResult = null): void {
+  projectDetectionResult: models.IProjectDetectionResult = null,
+): void {
   const vsicons = getVsiconsConfig();
-  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema, vsicons.customIconFolderPath);
-  const hasProjectDetectionResult = projectDetectionResult &&
+  const iconGenerator = new iconManifest.IconGenerator(
+    vscode,
+    iconManifest.schema,
+    vsicons.customIconFolderPath,
+  );
+  const hasProjectDetectionResult =
+    projectDetectionResult &&
     typeof projectDetectionResult === 'object' &&
     'value' in projectDetectionResult;
   const angularPreset = hasProjectDetectionResult
@@ -293,30 +384,57 @@ function generateManifest(
   let workingCustomFolders = customFolders;
   if (customFiles) {
     // check presets...
-    workingCustomFiles = iconManifest.toggleAngularPreset(!angularPreset, customFiles);
-    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.jsOfficial, workingCustomFiles,
-      [models.IconNames.jsOfficial], [models.IconNames.js]);
-    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.tsOfficial, workingCustomFiles,
-      [models.IconNames.tsOfficial, models.IconNames.tsDefOfficial], [models.IconNames.ts, models.IconNames.tsDef]);
-    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(!vsicons.presets.jsonOfficial, workingCustomFiles,
-      [models.IconNames.jsonOfficial], [models.IconNames.json]);
+    workingCustomFiles = iconManifest.toggleAngularPreset(
+      !angularPreset,
+      customFiles,
+    );
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(
+      !vsicons.presets.jsOfficial,
+      workingCustomFiles,
+      [models.IconNames.jsOfficial],
+      [models.IconNames.js],
+    );
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(
+      !vsicons.presets.tsOfficial,
+      workingCustomFiles,
+      [models.IconNames.tsOfficial, models.IconNames.tsDefOfficial],
+      [models.IconNames.ts, models.IconNames.tsDef],
+    );
+    workingCustomFiles = iconManifest.toggleOfficialIconsPreset(
+      !vsicons.presets.jsonOfficial,
+      workingCustomFiles,
+      [models.IconNames.jsonOfficial],
+      [models.IconNames.json],
+    );
   }
   if (customFolders) {
     workingCustomFolders = iconManifest.toggleFoldersAllDefaultIconPreset(
-      vsicons.presets.foldersAllDefaultIcon, customFolders);
-    workingCustomFolders = iconManifest.toggleHideFoldersPreset(vsicons.presets.hideFolders, workingCustomFolders);
+      vsicons.presets.foldersAllDefaultIcon,
+      customFolders,
+    );
+    workingCustomFolders = iconManifest.toggleHideFoldersPreset(
+      vsicons.presets.hideFolders,
+      workingCustomFolders,
+    );
   }
   // presets affecting default icons
   const workingFiles = iconManifest.toggleAngularPreset(!angularPreset, files);
-  let workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(vsicons.presets.foldersAllDefaultIcon, folders);
-  workingFolders = iconManifest.toggleHideFoldersPreset(vsicons.presets.hideFolders, workingFolders);
+  let workingFolders = iconManifest.toggleFoldersAllDefaultIconPreset(
+    vsicons.presets.foldersAllDefaultIcon,
+    folders,
+  );
+  workingFolders = iconManifest.toggleHideFoldersPreset(
+    vsicons.presets.hideFolders,
+    workingFolders,
+  );
 
   const json = iconManifest.mergeConfig(
     workingCustomFiles,
     workingFiles,
     workingCustomFolders,
     workingFolders,
-    iconGenerator);
+    iconGenerator,
+  );
 
   // apply non icons related config settings
   json.hidesExplorerArrows = vsicons.presets.hideExplorerArrows;
@@ -325,7 +443,12 @@ function generateManifest(
 }
 
 function restoreManifest(): void {
-  const iconGenerator = new iconManifest.IconGenerator(vscode, iconManifest.schema, '', /*avoidCustomDetection*/ true);
+  const iconGenerator = new iconManifest.IconGenerator(
+    vscode,
+    iconManifest.schema,
+    '',
+    /*avoidCustomDetection*/ true,
+  );
   const json = iconGenerator.generateJson(files, folders);
   iconGenerator.persist(extensionSettings.iconJsonFileName, json);
 }
@@ -333,9 +456,17 @@ function restoreManifest(): void {
 function resetProjectDetectionDefaults(): void {
   const conf = getConfig();
   if (conf.vsicons.projectDetection.autoReload) {
-    conf.update(constants.vsicons.projectDetectionAutoReloadSetting, false, true);
+    conf.update(
+      constants.vsicons.projectDetectionAutoReloadSetting,
+      false,
+      true,
+    );
   }
   if (conf.vsicons.projectDetection.disableDetect) {
-    conf.update(constants.vsicons.projectDetectionDisableDetectSetting, false, true);
+    conf.update(
+      constants.vsicons.projectDetectionDisableDetectSetting,
+      false,
+      true,
+    );
   }
 }
