@@ -5,6 +5,7 @@
 - Feature: Added support for `WebAssembly`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1663](https://github.com/vscode-icons/vscode-icons/pull/1663))
 - Enhancement: Improved error handling. ([@JimiC](https://github.com/JimiC) in [#1652](https://github.com/vscode-icons/vscode-icons/pull/1652))
 - Feature: Added support for `protable mode`. ([@JimiC](https://github.com/JimiC) in [#1651](https://github.com/vscode-icons/vscode-icons/pull/1651))
+- Enhancement: Changed build script in publish stage. ([@JimiC](https://github.com/JimiC) in [#1636](https://github.com/vscode-icons/vscode-icons/pull/1636))
 
 ## 7.24.0 (June 20, 2018)
 
