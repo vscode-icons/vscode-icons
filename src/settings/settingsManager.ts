@@ -84,7 +84,7 @@ export class SettingsManager implements ISettingsManager {
       const state = fs.readFileSync(this.settings.settingsFilePath, 'utf8');
       return (parseJSON(state) as IState) || defaultState;
     } catch (error) {
-      ErrorHandler.LogError(error, true);
+      ErrorHandler.logError(error, true);
       return defaultState;
     }
   }
@@ -93,7 +93,7 @@ export class SettingsManager implements ISettingsManager {
     try {
       fs.writeFileSync(this.settings.settingsFilePath, JSON.stringify(state));
     } catch (error) {
-      ErrorHandler.LogError(error);
+      ErrorHandler.logError(error);
     }
   }
 

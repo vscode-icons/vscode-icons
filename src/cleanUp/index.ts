@@ -54,12 +54,12 @@ export function cleanUpVSCodeSettings(): void {
   const saveSettings = content => {
     const settings = JSON.stringify(content, null, 4);
     writeFile(settingsFilePath, settings, error =>
-      ErrorHandler.LogError(error),
+      ErrorHandler.logError(error),
     );
   };
   const cleanUpSettings = (error, content) => {
     if (error) {
-      ErrorHandler.LogError(error, true);
+      ErrorHandler.logError(error, true);
       return;
     }
     const settings = parseJSON(content);
@@ -85,5 +85,5 @@ export function cleanUpVSIconsSettings(): void {
     getAppUserPath(__dirname),
     constants.extensionSettingsFilename,
   );
-  unlink(extensionSettingsFilePath, error => ErrorHandler.LogError(error));
+  unlink(extensionSettingsFilePath, error => ErrorHandler.logError(error));
 }
