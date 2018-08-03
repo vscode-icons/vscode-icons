@@ -6,6 +6,7 @@ import * as sinon from 'sinon';
 import { vscode } from '../../src/utils';
 import { extensionSettings, SettingsManager } from '../../src/settings';
 import { ExtensionStatus, IState } from '../../src/models';
+import { ErrorHandler } from '../../src/errorHandler';
 
 describe('SettingsManager: tests', function() {
   context('ensures that', function() {
@@ -111,6 +112,19 @@ describe('SettingsManager: tests', function() {
       sandbox.restore();
     });
 
+    it('the Error gets logged when writting the state fails', function() {
+      const writeToFile = sandbox.stub(fs, 'writeFileSync').throws();
+      const logStub = sandbox.stub(ErrorHandler, 'logError');
+      const stateMock: IState = {
+        version: '0.0.0',
+        status: ExtensionStatus.notActivated,
+        welcomeShown: false,
+      };
+      settingsManager.setState(stateMock);
+      expect(logStub.called).to.be.true;
+      expect(writeToFile.called).to.be.true;
+    });
+
     it('the state gets written to a settings file', function() {
       const writeToFile = sandbox.stub(fs, 'writeFileSync');
       const stateMock: IState = {
@@ -178,28 +192,30 @@ describe('SettingsManager: tests', function() {
         expect(Object.keys(state)).to.have.lengthOf(3);
       });
 
-      it('returns a default state if no settings file exists', function() {
-        sandbox.stub(fs, 'existsSync').returns(false);
-        const state = settingsManager.getState();
-        expect(state).to.be.instanceOf(Object);
-        expect(state.version).to.be.equal('0.0.0');
-      });
+      context('returns a default state when', function() {
+        it('no settings file exists', function() {
+          sandbox.stub(fs, 'existsSync').returns(false);
+          const state = settingsManager.getState();
+          expect(state).to.be.instanceOf(Object);
+          expect(state.version).to.be.equal('0.0.0');
+        });
 
-      it('returns a default state if reading the file fails', function() {
-        sandbox.stub(fs, 'existsSync').returns(true);
-        sandbox.stub(fs, 'readFileSync').throws(Error);
-        sandbox.stub(console, 'error');
-        const state = settingsManager.getState();
-        expect(state).to.be.instanceOf(Object);
-        expect(state.version).to.be.equal('0.0.0');
-      });
+        it('reading the file fails', function() {
+          sandbox.stub(fs, 'existsSync').returns(true);
+          sandbox.stub(fs, 'readFileSync').throws(Error);
+          sandbox.stub(console, 'error');
+          const state = settingsManager.getState();
+          expect(state).to.be.instanceOf(Object);
+          expect(state.version).to.be.equal('0.0.0');
+        });
 
-      it('returns a default state if parsing the file content fails', function() {
-        sandbox.stub(fs, 'existsSync').returns(true);
-        sandbox.stub(fs, 'readFileSync').returns('test');
-        const state = settingsManager.getState();
-        expect(state).to.be.instanceOf(Object);
-        expect(state.version).to.be.equal('0.0.0');
+        it('parsing the file content fails', function() {
+          sandbox.stub(fs, 'existsSync').returns(true);
+          sandbox.stub(fs, 'readFileSync').returns('test');
+          const state = settingsManager.getState();
+          expect(state).to.be.instanceOf(Object);
+          expect(state.version).to.be.equal('0.0.0');
+        });
       });
     });
 

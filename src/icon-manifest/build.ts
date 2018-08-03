@@ -8,7 +8,7 @@ import { extensionSettings } from '../settings';
 const iconGenerator = new IconGenerator(
   vscode,
   schema,
-  '',
+  /*configCustomIconFolderPath*/ null,
   /*avoidCustomDetection*/ true,
 );
 const json = iconGenerator.generateJson(files, folders);

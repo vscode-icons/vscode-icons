@@ -192,7 +192,7 @@ export class IconGenerator implements models.IIconGenerator {
       // tslint:disable-next-line no-console
       console.info('Icons manifest file successfully generated!');
     } catch (error) {
-      ErrorHandler.LogError(error);
+      ErrorHandler.logError(error);
     }
   }
 
@@ -213,7 +213,7 @@ export class IconGenerator implements models.IIconGenerator {
       // tslint:disable-next-line no-console
       console.info('package.json updated');
     } catch (error) {
-      ErrorHandler.LogError(error);
+      ErrorHandler.logError(error);
     }
   }
 

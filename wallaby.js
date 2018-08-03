@@ -12,6 +12,11 @@ module.exports = {
     "test/**/*.test.ts"
   ],
   filesWithNoCoverageCalculated: [
+    "src/index.ts",
+    "src/uninstall.ts",
+    "src/commands/index.ts",
+    "src/icon-manifest/build.ts",
+    "src/init/welcome.ts",
   ],
   preprocessors: {
     "**/*.json": (file, done) => done(file.rename(`../${file.path}`).content),
