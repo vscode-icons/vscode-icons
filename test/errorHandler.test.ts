@@ -39,7 +39,7 @@ describe('ErrorHandler: tests', function() {
         expect(error).to.not.haveOwnProperty('stack').to.be.true;
       });
 
-      it('the error iteslef, when no error stack and message are available', function() {
+      it('the error itself, when no error stack and message are available', function() {
         const error = new Error();
         delete error.stack;
         delete error.message;

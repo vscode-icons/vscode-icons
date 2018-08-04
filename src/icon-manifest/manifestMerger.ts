@@ -86,9 +86,9 @@ function mergeSupported(
     // check for exentensions in use.
     // we'll add a new node
     if (file.extends) {
-      final.filter(x => x.icon === file.extends).forEach(x => {
-        x.icon = file.icon;
-      });
+      final
+        .filter(x => x.icon === file.extends)
+        .forEach(x => (x.icon = file.icon));
     }
     // remove overrides
     final = final.filter(x => x.icon !== file.overrides);
@@ -96,11 +96,11 @@ function mergeSupported(
     if (!file.extensions) {
       file.extensions = [];
     }
-    file.extensions.forEach(ext => {
+    file.extensions.forEach(ext =>
       final
         .filter(x => x.extensions.find(y => y === ext))
-        .forEach(x => _.remove(x.extensions, el => el === ext));
-    });
+        .forEach(x => _.remove(x.extensions, el => el === ext)),
+    );
     final.push(file);
   });
   return final;
@@ -200,9 +200,7 @@ function togglePreset<
         disabled: disable,
       });
     } else {
-      existing.forEach(x => {
-        x.disabled = disable;
-      });
+      existing.forEach(x => (x.disabled = disable));
     }
   });
   return workingCopy as T;

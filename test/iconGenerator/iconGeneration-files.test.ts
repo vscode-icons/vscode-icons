@@ -1,4 +1,5 @@
 // tslint:disable only-arrow-functions
+// tslint:disable no-unused-expression
 import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
@@ -25,12 +26,11 @@ describe('IconGenerator: files icon generation test', function() {
     it('filename extension should not have a leading dot', function() {
       files.supported
         .filter(file => !file.filename && !file.disabled)
-        .forEach(file => {
-          file.extensions.forEach(extension => {
-            // tslint:disable-next-line:no-unused-expression
-            expect(extension.startsWith('.')).to.be.false;
-          });
-        });
+        .forEach(file =>
+          file.extensions.forEach(
+            extension => expect(extension.startsWith('.')).to.be.false,
+          ),
+        );
     });
 
     context('default', function() {
@@ -61,7 +61,6 @@ describe('IconGenerator: files icon generation test', function() {
                   `${settings.filePrefix}${file.icon}` +
                   `${settings.iconSuffix}.${FileFormat[file.format]}`;
                 const iconFilePath = path.join(iconsFolderPath, filename);
-                // tslint:disable-next-line:no-unused-expression
                 expect(fs.existsSync(iconFilePath)).to.be.true;
               });
             });
@@ -73,7 +72,6 @@ describe('IconGenerator: files icon generation test', function() {
               );
               files.supported.filter(file => !file.disabled).forEach(file => {
                 const definition = `${settings.manifestFilePrefix}${file.icon}`;
-                // tslint:disable-next-line:no-unused-expression
                 expect(schema.iconDefinitions[definition]).exist;
               });
             });
@@ -97,7 +95,6 @@ describe('IconGenerator: files icon generation test', function() {
                   settings.iconSuffix
                 }.${FileFormat[file.format]}`;
                 const iconFilePath = path.join(iconsFolderPath, filename);
-                // tslint:disable-next-line:no-unused-expression
                 expect(fs.existsSync(iconFilePath)).to.be.true;
               });
             });
@@ -113,7 +110,6 @@ describe('IconGenerator: files icon generation test', function() {
                   const definition = `${settings.manifestFileLightPrefix}${
                     file.icon
                   }`;
-                  // tslint:disable-next-line:no-unused-expression
                   expect(schema.iconDefinitions[definition]).exist;
                 });
             });
@@ -146,9 +142,9 @@ describe('IconGenerator: files icon generation test', function() {
                   const definition = `${settings.manifestFilePrefix}${
                     file.icon
                   }`;
-                  file.extensions.forEach(extension => {
-                    expect(schema.fileExtensions[extension]).equal(definition);
-                  });
+                  file.extensions.forEach(extension =>
+                    expect(schema.fileExtensions[extension]).equal(definition),
+                  );
                 });
             });
 
@@ -168,11 +164,11 @@ describe('IconGenerator: files icon generation test', function() {
                     const definition = `${settings.manifestFileLightPrefix}${
                       file.icon
                     }`;
-                    file.extensions.forEach(extension => {
+                    file.extensions.forEach(extension =>
                       expect(schema.light.fileExtensions[extension]).equal(
                         definition,
-                      );
-                    });
+                      ),
+                    );
                   });
               },
             );
@@ -190,35 +186,40 @@ describe('IconGenerator: files icon generation test', function() {
                   const definition = `${settings.manifestFilePrefix}${
                     file.icon
                   }`;
-                  file.extensions.forEach(extension => {
-                    expect(schema.fileNames[extension]).equal(definition);
-                  });
+                  file.extensions.forEach(extension =>
+                    expect(schema.fileNames[extension]).equal(definition),
+                  );
                 });
             });
 
-            // tslint:disable-next-line:max-line-length
-            it(`that is a filename and has a light theme version, has a file name referencing its 'light' definition`, function() {
-              const schema = iconGenerator.generateJson(
-                files,
-                emptyFolderCollection,
-              );
-              files.supported
-                .filter(
-                  file =>
-                    file.filename &&
-                    !file.languages &&
-                    file.light &&
-                    !file.disabled,
-                )
-                .forEach(file => {
-                  const definition = `${settings.manifestFileLightPrefix}${
-                    file.icon
-                  }`;
-                  file.extensions.forEach(extension => {
-                    expect(schema.light.fileNames[extension]).equal(definition);
+            it(
+              `that is a filename and has a light theme version, ` +
+                `has a file name referencing its 'light' definition`,
+              function() {
+                const schema = iconGenerator.generateJson(
+                  files,
+                  emptyFolderCollection,
+                );
+                files.supported
+                  .filter(
+                    file =>
+                      file.filename &&
+                      !file.languages &&
+                      file.light &&
+                      !file.disabled,
+                  )
+                  .forEach(file => {
+                    const definition = `${settings.manifestFileLightPrefix}${
+                      file.icon
+                    }`;
+                    file.extensions.forEach(extension =>
+                      expect(schema.light.fileNames[extension]).equal(
+                        definition,
+                      ),
+                    );
                   });
-                });
-            });
+              },
+            );
 
             it('that is supported by language ids, has a language id referencing its definition', function() {
               const schema = iconGenerator.generateJson(
@@ -286,35 +287,40 @@ describe('IconGenerator: files icon generation test', function() {
       context('each supported', function() {
         context('file extension', function() {
           context('that has not a light theme version', function() {
-            // tslint:disable-next-line:max-line-length
-            it(`and is supported by language ids, has a 'light' language id referencing its inherited definition`, function() {
-              const dSchema: IIconSchema = { ...defaultSchema };
-              dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
-              const schema = new IconGenerator(vscode, dSchema).generateJson(
-                files,
-                emptyFolderCollection,
-              );
-              files.supported
-                .filter(file => file.languages && !file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${settings.manifestFilePrefix}${
-                    file.icon
-                  }`;
-                  const assignLanguagesLight = language => {
-                    expect(schema.light.languageIds[language]).equal(
-                      definition,
-                    );
-                  };
+            it(
+              `and is supported by language ids, ` +
+                `has a 'light' language id referencing its inherited definition`,
+              function() {
+                const dSchema: IIconSchema = { ...defaultSchema };
+                dSchema.iconDefinitions._file_light.iconPath = 'light_icon';
+                const schema = new IconGenerator(vscode, dSchema).generateJson(
+                  files,
+                  emptyFolderCollection,
+                );
+                files.supported
+                  .filter(
+                    file => file.languages && !file.light && !file.disabled,
+                  )
+                  .forEach(file => {
+                    const definition = `${settings.manifestFilePrefix}${
+                      file.icon
+                    }`;
+                    const assignLanguagesLight = language => {
+                      expect(schema.light.languageIds[language]).equal(
+                        definition,
+                      );
+                    };
 
-                  file.languages.forEach(langIds => {
-                    if (Array.isArray(langIds.ids)) {
-                      langIds.ids.forEach(id => assignLanguagesLight(id));
-                    } else {
-                      assignLanguagesLight(langIds.ids);
-                    }
+                    file.languages.forEach(langIds => {
+                      if (Array.isArray(langIds.ids)) {
+                        langIds.ids.forEach(id => assignLanguagesLight(id));
+                      } else {
+                        assignLanguagesLight(langIds.ids);
+                      }
+                    });
                   });
-                });
-            });
+              },
+            );
 
             it('and is not a filename, has a file extension referencing its inherited definition', function() {
               const dSchema: IIconSchema = { ...defaultSchema };
@@ -329,11 +335,11 @@ describe('IconGenerator: files icon generation test', function() {
                   const definition = `${settings.manifestFilePrefix}${
                     file.icon
                   }`;
-                  file.extensions.forEach(extension => {
+                  file.extensions.forEach(extension =>
                     expect(schema.light.fileExtensions[extension]).equals(
                       definition,
-                    );
-                  });
+                    ),
+                  );
                 });
             });
 
@@ -350,7 +356,6 @@ describe('IconGenerator: files icon generation test', function() {
                   const definition = `${settings.manifestFileLightPrefix}${
                     file.icon
                   }`;
-                  // tslint:disable-next-line:no-unused-expression
                   expect(schema.iconDefinitions[definition]).exist;
                 });
             });
@@ -378,11 +383,11 @@ describe('IconGenerator: files icon generation test', function() {
                   const definition = `${settings.manifestFilePrefix}${
                     file.icon
                   }`;
-                  file.extensions.forEach(extension => {
+                  file.extensions.forEach(extension =>
                     expect(schema.light.fileNames[extension]).equals(
                       definition,
-                    );
-                  });
+                    ),
+                  );
                 });
             },
           );

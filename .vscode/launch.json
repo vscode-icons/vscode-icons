@@ -10,14 +10,10 @@
       "type": "extensionHost",
       "request": "launch",
       "runtimeExecutable": "${execPath}",
-      "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}"
-      ],
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
       "stopOnEntry": false,
       "sourceMaps": true,
-      "outFiles": [
-        "${workspaceFolder}/out/src/**/*.js"
-      ],
+      "outFiles": ["${workspaceFolder}/out/src/**/*.js"],
       "preLaunchTask": "npm"
     },
     {

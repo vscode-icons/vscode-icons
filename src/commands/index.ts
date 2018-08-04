@@ -42,9 +42,7 @@ function didChangeConfigurationListener(): void {
     doReload = false;
     // 'vscode' team still hasn't fixed this: In case the 'user settings' file has just been created
     // a delay needs to be introduced in order for the preset change to get persisted on disk.
-    setTimeout(() => {
-      executeAndReload(cb, ...argms);
-    }, 500);
+    setTimeout(() => executeAndReload(cb, ...argms), 500);
   } else if (!customMsgShown) {
     manageApplyCustomizations(
       initVSIconsConfig,
