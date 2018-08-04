@@ -1,4 +1,5 @@
 // tslint:disable only-arrow-functions
+// tslint:disable no-unused-expression
 import * as fs from 'fs';
 import * as path from 'path';
 import { expect } from 'chai';
@@ -37,7 +38,6 @@ describe('IconGenerator: folders icon generation test', function() {
       });
 
       it('folder has an icon path', function() {
-        // tslint:disable-next-line:no-unused-expression
         expect(schema.iconDefinitions._folder.iconPath).not.to.be.empty;
       });
 
@@ -48,7 +48,6 @@ describe('IconGenerator: folders icon generation test', function() {
       });
 
       it('root folder has an icon path', function() {
-        // tslint:disable-next-line:no-unused-expression
         expect(schema.iconDefinitions._root_folder.iconPath).not.to.be.empty;
       });
 
@@ -69,7 +68,6 @@ describe('IconGenerator: folders icon generation test', function() {
                   settings.iconSuffix
                 }.${FileFormat[folder.format]}`;
                 const iconFilePath = path.join(iconsFolderPath, filename);
-                // tslint:disable-next-line:no-unused-expression
                 expect(fs.existsSync(iconFilePath)).to.be.true;
               });
             });
@@ -80,7 +78,6 @@ describe('IconGenerator: folders icon generation test', function() {
                   `${settings.folderPrefix}${folder.icon}_opened` +
                   `${settings.iconSuffix}.${FileFormat[folder.format]}`;
                 const iconFilePath = path.join(iconsFolderPath, filename);
-                // tslint:disable-next-line:no-unused-expression
                 expect(fs.existsSync(iconFilePath)).to.be.true;
               });
             });
@@ -92,7 +89,6 @@ describe('IconGenerator: folders icon generation test', function() {
                   const definition = `${settings.manifestFolderPrefix}${
                     folder.icon
                   }`;
-                  // tslint:disable-next-line:no-unused-expression
                   expect(schema.iconDefinitions[definition]).exist;
                 });
             });
@@ -104,7 +100,6 @@ describe('IconGenerator: folders icon generation test', function() {
                   const definition = `${settings.manifestFolderPrefix}${
                     folder.icon
                   }_open`;
-                  // tslint:disable-next-line:no-unused-expression
                   expect(schema.iconDefinitions[definition]).exist;
                 });
             });
@@ -142,11 +137,11 @@ describe('IconGenerator: folders icon generation test', function() {
                   const definition = `${settings.manifestFolderPrefix}${
                     folder.icon
                   }_open`;
-                  folder.extensions.forEach(extension => {
+                  folder.extensions.forEach(extension =>
                     expect(schema.folderNamesExpanded[extension]).equal(
                       definition,
-                    );
-                  });
+                    ),
+                  );
                 });
             });
 
@@ -157,9 +152,9 @@ describe('IconGenerator: folders icon generation test', function() {
                   const definition = `${settings.manifestFolderPrefix}${
                     folder.icon
                   }`;
-                  folder.extensions.forEach(extension => {
-                    expect(schema.folderNames[extension]).equals(definition);
-                  });
+                  folder.extensions.forEach(extension =>
+                    expect(schema.folderNames[extension]).equals(definition),
+                  );
                 });
             });
 
@@ -172,7 +167,6 @@ describe('IconGenerator: folders icon generation test', function() {
                       `${settings.folderLightPrefix}${folder.icon}` +
                       `${settings.iconSuffix}.${FileFormat[folder.format]}`;
                     const iconFilePath = path.join(iconsFolderPath, filename);
-                    // tslint:disable-next-line:no-unused-expression
                     expect(fs.existsSync(iconFilePath)).to.be.true;
                   });
               });
@@ -187,7 +181,6 @@ describe('IconGenerator: folders icon generation test', function() {
                         FileFormat[folder.format]
                       }`;
                     const iconFilePath = path.join(iconsFolderPath, filename);
-                    // tslint:disable-next-line:no-unused-expression
                     expect(fs.existsSync(iconFilePath)).to.be.true;
                   });
               });
@@ -199,7 +192,6 @@ describe('IconGenerator: folders icon generation test', function() {
                     const definition = `${settings.manifestFolderLightPrefix}${
                       folder.icon
                     }`;
-                    // tslint:disable-next-line:no-unused-expression
                     expect(schema.iconDefinitions[definition]).exist;
                   });
               });
@@ -211,7 +203,6 @@ describe('IconGenerator: folders icon generation test', function() {
                     const definition = `${settings.manifestFolderLightPrefix}${
                       folder.icon
                     }_open`;
-                    // tslint:disable-next-line:no-unused-expression
                     expect(schema.iconDefinitions[definition]).exist;
                   });
               });
@@ -249,11 +240,11 @@ describe('IconGenerator: folders icon generation test', function() {
                     const definition = `${settings.manifestFolderLightPrefix}${
                       folder.icon
                     }`;
-                    folder.extensions.forEach(extension => {
+                    folder.extensions.forEach(extension =>
                       expect(schema.light.folderNames[extension]).equal(
                         definition,
-                      );
-                    });
+                      ),
+                    );
                   });
               });
 
@@ -264,11 +255,11 @@ describe('IconGenerator: folders icon generation test', function() {
                     const definition = `${settings.manifestFolderLightPrefix}${
                       folder.icon
                     }_open`;
-                    folder.extensions.forEach(extension => {
+                    folder.extensions.forEach(extension =>
                       expect(schema.light.folderNamesExpanded[extension]).equal(
                         definition,
-                      );
-                    });
+                      ),
+                    );
                   });
               });
             });
@@ -305,7 +296,6 @@ describe('IconGenerator: folders icon generation test', function() {
                     const definition = `${settings.manifestFolderLightPrefix}${
                       folder.icon
                     }`;
-                    // tslint:disable-next-line:no-unused-expression
                     expect(schema.iconDefinitions[definition]).exist;
                   });
               });
@@ -317,11 +307,11 @@ describe('IconGenerator: folders icon generation test', function() {
                     const definition = `${settings.manifestFolderPrefix}${
                       folder.icon
                     }`;
-                    folder.extensions.forEach(extension => {
+                    folder.extensions.forEach(extension =>
                       expect(schema.light.folderNames[extension]).equals(
                         definition,
-                      );
-                    });
+                      ),
+                    );
                   });
               });
             },
@@ -337,7 +327,6 @@ describe('IconGenerator: folders icon generation test', function() {
                     const definition = `${settings.manifestFolderLightPrefix}${
                       folder.icon
                     }_open`;
-                    // tslint:disable-next-line:no-unused-expression
                     expect(schema.iconDefinitions[definition]).exist;
                   });
               });
@@ -349,11 +338,11 @@ describe('IconGenerator: folders icon generation test', function() {
                     const definition = `${settings.manifestFolderPrefix}${
                       folder.icon
                     }_open`;
-                    folder.extensions.forEach(extension => {
+                    folder.extensions.forEach(extension =>
                       expect(
                         schema.light.folderNamesExpanded[extension],
-                      ).equals(definition);
-                    });
+                      ).equals(definition),
+                    );
                   });
               });
             },
