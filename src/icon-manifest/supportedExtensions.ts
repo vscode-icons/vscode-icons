@@ -2540,7 +2540,7 @@ export const extensions: IFileCollection = {
       icon: 'testjs',
       extensions: [],
       filenamesGlob: ['test', 'spec'],
-      extensionsGlob: ['js', 'jsx'],
+      extensionsGlob: ['js', 'jsx', 'mjs'],
       light: true,
       format: FileFormat.svg,
     },
