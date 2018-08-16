@@ -1035,7 +1035,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'excel',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods' ],
       format: FileFormat.svg,
     },
     {
