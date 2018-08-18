@@ -1035,7 +1035,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'excel',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods' ],
+      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods'],
       format: FileFormat.svg,
     },
     {
@@ -1783,7 +1783,13 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'node2', extensions: [], format: FileFormat.svg, disabled: true },
+    {
+      icon: 'node2',
+      extensions: ['.node-version', '.nvmrc'],
+      filename: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
     {
       icon: 'nodemon',
       extensions: ['nodemon.json'],
