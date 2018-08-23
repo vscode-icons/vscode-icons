@@ -27,7 +27,7 @@
   "hideExplorerArrowsPresetEnabled": "Explorer klasör okları görünürlüğü etkinleştirildi.",
   "hideExplorerArrowsPresetDisabled": "Explorer klasör okları görünürlüğü devre dışı bırakıldı.",
   "restart": "Değişikliklerin uygulanması için yeniden başlatın.",
-  "ngDetected": "",
-  "nonNgDetected": "",
-  "projectDetectionReset": ""
+  "ngDetected": "%extensionName%, Angular projesi tespit etti. Yeniden başlatarak Angular simgelerini ektinleştirin.",
+  "nonNgDetected": "%extensionName%, Angular olmayan bir proje tespit etti. Yeniden başlatarak Angular simgelerini devre dışı bırakın.",
+  "projectDetectionReset": "Proje Algılama varsayılanları sıfırlandı."
 }
