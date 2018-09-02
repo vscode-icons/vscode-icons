@@ -1,6 +1,7 @@
-version: #{build}
-image:
-  - Visual Studio 2017
+version: '#{build}'
+image: Visual Studio 2017
+clone_depth: 5
+build: off
 environment:
   # Define versions of Node.js
   matrix:
@@ -8,7 +9,6 @@ environment:
     - node_js: 7.9.0 # vscode >= 1.16.0
     - node_js: 7.4.0 # vscode >= 1.12.0 < 1.16.0
     - node_js: 6.5.0 # vscode >= 1.8.0 < 1.12.0
-clone_depth: 5
 matrix:
   fast_finish: true
   allow_failures:
@@ -45,4 +45,3 @@ after_test:
   # send coverage report
   - ps: If ($env:CODECLIMATE_REPO_TOKEN -ne $null) { gc .\coverage\lcov.info | & .\node_modules\.bin\codeclimate-test-reporter }
   - ps: If ($env:CODECOV_TOKEN -ne $null) { .\node_modules\.bin\codecov --disable=gcov }
-build: off
