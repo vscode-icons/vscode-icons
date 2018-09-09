@@ -58,8 +58,8 @@ describe('FileExtensions: merging configuration documents', function() {
       const def = json.iconDefinitions['_f_actionscript'];
       expect(def).exist;
       expect(def.iconPath).exist;
-      expect(json.fileExtensions['as2']).to.equals('_f_actionscript');
-      expect(path.extname(def.iconPath)).to.equals('.svg');
+      expect(json.fileExtensions['as2']).to.equal('_f_actionscript');
+      expect(path.extname(def.iconPath)).to.equal('.svg');
     });
 
     it('overrides removes the specified extension', function() {
@@ -112,9 +112,9 @@ describe('FileExtensions: merging configuration documents', function() {
       const newPath = json.iconDefinitions['_f_newExt'].iconPath;
       expect(extendedDef).not.to.exist;
       expect(newPath).exist;
-      expect(json.fileExtensions['as']).to.equals('_f_newExt');
-      expect(json.fileExtensions['mynew']).to.equals('_f_newExt');
-      expect(path.extname(newPath)).not.to.equals('.svg');
+      expect(json.fileExtensions['as']).to.equal('_f_newExt');
+      expect(json.fileExtensions['mynew']).to.equal('_f_newExt');
+      expect(path.extname(newPath)).not.to.equal('.svg');
     });
 
     it('disabled extensions are not included into the manifest', function() {
@@ -250,7 +250,7 @@ describe('FileExtensions: merging configuration documents', function() {
         const ngGroup = Object.keys(json.iconDefinitions).filter(x =>
           /^_f_ng_.*2$/.test(x),
         );
-        expect(ngGroup.length).to.equals(14);
+        expect(ngGroup.length).to.equal(14);
       });
 
       it('are removed from the original extension', function() {
@@ -268,8 +268,8 @@ describe('FileExtensions: merging configuration documents', function() {
           iconGenerator,
         );
         expect(json.iconDefinitions['_f_newExt']).exist;
-        expect(json.fileExtensions['bin']).to.equals('_f_newExt');
-        expect(json.fileExtensions['o']).to.equals('_f_newExt');
+        expect(json.fileExtensions['bin']).to.equal('_f_newExt');
+        expect(json.fileExtensions['o']).to.equal('_f_newExt');
       });
 
       it('accept languageId', function() {
@@ -292,7 +292,7 @@ describe('FileExtensions: merging configuration documents', function() {
           iconGenerator,
         );
         expect(json.iconDefinitions['_f_actionscript']).exist;
-        expect(json.languageIds['newlang']).to.equals('_f_actionscript');
+        expect(json.languageIds['newlang']).to.equal('_f_actionscript');
       });
     });
 
@@ -317,7 +317,7 @@ describe('FileExtensions: merging configuration documents', function() {
         );
         const customDef = json.iconDefinitions['_f_custom_icon'];
         expect(customDef).exist;
-        expect(path.extname(customDef.iconPath)).to.equals('.svg');
+        expect(path.extname(customDef.iconPath)).to.equal('.svg');
       });
 
       it('has a custom path', function() {
@@ -354,7 +354,7 @@ describe('FileExtensions: merging configuration documents', function() {
           expect(customDef.iconPath).to.contain(
             extensionSettings.customIconFolderName,
           );
-          expect(json.fileExtensions['custom']).to.equals('_f_custom_icon');
+          expect(json.fileExtensions['custom']).to.equal('_f_custom_icon');
         } finally {
           fs.unlinkSync(iconNamePath);
         }

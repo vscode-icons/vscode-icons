@@ -57,9 +57,9 @@ describe('FolderExtensions: merging configuration documents', function() {
       const def = json.iconDefinitions['_fd_aws'];
       expect(def).exist;
       expect(def.iconPath).exist;
-      expect(json.folderNames['aws3']).to.equals('_fd_aws');
-      expect(json.folderNamesExpanded['aws3']).to.equals('_fd_aws_open');
-      expect(path.extname(def.iconPath)).to.equals('.svg');
+      expect(json.folderNames['aws3']).to.equal('_fd_aws');
+      expect(json.folderNamesExpanded['aws3']).to.equal('_fd_aws_open');
+      expect(path.extname(def.iconPath)).to.equal('.svg');
     });
 
     it('overrides removes the specified extension', function() {
@@ -112,11 +112,11 @@ describe('FolderExtensions: merging configuration documents', function() {
       const newPath = json.iconDefinitions['_fd_newExt'].iconPath;
       expect(extendedPath).not.to.exist;
       expect(newPath).exist;
-      expect(json.folderNames['aws']).to.equals('_fd_newExt');
-      expect(json.folderNamesExpanded['aws']).to.equals('_fd_newExt_open');
-      expect(json.folderNames['mynew']).to.equals('_fd_newExt');
-      expect(json.folderNamesExpanded['mynew']).to.equals('_fd_newExt_open');
-      expect(path.extname(newPath)).not.to.equals('.svg');
+      expect(json.folderNames['aws']).to.equal('_fd_newExt');
+      expect(json.folderNamesExpanded['aws']).to.equal('_fd_newExt_open');
+      expect(json.folderNames['mynew']).to.equal('_fd_newExt');
+      expect(json.folderNamesExpanded['mynew']).to.equal('_fd_newExt_open');
+      expect(path.extname(newPath)).not.to.equal('.svg');
     });
 
     it('disabled extensions are not included into the manifest', function() {
@@ -187,7 +187,7 @@ describe('FolderExtensions: merging configuration documents', function() {
         iconGenerator,
       );
       expect(json.iconDefinitions['_fd_newExt']).exist;
-      expect(json.folderNames['aws']).to.equals('_fd_newExt');
+      expect(json.folderNames['aws']).to.equal('_fd_newExt');
     });
 
     context('custom icon', function() {
@@ -211,7 +211,7 @@ describe('FolderExtensions: merging configuration documents', function() {
         );
         const customDef = json.iconDefinitions['_fd_custom_icon'];
         expect(customDef).exist;
-        expect(path.extname(customDef.iconPath)).to.equals('.svg');
+        expect(path.extname(customDef.iconPath)).to.equal('.svg');
       });
 
       it('has a custom path', function() {
@@ -258,8 +258,8 @@ describe('FolderExtensions: merging configuration documents', function() {
           expect(customDef.iconPath).contains(
             extensionSettings.customIconFolderName,
           );
-          expect(json.folderNames['custom']).to.equals('_fd_custom_icon');
-          expect(json.folderNamesExpanded['custom']).to.equals(
+          expect(json.folderNames['custom']).to.equal('_fd_custom_icon');
+          expect(json.folderNamesExpanded['custom']).to.equal(
             '_fd_custom_icon_open',
           );
         } finally {
@@ -317,8 +317,8 @@ describe('FolderExtensions: merging configuration documents', function() {
           const customDef = json.iconDefinitions['_fd_custom_icon'];
           expect(customDef).exist;
           expect(customDef.iconPath).to.contain(customIconFolderPathFull);
-          expect(json.folderNames['custom']).to.equals('_fd_custom_icon');
-          expect(json.folderNamesExpanded['custom']).to.equals(
+          expect(json.folderNames['custom']).to.equal('_fd_custom_icon');
+          expect(json.folderNamesExpanded['custom']).to.equal(
             '_fd_custom_icon_open',
           );
         } finally {
@@ -377,8 +377,8 @@ describe('FolderExtensions: merging configuration documents', function() {
           expect(
             customDef.iconPath.startsWith(iconGenerator.iconsFolderBasePath),
           ).to.be.true;
-          expect(json.folderNames['custom']).to.equals('_fd_custom_icon');
-          expect(json.folderNamesExpanded['custom']).to.equals(
+          expect(json.folderNames['custom']).to.equal('_fd_custom_icon');
+          expect(json.folderNamesExpanded['custom']).to.equal(
             '_fd_custom_icon_open',
           );
         } finally {

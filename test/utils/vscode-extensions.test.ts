@@ -91,8 +91,7 @@ describe('vscode-extensions: tests', function() {
             },
           ];
           config.vsicons.associations.files = config.files.globalValue;
-          const c = vsExt.getVsiconsConfig();
-          expect(c).to.deep.equal(config.vsicons);
+          expect(vsExt.getVsiconsConfig()).to.deep.equal(config.vsicons);
         });
 
         it(`the configuration's vsicons property if workspaceValue is an empty array`, function() {
@@ -125,7 +124,7 @@ describe('vscode-extensions: tests', function() {
           ];
           // if workspaceValue is present vsicons will return it.
           config.vsicons.associations.files = config.files.workspaceValue;
-          expect(vsExt.getVsiconsConfig().associations.files).to.deep.equals([
+          expect(vsExt.getVsiconsConfig().associations.files).to.deep.equal([
             {
               icon: 'js2',
               extensions: ['myExt1', 'myExt2.custom.js'],
@@ -161,7 +160,7 @@ describe('vscode-extensions: tests', function() {
           ];
           // if workspaceValue is present vsicons will return it.
           config.vsicons.associations.files = config.files.workspaceValue;
-          expect(vsExt.getVsiconsConfig().associations.files).to.deep.equals([
+          expect(vsExt.getVsiconsConfig().associations.files).to.deep.equal([
             {
               icon: 'js',
               extensions: ['myExt1', 'myExt2.custom.js'],
@@ -219,7 +218,7 @@ describe('vscode-extensions: tests', function() {
           ];
           // if workspaceValue is present vsicons will return it.
           config.vsicons.associations.folders = config.folders.workspaceValue;
-          expect(vsExt.getVsiconsConfig().associations.folders).to.deep.equals([
+          expect(vsExt.getVsiconsConfig().associations.folders).to.deep.equal([
             {
               icon: 'js2',
               extensions: ['myExt1', 'myExt2.custom.js'],
@@ -255,7 +254,7 @@ describe('vscode-extensions: tests', function() {
           ];
           // if workspaceValue is present vsicons will return it.
           config.vsicons.associations.folders = config.folders.workspaceValue;
-          expect(vsExt.getVsiconsConfig().associations.folders).to.deep.equals([
+          expect(vsExt.getVsiconsConfig().associations.folders).to.deep.equal([
             {
               icon: 'js',
               extensions: ['myExt1', 'myExt2.custom.js'],
