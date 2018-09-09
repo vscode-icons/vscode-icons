@@ -91,7 +91,8 @@ describe('vscode-extensions: tests', function() {
             },
           ];
           config.vsicons.associations.files = config.files.globalValue;
-          expect(vsExt.getVsiconsConfig()).to.equals(config.vsicons);
+          const c = vsExt.getVsiconsConfig();
+          expect(c).to.deep.equal(config.vsicons);
         });
 
         it(`the configuration's vsicons property if workspaceValue is an empty array`, function() {
@@ -104,7 +105,7 @@ describe('vscode-extensions: tests', function() {
           ];
           config.files.workspaceValue = [];
           config.vsicons.associations.files = config.files.globalValue;
-          expect(vsExt.getVsiconsConfig()).to.equals(config.vsicons);
+          expect(vsExt.getVsiconsConfig()).to.deep.equal(config.vsicons);
         });
 
         it('both workspace and global settings for files', function() {
@@ -185,7 +186,7 @@ describe('vscode-extensions: tests', function() {
             },
           ];
           config.vsicons.associations.folders = config.folders.globalValue;
-          expect(vsExt.getVsiconsConfig()).to.equals(config.vsicons);
+          expect(vsExt.getVsiconsConfig()).to.deep.equal(config.vsicons);
         });
 
         it(`the configuration's vsicons property if workspaceValue is an empty array`, function() {
@@ -197,8 +198,8 @@ describe('vscode-extensions: tests', function() {
             },
           ];
           config.folders.workspaceValue = [];
-          config.vsicons.associations.files = config.folders.globalValue;
-          expect(vsExt.getVsiconsConfig()).to.equals(config.vsicons);
+          config.vsicons.associations.folders = config.folders.globalValue;
+          expect(vsExt.getVsiconsConfig()).to.deep.equal(config.vsicons);
         });
 
         it('both workspace and global settings for files', function() {

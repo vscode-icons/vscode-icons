@@ -8,7 +8,7 @@ export function getConfig(): vscode.WorkspaceConfiguration {
 
 export function getVsiconsConfig(): IVSIcons {
   const config = vscode.workspace.getConfiguration();
-  const mergedConfig = config.vsicons;
+  const mergedConfig = _.cloneDeep(config.vsicons);
   const files = config.inspect<IFileExtension[]>('vsicons.associations.files');
   const folders = config.inspect<IFileExtension[]>(
     'vsicons.associations.folders',
