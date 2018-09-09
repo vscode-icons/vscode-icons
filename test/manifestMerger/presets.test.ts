@@ -21,7 +21,7 @@ describe('Presets: merging configuration documents', function() {
       const nggroup = result.supported.filter(
         x => x.icon.startsWith('ng_') && x.disabled,
       );
-      expect(nggroup.length).to.equals(34);
+      expect(nggroup.length).to.equal(34);
     });
 
     it('only first set of angular extensions get enabled', function() {
@@ -29,7 +29,7 @@ describe('Presets: merging configuration documents', function() {
       const nggroup = result.supported.filter(
         x => x.icon.startsWith('ng_') && !x.disabled,
       );
-      expect(nggroup.length).to.equals(18);
+      expect(nggroup.length).to.equal(18);
     });
 
     it('only second set of angular extensions get enabled', function() {
@@ -89,7 +89,7 @@ describe('Presets: merging configuration documents', function() {
       const ngGroup = result.supported.filter(
         x => /^ng_.*2$/.test(x.icon) && !x.disabled,
       );
-      expect(ngGroup.length).to.equals(16);
+      expect(ngGroup.length).to.equal(16);
     });
 
     it('all angular extensions are disabled even if duplicity is present', function() {
@@ -113,7 +113,7 @@ describe('Presets: merging configuration documents', function() {
       const ngGroup = result.supported.filter(
         x => x.icon.startsWith('ng_') && x.disabled,
       );
-      expect(ngGroup.length).to.equals(4);
+      expect(ngGroup.length).to.equal(4);
     });
 
     it('JS official extension is enabled', function() {

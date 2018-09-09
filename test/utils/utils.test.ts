@@ -66,7 +66,7 @@ describe('Utils: tests', function() {
           utils.createDirectoryRecursively(directoryPath);
 
           expect(fileCheck.called).to.be.true;
-          expect(createDirectory.callCount).to.equals(expectedCounts);
+          expect(createDirectory.callCount).to.equal(expectedCounts);
 
           sandbox.restore();
         };
