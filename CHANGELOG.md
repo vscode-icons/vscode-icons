@@ -1,5 +1,24 @@
 # Change Log
 
+## 7.26.0 (September 9, 2018)
+
+- Fix: Fixed issue affecting merged configurations. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1708](https://github.com/vscode-icons/vscode-icons/pull/1708))
+- Fix: Fixed `Appveyor` configuration. ([@JimiC](https://github.com/JimiC) in [#1706](https://github.com/vscode-icons/vscode-icons/pull/1706))
+- Enhancement: Support for more `rollup` variations. ([@wayou](https://github.com/wayou) in [#1705](https://github.com/vscode-icons/vscode-icons/pull/1705))
+- Feature: Portuguese (Brazil) translations. ([@cgarbin](https://github.com/cgarbin) in [#1689](https://github.com/vscode-icons/vscode-icons/pull/1689))
+- Feature: Turkish translations. ([@kendinikertenkelebek](https://github.com/kendinikertenkelebek) in [#1689](https://github.com/vscode-icons/vscode-icons/pull/1689))
+- Fix: Formatted `supportedExtensions` file. ([@JimiC](https://github.com/JimiC) in [#1685](https://github.com/vscode-icons/vscode-icons/pull/1685))
+- Feature: Support for `.mjs` in tests. ([@zo](https://github.com/zo) in [#1684](https://github.com/vscode-icons/vscode-icons/pull/1684))
+- Feature: Support for `.fods`. ([@dlech](https://github.com/dlech) in [#1683](https://github.com/vscode-icons/vscode-icons/pull/1683))
+- Fix: Spelling correction. ([@daverayment](https://github.com/daverayment) in [#1676](https://github.com/vscode-icons/vscode-icons/pull/1676))
+- Enhancement: Refactor for `Prettier`. ([@JimiC](https://github.com/JimiC) in [#1673](https://github.com/vscode-icons/vscode-icons/pull/1673))
+- Enhancement: Simplified `.vscodeignore` entries. ([@JimiC](https://github.com/JimiC) in [#1671](https://github.com/vscode-icons/vscode-icons/pull/1671))
+- Enhancement: Added test cases for error handling. ([@JimiC](https://github.com/JimiC) in [#1670](https://github.com/vscode-icons/vscode-icons/pull/1670))
+- Enhancement: Added `svg` to image folders. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1669](https://github.com/vscode-icons/vscode-icons/pull/1669))
+- Feature: Added `Prettier` to the project. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1667](https://github.com/vscode-icons/vscode-icons/pull/1667))
+- Enhancement: Optimized `wasm` languages. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1666](https://github.com/vscode-icons/vscode-icons/pull/1666))
+- Fix: Fixed latest released changelog. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1665](https://github.com/vscode-icons/vscode-icons/pull/1665))
+
 ## 7.25.0 (August 1, 2018)
 
 - Feature: Added support for `WebAssembly`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1663](https://github.com/vscode-icons/vscode-icons/pull/1663))
