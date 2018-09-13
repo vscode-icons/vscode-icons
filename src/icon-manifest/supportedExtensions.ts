@@ -1136,6 +1136,7 @@ export const extensions: IFileCollection = {
         '.gitignore',
         '.gitmodules',
         '.gitkeep',
+        '.mailmap'
       ],
       filename: true,
       languages: [languages.git],
