@@ -15,6 +15,7 @@ export const languages: ILanguageCollection = {
   autohotkey: { ids: 'ahk', defaultExtension: 'ahk' },
   autoit: { ids: 'autoit', defaultExtension: 'au3' },
   avro: { ids: 'avro', defaultExtension: 'avcs' },
+  azcli: { ids: 'azcli', defaultExtension: 'azcli' },
   bat: { ids: 'bat', defaultExtension: 'bat' },
   bazel: { ids: 'bazel', defaultExtension: 'bzl' },
   bibtex: { ids: 'bibtex', defaultExtension: 'bib' },
