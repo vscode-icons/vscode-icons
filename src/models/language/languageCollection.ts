@@ -16,6 +16,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   autohotkey: ILanguage;
   autoit: ILanguage;
   avro: ILanguage;
+  azcli: ILanguage;
   bazel: ILanguage;
   bibtex: ILanguage;
   blade: ILanguage;
