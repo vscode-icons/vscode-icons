@@ -1,5 +1,12 @@
 # Change Log
 
+## 7.27.0 (September 23, 2018)
+
+- Feature: Added support for `Azure Pipelines` and `A<ure CLI`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1717](https://github.com/vscode-icons/vscode-icons/pull/1717))
+- Enhancement: Support for `.babelrc.json`. ([@eliasib13](https://github.com/eliasib13) in [#1716](https://github.com/vscode-icons/vscode-icons/pull/1716))
+- Enhancement: Support for `.mailmap`. ([@eliasib13](https://github.com/eliasib13) in [#1715](https://github.com/vscode-icons/vscode-icons/pull/1715))
+- Enhancement: Support for more `bazel` variations. ([@wayou](https://github.com/wayou) in [#1714](https://github.com/vscode-icons/vscode-icons/pull/1714))
+
 ## 7.26.0 (September 9, 2018)
 
 - Fix: Fixed issue affecting merged configurations. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1708](https://github.com/vscode-icons/vscode-icons/pull/1708))
