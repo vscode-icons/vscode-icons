@@ -2546,6 +2546,12 @@ export const extensions: IFileCollection = {
       languages: [languages.t4],
       format: FileFormat.svg,
     },
+    {
+      icon: 'tt',
+      extensions: ['tt2','tt3'],
+      languages: [languages.templatetoolkit],
+      format: FileFormat.svg,
+    },
     { icon: 'tcl', extensions: ['tcl', 'exp'], format: FileFormat.svg },
     {
       icon: 'terraform',
