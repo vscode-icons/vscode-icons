@@ -2548,7 +2548,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tt',
-      extensions: ['tt2','tt3'],
+      extensions: ['tt2', 'tt3'],
       languages: [languages.templatetoolkit],
       format: FileFormat.svg,
     },
