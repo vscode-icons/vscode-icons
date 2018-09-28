@@ -182,7 +182,7 @@ export const languages: ILanguageCollection = {
   swig: { ids: 'swig', defaultExtension: 'swig' },
   systemverilog: { ids: 'systemverilog', defaultExtension: 'sv' },
   t4: { ids: 't4', defaultExtension: 'tt' },
-  templatetoolkit: { ids: 'tt', defaultExtension: 'tt' },
+  templatetoolkit: { ids: 'tt', defaultExtension: 'tt3' },
   terraform: { ids: 'terraform', defaultExtension: 'tf' },
   tex: { ids: 'tex', defaultExtension: 'sty' },
   textile: { ids: 'textile', defaultExtension: 'textile' },
