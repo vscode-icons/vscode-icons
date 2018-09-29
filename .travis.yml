@@ -3,10 +3,9 @@ os:
   - linux
   - osx
 node_js:
-  - node # latest node
-  - 7.9.0 # vscode >= 1.16.0
-  - 7.4.0 # vscode >= 1.12.0 < 1.16.0
-  - 6.5.0 # vscode >= 1.8.0 < 1.12.0
+  - node  # latest node
+  - 8.9.3 # vscode >= 1.26.0
+  - 7.9.0 # vscode >= 1.16.0 < 1.26.0
 git:
   depth: 5
   submodules: false
@@ -19,10 +18,9 @@ before_install:
   - curl -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
 before_script:
-  - npm i codeclimate-test-reporter --no-save
-  - npm i codecov --no-save
+  - npm i codeclimate-test-reporter codecov --no-save
   - npm run postinstall
-script: npm run build
+script: npm test
 after_success:
   - if [[ $CODECLIMATE_REPO_TOKEN ]] ; then codeclimate-test-reporter < ./coverage/lcov.info ; fi
   - codecov --disable=gcov
@@ -44,7 +42,7 @@ jobs:
     - stage: publish
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       os: linux
-      node_js: 7.9.0
+      node_js: 8.9.3
       before_script: npm i vsce --no-save
       script: vsce publish -p $VSCE_TOKEN
       after_success:

@@ -1,15 +1,16 @@
 {
-  "tslint.enable": true,
   "editor.tabSize": 2,
   "files.exclude": {
     "out": false
   },
+  "prettier.tslintIntegration": true,
   "search.exclude": {
     "out": true,
     "images": true,
     "icons": true,
     "examples": true
   },
+  "tslint.enable": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
   "vsicons.projectDetection.disableDetect": true
 }

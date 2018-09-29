@@ -1,10 +1,10 @@
 export interface IVSCodeUri {
-  scheme: string;
-  authority: string;
-  path: string;
-  query: string;
-  fragment: string;
-  fsPath: string;
+  readonly scheme: string;
+  readonly authority: string;
+  readonly path: string;
+  readonly query: string;
+  readonly fragment: string;
+  readonly fsPath: string;
   with(change: {
     scheme?: string;
     authority?: string;

@@ -30,8 +30,8 @@
         "email": "roberto.huertas@outlook.com"
     },
     "engines": {
-        "vscode": "^1.8.1",
-        "node": ">=6.5.0"
+        "vscode": "^1.18.1",
+        "node": ">=7.9.0"
     },
     "categories": [
         "Themes"
@@ -65,57 +65,68 @@
             {
                 "command": "vscode-icons.activateIcons",
                 "title": "%command.activateIcons.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "activationCommand"
             },
             {
                 "command": "vscode-icons.regenerateIcons",
                 "title": "%command.regenerateIcons.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "applyCustomizationCommand"
             },
             {
                 "command": "vscode-icons.ngPreset",
                 "title": "%command.ngPreset.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "toggleAngularPresetCommand"
             },
             {
                 "command": "vscode-icons.jsPreset",
                 "title": "%command.jsPreset.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "toggleJsPresetCommand"
             },
             {
                 "command": "vscode-icons.tsPreset",
                 "title": "%command.tsPreset.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "toggleTsPresetCommand"
             },
             {
                 "command": "vscode-icons.jsonPreset",
                 "title": "%command.jsonPreset.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "toggleJsonPresetCommand"
             },
             {
                 "command": "vscode-icons.hideFoldersPreset",
                 "title": "%command.hideFoldersPreset.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "toggleHideFoldersPresetCommand"
             },
             {
                 "command": "vscode-icons.foldersAllDefaultIconPreset",
                 "title": "%command.foldersAllDefaultIconPreset.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "toggleFoldersAllDefaultIconPresetCommand"
             },
             {
                 "command": "vscode-icons.hideExplorerArrowsPreset",
                 "title": "%command.hideExplorerArrowsPreset.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "toggleHideExplorerArrowsPresetCommand"
             },
             {
                 "command": "vscode-icons.restoreIcons",
                 "title": "%command.restoreIcons.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "restoreDefaultManifestCommand"
             },
             {
                 "command": "vscode-icons.resetProjectDetectionDefaults",
                 "title": "%command.resetProjectDetectionDefaults.title%",
-                "category": "Icons"
+                "category": "Icons",
+                "callbackName": "resetProjectDetectionDefaultsCommand"
             }
         ],
         "configuration": {
@@ -225,47 +236,52 @@
         }
     },
     "scripts": {
-        "precommit": "pretty-quick --staged",
+        "format": "prettier --loglevel error --write \"{src,test}/**/*.ts\"",
+        "postformat": "npm run lint -- --fix",
         "preinstall": "git submodule update --init --recursive",
         "postinstall": "vscode-install",
-        "prebuild": "npm run lint && npm run test",
-        "build": "node ./out/src/icon-manifest/build.js",
-        "pretest": "rimraf ./.nyc_output ./coverage && npm run compile",
+        "prebuild": "npm run compile",
+        "build": "node ./out/src/build.js",
+        "prebuild:dev": "npm run lint && npm run compile:dev",
+        "build:dev": "node ./out/src/build.js",
+        "pretest": "rimraf ./.nyc_output ./coverage && npm run lint && npm run compile:dev",
         "test": "nyc -x '' mocha",
         "posttest": "nyc report -r lcov",
         "test:vs": "node ./node_modules/vscode/bin/test",
         "vscode:prepublish": "npm run build",
         "vscode:uninstall": "node ./out/src/uninstall.js",
         "precompile": "rimraf ./out",
-        "compile": "tsc",
-        "compile:w": "npm run compile -- -w",
+        "compile": "tsc -p tsconfig.prod.json",
+        "compile:w": "npm run compile:dev -- -w",
+        "precompile:dev": "npm run precompile",
+        "compile:dev": "tsc",
         "lint": "tslint -p .",
         "example": "example"
     },
     "devDependencies": {
-        "@types/chai": "^4.1.3",
-        "@types/lodash": "^4.14.109",
-        "@types/mocha": "^5.2.2",
-        "@types/mockery": "^1.4.29",
-        "@types/node": "7",
+        "@types/chai": "^4.1.6",
+        "@types/lodash": "^4.14.116",
+        "@types/mocha": "^5.2.5",
+        "@types/node": "8",
+        "@types/opn": "^5.1.0",
+        "@types/proxyquire": "^1.3.28",
         "@types/semver": "^5.5.0",
-        "@types/sinon": "^5.0.1",
-        "chai": "^4.1.2",
+        "@types/sinon": "^5.0.2",
+        "chai": "^4.2.0",
         "examples-generator": "file:submodules/examples-generator",
         "mocha": "^5.2.0",
-        "mockery": "^2.1.0",
-        "nyc": "^12.0.2",
-        "prettier": "^1.14.0",
-        "pretty-quick": "^1.6.0",
+        "nyc": "^13.0.1",
+        "prettier": "^1.14.3",
+        "proxyquire": "^2.1.0",
         "rimraf": "^2.6.2",
-        "sinon": "^6.0.0",
+        "sinon": "^6.3.4",
         "tslint": "^5.11.0",
-        "typescript": "^2.9.1",
-        "vscode": "^1.1.18"
+        "typescript": "^3.1.1",
+        "vscode": "1.1.18"
     },
     "dependencies": {
-        "lodash": "^4.17.10",
-        "opn": "^5.3.0",
-        "semver": "^5.5.0"
+        "lodash": "^4.17.11",
+        "opn": "^5.4.0",
+        "semver": "^5.5.1"
     }
 }

@@ -5,7 +5,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "npm",
+      "label": "npm: build - dev",
       // the command is a shell script
       "type": "shell",
       // we want to run npm
@@ -14,8 +14,8 @@
       "presentation": {
         "reveal": "silent"
       },
-      // we run the custom script "build" as defined in package.json
-      "args": ["run", "build", "--loglevel", "silent"],
+      // we run the custom script "build:dev" as defined in package.json
+      "args": ["run", "build:dev", "--loglevel", "silent"],
       // The tsc compiler is running in the background
       "isBackground": true,
       // use the standard tsc in watch mode problem matcher to find compile problems in the output.

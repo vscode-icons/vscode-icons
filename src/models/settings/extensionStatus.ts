@@ -1,5 +1,5 @@
 export enum ExtensionStatus {
-  enabled,
+  activated,
   disabled,
-  notActivated,
+  deactivated,
 }

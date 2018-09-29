@@ -1,4 +1,7 @@
-import { cleanUpVSCodeSettings, cleanUpVSIconsSettings } from './cleanUp';
+import { ConfigManager } from './configuration/configManager';
 
-cleanUpVSIconsSettings();
-cleanUpVSCodeSettings();
+function uninstall(): Thenable<void> {
+  return ConfigManager.removeSettings();
+}
+
+uninstall();

@@ -5,10 +5,9 @@ build: off
 environment:
   # Define versions of Node.js
   matrix:
-    - node_js: '' # latest node
-    - node_js: 7.9.0 # vscode >= 1.16.0
-    - node_js: 7.4.0 # vscode >= 1.12.0 < 1.16.0
-    - node_js: 6.5.0 # vscode >= 1.8.0 < 1.12.0
+    - node_js: ''    # latest node
+    - node_js: 8.9.3 # vscode >= 1.26.0
+    - node_js: 7.9.0 # vscode >= 1.16.0 < 1.26.0
 matrix:
   fast_finish: true
   allow_failures:
@@ -34,13 +33,12 @@ cache:
   - '%LOCALAPPDATA%\Yarn'
 before_test:
   # install coverage reporters
-  - npm i codeclimate-test-reporter --no-save
-  - npm i codecov --no-save
+  - npm i codeclimate-test-reporter codecov --no-save
   # run postinstall again to ensure that 'vscode.d.ts' is installed
   - npm run postinstall
 test_script:
-  # run build script
-  - npm run build
+  # run test script
+  - npm test
 after_test:
   # send coverage report
   - ps: If ($env:CODECLIMATE_REPO_TOKEN -ne $null) { gc .\coverage\lcov.info | & .\node_modules\.bin\codeclimate-test-reporter }

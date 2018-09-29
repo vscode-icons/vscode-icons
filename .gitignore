@@ -8,3 +8,6 @@ coverage
 *.vsix
 *.lcov
 *.log
+
+# remove this after refactoring completion
+test_old

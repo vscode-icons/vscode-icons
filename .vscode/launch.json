@@ -14,7 +14,7 @@
       "stopOnEntry": false,
       "sourceMaps": true,
       "outFiles": ["${workspaceFolder}/out/src/**/*.js"],
-      "preLaunchTask": "npm"
+      "preLaunchTask": "npm: build - dev"
     },
     {
       "name": "Launch Tests",
@@ -31,7 +31,7 @@
         "${workspaceFolder}/out/test/**/*.js",
         "${workspaceFolder}/out/src/**/*.js"
       ],
-      "preLaunchTask": "npm"
+      "preLaunchTask": "npm: build - dev"
     }
   ]
 }
