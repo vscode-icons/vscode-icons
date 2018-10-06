@@ -411,7 +411,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'aws', extensions: [], format: FileFormat.svg },
     { icon: 'azure', extensions: [], languages: [languages.azcli], format: FileFormat.svg },
-    { icon: 'azurepipelines', extensions: ['azure-pipelines.yml'], filename: true, languages: [languages.azurepipelines], format: FileFormat.svg },
+    { icon: 'azurepipelines', extensions: [], filename: true, languages: [languages.azurepipelines], format: FileFormat.svg },
     {
       icon: 'babel',
       extensions: [
