@@ -1064,6 +1064,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
+      icon: 'fla',
+      extensions: ['fla'],
+      light: true,
+      format: FileFormat.svg
+    },
+    {
       icon: 'floobits',
       extensions: ['.flooignore'],
       filename: true,
@@ -2878,6 +2884,12 @@ export const extensions: IFileCollection = {
     { icon: 'wxml', extensions: ['wxml'], format: FileFormat.svg },
     { icon: 'wxss', extensions: ['wxss'], format: FileFormat.svg },
     { icon: 'xcode', extensions: ['xcodeproj'], format: FileFormat.svg },
+    {
+      icon: 'xfl',
+      extensions: ['xfl'],
+      light: true,
+      format: FileFormat.svg
+    },
     { icon: 'xib', extensions: ['xib'], format: FileFormat.svg },
     { icon: 'xliff', extensions: ['xliff', 'xlf'], format: FileFormat.svg },
     {
