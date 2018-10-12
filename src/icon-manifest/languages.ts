@@ -83,6 +83,7 @@ export const languages: ILanguageCollection = {
   html: { ids: 'html', defaultExtension: 'html' },
   http: { ids: 'http', defaultExtension: 'http' },
   ini: { ids: 'ini', defaultExtension: 'ini' },
+  ink: { ids: 'ink', defaultExtension: 'ink' },
   io: { ids: 'io', defaultExtension: 'io' },
   latex: { ids: 'latex', defaultExtension: 'tex' },
   java: { ids: 'java', defaultExtension: 'java' },

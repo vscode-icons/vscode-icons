@@ -1359,6 +1359,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ink',
+      extensions: ['ink', 'ink2'],
+      languages: [languages.ink],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ionic',
       extensions: ['ionic.project', 'ionic.config.json'],
       filename: true,
