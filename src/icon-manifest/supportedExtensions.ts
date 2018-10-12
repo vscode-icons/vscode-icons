@@ -1360,7 +1360,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ink',
-      extensions: ['ink', 'ink2'],
+      extensions: [],
       languages: [languages.ink],
       format: FileFormat.svg,
     },
