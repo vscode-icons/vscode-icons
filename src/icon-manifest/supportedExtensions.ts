@@ -54,6 +54,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'affinitypublisher',
+      extensions: ['afpub', 'affinitypublisher'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
