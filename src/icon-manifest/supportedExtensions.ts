@@ -35,6 +35,14 @@ export const extensions: IFileCollection = {
       languages: [languages.actionscript],
       format: FileFormat.svg,
     },
+    {
+      icon: 'actionscript2',
+      extensions: ['as'],
+      light: true,
+      languages: [],
+      format: FileFormat.svg,
+      disabled: true,
+    },
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
