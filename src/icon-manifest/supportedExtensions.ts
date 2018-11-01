@@ -37,9 +37,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'actionscript2',
-      extensions: ['as'],
+      extensions: [],
       light: true,
-      languages: [],
+      languages: [languages.actionscript],
       format: FileFormat.svg,
       disabled: true,
     },
