@@ -1626,6 +1626,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'lintstagedrc',
+      extensions: ['.lintstagedrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'liquid', extensions: ['liquid'], format: FileFormat.svg },
     { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
     { icon: 'locale', extensions: [], format: FileFormat.svg },
