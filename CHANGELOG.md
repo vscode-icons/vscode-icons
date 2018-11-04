@@ -1,5 +1,14 @@
 # Change Log
 
+## 7.28.0 (October 30, 2018)
+
+- Feature: Support for `Affinity Suite` icons. ([@admvx](https://github.com/admvx) in [#1757](https://github.com/vscode-icons/vscode-icons/pull/1757))
+- Feature: Support for `Ink`. ([@admvx](https://github.com/admvx) in [#1751](https://github.com/vscode-icons/vscode-icons/pull/1751))
+- Feature: Added support for `.fla` and `.xfl`. ([@admvx](https://github.com/admvx) in [#1744](https://github.com/vscode-icons/vscode-icons/pull/1744))
+- Enhancement: Updated `Azure Pipelines` icon. ([@vtbassmatt](https://github.com/vtbassmatt) in [#1741](https://github.com/vscode-icons/vscode-icons/pull/1741))
+- Enhancement: Updated `Dart` icon. ([@timsneath](https://github.com/timsneath) in [#1737](https://github.com/vscode-icons/vscode-icons/pull/1737))
+- Fix: Fixed typo in `Changelog`. ([@emman27](https://github.com/emman27) in [#1723](https://github.com/vscode-icons/vscode-icons/pull/1723)
+
 ## 7.27.0 (September 23, 2018)
 
 - Feature: Added support for `Azure Pipelines` and `Azure CLI`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1717](https://github.com/vscode-icons/vscode-icons/pull/1717))

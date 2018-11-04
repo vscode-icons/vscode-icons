@@ -17,6 +17,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   autoit: ILanguage;
   avro: ILanguage;
   azcli: ILanguage;
+  azurepipelines: ILanguage;
   bazel: ILanguage;
   bibtex: ILanguage;
   blade: ILanguage;
@@ -68,6 +69,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   helm: ILanguage;
   hosts: ILanguage;
   http: ILanguage;
+  ink: ILanguage;
   jekyll: ILanguage;
   jenkins: ILanguage;
   jinja: ILanguage;
@@ -140,6 +142,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   swig: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
+  templatetoolkit: ILanguage;
   terraform: ILanguage;
   tex: ILanguage;
   textile: ILanguage;

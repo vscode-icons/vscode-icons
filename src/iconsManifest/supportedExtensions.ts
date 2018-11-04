@@ -44,6 +44,21 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'affinitydesigner',
+      extensions: ['afdesign', 'affinitydesigner'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'affinityphoto',
+      extensions: ['afphoto', 'affinityphoto'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'affinitypublisher',
+      extensions: ['afpub', 'affinitypublisher'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
@@ -410,7 +425,8 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'aws', extensions: [], format: FileFormat.svg },
-    { icon: 'azure', extensions: ['azure-pipelines.yml'], filename: true, languages: [languages.azcli], format: FileFormat.svg },
+    { icon: 'azure', extensions: [], languages: [languages.azcli], format: FileFormat.svg },
+    { icon: 'azurepipelines', extensions: ['azure-pipelines.yml'], filename: true, languages: [languages.azurepipelines], format: FileFormat.svg },
     {
       icon: 'babel',
       extensions: [
@@ -1063,6 +1079,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
+      icon: 'fla',
+      extensions: ['fla'],
+      light: true,
+      format: FileFormat.svg
+    },
+    {
       icon: 'floobits',
       extensions: ['.flooignore'],
       filename: true,
@@ -1352,6 +1374,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ink',
+      extensions: [],
+      languages: [languages.ink],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ionic',
       extensions: ['ionic.project', 'ionic.config.json'],
       filename: true,
@@ -1595,6 +1623,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'lime',
       extensions: ['include.xml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'lintstagedrc',
+      extensions: ['.lintstagedrc'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2546,6 +2580,12 @@ export const extensions: IFileCollection = {
       languages: [languages.t4],
       format: FileFormat.svg,
     },
+    {
+      icon: 'tt',
+      extensions: ['tt2'],
+      languages: [languages.templatetoolkit],
+      format: FileFormat.svg,
+    },
     { icon: 'tcl', extensions: ['tcl', 'exp'], format: FileFormat.svg },
     {
       icon: 'terraform',
@@ -2871,6 +2911,12 @@ export const extensions: IFileCollection = {
     { icon: 'wxml', extensions: ['wxml'], format: FileFormat.svg },
     { icon: 'wxss', extensions: ['wxss'], format: FileFormat.svg },
     { icon: 'xcode', extensions: ['xcodeproj'], format: FileFormat.svg },
+    {
+      icon: 'xfl',
+      extensions: ['xfl'],
+      light: true,
+      format: FileFormat.svg
+    },
     { icon: 'xib', extensions: ['xib'], format: FileFormat.svg },
     { icon: 'xliff', extensions: ['xliff', 'xlf'], format: FileFormat.svg },
     {
