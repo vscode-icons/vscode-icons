@@ -579,6 +579,13 @@ export const extensions: IFileCollection = {
       languages: [languages.cabal],
       format: FileFormat.svg,
     },
+    {
+      icon: 'caddy',
+      extensions: ['caddyfile'],
+      languages: [languages.caddyfile],
+      filename: true,
+      format: FileFormat.png
+    },
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
     {
