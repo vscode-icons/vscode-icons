@@ -581,9 +581,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'caddy',
-      extensions: ['caddyfile'],
+      extensions: [],
       languages: [languages.caddyfile],
-      filename: true,
       format: FileFormat.png
     },
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
