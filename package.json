@@ -247,7 +247,7 @@
         "@types/lodash": "^4.14.109",
         "@types/mocha": "^5.2.2",
         "@types/mockery": "^1.4.29",
-        "@types/node": "7",
+        "@types/node": "^10.12.4",
         "@types/semver": "^5.5.0",
         "@types/sinon": "^5.0.1",
         "chai": "^4.1.2",
