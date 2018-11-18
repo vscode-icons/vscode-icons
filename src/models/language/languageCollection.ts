@@ -24,6 +24,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   bolt: ILanguage;
   c_al: ILanguage;
   cabal: ILanguage;
+  caddyfile: ILanguage;
   cfc: ILanguage;
   cfm: ILanguage;
   cmake: ILanguage;

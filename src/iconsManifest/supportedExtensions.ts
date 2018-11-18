@@ -35,6 +35,14 @@ export const extensions: IFileCollection = {
       languages: [languages.actionscript],
       format: FileFormat.svg,
     },
+    {
+      icon: 'actionscript2',
+      extensions: [],
+      light: true,
+      languages: [languages.actionscript],
+      format: FileFormat.svg,
+      disabled: true,
+    },
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
@@ -589,6 +597,12 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.cabal],
       format: FileFormat.svg,
+    },
+    {
+      icon: 'caddy',
+      extensions: [],
+      languages: [languages.caddyfile],
+      format: FileFormat.svg
     },
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
