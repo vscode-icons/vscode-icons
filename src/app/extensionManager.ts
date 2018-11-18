@@ -19,13 +19,13 @@ export class ExtensionManager implements models.IExtensionManager {
     private settingsManager: models.ISettingsManager,
     private notificationManager: models.INotificationManager,
     private iconsGenerator: models.IIconsGenerator,
-    private projectAutoDetectionManager: models.IProjectAutoDetectionManager
+    private projectAutoDetectionManager: models.IProjectAutoDetectionManager,
   ) {
     // register event listener for configuration changes
     this.vscodeManager.workspace.onDidChangeConfiguration(
       this.didChangeConfigurationListener,
       this,
-      this.vscodeManager.context.subscriptions
+      this.vscodeManager.context.subscriptions,
     );
   }
   //#endregion
@@ -57,8 +57,8 @@ export class ExtensionManager implements models.IExtensionManager {
         this.vscodeManager.commands.registerCommand(
           command.command,
           Reflect.get(this, command.callbackName) || (() => void 0),
-          this
-        )
+          this,
+        ),
       );
     });
   }
@@ -86,9 +86,9 @@ export class ExtensionManager implements models.IExtensionManager {
       this.configManager.hasConfigChanged(
         Utils.unflattenProperties<{ vsicons }>(
           manifest.contributes.configuration.properties,
-          'default'
+          'default',
         ).vsicons,
-        [constants.vsicons.presets.name, constants.vsicons.associations.name]
+        [constants.vsicons.presets.name, constants.vsicons.associations.name],
       );
     if (configChanged) {
       this.applyCustomizationCommand();
@@ -102,7 +102,7 @@ export class ExtensionManager implements models.IExtensionManager {
           models.LangResourceKeys.welcome,
           models.LangResourceKeys.activate,
           models.LangResourceKeys.aboutOfficialApi,
-          models.LangResourceKeys.seeReadme
+          models.LangResourceKeys.seeReadme,
         )
         .then(
           btn => {
@@ -124,7 +124,7 @@ export class ExtensionManager implements models.IExtensionManager {
                 break;
             }
           },
-          reason => ErrorHandler.logError(reason)
+          reason => ErrorHandler.logError(reason),
         );
     return displayMessage();
   }
@@ -135,7 +135,7 @@ export class ExtensionManager implements models.IExtensionManager {
         `%s v${constants.extension.version}`,
         models.LangResourceKeys.newVersion,
         models.LangResourceKeys.seeReleaseNotes,
-        models.LangResourceKeys.dontShowThis
+        models.LangResourceKeys.dontShowThis,
       )
       .then(
         btn => {
@@ -149,7 +149,7 @@ export class ExtensionManager implements models.IExtensionManager {
               break;
           }
         },
-        reason => ErrorHandler.logError(reason)
+        reason => ErrorHandler.logError(reason),
       );
   }
 
@@ -157,14 +157,14 @@ export class ExtensionManager implements models.IExtensionManager {
     message: string | models.LangResourceKeys,
     items: Array<string | models.LangResourceKeys>,
     callback?: (...args: any[]) => void,
-    cbArgs?: any[]
+    cbArgs?: any[],
   ): Thenable<void> {
     this.customMsgShown = true;
     return this.notificationManager
       .notifyInfo(message, ...items)
       .then(
         btn => this.handleAction(btn, callback, cbArgs),
-        reason => ErrorHandler.logError(reason)
+        reason => ErrorHandler.logError(reason),
       );
   }
 
@@ -173,7 +173,7 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   private applyCustomizationCommand(
-    additionalTitles: Array<string | models.LangResourceKeys> = []
+    additionalTitles: Array<string | models.LangResourceKeys> = [],
   ): void {
     this.showCustomizationMessage(
       `%s %s`,
@@ -183,7 +183,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.reload,
         ...additionalTitles,
       ],
-      this.applyCustomization
+      this.applyCustomization,
     );
   }
 
@@ -196,7 +196,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.restart,
         models.LangResourceKeys.reload,
       ],
-      this.restoreManifest
+      this.restoreManifest,
     );
   }
 
@@ -209,7 +209,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.restart,
         models.LangResourceKeys.reload,
       ],
-      this.resetProjectDetectionDefaults
+      this.resetProjectDetectionDefaults,
     );
   }
 
@@ -219,7 +219,7 @@ export class ExtensionManager implements models.IExtensionManager {
       models.PresetNames.angular,
       models.CommandNames.ngPreset,
       false,
-      models.ConfigurationTarget.Workspace
+      models.ConfigurationTarget.Workspace,
     );
   }
 
@@ -229,7 +229,7 @@ export class ExtensionManager implements models.IExtensionManager {
       models.PresetNames.jsOfficial,
       models.CommandNames.jsPreset,
       false,
-      models.ConfigurationTarget.Global
+      models.ConfigurationTarget.Global,
     );
   }
 
@@ -239,7 +239,7 @@ export class ExtensionManager implements models.IExtensionManager {
       models.PresetNames.tsOfficial,
       models.CommandNames.tsPreset,
       false,
-      models.ConfigurationTarget.Global
+      models.ConfigurationTarget.Global,
     );
   }
 
@@ -249,7 +249,7 @@ export class ExtensionManager implements models.IExtensionManager {
       models.PresetNames.jsonOfficial,
       models.CommandNames.jsonPreset,
       false,
-      models.ConfigurationTarget.Global
+      models.ConfigurationTarget.Global,
     );
   }
 
@@ -259,7 +259,7 @@ export class ExtensionManager implements models.IExtensionManager {
       models.PresetNames.hideFolders,
       models.CommandNames.hideFoldersPreset,
       true,
-      models.ConfigurationTarget.Global
+      models.ConfigurationTarget.Global,
     );
   }
 
@@ -269,7 +269,7 @@ export class ExtensionManager implements models.IExtensionManager {
       models.PresetNames.foldersAllDefaultIcon,
       models.CommandNames.foldersAllDefaultIconPreset,
       true,
-      models.ConfigurationTarget.Global
+      models.ConfigurationTarget.Global,
     );
   }
 
@@ -279,27 +279,27 @@ export class ExtensionManager implements models.IExtensionManager {
       models.PresetNames.hideExplorerArrows,
       models.CommandNames.hideExplorerArrowsPreset,
       true,
-      models.ConfigurationTarget.Global
+      models.ConfigurationTarget.Global,
     );
   }
 
   private executeAndReload(
     callback: (...args: any[]) => any,
-    cbArgs?: any[]
+    cbArgs?: any[],
   ): void {
     if (callback) {
       callback.apply(this, cbArgs);
     }
     // reload
     this.vscodeManager.commands.executeCommand(
-      constants.vscode.reloadWindowActionSetting
+      constants.vscode.reloadWindowActionSetting,
     );
   }
 
   private handleAction(
     btn: string | models.LangResourceKeys,
     callback?: (...args: any[]) => void,
-    cbArgs?: any[] // This is a workaround because `callback.arguments` is not accessible
+    cbArgs?: any[], // This is a workaround because `callback.arguments` is not accessible
   ): Thenable<void> {
     if (!btn) {
       this.customMsgShown = false;
@@ -319,7 +319,7 @@ export class ExtensionManager implements models.IExtensionManager {
           case 'applyCustomization': {
             this.customMsgShown = false;
             retVal = this.configManager.updateDontShowConfigManuallyChangedMessage(
-              true
+              true,
             );
             break;
           }
@@ -355,7 +355,7 @@ export class ExtensionManager implements models.IExtensionManager {
 
   private handleUpdatePreset(
     callback: (...args: any[]) => void,
-    cbArgs: any[]
+    cbArgs: any[],
   ): void {
     if (!callback) {
       throw new Error('Callback function missing');
@@ -378,7 +378,7 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   private applyProjectDetection(
-    projectDetectionResult: models.IProjectDetectionResult
+    projectDetectionResult: models.IProjectDetectionResult,
   ): void {
     if (!projectDetectionResult || !projectDetectionResult.apply) {
       return;
@@ -395,7 +395,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.disableDetect,
       ],
       this.applyCustomization,
-      [projectDetectionResult]
+      [projectDetectionResult],
     );
   }
 
@@ -403,13 +403,13 @@ export class ExtensionManager implements models.IExtensionManager {
     preset: models.PresetNames,
     command: models.CommandNames,
     reverseAction: boolean,
-    configurationTarget: models.ConfigurationTarget | boolean
+    configurationTarget: models.ConfigurationTarget | boolean,
   ): void {
     const presetName = models.PresetNames[preset];
     const commandName = models.CommandNames[command];
     const toggledValue = ManifestReader.getToggledValue(
       preset,
-      this.configManager.vsicons.presets
+      this.configManager.vsicons.presets,
     );
     const action = reverseAction
       ? toggledValue
@@ -431,12 +431,12 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.reload,
       ],
       this.configManager.updatePreset,
-      [presetName, toggledValue, configurationTarget]
+      [presetName, toggledValue, configurationTarget],
     );
   }
 
   private applyCustomization(
-    projectDetectionResult?: models.IProjectDetectionResult
+    projectDetectionResult?: models.IProjectDetectionResult,
   ): void {
     const associations = this.configManager.vsicons.associations;
     const customFiles: models.IFileCollection = {
@@ -450,7 +450,7 @@ export class ExtensionManager implements models.IExtensionManager {
     const iconsManifest = this.iconsGenerator.generateIconsManifest(
       customFiles,
       customFolders,
-      projectDetectionResult
+      projectDetectionResult,
     );
     this.iconsGenerator.persist(iconsManifest);
   }
@@ -475,11 +475,11 @@ export class ExtensionManager implements models.IExtensionManager {
 
   //#region Event Listeners
   private didChangeConfigurationListener(
-    e: models.IVSCodeConfigurationChangeEvent
+    e: models.IVSCodeConfigurationChangeEvent,
   ): void {
     if (!e || !e.affectsConfiguration) {
       throw new Error(
-        `Unsupported 'vscode' version: ${this.vscodeManager.version}`
+        `Unsupported 'vscode' version: ${this.vscodeManager.version}`,
       );
     }
 

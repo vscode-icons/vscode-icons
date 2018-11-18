@@ -27,11 +27,15 @@ describe('CustomsMerger: folder extensions tests', function () {
         supported: [{ icon: 'aws', extensions: ['aws3'], format: 'svg' }],
       };
 
-      const newDefs = CustomsMerger
-        .merge(null, extFiles, customFolders, extFolders, vsicons.presets)
-        .folders.supported.filter(
-          folder => folder.icon === customFolders.supported[0].icon
-        );
+      const newDefs = CustomsMerger.merge(
+        null,
+        extFiles,
+        customFolders,
+        extFolders,
+        vsicons.presets,
+      ).folders.supported.filter(
+        folder => folder.icon === customFolders.supported[0].icon,
+      );
 
       expect(newDefs)
         .to.be.an('array')
@@ -63,13 +67,13 @@ describe('CustomsMerger: folder extensions tests', function () {
         extFiles,
         customFolders,
         extFolders,
-        vsicons.presets
+        vsicons.presets,
       );
       const overridenDef = folders.supported.filter(
-        folder => folder.icon === customFolders.supported[0].overrides
+        folder => folder.icon === customFolders.supported[0].overrides,
       );
       const newDefs = folders.supported.filter(
-        folder => folder.icon === customFolders.supported[0].icon
+        folder => folder.icon === customFolders.supported[0].icon,
       );
 
       expect(overridenDef).to.be.empty;
@@ -78,7 +82,7 @@ describe('CustomsMerger: folder extensions tests', function () {
         .with.lengthOf(1);
       expect(newDefs[0].icon).to.equal(customFolders.supported[0].icon);
       expect(newDefs[0].extensions).to.eql(
-        customFolders.supported[0].extensions
+        customFolders.supported[0].extensions,
       );
       expect(newDefs[0].format).to.equals(customFolders.supported[0].format);
     });
@@ -101,13 +105,13 @@ describe('CustomsMerger: folder extensions tests', function () {
         extFiles,
         customFolders,
         extFolders,
-        vsicons.presets
+        vsicons.presets,
       );
       const extendedDef = folders.supported.filter(
-        folder => folder.icon === customFolders.supported[0].extends
+        folder => folder.icon === customFolders.supported[0].extends,
       );
       const newDefs = folders.supported.filter(
-        folder => folder.icon === customFolders.supported[0].icon
+        folder => folder.icon === customFolders.supported[0].icon,
       );
 
       expect(extendedDef)
@@ -123,7 +127,7 @@ describe('CustomsMerger: folder extensions tests', function () {
       expect(newDefs[0].format).to.equals(FileFormat.svg);
 
       expect(newDefs[1].extensions).to.eql(
-        customFolders.supported[0].extensions
+        customFolders.supported[0].extensions,
       );
       expect(newDefs[1].format).to.equals(customFolders.supported[0].format);
     });
@@ -136,11 +140,15 @@ describe('CustomsMerger: folder extensions tests', function () {
         ],
       };
 
-      const newDefs = CustomsMerger
-        .merge(null, extFiles, customFolders, extFolders, vsicons.presets)
-        .folders.supported.filter(
-          folder => folder.icon === customFolders.supported[0].icon
-        );
+      const newDefs = CustomsMerger.merge(
+        null,
+        extFiles,
+        customFolders,
+        extFolders,
+        vsicons.presets,
+      ).folders.supported.filter(
+        folder => folder.icon === customFolders.supported[0].icon,
+      );
 
       expect(newDefs)
         .to.be.an('array')
@@ -156,11 +164,15 @@ describe('CustomsMerger: folder extensions tests', function () {
         ],
       };
 
-      const newDefs = CustomsMerger
-        .merge(null, extFiles, customFolders, extFolders, vsicons.presets)
-        .folders.supported.filter(
-          folder => folder.icon === customFolders.supported[0].icon
-        );
+      const newDefs = CustomsMerger.merge(
+        null,
+        extFiles,
+        customFolders,
+        extFolders,
+        vsicons.presets,
+      ).folders.supported.filter(
+        folder => folder.icon === customFolders.supported[0].icon,
+      );
 
       expect(newDefs)
         .to.be.an('array')
@@ -172,7 +184,7 @@ describe('CustomsMerger: folder extensions tests', function () {
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
       expect(newDefs[1].extensions).to.eql(
-        customFolders.supported[0].extensions
+        customFolders.supported[0].extensions,
       );
     });
 
@@ -182,11 +194,15 @@ describe('CustomsMerger: folder extensions tests', function () {
         supported: [{ icon: 'aws', disabled: false, format: 'svg' }],
       };
 
-      const newDefs = CustomsMerger
-        .merge(null, extFiles, customFolders, extFolders, vsicons.presets)
-        .folders.supported.filter(
-          folder => folder.icon === customFolders.supported[0].icon
-        );
+      const newDefs = CustomsMerger.merge(
+        null,
+        extFiles,
+        customFolders,
+        extFolders,
+        vsicons.presets,
+      ).folders.supported.filter(
+        folder => folder.icon === customFolders.supported[0].icon,
+      );
 
       expect(newDefs)
         .to.be.an('array')
@@ -213,18 +229,18 @@ describe('CustomsMerger: folder extensions tests', function () {
         extFiles,
         customFolders,
         extFolders,
-        vsicons.presets
+        vsicons.presets,
       );
 
       const oldDefs = folders.supported.filter(
         folder =>
           folder.icon ===
           extFolders.supported.find(ef =>
-            isEqual(ef.extensions, customFolders.supported[0].extensions)
-          ).icon
+            isEqual(ef.extensions, customFolders.supported[0].extensions),
+          ).icon,
       );
       const newDefs = folders.supported.filter(
-        folder => folder.icon === customFolders.supported[0].icon
+        folder => folder.icon === customFolders.supported[0].icon,
       );
 
       expect(oldDefs[0].extensions).to.be.empty;
@@ -233,7 +249,7 @@ describe('CustomsMerger: folder extensions tests', function () {
         .with.lengthOf(1);
       expect(newDefs[0].icon).to.eql(customFolders.supported[0].icon);
       expect(newDefs[0].extensions).to.eql(
-        customFolders.supported[0].extensions
+        customFolders.supported[0].extensions,
       );
     });
 
@@ -250,17 +266,15 @@ describe('CustomsMerger: folder extensions tests', function () {
           ],
         };
 
-        const newDefs = CustomsMerger
-          .merge(
-            null,
-            extFiles,
-            customFolders,
-            extFolders,
-            vsicons.presets
-          )
-          .folders.supported.filter(
-            folder => folder.icon === customFolders.supported[0].icon
-          );
+        const newDefs = CustomsMerger.merge(
+          null,
+          extFiles,
+          customFolders,
+          extFolders,
+          vsicons.presets,
+        ).folders.supported.filter(
+          folder => folder.icon === customFolders.supported[0].icon,
+        );
 
         expect(newDefs)
           .to.be.an('array')

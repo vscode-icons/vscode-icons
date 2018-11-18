@@ -67,7 +67,7 @@ describe('Utils: tests', function () {
     context(`the 'pathUnixJoin' function`, function () {
       it('returns a path using Unix separator', function () {
         expect(Utils.pathUnixJoin('path', 'to', 'code')).to.equal(
-          'path/to/code'
+          'path/to/code',
         );
       });
     });
@@ -92,10 +92,10 @@ describe('Utils: tests', function () {
         const testCase = (
           directoryPath: string,
           dirExists: boolean,
-          expectedCounts: number
+          expectedCounts: number,
         ) => {
           const fileCheck = existsStub.callsFake(
-            path => dirExists || directoryPath.split('/').indexOf(path) !== -1
+            path => dirExists || directoryPath.split('/').indexOf(path) !== -1,
           );
 
           existsStub.resetHistory();
@@ -104,7 +104,7 @@ describe('Utils: tests', function () {
           Utils.createDirectoryRecursively(directoryPath);
 
           expect(fileCheck.callCount).to.be.equal(
-            dirExists ? expectedCounts + 2 : expectedCounts
+            dirExists ? expectedCounts + 2 : expectedCounts,
           );
           expect(createDirectory.callCount).to.equal(expectedCounts);
         };
@@ -164,7 +164,7 @@ describe('Utils: tests', function () {
             const toDirName = 'path/to';
 
             expect(() =>
-              Utils.getRelativePath('path/from', toDirName, false)
+              Utils.getRelativePath('path/from', toDirName, false),
             ).to.not.throw(Error, `Directory '${toDirName}' not found.`);
           });
         });
@@ -176,7 +176,7 @@ describe('Utils: tests', function () {
             const relativePath = Utils.getRelativePath(
               'path/from',
               toDirName,
-              false
+              false,
             );
 
             expect(/\/$/g.test(relativePath)).to.be.true;
@@ -202,14 +202,14 @@ describe('Utils: tests', function () {
         it('the `fromDirPath` parameter is NOT defined', function () {
           expect(() => Utils.getRelativePath(null, 'path/to')).to.throw(
             Error,
-            'fromDirPath not defined.'
+            'fromDirPath not defined.',
           );
         });
 
         it('the `toDirName` parameter is NOT defined', function () {
           expect(() => Utils.getRelativePath('path/from', null)).to.throw(
             Error,
-            'toDirName not defined.'
+            'toDirName not defined.',
           );
         });
 
@@ -218,7 +218,7 @@ describe('Utils: tests', function () {
 
           expect(() => Utils.getRelativePath('path/from', toDirName)).to.throw(
             Error,
-            `Directory '${toDirName}' not found.`
+            `Directory '${toDirName}' not found.`,
           );
         });
       });
@@ -237,13 +237,13 @@ describe('Utils: tests', function () {
     context(`the 'belongToSameDrive' function`, function () {
       it(`returns 'false', when paths do NOT belong to the same drive`, function () {
         expect(
-          Utils.belongToSameDrive('C:\\path\\to', 'D:\\path\to')
+          Utils.belongToSameDrive('C:\\path\\to', 'D:\\path\to'),
         ).to.be.false;
       });
 
       it(`returns 'true', when paths do belong to the same drive`, function () {
         expect(
-          Utils.belongToSameDrive('C:\\path\\to', 'C:\\anotherpath\to')
+          Utils.belongToSameDrive('C:\\path\\to', 'C:\\anotherpath\to'),
         ).to.be.true;
       });
     });
@@ -254,7 +254,7 @@ describe('Utils: tests', function () {
         const destPath = 'D:\\path\\to';
 
         expect(Utils.overwriteDrive(sourcePath, destPath)).to.be.equal(
-          sourcePath
+          sourcePath,
         );
       });
     });
@@ -383,7 +383,7 @@ describe('Utils: tests', function () {
           .to.be.an('object')
           .with.ownProperty('vsicons')
           .and.that.to.haveOwnProperty(
-            'dontShowNewVersionMessage'
+            'dontShowNewVersionMessage',
           ).and.that.to.be.false;
       });
     });

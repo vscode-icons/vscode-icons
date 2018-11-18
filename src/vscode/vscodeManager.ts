@@ -6,7 +6,7 @@ export class VSCodeManager implements models.IVSCodeManager {
 
   constructor(
     private vscode: models.IVSCode,
-    private extensionContext: models.IVSCodeExtensionContext
+    private extensionContext: models.IVSCodeExtensionContext,
   ) {
     if (!vscode) {
       throw new ReferenceError(`'vscode' not set to an instance`);
@@ -80,7 +80,7 @@ export class VSCodeManager implements models.IVSCodeManager {
     this.appUserDirPath = Utils.pathUnixJoin(
       appDataDirPath,
       appDataDirName,
-      'User'
+      'User',
     );
     return this.appUserDirPath;
   }

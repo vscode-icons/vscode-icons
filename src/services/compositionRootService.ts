@@ -37,9 +37,7 @@ export class CompositionRootService {
       return element.identifier === identifier;
     });
     if (!result) {
-      throw new Error(
-        `Object not found for: ${identifier.toString()}`
-      );
+      throw new Error(`Object not found for: ${identifier.toString()}`);
     }
     return result.obj as T;
   }
@@ -49,30 +47,30 @@ export class CompositionRootService {
       SYMBOLS.IVSCodeManager,
       VSCodeManager,
       vscode,
-      context
+      context,
     );
     const configManager: IConfigManager = this.bind<IConfigManager>(
       SYMBOLS.IConfigManager,
       ConfigManager,
-      vscodeManager
+      vscodeManager,
     );
     const settingsManager: ISettingsManager = this.bind<ISettingsManager>(
       SYMBOLS.ISettingsManager,
       SettingsManager,
-      vscodeManager
+      vscodeManager,
     );
     const iconsGenerator: IIconsGenerator = this.bind<IIconsGenerator>(
       SYMBOLS.IIconsGenerator,
       IconsGenerator,
       vscodeManager,
-      configManager
+      configManager,
     );
     const languageResourceManager: ILanguageResourceManager = this.bind<
       ILanguageResourceManager
     >(
       SYMBOLS.ILanguageResourceManager,
       LanguageResourceManager,
-      langResourceCollection[vscode.env.language]
+      langResourceCollection[vscode.env.language],
     );
     const notificationManager: INotificationManager = this.bind<
       INotificationManager
@@ -80,7 +78,7 @@ export class CompositionRootService {
       SYMBOLS.INotificationManager,
       NotificationManager,
       vscodeManager,
-      languageResourceManager
+      languageResourceManager,
     );
     const projectAutoDetectionManager: IProjectAutoDetectionManager = this.bind<
       IProjectAutoDetectionManager
@@ -88,7 +86,7 @@ export class CompositionRootService {
       SYMBOLS.IProjectAutoDetectionManager,
       ProjectAutoDetectionManager,
       vscodeManager,
-      configManager
+      configManager,
     );
 
     this.bind<IExtensionManager>(
@@ -99,7 +97,7 @@ export class CompositionRootService {
       settingsManager,
       notificationManager,
       iconsGenerator,
-      projectAutoDetectionManager
+      projectAutoDetectionManager,
     );
   }
 

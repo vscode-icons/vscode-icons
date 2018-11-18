@@ -14,8 +14,8 @@ describe('Specifications of supported extensions: tests', function () {
         .filter(file => file.extensions.length && !file.filename)
         .forEach(file =>
           file.extensions.forEach(
-            extension => expect(extension.startsWith('.')).to.be.false
-          )
+            extension => expect(extension.startsWith('.')).to.be.false,
+          ),
         );
     });
 

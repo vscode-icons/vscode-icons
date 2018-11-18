@@ -9,7 +9,7 @@ export class ProjectAutoDetectionManager
   implements models.IProjectAutoDetectionManager {
   constructor(
     private vscodeManager: models.IVSCodeManager,
-    private configManager: models.IConfigManager
+    private configManager: models.IConfigManager,
   ) {
     if (!vscodeManager) {
       throw new ReferenceError(`'vscodeManager' not set to an instance`);
@@ -20,7 +20,7 @@ export class ProjectAutoDetectionManager
   }
 
   public detectProjects(
-    projects: models.Projects[]
+    projects: models.Projects[],
   ): Thenable<models.IProjectDetectionResult> {
     if (!projects || !projects.length) {
       return Promise.resolve(null);
@@ -29,17 +29,17 @@ export class ProjectAutoDetectionManager
       ? (Promise.resolve(null) as Thenable<models.IVSCodeUri[]>)
       : this.vscodeManager.workspace.findFiles(
           '**/package.json',
-          '**/node_modules/**'
+          '**/node_modules/**',
         );
     return promise.then(
       results => this.detect(results, projects),
-      error => ErrorHandler.logError(error)
+      error => ErrorHandler.logError(error),
     );
   }
 
   private detect(
     results: models.IVSCodeUri[],
-    projects: models.Projects[]
+    projects: models.Projects[],
   ): models.IProjectDetectionResult {
     if (!results || !results.length) {
       return;
@@ -56,7 +56,7 @@ export class ProjectAutoDetectionManager
 
   private checkForProject(
     results: models.IVSCodeUri[],
-    project: models.Projects
+    project: models.Projects,
   ): models.IProjectDetectionResult {
     let presetName: string;
     switch (project) {
@@ -90,7 +90,7 @@ export class ProjectAutoDetectionManager
     // Use case: User has the preset set but project detection does not detect that project
     const projectInfo: models.IProjectInfo = this.getProjectInfo(
       results,
-      project
+      project,
     );
     const enableIcons = iconsDisabled && (!!projectInfo || preset === true);
     const disableIcons = !iconsDisabled && (!projectInfo || preset === false);
@@ -117,21 +117,23 @@ export class ProjectAutoDetectionManager
 
   private getProjectInfo(
     results: models.IVSCodeUri[],
-    project: models.Projects
+    project: models.Projects,
   ): models.IProjectInfo {
     let projectInfo: models.IProjectInfo = null;
-    results.some(result => {
+    for (const result of results) {
       const content: string = readFileSync(result.fsPath, 'utf8');
       const projectJson: { [key: string]: any } = Utils.parseJSON(content);
       projectInfo = this.getInfo(projectJson, project);
-      return !!projectInfo;
-    });
+      if (!!projectInfo) {
+        break;
+      }
+    }
     return projectInfo;
   }
 
   private getInfo(
     projectJson: { [key: string]: any },
-    name: models.Projects
+    name: models.Projects,
   ): models.IProjectInfo {
     if (!projectJson) {
       return null;

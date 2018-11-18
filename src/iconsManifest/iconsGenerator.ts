@@ -15,14 +15,14 @@ export class IconsGenerator implements models.IIconsGenerator {
 
   constructor(
     private vscodeManager?: models.IVSCodeManager,
-    private configManager?: models.IConfigManager
+    private configManager?: models.IConfigManager,
   ) {
     // register event listener for configuration changes
     if (this.vscodeManager) {
       this.vscodeManager.workspace.onDidChangeConfiguration(
         this.didChangeConfigurationListener,
         this,
-        this.vscodeManager.context.subscriptions
+        this.vscodeManager.context.subscriptions,
       );
     }
   }
@@ -30,7 +30,7 @@ export class IconsGenerator implements models.IIconsGenerator {
   public generateIconsManifest(
     files?: models.IFileCollection,
     folders?: models.IFolderCollection,
-    projectDetectionResult?: models.IProjectDetectionResult
+    projectDetectionResult?: models.IProjectDetectionResult,
   ): models.IIconSchema {
     // default icons manifest
     if (!files && !folders) {
@@ -49,17 +49,17 @@ export class IconsGenerator implements models.IIconsGenerator {
       extFolders,
       vsiconsConfig.presets,
       projectDetectionResult,
-      this.affectedPresets
+      this.affectedPresets,
     );
     const customIconsDirPath =
       vsiconsConfig.customIconFolderPath &&
       this.configManager.getCustomIconsDirPath(
-        vsiconsConfig.customIconFolderPath
+        vsiconsConfig.customIconFolderPath,
       );
     const iconsManifest = ManifestBuilder.buildManifest(
       merged.files,
       merged.folders,
-      customIconsDirPath
+      customIconsDirPath,
     );
 
     // apply non icons related config settings
@@ -71,18 +71,18 @@ export class IconsGenerator implements models.IIconsGenerator {
 
   public persist(
     iconsManifest: models.IIconSchema,
-    updatePackageJson: boolean = false
+    updatePackageJson: boolean = false,
   ): Thenable<void> {
     const iconsManifestDirPath = join(__dirname, '../../../', 'out/src');
     this.writeIconsManifestToFile(
       constants.iconsManifest.filename,
       iconsManifest,
-      iconsManifestDirPath
+      iconsManifestDirPath,
     );
     if (updatePackageJson) {
       const iconsFolderRelativePath = `${Utils.getRelativePath(
         '.',
-        iconsManifestDirPath
+        iconsManifestDirPath,
       )}${constants.iconsManifest.filename}`;
       return this.updatePackageJson(iconsFolderRelativePath);
     }
@@ -92,7 +92,7 @@ export class IconsGenerator implements models.IIconsGenerator {
   private writeIconsManifestToFile(
     iconsFilename: string,
     iconsManifest: models.IIconSchema,
-    outDir: string
+    outDir: string,
   ): void {
     try {
       if (!existsSync(outDir)) {
@@ -101,13 +101,13 @@ export class IconsGenerator implements models.IIconsGenerator {
 
       writeFileSync(
         Utils.pathUnixJoin(outDir, iconsFilename),
-        JSON.stringify(iconsManifest, null, 2)
+        JSON.stringify(iconsManifest, null, 2),
       );
       // tslint:disable-next-line no-console
       console.info(
         `[${
           constants.extension.name
-        }] Icons manifest file successfully generated!`
+        }] Icons manifest file successfully generated!`,
       );
     } catch (error) {
       ErrorHandler.logError(error);
@@ -120,18 +120,18 @@ export class IconsGenerator implements models.IIconsGenerator {
       const foundLineIndex = rawText.findIndex(
         line =>
           line.includes('"path"') &&
-          line.includes(constants.iconsManifest.filename)
+          line.includes(constants.iconsManifest.filename),
       );
       if (foundLineIndex < 0) {
         return rawText;
       }
       const dotEscapedFilename = constants.iconsManifest.filename.replace(
         '.',
-        '\\.'
+        '\\.',
       );
       rawText[foundLineIndex] = rawText[foundLineIndex].replace(
         new RegExp(`(.*").*${dotEscapedFilename}(.*".*)`),
-        `$1${iconsFolderPath}$2`
+        `$1${iconsFolderPath}$2`,
       );
       return rawText;
     };
@@ -143,23 +143,23 @@ export class IconsGenerator implements models.IIconsGenerator {
     }
     return Utils.updateFile(
       Utils.pathUnixJoin(__dirname, '../../../', 'package.json'),
-      replacer
+      replacer,
     ).then(
       () =>
         // tslint:disable-next-line no-console
         console.info(
-          `[${constants.extension.name}] Icons path in 'package.json' updated`
+          `[${constants.extension.name}] Icons path in 'package.json' updated`,
         ),
-      (error: Error) => ErrorHandler.logError(error)
+      (error: Error) => ErrorHandler.logError(error),
     );
   }
 
   private didChangeConfigurationListener(
-    e: models.IVSCodeConfigurationChangeEvent
+    e: models.IVSCodeConfigurationChangeEvent,
   ): void {
     if (!e || !e.affectsConfiguration) {
       throw new Error(
-        `Unsupported 'vscode' version: ${this.vscodeManager.version}`
+        `Unsupported 'vscode' version: ${this.vscodeManager.version}`,
       );
     }
 

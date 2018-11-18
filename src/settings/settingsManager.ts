@@ -29,7 +29,7 @@ export class SettingsManager implements ISettingsManager {
 
   public getState(): IState {
     const state = this.vscodeManager.context.globalState.get<IState>(
-      constants.vsicons.name
+      constants.vsicons.name,
     );
     return state || this.defaultState;
   }
@@ -43,7 +43,7 @@ export class SettingsManager implements ISettingsManager {
         },
         reason => {
           return ErrorHandler.logError(reason);
-        }
+        },
       );
   }
 
@@ -72,7 +72,7 @@ export class SettingsManager implements ISettingsManager {
     // store in new place: 'globalState'
     return this.setState(state).then(() =>
       // delete state from legacy place
-      this.deleteStateLegacy()
+      this.deleteStateLegacy(),
     );
   }
 
@@ -80,7 +80,7 @@ export class SettingsManager implements ISettingsManager {
   private getStateLegacy(): IState {
     const extensionSettingsLegacyFilePath = Utils.pathUnixJoin(
       this.vscodeManager.getAppUserDirPath(),
-      constants.extension.settingsFilename
+      constants.extension.settingsFilename,
     );
 
     if (!existsSync(extensionSettingsLegacyFilePath)) {
@@ -99,7 +99,7 @@ export class SettingsManager implements ISettingsManager {
   private deleteStateLegacy(): void {
     const extensionSettingsLegacyFilePath = Utils.pathUnixJoin(
       this.vscodeManager.getAppUserDirPath(),
-      constants.extension.settingsFilename
+      constants.extension.settingsFilename,
     );
     try {
       unlinkSync(extensionSettingsLegacyFilePath);

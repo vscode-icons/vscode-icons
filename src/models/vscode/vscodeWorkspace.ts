@@ -11,20 +11,20 @@ export interface IVSCodeWorkspace {
   onDidChangeConfiguration: IVSCodeEvent<IVSCodeConfigurationChangeEvent>;
   getConfiguration(
     section?: string,
-    resource?: IVSCodeUri
+    resource?: IVSCodeUri,
   ): IVSCodeWorkspaceConfiguration;
   findFiles(
     include: GlobPattern,
     exclude?: GlobPattern,
     maxResults?: number,
-    token?: IVSCodeCancellationToken
+    token?: IVSCodeCancellationToken,
   ): Thenable<IVSCodeUri[]>;
 }
 
 export type IVSCodeEvent<T> = (
   listener: (e: T) => any,
   thisArgs?: any,
-  disposables?: IVSCodeDisposable[]
+  disposables?: IVSCodeDisposable[],
 ) => IVSCodeDisposable;
 
 type GlobPattern = string | IVSCodeRelativePattern;

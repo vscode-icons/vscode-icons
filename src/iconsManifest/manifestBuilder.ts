@@ -10,13 +10,13 @@ export class ManifestBuilder {
   public static buildManifest(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
-    customIconsDirPath?: string
+    customIconsDirPath?: string,
   ): models.IIconSchema {
     this.customIconDirPath = customIconsDirPath;
     this.iconsManifestDirPath = join(__dirname, '../../../', 'out/src');
     this.iconsDirRelativeBasePath = Utils.getRelativePath(
       this.iconsManifestDirPath,
-      join(__dirname, '../../../', 'icons')
+      join(__dirname, '../../../', 'icons'),
     );
 
     const schema = cloneDeep(defaultSchema);
@@ -26,27 +26,27 @@ export class ManifestBuilder {
     defs._file.iconPath = this.buildDefaultIconPath(
       files.default.file,
       defs._file,
-      false
+      false,
     );
     defs._folder.iconPath = this.buildDefaultIconPath(
       folders.default.folder,
       defs._folder,
-      false
+      false,
     );
     defs._folder_open.iconPath = this.buildDefaultIconPath(
       folders.default.folder,
       defs._folder_open,
-      true
+      true,
     );
     defs._root_folder.iconPath = this.buildDefaultIconPath(
       folders.default.root_folder,
       defs._root_folder,
-      false
+      false,
     );
     defs._root_folder_open.iconPath = this.buildDefaultIconPath(
       folders.default.root_folder,
       defs._root_folder_open,
-      true
+      true,
     );
 
     // set default icons for light theme
@@ -60,27 +60,27 @@ export class ManifestBuilder {
     defs._file_light.iconPath = this.buildDefaultIconPath(
       files.default.file_light,
       defs._file_light,
-      false
+      false,
     );
     defs._folder_light.iconPath = this.buildDefaultIconPath(
       folders.default.folder_light,
       defs._folder_light,
-      false
+      false,
     );
     defs._folder_light_open.iconPath = this.buildDefaultIconPath(
       folders.default.folder_light,
       defs._folder_light_open,
-      true
+      true,
     );
     defs._root_folder_light.iconPath = this.buildDefaultIconPath(
       folders.default.root_folder_light,
       defs._root_folder_light,
-      false
+      false,
     );
     defs._root_folder_light_open.iconPath = this.buildDefaultIconPath(
       folders.default.root_folder_light,
       defs._root_folder_light_open,
-      true
+      true,
     );
 
     // set the rest of the schema
@@ -94,7 +94,7 @@ export class ManifestBuilder {
   private static buildDefaultIconPath(
     defaultExtension: models.IDefaultExtension,
     schemaExtension: models.IIconPath,
-    isOpenFolder: boolean
+    isOpenFolder: boolean,
   ): string {
     if (!defaultExtension || defaultExtension.disabled) {
       return schemaExtension.iconPath || '';
@@ -105,7 +105,7 @@ export class ManifestBuilder {
     const icon = defaultExtension.icon;
     const format = defaultExtension.format;
     const filename = `${defPrefix}${icon}${openSuffix}${iconSuffix}${Utils.fileFormatToString(
-      format
+      format,
     )}`;
     const fPath = this.getIconPath(filename);
 
@@ -115,7 +115,7 @@ export class ManifestBuilder {
   private static buildJsonStructure(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
-    schema: models.IIconSchema
+    schema: models.IIconSchema,
   ): models.IIconSchema {
     // check for light files & folders
     const hasDefaultLightFolder =
@@ -152,14 +152,14 @@ export class ManifestBuilder {
 
   private static buildFiles(
     files: models.IFileCollection,
-    hasDefaultLightFile: boolean
+    hasDefaultLightFile: boolean,
   ) {
     const sts = constants.iconsManifest;
     return sortedUniq(
       sortBy(
         files.supported.filter(x => !x.disabled && x.icon),
-        item => item.icon
-      )
+        item => item.icon,
+      ),
     ).reduce(
       (old, current) => {
         const defs = old.defs;
@@ -178,7 +178,7 @@ export class ManifestBuilder {
         const filePath = Utils.pathUnixJoin(fileIconPath, iconFileType);
         const fileLightPath = Utils.pathUnixJoin(
           fileIconPath,
-          iconFileLightType
+          iconFileLightType,
         );
         const iconFileDefinition = `${sts.definitionFilePrefix}${icon}`;
         const iconFileLightDefinition = `${
@@ -250,7 +250,7 @@ export class ManifestBuilder {
 
         if (hasGlobDefinitions) {
           Utils.combine(current.filenamesGlob, current.extensionsGlob).forEach(
-            populateFn
+            populateFn,
           );
         }
 
@@ -261,18 +261,18 @@ export class ManifestBuilder {
         names: { fileExtensions: {}, fileNames: {} },
         light: { fileExtensions: {}, fileNames: {}, languageIds: {} },
         languageIds: {},
-      }
+      },
     );
   }
 
   private static buildFolders(
     folders: models.IFolderCollection,
-    hasDefaultLightFolder: boolean
+    hasDefaultLightFolder: boolean,
   ) {
     const sts = constants.iconsManifest;
     return sortBy(
       folders.supported.filter(x => !x.disabled && x.icon),
-      item => item.icon
+      item => item.icon,
     ).reduce(
       (old, current) => {
         const defs = old.defs;
@@ -294,7 +294,7 @@ export class ManifestBuilder {
         const folderPath = Utils.pathUnixJoin(folderIconPath, iconFolderType);
         const folderLightPath = Utils.pathUnixJoin(
           folderIconPath,
-          iconFolderLightType
+          iconFolderLightType,
         );
         const openFolderPath = `${folderPath}_opened`;
         const openFolderLightPath = `${folderLightPath}_opened`;
@@ -307,7 +307,7 @@ export class ManifestBuilder {
 
         if (folderIconPath !== openFolderIconPath) {
           throw new Error(
-            `Folder icons for '${icon}' must be placed in the same directory`
+            `Folder icons for '${icon}' must be placed in the same directory`,
           );
         }
 
@@ -356,7 +356,7 @@ export class ManifestBuilder {
         defs: {},
         names: { folderNames: {}, folderNamesExpanded: {} },
         light: { folderNames: {}, folderNamesExpanded: {} },
-      }
+      },
     );
   }
 
@@ -366,14 +366,14 @@ export class ManifestBuilder {
     }
     const absPath = Utils.pathUnixJoin(
       this.customIconDirPath,
-      constants.extension.customIconFolderName
+      constants.extension.customIconFolderName,
     );
     if (!this.hasCustomIcon(absPath, filename)) {
       return this.iconsDirRelativeBasePath;
     }
     const sanitizedFolderPath = Utils.belongToSameDrive(
       absPath,
-      this.iconsManifestDirPath
+      this.iconsManifestDirPath,
     )
       ? this.iconsManifestDirPath
       : Utils.overwriteDrive(absPath, this.iconsManifestDirPath);

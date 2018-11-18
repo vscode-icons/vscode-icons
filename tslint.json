@@ -3,7 +3,10 @@
   "rules": {
     "quotemark": [true, "single"],
     "object-literal-key-quotes": [true, "as-needed"],
-    "trailing-comma": [true, { "esSpecCompliant": true }],
+    "trailing-comma": [
+      true,
+      { "multiline": "always", "singleline": "never", "esSpecCompliant": true }
+    ],
     "variable-name": [
       true,
       "ban-keywords",

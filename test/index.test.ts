@@ -17,7 +17,7 @@ describe('Entry points: tests', function () {
     before(function () {
       proxyq.noCallThru();
       extensionStub = sinon.createStubInstance<IExtensionManager>(
-        ExtensionManager
+        ExtensionManager,
       );
       EntryPoint = proxyq('../src/index', {
         './services/compositionRootService': {
@@ -60,8 +60,8 @@ describe('Entry points: tests', function () {
           infoStub.calledOnceWithExactly(
             `[${constants.extension.name}] v${
               constants.extension.version
-            } activated!`
-          )
+            } activated!`,
+          ),
         ).to.be.true;
       });
     });

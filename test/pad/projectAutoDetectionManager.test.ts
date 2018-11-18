@@ -32,14 +32,14 @@ describe('ProjectAutoDetectionManager: tests', function () {
       sandbox = sinon.createSandbox();
 
       configManagerStub = sandbox.createStubInstance<IConfigManager>(
-        ConfigManager
+        ConfigManager,
       );
 
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
       getPresetStub = configManagerStub.getPreset;
 
       vscodeManagerStub = sandbox.createStubInstance<IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
 
       findFilesStub = sandbox.stub();
@@ -49,7 +49,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
 
       padManager = new ProjectAutoDetectionManager(
         vscodeManagerStub,
-        configManagerStub
+        configManagerStub,
       );
 
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
@@ -150,7 +150,8 @@ describe('ProjectAutoDetectionManager: tests', function () {
           iconsDisabledStub.returns(true);
 
           return padManager.detectProjects([Projects.angular]).then(res => {
-            expect(readFileStub.calledOnceWithExactly(packageJsonPath , 'utf8')).to.be.true;
+            expect(readFileStub.calledOnceWithExactly(packageJsonPath, 'utf8'))
+              .to.be.true;
             expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
             expect(res)
               .to.be.an('object')
@@ -167,8 +168,8 @@ describe('ProjectAutoDetectionManager: tests', function () {
           iconsDisabledStub.returns(true);
 
           return padManager.detectProjects([Projects.angular]).then(res => {
-            expect(readFileStub.calledOnceWithExactly(packageJsonPath, 'utf8')).to.be
-              .true;
+            expect(readFileStub.calledOnceWithExactly(packageJsonPath, 'utf8'))
+              .to.be.true;
             expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
             expect(res)
               .to.be.an('object')
@@ -185,8 +186,8 @@ describe('ProjectAutoDetectionManager: tests', function () {
           iconsDisabledStub.returns(true);
 
           return padManager.detectProjects([Projects.angular]).then(res => {
-            expect(readFileStub.calledOnceWithExactly(packageJsonPath, 'utf8')).to.be
-              .true;
+            expect(readFileStub.calledOnceWithExactly(packageJsonPath, 'utf8'))
+              .to.be.true;
             expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
             expect(res)
               .to.be.an('object')
@@ -194,7 +195,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
                 'apply',
                 'projectName',
                 'langResourceKey',
-                'value'
+                'value',
               );
             expect(res).ownProperty('apply').to.be.true;
             expect(res)
@@ -221,7 +222,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
                 'apply',
                 'projectName',
                 'langResourceKey',
-                'value'
+                'value',
               );
             expect(res).ownProperty('apply').to.be.true;
             expect(res)
@@ -366,7 +367,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
                     'apply',
                     'projectName',
                     'langResourceKey',
-                    'value'
+                    'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
@@ -390,7 +391,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
                     'apply',
                     'projectName',
                     'langResourceKey',
-                    'value'
+                    'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
@@ -420,7 +421,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
                     'apply',
                     'projectName',
                     'langResourceKey',
-                    'value'
+                    'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
@@ -454,7 +455,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
                     'apply',
                     'projectName',
                     'langResourceKey',
-                    'value'
+                    'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
@@ -478,7 +479,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
                     'apply',
                     'projectName',
                     'langResourceKey',
-                    'value'
+                    'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
@@ -510,7 +511,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
                     'apply',
                     'projectName',
                     'langResourceKey',
-                    'value'
+                    'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)

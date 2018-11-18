@@ -53,13 +53,13 @@ export class LanguageResourceManager
   }
 
   public getLangResourceKey(
-    message?: string
+    message?: string,
   ): models.LangResourceKeys | undefined {
     if (!message) {
       return undefined;
     }
     const prop = Reflect.ownKeys(this.languageResource).find(
-      key => this.languageResource[key] === message
+      key => this.languageResource[key] === message,
     );
     return models.LangResourceKeys[prop];
   }

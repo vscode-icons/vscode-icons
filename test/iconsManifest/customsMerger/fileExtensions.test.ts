@@ -29,11 +29,15 @@ describe('CustomsMerger: file extensions tests', function () {
         ],
       };
 
-      const newDefs = CustomsMerger
-        .merge(customFiles, extFiles, null, extFolders, vsicons.presets)
-        .files.supported.filter(
-          file => file.icon === customFiles.supported[0].icon
-        );
+      const newDefs = CustomsMerger.merge(
+        customFiles,
+        extFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      ).files.supported.filter(
+        file => file.icon === customFiles.supported[0].icon,
+      );
 
       expect(newDefs)
         .to.be.an('array')
@@ -65,13 +69,13 @@ describe('CustomsMerger: file extensions tests', function () {
         extFiles,
         null,
         extFolders,
-        vsicons.presets
+        vsicons.presets,
       );
       const overridenDef = files.supported.filter(
-        file => file.icon === customFiles.supported[0].overrides
+        file => file.icon === customFiles.supported[0].overrides,
       );
       const newDefs = files.supported.filter(
-        file => file.icon === customFiles.supported[0].icon
+        file => file.icon === customFiles.supported[0].icon,
       );
 
       expect(overridenDef).to.be.empty;
@@ -101,13 +105,13 @@ describe('CustomsMerger: file extensions tests', function () {
         extFiles,
         null,
         extFolders,
-        vsicons.presets
+        vsicons.presets,
       );
       const extendedDef = files.supported.filter(
-        file => file.icon === customFiles.supported[0].extends
+        file => file.icon === customFiles.supported[0].extends,
       );
       const newDefs = files.supported.filter(
-        file => file.icon === customFiles.supported[0].icon
+        file => file.icon === customFiles.supported[0].icon,
       );
 
       expect(extendedDef).to.be.empty;
@@ -137,11 +141,15 @@ describe('CustomsMerger: file extensions tests', function () {
         ],
       };
 
-      const newDefs = CustomsMerger
-        .merge(customFiles, extFiles, null, extFolders, vsicons.presets)
-        .files.supported.filter(
-          file => file.icon === customFiles.supported[0].icon
-        );
+      const newDefs = CustomsMerger.merge(
+        customFiles,
+        extFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      ).files.supported.filter(
+        file => file.icon === customFiles.supported[0].icon,
+      );
 
       expect(newDefs)
         .to.be.an('array')
@@ -162,11 +170,15 @@ describe('CustomsMerger: file extensions tests', function () {
         ],
       };
 
-      const newDefs = CustomsMerger
-        .merge(customFiles, extFiles, null, extFolders, vsicons.presets)
-        .files.supported.filter(
-          file => file.icon === customFiles.supported[0].icon
-        );
+      const newDefs = CustomsMerger.merge(
+        customFiles,
+        extFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      ).files.supported.filter(
+        file => file.icon === customFiles.supported[0].icon,
+      );
 
       expect(newDefs)
         .to.be.an('array')
@@ -186,11 +198,15 @@ describe('CustomsMerger: file extensions tests', function () {
         supported: [{ icon: 'actionscript', disabled: false, format: 'svg' }],
       };
 
-      const newDefs = CustomsMerger
-        .merge(customFiles, extFiles, null, extFolders, vsicons.presets)
-        .files.supported.filter(
-          file => file.icon === customFiles.supported[0].icon
-        );
+      const newDefs = CustomsMerger.merge(
+        customFiles,
+        extFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      ).files.supported.filter(
+        file => file.icon === customFiles.supported[0].icon,
+      );
 
       expect(newDefs)
         .to.be.an('array')
@@ -279,10 +295,10 @@ describe('CustomsMerger: file extensions tests', function () {
           extFiles,
           null,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         );
         const ngGroup = files.supported.filter(
-          x => /^ng_.*2$/.test(x.icon) && !x.disabled
+          x => /^ng_.*2$/.test(x.icon) && !x.disabled,
         );
 
         expect(ngGroup).to.have.lengthOf(14);
@@ -291,7 +307,7 @@ describe('CustomsMerger: file extensions tests', function () {
             cf =>
               cf.icon === file.icon &&
               isEqual(cf.extensions, file.extensions) &&
-              cf.format === file.format
+              cf.format === file.format,
           );
           expect(ng).to.exist;
         });
@@ -314,17 +330,17 @@ describe('CustomsMerger: file extensions tests', function () {
           extFiles,
           null,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         );
         const oldDefs = files.supported.filter(
           file =>
             file.icon ===
             extFiles.supported.find(ef =>
-              isEqual(ef.extensions, customFiles.supported[0].extensions)
-            ).icon
+              isEqual(ef.extensions, customFiles.supported[0].extensions),
+            ).icon,
         );
         const newDefs = files.supported.filter(
-          file => file.icon === customFiles.supported[0].icon
+          file => file.icon === customFiles.supported[0].icon,
         );
 
         expect(oldDefs[0].extensions).to.be.empty;
@@ -333,7 +349,7 @@ describe('CustomsMerger: file extensions tests', function () {
           .with.lengthOf(1);
         expect(newDefs[0].icon).to.eql(customFiles.supported[0].icon);
         expect(newDefs[0].extensions).to.eql(
-          customFiles.supported[0].extensions
+          customFiles.supported[0].extensions,
         );
       });
 
@@ -350,11 +366,15 @@ describe('CustomsMerger: file extensions tests', function () {
           ],
         };
 
-        const newDefs = CustomsMerger
-          .merge(customFiles, extFiles, null, extFolders, vsicons.presets)
-          .files.supported.filter(
-            file => file.icon === customFiles.supported[0].icon
-          );
+        const newDefs = CustomsMerger.merge(
+          customFiles,
+          extFiles,
+          null,
+          extFolders,
+          vsicons.presets,
+        ).files.supported.filter(
+          file => file.icon === customFiles.supported[0].icon,
+        );
 
         expect(newDefs)
           .to.be.an('array')
@@ -377,11 +397,15 @@ describe('CustomsMerger: file extensions tests', function () {
           ],
         };
 
-        const newDefs = CustomsMerger
-          .merge(customFiles, extFiles, null, extFolders, vsicons.presets)
-          .files.supported.filter(
-            file => file.icon === customFiles.supported[0].icon
-          );
+        const newDefs = CustomsMerger.merge(
+          customFiles,
+          extFiles,
+          null,
+          extFolders,
+          vsicons.presets,
+        ).files.supported.filter(
+          file => file.icon === customFiles.supported[0].icon,
+        );
 
         expect(newDefs)
           .to.be.an('array')

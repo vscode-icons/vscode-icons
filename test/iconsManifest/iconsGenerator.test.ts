@@ -48,7 +48,7 @@ describe('IconsGenerator: tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub = sinon.createStubInstance<IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
@@ -61,7 +61,7 @@ describe('IconsGenerator: tests', function () {
       vscodeManagerStub.getAppUserDirPath.returns('/path/to/app/user/dir/');
 
       configManagerStub = sandbox.createStubInstance<IConfigManager>(
-        ConfigManager
+        ConfigManager,
       );
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
@@ -97,8 +97,8 @@ describe('IconsGenerator: tests', function () {
               // @ts-ignore
               iconsGenerator.didChangeConfigurationListener,
               iconsGenerator,
-              vscodeManagerStub.context.subscriptions
-            )
+              vscodeManagerStub.context.subscriptions,
+            ),
           ).to.be.true;
         });
 
@@ -108,7 +108,7 @@ describe('IconsGenerator: tests', function () {
 
           expect(onDidChangeConfigurationStub.called).to.be.false;
         });
-      }
+      },
     );
 
     context(`generating the icons manifest`, function () {
@@ -117,7 +117,7 @@ describe('IconsGenerator: tests', function () {
           iconsGenerator.generateIconsManifest();
 
           expect(
-            buildManifestStub.calledOnceWithExactly(extFiles, extFolders)
+            buildManifestStub.calledOnceWithExactly(extFiles, extFolders),
           ).to.be.true;
         });
       });
@@ -133,7 +133,7 @@ describe('IconsGenerator: tests', function () {
 
         it(`throws an Error, when 'configManager' is NOT instantiated`, function () {
           expect(() =>
-            new IconsGenerator().generateIconsManifest(fixtFiles, fixtFolders)
+            new IconsGenerator().generateIconsManifest(fixtFiles, fixtFolders),
           ).to.throw(ReferenceError, /'configManager' not set to an instance/);
         });
 
@@ -145,30 +145,30 @@ describe('IconsGenerator: tests', function () {
               buildManifestStub.calledOnceWithExactly(
                 filesCollection,
                 foldersCollection,
-                ''
-              )
+                '',
+              ),
             ).to.be.true;
           });
 
           it(`using the custom icons folder path`, function () {
             vsiconsClone.customIconFolderPath = '/custom/icons/foder/path';
             configManagerStub.getCustomIconsDirPath.returns(
-              vsiconsClone.customIconFolderPath
+              vsiconsClone.customIconFolderPath,
             );
 
             iconsGenerator.generateIconsManifest(fixtFiles, fixtFolders);
 
             expect(
               configManagerStub.getCustomIconsDirPath.calledOnceWithExactly(
-                vsiconsClone.customIconFolderPath
-              )
+                vsiconsClone.customIconFolderPath,
+              ),
             ).to.be.true;
             expect(
               buildManifestStub.calledOnceWithExactly(
                 filesCollection,
                 foldersCollection,
-                vsiconsClone.customIconFolderPath
-              )
+                vsiconsClone.customIconFolderPath,
+              ),
             ).to.be.true;
           });
 
@@ -177,7 +177,7 @@ describe('IconsGenerator: tests', function () {
 
             expect(
               iconsGenerator.generateIconsManifest(fixtFiles, fixtFolders)
-                .hidesExplorerArrows
+                .hidesExplorerArrows,
             ).to.be.true;
           });
         });
@@ -218,7 +218,7 @@ describe('IconsGenerator: tests', function () {
         iconsGenerator.persist(iconsManifest);
 
         expect(
-          writeFileSyncStub.calledOnceWithExactly(filePath, stringified)
+          writeFileSyncStub.calledOnceWithExactly(filePath, stringified),
         ).to.be.true;
       });
 
@@ -229,8 +229,8 @@ describe('IconsGenerator: tests', function () {
           infoStub.calledOnceWithExactly(
             `[${
               constants.extension.name
-            }] Icons manifest file successfully generated!`
-          )
+            }] Icons manifest file successfully generated!`,
+          ),
         ).to.be.true;
       });
 
@@ -253,7 +253,7 @@ describe('IconsGenerator: tests', function () {
         return iconsGenerator
           .persist(iconsManifest)
           .then(
-            () => expect(logErrorStub.calledOnceWithExactly(error)).to.be.true
+            () => expect(logErrorStub.calledOnceWithExactly(error)).to.be.true,
           );
       });
 
@@ -320,8 +320,8 @@ describe('IconsGenerator: tests', function () {
                     infoStub.calledWithExactly(
                       `[${
                         constants.extension.name
-                      }] Icons path in 'package.json' updated`
-                    )
+                      }] Icons path in 'package.json' updated`,
+                    ),
                   ).to.be.true;
                 });
               });
@@ -342,8 +342,8 @@ describe('IconsGenerator: tests', function () {
                   infoStub.calledWithExactly(
                     `[${
                       constants.extension.name
-                    }] Icons path in 'package.json' updated`
-                  )
+                    }] Icons path in 'package.json' updated`,
+                  ),
                 ).to.be.true;
               });
             });
@@ -360,8 +360,8 @@ describe('IconsGenerator: tests', function () {
                 infoStub.calledWithExactly(
                   `[${
                     constants.extension.name
-                  }] Icons path in 'package.json' updated`
-                )
+                  }] Icons path in 'package.json' updated`,
+                ),
               ).to.be.true;
             });
           });
@@ -373,13 +373,13 @@ describe('IconsGenerator: tests', function () {
       context(`throws an Error`, function () {
         it(`when the 'event' object does NOT exists`, function () {
           expect(() =>
-            onDidChangeConfigurationStub.callArgOn(0, iconsGenerator)
+            onDidChangeConfigurationStub.callArgOn(0, iconsGenerator),
           ).to.throw(Error, /Unsupported 'vscode' version: \d+\.\d+\.\d+/);
         });
 
         it(`when an 'event' object is NOT of the correct type`, function () {
           expect(() =>
-            onDidChangeConfigurationStub.callArgOnWith(0, iconsGenerator, {})
+            onDidChangeConfigurationStub.callArgOnWith(0, iconsGenerator, {}),
           ).to.throw(Error, /Unsupported 'vscode' version: \d+\.\d+\.\d+/);
         });
       });

@@ -30,8 +30,8 @@ describe('ErrorHandler: tests', function () {
         ErrorHandler.logError(error);
         expect(
           consoleErrorStub.calledOnceWithExactly(
-            `Unhandled Error: ${error.stack}`
-          )
+            `Unhandled Error: ${error.stack}`,
+          ),
         ).to.be.true;
         expect(consoleErrorStub.calledWithMatch(/contextOfStack/)).to.be.true;
         expect(error)
@@ -45,8 +45,8 @@ describe('ErrorHandler: tests', function () {
         ErrorHandler.logError(error);
         expect(
           consoleErrorStub.calledOnceWithExactly(
-            `Unhandled Error: ${error.message}`
-          )
+            `Unhandled Error: ${error.message}`,
+          ),
         ).to.be.true;
         expect(consoleErrorStub.calledWithMatch(/message/)).to.be.true;
         expect(error).to.not.haveOwnProperty('stack').to.be.true;
@@ -58,7 +58,7 @@ describe('ErrorHandler: tests', function () {
         delete error.message;
         ErrorHandler.logError(error);
         expect(
-          consoleErrorStub.calledOnceWithExactly(`Unhandled Error: ${error}`)
+          consoleErrorStub.calledOnceWithExactly(`Unhandled Error: ${error}`),
         ).to.be.true;
         expect(error).to.not.haveOwnProperty('stack').to.be.true;
         expect(error).to.not.haveOwnProperty('message').to.be.true;
@@ -67,7 +67,11 @@ describe('ErrorHandler: tests', function () {
       it('handled errors', function () {
         const error = new Error();
         ErrorHandler.logError(error, true);
-        expect(consoleErrorStub.calledOnceWithExactly(`Handled Error: ${error.stack}`)).to.be.true;
+        expect(
+          consoleErrorStub.calledOnceWithExactly(
+            `Handled Error: ${error.stack}`,
+          ),
+        ).to.be.true;
       });
 
       it('unhandled errors', function () {
@@ -75,7 +79,9 @@ describe('ErrorHandler: tests', function () {
         delete error.stack;
         delete error.message;
         ErrorHandler.logError(error);
-        expect(consoleErrorStub.calledOnceWithExactly(`Unhandled Error: ${error}`)).to.be.true;
+        expect(
+          consoleErrorStub.calledOnceWithExactly(`Unhandled Error: ${error}`),
+        ).to.be.true;
       });
     });
   });

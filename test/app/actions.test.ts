@@ -37,7 +37,7 @@ describe('ExtensionManager: actions tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
@@ -48,20 +48,20 @@ describe('ExtensionManager: actions tests', function () {
       }));
 
       configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager
+        ConfigManager,
       );
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager
+        SettingsManager,
       );
       notifyManagerStub = sandbox.createStubInstance<
         models.INotificationManager
       >(NotificationManager);
 
       iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator
+        IconsGenerator,
       );
 
       padMngStub = sandbox.createStubInstance<
@@ -74,13 +74,13 @@ describe('ExtensionManager: actions tests', function () {
         settingsManagerStub,
         notifyManagerStub,
         iconsGeneratorStub,
-        padMngStub
+        padMngStub,
       );
 
       showCustomizationMessageStub = sandbox.stub(
         extensionManager,
         // @ts-ignore
-        'showCustomizationMessage'
+        'showCustomizationMessage',
       );
     });
 
@@ -95,7 +95,7 @@ describe('ExtensionManager: actions tests', function () {
         executeAndReloadStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'executeAndReload'
+          'executeAndReload',
         );
       });
 
@@ -126,7 +126,7 @@ describe('ExtensionManager: actions tests', function () {
           applyCustomizationStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'applyCustomization'
+            'applyCustomization',
           );
         });
 
@@ -140,8 +140,8 @@ describe('ExtensionManager: actions tests', function () {
             expect(
               executeAndReloadStub.calledOnceWithExactly(
                 applyCustomizationStub,
-                [projectDetectionResult]
-              )
+                [projectDetectionResult],
+              ),
             ).to.be.true;
             expect(showCustomizationMessageStub.called).to.be.false;
           });
@@ -164,8 +164,8 @@ describe('ExtensionManager: actions tests', function () {
                   models.LangResourceKeys.disableDetect,
                 ],
                 applyCustomizationStub,
-                [projectDetectionResult]
-              )
+                [projectDetectionResult],
+              ),
             ).to.be.true;
           });
         });
@@ -189,7 +189,7 @@ describe('ExtensionManager: actions tests', function () {
             models.PresetNames.tsOfficial,
             models.CommandNames.tsPreset,
             false,
-            models.ConfigurationTarget.Global
+            models.ConfigurationTarget.Global,
           );
 
           expect(
@@ -207,8 +207,8 @@ describe('ExtensionManager: actions tests', function () {
                 models.PresetNames[models.PresetNames.tsOfficial],
                 toggledValue,
                 models.ConfigurationTarget.Global,
-              ]
-            )
+              ],
+            ),
           ).to.be.true;
         });
       });
@@ -224,7 +224,7 @@ describe('ExtensionManager: actions tests', function () {
               models.PresetNames.hideFolders,
               models.CommandNames.hideFoldersPreset,
               true,
-              models.ConfigurationTarget.Global
+              models.ConfigurationTarget.Global,
             );
 
             expect(
@@ -244,8 +244,8 @@ describe('ExtensionManager: actions tests', function () {
                   models.PresetNames[models.PresetNames.hideFolders],
                   toggledValue,
                   models.ConfigurationTarget.Global,
-                ]
-              )
+                ],
+              ),
             ).to.be.true;
           });
 
@@ -258,7 +258,7 @@ describe('ExtensionManager: actions tests', function () {
               models.PresetNames.hideFolders,
               models.CommandNames.hideFoldersPreset,
               true,
-              models.ConfigurationTarget.Global
+              models.ConfigurationTarget.Global,
             );
 
             expect(
@@ -278,8 +278,8 @@ describe('ExtensionManager: actions tests', function () {
                   models.PresetNames[models.PresetNames.hideFolders],
                   toggledValue,
                   models.ConfigurationTarget.Global,
-                ]
-              )
+                ],
+              ),
             ).to.be.true;
           });
         });
@@ -296,7 +296,7 @@ describe('ExtensionManager: actions tests', function () {
               models.PresetNames.jsonOfficial,
               models.CommandNames.jsonPreset,
               false,
-              models.ConfigurationTarget.Global
+              models.ConfigurationTarget.Global,
             );
 
             expect(
@@ -316,8 +316,8 @@ describe('ExtensionManager: actions tests', function () {
                   models.PresetNames[models.PresetNames.jsonOfficial],
                   toggledValue,
                   models.ConfigurationTarget.Global,
-                ]
-              )
+                ],
+              ),
             ).to.be.true;
           });
 
@@ -330,7 +330,7 @@ describe('ExtensionManager: actions tests', function () {
               models.PresetNames.jsonOfficial,
               models.CommandNames.jsonPreset,
               false,
-              models.ConfigurationTarget.Global
+              models.ConfigurationTarget.Global,
             );
 
             expect(
@@ -350,8 +350,8 @@ describe('ExtensionManager: actions tests', function () {
                   models.PresetNames[models.PresetNames.jsonOfficial],
                   toggledValue,
                   models.ConfigurationTarget.Global,
-                ]
-              )
+                ],
+              ),
             ).to.be.true;
           });
         });
@@ -369,8 +369,8 @@ describe('ExtensionManager: actions tests', function () {
                   models.PresetNames.jsOfficial,
                   undefined,
                   false,
-                  models.ConfigurationTarget.Global
-                )
+                  models.ConfigurationTarget.Global,
+                ),
               ).to.throw(Error, /undefinedEnabled is not valid/);
             });
 
@@ -383,8 +383,8 @@ describe('ExtensionManager: actions tests', function () {
                   models.PresetNames.jsOfficial,
                   undefined,
                   false,
-                  models.ConfigurationTarget.Global
-                )
+                  models.ConfigurationTarget.Global,
+                ),
               ).to.throw(Error, /undefinedDisabled is not valid/);
             });
           });
@@ -418,11 +418,11 @@ describe('ExtensionManager: actions tests', function () {
             iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly(
               files,
               folders,
-              undefined
-            )
+              undefined,
+            ),
           ).to.be.true;
           expect(
-            iconsGeneratorStub.persist.calledOnceWith(models.schema)
+            iconsGeneratorStub.persist.calledOnceWith(models.schema),
           ).to.be.true;
         });
 
@@ -438,11 +438,11 @@ describe('ExtensionManager: actions tests', function () {
             iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly(
               files,
               folders,
-              projectDetectionResult
-            )
+              projectDetectionResult,
+            ),
           ).to.be.true;
           expect(
-            iconsGeneratorStub.persist.calledOnceWithExactly(models.schema)
+            iconsGeneratorStub.persist.calledOnceWithExactly(models.schema),
           ).to.be.true;
         });
       });
@@ -456,10 +456,10 @@ describe('ExtensionManager: actions tests', function () {
         extensionManager.restoreManifest();
 
         expect(
-          iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly()
+          iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly(),
         ).to.be.true;
         expect(
-          iconsGeneratorStub.persist.calledOnceWithExactly(models.schema)
+          iconsGeneratorStub.persist.calledOnceWithExactly(models.schema),
         ).to.be.true;
       });
     });
@@ -473,7 +473,7 @@ describe('ExtensionManager: actions tests', function () {
           extensionManager.resetProjectDetectionDefaults();
 
           expect(
-            configManagerStub.updateAutoReload.calledOnceWithExactly(false)
+            configManagerStub.updateAutoReload.calledOnceWithExactly(false),
           ).to.be.true;
           expect(configManagerStub.updateDisableDetection.called).to.be.false;
         });
@@ -498,8 +498,8 @@ describe('ExtensionManager: actions tests', function () {
 
           expect(
             configManagerStub.updateDisableDetection.calledOnceWithExactly(
-              false
-            )
+              false,
+            ),
           ).to.be.true;
           expect(configManagerStub.updateAutoReload.called).to.be.false;
         });

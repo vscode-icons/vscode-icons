@@ -44,7 +44,7 @@ describe('CompositionRootService: tests', function () {
       proxyq.noCallThru();
       CompositionRootService = proxyq(
         '../../src/services/compositionRootService',
-        { vscode }
+        { vscode },
       ).CompositionRootService;
     });
 
@@ -56,15 +56,15 @@ describe('CompositionRootService: tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
 
       configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager
+        ConfigManager,
       );
 
       settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager
+        SettingsManager,
       );
 
       languageResourceManagerStub = sandbox.createStubInstance<
@@ -76,7 +76,7 @@ describe('CompositionRootService: tests', function () {
       >(NotificationManager);
 
       iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator
+        IconsGenerator,
       );
 
       padMngStub = sandbox.createStubInstance<
@@ -100,7 +100,7 @@ describe('CompositionRootService: tests', function () {
 
           expect(() => crs.get('Interface')).to.throw(
             Error,
-            /Object not found for: Interface/
+            /Object not found for: Interface/,
           );
         });
       });
@@ -110,7 +110,7 @@ describe('CompositionRootService: tests', function () {
         const crs = new CompositionRootService(extensionContext);
 
         expect(crs.get(models.SYMBOLS.IVSCodeManager)).to.be.an.instanceOf(
-          VSCodeManager
+          VSCodeManager,
         );
       });
     });
@@ -119,7 +119,7 @@ describe('CompositionRootService: tests', function () {
       context(`throws an Error`, function () {
         it(`when an identifier is NOT provided`, function () {
           expect(() => new CompositionRootService().bind()).to.throw(
-            ReferenceError
+            ReferenceError,
           );
         });
       });
@@ -135,8 +135,8 @@ describe('CompositionRootService: tests', function () {
               models.SYMBOLS.IVSCodeManager,
               VSCodeManager,
               vscode,
-              extensionContext
-            )
+              extensionContext,
+            ),
           ).to.be.an.instanceOf(VSCodeManager);
           expect(crs.container).to.have.lengthOf(1);
         });
@@ -164,8 +164,8 @@ describe('CompositionRootService: tests', function () {
                 models.SYMBOLS.IVSCodeManager,
                 VSCodeManager,
                 vscode,
-                extensionContext
-              )
+                extensionContext,
+              ),
           ).to.be.true;
         });
 
@@ -184,8 +184,8 @@ describe('CompositionRootService: tests', function () {
               .calledWithExactly(
                 models.SYMBOLS.IConfigManager,
                 ConfigManager,
-                vscodeManagerStub
-              )
+                vscodeManagerStub,
+              ),
           ).to.be.true;
         });
 
@@ -204,8 +204,8 @@ describe('CompositionRootService: tests', function () {
               .calledWithExactly(
                 models.SYMBOLS.ISettingsManager,
                 SettingsManager,
-                vscodeManagerStub
-              )
+                vscodeManagerStub,
+              ),
           ).to.be.true;
         });
 
@@ -227,8 +227,8 @@ describe('CompositionRootService: tests', function () {
                 models.SYMBOLS.IIconsGenerator,
                 IconsGenerator,
                 vscodeManagerStub,
-                configManagerStub
-              )
+                configManagerStub,
+              ),
           ).to.be.true;
         });
 
@@ -243,8 +243,8 @@ describe('CompositionRootService: tests', function () {
               .calledWithExactly(
                 models.SYMBOLS.ILanguageResourceManager,
                 LanguageResourceManager,
-                langResourceCollection[vscode.env.language]
-              )
+                langResourceCollection[vscode.env.language],
+              ),
           ).to.be.true;
         });
 
@@ -266,8 +266,8 @@ describe('CompositionRootService: tests', function () {
                 models.SYMBOLS.INotificationManager,
                 NotificationManager,
                 vscodeManagerStub,
-                languageResourceManagerStub
-              )
+                languageResourceManagerStub,
+              ),
           ).to.be.true;
         });
 
@@ -289,8 +289,8 @@ describe('CompositionRootService: tests', function () {
                 models.SYMBOLS.IProjectAutoDetectionManager,
                 ProjectAutoDetectionManager,
                 vscodeManagerStub,
-                configManagerStub
-              )
+                configManagerStub,
+              ),
           ).to.be.true;
         });
 
@@ -324,8 +324,8 @@ describe('CompositionRootService: tests', function () {
                 settingsManagerStub,
                 notifyManagerStub,
                 iconsGeneratorStub,
-                padMngStub
-              )
+                padMngStub,
+              ),
           ).to.be.true;
         });
       });

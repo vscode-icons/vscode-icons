@@ -28,14 +28,14 @@ describe('VSCodeManager: tests', function () {
     it(`an Error gets thrown, when 'vscode' is NOT instantiated`, function () {
       expect(() => new VSCodeManager(null, extensionContext)).to.throw(
         Error,
-        /'vscode' not set to an instance/
+        /'vscode' not set to an instance/,
       );
     });
 
     it(`an Error gets thrown, when 'context' is NOT instantiated`, function () {
       expect(() => new VSCodeManager(vscode, null)).to.throw(
         Error,
-        /'extensionContext' not set to an instance/
+        /'extensionContext' not set to an instance/,
       );
     });
 
@@ -124,11 +124,11 @@ describe('VSCodeManager: tests', function () {
           VSCODE_PORTABLE: '/Path/To/Portable/Installation/Dir/data',
         });
         pathUnixJoinStub.returns(
-          `${process.env.VSCODE_PORTABLE}/user-data/User`
+          `${process.env.VSCODE_PORTABLE}/user-data/User`,
         );
 
         expect(vscodeManager.getAppUserDirPath()).to.equal(
-          `${process.env.VSCODE_PORTABLE}/user-data/User`
+          `${process.env.VSCODE_PORTABLE}/user-data/User`,
         );
       });
 
@@ -138,40 +138,40 @@ describe('VSCodeManager: tests', function () {
           pathUnixJoinStub.returns(`${Utils.getAppDataDirPath()}/Code/User`);
 
           expect(vscodeManager.getAppUserDirPath()).to.equal(
-            `${Utils.getAppDataDirPath()}/Code/User`
+            `${Utils.getAppDataDirPath()}/Code/User`,
           );
         });
 
         it(`'Code - Insiders'`, function () {
           vscodeManager.env.appName = 'Visual Studio Code - Insiders';
           pathUnixJoinStub.returns(
-            `${Utils.getAppDataDirPath()}/Code - Insiders/User`
+            `${Utils.getAppDataDirPath()}/Code - Insiders/User`,
           );
 
           expect(vscodeManager.getAppUserDirPath()).to.equal(
-            `${Utils.getAppDataDirPath()}/Code - Insiders/User`
+            `${Utils.getAppDataDirPath()}/Code - Insiders/User`,
           );
         });
 
         it(`'Code - OSS'`, function () {
           vscodeManager.env.appName = 'VSCode OSS';
           pathUnixJoinStub.returns(
-            `${Utils.getAppDataDirPath()}/Code - OSS/User`
+            `${Utils.getAppDataDirPath()}/Code - OSS/User`,
           );
 
           expect(vscodeManager.getAppUserDirPath()).to.equal(
-            `${Utils.getAppDataDirPath()}/Code - OSS/User`
+            `${Utils.getAppDataDirPath()}/Code - OSS/User`,
           );
         });
 
         it(`'Code - OSS - Dev'`, function () {
           vscodeManager.env.appName = 'VSCode OSS Dev';
           pathUnixJoinStub.returns(
-            `${Utils.getAppDataDirPath()}/code-oss-dev/User`
+            `${Utils.getAppDataDirPath()}/code-oss-dev/User`,
           );
 
           expect(vscodeManager.getAppUserDirPath()).to.equal(
-            `${Utils.getAppDataDirPath()}/code-oss-dev/User`
+            `${Utils.getAppDataDirPath()}/code-oss-dev/User`,
           );
         });
       });

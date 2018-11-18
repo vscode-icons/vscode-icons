@@ -30,8 +30,8 @@ describe('ManifestBuilder: files icons test', function () {
           array1.reduce(
             (previous: string[], current: string) =>
               previous.concat(array2.map(value => [current, value].join('.'))),
-            []
-          )
+            [],
+          ),
         );
       sandbox.stub(Utils, 'getRelativePath').returns(iconsDirRelativeBasePath);
       pathUnixJoinStub = sandbox
@@ -53,7 +53,7 @@ describe('ManifestBuilder: files icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             fixtFiles,
-            emptyFolderCollection
+            emptyFolderCollection,
           );
 
           expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
@@ -63,16 +63,16 @@ describe('ManifestBuilder: files icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFiles.default.file.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFiles.default.file.format
+            fixtFiles.default.file.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             fixtFiles,
-            emptyFolderCollection
+            emptyFolderCollection,
           );
 
           expect(manifest.iconDefinitions._file.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -80,7 +80,7 @@ describe('ManifestBuilder: files icons test', function () {
       it(`the 'default' 'light' file has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           fixtFiles,
-          emptyFolderCollection
+          emptyFolderCollection,
         );
 
         expect(manifest.iconDefinitions._file_light.iconPath).to.be.empty;
@@ -91,7 +91,7 @@ describe('ManifestBuilder: files icons test', function () {
           it('has a definition', function () {
             const manifest = ManifestBuilder.buildManifest(
               fixtFiles,
-              emptyFolderCollection
+              emptyFolderCollection,
             );
             fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
               const definition = `${
@@ -105,7 +105,7 @@ describe('ManifestBuilder: files icons test', function () {
           it('has an icon path', function () {
             const manifest = ManifestBuilder.buildManifest(
               fixtFiles,
-              emptyFolderCollection
+              emptyFolderCollection,
             );
             fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
               const definition = `${
@@ -120,14 +120,14 @@ describe('ManifestBuilder: files icons test', function () {
           it(`icon path has the correct structure`, function () {
             const manifest = ManifestBuilder.buildManifest(
               fixtFiles,
-              emptyFolderCollection
+              emptyFolderCollection,
             );
 
             fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
               const filename = `${constants.iconsManifest.fileTypePrefix}${
                 file.icon
               }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-                file.format
+                file.format,
               )}`;
 
               const definition = `${
@@ -135,7 +135,7 @@ describe('ManifestBuilder: files icons test', function () {
               }${file.icon}`;
 
               expect(manifest.iconDefinitions[definition].iconPath).to.equal(
-                `${iconsDirRelativeBasePath}/${filename}`
+                `${iconsDirRelativeBasePath}/${filename}`,
               );
             });
           });
@@ -144,7 +144,7 @@ describe('ManifestBuilder: files icons test', function () {
             it('has a definition', function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
               fixtFiles.supported
                 .filter(file => !file.light && !file.disabled)
@@ -160,7 +160,7 @@ describe('ManifestBuilder: files icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
               fixtFiles.supported
                 .filter(file => !file.light && !file.disabled)
@@ -177,7 +177,7 @@ describe('ManifestBuilder: files icons test', function () {
             it(`icon path has the correct structure`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
 
               fixtFiles.supported
@@ -193,7 +193,7 @@ describe('ManifestBuilder: files icons test', function () {
                   }${file.icon}`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -203,7 +203,7 @@ describe('ManifestBuilder: files icons test', function () {
             it(`has a 'light' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
               fixtFiles.supported
                 .filter(file => file.light && !file.disabled)
@@ -219,7 +219,7 @@ describe('ManifestBuilder: files icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
               fixtFiles.supported
                 .filter(file => file.light && !file.disabled)
@@ -236,7 +236,7 @@ describe('ManifestBuilder: files icons test', function () {
             it(`icon path has the correct structure`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
 
               fixtFiles.supported
@@ -252,7 +252,7 @@ describe('ManifestBuilder: files icons test', function () {
                   }${file.icon}`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -264,11 +264,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileExtensions' referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && !file.light && !file.disabled
+                      file => !file.filename && !file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -277,8 +277,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.fileExtensions[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -288,11 +288,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileExtensions' referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && file.light && !file.disabled
+                      file => !file.filename && file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -301,8 +301,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.fileExtensions[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -314,7 +314,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileNames' referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
@@ -322,7 +322,7 @@ describe('ManifestBuilder: files icons test', function () {
                         file.filename &&
                         !file.light &&
                         !file.languages &&
-                        !file.disabled
+                        !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -331,8 +331,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.fileNames[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -342,7 +342,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileNames' referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
@@ -350,7 +350,7 @@ describe('ManifestBuilder: files icons test', function () {
                         file.filename &&
                         !file.languages &&
                         file.light &&
-                        !file.disabled
+                        !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -359,8 +359,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.fileNames[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -372,7 +372,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'languageIds', referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(file => file.languages && !file.disabled)
@@ -383,7 +383,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       const assertLanguage = language => {
                         expect(manifest.languageIds[language]).to.equal(
-                          definition
+                          definition,
                         );
                       };
 
@@ -402,11 +402,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'languageIds', referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && file.light && !file.disabled
+                      file => file.languages && file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -415,7 +415,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       const assertLanguageLight = language => {
                         expect(manifest.languageIds[language]).to.equal(
-                          definition
+                          definition,
                         );
                       };
 
@@ -438,11 +438,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileExtensions' referencing its 'dark' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && !file.light && !file.disabled
+                      file => !file.filename && !file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -451,8 +451,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(
-                          manifest.light.fileExtensions[extension]
-                        ).to.equal(definition)
+                          manifest.light.fileExtensions[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -462,11 +462,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileExtensions' referencing its 'light' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && file.light && !file.disabled
+                      file => !file.filename && file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -475,8 +475,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(
-                          manifest.light.fileExtensions[extension]
-                        ).to.equal(definition)
+                          manifest.light.fileExtensions[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -488,7 +488,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileNames' referencing its 'dark' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
@@ -496,7 +496,7 @@ describe('ManifestBuilder: files icons test', function () {
                         file.filename &&
                         !file.light &&
                         !file.languages &&
-                        !file.disabled
+                        !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -505,8 +505,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.light.fileNames[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -516,7 +516,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileNames' referencing its 'light' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
@@ -524,7 +524,7 @@ describe('ManifestBuilder: files icons test', function () {
                         file.filename &&
                         !file.languages &&
                         file.light &&
-                        !file.disabled
+                        !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -533,8 +533,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.light.fileNames[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -546,11 +546,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'languageIds', referencing its ' dark'definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && !file.light && !file.disabled
+                      file => file.languages && !file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -559,7 +559,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       const assertLanguage = language => {
                         expect(manifest.light.languageIds[language]).to.equal(
-                          definition
+                          definition,
                         );
                       };
 
@@ -578,11 +578,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'languageIds', referencing its 'light' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && file.light && !file.disabled
+                      file => file.languages && file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -591,7 +591,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       const assertLanguageLight = language => {
                         expect(manifest.light.languageIds[language]).to.equal(
-                          definition
+                          definition,
                         );
                       };
 
@@ -624,7 +624,7 @@ describe('ManifestBuilder: files icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             fixtFiles,
-            emptyFolderCollection
+            emptyFolderCollection,
           );
 
           expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
@@ -634,16 +634,16 @@ describe('ManifestBuilder: files icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFiles.default.file.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFiles.default.file.format
+            fixtFiles.default.file.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             fixtFiles,
-            emptyFolderCollection
+            emptyFolderCollection,
           );
 
           expect(manifest.iconDefinitions._file.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -652,7 +652,7 @@ describe('ManifestBuilder: files icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             fixtFiles,
-            emptyFolderCollection
+            emptyFolderCollection,
           );
 
           expect(manifest.iconDefinitions._file_light.iconPath).not.to.be.empty;
@@ -662,16 +662,16 @@ describe('ManifestBuilder: files icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFiles.default.file_light.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFiles.default.file_light.format
+            fixtFiles.default.file_light.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             fixtFiles,
-            emptyFolderCollection
+            emptyFolderCollection,
           );
 
           expect(manifest.iconDefinitions._file_light.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -681,7 +681,7 @@ describe('ManifestBuilder: files icons test', function () {
           it('has a definition', function () {
             const manifest = ManifestBuilder.buildManifest(
               fixtFiles,
-              emptyFolderCollection
+              emptyFolderCollection,
             );
             fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
               const definition = `${
@@ -695,7 +695,7 @@ describe('ManifestBuilder: files icons test', function () {
           it('has an icon path', function () {
             const manifest = ManifestBuilder.buildManifest(
               fixtFiles,
-              emptyFolderCollection
+              emptyFolderCollection,
             );
             fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
               const definition = `${
@@ -710,14 +710,14 @@ describe('ManifestBuilder: files icons test', function () {
           it(`icon path has the correct structure`, function () {
             const manifest = ManifestBuilder.buildManifest(
               fixtFiles,
-              emptyFolderCollection
+              emptyFolderCollection,
             );
 
             fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
               const filename = `${constants.iconsManifest.fileTypePrefix}${
                 file.icon
               }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-                file.format
+                file.format,
               )}`;
 
               const definition = `${
@@ -725,7 +725,7 @@ describe('ManifestBuilder: files icons test', function () {
               }${file.icon}`;
 
               expect(manifest.iconDefinitions[definition].iconPath).to.equal(
-                `${iconsDirRelativeBasePath}/${filename}`
+                `${iconsDirRelativeBasePath}/${filename}`,
               );
             });
           });
@@ -734,7 +734,7 @@ describe('ManifestBuilder: files icons test', function () {
             it('has a definition', function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
               fixtFiles.supported
                 .filter(file => !file.light && !file.disabled)
@@ -750,7 +750,7 @@ describe('ManifestBuilder: files icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
               fixtFiles.supported
                 .filter(file => !file.light && !file.disabled)
@@ -767,7 +767,7 @@ describe('ManifestBuilder: files icons test', function () {
             it(`icon path has the correct structure`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
 
               fixtFiles.supported
@@ -783,7 +783,7 @@ describe('ManifestBuilder: files icons test', function () {
                   }${file.icon}`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -793,7 +793,7 @@ describe('ManifestBuilder: files icons test', function () {
             it(`has a 'light' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
               fixtFiles.supported
                 .filter(file => file.light && !file.disabled)
@@ -809,7 +809,7 @@ describe('ManifestBuilder: files icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
               fixtFiles.supported
                 .filter(file => file.light && !file.disabled)
@@ -826,7 +826,7 @@ describe('ManifestBuilder: files icons test', function () {
             it(`icon path has the correct structure`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 fixtFiles,
-                emptyFolderCollection
+                emptyFolderCollection,
               );
 
               fixtFiles.supported
@@ -842,7 +842,7 @@ describe('ManifestBuilder: files icons test', function () {
                   }${file.icon}`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -854,11 +854,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileExtensions' referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && !file.light && !file.disabled
+                      file => !file.filename && !file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -867,8 +867,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.fileExtensions[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -878,11 +878,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileExtensions' referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && file.light && !file.disabled
+                      file => !file.filename && file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -891,8 +891,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.fileExtensions[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -904,7 +904,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileNames' referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
@@ -912,7 +912,7 @@ describe('ManifestBuilder: files icons test', function () {
                         file.filename &&
                         !file.light &&
                         !file.languages &&
-                        !file.disabled
+                        !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -921,8 +921,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.fileNames[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -932,7 +932,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileNames' referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
@@ -940,7 +940,7 @@ describe('ManifestBuilder: files icons test', function () {
                         file.filename &&
                         !file.languages &&
                         file.light &&
-                        !file.disabled
+                        !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -949,8 +949,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.fileNames[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -962,7 +962,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'languageIds', referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(file => file.languages && !file.disabled)
@@ -973,7 +973,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       const assertLanguage = language => {
                         expect(manifest.languageIds[language]).to.equal(
-                          definition
+                          definition,
                         );
                       };
 
@@ -992,11 +992,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'languageIds', referencing its definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && file.light && !file.disabled
+                      file => file.languages && file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -1005,7 +1005,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       const assertLanguageLight = language => {
                         expect(manifest.languageIds[language]).to.equal(
-                          definition
+                          definition,
                         );
                       };
 
@@ -1028,11 +1028,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileExtensions' referencing its 'dark' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && !file.light && !file.disabled
+                      file => !file.filename && !file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -1041,8 +1041,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(
-                          manifest.light.fileExtensions[extension]
-                        ).to.equal(definition)
+                          manifest.light.fileExtensions[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -1052,11 +1052,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileExtensions' referencing its 'light' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && file.light && !file.disabled
+                      file => !file.filename && file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -1065,8 +1065,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(
-                          manifest.light.fileExtensions[extension]
-                        ).to.equal(definition)
+                          manifest.light.fileExtensions[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -1078,7 +1078,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileNames' referencing its 'dark' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
@@ -1086,7 +1086,7 @@ describe('ManifestBuilder: files icons test', function () {
                         file.filename &&
                         !file.light &&
                         !file.languages &&
-                        !file.disabled
+                        !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -1095,8 +1095,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.light.fileNames[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -1106,7 +1106,7 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'fileNames' referencing its 'light' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
@@ -1114,7 +1114,7 @@ describe('ManifestBuilder: files icons test', function () {
                         file.filename &&
                         !file.languages &&
                         file.light &&
-                        !file.disabled
+                        !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -1123,8 +1123,8 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach(extension =>
                         expect(manifest.light.fileNames[extension]).to.equal(
-                          definition
-                        )
+                          definition,
+                        ),
                       );
                     });
                 });
@@ -1136,11 +1136,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'languageIds', referencing its ' dark'definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && !file.light && !file.disabled
+                      file => file.languages && !file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -1149,7 +1149,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       const assertLanguage = language => {
                         expect(manifest.light.languageIds[language]).to.equal(
-                          definition
+                          definition,
                         );
                       };
 
@@ -1168,11 +1168,11 @@ describe('ManifestBuilder: files icons test', function () {
                 it(`has a 'languageIds', referencing its 'light' definition`, function () {
                   const manifest = ManifestBuilder.buildManifest(
                     fixtFiles,
-                    emptyFolderCollection
+                    emptyFolderCollection,
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && file.light && !file.disabled
+                      file => file.languages && file.light && !file.disabled,
                     )
                     .forEach(file => {
                       const definition = `${
@@ -1181,7 +1181,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       const assertLanguageLight = language => {
                         expect(manifest.light.languageIds[language]).to.equal(
-                          definition
+                          definition,
                         );
                       };
 
@@ -1218,18 +1218,18 @@ describe('ManifestBuilder: files icons test', function () {
 
       it(`that path is used, when it has a custom icon`, function () {
         pathUnixJoinStub.returns(
-          `${customIconDirPath}/${constants.extension.customIconFolderName}`
+          `${customIconDirPath}/${constants.extension.customIconFolderName}`,
         );
 
         const manifest = ManifestBuilder.buildManifest(
           fixtFiles,
           emptyFolderCollection,
-          customIconDirPath
+          customIconDirPath,
         );
 
         expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
         expect(manifest.iconDefinitions._file.iconPath).to.equal(
-          `${customIconDirPath}/${constants.extension.customIconFolderName}`
+          `${customIconDirPath}/${constants.extension.customIconFolderName}`,
         );
       });
 
@@ -1238,19 +1238,19 @@ describe('ManifestBuilder: files icons test', function () {
         pathUnixJoinStub.returns(
           `${iconsDirRelativeBasePath}/${
             constants.extension.customIconFolderName
-          }`
+          }`,
         );
 
         const manifest = ManifestBuilder.buildManifest(
           fixtFiles,
           emptyFolderCollection,
-          customIconDirPath
+          customIconDirPath,
         );
         expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
         expect(manifest.iconDefinitions._file.iconPath).to.equal(
           `${iconsDirRelativeBasePath}/${
             constants.extension.customIconFolderName
-          }`
+          }`,
         );
       });
 
@@ -1260,19 +1260,19 @@ describe('ManifestBuilder: files icons test', function () {
         const manifest = ManifestBuilder.buildManifest(
           fixtFiles,
           emptyFolderCollection,
-          customIconDirPath
+          customIconDirPath,
         );
 
         expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
         expect(manifest.iconDefinitions._file.iconPath).to.equal(
           `${iconsDirRelativeBasePath}/${
             constants.iconsManifest.defaultPrefix
-          }file.svg`
+          }file.svg`,
         );
         expect(
           overwriteDriveStub.calledWith(
-            `${customIconDirPath}/${constants.extension.customIconFolderName}`
-          )
+            `${customIconDirPath}/${constants.extension.customIconFolderName}`,
+          ),
         ).to.be.true;
       });
     });

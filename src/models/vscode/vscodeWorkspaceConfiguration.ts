@@ -5,7 +5,7 @@ export interface IVSCodeWorkspaceConfiguration {
   get<T>(section: string, defaultValue: T): T;
   has(section: string): boolean;
   inspect<T>(
-    section: string
+    section: string,
   ):
     | {
         key: string;
@@ -18,7 +18,7 @@ export interface IVSCodeWorkspaceConfiguration {
   update(
     section: string,
     value: any,
-    configurationTarget?: ConfigurationTarget | boolean
+    configurationTarget?: ConfigurationTarget | boolean,
   ): Thenable<void>;
   readonly [key: string]: any;
 }

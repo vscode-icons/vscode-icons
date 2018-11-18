@@ -6,13 +6,13 @@ export function activate(context: IVSCodeExtensionContext): void {
   const crs = new CompositionRootService(context);
 
   const extension: IExtensionManager = crs.get<IExtensionManager>(
-    SYMBOLS.IExtensionManager
+    SYMBOLS.IExtensionManager,
   );
   extension.activate();
 
   // tslint:disable-next-line no-console
   console.info(
-    `[${constants.extension.name}] v${constants.extension.version} activated!`
+    `[${constants.extension.name}] v${constants.extension.version} activated!`,
   );
 }
 

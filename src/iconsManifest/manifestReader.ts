@@ -7,7 +7,7 @@ import { constants } from '../constants';
 export class ManifestReader {
   public static getToggledValue(
     preset: models.PresetNames,
-    presets: models.IPresets
+    presets: models.IPresets,
   ): boolean {
     const isNonIconsRelatedPreset = () =>
       [models.PresetNames.hideExplorerArrows].some(prst => prst === preset);
@@ -32,7 +32,7 @@ export class ManifestReader {
       ? constants.iconsManifest.definitionFilePrefix
       : constants.iconsManifest.definitionFolderPrefix;
     const suffix: string = Reflect.ownKeys(models.Projects).some(
-      key => models.Projects[key] === name
+      key => models.Projects[key] === name,
     )
       ? '_'
       : '';
@@ -40,7 +40,7 @@ export class ManifestReader {
     return (
       !iconsJson ||
       !Reflect.ownKeys(iconsJson.iconDefinitions).filter(key =>
-        key.toString().startsWith(defNamePattern)
+        key.toString().startsWith(defNamePattern),
       ).length
     );
   }
@@ -71,7 +71,7 @@ export class ManifestReader {
     const manifestFilePath = join(
       __dirname,
       '..',
-      constants.iconsManifest.filename
+      constants.iconsManifest.filename,
     );
     try {
       return readFileSync(manifestFilePath, 'utf8');

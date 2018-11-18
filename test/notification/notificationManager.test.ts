@@ -23,7 +23,7 @@ describe('NotificationManager: tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub = sandbox.createStubInstance<IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
 
       showInformationMessageStub = sandbox.stub().resolves();
@@ -32,11 +32,11 @@ describe('NotificationManager: tests', function () {
       }));
 
       i18nManagerStub = sandbox.createStubInstance<ILanguageResourceManager>(
-        LanguageResourceManager
+        LanguageResourceManager,
       );
       notificationManager = new NotificationManager(
         vscodeManagerStub,
-        i18nManagerStub
+        i18nManagerStub,
       );
     });
 
@@ -58,8 +58,8 @@ describe('NotificationManager: tests', function () {
           return notificationManager.notifyInfo(undefined).then(() => {
             expect(
               i18nManagerStub.getLangResourceKey.calledOnceWithExactly(
-                undefined
-              )
+                undefined,
+              ),
             ).to.be.true;
           });
         });
@@ -86,8 +86,8 @@ describe('NotificationManager: tests', function () {
               .then(
                 () =>
                   expect(
-                    showInformationMessageStub.calledWith(message, ...items)
-                  ).to.be.true
+                    showInformationMessageStub.calledWith(message, ...items),
+                  ).to.be.true,
               );
           });
 
@@ -137,8 +137,8 @@ describe('NotificationManager: tests', function () {
               .then(
                 () =>
                   expect(
-                    showInformationMessageStub.calledWith(msg, ...msgItems)
-                  ).to.be.true
+                    showInformationMessageStub.calledWith(msg, ...msgItems),
+                  ).to.be.true,
               );
           });
 

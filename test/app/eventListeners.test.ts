@@ -37,7 +37,7 @@ describe('ExtensionManager: event listeners tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
@@ -49,20 +49,20 @@ describe('ExtensionManager: event listeners tests', function () {
       sandbox.stub(vscodeManagerStub, 'version').get(() => '1.27.1');
 
       configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager
+        ConfigManager,
       );
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager
+        SettingsManager,
       );
       notifyManagerStub = sandbox.createStubInstance<
         models.INotificationManager
       >(NotificationManager);
 
       iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator
+        IconsGenerator,
       );
 
       padMngStub = sandbox.createStubInstance<
@@ -75,7 +75,7 @@ describe('ExtensionManager: event listeners tests', function () {
         settingsManagerStub,
         notifyManagerStub,
         iconsGeneratorStub,
-        padMngStub
+        padMngStub,
       );
     });
 
@@ -93,13 +93,13 @@ describe('ExtensionManager: event listeners tests', function () {
       context(`throws an Error`, function () {
         it(`when the 'event' object does NOT exists`, function () {
           expect(() =>
-            onDidChangeConfigurationStub.callArgOn(0, extensionManager)
+            onDidChangeConfigurationStub.callArgOn(0, extensionManager),
           ).to.throw(Error, /Unsupported 'vscode' version: \d+\.\d+\.\d+/);
         });
 
         it(`when an 'event' object is NOT of the correct type`, function () {
           expect(() =>
-            onDidChangeConfigurationStub.callArgOnWith(0, extensionManager, {})
+            onDidChangeConfigurationStub.callArgOnWith(0, extensionManager, {}),
           ).to.throw(Error, /Unsupported 'vscode' version: \d+\.\d+\.\d+/);
         });
       });
@@ -126,18 +126,18 @@ describe('ExtensionManager: event listeners tests', function () {
                   extensionManager,
                   {
                     affectsConfiguration: affectsConfigurationStub,
-                  }
+                  },
                 );
 
                 expect(
                   settingsManagerStub.updateStatus.calledOnceWithExactly(
-                    models.ExtensionStatus.activated
-                  )
+                    models.ExtensionStatus.activated,
+                  ),
                 ).to.be.true;
                 expect(
                   affectsConfigurationStub.calledOnceWithExactly(
-                    constants.vscode.iconThemeSetting
-                  )
+                    constants.vscode.iconThemeSetting,
+                  ),
                 ).to.be.true;
               });
             });
@@ -155,14 +155,14 @@ describe('ExtensionManager: event listeners tests', function () {
                   extensionManager,
                   {
                     affectsConfiguration: affectsConfigurationStub,
-                  }
+                  },
                 );
 
                 expect(settingsManagerStub.updateStatus.called).to.be.false;
                 expect(
                   affectsConfigurationStub.calledOnceWithExactly(
-                    constants.vscode.iconThemeSetting
-                  )
+                    constants.vscode.iconThemeSetting,
+                  ),
                 ).to.be.true;
               });
             });
@@ -186,18 +186,18 @@ describe('ExtensionManager: event listeners tests', function () {
                   extensionManager,
                   {
                     affectsConfiguration: affectsConfigurationStub,
-                  }
+                  },
                 );
 
                 expect(
                   settingsManagerStub.updateStatus.calledOnceWithExactly(
-                    models.ExtensionStatus.deactivated
-                  )
+                    models.ExtensionStatus.deactivated,
+                  ),
                 ).to.be.true;
                 expect(
                   affectsConfigurationStub.calledOnceWithExactly(
-                    constants.vscode.iconThemeSetting
-                  )
+                    constants.vscode.iconThemeSetting,
+                  ),
                 ).to.be.true;
               });
             });
@@ -215,14 +215,14 @@ describe('ExtensionManager: event listeners tests', function () {
                   extensionManager,
                   {
                     affectsConfiguration: affectsConfigurationStub,
-                  }
+                  },
                 );
 
                 expect(settingsManagerStub.updateStatus.called).to.be.false;
                 expect(
                   affectsConfigurationStub.calledOnceWithExactly(
-                    constants.vscode.iconThemeSetting
-                  )
+                    constants.vscode.iconThemeSetting,
+                  ),
                 ).to.be.true;
               });
             });
@@ -238,12 +238,12 @@ describe('ExtensionManager: event listeners tests', function () {
           executeAndReloadStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'executeAndReload'
+            'executeAndReload',
           );
           applyCustomizationCommandStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'applyCustomizationCommand'
+            'applyCustomizationCommand',
           );
           affectsConfigurationStub
             .onFirstCall()
@@ -269,7 +269,7 @@ describe('ExtensionManager: event listeners tests', function () {
               timer.tick(500);
 
               expect(
-                executeAndReloadStub.calledOnceWithExactly(undefined)
+                executeAndReloadStub.calledOnceWithExactly(undefined),
               ).to.be.true;
 
               timer.restore();
@@ -289,7 +289,7 @@ describe('ExtensionManager: event listeners tests', function () {
                   extensionManager,
                   {
                     affectsConfiguration: affectsConfigurationStub,
-                  }
+                  },
                 );
 
                 expect(applyCustomizationCommandStub.called).to.be.false;
@@ -311,7 +311,7 @@ describe('ExtensionManager: event listeners tests', function () {
                     extensionManager,
                     {
                       affectsConfiguration: affectsConfigurationStub,
-                    }
+                    },
                   );
 
                   expect(
@@ -320,13 +320,13 @@ describe('ExtensionManager: event listeners tests', function () {
                       [
                         constants.vsicons.presets.name,
                         constants.vsicons.associations.name,
-                      ]
-                    )
+                      ],
+                    ),
                   ).to.be.true;
                   expect(
                     applyCustomizationCommandStub.calledOnceWithExactly([
                       models.LangResourceKeys.dontShowThis,
-                    ])
+                    ]),
                   ).to.be.true;
                 });
               });
@@ -340,7 +340,7 @@ describe('ExtensionManager: event listeners tests', function () {
                     extensionManager,
                     {
                       affectsConfiguration: affectsConfigurationStub,
-                    }
+                    },
                   );
 
                   expect(
@@ -349,8 +349,8 @@ describe('ExtensionManager: event listeners tests', function () {
                       [
                         constants.vsicons.presets.name,
                         constants.vsicons.associations.name,
-                      ]
-                    )
+                      ],
+                    ),
                   ).to.be.true;
                   expect(applyCustomizationCommandStub.called).to.be.false;
                 });
@@ -363,7 +363,7 @@ describe('ExtensionManager: event listeners tests', function () {
                     extensionManager,
                     {
                       affectsConfiguration: affectsConfigurationStub,
-                    }
+                    },
                   );
 
                   expect(configManagerStub.hasConfigChanged.called).to.be.false;

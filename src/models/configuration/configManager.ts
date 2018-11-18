@@ -5,12 +5,12 @@ export interface IConfigManager {
   vsicons: IVSIcons;
   hasConfigChanged(
     currentConfig: IVSIcons | undefined,
-    sections?: string[]
+    sections?: string[],
   ): boolean;
   getCustomIconsDirPath(path: string): string;
   getIconTheme(): string;
   getPreset<T>(
-    presetName: string
+    presetName: string,
   ):
     | {
         key: string;
@@ -28,6 +28,6 @@ export interface IConfigManager {
   updatePreset(
     presetName: string,
     value: boolean,
-    configurationTarget: ConfigurationTarget | boolean
+    configurationTarget: ConfigurationTarget | boolean,
   ): Thenable<void>;
 }

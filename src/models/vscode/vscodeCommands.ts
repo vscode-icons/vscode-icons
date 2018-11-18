@@ -5,6 +5,6 @@ export interface IVSCodeCommands {
   registerCommand(
     command: string,
     callback: (args: any[]) => any,
-    thisArg?: any
+    thisArg?: any,
   ): IVSCodeDisposable;
 }

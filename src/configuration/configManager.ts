@@ -23,23 +23,23 @@ export class ConfigManager implements IConfigManager {
   public get vsicons(): IVSIcons {
     // ALWAYS use 'getConfiguration' to get a fresh copy of the `vsicons` configurations
     const mergedConfig = cloneDeep(
-      this.vscodeManager.workspace.getConfiguration()[constants.vsicons.name]
+      this.vscodeManager.workspace.getConfiguration()[constants.vsicons.name],
     );
     const files = this.configuration.inspect<IFileExtension[]>(
-      constants.vsicons.associations.filesSetting
+      constants.vsicons.associations.filesSetting,
     );
     mergedConfig.associations.files = unionWith(
       files.workspaceValue,
       files.globalValue,
-      isEqual
+      isEqual,
     );
     const folders = this.configuration.inspect<IFileExtension[]>(
-      constants.vsicons.associations.foldersSetting
+      constants.vsicons.associations.foldersSetting,
     );
     mergedConfig.associations.folders = unionWith(
       folders.workspaceValue,
       folders.globalValue,
-      isEqual
+      isEqual,
     );
     return mergedConfig;
   }
@@ -47,7 +47,7 @@ export class ConfigManager implements IConfigManager {
   public static removeSettings(): Thenable<void> {
     const vscodeSettingsFilePath = Utils.pathUnixJoin(
       this.getAppUserPath(dirname(__filename)),
-      constants.vscode.settingsFilename
+      constants.vscode.settingsFilename,
     );
     const replacer = (rawText: string[]): string[] => {
       rawText = this.removeVSIconsConfigs(rawText);
@@ -57,7 +57,7 @@ export class ConfigManager implements IConfigManager {
     };
     return Utils.updateFile(vscodeSettingsFilePath, replacer).then(
       void 0,
-      error => ErrorHandler.logError(error)
+      error => ErrorHandler.logError(error),
     );
   }
 
@@ -82,8 +82,8 @@ export class ConfigManager implements IConfigManager {
           const isInsiders = existsSync(
             Utils.pathUnixJoin(
               process.env.VSCODE_CWD,
-              'code-insiders-portable-data'
-            )
+              'code-insiders-portable-data',
+            ),
           );
           dataDir = `code-${isInsiders ? 'insiders-' : ''}portable-data`;
           break;
@@ -127,7 +127,7 @@ export class ConfigManager implements IConfigManager {
       return linesToRemove;
     };
     findLinesToRemove().forEach((lineIndex, i) =>
-      source.splice(lineIndex - i, 1)
+      source.splice(lineIndex - i, 1),
     );
     return source;
   }
@@ -136,7 +136,7 @@ export class ConfigManager implements IConfigManager {
     const foundLineIndex = source.findIndex(
       line =>
         line.includes(constants.vscode.iconThemeSetting) &&
-        line.includes(constants.extension.name)
+        line.includes(constants.extension.name),
     );
     if (foundLineIndex > -1) {
       source.splice(foundLineIndex, 1);
@@ -166,10 +166,9 @@ export class ConfigManager implements IConfigManager {
     this.initVSIconsConfig = this.vsicons;
   }
 
-  // This function is much faster than the old one
   public hasConfigChanged(
     currentConfig: IVSIcons | undefined,
-    sections?: string[]
+    sections?: string[],
   ): boolean {
     const filter = (obj: IVSIcons, keys: string[]) =>
       (Reflect.ownKeys(obj || {}) as string[])
@@ -198,7 +197,7 @@ export class ConfigManager implements IConfigManager {
   }
 
   public getPreset<T>(
-    presetName: string
+    presetName: string,
   ):
     | {
         key: string;
@@ -215,17 +214,17 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.dontShowNewVersionMessageSetting,
       value,
-      ConfigurationTarget.Global
+      ConfigurationTarget.Global,
     );
   }
 
   public updateDontShowConfigManuallyChangedMessage(
-    value: boolean
+    value: boolean,
   ): Thenable<void> {
     return this.configuration.update(
       constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
       value,
-      ConfigurationTarget.Global
+      ConfigurationTarget.Global,
     );
   }
 
@@ -233,7 +232,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.projectDetectionAutoReloadSetting,
       value,
-      ConfigurationTarget.Global
+      ConfigurationTarget.Global,
     );
   }
 
@@ -241,7 +240,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.projectDetectionDisableDetectSetting,
       value,
-      ConfigurationTarget.Global
+      ConfigurationTarget.Global,
     );
   }
 
@@ -249,23 +248,23 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vscode.iconThemeSetting,
       constants.extension.name,
-      ConfigurationTarget.Global
+      ConfigurationTarget.Global,
     );
   }
 
   public updatePreset(
     presetName: string,
     value: boolean,
-    configurationTarget: ConfigurationTarget | boolean
+    configurationTarget: ConfigurationTarget | boolean,
   ): Thenable<void> {
     const removePreset =
       this.configuration.inspect(
-        `${constants.vsicons.presets.fullname}.${presetName}`
+        `${constants.vsicons.presets.fullname}.${presetName}`,
       ).defaultValue === value;
     return this.configuration.update(
       `${constants.vsicons.presets.fullname}.${presetName}`,
       removePreset ? undefined : value,
-      configurationTarget
+      configurationTarget,
     );
   }
 }

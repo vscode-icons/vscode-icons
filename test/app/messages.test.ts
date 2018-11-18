@@ -41,7 +41,7 @@ describe('ExtensionManager: messages tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
@@ -52,13 +52,13 @@ describe('ExtensionManager: messages tests', function () {
       }));
 
       configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager
+        ConfigManager,
       );
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager
+        SettingsManager,
       );
       isNewVersion = false;
       sandbox.stub(settingsManagerStub, 'isNewVersion').get(() => isNewVersion);
@@ -68,7 +68,7 @@ describe('ExtensionManager: messages tests', function () {
       >(NotificationManager);
 
       iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator
+        IconsGenerator,
       );
 
       padMngStub = sandbox.createStubInstance<
@@ -81,7 +81,7 @@ describe('ExtensionManager: messages tests', function () {
         settingsManagerStub,
         notifyManagerStub,
         iconsGeneratorStub,
-        padMngStub
+        padMngStub,
       );
 
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
@@ -99,12 +99,12 @@ describe('ExtensionManager: messages tests', function () {
         showWelcomeMessageStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'showWelcomeMessage'
+          'showWelcomeMessage',
         );
         showNewVersionMessageStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'showNewVersionMessage'
+          'showNewVersionMessage',
         );
       });
 
@@ -181,7 +181,7 @@ describe('ExtensionManager: messages tests', function () {
             expect(settingsManagerStub.isNewVersion).to.be.true;
             expect(showWelcomeMessageStub.called).to.be.false;
             expect(
-              showNewVersionMessageStub.calledOnceWithExactly()
+              showNewVersionMessageStub.calledOnceWithExactly(),
             ).to.be.true;
           });
 
@@ -192,7 +192,7 @@ describe('ExtensionManager: messages tests', function () {
             expect(settingsManagerStub.isNewVersion).to.be.true;
             expect(showWelcomeMessageStub.called).to.be.false;
             expect(
-              showNewVersionMessageStub.calledOnceWithExactly()
+              showNewVersionMessageStub.calledOnceWithExactly(),
             ).to.be.true;
           });
         });
@@ -233,7 +233,7 @@ describe('ExtensionManager: messages tests', function () {
         applyCustomizationCommandStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'applyCustomizationCommand'
+          'applyCustomizationCommand',
         );
       });
 
@@ -248,7 +248,7 @@ describe('ExtensionManager: messages tests', function () {
 
             expect(settingsManagerStub.isNewVersion).to.be.true;
             expect(
-              applyCustomizationCommandStub.calledOnceWithExactly()
+              applyCustomizationCommandStub.calledOnceWithExactly(),
             ).to.be.true;
           });
         });
@@ -295,7 +295,7 @@ describe('ExtensionManager: messages tests', function () {
                 expect(settingsManagerStub.isNewVersion).to.be.false;
                 expect(applyCustomizationCommandStub.called).to.be.false;
               });
-            }
+            },
           );
         });
       });
@@ -311,7 +311,8 @@ describe('ExtensionManager: messages tests', function () {
             // @ts-ignore
             .showWelcomeMessage()
             .then(
-              () => expect(logErrorStub.calledOnceWithExactly(error)).to.be.true
+              () =>
+                expect(logErrorStub.calledOnceWithExactly(error)).to.be.true,
             )
         );
       });
@@ -324,7 +325,7 @@ describe('ExtensionManager: messages tests', function () {
           activationCommandStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'activationCommand'
+            'activationCommand',
           );
           openStub = sandbox.stub(Utils, 'open');
         });
@@ -340,8 +341,8 @@ describe('ExtensionManager: messages tests', function () {
                   models.LangResourceKeys.welcome,
                   models.LangResourceKeys.activate,
                   models.LangResourceKeys.aboutOfficialApi,
-                  models.LangResourceKeys.seeReadme
-                )
+                  models.LangResourceKeys.seeReadme,
+                ),
               ).to.be.true;
               expect(activationCommandStub.called).to.be.false;
               expect(openStub.called).to.be.false;
@@ -352,7 +353,7 @@ describe('ExtensionManager: messages tests', function () {
         context(`to activate the extension`, function () {
           it(`calls the activation command`, function () {
             notifyManagerStub.notifyInfo.resolves(
-              models.LangResourceKeys.activate
+              models.LangResourceKeys.activate,
             );
 
             // @ts-ignore
@@ -362,8 +363,8 @@ describe('ExtensionManager: messages tests', function () {
                   models.LangResourceKeys.welcome,
                   models.LangResourceKeys.activate,
                   models.LangResourceKeys.aboutOfficialApi,
-                  models.LangResourceKeys.seeReadme
-                )
+                  models.LangResourceKeys.seeReadme,
+                ),
               ).to.be.true;
               expect(activationCommandStub.calledOnceWithExactly()).to.be.true;
             });
@@ -384,8 +385,8 @@ describe('ExtensionManager: messages tests', function () {
                   models.LangResourceKeys.welcome,
                   models.LangResourceKeys.activate,
                   models.LangResourceKeys.aboutOfficialApi,
-                  models.LangResourceKeys.seeReadme
-                )
+                  models.LangResourceKeys.seeReadme,
+                ),
               ).to.be.true;
               expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
               expect(openStub.calledOnceWithExactly(constants.urlOfficialApi))
@@ -408,8 +409,8 @@ describe('ExtensionManager: messages tests', function () {
                   models.LangResourceKeys.welcome,
                   models.LangResourceKeys.activate,
                   models.LangResourceKeys.aboutOfficialApi,
-                  models.LangResourceKeys.seeReadme
-                )
+                  models.LangResourceKeys.seeReadme,
+                ),
               ).to.be.true;
               expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
               expect(openStub.calledOnceWithExactly(constants.urlReadme)).to.be
@@ -430,7 +431,8 @@ describe('ExtensionManager: messages tests', function () {
             // @ts-ignore
             .showNewVersionMessage()
             .then(
-              () => expect(logErrorStub.calledOnceWithExactly(error)).to.be.true
+              () =>
+                expect(logErrorStub.calledOnceWithExactly(error)).to.be.true,
             )
         );
       });
@@ -453,8 +455,8 @@ describe('ExtensionManager: messages tests', function () {
                   `%s v${constants.extension.version}`,
                   models.LangResourceKeys.newVersion,
                   models.LangResourceKeys.seeReleaseNotes,
-                  models.LangResourceKeys.dontShowThis
-                )
+                  models.LangResourceKeys.dontShowThis,
+                ),
               ).to.be.true;
               expect(openStub.called).to.be.false;
               expect(configManagerStub.updateDontShowNewVersionMessage.called)
@@ -476,8 +478,8 @@ describe('ExtensionManager: messages tests', function () {
                   `%s v${constants.extension.version}`,
                   models.LangResourceKeys.newVersion,
                   models.LangResourceKeys.seeReleaseNotes,
-                  models.LangResourceKeys.dontShowThis
-                )
+                  models.LangResourceKeys.dontShowThis,
+                ),
               ).to.be.true;
               expect(openStub.calledOnceWithExactly(constants.urlReleaseNote))
                 .to.be.true;
@@ -488,7 +490,7 @@ describe('ExtensionManager: messages tests', function () {
         context(`to NOT show this message again`, function () {
           it(`updates the configuration`, function () {
             notifyManagerStub.notifyInfo.resolves(
-              models.LangResourceKeys.dontShowThis
+              models.LangResourceKeys.dontShowThis,
             );
 
             // @ts-ignore
@@ -498,13 +500,13 @@ describe('ExtensionManager: messages tests', function () {
                   `%s v${constants.extension.version}`,
                   models.LangResourceKeys.newVersion,
                   models.LangResourceKeys.seeReleaseNotes,
-                  models.LangResourceKeys.dontShowThis
-                )
+                  models.LangResourceKeys.dontShowThis,
+                ),
               ).to.be.true;
               expect(
                 configManagerStub.updateDontShowNewVersionMessage.calledOnceWithExactly(
-                  true
-                )
+                  true,
+                ),
               ).to.be.true;
             });
           });
@@ -530,8 +532,8 @@ describe('ExtensionManager: messages tests', function () {
               expect(
                 notifyManagerStub.notifyInfo.calledOnceWithExactly(
                   message,
-                  ...items
-                )
+                  ...items,
+                ),
               ).to.be.true;
               expect(handleActionStub.calledOnceWithExactly('btn', cb, cbArgs))
                 .to.be.true;
@@ -550,7 +552,8 @@ describe('ExtensionManager: messages tests', function () {
             // @ts-ignore
             .showCustomizationMessage(message, ...items)
             .then(
-              () => expect(logErrorStub.calledOnceWithExactly(error)).to.be.true
+              () =>
+                expect(logErrorStub.calledOnceWithExactly(error)).to.be.true,
             )
         );
       });

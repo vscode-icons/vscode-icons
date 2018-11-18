@@ -425,8 +425,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'aws', extensions: [], format: FileFormat.svg },
-    { icon: 'azure', extensions: [], languages: [languages.azcli], format: FileFormat.svg },
-    { icon: 'azurepipelines', extensions: ['azure-pipelines.yml'], filename: true, languages: [languages.azurepipelines], format: FileFormat.svg },
+    {
+      icon: 'azure',
+      extensions: [],
+      languages: [languages.azcli],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'azurepipelines',
+      extensions: ['azure-pipelines.yml'],
+      filename: true,
+      languages: [languages.azurepipelines],
+      format: FileFormat.svg,
+    },
     {
       icon: 'babel',
       extensions: [
@@ -1082,7 +1093,7 @@ export const extensions: IFileCollection = {
       icon: 'fla',
       extensions: ['fla'],
       light: true,
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'floobits',
@@ -1161,7 +1172,7 @@ export const extensions: IFileCollection = {
         '.gitignore',
         '.gitmodules',
         '.gitkeep',
-        '.mailmap'
+        '.mailmap',
       ],
       filename: true,
       languages: [languages.git],
@@ -2320,7 +2331,7 @@ export const extensions: IFileCollection = {
         'rollup.config',
         'rollup.config.common',
         'rollup.config.dev',
-        'rollup.config.prod'
+        'rollup.config.prod',
       ],
       extensionsGlob: ['js', 'coffee', 'ts'],
       filename: true,
@@ -2915,7 +2926,7 @@ export const extensions: IFileCollection = {
       icon: 'xfl',
       extensions: ['xfl'],
       light: true,
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     { icon: 'xib', extensions: ['xib'], format: FileFormat.svg },
     { icon: 'xliff', extensions: ['xliff', 'xlf'], format: FileFormat.svg },

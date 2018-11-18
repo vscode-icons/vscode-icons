@@ -10,19 +10,19 @@ export class CustomsMerger {
     extFolders: models.IFolderCollection,
     presets: models.IPresets,
     projectDetectionResult?: models.IProjectDetectionResult,
-    affectedPresets?: models.IPresets
+    affectedPresets?: models.IPresets,
   ): { files: models.IFileCollection; folders: models.IFolderCollection } {
     const angularPreset: boolean = this.getAngularPreset(
       presets,
       projectDetectionResult,
-      affectedPresets
+      affectedPresets,
     );
 
     let { files, folders } = this.mergeCustoms(
       customFiles || { default: {}, supported: [] },
       extFiles,
       customFolders || { default: {}, supported: [] },
-      extFolders
+      extFolders,
     );
 
     files = this.toggleAngularPreset(!angularPreset, files, extFiles);
@@ -30,25 +30,25 @@ export class CustomsMerger {
       !presets.jsOfficial,
       files,
       [models.IconNames.jsOfficial],
-      [models.IconNames.js]
+      [models.IconNames.js],
     );
     files = this.toggleOfficialIconsPreset(
       !presets.tsOfficial,
       files,
       [models.IconNames.tsOfficial, models.IconNames.tsDefOfficial],
-      [models.IconNames.ts, models.IconNames.tsDef]
+      [models.IconNames.ts, models.IconNames.tsDef],
     );
     files = this.toggleOfficialIconsPreset(
       !presets.jsonOfficial,
       files,
       [models.IconNames.jsonOfficial],
-      [models.IconNames.json]
+      [models.IconNames.json],
     );
 
     folders = this.toggleFoldersAllDefaultIconPreset(
       presets.foldersAllDefaultIcon,
       folders,
-      extFolders
+      extFolders,
     );
     folders = this.toggleHideFoldersPreset(presets.hideFolders, folders);
 
@@ -58,7 +58,7 @@ export class CustomsMerger {
   private static getAngularPreset(
     presets: models.IPresets,
     projectDetectionResult: models.IProjectDetectionResult,
-    affectedPresets: models.IPresets
+    affectedPresets: models.IPresets,
   ): boolean {
     const hasProjectDetectionResult =
       projectDetectionResult &&
@@ -76,7 +76,7 @@ export class CustomsMerger {
   private static toggleAngularPreset(
     disable: boolean,
     customFiles: models.IFileCollection,
-    defaultFiles: models.IFileCollection
+    defaultFiles: models.IFileCollection,
   ): models.IFileCollection {
     const regex = new RegExp(`^${models.IconNames.angular}_.*\\D$`);
     const icons = customFiles.supported
@@ -93,7 +93,7 @@ export class CustomsMerger {
     disable: boolean,
     customFiles: models.IFileCollection,
     officialIcons: string[],
-    defaultIcons: string[]
+    defaultIcons: string[],
   ): models.IFileCollection {
     const temp = this.togglePreset(disable, officialIcons, customFiles);
     return this.togglePreset(!disable, defaultIcons, temp);
@@ -102,31 +102,31 @@ export class CustomsMerger {
   private static toggleFoldersAllDefaultIconPreset(
     disable: boolean,
     customFolders: models.IFolderCollection,
-    defaultFolders: models.IFolderCollection
+    defaultFolders: models.IFolderCollection,
   ): models.IFolderCollection {
     const folderIcons = this.getNonDisabledIcons(customFolders);
     const defaultFolderIcons = defaultFolders.supported
       .filter(x => !x.disabled)
       .filter(x =>
         // Exclude overrides
-        customFolders.supported.every(y => y.overrides !== x.icon)
+        customFolders.supported.every(y => y.overrides !== x.icon),
       )
       .filter(x =>
         // Exclude disabled by custom
         customFolders.supported
           .filter(y => x.icon === y.icon)
-          .every(z => !z.disabled)
+          .every(z => !z.disabled),
       )
       .map(x => x.icon);
     const temp = this.togglePreset<models.IFolderCollection>(
       disable,
       folderIcons,
-      customFolders
+      customFolders,
     );
     const collection = this.togglePreset<models.IFolderCollection>(
       disable,
       defaultFolderIcons,
-      temp
+      temp,
     );
     collection.default.folder.disabled = customFolders.default.folder.disabled;
     if (customFolders.default.folder_light) {
@@ -144,13 +144,13 @@ export class CustomsMerger {
 
   private static toggleHideFoldersPreset(
     disable: boolean,
-    customFolders: models.IFolderCollection
+    customFolders: models.IFolderCollection,
   ): models.IFolderCollection {
     const folderIcons = this.getNonDisabledIcons(customFolders);
     const collection = this.togglePreset<models.IFolderCollection>(
       disable,
       folderIcons,
-      customFolders
+      customFolders,
     );
     collection.default.folder.disabled =
       customFolders.default.folder.disabled || disable;
@@ -167,7 +167,9 @@ export class CustomsMerger {
     return collection;
   }
 
-  private static getNonDisabledIcons(customFolders: models.IFolderCollection): any {
+  private static getNonDisabledIcons(
+    customFolders: models.IFolderCollection,
+  ): any {
     return customFolders.supported.filter(x => !x.disabled).map(x => x.icon);
   }
 
@@ -175,27 +177,27 @@ export class CustomsMerger {
     customFiles: models.IFileCollection,
     supportedFiles: models.IFileCollection,
     customFolders: models.IFolderCollection,
-    supportedFolders: models.IFolderCollection
+    supportedFolders: models.IFolderCollection,
   ): { files: models.IFileCollection; folders: models.IFolderCollection } {
     const files: models.IFileCollection = {
       default: this.mergeDefaultFiles(
         customFiles.default,
-        supportedFiles.default
+        supportedFiles.default,
       ),
       supported: this.mergeSupported(
         customFiles.supported,
-        supportedFiles.supported
+        supportedFiles.supported,
       ),
     };
 
     const folders: models.IFolderCollection = {
       default: this.mergeDefaultFolders(
         customFolders.default,
-        supportedFolders.default
+        supportedFolders.default,
       ),
       supported: this.mergeSupported(
         customFolders.supported,
-        supportedFolders.supported
+        supportedFolders.supported,
       ),
     };
 
@@ -204,7 +206,7 @@ export class CustomsMerger {
 
   private static mergeDefaultFiles(
     custom: models.IFileDefault,
-    supported: models.IFileDefault
+    supported: models.IFileDefault,
   ): models.IFileDefault {
     return {
       file: custom.file || supported.file,
@@ -214,7 +216,7 @@ export class CustomsMerger {
 
   private static mergeDefaultFolders(
     custom: models.IFolderDefault,
-    supported: models.IFolderDefault
+    supported: models.IFolderDefault,
   ): models.IFolderDefault {
     return {
       folder: custom.folder || supported.folder,
@@ -227,7 +229,7 @@ export class CustomsMerger {
 
   private static mergeSupported(
     custom: models.IExtension[],
-    supported: models.IExtension[]
+    supported: models.IExtension[],
   ): models.IExtension[] {
     if (!custom || !custom.length) {
       return supported;
@@ -265,7 +267,7 @@ export class CustomsMerger {
       file.extensions.forEach(ext =>
         final
           .filter(x => x.extensions.find(y => y === ext))
-          .forEach(x => remove(x.extensions, el => el === ext))
+          .forEach(x => remove(x.extensions, el => el === ext)),
       );
       final.push(file);
     });
@@ -279,7 +281,7 @@ export class CustomsMerger {
   >(
     disable: boolean,
     icons: string[],
-    customItems: models.IExtensionCollection<models.IExtension>
+    customItems: models.IExtensionCollection<models.IExtension>,
   ): T {
     const workingCopy = cloneDeep(customItems);
     icons.forEach(icon => {

@@ -35,9 +35,13 @@ describe('CustomsMerger: toggle presets tests', function () {
       it('enabled and disabled', function () {
         const toggle = (enable: boolean): IFileExtension[] => {
           vsicons.presets.angular = enable;
-          return CustomsMerger
-            .merge(null, extFiles, null, extFolders, vsicons.presets)
-            .files.supported.filter(file => regex.test(file.icon));
+          return CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+          ).files.supported.filter(file => regex.test(file.icon));
         };
 
         // Set Angular icons as enabled
@@ -55,7 +59,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         const toggle = (
           enable: boolean,
           padResult: IProjectDetectionResult,
-          affectPresets?: any
+          affectPresets?: any,
         ): any => {
           vsicons.presets.jsOfficial = enable;
           const _files = CustomsMerger.merge(
@@ -65,14 +69,14 @@ describe('CustomsMerger: toggle presets tests', function () {
             extFolders,
             vsicons.presets,
             padResult,
-            affectPresets
+            affectPresets,
           ).files;
 
           return {
             ngDefs: _files.supported.filter(file => regex.test(file.icon)),
             jsDefs: _files.supported.filter(file => file.icon === IconNames.js),
             officialJSDefs: _files.supported.filter(
-              file => file.icon === IconNames.jsOfficial
+              file => file.icon === IconNames.jsOfficial,
             ),
           };
         };
@@ -107,23 +111,33 @@ describe('CustomsMerger: toggle presets tests', function () {
       });
 
       it(`disabled, when no 'Angular' project is detected by PAD`, function () {
-        const defs = CustomsMerger
-          .merge(null, extFiles, null, extFolders, vsicons.presets, {
+        const defs = CustomsMerger.merge(
+          null,
+          extFiles,
+          null,
+          extFolders,
+          vsicons.presets,
+          {
             apply: false,
-          })
-          .files.supported.filter(file => regex.test(file.icon));
+          },
+        ).files.supported.filter(file => regex.test(file.icon));
 
         defs.forEach(def => expect(def.disabled).to.be.true);
       });
 
       it(`enabled, when an 'Angular' project is detected by PAD`, function () {
-        const defs = CustomsMerger
-          .merge(null, extFiles, null, extFolders, vsicons.presets, {
+        const defs = CustomsMerger.merge(
+          null,
+          extFiles,
+          null,
+          extFolders,
+          vsicons.presets,
+          {
             apply: true,
             projectName: Projects.angular,
             value: true,
-          })
-          .files.supported.filter(file => regex.test(file.icon));
+          },
+        ).files.supported.filter(file => regex.test(file.icon));
 
         defs.forEach(def => expect(def.disabled).to.be.false);
       });
@@ -138,13 +152,13 @@ describe('CustomsMerger: toggle presets tests', function () {
             extFiles,
             null,
             extFolders,
-            vsicons.presets
+            vsicons.presets,
           ).files;
 
           return {
             defs: _files.supported.filter(file => file.icon === IconNames.js),
             officialDefs: _files.supported.filter(
-              file => file.icon === IconNames.jsOfficial
+              file => file.icon === IconNames.jsOfficial,
             ),
           };
         };
@@ -154,7 +168,7 @@ describe('CustomsMerger: toggle presets tests', function () {
 
         icons.defs.forEach(def => expect(def.disabled).to.be.true);
         icons.officialDefs.forEach(
-          officialDef => expect(officialDef.disabled).to.be.false
+          officialDef => expect(officialDef.disabled).to.be.false,
         );
 
         // Set JS Official icon as disabled
@@ -162,7 +176,7 @@ describe('CustomsMerger: toggle presets tests', function () {
 
         icons.defs.forEach(def => expect(def.disabled).to.be.false);
         icons.officialDefs.forEach(
-          officialDef => expect(officialDef.disabled).to.be.true
+          officialDef => expect(officialDef.disabled).to.be.true,
         );
       });
     });
@@ -176,19 +190,19 @@ describe('CustomsMerger: toggle presets tests', function () {
             extFiles,
             null,
             extFolders,
-            vsicons.presets
+            vsicons.presets,
           ).files;
 
           return {
             tsDefs: _files.supported.filter(file => file.icon === IconNames.ts),
             officialTsDefs: _files.supported.filter(
-              file => file.icon === IconNames.tsOfficial
+              file => file.icon === IconNames.tsOfficial,
             ),
             typesDefs: _files.supported.filter(
-              file => file.icon === IconNames.tsDef
+              file => file.icon === IconNames.tsDef,
             ),
             officialTypesDefs: _files.supported.filter(
-              file => file.icon === IconNames.tsDefOfficial
+              file => file.icon === IconNames.tsDefOfficial,
             ),
           };
         };
@@ -198,12 +212,12 @@ describe('CustomsMerger: toggle presets tests', function () {
 
         icons.tsDefs.forEach(def => expect(def.disabled).to.be.true);
         icons.officialTsDefs.forEach(
-          officialDef => expect(officialDef.disabled).to.be.false
+          officialDef => expect(officialDef.disabled).to.be.false,
         );
 
         icons.typesDefs.forEach(def => expect(def.disabled).to.be.true);
         icons.officialTypesDefs.forEach(
-          officialDef => expect(officialDef.disabled).to.be.false
+          officialDef => expect(officialDef.disabled).to.be.false,
         );
 
         // Set TS Official icon as disabled
@@ -211,12 +225,12 @@ describe('CustomsMerger: toggle presets tests', function () {
 
         icons.tsDefs.forEach(def => expect(def.disabled).to.be.false);
         icons.officialTsDefs.forEach(
-          officialDef => expect(officialDef.disabled).to.be.true
+          officialDef => expect(officialDef.disabled).to.be.true,
         );
 
         icons.typesDefs.forEach(def => expect(def.disabled).to.be.false);
         icons.officialTypesDefs.forEach(
-          officialDef => expect(officialDef.disabled).to.be.true
+          officialDef => expect(officialDef.disabled).to.be.true,
         );
       });
     });
@@ -230,13 +244,13 @@ describe('CustomsMerger: toggle presets tests', function () {
             extFiles,
             null,
             extFolders,
-            vsicons.presets
+            vsicons.presets,
           ).files;
 
           return {
             defs: _files.supported.filter(file => file.icon === IconNames.json),
             officialDefs: _files.supported.filter(
-              file => file.icon === IconNames.jsonOfficial
+              file => file.icon === IconNames.jsonOfficial,
             ),
           };
         };
@@ -246,7 +260,7 @@ describe('CustomsMerger: toggle presets tests', function () {
 
         icons.defs.forEach(def => expect(def.disabled).to.be.true);
         icons.officialDefs.forEach(
-          officialDef => expect(officialDef.disabled).to.be.false
+          officialDef => expect(officialDef.disabled).to.be.false,
         );
 
         // Set JSON Official icon as disabled
@@ -254,7 +268,7 @@ describe('CustomsMerger: toggle presets tests', function () {
 
         icons.defs.forEach(def => expect(def.disabled).to.be.false);
         icons.officialDefs.forEach(
-          officialDef => expect(officialDef.disabled).to.be.true
+          officialDef => expect(officialDef.disabled).to.be.true,
         );
       });
     });
@@ -268,7 +282,7 @@ describe('CustomsMerger: toggle presets tests', function () {
             extFiles,
             null,
             extFolders,
-            vsicons.presets
+            vsicons.presets,
           ).folders;
         };
 
@@ -283,10 +297,10 @@ describe('CustomsMerger: toggle presets tests', function () {
         expect(defs.default.folder.disabled).to.be.false;
         expect(defs.default.root_folder.disabled).to.be.false;
         expect(
-          defs.supported.find(def => def.icon === 'aws').disabled
+          defs.supported.find(def => def.icon === 'aws').disabled,
         ).to.be.false;
         expect(
-          defs.supported.find(def => def.icon === 'aws2').disabled
+          defs.supported.find(def => def.icon === 'aws2').disabled,
         ).to.be.true;
       });
 
@@ -311,7 +325,7 @@ describe('CustomsMerger: toggle presets tests', function () {
           extFiles,
           customFolders,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).folders;
 
         expect(defs.default.folder.disabled).to.be.true;
@@ -329,7 +343,7 @@ describe('CustomsMerger: toggle presets tests', function () {
             extFiles,
             null,
             extFolders,
-            vsicons.presets
+            vsicons.presets,
           ).folders;
         };
 
@@ -344,10 +358,10 @@ describe('CustomsMerger: toggle presets tests', function () {
         expect(defs.default.folder.disabled).to.be.false;
         expect(defs.default.root_folder.disabled).to.be.false;
         expect(
-          defs.supported.find(def => def.icon === 'aws').disabled
+          defs.supported.find(def => def.icon === 'aws').disabled,
         ).to.be.false;
         expect(
-          defs.supported.find(def => def.icon === 'aws2').disabled
+          defs.supported.find(def => def.icon === 'aws2').disabled,
         ).to.be.true;
       });
 
@@ -372,13 +386,13 @@ describe('CustomsMerger: toggle presets tests', function () {
           extFiles,
           customFolders,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).folders;
 
         expect(defs.default.folder.disabled).to.be.true;
         expect(defs.default.root_folder.disabled).to.be.true;
         expect(
-          defs.supported.find(def => def.icon === 'aws3').disabled
+          defs.supported.find(def => def.icon === 'aws3').disabled,
         ).to.be.true;
         defs.supported
           .filter(def => def.icon !== 'aws3')

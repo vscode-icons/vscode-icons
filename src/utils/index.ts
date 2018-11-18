@@ -87,7 +87,7 @@ export class Utils {
   public static getRelativePath(
     fromDirPath: string,
     toDirName: string,
-    checkDirectory: boolean = true
+    checkDirectory: boolean = true,
   ): string {
     if (fromDirPath == null) {
       throw new Error('fromDirPath not defined.');
@@ -129,13 +129,13 @@ export class Utils {
     return array1.reduce(
       (previous: string[], current: string) =>
         previous.concat(array2.map(value => [current, value].join('.'))),
-      []
+      [],
     );
   }
 
   public static updateFile(
     filePath: string,
-    replaceFn: (rawText: string[]) => string[]
+    replaceFn: (rawText: string[]) => string[],
   ): Thenable<void> {
     return new Promise((res, rej) => {
       fs.readFile(filePath, 'utf8', (error: Error, raw: string) => {
@@ -157,11 +157,11 @@ export class Utils {
 
   public static unflattenProperties<T>(
     obj: { [key: string]: any },
-    lookupKey: string
+    lookupKey: string,
   ): T {
     const newObj = {};
     Reflect.ownKeys(obj).forEach((key: string) =>
-      set(newObj, key, obj[key][lookupKey])
+      set(newObj, key, obj[key][lookupKey]),
     );
     return newObj as T;
   }

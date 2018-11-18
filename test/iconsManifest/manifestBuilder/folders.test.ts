@@ -42,7 +42,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
@@ -52,16 +52,16 @@ describe('ManifestBuilder: folders icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder.format
+            fixtFolders.default.folder.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -70,11 +70,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._folder_open.iconPath
+            manifest.iconDefinitions._folder_open.iconPath,
           ).not.to.be.empty;
         });
 
@@ -87,11 +87,11 @@ describe('ManifestBuilder: folders icons test', function () {
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder_open.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -99,7 +99,7 @@ describe('ManifestBuilder: folders icons test', function () {
       it(`the 'default' 'light' folder has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
-          fixtFolders
+          fixtFolders,
         );
 
         expect(manifest.iconDefinitions._folder_light.iconPath).to.be.empty;
@@ -108,11 +108,11 @@ describe('ManifestBuilder: folders icons test', function () {
       it(`the 'default' 'light' open folder has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
-          fixtFolders
+          fixtFolders,
         );
 
         expect(
-          manifest.iconDefinitions._folder_light_open.iconPath
+          manifest.iconDefinitions._folder_light_open.iconPath,
         ).to.be.empty;
       });
 
@@ -120,11 +120,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder.iconPath
+            manifest.iconDefinitions._root_folder.iconPath,
           ).not.to.be.empty;
         });
 
@@ -132,16 +132,16 @@ describe('ManifestBuilder: folders icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.root_folder.format
+            fixtFolders.default.root_folder.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._root_folder.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -150,11 +150,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder_open.iconPath
+            manifest.iconDefinitions._root_folder_open.iconPath,
           ).not.to.be.empty;
         });
 
@@ -167,11 +167,11 @@ describe('ManifestBuilder: folders icons test', function () {
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._root_folder_open.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -179,22 +179,22 @@ describe('ManifestBuilder: folders icons test', function () {
       it(`the 'root' 'light' folder has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
-          fixtFolders
+          fixtFolders,
         );
 
         expect(
-          manifest.iconDefinitions._root_folder_light.iconPath
+          manifest.iconDefinitions._root_folder_light.iconPath,
         ).to.be.empty;
       });
 
       it(`the 'root' 'light' open folder has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
-          fixtFolders
+          fixtFolders,
         );
 
         expect(
-          manifest.iconDefinitions._root_folder_light_open.iconPath
+          manifest.iconDefinitions._root_folder_light_open.iconPath,
         ).to.be.empty;
       });
 
@@ -203,7 +203,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it('has a definition', function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -219,7 +219,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it(`has an 'open' definition`, function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
 
             fixtFolders.supported
@@ -236,7 +236,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it('has an icon path', function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -253,7 +253,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it(`has an 'opened' icon path`, function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -271,7 +271,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`for closed folder`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -288,7 +288,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${folder.icon}`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -296,7 +296,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`for opened folder`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -313,7 +313,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${folder.icon}_open`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -323,7 +323,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has a definition', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -339,7 +339,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'open' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -356,7 +356,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -373,7 +373,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'opened' icon path`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -391,7 +391,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for closed folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -408,7 +408,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -416,7 +416,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for opened folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -433,7 +433,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}_open`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -444,7 +444,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has a 'light' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -460,7 +460,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has a 'light' 'open' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -476,7 +476,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -493,7 +493,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'opened' icon path`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -511,7 +511,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for closed folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -528,7 +528,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -536,7 +536,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for opened folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -553,7 +553,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}_open`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -565,7 +565,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -576,8 +576,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -585,7 +585,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -596,8 +596,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNamesExpanded[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -607,7 +607,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -618,8 +618,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -627,7 +627,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -638,8 +638,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNamesExpanded[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -651,7 +651,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its 'dark' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -662,8 +662,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.light.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -671,7 +671,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -682,8 +682,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(
-                        manifest.light.folderNamesExpanded[extension]
-                      ).to.equal(definition)
+                        manifest.light.folderNamesExpanded[extension],
+                      ).to.equal(definition),
                     );
                   });
               });
@@ -693,7 +693,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its 'light' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -704,8 +704,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.light.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -713,7 +713,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -724,8 +724,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(
-                        manifest.light.folderNamesExpanded[extension]
-                      ).to.equal(definition)
+                        manifest.light.folderNamesExpanded[extension],
+                      ).to.equal(definition),
                     );
                   });
               });
@@ -751,7 +751,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
@@ -761,16 +761,16 @@ describe('ManifestBuilder: folders icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder.format
+            fixtFolders.default.folder.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -779,11 +779,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._folder_open.iconPath
+            manifest.iconDefinitions._folder_open.iconPath,
           ).not.to.be.empty;
         });
 
@@ -796,11 +796,11 @@ describe('ManifestBuilder: folders icons test', function () {
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder_open.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -809,11 +809,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._folder_light.iconPath
+            manifest.iconDefinitions._folder_light.iconPath,
           ).not.to.be.empty;
         });
 
@@ -821,16 +821,16 @@ describe('ManifestBuilder: folders icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder_light.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder_light.format
+            fixtFolders.default.folder_light.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder_light.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -839,11 +839,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._folder_light_open.iconPath
+            manifest.iconDefinitions._folder_light_open.iconPath,
           ).not.to.be.empty;
         });
 
@@ -853,16 +853,16 @@ describe('ManifestBuilder: folders icons test', function () {
           }_opened${
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(
-            fixtFolders.default.folder_light.format
+            fixtFolders.default.folder_light.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder_light_open.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -871,11 +871,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder.iconPath
+            manifest.iconDefinitions._root_folder.iconPath,
           ).not.to.be.empty;
         });
 
@@ -883,16 +883,16 @@ describe('ManifestBuilder: folders icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.root_folder.format
+            fixtFolders.default.root_folder.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._root_folder.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -901,11 +901,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder_open.iconPath
+            manifest.iconDefinitions._root_folder_open.iconPath,
           ).not.to.be.empty;
         });
 
@@ -918,11 +918,11 @@ describe('ManifestBuilder: folders icons test', function () {
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._root_folder_open.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -930,22 +930,22 @@ describe('ManifestBuilder: folders icons test', function () {
       it(`the 'root' 'light' folder has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
-          fixtFolders
+          fixtFolders,
         );
 
         expect(
-          manifest.iconDefinitions._root_folder_light.iconPath
+          manifest.iconDefinitions._root_folder_light.iconPath,
         ).to.be.empty;
       });
 
       it(`the 'root' 'light' open folder has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
-          fixtFolders
+          fixtFolders,
         );
 
         expect(
-          manifest.iconDefinitions._root_folder_light_open.iconPath
+          manifest.iconDefinitions._root_folder_light_open.iconPath,
         ).to.be.empty;
       });
 
@@ -954,7 +954,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it('has a definition', function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -970,7 +970,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it(`has an 'open' definition`, function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
 
             fixtFolders.supported
@@ -987,7 +987,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it('has an icon path', function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -1004,7 +1004,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it(`has an 'opened' icon path`, function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -1022,7 +1022,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`for closed folder`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -1039,7 +1039,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${folder.icon}`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -1047,7 +1047,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`for opened folder`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -1064,7 +1064,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${folder.icon}_open`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -1074,7 +1074,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has a definition', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -1090,7 +1090,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'open' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -1107,7 +1107,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -1124,7 +1124,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'opened' icon path`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -1142,7 +1142,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for closed folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -1159,7 +1159,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -1167,7 +1167,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for opened folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -1184,7 +1184,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}_open`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -1195,7 +1195,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has a 'light' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -1211,7 +1211,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has a 'light' 'open' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -1227,7 +1227,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -1244,7 +1244,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'opened' icon path`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -1262,7 +1262,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for closed folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -1279,7 +1279,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -1287,7 +1287,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for opened folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -1304,7 +1304,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}_open`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -1316,7 +1316,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -1327,8 +1327,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -1336,7 +1336,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -1347,8 +1347,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNamesExpanded[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -1358,7 +1358,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -1369,8 +1369,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -1378,7 +1378,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -1389,8 +1389,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNamesExpanded[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -1402,7 +1402,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its 'dark' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -1413,8 +1413,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.light.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -1422,7 +1422,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -1433,8 +1433,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(
-                        manifest.light.folderNamesExpanded[extension]
-                      ).to.equal(definition)
+                        manifest.light.folderNamesExpanded[extension],
+                      ).to.equal(definition),
                     );
                   });
               });
@@ -1444,7 +1444,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its 'light' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -1455,8 +1455,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.light.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -1464,7 +1464,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -1475,8 +1475,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(
-                        manifest.light.folderNamesExpanded[extension]
-                      ).to.equal(definition)
+                        manifest.light.folderNamesExpanded[extension],
+                      ).to.equal(definition),
                     );
                   });
               });
@@ -1502,7 +1502,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
@@ -1512,16 +1512,16 @@ describe('ManifestBuilder: folders icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder.format
+            fixtFolders.default.folder.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -1530,11 +1530,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._folder_open.iconPath
+            manifest.iconDefinitions._folder_open.iconPath,
           ).not.to.be.empty;
         });
 
@@ -1547,11 +1547,11 @@ describe('ManifestBuilder: folders icons test', function () {
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._folder_open.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -1559,7 +1559,7 @@ describe('ManifestBuilder: folders icons test', function () {
       it(`the 'default' 'light' folder has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
-          fixtFolders
+          fixtFolders,
         );
 
         expect(manifest.iconDefinitions._folder_light.iconPath).to.be.empty;
@@ -1568,11 +1568,11 @@ describe('ManifestBuilder: folders icons test', function () {
       it(`the 'default' 'light' open folder has NOT an icon path`, function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
-          fixtFolders
+          fixtFolders,
         );
 
         expect(
-          manifest.iconDefinitions._folder_light_open.iconPath
+          manifest.iconDefinitions._folder_light_open.iconPath,
         ).to.be.empty;
       });
 
@@ -1580,11 +1580,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder.iconPath
+            manifest.iconDefinitions._root_folder.iconPath,
           ).not.to.be.empty;
         });
 
@@ -1592,16 +1592,16 @@ describe('ManifestBuilder: folders icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.root_folder.format
+            fixtFolders.default.root_folder.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._root_folder.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -1610,11 +1610,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder_open.iconPath
+            manifest.iconDefinitions._root_folder_open.iconPath,
           ).not.to.be.empty;
         });
 
@@ -1627,11 +1627,11 @@ describe('ManifestBuilder: folders icons test', function () {
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._root_folder_open.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -1640,11 +1640,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder_light.iconPath
+            manifest.iconDefinitions._root_folder_light.iconPath,
           ).not.to.be.empty;
         });
 
@@ -1652,16 +1652,16 @@ describe('ManifestBuilder: folders icons test', function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder_light.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.root_folder_light.format
+            fixtFolders.default.root_folder_light.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(manifest.iconDefinitions._root_folder_light.iconPath).to.equal(
-            `${iconsDirRelativeBasePath}/${filename}`
+            `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
       });
@@ -1670,11 +1670,11 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`has an icon path`, function () {
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder_light_open.iconPath
+            manifest.iconDefinitions._root_folder_light_open.iconPath,
           ).not.to.be.empty;
         });
 
@@ -1684,16 +1684,16 @@ describe('ManifestBuilder: folders icons test', function () {
           }_opened${
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(
-            fixtFolders.default.root_folder_light.format
+            fixtFolders.default.root_folder_light.format,
           )}`;
 
           const manifest = ManifestBuilder.buildManifest(
             emptyFileCollection,
-            fixtFolders
+            fixtFolders,
           );
 
           expect(
-            manifest.iconDefinitions._root_folder_light_open.iconPath
+            manifest.iconDefinitions._root_folder_light_open.iconPath,
           ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
         });
       });
@@ -1703,7 +1703,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it('has a definition', function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -1719,7 +1719,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it(`has an 'open' definition`, function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
 
             fixtFolders.supported
@@ -1736,7 +1736,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it('has an icon path', function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -1753,7 +1753,7 @@ describe('ManifestBuilder: folders icons test', function () {
           it(`has an 'opened' icon path`, function () {
             const manifest = ManifestBuilder.buildManifest(
               emptyFileCollection,
-              fixtFolders
+              fixtFolders,
             );
             fixtFolders.supported
               .filter(folder => !folder.disabled)
@@ -1771,7 +1771,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`for closed folder`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -1788,7 +1788,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${folder.icon}`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -1796,7 +1796,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`for opened folder`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -1813,7 +1813,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${folder.icon}_open`;
 
                   expect(
-                    manifest.iconDefinitions[definition].iconPath
+                    manifest.iconDefinitions[definition].iconPath,
                   ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                 });
             });
@@ -1823,7 +1823,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has a definition', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -1839,7 +1839,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'open' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
 
               fixtFolders.supported
@@ -1856,7 +1856,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -1873,7 +1873,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'opened' icon path`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => !folder.light && !folder.disabled)
@@ -1891,7 +1891,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for closed folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -1908,7 +1908,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -1916,7 +1916,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for opened folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -1933,7 +1933,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}_open`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -1944,7 +1944,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has a 'light' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -1960,7 +1960,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has a 'light' 'open' definition`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -1976,7 +1976,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it('has an icon path', function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -1993,7 +1993,7 @@ describe('ManifestBuilder: folders icons test', function () {
             it(`has an 'opened' icon path`, function () {
               const manifest = ManifestBuilder.buildManifest(
                 emptyFileCollection,
-                fixtFolders
+                fixtFolders,
               );
               fixtFolders.supported
                 .filter(folder => folder.light && !folder.disabled)
@@ -2011,7 +2011,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for closed folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -2028,7 +2028,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -2036,7 +2036,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`for opened folder`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
 
                 fixtFolders.supported
@@ -2053,7 +2053,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${folder.icon}_open`;
 
                     expect(
-                      manifest.iconDefinitions[definition].iconPath
+                      manifest.iconDefinitions[definition].iconPath,
                     ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
                   });
               });
@@ -2065,7 +2065,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -2076,8 +2076,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -2085,7 +2085,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -2096,8 +2096,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNamesExpanded[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -2107,7 +2107,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -2118,8 +2118,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -2127,7 +2127,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -2138,8 +2138,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.folderNamesExpanded[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -2151,7 +2151,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its 'dark' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -2162,8 +2162,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.light.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -2171,7 +2171,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => !folder.light && !folder.disabled)
@@ -2182,8 +2182,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(
-                        manifest.light.folderNamesExpanded[extension]
-                      ).to.equal(definition)
+                        manifest.light.folderNamesExpanded[extension],
+                      ).to.equal(definition),
                     );
                   });
               });
@@ -2193,7 +2193,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNames' extension referencing its 'light' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -2204,8 +2204,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(manifest.light.folderNames[extension]).to.equal(
-                        definition
-                      )
+                        definition,
+                      ),
                     );
                   });
               });
@@ -2213,7 +2213,7 @@ describe('ManifestBuilder: folders icons test', function () {
               it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, function () {
                 const manifest = ManifestBuilder.buildManifest(
                   emptyFileCollection,
-                  fixtFolders
+                  fixtFolders,
                 );
                 fixtFolders.supported
                   .filter(folder => folder.light && !folder.disabled)
@@ -2224,8 +2224,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
                     folder.extensions.forEach(extension =>
                       expect(
-                        manifest.light.folderNamesExpanded[extension]
-                      ).to.equal(definition)
+                        manifest.light.folderNamesExpanded[extension],
+                      ).to.equal(definition),
                     );
                   });
               });
@@ -2257,36 +2257,36 @@ describe('ManifestBuilder: folders icons test', function () {
             .stub(ManifestBuilder, 'getIconPath')
             .callsFake(
               (file: string) =>
-                /opened/g.test(file) ? '' : iconsDirRelativeBasePath
+                /opened/g.test(file) ? '' : iconsDirRelativeBasePath,
             );
 
           expect(() =>
             ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
-              customIconDirPath
-            )
+              customIconDirPath,
+            ),
           ).to.throw(
             Error,
-            /Folder icons for '.*' must be placed in the same directory/
+            /Folder icons for '.*' must be placed in the same directory/,
           );
         });
       });
 
       it(`that path is used, when it has a custom icon`, function () {
         pathUnixJoinStub.returns(
-          `${customIconDirPath}/${constants.extension.customIconFolderName}`
+          `${customIconDirPath}/${constants.extension.customIconFolderName}`,
         );
 
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
-          customIconDirPath
+          customIconDirPath,
         );
 
         expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
         expect(manifest.iconDefinitions._folder.iconPath).to.equal(
-          `${customIconDirPath}/${constants.extension.customIconFolderName}`
+          `${customIconDirPath}/${constants.extension.customIconFolderName}`,
         );
       });
 
@@ -2295,19 +2295,19 @@ describe('ManifestBuilder: folders icons test', function () {
         pathUnixJoinStub.returns(
           `${iconsDirRelativeBasePath}/${
             constants.extension.customIconFolderName
-          }`
+          }`,
         );
 
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
-          customIconDirPath
+          customIconDirPath,
         );
         expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
         expect(manifest.iconDefinitions._folder.iconPath).to.equal(
           `${iconsDirRelativeBasePath}/${
             constants.extension.customIconFolderName
-          }`
+          }`,
         );
       });
 
@@ -2317,19 +2317,19 @@ describe('ManifestBuilder: folders icons test', function () {
         const manifest = ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
-          customIconDirPath
+          customIconDirPath,
         );
 
         expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
         expect(manifest.iconDefinitions._folder.iconPath).to.equal(
           `${iconsDirRelativeBasePath}/${
             constants.iconsManifest.defaultPrefix
-          }folder.svg`
+          }folder.svg`,
         );
         expect(
           overwriteDriveStub.calledWith(
-            `${customIconDirPath}/${constants.extension.customIconFolderName}`
-          )
+            `${customIconDirPath}/${constants.extension.customIconFolderName}`,
+          ),
         ).to.be.true;
       });
     });

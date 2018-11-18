@@ -33,7 +33,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           null,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).files.default.file_light;
 
         expect(def)
@@ -56,7 +56,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           null,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).files.default.file;
 
         expect(def)
@@ -78,7 +78,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           null,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).files.default.file;
 
         expect(def)
@@ -104,7 +104,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           customFolders,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).folders.default.folder_light;
 
         expect(def)
@@ -128,7 +128,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           customFolders,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).folders.default.folder;
 
         expect(def)
@@ -151,7 +151,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           customFolders,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).folders.default.folder;
 
         expect(def)
@@ -180,7 +180,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           customFolders,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).folders.default.root_folder_light;
 
         expect(def)
@@ -188,7 +188,7 @@ describe('CustomsMerger: default extensions tests', function () {
           .with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.root_folder_light.icon);
         expect(def.format).to.equal(
-          customFolders.default.root_folder_light.format
+          customFolders.default.root_folder_light.format,
         );
         expect(def.disabled).to.be.false;
       });
@@ -206,7 +206,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           customFolders,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).folders.default.root_folder;
 
         expect(def)
@@ -229,7 +229,7 @@ describe('CustomsMerger: default extensions tests', function () {
           extFiles,
           customFolders,
           extFolders,
-          vsicons.presets
+          vsicons.presets,
         ).folders.default.root_folder;
 
         expect(def)
@@ -238,7 +238,7 @@ describe('CustomsMerger: default extensions tests', function () {
         expect(def.icon).to.equal(customFolders.default.root_folder.icon);
         expect(def.format).to.equal(customFolders.default.root_folder.format);
         expect(def.disabled).to.equal(
-          customFolders.default.root_folder.disabled
+          customFolders.default.root_folder.disabled,
         );
       });
     });

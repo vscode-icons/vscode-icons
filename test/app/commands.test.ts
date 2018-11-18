@@ -36,7 +36,7 @@ describe('ExtensionManager: commands tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
@@ -52,18 +52,18 @@ describe('ExtensionManager: commands tests', function () {
       }));
 
       configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager
+        ConfigManager,
       );
 
       settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager
+        SettingsManager,
       );
       notifyManagerStub = sandbox.createStubInstance<
         models.INotificationManager
       >(NotificationManager);
 
       iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator
+        IconsGenerator,
       );
 
       padMngStub = sandbox.createStubInstance<
@@ -76,19 +76,19 @@ describe('ExtensionManager: commands tests', function () {
         settingsManagerStub,
         notifyManagerStub,
         iconsGeneratorStub,
-        padMngStub
+        padMngStub,
       );
 
       showCustomizationMessageStub = sandbox.stub(
         extensionManager,
         // @ts-ignore
-        'showCustomizationMessage'
+        'showCustomizationMessage',
       );
 
       togglePresetStub = sandbox.stub(
         extensionManager,
         // @ts-ignore
-        'togglePreset'
+        'togglePreset',
       );
     });
 
@@ -124,7 +124,7 @@ describe('ExtensionManager: commands tests', function () {
 
         expect(reflectGetSpy.returned(undefined)).to.be.true;
         expect(
-          registerCommandStub.calledOnceWith(commands[0].command)
+          registerCommandStub.calledOnceWith(commands[0].command),
         ).to.be.true;
       });
     });
@@ -135,7 +135,7 @@ describe('ExtensionManager: commands tests', function () {
         extensionManager.activationCommand();
 
         expect(
-          configManagerStub.updateIconTheme.calledOnceWithExactly()
+          configManagerStub.updateIconTheme.calledOnceWithExactly(),
         ).to.be.true;
       });
     });
@@ -146,7 +146,7 @@ describe('ExtensionManager: commands tests', function () {
           const applyCustomizationStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'applyCustomization'
+            'applyCustomization',
           );
 
           // @ts-ignore
@@ -161,8 +161,8 @@ describe('ExtensionManager: commands tests', function () {
                 models.LangResourceKeys.reload,
                 ...[],
               ],
-              applyCustomizationStub
-            )
+              applyCustomizationStub,
+            ),
           ).to.be.true;
         });
       });
@@ -174,7 +174,7 @@ describe('ExtensionManager: commands tests', function () {
           const restoreManifestStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'restoreManifest'
+            'restoreManifest',
           );
 
           // @ts-ignore
@@ -189,8 +189,8 @@ describe('ExtensionManager: commands tests', function () {
                 models.LangResourceKeys.reload,
                 ...[],
               ],
-              restoreManifestStub
-            )
+              restoreManifestStub,
+            ),
           ).to.be.true;
         });
       });
@@ -202,7 +202,7 @@ describe('ExtensionManager: commands tests', function () {
           const resetProjectDetectionDefaultsStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'resetProjectDetectionDefaults'
+            'resetProjectDetectionDefaults',
           );
 
           // @ts-ignore
@@ -217,8 +217,8 @@ describe('ExtensionManager: commands tests', function () {
                 models.LangResourceKeys.reload,
                 ...[],
               ],
-              resetProjectDetectionDefaultsStub
-            )
+              resetProjectDetectionDefaultsStub,
+            ),
           ).to.be.true;
         });
       });
@@ -234,8 +234,8 @@ describe('ExtensionManager: commands tests', function () {
             models.PresetNames.angular,
             models.CommandNames.ngPreset,
             false,
-            models.ConfigurationTarget.Workspace
-          )
+            models.ConfigurationTarget.Workspace,
+          ),
         ).to.be.true;
       });
     });
@@ -250,8 +250,8 @@ describe('ExtensionManager: commands tests', function () {
             models.PresetNames.jsOfficial,
             models.CommandNames.jsPreset,
             false,
-            models.ConfigurationTarget.Global
-          )
+            models.ConfigurationTarget.Global,
+          ),
         ).to.be.true;
       });
     });
@@ -266,8 +266,8 @@ describe('ExtensionManager: commands tests', function () {
             models.PresetNames.tsOfficial,
             models.CommandNames.tsPreset,
             false,
-            models.ConfigurationTarget.Global
-          )
+            models.ConfigurationTarget.Global,
+          ),
         ).to.be.true;
       });
     });
@@ -282,8 +282,8 @@ describe('ExtensionManager: commands tests', function () {
             models.PresetNames.jsonOfficial,
             models.CommandNames.jsonPreset,
             false,
-            models.ConfigurationTarget.Global
-          )
+            models.ConfigurationTarget.Global,
+          ),
         ).to.be.true;
       });
     });
@@ -298,8 +298,8 @@ describe('ExtensionManager: commands tests', function () {
             models.PresetNames.hideFolders,
             models.CommandNames.hideFoldersPreset,
             true,
-            models.ConfigurationTarget.Global
-          )
+            models.ConfigurationTarget.Global,
+          ),
         ).to.be.true;
       });
     });
@@ -314,8 +314,8 @@ describe('ExtensionManager: commands tests', function () {
             models.PresetNames.foldersAllDefaultIcon,
             models.CommandNames.foldersAllDefaultIconPreset,
             true,
-            models.ConfigurationTarget.Global
-          )
+            models.ConfigurationTarget.Global,
+          ),
         ).to.be.true;
       });
     });
@@ -330,8 +330,8 @@ describe('ExtensionManager: commands tests', function () {
             models.PresetNames.hideExplorerArrows,
             models.CommandNames.hideExplorerArrowsPreset,
             true,
-            models.ConfigurationTarget.Global
-          )
+            models.ConfigurationTarget.Global,
+          ),
         ).to.be.true;
       });
     });

@@ -69,7 +69,7 @@ describe('LanguageResourceManager: tests', function () {
           LangResourceKeys.newVersion,
           literalString2,
           LangResourceKeys.restart,
-          literalString3
+          literalString3,
         );
 
         expect(msg).to.equal(expectedMsg);
@@ -126,7 +126,7 @@ describe('LanguageResourceManager: tests', function () {
             const msg = i18nManager.getMessage(LangResourceKeys.welcome);
 
             expect(msg).to.equal(
-              resourceCollection.test.welcome[process.platform]
+              resourceCollection.test.welcome[process.platform],
             );
           });
 
@@ -136,7 +136,7 @@ describe('LanguageResourceManager: tests', function () {
             const msg = i18nManager.getMessage(LangResourceKeys.welcome);
 
             expect(msg).to.equal(
-              resourceCollection.test.welcome[process.platform]
+              resourceCollection.test.welcome[process.platform],
             );
           });
 
@@ -146,7 +146,7 @@ describe('LanguageResourceManager: tests', function () {
             const msg = i18nManager.getMessage(LangResourceKeys.welcome);
 
             expect(msg).to.equal(
-              resourceCollection.test.welcome[process.platform]
+              resourceCollection.test.welcome[process.platform],
             );
           });
         });
@@ -155,7 +155,7 @@ describe('LanguageResourceManager: tests', function () {
           platformStub.value('freebsd');
 
           expect(() =>
-            i18nManager.getMessage(LangResourceKeys.welcome)
+            i18nManager.getMessage(LangResourceKeys.welcome),
           ).to.throw(Error, /Not Implemented/);
         });
       });
@@ -196,11 +196,11 @@ describe('LanguageResourceManager: tests', function () {
           const msg = i18nManager.getMessage(
             literalString1,
             literalString2,
-            literalString3
+            literalString3,
           );
 
           expect(msg).to.equal(
-            `${literalString1}${literalString2}${literalString3}`
+            `${literalString1}${literalString2}${literalString3}`,
           );
         });
 
@@ -208,13 +208,13 @@ describe('LanguageResourceManager: tests', function () {
           const msg = i18nManager.getMessage(
             LangResourceKeys.newVersion,
             ' ',
-            LangResourceKeys.welcome
+            LangResourceKeys.welcome,
           );
 
           expect(msg).to.equal(
             `${resourceCollection.en.newVersion} ${
               resourceCollection.en.welcome
-            }`
+            }`,
           );
         });
       });
@@ -222,7 +222,7 @@ describe('LanguageResourceManager: tests', function () {
       context('will throw an Error for invalid', function () {
         it('resource keys', function () {
           expect(() =>
-            i18nManager.getMessage(LangResourceKeys.restart)
+            i18nManager.getMessage(LangResourceKeys.restart),
           ).to.throw(Error, /is not valid/);
         });
 
@@ -231,7 +231,7 @@ describe('LanguageResourceManager: tests', function () {
 
           expect(() => i18nManager.getMessage(literalString)).to.throw(
             Error,
-            /is not valid/
+            /is not valid/,
           );
         });
       });

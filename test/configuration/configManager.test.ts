@@ -55,7 +55,7 @@ describe('ConfigManager: tests', function () {
       });
 
       vscodeManagerStub = sandbox.createStubInstance<IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
 
       getStub = sandbox.stub();
@@ -215,7 +215,7 @@ describe('ConfigManager: tests', function () {
         updateFileStub.callsArgWith(1, ['']).resolves();
 
         return ConfigManager.removeSettings().then(
-          () => expect(updateFileStub.calledOnce).to.be.true
+          () => expect(updateFileStub.calledOnce).to.be.true,
         );
       });
 
@@ -280,7 +280,7 @@ describe('ConfigManager: tests', function () {
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(
-                  dirPath.replace('%appDir%', '.vscode-insiders')
+                  dirPath.replace('%appDir%', '.vscode-insiders'),
                 );
 
                 return ConfigManager.removeSettings().then(() => {
@@ -294,7 +294,7 @@ describe('ConfigManager: tests', function () {
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(
-                  dirPath.replace('%appDir%', '.vscode-oss-dev')
+                  dirPath.replace('%appDir%', '.vscode-oss-dev'),
                 );
 
                 return ConfigManager.removeSettings().then(() => {
@@ -357,7 +357,7 @@ describe('ConfigManager: tests', function () {
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(
-                  dirPath.replace('%appDir%', '.vscode-insiders')
+                  dirPath.replace('%appDir%', '.vscode-insiders'),
                 );
 
                 return ConfigManager.removeSettings().then(() => {
@@ -371,7 +371,7 @@ describe('ConfigManager: tests', function () {
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(
-                  dirPath.replace('%appDir%', '.vscode-oss-dev')
+                  dirPath.replace('%appDir%', '.vscode-oss-dev'),
                 );
 
                 return ConfigManager.removeSettings().then(() => {
@@ -451,7 +451,7 @@ describe('ConfigManager: tests', function () {
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(
-                  dirPath.replace('%appDir%', '.vscode-insiders')
+                  dirPath.replace('%appDir%', '.vscode-insiders'),
                 );
 
                 return ConfigManager.removeSettings().then(() => {
@@ -465,7 +465,7 @@ describe('ConfigManager: tests', function () {
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(
-                  dirPath.replace('%appDir%', '.vscode-oss-dev')
+                  dirPath.replace('%appDir%', '.vscode-oss-dev'),
                 );
 
                 return ConfigManager.removeSettings().then(() => {
@@ -505,7 +505,7 @@ describe('ConfigManager: tests', function () {
                   process.env.VSCODE_CWD
                 }/data/user-data/User`;
                 const expected = new RegExp(
-                  `^${userPath.replace(/\\/g, '\\\\')}`
+                  `^${userPath.replace(/\\/g, '\\\\')}`,
                 );
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', 'data'));
@@ -519,7 +519,7 @@ describe('ConfigManager: tests', function () {
               it(`'.vscode' `, function () {
                 const userPath = `${process.env.APPDATA}/Code/User`;
                 const expected = new RegExp(
-                  `^${userPath.replace(/\\/g, '\\\\')}`
+                  `^${userPath.replace(/\\/g, '\\\\')}`,
                 );
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode'));
@@ -533,11 +533,11 @@ describe('ConfigManager: tests', function () {
               it(`'.vscode-insiders'`, function () {
                 const userPath = `${process.env.APPDATA}/Code - Insiders/User`;
                 const expected = new RegExp(
-                  `^${userPath.replace(/\\/g, '\\\\')}`
+                  `^${userPath.replace(/\\/g, '\\\\')}`,
                 );
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(
-                  dirPath.replace('%appDir%', '.vscode-insiders')
+                  dirPath.replace('%appDir%', '.vscode-insiders'),
                 );
 
                 return ConfigManager.removeSettings().then(() => {
@@ -549,11 +549,11 @@ describe('ConfigManager: tests', function () {
               it(`'.code-oss-dev'`, function () {
                 const userPath = `${process.env.APPDATA}/code-oss-dev/User`;
                 const expected = new RegExp(
-                  `^${userPath.replace(/\\/g, '\\\\')}`
+                  `^${userPath.replace(/\\/g, '\\\\')}`,
                 );
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(
-                  dirPath.replace('%appDir%', '.vscode-oss-dev')
+                  dirPath.replace('%appDir%', '.vscode-oss-dev'),
                 );
 
                 return ConfigManager.removeSettings().then(() => {
@@ -565,7 +565,7 @@ describe('ConfigManager: tests', function () {
               it(`'.code-oss'`, function () {
                 const userPath = `${process.env.APPDATA}/Code - OSS/User`;
                 const expected = new RegExp(
-                  `^${userPath.replace(/\\/g, '\\\\')}`
+                  `^${userPath.replace(/\\/g, '\\\\')}`,
                 );
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode-oss'));
@@ -588,7 +588,7 @@ describe('ConfigManager: tests', function () {
         removeVSIconsConfigsSpy = sandbox.spy(
           ConfigManager,
           // @ts-ignore
-          'removeVSIconsConfigs'
+          'removeVSIconsConfigs',
         );
       });
 
@@ -597,10 +597,12 @@ describe('ConfigManager: tests', function () {
           const content: string[] = splitter(
             '{\n"updateChannel": "none",\n' +
               '\\\\ Comments\n' +
-              `"${constants.vsicons.dontShowNewVersionMessageSetting}": true\n}`
+              `"${
+                constants.vsicons.dontShowNewVersionMessageSetting
+              }": true\n}`,
           );
           const expected: string[] = splitter(
-            `{\n"updateChannel": "none",\n\\\\ Comments\n}`
+            `{\n"updateChannel": "none",\n\\\\ Comments\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
@@ -618,10 +620,10 @@ describe('ConfigManager: tests', function () {
               constants.vsicons.dontShowNewVersionMessageSetting
             }": true,\n` +
               '\\\\ Comments\n' +
-              '"window.zoomLevel": 0,\n"updateChannel": "none"\n}'
+              '"window.zoomLevel": 0,\n"updateChannel": "none"\n}',
           );
           const expected = splitter(
-            `{\n\\\\ Comments\n"window.zoomLevel": 0,\n"updateChannel": "none"\n}`
+            `{\n\\\\ Comments\n"window.zoomLevel": 0,\n"updateChannel": "none"\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
@@ -640,10 +642,10 @@ describe('ConfigManager: tests', function () {
               `"${
                 constants.vsicons.dontShowNewVersionMessageSetting
               }": true,\n` +
-              '"updateChannel": "none"\n}'
+              '"updateChannel": "none"\n}',
           );
           const expected = splitter(
-            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n"updateChannel": "none"\n}`
+            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n"updateChannel": "none"\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
@@ -663,10 +665,10 @@ describe('ConfigManager: tests', function () {
                 constants.vsicons.dontShowNewVersionMessageSetting
               }": true,\n` +
               `"${constants.vsicons.presets.angular}": true,\n` +
-              '"updateChannel": "none"\n}'
+              '"updateChannel": "none"\n}',
           );
           const expected = splitter(
-            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n"updateChannel": "none"\n}`
+            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n"updateChannel": "none"\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
@@ -688,10 +690,10 @@ describe('ConfigManager: tests', function () {
               '"icon": "ts",\n' +
               '"format": "svg"\n' +
               '}\n' +
-              '}'
+              '}',
           );
           const expected = splitter(
-            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n}`
+            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
@@ -712,10 +714,10 @@ describe('ConfigManager: tests', function () {
               '\\\\ Comments\n' +
               '{"icon": "ts", "format": "svg"}\n' +
               ']\n' +
-              '}'
+              '}',
           );
           const expected = splitter(
-            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n}`
+            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
@@ -736,7 +738,7 @@ describe('ConfigManager: tests', function () {
         resetIconThemeSpy = sandbox.spy(
           ConfigManager,
           // @ts-ignore
-          'resetIconTheme'
+          'resetIconTheme',
         );
       });
 
@@ -747,7 +749,7 @@ describe('ConfigManager: tests', function () {
             `"${constants.vscode.iconThemeSetting}": "${
               constants.extension.name
             }"\n` +
-            '}'
+            '}',
         );
         const expected = splitter(`{\n"window.zoomLevel": 0\n` + '}');
         updateFileStub.callsArgWith(1, content).resolves();
@@ -765,7 +767,7 @@ describe('ConfigManager: tests', function () {
           '{\n' +
             '"window.zoomLevel": 0,\n' +
             `"${constants.vscode.iconThemeSetting}": "otherIconTheme"\n` +
-            '}'
+            '}',
         );
         updateFileStub.callsArgWith(1, content).resolves();
 
@@ -785,7 +787,7 @@ describe('ConfigManager: tests', function () {
         removeLastEntryTrailingCommaStub = sandbox.spy(
           ConfigManager,
           // @ts-ignore
-          'removeLastEntryTrailingComma'
+          'removeLastEntryTrailingComma',
         );
       });
 
@@ -793,10 +795,10 @@ describe('ConfigManager: tests', function () {
         context('of the last settings entry', function () {
           it('when there is no EOF extra line', function () {
             const content = splitter(
-              `{\n"window.zoomLevel": 0,\n"updateChannel": "none",\n}`
+              `{\n"window.zoomLevel": 0,\n"updateChannel": "none",\n}`,
             );
             const expected = splitter(
-              `{\n"window.zoomLevel": 0,\n"updateChannel": "none"\n}`
+              `{\n"window.zoomLevel": 0,\n"updateChannel": "none"\n}`,
             );
             updateFileStub.callsArgWith(1, content).resolves();
 
@@ -811,10 +813,10 @@ describe('ConfigManager: tests', function () {
 
           it('when there is an EOF extra line', function () {
             const content = splitter(
-              `{\n"window.zoomLevel": 0,\n"updateChannel": "none",\n}\n`
+              `{\n"window.zoomLevel": 0,\n"updateChannel": "none",\n}\n`,
             );
             const expected = splitter(
-              `{\n"window.zoomLevel": 0,\n"updateChannel": "none"\n}\n`
+              `{\n"window.zoomLevel": 0,\n"updateChannel": "none"\n}\n`,
             );
             updateFileStub.callsArgWith(1, content).resolves();
 
@@ -835,7 +837,7 @@ describe('ConfigManager: tests', function () {
                 '"files.associations": {\n' +
                 '"js": "something"\n' +
                 '},\n' +
-                '}'
+                '}',
             );
             const expected = splitter(
               '{\n' +
@@ -844,7 +846,7 @@ describe('ConfigManager: tests', function () {
                 '"files.associations": {\n' +
                 '"js": "something"\n' +
                 '}\n' +
-                '}'
+                '}',
             );
             updateFileStub.callsArgWith(1, content).resolves();
 
@@ -866,7 +868,7 @@ describe('ConfigManager: tests', function () {
                 '"entry",\n' +
                 '"anotherEntry"\n' +
                 '],\n' +
-                '}'
+                '}',
             );
             const expected = splitter(
               '{\n' +
@@ -876,7 +878,7 @@ describe('ConfigManager: tests', function () {
                 '"entry",\n' +
                 '"anotherEntry"\n' +
                 ']\n' +
-                '}'
+                '}',
             );
             updateFileStub.callsArgWith(1, content).resolves();
 
@@ -911,7 +913,7 @@ describe('ConfigManager: tests', function () {
             expect(
               configManager.hasConfigChanged(vsiconsClone, [
                 constants.vsicons.presets.name,
-              ])
+              ]),
             ).to.be.true;
           });
         });
@@ -929,7 +931,7 @@ describe('ConfigManager: tests', function () {
             expect(
               configManager.hasConfigChanged(vsiconsClone, [
                 constants.vsicons.associations.name,
-              ])
+              ]),
             ).to.be.false;
           });
         });
@@ -942,7 +944,7 @@ describe('ConfigManager: tests', function () {
         vscodeManagerStub.getAppUserDirPath.returns(appUserDirPath);
 
         expect(configManager.getCustomIconsDirPath('')).to.be.equal(
-          appUserDirPath
+          appUserDirPath,
         );
       });
 
@@ -951,7 +953,7 @@ describe('ConfigManager: tests', function () {
           const customIconsDirPath = '/Path/To/Custom/Icons/Dir/';
 
           expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath)
+            configManager.getCustomIconsDirPath(customIconsDirPath),
           ).to.be.equal(customIconsDirPath);
         });
 
@@ -960,7 +962,7 @@ describe('ConfigManager: tests', function () {
           vscodeManagerStub.getWorkspacePaths.returns(undefined);
 
           expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath)
+            configManager.getCustomIconsDirPath(customIconsDirPath),
           ).to.be.equal(customIconsDirPath);
         });
 
@@ -969,7 +971,7 @@ describe('ConfigManager: tests', function () {
           vscodeManagerStub.getWorkspacePaths.returns([]);
 
           expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath)
+            configManager.getCustomIconsDirPath(customIconsDirPath),
           ).to.be.equal(customIconsDirPath);
         });
 
@@ -982,7 +984,7 @@ describe('ConfigManager: tests', function () {
           pathUnixJoinStub.returns(joinedDir);
 
           expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath)
+            configManager.getCustomIconsDirPath(customIconsDirPath),
           ).to.be.equal(joinedDir);
         });
       });
@@ -997,7 +999,7 @@ describe('ConfigManager: tests', function () {
           pathUnixJoinStub.returns(joinedDir);
 
           expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath)
+            configManager.getCustomIconsDirPath(customIconsDirPath),
           ).to.be.equal(joinedDir);
         });
       });
@@ -1009,7 +1011,7 @@ describe('ConfigManager: tests', function () {
 
         expect(configManager.getIconTheme()).to.equal(constants.vsicons.name);
         expect(
-          getStub.calledOnceWith(constants.vscode.iconThemeSetting)
+          getStub.calledOnceWith(constants.vscode.iconThemeSetting),
         ).to.be.true;
       });
 
@@ -1018,7 +1020,7 @@ describe('ConfigManager: tests', function () {
 
         expect(configManager.getIconTheme()).to.be.undefined;
         expect(
-          getStub.calledOnceWith(constants.vscode.iconThemeSetting)
+          getStub.calledOnceWith(constants.vscode.iconThemeSetting),
         ).to.be.true;
       });
     });
@@ -1035,12 +1037,12 @@ describe('ConfigManager: tests', function () {
         inspectStub.returns(expected);
 
         expect(
-          configManager.getPreset(PresetNames[PresetNames.hideFolders])
+          configManager.getPreset(PresetNames[PresetNames.hideFolders]),
         ).to.eql(expected);
         expect(
           inspectStub
             .getCall(2)
-            .calledWith(PresetNames[PresetNames.hideFolders])
+            .calledWith(PresetNames[PresetNames.hideFolders]),
         ).to.be.true;
       });
 
@@ -1062,9 +1064,9 @@ describe('ConfigManager: tests', function () {
                 updateStub.calledOnceWith(
                   constants.vsicons.dontShowNewVersionMessageSetting,
                   true,
-                  ConfigurationTarget.Global
-                )
-              ).to.be.true
+                  ConfigurationTarget.Global,
+                ),
+              ).to.be.true,
           );
       });
 
@@ -1077,9 +1079,9 @@ describe('ConfigManager: tests', function () {
                 updateStub.calledOnceWith(
                   constants.vsicons.dontShowNewVersionMessageSetting,
                   false,
-                  ConfigurationTarget.Global
-                )
-              ).to.be.true
+                  ConfigurationTarget.Global,
+                ),
+              ).to.be.true,
           );
       });
     });
@@ -1097,9 +1099,9 @@ describe('ConfigManager: tests', function () {
                     constants.vsicons
                       .dontShowConfigManuallyChangedMessageSetting,
                     true,
-                    ConfigurationTarget.Global
-                  )
-                ).to.be.true
+                    ConfigurationTarget.Global,
+                  ),
+                ).to.be.true,
             );
         });
 
@@ -1113,12 +1115,12 @@ describe('ConfigManager: tests', function () {
                     constants.vsicons
                       .dontShowConfigManuallyChangedMessageSetting,
                     false,
-                    ConfigurationTarget.Global
-                  )
-                ).to.be.true
+                    ConfigurationTarget.Global,
+                  ),
+                ).to.be.true,
             );
         });
-      }
+      },
     );
 
     context(`function 'updateAutoReload'`, function () {
@@ -1131,9 +1133,9 @@ describe('ConfigManager: tests', function () {
                 updateStub.calledOnceWith(
                   constants.vsicons.projectDetectionAutoReloadSetting,
                   true,
-                  ConfigurationTarget.Global
-                )
-              ).to.be.true
+                  ConfigurationTarget.Global,
+                ),
+              ).to.be.true,
           );
       });
 
@@ -1146,9 +1148,9 @@ describe('ConfigManager: tests', function () {
                 updateStub.calledOnceWith(
                   constants.vsicons.projectDetectionAutoReloadSetting,
                   false,
-                  ConfigurationTarget.Global
-                )
-              ).to.be.true
+                  ConfigurationTarget.Global,
+                ),
+              ).to.be.true,
           );
       });
     });
@@ -1163,9 +1165,9 @@ describe('ConfigManager: tests', function () {
                 updateStub.calledOnceWith(
                   constants.vsicons.projectDetectionDisableDetectSetting,
                   true,
-                  ConfigurationTarget.Global
-                )
-              ).to.be.true
+                  ConfigurationTarget.Global,
+                ),
+              ).to.be.true,
           );
       });
 
@@ -1178,9 +1180,9 @@ describe('ConfigManager: tests', function () {
                 updateStub.calledOnceWith(
                   constants.vsicons.projectDetectionDisableDetectSetting,
                   false,
-                  ConfigurationTarget.Global
-                )
-              ).to.be.true
+                  ConfigurationTarget.Global,
+                ),
+              ).to.be.true,
           );
       });
     });
@@ -1195,9 +1197,9 @@ describe('ConfigManager: tests', function () {
                 updateStub.calledOnceWith(
                   constants.vscode.iconThemeSetting,
                   constants.extension.name,
-                  ConfigurationTarget.Global
-                )
-              ).to.be.true
+                  ConfigurationTarget.Global,
+                ),
+              ).to.be.true,
           );
       });
     });
@@ -1210,7 +1212,7 @@ describe('ConfigManager: tests', function () {
           .updatePreset(
             PresetNames[PresetNames.tsOfficial],
             true,
-            ConfigurationTarget.Global
+            ConfigurationTarget.Global,
           )
           .then(() => {
             expect(
@@ -1219,8 +1221,8 @@ describe('ConfigManager: tests', function () {
                 .calledWith(
                   `${constants.vsicons.presets.fullname}.${
                     PresetNames[PresetNames.tsOfficial]
-                  }`
-                )
+                  }`,
+                ),
             ).to.be.true;
             expect(
               updateStub.calledOnceWith(
@@ -1228,8 +1230,8 @@ describe('ConfigManager: tests', function () {
                   PresetNames[PresetNames.tsOfficial]
                 }`,
                 true,
-                ConfigurationTarget.Global
-              )
+                ConfigurationTarget.Global,
+              ),
             ).to.be.true;
           });
       });
@@ -1241,7 +1243,7 @@ describe('ConfigManager: tests', function () {
           .updatePreset(
             PresetNames[PresetNames.jsOfficial],
             false,
-            ConfigurationTarget.Global
+            ConfigurationTarget.Global,
           )
           .then(() => {
             expect(
@@ -1250,8 +1252,8 @@ describe('ConfigManager: tests', function () {
                 .calledWith(
                   `${constants.vsicons.presets.fullname}.${
                     PresetNames[PresetNames.jsOfficial]
-                  }`
-                )
+                  }`,
+                ),
             ).to.be.true;
             expect(
               updateStub.calledOnceWith(
@@ -1259,8 +1261,8 @@ describe('ConfigManager: tests', function () {
                   PresetNames[PresetNames.jsOfficial]
                 }`,
                 undefined,
-                ConfigurationTarget.Global
-              )
+                ConfigurationTarget.Global,
+              ),
             ).to.be.true;
           });
       });
@@ -1272,7 +1274,7 @@ describe('ConfigManager: tests', function () {
           .updatePreset(
             PresetNames[PresetNames.angular],
             false,
-            ConfigurationTarget.Workspace
+            ConfigurationTarget.Workspace,
           )
           .then(() => {
             expect(
@@ -1281,8 +1283,8 @@ describe('ConfigManager: tests', function () {
                 .calledWith(
                   `${constants.vsicons.presets.fullname}.${
                     PresetNames[PresetNames.angular]
-                  }`
-                )
+                  }`,
+                ),
             ).to.be.true;
             expect(
               updateStub.calledOnceWith(
@@ -1290,8 +1292,8 @@ describe('ConfigManager: tests', function () {
                   PresetNames[PresetNames.angular]
                 }`,
                 undefined,
-                ConfigurationTarget.Workspace
-              )
+                ConfigurationTarget.Workspace,
+              ),
             ).to.be.true;
           });
       });

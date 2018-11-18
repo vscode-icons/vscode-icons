@@ -43,7 +43,7 @@ describe('ManifestReader: tests', function () {
         it(`returns 'true' when the preset is 'false'`, function () {
           const sut = ManifestReader.getToggledValue(
             PresetNames.hideExplorerArrows,
-            presets
+            presets,
           );
 
           expect(sut).to.be.true;
@@ -54,7 +54,7 @@ describe('ManifestReader: tests', function () {
 
           const sut = ManifestReader.getToggledValue(
             PresetNames.hideExplorerArrows,
-            presets
+            presets,
           );
 
           expect(sut).to.be.false;
@@ -71,7 +71,7 @@ describe('ManifestReader: tests', function () {
 
             const sut = ManifestReader.getToggledValue(
               PresetNames.hideFolders,
-              presets
+              presets,
             );
 
             expect(sut).to.be.true;
@@ -85,7 +85,7 @@ describe('ManifestReader: tests', function () {
 
             const sut = ManifestReader.getToggledValue(
               PresetNames.hideFolders,
-              presets
+              presets,
             );
 
             expect(sut).to.be.false;
@@ -101,7 +101,7 @@ describe('ManifestReader: tests', function () {
 
             const sut = ManifestReader.getToggledValue(
               PresetNames.foldersAllDefaultIcon,
-              presets
+              presets,
             );
 
             expect(sut).to.be.true;
@@ -115,7 +115,7 @@ describe('ManifestReader: tests', function () {
 
             const sut = ManifestReader.getToggledValue(
               PresetNames.foldersAllDefaultIcon,
-              presets
+              presets,
             );
 
             expect(sut).to.be.false;
@@ -130,7 +130,7 @@ describe('ManifestReader: tests', function () {
 
           const sut = ManifestReader.getToggledValue(
             PresetNames.angular,
-            presets
+            presets,
           );
 
           expect(sut).to.be.true;
@@ -142,7 +142,7 @@ describe('ManifestReader: tests', function () {
 
           const sut = ManifestReader.getToggledValue(
             PresetNames.angular,
-            presets
+            presets,
           );
 
           expect(sut).to.be.false;
@@ -232,7 +232,7 @@ describe('ManifestReader: tests', function () {
               parseJSONStub.returns(JSON.parse(iconManifest));
 
               expect(
-                ManifestReader.folderIconsDisabled('hideFolders')
+                ManifestReader.folderIconsDisabled('hideFolders'),
               ).to.be.false;
             });
 
@@ -243,7 +243,7 @@ describe('ManifestReader: tests', function () {
               parseJSONStub.returns(JSON.parse(iconManifest));
 
               expect(
-                ManifestReader.folderIconsDisabled('hideFolders')
+                ManifestReader.folderIconsDisabled('hideFolders'),
               ).to.be.false;
             });
 
@@ -254,7 +254,7 @@ describe('ManifestReader: tests', function () {
               parseJSONStub.returns(JSON.parse(iconManifest));
 
               expect(
-                ManifestReader.folderIconsDisabled('hideFolders')
+                ManifestReader.folderIconsDisabled('hideFolders'),
               ).to.be.true;
             });
           });
@@ -267,7 +267,7 @@ describe('ManifestReader: tests', function () {
               parseJSONStub.returns(JSON.parse(iconManifest));
 
               expect(
-                ManifestReader.folderIconsDisabled('foldersAllDefaultIcon')
+                ManifestReader.folderIconsDisabled('foldersAllDefaultIcon'),
               ).to.be.false;
             });
 
@@ -278,7 +278,7 @@ describe('ManifestReader: tests', function () {
               parseJSONStub.returns(JSON.parse(iconManifest));
 
               expect(
-                ManifestReader.folderIconsDisabled('foldersAllDefaultIcon')
+                ManifestReader.folderIconsDisabled('foldersAllDefaultIcon'),
               ).to.be.true;
             });
           });
@@ -297,16 +297,16 @@ describe('ManifestReader: tests', function () {
                     [
                       PresetNames.hideFolders,
                       PresetNames.foldersAllDefaultIcon,
-                    ].every(prst => prst !== PresetNames[preset])
+                    ].every(prst => prst !== PresetNames[preset]),
                 )
                 .forEach((preset: string) => {
                   expect(() =>
-                    ManifestReader.folderIconsDisabled(preset)
+                    ManifestReader.folderIconsDisabled(preset),
                   ).to.throw(Error, /Not Implemented/);
                 });
             });
           });
-        }
+        },
       );
     });
   });

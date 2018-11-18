@@ -40,7 +40,7 @@ describe('ExtensionManager: tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager
+        VSCodeManager,
       );
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
@@ -57,13 +57,13 @@ describe('ExtensionManager: tests', function () {
       }));
 
       configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager
+        ConfigManager,
       );
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager
+        SettingsManager,
       );
       isNewVersion = false;
       sandbox.stub(settingsManagerStub, 'isNewVersion').get(() => isNewVersion);
@@ -73,7 +73,7 @@ describe('ExtensionManager: tests', function () {
       >(NotificationManager);
 
       iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator
+        IconsGenerator,
       );
 
       padMngStub = sandbox.createStubInstance<
@@ -86,7 +86,7 @@ describe('ExtensionManager: tests', function () {
         settingsManagerStub,
         notifyManagerStub,
         iconsGeneratorStub,
-        padMngStub
+        padMngStub,
       );
     });
 
@@ -103,11 +103,11 @@ describe('ExtensionManager: tests', function () {
               // @ts-ignore
               extensionManager.didChangeConfigurationListener,
               extensionManager,
-              vscodeManagerStub.context.subscriptions
-            )
+              vscodeManagerStub.context.subscriptions,
+            ),
           ).to.be.true;
         });
-      }
+      },
     );
 
     context(`on activation`, function () {
@@ -119,17 +119,17 @@ describe('ExtensionManager: tests', function () {
         registerCommandsStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'registerCommands'
+          'registerCommands',
         );
         manageIntroMessageStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'manageIntroMessage'
+          'manageIntroMessage',
         );
         manageCustomizationsStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'manageCustomizations'
+          'manageCustomizations',
         );
         padMngStub.detectProjects.resolves();
         // @ts-ignore
@@ -142,31 +142,31 @@ describe('ExtensionManager: tests', function () {
         extensionManager.activate();
 
         expect(
-          settingsManagerStub.moveStateFromLegacyPlace.calledOnceWithExactly()
+          settingsManagerStub.moveStateFromLegacyPlace.calledOnceWithExactly(),
         ).to.be.true;
         expect(
           registerCommandsStub.calledImmediatelyAfter(
-            settingsManagerStub.moveStateFromLegacyPlace
-          )
+            settingsManagerStub.moveStateFromLegacyPlace,
+          ),
         ).to.be.true;
         expect(
-          manageIntroMessageStub.calledImmediatelyAfter(registerCommandsStub)
+          manageIntroMessageStub.calledImmediatelyAfter(registerCommandsStub),
         ).to.be.true;
         expect(
           manageCustomizationsStub.calledImmediatelyAfter(
-            manageIntroMessageStub
-          )
+            manageIntroMessageStub,
+          ),
         ).to.be.true;
         expect(
           padMngStub.detectProjects.calledImmediatelyAfter(
-            manageCustomizationsStub
-          )
+            manageCustomizationsStub,
+          ),
         ).to.be.true;
         expect(settingsManagerStub.isNewVersion).to.be.true;
         expect(
           settingsManagerStub.updateStatus.calledImmediatelyAfter(
-            padMngStub.detectProjects
-          )
+            padMngStub.detectProjects,
+          ),
         ).to.be.true;
       });
 
@@ -178,11 +178,11 @@ describe('ExtensionManager: tests', function () {
         expect(settingsManagerStub.isNewVersion).to.be.true;
         expect(
           settingsManagerStub.updateStatus.calledImmediatelyAfter(
-            padMngStub.detectProjects
-          )
+            padMngStub.detectProjects,
+          ),
         ).to.be.true;
         expect(
-          settingsManagerStub.updateStatus.calledOnceWithExactly()
+          settingsManagerStub.updateStatus.calledOnceWithExactly(),
         ).to.be.true;
       });
 
@@ -203,8 +203,8 @@ describe('ExtensionManager: tests', function () {
 
           expect(
             executeCommandStub.calledOnceWithExactly(
-              constants.vscode.reloadWindowActionSetting
-            )
+              constants.vscode.reloadWindowActionSetting,
+            ),
           ).to.be.true;
         });
 
@@ -217,8 +217,8 @@ describe('ExtensionManager: tests', function () {
           expect(cb.calledOnceWithExactly()).to.be.true;
           expect(
             executeCommandStub.calledOnceWithExactly(
-              constants.vscode.reloadWindowActionSetting
-            )
+              constants.vscode.reloadWindowActionSetting,
+            ),
           ).to.be.true;
         });
 
@@ -232,8 +232,8 @@ describe('ExtensionManager: tests', function () {
           expect(cb.calledOnceWithExactly(...cbArgs)).to.be.true;
           expect(
             executeCommandStub.calledOnceWithExactly(
-              constants.vscode.reloadWindowActionSetting
-            )
+              constants.vscode.reloadWindowActionSetting,
+            ),
           ).to.be.true;
         });
       });
@@ -247,12 +247,12 @@ describe('ExtensionManager: tests', function () {
         executeAndReloadStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'executeAndReload'
+          'executeAndReload',
         );
         handleUpdatePresetStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
-          'handleUpdatePreset'
+          'handleUpdatePreset',
         );
       });
 
@@ -265,7 +265,7 @@ describe('ExtensionManager: tests', function () {
           expect(extensionManager.customMsgShown).to.be.false;
           expect(executeAndReloadStub.called).to.be.false;
           expect(
-            configManagerStub.updateDontShowConfigManuallyChangedMessage.called
+            configManagerStub.updateDontShowConfigManuallyChangedMessage.called,
           ).to.be.false;
           expect(configManagerStub.updateDisableDetection.called).to.be.false;
           expect(configManagerStub.updateAutoReload.called).to.be.false;
@@ -279,21 +279,21 @@ describe('ExtensionManager: tests', function () {
             it(`and does nothing`, function () {
               // @ts-ignore
               extensionManager.handleAction(
-                models.LangResourceKeys.dontShowThis
+                models.LangResourceKeys.dontShowThis,
               );
 
               // @ts-ignore
               expect(extensionManager.customMsgShown).to.be.undefined;
               expect(executeAndReloadStub.called).to.be.false;
               expect(
-                configManagerStub.updateDisableDetection.called
+                configManagerStub.updateDisableDetection.called,
               ).to.be.false;
               expect(configManagerStub.updateAutoReload.called).to.be.false;
               // @ts-ignore
               expect(extensionManager.doReload).to.be.false;
               expect(
                 configManagerStub.updateDontShowConfigManuallyChangedMessage
-                  .called
+                  .called,
               ).to.be.false;
               expect(handleUpdatePresetStub.called).to.be.false;
             });
@@ -305,21 +305,21 @@ describe('ExtensionManager: tests', function () {
                 // @ts-ignore
                 extensionManager.handleAction(
                   models.LangResourceKeys.dontShowThis,
-                  sandbox.spy()
+                  sandbox.spy(),
                 );
 
                 // @ts-ignore
                 expect(extensionManager.customMsgShown).to.be.undefined;
                 expect(executeAndReloadStub.called).to.be.false;
                 expect(
-                  configManagerStub.updateDisableDetection.called
+                  configManagerStub.updateDisableDetection.called,
                 ).to.be.false;
                 expect(configManagerStub.updateAutoReload.called).to.be.false;
                 // @ts-ignore
                 expect(extensionManager.doReload).to.be.false;
                 expect(
                   configManagerStub.updateDontShowConfigManuallyChangedMessage
-                    .called
+                    .called,
                 ).to.be.false;
                 expect(handleUpdatePresetStub.called).to.be.false;
               });
@@ -335,14 +335,14 @@ describe('ExtensionManager: tests', function () {
                 // @ts-ignore
                 extensionManager.handleAction(
                   models.LangResourceKeys.dontShowThis,
-                  cb
+                  cb,
                 );
 
                 // @ts-ignore
                 expect(extensionManager.customMsgShown).to.be.false;
                 expect(executeAndReloadStub.called).to.be.false;
                 expect(
-                  configManagerStub.updateDisableDetection.called
+                  configManagerStub.updateDisableDetection.called,
                 ).to.be.false;
                 expect(configManagerStub.updateAutoReload.called).to.be.false;
                 // @ts-ignore
@@ -354,8 +354,8 @@ describe('ExtensionManager: tests', function () {
                 expect(handleUpdatePresetStub.called).to.be.false;
                 expect(
                   configManagerStub.updateDontShowConfigManuallyChangedMessage.calledOnceWithExactly(
-                    true
-                  )
+                    true,
+                  ),
                 ).to.be.true;
               });
             });
@@ -368,7 +368,7 @@ describe('ExtensionManager: tests', function () {
           it(`but updates the setting`, function () {
             // @ts-ignore
             extensionManager.handleAction(
-              models.LangResourceKeys.disableDetect
+              models.LangResourceKeys.disableDetect,
             );
 
             // @ts-ignore
@@ -378,14 +378,14 @@ describe('ExtensionManager: tests', function () {
             expect(executeAndReloadStub.called).to.be.false;
             expect(
               configManagerStub.updateDontShowConfigManuallyChangedMessage
-                .called
+                .called,
             ).to.be.false;
             expect(configManagerStub.updateAutoReload.called).to.be.false;
             expect(handleUpdatePresetStub.called).to.be.false;
             expect(
               configManagerStub.updateDisableDetection.calledOnceWithExactly(
-                true
-              )
+                true,
+              ),
             ).to.be.true;
           });
         });
@@ -416,15 +416,15 @@ describe('ExtensionManager: tests', function () {
                     .false;
                   expect(
                     configManagerStub.updateDontShowConfigManuallyChangedMessage
-                      .called
+                      .called,
                   ).to.be.false;
                   expect(
                     configManagerStub.updateAutoReload.calledOnceWithExactly(
-                      true
-                    )
+                      true,
+                    ),
                   ).to.be.true;
                   expect(
-                    handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)
+                    handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs),
                   ).to.be.true;
                 })
             );
@@ -450,14 +450,14 @@ describe('ExtensionManager: tests', function () {
                   expect(extensionManager.callback).to.equal(cb);
                   expect(
                     configManagerStub.updateDontShowConfigManuallyChangedMessage
-                      .called
+                      .called,
                   ).to.be.false;
                   expect(configManagerStub.updateDisableDetection.called).to.be
                     .false;
                   expect(configManagerStub.updateAutoReload.called).to.be.false;
                   expect(handleUpdatePresetStub.called).to.be.false;
                   expect(
-                    executeAndReloadStub.calledOnceWithExactly(cb, undefined)
+                    executeAndReloadStub.calledOnceWithExactly(cb, undefined),
                   ).to.be.true;
                 })
             );
@@ -480,7 +480,7 @@ describe('ExtensionManager: tests', function () {
                   expect(extensionManager.callback).to.equal(cb);
                   expect(
                     configManagerStub.updateDontShowConfigManuallyChangedMessage
-                      .called
+                      .called,
                   ).to.be.false;
                   expect(configManagerStub.updateDisableDetection.called).to.be
                     .false;
@@ -510,13 +510,13 @@ describe('ExtensionManager: tests', function () {
                   expect(executeAndReloadStub.called).to.be.false;
                   expect(
                     configManagerStub.updateDontShowConfigManuallyChangedMessage
-                      .called
+                      .called,
                   ).to.be.false;
                   expect(configManagerStub.updateDisableDetection.called).to.be
                     .false;
                   expect(configManagerStub.updateAutoReload.called).to.be.false;
                   expect(
-                    handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)
+                    handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs),
                   ).to.be.true;
                 })
             );
@@ -538,7 +538,7 @@ describe('ExtensionManager: tests', function () {
           // @ts-ignore
           expect(executeAndReloadStub.called).to.be.false;
           expect(
-            configManagerStub.updateDontShowConfigManuallyChangedMessage.called
+            configManagerStub.updateDontShowConfigManuallyChangedMessage.called,
           ).to.be.false;
           expect(configManagerStub.updateDisableDetection.called).to.be.false;
           expect(configManagerStub.updateAutoReload.called).to.be.false;
@@ -553,14 +553,14 @@ describe('ExtensionManager: tests', function () {
           // @ts-ignore
           expect(() => extensionManager.handleUpdatePreset()).throw(
             Error,
-            /Callback function missing/
+            /Callback function missing/,
           );
         });
 
         it(`when no callback arguments are is provided`, function () {
           expect(() =>
             // @ts-ignore
-            extensionManager.handleUpdatePreset(sinon.fake())
+            extensionManager.handleUpdatePreset(sinon.fake()),
           ).to.throw(Error, /Arguments missing/);
         });
 
@@ -568,7 +568,7 @@ describe('ExtensionManager: tests', function () {
           it(`are empty`, function () {
             expect(() =>
               // @ts-ignore
-              extensionManager.handleUpdatePreset(sinon.fake(), [])
+              extensionManager.handleUpdatePreset(sinon.fake(), []),
             ).to.throw(Error, /Arguments missing/);
           });
 
@@ -578,7 +578,7 @@ describe('ExtensionManager: tests', function () {
               extensionManager.handleUpdatePreset(sinon.fake(), [
                 'arg1',
                 'arg2',
-              ])
+              ]),
             ).to.throw(Error, /Arguments mismatch/);
           });
         });
@@ -592,12 +592,12 @@ describe('ExtensionManager: tests', function () {
           executeAndReloadStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'executeAndReload'
+            'executeAndReload',
           );
           applyCustomizationStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
-            'applyCustomization'
+            'applyCustomization',
           );
         });
 
@@ -620,17 +620,17 @@ describe('ExtensionManager: tests', function () {
               // @ts-ignore
               expect(extensionManager.callback).to.be.undefined;
               expect(
-                configManagerStub.updateDisableDetection.called
+                configManagerStub.updateDisableDetection.called,
               ).to.be.false;
               expect(
                 configManagerStub.updateDontShowConfigManuallyChangedMessage
-                  .called
+                  .called,
               ).to.be.false;
               expect(
                 executeAndReloadStub.calledOnceWith(
                   applyCustomizationStub,
-                  cbArgs
-                )
+                  cbArgs,
+                ),
               ).to.be.true;
             });
           });
@@ -652,14 +652,14 @@ describe('ExtensionManager: tests', function () {
                 expect(extensionManager.doReload).to.be.true;
                 // @ts-ignore
                 expect(extensionManager.callback).to.equal(
-                  applyCustomizationStub
+                  applyCustomizationStub,
                 );
                 expect(
-                  configManagerStub.updateDisableDetection.called
+                  configManagerStub.updateDisableDetection.called,
                 ).to.be.false;
                 expect(
                   configManagerStub.updateDontShowConfigManuallyChangedMessage
-                    .called
+                    .called,
                 ).to.be.false;
                 expect(cb.calledOnceWithExactly(...cbArgs)).to.be.true;
               });
