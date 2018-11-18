@@ -2255,9 +2255,8 @@ describe('ManifestBuilder: folders icons test', function () {
           sandbox
             // @ts-ignore
             .stub(ManifestBuilder, 'getIconPath')
-            .callsFake(
-              (file: string) =>
-                /opened/g.test(file) ? '' : iconsDirRelativeBasePath,
+            .callsFake((file: string) =>
+              /opened/g.test(file) ? '' : iconsDirRelativeBasePath,
             );
 
           expect(() =>

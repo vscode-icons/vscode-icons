@@ -38,16 +38,18 @@ describe('Specifications of supported extensions: tests', function () {
 
         context('that has a light theme version', function () {
           it('has an associated icon file', function () {
-            files.supported.filter(file => file.light).forEach(file => {
-              const filename = `${constants.iconsManifest.fileTypeLightPrefix}${
-                file.icon
-              }${constants.iconsManifest.iconSuffix}.${
-                FileFormat[file.format]
-              }`;
-              const iconFilePath = join(iconsDirPath, filename);
+            files.supported
+              .filter(file => file.light)
+              .forEach(file => {
+                const filename = `${
+                  constants.iconsManifest.fileTypeLightPrefix
+                }${file.icon}${constants.iconsManifest.iconSuffix}.${
+                  FileFormat[file.format]
+                }`;
+                const iconFilePath = join(iconsDirPath, filename);
 
-              expect(existsSync(iconFilePath)).to.be.true;
-            });
+                expect(existsSync(iconFilePath)).to.be.true;
+              });
           });
         });
       });

@@ -43,31 +43,35 @@ describe('Specifications of supported folders: tests', function () {
 
         context('that has a light theme version', function () {
           it('has an associated icon file', function () {
-            folders.supported.filter(folder => folder.light).forEach(folder => {
-              const filename =
-                `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
-                `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format]
-                }`;
-              const iconFilePath = join(iconsDirPath, filename);
+            folders.supported
+              .filter(folder => folder.light)
+              .forEach(folder => {
+                const filename =
+                  `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
+                  `${constants.iconsManifest.iconSuffix}.${
+                    FileFormat[folder.format]
+                  }`;
+                const iconFilePath = join(iconsDirPath, filename);
 
-              expect(existsSync(iconFilePath)).to.be.true;
-            });
+                expect(existsSync(iconFilePath)).to.be.true;
+              });
           });
 
           it('has an associated opened icon file', function () {
-            folders.supported.filter(folder => folder.light).forEach(folder => {
-              const filename =
-                `${constants.iconsManifest.folderTypePrefix}${
-                  folder.icon
-                }_opened` +
-                `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format]
-                }`;
-              const iconFilePath = join(iconsDirPath, filename);
+            folders.supported
+              .filter(folder => folder.light)
+              .forEach(folder => {
+                const filename =
+                  `${constants.iconsManifest.folderTypePrefix}${
+                    folder.icon
+                  }_opened` +
+                  `${constants.iconsManifest.iconSuffix}.${
+                    FileFormat[folder.format]
+                  }`;
+                const iconFilePath = join(iconsDirPath, filename);
 
-              expect(existsSync(iconFilePath)).to.be.true;
-            });
+                expect(existsSync(iconFilePath)).to.be.true;
+              });
           });
         });
       });

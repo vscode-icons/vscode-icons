@@ -40,13 +40,16 @@ export class Utils {
    * @param {any} dirPath The directory's path
    */
   public static createDirectoryRecursively(dirPath: string): void {
-    dirPath.split(posix.sep).reduce((parentDir, childDir) => {
-      const curDir = resolve(parentDir, childDir);
-      if (!fs.existsSync(curDir)) {
-        fs.mkdirSync(curDir);
-      }
-      return curDir;
-    }, isAbsolute(dirPath) ? posix.sep : '');
+    dirPath.split(posix.sep).reduce(
+      (parentDir, childDir) => {
+        const curDir = resolve(parentDir, childDir);
+        if (!fs.existsSync(curDir)) {
+          fs.mkdirSync(curDir);
+        }
+        return curDir;
+      },
+      isAbsolute(dirPath) ? posix.sep : '',
+    );
   }
 
   /**

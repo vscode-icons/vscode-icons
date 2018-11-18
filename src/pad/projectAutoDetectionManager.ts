@@ -104,8 +104,8 @@ export class ProjectAutoDetectionManager
         ? models.LangResourceKeys.ngDetected
         : models.LangResourceKeys.nonNgDetectedPresetTrue
       : projectInfo
-        ? models.LangResourceKeys.nonNgDetected
-        : models.LangResourceKeys.ngDetectedPresetFalse;
+      ? models.LangResourceKeys.nonNgDetected
+      : models.LangResourceKeys.ngDetectedPresetFalse;
 
     return {
       apply: true,

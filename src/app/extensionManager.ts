@@ -416,8 +416,8 @@ export class ExtensionManager implements models.IExtensionManager {
         ? 'Disabled'
         : 'Enabled'
       : toggledValue
-        ? 'Enabled'
-        : 'Disabled';
+      ? 'Enabled'
+      : 'Disabled';
 
     if (!Reflect.has(models.LangResourceKeys, `${commandName}${action}`)) {
       throw Error(`${commandName}${action} is not valid`);

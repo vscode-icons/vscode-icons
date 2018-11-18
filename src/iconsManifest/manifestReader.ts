@@ -21,8 +21,8 @@ export class ManifestReader {
     return isNonIconsRelatedPreset()
       ? !presets[presetName]
       : isFoldersRelatedPreset()
-        ? !ManifestReader.folderIconsDisabled(presetName)
-        : ManifestReader.iconsDisabled(models.IconNames[presetName]);
+      ? !ManifestReader.folderIconsDisabled(presetName)
+      : ManifestReader.iconsDisabled(models.IconNames[presetName]);
   }
 
   public static iconsDisabled(name: string, isFile: boolean = true): boolean {

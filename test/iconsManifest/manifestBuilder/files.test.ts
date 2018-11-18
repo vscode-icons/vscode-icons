@@ -93,13 +93,15 @@ describe('ManifestBuilder: files icons test', function () {
               fixtFiles,
               emptyFolderCollection,
             );
-            fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
-              const definition = `${
-                constants.iconsManifest.definitionFilePrefix
-              }${file.icon}`;
+            fixtFiles.supported
+              .filter(file => !file.disabled)
+              .forEach(file => {
+                const definition = `${
+                  constants.iconsManifest.definitionFilePrefix
+                }${file.icon}`;
 
-              expect(manifest.iconDefinitions[definition]).to.exist;
-            });
+                expect(manifest.iconDefinitions[definition]).to.exist;
+              });
           });
 
           it('has an icon path', function () {
@@ -107,14 +109,16 @@ describe('ManifestBuilder: files icons test', function () {
               fixtFiles,
               emptyFolderCollection,
             );
-            fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
-              const definition = `${
-                constants.iconsManifest.definitionFilePrefix
-              }${file.icon}`;
+            fixtFiles.supported
+              .filter(file => !file.disabled)
+              .forEach(file => {
+                const definition = `${
+                  constants.iconsManifest.definitionFilePrefix
+                }${file.icon}`;
 
-              expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                .empty;
-            });
+                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
+                  .empty;
+              });
           });
 
           it(`icon path has the correct structure`, function () {
@@ -123,21 +127,23 @@ describe('ManifestBuilder: files icons test', function () {
               emptyFolderCollection,
             );
 
-            fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
-              const filename = `${constants.iconsManifest.fileTypePrefix}${
-                file.icon
-              }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-                file.format,
-              )}`;
+            fixtFiles.supported
+              .filter(file => !file.disabled)
+              .forEach(file => {
+                const filename = `${constants.iconsManifest.fileTypePrefix}${
+                  file.icon
+                }${
+                  constants.iconsManifest.iconSuffix
+                }${Utils.fileFormatToString(file.format)}`;
 
-              const definition = `${
-                constants.iconsManifest.definitionFilePrefix
-              }${file.icon}`;
+                const definition = `${
+                  constants.iconsManifest.definitionFilePrefix
+                }${file.icon}`;
 
-              expect(manifest.iconDefinitions[definition].iconPath).to.equal(
-                `${iconsDirRelativeBasePath}/${filename}`,
-              );
-            });
+                expect(manifest.iconDefinitions[definition].iconPath).to.equal(
+                  `${iconsDirRelativeBasePath}/${filename}`,
+                );
+              });
           });
 
           context('that has NOT a light theme version', function () {
@@ -683,13 +689,15 @@ describe('ManifestBuilder: files icons test', function () {
               fixtFiles,
               emptyFolderCollection,
             );
-            fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
-              const definition = `${
-                constants.iconsManifest.definitionFilePrefix
-              }${file.icon}`;
+            fixtFiles.supported
+              .filter(file => !file.disabled)
+              .forEach(file => {
+                const definition = `${
+                  constants.iconsManifest.definitionFilePrefix
+                }${file.icon}`;
 
-              expect(manifest.iconDefinitions[definition]).to.exist;
-            });
+                expect(manifest.iconDefinitions[definition]).to.exist;
+              });
           });
 
           it('has an icon path', function () {
@@ -697,14 +705,16 @@ describe('ManifestBuilder: files icons test', function () {
               fixtFiles,
               emptyFolderCollection,
             );
-            fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
-              const definition = `${
-                constants.iconsManifest.definitionFilePrefix
-              }${file.icon}`;
+            fixtFiles.supported
+              .filter(file => !file.disabled)
+              .forEach(file => {
+                const definition = `${
+                  constants.iconsManifest.definitionFilePrefix
+                }${file.icon}`;
 
-              expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                .empty;
-            });
+                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
+                  .empty;
+              });
           });
 
           it(`icon path has the correct structure`, function () {
@@ -713,21 +723,23 @@ describe('ManifestBuilder: files icons test', function () {
               emptyFolderCollection,
             );
 
-            fixtFiles.supported.filter(file => !file.disabled).forEach(file => {
-              const filename = `${constants.iconsManifest.fileTypePrefix}${
-                file.icon
-              }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-                file.format,
-              )}`;
+            fixtFiles.supported
+              .filter(file => !file.disabled)
+              .forEach(file => {
+                const filename = `${constants.iconsManifest.fileTypePrefix}${
+                  file.icon
+                }${
+                  constants.iconsManifest.iconSuffix
+                }${Utils.fileFormatToString(file.format)}`;
 
-              const definition = `${
-                constants.iconsManifest.definitionFilePrefix
-              }${file.icon}`;
+                const definition = `${
+                  constants.iconsManifest.definitionFilePrefix
+                }${file.icon}`;
 
-              expect(manifest.iconDefinitions[definition].iconPath).to.equal(
-                `${iconsDirRelativeBasePath}/${filename}`,
-              );
-            });
+                expect(manifest.iconDefinitions[definition].iconPath).to.equal(
+                  `${iconsDirRelativeBasePath}/${filename}`,
+                );
+              });
           });
 
           context('that has NOT a light theme version', function () {

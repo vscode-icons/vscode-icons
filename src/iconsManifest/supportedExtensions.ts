@@ -602,7 +602,7 @@ export const extensions: IFileCollection = {
       icon: 'caddy',
       extensions: [],
       languages: [languages.caddyfile],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
