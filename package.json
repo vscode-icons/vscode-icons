@@ -278,7 +278,7 @@
     "rimraf": "^2.6.2",
     "sinon": "^7.1.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6",
+    "typescript": "^3.2.2",
     "vscode": "1.1.18"
   },
   "dependencies": {
