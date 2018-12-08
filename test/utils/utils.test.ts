@@ -95,7 +95,7 @@ describe('Utils: tests', function () {
           expectedCounts: number,
         ) => {
           const fileCheck = existsStub.callsFake(
-            path => dirExists || directoryPath.split('/').indexOf(path) !== -1,
+            (path: string) => dirExists || directoryPath.split('/').indexOf(path) !== -1,
           );
 
           existsStub.resetHistory();
@@ -127,9 +127,9 @@ describe('Utils: tests', function () {
         const readDirectory = sandbox
           .stub(fs, 'readdirSync')
           .callsFake(() => ['dir', 'file.txt']);
-        const stats = sandbox.stub(fs, 'lstatSync').callsFake(path => ({
+        const stats = sandbox.stub(fs, 'lstatSync').callsFake((path: string) => ({
           isDirectory: () => path !== '/path/to/file.txt',
-        }));
+        }) as any);
         const deleteFile = sandbox.stub(fs, 'unlinkSync');
         const removeDirectory = sandbox.stub(fs, 'rmdirSync');
 
