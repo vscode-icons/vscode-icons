@@ -236,7 +236,6 @@
         }
     },
     "scripts": {
-        "precommit": "pretty-quick --staged",
         "format": "prettier --loglevel error --write \"{src,test}/**/*.ts\"",
         "postformat": "npm run lint -- --fix",
         "preinstall": "git submodule update --init --recursive",
@@ -270,10 +269,11 @@
         "@types/sinon": "^5.0.5",
         "chai": "^4.2.0",
         "examples-generator": "file:submodules/examples-generator",
+        "husky": "^1.2.0",
+        "lint-staged": "^8.1.0",
         "mocha": "^5.2.0",
         "nyc": "^13.1.0",
         "prettier": "^1.15.3",
-        "pretty-quick": "^1.8.0",
         "proxyquire": "^2.1.0",
         "rimraf": "^2.6.2",
         "sinon": "^7.1.1",
@@ -282,8 +282,22 @@
         "vscode": "^1.1.26"
     },
     "dependencies": {
+        "D": "^1.0.0",
         "lodash": "^4.17.11",
         "opn": "^5.4.0",
-        "semver": "^5.6.0"
+        "semver": "^5.6.0",
+        "tslint-config-prettier": "^1.17.0"
+    },
+    "lint-staged": {
+        "src/**/*.ts": [
+            "prettier --parser typescript --write",
+            "git add",
+            "tslint"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     }
 }

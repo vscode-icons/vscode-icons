@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:latest"],
+  "extends": ["tslint:latest", "tslint-config-prettier"],
   "rules": {
     "quotemark": [true, "single"],
     "object-literal-key-quotes": [true, "as-needed"],
