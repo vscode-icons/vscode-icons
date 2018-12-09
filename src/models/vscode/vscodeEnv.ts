@@ -1,3 +1,4 @@
 export interface IVSCodeEnv {
-  appName?: string;
+  appName: string;
+  language: string;
 }

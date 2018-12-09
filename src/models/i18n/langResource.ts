@@ -1,4 +1,4 @@
-import { IOSSpecific } from './';
+import { IOSSpecific } from './osSpecific';
 
 export interface ILangResource {
   newVersion: string | IOSSpecific;
@@ -16,12 +16,12 @@ export interface ILangResource {
   iconRestore: string | IOSSpecific;
   ngPresetEnabled: string | IOSSpecific;
   ngPresetDisabled: string | IOSSpecific;
-  jsOfficialPresetEnabled: string | IOSSpecific;
-  jsOfficialPresetDisabled: string | IOSSpecific;
-  tsOfficialPresetEnabled: string | IOSSpecific;
-  tsOfficialPresetDisabled: string | IOSSpecific;
-  jsonOfficialPresetEnabled: string | IOSSpecific;
-  jsonOfficialPresetDisabled: string | IOSSpecific;
+  jsPresetEnabled: string | IOSSpecific;
+  jsPresetDisabled: string | IOSSpecific;
+  tsPresetEnabled: string | IOSSpecific;
+  tsPresetDisabled: string | IOSSpecific;
+  jsonPresetEnabled: string | IOSSpecific;
+  jsonPresetDisabled: string | IOSSpecific;
   hideFoldersPresetEnabled: string | IOSSpecific;
   hideFoldersPresetDisabled: string | IOSSpecific;
   foldersAllDefaultIconPresetEnabled: string | IOSSpecific;
@@ -29,5 +29,7 @@ export interface ILangResource {
   restart: string | IOSSpecific;
   ngDetected: string | IOSSpecific;
   nonNgDetected: string | IOSSpecific;
+  ngDetectedPresetFalse: string | IOSSpecific;
+  nonNgDetectedPresetTrue: string | IOSSpecific;
   projectDetectionReset: string | IOSSpecific;
 }

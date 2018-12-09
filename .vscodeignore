@@ -17,4 +17,4 @@ out/test
 *lock.json
 *.template.json
 ts*.json
-wallaby.js
+wallaby.*

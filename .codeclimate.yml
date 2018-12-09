@@ -33,5 +33,5 @@ exclude_patterns:
   - "*.yml"
   - "*.lock"
   - ".*"
-  - "wallaby.js"
+  - "wallaby.*"
   - "**/*.d.ts"

@@ -1,5 +1,9 @@
+import { Projects } from './projects';
+import { LangResourceKeys } from '../i18n/langResourceKeys';
+
 export interface IProjectDetectionResult {
   apply: boolean;
-  message?: string;
+  projectName?: Projects;
+  langResourceKey?: LangResourceKeys;
   value?: boolean;
 }

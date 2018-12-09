@@ -1,10 +1,10 @@
-import { IProjectDetection, IPresets, IAssociations } from './';
+import { IProjectDetection, IPresets, IAssociations } from '.';
 
 export interface IVSIcons {
-  dontShowNewVersionMessage?: boolean;
+  associations: IAssociations;
+  customIconFolderPath: string;
+  dontShowNewVersionMessage: boolean;
   dontShowConfigManuallyChangedMessage: boolean;
   projectDetection: IProjectDetection;
   presets: IPresets;
-  customIconFolderPath: string;
-  associations: IAssociations;
 }

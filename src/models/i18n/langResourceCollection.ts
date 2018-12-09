@@ -1,6 +1,7 @@
-import { ILangResource } from './';
+import { ILangResource } from './langResource';
+import { ILangResourceCollectionLike } from './langResourceCollectionLike';
 
-export interface ILangResourceCollection {
+export interface ILangResourceCollection extends ILangResourceCollectionLike {
   de?: ILangResource;
   en: ILangResource;
   es?: ILangResource;
