@@ -7,6 +7,7 @@
   "license": "MIT",
   "author": {
     "email": "roberto.huertas@outlook.com",
+    
     "name": "Roberto Huertas",
     "url": "http://codecoding.com"
   },
@@ -52,6 +53,28 @@
   "activationEvents": [
     "*"
   ],
+  
+"languages": [
+      {
+        "id": "aspnetcorerazor",
+        "extensions": [
+          ".cshtml"
+        ],
+        "mimetypes": [
+          "text/x-cshtml"
+        ],
+        "configuration": "./src/razor/language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "aspnetcorerazor",
+        "scopeName": "text.aspnetcorerazor",
+        "path": "./src/razor/syntaxes/aspnetcorerazor.tmLanguage.json"
+
+      }
+    ],
+  
   "main": "./out/src/",
   "contributes": {
     "iconThemes": [
