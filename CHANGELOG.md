@@ -3,7 +3,7 @@
 ## 8.0.0 (December 9, 2018)
 
 - Feature: Support for `Caddy`. ([@nitroin](https://github.com/nitroin) in [#1768](https://github.com/vscode-icons/vscode-icons/pull/1768))
-- Enhancement: Added alternate extension-based support for `ActionScript`files. ([@admvx](https://github.com/admvx) in [#1765](https://github.com/vscode-icons/vscode-icons/pull/1765))
+- Enhancement: Added alternate extension-based support for `ActionScript` files. ([@admvx](https://github.com/admvx) in [#1765](https://github.com/vscode-icons/vscode-icons/pull/1765))
 - Feature: Support for `.lintstagedrc` files. ([@admvx](https://github.com/admvx) in [#1764](https://github.com/vscode-icons/vscode-icons/pull/1764))
 - Enhancement: Complete application refactor. ([@JimiC](https://github.com/JimiC) in [#17035](https://github.com/vscode-icons/vscode-icons/pull/1735))
 
