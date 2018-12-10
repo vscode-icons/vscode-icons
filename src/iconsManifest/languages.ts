@@ -151,7 +151,7 @@ export const languages: ILanguageCollection = {
   qsharp: { ids: 'qsharp', defaultExtension: 'qs' },
   r: { ids: 'r', defaultExtension: 'r' },
   racket: { ids: 'racket', defaultExtension: 'rkt' },
-  razor: { ids: ['razor', 'aspnetcorerazor], defaultExtension: 'cshtml' },
+  razor: { ids: ['razor', 'aspnetcorerazor'], defaultExtension: 'cshtml' },
   raml: { ids: 'raml', defaultExtension: 'raml' },
   reason: { ids: 'reason', defaultExtension: 're' },
   restructuredtext: { ids: 'restructuredtext', defaultExtension: 'rst' },
