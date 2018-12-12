@@ -29,7 +29,7 @@
   "restart": "Нажмите 'Перезапустить' чтобы изменения вступили в силу.",
   "ngDetected": "%extensionName% обнаружил проект Angular. Нажмите 'Перезапустить' чтобы включить значки Angular.",
   "nonNgDetected": "%extensionName% обнаружил проект отличный от Angular. Нажмите 'Перезапустить' чтобы отключить значки Angular.",
-  "ngDetectedPresetFalse": "",
-  "nonNgDetectedPresetTrue": "",
+  "ngDetectedPresetFalse": "%extensionName% обнаружил проект Angular, но параметру 'preset' установлено значение 'false'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' отключит значки Angular.",
+  "nonNgDetectedPresetTrue": "%extensionName% обнаружил проект отличный от Angular, но параметру 'preset' установлено значение 'true'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' включит значки Angular.",
   "projectDetectionReset": "Определение проекта будет установлено по-умолчанию."
 }
