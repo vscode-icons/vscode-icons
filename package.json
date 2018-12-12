@@ -266,7 +266,7 @@
     "@types/opn": "^5.1.0",
     "@types/proxyquire": "^1.3.28",
     "@types/semver": "^5.5.0",
-    "@types/sinon": "^5.0.7",
+    "@types/sinon": "^7.0.0",
     "chai": "^4.2.0",
     "examples-generator": "file:submodules/examples-generator",
     "husky": "^1.2.0",
