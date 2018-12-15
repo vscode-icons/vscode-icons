@@ -11,7 +11,7 @@ export const extensions: IFolderCollection = {
     { icon: 'app', extensions: ['app', '.app'], format: FileFormat.svg },
     {
       icon: 'asset',
-      extensions: ['assets', '.assets', 'files'],
+      extensions: ['assets', '.assets'],
       format: FileFormat.svg,
     },
     {
