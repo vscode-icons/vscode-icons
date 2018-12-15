@@ -29,7 +29,7 @@
   "restart": "Drücken Sie 'Neu starten' um die Änderungen zu übernehmen.",
   "ngDetected": "%extensionName% hat ein Angular Projekt erkannt! Drücken Sie 'Neu starten', damit die Angular Icons übernommen werden.",
   "nonNgDetected": "%extensionName% hat ein nicht Angular Projekt erkannt! Drücken Sie 'Neu starten', damit die Angular Icons deaktiviert werden.",
-  "ngDetectedPresetFalse": "",
-  "nonNgDetectedPresetTrue": "",
+  "ngDetectedPresetFalse": "%extensionName% hat ein Angular-Projekt erkannt, allerdings ist die 'preset'-Einstellung auf 'false' gesetzt. Es wird wärmstens empfohlen, die 'preset'-Einstellung komplett von den Einstellungen zu entfernen. Wenn Sie auf 'Neu starten' drücken, werden die Angular-Icons deaktiviert.",
+  "nonNgDetectedPresetTrue": "%extensionName% hat ein Angular-Projekt erkannt, allerdings ist die 'preset'-Einstellung auf 'true' gesetzt. Es wird wärmstens empfohlen, die 'preset'-Einstellung komplett von den Einstellungen zu entfernen. Wenn Sie auf 'Neu starten' drücken, werden die Angular-Icons aktiviert.",
   "projectDetectionReset": "Projekterkennung wird zurückgesetzt."
 }
