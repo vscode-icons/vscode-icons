@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.0.0 (December 16, 2018)
+## 8.0.0 (December 15, 2018)
 
 - Enhancement: Update dependencies ([@robertohuertasm](https://github.com/robertohuertasm) in [#1806](https://github.com/vscode-icons/vscode-icons/pull/1806))
 - Enhancement: Add support for `ASPNETCoreRazor` language id. ([@Guar1](https://github.com/Guar1) in [#1799](https://github.com/vscode-icons/vscode-icons/pull/1799))
