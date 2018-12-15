@@ -16,7 +16,10 @@ export const languages: ILanguageCollection = {
   autoit: { ids: 'autoit', defaultExtension: 'au3' },
   avro: { ids: 'avro', defaultExtension: 'avcs' },
   azcli: { ids: 'azcli', defaultExtension: 'azcli' },
-  azurepipelines: { ids: 'azure-pipelines', defaultExtension: 'azure-pipelines.yml'},
+  azurepipelines: {
+    ids: 'azure-pipelines',
+    defaultExtension: 'azure-pipelines.yml',
+  },
   bat: { ids: 'bat', defaultExtension: 'bat' },
   bazel: { ids: 'bazel', defaultExtension: 'bzl' },
   bibtex: { ids: 'bibtex', defaultExtension: 'bib' },
