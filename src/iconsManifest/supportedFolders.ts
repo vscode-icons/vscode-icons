@@ -57,7 +57,7 @@ export const extensions: IFolderCollection = {
     { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
     {
       icon: 'db',
-      extensions: ['db', 'database', 'sql'],
+      extensions: ['db', 'database', 'sql', 'data'],
       format: FileFormat.svg,
     },
     { icon: 'debian', extensions: ['debian'], format: FileFormat.svg },
@@ -77,7 +77,7 @@ export const extensions: IFolderCollection = {
       extensions: ['.elasticbeanstalk', '.ebextensions'],
       format: FileFormat.svg,
     },
-    { icon: 'flow', extensions: ['flow'], format: FileFormat.svg },
+    { icon: 'flow', extensions: ['flow', 'flow-typed'], format: FileFormat.svg },
     {
       icon: 'fonts',
       extensions: ['fonts', 'font', 'fnt'],
@@ -162,7 +162,7 @@ export const extensions: IFolderCollection = {
       extensions: ['models', '.models'],
       format: FileFormat.svg,
     },
-    { icon: 'mongodb', extensions: ['mongodb'], format: FileFormat.svg },
+    { icon: 'mongodb', extensions: ['mongodb', 'mongo'], format: FileFormat.svg },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
     {
       icon: 'node',
@@ -206,7 +206,7 @@ export const extensions: IFolderCollection = {
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
     {
       icon: 'route',
-      extensions: ['route', 'routes', '_route', '_routes'],
+      extensions: ['route', 'routes', '_route', '_routes', 'routers'],
       format: FileFormat.svg,
     },
     {
