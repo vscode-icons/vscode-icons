@@ -1,5 +1,15 @@
 # Change Log
 
+## 8.0.0 (December 15, 2018)
+
+- Enhancement: Update dependencies ([@robertohuertasm](https://github.com/robertohuertasm) in [#1806](https://github.com/vscode-icons/vscode-icons/pull/1806))
+- Enhancement: Add support for `ASPNETCoreRazor` language id. ([@Guar1](https://github.com/Guar1) in [#1799](https://github.com/vscode-icons/vscode-icons/pull/1799))
+- Enhancement: Add new supported folder aliases. ([@mgcrea](https://github.com/mgcrea) in [#1770](https://github.com/vscode-icons/vscode-icons/pull/1770))
+- Feature: Support for `Caddy`. ([@nitroin](https://github.com/nitroin) in [#1768](https://github.com/vscode-icons/vscode-icons/pull/1768))
+- Enhancement: Added alternate extension-based support for `ActionScript` files. ([@admvx](https://github.com/admvx) in [#1765](https://github.com/vscode-icons/vscode-icons/pull/1765))
+- Feature: Support for `.lintstagedrc` files. ([@admvx](https://github.com/admvx) in [#1764](https://github.com/vscode-icons/vscode-icons/pull/1764))
+- Enhancement: Complete application refactor. ([@JimiC](https://github.com/JimiC) in [#1735](https://github.com/vscode-icons/vscode-icons/pull/1735))
+
 ## 7.28.0 (October 30, 2018)
 
 - Feature: Support for `Affinity Suite` icons. ([@admvx](https://github.com/admvx) in [#1757](https://github.com/vscode-icons/vscode-icons/pull/1757))
