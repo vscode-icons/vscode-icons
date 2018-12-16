@@ -30,12 +30,14 @@ jobs:
     - stage: wiki pages icons list update
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       os: linux
-      node_js: 7.9.0
+      node_js: 8.9.3
       addons:
         apt:
           sources: [ubuntu-toolchain-r-test]
           packages: [libstdc++-4.9-dev]
-      before_script: npm i vscode-icons/wpilgenerator --no-save
+      before_script:
+        - npm i vscode-icons/wpilgenerator --no-save
+        - npm run postinstall
       script: npm run compile
       after_success: wpilgen
 
@@ -43,21 +45,27 @@ jobs:
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       os: linux
       node_js: 8.9.3
-      install: npm i
-      before_script: npm i vsce --no-save
+      before_script:
+        - npm i vsce --no-save
+        - npm run postinstall
       script: vsce publish -p $VSCE_TOKEN
+      after_success:
 
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       sudo: required
       language: generic
+      before_script:
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
+      after_success:
 
     - stage: docker vsi:tag
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       sudo: required
       language: generic
+      before_script:
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
+      after_success:
 
 # See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines
