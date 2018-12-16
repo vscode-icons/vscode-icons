@@ -55,6 +55,7 @@ jobs:
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       sudo: required
       language: generic
+      before_install:
       before_script:
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
       after_success:
@@ -63,6 +64,7 @@ jobs:
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       sudo: required
       language: generic
+      before_install:
       before_script:
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
       after_success:
