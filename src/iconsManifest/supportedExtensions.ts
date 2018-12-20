@@ -1084,6 +1084,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'falcon',
+      extensions: [],
+      languages: [languages.falcon],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'favicon',
       extensions: ['favicon.ico'],
       filename: true,
