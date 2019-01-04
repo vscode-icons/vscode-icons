@@ -2105,7 +2105,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'postcssconfig',
-      extensions: ['.postcssrc', '.postcssrc.js', 'postcss.config.js'],
+      extensions: ['.postcssrc', '.postcssrc.json', '.postcssrc.yml', '.postcssrc.js', 'postcss.config.js'],
       filename: true,
       format: FileFormat.svg,
     },
