@@ -1256,6 +1256,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gridsome',
+      extensions: [],
+      filenamesGlob: ['gridsome.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'groovy',
       extensions: [],
       languages: [languages.groovy],
