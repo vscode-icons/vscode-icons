@@ -1,5 +1,1 @@
-<svg version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <path d="m22.761 6.8326v3.2438h-4.992v15.091h-3.5135v-15.091h-5.0169v-3.2438z" style="fill:#000000"/>
-  <path d="m2 2h6.2v3.0945h-2.8647v21.794h2.8647v3.1111h-6.2z" style="fill:#7e7f7f"/>
-  <path d="m30 30h-6.2v-3.0945h2.8647v-21.794h-2.8647v-3.1111h6.2z" style="fill:#7e7f7f"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>file_type_toml</title><path d="M22.76,6.83v3.25h-5V25.17H14.26V10.08h-5V6.83Z" style="fill:#7f7f7f"/><path d="M2,2H8.2V5.09H5.34v21.8H8.2V30H2Z" style="fill:#bfbfbf"/><path d="M30,30H23.8V26.91h2.86V5.11H23.8V2H30Z" style="fill:#bfbfbf"/></svg>
