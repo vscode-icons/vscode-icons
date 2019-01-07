@@ -1099,6 +1099,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'firebasehosting',
       extensions: ['firebase.json'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
