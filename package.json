@@ -298,5 +298,10 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "greenkeeper": {
+    "ignore": [
+      "@types/node"
+    ]
   }
 }
