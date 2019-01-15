@@ -62,6 +62,7 @@ export const languages: ILanguageCollection = {
   elm: { ids: 'elm', defaultExtension: 'elm' },
   erb: { ids: 'erb', defaultExtension: 'erb' },
   erlang: { ids: 'erlang', defaultExtension: 'erl' },
+  falcon: { ids: 'falcon', defaultExtension: 'falcon' },
   fortran: { ids: ['fortran', 'fortran-modern'], defaultExtension: 'f' },
   freemarker: { ids: 'ftl', defaultExtension: 'ftl' },
   fsharp: { ids: 'fsharp', defaultExtension: 'fs' },
