@@ -1084,6 +1084,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'falcon',
+      extensions: [],
+      languages: [languages.falcon],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'favicon',
       extensions: ['favicon.ico'],
       filename: true,
@@ -1093,6 +1099,13 @@ export const extensions: IFileCollection = {
     {
       icon: 'firebase',
       extensions: ['.firebaserc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'firebasehosting',
+      extensions: ['firebase.json'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
@@ -2966,6 +2979,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'yamllint',
       extensions: ['.yamllint'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'yandex',
+      extensions: ['.yaspellerrc', '.yaspeller.json'],
       filename: true,
       format: FileFormat.svg,
     },
