@@ -2690,6 +2690,7 @@ export const extensions: IFileCollection = {
       icon: 'toml',
       extensions: [],
       languages: [languages.toml],
+      light: true,
       format: FileFormat.svg,
     },
     {
