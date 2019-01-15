@@ -1103,6 +1103,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'firebasehosting',
+      extensions: ['firebase.json'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'firestore',
       extensions: ['firestore.rules'],
       filename: true,
@@ -2972,6 +2979,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'yamllint',
       extensions: ['.yamllint'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'yandex',
+      extensions: ['.yaspellerrc', '.yaspeller.json'],
       filename: true,
       format: FileFormat.svg,
     },
