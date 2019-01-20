@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <g transform="translate(0,-43.966981)" style="fill:#0055d4">
+    <g transform="translate(0.14657968,-0.73289839)">
+      <rect y="48.849754" x="11.213346" height="6.4495058" width="17.369692" />
+      <ellipse ry="2.7850139" rx="2.6384342" cy="52.074509" cx="5.7166076" id="path4602" />
+    </g>
+    <g transform="translate(0.21986923,8.0618767)">
+      <rect y="48.849754" x="11.213346" height="6.4495058" width="17.369692" />
+      <ellipse ry="2.7850139" rx="2.6384342" cy="52.074509" cx="5.7166076" />
+    </g>
+    <g transform="translate(0.2198688,16.85665)">
+      <rect y="48.849754" x="11.213346" height="6.4495058" width="17.369692" />
+      <ellipse ry="2.7850139" rx="2.6384342" cy="52.074509" cx="5.7166076" />
+    </g>
+  </g>
+</svg>

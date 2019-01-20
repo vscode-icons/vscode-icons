@@ -1973,6 +1973,24 @@ export const extensions: IFileCollection = {
     },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
     { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
+    {
+      icon: 'pddl',
+      extensions: ['pddl'],
+      languages: [languages.pddl],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pddl_plan',
+      extensions: ['plan'],
+      languages: [languages.pddlplan],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pddl_happenings',
+      extensions: ['happenings'],
+      languages: [languages.pddlhappenings],
+      format: FileFormat.svg,
+    },
     { icon: 'pdf', extensions: ['pdf'], format: FileFormat.svg },
     {
       icon: 'pdf2',
@@ -2126,7 +2144,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'postcssconfig',
-      extensions: ['.postcssrc', '.postcssrc.json', '.postcssrc.yml', '.postcssrc.js', 'postcss.config.js'],
+      extensions: [
+        '.postcssrc',
+        '.postcssrc.json',
+        '.postcssrc.yml',
+        '.postcssrc.js',
+        'postcss.config.js',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
