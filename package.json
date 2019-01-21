@@ -280,7 +280,7 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.2",
-    "vscode": "1.1.18"
+    "vscode": "1.1.27"
   },
   "dependencies": {
     "lodash": "^4.17.11",
