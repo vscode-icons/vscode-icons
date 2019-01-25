@@ -1975,19 +1975,19 @@ export const extensions: IFileCollection = {
     { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
     {
       icon: 'pddl',
-      extensions: ['pddl'],
+      extensions: [],
       languages: [languages.pddl],
       format: FileFormat.svg,
     },
     {
       icon: 'pddl_plan',
-      extensions: ['plan'],
+      extensions: [],
       languages: [languages.pddlplan],
       format: FileFormat.svg,
     },
     {
       icon: 'pddl_happenings',
-      extensions: ['happenings'],
+      extensions: [],
       languages: [languages.pddlhappenings],
       format: FileFormat.svg,
     },
