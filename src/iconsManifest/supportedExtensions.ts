@@ -2126,7 +2126,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'postcssconfig',
-      extensions: ['.postcssrc', '.postcssrc.json', '.postcssrc.yml', '.postcssrc.js', 'postcss.config.js'],
+      extensions: [
+        '.postcssrc',
+        '.postcssrc.json',
+        '.postcssrc.yml',
+        '.postcssrc.js',
+        'postcss.config.js',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2624,6 +2630,14 @@ export const extensions: IFileCollection = {
       icon: 't4tt',
       extensions: [],
       languages: [languages.t4],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tailwind',
+      extensions: [],
+      filenamesGlob: ['tailwind', 'tailwind.config', 'tailwind-config'],
+      extensionsGlob: ['js', 'coffee', 'ts'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
