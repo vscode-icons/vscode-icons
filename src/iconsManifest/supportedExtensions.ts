@@ -3033,5 +3033,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg, },
   ],
 };
