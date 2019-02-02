@@ -158,6 +158,7 @@ export const languages: ILanguageCollection = {
   razor: { ids: ['razor', 'aspnetcorerazor'], defaultExtension: 'cshtml' },
   raml: { ids: 'raml', defaultExtension: 'raml' },
   reason: { ids: 'reason', defaultExtension: 're' },
+  red: { ids: 'red', defaultExtension: 'red' },
   restructuredtext: { ids: 'restructuredtext', defaultExtension: 'rst' },
   riot: { ids: 'riot', defaultExtension: 'tag' },
   robot: { ids: 'robot', defaultExtension: 'robot' },
