@@ -1255,6 +1255,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'go_package',
+      extensions: ['go.sum', 'go.mod'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'godot',
       extensions: [],
       languages: [languages.godot],
