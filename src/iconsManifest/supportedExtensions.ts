@@ -1142,6 +1142,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'flutter',
+      extensions: ['.flutter-plugins', '.metadata'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'flutter_package',
+      extensions: ['pubspec.lock', 'pubspec.yaml', '.packages'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'font',
       extensions: ['woff', 'woff2', 'ttf', 'otf', 'eot', 'pfa', 'pfb', 'sfd'],
       light: true,
