@@ -532,6 +532,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bitbucketpipeline',
+      extensions: ['bitbucket-pipelines.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'blade',
       extensions: [],
       languages: [languages.blade],
@@ -2359,6 +2365,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'red',
+      extensions: [],
+      languages: [languages.red],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rest',
       extensions: [],
       languages: [languages.restructuredtext],
@@ -2919,6 +2931,11 @@ export const extensions: IFileCollection = {
       icon: 'wasm',
       extensions: ['wasm'],
       languages: [languages.wasm],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'webp',
+      extensions: ['webp'],
       format: FileFormat.svg,
     },
     {
