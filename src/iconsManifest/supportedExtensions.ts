@@ -1907,7 +1907,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'npm',
-      extensions: ['.npmignore', '.npmrc', 'package.json', 'package-lock.json'],
+      extensions: [
+        '.npmignore',
+        '.npmrc',
+        'package.json',
+        'package-lock.json',
+        'npm-shrinkwrap.json',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2203,6 +2209,16 @@ export const extensions: IFileCollection = {
       icon: 'powershell',
       extensions: [],
       languages: [languages.powershell],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'powershell_psm',
+      extensions: ['psm1'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'powershell_psd',
+      extensions: ['psd1'],
       format: FileFormat.svg,
     },
     {
