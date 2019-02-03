@@ -21,7 +21,6 @@
 - Fix: Disable `before_install` step from docker stages. ([@JimiC](https://github.com/JimiC) in [#1810](https://github.com/vscode-icons/vscode-icons/pull/1810))
 - Fix: Fixes CI issues. ([@JimiC](https://github.com/JimiC) in [#1809](https://github.com/vscode-icons/vscode-icons/pull/1809))
 
-
 ## 8.0.0 (December 16, 2018)
 
 - Enhancement: Update dependencies ([@robertohuertasm](https://github.com/robertohuertasm) in [#1806](https://github.com/vscode-icons/vscode-icons/pull/1806))
