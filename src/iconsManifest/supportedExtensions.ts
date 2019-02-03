@@ -1432,6 +1432,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'imba',
+      extensions: [],
+      languages: [languages.imba],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ini',
       extensions: [],
       languages: [languages.ini],
