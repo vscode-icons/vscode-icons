@@ -2916,6 +2916,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'webp',
+      extensions: ['webp'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'webpack',
       extensions: [],
       filenamesGlob: [
