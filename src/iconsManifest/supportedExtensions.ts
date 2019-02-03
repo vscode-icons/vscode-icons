@@ -1979,6 +1979,24 @@ export const extensions: IFileCollection = {
     },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
     { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
+    {
+      icon: 'pddl',
+      extensions: [],
+      languages: [languages.pddl],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pddl_plan',
+      extensions: [],
+      languages: [languages.pddlplan],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pddl_happenings',
+      extensions: [],
+      languages: [languages.pddlhappenings],
+      format: FileFormat.svg,
+    },
     { icon: 'pdf', extensions: ['pdf'], format: FileFormat.svg },
     {
       icon: 'pdf2',
