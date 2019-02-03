@@ -1907,7 +1907,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'npm',
-      extensions: ['.npmignore', '.npmrc', 'package.json', 'package-lock.json'],
+      extensions: [
+        '.npmignore',
+        '.npmrc',
+        'package.json',
+        'package-lock.json',
+        'npm-shrinkwrap.json',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
