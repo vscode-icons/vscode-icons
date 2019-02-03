@@ -2663,6 +2663,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tailwind',
+      extensions: [],
+      filenamesGlob: ['tailwind', 'tailwind.config'],
+      extensionsGlob: ['js', 'coffee', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tt',
       extensions: ['tt2'],
       languages: [languages.templatetoolkit],
