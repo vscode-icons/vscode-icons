@@ -1,10 +1,32 @@
 # Change Log
 
+## 8.1.0 (February 03, 2019)
+
+- Feature: Support for `Flutter`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1857](https://github.com/vscode-icons/vscode-icons/pull/1857))
+- Enhancement: Support for the new `Go` logo and for `Go Modules`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1856](https://github.com/vscode-icons/vscode-icons/pull/1856))
+- Feature: Support for `Bitbucket pipeline`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1853](https://github.com/vscode-icons/vscode-icons/pull/1853))
+- Feature: Support for `Red` programming language. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1852](https://github.com/vscode-icons/vscode-icons/pull/1852))
+- Feature: Support for `ovpn`. ([@adamzerella](https://github.com/adamzerella) in [#1850](https://github.com/vscode-icons/vscode-icons/pull/1850))
+- Feature: Support for `Tailwind`. ([@bradlc](https://github.com/bradlc) in [#1846](https://github.com/vscode-icons/vscode-icons/pull/1846))
+- Enhancement: `GreenKeeper` configured to ignore `vscode` dependency. ([@JimiC](https://github.com/JimiC) in [#1843](https://github.com/vscode-icons/vscode-icons/pull/1843))
+- Feature: Support for `PDDL` (Artificial Intelligence Planning). ([@jan-dolejsi](https://github.com/jan-dolejsi) in [#1839](https://github.com/vscode-icons/vscode-icons/pull/1839))
+- Feature: Support for `.webp` files. ([@uu1t](https://github.com/uu1t) in [#1838](https://github.com/vscode-icons/vscode-icons/pull/1838))
+- Enhancement: `GreenKeeper` configured to ignore node type dependency. ([@JimiC](https://github.com/JimiC) in [#1833](https://github.com/vscode-icons/vscode-icons/pull/1833))
+- Enhancement: Updated `TOML` logo. ([@cailloumajor](https://github.com/cailloumajor) in [#1831](https://github.com/vscode-icons/vscode-icons/pull/1831))
+- Feature: Support for `Gridsome`. ([@bricksroo](https://github.com/bricksroo) in [#1829](https://github.com/vscode-icons/vscode-icons/pull/1829))
+- Enhancement: Added more supported extensions for `postcss`. ([@vitaliytv](https://github.com/vitaliytv) in [#1826](https://github.com/vscode-icons/vscode-icons/pull/1826))
+- Feature: Support for `Yandex` and `Firebase` hosting. ([@vitaliytv](https://github.com/vitaliytv) in [#1824](https://github.com/vscode-icons/vscode-icons/pull/1824))
+- Feature: Support for `Falcon`. ([@qfish](https://github.com/qfish) in [#1816](https://github.com/vscode-icons/vscode-icons/pull/1816))
+- Enhancement: Added node version for vscode insiders. ([@JimiC](https://github.com/JimiC) in [#1811](https://github.com/vscode-icons/vscode-icons/pull/1811))
+- Fix: Disable `before_install` step from docker stages. ([@JimiC](https://github.com/JimiC) in [#1810](https://github.com/vscode-icons/vscode-icons/pull/1810))
+- Fix: Fixes CI issues. ([@JimiC](https://github.com/JimiC) in [#1809](https://github.com/vscode-icons/vscode-icons/pull/1809))
+
+
 ## 8.0.0 (December 16, 2018)
 
 - Enhancement: Update dependencies ([@robertohuertasm](https://github.com/robertohuertasm) in [#1806](https://github.com/vscode-icons/vscode-icons/pull/1806))
-- Enhancement: Add support for `ASPNETCoreRazor` language id. ([@Guar1](https://github.com/Guar1) in [#1799](https://github.com/vscode-icons/vscode-icons/pull/1799))
-- Enhancement: Add new supported folder aliases. ([@mgcrea](https://github.com/mgcrea) in [#1770](https://github.com/vscode-icons/vscode-icons/pull/1770))
+- Enhancement: Added support for `ASPNETCoreRazor` language id. ([@Guar1](https://github.com/Guar1) in [#1799](https://github.com/vscode-icons/vscode-icons/pull/1799))
+- Enhancement: Added new supported folder aliases. ([@mgcrea](https://github.com/mgcrea) in [#1770](https://github.com/vscode-icons/vscode-icons/pull/1770))
 - Feature: Support for `Caddy`. ([@nitroin](https://github.com/nitroin) in [#1768](https://github.com/vscode-icons/vscode-icons/pull/1768))
 - Enhancement: Added alternate extension-based support for `ActionScript` files. ([@admvx](https://github.com/admvx) in [#1765](https://github.com/vscode-icons/vscode-icons/pull/1765))
 - Feature: Support for `.lintstagedrc` files. ([@admvx](https://github.com/admvx) in [#1764](https://github.com/vscode-icons/vscode-icons/pull/1764))
@@ -56,7 +78,7 @@
 
 - Enhancement: Associated `plist` with `config` icon. ([@JimiC](https://github.com/JimiC) in [#1630](https://github.com/vscode-icons/vscode-icons/pull/1630))
 - Fix: Disable `before_script` step in docker stages. ([@JimiC](https://github.com/JimiC) in [#1629](https://github.com/vscode-icons/vscode-icons/pull/1629))
-- Enhancement: Add publish stage in CI. ([@JimiC](https://github.com/JimiC) in [#1627](https://github.com/vscode-icons/vscode-icons/pull/1627))
+- Enhancement: Added publish stage in CI. ([@JimiC](https://github.com/JimiC) in [#1627](https://github.com/vscode-icons/vscode-icons/pull/1627))
 - Enhancement: Get docker trigger script from docker repo. ([@JimiC](https://github.com/JimiC) in [#1626](https://github.com/vscode-icons/vscode-icons/pull/1626))
 - Enhancement: Updated project dependencies. ([@JimiC](https://github.com/JimiC) in [#1625](https://github.com/vscode-icons/vscode-icons/pull/1625), [#1587](https://github.com/vscode-icons/vscode-icons/pull/1587))
 - Enhancement: Added `code-climate` config file. ([@JimiC](https://github.com/JimiC) in [#1624](https://github.com/vscode-icons/vscode-icons/pull/1624))
