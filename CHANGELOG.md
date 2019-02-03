@@ -2,6 +2,8 @@
 
 ## 8.1.0 (February 03, 2019)
 
+- Enhancement: Support for `npm-shrinkwrap.json`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1860](https://github.com/vscode-icons/vscode-icons/pull/1860))
+- Enhancement: Support for `Powershell modules`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1859](https://github.com/vscode-icons/vscode-icons/pull/1859))
 - Feature: Support for `Flutter`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1857](https://github.com/vscode-icons/vscode-icons/pull/1857))
 - Enhancement: Support for the new `Go` logo and for `Go Modules`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1856](https://github.com/vscode-icons/vscode-icons/pull/1856))
 - Feature: Support for `Bitbucket pipeline`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1853](https://github.com/vscode-icons/vscode-icons/pull/1853))
