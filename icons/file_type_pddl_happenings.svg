@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <g transform="translate(0,-43.966981)" style="fill:#0055d4">
-    <g transform="translate(0.14657968,-0.73289839)">
-      <rect y="48.849754" x="11.213346" height="6.4495058" width="17.369692" />
-      <ellipse ry="2.7850139" rx="2.6384342" cy="52.074509" cx="5.7166076" id="path4602" />
-    </g>
-    <g transform="translate(0.21986923,8.0618767)">
-      <rect y="48.849754" x="11.213346" height="6.4495058" width="17.369692" />
-      <ellipse ry="2.7850139" rx="2.6384342" cy="52.074509" cx="5.7166076" />
-    </g>
-    <g transform="translate(0.2198688,16.85665)">
-      <rect y="48.849754" x="11.213346" height="6.4495058" width="17.369692" />
-      <ellipse ry="2.7850139" rx="2.6384342" cy="52.074509" cx="5.7166076" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>file_type_pddl_happenings</title><rect x="11.36" y="4.15" width="17.37" height="6.45" style="fill:#0055d4"/><ellipse cx="5.863" cy="7.375" rx="2.638" ry="2.785" style="fill:#0055d4"/><rect x="11.433" y="12.945" width="17.37" height="6.45" style="fill:#0055d4"/><ellipse cx="5.936" cy="16.169" rx="2.638" ry="2.785" style="fill:#0055d4"/><rect x="11.433" y="21.739" width="17.37" height="6.45" style="fill:#0055d4"/><ellipse cx="5.936" cy="24.964" rx="2.638" ry="2.785" style="fill:#0055d4"/></svg>
