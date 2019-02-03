@@ -2212,6 +2212,16 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'powershell_psm',
+      extensions: ['psm1'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'powershell_psd',
+      extensions: ['psd1'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'prettier',
       extensions: ['.prettierrc', '.prettierignore'],
       light: true,
