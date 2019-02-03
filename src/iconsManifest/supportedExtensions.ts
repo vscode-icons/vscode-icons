@@ -532,6 +532,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bitbucketpipeline',
+      extensions: ['bitbucket-pipelines.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'blade',
       extensions: [],
       languages: [languages.blade],
