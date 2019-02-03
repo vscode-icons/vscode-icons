@@ -301,7 +301,8 @@
   },
   "greenkeeper": {
     "ignore": [
-      "@types/node"
+      "@types/node",
+      "vscode"
     ]
   }
 }

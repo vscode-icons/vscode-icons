@@ -532,6 +532,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bitbucketpipeline',
+      extensions: ['bitbucket-pipelines.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'blade',
       extensions: [],
       languages: [languages.blade],
@@ -2126,7 +2132,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'postcssconfig',
-      extensions: ['.postcssrc', '.postcssrc.json', '.postcssrc.yml', '.postcssrc.js', 'postcss.config.js'],
+      extensions: [
+        '.postcssrc',
+        '.postcssrc.json',
+        '.postcssrc.yml',
+        '.postcssrc.js',
+        'postcss.config.js',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2332,6 +2344,12 @@ export const extensions: IFileCollection = {
       icon: 'reason',
       extensions: [],
       languages: [languages.reason],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'red',
+      extensions: [],
+      languages: [languages.red],
       format: FileFormat.svg,
     },
     {
