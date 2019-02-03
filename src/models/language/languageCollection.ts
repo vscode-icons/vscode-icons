@@ -104,6 +104,9 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   openEdge: ILanguage;
   openHAB: ILanguage;
   pascal: ILanguage;
+  pddl: ILanguage;
+  pddlplan: ILanguage;
+  pddlhappenings: ILanguage;
   pgsql: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;
@@ -120,6 +123,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   racket: ILanguage;
   raml: ILanguage;
   reason: ILanguage;
+  red: ILanguage;
   restructuredtext: ILanguage;
   riot: ILanguage;
   robot: ILanguage;

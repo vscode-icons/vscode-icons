@@ -532,6 +532,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bitbucketpipeline',
+      extensions: ['bitbucket-pipelines.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'blade',
       extensions: [],
       languages: [languages.blade],
@@ -1973,6 +1979,24 @@ export const extensions: IFileCollection = {
     },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
     { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
+    {
+      icon: 'pddl',
+      extensions: [],
+      languages: [languages.pddl],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pddl_plan',
+      extensions: [],
+      languages: [languages.pddlplan],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pddl_happenings',
+      extensions: [],
+      languages: [languages.pddlhappenings],
+      format: FileFormat.svg,
+    },
     { icon: 'pdf', extensions: ['pdf'], format: FileFormat.svg },
     {
       icon: 'pdf2',
@@ -2338,6 +2362,12 @@ export const extensions: IFileCollection = {
       icon: 'reason',
       extensions: [],
       languages: [languages.reason],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'red',
+      extensions: [],
+      languages: [languages.red],
       format: FileFormat.svg,
     },
     {
@@ -2909,6 +2939,11 @@ export const extensions: IFileCollection = {
       icon: 'wasm',
       extensions: ['wasm'],
       languages: [languages.wasm],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'webp',
+      extensions: ['webp'],
       format: FileFormat.svg,
     },
     {
