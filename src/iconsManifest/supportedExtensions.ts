@@ -1980,6 +1980,24 @@ export const extensions: IFileCollection = {
     },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
     { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
+    {
+      icon: 'pddl',
+      extensions: [],
+      languages: [languages.pddl],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pddl_plan',
+      extensions: [],
+      languages: [languages.pddlplan],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pddl_happenings',
+      extensions: [],
+      languages: [languages.pddlhappenings],
+      format: FileFormat.svg,
+    },
     { icon: 'pdf', extensions: ['pdf'], format: FileFormat.svg },
     {
       icon: 'pdf2',
@@ -2348,6 +2366,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'red',
+      extensions: [],
+      languages: [languages.red],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rest',
       extensions: [],
       languages: [languages.restructuredtext],
@@ -2640,6 +2664,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tailwind',
+      extensions: [],
+      filenamesGlob: ['tailwind', 'tailwind.config'],
+      extensionsGlob: ['js', 'coffee', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tt',
       extensions: ['tt2'],
       languages: [languages.templatetoolkit],
@@ -2908,6 +2940,11 @@ export const extensions: IFileCollection = {
       icon: 'wasm',
       extensions: ['wasm'],
       languages: [languages.wasm],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'webp',
+      extensions: ['webp'],
       format: FileFormat.svg,
     },
     {
