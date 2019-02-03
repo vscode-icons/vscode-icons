@@ -2347,6 +2347,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'red',
+      extensions: [],
+      languages: [languages.red],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rest',
       extensions: [],
       languages: [languages.restructuredtext],

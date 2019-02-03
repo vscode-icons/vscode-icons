@@ -120,6 +120,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   racket: ILanguage;
   raml: ILanguage;
   reason: ILanguage;
+  red: ILanguage;
   restructuredtext: ILanguage;
   riot: ILanguage;
   robot: ILanguage;
