@@ -1962,6 +1962,7 @@ export const extensions: IFileCollection = {
       extensions: ['pst', 'bcmx', 'otm', 'msg', 'oft'],
       format: FileFormat.svg,
     },
+    { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
     {
       icon: 'paket',
