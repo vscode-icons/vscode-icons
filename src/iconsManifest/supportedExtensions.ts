@@ -2168,6 +2168,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pony',
+      extensions: [],
+      languages: [languages.pony],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'postcss',
       extensions: [],
       languages: [languages.postcss],

@@ -142,6 +142,7 @@ export const languages: ILanguageCollection = {
   plaintext: { ids: 'plaintext', defaultExtension: 'txt' },
   plsql: { ids: ['plsql', 'oracle'], defaultExtension: 'ddl' },
   polymer: { ids: 'polymer', defaultExtension: 'polymer' },
+  pony: { ids: 'pony', defaultExtension: 'pony' },
   postcss: { ids: 'postcss', defaultExtension: 'pcss' },
   powershell: { ids: 'powershell', defaultExtension: 'ps1' },
   processinglang: { ids: 'pde', defaultExtension: 'pde' },
