@@ -78,7 +78,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'ng_component_dt',
+      icon: 'ng_component_dart',
       extensions: ['component.dart'],
       format: FileFormat.svg,
       disabled: true,
@@ -108,7 +108,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_directive_dt',
+      icon: 'ng_directive_dart',
       extensions: ['directive.dart'],
       format: FileFormat.svg,
       disabled: true,
@@ -126,7 +126,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_guard_dt',
+      icon: 'ng_guard_dart',
       extensions: ['guard.dart'],
       format: FileFormat.svg,
       disabled: true,
@@ -144,7 +144,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_module_dt',
+      icon: 'ng_module_dart',
       extensions: ['module.dart'],
       format: FileFormat.svg,
       disabled: true,
@@ -162,7 +162,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_pipe_dt',
+      icon: 'ng_pipe_dart',
       extensions: ['pipe.dart'],
       format: FileFormat.svg,
       disabled: true,
@@ -180,7 +180,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_routing_dt',
+      icon: 'ng_routing_dart',
       extensions: ['routing.dart'],
       format: FileFormat.svg,
       disabled: true,
@@ -198,7 +198,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_routing_dt',
+      icon: 'ng_routing_dart',
       extensions: ['app-routing.module.dart'],
       filename: true,
       format: FileFormat.svg,
@@ -219,7 +219,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_smart_component_dt',
+      icon: 'ng_smart_component_dart',
       extensions: ['page.dart', 'container.dart'],
       format: FileFormat.svg,
       disabled: true,
@@ -237,7 +237,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_service_dt',
+      icon: 'ng_service_dart',
       extensions: ['service.dart'],
       format: FileFormat.svg,
       disabled: true,
@@ -255,7 +255,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'ng_interceptor_dt',
+      icon: 'ng_interceptor_dart',
       extensions: ['interceptor.dart'],
       format: FileFormat.svg,
       disabled: true,
