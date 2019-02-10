@@ -2395,8 +2395,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'reason',
-      extensions: [],
+      extensions: ['re'],
       languages: [languages.reason],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'reason_interface',
+      extensions: ['rei'],
       format: FileFormat.svg,
     },
     {
