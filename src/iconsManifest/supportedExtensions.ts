@@ -1874,6 +1874,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mysql',
+      extensions: [],
+      languages: [languages.mysql],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nginx',
       extensions: ['nginx.conf'],
       filename: true,
