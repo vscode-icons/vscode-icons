@@ -32,6 +32,7 @@ describe('ExtensionManager: event listeners tests', function () {
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let extensionManager: models.IExtensionManager;
     let vsiconsClone: models.IVSIcons;
+    let state: models.IState;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
@@ -77,6 +78,8 @@ describe('ExtensionManager: event listeners tests', function () {
         iconsGeneratorStub,
         padMngStub,
       );
+
+      state = SettingsManager.defaultState;
     });
 
     afterEach(function () {
@@ -117,9 +120,8 @@ describe('ExtensionManager: event listeners tests', function () {
           context(`and the 'status' is NOT 'activated'`, function () {
             context(`the 'status' gets set to`, function () {
               it(`'activated' and gets updated`, function () {
-                settingsManagerStub.getState.returns({
-                  status: models.ExtensionStatus.deactivated,
-                });
+                state.status = models.ExtensionStatus.deactivated;
+                settingsManagerStub.getState.returns(state);
 
                 onDidChangeConfigurationStub.callArgOnWith(
                   0,
@@ -146,9 +148,8 @@ describe('ExtensionManager: event listeners tests', function () {
           context(`and the 'status' is 'activated'`, function () {
             context(`the 'status' gets`, function () {
               it(`NOT updated`, function () {
-                settingsManagerStub.getState.returns({
-                  status: models.ExtensionStatus.activated,
-                });
+                state.status = models.ExtensionStatus.activated;
+                settingsManagerStub.getState.returns(state);
 
                 onDidChangeConfigurationStub.callArgOnWith(
                   0,
@@ -177,9 +178,8 @@ describe('ExtensionManager: event listeners tests', function () {
           context(`and the 'status' is 'activated'`, function () {
             context(`the extension 'status' gets set to`, function () {
               it(`'deactivated' and gets updated`, function () {
-                settingsManagerStub.getState.returns({
-                  status: models.ExtensionStatus.activated,
-                });
+                state.status = models.ExtensionStatus.activated;
+                settingsManagerStub.getState.returns(state);
 
                 onDidChangeConfigurationStub.callArgOnWith(
                   0,
@@ -206,9 +206,8 @@ describe('ExtensionManager: event listeners tests', function () {
           context(`and the 'status' is 'deactivated'`, function () {
             context(`the 'status' gets`, function () {
               it(`NOT updated`, function () {
-                settingsManagerStub.getState.returns({
-                  status: models.ExtensionStatus.deactivated,
-                });
+                state.status = models.ExtensionStatus.deactivated;
+                settingsManagerStub.getState.returns(state);
 
                 onDidChangeConfigurationStub.callArgOnWith(
                   0,

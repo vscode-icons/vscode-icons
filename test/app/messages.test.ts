@@ -36,6 +36,7 @@ describe('ExtensionManager: messages tests', function () {
     let extensionManager: models.IExtensionManager;
     let isNewVersion: boolean;
     let vsiconsClone: models.IVSIcons;
+    let state: models.IState;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
@@ -85,6 +86,8 @@ describe('ExtensionManager: messages tests', function () {
       );
 
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
+
+      state = SettingsManager.defaultState;
     });
 
     afterEach(function () {
@@ -111,9 +114,8 @@ describe('ExtensionManager: messages tests', function () {
       context(`the welcome message gets`, function () {
         context(`shown`, function () {
           beforeEach(function () {
-            settingsManagerStub.getState.returns({
-              welcomeShown: false,
-            });
+            state.welcomeShown = false;
+            settingsManagerStub.getState.returns(state);
             configManagerStub.getIconTheme.returns(undefined);
           });
 
@@ -136,9 +138,8 @@ describe('ExtensionManager: messages tests', function () {
 
         context(`NOT shown`, function () {
           beforeEach(function () {
-            settingsManagerStub.getState.returns({
-              welcomeShown: true,
-            });
+            state.welcomeShown = true;
+            settingsManagerStub.getState.returns(state);
             configManagerStub.getIconTheme.returns(constants.extension.name);
           });
 
@@ -162,9 +163,8 @@ describe('ExtensionManager: messages tests', function () {
 
       context(`the new version message gets`, function () {
         beforeEach(function () {
-          settingsManagerStub.getState.returns({
-            welcomeShown: true,
-          });
+          state.welcomeShown = true;
+          settingsManagerStub.getState.returns(state);
           configManagerStub.getIconTheme.returns(constants.extension.name);
         });
 
@@ -352,8 +352,8 @@ describe('ExtensionManager: messages tests', function () {
 
         context(`to activate the extension`, function () {
           it(`calls the activation command`, function () {
-            notifyManagerStub.notifyInfo.resolves(
-              models.LangResourceKeys.activate,
+            notifyManagerStub.notifyInfo.returns(
+              Promise.resolve(models.LangResourceKeys.activate),
             );
 
             // @ts-ignore
@@ -375,7 +375,9 @@ describe('ExtensionManager: messages tests', function () {
           it(`opens the official API url and re-displays the message`, function () {
             notifyManagerStub.notifyInfo
               .onFirstCall()
-              .resolves(models.LangResourceKeys.aboutOfficialApi)
+              .returns(
+                Promise.resolve(models.LangResourceKeys.aboutOfficialApi),
+              )
               .resolves();
 
             // @ts-ignore
@@ -399,7 +401,7 @@ describe('ExtensionManager: messages tests', function () {
           it(`opens the readme url and re-displays the message`, function () {
             notifyManagerStub.notifyInfo
               .onFirstCall()
-              .resolves(models.LangResourceKeys.seeReadme)
+              .returns(Promise.resolve(models.LangResourceKeys.seeReadme))
               .resolves();
 
             // @ts-ignore
@@ -469,7 +471,9 @@ describe('ExtensionManager: messages tests', function () {
           it(`opens the release notes url`, function () {
             notifyManagerStub.notifyInfo
               .onFirstCall()
-              .resolves(models.LangResourceKeys.seeReleaseNotes);
+              .returns(
+                Promise.resolve(models.LangResourceKeys.seeReleaseNotes),
+              );
 
             // @ts-ignore
             return extensionManager.showNewVersionMessage().then(() => {
@@ -489,8 +493,8 @@ describe('ExtensionManager: messages tests', function () {
 
         context(`to NOT show this message again`, function () {
           it(`updates the configuration`, function () {
-            notifyManagerStub.notifyInfo.resolves(
-              models.LangResourceKeys.dontShowThis,
+            notifyManagerStub.notifyInfo.returns(
+              Promise.resolve(models.LangResourceKeys.dontShowThis),
             );
 
             // @ts-ignore
@@ -520,7 +524,7 @@ describe('ExtensionManager: messages tests', function () {
         const items = ['item'];
         const cb = sinon.fake();
         const cbArgs = [];
-        notifyManagerStub.notifyInfo.resolves('btn');
+        notifyManagerStub.notifyInfo.returns(Promise.resolve('btn'));
         // @ts-ignore
         const handleActionStub = sandbox.stub(extensionManager, 'handleAction');
 

@@ -4,8 +4,8 @@ os:
   - osx
 node_js:
   - node   # latest node
-  - 10.2.0 # insiders
-  - 8.9.3  # vscode >= 1.26.0
+  - 10.2.0 # vscode >= 1.31.0
+  - 8.9.3  # vscode >= 1.26.0 < 1.31.0
   - 7.9.0  # vscode >= 1.16.0 < 1.26.0
 git:
   depth: 5
