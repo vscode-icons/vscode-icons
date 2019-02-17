@@ -1858,7 +1858,6 @@ export const extensions: IFileCollection = {
         'slx',
         'slddc',
         'smv',
-        'tikz',
         'xvc',
       ],
       languages: [languages.matlab],
@@ -2821,7 +2820,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tex',
-      extensions: ['texi'],
+      extensions: ['texi', 'tikz'],
       languages: [
         languages.tex,
         languages.latex,
