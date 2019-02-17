@@ -476,6 +476,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'ballerina',
+      extensions: [],
+      languages: [languages.ballerina],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bat',
       extensions: [],
       languages: [languages.bat],
@@ -1874,6 +1880,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'netlify',
+      extensions: ['netlify.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nginx',
       extensions: ['nginx.conf'],
       filename: true,
@@ -2165,6 +2177,12 @@ export const extensions: IFileCollection = {
       icon: 'polymer',
       extensions: [],
       languages: [languages.polymer],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pony',
+      extensions: [],
+      languages: [languages.pony],
       format: FileFormat.svg,
     },
     {
