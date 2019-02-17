@@ -11,7 +11,7 @@ import { ErrorHandler } from '../errorHandler';
 import { constants } from '../constants';
 
 export class SettingsManager implements ISettingsManager {
-  private defaultState: IState = {
+  public static defaultState: IState = {
     version: '0.0.0',
     status: ExtensionStatus.deactivated,
     welcomeShown: false,
@@ -31,7 +31,7 @@ export class SettingsManager implements ISettingsManager {
     const state = this.vscodeManager.context.globalState.get<IState>(
       constants.vsicons.name,
     );
-    return state || this.defaultState;
+    return state || SettingsManager.defaultState;
   }
 
   public setState(state: IState): Thenable<void> {
@@ -66,7 +66,7 @@ export class SettingsManager implements ISettingsManager {
     // read state from legacy place
     const state: IState = this.getStateLegacy();
     // state not found in legacy place
-    if (eq(state.version, this.defaultState.version)) {
+    if (eq(state.version, SettingsManager.defaultState.version)) {
       return Promise.resolve();
     }
     // store in new place: 'globalState'
@@ -84,14 +84,14 @@ export class SettingsManager implements ISettingsManager {
     );
 
     if (!existsSync(extensionSettingsLegacyFilePath)) {
-      return this.defaultState;
+      return SettingsManager.defaultState;
     }
     try {
       const state = readFileSync(extensionSettingsLegacyFilePath, 'utf8');
-      return (Utils.parseJSON(state) as IState) || this.defaultState;
+      return (Utils.parseJSON(state) as IState) || SettingsManager.defaultState;
     } catch (error) {
       ErrorHandler.logError(error, true);
-      return this.defaultState;
+      return SettingsManager.defaultState;
     }
   }
 
