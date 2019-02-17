@@ -18,6 +18,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   avro: ILanguage;
   azcli: ILanguage;
   azurepipelines: ILanguage;
+  ballerina: ILanguage;
   bazel: ILanguage;
   bibtex: ILanguage;
   blade: ILanguage;
@@ -71,6 +72,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   helm: ILanguage;
   hosts: ILanguage;
   http: ILanguage;
+  imba: ILanguage;
   ink: ILanguage;
   jekyll: ILanguage;
   jenkins: ILanguage;
@@ -111,6 +113,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   pgsql: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;
+  pony: ILanguage;
   postcss: ILanguage;
   processinglang: ILanguage;
   prolog: ILanguage;
