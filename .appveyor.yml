@@ -6,8 +6,8 @@ environment:
   # Define versions of Node.js
   matrix:
     - node_js: ''     # latest node
-    - node_js: 10.2.0 # insiders
-    - node_js: 8.9.3  # vscode >= 1.26.0
+    - node_js: 10.2.0 # vscode >= 1.31.0
+    - node_js: 8.9.3  # vscode >= 1.26.0 < 1.31.0
     - node_js: 7.9.0  # vscode >= 1.16.0 < 1.26.0
 matrix:
   fast_finish: true

@@ -84,7 +84,7 @@ export class ExtensionManager implements models.IExtensionManager {
     const configChanged =
       this.settingsManager.isNewVersion &&
       this.configManager.hasConfigChanged(
-        Utils.unflattenProperties<{ vsicons }>(
+        Utils.unflattenProperties<{ vsicons: models.IVSIcons }>(
           manifest.contributes.configuration.properties,
           'default',
         ).vsicons,
