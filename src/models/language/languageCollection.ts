@@ -111,6 +111,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   pgsql: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;
+  pony: ILanguage;
   postcss: ILanguage;
   processinglang: ILanguage;
   prolog: ILanguage;
