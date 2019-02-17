@@ -78,6 +78,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ng_component_dart',
+      extensions: ['component.dart'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'ng_component_ts',
       extensions: ['component.ts'],
       format: FileFormat.svg,
@@ -102,6 +108,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'ng_directive_dart',
+      extensions: ['directive.dart'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'ng_directive_ts',
       extensions: ['directive.ts'],
       format: FileFormat.svg,
@@ -110,6 +122,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'ng_directive_js',
       extensions: ['directive.js'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'ng_guard_dart',
+      extensions: ['guard.dart'],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -126,6 +144,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'ng_module_dart',
+      extensions: ['module.dart'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'ng_module_ts',
       extensions: ['module.ts'],
       format: FileFormat.svg,
@@ -134,6 +158,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'ng_module_js',
       extensions: ['module.js'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'ng_pipe_dart',
+      extensions: ['pipe.dart'],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -150,6 +180,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'ng_routing_dart',
+      extensions: ['routing.dart'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'ng_routing_ts',
       extensions: ['routing.ts'],
       format: FileFormat.svg,
@@ -158,6 +194,13 @@ export const extensions: IFileCollection = {
     {
       icon: 'ng_routing_js',
       extensions: ['routing.js'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_dart',
+      extensions: ['app-routing.module.dart'],
+      filename: true,
       format: FileFormat.svg,
       disabled: true,
     },
@@ -176,6 +219,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'ng_smart_component_dart',
+      extensions: ['page.dart', 'container.dart'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'ng_smart_component_ts',
       extensions: ['page.ts', 'container.ts'],
       format: FileFormat.svg,
@@ -188,6 +237,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'ng_service_dart',
+      extensions: ['service.dart'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'ng_service_ts',
       extensions: ['service.ts'],
       format: FileFormat.svg,
@@ -196,6 +251,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'ng_service_js',
       extensions: ['service.js'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'ng_interceptor_dart',
+      extensions: ['interceptor.dart'],
       format: FileFormat.svg,
       disabled: true,
     },
