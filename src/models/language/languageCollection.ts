@@ -72,6 +72,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   helm: ILanguage;
   hosts: ILanguage;
   http: ILanguage;
+  imba: ILanguage;
   ink: ILanguage;
   jekyll: ILanguage;
   jenkins: ILanguage;

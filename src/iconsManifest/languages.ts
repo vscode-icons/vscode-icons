@@ -91,6 +91,7 @@ export const languages: ILanguageCollection = {
   hosts: { ids: 'hosts', defaultExtension: 'hosts' },
   html: { ids: 'html', defaultExtension: 'html' },
   http: { ids: 'http', defaultExtension: 'http' },
+  imba: { ids: 'imba', defaultExtension: 'imba' },
   ini: { ids: 'ini', defaultExtension: 'ini' },
   ink: { ids: 'ink', defaultExtension: 'ink' },
   io: { ids: 'io', defaultExtension: 'io' },
