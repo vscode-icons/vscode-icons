@@ -1,5 +1,16 @@
 # Change Log
 
+## 8.2.0 (February 17, 2019)
+
+- Enhancement: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#1879](https://github.com/vscode-icons/vscode-icons/pull/1879))
+- Enhancement: Updated recommended extesions. ([@JimiC](https://github.com/JimiC) in [#1874](https://github.com/vscode-icons/vscode-icons/pull/1874))
+- Enhancement: Support for modern `Fortran` extensions. ([@emanspeaks](https://github.com/emanspeaks) in [#1872](https://github.com/vscode-icons/vscode-icons/pull/1872))
+- Feature: Support for `Ballerina`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1869](https://github.com/vscode-icons/vscode-icons/pull/1869))
+- Feature: Support for `Netlify` config file. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1867](https://github.com/vscode-icons/vscode-icons/pull/1867))
+- Feature: Support for `Pony`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1865](https://github.com/vscode-icons/vscode-icons/pull/1865))
+- Feature: Support for `AngularDart`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1863](https://github.com/vscode-icons/vscode-icons/pull/1863))
+- Feature: Support for `imba`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1862](https://github.com/vscode-icons/vscode-icons/pull/1862))
+
 ## 8.1.0 (February 03, 2019)
 
 - Enhancement: Support for `npm-shrinkwrap.json`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#1860](https://github.com/vscode-icons/vscode-icons/pull/1860))
