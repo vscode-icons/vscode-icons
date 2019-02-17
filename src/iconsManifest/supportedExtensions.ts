@@ -1877,6 +1877,7 @@ export const extensions: IFileCollection = {
       icon: 'mysql',
       extensions: [],
       languages: [languages.mysql],
+      light: true,
       format: FileFormat.svg,
     },
     {
