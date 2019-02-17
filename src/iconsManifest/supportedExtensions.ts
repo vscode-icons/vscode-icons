@@ -1880,6 +1880,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'netlify',
+      extensions: ['netlify.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nginx',
       extensions: ['nginx.conf'],
       filename: true,
