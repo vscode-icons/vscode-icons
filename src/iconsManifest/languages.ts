@@ -20,6 +20,7 @@ export const languages: ILanguageCollection = {
     ids: 'azure-pipelines',
     defaultExtension: 'azure-pipelines.yml',
   },
+  ballerina: { ids: 'ballerina', defaultExtension: 'bal' },
   bat: { ids: 'bat', defaultExtension: 'bat' },
   bazel: { ids: 'bazel', defaultExtension: 'bzl' },
   bibtex: { ids: 'bibtex', defaultExtension: 'bib' },
