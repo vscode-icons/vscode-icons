@@ -2923,6 +2923,20 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'unibeautify',
+      extensions: [
+        '.unibeautifyrc',
+        '.unibeautifyrc.js',
+        '.unibeautifyrc.json',
+        '.unibeautifyrc.yaml',
+        '.unibeautifyrc.yml',
+        'unibeautify.config.js',
+      ],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vagrant',
       extensions: ['vagrantfile'],
       filename: true,
