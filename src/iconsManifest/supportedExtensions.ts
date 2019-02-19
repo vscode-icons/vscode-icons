@@ -2416,6 +2416,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'q', extensions: ['q'], format: FileFormat.svg },
     {
+      icon: 'qbs',
+      extensions: [],
+      languages: [languages.qbs],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'qlikview',
       extensions: ['qvd', 'qvw'],
       languages: [languages.qlik],
@@ -2423,7 +2429,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'qml',
-      extensions: ['qbs'],
+      extensions: [],
       languages: [languages.qml],
       format: FileFormat.svg,
     },
