@@ -161,6 +161,7 @@ export const languages: ILanguageCollection = {
   pyret: { ids: 'pyret', defaultExtension: 'arr' },
   python: { ids: 'python', defaultExtension: 'py' },
   qlik: { ids: 'qlik', defaultExtension: 'qvs' },
+  qml: { ids: 'qml', defaultExtension: 'qml' },
   qsharp: { ids: 'qsharp', defaultExtension: 'qs' },
   r: { ids: 'r', defaultExtension: 'r' },
   racket: { ids: 'racket', defaultExtension: 'rkt' },
