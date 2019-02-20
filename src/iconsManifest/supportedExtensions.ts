@@ -2415,12 +2415,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'q', extensions: ['q'], format: FileFormat.svg },
-    {
-      icon: 'qbs',
-      extensions: [],
-      languages: [languages.qbs],
-      format: FileFormat.svg,
-    },
+    { icon: 'qbs', extensions: ['qbs'], format: FileFormat.svg },
     {
       icon: 'qlikview',
       extensions: ['qvd', 'qvw'],
