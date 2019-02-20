@@ -160,7 +160,6 @@ export const languages: ILanguageCollection = {
   purescript: { ids: 'purescript', defaultExtension: 'purs' },
   pyret: { ids: 'pyret', defaultExtension: 'arr' },
   python: { ids: 'python', defaultExtension: 'py' },
-  qbs: { ids: 'qbs', defaultExtension: 'qbs' },
   qlik: { ids: 'qlik', defaultExtension: 'qvs' },
   qml: { ids: 'qml', defaultExtension: 'qml' },
   qsharp: { ids: 'qsharp', defaultExtension: 'qs' },
