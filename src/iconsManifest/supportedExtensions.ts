@@ -2429,6 +2429,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'qmldir',
+      extensions: ['qmldir'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'qsharp',
       extensions: [],
       languages: [languages.qsharp],
