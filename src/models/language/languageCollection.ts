@@ -158,6 +158,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   textmatejson: ILanguage;
   textmateyaml: ILanguage;
   toml: ILanguage;
+  ttcn: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
   vba: ILanguage;

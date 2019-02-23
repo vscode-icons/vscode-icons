@@ -2891,6 +2891,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ttcn',
+      extensions: [],
+      languages: [languages.ttcn],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'twig',
       extensions: [],
       languages: [languages.twig],
