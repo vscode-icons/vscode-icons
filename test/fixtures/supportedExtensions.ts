@@ -84,6 +84,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nestjs',
+      extensions: [
+        'nestconfig.json',
+        '.nestconfig.json',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ng_component_ts',
       extensions: ['component.ts'],
       format: FileFormat.svg,

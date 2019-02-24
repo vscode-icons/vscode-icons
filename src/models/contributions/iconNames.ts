@@ -1,5 +1,6 @@
 export enum IconNames {
   angular = 'ng',
+  nestjs = 'nest',
   js = 'js',
   jsOfficial = 'js_official',
   ts = 'typescript',

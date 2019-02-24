@@ -14,6 +14,8 @@
   "iconRestore": "The icons manifest will be restored.",
   "ngPresetEnabled": "Angular icons will be enabled.",
   "ngPresetDisabled": "Angular icons will be disabled.",
+  "nestPresetEnabled": "NestJS icons will be enabled.",
+  "nestPresetDisabled": "NestJS icons will be disabled.",
   "jsPresetEnabled": "Official JS icon will be enabled.",
   "jsPresetDisabled": "Official JS icon will be disabled.",
   "tsPresetEnabled": "Official TS icon will be enabled.",

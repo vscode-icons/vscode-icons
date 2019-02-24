@@ -14,6 +14,8 @@
   "iconRestore": "El manifiesto de iconos procederá a restaurarse.",
   "ngPresetEnabled": "Los iconos de Angular procederán a activarse.",
   "ngPresetDisabled": "Los iconos de Angular procederán a desactivarse.",
+  "nestPresetEnabled": "Los iconos de NestJS procederán a activarse.",
+  "nestPresetDisabled": "Los iconos de NestJS procederán a desactivarse.",
   "jsPresetEnabled": "El icono oficial de JS procederá a activarse.",
   "jsPresetDisabled": "El icono oficial de JS procederá a desactivarse.",
   "tsPresetEnabled": "El icono oficial de TS procederá a activarse.",

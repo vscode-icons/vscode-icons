@@ -28,6 +28,7 @@ export const constants = {
       name: 'presets',
       fullname: 'vsicons.presets',
       angular: 'vsicons.presets.angular',
+      nestjs: 'vsicons.presets.nestjs',
     },
     projectDetectionAutoReloadSetting: 'vsicons.projectDetection.autoReload',
     projectDetectionDisableDetectSetting:

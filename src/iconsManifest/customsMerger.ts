@@ -18,6 +18,12 @@ export class CustomsMerger {
       affectedPresets,
     );
 
+    const nestjsPreset: boolean = this.getNestjsPreset(
+      presets,
+      projectDetectionResult,
+      affectedPresets,
+    );
+
     let { files, folders } = this.mergeCustoms(
       customFiles || { default: {}, supported: [] },
       extFiles,
@@ -26,6 +32,7 @@ export class CustomsMerger {
     );
 
     files = this.toggleAngularPreset(!angularPreset, files, extFiles);
+    files = this.toggleNestjsPreset(!nestjsPreset, files, extFiles);
     files = this.toggleOfficialIconsPreset(
       !presets.jsOfficial,
       files,
@@ -79,6 +86,40 @@ export class CustomsMerger {
     defaultFiles: models.IFileCollection,
   ): models.IFileCollection {
     const regex = new RegExp(`^${models.IconNames.angular}_.*\\D$`);
+    const icons = customFiles.supported
+      .filter(x => regex.test(x.icon))
+      .map(x => x.icon);
+    const defaultIcons = defaultFiles.supported
+      .filter(x => regex.test(x.icon))
+      .map(x => x.icon);
+    const temp = this.togglePreset(disable, icons, customFiles);
+    return this.togglePreset(disable, defaultIcons, temp);
+  }
+
+  private static getNestjsPreset(
+    presets: models.IPresets,
+    projectDetectionResult: models.IProjectDetectionResult,
+    affectedPresets: models.IPresets,
+  ): boolean {
+    const hasProjectDetectionResult =
+      projectDetectionResult &&
+      typeof projectDetectionResult === 'object' &&
+      'value' in projectDetectionResult;
+    return hasProjectDetectionResult &&
+      projectDetectionResult.projectName === models.Projects.nestjs
+      ? projectDetectionResult.value
+      : presets.nestjs ||
+          (affectedPresets &&
+            !affectedPresets.nestjs &&
+            !ManifestReader.iconsDisabled(models.Projects.nestjs));
+  }
+
+  private static toggleNestjsPreset(
+    disable: boolean,
+    customFiles: models.IFileCollection,
+    defaultFiles: models.IFileCollection,
+  ): models.IFileCollection {
+    const regex = new RegExp(`^${models.IconNames.nestjs}_.*\\D$`);
     const icons = customFiles.supported
       .filter(x => regex.test(x.icon))
       .map(x => x.icon);

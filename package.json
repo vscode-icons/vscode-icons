@@ -81,6 +81,12 @@
         "callbackName": "toggleAngularPresetCommand"
       },
       {
+        "command": "vscode-icons.nestPreset",
+        "title": "%command.nestPreset.title%",
+        "category": "Icons",
+        "callbackName": "toggleNestPresetCommand"
+      },
+      {
         "command": "vscode-icons.jsPreset",
         "title": "%command.jsPreset.title%",
         "category": "Icons",
@@ -156,6 +162,11 @@
           "type": "boolean",
           "default": false,
           "description": "%configuration.presets.angular.description%"
+        },
+        "vsicons.presets.nestjs": {
+          "type": "boolean",
+          "default": false,
+          "description": "%configuration.presets.nestjs.description%"
         },
         "vsicons.presets.jsOfficial": {
           "type": "boolean",
