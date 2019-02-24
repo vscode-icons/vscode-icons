@@ -1884,6 +1884,7 @@ export const extensions: IFileCollection = {
       languages: [languages.mel],
       format: FileFormat.svg,
     },
+    { icon: 'mdx', extensions: ['mdx'], format: FileFormat.svg },
     {
       icon: 'mediawiki',
       extensions: [],
