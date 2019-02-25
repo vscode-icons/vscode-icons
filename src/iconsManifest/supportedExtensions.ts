@@ -2894,7 +2894,6 @@ export const extensions: IFileCollection = {
       icon: 'ttcn',
       extensions: [],
       languages: [languages.ttcn],
-      filename: true,
       format: FileFormat.svg,
     },
     {
