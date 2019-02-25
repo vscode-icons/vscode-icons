@@ -33,5 +33,9 @@ export enum LangResourceKeys {
   nonNgDetected,
   ngDetectedPresetFalse,
   nonNgDetectedPresetTrue,
+  nestDetected,
+  nonNestDetected,
+  nestDetectedPresetFalse,
+  nonNestDetectedPresetTrue,
   projectDetectionReset,
 }

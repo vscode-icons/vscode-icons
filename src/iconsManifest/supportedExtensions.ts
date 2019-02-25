@@ -1948,7 +1948,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nestjs',
-      extensions: ['nestconfig.json', '.nestconfig.json'],
+      extensions: [
+        '.nest-cli.json',
+        'nest-cli.json',
+        'nestconfig.json',
+        '.nestconfig.json',
+      ],
       filename: true,
       format: FileFormat.svg,
     },

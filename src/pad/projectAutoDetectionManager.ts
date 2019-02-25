@@ -62,6 +62,8 @@ export class ProjectAutoDetectionManager
     switch (project) {
       case models.Projects.angular:
         presetName = constants.vsicons.presets.angular;
+      case models.Projects.nestjs:
+        presetName = constants.vsicons.presets.nestjs;
       default:
         break;
     }
@@ -101,18 +103,55 @@ export class ProjectAutoDetectionManager
 
     const langResourceKey: models.LangResourceKeys = enableIcons
       ? projectInfo
-        ? models.LangResourceKeys.ngDetected
-        : models.LangResourceKeys.nonNgDetectedPresetTrue
+        ? this.getDetected(projectInfo.name)
+        : this.getNonDetectionPreset(projectInfo.name)
       : projectInfo
-      ? models.LangResourceKeys.nonNgDetected
-      : models.LangResourceKeys.ngDetectedPresetFalse;
+      ? this.getNonDetected(projectInfo.name)
+      : this.getDetectedPreset(projectInfo.name);
 
+    console.log('Project Info', projectInfo);
     return {
       apply: true,
       projectName: project,
       langResourceKey,
       value: enableIcons || !disableIcons,
     };
+  }
+
+  private getDetected(projectName: string): number {
+    switch (projectName) {
+      case models.Projects.angular:
+        return models.LangResourceKeys.ngDetected;
+      case models.Projects.nestjs:
+        return models.LangResourceKeys.nestDetected;
+    }
+  }
+
+  private getDetectedPreset(projectName: string): number {
+    switch (projectName) {
+      case models.Projects.angular:
+        return models.LangResourceKeys.ngDetectedPresetFalse;
+      case models.Projects.nestjs:
+        return models.LangResourceKeys.nestDetectedPresetFalse;
+    }
+  }
+
+  private getNonDetectionPreset(projectName: string): number {
+    switch (projectName) {
+      case models.Projects.angular:
+        return models.LangResourceKeys.nonNgDetectedPresetTrue;
+      case models.Projects.nestjs:
+        return models.LangResourceKeys.nonNestDetectedPresetTrue;
+    }
+  }
+
+  private getNonDetected(projectName: string): number {
+    switch (projectName) {
+      case models.Projects.angular:
+        return models.LangResourceKeys.nonNgDetected;
+      case models.Projects.nestjs:
+        return models.LangResourceKeys.nonNestDetected;
+    }
   }
 
   private getProjectInfo(
@@ -152,6 +191,8 @@ export class ProjectAutoDetectionManager
     switch (name) {
       case models.Projects.angular:
         return _getInfo('@angular/core');
+      case models.Projects.nestjs:
+        return _getInfo('@nestjs/core');
       default:
         return null;
     }

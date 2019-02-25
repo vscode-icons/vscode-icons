@@ -33,5 +33,9 @@ export interface ILangResource {
   nonNgDetected: string | IOSSpecific;
   ngDetectedPresetFalse: string | IOSSpecific;
   nonNgDetectedPresetTrue: string | IOSSpecific;
+  nestDetected: string | IOSSpecific;
+  nonNestDetected: string | IOSSpecific;
+  nestDetectedPresetFalse: string | IOSSpecific;
+  nonNestDetectedPresetTrue: string | IOSSpecific;
   projectDetectionReset: string | IOSSpecific;
 }

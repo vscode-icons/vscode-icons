@@ -29,7 +29,7 @@
     "no-string-literal": false,
     "ordered-imports": [false],
     "arrow-parens": [true, "ban-single-arg-parens"],
-    "no-console": [true, "log", "debug", "info", "warn"],
+    "no-console": [true, "debug", "info", "warn"],
     "no-implicit-dependencies": [true, "dev"]
   }
 }

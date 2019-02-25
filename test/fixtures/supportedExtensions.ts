@@ -86,6 +86,8 @@ export const extensions: IFileCollection = {
     {
       icon: 'nestjs',
       extensions: [
+        '.nest-cli.json',
+        'nest-cli.json',
         'nestconfig.json',
         '.nestconfig.json',
       ],
