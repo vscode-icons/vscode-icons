@@ -33,8 +33,8 @@
   "nonNgDetected": "%extensionName% ha detectado un proyecto no Angular. Pulsar 'Reiniciar' para desactivar los iconos de Angular.",
   "ngDetectedPresetFalse": "%extensionName% ha detectado un proyecto Angular, pero el 'preset' está ajustado a 'false'. Se recomienda eliminar completamente dicho 'preset' de la configuración. Al seleccionar 'Reiniciar' se desactivarán los iconos de Angular.",
   "nonNgDetectedPresetTrue": "%extensionName% ha detectado un proyecto no Angular, pero el 'preset' está ajustado a 'true'. Se recomienda eliminar completamente dicho 'preset' de la configuración. Al seleccionar 'Reiniciar' se activarán los iconos de Angular.",
-  "nestDetected": "%extensionName% ha detectado un proyecto Angular. Pulsar 'Reiniciar' para activar los iconos de Angular.",
-  "nonNestDetected": "%extensionName% ha detectado un proyecto no Angular. Pulsar 'Reiniciar' para desactivar los iconos de Angular.",
+  "nestDetected": "%extensionName% ha detectado un proyecto NestJS. Pulsar 'Reiniciar' para activar los iconos de NestJS.",
+  "nonNestDetected": "%extensionName% ha detectado un proyecto no NestJS. Pulsar 'Reiniciar' para desactivar los iconos de NestJS.",
   "nestDetectedPresetFalse": "%extensionName% ha detectado un proyecto NestJS, pero el 'preset' está ajustado a 'false'. Se recomienda eliminar completamente dicho 'preset' de la configuración. Al seleccionar 'Reiniciar' se desactivarán los iconos de NestJS.",
   "nonNestDetectedPresetTrue": "%extensionName% ha detectado un proyecto no NestJS, pero el 'preset' está ajustado a 'true'. Se recomienda eliminar completamente dicho 'preset' de la configuración. Al seleccionar 'Reiniciar' se activarán los iconos de NestJS.",
   "projectDetectionReset": "La detección de proyectos se va a restaurar a sus valores iniciales."
