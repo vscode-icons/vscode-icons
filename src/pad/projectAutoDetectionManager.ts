@@ -109,7 +109,6 @@ export class ProjectAutoDetectionManager
       ? this.getNonDetected(projectInfo.name)
       : this.getDetectedPreset(projectInfo.name);
 
-    console.log('Project Info', projectInfo);
     return {
       apply: true,
       projectName: project,
