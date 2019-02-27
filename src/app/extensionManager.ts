@@ -39,14 +39,8 @@ export class ExtensionManager implements models.IExtensionManager {
     this.manageIntroMessage();
     this.manageCustomizations();
 
-    // Check if Angular 2+ Project
     this.projectAutoDetectionManager
-      .detectProjects([models.Projects.angular])
-      .then(detectionResult => this.applyProjectDetection(detectionResult));
-
-    // Check if NestJS Project
-    this.projectAutoDetectionManager
-      .detectProjects([models.Projects.nestjs])
+      .detectProjects([models.Projects.angular, models.Projects.nestjs])
       .then(detectionResult => this.applyProjectDetection(detectionResult));
 
     // Update the version in settings

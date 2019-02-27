@@ -103,11 +103,11 @@ export class ProjectAutoDetectionManager
 
     const langResourceKey: models.LangResourceKeys = enableIcons
       ? projectInfo
-        ? this.getDetected(projectInfo.name)
-        : this.getNonDetectionPreset(projectInfo.name)
+        ? this.getDetected(project)
+        : this.getNonDetectionPreset(project)
       : projectInfo
-      ? this.getNonDetected(projectInfo.name)
-      : this.getDetectedPreset(projectInfo.name);
+      ? this.getNonDetected(project)
+      : this.getDetectedPreset(project);
 
     return {
       apply: true,
