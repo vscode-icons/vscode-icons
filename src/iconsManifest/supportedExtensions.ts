@@ -3119,6 +3119,16 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'webpack',
+      extensions: [],
+      filenamesGlob: [
+        'wpml-config',
+      ],
+      extensionsGlob: ['xml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wurst',
       extensions: [],
       languages: [languages.wurst],
