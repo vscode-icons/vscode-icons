@@ -12,16 +12,18 @@ export class CustomsMerger {
     projectDetectionResult?: models.IProjectDetectionResult,
     affectedPresets?: models.IPresets,
   ): { files: models.IFileCollection; folders: models.IFolderCollection } {
-    const angularPreset: boolean = this.getAngularPreset(
+    const angularPreset: boolean = this.getPreset(
       presets,
       projectDetectionResult,
       affectedPresets,
+      models.PresetNames[models.PresetNames.angular],
     );
 
-    const nestjsPreset: boolean = this.getNestjsPreset(
+    const nestjsPreset: boolean = this.getPreset(
       presets,
       projectDetectionResult,
       affectedPresets,
+      models.PresetNames[models.PresetNames.nestjs],
     );
 
     let { files, folders } = this.mergeCustoms(
@@ -31,8 +33,18 @@ export class CustomsMerger {
       extFolders,
     );
 
-    files = this.toggleAngularPreset(!angularPreset, files, extFiles);
-    files = this.toggleNestjsPreset(!nestjsPreset, files, extFiles);
+    files = this.toggleProjectPreset(
+      !angularPreset,
+      files,
+      extFiles,
+      models.PresetNames[models.PresetNames.angular],
+    );
+    files = this.toggleProjectPreset(
+      !nestjsPreset,
+      files,
+      extFiles,
+      models.PresetNames[models.PresetNames.nestjs],
+    );
     files = this.toggleOfficialIconsPreset(
       !presets.jsOfficial,
       files,
@@ -62,64 +74,32 @@ export class CustomsMerger {
     return { files, folders };
   }
 
-  private static getAngularPreset(
+  private static getPreset(
     presets: models.IPresets,
     projectDetectionResult: models.IProjectDetectionResult,
     affectedPresets: models.IPresets,
+    projectPresetKey: string,
   ): boolean {
     const hasProjectDetectionResult =
       projectDetectionResult &&
       typeof projectDetectionResult === 'object' &&
       'value' in projectDetectionResult;
     return hasProjectDetectionResult &&
-      projectDetectionResult.projectName === models.Projects.angular
+      projectDetectionResult.projectName === models.Projects[projectPresetKey]
       ? projectDetectionResult.value
-      : presets.angular ||
+      : presets[projectPresetKey] ||
           (affectedPresets &&
-            !affectedPresets.angular &&
-            !ManifestReader.iconsDisabled(models.Projects.angular));
+            !affectedPresets[projectPresetKey] &&
+            !ManifestReader.iconsDisabled(models.Projects[projectPresetKey]));
   }
 
-  private static toggleAngularPreset(
+  private static toggleProjectPreset(
     disable: boolean,
     customFiles: models.IFileCollection,
     defaultFiles: models.IFileCollection,
+    projectPresetKey: string,
   ): models.IFileCollection {
-    const regex = new RegExp(`^${models.IconNames.angular}_.*\\D$`);
-    const icons = customFiles.supported
-      .filter(x => regex.test(x.icon))
-      .map(x => x.icon);
-    const defaultIcons = defaultFiles.supported
-      .filter(x => regex.test(x.icon))
-      .map(x => x.icon);
-    const temp = this.togglePreset(disable, icons, customFiles);
-    return this.togglePreset(disable, defaultIcons, temp);
-  }
-
-  private static getNestjsPreset(
-    presets: models.IPresets,
-    projectDetectionResult: models.IProjectDetectionResult,
-    affectedPresets: models.IPresets,
-  ): boolean {
-    const hasProjectDetectionResult =
-      projectDetectionResult &&
-      typeof projectDetectionResult === 'object' &&
-      'value' in projectDetectionResult;
-    return hasProjectDetectionResult &&
-      projectDetectionResult.projectName === models.Projects.nestjs
-      ? projectDetectionResult.value
-      : presets.nestjs ||
-          (affectedPresets &&
-            !affectedPresets.nestjs &&
-            !ManifestReader.iconsDisabled(models.Projects.nestjs));
-  }
-
-  private static toggleNestjsPreset(
-    disable: boolean,
-    customFiles: models.IFileCollection,
-    defaultFiles: models.IFileCollection,
-  ): models.IFileCollection {
-    const regex = new RegExp(`^${models.IconNames.nestjs}_.*\\D$`);
+    const regex = new RegExp(`^${models.IconNames[projectPresetKey]}_.*\\D$`);
     const icons = customFiles.supported
       .filter(x => regex.test(x.icon))
       .map(x => x.icon);

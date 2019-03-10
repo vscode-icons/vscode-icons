@@ -78,7 +78,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
       findFilesStub.rejects(reason);
 
       return padManager
-        .detectProjects([Projects.angular])
+        .detectProjects([Projects.angular, Projects.nestjs])
         .then(() => expect(logErrorStub.calledOnceWith(reason)).to.be.true);
     });
 
@@ -99,7 +99,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
         findFilesStub.resolves(undefined);
 
         return padManager
-          .detectProjects([Projects.angular])
+          .detectProjects([Projects.angular, Projects.nestjs])
           .then(res => expect(res).to.not.be.an('object'));
       });
 
@@ -107,7 +107,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
         findFilesStub.resolves([]);
 
         return padManager
-          .detectProjects([Projects.angular])
+          .detectProjects([Projects.angular, Projects.nestjs])
           .then(res => expect(res).to.not.be.an('object'));
       });
 
@@ -115,7 +115,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
         findFilesStub.resolves([]);
 
         return padManager
-          .detectProjects([Projects.angular])
+          .detectProjects([Projects.angular, Projects.nestjs])
           .then(res => expect(res).to.not.be.an('object'));
       });
 
@@ -123,7 +123,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
         vsicons.projectDetection.disableDetect = true;
 
         return padManager
-          .detectProjects([Projects.angular])
+          .detectProjects([Projects.angular, Projects.nestjs])
           .then(res => expect(res).to.not.be.an('object'));
       });
     });
@@ -269,19 +269,110 @@ describe('ProjectAutoDetectionManager: tests', function () {
         });
       });
 
+      context(`detects an NestJS project from`, function () {
+        it('dependencies', function () {
+          parseJSONStub.returns({ dependencies: { '@nestjs/core': '1.0.0' } });
+          getPresetStub.returns({ workspaceValue: undefined });
+          iconsDisabledStub.returns(true);
+
+          return padManager.detectProjects([Projects.nestjs]).then(res => {
+            expect(readFileStub.calledOnceWithExactly(packageJsonPath, 'utf8'))
+              .to.be.true;
+            expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+            expect(res)
+              .to.be.an('object')
+              .and.to.have.all.keys(
+                'apply',
+                'projectName',
+                'langResourceKey',
+                'value',
+              );
+            expect(res).ownProperty('apply').to.be.true;
+            expect(res)
+              .ownProperty('projectName')
+              .to.equal(Projects.nestjs);
+            expect(res).ownProperty('value').to.be.true;
+          });
+        });
+
+        it('devDependencies', function () {
+          parseJSONStub.returns({
+            devDependencies: { '@nestjs/core': '1.0.0' },
+          });
+          getPresetStub.returns({ workspaceValue: undefined });
+          iconsDisabledStub.returns(true);
+
+          return padManager.detectProjects([Projects.nestjs]).then(res => {
+            expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to.be
+              .true;
+            expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+            expect(res)
+              .to.be.an('object')
+              .and.to.have.all.keys(
+                'apply',
+                'projectName',
+                'langResourceKey',
+                'value',
+              );
+            expect(res).ownProperty('apply').to.be.true;
+            expect(res)
+              .ownProperty('projectName')
+              .to.equal(Projects.nestjs);
+            expect(res).ownProperty('value').to.be.true;
+          });
+        });
+      });
+
+      context(`detects an non NestJS project from`, function () {
+        beforeEach(function () {
+          parseJSONStub.returns({ dependencies: { vscode: '' } });
+        });
+
+        it('dependencies', function () {
+          getPresetStub.returns({ workspaceValue: undefined });
+          iconsDisabledStub.returns(true);
+
+          return padManager.detectProjects([Projects.nestjs]).then(res => {
+            expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to.be
+              .true;
+            expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+            expect(res)
+              .to.be.an('object')
+              .and.to.have.all.keys('apply')
+              .and.ownProperty('apply').to.be.false;
+          });
+        });
+
+        it('devDependencies', function () {
+          getPresetStub.returns({ workspaceValue: undefined });
+          iconsDisabledStub.returns(true);
+
+          return padManager.detectProjects([Projects.nestjs]).then(res => {
+            expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to.be
+              .true;
+            expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+            expect(res)
+              .to.be.an('object')
+              .and.to.have.all.keys('apply')
+              .and.ownProperty('apply').to.be.false;
+          });
+        });
+      });
+
       context(`does NOT detect a project when`, function () {
         it('it does NOT exist', function () {
           parseJSONStub.returns({
             dependencies: {
               '@angular/core': '',
+              '@nestjs/core': '',
               vscode: '',
             },
           });
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.returns(true);
 
-          return padManager.detectProjects([Projects.angular]).then(res => {
-            expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to.be
+          return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
+            expect(readFileStub.calledWithExactly(packageJsonPath, 'utf8')).to.be
               .true;
             expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
             expect(res)
@@ -296,8 +387,8 @@ describe('ProjectAutoDetectionManager: tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.returns(true);
 
-          return padManager.detectProjects([Projects.angular]).then(res => {
-            expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to.be
+          return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
+            expect(readFileStub.calledWithExactly(packageJsonPath, 'utf8')).to.be
               .true;
             expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
             expect(res)
@@ -312,8 +403,8 @@ describe('ProjectAutoDetectionManager: tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.returns(true);
 
-          return padManager.detectProjects([Projects.angular]).then(res => {
-            expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to.be
+          return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
+            expect(readFileStub.calledWithExactly(packageJsonPath, 'utf8')).to.be
               .true;
             expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
             expect(res)
@@ -411,7 +502,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
               getPresetStub.returns({ workspaceValue: true });
               iconsDisabledStub.returns(true);
 
-              return padManager.detectProjects([Projects.angular]).then(res => {
+              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
@@ -445,7 +536,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
               getPresetStub.returns({ workspaceValue: false });
               iconsDisabledStub.returns(false);
 
-              return padManager.detectProjects([Projects.angular]).then(res => {
+              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
@@ -469,7 +560,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
               getPresetStub.returns({ workspaceValue: undefined });
               iconsDisabledStub.returns(false);
 
-              return padManager.detectProjects([Projects.angular]).then(res => {
+              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
@@ -501,7 +592,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
               getPresetStub.returns({ workspaceValue: false });
               iconsDisabledStub.returns(false);
 
-              return padManager.detectProjects([Projects.angular]).then(res => {
+              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
@@ -598,7 +689,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
             it(`Angular preset is 'false'`, function () {
               getPresetStub.returns({ workspaceValue: false });
 
-              return padManager.detectProjects([Projects.angular]).then(res => {
+              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
                 expect(readFileStub.called).to.be.false;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
                 expect(res)
@@ -611,8 +702,8 @@ describe('ProjectAutoDetectionManager: tests', function () {
             it(`Angular preset is 'undefined'`, function () {
               getPresetStub.returns({ workspaceValue: undefined });
 
-              return padManager.detectProjects([Projects.angular]).then(res => {
-                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
+                expect(readFileStub.calledWithExactly(packageJsonPath, 'utf8')).to
                   .be.true;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
                 expect(res)
@@ -633,7 +724,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
             it(`Angular preset is 'false'`, function () {
               getPresetStub.returns({ workspaceValue: false });
 
-              return padManager.detectProjects([Projects.angular]).then(res => {
+              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
                 expect(readFileStub.called).to.be.false;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
                 expect(res)
