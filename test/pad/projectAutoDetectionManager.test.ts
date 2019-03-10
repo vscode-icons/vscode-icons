@@ -111,14 +111,6 @@ describe('ProjectAutoDetectionManager: tests', function () {
           .then(res => expect(res).to.not.be.an('object'));
       });
 
-      it(`no 'package.json' exists`, function () {
-        findFilesStub.resolves([]);
-
-        return padManager
-          .detectProjects([Projects.angular, Projects.nestjs])
-          .then(res => expect(res).to.not.be.an('object'));
-      });
-
       it('detection is disabled', function () {
         vsicons.projectDetection.disableDetect = true;
 
