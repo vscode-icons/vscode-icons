@@ -584,7 +584,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
               getPresetStub.returns({ workspaceValue: false });
               iconsDisabledStub.returns(false);
 
-              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
+              return padManager.detectProjects([Projects.angular]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
@@ -681,7 +681,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
             it(`Angular preset is 'false'`, function () {
               getPresetStub.returns({ workspaceValue: false });
 
-              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
+              return padManager.detectProjects([Projects.angular]).then(res => {
                 expect(readFileStub.called).to.be.false;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
                 expect(res)
@@ -694,8 +694,8 @@ describe('ProjectAutoDetectionManager: tests', function () {
             it(`Angular preset is 'undefined'`, function () {
               getPresetStub.returns({ workspaceValue: undefined });
 
-              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
-                expect(readFileStub.calledWithExactly(packageJsonPath, 'utf8')).to
+              return padManager.detectProjects([Projects.angular]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
                 expect(res)
@@ -716,7 +716,309 @@ describe('ProjectAutoDetectionManager: tests', function () {
             it(`Angular preset is 'false'`, function () {
               getPresetStub.returns({ workspaceValue: false });
 
-              return padManager.detectProjects([Projects.angular, Projects.nestjs]).then(res => {
+              return padManager.detectProjects([Projects.angular]).then(res => {
+                expect(readFileStub.called).to.be.false;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys('apply')
+                  .and.ownProperty('apply').to.be.false;
+              });
+            });
+          });
+        });
+      });
+
+      context('enables the NestJS icons when', function () {
+        context(`NestJS icons are disabled and the workspace is`, function () {
+          context('an Nest project and', function () {
+            beforeEach(function () {
+              parseJSONStub.returns({
+                dependencies: { '@nestjs/core': '0.0.0' },
+              });
+            });
+
+            it(`Nest preset is 'true'`, function () {
+              getPresetStub.returns({ workspaceValue: true });
+              iconsDisabledStub.returns(true);
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+                  .be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys(
+                    'apply',
+                    'projectName',
+                    'langResourceKey',
+                    'value',
+                  );
+                expect(res).ownProperty('apply').to.be.true;
+                expect(res)
+                  .ownProperty('projectName')
+                  .to.equal(Projects.nestjs);
+                expect(res).ownProperty('value').to.be.true;
+              });
+            });
+
+            it(`Nest preset is 'undefined'`, function () {
+              getPresetStub.returns({ workspaceValue: undefined });
+              iconsDisabledStub.returns(true);
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+                  .be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys(
+                    'apply',
+                    'projectName',
+                    'langResourceKey',
+                    'value',
+                  );
+                expect(res).ownProperty('apply').to.be.true;
+                expect(res)
+                  .ownProperty('projectName')
+                  .to.equal(Projects.nestjs);
+                expect(res).ownProperty('value').to.be.true;
+              });
+            });
+          });
+
+          context('not an Nest project and', function () {
+            beforeEach(function () {
+              parseJSONStub.returns({ dependencies: { vscode: '0.0.0' } });
+            });
+
+            it(`Nest preset is 'true'`, function () {
+              getPresetStub.returns({ workspaceValue: true });
+              iconsDisabledStub.returns(true);
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+                  .be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys(
+                    'apply',
+                    'projectName',
+                    'langResourceKey',
+                    'value',
+                  );
+                expect(res).ownProperty('apply').to.be.true;
+                expect(res)
+                  .ownProperty('projectName')
+                  .to.equal(Projects.nestjs);
+                expect(res).ownProperty('value').to.be.true;
+              });
+            });
+          });
+        });
+      });
+
+      context('disables the NestJS icons when', function () {
+        context('Nest icons are enabled and the workspace is', function () {
+          context('not an Nest project and', function () {
+            beforeEach(function () {
+              parseJSONStub.returns({ dependencies: { vscode: '0.0.0' } });
+            });
+
+            it(`Nest preset is 'false'`, function () {
+              getPresetStub.returns({ workspaceValue: false });
+              iconsDisabledStub.returns(false);
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+                  .be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys(
+                    'apply',
+                    'projectName',
+                    'langResourceKey',
+                    'value',
+                  );
+                expect(res).ownProperty('apply').to.be.true;
+                expect(res)
+                  .ownProperty('projectName')
+                  .to.equal(Projects.nestjs);
+                expect(res).ownProperty('value').to.be.false;
+              });
+            });
+
+            it(`Nest preset is 'undefined'`, function () {
+              getPresetStub.returns({ workspaceValue: undefined });
+              iconsDisabledStub.returns(false);
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+                  .be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys(
+                    'apply',
+                    'projectName',
+                    'langResourceKey',
+                    'value',
+                  );
+                expect(res).ownProperty('apply').to.be.true;
+                expect(res)
+                  .ownProperty('projectName')
+                  .to.equal(Projects.nestjs);
+                expect(res).ownProperty('value').to.be.false;
+              });
+            });
+          });
+
+          context('an Nest project and', function () {
+            beforeEach(function () {
+              parseJSONStub.returns({
+                dependencies: { '@nestjs/core': '0.0.0' },
+              });
+            });
+
+            it(`Nest preset is 'false'`, function () {
+              getPresetStub.returns({ workspaceValue: false });
+              iconsDisabledStub.returns(false);
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+                  .be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys(
+                    'apply',
+                    'projectName',
+                    'langResourceKey',
+                    'value',
+                  );
+                expect(res).ownProperty('apply').to.be.true;
+                expect(res)
+                  .ownProperty('projectName')
+                  .to.equal(Projects.nestjs);
+                expect(res).ownProperty('value').to.be.false;
+              });
+            });
+          });
+        });
+      });
+
+      context('does not toggle the NestJS icons when', function () {
+        context('Nest icons are enabled and the workspace is', function () {
+          beforeEach(function () {
+            iconsDisabledStub.returns(false);
+          });
+
+          context('an Nest project and', function () {
+            beforeEach(function () {
+              parseJSONStub.returns({
+                dependencies: { '@nestjs/core': '0.0.0' },
+              });
+            });
+
+            it(`Nest preset is 'true'`, function () {
+              getPresetStub.returns({ workspaceValue: true });
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.called).to.be.false;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys('apply')
+                  .and.ownProperty('apply').to.be.false;
+              });
+            });
+
+            it(`Nest preset is 'undefined'`, function () {
+              getPresetStub.returns({ workspaceValue: undefined });
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+                  .be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys('apply')
+                  .and.ownProperty('apply').to.be.false;
+              });
+            });
+          });
+
+          context('not an Nest project and', function () {
+            beforeEach(function () {
+              parseJSONStub.returns({ dependencies: { vscode: '0.0.0' } });
+            });
+
+            it(`Nest preset is 'true'`, function () {
+              getPresetStub.returns({ workspaceValue: true });
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.called).to.be.false;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys('apply')
+                  .and.ownProperty('apply').to.be.false;
+              });
+            });
+          });
+        });
+
+        context('NestJS icons are disabled and the workspace is', function () {
+          beforeEach(function () {
+            iconsDisabledStub.returns(true);
+          });
+
+          context('not an Nest project and', function () {
+            beforeEach(function () {
+              parseJSONStub.returns({ dependencies: { vscode: '0.0.0' } });
+            });
+
+            it(`Nest preset is 'false'`, function () {
+              getPresetStub.returns({ workspaceValue: false });
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.called).to.be.false;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys('apply')
+                  .and.ownProperty('apply').to.be.false;
+              });
+            });
+
+            it(`Nest preset is 'undefined'`, function () {
+              getPresetStub.returns({ workspaceValue: undefined });
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
+                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
+                  .be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+                expect(res)
+                  .to.be.an('object')
+                  .and.to.have.all.keys('apply')
+                  .and.ownProperty('apply').to.be.false;
+              });
+            });
+          });
+
+          context('an Nest project and', function () {
+            beforeEach(function () {
+              parseJSONStub.returns({
+                dependencies: { '@nestjs/core': '0.0.0' },
+              });
+            });
+
+            it(`Nest preset is 'false'`, function () {
+              getPresetStub.returns({ workspaceValue: false });
+
+              return padManager.detectProjects([Projects.nestjs]).then(res => {
                 expect(readFileStub.called).to.be.false;
                 expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
                 expect(res)
