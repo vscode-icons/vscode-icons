@@ -2,7 +2,7 @@
 
 ## 8.3.0 (March 14, 2019)
 
-- Fix: Changed publisher name. [@robertohuertasm](https://github.com/robertohuertasm) in [#1872](https://github.com/vscode-icons/vscode-icons/pull/1872))
+- Fix: Changed publisher name. [@robertohuertasm](https://github.com/robertohuertasm) in [#1909](https://github.com/vscode-icons/vscode-icons/pull/1909))
 
 ## 8.2.0 (February 17, 2019)
 
