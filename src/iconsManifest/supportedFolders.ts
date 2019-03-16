@@ -77,7 +77,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.elasticbeanstalk', '.ebextensions'],
       format: FileFormat.svg,
     },
-    { icon: 'flow', extensions: ['flow', 'flow-typed'], format: FileFormat.svg },
+    {
+      icon: 'flow',
+      extensions: ['flow', 'flow-typed'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'fonts',
       extensions: ['fonts', 'font', 'fnt'],
@@ -155,6 +159,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'log', extensions: ['log', 'logs'], format: FileFormat.svg },
+    {
+      icon: 'mariadb',
+      extensions: ['mariadb', 'maria'],
+      format: FileFormat.svg,
+    },
     { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
@@ -162,7 +171,12 @@ export const extensions: IFolderCollection = {
       extensions: ['models', '.models'],
       format: FileFormat.svg,
     },
-    { icon: 'mongodb', extensions: ['mongodb', 'mongo'], format: FileFormat.svg },
+    {
+      icon: 'mongodb',
+      extensions: ['mongodb', 'mongo'],
+      format: FileFormat.svg,
+    },
+    { icon: 'mysql', extensions: ['mysqldb', 'mysql'], format: FileFormat.svg },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
     {
       icon: 'node',

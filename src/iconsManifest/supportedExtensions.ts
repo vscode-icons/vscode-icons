@@ -1947,13 +1947,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'mysql',
-      extensions: [],
-      languages: [languages.mysql],
-      light: true,
-      format: FileFormat.svg,
-    },
-    {
       icon: 'netlify',
       extensions: ['netlify.toml'],
       filename: true,

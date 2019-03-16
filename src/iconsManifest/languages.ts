@@ -128,7 +128,6 @@ export const languages: ILanguageCollection = {
   mlang: { ids: ['mlang', 'powerquerymlanguage'], defaultExtension: 'pq' },
   mojolicious: { ids: 'mojolicious', defaultExtension: 'ep' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
-  mysql: { ids: 'mysql', defaultExtension: 'mysql' },
   nim: { ids: ['nim', 'nimble'], defaultExtension: 'nim' },
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], defaultExtension: 'nsi' },
   nunjucks: { ids: 'nunjucks', defaultExtension: 'nunjucks' },
