@@ -2924,14 +2924,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'unibeautify',
-      extensions: [
-        '.unibeautifyrc',
-        '.unibeautifyrc.js',
-        '.unibeautifyrc.json',
-        '.unibeautifyrc.yaml',
-        '.unibeautifyrc.yml',
-        'unibeautify.config.js',
-      ],
+      extensions: ['.unibeautifyrc', 'unibeautify.config.js'],
+      filenamesGlob: ['.unibeautifyrc'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
       light: true,
       format: FileFormat.svg,
