@@ -47,7 +47,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
       );
 
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
-   });
+    });
 
     afterEach(function () {
       padManager = null;
@@ -76,40 +76,35 @@ describe('ProjectAutoDetectionManager: tests', function () {
     });
 
     context('does NOT detect a project when', function () {
-      it(`project names are 'undefined'`, function () {
-        return padManager
-          .detectProjects(undefined)
+      const testCase = (projectNames: Projects[]) =>
+        padManager
+          .detectProjects(projectNames)
           .then(res => expect(res).to.not.be.an('object'));
+
+      it(`project names are 'undefined'`, function () {
+        return testCase(undefined);
       });
 
       it(`no project names are given`, function () {
-        return padManager
-          .detectProjects([])
-          .then(res => expect(res).to.not.be.an('object'));
+        return testCase([]);
       });
 
       it(`detection fails`, function () {
         findFilesStub.resolves(undefined);
 
-        return padManager
-          .detectProjects([Projects.angular])
-          .then(res => expect(res).to.not.be.an('object'));
+        return testCase([Projects.angular]);
       });
 
       it(`no 'package.json' exists`, function () {
         findFilesStub.resolves([]);
 
-        return padManager
-          .detectProjects([Projects.angular])
-          .then(res => expect(res).to.not.be.an('object'));
+        return testCase([Projects.angular]);
       });
 
       it('detection is disabled', function () {
         vsicons.projectDetection.disableDetect = true;
 
-        return padManager
-          .detectProjects([Projects.angular])
-          .then(res => expect(res).to.not.be.an('object'));
+        return testCase([Projects.angular]);
       });
     });
   });
