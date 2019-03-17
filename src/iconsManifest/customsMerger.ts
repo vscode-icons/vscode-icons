@@ -12,18 +12,11 @@ export class CustomsMerger {
     projectDetectionResult?: models.IProjectDetectionResult,
     affectedPresets?: models.IPresets,
   ): { files: models.IFileCollection; folders: models.IFolderCollection } {
-    const angularPreset: boolean = this.getPreset(
-      presets,
+    const projectPresets = this.getProjectPresets(
+      [models.PresetNames.angular, models.PresetNames.nestjs],
       projectDetectionResult,
-      affectedPresets,
-      models.PresetNames[models.PresetNames.angular],
-    );
-
-    const nestjsPreset: boolean = this.getPreset(
       presets,
-      projectDetectionResult,
       affectedPresets,
-      models.PresetNames[models.PresetNames.nestjs],
     );
 
     let { files, folders } = this.mergeCustoms(
@@ -33,30 +26,22 @@ export class CustomsMerger {
       extFolders,
     );
 
-    files = this.toggleProjectPreset(
-      !angularPreset,
-      files,
-      extFiles,
-      models.PresetNames[models.PresetNames.angular],
-    );
-    files = this.toggleProjectPreset(
-      !nestjsPreset,
-      files,
-      extFiles,
-      models.PresetNames[models.PresetNames.nestjs],
-    );
+    files = this.toggleProjectPreset(projectPresets, files, extFiles);
+
     files = this.toggleOfficialIconsPreset(
       !presets.jsOfficial,
       files,
       [models.IconNames.jsOfficial],
       [models.IconNames.js],
     );
+
     files = this.toggleOfficialIconsPreset(
       !presets.tsOfficial,
       files,
       [models.IconNames.tsOfficial, models.IconNames.tsDefOfficial],
       [models.IconNames.ts, models.IconNames.tsDef],
     );
+
     files = this.toggleOfficialIconsPreset(
       !presets.jsonOfficial,
       files,
@@ -74,40 +59,68 @@ export class CustomsMerger {
     return { files, folders };
   }
 
-  private static getPreset(
-    presets: models.IPresets,
+  private static getProjectPresets(
+    presetNames: models.PresetNames[],
     projectDetectionResult: models.IProjectDetectionResult,
+    presets: models.IPresets,
     affectedPresets: models.IPresets,
-    projectPresetKey: string,
+  ): Array<{}> {
+    const projectPresets = [];
+    for (const presetName of presetNames) {
+      const preset: boolean = this.getPreset(
+        presetName,
+        projectDetectionResult,
+        presets,
+        affectedPresets,
+      );
+      projectPresets.push({ [presetName]: !preset });
+    }
+    return projectPresets;
+  }
+
+  private static getPreset(
+    presetName: models.PresetNames,
+    projectDetectionResult: models.IProjectDetectionResult,
+    presets: models.IPresets,
+    affectedPresets: models.IPresets,
   ): boolean {
-    const hasProjectDetectionResult =
-      projectDetectionResult &&
+    const hasProjectDetectionResult: boolean =
+      !!projectDetectionResult &&
       typeof projectDetectionResult === 'object' &&
       'value' in projectDetectionResult;
+    const name = models.PresetNames[presetName];
+    const projectName = models.Projects[name];
     return hasProjectDetectionResult &&
-      projectDetectionResult.projectName === models.Projects[projectPresetKey]
+      projectDetectionResult.projectName === projectName
       ? projectDetectionResult.value
-      : presets[projectPresetKey] ||
-          (affectedPresets &&
-            !affectedPresets[projectPresetKey] &&
-            !ManifestReader.iconsDisabled(models.Projects[projectPresetKey]));
+      : presets[name] ||
+          (!!affectedPresets &&
+            !affectedPresets[name] &&
+            !ManifestReader.iconsDisabled(projectName));
   }
 
   private static toggleProjectPreset(
-    disable: boolean,
+    projectPresets: Array<{}>,
     customFiles: models.IFileCollection,
     defaultFiles: models.IFileCollection,
-    projectPresetKey: string,
   ): models.IFileCollection {
-    const regex = new RegExp(`^${models.IconNames[projectPresetKey]}_.*\\D$`);
-    const icons = customFiles.supported
-      .filter(x => regex.test(x.icon))
-      .map(x => x.icon);
-    const defaultIcons = defaultFiles.supported
-      .filter(x => regex.test(x.icon))
-      .map(x => x.icon);
-    const temp = this.togglePreset(disable, icons, customFiles);
-    return this.togglePreset(disable, defaultIcons, temp);
+    let files = customFiles;
+    for (const preset of projectPresets) {
+      const key = Object.keys(preset)[0];
+      const disable = preset[key];
+      const regex = new RegExp(
+        `^${models.IconNames[models.PresetNames[key]]}_.*\\D$`,
+      );
+      const icons = files.supported
+        .filter(x => regex.test(x.icon))
+        .map(x => x.icon);
+      const defaultIcons = defaultFiles.supported
+        .filter(x => regex.test(x.icon))
+        .map(x => x.icon);
+      const temp = this.togglePreset(disable, icons, files);
+      files = this.togglePreset(disable, defaultIcons, temp);
+    }
+    return files;
   }
 
   private static toggleOfficialIconsPreset(

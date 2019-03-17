@@ -101,13 +101,9 @@ export class ProjectAutoDetectionManager
       return { apply: false };
     }
 
-    const langResourceKey: models.LangResourceKeys = enableIcons
-      ? projectInfo
-        ? this.getDetected(project)
-        : this.getNonDetectionPreset(project)
-      : projectInfo
-      ? this.getNonDetected(project)
-      : this.getDetectedPreset(project);
+    const langResourceKey: models.LangResourceKeys = !!projectInfo
+      ? this.getDetected(project, enableIcons)
+      : this.getDetectedPreset(project, enableIcons);
 
     return {
       apply: true,
@@ -117,39 +113,35 @@ export class ProjectAutoDetectionManager
     };
   }
 
-  private getDetected(projectName: string): number {
-    switch (projectName) {
+  private getDetected(
+    project: models.Projects,
+    enableIcons: boolean,
+  ): models.LangResourceKeys {
+    switch (project) {
       case models.Projects.angular:
-        return models.LangResourceKeys.ngDetected;
+        return enableIcons
+          ? models.LangResourceKeys.ngDetected
+          : models.LangResourceKeys.nonNgDetected;
       case models.Projects.nestjs:
-        return models.LangResourceKeys.nestDetected;
+        return enableIcons
+          ? models.LangResourceKeys.nestDetected
+          : models.LangResourceKeys.nonNestDetected;
     }
   }
 
-  private getDetectedPreset(projectName: string): number {
-    switch (projectName) {
+  private getDetectedPreset(
+    project: models.Projects,
+    enableIcons: boolean,
+  ): models.LangResourceKeys {
+    switch (project) {
       case models.Projects.angular:
-        return models.LangResourceKeys.ngDetectedPresetFalse;
+        return enableIcons
+          ? models.LangResourceKeys.nonNgDetectedPresetTrue
+          : models.LangResourceKeys.ngDetectedPresetFalse;
       case models.Projects.nestjs:
-        return models.LangResourceKeys.nestDetectedPresetFalse;
-    }
-  }
-
-  private getNonDetectionPreset(projectName: string): number {
-    switch (projectName) {
-      case models.Projects.angular:
-        return models.LangResourceKeys.nonNgDetectedPresetTrue;
-      case models.Projects.nestjs:
-        return models.LangResourceKeys.nonNestDetectedPresetTrue;
-    }
-  }
-
-  private getNonDetected(projectName: string): number {
-    switch (projectName) {
-      case models.Projects.angular:
-        return models.LangResourceKeys.nonNgDetected;
-      case models.Projects.nestjs:
-        return models.LangResourceKeys.nonNestDetected;
+        return enableIcons
+          ? models.LangResourceKeys.nonNestDetectedPresetTrue
+          : models.LangResourceKeys.nestDetectedPresetFalse;
     }
   }
 
