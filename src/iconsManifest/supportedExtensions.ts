@@ -1771,7 +1771,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lintstagedrc',
-      extensions: ['.lintstagedrc'],
+      extensions: [
+        '.lintstagedrc',
+        '.lintstagedrc.json',
+        '.lintstagedrc.yaml',
+        '.lintstagedrc.yml',
+        '.lintstagedrc.js',
+        'lint-staged.config.js',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
