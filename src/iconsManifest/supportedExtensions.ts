@@ -842,6 +842,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'chef_cookbook',
+      extensions: [],
+      languages: [languages.cookbook],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coveralls',
       extensions: ['.coveralls.yml'],
       filename: true,
@@ -1777,10 +1783,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lintstagedrc',
-      extensions: [
-        '.lintstagedrc',
-        'lint-staged.config.js',
-      ],
+      extensions: ['.lintstagedrc', 'lint-staged.config.js'],
       filenamesGlob: ['.lintstagedrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
