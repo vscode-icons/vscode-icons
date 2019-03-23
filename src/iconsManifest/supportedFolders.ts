@@ -142,7 +142,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
-    { icon: 'library', extensions: ['lib', '.lib'], format: FileFormat.svg },
+    {
+      icon: 'library',
+      extensions: ['lib', '.lib', 'library'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'locale',
       extensions: [
