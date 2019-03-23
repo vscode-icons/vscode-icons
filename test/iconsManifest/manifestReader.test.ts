@@ -30,6 +30,7 @@ describe('ManifestReader: tests', function () {
       beforeEach(function () {
         presets = {
           angular: false,
+          nestjs: false,
           jsOfficial: false,
           tsOfficial: false,
           jsonOfficial: false,

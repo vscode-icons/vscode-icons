@@ -14,6 +14,8 @@
   "iconRestore": "Манифест значков будет восстановлен по-умолчанию.",
   "ngPresetEnabled": "Значки файлов Angular будут включены.",
   "ngPresetDisabled": "Значки файлов Angular будут отключены.",
+  "nestPresetEnabled": "Значки файлов NestJS будут включены.",
+  "nestPresetDisabled": "Значки файлов NestJS будут отключены.",
   "jsPresetEnabled": "Официальный значок JS файлов будет включен.",
   "jsPresetDisabled": "Официальный значок JS файлов будет отключен.",
   "tsPresetEnabled": "Официальный значок TS файлов будет включен.",
@@ -31,5 +33,9 @@
   "nonNgDetected": "%extensionName% обнаружил проект отличный от Angular. Нажмите 'Перезапустить' чтобы отключить значки Angular.",
   "ngDetectedPresetFalse": "%extensionName% обнаружил проект Angular, но параметру 'preset' установлено значение 'false'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' отключит значки Angular.",
   "nonNgDetectedPresetTrue": "%extensionName% обнаружил проект отличный от Angular, но параметру 'preset' установлено значение 'true'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' включит значки Angular.",
+  "nestDetected": "%extensionName% обнаружил проект NestJS. Нажмите 'Перезапустить' чтобы включить значки NestJS.",
+  "nonNestDetected": "%extensionName% обнаружил проект отличный от NestJS. Нажмите 'Перезапустить' чтобы отключить значки NestJS.",
+  "nestDetectedPresetFalse": "%extensionName% обнаружил проект NestJS, но параметру 'preset' установлено значение 'false'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' отключит значки NestJS.",
+  "nonNestDetectedPresetTrue": "%extensionName% обнаружил проект отличный от NestJS, но параметру 'preset' установлено значение 'true'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' включит значки NestJS.",
   "projectDetectionReset": "Определение проекта будет установлено по-умолчанию."
 }

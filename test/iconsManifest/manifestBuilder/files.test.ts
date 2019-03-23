@@ -387,7 +387,7 @@ describe('ManifestBuilder: files icons test', function () {
                         constants.iconsManifest.definitionFilePrefix
                       }${file.icon}`;
 
-                      const assertLanguage = language => {
+                      const assertLanguage = (language: string) => {
                         expect(manifest.languageIds[language]).to.equal(
                           definition,
                         );
@@ -419,7 +419,7 @@ describe('ManifestBuilder: files icons test', function () {
                         constants.iconsManifest.definitionFilePrefix
                       }${file.icon}`;
 
-                      const assertLanguageLight = language => {
+                      const assertLanguageLight = (language: string) => {
                         expect(manifest.languageIds[language]).to.equal(
                           definition,
                         );
@@ -563,7 +563,7 @@ describe('ManifestBuilder: files icons test', function () {
                         constants.iconsManifest.definitionFilePrefix
                       }${file.icon}`;
 
-                      const assertLanguage = language => {
+                      const assertLanguage = (language: string) => {
                         expect(manifest.light.languageIds[language]).to.equal(
                           definition,
                         );
@@ -595,7 +595,7 @@ describe('ManifestBuilder: files icons test', function () {
                         constants.iconsManifest.definitionFileLightPrefix
                       }${file.icon}`;
 
-                      const assertLanguageLight = language => {
+                      const assertLanguageLight = (language: string) => {
                         expect(manifest.light.languageIds[language]).to.equal(
                           definition,
                         );
@@ -983,7 +983,7 @@ describe('ManifestBuilder: files icons test', function () {
                         constants.iconsManifest.definitionFilePrefix
                       }${file.icon}`;
 
-                      const assertLanguage = language => {
+                      const assertLanguage = (language: string) => {
                         expect(manifest.languageIds[language]).to.equal(
                           definition,
                         );
@@ -1015,7 +1015,7 @@ describe('ManifestBuilder: files icons test', function () {
                         constants.iconsManifest.definitionFilePrefix
                       }${file.icon}`;
 
-                      const assertLanguageLight = language => {
+                      const assertLanguageLight = (language: string) => {
                         expect(manifest.languageIds[language]).to.equal(
                           definition,
                         );
@@ -1159,7 +1159,7 @@ describe('ManifestBuilder: files icons test', function () {
                         constants.iconsManifest.definitionFilePrefix
                       }${file.icon}`;
 
-                      const assertLanguage = language => {
+                      const assertLanguage = (language: string) => {
                         expect(manifest.light.languageIds[language]).to.equal(
                           definition,
                         );
@@ -1191,7 +1191,7 @@ describe('ManifestBuilder: files icons test', function () {
                         constants.iconsManifest.definitionFileLightPrefix
                       }${file.icon}`;
 
-                      const assertLanguageLight = language => {
+                      const assertLanguageLight = (language: string) => {
                         expect(manifest.light.languageIds[language]).to.equal(
                           definition,
                         );

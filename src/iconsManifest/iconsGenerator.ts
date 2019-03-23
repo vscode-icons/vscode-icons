@@ -165,6 +165,7 @@ export class IconsGenerator implements models.IIconsGenerator {
 
     this.affectedPresets = {
       angular: e.affectsConfiguration(constants.vsicons.presets.angular),
+      nestjs: e.affectsConfiguration(constants.vsicons.presets.nestjs),
       jsOfficial: false,
       tsOfficial: false,
       jsonOfficial: false,

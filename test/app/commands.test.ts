@@ -240,6 +240,22 @@ describe('ExtensionManager: commands tests', function () {
       });
     });
 
+    context(`the toggle nestjs preset command`, function () {
+      it(`toggles the nestjs preset`, function () {
+        // @ts-ignore
+        extensionManager.toggleNestPresetCommand();
+
+        expect(
+          togglePresetStub.calledOnceWithExactly(
+            models.PresetNames.nestjs,
+            models.CommandNames.nestPreset,
+            false,
+            models.ConfigurationTarget.Workspace,
+          ),
+        ).to.be.true;
+      });
+    });
+
     context(`the toggle js preset command`, function () {
       it(`toggles the js preset`, function () {
         // @ts-ignore

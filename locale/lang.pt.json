@@ -14,6 +14,8 @@
   "iconRestore": "O manifesto de ícones será restaurado.",
   "ngPresetEnabled": "Ícones de Angular serão habilitados.",
   "ngPresetDisabled": "Ícones de Angular serão desativados.",
+  "nestPresetEnabled": "Ícones de NestJS serão habilitados.",
+  "nestPresetDisabled": "Ícones de NestJS serão desativados.",
   "jsPresetEnabled": "Ícone oficial de JS será habilitado.",
   "jsPresetDisabled": "Ícone oficial de JS será desativado.",
   "tsPresetEnabled": "Ícone oficial de TS será habilitado.",
@@ -31,5 +33,9 @@
   "nonNgDetected": "%extensionName% detectou um projeto não Angular. Selecione 'Reiniciar' para desativar os ícones de Angular.",
   "ngDetectedPresetFalse": "",
   "nonNgDetectedPresetTrue": "",
+  "nestDetected": "%extensionName% detectou um projeto NestJS. Selecione 'Reiniciar' para habilitar os ícones de NestJS.",
+  "nonNestDetected": "%extensionName% detectou um projeto não NestJS. Selecione 'Reiniciar' para desativar os ícones de NestJS.",
+  "nestDetectedPresetFalse": "",
+  "nonNestDetectedPresetTrue": "",
   "projectDetectionReset": "Padrões de detecção de projeto serão reinicializados."
 }
