@@ -1858,7 +1858,6 @@ export const extensions: IFileCollection = {
         'slx',
         'slddc',
         'smv',
-        'tikz',
         'xvc',
       ],
       languages: [languages.matlab],
@@ -2415,10 +2414,23 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'q', extensions: ['q'], format: FileFormat.svg },
+    { icon: 'qbs', extensions: ['qbs'], format: FileFormat.svg },
     {
       icon: 'qlikview',
       extensions: ['qvd', 'qvw'],
       languages: [languages.qlik],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'qml',
+      extensions: [],
+      languages: [languages.qml],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'qmldir',
+      extensions: ['qmldir'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -2821,7 +2833,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tex',
-      extensions: ['texi'],
+      extensions: ['texi', 'tikz'],
       languages: [
         languages.tex,
         languages.latex,
@@ -2891,6 +2903,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ttcn',
+      extensions: [],
+      languages: [languages.ttcn],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'twig',
       extensions: [],
       languages: [languages.twig],
@@ -2920,6 +2938,15 @@ export const extensions: IFileCollection = {
       icon: 'typo3',
       extensions: [],
       languages: [languages.typo3],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'unibeautify',
+      extensions: ['.unibeautifyrc', 'unibeautify.config.js'],
+      filenamesGlob: ['.unibeautifyrc'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {

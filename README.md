@@ -1,11 +1,11 @@
 # vscode-icons
 
-[![Version](https://vsmarketplacebadge.apphb.com/version/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
-[![Installs](https://vsmarketplacebadge.apphb.com/installs/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
-[![Ratings](https://vsmarketplacebadge.apphb.com/rating/robertohuertasm.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=robertohuertasm.vscode-icons)
+[![Version](https://vsmarketplacebadge.apphb.com/version/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
 [![Build Status](https://travis-ci.org/vscode-icons/vscode-icons.svg?branch=master)](https://travis-ci.org/vscode-icons/vscode-icons)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/vscode-icons/vscode-icons?branch=master&svg=true)](https://ci.appveyor.com/project/robertohuertasm/vscode-icons)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/vscode-icons/vscode-icons?branch=master&svg=true)](https://ci.appveyor.com/project/vscode-icons-team/vscode-icons)
 
 [![Dependencies Status](https://david-dm.org/vscode-icons/vscode-icons/status.svg)](https://david-dm.org/vscode-icons/vscode-icons)
 [![DevDependencies Status](https://david-dm.org/vscode-icons/vscode-icons/dev-status.svg)](https://david-dm.org/vscode-icons/vscode-icons?type=dev)
