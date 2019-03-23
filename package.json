@@ -2,13 +2,13 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "8.2.0",
-  "publisher": "robertohuertasm",
+  "version": "8.3.0",
+  "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
     "email": "roberto.huertas@outlook.com",
     "name": "Roberto Huertas",
-    "url": "http://codecoding.com"
+    "url": "http://robertohuertas.com"
   },
   "maintainers": [
     {
