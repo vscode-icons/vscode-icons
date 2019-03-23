@@ -2414,10 +2414,23 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'q', extensions: ['q'], format: FileFormat.svg },
+    { icon: 'qbs', extensions: ['qbs'], format: FileFormat.svg },
     {
       icon: 'qlikview',
       extensions: ['qvd', 'qvw'],
       languages: [languages.qlik],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'qml',
+      extensions: [],
+      languages: [languages.qml],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'qmldir',
+      extensions: ['qmldir'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
