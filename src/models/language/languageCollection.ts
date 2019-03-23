@@ -72,6 +72,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   helm: ILanguage;
   hosts: ILanguage;
   http: ILanguage;
+  icl: ILanguage;
   imba: ILanguage;
   ink: ILanguage;
   jekyll: ILanguage;
@@ -122,6 +123,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   purescript: ILanguage;
   pyret: ILanguage;
   qlik: ILanguage;
+  qml: ILanguage;
   qsharp: ILanguage;
   racket: ILanguage;
   raml: ILanguage;
@@ -152,12 +154,14 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   systemverilog: ILanguage;
   t4: ILanguage;
   templatetoolkit: ILanguage;
+  tera: ILanguage;
   terraform: ILanguage;
   tex: ILanguage;
   textile: ILanguage;
   textmatejson: ILanguage;
   textmateyaml: ILanguage;
   toml: ILanguage;
+  ttcn: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
   vba: ILanguage;
