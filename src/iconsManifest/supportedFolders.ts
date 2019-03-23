@@ -237,6 +237,7 @@ export const extensions: IFolderCollection = {
       extensions: ['route', 'routes', '_route', '_routes', 'routers'],
       format: FileFormat.svg,
     },
+    { icon: 'redux', extensions: ['redux'], format: FileFormat.svg },
     {
       icon: 'meteor',
       extensions: ['.meteor'],
