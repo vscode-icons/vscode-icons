@@ -45,6 +45,8 @@ export const extensions: IFolderCollection = {
       icon: 'config',
       extensions: [
         'config',
+        'configs',
+        'configuration',
         '.config',
         'ini',
         '.ini',
