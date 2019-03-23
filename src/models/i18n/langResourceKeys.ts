@@ -14,6 +14,8 @@ export enum LangResourceKeys {
   iconRestore,
   ngPresetEnabled,
   ngPresetDisabled,
+  nestPresetEnabled,
+  nestPresetDisabled,
   jsPresetEnabled,
   jsPresetDisabled,
   tsPresetEnabled,
@@ -31,5 +33,9 @@ export enum LangResourceKeys {
   nonNgDetected,
   ngDetectedPresetFalse,
   nonNgDetectedPresetTrue,
+  nestDetected,
+  nonNestDetected,
+  nestDetectedPresetFalse,
+  nonNestDetectedPresetTrue,
   projectDetectionReset,
 }

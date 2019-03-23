@@ -40,8 +40,10 @@ export class ExtensionManager implements models.IExtensionManager {
     this.manageCustomizations();
 
     this.projectAutoDetectionManager
-      .detectProjects([models.Projects.angular])
-      .then(detectionResult => this.applyProjectDetection(detectionResult));
+      .detectProjects([models.Projects.angular, models.Projects.nestjs])
+      .then((detectionResult: models.IProjectDetectionResult) =>
+        this.applyProjectDetection(detectionResult),
+      );
 
     // Update the version in settings
     if (this.settingsManager.isNewVersion) {
@@ -218,6 +220,16 @@ export class ExtensionManager implements models.IExtensionManager {
     this.togglePreset(
       models.PresetNames.angular,
       models.CommandNames.ngPreset,
+      false,
+      models.ConfigurationTarget.Workspace,
+    );
+  }
+
+  // @ts-ignore: Called via reflection
+  private toggleNestPresetCommand(): void {
+    this.togglePreset(
+      models.PresetNames.nestjs,
+      models.CommandNames.nestPreset,
       false,
       models.ConfigurationTarget.Workspace,
     );

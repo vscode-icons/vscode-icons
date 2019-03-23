@@ -16,6 +16,8 @@ export interface ILangResource {
   iconRestore: string | IOSSpecific;
   ngPresetEnabled: string | IOSSpecific;
   ngPresetDisabled: string | IOSSpecific;
+  nestPresetEnabled: string | IOSSpecific;
+  nestPresetDisabled: string | IOSSpecific;
   jsPresetEnabled: string | IOSSpecific;
   jsPresetDisabled: string | IOSSpecific;
   tsPresetEnabled: string | IOSSpecific;
@@ -31,5 +33,9 @@ export interface ILangResource {
   nonNgDetected: string | IOSSpecific;
   ngDetectedPresetFalse: string | IOSSpecific;
   nonNgDetectedPresetTrue: string | IOSSpecific;
+  nestDetected: string | IOSSpecific;
+  nonNestDetected: string | IOSSpecific;
+  nestDetectedPresetFalse: string | IOSSpecific;
+  nonNestDetectedPresetTrue: string | IOSSpecific;
   projectDetectionReset: string | IOSSpecific;
 }

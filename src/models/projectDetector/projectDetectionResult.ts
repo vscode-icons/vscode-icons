@@ -3,7 +3,7 @@ import { LangResourceKeys } from '../i18n/langResourceKeys';
 
 export interface IProjectDetectionResult {
   apply: boolean;
-  projectName?: Projects;
+  projectName?: string | Projects;
   langResourceKey?: LangResourceKeys;
   value?: boolean;
 }

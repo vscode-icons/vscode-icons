@@ -1,5 +1,6 @@
 export enum PresetNames {
   angular,
+  nestjs,
   jsOfficial,
   tsOfficial,
   jsonOfficial,

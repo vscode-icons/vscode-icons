@@ -143,6 +143,119 @@ describe('CustomsMerger: toggle presets tests', function () {
       });
     });
 
+    context(`'NestJS' icons can be`, function () {
+      const regex = /^nest_.*\D$/;
+      it('enabled and disabled', function () {
+        const toggle = (enable: boolean): IFileExtension[] => {
+          vsicons.presets.nestjs = enable;
+          return CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+          ).files.supported.filter(file => regex.test(file.icon));
+        };
+
+        // Set Angular icons as enabled
+        let defs = toggle(true);
+
+        defs.forEach(def => expect(def.disabled).to.be.false);
+
+        // Set Angular icons as disabled
+        defs = toggle(false);
+
+        defs.forEach(def => expect(def.disabled).to.be.true);
+      });
+
+      it(`preserved, if enabled by PAD, when toggling any preset`, function () {
+        const toggle = (
+          enable: boolean,
+          padResult: IProjectDetectionResult,
+          affectPresets?: any,
+        ): any => {
+          vsicons.presets.jsOfficial = enable;
+          const _files = CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+            padResult,
+            affectPresets,
+          ).files;
+
+          return {
+            ngDefs: _files.supported.filter(file => regex.test(file.icon)),
+            jsDefs: _files.supported.filter(file => file.icon === IconNames.js),
+            officialJSDefs: _files.supported.filter(
+              file => file.icon === IconNames.jsOfficial,
+            ),
+          };
+        };
+
+        // NestJS icons get enabled by PAD
+        let icons = toggle(false, {
+          apply: true,
+          projectName: Projects.nestjs,
+          value: true,
+        });
+
+        icons.jsDefs.forEach(def => expect(def.disabled).to.be.false);
+        icons.officialJSDefs.forEach(def => expect(def.disabled).to.be.true);
+        icons.ngDefs.forEach(def => expect(def.disabled).to.be.false);
+
+        // Angular icons are enabled
+        iconsDisabledStub.returns(false);
+
+        // User toggles to enable JS Official icons
+        icons = toggle(true, undefined, { nestjs: false });
+
+        icons.jsDefs.forEach(def => expect(def.disabled).to.be.true);
+        icons.officialJSDefs.forEach(def => expect(def.disabled).to.be.false);
+        icons.ngDefs.forEach(def => expect(def.disabled).to.be.false);
+
+        // User toggles to disable JS Official icons
+        icons = toggle(false, undefined, { nestjs: false });
+
+        icons.jsDefs.forEach(def => expect(def.disabled).to.be.false);
+        icons.officialJSDefs.forEach(def => expect(def.disabled).to.be.true);
+        icons.ngDefs.forEach(def => expect(def.disabled).to.be.false);
+      });
+
+      it(`disabled, when no 'NestJS' project is detected by PAD`, function () {
+        const defs = CustomsMerger.merge(
+          null,
+          extFiles,
+          null,
+          extFolders,
+          vsicons.presets,
+          {
+            apply: false,
+          },
+        ).files.supported.filter(file => regex.test(file.icon));
+
+        defs.forEach(def => expect(def.disabled).to.be.true);
+      });
+
+      it(`enabled, when an 'NestJS' project is detected by PAD`, function () {
+        const defs = CustomsMerger.merge(
+          null,
+          extFiles,
+          null,
+          extFolders,
+          vsicons.presets,
+          {
+            apply: true,
+            projectName: Projects.nestjs,
+            value: true,
+          },
+        ).files.supported.filter(file => regex.test(file.icon));
+
+        defs.forEach(def => expect(def.disabled).to.be.false);
+      });
+    });
+
     context(`'Javascript' official icons can be`, function () {
       it('enabled and disabled', function () {
         const toggle = (enable: boolean): any => {
