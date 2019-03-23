@@ -207,6 +207,7 @@ export const languages: ILanguageCollection = {
   textmatejson: { ids: 'json-tmlanguage', defaultExtension: 'JSON-tmLanguage' },
   textmateyaml: { ids: 'yaml-tmlanguage', defaultExtension: 'YAML-tmLanguage' },
   toml: { ids: 'toml', defaultExtension: 'toml' },
+  ttcn: { ids: 'ttcn', defaultExtension: 'ttcn3' },
   twig: { ids: 'twig', defaultExtension: 'twig' },
   typescript: { ids: 'typescript', defaultExtension: 'ts' },
   typescriptreact: { ids: 'typescriptreact', defaultExtension: 'tsx' },
