@@ -7,8 +7,14 @@ export const extensions: IFolderCollection = {
     root_folder: { icon: 'root_folder', format: FileFormat.svg },
   },
   supported: [
+    { icon: 'android', extensions: ['android'], format: FileFormat.svg },
     { icon: 'api', extensions: ['api', '.api'], format: FileFormat.svg },
     { icon: 'app', extensions: ['app', '.app'], format: FileFormat.svg },
+    {
+      icon: 'arangodb',
+      extensions: ['arangodb', 'arango'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'asset',
       extensions: ['assets', '.assets'],
@@ -136,6 +142,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'ios', extensions: ['ios'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
     {
       icon: 'kubernetes',
