@@ -1,8 +1,27 @@
 # Change Log
 
+## 8.4.0 (March 23, 2019)
+
+- Enhancement: Support for more `lintstaged` extensions. [@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#1911](https://github.com/vscode-icons/vscode-icons/pull/1911))
+- Feature: Support for `WPML`. [@displaynone](https://github.com/displaynone) in [#1902](https://github.com/vscode-icons/vscode-icons/pull/1902))
+- Feature: Support for `NestJS` PAD. [@KingDarBoja](https://github.com/KingDarBoja) in [#1897](https://github.com/vscode-icons/vscode-icons/pull/1897))
+- Feature: Support for `San`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1896](https://github.com/vscode-icons/vscode-icons/pull/1896))
+- Feature: Support for `MDX`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1895](https://github.com/vscode-icons/vscode-icons/pull/1895))
+- Feature: Support for `ICL`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1894](https://github.com/vscode-icons/vscode-icons/pull/1894))
+- Feature: Support for `Tera`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1893](https://github.com/vscode-icons/vscode-icons/pull/1893))
+- Enhancement: Support for more `Mocha` extensions. [@calebcartwright](https://github.com/calebcartwright) in [#1892](https://github.com/vscode-icons/vscode-icons/pull/1892))
+- Enhancement: Updated `Meson` icon. [@KingDarBoja](https://github.com/KingDarBoja) in [#1890](https://github.com/vscode-icons/vscode-icons/pull/1890))
+- Feature: Support for `TTCN-3`. [@ealap](https://github.com/ealap) in [#1889](https://github.com/vscode-icons/vscode-icons/pull/1889))
+- Feature: Support for `QML` &  `Qbs`. [@oltodo](https://github.com/oltodo) in [#1886](https://github.com/vscode-icons/vscode-icons/pull/1886))
+- Enhancement: Updated `Tikz` file association. [@KingDarBoja](https://github.com/KingDarBoja) in [#1882](https://github.com/vscode-icons/vscode-icons/pull/1882))
+- Enhancement: Updated `Al` file. [@KingDarBoja](https://github.com/KingDarBoja) in [#1881](https://github.com/vscode-icons/vscode-icons/pull/1881))
+- Feature: Support for `Unibeautify`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1880](https://github.com/vscode-icons/vscode-icons/pull/1880))
+- Feature: Support for `MySQL` & `MariaDB`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1870](https://github.com/vscode-icons/vscode-icons/pull/1870))
+
 ## 8.3.0 (March 14, 2019)
 
 - Fix: Changed publisher name. [@robertohuertasm](https://github.com/robertohuertasm) in [#1909](https://github.com/vscode-icons/vscode-icons/pull/1909))
+- Fix: Fixed changelog typo. [@jakobpack](https://github.com/jakobpack) in [#1884](https://github.com/vscode-icons/vscode-icons/pull/1884))
 
 ## 8.2.0 (February 17, 2019)
 
