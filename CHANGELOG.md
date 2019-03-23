@@ -2,6 +2,13 @@
 
 ## 8.4.0 (March 23, 2019)
 
+- Feature: Support for `redux` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1919](https://github.com/vscode-icons/vscode-icons/pull/1919))
+- Feature: Support for `arangodb` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1918](https://github.com/vscode-icons/vscode-icons/pull/1918))
+- Feature: Support for `ios` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1917](https://github.com/vscode-icons/vscode-icons/pull/1917))
+- Feature: Support for `android` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1916](https://github.com/vscode-icons/vscode-icons/pull/1916))
+- Feature: Support for `graphql` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1915](https://github.com/vscode-icons/vscode-icons/pull/1915))
+- Enhancement: Support for `library` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1914](https://github.com/vscode-icons/vscode-icons/pull/1914))
+- Enhancement: Support for `configuration` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1913](https://github.com/vscode-icons/vscode-icons/pull/1913))
 - Enhancement: Support for more `lintstaged` extensions. [@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#1911](https://github.com/vscode-icons/vscode-icons/pull/1911))
 - Feature: Support for `WPML`. [@displaynone](https://github.com/displaynone) in [#1902](https://github.com/vscode-icons/vscode-icons/pull/1902))
 - Feature: Support for `NestJS` PAD. [@KingDarBoja](https://github.com/KingDarBoja) in [#1897](https://github.com/vscode-icons/vscode-icons/pull/1897))
