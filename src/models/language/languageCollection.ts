@@ -99,6 +99,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mjml: ILanguage;
   mlang: ILanguage;
   mojolicious: ILanguage;
+  mongo: ILanguage;
   mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;

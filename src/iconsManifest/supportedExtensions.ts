@@ -1777,10 +1777,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lintstagedrc',
-      extensions: [
-        '.lintstagedrc',
-        'lint-staged.config.js',
-      ],
+      extensions: ['.lintstagedrc', 'lint-staged.config.js'],
       filenamesGlob: ['.lintstagedrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
@@ -1944,6 +1941,12 @@ export const extensions: IFileCollection = {
       icon: 'mojolicious',
       extensions: [],
       languages: [languages.mojolicious],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mongo',
+      extensions: [],
+      languages: [languages.mongo],
       format: FileFormat.svg,
     },
     {
