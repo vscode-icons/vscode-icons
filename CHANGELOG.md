@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.4.0 (March 23, 2019)
+## 8.4.0 (March 24, 2019)
 
 - Feature: Support for `redux` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1919](https://github.com/vscode-icons/vscode-icons/pull/1919))
 - Feature: Support for `arangodb` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1918](https://github.com/vscode-icons/vscode-icons/pull/1918))
