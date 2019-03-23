@@ -1890,6 +1890,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mdx',
+      extensions: ['mdx'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mediawiki',
       extensions: [],
       languages: [languages.mediawiki],
