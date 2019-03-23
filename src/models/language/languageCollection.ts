@@ -132,6 +132,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   restructuredtext: ILanguage;
   riot: ILanguage;
   robot: ILanguage;
+  san: ILanguage;
   sbt: ILanguage;
   scala: ILanguage;
   scilab: ILanguage;

@@ -2581,6 +2581,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'saltstack', extensions: ['sls'], format: FileFormat.svg },
+    {
+      icon: 'san',
+      extensions: [],
+      languages: [languages.san],
+      format: FileFormat.svg,
+    },
     { icon: 'sass', extensions: ['sass'], format: FileFormat.svg },
     {
       icon: 'sbt',

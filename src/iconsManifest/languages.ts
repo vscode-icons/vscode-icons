@@ -175,6 +175,7 @@ export const languages: ILanguageCollection = {
   robot: { ids: 'robot', defaultExtension: 'robot' },
   ruby: { ids: 'ruby', defaultExtension: 'rb' },
   rust: { ids: 'rust', defaultExtension: 'rs' },
+  san: { ids: 'san', defaultExtension: 'san' },
   sbt: { ids: 'sbt', defaultExtension: 'sbt' },
   scala: { ids: 'scala', defaultExtension: 'scala' },
   scilab: { ids: 'scilab', defaultExtension: 'sce' },
