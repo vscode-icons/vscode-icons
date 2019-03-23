@@ -1,5 +1,9 @@
 # Change Log
 
+## 8.3.0 (March 14, 2019)
+
+- Fix: Changed publisher name. [@robertohuertasm](https://github.com/robertohuertasm) in [#1909](https://github.com/vscode-icons/vscode-icons/pull/1909))
+
 ## 8.2.0 (February 17, 2019)
 
 - Enhancement: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#1879](https://github.com/vscode-icons/vscode-icons/pull/1879))
