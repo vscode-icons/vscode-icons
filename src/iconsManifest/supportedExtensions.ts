@@ -1777,10 +1777,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lintstagedrc',
-      extensions: [
-        '.lintstagedrc',
-        'lint-staged.config.js',
-      ],
+      extensions: ['.lintstagedrc', 'lint-staged.config.js'],
       filenamesGlob: ['.lintstagedrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
@@ -2378,6 +2375,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'pip',
       extensions: ['pipfile', 'pipfile.lock'],
+      languages: [languages.pip],
       filename: true,
       format: FileFormat.svg,
     },
