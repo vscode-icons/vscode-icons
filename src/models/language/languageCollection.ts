@@ -122,6 +122,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   purescript: ILanguage;
   pyret: ILanguage;
   qlik: ILanguage;
+  qml: ILanguage;
   qsharp: ILanguage;
   racket: ILanguage;
   raml: ILanguage;
@@ -159,6 +160,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   textmatejson: ILanguage;
   textmateyaml: ILanguage;
   toml: ILanguage;
+  ttcn: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
   vba: ILanguage;
