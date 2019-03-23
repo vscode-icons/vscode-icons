@@ -201,6 +201,7 @@ export const languages: ILanguageCollection = {
   systemverilog: { ids: 'systemverilog', defaultExtension: 'sv' },
   t4: { ids: 't4', defaultExtension: 'tt' },
   templatetoolkit: { ids: 'tt', defaultExtension: 'tt3' },
+  tera: { ids: 'tera', defaultExtension: 'tera' },
   terraform: { ids: 'terraform', defaultExtension: 'tf' },
   tex: { ids: 'tex', defaultExtension: 'sty' },
   textile: { ids: 'textile', defaultExtension: 'textile' },

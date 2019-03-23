@@ -2812,6 +2812,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'tcl', extensions: ['tcl', 'exp'], format: FileFormat.svg },
     {
+      icon: 'tera',
+      extensions: [],
+      languages: [languages.tera],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'terraform',
       extensions: ['tfstate'],
       languages: [languages.terraform],
