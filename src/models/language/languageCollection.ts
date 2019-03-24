@@ -32,6 +32,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cmakecache: ILanguage;
   cobol: ILanguage;
   coldfusion: ILanguage;
+  cookbook: ILanguage;
   crystal: ILanguage;
   csharp: ILanguage;
   cucumber: ILanguage;
@@ -99,6 +100,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mjml: ILanguage;
   mlang: ILanguage;
   mojolicious: ILanguage;
+  mongo: ILanguage;
   mson: ILanguage;
   nim: ILanguage;
   nsis: ILanguage;

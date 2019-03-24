@@ -100,7 +100,7 @@ export class ExtensionManager implements models.IExtensionManager {
   private showWelcomeMessage(): Thenable<void> {
     const displayMessage = (): Thenable<void> =>
       this.notificationManager
-        .notifyInfo<models.LangResourceKeys>(
+        .notifyInfo(
           models.LangResourceKeys.welcome,
           models.LangResourceKeys.activate,
           models.LangResourceKeys.aboutOfficialApi,
@@ -133,7 +133,7 @@ export class ExtensionManager implements models.IExtensionManager {
 
   private showNewVersionMessage(): Thenable<void> {
     return this.notificationManager
-      .notifyInfo<models.LangResourceKeys>(
+      .notifyInfo(
         `%s v${constants.extension.version}`,
         models.LangResourceKeys.newVersion,
         models.LangResourceKeys.seeReleaseNotes,
@@ -309,7 +309,7 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   private handleAction(
-    btn: string | models.LangResourceKeys,
+    btn: models.LangResourceKeyLike,
     callback?: (...args: any[]) => void,
     cbArgs?: any[], // This is a workaround because `callback.arguments` is not accessible
   ): Thenable<void> {

@@ -842,6 +842,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'chef_cookbook',
+      extensions: [],
+      languages: [languages.cookbook],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coveralls',
       extensions: ['.coveralls.yml'],
       filename: true,
@@ -1941,6 +1947,12 @@ export const extensions: IFileCollection = {
       icon: 'mojolicious',
       extensions: [],
       languages: [languages.mojolicious],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mongo',
+      extensions: [],
+      languages: [languages.mongo],
       format: FileFormat.svg,
     },
     {
