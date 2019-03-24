@@ -842,6 +842,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'chef_cookbook',
+      extensions: [],
+      languages: [languages.cookbook],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coveralls',
       extensions: ['.coveralls.yml'],
       filename: true,
