@@ -1037,7 +1037,7 @@ describe('ConfigManager: tests', function () {
         inspectStub.returns(expected);
 
         expect(
-          configManager.getPreset(PresetNames[PresetNames.hideFolders]),
+          configManager.getPreset<boolean>(PresetNames[PresetNames.hideFolders]),
         ).to.eql(expected);
         expect(
           inspectStub
@@ -1049,7 +1049,7 @@ describe('ConfigManager: tests', function () {
       it(`returns 'undefined', if the preset setting does NOT exists`, function () {
         inspectStub.returns(undefined);
 
-        expect(configManager.getPreset('some.unknown')).to.be.undefined;
+        expect(configManager.getPreset<any>('some.unknown')).to.be.undefined;
         expect(inspectStub.getCall(2).calledWith('some.unknown')).to.be.true;
       });
     });

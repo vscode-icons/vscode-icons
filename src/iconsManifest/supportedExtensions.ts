@@ -1950,6 +1950,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mongo',
+      extensions: [],
+      languages: [languages.mongo],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'monotone',
       extensions: ['.mtn-ignore'],
       filename: true,
