@@ -3,7 +3,7 @@ import {
   INotificationManager,
   IVSCodeManager,
   ILanguageResourceManager,
-  LangResourceKeys,
+  LangResourceKeyLike,
 } from '../models';
 
 export class NotificationManager implements INotificationManager {
@@ -12,10 +12,10 @@ export class NotificationManager implements INotificationManager {
     private i18nManager: ILanguageResourceManager,
   ) {}
 
-  public notifyInfo<T extends string | LangResourceKeys | undefined>(
-    message: string | LangResourceKeys,
-    ...items: Array<string | LangResourceKeys>
-  ): Thenable<T> {
+  public notifyInfo(
+    message: LangResourceKeyLike,
+    ...items: LangResourceKeyLike[]
+  ): Thenable<LangResourceKeyLike> {
     let msg: string;
     if (typeof message === 'string' && /%s/.test(message)) {
       const matchesLength = message.match(/%s/g).length;
@@ -28,8 +28,6 @@ export class NotificationManager implements INotificationManager {
     const msgItems = items.map(item => this.i18nManager.getMessage(item));
     return this.vscodeManager.window
       .showInformationMessage(msg, ...msgItems)
-      .then(
-        result => (this.i18nManager.getLangResourceKey(result) || result) as T,
-      );
+      .then(result => this.i18nManager.getLangResourceKey(result) || result);
   }
 }

@@ -14,10 +14,10 @@ export interface IConfigManager {
   ):
     | {
         key: string;
-        defaultValue?: T;
-        globalValue?: T;
-        workspaceValue?: T;
-        workspaceFolderValue?: T;
+        defaultValue?: Partial<T>;
+        globalValue?: Partial<T>;
+        workspaceValue?: Partial<T>;
+        workspaceFolderValue?: Partial<T>;
       }
     | undefined;
   updateDontShowNewVersionMessage(value: boolean): Thenable<void>;

@@ -1,8 +1,10 @@
 import { LangResourceKeys } from '../i18n';
 
+export type LangResourceKeyLike = string | LangResourceKeys;
+
 export interface INotificationManager {
-  notifyInfo<T extends string | LangResourceKeys | undefined>(
-    message: string | LangResourceKeys,
-    ...items: Array<string | LangResourceKeys>
-  ): Thenable<T>;
+  notifyInfo(
+    message: LangResourceKeyLike,
+    ...items: LangResourceKeyLike[]
+  ): Thenable<LangResourceKeyLike>;
 }
