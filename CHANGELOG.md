@@ -2,6 +2,10 @@
 
 ## 8.4.0 (March 24, 2019)
 
+- Feature: Support for `pip-requirements` language id. [@JimiC](https://github.com/JimiC) in [#1924](https://github.com/vscode-icons/vscode-icons/pull/1924))
+- Feature: Support for `Chef cookbook`. [@JimiC](https://github.com/JimiC) in [#1923](https://github.com/vscode-icons/vscode-icons/pull/1923))
+- Feature: Support for `MongoDB Scrapbooks`. [@JimiC](https://github.com/JimiC) in [#1922](https://github.com/vscode-icons/vscode-icons/pull/1922))
+- Enhancement: Updated dependencies. [@JimiC](https://github.com/JimiC) in [#1921](https://github.com/vscode-icons/vscode-icons/pull/1921))
 - Feature: Support for `redux` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1919](https://github.com/vscode-icons/vscode-icons/pull/1919))
 - Feature: Support for `arangodb` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1918](https://github.com/vscode-icons/vscode-icons/pull/1918))
 - Feature: Support for `ios` folder. [@robertohuertasm](https://github.com/robertohuertasm) in [#1917](https://github.com/vscode-icons/vscode-icons/pull/1917))
