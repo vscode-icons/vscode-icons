@@ -2387,6 +2387,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'pip',
       extensions: ['pipfile', 'pipfile.lock'],
+      languages: [languages.pip],
       filename: true,
       format: FileFormat.svg,
     },
