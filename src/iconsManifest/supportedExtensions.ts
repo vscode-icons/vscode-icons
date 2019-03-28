@@ -1497,6 +1497,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'husky',
+      extensions: ['.huskyrc'],
+      filenamesGlob: ['.huskyrc'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'icl',
       extensions: [],
       languages: [languages.icl],
