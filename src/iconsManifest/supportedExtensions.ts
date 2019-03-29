@@ -1368,7 +1368,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'greenkeeper',
       extensions: ['greenkeeper.json'],
-      languages: [],
+      filename: true,
       format: FileFormat.svg,
     },
     {
