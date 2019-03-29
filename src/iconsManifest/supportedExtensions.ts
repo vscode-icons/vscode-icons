@@ -1501,6 +1501,7 @@ export const extensions: IFileCollection = {
       extensions: ['.huskyrc'],
       filenamesGlob: ['.huskyrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
