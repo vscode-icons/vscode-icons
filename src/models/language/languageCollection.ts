@@ -43,6 +43,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dlang: ILanguage;
   doctex: ILanguage;
   dotenv: ILanguage;
+  dotjs: ILanguage;
   doxygen: ILanguage;
   drools: ILanguage;
   dylanlang: ILanguage;
