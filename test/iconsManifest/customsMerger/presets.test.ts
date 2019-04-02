@@ -84,7 +84,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         // Angular icons get enabled by PAD
         let icons = toggle(false, {
           apply: true,
-          projectName: Projects.angular,
+          project: Projects.angular,
           value: true,
         });
 
@@ -134,7 +134,7 @@ describe('CustomsMerger: toggle presets tests', function () {
           vsicons.presets,
           {
             apply: true,
-            projectName: Projects.angular,
+            project: Projects.angular,
             value: true,
           },
         ).files.supported.filter(file => regex.test(file.icon));
@@ -197,7 +197,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         // NestJS icons get enabled by PAD
         let icons = toggle(false, {
           apply: true,
-          projectName: Projects.nestjs,
+          project: Projects.nestjs,
           value: true,
         });
 
@@ -247,7 +247,7 @@ describe('CustomsMerger: toggle presets tests', function () {
           vsicons.presets,
           {
             apply: true,
-            projectName: Projects.nestjs,
+            project: Projects.nestjs,
             value: true,
           },
         ).files.supported.filter(file => regex.test(file.icon));

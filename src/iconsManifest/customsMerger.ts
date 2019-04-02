@@ -89,14 +89,14 @@ export class CustomsMerger {
       typeof projectDetectionResult === 'object' &&
       'value' in projectDetectionResult;
     const name = models.PresetNames[presetName];
-    const projectName = models.Projects[name];
+    const project = models.Projects[name];
     return hasProjectDetectionResult &&
-      projectDetectionResult.projectName === projectName
+      projectDetectionResult.project === project
       ? projectDetectionResult.value
       : presets[name] ||
           (!!affectedPresets &&
             !affectedPresets[name] &&
-            !ManifestReader.iconsDisabled(projectName));
+            !ManifestReader.iconsDisabled(project));
   }
 
   private static toggleProjectPreset(

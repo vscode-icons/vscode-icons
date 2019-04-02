@@ -37,5 +37,6 @@
   "nonNestDetected": "%extensionName%: NestJSプロジェクトではないと判断しました。NestJSアイコンを無効にするには「再読み込み」を選んでください。",
   "nestDetectedPresetFalse": "%extensionName%: NestJSプロジェクトと判断しましたが、'preset'設定が'false'に設定されています。全ての設定から'preset'設定を削除することを強く推奨します。「再読み込み」を選ぶとNestJSのアイコンは無効になります。",
   "nonNestDetectedPresetTrue": "%extensionName%: NestJSプロジェクトではないと判断しましたが、'preset'設定が'true'に設定されています。全ての設定から'preset'を削除することを強く推奨します。「再読み込み」を選ぶとNestJSのアイコンは有効になります。",
-  "projectDetectionReset": "プロジェクト検出設定をリセットします。"
+  "projectDetectionReset": "プロジェクト検出設定をリセットします。",
+  "conflictProjectsDetected": ""
 }

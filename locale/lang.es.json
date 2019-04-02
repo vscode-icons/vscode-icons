@@ -37,5 +37,6 @@
   "nonNestDetected": "%extensionName% ha detectado un proyecto no NestJS. Pulsar 'Reiniciar' para desactivar los iconos de NestJS.",
   "nestDetectedPresetFalse": "%extensionName% ha detectado un proyecto NestJS, pero el 'preset' está ajustado a 'false'. Se recomienda eliminar completamente dicho 'preset' de la configuración. Al seleccionar 'Reiniciar' se desactivarán los iconos de NestJS.",
   "nonNestDetectedPresetTrue": "%extensionName% ha detectado un proyecto no NestJS, pero el 'preset' está ajustado a 'true'. Se recomienda eliminar completamente dicho 'preset' de la configuración. Al seleccionar 'Reiniciar' se activarán los iconos de NestJS.",
-  "projectDetectionReset": "La detección de proyectos se va a restaurar a sus valores iniciales."
+  "projectDetectionReset": "La detección de proyectos se va a restaurar a sus valores iniciales.",
+  "conflictProjectsDetected": ""
 }

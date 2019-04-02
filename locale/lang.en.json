@@ -33,9 +33,10 @@
   "nonNgDetected": "%extensionName% has detected a non Angular project. Select 'Restart' to disable the Angular icons.",
   "ngDetectedPresetFalse": "%extensionName% has detected an Angular project, but the 'preset' setting is set to 'false'. It's highly recommended to remove the 'preset' from the settings entirely. Selecting 'Restart' will disable the Angular icons.",
   "nonNgDetectedPresetTrue": "%extensionName% has detected a non Angular project, but the 'preset' setting is set to 'true'. It's highly recommended to remove the 'preset' from the settings entirely. Selecting 'Restart' will enable the Angular icons.",
-  "nestDetected": "%extensionName% has detected an NestJS project. Select 'Restart' to enable the NestJS icons.",
+  "nestDetected": "%extensionName% has detected a NestJS project. Select 'Restart' to enable the NestJS icons.",
   "nonNestDetected": "%extensionName% has detected a non NestJS project. Select 'Restart' to disable the NestJS icons.",
   "nestDetectedPresetFalse": "%extensionName% has detected an NestJS project, but the 'preset' setting is set to 'false'. It's highly recommended to remove the 'preset' from the settings entirely. Selecting 'Restart' will disable the NestJS icons.",
   "nonNestDetectedPresetTrue": "%extensionName% has detected a non NestJS project, but the 'preset' setting is set to 'true'. It's highly recommended to remove the 'preset' from the settings entirely. Selecting 'Restart' will enable the NestJS icons.",
-  "projectDetectionReset": "Project Detection defaults will be reset."
+  "projectDetectionReset": "Project Detection defaults will be reset.",
+  "conflictProjectsDetected": "%extensionName% has detected conflicting project icons. Choose which project icons to use. Note: This action will set a preset in your workspace settings."
 }

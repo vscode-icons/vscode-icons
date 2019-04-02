@@ -156,8 +156,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   private showCustomizationMessage(
-    message: string | models.LangResourceKeys,
-    items: Array<string | models.LangResourceKeys>,
+    message: models.LangResourceKeyLike,
+    items: models.LangResourceKeyLike[],
     callback?: (...args: any[]) => void,
     cbArgs?: any[],
   ): Thenable<void> {
@@ -175,7 +175,7 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   private applyCustomizationCommand(
-    additionalTitles: Array<string | models.LangResourceKeys> = [],
+    additionalTitles: models.LangResourceKeyLike[] = [],
   ): void {
     this.showCustomizationMessage(
       `%s %s`,
@@ -318,10 +318,29 @@ export class ExtensionManager implements models.IExtensionManager {
       return Promise.resolve();
     }
 
+    const setPreset = (
+      project: models.Projects,
+      preset: models.PresetNames,
+    ) => {
+      cbArgs[0].project = project;
+      this.configManager.updatePreset(
+        models.PresetNames[preset],
+        true,
+        models.ConfigurationTarget.Workspace,
+      );
+      this.handleUpdatePreset(callback, cbArgs);
+    };
+
     this.callback = callback;
 
     let retVal: Thenable<void>;
     switch (btn) {
+      case models.ProjectNames.ng:
+        setPreset(models.Projects.angular, models.PresetNames.angular);
+        break;
+      case models.ProjectNames.nest:
+        setPreset(models.Projects.nestjs, models.PresetNames.nestjs);
+        break;
       case models.LangResourceKeys.dontShowThis: {
         this.doReload = false;
         if (!callback) {
@@ -395,17 +414,36 @@ export class ExtensionManager implements models.IExtensionManager {
     if (!projectDetectionResult || !projectDetectionResult.apply) {
       return;
     }
-    if (this.configManager.vsicons.projectDetection.autoReload) {
+
+    if (
+      !(
+        projectDetectionResult.conflictingProjects &&
+        projectDetectionResult.conflictingProjects.length
+      ) &&
+      this.configManager.vsicons.projectDetection.autoReload
+    ) {
       this.executeAndReload(this.applyCustomization, [projectDetectionResult]);
       return;
     }
+
+    const items =
+      projectDetectionResult.conflictingProjects &&
+      projectDetectionResult.conflictingProjects.length
+        ? ([
+            models.ProjectNames[projectDetectionResult.project],
+            ...projectDetectionResult.conflictingProjects.map(
+              cp => models.ProjectNames[cp],
+            ),
+          ] as string[])
+        : [
+            models.LangResourceKeys.reload,
+            models.LangResourceKeys.autoReload,
+            models.LangResourceKeys.disableDetect,
+          ];
+
     this.showCustomizationMessage(
       projectDetectionResult.langResourceKey,
-      [
-        models.LangResourceKeys.reload,
-        models.LangResourceKeys.autoReload,
-        models.LangResourceKeys.disableDetect,
-      ],
+      items,
       this.applyCustomization,
       [projectDetectionResult],
     );

@@ -3,17 +3,17 @@
 import { expect } from 'chai';
 import * as fs from 'fs';
 import * as sinon from 'sinon';
-import {
-  IVSCodeManager,
-  IProjectAutoDetectionManager,
-  Projects,
-  IConfigManager,
-} from '../../src/models';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ManifestReader } from '../../src/iconsManifest';
+import {
+  IConfigManager,
+  IProjectAutoDetectionManager,
+  IVSCodeManager,
+  Projects,
+} from '../../src/models';
+import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { Utils } from '../../src/utils';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
 describe('ProjectAutoDetectionManager: Angular project tests', function () {
@@ -116,20 +116,21 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.returns(true);
 
           return padManager.detectProjects([Projects.angular]).then(res => {
-            expect(readFileStub.calledOnceWithExactly(packageJsonPath, 'utf8'))
-              .to.be.true;
-            expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+            expect(readFileStub.calledWithExactly(packageJsonPath, 'utf8')).to
+              .be.true;
+            expect(Reflect.ownKeys(res)).to.have.lengthOf(5);
             expect(res)
               .to.be.an('object')
               .and.to.have.all.keys(
                 'apply',
-                'projectName',
+                'project',
+                'conflictingProjects',
                 'langResourceKey',
                 'value',
               );
             expect(res).ownProperty('apply').to.be.true;
             expect(res)
-              .ownProperty('projectName')
+              .ownProperty('project')
               .to.equal(Projects.angular);
             expect(res).ownProperty('value').to.be.true;
           });
@@ -143,27 +144,28 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.returns(true);
 
           return padManager.detectProjects([Projects.angular]).then(res => {
-            expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to.be
-              .true;
-            expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+            expect(readFileStub.calledWithExactly(packageJsonPath, 'utf8')).to
+              .be.true;
+            expect(Reflect.ownKeys(res)).to.have.lengthOf(5);
             expect(res)
               .to.be.an('object')
               .and.to.have.all.keys(
                 'apply',
-                'projectName',
+                'project',
+                'conflictingProjects',
                 'langResourceKey',
                 'value',
               );
             expect(res).ownProperty('apply').to.be.true;
             expect(res)
-              .ownProperty('projectName')
+              .ownProperty('project')
               .to.equal(Projects.angular);
             expect(res).ownProperty('value').to.be.true;
           });
         });
       });
 
-      context(`detects an non Angular project from`, function () {
+      context(`detects a non Angular project from`, function () {
         beforeEach(function () {
           parseJSONStub.returns({ dependencies: { vscode: '' } });
         });
@@ -274,8 +276,8 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
         });
       });
 
-      context('enables the Angular icons when', function () {
-        context(`Angular icons are disabled and the workspace is`, function () {
+      context('the icons get enabled when', function () {
+        context(`the icons are disabled and the workspace is`, function () {
           context('an Angular project and', function () {
             beforeEach(function () {
               parseJSONStub.returns({
@@ -283,49 +285,51 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               });
             });
 
-            it(`Angular preset is 'true'`, function () {
+            it(`preset is 'true'`, function () {
               getPresetStub.returns({ workspaceValue: true });
               iconsDisabledStub.returns(true);
 
               return padManager.detectProjects([Projects.angular]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
-                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(5);
                 expect(res)
                   .to.be.an('object')
                   .and.to.have.all.keys(
                     'apply',
-                    'projectName',
+                    'project',
+                    'conflictingProjects',
                     'langResourceKey',
                     'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
-                  .ownProperty('projectName')
+                  .ownProperty('project')
                   .to.equal(Projects.angular);
                 expect(res).ownProperty('value').to.be.true;
               });
             });
 
-            it(`Angular preset is 'undefined'`, function () {
+            it(`preset is 'undefined'`, function () {
               getPresetStub.returns({ workspaceValue: undefined });
               iconsDisabledStub.returns(true);
 
               return padManager.detectProjects([Projects.angular]).then(res => {
-                expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
-                  .be.true;
-                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(readFileStub.calledWithExactly(packageJsonPath, 'utf8'))
+                  .to.be.true;
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(5);
                 expect(res)
                   .to.be.an('object')
                   .and.to.have.all.keys(
                     'apply',
-                    'projectName',
+                    'project',
+                    'conflictingProjects',
                     'langResourceKey',
                     'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
-                  .ownProperty('projectName')
+                  .ownProperty('project')
                   .to.equal(Projects.angular);
                 expect(res).ownProperty('value').to.be.true;
               });
@@ -337,25 +341,26 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               parseJSONStub.returns({ dependencies: { vscode: '0.0.0' } });
             });
 
-            it(`Angular preset is 'true'`, function () {
+            it(`preset is 'true'`, function () {
               getPresetStub.returns({ workspaceValue: true });
               iconsDisabledStub.returns(true);
 
               return padManager.detectProjects([Projects.angular]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
-                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(5);
                 expect(res)
                   .to.be.an('object')
                   .and.to.have.all.keys(
                     'apply',
-                    'projectName',
+                    'project',
+                    'conflictingProjects',
                     'langResourceKey',
                     'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
-                  .ownProperty('projectName')
+                  .ownProperty('project')
                   .to.equal(Projects.angular);
                 expect(res).ownProperty('value').to.be.true;
               });
@@ -364,56 +369,58 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
         });
       });
 
-      context('disables the Angular icons when', function () {
-        context('Angular icons are enabled and the workspace is', function () {
+      context('the icons get disabled when', function () {
+        context('the icons are enabled and the workspace is', function () {
           context('not an Angular project and', function () {
             beforeEach(function () {
               parseJSONStub.returns({ dependencies: { vscode: '0.0.0' } });
             });
 
-            it(`Angular preset is 'false'`, function () {
+            it(`preset is 'false'`, function () {
               getPresetStub.returns({ workspaceValue: false });
               iconsDisabledStub.returns(false);
 
               return padManager.detectProjects([Projects.angular]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
-                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(5);
                 expect(res)
                   .to.be.an('object')
                   .and.to.have.all.keys(
                     'apply',
-                    'projectName',
+                    'project',
+                    'conflictingProjects',
                     'langResourceKey',
                     'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
-                  .ownProperty('projectName')
+                  .ownProperty('project')
                   .to.equal(Projects.angular);
                 expect(res).ownProperty('value').to.be.false;
               });
             });
 
-            it(`Angular preset is 'undefined'`, function () {
+            it(`preset is 'undefined'`, function () {
               getPresetStub.returns({ workspaceValue: undefined });
               iconsDisabledStub.returns(false);
 
               return padManager.detectProjects([Projects.angular]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
-                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(5);
                 expect(res)
                   .to.be.an('object')
                   .and.to.have.all.keys(
                     'apply',
-                    'projectName',
+                    'project',
+                    'conflictingProjects',
                     'langResourceKey',
                     'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
-                  .ownProperty('projectName')
+                  .ownProperty('project')
                   .to.equal(Projects.angular);
                 expect(res).ownProperty('value').to.be.false;
               });
@@ -427,25 +434,26 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               });
             });
 
-            it(`Angular preset is 'false'`, function () {
+            it(`preset is 'false'`, function () {
               getPresetStub.returns({ workspaceValue: false });
               iconsDisabledStub.returns(false);
 
               return padManager.detectProjects([Projects.angular]).then(res => {
                 expect(readFileStub.calledOnceWith(packageJsonPath, 'utf8')).to
                   .be.true;
-                expect(Reflect.ownKeys(res)).to.have.lengthOf(4);
+                expect(Reflect.ownKeys(res)).to.have.lengthOf(5);
                 expect(res)
                   .to.be.an('object')
                   .and.to.have.all.keys(
                     'apply',
-                    'projectName',
+                    'project',
+                    'conflictingProjects',
                     'langResourceKey',
                     'value',
                   );
                 expect(res).ownProperty('apply').to.be.true;
                 expect(res)
-                  .ownProperty('projectName')
+                  .ownProperty('project')
                   .to.equal(Projects.angular);
                 expect(res).ownProperty('value').to.be.false;
               });
@@ -454,8 +462,8 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
         });
       });
 
-      context('does not toggle the Angular icons when', function () {
-        context('Angular icons are enabled and the workspace is', function () {
+      context('does not toggle the icons when', function () {
+        context('the icons are enabled and the workspace is', function () {
           beforeEach(function () {
             iconsDisabledStub.returns(false);
           });
@@ -467,7 +475,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               });
             });
 
-            it(`Angular preset is 'true'`, function () {
+            it(`preset is 'true'`, function () {
               getPresetStub.returns({ workspaceValue: true });
 
               return padManager.detectProjects([Projects.angular]).then(res => {
@@ -480,7 +488,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               });
             });
 
-            it(`Angular preset is 'undefined'`, function () {
+            it(`preset is 'undefined'`, function () {
               getPresetStub.returns({ workspaceValue: undefined });
 
               return padManager.detectProjects([Projects.angular]).then(res => {
@@ -500,7 +508,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               parseJSONStub.returns({ dependencies: { vscode: '0.0.0' } });
             });
 
-            it(`Angular preset is 'true'`, function () {
+            it(`preset is 'true'`, function () {
               getPresetStub.returns({ workspaceValue: true });
 
               return padManager.detectProjects([Projects.angular]).then(res => {
@@ -515,7 +523,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           });
         });
 
-        context('Angular icons are disabled and the workspace is', function () {
+        context('the icons are disabled and the workspace is', function () {
           beforeEach(function () {
             iconsDisabledStub.returns(true);
           });
@@ -525,7 +533,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               parseJSONStub.returns({ dependencies: { vscode: '0.0.0' } });
             });
 
-            it(`Angular preset is 'false'`, function () {
+            it(`preset is 'false'`, function () {
               getPresetStub.returns({ workspaceValue: false });
 
               return padManager.detectProjects([Projects.angular]).then(res => {
@@ -538,7 +546,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               });
             });
 
-            it(`Angular preset is 'undefined'`, function () {
+            it(`preset is 'undefined'`, function () {
               getPresetStub.returns({ workspaceValue: undefined });
 
               return padManager.detectProjects([Projects.angular]).then(res => {
@@ -560,7 +568,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               });
             });
 
-            it(`Angular preset is 'false'`, function () {
+            it(`preset is 'false'`, function () {
               getPresetStub.returns({ workspaceValue: false });
 
               return padManager.detectProjects([Projects.angular]).then(res => {
@@ -571,6 +579,33 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
                   .and.to.have.all.keys('apply')
                   .and.ownProperty('apply').to.be.false;
               });
+            });
+          });
+        });
+
+        context('conflicting project icons are enabled and', function () {
+          it('its preset is explicitly set', function () {
+            parseJSONStub.returns({
+              dependencies: {
+                '@angular/core': '1.0.0',
+                '@nestjs/core': '1.0.0',
+              },
+            });
+            getPresetStub
+              .onSecondCall()
+              .returns({ workspaceValue: true })
+              .returns({ workspaceValue: undefined });
+            iconsDisabledStub
+              .onSecondCall()
+              .returns(false)
+              .returns(true);
+
+            return padManager.detectProjects([Projects.angular]).then(res => {
+              expect(Reflect.ownKeys(res)).to.have.lengthOf(1);
+              expect(res)
+                .to.be.an('object')
+                .and.to.have.all.keys('apply')
+                .and.ownProperty('apply').to.be.false;
             });
           });
         });

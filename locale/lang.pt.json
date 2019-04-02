@@ -37,5 +37,6 @@
   "nonNestDetected": "%extensionName% detectou um projeto não NestJS. Selecione 'Reiniciar' para desativar os ícones de NestJS.",
   "nestDetectedPresetFalse": "",
   "nonNestDetectedPresetTrue": "",
-  "projectDetectionReset": "Padrões de detecção de projeto serão reinicializados."
+  "projectDetectionReset": "Padrões de detecção de projeto serão reinicializados.",
+  "conflictProjectsDetected": ""
 }
