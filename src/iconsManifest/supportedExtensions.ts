@@ -894,6 +894,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'csscomb',
+      extensions: ['.csscomb.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'csslint',
       extensions: ['.csslintrc'],
       filename: true,
