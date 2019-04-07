@@ -2,7 +2,7 @@
   "command.activateIcons.title": "Ativar ícones VSCode",
   "command.regenerateIcons.title": "Aplicar a personalização de ícones",
   "command.ngPreset.title": "Alternar predefinições de Angular (nível de espaço de trabalho)",
-  "command.nestPreset.title": "Alternar predefinições de Angular (nível de espaço de trabalho)",
+  "command.nestPreset.title": "Alternar predefinições de NestJS (nível de espaço de trabalho)",
   "command.jsPreset.title": "Alternar predefinições oficiais de JS (nível de usuário)",
   "command.tsPreset.title": "Alternar predefinições oficiais de TS (nível de usuário)",
   "command.jsonPreset.title": "Alternar predefinições oficiais de JSON (nível de usuário)",
