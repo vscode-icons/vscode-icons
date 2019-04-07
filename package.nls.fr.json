@@ -2,7 +2,7 @@
   "command.activateIcons.title": "Activer VSCode Icons.",
   "command.regenerateIcons.title": "Appliquer La Personnalisation d'Icônes.",
   "command.ngPreset.title": "Activer\/Désactiver Le Preset Angular. (Configuration de l'environement de travail)",
-  "command.nestPreset.title": "Activer\/Désactiver Le Preset NestJS. (Configuration de l'environement de travail)",
+  "command.nestPreset.title": "Activer\\\/Désactiver Le Preset NestJS. (Configuration de l'environement de travail)",
   "command.jsPreset.title": "Activer\/Désactiver Le Preset Officiel JS. (Configuration de l'utilisateur seulement)",
   "command.tsPreset.title": "Activer\/Désactiver Le Preset Officiel TS. (Configuration de l'utilisateur seulement)",
   "command.jsonPreset.title": "Activer\/Désactiver Le Preset Officiel JSON. (Configuration de l'utilisateur seulement)",
