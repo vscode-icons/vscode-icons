@@ -35,7 +35,7 @@
   "nonNgDetectedPresetTrue": "%extensionName% ha rilevato un progetto non Angular ma l'impostazione 'preset' è impostata su 'true'. È altamente raccomandato rimuovere completamente l'impostazione 'preset'. Selezionando 'Riavvia' le icone di Angular verranno abilitate.",
   "nestDetected": "%extensionName% ha rilevato un progetto NestJS. Seleziona 'Riavvia' per abilitare le icone NestJS.",
   "nonNestDetected": "%extensionName% ha rilevato un progetto non NestJS. Seleziona 'Riavvia' per disabilitare le icone NestJS.",
-  "nestDetectedPresetFalse": "%extensionName% ha rilevato un progetto NestJS ma l'impostazione 'preset' è impostata su 'false'. È altamente raccomandato rimuovere completamente l'impostazione 'preset'. Selezionando 'Riavvia' le icone di NestJS verranno disabilitate.",
+  "nestDetectedPresetFalse": "",
   "nonNestDetectedPresetTrue": "%extensionName% ha rilevato un progetto non NestJS ma l'impostazione 'preset' è impostata su 'true'. È altamente raccomandato rimuovere completamente l'impostazione 'preset'. Selezionando 'Riavvia' le icone di NestJS verranno abilitate.",
   "projectDetectionReset": "Impostazioni Rilevazione Progetto Predefinite saranno ripristinate.",
   "conflictProjectsDetected": "%extensionName% ha individuato conflitti tra le icone di progetto. Scegli quali icone di progetto usare. Nota: Questa azione inserirà una pre impostazione nelle tua impostazioni dell'area di lavoro."
