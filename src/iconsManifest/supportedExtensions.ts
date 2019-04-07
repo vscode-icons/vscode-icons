@@ -1391,6 +1391,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'greenkeeper',
+      extensions: ['greenkeeper.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gridsome',
       extensions: [],
       filenamesGlob: ['gridsome.config'],
