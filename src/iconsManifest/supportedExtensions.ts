@@ -894,6 +894,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'csscomb',
+      extensions: ['.csscomb.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'csslint',
       extensions: ['.csslintrc'],
       filename: true,
@@ -1042,6 +1048,12 @@ export const extensions: IFileCollection = {
       icon: 'drools',
       extensions: [],
       languages: [languages.drools],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotjs',
+      extensions: [],
+      languages: [languages.dotjs],
       format: FileFormat.svg,
     },
     {
@@ -1316,6 +1328,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gatsby',
+      extensions: [],
+      filenamesGlob: [
+        'gatsby-config',
+        'gatsby-node',
+        'gatsby-browser',
+        'gatsby-ssr',
+      ],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gitlab',
       extensions: ['.gitlab-ci.yml'],
       filename: true,
@@ -1473,6 +1498,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hjson',
+      extensions: [],
+      languages: [languages.hjson],
+      format: FileFormat.svg,
+      light: true,
+    },
+    {
       icon: 'hlsl',
       extensions: [],
       languages: [languages.hlsl],
@@ -1500,6 +1532,14 @@ export const extensions: IFileCollection = {
       icon: 'http',
       extensions: [],
       languages: [languages.http],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'husky',
+      extensions: ['.huskyrc'],
+      filenamesGlob: ['.huskyrc'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -2484,6 +2524,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'precommit',
+      extensions: ['.pre-commit-config.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'prettier',
       extensions: ['.prettierrc', '.prettierignore'],
       light: true,
@@ -2789,6 +2835,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'serverless',
+      extensions: ['serverless.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sequelize',
       extensions: ['.sequelizerc'],
       filename: true,
@@ -2843,6 +2895,12 @@ export const extensions: IFileCollection = {
       icon: 'smarty',
       extensions: [],
       languages: [languages.smarty],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'snapcraft',
+      extensions: ['snapcraft.yaml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
