@@ -30,13 +30,13 @@
   "hideExplorerArrowsPresetDisabled": "Visibilidade de setas de pasta do Explorador será desativada.",
   "restart": "Selecione 'Reiniciar' para que as alterações tenham efeito.",
   "ngDetected": "%extensionName% detectou um projeto Angular. Selecione 'Reiniciar' para habilitar os ícones de Angular.",
-  "nonNgDetected": "%extensionName% detectou um projeto não Angular. Selecione 'Reiniciar' para desativar os ícones de Angular.",
-  "ngDetectedPresetFalse": "",
-  "nonNgDetectedPresetTrue": "",
+  "nonNgDetected": "%extensionName% detectou um projeto não Angular. Selecione 'Reiniciar' para desactivar os ícones de Angular.",
+  "ngDetectedPresetFalse": "%extensionName% detectou um projeto Angular, mas a configuração 'Predefinição' é definida como 'false'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' irá desactivar os ícones de Angular.",
+  "nonNgDetectedPresetTrue": "%extensionName% detectou um projeto não Angular, mas a configuração 'Predefinição' é definida como 'true'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' abilitará os ícones de Angular.",
   "nestDetected": "%extensionName% detectou um projeto NestJS. Selecione 'Reiniciar' para habilitar os ícones de NestJS.",
-  "nonNestDetected": "%extensionName% detectou um projeto não NestJS. Selecione 'Reiniciar' para desativar os ícones de NestJS.",
-  "nestDetectedPresetFalse": "",
-  "nonNestDetectedPresetTrue": "",
+  "nonNestDetected": "%extensionName% detectou um projeto não NestJS. Selecione 'Reiniciar' para desactivar os ícones de NestJS.",
+  "nestDetectedPresetFalse": "%extensionName% detectou um projeto NestJS, mas a configuração 'Predefinição' é definida como 'false'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' irá desactivar os ícones de NestJS.",
+  "nonNestDetectedPresetTrue": "%extensionName% detectou um projeto não NestJS, mas a configuração 'Predefinição' é definida como 'true'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' abilitará os ícones de NestJS.",
   "projectDetectionReset": "Padrões de detecção de projeto serão reinicializados.",
-  "conflictProjectsDetected": ""
+  "conflictProjectsDetected": "%extensionName% detectou ícones do projeto conflitantes. Escolha quais projeto ícones para usar. Nota: Esta ação irá criar uma predefinição nas configurações do seu espaço de trabalho."
 }
