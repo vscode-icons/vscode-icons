@@ -35,7 +35,7 @@
   "nonNgDetectedPresetTrue": "%extensionName% обнаружил проект отличный от Angular, но параметру 'preset' установлено значение 'true'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' включит значки Angular.",
   "nestDetected": "%extensionName% обнаружил проект NestJS. Нажмите 'Перезапустить' чтобы включить значки NestJS.",
   "nonNestDetected": "%extensionName% обнаружил проект отличный от NestJS. Нажмите 'Перезапустить' чтобы отключить значки NestJS.",
-  "nestDetectedPresetFalse": "%extensionName% обнаружил проект NestJS, но параметру 'preset' установлено значение 'false'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' отключит значки NestJS.",
+  "nestDetectedPresetFalse": "",
   "nonNestDetectedPresetTrue": "%extensionName% обнаружил проект отличный от NestJS, но параметру 'preset' установлено значение 'true'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' включит значки NestJS.",
   "projectDetectionReset": "Определение проекта будет установлено по-умолчанию.",
   "conflictProjectsDetected": ""
