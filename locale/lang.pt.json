@@ -32,11 +32,11 @@
   "ngDetected": "%extensionName% detectou um projeto Angular. Selecione 'Reiniciar' para habilitar os ícones de Angular.",
   "nonNgDetected": "%extensionName% detectou um projeto não Angular. Selecione 'Reiniciar' para desativar os ícones de Angular.",
   "ngDetectedPresetFalse": "%extensionName% detectou um projeto de Angular, mas a configuração 'Predefinição' é definida como 'false'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' irá desativar os ícones Angular.",
-  "nonNgDetectedPresetTrue": "",
-  "nestDetected": "",
+  "nonNgDetectedPresetTrue": "%extensionName% detectou um projeto não Angular, mas a configuração 'Predefinição' é definida como 'true'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' abilitará os ícones Angular.",
+  "nestDetected": "%extensionName% detectou um projeto de NestJS. Selecione 'Reiniciar' para habilitar os ícones NestJS.",
   "nonNestDetected": "%extensionName% detectou um projeto não NestJS. Selecione 'Reiniciar' para desactivar os ícones NestJS.",
   "nestDetectedPresetFalse": "%extensionName% detectou um projeto de NestJS, mas a configuração 'Predefinição' é definida como 'false'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' irá desativar os ícones NestJS.",
   "nonNestDetectedPresetTrue": "%extensionName% detectou um projeto não NestJS, mas a configuração 'Predefinição' é definida como 'true'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' abilitará os ícones NestJS.",
   "projectDetectionReset": "Padrões de detecção de projeto serão reinicializados.",
-  "conflictProjectsDetected": ""
+  "conflictProjectsDetected": "%extensionName% detectou ícones do projeto conflitantes. Escolha quais projeto ícones para usar. Nota: Esta ação irá criar uma predefinição nas configurações do seu espaço de trabalho."
 }
