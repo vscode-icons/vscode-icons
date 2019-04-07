@@ -35,7 +35,7 @@
   "nonNgDetectedPresetTrue": "%extensionName% a détecter un projet non Angular, mais le paramètre 'preset' est configuré à 'true'. Il est fortement recommandé de supprimer 'preset' entièrement des paramètres. Sélectionner 'Redémarrer' va activer les icônes Angular.",
   "nestDetected": "%extensionName% a détécté un projet NestJS. Sélectionner 'Redémarrer' pour activer les icônes NestJS.",
   "nonNestDetected": "%extensionName% a détecté un projet non NestJS. Sélectionner 'Redémarrer' pour désactiver les icônes NestJS.",
-  "nestDetectedPresetFalse": "%extensionName% a détecter un projet NestJS, mais le paramètre 'preset' est configuré à 'false'. Il est fortement recommandé de supprimer 'preset' entièrement des paramètres. Sélectionner 'Redémarrer' va désactiver les icônes NestJS.",
+  "nestDetectedPresetFalse": "",
   "nonNestDetectedPresetTrue": "%extensionName% a détecter un projet non NestJS, mais le paramètre 'preset' est configuré à 'true'. Il est fortement recommandé de supprimer 'preset' entièrement des paramètres. Sélectionner 'Redémarrer' va activer les icônes NestJS.",
   "projectDetectionReset": "La détection de projet va être réinitialisé.",
   "conflictProjectsDetected": ""
