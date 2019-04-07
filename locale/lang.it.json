@@ -38,5 +38,5 @@
   "nestDetectedPresetFalse": "%extensionName% ha rilevato un progetto NestJS ma l'impostazione 'preset' è impostata su 'false'. È altamente raccomandato rimuovere completamente l'impostazione 'preset'. Selezionando 'Riavvia' le icone di NestJS verranno disabilitate.",
   "nonNestDetectedPresetTrue": "%extensionName% ha rilevato un progetto non NestJS ma l'impostazione 'preset' è impostata su 'true'. È altamente raccomandato rimuovere completamente l'impostazione 'preset'. Selezionando 'Riavvia' le icone di NestJS verranno abilitate.",
   "projectDetectionReset": "Impostazioni Rilevazione Progetto Predefinite saranno ripristinate.",
-  "conflictProjectsDetected": ""
+  "conflictProjectsDetected": "%extensionName% ha individuato conflitti tra le icone di progetto. Scegli quali icone di progetto usare. Nota: Questa azione inserirà una pre impostazione nelle tua impostazioni dell'area di lavoro."
 }
