@@ -35,7 +35,7 @@
   "nonNgDetectedPresetTrue": "%extensionName% hat ein Nicht-Angular-Projekt erkannt, allerdings ist die 'preset'-Einstellung auf 'true' gesetzt. Es wird wärmstens empfohlen, die 'preset'-Einstellung komplett von den Einstellungen zu entfernen. Wenn Sie auf 'Neu starten' drücken, werden die Angular-Icons aktiviert.",
   "nestDetected": "%extensionName% hat ein NestJS-Projekt erkannt. Drücken Sie 'Neu starten', damit die NestJS Icons übernommen werden.",
   "nonNestDetected": "%extensionName% hat ein Nicht-NestJS-Projekt erkannt. Drücken Sie 'Neu starten', damit die NestJS Icons deaktiviert werden.",
-  "nestDetectedPresetFalse": "%extensionName% hat ein NestJS-Projekt erkannt, allerdings ist die 'preset'-Einstellung auf 'false' gesetzt. Es wird wärmstens empfohlen, die 'preset'-Einstellung komplett von den Einstellungen zu entfernen. Wenn Sie auf 'Neu starten' drücken, werden die NestJS-Icons deaktiviert.",
+  "nestDetectedPresetFalse": "",
   "nonNestDetectedPresetTrue": "%extensionName% hat ein Nicht-NestJS-Projekt erkannt, allerdings ist die 'preset'-Einstellung auf 'true' gesetzt. Es wird wärmstens empfohlen, die 'preset'-Einstellung komplett von den Einstellungen zu entfernen. Wenn Sie auf 'Neu starten' drücken, werden die NestJS-Icons aktiviert.",
   "projectDetectionReset": "Projekterkennung wird zurückgesetzt.",
   "conflictProjectsDetected": "%extensionName% hat widersprüchliche Projekte erkannt. Wählen Sie aus, welche Projekticons benutzt werden sollen. Hinweis: Diese Aktion wird in den Arbeitsbereichseinstellungen gespeichert."
