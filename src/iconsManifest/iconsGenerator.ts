@@ -51,11 +51,9 @@ export class IconsGenerator implements models.IIconsGenerator {
       projectDetectionResult,
       this.affectedPresets,
     );
-    const customIconsDirPath =
-      vsiconsConfig.customIconFolderPath &&
-      this.configManager.getCustomIconsDirPath(
-        vsiconsConfig.customIconFolderPath,
-      );
+    const customIconsDirPath = this.configManager.getCustomIconsDirPath(
+      vsiconsConfig.customIconFolderPath,
+    );
     const iconsManifest = ManifestBuilder.buildManifest(
       merged.files,
       merged.folders,
