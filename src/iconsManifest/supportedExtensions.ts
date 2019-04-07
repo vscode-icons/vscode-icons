@@ -1051,6 +1051,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dotjs',
+      extensions: [],
+      languages: [languages.dotjs],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dustjs',
       extensions: [],
       languages: [languages.dustjs],
