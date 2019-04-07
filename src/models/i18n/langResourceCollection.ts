@@ -9,7 +9,9 @@ export interface ILangResourceCollection extends ILangResourceCollectionLike {
   it?: ILangResource;
   ja?: ILangResource;
   ko?: ILangResource;
+  'pt-br'?: ILangResource;
   ru?: ILangResource;
+  tr?: ILangResource;
   'zh-cn'?: ILangResource;
   'zh-tw'?: ILangResource;
 }
