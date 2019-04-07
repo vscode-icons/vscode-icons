@@ -1316,6 +1316,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gatsby',
+      extensions: [],
+      filenamesGlob: [
+        'gatsby-config',
+        'gatsby-node',
+        'gatsby-browser',
+        'gatsby-ssr',
+      ],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gitlab',
       extensions: ['.gitlab-ci.yml'],
       filename: true,
@@ -2475,6 +2488,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'powershell_psd',
       extensions: ['psd1'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'precommit',
+      extensions: ['.pre-commit-config.yaml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
