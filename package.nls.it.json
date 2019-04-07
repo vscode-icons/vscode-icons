@@ -23,7 +23,7 @@
   "configuration.presets.jsonOfficial.description": "Se 'true', l'estensione userà l'icona ufficiale JSON.",
   "configuration.presets.hideFolders.description": "Se 'true', tutte le icone delle cartelle saranno nascoste.",
   "configuration.presets.foldersAllDefaultIcon.description": "Se 'true', tutte le cartelle avranno l'icona predefinita.",
-  "configuration.presets.hideExplorerArrows.description": "Se impostato su true, l'estensione nasconderà le frecce delle cartelle nell'Explorer.",
+  "configuration.presets.hideExplorerArrows.description": "Se impostato su true, l'estensione nasconderà le frecce delle cartelle nell 'Explorer.",
   "configuration.customIconFolderPath.description": "Il percorso fisico alla cartella padre, dove la cartella delle icone personalizzate risiede sulla macchina locale.",
   "configuration.associations.files.description": "Queste associazioni personalizzate sovrascriveranno le associazioni delle icone per file predefinite.",
   "configuration.associations.folders.description": "Queste associazioni personalizzate sovrascriveranno le associazioni delle icone per cartelle predefinite.",
