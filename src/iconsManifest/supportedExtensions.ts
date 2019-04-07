@@ -502,7 +502,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'azurepipelines',
-      extensions: ['azure-pipelines.yml'],
+      extensions: ['azure-pipelines.yml', '.vsts-ci.yml'],
       filename: true,
       languages: [languages.azurepipelines],
       format: FileFormat.svg,
