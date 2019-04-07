@@ -21,7 +21,7 @@
   "configuration.presets.jsOfficial.description": "'true' olarak ayarlanırsa, uzantıda resmi JS simgesini kullanır.",
   "configuration.presets.tsOfficial.description": "'true' olarak ayarlanırsa, uzantıda resmi TS simgesini kullanır.",
   "configuration.presets.jsonOfficial.description": "'true' olarak ayarlanırsa, uzantıda resmi JSON simgesini kullanır.",
-  "configuration.presets.hideFolders.description": "True olarak ayarlanırsa, bütün dosyalar gizlenir.",
+  "configuration.presets.hideFolders.description": "'true' olarak ayarlanırsa, bütün dosyalar gizlenir.",
   "configuration.presets.foldersAllDefaultIcon.description": "'true' olarak ayarlanırsa, tüm klasörler varsayılan klasör simgesine sahip olacaktır.",
   "configuration.presets.hideExplorerArrows.description": "'true' olarak ayarlanırsa, uzantı 'Explorer' içindeki klasör oklarını gizler.",
   "configuration.customIconFolderPath.description": "Özel simgeler klasörünün yerel makinenizde bulunduğu üst klasörün fiziksel yolu.",
