@@ -1,13 +1,13 @@
 files:
   - source: package.nls.json
-    translation: /package.nls.%two_letters_code%.json
+    translation: /package.nls.%two_letters_code%.%file_extension%
     languages_mapping:
       two_letters_code:
         zh-CN: zh-cn
         zh-TW: zh-tw
         pt: pt-br
   - source: /locale/lang.en.json
-    translation: /locale/lang.%two_letters_code%.json
+    translation: /locale/lang.%two_letters_code%.%file_extension%
     languages_mapping:
       two_letters_code:
         zh-CN: zh-cn
