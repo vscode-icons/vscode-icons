@@ -22,7 +22,7 @@
   "configuration.presets.tsOfficial.description": "如果设置成'true'，插件会自动使用官方 TS 图标",
   "configuration.presets.jsonOfficial.description": "如果设置成'true'，插件会自动使用官方 JSON 图标",
   "configuration.presets.hideFolders.description": "如果设置成'true'，所有文件夹会隐藏",
-  "configuration.presets.foldersAllDefaultIcon.description": "如果设置成'true'，所有文件夹会隐藏",
+  "configuration.presets.foldersAllDefaultIcon.description": "如果设置成'true'，所有文件夹会恢复成默认图标",
   "configuration.presets.hideExplorerArrows.description": "如果设置成'true'，此扩展会隐藏在“资源管理器”中的文件夹箭头",
   "configuration.customIconFolderPath.description": "指向位于您的计算机上含自定义图标的文件夹的父文件夹的物理路径",
   "configuration.associations.files.description": "这些自定义设置会覆盖掉系统默认的文件图标设置",
