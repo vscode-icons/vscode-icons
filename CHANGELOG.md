@@ -1,5 +1,23 @@
 # Change Log
 
+## 8.5.0 (April 7, 2019)
+
+- Enhancement: Added new translations and fixed old ones. [@JimiC](https://github.com/JimiC) in [#1956](https://github.com/vscode-icons/vscode-icons/pull/1956))
+- Feature: Support for `Portuguese Brazil` and `Turkish`. [@JimiC](https://github.com/JimiC) in [#1955](https://github.com/vscode-icons/vscode-icons/pull/1955))
+- Fix: Fixed path search to custom icons folder. [@JimiC](https://github.com/JimiC) in [#1954](https://github.com/vscode-icons/vscode-icons/pull/1954))
+- Fix: Corrected grammar and syntax error in some extension messages. [@JimiC](https://github.com/JimiC) in [#1953](https://github.com/vscode-icons/vscode-icons/pull/1953))
+- Feature: Support for old `vsts-ci` extension. [@robertohuertasm](https://github.com/robertohuertasm) in [#1948](https://github.com/vscode-icons/vscode-icons/pull/1948))
+- Feature: Support for `gatsby`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1947](https://github.com/vscode-icons/vscode-icons/pull/1947))
+- Feature: Support for `precommit`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1946](https://github.com/vscode-icons/vscode-icons/pull/1946))
+- Feature: Support for `snapcraft`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1945](https://github.com/vscode-icons/vscode-icons/pull/1945))
+- Feature: Support for `serverless`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1944](https://github.com/vscode-icons/vscode-icons/pull/1944))
+- Feature: Support for `csscomb`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1943](https://github.com/vscode-icons/vscode-icons/pull/1943))
+- Feature: Added ability to resolved conflicting project icons. [@JimiC](https://github.com/JimiC) in [#1940](https://github.com/vscode-icons/vscode-icons/pull/1940))
+- Feature: Support for `hjson`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1935](https://github.com/vscode-icons/vscode-icons/pull/1935))
+- Feature: Support for `dotjs`. [@KingDarBoja](https://github.com/KingDarBoja) in [#1934](https://github.com/vscode-icons/vscode-icons/pull/1934))
+- Feature: Support for `Husky`. [@JimiC](https://github.com/JimiC) in [#1931](https://github.com/vscode-icons/vscode-icons/pull/1931))
+- Feature: Support for `GreenKeeper`. [@JimiC](https://github.com/JimiC) in [#1930](https://github.com/vscode-icons/vscode-icons/pull/1930))
+
 ## 8.4.0 (March 24, 2019)
 
 - Feature: Support for `pip-requirements` language id. [@JimiC](https://github.com/JimiC) in [#1924](https://github.com/vscode-icons/vscode-icons/pull/1924))
