@@ -58,25 +58,29 @@ export class ProjectAutoDetectionManager
     results: models.IVSCodeUri[],
     project: models.Projects,
   ): models.IProjectDetectionResult {
-    let presetName: string;
-    switch (project) {
-      case models.Projects.angular:
-        presetName = constants.vsicons.presets.angular;
-      case models.Projects.nestjs:
-        presetName = constants.vsicons.presets.nestjs;
-      default:
-        break;
-    }
+    const _getPresetName = (_project: models.Projects): string => {
+      switch (_project) {
+        case models.Projects.angular:
+          return constants.vsicons.presets.angular;
+        case models.Projects.nestjs:
+          return constants.vsicons.presets.nestjs;
+        default:
+          break;
+      }
+    };
+
+    // We need to check only the 'workspaceValue' ('user' setting should be ignored)
+    const preset = this.configManager.getPreset<boolean>(
+      _getPresetName(project),
+    ).workspaceValue;
+
+    const iconsDisabled: boolean = ManifestReader.iconsDisabled(project);
 
     // NOTE: User setting (preset) bypasses detection in the following cases:
     // 1. Preset is set to 'false' and icons are not present in the manifest file
     // 2. Preset is set to 'true' and icons are present in the manifest file
     // For this cases PAD will not display a message
-    // We need to check only the 'workspaceValue' ('user' setting should be ignored)
-    const iconsDisabled: boolean = ManifestReader.iconsDisabled(project);
-    const preset = this.configManager.getPreset<boolean>(presetName)
-      .workspaceValue;
-    const bypass =
+    let bypass =
       preset != null &&
       ((!preset && iconsDisabled) || (preset && !iconsDisabled));
 
@@ -88,7 +92,6 @@ export class ProjectAutoDetectionManager
     // 1. The project related icons are present in the manifest file
     // 2. It's a detectable project
     // 3. The preset (when it's defined)
-
     // Use case: User has the preset set but project detection does not detect that project
     const projectInfo: models.IProjectInfo = this.getProjectInfo(
       results,
@@ -97,52 +100,90 @@ export class ProjectAutoDetectionManager
     const enableIcons = iconsDisabled && (!!projectInfo || preset === true);
     const disableIcons = !iconsDisabled && (!projectInfo || preset === false);
 
-    if (!enableIcons && !disableIcons) {
+    // Don't check for conflicting projects if user setting (preset) is explicitly set
+    const conflictingProjects = preset
+      ? []
+      : this.checkForConflictingProjects(results, project, enableIcons);
+
+    // bypass, if user explicitly has any preset of a conficting project set
+    // and those icons are enabled
+    bypass = conflictingProjects.some(
+      cp =>
+        this.configManager.getPreset<boolean>(_getPresetName(cp))
+          .workspaceValue && !ManifestReader.iconsDisabled(cp),
+    );
+
+    if (bypass || (!enableIcons && !disableIcons)) {
       return { apply: false };
     }
 
-    const langResourceKey: models.LangResourceKeys = !!projectInfo
-      ? this.getDetected(project, enableIcons)
-      : this.getDetectedPreset(project, enableIcons);
+    const langResourceKey: models.LangResourceKeys = conflictingProjects.length
+      ? models.LangResourceKeys.conflictProjectsDetected
+      : this.getDetectionLanguageResourseKey(project, enableIcons, preset);
 
     return {
       apply: true,
-      projectName: project,
+      project,
+      conflictingProjects,
       langResourceKey,
       value: enableIcons || !disableIcons,
     };
   }
 
-  private getDetected(
+  private checkForConflictingProjects(
+    results: models.IVSCodeUri[],
     project: models.Projects,
     enableIcons: boolean,
-  ): models.LangResourceKeys {
+  ): models.Projects[] {
+    if (!enableIcons) {
+      return [];
+    }
+    const conflictingProjects = (conflictProjects: models.Projects[]) =>
+      conflictProjects.filter(
+        (cp: models.Projects) => this.getProjectInfo(results, cp) !== null,
+      );
+
     switch (project) {
-      case models.Projects.angular:
-        return enableIcons
-          ? models.LangResourceKeys.ngDetected
-          : models.LangResourceKeys.nonNgDetected;
       case models.Projects.nestjs:
-        return enableIcons
-          ? models.LangResourceKeys.nestDetected
-          : models.LangResourceKeys.nonNestDetected;
+        return conflictingProjects([models.Projects.angular]);
+      case models.Projects.angular:
+        return conflictingProjects([models.Projects.nestjs]);
+      default:
+        return [];
     }
   }
 
-  private getDetectedPreset(
+  private getDetectionLanguageResourseKey(
     project: models.Projects,
     enableIcons: boolean,
+    preset: boolean,
   ): models.LangResourceKeys {
     switch (project) {
       case models.Projects.angular:
-        return enableIcons
-          ? models.LangResourceKeys.nonNgDetectedPresetTrue
-          : models.LangResourceKeys.ngDetectedPresetFalse;
+        return this.getNgRelatedMessages(enableIcons, preset);
       case models.Projects.nestjs:
-        return enableIcons
-          ? models.LangResourceKeys.nonNestDetectedPresetTrue
-          : models.LangResourceKeys.nestDetectedPresetFalse;
+        return this.getNestRelatedMessages(enableIcons, preset);
     }
+  }
+
+  private getNgRelatedMessages(enableIcons: boolean, preset: boolean) {
+    return enableIcons
+      ? preset === true
+        ? models.LangResourceKeys.nonNgDetectedPresetTrue
+        : models.LangResourceKeys.ngDetected
+      : preset === false
+      ? models.LangResourceKeys.ngDetectedPresetFalse
+      : models.LangResourceKeys.nonNgDetected;
+  }
+
+  private getNestRelatedMessages(enableIcons: boolean, preset: boolean) {
+    return enableIcons
+      ? preset === true
+        ? models.LangResourceKeys.nonNestDetectedPresetTrue
+        : models.LangResourceKeys.nestDetected
+      : preset === false
+      ? models.LangResourceKeys.nestDetectedPresetFalse
+      : models.LangResourceKeys.nonNestDetected;
   }
 
   private getProjectInfo(

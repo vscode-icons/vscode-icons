@@ -38,4 +38,5 @@ export enum LangResourceKeys {
   nestDetectedPresetFalse,
   nonNestDetectedPresetTrue,
   projectDetectionReset,
+  conflictProjectsDetected,
 }

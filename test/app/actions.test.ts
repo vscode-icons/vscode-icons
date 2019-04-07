@@ -168,6 +168,27 @@ describe('ExtensionManager: actions tests', function () {
               ),
             ).to.be.true;
           });
+
+          context('by showing a choice message', function () {
+            it('when conflicting project icons are detected', function () {
+              projectDetectionResult.conflictingProjects = [
+                models.Projects.nestjs,
+              ];
+
+              // @ts-ignore
+              extensionManager.applyProjectDetection(projectDetectionResult);
+
+              expect(executeAndReloadStub.called).to.be.false;
+              expect(
+                showCustomizationMessageStub.calledOnceWithExactly(
+                  projectDetectionResult.langResourceKey,
+                  [undefined, 'NestJS'],
+                  applyCustomizationStub,
+                  [projectDetectionResult],
+                ),
+              ).to.be.true;
+            });
+          });
         });
       });
     });

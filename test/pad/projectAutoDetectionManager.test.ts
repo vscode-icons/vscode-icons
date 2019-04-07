@@ -1,17 +1,21 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
+import * as fs from 'fs';
 import * as sinon from 'sinon';
-import {
-  IVSCodeManager,
-  IProjectAutoDetectionManager,
-  Projects,
-  IConfigManager,
-} from '../../src/models';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ErrorHandler } from '../../src/errorHandler';
+import { ManifestReader } from '../../src/iconsManifest';
+import {
+  IConfigManager,
+  IProjectAutoDetectionManager,
+  IVSCodeManager,
+  LangResourceKeys,
+  Projects,
+} from '../../src/models';
+import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import { Utils } from '../../src/utils';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
 describe('ProjectAutoDetectionManager: tests', function () {
@@ -75,6 +79,31 @@ describe('ProjectAutoDetectionManager: tests', function () {
         .then(() => expect(logErrorStub.calledOnceWith(reason)).to.be.true);
     });
 
+    it('detects non conflicting projects', function () {
+      vsicons.projectDetection.disableDetect = false;
+      findFilesStub.resolves([{ fsPath: '' }]);
+      sandbox.stub(fs, 'readFileSync').returns(undefined);
+      sandbox.stub(Utils, 'parseJSON').returns({
+        dependencies: {
+          angularjs: '1.0.0',
+          meteo: '1.0.0',
+        },
+      });
+      configManagerStub.getPreset.returns({
+        key: '',
+        workspaceValue: undefined,
+      });
+      sandbox.stub(ManifestReader, 'iconsDisabled').returns(true);
+      // @ts-ignore
+      sandbox.stub(padManager, 'getProjectInfo').returns({});
+
+      return padManager.detectProjects([Projects.angularjs]).then(res => {
+        expect(res)
+          .to.be.an('object')
+          .and.have.ownProperty('conflictingProjects').that.is.empty;
+      });
+    });
+
     context('does NOT detect a project when', function () {
       const testCase = (projectNames: Projects[]) =>
         padManager
@@ -105,6 +134,34 @@ describe('ProjectAutoDetectionManager: tests', function () {
         vsicons.projectDetection.disableDetect = true;
 
         return testCase([Projects.angular]);
+      });
+    });
+
+    context('when conflicting project icons are detected', function () {
+      it('returns the conflict project detected \'LangResourceKey\'', function () {
+        vsicons.projectDetection.disableDetect = false;
+        findFilesStub.resolves([{ fsPath: '' }]);
+        sandbox.stub(fs, 'readFileSync').returns(undefined);
+        sandbox.stub(Utils, 'parseJSON').returns({
+          dependencies: {
+            '@angular/core': '1.0.0',
+            '@nestjs/core': '1.0.0',
+          },
+        });
+        configManagerStub.getPreset.returns({
+          key: '',
+          workspaceValue: undefined,
+        });
+        sandbox.stub(ManifestReader, 'iconsDisabled').returns(true);
+
+        return padManager
+          .detectProjects([Projects.angular, Projects.nestjs])
+          .then(res => {
+            expect(res)
+              .to.be.an('object')
+              .and.have.ownProperty('langResourceKey')
+              .to.equal(LangResourceKeys.conflictProjectsDetected);
+          });
       });
     });
   });

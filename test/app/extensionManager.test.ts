@@ -545,6 +545,52 @@ describe('ExtensionManager: tests', function () {
           expect(handleUpdatePresetStub.called).to.be.false;
         });
       });
+
+      context('when conflicting project icons are detected', function () {
+        it('enables the Angular icons, if they are selected', function () {
+          const cb = sinon.fake();
+          const cbArgs = [{}];
+
+          // @ts-ignore
+          extensionManager.handleAction('Angular', cb, cbArgs);
+
+          expect(cbArgs[0])
+            .to.haveOwnProperty('project')
+            .and.that.to.equal(models.Projects.angular);
+          expect(
+            configManagerStub.updatePreset.calledOnceWithExactly(
+              models.PresetNames[models.PresetNames.angular],
+              true,
+              models.ConfigurationTarget.Workspace,
+            ),
+          ).to.be.true;
+          expect(
+            handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs),
+          ).to.be.true;
+        });
+
+        it('enables the NestJS icons, if they are selected', function () {
+          const cb = sinon.fake();
+          const cbArgs = [{}];
+
+          // @ts-ignore
+          extensionManager.handleAction('NestJS', cb, cbArgs);
+
+          expect(cbArgs[0])
+            .to.haveOwnProperty('project')
+            .and.that.to.equal(models.Projects.nestjs);
+          expect(
+            configManagerStub.updatePreset.calledOnceWithExactly(
+              models.PresetNames[models.PresetNames.nestjs],
+              true,
+              models.ConfigurationTarget.Workspace,
+            ),
+          ).to.be.true;
+          expect(
+            handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs),
+          ).to.be.true;
+        });
+      });
     });
 
     context(`the handle update preset`, function () {

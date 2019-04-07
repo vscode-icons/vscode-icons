@@ -37,5 +37,6 @@
   "nonNestDetected": "%extensionName% hat ein nicht NestJS Projekt erkannt! Drücken Sie 'Neu starten', damit die Angular Icons deaktiviert werden.",
   "nestDetectedPresetFalse": "%extensionName% hat ein NestJS-Projekt erkannt, allerdings ist die 'preset'-Einstellung auf 'false' gesetzt. Es wird wärmstens empfohlen, die 'preset'-Einstellung komplett von den Einstellungen zu entfernen. Wenn Sie auf 'Neu starten' drücken, werden die NestJS-Icons deaktiviert.",
   "nonNestDetectedPresetTrue": "%extensionName% hat ein NestJS-Projekt erkannt, allerdings ist die 'preset'-Einstellung auf 'true' gesetzt. Es wird wärmstens empfohlen, die 'preset'-Einstellung komplett von den Einstellungen zu entfernen. Wenn Sie auf 'Neu starten' drücken, werden die NestJS-Icons aktiviert.",
-  "projectDetectionReset": "Projekterkennung wird zurückgesetzt."
+  "projectDetectionReset": "Projekterkennung wird zurückgesetzt.",
+  "conflictProjectsDetected": ""
 }

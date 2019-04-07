@@ -37,5 +37,6 @@
   "nonNestDetected": "%extensionName% 发现当前工程不是 NestJS。选择「重启」取消使用 Angular 的图标",
   "nestDetectedPresetFalse": "%extensionName% 检测到了这是个NestJS项目, 但是\"预设\"的设置是\"false\". 我们建议从设置中删除所有的\"预设\"设置. 选择\"重新启动\"会禁用NestJS图标",
   "nonNestDetectedPresetTrue": "%extensionName% 检测到了这不是个NestJS项目, 但是\"预设\"的设置是\"true\". 我们建议从设置中删除所有的\"预设\"设置. 选择\"重新启动\"会启用NestJS图标",
-  "projectDetectionReset": "重设自动检测工程文件为默认设置"
+  "projectDetectionReset": "重设自动检测工程文件为默认设置",
+  "conflictProjectsDetected": ""
 }
