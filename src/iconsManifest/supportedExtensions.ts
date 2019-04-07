@@ -1486,6 +1486,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hjson',
+      extensions: [],
+      languages: [languages.hjson],
+      format: FileFormat.svg,
+      light: true,
+    },
+    {
       icon: 'hlsl',
       extensions: [],
       languages: [languages.hlsl],
