@@ -139,19 +139,20 @@ describe('IconsGenerator: tests', function () {
 
         context(`generates the icons manifest`, function () {
           it(`including the custom definitions`, function () {
+            configManagerStub.getCustomIconsDirPath.returns('/default/path/to/vscode/user/folder');
             iconsGenerator.generateIconsManifest(fixtFiles, fixtFolders);
 
             expect(
               buildManifestStub.calledOnceWithExactly(
                 filesCollection,
                 foldersCollection,
-                '',
+                '/default/path/to/vscode/user/folder',
               ),
             ).to.be.true;
           });
 
           it(`using the custom icons folder path`, function () {
-            vsiconsClone.customIconFolderPath = '/custom/icons/foder/path';
+            vsiconsClone.customIconFolderPath = '/custom/icons/folder/path';
             configManagerStub.getCustomIconsDirPath.returns(
               vsiconsClone.customIconFolderPath,
             );
