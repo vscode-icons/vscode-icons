@@ -407,6 +407,22 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'apl',
+      extensions: [
+        '.dyalog',
+        '.dyapp',
+        '.aplf',
+        '.aplo',
+        '.aplc',
+        '.apli',
+        '.apln',
+        '.apla',
+        '.mipage',
+      ],
+      languages: [languages.apl],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'applescript',
       extensions: [],
       languages: [languages.applescript],
