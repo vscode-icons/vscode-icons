@@ -1996,6 +1996,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'moleculer',
+      extensions: ['.service.js', 'moleculer.config.js', 'moleculer.config.json', 'moleculer.config.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mongo',
       extensions: [],
       languages: [languages.mongo],
