@@ -1997,7 +1997,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'moleculer',
-      extensions: ['.service.js', 'moleculer.config.js', 'moleculer.config.json', 'moleculer.config.ts'],
+      extensions: ['service.js', 'moleculer.config.js', 'moleculer.config.json', 'moleculer.config.ts'],
       filename: true,
       format: FileFormat.svg,
     },
