@@ -408,18 +408,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'apl',
-      extensions: [
-        'dyalog',
-        'dyapp',
-        'aplf',
-        'aplo',
-        'aplc',
-        'apli',
-        'apln',
-        'apla',
-        'mipage',
-      ],
+      extensions: [],
       languages: [languages.apl],
+      light: true,
       format: FileFormat.svg,
     },
     {
