@@ -186,6 +186,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'module',
+      extensions: ['modules'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mongodb',
       extensions: ['mongodb', 'mongo'],
       format: FileFormat.svg,
