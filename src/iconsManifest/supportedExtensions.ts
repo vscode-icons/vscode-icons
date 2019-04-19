@@ -1714,6 +1714,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
+    { icon: 'jss', extensions: ['jss'], format: FileFormat.svg },
     {
       icon: 'julia',
       extensions: [],
