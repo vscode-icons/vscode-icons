@@ -9,6 +9,7 @@ export const languages: ILanguageCollection = {
   apache: { ids: 'apacheconf', defaultExtension: 'htaccess' },
   apex: { ids: 'apex', defaultExtension: 'cls' },
   apib: { ids: 'apiblueprint', defaultExtension: 'apib' },
+  apl: { ids: 'apl', defaultExtension: 'apl' },
   applescript: { ids: 'applescript', defaultExtension: 'applescript' },
   asp: { ids: ['asp', 'asp (html)'], defaultExtension: 'asp' },
   assembly: { ids: ['arm', 'asm'], defaultExtension: 'asm' },
