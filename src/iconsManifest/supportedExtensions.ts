@@ -2838,7 +2838,6 @@ export const extensions: IFileCollection = {
       icon: 'sentry',
       extensions: ['.sentryclirc'],
       filename: true,
-      light: true,
       format: FileFormat.svg,
     },
     {
