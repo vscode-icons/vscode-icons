@@ -1721,6 +1721,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
+    { icon: 'jss', extensions: ['jss'], format: FileFormat.svg },
     {
       icon: 'julia',
       extensions: [],
@@ -2000,6 +2001,14 @@ export const extensions: IFileCollection = {
       icon: 'mojolicious',
       extensions: [],
       languages: [languages.mojolicious],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'moleculer',
+      extensions: [],
+      filenamesGlob: ['moleculer.config'],
+      extensionsGlob: ['js', 'json', 'ts'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -2839,6 +2848,12 @@ export const extensions: IFileCollection = {
       icon: 'sdlang',
       extensions: [],
       languages: [languages.sdlang],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'sentry',
+      extensions: ['.sentryclirc'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
