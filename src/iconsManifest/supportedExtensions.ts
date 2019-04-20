@@ -2844,6 +2844,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'sentry',
+      extensions: ['.sentryclirc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'serverless',
       extensions: ['serverless.yml'],
       filename: true,
