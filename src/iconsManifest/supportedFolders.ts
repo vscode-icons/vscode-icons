@@ -85,6 +85,7 @@ export const extensions: IFolderCollection = {
       extensions: ['.elasticbeanstalk', '.ebextensions'],
       format: FileFormat.svg,
     },
+    { icon: 'electron', extensions: ['electron'], format: FileFormat.svg },
     {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
