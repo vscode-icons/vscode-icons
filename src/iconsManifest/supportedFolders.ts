@@ -164,6 +164,8 @@ export const extensions: IFolderCollection = {
         'languages',
         'locale',
         'locales',
+        '_locale',
+        '_locales',
         'internationalization',
         'globalization',
         'localization',
