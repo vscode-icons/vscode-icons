@@ -200,6 +200,11 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'notification',
+      extensions: ['notifications', 'events'],
+      format: FileFormat.svg,
+    },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
     {
       icon: 'package',
