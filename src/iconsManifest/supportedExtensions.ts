@@ -920,6 +920,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cuda',
+      extensions: [],
+      languages: [languages.cuda],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cython',
       extensions: [],
       languages: [languages.cython],
