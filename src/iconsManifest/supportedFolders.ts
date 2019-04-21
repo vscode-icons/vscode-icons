@@ -42,6 +42,11 @@ export const extensions: IFolderCollection = {
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     {
+      icon: 'controller',
+      extensions: ['controllers', '.controllers', 'handlers', '.handlers'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'component',
       extensions: ['components', '.components'],
       format: FileFormat.svg,
