@@ -920,6 +920,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cuda',
+      extensions: [],
+      languages: [languages.cuda],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cython',
       extensions: [],
       languages: [languages.cython],
@@ -3332,6 +3338,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     { icon: 'vsix', extensions: ['vsix'], light: true, format: FileFormat.svg },
+    {
+      icon: 'vsixmanifest',
+      extensions: ['vsixmanifest'],
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'vue',
       extensions: [],
