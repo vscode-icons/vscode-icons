@@ -238,6 +238,11 @@ export const extensions: IFolderCollection = {
     { icon: 'middleware', extensions: ['middleware'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
+      icon: 'minikube',
+      extensions: ['minikube', 'minik8s', 'minikuber'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mock',
       extensions: ['mocks', '.mocks', '__mocks__'],
       format: FileFormat.svg,
