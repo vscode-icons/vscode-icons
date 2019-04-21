@@ -47,6 +47,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
+    { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
@@ -147,6 +148,7 @@ export const extensions: IFolderCollection = {
     { icon: 'github', extensions: ['.github'], format: FileFormat.svg },
     { icon: 'gitlab', extensions: ['.gitlab'], format: FileFormat.svg },
     { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
+    { icon: 'grunt', extensions: ['grunt'], format: FileFormat.svg },
     {
       icon: 'gulp',
       extensions: [
@@ -241,6 +243,11 @@ export const extensions: IFolderCollection = {
     { icon: 'middleware', extensions: ['middleware'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
+      icon: 'minikube',
+      extensions: ['minikube', 'minik8s', 'minikuber'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mock',
       extensions: ['mocks', '.mocks', '__mocks__'],
       format: FileFormat.svg,
@@ -248,6 +255,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'model',
       extensions: ['models', '.models', 'entities', '.entities'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'module',
+      extensions: ['modules'],
       format: FileFormat.svg,
     },
     {
@@ -330,6 +342,12 @@ export const extensions: IFolderCollection = {
     {
       icon: 'src',
       extensions: ['src', 'source', 'sources'],
+      format: FileFormat.svg,
+    },
+    { icon: 'server', extensions: ['server'], format: FileFormat.svg },
+    {
+      icon: 'story',
+      extensions: ['stories', '__stories__'],
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
