@@ -312,6 +312,7 @@ export const extensions: IFolderCollection = {
       extensions: ['template', '.template', 'templates', '.templates'],
       format: FileFormat.svg,
     },
+    { icon: 'theme', extensions: ['theme', 'themes'], format: FileFormat.svg },
     { icon: 'travis', extensions: ['.travis'], format: FileFormat.svg },
     {
       icon: 'tools',
