@@ -75,7 +75,15 @@ export const extensions: IFolderCollection = {
     { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
     {
       icon: 'db',
-      extensions: ['db', 'database', 'sql', 'data'],
+      extensions: [
+        'db',
+        'database',
+        'sql',
+        'data',
+        'repo',
+        'repository',
+        'repositories',
+      ],
       format: FileFormat.svg,
     },
     { icon: 'debian', extensions: ['debian'], format: FileFormat.svg },
