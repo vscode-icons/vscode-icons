@@ -143,6 +143,7 @@ export const extensions: IFolderCollection = {
     { icon: 'github', extensions: ['.github'], format: FileFormat.svg },
     { icon: 'gitlab', extensions: ['.gitlab'], format: FileFormat.svg },
     { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
+    { icon: 'grunt', extensions: ['grunt'], format: FileFormat.svg },
     {
       icon: 'gulp',
       extensions: [
