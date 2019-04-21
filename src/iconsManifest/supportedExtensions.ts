@@ -3333,6 +3333,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'vsix', extensions: ['vsix'], light: true, format: FileFormat.svg },
     {
+      icon: 'vsixmanifest',
+      extensions: ['vsixmanifest'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vue',
       extensions: [],
       languages: [languages.vue],
