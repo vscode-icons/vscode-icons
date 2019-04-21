@@ -141,6 +141,19 @@ export const extensions: IFolderCollection = {
     { icon: 'github', extensions: ['.github'], format: FileFormat.svg },
     { icon: 'gitlab', extensions: ['.gitlab'], format: FileFormat.svg },
     { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
+    {
+      icon: 'gulp',
+      extensions: [
+        'gulp',
+        'gulpfile.js',
+        'gulpfile.coffee',
+        'gulpfile.ts',
+        'gulpfile.babel.js',
+        'gulpfile.babel.coffee',
+        'gulpfile.babel.ts',
+      ],
+      format: FileFormat.svg,
+    },
     { icon: 'haxelib', extensions: ['haxelib'], format: FileFormat.svg },
     {
       icon: 'helper',
