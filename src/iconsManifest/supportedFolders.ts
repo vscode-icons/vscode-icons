@@ -201,6 +201,11 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'notification',
+      extensions: ['notifications', 'events'],
+      format: FileFormat.svg,
+    },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
     {
       icon: 'package',
@@ -258,12 +263,13 @@ export const extensions: IFolderCollection = {
       extensions: ['script', 'scripts'],
       format: FileFormat.svg,
     },
+    { icon: 'server', extensions: ['server'], format: FileFormat.svg },
+    { icon: 'services', extensions: ['services'], format: FileFormat.svg },
     {
       icon: 'src',
       extensions: ['src', 'source', 'sources'],
       format: FileFormat.svg,
     },
-    { icon: 'server', extensions: ['server'], format: FileFormat.svg },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
     {
       icon: 'test',
