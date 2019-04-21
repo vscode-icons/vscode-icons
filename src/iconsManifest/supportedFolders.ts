@@ -181,6 +181,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
+    { icon: 'middleware', extensions: ['middleware'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
       icon: 'model',
