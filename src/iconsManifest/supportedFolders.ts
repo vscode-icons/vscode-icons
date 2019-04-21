@@ -46,6 +46,11 @@ export const extensions: IFolderCollection = {
       extensions: ['composer', '.composer'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'cli',
+      extensions: ['cli', 'command', 'commandline'],
+      format: FileFormat.svg,
+    },
     { icon: 'client', extensions: ['client'], format: FileFormat.svg },
     {
       icon: 'config',
