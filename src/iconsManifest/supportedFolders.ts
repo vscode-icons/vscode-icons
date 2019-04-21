@@ -183,6 +183,11 @@ export const extensions: IFolderCollection = {
     { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
+      icon: 'minikube',
+      extensions: ['minikube', 'minik8s', 'minikuber'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'model',
       extensions: ['models', '.models'],
       format: FileFormat.svg,
