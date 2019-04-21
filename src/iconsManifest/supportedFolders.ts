@@ -32,6 +32,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
     { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
+    {
+      icon: 'blueprint',
+      extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
+      format: FileFormat.svg,
+    },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
