@@ -32,10 +32,20 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
     { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
+    {
+      icon: 'blueprint',
+      extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
+      format: FileFormat.svg,
+    },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
+    {
+      icon: 'controller',
+      extensions: ['controllers', '.controllers', 'handlers', '.handlers'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'component',
       extensions: ['components', '.components'],
@@ -181,7 +191,13 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
+    { icon: 'middleware', extensions: ['middleware'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
+    {
+      icon: 'mock',
+      extensions: ['mocks', '.mocks', '__mocks__'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'model',
       extensions: ['models', '.models'],
@@ -198,6 +214,11 @@ export const extensions: IFolderCollection = {
       icon: 'node',
       extensions: ['node_modules'],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'notification',
+      extensions: ['notifications', 'events'],
       format: FileFormat.svg,
     },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
@@ -257,12 +278,13 @@ export const extensions: IFolderCollection = {
       extensions: ['script', 'scripts'],
       format: FileFormat.svg,
     },
+    { icon: 'server', extensions: ['server'], format: FileFormat.svg },
+    { icon: 'services', extensions: ['services'], format: FileFormat.svg },
     {
       icon: 'src',
       extensions: ['src', 'source', 'sources'],
       format: FileFormat.svg,
     },
-    { icon: 'server', extensions: ['server'], format: FileFormat.svg },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
     {
       icon: 'test',
