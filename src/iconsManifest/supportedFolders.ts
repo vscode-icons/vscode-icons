@@ -27,7 +27,16 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'audio',
-      extensions: ['audio', '.audio', 'audios', '.audios'],
+      extensions: [
+        'audio',
+        '.audio',
+        'audios',
+        '.audios',
+        'sound',
+        '.sound',
+        'sounds',
+        '.sounds',
+      ],
       format: FileFormat.svg,
     },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
