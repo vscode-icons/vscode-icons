@@ -37,7 +37,6 @@
 - Feature: Support for `Moleculer`. ([@icebob](https://github.com/icebob) in [#1980](https://github.com/vscode-icons/vscode-icons/pull/1980))
 - Feature: Support for `APL`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#1978](https://github.com/vscode-icons/vscode-icons/pull/1978))
 
-
 ## 8.5.0 (April 7, 2019)
 
 - Enhancement: Added new translations and fixed old ones. ([@JimiC](https://github.com/JimiC) in [#1956](https://github.com/vscode-icons/vscode-icons/pull/1956))
