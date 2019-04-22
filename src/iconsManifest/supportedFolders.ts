@@ -54,6 +54,11 @@ export const extensions: IFolderCollection = {
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
+    {
+      icon: 'certificate',
+      extensions: ['certificates', '.certificates', 'certs', 'certs.'],
+      format: FileFormat.svg,
+    },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     {
@@ -204,6 +209,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'interfaces', extensions: ['interfaces'], format: FileFormat.svg },
     { icon: 'ios', extensions: ['ios'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
     {
