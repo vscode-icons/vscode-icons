@@ -40,6 +40,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
+    {
+      icon: 'azurepipelines',
+      extensions: ['azure-pipelines', '.azure-pipelines'],
+      format: FileFormat.svg,
+    },
     { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
     {
       icon: 'blueprint',
@@ -49,6 +54,11 @@ export const extensions: IFolderCollection = {
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
+    {
+      icon: 'certificate',
+      extensions: ['certificates', '.certificates', 'certs', 'certs.'],
+      format: FileFormat.svg,
+    },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     {
@@ -95,6 +105,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'coverage', extensions: ['coverage'], format: FileFormat.svg },
     { icon: 'css', extensions: ['css', '_css'], format: FileFormat.svg },
     { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
     {
@@ -199,6 +210,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'interfaces', extensions: ['interfaces'], format: FileFormat.svg },
     { icon: 'ios', extensions: ['ios'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
     {
