@@ -1,6 +1,6 @@
 # Change Log
 
-## 8.6.0 (April 722, 2019)
+## 8.6.0 (April 22, 2019)
 
 - Feature: Support for `coverage` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2015](https://github.com/vscode-icons/vscode-icons/pull/2015))
 - Feature: Support for `azure-pipelines` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2014](https://github.com/vscode-icons/vscode-icons/pull/2014))
