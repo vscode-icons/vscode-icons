@@ -11,5 +11,11 @@
     "examples": true
   },
   "typescript.tsdk": "./node_modules/typescript/lib",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "vsicons.projectDetection.disableDetect": true
 }
