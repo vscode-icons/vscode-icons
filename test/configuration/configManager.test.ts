@@ -627,8 +627,8 @@ describe('ConfigManager: tests', function () {
 
       it('to return \'false\' on multiple installations', function () {
         readdirStub.returns([
-          `${constants.extension.name}-1.0.0`,
-          `${constants.extension.name}-1.1.0`,
+          `${constants.extension.name}-2.0.0`,
+          `${constants.extension.name}-2.1.0`,
         ]);
 
         return ConfigManager.removeSettings().then(() => {
