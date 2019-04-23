@@ -1,6 +1,6 @@
 import { cloneDeep, unionWith, isEqual } from 'lodash';
 import { dirname, isAbsolute } from 'path';
-import { existsSync } from 'fs';
+import { existsSync, readdirSync } from 'fs';
 import {
   IConfigManager,
   IVSCodeManager,
@@ -45,6 +45,9 @@ export class ConfigManager implements IConfigManager {
   }
 
   public static removeSettings(): Thenable<void> {
+    if (!this.isSingleInstallation()) {
+      return Promise.resolve();
+    }
     const vscodeSettingsFilePath = Utils.pathUnixJoin(
       this.getAppUserPath(dirname(__filename)),
       constants.vscode.settingsFilename,
@@ -59,6 +62,20 @@ export class ConfigManager implements IConfigManager {
       void 0,
       error => ErrorHandler.logError(error),
     );
+  }
+
+  private static isSingleInstallation(): boolean {
+    const regex = new RegExp(
+      `(.+[\\|/]extensions[\\|/])(?:.*${constants.extension.name})`,
+    );
+    const matches = dirname(__filename).match(regex);
+    const vscodeExtensionDirPath: string =
+      (matches && matches.length > 0 && matches[1]) || './';
+    const extensionNameRegExp = new RegExp(`.*${constants.extension.name}`);
+    const existingInstallations: number = readdirSync(
+      vscodeExtensionDirPath,
+    ).filter(filename => extensionNameRegExp.test(filename)).length;
+    return existingInstallations === 1;
   }
 
   private static getAppUserPath(dirPath: string): string {

@@ -24,6 +24,7 @@ describe('ConfigManager: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
     let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
+    let readdirStub: sinon.SinonStub;
     let envStub: sinon.SinonStub;
     let updateFileStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
@@ -40,6 +41,7 @@ describe('ConfigManager: tests', function () {
     beforeEach(() => {
       sandbox = sinon.createSandbox();
 
+      readdirStub = sandbox.stub(fs, 'readdirSync');
       envStub = sandbox.stub(process, 'env');
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
       updateFileStub = sandbox.stub(Utils, 'updateFile');
@@ -78,6 +80,11 @@ describe('ConfigManager: tests', function () {
       configManager = new ConfigManager(vscodeManagerStub);
 
       splitter = (content: string) => content.split('\n');
+
+      dirnameStub.returns(
+        `/path/to/extensions/${constants.extension.name}-1.0.0`,
+      );
+      readdirStub.returns([`${constants.extension.name}-1.0.0`]);
     });
 
     afterEach(function () {
@@ -211,12 +218,29 @@ describe('ConfigManager: tests', function () {
     });
 
     context(`function 'removeSettings'`, function () {
-      it(`updates the 'vscode' settings file`, function () {
-        updateFileStub.callsArgWith(1, ['']).resolves();
+      context(`does NOT update 'vscode' the settings file`, function () {
+        it('on extension update', function () {
+          readdirStub.returns([
+            `${constants.extension.name}-1.0.0`,
+            `${constants.extension.name}-1.1.0`,
+          ]);
 
-        return ConfigManager.removeSettings().then(
-          () => expect(updateFileStub.calledOnce).to.be.true,
-        );
+          updateFileStub.callsArgWith(1, ['']).resolves();
+
+          return ConfigManager.removeSettings().then(
+            () => expect(updateFileStub.called).to.be.false,
+          );
+        });
+      });
+
+      context(`updates the 'vscode' settings file`, function () {
+        it('on extension full uninstall', function () {
+          updateFileStub.callsArgWith(1, ['']).resolves();
+
+          return ConfigManager.removeSettings().then(
+            () => expect(updateFileStub.calledOnce).to.be.true,
+          );
+        });
       });
 
       it('logs an Error message when updating the file fails', function () {
@@ -581,6 +605,39 @@ describe('ConfigManager: tests', function () {
       });
     });
 
+    context(`function 'isSingleInstallation'`, function () {
+      let isSingleInstallationSpy: sinon.SinonSpy;
+      beforeEach(() => {
+        isSingleInstallationSpy = sandbox.spy(
+          ConfigManager,
+          // @ts-ignore
+          'isSingleInstallation',
+        );
+      });
+
+      it('to return \'true\' on a single installation', function () {
+        readdirStub.returns([`${constants.extension.name}-1.1.0`]);
+        updateFileStub.resolves();
+
+        return ConfigManager.removeSettings().then(() => {
+          expect(isSingleInstallationSpy.calledOnce).to.be.true;
+          expect(isSingleInstallationSpy.returned(true)).to.be.true;
+        });
+      });
+
+      it('to return \'false\' on multiple installations', function () {
+        readdirStub.returns([
+          `${constants.extension.name}-1.0.0`,
+          `${constants.extension.name}-1.1.0`,
+        ]);
+
+        return ConfigManager.removeSettings().then(() => {
+          expect(isSingleInstallationSpy.calledOnce).to.be.true;
+          expect(isSingleInstallationSpy.returned(false)).to.be.true;
+        });
+      });
+    });
+
     context(`function 'removeVSIconsConfigs'`, function () {
       let removeVSIconsConfigsSpy: sinon.SinonSpy;
 
@@ -742,40 +799,44 @@ describe('ConfigManager: tests', function () {
         );
       });
 
-      it(`does reset the 'iconTheme' configuration, if it was set to 'vscode-icons'`, function () {
-        const content = splitter(
-          '{\n' +
-            '"window.zoomLevel": 0,\n' +
-            `"${constants.vscode.iconThemeSetting}": "${
-              constants.extension.name
-            }"\n` +
-            '}',
-        );
-        const expected = splitter(`{\n"window.zoomLevel": 0\n` + '}');
-        updateFileStub.callsArgWith(1, content).resolves();
+      context(`does reset the 'iconTheme' configuration`, function () {
+        it(`if it was set to 'vscode-icons'`, function () {
+          const content = splitter(
+            '{\n' +
+              '"window.zoomLevel": 0,\n' +
+              `"${constants.vscode.iconThemeSetting}": "${
+                constants.extension.name
+              }"\n` +
+              '}',
+          );
+          const expected = splitter(`{\n"window.zoomLevel": 0\n` + '}');
+          updateFileStub.callsArgWith(1, content).resolves();
 
-        return ConfigManager.removeSettings().then(() => {
-          expect(updateFileStub.calledOnce).to.be.true;
-          expect(updateFileStub.firstCall.callback).to.be.a('function');
-          expect(resetIconThemeSpy.calledOnce).to.be.true;
-          expect(resetIconThemeSpy.returned(expected)).to.be.true;
+          return ConfigManager.removeSettings().then(() => {
+            expect(updateFileStub.calledOnce).to.be.true;
+            expect(updateFileStub.firstCall.callback).to.be.a('function');
+            expect(resetIconThemeSpy.calledOnce).to.be.true;
+            expect(resetIconThemeSpy.returned(expected)).to.be.true;
+          });
         });
       });
 
-      it(`does NOT reset the 'iconTheme' configuration, if it's NOT set to 'vscode-icons'`, function () {
-        const content = splitter(
-          '{\n' +
-            '"window.zoomLevel": 0,\n' +
-            `"${constants.vscode.iconThemeSetting}": "otherIconTheme"\n` +
-            '}',
-        );
-        updateFileStub.callsArgWith(1, content).resolves();
+      context(`does NOT reset the 'iconTheme' configuration`, function () {
+        it(`if it's NOT set to 'vscode-icons'`, function () {
+          const content = splitter(
+            '{\n' +
+              '"window.zoomLevel": 0,\n' +
+              `"${constants.vscode.iconThemeSetting}": "otherIconTheme"\n` +
+              '}',
+          );
+          updateFileStub.callsArgWith(1, content).resolves();
 
-        return ConfigManager.removeSettings().then(() => {
-          expect(updateFileStub.calledOnce).to.be.true;
-          expect(updateFileStub.firstCall.callback).to.be.a('function');
-          expect(resetIconThemeSpy.calledOnce).to.be.true;
-          expect(resetIconThemeSpy.returned(content)).to.be.true;
+          return ConfigManager.removeSettings().then(() => {
+            expect(updateFileStub.calledOnce).to.be.true;
+            expect(updateFileStub.firstCall.callback).to.be.a('function');
+            expect(resetIconThemeSpy.calledOnce).to.be.true;
+            expect(resetIconThemeSpy.returned(content)).to.be.true;
+          });
         });
       });
     });
@@ -1037,7 +1098,9 @@ describe('ConfigManager: tests', function () {
         inspectStub.returns(expected);
 
         expect(
-          configManager.getPreset<boolean>(PresetNames[PresetNames.hideFolders]),
+          configManager.getPreset<boolean>(
+            PresetNames[PresetNames.hideFolders],
+          ),
         ).to.eql(expected);
         expect(
           inspectStub
