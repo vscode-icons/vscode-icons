@@ -1,4 +1,4 @@
-import opn = require('opn');
+import open = require('open');
 import * as fs from 'fs';
 import { ChildProcess } from 'child_process';
 import { homedir, tmpdir } from 'os';
@@ -170,6 +170,6 @@ export class Utils {
   }
 
   public static open(target: string, options?: any): Promise<ChildProcess> {
-    return opn(target, options);
+    return open(target, options);
   }
 }

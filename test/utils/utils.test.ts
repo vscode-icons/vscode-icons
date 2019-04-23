@@ -390,14 +390,14 @@ describe('Utils: tests', function () {
 
     context(`the 'open' function`, function () {
       it(`to call the external module`, function () {
-        const opnStub = sandbox.stub().resolves();
+        const openStub = sandbox.stub().resolves();
         const target = 'target';
         const utils = proxyq('../../src/utils', {
-          opn: opnStub,
+          open: openStub,
         }).Utils;
 
         return utils.open(target).then(() => {
-          expect(opnStub.calledOnceWithExactly(target, undefined)).to.be.true;
+          expect(openStub.calledOnceWithExactly(target, undefined)).to.be.true;
         });
       });
     });
