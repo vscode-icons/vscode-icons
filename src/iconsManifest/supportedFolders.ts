@@ -138,7 +138,12 @@ export const extensions: IFolderCollection = {
       extensions: ['.elasticbeanstalk', '.ebextensions'],
       format: FileFormat.svg,
     },
-    { icon: 'electron', extensions: ['electron'], format: FileFormat.svg },
+    {
+      icon: 'electron',
+      extensions: ['electron'],
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
@@ -279,7 +284,12 @@ export const extensions: IFolderCollection = {
       extensions: ['mongodb', 'mongo'],
       format: FileFormat.svg,
     },
-    { icon: 'mysql', extensions: ['mysqldb', 'mysql'], format: FileFormat.svg },
+    {
+      icon: 'mysql',
+      extensions: ['mysqldb', 'mysql'],
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
     {
       icon: 'node',
@@ -331,7 +341,12 @@ export const extensions: IFolderCollection = {
       extensions: ['route', 'routes', '_route', '_routes', 'routers'],
       format: FileFormat.svg,
     },
-    { icon: 'redux', extensions: ['redux'], format: FileFormat.svg },
+    {
+      icon: 'redux',
+      extensions: ['redux'],
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'meteor',
       extensions: ['.meteor'],
