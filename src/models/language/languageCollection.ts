@@ -157,6 +157,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   stata: ILanguage;
   stylable: ILanguage;
   stylus: ILanguage;
+  svelte: ILanguage;
   swagger: ILanguage;
   swig: ILanguage;
   systemverilog: ILanguage;

@@ -204,6 +204,7 @@ export const languages: ILanguageCollection = {
   stata: { ids: 'stata', defaultExtension: 'do' },
   stylable: { ids: 'stylable', defaultExtension: 'st.css' },
   stylus: { ids: 'stylus', defaultExtension: 'styl' },
+  svelte: { ids: 'svelte', defaultExtension: 'svelte' },
   swagger: { ids: ['Swagger', 'swagger'], defaultExtension: 'swagger' },
   swift: { ids: 'swift', defaultExtension: 'swift' },
   swig: { ids: 'swig', defaultExtension: 'swig' },
