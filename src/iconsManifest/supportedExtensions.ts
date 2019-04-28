@@ -3457,6 +3457,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'xml',
+      extensions: ['xq', 'xql', 'xqm', 'xqy'],
+      languages: [languages.xquery],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'xsl',
       extensions: [],
       languages: [languages.xsl],
