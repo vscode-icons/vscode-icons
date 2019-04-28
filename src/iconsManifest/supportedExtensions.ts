@@ -2755,6 +2755,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['.rehyperc'],
       extensionsGlob: ['js'],
       light: true,
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -2763,6 +2764,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['.remarkrc'],
       extensionsGlob: ['js'],
       light: true,
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -2777,6 +2779,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['.retextrc'],
       extensionsGlob: ['js'],
       light: true,
+      filename: true,
       format: FileFormat.svg,
     },
     {
