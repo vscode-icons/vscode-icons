@@ -83,6 +83,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   jekyll: ILanguage;
   jenkins: ILanguage;
   jinja: ILanguage;
+  jsonnet: ILanguage;
   json5: ILanguage;
   julia: ILanguage;
   io: ILanguage;
