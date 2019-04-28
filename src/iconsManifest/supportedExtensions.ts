@@ -1715,7 +1715,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'jsonnet',
-      extensions: ['libsonnet'],
+      extensions: [],
       languages: [languages.jsonnet],
       format: FileFormat.svg,
     },
