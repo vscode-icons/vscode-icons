@@ -3103,7 +3103,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'testts',
       extensions: [],
-      filenamesGlob: ['test', 'spec'],
+      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
       extensionsGlob: ['ts', 'tsx'],
       format: FileFormat.svg,
     },
