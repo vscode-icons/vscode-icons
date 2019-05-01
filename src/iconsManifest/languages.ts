@@ -237,6 +237,7 @@ export const languages: ILanguageCollection = {
   wurst: { ids: ['wurstlang', 'wurst'], defaultExtension: 'wurst' },
   wxml: { ids: 'wxml', defaultExtension: 'wxml' },
   xml: { ids: 'xml', defaultExtension: 'xml' },
+  xquery: { ids: 'xquery', defaultExtension: 'xquery' },
   xsl: { ids: 'xsl', defaultExtension: 'xsl' },
   yaml: { ids: 'yaml', defaultExtension: 'yaml' },
   yang: { ids: 'yang', defaultExtension: 'yang' },

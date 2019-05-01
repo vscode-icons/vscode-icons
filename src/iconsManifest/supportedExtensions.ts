@@ -3109,7 +3109,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'testts',
       extensions: [],
-      filenamesGlob: ['test', 'spec'],
+      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
       extensionsGlob: ['ts', 'tsx'],
       format: FileFormat.svg,
     },
@@ -3460,6 +3460,12 @@ export const extensions: IFileCollection = {
       icon: 'xml',
       extensions: ['pex', 'tmlanguage'],
       languages: [languages.xml],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'xquery',
+      extensions: [],
+      languages: [languages.xquery],
       format: FileFormat.svg,
     },
     {

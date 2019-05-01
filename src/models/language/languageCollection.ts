@@ -185,5 +185,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;
+  xquery: ILanguage;
   yang: ILanguage;
 }
