@@ -133,6 +133,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'docs', extensions: ['docs', 'doc'], format: FileFormat.svg },
+    { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
     {
       icon: 'elasticbeanstalk',
       extensions: ['.elasticbeanstalk', '.ebextensions'],
