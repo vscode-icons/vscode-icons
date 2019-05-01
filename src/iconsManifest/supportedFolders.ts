@@ -245,7 +245,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'log', extensions: ['log', 'logs'], format: FileFormat.svg },
-    { icon: 'macos', extensions: ['macos'], format: FileFormat.svg },
+    { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
     {
       icon: 'mariadb',
       extensions: ['mariadb', 'maria'],
@@ -289,7 +289,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'notification',
-      extensions: ['notifications', 'events'],
+      extensions: ['notification', 'notifications', 'event', 'events'],
       format: FileFormat.svg,
     },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
@@ -442,10 +442,14 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'vs', extensions: ['.vs'], format: FileFormat.svg },
-    { icon: 'vscode', extensions: ['.vscode'], format: FileFormat.svg },
+    {
+      icon: 'vscode',
+      extensions: ['.vscode', 'vscode'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'vscode2',
-      extensions: ['.vscode'],
+      extensions: ['.vscode', 'vscode'],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -461,7 +465,11 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     { icon: 'webpack', extensions: ['webpack'], format: FileFormat.svg },
-    { icon: 'windows', extensions: ['windows'], format: FileFormat.svg },
+    {
+      icon: 'windows',
+      extensions: ['windows', 'win32'],
+      format: FileFormat.svg,
+    },
     { icon: 'www', extensions: ['www', 'wwwroot'], format: FileFormat.svg },
   ],
 };
