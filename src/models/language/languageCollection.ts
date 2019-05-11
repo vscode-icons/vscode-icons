@@ -158,6 +158,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   stata: ILanguage;
   stylable: ILanguage;
   stylus: ILanguage;
+  svelte: ILanguage;
   swagger: ILanguage;
   swig: ILanguage;
   systemverilog: ILanguage;
@@ -185,5 +186,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;
+  xquery: ILanguage;
   yang: ILanguage;
 }

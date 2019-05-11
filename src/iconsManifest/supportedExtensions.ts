@@ -2003,9 +2003,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mocha',
-      extensions: ['.mocharc', 'mocha.opts'],
+      extensions: ['mocha.opts'],
       filenamesGlob: ['.mocharc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      extensionsGlob: ['js', 'json', 'jsonc', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3030,6 +3030,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'svelte',
+      extensions: [],
+      languages: [languages.svelte],
+      format: FileFormat.svg,
+    },
     { icon: 'svg', extensions: ['svg'], format: FileFormat.svg },
     {
       icon: 'swagger',
@@ -3109,7 +3115,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'testts',
       extensions: [],
-      filenamesGlob: ['test', 'spec'],
+      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
       extensionsGlob: ['ts', 'tsx'],
       format: FileFormat.svg,
     },
@@ -3460,6 +3466,12 @@ export const extensions: IFileCollection = {
       icon: 'xml',
       extensions: ['pex', 'tmlanguage'],
       languages: [languages.xml],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'xquery',
+      extensions: [],
+      languages: [languages.xquery],
       format: FileFormat.svg,
     },
     {
