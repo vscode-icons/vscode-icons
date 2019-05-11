@@ -1714,6 +1714,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'jsonnet',
+      extensions: [],
+      languages: [languages.jsonnet],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'json5',
       extensions: ['json5'],
       languages: [languages.json5],
