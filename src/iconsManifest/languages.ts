@@ -93,6 +93,7 @@ export const languages: ILanguageCollection = {
   helm: { ids: 'helm', defaultExtension: 'helm.tpl' },
   hjson: { ids: 'hjson', defaultExtension: 'hjson' },
   hlsl: { ids: 'hlsl', defaultExtension: 'hlsl' },
+  homeassistant: { ids: 'home-assistant', defaultExtension: 'yaml' },
   hosts: { ids: 'hosts', defaultExtension: 'hosts' },
   html: { ids: 'html', defaultExtension: 'html' },
   http: { ids: 'http', defaultExtension: 'http' },
