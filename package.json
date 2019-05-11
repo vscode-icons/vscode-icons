@@ -49,6 +49,7 @@
   "galleryBanner": {
     "color": "#ffdd00"
   },
+  "extensionKind": "ui",
   "activationEvents": [
     "*"
   ],

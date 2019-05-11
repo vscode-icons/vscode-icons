@@ -716,16 +716,18 @@ describe('ConfigManager: tests', function () {
 
         it(`to remove multiple 'vsicons' settings`, function () {
           const content = splitter(
-            '{\n"window.zoomLevel": 0,\n' +
-              '\\\\ Comments\n' +
-              `"${
+            '{\n' +
+              '    "window.zoomLevel": 0,\n' +
+              '    \\\\ Comments\n' +
+              `    "${
                 constants.vsicons.dontShowNewVersionMessageSetting
               }": true,\n` +
-              `"${constants.vsicons.presets.angular}": true,\n` +
-              '"updateChannel": "none"\n}',
+              `    "${constants.vsicons.presets.angular}": true,\n` +
+              '    "updateChannel": "none"\n' +
+              '}',
           );
           const expected = splitter(
-            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n"updateChannel": "none"\n}`,
+            `{\n    "window.zoomLevel": 0,\n    \\\\ Comments\n    "updateChannel": "none"\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
@@ -740,17 +742,20 @@ describe('ConfigManager: tests', function () {
         it(`to remove 'vsicons' settings of 'object' type`, function () {
           const content = splitter(
             '{\n' +
-              '"window.zoomLevel": 0,\n' +
-              '\\\\ Comments\n' +
-              `"${constants.vsicons.associations.defaultFileSetting}": {\n` +
-              '\\\\ Comments\n' +
-              '"icon": "ts",\n' +
-              '"format": "svg"\n' +
-              '}\n' +
+              '    "window.zoomLevel": 0,\n' +
+              '    \\\\ Comments\n' +
+              `    "${
+                constants.vsicons.associations.defaultFileSetting
+              }": {\n` +
+              '        \\\\ Comments\n' +
+              '        "icon": "ts",\n' +
+              '        "extensions": ["extone"],\n' +
+              '        "format": "svg"\n' +
+              '    }\n' +
               '}',
           );
           const expected = splitter(
-            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n}`,
+            `{\n    "window.zoomLevel": 0,\n    \\\\ Comments\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
@@ -762,29 +767,74 @@ describe('ConfigManager: tests', function () {
           });
         });
 
-        it(`to remove 'vsicons' settings of 'array' type`, function () {
-          const content = splitter(
-            '{\n' +
-              '"window.zoomLevel": 0,\n' +
-              '\\\\ Comments\n' +
-              `"${constants.vsicons.associations.filesSetting}": [\n` +
-              '\\\\ Comments\n' +
-              '{"icon": "ts", "format": "svg"}\n' +
-              ']\n' +
-              '}',
-          );
-          const expected = splitter(
-            `{\n"window.zoomLevel": 0,\n\\\\ Comments\n}`,
-          );
-          updateFileStub.callsArgWith(1, content).resolves();
+        context(
+          `to remove 'vsicons' settings of 'array' type`,
+          function () {
+            it(`when the trailing character is '['`, function () {
+              const content = splitter(
+                '{\n' +
+                  '    "window.zoomLevel": 0,\n' +
+                  '    \\\\ Comments\n' +
+                  `    "${constants.vsicons.associations.filesSetting}": [\n` +
+                  '    \\\\ Comments\n' +
+                  '    {\n' +
+                  '        "icon": "one",\n' +
+                  '        "extensions": ["extone"],\n' +
+                  '        "format": "svg"\n' +
+                  '    }\n' +
+                  '],\n' +
+                  '}',
+              );
+              const expected = splitter(
+                `{\n    "window.zoomLevel": 0,\n    \\\\ Comments\n}`,
+              );
+              updateFileStub.callsArgWith(1, content).resolves();
 
-          return ConfigManager.removeSettings().then(() => {
-            expect(updateFileStub.calledOnce).to.be.true;
-            expect(updateFileStub.firstCall.callback).to.be.a('function');
-            expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
-            expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
-          });
-        });
+              return ConfigManager.removeSettings().then(() => {
+                expect(updateFileStub.calledOnce).to.be.true;
+                expect(updateFileStub.firstCall.callback).to.be.a('function');
+                expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
+                expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
+              });
+            });
+
+            it(`when the trailing character is '[{'`, function () {
+              const content = splitter(
+                '{\n' +
+                  '    "window.zoomLevel": 0,\n' +
+                  '    \\\\ Comments\n' +
+                  `    "${constants.vsicons.associations.filesSetting}": [{\n` +
+                  '            "icon": "one",\n' +
+                  '            "extensions": ["extone"],\n' +
+                  '            "format": "svg"\n' +
+                  '        },\n' +
+                  '        {\n' +
+                  '            "icon": "two",\n' +
+                  '            "extensions": ["extone", "exttwo"],\n' +
+                  '            "format": "svg"\n' +
+                  '        },\n' +
+                  '        {\n' +
+                  '            "icon": "three",\n' +
+                  '            "extensions": ["extone"],\n' +
+                  '            "format": "svg"\n' +
+                  '        },\n' +
+                  '    ],\n' +
+                  '}',
+              );
+              const expected = splitter(
+                `{\n    "window.zoomLevel": 0,\n    \\\\ Comments\n}`,
+              );
+              updateFileStub.callsArgWith(1, content).resolves();
+
+              return ConfigManager.removeSettings().then(() => {
+                expect(updateFileStub.calledOnce).to.be.true;
+                expect(updateFileStub.firstCall.callback).to.be.a('function');
+                expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
+                expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
+              });
+            });
+          },
+        );
       });
     });
 
