@@ -68,7 +68,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'component',
-      extensions: ['components', '.components'],
+      extensions: ['components', '.components', 'widgets'],
       format: FileFormat.svg,
     },
     {
