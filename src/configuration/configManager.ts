@@ -129,14 +129,17 @@ export class ConfigManager implements IConfigManager {
         let counter = 0;
         if (/[\{\[]\s*$/.test(array[index])) {
           counter++;
-          while (counter > 0) {
-            linesToRemove.push(++index);
-            if (/[\{\[]/.test(array[index])) {
-              counter++;
-            }
-            if (/[\}\]]/.test(array[index])) {
-              counter--;
-            }
+        }
+        if (/\[\{\s*$/.test(array[index])) {
+          counter++;
+        }
+        while (counter > 0) {
+          linesToRemove.push(++index);
+          if (/[\{\[]/.test(array[index])) {
+            counter++;
+          }
+          if (/[\}\]]/.test(array[index])) {
+            counter--;
           }
         }
       };
