@@ -1045,6 +1045,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'docz',
+      extensions: ['.doczrc'],
+      filenamesGlob: ['docz', '.docz', 'doczrc', 'docz.config'],
+      extensionsGlob: ['js', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'doxygen',
       extensions: [],
       languages: [languages.doxygen],
@@ -1521,6 +1529,12 @@ export const extensions: IFileCollection = {
       icon: 'hlsl',
       extensions: [],
       languages: [languages.hlsl],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'homeassistant',
+      extensions: [],
+      languages: [languages.homeassistant],
       format: FileFormat.svg,
     },
     {
