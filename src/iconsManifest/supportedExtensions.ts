@@ -1045,6 +1045,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'docz',
+      extensions: ['.doczrc'],
+      filenamesGlob: ['docz', '.docz', 'doczrc', 'docz.config'],
+      extensionsGlob: ['js', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'doxygen',
       extensions: [],
       languages: [languages.doxygen],
