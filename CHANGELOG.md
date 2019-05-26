@@ -1,5 +1,26 @@
 # Change Log
 
+## 8.7.0 (May 26, 2019)
+
+- Feature: Support for `widgets` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2063](https://github.com/vscode-icons/vscode-icons/pull/2063))
+- Feature: Support for `Docz`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2061](https://github.com/vscode-icons/vscode-icons/pull/2061))
+- Feature: Support for `Inno Setup`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2060](https://github.com/vscode-icons/vscode-icons/pull/2060))
+- Feature: Support for `Home Assistant`. ([@keesschollaart81](https://github.com/keesschollaart81) in [#2054](https://github.com/vscode-icons/vscode-icons/pull/2054))
+- Enhancement: Updated `mocha` config filenames. ([@JimiC](https://github.com/JimiC) in [#2050](https://github.com/vscode-icons/vscode-icons/pull/2050))
+- Feature: Support for remote development. ([@mjbvz](https://github.com/mjbvz) in [#2046](https://github.com/vscode-icons/vscode-icons/pull/2046))
+- Feature: Support for `Remark, Rehype & Retext`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2040](https://github.com/vscode-icons/vscode-icons/pull/2040))
+- Feature: Support for `XQuery`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2039](https://github.com/vscode-icons/vscode-icons/pull/2039))
+- Feature: Support for `Jsonnet`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2038](https://github.com/vscode-icons/vscode-icons/pull/2038))
+- Feature: Support for `svelte`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2037](https://github.com/vscode-icons/vscode-icons/pull/2037))
+- Fix: Fixed `vsicons` setting removal when ending in `[{`. ([@JimiC](https://github.com/JimiC) in [#2035](https://github.com/vscode-icons/vscode-icons/pull/2035))
+- Enhancement: Updated `robotframework` icon to the official version. ([@GLMeece](https://github.com/GLMeece) in [#2031](https://github.com/vscode-icons/vscode-icons/pull/2031))
+- Feature: Support for `e2e` folder. ([@JimiC](https://github.com/JimiC) in [#2029](https://github.com/vscode-icons/vscode-icons/pull/2029))
+- Enhancement: Updated folder coloring. ([@JimiC](https://github.com/JimiC) in [#2028](https://github.com/vscode-icons/vscode-icons/pull/2028))
+- Feature: Support for `e2e test` filenames. ([@dantehemerson](https://github.com/dantehemerson) in [#2025](https://github.com/vscode-icons/vscode-icons/pull/2025))
+- Feature: Support for more folder aliases (darwin, notification, event, vscode, win32). ([@JimiC](https://github.com/JimiC) in [#2023](https://github.com/vscode-icons/vscode-icons/pull/2023))
+- Fix: Corrected reactivation issue. ([@JimiC](https://github.com/JimiC) in [#2019](https://github.com/vscode-icons/vscode-icons/pull/2019))
+- Enhancement: Added default formatter in settings. ([@JimiC](https://github.com/JimiC) in [#2018](https://github.com/vscode-icons/vscode-icons/pull/2018))
+
 ## 8.6.0 (April 22, 2019)
 
 - Feature: Support for `coverage` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2015](https://github.com/vscode-icons/vscode-icons/pull/2015))
