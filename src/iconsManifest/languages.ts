@@ -101,6 +101,7 @@ export const languages: ILanguageCollection = {
   imba: { ids: 'imba', defaultExtension: 'imba' },
   ini: { ids: 'ini', defaultExtension: 'ini' },
   ink: { ids: 'ink', defaultExtension: 'ink' },
+  innosetup: { ids: 'innosetup', defaultExtension: 'iss' },
   io: { ids: 'io', defaultExtension: 'io' },
   latex: { ids: 'latex', defaultExtension: 'tex' },
   java: { ids: 'java', defaultExtension: 'java' },

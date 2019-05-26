@@ -1590,6 +1590,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'infopath',
+      extensions: ['infopathxml', 'xsn', 'xsf', 'xtp2'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ini',
       extensions: [],
       languages: [languages.ini],
@@ -1597,14 +1602,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'infopath',
-      extensions: ['infopathxml', 'xsn', 'xsf', 'xtp2'],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'ink',
       extensions: [],
       languages: [languages.ink],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'innosetup',
+      extensions: [],
+      languages: [languages.innosetup],
       format: FileFormat.svg,
     },
     {
