@@ -1532,6 +1532,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'homeassistant',
+      extensions: [],
+      languages: [languages.homeassistant],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'host',
       extensions: [],
       languages: [languages.hosts],
