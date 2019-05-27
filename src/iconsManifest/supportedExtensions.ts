@@ -3209,7 +3209,7 @@ export const extensions: IFileCollection = {
       extensions: ['.ini'],
       filenamesGlob: ['tox.ini'],
       filename: true,
-      format: FileFormat.png,
+      format: FileFormat.svg,
     },
     {
       icon: 'travis',
