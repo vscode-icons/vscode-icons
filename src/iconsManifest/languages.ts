@@ -34,6 +34,7 @@ export const languages: ILanguageCollection = {
   cfc: { ids: 'cfc', defaultExtension: 'cfc' },
   cfm: { ids: 'cfmhtml', defaultExtension: 'cfm' },
   clojure: { ids: 'clojure', defaultExtension: 'clojure' },
+  clojurescript: { ids: 'clojurescript', defaultExtension: 'clojurescript' },
   cmake: { ids: 'cmake', defaultExtension: 'cmake' },
   cmakecache: { ids: 'cmake-cache', defaultExtension: 'CMakeCache.txt' },
   cobol: { ids: 'cobol', defaultExtension: 'cbl' },

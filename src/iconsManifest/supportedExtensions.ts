@@ -771,6 +771,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'clojurescript',
+      extensions: ['cljs'],
+      languages: [languages.clojurescript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cloudfoundry',
       extensions: ['.cfignore'],
       light: true,
