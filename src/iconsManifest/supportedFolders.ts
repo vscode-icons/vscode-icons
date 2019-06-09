@@ -40,6 +40,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
+    { icon: 'azure', extensions: ['azure'], format: FileFormat.svg },
     {
       icon: 'azurepipelines',
       extensions: ['azure-pipelines', '.azure-pipelines'],
