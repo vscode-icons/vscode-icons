@@ -1053,7 +1053,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'dojojs',
+      icon: 'dojo',
       extensions: ['.dojorc'],
       filename: true,
       format: FileFormat.svg,
