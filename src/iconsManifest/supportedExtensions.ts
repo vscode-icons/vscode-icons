@@ -3040,6 +3040,12 @@ export const extensions: IFileCollection = {
       languages: [languages.stata],
       format: FileFormat.svg,
     },
+    {
+      icon: 'stencil',
+      extensions: [],
+      languages: [languages.stencil, languages.stencilhtml],
+      format: FileFormat.svg,
+    },
     { icon: 'style', extensions: [], format: FileFormat.svg },
     {
       icon: 'stylelint',
