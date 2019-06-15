@@ -687,6 +687,14 @@ export const extensions: IFileCollection = {
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
     {
+      icon: 'capacitor',
+      extensions: [],
+      extensionsGlob: ['json'],
+      filename: true,
+      filenamesGlob: ['capacitor.config'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cargo',
       extensions: ['cargo.toml', 'cargo.lock'],
       filename: true,
