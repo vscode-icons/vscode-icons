@@ -40,6 +40,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
+    { icon: 'azure', extensions: ['azure', '.azure'], format: FileFormat.svg },
     {
       icon: 'azurepipelines',
       extensions: ['azure-pipelines', '.azure-pipelines'],
@@ -179,7 +180,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'haxelib', extensions: ['haxelib'], format: FileFormat.svg },
+    { icon: 'haxelib', extensions: ['.haxelib', 'haxe_libraries'], format: FileFormat.svg },
     {
       icon: 'helper',
       extensions: ['helpers', '.helpers'],
