@@ -180,7 +180,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'haxelib', extensions: ['haxelib'], format: FileFormat.svg },
+    { icon: 'haxelib', extensions: ['.haxelib', 'haxe_libraries'], format: FileFormat.svg },
     {
       icon: 'helper',
       extensions: ['helpers', '.helpers'],
