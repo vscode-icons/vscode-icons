@@ -687,6 +687,14 @@ export const extensions: IFileCollection = {
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
     {
+      icon: 'capacitor',
+      extensions: [],
+      extensionsGlob: ['json'],
+      filename: true,
+      filenamesGlob: ['capacitor.config'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cargo',
       extensions: ['cargo.toml', 'cargo.lock'],
       filename: true,
@@ -768,6 +776,12 @@ export const extensions: IFileCollection = {
       icon: 'clojure',
       extensions: ['cjm', 'cljc'],
       languages: [languages.clojure],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'clojurescript',
+      extensions: ['cljs'],
+      languages: [languages.clojurescript],
       format: FileFormat.svg,
     },
     {
@@ -3044,6 +3058,12 @@ export const extensions: IFileCollection = {
       icon: 'stata',
       extensions: ['dta'],
       languages: [languages.stata],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'stencil',
+      extensions: [],
+      languages: [languages.stencil, languages.stencilhtml],
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: [], format: FileFormat.svg },
