@@ -2068,6 +2068,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nearly',
+      extensions: [],
+      languages: [languages.nearley],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nestjs',
       extensions: [
         '.nest-cli.json',
