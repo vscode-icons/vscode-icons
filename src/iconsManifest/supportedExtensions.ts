@@ -719,6 +719,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ceylon',
+      extensions: ['ceylon'],
+      languages: [languages.ceylon],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cf',
       extensions: ['lucee'],
       languages: [languages.coldfusion],

@@ -31,6 +31,7 @@ export const languages: ILanguageCollection = {
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
   cabal: { ids: 'cabal', defaultExtension: 'cabal' },
   caddyfile: { ids: 'caddyfile', defaultExtension: 'Caddyfile' },
+  ceylon: { ids: 'ceylon', defaultExtension: 'ceylon' },
   cfc: { ids: 'cfc', defaultExtension: 'cfc' },
   cfm: { ids: 'cfmhtml', defaultExtension: 'cfm' },
   clojure: { ids: 'clojure', defaultExtension: 'clojure' },
