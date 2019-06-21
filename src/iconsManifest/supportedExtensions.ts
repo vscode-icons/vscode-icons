@@ -1666,7 +1666,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'jest_snapshot',
-      extensions: ['js.snap', 'jsx.snap', 'ts.snap', 'tsx.snap'],
+      extensions: [],
       languages: [languages.jestsnapshot],
       format: FileFormat.svg,
     },
