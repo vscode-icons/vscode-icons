@@ -13,7 +13,7 @@
 - Feature: Support for `Dojo`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2085](https://github.com/vscode-icons/vscode-icons/pull/2085))
 - Feature: Support for `Azure` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2081](https://github.com/vscode-icons/vscode-icons/pull/2081))
 - Feature: Support for `SSO` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2080](https://github.com/vscode-icons/vscode-icons/pull/2080))
-- Feature: Support for `Nearly`. ([@Floffah](https://github.com/Floffah) in [#2077](https://github.com/vscode-icons/vscode-icons/pull/2077))
+- Feature: Support for `Nearley`. ([@Floffah](https://github.com/Floffah) in [#2077](https://github.com/vscode-icons/vscode-icons/pull/2077))
 - Feature: Support for `tox`. ([@oriash93](https://github.com/oriash93) in [#2066](https://github.com/vscode-icons/vscode-icons/pull/2066))
 
 ## 8.7.0 (May 26, 2019)
