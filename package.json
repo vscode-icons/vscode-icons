@@ -2,13 +2,13 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "8.7.0",
+  "version": "8.8.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
     "email": "roberto.huertas@outlook.com",
     "name": "Roberto Huertas",
-    "url": "http://robertohuertas.com"
+    "url": "https://robertohuertas.com"
   },
   "maintainers": [
     {
@@ -19,6 +19,11 @@
       "email": "jenshausdorf@gmail.com",
       "name": "Jens Hausdorf",
       "url": "https://jens-hausdorf.de"
+    },
+    {
+      "email": "to_be_filled_by@manuel.bojato",
+      "name": "Manuel Bojato",
+      "url": "https://something.here.manuel?"
     }
   ],
   "repository": {
