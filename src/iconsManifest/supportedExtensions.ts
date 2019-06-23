@@ -2987,6 +2987,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'sln', extensions: ['sln'], format: FileFormat.svg },
     {
+      icon: 'sln2',
+      extensions: ['sln'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'silverstripe',
       extensions: [],
       languages: [languages.silverstripe],
@@ -3428,6 +3434,24 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vscode2',
+      extensions: ['.vscodeignore'],
+      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      extensionsGlob: ['json'],
+      filename: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'vscode3',
+      extensions: ['.vscodeignore'],
+      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      extensionsGlob: ['json'],
+      filename: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'vscode-insiders',
       extensions: ['.vscodeignore'],
       filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
