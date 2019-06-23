@@ -2094,6 +2094,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nearly',
+      extensions: [],
+      languages: [languages.nearley],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nestjs',
       extensions: [
         '.nest-cli.json',
@@ -2987,6 +2993,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'sln', extensions: ['sln'], format: FileFormat.svg },
     {
+      icon: 'sln2',
+      extensions: ['sln'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'silverstripe',
       extensions: [],
       languages: [languages.silverstripe],
@@ -3237,6 +3249,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tox',
+      extensions: ['.ini'],
+      filenamesGlob: ['tox.ini'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'travis',
       extensions: ['.travis.yml'],
       filename: true,
@@ -3421,6 +3440,24 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vscode2',
+      extensions: ['.vscodeignore'],
+      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      extensionsGlob: ['json'],
+      filename: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'vscode3',
+      extensions: ['.vscodeignore'],
+      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      extensionsGlob: ['json'],
+      filename: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'vscode-insiders',
       extensions: ['.vscodeignore'],
       filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
