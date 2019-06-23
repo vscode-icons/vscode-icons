@@ -720,7 +720,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ceylon',
-      extensions: ['ceylon'],
+      extensions: [],
       languages: [languages.ceylon],
       format: FileFormat.svg,
     },
