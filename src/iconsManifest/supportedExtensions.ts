@@ -687,6 +687,14 @@ export const extensions: IFileCollection = {
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
     {
+      icon: 'capacitor',
+      extensions: [],
+      extensionsGlob: ['json'],
+      filename: true,
+      filenamesGlob: ['capacitor.config'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cargo',
       extensions: ['cargo.toml', 'cargo.lock'],
       filename: true,
@@ -768,6 +776,12 @@ export const extensions: IFileCollection = {
       icon: 'clojure',
       extensions: ['cjm', 'cljc'],
       languages: [languages.clojure],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'clojurescript',
+      extensions: ['cljs'],
+      languages: [languages.clojurescript],
       format: FileFormat.svg,
     },
     {
@@ -1049,6 +1063,12 @@ export const extensions: IFileCollection = {
       extensions: ['.doczrc'],
       filenamesGlob: ['docz', '.docz', 'doczrc', 'docz.config'],
       extensionsGlob: ['js', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dojo',
+      extensions: ['.dojorc'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2068,6 +2088,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nearly',
+      extensions: [],
+      languages: [languages.nearley],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nestjs',
       extensions: [
         '.nest-cli.json',
@@ -3046,6 +3072,12 @@ export const extensions: IFileCollection = {
       languages: [languages.stata],
       format: FileFormat.svg,
     },
+    {
+      icon: 'stencil',
+      extensions: [],
+      languages: [languages.stencil, languages.stencilhtml],
+      format: FileFormat.svg,
+    },
     { icon: 'style', extensions: [], format: FileFormat.svg },
     {
       icon: 'stylelint',
@@ -3208,6 +3240,13 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.toml],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tox',
+      extensions: ['.ini'],
+      filenamesGlob: ['tox.ini'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
