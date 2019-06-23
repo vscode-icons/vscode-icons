@@ -3231,6 +3231,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tox',
+      extensions: ['.ini'],
+      filenamesGlob: ['tox.ini'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'travis',
       extensions: ['.travis.yml'],
       filename: true,
