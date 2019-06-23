@@ -139,6 +139,7 @@ export const languages: ILanguageCollection = {
   mojolicious: { ids: 'mojolicious', defaultExtension: 'ep' },
   mongo: { ids: 'mongo', defaultExtension: 'mongo' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
+  nearley: { ids: 'nearley', defaultExtension: 'ne' },
   nim: { ids: ['nim', 'nimble'], defaultExtension: 'nim' },
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], defaultExtension: 'nsi' },
   nunjucks: { ids: 'nunjucks', defaultExtension: 'nunjucks' },
