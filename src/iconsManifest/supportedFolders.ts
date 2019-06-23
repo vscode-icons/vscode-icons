@@ -180,7 +180,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'haxelib', extensions: ['.haxelib', 'haxe_libraries'], format: FileFormat.svg },
+    {
+      icon: 'haxelib',
+      extensions: ['.haxelib', 'haxe_libraries'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'helper',
       extensions: ['helpers', '.helpers'],
@@ -465,6 +469,12 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'vs', extensions: ['.vs'], format: FileFormat.svg },
     {
+      icon: 'vs2',
+      extensions: ['.vs'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'vscode',
       extensions: ['.vscode', 'vscode'],
       format: FileFormat.svg,
@@ -476,12 +486,24 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     {
+      icon: 'vscode3',
+      extensions: ['.vscode', 'vscode'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'vscode_test',
       extensions: ['.vscode-test'],
       format: FileFormat.svg,
     },
     {
       icon: 'vscode_test2',
+      extensions: ['.vscode-test'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'vscode_test3',
       extensions: ['.vscode-test'],
       format: FileFormat.svg,
       disabled: true,
