@@ -1,5 +1,21 @@
 # Change Log
 
+## 8.8.0 (June 23, 2019)
+
+- Enhancement: Support for `gridsome.server`. ([@tyankatsu0105](https://github.com/tyankatsu0105) in [#2101](https://github.com/vscode-icons/vscode-icons/pull/2101))
+- Feature: Support for `Ceylon`. ([@maheshuligade](https://github.com/maheshuligade) in [#2100](https://github.com/vscode-icons/vscode-icons/pull/2100))
+- Feature: Support for `Jest Snapshot`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2097](https://github.com/vscode-icons/vscode-icons/pull/2097))
+- Feature: Support for `Stencil`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2094](https://github.com/vscode-icons/vscode-icons/pull/2094))
+- Feature: Support for `capacitor`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2093](https://github.com/vscode-icons/vscode-icons/pull/2093))
+- Enhancement: Updated `vscode file icons` with `stable` and `insider` versions (1.35). ([@KingDarBoja](https://github.com/KingDarBoja) in [#2092](https://github.com/vscode-icons/vscode-icons/pull/2092))
+- Fix: `Haxelib` icon should only be used for `.haxelib`. ([@Gama11](https://github.com/Gama11) in [#2089](https://github.com/vscode-icons/vscode-icons/pull/2089))
+- Feature: Support for `ClojureScript`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2086](https://github.com/vscode-icons/vscode-icons/pull/2086))
+- Feature: Support for `Dojo`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2085](https://github.com/vscode-icons/vscode-icons/pull/2085))
+- Feature: Support for `Azure` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2081](https://github.com/vscode-icons/vscode-icons/pull/2081))
+- Feature: Support for `SSO` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2080](https://github.com/vscode-icons/vscode-icons/pull/2080))
+- Feature: Support for `Nearley`. ([@Floffah](https://github.com/Floffah) in [#2077](https://github.com/vscode-icons/vscode-icons/pull/2077))
+- Feature: Support for `tox`. ([@oriash93](https://github.com/oriash93) in [#2066](https://github.com/vscode-icons/vscode-icons/pull/2066))
+
 ## 8.7.0 (May 26, 2019)
 
 - Feature: Support for `widgets` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2063](https://github.com/vscode-icons/vscode-icons/pull/2063))
