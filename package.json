@@ -273,7 +273,9 @@
     "precompile:dev": "npm run precompile",
     "compile:dev": "tsc",
     "lint": "tslint -p .",
-    "example": "example"
+    "example": "example",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
@@ -302,7 +304,8 @@
   "dependencies": {
     "lodash": "^4.17.11",
     "opn": "^5.5.0",
-    "semver": "^5.6.0"
+    "semver": "^5.6.0",
+    "snyk": "^1.189.0"
   },
   "lint-staged": {
     "src/**/*.ts": [
@@ -321,5 +324,6 @@
       "@types/node",
       "vscode"
     ]
-  }
+  },
+  "snyk": true
 }
