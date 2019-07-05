@@ -1,20 +1,20 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
-import * as sinon from 'sinon';
-import * as fs from 'fs';
 import * as semver from 'semver';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { SettingsManager } from '../../src/settings/settingsManager';
+import * as sinon from 'sinon';
+import { ErrorHandler } from '../../src/common/errorHandler';
+import * as fsAsync from '../../src/common/fsAsync';
+import { constants } from '../../src/constants';
 import {
   ExtensionStatus,
-  IState,
   ISettingsManager,
+  IState,
   IVSCodeManager,
 } from '../../src/models';
+import { SettingsManager } from '../../src/settings/settingsManager';
 import { Utils } from '../../src/utils';
-import { ErrorHandler } from '../../src/errorHandler';
-import { constants } from '../../src/constants';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
 describe('SettingsManager: tests', function () {
   context('ensures that', function () {
@@ -67,29 +67,29 @@ describe('SettingsManager: tests', function () {
         .that.matches(/'vscodeManager' not set to an instance/);
     });
 
-    context(`moving the state from its legacy place`, function () {
-      let existsStub: sinon.SinonStub;
-      let readFileStub: sinon.SinonStub;
-      let unlinkFileStub: sinon.SinonStub;
+    context('moving the state from its legacy place', function () {
+      let existsAsyncStub: sinon.SinonStub;
+      let readFileAsyncStub: sinon.SinonStub;
+      let unlinkFileAsyncStub: sinon.SinonStub;
       let semverSpy: sinon.SinonSpy;
 
       beforeEach(function () {
-        existsStub = sandbox.stub(fs, 'existsSync');
-        readFileStub = sandbox.stub(fs, 'readFileSync');
-        unlinkFileStub = sandbox.stub(fs, 'unlinkSync');
+        existsAsyncStub = sandbox.stub(fsAsync, 'existsAsync');
+        readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
+        unlinkFileAsyncStub = sandbox.stub(fsAsync, 'unlinkAsync');
         vscodeManagerStub.getAppUserDirPath.returns('');
       });
 
-      it(`when the file is NOT found, no moving happens`, function () {
-        existsStub.returns(false);
+      it('when the file is NOT found, no moving happens', async function () {
+        existsAsyncStub.resolves(false);
         globalStateUpdateStub.resolves();
 
-        return settingsManager.moveStateFromLegacyPlace().then(() => {
-          expect(existsStub.calledOnce).to.be.true;
-          expect(readFileStub.called).to.be.false;
-          expect(globalStateUpdateStub.called).to.be.false;
-          expect(unlinkFileStub.called).to.be.false;
-        });
+        await settingsManager.moveStateFromLegacyPlace();
+
+        expect(existsAsyncStub.calledOnce).to.be.true;
+        expect(readFileAsyncStub.called).to.be.false;
+        expect(globalStateUpdateStub.called).to.be.false;
+        expect(unlinkFileAsyncStub.called).to.be.false;
       });
 
       context(`when the file is found`, function () {
@@ -98,145 +98,149 @@ describe('SettingsManager: tests', function () {
         });
 
         context(`it gets not moved`, function () {
-          it(`if state version equals the default state version`, function () {
-            existsStub.returns(true);
-            readFileStub.returns(JSON.stringify(stateMock));
+          it(`if state version equals the default state version`, async function () {
+            existsAsyncStub.resolves(true);
+            readFileAsyncStub.resolves(JSON.stringify(stateMock));
             globalStateUpdateStub.resolves();
 
-            return settingsManager.moveStateFromLegacyPlace().then(() => {
-              expect(existsStub.calledOnce).to.be.true;
-              expect(readFileStub.calledOnce).to.be.true;
-              expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
-                .true;
-              expect(globalStateUpdateStub.called).to.be.false;
-              expect(unlinkFileStub.called).to.be.false;
-            });
+            await settingsManager.moveStateFromLegacyPlace();
+
+            expect(existsAsyncStub.calledOnce).to.be.true;
+            expect(readFileAsyncStub.calledOnce).to.be.true;
+            expect(
+              semverSpy.calledOnceWithExactly('0.0.0', '0.0.0'),
+            ).to.be.true;
+            expect(globalStateUpdateStub.called).to.be.false;
+            expect(unlinkFileAsyncStub.called).to.be.false;
           });
 
-          it(`if parsing the state fails`, function () {
-            existsStub.returns(true);
-            readFileStub.returns('sometext');
+          it(`if parsing the state fails`, async function () {
+            existsAsyncStub.resolves(true);
+            readFileAsyncStub.resolves('sometext');
             globalStateUpdateStub.resolves();
 
-            return settingsManager.moveStateFromLegacyPlace().then(() => {
-              expect(existsStub.calledOnce).to.be.true;
-              expect(readFileStub.calledOnce).to.be.true;
-              expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
-                .true;
-              expect(globalStateUpdateStub.called).to.be.false;
-              expect(unlinkFileStub.called).to.be.false;
-            });
+            await settingsManager.moveStateFromLegacyPlace();
+
+            expect(existsAsyncStub.calledOnce).to.be.true;
+            expect(readFileAsyncStub.calledOnce).to.be.true;
+            expect(
+              semverSpy.calledOnceWithExactly('0.0.0', '0.0.0'),
+            ).to.be.true;
+            expect(globalStateUpdateStub.called).to.be.false;
+            expect(unlinkFileAsyncStub.called).to.be.false;
           });
         });
 
         context(`it gets moved`, function () {
-          it(`if state version does NOT equal the default state version`, function () {
+          it(`if state version does NOT equal the default state version`, async function () {
             stateMock.version = '1.0.0';
-            existsStub.returns(true);
+            existsAsyncStub.resolves(true);
             parseJSONStub.returns(stateMock);
             globalStateUpdateStub.resolves();
 
-            return settingsManager.moveStateFromLegacyPlace().then(() => {
-              expect(existsStub.calledOnce).to.be.true;
-              expect(readFileStub.calledOnce).to.be.true;
-              expect(
-                semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'),
-              ).to.be.true;
-              expect(
-                globalStateUpdateStub.calledOnceWithExactly(
-                  constants.vsicons.name,
-                  stateMock,
-                ),
-              ).to.be.true;
-              expect(unlinkFileStub.calledOnce).to.be.true;
-            });
+            await settingsManager.moveStateFromLegacyPlace();
+
+            expect(existsAsyncStub.calledOnce).to.be.true;
+            expect(readFileAsyncStub.calledOnce).to.be.true;
+            expect(
+              semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'),
+            ).to.be.true;
+            expect(
+              globalStateUpdateStub.calledOnceWithExactly(
+                constants.vsicons.name,
+                stateMock,
+              ),
+            ).to.be.true;
+            expect(unlinkFileAsyncStub.calledOnce).to.be.true;
           });
         });
 
         context(`an Error gets logged when`, function () {
-          it(`reading the file fails`, function () {
-            existsStub.returns(true);
+          it(`reading the file fails`, async function () {
+            existsAsyncStub.resolves(true);
             const error = new Error();
-            readFileStub.throws(error);
+            readFileAsyncStub.rejects(error);
             globalStateUpdateStub.resolves();
 
-            return settingsManager.moveStateFromLegacyPlace().then(() => {
-              expect(logErrorStub.calledOnceWithExactly(error, true)).to.be
-                .true;
-              expect(existsStub.calledOnce).to.be.true;
-              expect(readFileStub.calledOnce).to.be.true;
-              expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
-                .true;
-              expect(globalStateUpdateStub.called).to.be.false;
-              expect(unlinkFileStub.called).to.be.false;
-            });
+            await settingsManager.moveStateFromLegacyPlace();
+
+            expect(logErrorStub.calledOnceWithExactly(error, true)).to.be.true;
+            expect(existsAsyncStub.calledOnce).to.be.true;
+            expect(readFileAsyncStub.calledOnce).to.be.true;
+            expect(
+              semverSpy.calledOnceWithExactly('0.0.0', '0.0.0'),
+            ).to.be.true;
+            expect(globalStateUpdateStub.called).to.be.false;
+            expect(unlinkFileAsyncStub.called).to.be.false;
           });
 
-          it(`deleting the file fails`, function () {
+          it(`deleting the file fails`, async function () {
             stateMock.version = '1.0.0';
-            existsStub.returns(true);
+            existsAsyncStub.resolves(true);
             parseJSONStub.returns(stateMock);
             globalStateUpdateStub.resolves();
 
             const error = new Error();
-            unlinkFileStub.throws(error);
+            unlinkFileAsyncStub.rejects(error);
 
-            return settingsManager.moveStateFromLegacyPlace().then(() => {
-              expect(existsStub.calledOnce).to.be.true;
-              expect(readFileStub.calledOnce).to.be.true;
-              expect(
-                semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'),
-              ).to.be.true;
-              expect(
-                globalStateUpdateStub.calledOnceWithExactly(
-                  constants.vsicons.name,
-                  stateMock,
-                ),
-              ).to.be.true;
-              expect(unlinkFileStub.calledOnceWithExactly(undefined)).to.be
-                .true;
-              expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
-            });
+            await settingsManager.moveStateFromLegacyPlace();
+
+            expect(existsAsyncStub.calledOnce).to.be.true;
+            expect(readFileAsyncStub.calledOnce).to.be.true;
+            expect(
+              semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'),
+            ).to.be.true;
+            expect(
+              globalStateUpdateStub.calledOnceWithExactly(
+                constants.vsicons.name,
+                stateMock,
+              ),
+            ).to.be.true;
+            expect(
+              unlinkFileAsyncStub.calledOnceWithExactly(undefined),
+            ).to.be.true;
+            expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
           });
         });
       });
     });
 
-    it('the state gets set to the global state storage', function () {
+    it('the state gets set to the global state storage', async function () {
       globalStateUpdateStub.resolves();
 
-      return settingsManager.setState(stateMock).then(() => {
-        expect(
-          globalStateUpdateStub.calledOnceWithExactly(
-            constants.vsicons.name,
-            stateMock,
-          ),
-        ).to.be.true;
-        expect(logErrorStub.called).to.be.false;
-      });
+      await settingsManager.setState(stateMock);
+
+      expect(
+        globalStateUpdateStub.calledOnceWithExactly(
+          constants.vsicons.name,
+          stateMock,
+        ),
+      ).to.be.true;
+      expect(logErrorStub.called).to.be.false;
     });
 
-    it('an Error gets logged when setting the state fails', function () {
+    it('an Error gets logged when setting the state fails', async function () {
       const error = new Error();
       globalStateUpdateStub.rejects(error);
 
-      return settingsManager.setState(stateMock).then(() => {
-        expect(
-          globalStateUpdateStub.calledOnceWithExactly(
-            constants.vsicons.name,
-            stateMock,
-          ),
-        ).to.be.true;
-        expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
-      });
+      await settingsManager.setState(stateMock);
+
+      expect(
+        globalStateUpdateStub.calledOnceWithExactly(
+          constants.vsicons.name,
+          stateMock,
+        ),
+      ).to.be.true;
+      expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
     });
 
-    it('the state status gets updated', function () {
+    it('the state status gets updated', async function () {
       globalStateGetStub.returns(stateMock);
       globalStateUpdateStub.resolves();
 
       const status = ExtensionStatus.activated;
-      const state = settingsManager.updateStatus(status);
+
+      const state = await settingsManager.updateStatus(status);
 
       expect(
         globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
@@ -250,11 +254,11 @@ describe('SettingsManager: tests', function () {
       expect(state.status).to.be.equal(status);
     });
 
-    it('the settings status does NOT get updated, if no status is provided', function () {
+    it('the settings status does NOT get updated, if no status is provided', async function () {
       globalStateGetStub.returns(stateMock);
       globalStateUpdateStub.resolves();
 
-      const state = settingsManager.updateStatus();
+      const state = await settingsManager.updateStatus();
 
       expect(
         globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
@@ -270,10 +274,10 @@ describe('SettingsManager: tests', function () {
       expect(state.welcomeShown).to.be.true;
     });
 
-    it('the state gets deleted', function () {
+    it('the state gets deleted', async function () {
       globalStateUpdateStub.resolves();
 
-      settingsManager.deleteState();
+      await settingsManager.deleteState();
 
       expect(
         globalStateUpdateStub.calledOnceWithExactly(
@@ -283,19 +287,19 @@ describe('SettingsManager: tests', function () {
       ).to.be.true;
     });
 
-    it('an Error gets logged when deleting the state fails', function () {
+    it('an Error gets logged when deleting the state fails', async function () {
       const error = new Error();
       globalStateUpdateStub.rejects(error);
 
-      return settingsManager.deleteState().then(() => {
-        expect(
-          globalStateUpdateStub.calledOnceWithExactly(
-            constants.vsicons.name,
-            undefined,
-          ),
-        ).to.be.true;
-        expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
-      });
+      await settingsManager.deleteState();
+
+      expect(
+        globalStateUpdateStub.calledOnceWithExactly(
+          constants.vsicons.name,
+          undefined,
+        ),
+      ).to.be.true;
+      expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
     });
 
     context('getting the state from the global state storage', function () {

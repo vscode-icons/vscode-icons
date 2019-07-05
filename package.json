@@ -35,8 +35,8 @@
     "email": "roberto.huertas@outlook.com"
   },
   "engines": {
-    "vscode": "^1.18.1",
-    "node": ">=7.9.0"
+    "vscode": "^1.26.1",
+    "node": ">=8.9.3"
   },
   "categories": [
     "Themes"
@@ -58,13 +58,14 @@
   "activationEvents": [
     "*"
   ],
-  "main": "./out/src/",
+  "main": "out/src/",
   "contributes": {
     "iconThemes": [
       {
         "id": "vscode-icons",
         "label": "VSCode Icons",
-        "path": "out/src/icons.json"
+        "path": "out/src/vsicons-icon-theme.json",
+        "_watch": true
       }
     ],
     "commands": [
@@ -256,70 +257,67 @@
     "format": "prettier --loglevel error --write \"{src,test}/**/*.ts\"",
     "postformat": "npm run lint -- --fix",
     "preinstall": "git submodule update --init --recursive",
-    "postinstall": "vscode-install",
+    "prebundle:dev": "rimraf ./*.nls*.json",
+    "bundle:dev": "node ./out/src/tools/bundle.js",
+    "bundle": "npm run bundle:dev -- --release",
     "prebuild": "npm run compile",
-    "build": "node ./out/src/build.js",
+    "build": "node ./out/src/tools/build.js \"--release\"",
     "prebuild:dev": "npm run lint && npm run compile:dev",
-    "build:dev": "node ./out/src/build.js",
-    "pretest": "rimraf ./.nyc_output ./coverage && npm run lint && npm run compile:dev",
-    "test": "nyc -x '' mocha",
+    "build:dev": "node ./out/src/tools/build.js",
+    "pretest": "rimraf ./.nyc_output ./coverage && npm run prebuild:dev",
+    "test": "nyc mocha",
     "posttest": "nyc report -r lcov",
     "test:vs": "node ./node_modules/vscode/bin/test",
-    "vscode:prepublish": "npm run build",
+    "vscode:prepublish": "npm run dist",
     "vscode:uninstall": "node ./out/src/uninstall.js",
-    "precompile": "rimraf ./out",
+    "precompile": "rimraf ./out ./dist",
     "compile": "tsc -p tsconfig.prod.json",
+    "postcompile": "npm run bundle",
     "compile:w": "npm run compile:dev -- -w",
     "precompile:dev": "npm run precompile",
     "compile:dev": "tsc",
+    "postcompile:dev": "npm run bundle:dev",
+    "lint-staged": "lint-staged",
     "lint": "tslint -p .",
+    "predist": "npm run build",
+    "dist": "webpack --hide-modules --mode production",
+    "postdist": "nsri create -s .",
     "example": "example"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
-    "@types/lodash": "^4.14.123",
-    "@types/mocha": "^5.2.6",
-    "@types/node": "7",
-    "@types/opn": "^5.1.0",
+    "@types/glob": "^7.1.1",
+    "@types/lodash": "^4.14.135",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "8",
+    "@types/open": "^6.1.0",
     "@types/proxyquire": "^1.3.28",
-    "@types/semver": "^5.5.0",
-    "@types/sinon": "^7.0.10",
+    "@types/semver": "^6.0.1",
+    "@types/sinon": "^7.0.13",
+    "@types/vscode": "1.36.0",
     "chai": "^4.2.0",
     "examples-generator": "file:submodules/examples-generator",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.5",
-    "mocha": "^6.0.2",
-    "nyc": "^13.3.0",
-    "prettier": "^1.16.4",
+    "glob": "^7.1.4",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.2",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
     "proxyquire": "^2.1.0",
     "rimraf": "^2.6.3",
-    "sinon": "^7.3.0",
-    "tslint": "^5.14.0",
+    "sinon": "^7.3.2",
+    "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.3.4000",
-    "vscode": "1.1.18"
+    "typescript": "^3.5.2",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
   },
   "dependencies": {
+    "inversify": "^5.0.1",
     "lodash": "^4.17.11",
-    "opn": "^5.5.0",
-    "semver": "^5.6.0"
-  },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "prettier --parser typescript --write",
-      "git add",
-      "tslint"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "greenkeeper": {
-    "ignore": [
-      "@types/node",
-      "vscode"
-    ]
+    "open": "^6.4.0",
+    "nsri": "^4.4.0",
+    "reflect-metadata": "^0.1.13",
+    "semver": "^6.2.0"
   }
 }

@@ -21,7 +21,7 @@ describe('CustomsMerger: file extensions tests', function () {
       sandbox.restore();
     });
 
-    it('new extensions are added to existing file icon and respect the format type', function () {
+    it('new extensions are added to existing file icon and respect the format type', async function () {
       const customFiles: any = {
         default: {},
         supported: [
@@ -29,13 +29,13 @@ describe('CustomsMerger: file extensions tests', function () {
         ],
       };
 
-      const newDefs = CustomsMerger.merge(
+      const newDefs = (await CustomsMerger.merge(
         customFiles,
         extFiles,
         null,
         extFolders,
         vsicons.presets,
-      ).files.supported.filter(
+      )).files.supported.filter(
         file => file.icon === customFiles.supported[0].icon,
       );
 
@@ -51,7 +51,7 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs[1].extensions).to.eql(['as2']);
     });
 
-    it(`'overrides' removes the specified icon`, function () {
+    it(`'overrides' removes the specified icon`, async function () {
       const customFiles: any = {
         default: {},
         supported: [
@@ -64,7 +64,7 @@ describe('CustomsMerger: file extensions tests', function () {
         ],
       };
 
-      const { files } = CustomsMerger.merge(
+      const { files } = await CustomsMerger.merge(
         customFiles,
         extFiles,
         null,
@@ -87,7 +87,7 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs[0].format).to.equals(customFiles.supported[0].format);
     });
 
-    it(`'extends' replaces the specified icon`, function () {
+    it(`'extends' replaces the specified icon`, async function () {
       const customFiles: any = {
         default: {},
         supported: [
@@ -100,7 +100,7 @@ describe('CustomsMerger: file extensions tests', function () {
         ],
       };
 
-      const { files } = CustomsMerger.merge(
+      const { files } = await CustomsMerger.merge(
         customFiles,
         extFiles,
         null,
@@ -128,7 +128,7 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs[1].format).to.equals(customFiles.supported[0].format);
     });
 
-    it('disabled extensions are NOT included into the manifest', function () {
+    it('disabled extensions are NOT included into the manifest', async function () {
       const customFiles: any = {
         default: {},
         supported: [
@@ -141,13 +141,13 @@ describe('CustomsMerger: file extensions tests', function () {
         ],
       };
 
-      const newDefs = CustomsMerger.merge(
+      const newDefs = (await CustomsMerger.merge(
         customFiles,
         extFiles,
         null,
         extFolders,
         vsicons.presets,
-      ).files.supported.filter(
+      )).files.supported.filter(
         file => file.icon === customFiles.supported[0].icon,
       );
 
@@ -157,7 +157,7 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs[0].disabled).to.be.true;
     });
 
-    it('NOT disabled icons are included into the manifest', function () {
+    it('NOT disabled icons are included into the manifest', async function () {
       const customFiles: any = {
         default: {},
         supported: [
@@ -170,13 +170,13 @@ describe('CustomsMerger: file extensions tests', function () {
         ],
       };
 
-      const newDefs = CustomsMerger.merge(
+      const newDefs = (await CustomsMerger.merge(
         customFiles,
         extFiles,
         null,
         extFolders,
         vsicons.presets,
-      ).files.supported.filter(
+      )).files.supported.filter(
         file => file.icon === customFiles.supported[0].icon,
       );
 
@@ -192,19 +192,19 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs[1].extensions).to.eql(customFiles.supported[0].extensions);
     });
 
-    it(`if 'extensions' attribute is NOT defined, it gets added internally`, function () {
+    it(`if 'extensions' attribute is NOT defined, it gets added internally`, async function () {
       const customFiles: any = {
         default: {},
         supported: [{ icon: 'actionscript', disabled: false, format: 'svg' }],
       };
 
-      const newDefs = CustomsMerger.merge(
+      const newDefs = (await CustomsMerger.merge(
         customFiles,
         extFiles,
         null,
         extFolders,
         vsicons.presets,
-      ).files.supported.filter(
+      )).files.supported.filter(
         file => file.icon === customFiles.supported[0].icon,
       );
 
@@ -221,7 +221,7 @@ describe('CustomsMerger: file extensions tests', function () {
     });
 
     context('existing icons', function () {
-      it('of second set are getting enabled', function () {
+      it('of second set are getting enabled', async function () {
         const customFiles: any = {
           default: {},
           supported: [
@@ -290,7 +290,7 @@ describe('CustomsMerger: file extensions tests', function () {
           ],
         };
 
-        const { files } = CustomsMerger.merge(
+        const { files } = await CustomsMerger.merge(
           customFiles,
           extFiles,
           null,
@@ -313,7 +313,7 @@ describe('CustomsMerger: file extensions tests', function () {
         });
       });
 
-      it(`have its 'extensions' reassigned to new custom icon`, function () {
+      it(`have its 'extensions' reassigned to new custom icon`, async function () {
         const customFiles: any = {
           default: {},
           supported: [
@@ -325,7 +325,7 @@ describe('CustomsMerger: file extensions tests', function () {
           ],
         };
 
-        const { files } = CustomsMerger.merge(
+        const { files } = await CustomsMerger.merge(
           customFiles,
           extFiles,
           null,
@@ -353,7 +353,7 @@ describe('CustomsMerger: file extensions tests', function () {
         );
       });
 
-      it(`accept 'languageId'`, function () {
+      it(`accept 'languageId'`, async function () {
         const customFiles: any = {
           default: {},
           supported: [
@@ -366,13 +366,13 @@ describe('CustomsMerger: file extensions tests', function () {
           ],
         };
 
-        const newDefs = CustomsMerger.merge(
+        const newDefs = (await CustomsMerger.merge(
           customFiles,
           extFiles,
           null,
           extFolders,
           vsicons.presets,
-        ).files.supported.filter(
+        )).files.supported.filter(
           file => file.icon === customFiles.supported[0].icon,
         );
 
@@ -385,7 +385,7 @@ describe('CustomsMerger: file extensions tests', function () {
     });
 
     context('custom icon', function () {
-      it(`keeps the correct 'format'`, function () {
+      it(`keeps the correct 'format'`, async function () {
         const customFiles: any = {
           default: {},
           supported: [
@@ -397,13 +397,13 @@ describe('CustomsMerger: file extensions tests', function () {
           ],
         };
 
-        const newDefs = CustomsMerger.merge(
+        const newDefs = (await CustomsMerger.merge(
           customFiles,
           extFiles,
           null,
           extFolders,
           vsicons.presets,
-        ).files.supported.filter(
+        )).files.supported.filter(
           file => file.icon === customFiles.supported[0].icon,
         );
 

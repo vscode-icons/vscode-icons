@@ -1,5 +1,11 @@
 {
   "editor.tabSize": 2,
+  "files.associations": {
+    ".huskyrc": "json",
+    ".lintstagedrc": "json",
+    ".nsrirc": "json",
+    ".nycrc": "json"
+  },
   "files.exclude": {
     "out": false
   },
@@ -14,8 +20,12 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "npm.exclude": "**/submodules/**",
   "vsicons.projectDetection.disableDetect": true
 }

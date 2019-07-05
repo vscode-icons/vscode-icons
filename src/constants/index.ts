@@ -1,11 +1,17 @@
 import * as manifest from '../../../package.json';
 
 export const constants = {
+  environment: { production: false },
   extension: {
     name: 'vscode-icons',
     settingsFilename: 'vsicons.settings.json',
     version: manifest.version,
     customIconFolderName: 'vsicons-custom-icons',
+    distEntryFilename: 'vscode-icons.bundle.js',
+    outDirName: 'out',
+    distDirName: 'dist',
+    srcDirName: 'src',
+    iconsDirName: 'icons',
   },
   vscode: {
     iconThemeSetting: 'workbench.iconTheme',
@@ -41,7 +47,7 @@ export const constants = {
   urlOfficialApi:
     'https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-file-icon-theme',
   iconsManifest: {
-    filename: 'icons.json',
+    filename: 'vsicons-icon-theme.json',
     iconSuffix: '',
     fileTypePrefix: 'file_type_',
     fileTypeLightPrefix: 'file_type_light_',

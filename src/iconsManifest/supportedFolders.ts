@@ -385,7 +385,6 @@ export const extensions: IFolderCollection = {
       extensions: ['sso'],
       format: FileFormat.svg,
     },
-    { icon: 'server', extensions: ['server'], format: FileFormat.svg },
     {
       icon: 'story',
       extensions: ['stories', '__stories__'],

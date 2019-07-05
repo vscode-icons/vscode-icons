@@ -2,6 +2,8 @@ version: "2"
 checks:
   file-lines:
     enabled: false
+  method-count:
+    enabled: false
   method-complexity:
     enabled: false
   method-lines:
@@ -21,17 +23,9 @@ plugins:
   tslint:
     enabled: true
 exclude_patterns:
+  - ".*"
+  - ".*/"
+  - "*.*"
+  - "!*.md"
   - "!src/**/*.ts"
   - "!test/**/*.ts"
-  - "test/support"
-  - "docker/"
-  - "images/"
-  - "icons/"
-  - "locale/"
-  - "submodules/"
-  - "*.json"
-  - "*.yml"
-  - "*.lock"
-  - ".*"
-  - "wallaby.*"
-  - "**/*.d.ts"

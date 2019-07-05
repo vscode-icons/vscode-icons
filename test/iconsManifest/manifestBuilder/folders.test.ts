@@ -2,7 +2,7 @@
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as fs from 'fs';
+import * as fsAsync from '../../../src/common/fsAsync';
 import { IFileCollection } from '../../../src/models';
 import { ManifestBuilder } from '../../../src/iconsManifest';
 import { constants } from '../../../src/constants';
@@ -22,7 +22,7 @@ describe('ManifestBuilder: folders icons test', function () {
 
       sandbox.stub(Utils, 'fileFormatToString').returns('.svg');
 
-      sandbox.stub(Utils, 'getRelativePath').returns(iconsDirRelativeBasePath);
+      sandbox.stub(Utils, 'getRelativePath').resolves(iconsDirRelativeBasePath);
       pathUnixJoinStub = sandbox
         .stub(Utils, 'pathUnixJoin')
         .callsFake((fpath: string, file: string) => `${fpath}/${file}`);
@@ -39,8 +39,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
     context(`if a default 'light' icon is NOT defined`, function () {
       context(`the 'default' folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -48,14 +48,14 @@ describe('ManifestBuilder: folders icons test', function () {
           expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
             fixtFolders.default.folder.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -67,8 +67,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'default' open folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -78,14 +78,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }_opened${
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -96,8 +96,8 @@ describe('ManifestBuilder: folders icons test', function () {
         });
       });
 
-      it(`the 'default' 'light' folder has NOT an icon path`, function () {
-        const manifest = ManifestBuilder.buildManifest(
+      it(`the 'default' 'light' folder has NOT an icon path`, async function () {
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
@@ -105,8 +105,8 @@ describe('ManifestBuilder: folders icons test', function () {
         expect(manifest.iconDefinitions._folder_light.iconPath).to.be.empty;
       });
 
-      it(`the 'default' 'light' open folder has NOT an icon path`, function () {
-        const manifest = ManifestBuilder.buildManifest(
+      it(`the 'default' 'light' open folder has NOT an icon path`, async function () {
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
@@ -117,8 +117,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'root' folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -128,14 +128,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
             fixtFolders.default.root_folder.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -147,8 +147,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'root' open folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -158,14 +158,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }_opened${
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(fixtFolders.default.root_folder.format)}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -176,8 +176,8 @@ describe('ManifestBuilder: folders icons test', function () {
         });
       });
 
-      it(`the 'root' 'light' folder has NOT an icon path`, function () {
-        const manifest = ManifestBuilder.buildManifest(
+      it(`the 'root' 'light' folder has NOT an icon path`, async function () {
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
@@ -187,8 +187,8 @@ describe('ManifestBuilder: folders icons test', function () {
         ).to.be.empty;
       });
 
-      it(`the 'root' 'light' open folder has NOT an icon path`, function () {
-        const manifest = ManifestBuilder.buildManifest(
+      it(`the 'root' 'light' open folder has NOT an icon path`, async function () {
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
@@ -200,8 +200,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
       context('each supported', function () {
         context('folder', function () {
-          it('has a definition', function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it('has a definition', async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -216,8 +216,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it(`has an 'open' definition`, function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it(`has an 'open' definition`, async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -233,8 +233,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it('has an icon path', function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it('has an icon path', async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -250,8 +250,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it(`has an 'opened' icon path`, function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it(`has an 'opened' icon path`, async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -268,8 +268,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('icon path has the correct structure', function () {
-            it(`for closed folder`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`for closed folder`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -293,8 +293,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`for opened folder`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`for opened folder`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -320,8 +320,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('that has NOT a light theme version', function () {
-            it('has a definition', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has a definition', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -336,8 +336,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'open' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'open' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -353,8 +353,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it('has an icon path', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has an icon path', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -370,8 +370,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'opened' icon path`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'opened' icon path`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -388,8 +388,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('icon path has the correct structure', function () {
-              it(`for closed folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for closed folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -413,8 +413,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`for opened folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for opened folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -441,8 +441,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('that has a light theme version', function () {
-            it(`has a 'light' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has a 'light' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -457,8 +457,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has a 'light' 'open' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has a 'light' 'open' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -473,8 +473,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it('has an icon path', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has an icon path', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -490,8 +490,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'opened' icon path`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'opened' icon path`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -508,8 +508,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('icon path has the correct structure', function () {
-              it(`for closed folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for closed folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -533,8 +533,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`for opened folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for opened folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -562,8 +562,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
           context('for a dark color theme', function () {
             context('and has NOT a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -582,8 +582,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -604,8 +604,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('and has a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -624,8 +624,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -648,8 +648,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
           context('for a light color theme', function () {
             context('and has NOT a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its 'dark' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its 'dark' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -668,8 +668,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -690,8 +690,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('and has a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its 'light' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its 'light' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -710,8 +710,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -748,8 +748,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'default' folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -757,14 +757,14 @@ describe('ManifestBuilder: folders icons test', function () {
           expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
             fixtFolders.default.folder.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -776,8 +776,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'default' open folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -787,14 +787,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }_opened${
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -806,8 +806,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'default' 'light' folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -817,14 +817,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder_light.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
             fixtFolders.default.folder_light.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -836,8 +836,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'default' 'light' open folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -847,7 +847,7 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder_light.icon
           }_opened${
@@ -856,7 +856,7 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders.default.folder_light.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -868,8 +868,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'root' folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -879,14 +879,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
             fixtFolders.default.root_folder.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -898,8 +898,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'root' open folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -909,14 +909,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }_opened${
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(fixtFolders.default.root_folder.format)}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -927,8 +927,8 @@ describe('ManifestBuilder: folders icons test', function () {
         });
       });
 
-      it(`the 'root' 'light' folder has NOT an icon path`, function () {
-        const manifest = ManifestBuilder.buildManifest(
+      it(`the 'root' 'light' folder has NOT an icon path`, async function () {
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
@@ -938,8 +938,8 @@ describe('ManifestBuilder: folders icons test', function () {
         ).to.be.empty;
       });
 
-      it(`the 'root' 'light' open folder has NOT an icon path`, function () {
-        const manifest = ManifestBuilder.buildManifest(
+      it(`the 'root' 'light' open folder has NOT an icon path`, async function () {
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
@@ -951,8 +951,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
       context('each supported', function () {
         context('folder', function () {
-          it('has a definition', function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it('has a definition', async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -967,8 +967,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it(`has an 'open' definition`, function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it(`has an 'open' definition`, async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -984,8 +984,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it('has an icon path', function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it('has an icon path', async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -1001,8 +1001,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it(`has an 'opened' icon path`, function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it(`has an 'opened' icon path`, async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -1019,8 +1019,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('icon path has the correct structure', function () {
-            it(`for closed folder`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`for closed folder`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1044,8 +1044,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`for opened folder`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`for opened folder`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1071,8 +1071,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('that has NOT a light theme version', function () {
-            it('has a definition', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has a definition', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1087,8 +1087,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'open' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'open' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1104,8 +1104,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it('has an icon path', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has an icon path', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1121,8 +1121,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'opened' icon path`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'opened' icon path`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1139,8 +1139,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('icon path has the correct structure', function () {
-              it(`for closed folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for closed folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1164,8 +1164,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`for opened folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for opened folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1192,8 +1192,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('that has a light theme version', function () {
-            it(`has a 'light' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has a 'light' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1208,8 +1208,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has a 'light' 'open' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has a 'light' 'open' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1224,8 +1224,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it('has an icon path', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has an icon path', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1241,8 +1241,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'opened' icon path`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'opened' icon path`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1259,8 +1259,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('icon path has the correct structure', function () {
-              it(`for closed folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for closed folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1284,8 +1284,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`for opened folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for opened folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1313,8 +1313,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
           context('for a dark color theme', function () {
             context('and has NOT a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1333,8 +1333,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1355,8 +1355,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('and has a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1375,8 +1375,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1399,8 +1399,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
           context('for a light color theme', function () {
             context('and has NOT a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its 'dark' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its 'dark' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1419,8 +1419,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1441,8 +1441,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('and has a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its 'light' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its 'light' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1461,8 +1461,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1499,8 +1499,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'default' folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1508,14 +1508,14 @@ describe('ManifestBuilder: folders icons test', function () {
           expect(manifest.iconDefinitions._folder.iconPath).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
             fixtFolders.default.folder.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1527,8 +1527,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'default' open folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1538,14 +1538,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
           }_opened${
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1556,8 +1556,8 @@ describe('ManifestBuilder: folders icons test', function () {
         });
       });
 
-      it(`the 'default' 'light' folder has NOT an icon path`, function () {
-        const manifest = ManifestBuilder.buildManifest(
+      it(`the 'default' 'light' folder has NOT an icon path`, async function () {
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
@@ -1565,8 +1565,8 @@ describe('ManifestBuilder: folders icons test', function () {
         expect(manifest.iconDefinitions._folder_light.iconPath).to.be.empty;
       });
 
-      it(`the 'default' 'light' open folder has NOT an icon path`, function () {
-        const manifest = ManifestBuilder.buildManifest(
+      it(`the 'default' 'light' open folder has NOT an icon path`, async function () {
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
@@ -1577,8 +1577,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'root' folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1588,14 +1588,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
             fixtFolders.default.root_folder.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1607,8 +1607,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'root' open folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1618,14 +1618,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
           }_opened${
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(fixtFolders.default.root_folder.format)}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1637,8 +1637,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'root' 'light' folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1648,14 +1648,14 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder_light.icon
           }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
             fixtFolders.default.root_folder_light.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1667,8 +1667,8 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`the 'root' 'light' open folder`, function () {
-        it(`has an icon path`, function () {
-          const manifest = ManifestBuilder.buildManifest(
+        it(`has an icon path`, async function () {
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1678,7 +1678,7 @@ describe('ManifestBuilder: folders icons test', function () {
           ).not.to.be.empty;
         });
 
-        it(`icon path has the correct structure`, function () {
+        it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder_light.icon
           }_opened${
@@ -1687,7 +1687,7 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders.default.root_folder_light.format,
           )}`;
 
-          const manifest = ManifestBuilder.buildManifest(
+          const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             fixtFolders,
           );
@@ -1700,8 +1700,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
       context('each supported', function () {
         context('folder', function () {
-          it('has a definition', function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it('has a definition', async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -1716,8 +1716,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it(`has an 'open' definition`, function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it(`has an 'open' definition`, async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -1733,8 +1733,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it('has an icon path', function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it('has an icon path', async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -1750,8 +1750,8 @@ describe('ManifestBuilder: folders icons test', function () {
               });
           });
 
-          it(`has an 'opened' icon path`, function () {
-            const manifest = ManifestBuilder.buildManifest(
+          it(`has an 'opened' icon path`, async function () {
+            const manifest = await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
             );
@@ -1768,8 +1768,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('icon path has the correct structure', function () {
-            it(`for closed folder`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`for closed folder`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1793,8 +1793,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`for opened folder`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`for opened folder`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1820,8 +1820,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('that has NOT a light theme version', function () {
-            it('has a definition', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has a definition', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1836,8 +1836,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'open' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'open' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1853,8 +1853,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it('has an icon path', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has an icon path', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1870,8 +1870,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'opened' icon path`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'opened' icon path`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1888,8 +1888,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('icon path has the correct structure', function () {
-              it(`for closed folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for closed folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1913,8 +1913,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`for opened folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for opened folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -1941,8 +1941,8 @@ describe('ManifestBuilder: folders icons test', function () {
           });
 
           context('that has a light theme version', function () {
-            it(`has a 'light' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has a 'light' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1957,8 +1957,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has a 'light' 'open' definition`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has a 'light' 'open' definition`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1973,8 +1973,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it('has an icon path', function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it('has an icon path', async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -1990,8 +1990,8 @@ describe('ManifestBuilder: folders icons test', function () {
                 });
             });
 
-            it(`has an 'opened' icon path`, function () {
-              const manifest = ManifestBuilder.buildManifest(
+            it(`has an 'opened' icon path`, async function () {
+              const manifest = await ManifestBuilder.buildManifest(
                 emptyFileCollection,
                 fixtFolders,
               );
@@ -2008,8 +2008,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('icon path has the correct structure', function () {
-              it(`for closed folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for closed folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2033,8 +2033,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`for opened folder`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`for opened folder`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2062,8 +2062,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
           context('for a dark color theme', function () {
             context('and has NOT a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2082,8 +2082,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2104,8 +2104,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('and has a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2124,8 +2124,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2148,8 +2148,8 @@ describe('ManifestBuilder: folders icons test', function () {
 
           context('for a light color theme', function () {
             context('and has NOT a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its 'dark' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its 'dark' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2168,8 +2168,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its 'dark' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2190,8 +2190,8 @@ describe('ManifestBuilder: folders icons test', function () {
             });
 
             context('and has a light theme version', function () {
-              it(`has a 'folderNames' extension referencing its 'light' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNames' extension referencing its 'light' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2210,8 +2210,8 @@ describe('ManifestBuilder: folders icons test', function () {
                   });
               });
 
-              it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, function () {
-                const manifest = ManifestBuilder.buildManifest(
+              it(`has a 'folderNamesExpanded' extension referencing its 'light' definition`, async function () {
+                const manifest = await ManifestBuilder.buildManifest(
                   emptyFileCollection,
                   fixtFolders,
                 );
@@ -2236,14 +2236,14 @@ describe('ManifestBuilder: folders icons test', function () {
     });
 
     context(`when a custom icons directory path is provided`, function () {
-      let existsSyncStub: sinon.SinonStub;
+      let existsAsyncStub: sinon.SinonStub;
       let belongToSameDriveStub: sinon.SinonStub;
       let overwriteDriveStub: sinon.SinonStub;
 
       const customIconDirPath = 'path/to/custom/icons/dir';
 
       beforeEach(function () {
-        existsSyncStub = sandbox.stub(fs, 'existsSync').returns(true);
+        existsAsyncStub = sandbox.stub(fsAsync, 'existsAsync').resolves(true);
         belongToSameDriveStub = sandbox
           .stub(Utils, 'belongToSameDrive')
           .returns(true);
@@ -2251,7 +2251,7 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`an Error gets thrown`, function () {
-        it(`if the closed and opened icons are NOT in the same directory`, function () {
+        it(`if the closed and opened icons are NOT in the same directory`, async function () {
           sandbox
             // @ts-ignore
             .stub(ManifestBuilder, 'getIconPath')
@@ -2259,25 +2259,26 @@ describe('ManifestBuilder: folders icons test', function () {
               /opened/g.test(file) ? '' : iconsDirRelativeBasePath,
             );
 
-          expect(() =>
-            ManifestBuilder.buildManifest(
+          try {
+            await ManifestBuilder.buildManifest(
               emptyFileCollection,
               fixtFolders,
               customIconDirPath,
-            ),
-          ).to.throw(
-            Error,
-            /Folder icons for '.*' must be placed in the same directory/,
-          );
+            );
+          } catch (error) {
+            expect(error).to.match(
+              /Folder icons for '.*' must be placed in the same directory/,
+            );
+          }
         });
       });
 
-      it(`that path is used, when it has a custom icon`, function () {
+      it(`that path is used, when it has a custom icon`, async function () {
         pathUnixJoinStub.returns(
           `${customIconDirPath}/${constants.extension.customIconFolderName}`,
         );
 
-        const manifest = ManifestBuilder.buildManifest(
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
           customIconDirPath,
@@ -2289,15 +2290,15 @@ describe('ManifestBuilder: folders icons test', function () {
         );
       });
 
-      it(`that path is NOT used, when it has NOT a custom icon`, function () {
-        existsSyncStub.returns(false);
+      it(`that path is NOT used, when it has NOT a custom icon`, async function () {
+        existsAsyncStub.resolves(false);
         pathUnixJoinStub.returns(
           `${iconsDirRelativeBasePath}/${
             constants.extension.customIconFolderName
           }`,
         );
 
-        const manifest = ManifestBuilder.buildManifest(
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
           customIconDirPath,
@@ -2310,10 +2311,10 @@ describe('ManifestBuilder: folders icons test', function () {
         );
       });
 
-      it(`that path gets sanitized, when it's NOT on the same drive`, function () {
+      it(`that path gets sanitized, when it's NOT on the same drive`, async function () {
         belongToSameDriveStub.returns(false);
 
-        const manifest = ManifestBuilder.buildManifest(
+        const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
           customIconDirPath,
