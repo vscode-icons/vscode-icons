@@ -80,6 +80,7 @@ export const languages: ILanguageCollection = {
   gamemaker: { ids: 'gml-gms', defaultExtension: 'gml' },
   gamemaker2: { ids: 'gml-gms2', defaultExtension: 'gml' },
   gamemaker81: { ids: 'gml-gm81', defaultExtension: 'gml' },
+  gcode: { ids: 'gcode', defaultExtension: 'gcode' },
   git: { ids: ['git-commit', 'git-rebase'], defaultExtension: 'git' },
   glsl: { ids: 'glsl', defaultExtension: 'glsl' },
   go: { ids: 'go', defaultExtension: 'go' },

@@ -1388,6 +1388,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gcode',
+      extensions: [],
+      languages: [languages.gcode],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gitlab',
       extensions: ['.gitlab-ci.yml'],
       filename: true,
