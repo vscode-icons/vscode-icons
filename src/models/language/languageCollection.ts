@@ -33,6 +33,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cmakecache: ILanguage;
   cobol: ILanguage;
   coldfusion: ILanguage;
+  confluence: ILanguage;
   cookbook: ILanguage;
   crystal: ILanguage;
   csharp: ILanguage;

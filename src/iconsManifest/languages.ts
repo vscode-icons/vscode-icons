@@ -41,6 +41,7 @@ export const languages: ILanguageCollection = {
   cobol: { ids: 'cobol', defaultExtension: 'cbl' },
   coffeescript: { ids: 'coffeescript', defaultExtension: 'coffee' },
   coldfusion: { ids: ['cfml', 'lang-cfml'], defaultExtension: 'cfml' },
+  confluence: { ids: ['confluence'], defaultExtension: 'confluence' },
   cookbook: { ids: 'cookbook', defaultExtension: 'ckbk' },
   cpp: { ids: 'cpp', defaultExtension: 'cpp' },
   crystal: { ids: 'crystal', defaultExtension: 'cr' },
