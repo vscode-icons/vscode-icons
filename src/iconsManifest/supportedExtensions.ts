@@ -875,6 +875,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'confluence',
+      extensions: [],
+      languages: [languages.confluence],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coveralls',
       extensions: ['.coveralls.yml'],
       filename: true,
