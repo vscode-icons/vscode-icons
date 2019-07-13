@@ -2322,6 +2322,20 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nsri',
+      extensions: ['.nsrirc', '.nsriignore'],
+      filenamesGlob: ['.nsrirc'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml', 'config.js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'nsri-integrity',
+      extensions: ['.integrity.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nuget',
       extensions: ['nupkg', 'nuspec', 'psmdcp'],
       format: FileFormat.svg,
