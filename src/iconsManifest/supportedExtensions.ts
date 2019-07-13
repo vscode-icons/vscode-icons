@@ -719,6 +719,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ceylon',
+      extensions: [],
+      languages: [languages.ceylon],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cf',
       extensions: ['lucee'],
       languages: [languages.coldfusion],
@@ -866,6 +872,12 @@ export const extensions: IFileCollection = {
       icon: 'chef_cookbook',
       extensions: [],
       languages: [languages.cookbook],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'confluence',
+      extensions: [],
+      languages: [languages.confluence],
       format: FileFormat.svg,
     },
     {
@@ -1382,6 +1394,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gcode',
+      extensions: [],
+      languages: [languages.gcode],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gitlab',
       extensions: ['.gitlab-ci.yml'],
       filename: true,
@@ -1440,7 +1458,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'gridsome',
       extensions: [],
-      filenamesGlob: ['gridsome.config'],
+      filenamesGlob: ['gridsome.config', 'gridsome.server'],
       extensionsGlob: ['js', 'ts'],
       filename: true,
       format: FileFormat.svg,
@@ -1662,6 +1680,11 @@ export const extensions: IFileCollection = {
         '.jestrc',
       ],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'jest_snapshot',
+      extensions: ['js.snap', 'jsx.snap', 'ts.snap', 'tsx.snap'],
       format: FileFormat.svg,
     },
     {
@@ -2085,6 +2108,12 @@ export const extensions: IFileCollection = {
       icon: 'mustache',
       extensions: ['mustache', 'mst'],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'nearly',
+      extensions: [],
+      languages: [languages.nearley],
       format: FileFormat.svg,
     },
     {
@@ -2981,6 +3010,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'sln', extensions: ['sln'], format: FileFormat.svg },
     {
+      icon: 'sln2',
+      extensions: ['sln'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'silverstripe',
       extensions: [],
       languages: [languages.silverstripe],
@@ -3231,6 +3266,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tox',
+      extensions: ['.ini'],
+      filenamesGlob: ['tox.ini'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'travis',
       extensions: ['.travis.yml'],
       filename: true,
@@ -3415,6 +3457,24 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vscode2',
+      extensions: ['.vscodeignore'],
+      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      extensionsGlob: ['json'],
+      filename: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'vscode3',
+      extensions: ['.vscodeignore'],
+      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      extensionsGlob: ['json'],
+      filename: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'vscode-insiders',
       extensions: ['.vscodeignore'],
       filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
