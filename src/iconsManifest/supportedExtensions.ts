@@ -875,6 +875,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'confluence',
+      extensions: [],
+      languages: [languages.confluence],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coveralls',
       extensions: ['.coveralls.yml'],
       filename: true,
@@ -1385,6 +1391,12 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['js', 'ts'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'gcode',
+      extensions: [],
+      languages: [languages.gcode],
       format: FileFormat.svg,
     },
     {

@@ -33,6 +33,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cmakecache: ILanguage;
   cobol: ILanguage;
   coldfusion: ILanguage;
+  confluence: ILanguage;
   cookbook: ILanguage;
   crystal: ILanguage;
   csharp: ILanguage;
@@ -64,6 +65,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   gamemaker: ILanguage;
   gamemaker2: ILanguage;
   gamemaker81: ILanguage;
+  gcode: ILanguage;
   glsl: ILanguage;
   godot: ILanguage;
   graphql: ILanguage;
