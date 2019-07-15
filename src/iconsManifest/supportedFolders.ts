@@ -237,7 +237,7 @@ export const extensions: IFolderCollection = {
         '.kubernetes',
         '.k8s',
         '.kube',
-        '.kuber'
+        '.kuber',
       ],
       format: FileFormat.svg,
     },
