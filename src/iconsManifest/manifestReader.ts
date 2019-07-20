@@ -1,14 +1,14 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { readFileAsync } from '../common/fsAsync';
+import { ConfigManager } from '../configuration/configManager';
+import { constants } from '../constants';
 import * as models from '../models';
 import { Utils } from '../utils';
-import { constants } from '../constants';
 
 export class ManifestReader {
-  public static getToggledValue(
+  public static async getToggledValue(
     preset: models.PresetNames,
     presets: models.IPresets,
-  ): boolean {
+  ): Promise<boolean> {
     const isNonIconsRelatedPreset = () =>
       [models.PresetNames.hideExplorerArrows].some(prst => prst === preset);
     const isFoldersRelatedPreset = () =>
@@ -21,12 +21,15 @@ export class ManifestReader {
     return isNonIconsRelatedPreset()
       ? !presets[presetName]
       : isFoldersRelatedPreset()
-      ? !ManifestReader.folderIconsDisabled(presetName)
+      ? !(await ManifestReader.folderIconsDisabled(presetName))
       : ManifestReader.iconsDisabled(models.IconNames[presetName]);
   }
 
-  public static iconsDisabled(name: string, isFile: boolean = true): boolean {
-    const iconManifest: string = this.getIconManifest();
+  public static async iconsDisabled(
+    name: string,
+    isFile: boolean = true,
+  ): Promise<boolean> {
+    const iconManifest: string = await this.getIconManifest();
     const iconsJson: models.IIconSchema = Utils.parseJSON(iconManifest);
     const prefix: string = isFile
       ? constants.iconsManifest.definitionFilePrefix
@@ -45,8 +48,10 @@ export class ManifestReader {
     );
   }
 
-  public static folderIconsDisabled(presetName: string): boolean {
-    const manifest: string = this.getIconManifest();
+  public static async folderIconsDisabled(
+    presetName: string,
+  ): Promise<boolean> {
+    const manifest: string = await this.getIconManifest();
     const iconsJson: models.IIconSchema = Utils.parseJSON(manifest);
     if (!iconsJson) {
       return true;
@@ -67,14 +72,13 @@ export class ManifestReader {
     }
   }
 
-  private static getIconManifest(): string {
-    const manifestFilePath = join(
-      __dirname,
-      '..',
+  private static async getIconManifest(): Promise<string> {
+    const manifestFilePath = Utils.pathUnixJoin(
+      ConfigManager.sourceDir,
       constants.iconsManifest.filename,
     );
     try {
-      return readFileSync(manifestFilePath, 'utf8');
+      return readFileAsync(manifestFilePath, 'utf8');
     } catch (err) {
       return null;
     }

@@ -39,4 +39,6 @@ export enum LangResourceKeys {
   nonNestDetectedPresetTrue,
   projectDetectionReset,
   conflictProjectsDetected,
+  unsupportedVersion,
+  integrityFailure,
 }

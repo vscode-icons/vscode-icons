@@ -7,6 +7,7 @@ import { constants } from '../src/constants';
 import { IExtensionManager } from '../src/models';
 import { ExtensionManager } from '../src/app/extensionManager';
 import { context as extensionContext } from './fixtures/extensionContext';
+import { Debugger } from '../src/common';
 
 describe('Entry points: tests', function () {
   context('ensures that', function () {
@@ -53,16 +54,41 @@ describe('Entry points: tests', function () {
         expect(extensionStub.activate.calledOnceWithExactly()).to.be.true;
       });
 
-      it(`prints an activation informative message`, function () {
-        EntryPoint.activate(extensionContext);
+      context(`and 'Debugger' is`, function () {
+        let debuggerAttachedStub: sinon.SinonStub;
+        beforeEach(function () {
+          debuggerAttachedStub = sandbox.stub(Debugger, 'isAttached');
+        });
 
-        expect(
-          infoStub.calledOnceWithExactly(
-            `[${constants.extension.name}] v${
-              constants.extension.version
-            } activated!`,
-          ),
-        ).to.be.true;
+        context(`NOT attached`, function () {
+          beforeEach(function () {
+            debuggerAttachedStub.value(false);
+          });
+
+          it(`prints an activation informative message`, async function () {
+            await EntryPoint.activate(extensionContext);
+
+            expect(
+              infoStub.calledOnceWithExactly(
+                `[${constants.extension.name}] v${
+                  constants.extension.version
+                } activated!`,
+              ),
+            ).to.be.true;
+          });
+        });
+
+        context(`attached`, function () {
+          beforeEach(function () {
+            debuggerAttachedStub.value(true);
+          });
+
+          it(`does NOT print an activation informative message`, async function () {
+            await EntryPoint.activate(extensionContext);
+
+            expect(infoStub.called).to.be.false;
+          });
+        });
       });
     });
 

@@ -1,0 +1,9 @@
+{
+  "spec": "./out/test/**/*.test.js",
+  "ui": "bdd",
+  "exit": true,
+  "colors": true,
+  "recursive": true,
+  "retries": 2,
+  "timeout": 15000
+}

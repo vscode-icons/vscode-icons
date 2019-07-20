@@ -23,7 +23,7 @@
 
 ---
 
-Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**minimum supported version: `1.18.1`**)
+Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**minimum supported version: `1.26.1`**)
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
@@ -46,6 +46,10 @@ ext install icons
 # or
 ext install "vscode-icons"
 ```
+
+## Security
+
+`vscode-icons` utilizes [NSRI](https://www.npmjs.com/package/nsri) for its subresources integrity check and protection against code injection.
 
 ## Usage
 

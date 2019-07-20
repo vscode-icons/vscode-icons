@@ -1,7 +1,0 @@
-./out/test
---ui bdd
---colors
---exit
---recursive
---retries 2
---timeout 15000

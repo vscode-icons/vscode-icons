@@ -63,6 +63,46 @@ describe('VSCodeManager: tests', function () {
       expect(vscodeManager.workspace).to.equal(vscode.workspace);
     });
 
+    context(`function 'supportsThemesReload'`, function () {
+      context(`when editor theme reload`, function () {
+        context(`is NOT supported`, function () {
+          it(`returns 'false'`, function () {
+            vscode.version = '1.33.0';
+
+            expect(vscodeManager.supportsThemesReload).to.be.false;
+          });
+
+          context(`is supported`, function () {
+            it(`returns 'true'`, function () {
+              vscode.version = '1.34.0';
+
+              expect(vscodeManager.supportsThemesReload).to.be.true;
+            });
+          });
+        });
+      });
+    });
+
+    context(`function 'isSupportedVersion'`, function () {
+      context(`when editor version`, function () {
+        context(`is NOT supported`, function () {
+          it(`returns 'false'`, function () {
+            vscode.version = '1.28.0';
+
+            expect(vscodeManager.isSupportedVersion).to.be.false;
+          });
+
+          context(`is supported`, function () {
+            it(`returns 'true'`, function () {
+              vscode.version = '1.34.0';
+
+              expect(vscodeManager.isSupportedVersion).to.be.true;
+            });
+          });
+        });
+      });
+    });
+
     context(`function 'getWorkspacePaths'`, function () {
       it(`returns an empty array, when no 'workspaceFolders' and no 'rootPath'`, function () {
         vscodeManager.workspace.rootPath = undefined;
@@ -107,7 +147,7 @@ describe('VSCodeManager: tests', function () {
           .returns('path/to/app/data/dir/');
       });
 
-      context(`'when getting it more than once`, function () {
+      context(`when getting it more than once`, function () {
         it('returns the same path', function () {
           pathUnixJoinStub.returns('path/to/app/user/dir/');
           const path = vscodeManager.getAppUserDirPath();
