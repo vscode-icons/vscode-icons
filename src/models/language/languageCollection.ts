@@ -129,6 +129,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   polymer: ILanguage;
   pony: ILanguage;
   postcss: ILanguage;
+  prisma: ILanguage;
   processinglang: ILanguage;
   prolog: ILanguage;
   prometheus: ILanguage;
