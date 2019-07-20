@@ -2,10 +2,9 @@ module.exports = {
   files: [
     'src/**/*.ts',
     'test/fixtures/**/*.ts',
-    'locale/*.json',
+    'lang.nls.bundle.json',
     'package.json',
-    'package.nls.json',
-    'package.nls.template.json',
+    'locale/**',
     'icons/*.*',
   ],
   tests: ['test/**/*.test.ts'],

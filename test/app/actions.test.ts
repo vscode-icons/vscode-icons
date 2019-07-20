@@ -1,16 +1,17 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
-import * as sinon from 'sinon';
 import { cloneDeep } from 'lodash';
-import * as models from '../../src/models';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { ConfigManager } from '../../src/configuration/configManager';
-import { SettingsManager } from '../../src/settings/settingsManager';
-import { NotificationManager } from '../../src/notification/notificationManager';
-import { IconsGenerator, ManifestReader } from '../../src/iconsManifest';
-import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import * as sinon from 'sinon';
 import { ExtensionManager } from '../../src/app/extensionManager';
+import { ConfigManager } from '../../src/configuration/configManager';
+import { IconsGenerator, ManifestReader } from '../../src/iconsManifest';
+import { IntegrityManager } from '../../src/integrity/integrityManager';
+import * as models from '../../src/models';
+import { NotificationManager } from '../../src/notification/notificationManager';
+import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import { SettingsManager } from '../../src/settings/settingsManager';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
 describe('ExtensionManager: actions tests', function () {
@@ -27,6 +28,9 @@ describe('ExtensionManager: actions tests', function () {
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
     let padMngStub: sinon.SinonStubbedInstance<
       models.IProjectAutoDetectionManager
+    >;
+    let integrityManagerStub: sinon.SinonStubbedInstance<
+      models.IIntegrityManager
     >;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
@@ -68,6 +72,10 @@ describe('ExtensionManager: actions tests', function () {
         models.IProjectAutoDetectionManager
       >(ProjectAutoDetectionManager);
 
+      integrityManagerStub = sandbox.createStubInstance<
+        models.IIntegrityManager
+      >(IntegrityManager);
+
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
         configManagerStub,
@@ -75,6 +83,7 @@ describe('ExtensionManager: actions tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
+        integrityManagerStub,
       );
 
       showCustomizationMessageStub = sandbox.stub(
@@ -118,11 +127,11 @@ describe('ExtensionManager: actions tests', function () {
       });
 
       context(`applies the customizations`, function () {
-        let projectDetectionResult: models.IProjectDetectionResult;
+        let projectDetectionResults: models.IProjectDetectionResult[];
         let applyCustomizationStub: sinon.SinonStub;
 
         beforeEach(function () {
-          projectDetectionResult = { apply: true };
+          projectDetectionResults = [{ apply: true }];
           applyCustomizationStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -135,12 +144,12 @@ describe('ExtensionManager: actions tests', function () {
             configManagerStub.vsicons.projectDetection.autoReload = true;
 
             // @ts-ignore
-            extensionManager.applyProjectDetection(projectDetectionResult);
+            extensionManager.applyProjectDetection(projectDetectionResults);
 
             expect(
               executeAndReloadStub.calledOnceWithExactly(
                 applyCustomizationStub,
-                [projectDetectionResult],
+                [projectDetectionResults],
               ),
             ).to.be.true;
             expect(showCustomizationMessageStub.called).to.be.false;
@@ -152,39 +161,39 @@ describe('ExtensionManager: actions tests', function () {
             configManagerStub.vsicons.projectDetection.autoReload = false;
 
             // @ts-ignore
-            extensionManager.applyProjectDetection(projectDetectionResult);
+            extensionManager.applyProjectDetection(projectDetectionResults);
 
             expect(executeAndReloadStub.called).to.be.false;
             expect(
               showCustomizationMessageStub.calledOnceWithExactly(
-                projectDetectionResult.langResourceKey,
+                projectDetectionResults[0].langResourceKey,
                 [
                   models.LangResourceKeys.reload,
                   models.LangResourceKeys.autoReload,
                   models.LangResourceKeys.disableDetect,
                 ],
                 applyCustomizationStub,
-                [projectDetectionResult],
+                [projectDetectionResults],
               ),
             ).to.be.true;
           });
 
           context('by showing a choice message', function () {
             it('when conflicting project icons are detected', function () {
-              projectDetectionResult.conflictingProjects = [
+              projectDetectionResults[0].conflictingProjects = [
                 models.Projects.nestjs,
               ];
 
               // @ts-ignore
-              extensionManager.applyProjectDetection(projectDetectionResult);
+              extensionManager.applyProjectDetection(projectDetectionResults);
 
               expect(executeAndReloadStub.called).to.be.false;
               expect(
                 showCustomizationMessageStub.calledOnceWithExactly(
-                  projectDetectionResult.langResourceKey,
+                  projectDetectionResults[0].langResourceKey,
                   [undefined, 'NestJS'],
                   applyCustomizationStub,
-                  [projectDetectionResult],
+                  [projectDetectionResults],
                 ),
               ).to.be.true;
             });
@@ -201,12 +210,12 @@ describe('ExtensionManager: actions tests', function () {
       });
 
       context(`shows the customization message`, function () {
-        it(`with 'updatePreset' as callback`, function () {
+        it(`with 'updatePreset' as callback`, async function () {
           const toggledValue = true;
-          getToggledValueStub.returns(toggledValue);
+          getToggledValueStub.resolves(toggledValue);
 
           // @ts-ignore
-          extensionManager.togglePreset(
+          await extensionManager.togglePreset(
             models.PresetNames.tsOfficial,
             models.CommandNames.tsPreset,
             false,
@@ -236,12 +245,12 @@ describe('ExtensionManager: actions tests', function () {
 
       context(`with a reverse action`, function () {
         context(`looks up a language resource key for`, function () {
-          it(`'Enabled'`, function () {
+          it(`'Enabled'`, async function () {
             const toggledValue = false;
-            getToggledValueStub.returns(toggledValue);
+            getToggledValueStub.resolves(toggledValue);
 
             // @ts-ignore
-            extensionManager.togglePreset(
+            await extensionManager.togglePreset(
               models.PresetNames.hideFolders,
               models.CommandNames.hideFoldersPreset,
               true,
@@ -270,12 +279,12 @@ describe('ExtensionManager: actions tests', function () {
             ).to.be.true;
           });
 
-          it(`'Disabled'`, function () {
+          it(`'Disabled'`, async function () {
             const toggledValue = true;
-            getToggledValueStub.returns(toggledValue);
+            getToggledValueStub.resolves(toggledValue);
 
             // @ts-ignore
-            extensionManager.togglePreset(
+            await extensionManager.togglePreset(
               models.PresetNames.hideFolders,
               models.CommandNames.hideFoldersPreset,
               true,
@@ -308,12 +317,12 @@ describe('ExtensionManager: actions tests', function () {
 
       context(`with a NON reverse action`, function () {
         context(`looks up a language resource key for`, function () {
-          it(`'Disabled'`, function () {
+          it(`'Disabled'`, async function () {
             const toggledValue = false;
-            getToggledValueStub.returns(toggledValue);
+            getToggledValueStub.resolves(toggledValue);
 
             // @ts-ignore
-            extensionManager.togglePreset(
+            await extensionManager.togglePreset(
               models.PresetNames.jsonOfficial,
               models.CommandNames.jsonPreset,
               false,
@@ -342,12 +351,12 @@ describe('ExtensionManager: actions tests', function () {
             ).to.be.true;
           });
 
-          it(`'Enabled'`, function () {
+          it(`'Enabled'`, async function () {
             const toggledValue = true;
-            getToggledValueStub.returns(toggledValue);
+            getToggledValueStub.resolves(toggledValue);
 
             // @ts-ignore
-            extensionManager.togglePreset(
+            await extensionManager.togglePreset(
               models.PresetNames.jsonOfficial,
               models.CommandNames.jsonPreset,
               false,
@@ -381,32 +390,36 @@ describe('ExtensionManager: actions tests', function () {
       context(`throws an Error`, function () {
         context(`when the action does NOT have`, function () {
           context(`a language resource key for`, function () {
-            it(`'Enabled'`, function () {
-              getToggledValueStub.returns(true);
+            it(`'Enabled'`, async function () {
+              getToggledValueStub.resolves(true);
 
-              expect(() =>
+              try {
                 // @ts-ignore
-                extensionManager.togglePreset(
+                await extensionManager.togglePreset(
                   models.PresetNames.jsOfficial,
                   undefined,
                   false,
                   models.ConfigurationTarget.Global,
-                ),
-              ).to.throw(Error, /undefinedEnabled is not valid/);
+                );
+              } catch (error) {
+                expect(error).to.match(/undefinedEnabled is not valid/);
+              }
             });
 
-            it(`'Disabled'`, function () {
-              getToggledValueStub.returns(false);
+            it(`'Disabled'`, async function () {
+              getToggledValueStub.resolves(false);
 
-              expect(() =>
+              try {
                 // @ts-ignore
-                extensionManager.togglePreset(
+                await extensionManager.togglePreset(
                   models.PresetNames.jsOfficial,
                   undefined,
                   false,
                   models.ConfigurationTarget.Global,
-                ),
-              ).to.throw(Error, /undefinedDisabled is not valid/);
+                );
+              } catch (error) {
+                expect(error).to.match(/undefinedDisabled is not valid/);
+              }
             });
           });
         });
@@ -428,12 +441,12 @@ describe('ExtensionManager: actions tests', function () {
             default: associations.folderDefault,
             supported: associations.folders,
           };
-          iconsGeneratorStub.generateIconsManifest.returns(models.schema);
+          iconsGeneratorStub.generateIconsManifest.resolves(models.schema);
         });
 
-        it(`without a project detection result`, function () {
+        it(`without a project detection result`, async function () {
           // @ts-ignore
-          extensionManager.applyCustomization();
+          await extensionManager.applyCustomization();
 
           expect(
             iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly(
@@ -447,19 +460,21 @@ describe('ExtensionManager: actions tests', function () {
           ).to.be.true;
         });
 
-        it(`including the project detection result`, function () {
-          const projectDetectionResult: models.IProjectDetectionResult = {
-            apply: true,
-          };
+        it(`including the project detection result`, async function () {
+          const projectDetectionResults: models.IProjectDetectionResult[] = [
+            {
+              apply: true,
+            },
+          ];
 
           // @ts-ignore
-          extensionManager.applyCustomization(projectDetectionResult);
+          await extensionManager.applyCustomization(projectDetectionResults);
 
           expect(
             iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly(
               files,
               folders,
-              projectDetectionResult,
+              projectDetectionResults,
             ),
           ).to.be.true;
           expect(
@@ -470,11 +485,11 @@ describe('ExtensionManager: actions tests', function () {
     });
 
     context(`restoring the manifest`, function () {
-      it(`generates and saves a default icons manifest`, function () {
-        iconsGeneratorStub.generateIconsManifest.returns(models.schema);
+      it(`generates and saves a default icons manifest`, async function () {
+        iconsGeneratorStub.generateIconsManifest.resolves(models.schema);
 
         // @ts-ignore
-        extensionManager.restoreManifest();
+        await extensionManager.restoreManifest();
 
         expect(
           iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly(),

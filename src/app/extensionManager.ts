@@ -1,8 +1,10 @@
-import * as models from '../models';
+import { dirname, resolve } from 'path';
 import * as manifest from '../../../package.json';
+import { ErrorHandler } from '../common/errorHandler';
+import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
-import { ErrorHandler } from '../errorHandler';
+import * as models from '../models';
 import { Utils } from '../utils';
 
 export class ExtensionManager implements models.IExtensionManager {
@@ -20,6 +22,7 @@ export class ExtensionManager implements models.IExtensionManager {
     private notificationManager: models.INotificationManager,
     private iconsGenerator: models.IIconsGenerator,
     private projectAutoDetectionManager: models.IProjectAutoDetectionManager,
+    private integrityManager: models.IIntegrityManager,
   ) {
     // register event listener for configuration changes
     this.vscodeManager.workspace.onDidChangeConfiguration(
@@ -31,58 +34,78 @@ export class ExtensionManager implements models.IExtensionManager {
   //#endregion
 
   //#region Public functions
-  public activate(): void {
+  public async activate(): Promise<void> {
+    if (!this.vscodeManager.isSupportedVersion) {
+      await this.notificationManager.notifyError(
+        '%s %s',
+        models.LangResourceKeys.unsupportedVersion,
+        `${this.vscodeManager.version}`,
+      );
+      return;
+    }
+
+    constants.environment.production = new RegExp(
+      `${constants.extension.distEntryFilename}`,
+    ).test(manifest.main);
+    if (constants.environment.production) {
+      ConfigManager.rootDir = resolve(dirname(__filename), '../../');
+
+      if (!(await this.integrityManager.check())) {
+        this.notificationManager.notifyWarning(
+          models.LangResourceKeys.integrityFailure,
+        );
+      }
+    }
+
     // function calls has to be done in this order strictly
-    this.settingsManager.moveStateFromLegacyPlace();
+    await this.settingsManager.moveStateFromLegacyPlace();
 
     this.registerCommands(manifest.contributes.commands);
-    this.manageIntroMessage();
-    this.manageCustomizations();
+    await this.manageIntroMessage();
+    await this.manageCustomizations();
 
-    this.projectAutoDetectionManager
-      .detectProjects([models.Projects.angular, models.Projects.nestjs])
-      .then((detectionResult: models.IProjectDetectionResult) =>
-        this.applyProjectDetection(detectionResult),
-      );
+    const detectionResults: models.IProjectDetectionResult[] = await this.projectAutoDetectionManager.detectProjects(
+      [models.Projects.angular, models.Projects.nestjs],
+    );
+    await this.applyProjectDetection(detectionResults);
 
     // Update the version in settings
     if (this.settingsManager.isNewVersion) {
-      this.settingsManager.updateStatus();
+      await this.settingsManager.updateStatus();
     }
   }
   //#endregion
 
   //#region Private functions
   private registerCommands(commands: any[]): void {
-    commands.forEach(command => {
+    commands.forEach(command =>
       this.vscodeManager.context.subscriptions.push(
         this.vscodeManager.commands.registerCommand(
           command.command,
           Reflect.get(this, command.callbackName) || (() => void 0),
           this,
         ),
-      );
-    });
+      ),
+    );
   }
 
-  private manageIntroMessage(): void {
+  private manageIntroMessage(): Promise<void> {
     if (
       !this.settingsManager.getState().welcomeShown &&
       this.configManager.getIconTheme() !== constants.extension.name
     ) {
-      this.showWelcomeMessage();
-      return;
+      return this.showWelcomeMessage();
     }
 
     if (
       this.settingsManager.isNewVersion &&
       !this.configManager.vsicons.dontShowNewVersionMessage
     ) {
-      this.showNewVersionMessage();
+      return this.showNewVersionMessage();
     }
   }
 
-  private manageCustomizations(): void {
+  private manageCustomizations(): Promise<void> {
     const configChanged =
       this.settingsManager.isNewVersion &&
       this.configManager.hasConfigChanged(
@@ -93,91 +116,103 @@ export class ExtensionManager implements models.IExtensionManager {
         [constants.vsicons.presets.name, constants.vsicons.associations.name],
       );
     if (configChanged) {
-      this.applyCustomizationCommand();
+      return this.applyCustomizationCommand();
     }
   }
 
-  private showWelcomeMessage(): Thenable<void> {
-    const displayMessage = (): Thenable<void> =>
-      this.notificationManager
-        .notifyInfo(
+  private showWelcomeMessage(): Promise<void> {
+    const displayMessage = async (): Promise<void> => {
+      try {
+        const btn = await this.notificationManager.notifyInfo(
           models.LangResourceKeys.welcome,
           models.LangResourceKeys.activate,
           models.LangResourceKeys.aboutOfficialApi,
           models.LangResourceKeys.seeReadme,
-        )
-        .then(
-          btn => {
-            switch (btn) {
-              case models.LangResourceKeys.activate:
-                this.activationCommand();
-                break;
-              case models.LangResourceKeys.aboutOfficialApi: {
-                Utils.open(constants.urlOfficialApi);
-                // Display the message again so the user can choose to activate or not
-                return displayMessage();
-              }
-              case models.LangResourceKeys.seeReadme: {
-                Utils.open(constants.urlReadme);
-                // Display the message again so the user can choose to activate or not
-                return displayMessage();
-              }
-              default:
-                break;
-            }
-          },
-          reason => ErrorHandler.logError(reason),
         );
+
+        switch (btn) {
+          case models.LangResourceKeys.activate:
+            await this.activationCommand();
+            break;
+          case models.LangResourceKeys.aboutOfficialApi: {
+            Utils.open(constants.urlOfficialApi);
+            // Display the message again so the user can choose to activate or not
+            return displayMessage();
+          }
+          case models.LangResourceKeys.seeReadme: {
+            Utils.open(constants.urlReadme);
+            // Display the message again so the user can choose to activate or not
+            return displayMessage();
+          }
+          default:
+            break;
+        }
+      } catch (error) {
+        ErrorHandler.logError(error);
+      }
+    };
     return displayMessage();
   }
 
-  private showNewVersionMessage(): Thenable<void> {
-    return this.notificationManager
-      .notifyInfo(
+  private async showNewVersionMessage(): Promise<void> {
+    try {
+      const btn = await this.notificationManager.notifyInfo(
         `%s v${constants.extension.version}`,
         models.LangResourceKeys.newVersion,
         models.LangResourceKeys.seeReleaseNotes,
         models.LangResourceKeys.dontShowThis,
-      )
-      .then(
-        btn => {
-          switch (btn) {
-            case models.LangResourceKeys.seeReleaseNotes:
-              Utils.open(constants.urlReleaseNote);
-              break;
-            case models.LangResourceKeys.dontShowThis:
-              return this.configManager.updateDontShowNewVersionMessage(true);
-            default:
-              break;
-          }
-        },
-        reason => ErrorHandler.logError(reason),
       );
+      switch (btn) {
+        case models.LangResourceKeys.seeReleaseNotes:
+          Utils.open(constants.urlReleaseNote);
+          break;
+        case models.LangResourceKeys.dontShowThis:
+          return this.configManager.updateDontShowNewVersionMessage(true);
+        default:
+          break;
+      }
+    } catch (error) {
+      ErrorHandler.logError(error);
+    }
   }
 
-  private showCustomizationMessage(
-    message: models.LangResourceKeyLike,
-    items: models.LangResourceKeyLike[],
+  private async showCustomizationMessage(
+    message: models.LangResourceLike,
+    items: models.LangResourceLike[],
     callback?: (...args: any[]) => void,
     cbArgs?: any[],
-  ): Thenable<void> {
-    this.customMsgShown = true;
-    return this.notificationManager
-      .notifyInfo(message, ...items)
-      .then(
-        btn => this.handleAction(btn, callback, cbArgs),
-        reason => ErrorHandler.logError(reason),
-      );
+  ): Promise<void> {
+    try {
+      if (
+        this.vscodeManager.supportsThemesReload &&
+        items.some(item => item === models.LangResourceKeys.reload)
+      ) {
+        await this.handleAction(
+          models.LangResourceKeys.reload,
+          callback,
+          cbArgs,
+        );
+      } else {
+        this.customMsgShown = true;
+        const btn = await this.notificationManager.notifyInfo(
+          message,
+          ...items,
+        );
+        await this.handleAction(btn, callback, cbArgs);
+      }
+    } catch (error) {
+      ErrorHandler.logError(error);
+    }
   }
 
-  private activationCommand(): void {
-    this.configManager.updateIconTheme();
+  private async activationCommand(): Promise<void> {
+    await this.configManager.updateIconTheme();
   }
 
-  private applyCustomizationCommand(
-    additionalTitles: models.LangResourceKeyLike[] = [],
-  ): void {
-    this.showCustomizationMessage(
+  private async applyCustomizationCommand(
+    additionalTitles: models.LangResourceLike[] = [],
+  ): Promise<void> {
+    await this.showCustomizationMessage(
       `%s %s`,
       [
         models.LangResourceKeys.iconCustomization,
@@ -190,8 +225,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private restoreDefaultManifestCommand(): void {
-    this.showCustomizationMessage(
+  private async restoreDefaultManifestCommand(): Promise<void> {
+    await this.showCustomizationMessage(
       `%s %s`,
       [
         models.LangResourceKeys.iconRestore,
@@ -203,8 +238,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private resetProjectDetectionDefaultsCommand(): void {
-    this.showCustomizationMessage(
+  private async resetProjectDetectionDefaultsCommand(): Promise<void> {
+    await this.showCustomizationMessage(
       `%s %s`,
       [
         models.LangResourceKeys.projectDetectionReset,
@@ -216,8 +251,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private toggleAngularPresetCommand(): void {
-    this.togglePreset(
+  private async toggleAngularPresetCommand(): Promise<void> {
+    await this.togglePreset(
       models.PresetNames.angular,
       models.CommandNames.ngPreset,
       false,
@@ -226,8 +261,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private toggleNestPresetCommand(): void {
-    this.togglePreset(
+  private async toggleNestPresetCommand(): Promise<void> {
+    await this.togglePreset(
       models.PresetNames.nestjs,
       models.CommandNames.nestPreset,
       false,
@@ -236,8 +271,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private toggleJsPresetCommand(): void {
-    this.togglePreset(
+  private async toggleJsPresetCommand(): Promise<void> {
+    await this.togglePreset(
       models.PresetNames.jsOfficial,
       models.CommandNames.jsPreset,
       false,
@@ -246,8 +281,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private toggleTsPresetCommand(): void {
-    this.togglePreset(
+  private async toggleTsPresetCommand(): Promise<void> {
+    await this.togglePreset(
       models.PresetNames.tsOfficial,
       models.CommandNames.tsPreset,
       false,
@@ -256,8 +291,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private toggleJsonPresetCommand(): void {
-    this.togglePreset(
+  private async toggleJsonPresetCommand(): Promise<void> {
+    await this.togglePreset(
       models.PresetNames.jsonOfficial,
       models.CommandNames.jsonPreset,
       false,
@@ -266,8 +301,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private toggleHideFoldersPresetCommand(): void {
-    this.togglePreset(
+  private async toggleHideFoldersPresetCommand(): Promise<void> {
+    await this.togglePreset(
       models.PresetNames.hideFolders,
       models.CommandNames.hideFoldersPreset,
       true,
@@ -276,8 +311,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private toggleFoldersAllDefaultIconPresetCommand(): void {
-    this.togglePreset(
+  private async toggleFoldersAllDefaultIconPresetCommand(): Promise<void> {
+    await this.togglePreset(
       models.PresetNames.foldersAllDefaultIcon,
       models.CommandNames.foldersAllDefaultIconPreset,
       true,
@@ -286,8 +321,8 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
-  private toggleHideExplorerArrowsPresetCommand(): void {
-    this.togglePreset(
+  private async toggleHideExplorerArrowsPresetCommand(): Promise<void> {
+    await this.togglePreset(
       models.PresetNames.hideExplorerArrows,
       models.CommandNames.hideExplorerArrowsPreset,
       true,
@@ -302,28 +337,31 @@ export class ExtensionManager implements models.IExtensionManager {
     if (callback) {
       callback.apply(this, cbArgs);
     }
+    if (this.vscodeManager.supportsThemesReload) {
+      return;
+    }
     // reload
     this.vscodeManager.commands.executeCommand(
       constants.vscode.reloadWindowActionSetting,
     );
   }
 
-  private handleAction(
-    btn: models.LangResourceKeyLike,
+  private async handleAction(
+    btn: models.LangResourceLike,
     callback?: (...args: any[]) => void,
     cbArgs?: any[], // This is a workaround because `callback.arguments` is not accessible
-  ): Thenable<void> {
+  ): Promise<void> {
     if (!btn) {
       this.customMsgShown = false;
-      return Promise.resolve();
+      return;
     }
 
-    const setPreset = (
+    const setPreset = async (
       project: models.Projects,
       preset: models.PresetNames,
-    ) => {
-      cbArgs[0].project = project;
-      this.configManager.updatePreset(
+    ): Promise<void> => {
+      cbArgs = [cbArgs[0].filter((cbArg: any) => cbArg.project === project)];
+      await this.configManager.updatePreset(
         models.PresetNames[preset],
         true,
         models.ConfigurationTarget.Workspace,
@@ -333,13 +371,12 @@ export class ExtensionManager implements models.IExtensionManager {
 
     this.callback = callback;
 
-    let retVal: Thenable<void>;
     switch (btn) {
       case models.ProjectNames.ng:
-        setPreset(models.Projects.angular, models.PresetNames.angular);
+        await setPreset(models.Projects.angular, models.PresetNames.angular);
         break;
       case models.ProjectNames.nest:
-        setPreset(models.Projects.nestjs, models.PresetNames.nestjs);
+        await setPreset(models.Projects.nestjs, models.PresetNames.nestjs);
         break;
       case models.LangResourceKeys.dontShowThis: {
         this.doReload = false;
@@ -349,7 +386,7 @@ export class ExtensionManager implements models.IExtensionManager {
         switch (callback.name) {
           case 'applyCustomization': {
             this.customMsgShown = false;
-            retVal = this.configManager.updateDontShowConfigManuallyChangedMessage(
+            await this.configManager.updateDontShowConfigManuallyChangedMessage(
               true,
             );
             break;
@@ -361,13 +398,12 @@ export class ExtensionManager implements models.IExtensionManager {
       }
       case models.LangResourceKeys.disableDetect: {
         this.doReload = false;
-        retVal = this.configManager.updateDisableDetection(true);
+        await this.configManager.updateDisableDetection(true);
         break;
       }
       case models.LangResourceKeys.autoReload: {
-        retVal = this.configManager
-          .updateAutoReload(true)
-          .then(() => this.handleUpdatePreset(callback, cbArgs));
+        await this.configManager.updateAutoReload(true);
+        this.handleUpdatePreset(callback, cbArgs);
         break;
       }
       case models.LangResourceKeys.reload: {
@@ -381,7 +417,6 @@ export class ExtensionManager implements models.IExtensionManager {
       default:
         break;
     }
-    return retVal || Promise.resolve();
   }
 
   private handleUpdatePreset(
@@ -409,55 +444,51 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   private applyProjectDetection(
-    projectDetectionResult: models.IProjectDetectionResult,
-  ): void {
-    if (!projectDetectionResult || !projectDetectionResult.apply) {
-      return;
-    }
-
+    projectDetectionResults: models.IProjectDetectionResult[],
+  ): Promise<void> {
     if (
-      !(
-        projectDetectionResult.conflictingProjects &&
-        projectDetectionResult.conflictingProjects.length
-      ) &&
-      this.configManager.vsicons.projectDetection.autoReload
+      !projectDetectionResults ||
+      !projectDetectionResults.length ||
+      !projectDetectionResults.every(pdr => pdr.apply)
     ) {
-      this.executeAndReload(this.applyCustomization, [projectDetectionResult]);
       return;
     }
 
-    const items =
-      projectDetectionResult.conflictingProjects &&
-      projectDetectionResult.conflictingProjects.length
-        ? ([
-            models.ProjectNames[projectDetectionResult.project],
-            ...projectDetectionResult.conflictingProjects.map(
-              cp => models.ProjectNames[cp],
-            ),
-          ] as string[])
-        : [
-            models.LangResourceKeys.reload,
-            models.LangResourceKeys.autoReload,
-            models.LangResourceKeys.disableDetect,
-          ];
+    const conflict = projectDetectionResults.find(
+      pdr => pdr.conflictingProjects && pdr.conflictingProjects.length,
+    );
+    if (!conflict && this.configManager.vsicons.projectDetection.autoReload) {
+      this.executeAndReload(this.applyCustomization, [projectDetectionResults]);
+      return;
+    }
+    const items = conflict
+      ? ([
+          models.ProjectNames[conflict.project],
+          ...conflict.conflictingProjects.map(cp => models.ProjectNames[cp]),
+        ] as string[])
+      : [
+          models.LangResourceKeys.reload,
+          models.LangResourceKeys.autoReload,
+          models.LangResourceKeys.disableDetect,
+        ];
 
-    this.showCustomizationMessage(
-      projectDetectionResult.langResourceKey,
+    return this.showCustomizationMessage(
+      projectDetectionResults[0].langResourceKey,
       items,
       this.applyCustomization,
-      [projectDetectionResult],
+      [projectDetectionResults],
     );
   }
 
-  private togglePreset(
+  private async togglePreset(
     preset: models.PresetNames,
     command: models.CommandNames,
     reverseAction: boolean,
     configurationTarget: models.ConfigurationTarget | boolean,
-  ): void {
+  ): Promise<void> {
     const presetName = models.PresetNames[preset];
     const commandName = models.CommandNames[command];
-    const toggledValue = ManifestReader.getToggledValue(
+    const toggledValue = await ManifestReader.getToggledValue(
       preset,
       this.configManager.vsicons.presets,
     );
@@ -485,9 +516,9 @@ export class ExtensionManager implements models.IExtensionManager {
     );
   }
 
-  private applyCustomization(
-    projectDetectionResult?: models.IProjectDetectionResult,
-  ): void {
+  private async applyCustomization(
+    projectDetectionResults?: models.IProjectDetectionResult[],
+  ): Promise<void> {
     const associations = this.configManager.vsicons.associations;
     const customFiles: models.IFileCollection = {
       default: associations.fileDefault,
@@ -497,16 +528,16 @@ export class ExtensionManager implements models.IExtensionManager {
       default: associations.folderDefault,
       supported: associations.folders,
     };
-    const iconsManifest = this.iconsGenerator.generateIconsManifest(
+    const iconsManifest = await this.iconsGenerator.generateIconsManifest(
       customFiles,
       customFolders,
-      projectDetectionResult,
+      projectDetectionResults,
     );
     this.iconsGenerator.persist(iconsManifest);
   }
 
-  private restoreManifest(): void {
-    const iconsManifest = this.iconsGenerator.generateIconsManifest();
+  private async restoreManifest(): Promise<void> {
+    const iconsManifest = await this.iconsGenerator.generateIconsManifest();
     this.iconsGenerator.persist(iconsManifest);
   }
 
@@ -524,15 +555,9 @@ export class ExtensionManager implements models.IExtensionManager {
   //#endregion
 
   //#region Event Listeners
-  private didChangeConfigurationListener(
+  private async didChangeConfigurationListener(
     e: models.IVSCodeConfigurationChangeEvent,
-  ): void {
-    if (!e || !e.affectsConfiguration) {
-      throw new Error(
-        `Unsupported 'vscode' version: ${this.vscodeManager.version}`,
-      );
-    }
-
+  ): Promise<void> {
     // Update the status in extension settings
     if (e.affectsConfiguration(constants.vscode.iconThemeSetting)) {
       const status =
@@ -540,7 +565,11 @@ export class ExtensionManager implements models.IExtensionManager {
           ? models.ExtensionStatus.activated
           : models.ExtensionStatus.deactivated;
       if (this.settingsManager.getState().status !== status) {
-        this.settingsManager.updateStatus(status);
+        try {
+          await this.settingsManager.updateStatus(status);
+        } catch (error) {
+          ErrorHandler.logError(error);
+        }
       }
       return;
     }

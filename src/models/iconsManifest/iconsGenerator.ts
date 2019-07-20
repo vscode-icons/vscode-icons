@@ -6,10 +6,10 @@ export interface IIconsGenerator {
   generateIconsManifest(
     files?: IFileCollection,
     folders?: IFolderCollection,
-    projectDetectionResult?: IProjectDetectionResult,
-  ): IIconSchema;
+    projectDetectionResults?: IProjectDetectionResult[],
+  ): Promise<IIconSchema>;
   persist(
     iconsManifest: IIconSchema,
     updatePackageJson?: boolean,
-  ): Thenable<void>;
+  ): Promise<void>;
 }

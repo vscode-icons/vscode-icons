@@ -1,9 +1,19 @@
-import opn = require('opn');
-import * as fs from 'fs';
+import open = require('open');
 import { ChildProcess } from 'child_process';
-import { homedir, tmpdir } from 'os';
-import { isAbsolute, resolve, relative, posix } from 'path';
+import { Stats } from 'fs';
+import {
+  existsAsync,
+  lstatAsync,
+  mkdirAsync,
+  readdirAsync,
+  readFileAsync,
+  rmdirAsync,
+  unlinkAsync,
+  writeFileAsync,
+} from '../common/fsAsync';
 import { set } from 'lodash';
+import { homedir, tmpdir } from 'os';
+import { isAbsolute, posix, relative, resolve } from 'path';
 import { FileFormat } from '../models';
 
 export class Utils {
@@ -35,49 +45,61 @@ export class Utils {
   }
 
   /**
-   * Creates a directory and all subdirectories synchronously
-   *
-   * @param {any} dirPath The directory's path
+   * Creates a directory and all subdirectories asynchronously
    */
-  public static createDirectoryRecursively(dirPath: string): void {
-    dirPath.split(posix.sep).reduce(
-      (parentDir, childDir) => {
-        const curDir = resolve(parentDir, childDir);
-        if (!fs.existsSync(curDir)) {
-          fs.mkdirSync(curDir);
-        }
-        return curDir;
-      },
-      isAbsolute(dirPath) ? posix.sep : '',
-    );
+  public static async createDirectoryRecursively(
+    dirPath: string,
+  ): Promise<void> {
+    const callbackFn = async (
+      parentDir: Promise<string>,
+      childDir: string,
+    ): Promise<string> => {
+      const curDir = resolve(await parentDir, childDir);
+      const dirExists: boolean = await existsAsync(curDir);
+      if (!dirExists) {
+        await mkdirAsync(curDir);
+      }
+      return curDir;
+    };
+    await dirPath
+      .split(posix.sep)
+      .reduce(
+        callbackFn,
+        Promise.resolve(isAbsolute(dirPath) ? posix.sep : ''),
+      );
   }
 
   /**
-   * Deletes a directory and all subdirectories synchronously
-   *
-   * @param {any} dirPath The directory's path
+   * Deletes a directory and all subdirectories asynchronously
    */
-  public static deleteDirectoryRecursively(dirPath: string): void {
-    if (fs.existsSync(dirPath)) {
-      fs.readdirSync(dirPath).forEach(file => {
-        const curPath = `${dirPath}/${file}`;
-        if (fs.lstatSync(curPath).isDirectory()) {
-          // recurse
-          this.deleteDirectoryRecursively(curPath);
-        } else {
-          // delete file
-          fs.unlinkSync(curPath);
-        }
-      });
-      fs.rmdirSync(dirPath);
+  public static async deleteDirectoryRecursively(
+    dirPath: string,
+  ): Promise<void> {
+    const dirExists: boolean = await existsAsync(dirPath);
+    if (!dirExists) {
+      return;
     }
+    const iterator = async (file: string): Promise<void> => {
+      const curPath = `${dirPath}/${file}`;
+      const stats: Stats = await lstatAsync(curPath);
+      if (stats.isDirectory()) {
+        // recurse
+        await this.deleteDirectoryRecursively(curPath);
+      } else {
+        // delete file
+        await unlinkAsync(curPath);
+      }
+    };
+    const promises: Array<Promise<void>> = [];
+    const files: string[] = await readdirAsync(dirPath);
+    files.forEach((file: string) => promises.push(iterator(file)));
+    await Promise.all(promises);
+    await rmdirAsync(dirPath);
   }
 
   /**
    * Converts a JavaScript Object Notation (JSON) string into an object
    * without throwing an exception.
-   *
-   * @param {string} text A valid JSON string.
    */
   public static parseJSON(text: string): any {
     try {
@@ -87,11 +109,11 @@ export class Utils {
     }
   }
 
-  public static getRelativePath(
+  public static async getRelativePath(
     fromDirPath: string,
     toDirName: string,
     checkDirectory: boolean = true,
-  ): string {
+  ): Promise<string> {
     if (fromDirPath == null) {
       throw new Error('fromDirPath not defined.');
     }
@@ -100,7 +122,8 @@ export class Utils {
       throw new Error('toDirName not defined.');
     }
 
-    if (checkDirectory && !fs.existsSync(toDirName)) {
+    const dirExists: boolean = await existsAsync(toDirName);
+    if (checkDirectory && !dirExists) {
       throw new Error(`Directory '${toDirName}' not found.`);
     }
 
@@ -136,26 +159,15 @@ export class Utils {
     );
   }
 
-  public static updateFile(
+  public static async updateFile(
     filePath: string,
     replaceFn: (rawText: string[]) => string[],
-  ): Thenable<void> {
-    return new Promise((res, rej) => {
-      fs.readFile(filePath, 'utf8', (error: Error, raw: string) => {
-        if (error) {
-          return rej(error);
-        }
-        const lineBreak: string = /\r\n$/.test(raw) ? '\r\n' : '\n';
-        const allLines: string[] = raw.split(lineBreak);
-        const data: string = replaceFn(allLines).join(lineBreak);
-        fs.writeFile(filePath, data, (err: Error) => {
-          if (err) {
-            return rej(err);
-          }
-          res();
-        });
-      });
-    });
+  ): Promise<void> {
+    const raw = await readFileAsync(filePath, 'utf8');
+    const lineBreak: string = /\r\n$/.test(raw) ? '\r\n' : '\n';
+    const allLines: string[] = raw.split(lineBreak);
+    const data: string = replaceFn(allLines).join(lineBreak);
+    await writeFileAsync(filePath, data);
   }
 
   public static unflattenProperties<T>(
@@ -170,6 +182,6 @@ export class Utils {
   }
 
   public static open(target: string, options?: any): Promise<ChildProcess> {
-    return opn(target, options);
+    return open(target, options);
   }
 }

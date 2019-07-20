@@ -3,9 +3,9 @@ import { ExtensionStatus } from './extensionStatus';
 
 export interface ISettingsManager {
   isNewVersion: boolean;
-  moveStateFromLegacyPlace: () => Thenable<void>;
+  moveStateFromLegacyPlace: () => Promise<void>;
   getState: () => IState;
-  setState: (state: IState) => Thenable<void>;
-  updateStatus: (status?: ExtensionStatus) => IState;
-  deleteState: () => Thenable<void>;
+  setState: (state: IState) => Promise<void>;
+  updateStatus: (status?: ExtensionStatus) => Promise<IState>;
+  deleteState: () => Promise<void>;
 }

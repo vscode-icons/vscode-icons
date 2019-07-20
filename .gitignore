@@ -1,4 +1,5 @@
 node_modules
+dist
 out
 examples
 coverage
@@ -8,3 +9,6 @@ coverage
 *.vsix
 *.lcov
 *.log
+/*bundle*.json
+/package.nls*.json
+**/.integrity.json

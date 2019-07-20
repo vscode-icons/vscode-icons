@@ -3,7 +3,7 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { cloneDeep } from 'lodash';
-import * as fs from 'fs';
+import * as fsAsync from '../../src/common/fsAsync';
 import * as os from 'os';
 import * as path from 'path';
 import {
@@ -15,7 +15,7 @@ import {
 } from '../../src/models';
 import { constants } from '../../src/constants';
 import { Utils } from '../../src/utils';
-import { ErrorHandler } from '../../src/errorHandler';
+import { ErrorHandler } from '../../src/common/errorHandler';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
@@ -24,7 +24,7 @@ describe('ConfigManager: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
     let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
-    let readdirStub: sinon.SinonStub;
+    let readdirAsyncStub: sinon.SinonStub;
     let envStub: sinon.SinonStub;
     let updateFileStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
@@ -41,7 +41,7 @@ describe('ConfigManager: tests', function () {
     beforeEach(() => {
       sandbox = sinon.createSandbox();
 
-      readdirStub = sandbox.stub(fs, 'readdirSync');
+      readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync');
       envStub = sandbox.stub(process, 'env');
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
       updateFileStub = sandbox.stub(Utils, 'updateFile');
@@ -82,15 +82,92 @@ describe('ConfigManager: tests', function () {
       splitter = (content: string) => content.split('\n');
 
       dirnameStub.returns(
-        `/path/to/extensions/${constants.extension.name}-1.0.0`,
+        `/path/to/.vscode/extensions/${constants.extension.name}-1.0.0`,
       );
-      readdirStub.returns([`${constants.extension.name}-1.0.0`]);
+      readdirAsyncStub.resolves([`${constants.extension.name}-1.0.0`]);
     });
 
     afterEach(function () {
       vsiconsClone = null;
       configManager = null;
       sandbox.restore();
+    });
+
+    context(`function 'rootDir'`, function () {
+      let originalRootDir: string;
+      beforeEach(function () {
+        dirnameStub.returns('/path/to/filename');
+        originalRootDir = ConfigManager.rootDir;
+      });
+
+      afterEach(function () {
+        ConfigManager.rootDir = originalRootDir;
+      });
+
+      context(`returns the 'root' directory`, function () {
+        const regexp = /^[a-zA-Z:\\]+|\//;
+
+        it(`by default`, function () {
+          expect(ConfigManager.rootDir).to.match(regexp);
+        });
+
+        context(`when assigned one is`, function () {
+          it(`an empty string`, function () {
+            ConfigManager.rootDir = '';
+
+            expect(ConfigManager.rootDir).to.match(regexp);
+          });
+
+          it(`'undefined'`, function () {
+            ConfigManager.rootDir = undefined;
+
+            expect(ConfigManager.rootDir).to.match(regexp);
+          });
+
+          it(`'null'`, function () {
+            ConfigManager.rootDir = null;
+
+            expect(ConfigManager.rootDir).to.match(regexp);
+          });
+        });
+      });
+
+      it(`returns the assigned 'root' directory`, function () {
+        const assignedDir = '/path';
+
+        ConfigManager.rootDir = assignedDir;
+
+        expect(ConfigManager.rootDir).to.equal(assignedDir);
+      });
+    });
+
+    context(`function 'outDir'`, function () {
+      it(`returns the 'out' directory`, function () {
+        const baseRegexp = `^[a-zA-Z:\\\\]+|\/`;
+        expect(ConfigManager.outDir).to.match(
+          new RegExp(`${baseRegexp}${constants.extension.outDirName}`),
+        );
+      });
+    });
+
+    context(`function 'sourceDir'`, function () {
+      it(`returns the 'source' directory`, function () {
+        const baseRegexp = `^[a-zA-Z:\\\\]+|\/`;
+        expect(ConfigManager.sourceDir).to.match(
+          new RegExp(
+            `${baseRegexp}${constants.extension.outDirName}[\\\\|\/]${constants.extension.srcDirName}`,
+          ),
+        );
+      });
+    });
+
+    context(`function 'iconsDir'`, function () {
+      it(`returns the 'icons' directory`, function () {
+        const baseRegexp = `^[a-zA-Z:\\\\]+|\/`;
+        expect(ConfigManager.iconsDir).to.match(
+          new RegExp(`${baseRegexp}${constants.extension.iconsDirName}`),
+        );
+      });
     });
 
     context(`function 'vsicons'`, function () {
@@ -219,37 +296,37 @@ describe('ConfigManager: tests', function () {
 
     context(`function 'removeSettings'`, function () {
       context(`does NOT update 'vscode' the settings file`, function () {
-        it('on extension update', function () {
-          readdirStub.returns([
+        it('on extension update', async function () {
+          readdirAsyncStub.resolves([
             `${constants.extension.name}-1.0.0`,
             `${constants.extension.name}-1.1.0`,
           ]);
 
           updateFileStub.callsArgWith(1, ['']).resolves();
 
-          return ConfigManager.removeSettings().then(
-            () => expect(updateFileStub.called).to.be.false,
-          );
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.called).to.be.false;
         });
       });
 
       context(`updates the 'vscode' settings file`, function () {
-        it('on extension full uninstall', function () {
+        it('on extension full uninstall', async function () {
           updateFileStub.callsArgWith(1, ['']).resolves();
 
-          return ConfigManager.removeSettings().then(
-            () => expect(updateFileStub.calledOnce).to.be.true,
-          );
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.calledOnce).to.be.true;
         });
       });
 
-      it('logs an Error message when updating the file fails', function () {
+      it('logs an Error message when updating the file fails', async function () {
         const error = new Error();
         updateFileStub.rejects(error);
 
-        return ConfigManager.removeSettings().then(() => {
-          expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
-        });
+        await ConfigManager.removeSettings();
+
+        expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
       });
     });
 
@@ -273,33 +350,31 @@ describe('ConfigManager: tests', function () {
             });
 
             context(`and extension's installed directory is`, function () {
-              it('in portable mode', function () {
-                const userPath = `${
-                  process.env.VSCODE_CWD
-                }/data/user-data/User`;
+              it('in portable mode', async function () {
+                const userPath = `${process.env.VSCODE_CWD}/data/user-data/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', 'data'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('freebsd');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('freebsd');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.vscode'`, function () {
+              it(`'.vscode'`, async function () {
                 const userPath = `${appPath}/Code/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('freebsd');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('freebsd');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.vscode-insiders'`, function () {
+              it(`'.vscode-insiders'`, async function () {
                 const userPath = `${appPath}/Code - Insiders/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
@@ -307,13 +382,13 @@ describe('ConfigManager: tests', function () {
                   dirPath.replace('%appDir%', '.vscode-insiders'),
                 );
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('freebsd');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('freebsd');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.code-oss-dev'`, function () {
+              it(`'.code-oss-dev'`, async function () {
                 const userPath = `${appPath}/code-oss-dev/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
@@ -321,22 +396,22 @@ describe('ConfigManager: tests', function () {
                   dirPath.replace('%appDir%', '.vscode-oss-dev'),
                 );
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('freebsd');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('freebsd');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.code-oss'`, function () {
+              it(`'.code-oss'`, async function () {
                 const userPath = `${appPath}/Code - OSS/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode-oss'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('freebsd');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('freebsd');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
             });
           });
@@ -350,33 +425,31 @@ describe('ConfigManager: tests', function () {
             });
 
             context(`and extension's installed directory is`, function () {
-              it('in portable mode', function () {
-                const userPath = `${
-                  process.env.VSCODE_CWD
-                }/data/user-data/User`;
+              it('in portable mode', async function () {
+                const userPath = `${process.env.VSCODE_CWD}/data/user-data/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', 'data'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('linux');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('linux');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.vscode'`, function () {
+              it(`'.vscode'`, async function () {
                 const userPath = `${appPath}/Code/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('linux');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('linux');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.vscode-insiders'`, function () {
+              it(`'.vscode-insiders'`, async function () {
                 const userPath = `${appPath}/Code - Insiders/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
@@ -384,13 +457,13 @@ describe('ConfigManager: tests', function () {
                   dirPath.replace('%appDir%', '.vscode-insiders'),
                 );
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('linux');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('linux');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.code-oss-dev'`, function () {
+              it(`'.code-oss-dev'`, async function () {
                 const userPath = `${appPath}/code-oss-dev/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
@@ -398,22 +471,22 @@ describe('ConfigManager: tests', function () {
                   dirPath.replace('%appDir%', '.vscode-oss-dev'),
                 );
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('linux');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('linux');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.code-oss'`, function () {
+              it(`'.code-oss'`, async function () {
                 const userPath = `${appPath}/Code - OSS/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode-oss'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('linux');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('linux');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
             });
           });
@@ -428,49 +501,45 @@ describe('ConfigManager: tests', function () {
 
             context(`and extension's installed directory is`, function () {
               context('in portable mode', function () {
-                it(`of 'vscode'`, function () {
-                  const userPath = `${
-                    process.env.VSCODE_CWD
-                  }/code-portable-data/user-data/User`;
+                it(`of 'vscode'`, async function () {
+                  const userPath = `${process.env.VSCODE_CWD}/code-portable-data/user-data/User`;
                   const expected = new RegExp(`^${userPath}`);
                   pathUnixJoinStub.returns(userPath);
                   dirnameStub.returns(dirPath.replace('%appDir%', 'data'));
 
-                  return ConfigManager.removeSettings().then(() => {
-                    expect(process.platform).to.equal('darwin');
-                    expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                  });
+                  await ConfigManager.removeSettings();
+
+                  expect(process.platform).to.equal('darwin');
+                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
                 });
 
-                it(`of 'vscode-insiders'`, function () {
-                  sandbox.stub(fs, 'existsSync').returns(true);
-                  const userPath = `${
-                    process.env.VSCODE_CWD
-                  }/code-insiders-portable-data/user-data/User`;
+                it(`of 'vscode-insiders'`, async function () {
+                  sandbox.stub(fsAsync, 'existsAsync').resolves(true);
+                  const userPath = `${process.env.VSCODE_CWD}/code-insiders-portable-data/user-data/User`;
                   const expected = new RegExp(`^${userPath}`);
                   pathUnixJoinStub.returns(userPath);
                   dirnameStub.returns(dirPath.replace('%appDir%', 'data'));
 
-                  return ConfigManager.removeSettings().then(() => {
-                    expect(process.platform).to.equal('darwin');
-                    expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                  });
-                });
-              });
+                  await ConfigManager.removeSettings();
 
-              it(`'.vscode'`, function () {
-                const userPath = `${appPath}/Code/User`;
-                const expected = new RegExp(`^${userPath}`);
-                pathUnixJoinStub.returns(userPath);
-                dirnameStub.returns(dirPath.replace('%appDir%', '.vscode'));
-
-                return ConfigManager.removeSettings().then(() => {
                   expect(process.platform).to.equal('darwin');
                   expect(updateFileStub.firstCall.args[0]).to.match(expected);
                 });
               });
 
-              it(`'.vscode-insiders'`, function () {
+              it(`'.vscode'`, async function () {
+                const userPath = `${appPath}/Code/User`;
+                const expected = new RegExp(`^${userPath}`);
+                pathUnixJoinStub.returns(userPath);
+                dirnameStub.returns(dirPath.replace('%appDir%', '.vscode'));
+
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('darwin');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
+              });
+
+              it(`'.vscode-insiders'`, async function () {
                 const userPath = `${appPath}/Code - Insiders/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
@@ -478,13 +547,13 @@ describe('ConfigManager: tests', function () {
                   dirPath.replace('%appDir%', '.vscode-insiders'),
                 );
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('darwin');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('darwin');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.code-oss-dev'`, function () {
+              it(`'.code-oss-dev'`, async function () {
                 const userPath = `${appPath}/code-oss-dev/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
@@ -492,22 +561,22 @@ describe('ConfigManager: tests', function () {
                   dirPath.replace('%appDir%', '.vscode-oss-dev'),
                 );
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('darwin');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('darwin');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.code-oss'`, function () {
+              it(`'.code-oss'`, async function () {
                 const userPath = `${appPath}/Code - OSS/User`;
                 const expected = new RegExp(`^${userPath}`);
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode-oss'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('darwin');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('darwin');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
             });
           });
@@ -524,23 +593,21 @@ describe('ConfigManager: tests', function () {
             });
 
             context(`and extension's installed directory is`, function () {
-              it('in portable mode', function () {
-                const userPath = `${
-                  process.env.VSCODE_CWD
-                }/data/user-data/User`;
+              it('in portable mode', async function () {
+                const userPath = `${process.env.VSCODE_CWD}/data/user-data/User`;
                 const expected = new RegExp(
                   `^${userPath.replace(/\\/g, '\\\\')}`,
                 );
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', 'data'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('win32');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('win32');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.vscode' `, function () {
+              it(`'.vscode' `, async function () {
                 const userPath = `${process.env.APPDATA}/Code/User`;
                 const expected = new RegExp(
                   `^${userPath.replace(/\\/g, '\\\\')}`,
@@ -548,13 +615,13 @@ describe('ConfigManager: tests', function () {
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('win32');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('win32');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.vscode-insiders'`, function () {
+              it(`'.vscode-insiders'`, async function () {
                 const userPath = `${process.env.APPDATA}/Code - Insiders/User`;
                 const expected = new RegExp(
                   `^${userPath.replace(/\\/g, '\\\\')}`,
@@ -564,13 +631,13 @@ describe('ConfigManager: tests', function () {
                   dirPath.replace('%appDir%', '.vscode-insiders'),
                 );
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('win32');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('win32');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.code-oss-dev'`, function () {
+              it(`'.code-oss-dev'`, async function () {
                 const userPath = `${process.env.APPDATA}/code-oss-dev/User`;
                 const expected = new RegExp(
                   `^${userPath.replace(/\\/g, '\\\\')}`,
@@ -580,13 +647,13 @@ describe('ConfigManager: tests', function () {
                   dirPath.replace('%appDir%', '.vscode-oss-dev'),
                 );
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('win32');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('win32');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
 
-              it(`'.code-oss'`, function () {
+              it(`'.code-oss'`, async function () {
                 const userPath = `${process.env.APPDATA}/Code - OSS/User`;
                 const expected = new RegExp(
                   `^${userPath.replace(/\\/g, '\\\\')}`,
@@ -594,10 +661,10 @@ describe('ConfigManager: tests', function () {
                 pathUnixJoinStub.returns(userPath);
                 dirnameStub.returns(dirPath.replace('%appDir%', '.vscode-oss'));
 
-                return ConfigManager.removeSettings().then(() => {
-                  expect(process.platform).to.equal('win32');
-                  expect(updateFileStub.firstCall.args[0]).to.match(expected);
-                });
+                await ConfigManager.removeSettings();
+
+                expect(process.platform).to.equal('win32');
+                expect(updateFileStub.firstCall.args[0]).to.match(expected);
               });
             });
           });
@@ -615,26 +682,26 @@ describe('ConfigManager: tests', function () {
         );
       });
 
-      it('to return \'true\' on a single installation', function () {
-        readdirStub.returns([`${constants.extension.name}-1.1.0`]);
+      it(`to return 'true' on a single installation`, async function () {
+        readdirAsyncStub.resolves([`${constants.extension.name}-1.1.0`]);
         updateFileStub.resolves();
 
-        return ConfigManager.removeSettings().then(() => {
-          expect(isSingleInstallationSpy.calledOnce).to.be.true;
-          expect(isSingleInstallationSpy.returned(true)).to.be.true;
-        });
+        await ConfigManager.removeSettings();
+
+        expect(isSingleInstallationSpy.calledOnce).to.be.true;
+        expect(await isSingleInstallationSpy.firstCall.returnValue).to.be.true;
       });
 
-      it('to return \'false\' on multiple installations', function () {
-        readdirStub.returns([
+      it(`to return 'false' on multiple installations`, async function () {
+        readdirAsyncStub.resolves([
           `${constants.extension.name}-2.0.0`,
           `${constants.extension.name}-2.1.0`,
         ]);
 
-        return ConfigManager.removeSettings().then(() => {
-          expect(isSingleInstallationSpy.calledOnce).to.be.true;
-          expect(isSingleInstallationSpy.returned(false)).to.be.true;
-        });
+        await ConfigManager.removeSettings();
+
+        expect(isSingleInstallationSpy.calledOnce).to.be.true;
+        expect(await isSingleInstallationSpy.firstCall.returnValue).to.be.false;
       });
     });
 
@@ -650,32 +717,28 @@ describe('ConfigManager: tests', function () {
       });
 
       context(`to maintain comments and`, function () {
-        it(`to remove a 'vsicons' configuration when it is last`, function () {
+        it(`to remove a 'vsicons' configuration when it is last`, async function () {
           const content: string[] = splitter(
             '{\n"updateChannel": "none",\n' +
               '\\\\ Comments\n' +
-              `"${
-                constants.vsicons.dontShowNewVersionMessageSetting
-              }": true\n}`,
+              `"${constants.vsicons.dontShowNewVersionMessageSetting}": true\n}`,
           );
           const expected: string[] = splitter(
             `{\n"updateChannel": "none",\n\\\\ Comments\n}`,
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
-          return ConfigManager.removeSettings().then(() => {
-            expect(updateFileStub.calledOnce).to.be.true;
-            expect(updateFileStub.firstCall.callback).to.be.a('function');
-            expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
-            expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
-          });
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.calledOnce).to.be.true;
+          expect(updateFileStub.firstCall.callback).to.be.a('function');
+          expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
+          expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
         });
 
-        it(`to remove a 'vsicons' configuration when it is first`, function () {
+        it(`to remove a 'vsicons' configuration when it is first`, async function () {
           const content = splitter(
-            `{\n"${
-              constants.vsicons.dontShowNewVersionMessageSetting
-            }": true,\n` +
+            `{\n"${constants.vsicons.dontShowNewVersionMessageSetting}": true,\n` +
               '\\\\ Comments\n' +
               '"window.zoomLevel": 0,\n"updateChannel": "none"\n}',
           );
@@ -684,21 +747,19 @@ describe('ConfigManager: tests', function () {
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
-          return ConfigManager.removeSettings().then(() => {
-            expect(updateFileStub.calledOnce).to.be.true;
-            expect(updateFileStub.firstCall.callback).to.be.a('function');
-            expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
-            expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
-          });
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.calledOnce).to.be.true;
+          expect(updateFileStub.firstCall.callback).to.be.a('function');
+          expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
+          expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
         });
 
-        it(`to remove a 'vsicons' configuration when it is in between`, function () {
+        it(`to remove a 'vsicons' configuration when it is in between`, async function () {
           const content = splitter(
             '{\n"window.zoomLevel": 0,\n' +
               '\\\\ Comments\n' +
-              `"${
-                constants.vsicons.dontShowNewVersionMessageSetting
-              }": true,\n` +
+              `"${constants.vsicons.dontShowNewVersionMessageSetting}": true,\n` +
               '"updateChannel": "none"\n}',
           );
           const expected = splitter(
@@ -706,22 +767,20 @@ describe('ConfigManager: tests', function () {
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
-          return ConfigManager.removeSettings().then(() => {
-            expect(updateFileStub.calledOnce).to.be.true;
-            expect(updateFileStub.firstCall.callback).to.be.a('function');
-            expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
-            expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
-          });
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.calledOnce).to.be.true;
+          expect(updateFileStub.firstCall.callback).to.be.a('function');
+          expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
+          expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
         });
 
-        it(`to remove multiple 'vsicons' settings`, function () {
+        it(`to remove multiple 'vsicons' settings`, async function () {
           const content = splitter(
             '{\n' +
               '    "window.zoomLevel": 0,\n' +
               '    \\\\ Comments\n' +
-              `    "${
-                constants.vsicons.dontShowNewVersionMessageSetting
-              }": true,\n` +
+              `    "${constants.vsicons.dontShowNewVersionMessageSetting}": true,\n` +
               `    "${constants.vsicons.presets.angular}": true,\n` +
               '    "updateChannel": "none"\n' +
               '}',
@@ -731,22 +790,20 @@ describe('ConfigManager: tests', function () {
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
-          return ConfigManager.removeSettings().then(() => {
-            expect(updateFileStub.calledOnce).to.be.true;
-            expect(updateFileStub.firstCall.callback).to.be.a('function');
-            expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
-            expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
-          });
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.calledOnce).to.be.true;
+          expect(updateFileStub.firstCall.callback).to.be.a('function');
+          expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
+          expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
         });
 
-        it(`to remove 'vsicons' settings of 'object' type`, function () {
+        it(`to remove 'vsicons' settings of 'object' type`, async function () {
           const content = splitter(
             '{\n' +
               '    "window.zoomLevel": 0,\n' +
               '    \\\\ Comments\n' +
-              `    "${
-                constants.vsicons.associations.defaultFileSetting
-              }": {\n` +
+              `    "${constants.vsicons.associations.defaultFileSetting}": {\n` +
               '        \\\\ Comments\n' +
               '        "icon": "ts",\n' +
               '        "extensions": ["extone"],\n' +
@@ -759,82 +816,79 @@ describe('ConfigManager: tests', function () {
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
-          return ConfigManager.removeSettings().then(() => {
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.calledOnce).to.be.true;
+          expect(updateFileStub.firstCall.callback).to.be.a('function');
+          expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
+          expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
+        });
+
+        context(`to remove 'vsicons' settings of 'array' type`, function () {
+          it(`when the trailing character is '['`, async function () {
+            const content = splitter(
+              '{\n' +
+                '    "window.zoomLevel": 0,\n' +
+                '    \\\\ Comments\n' +
+                `    "${constants.vsicons.associations.filesSetting}": [\n` +
+                '    \\\\ Comments\n' +
+                '    {\n' +
+                '        "icon": "one",\n' +
+                '        "extensions": ["extone"],\n' +
+                '        "format": "svg"\n' +
+                '    }\n' +
+                '],\n' +
+                '}',
+            );
+            const expected = splitter(
+              `{\n    "window.zoomLevel": 0,\n    \\\\ Comments\n}`,
+            );
+            updateFileStub.callsArgWith(1, content).resolves();
+
+            await ConfigManager.removeSettings();
+
+            expect(updateFileStub.calledOnce).to.be.true;
+            expect(updateFileStub.firstCall.callback).to.be.a('function');
+            expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
+            expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
+          });
+
+          it(`when the trailing character is '[{'`, async function () {
+            const content = splitter(
+              '{\n' +
+                '    "window.zoomLevel": 0,\n' +
+                '    \\\\ Comments\n' +
+                `    "${constants.vsicons.associations.filesSetting}": [{\n` +
+                '            "icon": "one",\n' +
+                '            "extensions": ["extone"],\n' +
+                '            "format": "svg"\n' +
+                '        },\n' +
+                '        {\n' +
+                '            "icon": "two",\n' +
+                '            "extensions": ["extone", "exttwo"],\n' +
+                '            "format": "svg"\n' +
+                '        },\n' +
+                '        {\n' +
+                '            "icon": "three",\n' +
+                '            "extensions": ["extone"],\n' +
+                '            "format": "svg"\n' +
+                '        },\n' +
+                '    ],\n' +
+                '}',
+            );
+            const expected = splitter(
+              `{\n    "window.zoomLevel": 0,\n    \\\\ Comments\n}`,
+            );
+            updateFileStub.callsArgWith(1, content).resolves();
+
+            await ConfigManager.removeSettings();
+
             expect(updateFileStub.calledOnce).to.be.true;
             expect(updateFileStub.firstCall.callback).to.be.a('function');
             expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
             expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
           });
         });
-
-        context(
-          `to remove 'vsicons' settings of 'array' type`,
-          function () {
-            it(`when the trailing character is '['`, function () {
-              const content = splitter(
-                '{\n' +
-                  '    "window.zoomLevel": 0,\n' +
-                  '    \\\\ Comments\n' +
-                  `    "${constants.vsicons.associations.filesSetting}": [\n` +
-                  '    \\\\ Comments\n' +
-                  '    {\n' +
-                  '        "icon": "one",\n' +
-                  '        "extensions": ["extone"],\n' +
-                  '        "format": "svg"\n' +
-                  '    }\n' +
-                  '],\n' +
-                  '}',
-              );
-              const expected = splitter(
-                `{\n    "window.zoomLevel": 0,\n    \\\\ Comments\n}`,
-              );
-              updateFileStub.callsArgWith(1, content).resolves();
-
-              return ConfigManager.removeSettings().then(() => {
-                expect(updateFileStub.calledOnce).to.be.true;
-                expect(updateFileStub.firstCall.callback).to.be.a('function');
-                expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
-                expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
-              });
-            });
-
-            it(`when the trailing character is '[{'`, function () {
-              const content = splitter(
-                '{\n' +
-                  '    "window.zoomLevel": 0,\n' +
-                  '    \\\\ Comments\n' +
-                  `    "${constants.vsicons.associations.filesSetting}": [{\n` +
-                  '            "icon": "one",\n' +
-                  '            "extensions": ["extone"],\n' +
-                  '            "format": "svg"\n' +
-                  '        },\n' +
-                  '        {\n' +
-                  '            "icon": "two",\n' +
-                  '            "extensions": ["extone", "exttwo"],\n' +
-                  '            "format": "svg"\n' +
-                  '        },\n' +
-                  '        {\n' +
-                  '            "icon": "three",\n' +
-                  '            "extensions": ["extone"],\n' +
-                  '            "format": "svg"\n' +
-                  '        },\n' +
-                  '    ],\n' +
-                  '}',
-              );
-              const expected = splitter(
-                `{\n    "window.zoomLevel": 0,\n    \\\\ Comments\n}`,
-              );
-              updateFileStub.callsArgWith(1, content).resolves();
-
-              return ConfigManager.removeSettings().then(() => {
-                expect(updateFileStub.calledOnce).to.be.true;
-                expect(updateFileStub.firstCall.callback).to.be.a('function');
-                expect(removeVSIconsConfigsSpy.calledOnce).to.be.true;
-                expect(removeVSIconsConfigsSpy.returned(expected)).to.be.true;
-              });
-            });
-          },
-        );
       });
     });
 
@@ -850,29 +904,27 @@ describe('ConfigManager: tests', function () {
       });
 
       context(`does reset the 'iconTheme' configuration`, function () {
-        it(`if it was set to 'vscode-icons'`, function () {
+        it(`if it was set to 'vscode-icons'`, async function () {
           const content = splitter(
             '{\n' +
               '"window.zoomLevel": 0,\n' +
-              `"${constants.vscode.iconThemeSetting}": "${
-                constants.extension.name
-              }"\n` +
+              `"${constants.vscode.iconThemeSetting}": "${constants.extension.name}"\n` +
               '}',
           );
           const expected = splitter(`{\n"window.zoomLevel": 0\n` + '}');
           updateFileStub.callsArgWith(1, content).resolves();
 
-          return ConfigManager.removeSettings().then(() => {
-            expect(updateFileStub.calledOnce).to.be.true;
-            expect(updateFileStub.firstCall.callback).to.be.a('function');
-            expect(resetIconThemeSpy.calledOnce).to.be.true;
-            expect(resetIconThemeSpy.returned(expected)).to.be.true;
-          });
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.calledOnce).to.be.true;
+          expect(updateFileStub.firstCall.callback).to.be.a('function');
+          expect(resetIconThemeSpy.calledOnce).to.be.true;
+          expect(resetIconThemeSpy.returned(expected)).to.be.true;
         });
       });
 
       context(`does NOT reset the 'iconTheme' configuration`, function () {
-        it(`if it's NOT set to 'vscode-icons'`, function () {
+        it(`if it's NOT set to 'vscode-icons'`, async function () {
           const content = splitter(
             '{\n' +
               '"window.zoomLevel": 0,\n' +
@@ -881,12 +933,12 @@ describe('ConfigManager: tests', function () {
           );
           updateFileStub.callsArgWith(1, content).resolves();
 
-          return ConfigManager.removeSettings().then(() => {
-            expect(updateFileStub.calledOnce).to.be.true;
-            expect(updateFileStub.firstCall.callback).to.be.a('function');
-            expect(resetIconThemeSpy.calledOnce).to.be.true;
-            expect(resetIconThemeSpy.returned(content)).to.be.true;
-          });
+          await ConfigManager.removeSettings();
+
+          expect(updateFileStub.calledOnce).to.be.true;
+          expect(updateFileStub.firstCall.callback).to.be.a('function');
+          expect(resetIconThemeSpy.calledOnce).to.be.true;
+          expect(resetIconThemeSpy.returned(content)).to.be.true;
         });
       });
     });
@@ -904,7 +956,7 @@ describe('ConfigManager: tests', function () {
 
       context('to remove the trailing comma', function () {
         context('of the last settings entry', function () {
-          it('when there is no EOF extra line', function () {
+          it('when there is no EOF extra line', async function () {
             const content = splitter(
               `{\n"window.zoomLevel": 0,\n"updateChannel": "none",\n}`,
             );
@@ -913,16 +965,17 @@ describe('ConfigManager: tests', function () {
             );
             updateFileStub.callsArgWith(1, content).resolves();
 
-            return ConfigManager.removeSettings().then(() => {
-              expect(updateFileStub.calledOnce).to.be.true;
-              expect(updateFileStub.firstCall.callback).to.be.a('function');
-              expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
-              expect(removeLastEntryTrailingCommaStub.returned(expected)).to.be
-                .true;
-            });
+            await ConfigManager.removeSettings();
+
+            expect(updateFileStub.calledOnce).to.be.true;
+            expect(updateFileStub.firstCall.callback).to.be.a('function');
+            expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
+            expect(
+              removeLastEntryTrailingCommaStub.returned(expected),
+            ).to.be.true;
           });
 
-          it('when there is an EOF extra line', function () {
+          it('when there is an EOF extra line', async function () {
             const content = splitter(
               `{\n"window.zoomLevel": 0,\n"updateChannel": "none",\n}\n`,
             );
@@ -931,16 +984,17 @@ describe('ConfigManager: tests', function () {
             );
             updateFileStub.callsArgWith(1, content).resolves();
 
-            return ConfigManager.removeSettings().then(() => {
-              expect(updateFileStub.calledOnce).to.be.true;
-              expect(updateFileStub.firstCall.callback).to.be.a('function');
-              expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
-              expect(removeLastEntryTrailingCommaStub.returned(expected)).to.be
-                .true;
-            });
+            await ConfigManager.removeSettings();
+
+            expect(updateFileStub.calledOnce).to.be.true;
+            expect(updateFileStub.firstCall.callback).to.be.a('function');
+            expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
+            expect(
+              removeLastEntryTrailingCommaStub.returned(expected),
+            ).to.be.true;
           });
 
-          it(`when the last entry is of 'object' type`, function () {
+          it(`when the last entry is of 'object' type`, async function () {
             const content = splitter(
               '{\n' +
                 '"window.zoomLevel": 0,\n' +
@@ -961,16 +1015,17 @@ describe('ConfigManager: tests', function () {
             );
             updateFileStub.callsArgWith(1, content).resolves();
 
-            return ConfigManager.removeSettings().then(() => {
-              expect(updateFileStub.calledOnce).to.be.true;
-              expect(updateFileStub.firstCall.callback).to.be.a('function');
-              expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
-              expect(removeLastEntryTrailingCommaStub.returned(expected)).to.be
-                .true;
-            });
+            await ConfigManager.removeSettings();
+
+            expect(updateFileStub.calledOnce).to.be.true;
+            expect(updateFileStub.firstCall.callback).to.be.a('function');
+            expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
+            expect(
+              removeLastEntryTrailingCommaStub.returned(expected),
+            ).to.be.true;
           });
 
-          it(`when the last entry is of 'array' type`, function () {
+          it(`when the last entry is of 'array' type`, async function () {
             const content = splitter(
               '{\n' +
                 '"window.zoomLevel": 0,\n' +
@@ -993,13 +1048,14 @@ describe('ConfigManager: tests', function () {
             );
             updateFileStub.callsArgWith(1, content).resolves();
 
-            return ConfigManager.removeSettings().then(() => {
-              expect(updateFileStub.calledOnce).to.be.true;
-              expect(updateFileStub.firstCall.callback).to.be.a('function');
-              expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
-              expect(removeLastEntryTrailingCommaStub.returned(expected)).to.be
-                .true;
-            });
+            await ConfigManager.removeSettings();
+
+            expect(updateFileStub.calledOnce).to.be.true;
+            expect(updateFileStub.firstCall.callback).to.be.a('function');
+            expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
+            expect(
+              removeLastEntryTrailingCommaStub.returned(expected),
+            ).to.be.true;
           });
         });
       });
@@ -1050,68 +1106,78 @@ describe('ConfigManager: tests', function () {
     });
 
     context(`function 'getCustomIconsDirPath'`, function () {
-      it(`returns the app user directory, when no directory path is provided`, function () {
+      it(`returns the app user directory, when no directory path is provided`, async function () {
         const appUserDirPath = '/Path/To/App/User/Dir/Path';
         vscodeManagerStub.getAppUserDirPath.returns(appUserDirPath);
 
-        expect(configManager.getCustomIconsDirPath('')).to.be.equal(
-          appUserDirPath,
-        );
+        const dirPath = await configManager.getCustomIconsDirPath('');
+
+        expect(dirPath).to.be.equal(appUserDirPath);
       });
 
       context(`returns the provide directory path, when`, function () {
-        it(`it's an absolute path`, function () {
+        it(`it's an absolute path`, async function () {
           const customIconsDirPath = '/Path/To/Custom/Icons/Dir/';
 
-          expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath),
-          ).to.be.equal(customIconsDirPath);
+          const dirPath = await configManager.getCustomIconsDirPath(
+            customIconsDirPath,
+          );
+
+          expect(dirPath).to.be.equal(customIconsDirPath);
         });
 
-        it(`no 'workspace' directory paths exist`, function () {
+        it(`no 'workspace' directory paths exist`, async function () {
           const customIconsDirPath = './Path/To/Custom/Icons/Dir/';
           vscodeManagerStub.getWorkspacePaths.returns(undefined);
 
-          expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath),
-          ).to.be.equal(customIconsDirPath);
+          const dirPath = await configManager.getCustomIconsDirPath(
+            customIconsDirPath,
+          );
+
+          expect(dirPath).to.be.equal(customIconsDirPath);
         });
 
-        it(`the 'workspace' directory paths are empty`, function () {
+        it(`the 'workspace' directory paths are empty`, async function () {
           const customIconsDirPath = './Path/To/Custom/Icons/Dir/';
           vscodeManagerStub.getWorkspacePaths.returns([]);
 
-          expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath),
-          ).to.be.equal(customIconsDirPath);
+          const dirPath = await configManager.getCustomIconsDirPath(
+            customIconsDirPath,
+          );
+
+          expect(dirPath).to.be.equal(customIconsDirPath);
         });
 
-        it(`the 'workspace' directory path does NOT exist`, function () {
+        it(`the 'workspace' directory path does NOT exist`, async function () {
           const customIconsDirPath = './Path/To/Custom/Icons/Dir/';
           const rootDir = '/';
           const joinedDir = path.posix.join('', customIconsDirPath);
           vscodeManagerStub.getWorkspacePaths.returns([rootDir]);
-          sandbox.stub(fs, 'existsSync').returns(false);
+          sandbox.stub(fsAsync, 'existsAsync').resolves(false);
           pathUnixJoinStub.returns(joinedDir);
 
-          expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath),
-          ).to.be.equal(joinedDir);
+          const dirPath = await configManager.getCustomIconsDirPath(
+            customIconsDirPath,
+          );
+
+          expect(dirPath).to.be.equal(joinedDir);
         });
       });
 
       context(`returns an absolute directory path, when`, function () {
-        it(`the provided path is relative to the 'workspace' directory`, function () {
+        it(`the provided path is relative to the 'workspace' directory`, async function () {
           const customIconsDirPath = './Path/To/Custom/Icons/Dir/';
           const rootDir = '/';
           const joinedDir = path.posix.join(rootDir, customIconsDirPath);
           vscodeManagerStub.getWorkspacePaths.returns([rootDir]);
-          sandbox.stub(fs, 'existsSync').returns(true);
+          sandbox.stub(fsAsync, 'existsAsync').resolves(true);
           pathUnixJoinStub.returns(joinedDir);
 
-          expect(
-            configManager.getCustomIconsDirPath(customIconsDirPath),
-          ).to.be.equal(joinedDir);
+          const dirPath = await configManager.getCustomIconsDirPath(
+            customIconsDirPath,
+          );
+
+          expect(dirPath).to.be.equal(joinedDir);
         });
       });
     });
@@ -1168,247 +1234,212 @@ describe('ConfigManager: tests', function () {
     });
 
     context(`function 'updateDontShowNewVersionMessage'`, function () {
-      it(`updates the setting to 'true'`, function () {
-        return configManager
-          .updateDontShowNewVersionMessage(true)
-          .then(
-            () =>
-              expect(
-                updateStub.calledOnceWith(
-                  constants.vsicons.dontShowNewVersionMessageSetting,
-                  true,
-                  ConfigurationTarget.Global,
-                ),
-              ).to.be.true,
-          );
+      it(`updates the setting to 'true'`, async function () {
+        await configManager.updateDontShowNewVersionMessage(true);
+
+        expect(
+          updateStub.calledOnceWith(
+            constants.vsicons.dontShowNewVersionMessageSetting,
+            true,
+            ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
       });
 
-      it(`updates the setting to 'false'`, function () {
-        return configManager
-          .updateDontShowNewVersionMessage(false)
-          .then(
-            () =>
-              expect(
-                updateStub.calledOnceWith(
-                  constants.vsicons.dontShowNewVersionMessageSetting,
-                  false,
-                  ConfigurationTarget.Global,
-                ),
-              ).to.be.true,
-          );
+      it(`updates the setting to 'false'`, async function () {
+        await configManager.updateDontShowNewVersionMessage(false);
+
+        expect(
+          updateStub.calledOnceWith(
+            constants.vsicons.dontShowNewVersionMessageSetting,
+            false,
+            ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
       });
     });
 
     context(
       `function 'updateDontShowConfigManuallyChangedMessage'`,
       function () {
-        it(`updates the setting to 'true'`, function () {
-          return configManager
-            .updateDontShowConfigManuallyChangedMessage(true)
-            .then(
-              () =>
-                expect(
-                  updateStub.calledOnceWith(
-                    constants.vsicons
-                      .dontShowConfigManuallyChangedMessageSetting,
-                    true,
-                    ConfigurationTarget.Global,
-                  ),
-                ).to.be.true,
-            );
+        it(`updates the setting to 'true'`, async function () {
+          await configManager.updateDontShowConfigManuallyChangedMessage(true);
+
+          expect(
+            updateStub.calledOnceWith(
+              constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
+              true,
+              ConfigurationTarget.Global,
+            ),
+          ).to.be.true;
         });
 
-        it(`updates the setting to 'false'`, function () {
-          return configManager
-            .updateDontShowConfigManuallyChangedMessage(false)
-            .then(
-              () =>
-                expect(
-                  updateStub.calledOnceWith(
-                    constants.vsicons
-                      .dontShowConfigManuallyChangedMessageSetting,
-                    false,
-                    ConfigurationTarget.Global,
-                  ),
-                ).to.be.true,
-            );
+        it(`updates the setting to 'false'`, async function () {
+          await configManager.updateDontShowConfigManuallyChangedMessage(false);
+
+          expect(
+            updateStub.calledOnceWith(
+              constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
+              false,
+              ConfigurationTarget.Global,
+            ),
+          ).to.be.true;
         });
       },
     );
 
     context(`function 'updateAutoReload'`, function () {
-      it(`updates the setting to 'true'`, function () {
-        return configManager
-          .updateAutoReload(true)
-          .then(
-            () =>
-              expect(
-                updateStub.calledOnceWith(
-                  constants.vsicons.projectDetectionAutoReloadSetting,
-                  true,
-                  ConfigurationTarget.Global,
-                ),
-              ).to.be.true,
-          );
+      it(`updates the setting to 'true'`, async function () {
+        await configManager.updateAutoReload(true);
+
+        expect(
+          updateStub.calledOnceWith(
+            constants.vsicons.projectDetectionAutoReloadSetting,
+            true,
+            ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
       });
 
-      it(`updates the setting to 'false'`, function () {
-        return configManager
-          .updateAutoReload(false)
-          .then(
-            () =>
-              expect(
-                updateStub.calledOnceWith(
-                  constants.vsicons.projectDetectionAutoReloadSetting,
-                  false,
-                  ConfigurationTarget.Global,
-                ),
-              ).to.be.true,
-          );
+      it(`updates the setting to 'false'`, async function () {
+        await configManager.updateAutoReload(false);
+
+        expect(
+          updateStub.calledOnceWith(
+            constants.vsicons.projectDetectionAutoReloadSetting,
+            false,
+            ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
       });
     });
 
     context(`function 'updateDisableDetection'`, function () {
-      it(`updates the setting to 'true'`, function () {
-        return configManager
-          .updateDisableDetection(true)
-          .then(
-            () =>
-              expect(
-                updateStub.calledOnceWith(
-                  constants.vsicons.projectDetectionDisableDetectSetting,
-                  true,
-                  ConfigurationTarget.Global,
-                ),
-              ).to.be.true,
-          );
+      it(`updates the setting to 'true'`, async function () {
+        await configManager.updateDisableDetection(true);
+
+        expect(
+          updateStub.calledOnceWith(
+            constants.vsicons.projectDetectionDisableDetectSetting,
+            true,
+            ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
       });
 
-      it(`updates the setting to 'false'`, function () {
-        return configManager
-          .updateDisableDetection(false)
-          .then(
-            () =>
-              expect(
-                updateStub.calledOnceWith(
-                  constants.vsicons.projectDetectionDisableDetectSetting,
-                  false,
-                  ConfigurationTarget.Global,
-                ),
-              ).to.be.true,
-          );
+      it(`updates the setting to 'false'`, async function () {
+        await configManager.updateDisableDetection(false);
+
+        expect(
+          updateStub.calledOnceWith(
+            constants.vsicons.projectDetectionDisableDetectSetting,
+            false,
+            ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
       });
     });
 
     context(`function 'updateIconTheme'`, function () {
-      it(`updates the icon theme setting to 'vsicons'`, function () {
-        return configManager
-          .updateIconTheme()
-          .then(
-            () =>
-              expect(
-                updateStub.calledOnceWith(
-                  constants.vscode.iconThemeSetting,
-                  constants.extension.name,
-                  ConfigurationTarget.Global,
-                ),
-              ).to.be.true,
-          );
+      it(`updates the icon theme setting to 'vsicons'`, async function () {
+        await configManager.updateIconTheme();
+
+        expect(
+          updateStub.calledOnceWith(
+            constants.vscode.iconThemeSetting,
+            constants.extension.name,
+            ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
       });
     });
 
     context(`function 'updatePreset'`, function () {
-      it(`updates the preset setting to 'true'`, function () {
+      it(`updates the preset setting to 'true'`, async function () {
         inspectStub.returns({ defaultValue: false });
 
-        return configManager
-          .updatePreset(
-            PresetNames[PresetNames.tsOfficial],
+        await configManager.updatePreset(
+          PresetNames[PresetNames.tsOfficial],
+          true,
+          ConfigurationTarget.Global,
+        );
+
+        expect(
+          inspectStub
+            .getCall(2)
+            .calledWith(
+              `${constants.vsicons.presets.fullname}.${
+                PresetNames[PresetNames.tsOfficial]
+              }`,
+            ),
+        ).to.be.true;
+        expect(
+          updateStub.calledOnceWith(
+            `${constants.vsicons.presets.fullname}.${
+              PresetNames[PresetNames.tsOfficial]
+            }`,
             true,
             ConfigurationTarget.Global,
-          )
-          .then(() => {
-            expect(
-              inspectStub
-                .getCall(2)
-                .calledWith(
-                  `${constants.vsicons.presets.fullname}.${
-                    PresetNames[PresetNames.tsOfficial]
-                  }`,
-                ),
-            ).to.be.true;
-            expect(
-              updateStub.calledOnceWith(
-                `${constants.vsicons.presets.fullname}.${
-                  PresetNames[PresetNames.tsOfficial]
-                }`,
-                true,
-                ConfigurationTarget.Global,
-              ),
-            ).to.be.true;
-          });
+          ),
+        ).to.be.true;
       });
 
-      it(`removes the preset setting when the value is 'false'`, function () {
+      it(`removes the preset setting when the value is 'false'`, async function () {
         inspectStub.returns({ defaultValue: false });
 
-        return configManager
-          .updatePreset(
-            PresetNames[PresetNames.jsOfficial],
-            false,
+        await configManager.updatePreset(
+          PresetNames[PresetNames.jsOfficial],
+          false,
+          ConfigurationTarget.Global,
+        );
+
+        expect(
+          inspectStub
+            .getCall(2)
+            .calledWith(
+              `${constants.vsicons.presets.fullname}.${
+                PresetNames[PresetNames.jsOfficial]
+              }`,
+            ),
+        ).to.be.true;
+        expect(
+          updateStub.calledOnceWith(
+            `${constants.vsicons.presets.fullname}.${
+              PresetNames[PresetNames.jsOfficial]
+            }`,
+            undefined,
             ConfigurationTarget.Global,
-          )
-          .then(() => {
-            expect(
-              inspectStub
-                .getCall(2)
-                .calledWith(
-                  `${constants.vsicons.presets.fullname}.${
-                    PresetNames[PresetNames.jsOfficial]
-                  }`,
-                ),
-            ).to.be.true;
-            expect(
-              updateStub.calledOnceWith(
-                `${constants.vsicons.presets.fullname}.${
-                  PresetNames[PresetNames.jsOfficial]
-                }`,
-                undefined,
-                ConfigurationTarget.Global,
-              ),
-            ).to.be.true;
-          });
+          ),
+        ).to.be.true;
       });
 
-      it(`respects the configuration target`, function () {
+      it(`respects the configuration target`, async function () {
         inspectStub.returns({ defaultValue: false });
 
-        return configManager
-          .updatePreset(
-            PresetNames[PresetNames.angular],
-            false,
+        await configManager.updatePreset(
+          PresetNames[PresetNames.angular],
+          false,
+          ConfigurationTarget.Workspace,
+        );
+
+        expect(
+          inspectStub
+            .getCall(2)
+            .calledWith(
+              `${constants.vsicons.presets.fullname}.${
+                PresetNames[PresetNames.angular]
+              }`,
+            ),
+        ).to.be.true;
+        expect(
+          updateStub.calledOnceWith(
+            `${constants.vsicons.presets.fullname}.${
+              PresetNames[PresetNames.angular]
+            }`,
+            undefined,
             ConfigurationTarget.Workspace,
-          )
-          .then(() => {
-            expect(
-              inspectStub
-                .getCall(2)
-                .calledWith(
-                  `${constants.vsicons.presets.fullname}.${
-                    PresetNames[PresetNames.angular]
-                  }`,
-                ),
-            ).to.be.true;
-            expect(
-              updateStub.calledOnceWith(
-                `${constants.vsicons.presets.fullname}.${
-                  PresetNames[PresetNames.angular]
-                }`,
-                undefined,
-                ConfigurationTarget.Workspace,
-              ),
-            ).to.be.true;
-          });
+          ),
+        ).to.be.true;
       });
     });
   });

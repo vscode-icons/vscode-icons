@@ -35,6 +35,12 @@ export const extensions: IFileCollection = {
       languages: [languages.actionscript],
       format: FileFormat.svg,
     },
+    // {
+    //   icon: 'actionscript',
+    //   extensions: ['exte'],
+    //   languages: [languages.actionscript],
+    //   format: FileFormat.svg,
+    // },
     {
       icon: 'actionscript2',
       extensions: [],
@@ -627,7 +633,6 @@ export const extensions: IFileCollection = {
       icon: 'bolt',
       extensions: [],
       languages: [languages.bolt],
-      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -1947,10 +1952,9 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
-    { icon: 'makefile', extensions: ['makefile'], format: FileFormat.svg },
     {
       icon: 'makefile',
-      extensions: [],
+      extensions: ['makefile'],
       languages: [languages.makefile],
       format: FileFormat.svg,
     },

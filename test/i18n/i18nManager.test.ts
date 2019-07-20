@@ -2,68 +2,106 @@
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
-import { langResourceCollection } from '../../src/i18n/langResourceCollection';
-import {
-  LangResourceKeys,
-  ILanguageResourceManager,
-} from '../../src/models/i18n';
+import * as langResources from '../../../lang.nls.bundle.json';
 import * as manifest from '../../../package.json';
-import * as nls from '../../../package.nls.json';
-import * as nlsTemplate from '../../../package.nls.template.json';
+import * as nls from '../../../locale/package/package.nls.json';
+import * as nlsTemplate from '../../../locale/package.nls.template.json';
+import {
+  ILanguageResourceManager,
+  LangResourceKeys,
+} from '../../src/models/i18n';
+import * as proxyq from 'proxyquire';
 
 describe('LanguageResourceManager: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let resourceCollection: any;
     let i18nManager: ILanguageResourceManager;
+    let LanguageResourceManager: any;
+    let initResourceCollection: string[];
+    let resourceCollection: any;
+    let numberOfLangResourceKeys: number;
+
+    before(function () {
+      proxyq.noCallThru();
+
+      LanguageResourceManager = (resource: {}): any =>
+        proxyq('../../src/i18n/languageResourceManager', {
+          '../../../lang.nls.bundle.json': resource,
+        }).LanguageResourceManager;
+    });
+
+    after(function () {
+      proxyq.callThru();
+    });
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
+      numberOfLangResourceKeys = Reflect.ownKeys(LangResourceKeys).filter(
+        (key: string) => isNaN(parseInt(key, 10)),
+      ).length;
+      initResourceCollection = Array(numberOfLangResourceKeys).fill('');
     });
 
     afterEach(function () {
       sandbox.restore();
     });
 
-    it(`'LangResourceKeys' properties match ILangResource properties`, function () {
-      for (const key in LangResourceKeys) {
-        // We only care about the enum members not the values
-        if (isNaN(parseInt(key, 10))) {
-          for (const collection of Reflect.ownKeys(langResourceCollection)) {
-            expect(Reflect.has(langResourceCollection[collection], key)).to.be
-              .true;
-          }
-        }
+    it(`'LangResourceKeys' length match ILangResource length`, function () {
+      for (const collection of Reflect.ownKeys(langResources)) {
+        expect(langResources[collection]).to.have.lengthOf(
+          numberOfLangResourceKeys,
+        );
       }
     });
 
-    it(`'ILangResource' properties match LangResourceKeys properties`, function () {
-      for (const collection of Reflect.ownKeys(langResourceCollection)) {
-        for (const key of Reflect.ownKeys(langResourceCollection[collection])) {
-          expect(LangResourceKeys[key]).to.exist;
-        }
+    it(`'ILangResource' length match LangResourceKeys length`, function () {
+      for (const collection of Reflect.ownKeys(langResources)) {
+        expect(numberOfLangResourceKeys).to.equal(
+          langResources[collection].length,
+        );
       }
     });
 
-    context(`function 'getMessage'`, function () {
+    context(`function 'localize'`, function () {
+      it(`filters out 'null' keys`, function () {
+        resourceCollection = { en: initResourceCollection };
+
+        i18nManager = new (LanguageResourceManager(resourceCollection))('en');
+
+        const msg = i18nManager.localize(null);
+
+        expect(msg).to.equal('');
+      });
+
+      it(`filters out 'undefined' keys`, function () {
+        resourceCollection = { en: initResourceCollection };
+
+        i18nManager = new (LanguageResourceManager(resourceCollection))('en');
+
+        const msg = i18nManager.localize(undefined);
+
+        expect(msg).to.equal('');
+      });
+
       it('returns properly a combination of resource and literal messages', function () {
-        resourceCollection = {
-          en: {
-            newVersion: 'brave flees',
-            restart: 'jumped over the fence',
-          },
-        };
-        i18nManager = new LanguageResourceManager(resourceCollection.en);
+        resourceCollection = { en: initResourceCollection };
+        resourceCollection.en[LangResourceKeys.newVersion] = 'brave flees';
+        resourceCollection.en[LangResourceKeys.restart] =
+          'jumped over the fence';
+
+        i18nManager = new (LanguageResourceManager(resourceCollection))('en');
+
         const literalString1 = '10';
         const literalString2 = ' ';
         const literalString3 = '!';
         const expectedMsg =
           `${literalString1}${literalString2}` +
-          `${resourceCollection.en.newVersion}` +
-          `${literalString2}${resourceCollection.en.restart}${literalString3}`;
+          `${resourceCollection.en[LangResourceKeys.newVersion]}` +
+          `${literalString2}${
+            resourceCollection.en[LangResourceKeys.restart]
+          }${literalString3}`;
 
-        const msg = i18nManager.getMessage(
+        const msg = i18nManager.localize(
           literalString1,
           literalString2,
           LangResourceKeys.newVersion,
@@ -77,26 +115,31 @@ describe('LanguageResourceManager: tests', function () {
 
       context('uses the default language resource', function () {
         it('if no message exists for the provided resource', function () {
-          resourceCollection = { es: { reload: '' } };
-          i18nManager = new LanguageResourceManager(resourceCollection.es);
+          resourceCollection = {
+            en: Array.from(initResourceCollection),
+            es: Array.from(initResourceCollection),
+          };
+          resourceCollection.en[LangResourceKeys.reload] = 'Restart';
 
-          const msg = i18nManager.getMessage(LangResourceKeys.reload);
+          i18nManager = new (LanguageResourceManager(resourceCollection))('es');
 
-          expect(msg).to.equal('Restart');
-        });
-
-        it('if an empty language resource is provided', function () {
-          i18nManager = new LanguageResourceManager({} as any);
-
-          const msg = i18nManager.getMessage(LangResourceKeys.reload);
+          const msg = i18nManager.localize(LangResourceKeys.reload);
 
           expect(msg).to.equal('Restart');
         });
 
-        it('if no language resource exists', function () {
-          i18nManager = new LanguageResourceManager(undefined);
+        it('if no locale is provided', function () {
+          i18nManager = new (LanguageResourceManager(langResources))();
 
-          const msg = i18nManager.getMessage(LangResourceKeys.reload);
+          const msg = i18nManager.localize(LangResourceKeys.reload);
+
+          expect(msg).to.equal('Restart');
+        });
+
+        it('if no locale exists', function () {
+          i18nManager = new (LanguageResourceManager(langResources))('bg');
+
+          const msg = i18nManager.localize(LangResourceKeys.reload);
 
           expect(msg).to.equal('Restart');
         });
@@ -107,75 +150,73 @@ describe('LanguageResourceManager: tests', function () {
 
         beforeEach(function () {
           platformStub = sandbox.stub(process, 'platform');
-          resourceCollection = {
-            test: {
-              welcome: {
-                darwin: 'Macintosh',
-                linux: 'Linux',
-                win32: 'Windows',
-              },
-            },
+          resourceCollection = { test: initResourceCollection };
+
+          resourceCollection.test[LangResourceKeys.welcome] = {
+            darwin: 'Macintosh',
+            linux: 'Linux',
+            win32: 'Windows',
           };
-          i18nManager = new LanguageResourceManager(resourceCollection.test);
+
+          i18nManager = new (LanguageResourceManager(resourceCollection))(
+            'test',
+          );
         });
 
         context('returns properly messages for', function () {
+          const testCase = () => {
+            const msg = i18nManager.localize(LangResourceKeys.welcome);
+
+            expect(msg).to.equal(
+              resourceCollection.test[LangResourceKeys.welcome][
+                process.platform
+              ],
+            );
+          };
+
           it('osx (darwin)', function () {
             platformStub.value('darwin');
 
-            const msg = i18nManager.getMessage(LangResourceKeys.welcome);
-
-            expect(msg).to.equal(
-              resourceCollection.test.welcome[process.platform],
-            );
+            testCase();
           });
 
           it('linux', function () {
             platformStub.value('linux');
 
-            const msg = i18nManager.getMessage(LangResourceKeys.welcome);
-
-            expect(msg).to.equal(
-              resourceCollection.test.welcome[process.platform],
-            );
+            testCase();
           });
 
           it('win32 (windows)', function () {
             platformStub.value('win32');
 
-            const msg = i18nManager.getMessage(LangResourceKeys.welcome);
-
-            expect(msg).to.equal(
-              resourceCollection.test.welcome[process.platform],
-            );
+            testCase();
           });
         });
 
         it('will throw an Error for NOT implemented platforms', function () {
           platformStub.value('freebsd');
 
-          expect(() =>
-            i18nManager.getMessage(LangResourceKeys.welcome),
-          ).to.throw(Error, /Not Implemented/);
+          expect(() => i18nManager.localize(LangResourceKeys.welcome)).to.throw(
+            Error,
+            /Not Implemented/,
+          );
         });
       });
 
       context('returns proper message for', function () {
         beforeEach(function () {
-          resourceCollection = {
-            en: {
-              newVersion: '10 brave flees jumped ',
-              welcome: 'over the fence',
-            },
-          };
+          resourceCollection = { en: initResourceCollection };
+          resourceCollection.en[LangResourceKeys.newVersion] =
+            '10 brave flees jumped ';
+          resourceCollection.en[LangResourceKeys.welcome] = 'over the fence';
 
-          i18nManager = new LanguageResourceManager(resourceCollection.en);
+          i18nManager = new (LanguageResourceManager(resourceCollection))('en');
         });
 
         it('a literal string', function () {
           const literalString = 'test';
 
-          const msg = i18nManager.getMessage(literalString);
+          const msg = i18nManager.localize(literalString);
 
           expect(msg).to.equal(literalString);
         });
@@ -183,7 +224,7 @@ describe('LanguageResourceManager: tests', function () {
         it('a literal string with punctuation marks', function () {
           const literalString = `test's can often fail. Or do they?`;
 
-          const msg = i18nManager.getMessage(literalString);
+          const msg = i18nManager.localize(literalString);
 
           expect(msg).to.equal(literalString);
         });
@@ -193,7 +234,7 @@ describe('LanguageResourceManager: tests', function () {
           const literalString2 = ' brave flees jumped ';
           const literalString3 = 'over the fence.';
 
-          const msg = i18nManager.getMessage(
+          const msg = i18nManager.localize(
             literalString1,
             literalString2,
             literalString3,
@@ -205,31 +246,37 @@ describe('LanguageResourceManager: tests', function () {
         });
 
         it(`an array of 'LangResourceKeys'`, function () {
-          const msg = i18nManager.getMessage(
+          const msg = i18nManager.localize(
             LangResourceKeys.newVersion,
             ' ',
             LangResourceKeys.welcome,
           );
 
           expect(msg).to.equal(
-            `${resourceCollection.en.newVersion} ${
-              resourceCollection.en.welcome
+            `${resourceCollection.en[LangResourceKeys.newVersion]} ${
+              resourceCollection.en[LangResourceKeys.welcome]
             }`,
           );
         });
       });
 
       context('will throw an Error for invalid', function () {
+        beforeEach(function () {
+          resourceCollection = { en: initResourceCollection };
+          i18nManager = new (LanguageResourceManager(resourceCollection))('en');
+        });
+
         it('resource keys', function () {
-          expect(() =>
-            i18nManager.getMessage(LangResourceKeys.restart),
-          ).to.throw(Error, /is not valid/);
+          expect(() => i18nManager.localize(50)).to.throw(
+            Error,
+            /is not valid/,
+          );
         });
 
         it('characters', function () {
           const literalString = '#';
 
-          expect(() => i18nManager.getMessage(literalString)).to.throw(
+          expect(() => i18nManager.localize(literalString)).to.throw(
             Error,
             /is not valid/,
           );
@@ -239,7 +286,7 @@ describe('LanguageResourceManager: tests', function () {
 
     context(`function 'getLangResourceKey'`, function () {
       beforeEach(function () {
-        i18nManager = new LanguageResourceManager(langResourceCollection.en);
+        i18nManager = new (LanguageResourceManager(langResources))('en');
       });
 
       context(`returns 'undefined'`, function () {
