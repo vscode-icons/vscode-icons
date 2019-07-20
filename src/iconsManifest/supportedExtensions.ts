@@ -2867,6 +2867,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'renovate',
+      extensions: [],
+      filenamesGlob: ['renovate', '.renovaterc'],
+      extensionsGlob: ['json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rest',
       extensions: [],
       languages: [languages.restructuredtext],
