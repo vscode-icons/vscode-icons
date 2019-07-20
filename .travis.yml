@@ -3,10 +3,10 @@ os:
   - linux
   - osx
 node_js:
-  - node   # latest node
-  - 10.2.0 # vscode >= 1.31.0
-  - 8.9.3  # vscode >= 1.26.0 < 1.31.0
-  - 7.9.0  # vscode >= 1.16.0 < 1.26.0
+  - node    # latest node
+  - 10.11.0 # vscode >= 1.36.0
+  - 10.2.0  # vscode >= 1.31.0 < 1.36.0
+  - 8.9.3   # vscode >= 1.26.0 < 1.31.0
 git:
   depth: 5
   submodules: false
@@ -14,17 +14,19 @@ matrix:
   allow_failures:
     - node_js: node
   fast_finish: true
-cache: yarn
-before_install:
-  - curl -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
+env:
+  global:
+    - CC_OS_NAME=$(if [[ $TRAVIS_OS_NAME == "osx" ]]; then echo "darwin"; else echo $TRAVIS_OS_NAME; fi)
+install:
+  - npm install
+cache: npm
 before_script:
-  - npm i codeclimate-test-reporter codecov --no-save
-  - npm run postinstall
+  - curl -sL "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-$CC_OS_NAME-amd64" > cc-test-reporter
+  - chmod +x cc-test-reporter
+  - ./cc-test-reporter before-build
 script: npm test
 after_success:
-  - if [[ $CODECLIMATE_REPO_TOKEN ]] ; then codeclimate-test-reporter < ./coverage/lcov.info ; fi
-  - codecov --disable=gcov
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 jobs:
   include:
@@ -36,9 +38,11 @@ jobs:
         apt:
           sources: [ubuntu-toolchain-r-test]
           packages: [libstdc++-4.9-dev]
-      before_script:
+      install:
+        - npm run preinstall
         - npm i vscode-icons/wpilgenerator --no-save
         - npm run postinstall
+      before_script:
       script: npm run compile
       after_success: wpilgen
 
@@ -46,9 +50,11 @@ jobs:
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       os: linux
       node_js: 8.9.3
-      before_script:
+      install:
+        - npm run preinstall
         - npm i vsce --no-save
         - npm run postinstall
+      before_script:
       script: vsce publish -p $VSCE_TOKEN
       after_success:
 
@@ -56,7 +62,7 @@ jobs:
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       sudo: required
       language: generic
-      before_install:
+      install:
       before_script:
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
       after_success:
@@ -65,7 +71,7 @@ jobs:
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       sudo: required
       language: generic
-      before_install:
+      install:
       before_script:
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
       after_success:

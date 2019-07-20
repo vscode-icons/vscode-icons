@@ -1,10 +1,20 @@
 import { LangResourceKeys } from '../i18n';
 
-export type LangResourceKeyLike = string | LangResourceKeys;
+export type LangResourceLike = string | LangResourceKeys;
 
 export interface INotificationManager {
   notifyInfo(
-    message: LangResourceKeyLike,
-    ...items: LangResourceKeyLike[]
-  ): Thenable<LangResourceKeyLike>;
+    message: LangResourceLike,
+    ...items: LangResourceLike[]
+  ): Promise<LangResourceLike>;
+
+  notifyWarning(
+    message: LangResourceLike,
+    ...items: LangResourceLike[]
+  ): Promise<LangResourceLike>;
+
+  notifyError(
+    message: LangResourceLike,
+    ...items: LangResourceLike[]
+  ): Promise<LangResourceLike>;
 }

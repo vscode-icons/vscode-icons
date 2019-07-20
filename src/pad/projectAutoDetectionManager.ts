@@ -1,9 +1,9 @@
-import { readFileSync } from 'fs';
+import { ErrorHandler } from '../common/errorHandler';
+import { readFileAsync } from '../common/fsAsync';
+import { constants } from '../constants';
+import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
 import { Utils } from '../utils';
-import { ManifestReader } from '../iconsManifest';
-import { ErrorHandler } from '../errorHandler';
-import { constants } from '../constants';
 
 export class ProjectAutoDetectionManager
   implements models.IProjectAutoDetectionManager {
@@ -19,45 +19,49 @@ export class ProjectAutoDetectionManager
     }
   }
 
-  public detectProjects(
+  public async detectProjects(
     projects: models.Projects[],
-  ): Thenable<models.IProjectDetectionResult> {
+  ): Promise<models.IProjectDetectionResult[]> {
     if (!projects || !projects.length) {
-      return Promise.resolve(null);
+      return null;
     }
-    const promise = this.configManager.vsicons.projectDetection.disableDetect
-      ? (Promise.resolve(null) as Thenable<models.IVSCodeUri[]>)
-      : this.vscodeManager.workspace.findFiles(
-          '**/package.json',
-          '**/node_modules/**',
-        );
-    return promise.then(
-      results => this.detect(results, projects),
-      error => ErrorHandler.logError(error),
-    );
+
+    try {
+      const results = await (this.configManager.vsicons.projectDetection
+        .disableDetect
+        ? Promise.resolve(null)
+        : this.vscodeManager.workspace.findFiles(
+            '**/package.json',
+            '**/node_modules/**',
+          ));
+      return this.detect(results, projects);
+    } catch (error) {
+      ErrorHandler.logError(error);
+    }
   }
 
-  private detect(
+  private async detect(
     results: models.IVSCodeUri[],
     projects: models.Projects[],
-  ): models.IProjectDetectionResult {
+  ): Promise<models.IProjectDetectionResult[]> {
+    const detectionResults: models.IProjectDetectionResult[] = [];
     if (!results || !results.length) {
-      return;
+      return detectionResults;
     }
-    let detectionResult: models.IProjectDetectionResult;
     for (const project of projects) {
-      detectionResult = this.checkForProject(results, project);
-      if (detectionResult.apply) {
-        break;
-      }
+      const detectionResult: models.IProjectDetectionResult = await this.checkForProject(
+        results,
+        project,
+      );
+      detectionResults.push(detectionResult);
     }
-    return detectionResult;
+    return detectionResults;
   }
 
-  private checkForProject(
+  private async checkForProject(
     results: models.IVSCodeUri[],
     project: models.Projects,
-  ): models.IProjectDetectionResult {
+  ): Promise<models.IProjectDetectionResult> {
     const _getPresetName = (_project: models.Projects): string => {
       switch (_project) {
         case models.Projects.angular:
@@ -74,7 +78,7 @@ export class ProjectAutoDetectionManager
       _getPresetName(project),
     ).workspaceValue;
 
-    const iconsDisabled: boolean = ManifestReader.iconsDisabled(project);
+    const iconsDisabled: boolean = await ManifestReader.iconsDisabled(project);
 
     // NOTE: User setting (preset) bypasses detection in the following cases:
     // 1. Preset is set to 'false' and icons are not present in the manifest file
@@ -93,7 +97,7 @@ export class ProjectAutoDetectionManager
     // 2. It's a detectable project
     // 3. The preset (when it's defined)
     // Use case: User has the preset set but project detection does not detect that project
-    const projectInfo: models.IProjectInfo = this.getProjectInfo(
+    const projectInfo: models.IProjectInfo = await this.getProjectInfo(
       results,
       project,
     );
@@ -101,17 +105,20 @@ export class ProjectAutoDetectionManager
     const disableIcons = !iconsDisabled && (!projectInfo || preset === false);
 
     // Don't check for conflicting projects if user setting (preset) is explicitly set
-    const conflictingProjects = preset
+    const conflictingProjects: models.Projects[] = preset
       ? []
-      : this.checkForConflictingProjects(results, project, enableIcons);
+      : await this.checkForConflictingProjects(results, project, enableIcons);
 
     // bypass, if user explicitly has any preset of a conficting project set
     // and those icons are enabled
-    bypass = conflictingProjects.some(
-      cp =>
-        this.configManager.getPreset<boolean>(_getPresetName(cp))
-          .workspaceValue && !ManifestReader.iconsDisabled(cp),
-    );
+    for (const cp of conflictingProjects) {
+      bypass =
+        this.configManager.getPreset<boolean>(_getPresetName(cp)) &&
+        !(await ManifestReader.iconsDisabled(cp));
+      if (bypass) {
+        break;
+      }
+    }
 
     if (bypass || (!enableIcons && !disableIcons)) {
       return { apply: false };
@@ -130,18 +137,24 @@ export class ProjectAutoDetectionManager
     };
   }
 
-  private checkForConflictingProjects(
+  private async checkForConflictingProjects(
     results: models.IVSCodeUri[],
     project: models.Projects,
     enableIcons: boolean,
-  ): models.Projects[] {
+  ): Promise<models.Projects[]> {
     if (!enableIcons) {
       return [];
     }
-    const conflictingProjects = (conflictProjects: models.Projects[]) =>
-      conflictProjects.filter(
-        (cp: models.Projects) => this.getProjectInfo(results, cp) !== null,
-      );
+    const conflictingProjects = async (conflictProjects: models.Projects[]) => {
+      const projectInfos = [];
+      for (const cp of conflictProjects) {
+        const info = await this.getProjectInfo(results, cp);
+        if (info) {
+          projectInfos.push(cp);
+        }
+      }
+      return projectInfos;
+    };
 
     switch (project) {
       case models.Projects.nestjs:
@@ -186,13 +199,13 @@ export class ProjectAutoDetectionManager
       : models.LangResourceKeys.nonNestDetected;
   }
 
-  private getProjectInfo(
+  private async getProjectInfo(
     results: models.IVSCodeUri[],
     project: models.Projects,
-  ): models.IProjectInfo {
+  ): Promise<models.IProjectInfo> {
     let projectInfo: models.IProjectInfo = null;
     for (const result of results) {
-      const content: string = readFileSync(result.fsPath, 'utf8');
+      const content: string = await readFileAsync(result.fsPath, 'utf8');
       const projectJson: { [key: string]: any } = Utils.parseJSON(content);
       projectInfo = this.getInfo(projectJson, project);
       if (!!projectInfo) {

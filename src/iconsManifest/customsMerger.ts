@@ -3,19 +3,19 @@ import * as models from '../models';
 import { ManifestReader } from './manifestReader';
 
 export class CustomsMerger {
-  public static merge(
+  public static async merge(
     customFiles: models.IFileCollection,
     extFiles: models.IFileCollection,
     customFolders: models.IFolderCollection,
     extFolders: models.IFolderCollection,
     presets: models.IPresets,
-    projectDetectionResult?: models.IProjectDetectionResult,
+    projectDetectionResults?: models.IProjectDetectionResult[],
     affectedPresets?: models.IPresets,
-  ): { files: models.IFileCollection; folders: models.IFolderCollection } {
-    const projectPresets = this.getProjectPresets(
+  ): Promise<models.IMergedCollection> {
+    const projectPresets = await this.getProjectPresets(
       [models.PresetNames.angular, models.PresetNames.nestjs],
-      projectDetectionResult,
       presets,
+      projectDetectionResults,
       affectedPresets,
     );
 
@@ -59,18 +59,24 @@ export class CustomsMerger {
     return { files, folders };
   }
 
-  private static getProjectPresets(
+  private static async getProjectPresets(
     presetNames: models.PresetNames[],
-    projectDetectionResult: models.IProjectDetectionResult,
     presets: models.IPresets,
-    affectedPresets: models.IPresets,
-  ): Array<{}> {
+    projectDetectionResults?: models.IProjectDetectionResult[],
+    affectedPresets?: models.IPresets,
+  ): Promise<Array<{}>> {
     const projectPresets = [];
     for (const presetName of presetNames) {
-      const preset: boolean = this.getPreset(
-        presetName,
-        projectDetectionResult,
+      const name: string = models.PresetNames[presetName];
+      const project: string = models.Projects[name];
+      const projectDetectionResult = (projectDetectionResults || []).find(
+        pdr => pdr.project === project,
+      );
+      const preset: boolean = await this.getPreset(
+        name,
+        project,
         presets,
+        projectDetectionResult,
         affectedPresets,
       );
       projectPresets.push({ [presetName]: !preset });
@@ -78,25 +84,24 @@ export class CustomsMerger {
     return projectPresets;
   }
 
-  private static getPreset(
-    presetName: models.PresetNames,
-    projectDetectionResult: models.IProjectDetectionResult,
+  private static async getPreset(
+    name: string,
+    project: string,
     presets: models.IPresets,
-    affectedPresets: models.IPresets,
-  ): boolean {
+    projectDetectionResult?: models.IProjectDetectionResult,
+    affectedPresets?: models.IPresets,
+  ): Promise<boolean> {
     const hasProjectDetectionResult: boolean =
       !!projectDetectionResult &&
       typeof projectDetectionResult === 'object' &&
       'value' in projectDetectionResult;
-    const name = models.PresetNames[presetName];
-    const project = models.Projects[name];
     return hasProjectDetectionResult &&
       projectDetectionResult.project === project
       ? projectDetectionResult.value
       : presets[name] ||
           (!!affectedPresets &&
             !affectedPresets[name] &&
-            !ManifestReader.iconsDisabled(project));
+            !(await ManifestReader.iconsDisabled(project)));
   }
 
   private static toggleProjectPreset(
@@ -212,7 +217,7 @@ export class CustomsMerger {
     supportedFiles: models.IFileCollection,
     customFolders: models.IFolderCollection,
     supportedFolders: models.IFolderCollection,
-  ): { files: models.IFileCollection; folders: models.IFolderCollection } {
+  ): models.IMergedCollection {
     const files: models.IFileCollection = {
       default: this.mergeDefaultFiles(
         customFiles.default,

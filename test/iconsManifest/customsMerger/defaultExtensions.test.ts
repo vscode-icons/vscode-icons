@@ -20,7 +20,7 @@ describe('CustomsMerger: default extensions tests', function () {
     });
 
     context('default file icons can be', function () {
-      it('added', function () {
+      it('added', async function () {
         const customFiles: any = {
           default: {
             file_light: { icon: 'customFileIconLight', format: 'svg' },
@@ -28,13 +28,13 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           customFiles,
           extFiles,
           null,
           extFolders,
           vsicons.presets,
-        ).files.default.file_light;
+        )).files.default.file_light;
 
         expect(def)
           .to.be.an('object')
@@ -43,7 +43,7 @@ describe('CustomsMerger: default extensions tests', function () {
         expect(def.format).to.equal(customFiles.default.file_light.format);
       });
 
-      it('overriden', function () {
+      it('overriden', async function () {
         const customFiles: any = {
           default: {
             file: { icon: 'customFileIcon', format: 'svg' },
@@ -51,13 +51,13 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           customFiles,
           extFiles,
           null,
           extFolders,
           vsicons.presets,
-        ).files.default.file;
+        )).files.default.file;
 
         expect(def)
           .to.be.an('object')
@@ -66,20 +66,20 @@ describe('CustomsMerger: default extensions tests', function () {
         expect(def.format).to.equal(customFiles.default.file.format);
       });
 
-      it('disabled', function () {
+      it('disabled', async function () {
         const customFiles: any = {
           default: {
             file: { icon: '', format: 'svg', disabled: true },
           },
           supported: [],
         };
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           customFiles,
           extFiles,
           null,
           extFolders,
           vsicons.presets,
-        ).files.default.file;
+        )).files.default.file;
 
         expect(def)
           .to.be.an('object')
@@ -91,7 +91,7 @@ describe('CustomsMerger: default extensions tests', function () {
     });
 
     context('default folder icons can be', function () {
-      it('added', function () {
+      it('added', async function () {
         const customFolders: any = {
           default: {
             folder_light: { icon: 'customFolderIconLight', format: 'svg' },
@@ -99,13 +99,13 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           null,
           extFiles,
           customFolders,
           extFolders,
           vsicons.presets,
-        ).folders.default.folder_light;
+        )).folders.default.folder_light;
 
         expect(def)
           .to.be.an('object')
@@ -115,7 +115,7 @@ describe('CustomsMerger: default extensions tests', function () {
         expect(def.disabled).to.be.false;
       });
 
-      it('overriden', function () {
+      it('overriden', async function () {
         const customFolders: any = {
           default: {
             folder: { icon: 'customFolderIcon', format: 'svg' },
@@ -123,13 +123,13 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           null,
           extFiles,
           customFolders,
           extFolders,
           vsicons.presets,
-        ).folders.default.folder;
+        )).folders.default.folder;
 
         expect(def)
           .to.be.an('object')
@@ -139,20 +139,20 @@ describe('CustomsMerger: default extensions tests', function () {
         expect(def.disabled).to.be.false;
       });
 
-      it('disabled', function () {
+      it('disabled', async function () {
         const customFolders: any = {
           default: {
             folder: { icon: '', format: 'svg', disabled: true },
           },
           supported: [],
         };
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           null,
           extFiles,
           customFolders,
           extFolders,
           vsicons.presets,
-        ).folders.default.folder;
+        )).folders.default.folder;
 
         expect(def)
           .to.be.an('object')
@@ -164,7 +164,7 @@ describe('CustomsMerger: default extensions tests', function () {
     });
 
     context('default root folder icons can be', function () {
-      it('added', function () {
+      it('added', async function () {
         const customFolders: any = {
           default: {
             root_folder_light: {
@@ -175,13 +175,13 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           null,
           extFiles,
           customFolders,
           extFolders,
           vsicons.presets,
-        ).folders.default.root_folder_light;
+        )).folders.default.root_folder_light;
 
         expect(def)
           .to.be.an('object')
@@ -193,7 +193,7 @@ describe('CustomsMerger: default extensions tests', function () {
         expect(def.disabled).to.be.false;
       });
 
-      it('overriden', function () {
+      it('overriden', async function () {
         const customFolders: any = {
           default: {
             root_folder: { icon: 'customRootFolderIcon', format: 'svg' },
@@ -201,13 +201,13 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           null,
           extFiles,
           customFolders,
           extFolders,
           vsicons.presets,
-        ).folders.default.root_folder;
+        )).folders.default.root_folder;
 
         expect(def)
           .to.be.an('object')
@@ -217,20 +217,20 @@ describe('CustomsMerger: default extensions tests', function () {
         expect(def.disabled).to.be.false;
       });
 
-      it('disabled', function () {
+      it('disabled', async function () {
         const customFolders: any = {
           default: {
             root_folder: { icon: '', format: 'svg', disabled: true },
           },
           supported: [],
         };
-        const def = CustomsMerger.merge(
+        const def = (await CustomsMerger.merge(
           null,
           extFiles,
           customFolders,
           extFolders,
           vsicons.presets,
-        ).folders.default.root_folder;
+        )).folders.default.root_folder;
 
         expect(def)
           .to.be.an('object')

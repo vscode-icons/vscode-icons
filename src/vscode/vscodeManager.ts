@@ -1,8 +1,12 @@
 import * as models from '../models';
 import { Utils } from '../utils';
+import { gte } from 'semver';
+import * as manifest from '../../../package.json';
 
 export class VSCodeManager implements models.IVSCodeManager {
   private appUserDirPath: string;
+  private supportedVersion: string = '1.28.1';
+  private supportsThemeReloadVersion: string = '1.34.0';
 
   constructor(
     private vscode: models.IVSCode,
@@ -38,6 +42,18 @@ export class VSCodeManager implements models.IVSCodeManager {
 
   public get workspace(): models.IVSCodeWorkspace {
     return this.vscode.workspace;
+  }
+
+  public get supportsThemesReload(): boolean {
+    const watchable =
+      manifest &&
+      manifest.contributes &&
+      manifest.contributes.iconThemes.some((theme: any) => theme._watch);
+    return gte(this.version, this.supportsThemeReloadVersion) && watchable;
+  }
+
+  public get isSupportedVersion(): boolean {
+    return gte(this.version, this.supportedVersion);
   }
 
   public getWorkspacePaths(): string[] {

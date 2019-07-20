@@ -2,14 +2,15 @@
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as models from '../../src/models';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { ConfigManager } from '../../src/configuration/configManager';
-import { SettingsManager } from '../../src/settings/settingsManager';
-import { NotificationManager } from '../../src/notification/notificationManager';
-import { IconsGenerator } from '../../src/iconsManifest';
-import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { ExtensionManager } from '../../src/app/extensionManager';
+import { ConfigManager } from '../../src/configuration/configManager';
+import { IconsGenerator } from '../../src/iconsManifest';
+import { IntegrityManager } from '../../src/integrity/integrityManager';
+import * as models from '../../src/models';
+import { NotificationManager } from '../../src/notification/notificationManager';
+import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import { SettingsManager } from '../../src/settings/settingsManager';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
 describe('ExtensionManager: commands tests', function () {
   context('ensures that', function () {
@@ -25,6 +26,9 @@ describe('ExtensionManager: commands tests', function () {
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
     let padMngStub: sinon.SinonStubbedInstance<
       models.IProjectAutoDetectionManager
+    >;
+    let integrityManagerStub: sinon.SinonStubbedInstance<
+      models.IIntegrityManager
     >;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let registerCommandStub: sinon.SinonStub;
@@ -70,6 +74,10 @@ describe('ExtensionManager: commands tests', function () {
         models.IProjectAutoDetectionManager
       >(ProjectAutoDetectionManager);
 
+      integrityManagerStub = sandbox.createStubInstance<
+        models.IIntegrityManager
+      >(IntegrityManager);
+
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
         configManagerStub,
@@ -77,6 +85,7 @@ describe('ExtensionManager: commands tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
+        integrityManagerStub,
       );
 
       showCustomizationMessageStub = sandbox.stub(

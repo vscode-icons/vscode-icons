@@ -1,17 +1,19 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
-import * as sinon from 'sinon';
 import { cloneDeep } from 'lodash';
-import * as models from '../../src/models';
-import { constants } from '../../src/constants';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { ConfigManager } from '../../src/configuration/configManager';
-import { SettingsManager } from '../../src/settings/settingsManager';
-import { NotificationManager } from '../../src/notification/notificationManager';
-import { IconsGenerator } from '../../src/iconsManifest';
-import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import * as sinon from 'sinon';
 import { ExtensionManager } from '../../src/app/extensionManager';
+import { ErrorHandler } from '../../src/common/errorHandler';
+import { ConfigManager } from '../../src/configuration/configManager';
+import { constants } from '../../src/constants';
+import { IconsGenerator } from '../../src/iconsManifest';
+import { IntegrityManager } from '../../src/integrity/integrityManager';
+import * as models from '../../src/models';
+import { NotificationManager } from '../../src/notification/notificationManager';
+import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import { SettingsManager } from '../../src/settings/settingsManager';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
 describe('ExtensionManager: event listeners tests', function () {
@@ -29,7 +31,13 @@ describe('ExtensionManager: event listeners tests', function () {
     let padMngStub: sinon.SinonStubbedInstance<
       models.IProjectAutoDetectionManager
     >;
+    let integrityManagerStub: sinon.SinonStubbedInstance<
+      models.IIntegrityManager
+    >;
+
     let onDidChangeConfigurationStub: sinon.SinonStub;
+    let logErrorStub: sinon.SinonStub;
+
     let extensionManager: models.IExtensionManager;
     let vsiconsClone: models.IVSIcons;
     let state: models.IState;
@@ -47,7 +55,6 @@ describe('ExtensionManager: event listeners tests', function () {
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
         onDidChangeConfiguration: onDidChangeConfigurationStub,
       }));
-      sandbox.stub(vscodeManagerStub, 'version').get(() => '1.27.1');
 
       configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
         ConfigManager,
@@ -70,6 +77,10 @@ describe('ExtensionManager: event listeners tests', function () {
         models.IProjectAutoDetectionManager
       >(ProjectAutoDetectionManager);
 
+      integrityManagerStub = sandbox.createStubInstance<
+        models.IIntegrityManager
+      >(IntegrityManager);
+
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
         configManagerStub,
@@ -77,7 +88,10 @@ describe('ExtensionManager: event listeners tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
+        integrityManagerStub,
       );
+
+      logErrorStub = sandbox.stub(ErrorHandler, 'logError');
 
       state = SettingsManager.defaultState;
     });
@@ -93,20 +107,6 @@ describe('ExtensionManager: event listeners tests', function () {
         affectsConfigurationStub = sandbox.stub();
       });
 
-      context(`throws an Error`, function () {
-        it(`when the 'event' object does NOT exists`, function () {
-          expect(() =>
-            onDidChangeConfigurationStub.callArgOn(0, extensionManager),
-          ).to.throw(Error, /Unsupported 'vscode' version: \d+\.\d+\.\d+/);
-        });
-
-        it(`when an 'event' object is NOT of the correct type`, function () {
-          expect(() =>
-            onDidChangeConfigurationStub.callArgOnWith(0, extensionManager, {}),
-          ).to.throw(Error, /Unsupported 'vscode' version: \d+\.\d+\.\d+/);
-        });
-      });
-
       context(`when the affected configuration is the icon theme`, function () {
         beforeEach(function () {
           affectsConfigurationStub.returns(true);
@@ -117,13 +117,29 @@ describe('ExtensionManager: event listeners tests', function () {
             configManagerStub.getIconTheme.returns(constants.extension.name);
           });
 
+          it(`logs an Error, when 'updateStatus' fails`, async function () {
+            settingsManagerStub.getState.returns(state);
+            settingsManagerStub.updateStatus.throws();
+
+            await onDidChangeConfigurationStub.callArgOnWith(
+              0,
+              extensionManager,
+              {
+                affectsConfiguration: affectsConfigurationStub,
+              },
+            );
+
+            expect(logErrorStub.called).to.be.true;
+          });
+
           context(`and the 'status' is NOT 'activated'`, function () {
             context(`the 'status' gets set to`, function () {
-              it(`'activated' and gets updated`, function () {
+              it(`'activated' and gets updated`, async function () {
                 state.status = models.ExtensionStatus.deactivated;
                 settingsManagerStub.getState.returns(state);
+                settingsManagerStub.updateStatus.resolves();
 
-                onDidChangeConfigurationStub.callArgOnWith(
+                await onDidChangeConfigurationStub.callArgOnWith(
                   0,
                   extensionManager,
                   {
@@ -147,11 +163,11 @@ describe('ExtensionManager: event listeners tests', function () {
 
           context(`and the 'status' is 'activated'`, function () {
             context(`the 'status' gets`, function () {
-              it(`NOT updated`, function () {
+              it(`NOT updated`, async function () {
                 state.status = models.ExtensionStatus.activated;
                 settingsManagerStub.getState.returns(state);
 
-                onDidChangeConfigurationStub.callArgOnWith(
+                await onDidChangeConfigurationStub.callArgOnWith(
                   0,
                   extensionManager,
                   {
@@ -177,11 +193,12 @@ describe('ExtensionManager: event listeners tests', function () {
 
           context(`and the 'status' is 'activated'`, function () {
             context(`the extension 'status' gets set to`, function () {
-              it(`'deactivated' and gets updated`, function () {
+              it(`'deactivated' and gets updated`, async function () {
                 state.status = models.ExtensionStatus.activated;
                 settingsManagerStub.getState.returns(state);
+                settingsManagerStub.updateStatus.resolves();
 
-                onDidChangeConfigurationStub.callArgOnWith(
+                await onDidChangeConfigurationStub.callArgOnWith(
                   0,
                   extensionManager,
                   {
@@ -205,11 +222,11 @@ describe('ExtensionManager: event listeners tests', function () {
 
           context(`and the 'status' is 'deactivated'`, function () {
             context(`the 'status' gets`, function () {
-              it(`NOT updated`, function () {
+              it(`NOT updated`, async function () {
                 state.status = models.ExtensionStatus.deactivated;
                 settingsManagerStub.getState.returns(state);
 
-                onDidChangeConfigurationStub.callArgOnWith(
+                await onDidChangeConfigurationStub.callArgOnWith(
                   0,
                   extensionManager,
                   {
@@ -252,14 +269,19 @@ describe('ExtensionManager: event listeners tests', function () {
 
         context(`is the 'presets' or the 'associations'`, function () {
           context(`and is set to 'reload' the editor`, function () {
-            it(`calls the 'executeAndReload' function`, function () {
-              // @ts-ignore
-              extensionManager.doReload = true;
+            it(`calls the 'executeAndReload' function`, async function () {
               const timer = sandbox.useFakeTimers();
 
-              onDidChangeConfigurationStub.callArgOnWith(0, extensionManager, {
-                affectsConfiguration: affectsConfigurationStub,
-              });
+              // @ts-ignore
+              extensionManager.doReload = true;
+
+              await onDidChangeConfigurationStub.callArgOnWith(
+                0,
+                extensionManager,
+                {
+                  affectsConfiguration: affectsConfigurationStub,
+                },
+              );
 
               expect(affectsConfigurationStub.calledTwice).to.be.true;
               // @ts-ignore
@@ -282,8 +304,8 @@ describe('ExtensionManager: event listeners tests', function () {
                 extensionManager.customMsgShown = true;
               });
 
-              it(`does nothing`, function () {
-                onDidChangeConfigurationStub.callArgOnWith(
+              it(`does nothing`, async function () {
+                await onDidChangeConfigurationStub.callArgOnWith(
                   0,
                   extensionManager,
                   {
@@ -302,10 +324,10 @@ describe('ExtensionManager: event listeners tests', function () {
               });
 
               context(`does call 'applyCustomizationCommand'`, function () {
-                it(`when the configuration has changed`, function () {
+                it(`when the configuration has changed`, async function () {
                   configManagerStub.hasConfigChanged.returns(true);
 
-                  onDidChangeConfigurationStub.callArgOnWith(
+                  await onDidChangeConfigurationStub.callArgOnWith(
                     0,
                     extensionManager,
                     {
@@ -331,10 +353,10 @@ describe('ExtensionManager: event listeners tests', function () {
               });
 
               context(`does NOT call 'applyCustomizationCommand'`, function () {
-                it(`when the configuration has NOT changed`, function () {
+                it(`when the configuration has NOT changed`, async function () {
                   configManagerStub.hasConfigChanged.returns(false);
 
-                  onDidChangeConfigurationStub.callArgOnWith(
+                  await onDidChangeConfigurationStub.callArgOnWith(
                     0,
                     extensionManager,
                     {
@@ -354,10 +376,10 @@ describe('ExtensionManager: event listeners tests', function () {
                   expect(applyCustomizationCommandStub.called).to.be.false;
                 });
 
-                it(`when set NOT to show the custom message`, function () {
+                it(`when set NOT to show the custom message`, async function () {
                   configManagerStub.vsicons.dontShowConfigManuallyChangedMessage = true;
 
-                  onDidChangeConfigurationStub.callArgOnWith(
+                  await onDidChangeConfigurationStub.callArgOnWith(
                     0,
                     extensionManager,
                     {
@@ -374,12 +396,16 @@ describe('ExtensionManager: event listeners tests', function () {
         });
 
         context(`is NOT the 'presets' or the 'associations'`, function () {
-          it(`does nothing`, function () {
+          it(`does nothing`, async function () {
             affectsConfigurationStub.returns(false);
 
-            onDidChangeConfigurationStub.callArgOnWith(0, extensionManager, {
-              affectsConfiguration: affectsConfigurationStub,
-            });
+            await onDidChangeConfigurationStub.callArgOnWith(
+              0,
+              extensionManager,
+              {
+                affectsConfiguration: affectsConfigurationStub,
+              },
+            );
 
             expect(affectsConfigurationStub.calledThrice).to.be.true;
             expect(applyCustomizationCommandStub.called).to.be.false;

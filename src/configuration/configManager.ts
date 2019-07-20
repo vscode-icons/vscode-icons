@@ -1,19 +1,43 @@
-import { cloneDeep, unionWith, isEqual } from 'lodash';
-import { dirname, isAbsolute } from 'path';
-import { existsSync, readdirSync } from 'fs';
+import { cloneDeep, isEqual, unionWith } from 'lodash';
+import { dirname, isAbsolute, resolve } from 'path';
+import { ErrorHandler } from '../common/errorHandler';
+import { existsAsync, readdirAsync } from '../common/fsAsync';
+import { constants } from '../constants';
 import {
+  ConfigurationTarget,
   IConfigManager,
+  IFileExtension,
+  IPreset,
   IVSCodeManager,
   IVSCodeWorkspaceConfiguration,
   IVSIcons,
-  IFileExtension,
-  ConfigurationTarget,
 } from '../models';
-import { constants } from '../constants';
 import { Utils } from '../utils';
-import { ErrorHandler } from '../errorHandler';
 
 export class ConfigManager implements IConfigManager {
+  public static get rootDir(): string {
+    return this.rootdir || resolve(dirname(__filename), '../../../');
+  }
+
+  public static set rootDir(value: string) {
+    this.rootdir = value || this.rootdir;
+  }
+
+  public static get outDir(): string {
+    const dirName = constants.environment.production
+      ? constants.extension.distDirName
+      : constants.extension.outDirName;
+    return resolve(this.rootDir, dirName);
+  }
+
+  public static get sourceDir(): string {
+    return resolve(this.outDir, constants.extension.srcDirName);
+  }
+
+  public static get iconsDir(): string {
+    return resolve(this.rootDir, constants.extension.iconsDirName);
+  }
+
   /**
    * Returns a `user` and `workspace` merged `vsicons` configuration
    *
@@ -44,12 +68,13 @@ export class ConfigManager implements IConfigManager {
     return mergedConfig;
   }
 
-  public static removeSettings(): Thenable<void> {
-    if (!this.isSingleInstallation()) {
-      return Promise.resolve();
+  public static async removeSettings(): Promise<void> {
+    const isSingleInstallation = await this.isSingleInstallation();
+    if (!isSingleInstallation) {
+      return;
     }
     const vscodeSettingsFilePath = Utils.pathUnixJoin(
-      this.getAppUserPath(dirname(__filename)),
+      await this.getAppUserPath(dirname(__filename)),
       constants.vscode.settingsFilename,
     );
     const replacer = (rawText: string[]): string[] => {
@@ -58,13 +83,14 @@ export class ConfigManager implements IConfigManager {
       rawText = this.removeLastEntryTrailingComma(rawText);
       return rawText;
     };
-    return Utils.updateFile(vscodeSettingsFilePath, replacer).then(
-      void 0,
-      error => ErrorHandler.logError(error),
-    );
+    try {
+      await Utils.updateFile(vscodeSettingsFilePath, replacer);
+    } catch (error) {
+      ErrorHandler.logError(error);
+    }
   }
 
-  private static isSingleInstallation(): boolean {
+  public static async isSingleInstallation(): Promise<boolean> {
     const regex = new RegExp(
       `(.+[\\|/]extensions[\\|/])(?:.*${constants.extension.name})`,
     );
@@ -72,13 +98,15 @@ export class ConfigManager implements IConfigManager {
     const vscodeExtensionDirPath: string =
       (matches && matches.length > 0 && matches[1]) || './';
     const extensionNameRegExp = new RegExp(`.*${constants.extension.name}`);
-    const existingInstallations: number = readdirSync(
+    const existingInstallations: number = (await readdirAsync(
       vscodeExtensionDirPath,
-    ).filter(filename => extensionNameRegExp.test(filename)).length;
+    )).filter(filename => extensionNameRegExp.test(filename)).length;
     return existingInstallations === 1;
   }
 
-  private static getAppUserPath(dirPath: string): string {
+  private static rootdir: string;
+
+  private static async getAppUserPath(dirPath: string): Promise<string> {
     const vscodeAppName = /[\\|/]\.vscode-oss-dev/i.test(dirPath)
       ? 'code-oss-dev'
       : /[\\|/]\.vscode-oss/i.test(dirPath)
@@ -89,14 +117,14 @@ export class ConfigManager implements IConfigManager {
       ? 'Code'
       : 'user-data';
     // workaround until `process.env.VSCODE_PORTABLE` gets available
-    const vscodePortable = () => {
+    const vscodePortable = async () => {
       if (vscodeAppName !== 'user-data') {
         return undefined;
       }
       let dataDir: string;
       switch (process.platform) {
         case 'darwin':
-          const isInsiders = existsSync(
+          const isInsiders = await existsAsync(
             Utils.pathUnixJoin(
               process.env.VSCODE_CWD,
               'code-insiders-portable-data',
@@ -112,7 +140,7 @@ export class ConfigManager implements IConfigManager {
     };
     const appPath =
       process.env.VSCODE_PORTABLE ||
-      vscodePortable() ||
+      (await vscodePortable()) ||
       Utils.getAppDataDirPath();
     return Utils.pathUnixJoin(appPath, vscodeAppName, 'User');
   }
@@ -199,7 +227,7 @@ export class ConfigManager implements IConfigManager {
     return !isEqual(a, b);
   }
 
-  public getCustomIconsDirPath(dirPath: string): string {
+  public async getCustomIconsDirPath(dirPath: string): Promise<string> {
     if (!dirPath) {
       return this.vscodeManager.getAppUserDirPath();
     }
@@ -208,7 +236,14 @@ export class ConfigManager implements IConfigManager {
     if (isAbsolute(dPath) || !workspacePaths || !workspacePaths.length) {
       return dPath;
     }
-    const absWspPath = workspacePaths.find(wsp => existsSync(wsp)) || '';
+    const iterator = async (wsp: string): Promise<string> =>
+      (await existsAsync(wsp)) ? wsp : '';
+
+    const promises: Array<Promise<string>> = [];
+    workspacePaths.forEach((wsp: string) => promises.push(iterator(wsp)));
+    const absWspPath: string = (await Promise.all(promises)).find(
+      path => !!path,
+    );
     return Utils.pathUnixJoin(absWspPath, dPath);
   }
 
@@ -216,21 +251,11 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.get<string>(constants.vscode.iconThemeSetting);
   }
 
-  public getPreset<T>(
-    presetName: string,
-  ):
-    | {
-        key: string;
-        defaultValue?: T;
-        globalValue?: T;
-        workspaceValue?: T;
-        workspaceFolderValue?: T;
-      }
-    | undefined {
+  public getPreset<T>(presetName: string): IPreset<T> | undefined {
     return this.configuration.inspect<T>(presetName);
   }
 
-  public updateDontShowNewVersionMessage(value: boolean): Thenable<void> {
+  public async updateDontShowNewVersionMessage(value: boolean): Promise<void> {
     return this.configuration.update(
       constants.vsicons.dontShowNewVersionMessageSetting,
       value,
@@ -238,9 +263,9 @@ export class ConfigManager implements IConfigManager {
     );
   }
 
-  public updateDontShowConfigManuallyChangedMessage(
+  public async updateDontShowConfigManuallyChangedMessage(
     value: boolean,
-  ): Thenable<void> {
+  ): Promise<void> {
     return this.configuration.update(
       constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
       value,
@@ -248,7 +273,7 @@ export class ConfigManager implements IConfigManager {
     );
   }
 
-  public updateAutoReload(value: boolean): Thenable<void> {
+  public async updateAutoReload(value: boolean): Promise<void> {
     return this.configuration.update(
       constants.vsicons.projectDetectionAutoReloadSetting,
       value,
@@ -256,7 +281,7 @@ export class ConfigManager implements IConfigManager {
     );
   }
 
-  public updateDisableDetection(value: boolean): Thenable<void> {
+  public async updateDisableDetection(value: boolean): Promise<void> {
     return this.configuration.update(
       constants.vsicons.projectDetectionDisableDetectSetting,
       value,
@@ -264,7 +289,7 @@ export class ConfigManager implements IConfigManager {
     );
   }
 
-  public updateIconTheme(): Thenable<void> {
+  public async updateIconTheme(): Promise<void> {
     return this.configuration.update(
       constants.vscode.iconThemeSetting,
       constants.extension.name,
@@ -272,11 +297,11 @@ export class ConfigManager implements IConfigManager {
     );
   }
 
-  public updatePreset(
+  public async updatePreset(
     presetName: string,
     value: boolean,
     configurationTarget: ConfigurationTarget | boolean,
-  ): Thenable<void> {
+  ): Promise<void> {
     const removePreset =
       this.configuration.inspect(
         `${constants.vsicons.presets.fullname}.${presetName}`,

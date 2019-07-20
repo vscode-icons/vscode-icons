@@ -1,6 +1,6 @@
 import { ConfigManager } from './configuration/configManager';
 
-function uninstall(): Thenable<void> {
+function uninstall(): Promise<void> {
   return ConfigManager.removeSettings();
 }
 

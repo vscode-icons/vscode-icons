@@ -1,113 +1,145 @@
-import * as vscode from 'vscode';
 import {
-  IVSCodeExtensionContext,
-  IVSCodeManager,
-  ISettingsManager,
-  IIconsGenerator,
-  ILanguageResourceManager,
-  IExtensionManager,
-  IProjectAutoDetectionManager,
-  INotificationManager,
-  IConfigManager,
-  SYMBOLS,
-  ServiceIdentifier,
-} from '../models';
-import { VSCodeManager } from '../vscode/vscodeManager';
-import { ConfigManager } from '../configuration/configManager';
-import { SettingsManager } from '../settings/settingsManager';
-import { NotificationManager } from '../notification/notificationManager';
-import { IconsGenerator } from '../iconsManifest';
-import { LanguageResourceManager } from '../i18n/languageResourceManager';
-import { langResourceCollection } from '../i18n/langResourceCollection';
-import { ProjectAutoDetectionManager } from '../pad/projectAutoDetectionManager';
+  Container,
+  decorate,
+  inject,
+  injectable,
+  interfaces,
+  METADATA_KEY,
+} from 'inversify';
+import 'reflect-metadata';
+import * as vscode from 'vscode';
+import { ServiceIdentifierOrFunc } from '../../node_modules/inversify/dts/annotation/inject';
 import { ExtensionManager } from '../app/extensionManager';
+import { ConfigManager } from '../configuration/configManager';
+import { LanguageResourceManager } from '../i18n/languageResourceManager';
+import { IconsGenerator } from '../iconsManifest';
+import * as models from '../models';
+import { NotificationManager } from '../notification/notificationManager';
+import { ProjectAutoDetectionManager } from '../pad/projectAutoDetectionManager';
+import { SettingsManager } from '../settings/settingsManager';
+import { VSCodeManager } from '../vscode/vscodeManager';
+import { IntegrityManager } from '../integrity/integrityManager';
+
+type Class = new (...args: any[]) => any;
 
 export class CompositionRootService {
-  private readonly container: any[];
+  private readonly container: Container;
+  private injectableClasses: ReadonlyArray<[Class, ServiceIdentifierOrFunc[]]>;
 
-  constructor(context: IVSCodeExtensionContext) {
-    this.container = [];
-    if (context) {
-      this.register(context);
-    }
+  constructor(private context: models.IVSCodeExtensionContext) {
+    this.container = new Container({ defaultScope: 'Singleton' });
+    this.init();
+    this.initDecorations();
+    this.initBindings();
   }
 
-  public get<T>(identifier: ServiceIdentifier): T {
-    const result = this.container.find(element => {
-      return element.identifier === identifier;
+  public get<T>(serviceIdentifier: interfaces.ServiceIdentifier<T>): T {
+    return this.container.get<T>(serviceIdentifier);
+  }
+
+  public dispose() {
+    this.injectableClasses
+      .map(injectableClass => injectableClass[0])
+      .forEach(klass => {
+        Reflect.deleteMetadata(METADATA_KEY.PARAM_TYPES, klass);
+        Reflect.deleteMetadata(METADATA_KEY.TAGGED, klass);
+      });
+  }
+
+  private init(): void {
+    // Each tuple has the form of (class, array of parameters)
+    // The array of parameters MUST be declared in the precise order
+    // they are declared in the constructor of each class
+    this.injectableClasses = [
+      [
+        ExtensionManager,
+        [
+          models.SYMBOLS.IVSCodeManager,
+          models.SYMBOLS.IConfigManager,
+          models.SYMBOLS.ISettingsManager,
+          models.SYMBOLS.INotificationManager,
+          models.SYMBOLS.IIconsGenerator,
+          models.SYMBOLS.IProjectAutoDetectionManager,
+          models.SYMBOLS.IIntegrityManager,
+        ],
+      ],
+      [ConfigManager, [models.SYMBOLS.IVSCodeManager]],
+      [LanguageResourceManager, [models.SYMBOLS.ILocale]],
+      [
+        IconsGenerator,
+        [models.SYMBOLS.IVSCodeManager, models.SYMBOLS.IConfigManager],
+      ],
+      [
+        NotificationManager,
+        [
+          models.SYMBOLS.IVSCodeManager,
+          models.SYMBOLS.ILanguageResourceManager,
+        ],
+      ],
+      [
+        ProjectAutoDetectionManager,
+        [models.SYMBOLS.IVSCodeManager, models.SYMBOLS.IConfigManager],
+      ],
+      [SettingsManager, [models.SYMBOLS.IVSCodeManager]],
+      [
+        VSCodeManager,
+        [models.SYMBOLS.IVSCode, models.SYMBOLS.IVSCodeExtensionContext],
+      ],
+      [IntegrityManager, []],
+    ];
+    this.dispose();
+  }
+
+  private initDecorations(): void {
+    this.injectableClasses.forEach(injectableClass => {
+      // declare classes as injectables
+      const klass: Class = injectableClass[0];
+      decorate(injectable(), klass);
+      // declare injectable parameters
+      const params: ServiceIdentifierOrFunc[] = injectableClass[1];
+      params.forEach((identifier: ServiceIdentifierOrFunc, index: number) =>
+        decorate(inject(identifier), klass, index),
+      );
     });
-    if (!result) {
-      throw new Error(`Object not found for: ${identifier.toString()}`);
-    }
-    return result.obj as T;
   }
 
-  private register(context: IVSCodeExtensionContext): void {
-    const vscodeManager: IVSCodeManager = this.bind<IVSCodeManager>(
-      SYMBOLS.IVSCodeManager,
-      VSCodeManager,
-      vscode,
-      context,
-    );
-    const configManager: IConfigManager = this.bind<IConfigManager>(
-      SYMBOLS.IConfigManager,
-      ConfigManager,
-      vscodeManager,
-    );
-    const settingsManager: ISettingsManager = this.bind<ISettingsManager>(
-      SYMBOLS.ISettingsManager,
-      SettingsManager,
-      vscodeManager,
-    );
-    const iconsGenerator: IIconsGenerator = this.bind<IIconsGenerator>(
-      SYMBOLS.IIconsGenerator,
-      IconsGenerator,
-      vscodeManager,
-      configManager,
-    );
-    const languageResourceManager: ILanguageResourceManager = this.bind<
-      ILanguageResourceManager
-    >(
-      SYMBOLS.ILanguageResourceManager,
-      LanguageResourceManager,
-      langResourceCollection[vscode.env.language],
-    );
-    const notificationManager: INotificationManager = this.bind<
-      INotificationManager
-    >(
-      SYMBOLS.INotificationManager,
-      NotificationManager,
-      vscodeManager,
-      languageResourceManager,
-    );
-    const projectAutoDetectionManager: IProjectAutoDetectionManager = this.bind<
-      IProjectAutoDetectionManager
-    >(
-      SYMBOLS.IProjectAutoDetectionManager,
-      ProjectAutoDetectionManager,
-      vscodeManager,
-      configManager,
-    );
+  private initBindings(): void {
+    const bind = <T>(
+      identifier: interfaces.ServiceIdentifier<T>,
+    ): interfaces.BindingToSyntax<T> => this.container.bind<T>(identifier);
 
-    this.bind<IExtensionManager>(
-      SYMBOLS.IExtensionManager,
+    bind<string>(models.SYMBOLS.ILocale).toConstantValue(vscode.env.language);
+    bind<models.IVSCode>(models.SYMBOLS.IVSCode).toConstantValue(vscode);
+    bind<models.IVSCodeExtensionContext>(
+      models.SYMBOLS.IVSCodeExtensionContext,
+    ).toConstantValue(this.context);
+
+    bind<models.IExtensionManager>(models.SYMBOLS.IExtensionManager).to(
       ExtensionManager,
-      vscodeManager,
-      configManager,
-      settingsManager,
-      notificationManager,
-      iconsGenerator,
-      projectAutoDetectionManager,
     );
-  }
-
-  private bind<T>(identifier: ServiceIdentifier, obj: any, ...args: any[]): T {
-    if (!identifier) {
-      throw new ReferenceError('Identifier cannot be undefined');
-    }
-
-    const bindedObj = Reflect.construct(obj, args) as T;
-    this.container.push({ identifier, obj: bindedObj });
-    return bindedObj;
+    bind<models.IConfigManager>(models.SYMBOLS.IConfigManager).to(
+      ConfigManager,
+    );
+    bind<models.ISettingsManager>(models.SYMBOLS.ISettingsManager).to(
+      SettingsManager,
+    );
+    bind<models.ILanguageResourceManager>(
+      models.SYMBOLS.ILanguageResourceManager,
+    ).to(LanguageResourceManager);
+    bind<models.INotificationManager>(models.SYMBOLS.INotificationManager).to(
+      NotificationManager,
+    );
+    bind<models.IIconsGenerator>(models.SYMBOLS.IIconsGenerator).to(
+      IconsGenerator,
+    );
+    bind<models.IProjectAutoDetectionManager>(
+      models.SYMBOLS.IProjectAutoDetectionManager,
+    ).to(ProjectAutoDetectionManager);
+    bind<models.IIntegrityManager>(models.SYMBOLS.IIntegrityManager).to(
+      IntegrityManager,
+    );
+    bind<models.IVSCodeManager>(models.SYMBOLS.IVSCodeManager).to(
+      VSCodeManager,
+    );
   }
 }

@@ -1,10 +1,10 @@
 // tslint:disable only-arrow-functions
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
-import * as fs from 'fs';
 import * as sinon from 'sinon';
+import { ErrorHandler } from '../../src/common/errorHandler';
+import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
-import { ErrorHandler } from '../../src/errorHandler';
 import { ManifestReader } from '../../src/iconsManifest';
 import {
   IConfigManager,
@@ -59,30 +59,30 @@ describe('ProjectAutoDetectionManager: tests', function () {
     });
 
     it(`an Error gets thrown, when 'vscodeManager' is NOT instantiated`, function () {
-      expect(() => new ProjectAutoDetectionManager(null, configManagerStub))
-        .to.throw(ReferenceError)
-        .that.matches(/'vscodeManager' not set to an instance/);
+      expect(
+        () => new ProjectAutoDetectionManager(null, configManagerStub),
+      ).to.throw(ReferenceError, /'vscodeManager' not set to an instance/);
     });
 
     it(`an Error gets thrown, when 'configManager' is NOT instantiated`, function () {
-      expect(() => new ProjectAutoDetectionManager(vscodeManagerStub, null))
-        .to.throw(ReferenceError)
-        .that.matches(/'configManager' not set to an instance/);
+      expect(
+        () => new ProjectAutoDetectionManager(vscodeManagerStub, null),
+      ).to.throw(ReferenceError, /'configManager' not set to an instance/);
     });
 
-    it(`logs an Error when searching for a 'package.json' fails`, function () {
-      const reason = new Error('failure');
-      findFilesStub.rejects(reason);
+    it(`logs an Error when searching for a 'package.json' fails`, async function () {
+      const error = new Error('failure');
+      findFilesStub.rejects(error);
 
-      return padManager
-        .detectProjects([Projects.angular])
-        .then(() => expect(logErrorStub.calledOnceWith(reason)).to.be.true);
+      await padManager.detectProjects([Projects.angular]);
+
+      expect(logErrorStub.calledOnceWith(error)).to.be.true;
     });
 
-    it('detects non conflicting projects', function () {
+    it('detects non conflicting projects', async function () {
       vsicons.projectDetection.disableDetect = false;
       findFilesStub.resolves([{ fsPath: '' }]);
-      sandbox.stub(fs, 'readFileSync').returns(undefined);
+      sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
       sandbox.stub(Utils, 'parseJSON').returns({
         dependencies: {
           angularjs: '1.0.0',
@@ -93,55 +93,58 @@ describe('ProjectAutoDetectionManager: tests', function () {
         key: '',
         workspaceValue: undefined,
       });
-      sandbox.stub(ManifestReader, 'iconsDisabled').returns(true);
+      sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
       // @ts-ignore
-      sandbox.stub(padManager, 'getProjectInfo').returns({});
+      sandbox.stub(padManager, 'getProjectInfo').resolves({});
 
-      return padManager.detectProjects([Projects.angularjs]).then(res => {
-        expect(res)
-          .to.be.an('object')
-          .and.have.ownProperty('conflictingProjects').that.is.empty;
-      });
+      const res = await padManager.detectProjects([Projects.angularjs]);
+      const firstResult = res[0];
+
+      expect(res).to.be.an('array');
+      expect(firstResult)
+        .to.be.an('object')
+        .and.have.ownProperty('conflictingProjects').that.is.empty;
     });
 
     context('does NOT detect a project when', function () {
-      const testCase = (projectNames: Projects[]) =>
-        padManager
-          .detectProjects(projectNames)
-          .then(res => expect(res).to.not.be.an('object'));
+      const testCase = async (projectNames: Projects[]) => {
+        const res = await padManager.detectProjects(projectNames);
 
-      it(`project names are 'undefined'`, function () {
-        return testCase(undefined);
+        expect(res).to.not.be.an('object');
+      };
+
+      it(`project names are 'undefined'`, async function () {
+        await testCase(undefined);
       });
 
-      it(`no project names are given`, function () {
-        return testCase([]);
+      it(`no project names are given`, async function () {
+        await testCase([]);
       });
 
-      it(`detection fails`, function () {
+      it(`detection fails`, async function () {
         findFilesStub.resolves(undefined);
 
-        return testCase([Projects.angular]);
+        await testCase([Projects.angular]);
       });
 
-      it(`no 'package.json' exists`, function () {
+      it(`no 'package.json' exists`, async function () {
         findFilesStub.resolves([]);
 
-        return testCase([Projects.angular]);
+        await testCase([Projects.angular]);
       });
 
-      it('detection is disabled', function () {
+      it('detection is disabled', async function () {
         vsicons.projectDetection.disableDetect = true;
 
-        return testCase([Projects.angular]);
+        await testCase([Projects.angular]);
       });
     });
 
     context('when conflicting project icons are detected', function () {
-      it('returns the conflict project detected \'LangResourceKey\'', function () {
+      it(`returns the conflict project detected 'LangResourceKey'`, async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '' }]);
-        sandbox.stub(fs, 'readFileSync').returns(undefined);
+        sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
         sandbox.stub(Utils, 'parseJSON').returns({
           dependencies: {
             '@angular/core': '1.0.0',
@@ -152,16 +155,19 @@ describe('ProjectAutoDetectionManager: tests', function () {
           key: '',
           workspaceValue: undefined,
         });
-        sandbox.stub(ManifestReader, 'iconsDisabled').returns(true);
+        sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
 
-        return padManager
-          .detectProjects([Projects.angular, Projects.nestjs])
-          .then(res => {
-            expect(res)
-              .to.be.an('object')
-              .and.have.ownProperty('langResourceKey')
-              .to.equal(LangResourceKeys.conflictProjectsDetected);
-          });
+        const res = await padManager.detectProjects([
+          Projects.angular,
+          Projects.nestjs,
+        ]);
+        const firstResult = res[0];
+
+        expect(res).to.be.an('array');
+        expect(firstResult)
+          .to.be.an('object')
+          .and.have.ownProperty('langResourceKey')
+          .to.equal(LangResourceKeys.conflictProjectsDetected);
       });
     });
   });
