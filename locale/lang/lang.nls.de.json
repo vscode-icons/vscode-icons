@@ -39,6 +39,6 @@
   "nonNestDetectedPresetTrue": "%extensionName% hat ein Nicht-NestJS-Projekt erkannt, allerdings ist die 'preset'-Einstellung auf 'true' gesetzt. Es wird wärmstens empfohlen, die 'preset'-Einstellung komplett von den Einstellungen zu entfernen. Wenn Sie auf 'Neu starten' drücken, werden die NestJS-Icons aktiviert.",
   "projectDetectionReset": "Projekterkennung wird zurückgesetzt.",
   "conflictProjectsDetected": "%extensionName% hat widersprüchliche Projekte erkannt. Wählen Sie aus, welche Projekticons benutzt werden sollen. Hinweis: Diese Aktion wird in den Arbeitsbereichseinstellungen gespeichert.",
-  "unsupportedVersion": "",
-  "integrityFailure": ""
+  "unsupportedVersion": "Nicht unterstützte „VS Code“-Version:",
+  "integrityFailure": "Die Integrität dieser Erweiterung wurde beeinträchtigt. Es gibt KEINEN Anspruch darauf, dass die Erweiterung wie gewünscht arbeitet."
 }
