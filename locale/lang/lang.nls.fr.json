@@ -38,7 +38,7 @@
   "nestDetectedPresetFalse": "%extensionName% a détecter un projet NestJS, mais le paramètre 'preset' est configuré à 'false'. Il est fortement recommandé de supprimer 'preset' entièrement des paramètres. Sélectionner 'Redémarrer' va désactiver les icônes NestJS.",
   "nonNestDetectedPresetTrue": "%extensionName% a détecter un projet non NestJS, mais le paramètre 'preset' est configuré à 'true'. Il est fortement recommandé de supprimer 'preset' entièrement des paramètres. Sélectionner 'Redémarrer' va activer les icônes NestJS.",
   "projectDetectionReset": "La détection de projet va être réinitialisé.",
-  "conflictProjectsDetected": "",
+  "conflictProjectsDetected": "%extensionName% a détecté un conflit d'icônes dans le projet. Choisissez quelles icônes utiliser. Note : cette action modifiera les paramètres de votre espace de travail.",
   "unsupportedVersion": "",
   "integrityFailure": ""
 }
