@@ -11,6 +11,7 @@ export interface INativeLanguageCollection {
   css: ILanguage;
   diff: ILanguage;
   dockerfile: ILanguage;
+
   fsharp: ILanguage;
   git: ILanguage;
   go: ILanguage;
