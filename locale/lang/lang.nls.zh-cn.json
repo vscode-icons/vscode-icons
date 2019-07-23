@@ -38,7 +38,7 @@
   "nestDetectedPresetFalse": "%extensionName% 检测到了这是个NestJS项目, 但是'预设'的设置是'false'. 我们建议从设置中删除所有的'预设'设置. 选择'重新启动'会禁用NestJS图标",
   "nonNestDetectedPresetTrue": "%extensionName% 检测到了这不是个NestJS项目, 但是'预设'的设置是'true'. 我们建议从设置中删除所有的'预设'设置. 选择'重新启动'会启用NestJS图标",
   "projectDetectionReset": "重设自动检测工程文件为默认设置",
-  "conflictProjectsDetected": "",
-  "unsupportedVersion": "",
-  "integrityFailure": ""
+  "conflictProjectsDetected": "%extensionName%检测到了工程图标冲突. 请选择你想要用的工程图标. 注意: 这个设定还会改变你的工作区设置",
+  "unsupportedVersion": "不支持这个版本的VS Code:",
+  "integrityFailure": "此插件完整性受到了损害. 不能保证此插件会正常运行"
 }
