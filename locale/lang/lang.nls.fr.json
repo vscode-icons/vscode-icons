@@ -39,6 +39,6 @@
   "nonNestDetectedPresetTrue": "%extensionName% a détecter un projet non NestJS, mais le paramètre 'preset' est configuré à 'true'. Il est fortement recommandé de supprimer 'preset' entièrement des paramètres. Sélectionner 'Redémarrer' va activer les icônes NestJS.",
   "projectDetectionReset": "La détection de projet va être réinitialisé.",
   "conflictProjectsDetected": "%extensionName% a détecté un conflit d'icônes dans le projet. Choisissez quelles icônes utiliser. Note : cette action modifiera les paramètres de votre espace de travail.",
-  "unsupportedVersion": "",
-  "integrityFailure": ""
+  "unsupportedVersion": "Version de 'VS Code' non supportée:",
+  "integrityFailure": "L'intégrité de l'extension est compromise. Il n'y a AUCUNE garantie qu'elle fonctionnera comme prévu."
 }
