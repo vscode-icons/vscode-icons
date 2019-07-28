@@ -2771,6 +2771,12 @@ export const extensions: IFileCollection = {
       languages: [languages.python],
       format: FileFormat.svg,
     },
+    {
+      icon: 'pyup',
+      extensions: ['.pyup', '.pyup.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'q', extensions: ['q'], format: FileFormat.svg },
     { icon: 'qbs', extensions: ['qbs'], format: FileFormat.svg },
     {
