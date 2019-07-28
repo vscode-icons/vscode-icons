@@ -1,5 +1,27 @@
 # Change Log
 
+## 9.0.0 (July 28, 2019)
+
+- Feature: Support for `Pyup`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2162](https://github.com/vscode-icons/vscode-icons/pull/2162))
+- Enhancement: Support `.dockerignore` via language id. ([@JimiC](https://github.com/JimiC) in [#2161](https://github.com/vscode-icons/vscode-icons/pull/2161))
+- Enhancement: Removed `Codecov` badge. ([@JimiC](https://github.com/JimiC) in [#2157](https://github.com/vscode-icons/vscode-icons/pull/2157))
+- Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#2156](https://github.com/vscode-icons/vscode-icons/pull/2156))
+- Fix: Fixed Travis CI jobs. ([@JimiC](https://github.com/JimiC) in [#2153](https://github.com/vscode-icons/vscode-icons/pull/2153))
+- Enhancement: Updated project's dependencies. ([@JimiC](https://github.com/JimiC) in [#2152](https://github.com/vscode-icons/vscode-icons/pull/2152))
+- Feature: Support for `Renovate Bot`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2148](https://github.com/vscode-icons/vscode-icons/pull/2148))
+- Feature: Support for `Biml`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2147](https://github.com/vscode-icons/vscode-icons/pull/2147))
+- Feature: Support for `Prisma`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2146](https://github.com/vscode-icons/vscode-icons/pull/2146))
+- Enhancement: Updated `RiotJS` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2145](https://github.com/vscode-icons/vscode-icons/pull/2145))
+- Enhancement: Updated `Storybook` icon. ([@ghengeveld](https://github.com/ghengeveld) in [#2138](https://github.com/vscode-icons/vscode-icons/pull/2138))
+- Enhancement: Support for `Kubernetes` extensions. ([@mmisztal1980](https://github.com/mmisztal1980) in [#2135](https://github.com/vscode-icons/vscode-icons/pull/2135))
+- Feature: Support for `G-Code`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2129](https://github.com/vscode-icons/vscode-icons/pull/2129))
+- Feature: Support for `AsciiDoc`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2128](https://github.com/vscode-icons/vscode-icons/pull/2128))
+- Feature: Support for `Confluence`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2127](https://github.com/vscode-icons/vscode-icons/pull/2127))
+- Enhancement: Support for `jenkinsfile`. ([@fsmaia](https://github.com/fsmaia) in [#2116](https://github.com/vscode-icons/vscode-icons/pull/2116))
+- Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#2112](https://github.com/vscode-icons/vscode-icons/pull/2112))
+- Feature: `v9` refactor. See link for more details. ([@JimiC](https://github.com/JimiC) in [#2111](https://github.com/vscode-icons/vscode-icons/pull/2111))
+- Feature: Support for `NSRI`. ([@JimiC](https://github.com/JimiC) in [#2110](https://github.com/vscode-icons/vscode-icons/pull/2110))
+
 ## 8.8.0 (June 23, 2019)
 
 - Enhancement: Support for `gridsome.server`. ([@tyankatsu0105](https://github.com/tyankatsu0105) in [#2101](https://github.com/vscode-icons/vscode-icons/pull/2101))
