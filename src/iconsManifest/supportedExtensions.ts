@@ -2773,9 +2773,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pyup',
-      extensions: ['.pyup'],
-      filenamesGlob: ['.pyup'],
-      extensionsGlob: ['yml'],
+      extensions: ['.pyup.yml'],
       filename: true,
       format: FileFormat.svg,
     },
