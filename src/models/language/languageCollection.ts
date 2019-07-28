@@ -23,6 +23,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   ballerina: ILanguage;
   bazel: ILanguage;
   bibtex: ILanguage;
+  biml: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
   c_al: ILanguage;
