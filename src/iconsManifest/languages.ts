@@ -171,6 +171,7 @@ export const languages: ILanguageCollection = {
   pony: { ids: 'pony', defaultExtension: 'pony' },
   postcss: { ids: 'postcss', defaultExtension: 'pcss' },
   powershell: { ids: 'powershell', defaultExtension: 'ps1' },
+  prisma: { ids: 'prisma', defaultExtension: 'prisma' },
   processinglang: { ids: 'pde', defaultExtension: 'pde' },
   prolog: { ids: 'prolog', defaultExtension: 'pro' },
   prometheus: { ids: 'prometheus', defaultExtension: 'rules' },

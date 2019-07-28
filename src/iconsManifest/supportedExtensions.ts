@@ -2682,6 +2682,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'prisma',
+      extensions: [],
+      languages: [languages.prisma],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'processinglang',
       extensions: [],
       languages: [languages.processinglang],
