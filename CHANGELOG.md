@@ -2,6 +2,7 @@
 
 ## 9.0.0 (July 28, 2019)
 
+- Fix: Use same vscode engine version. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2164](https://github.com/vscode-icons/vscode-icons/pull/2164))
 - Feature: Support for `Pyup`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2162](https://github.com/vscode-icons/vscode-icons/pull/2162))
 - Enhancement: Support `.dockerignore` via language id. ([@JimiC](https://github.com/JimiC) in [#2161](https://github.com/vscode-icons/vscode-icons/pull/2161))
 - Enhancement: Removed `Codecov` badge. ([@JimiC](https://github.com/JimiC) in [#2157](https://github.com/vscode-icons/vscode-icons/pull/2157))
