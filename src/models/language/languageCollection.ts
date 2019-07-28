@@ -23,6 +23,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   ballerina: ILanguage;
   bazel: ILanguage;
   bibtex: ILanguage;
+  biml: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
   c_al: ILanguage;
@@ -45,6 +46,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dart: ILanguage;
   django: ILanguage;
   dlang: ILanguage;
+  dockerignore: ILanguage;
   doctex: ILanguage;
   dotenv: ILanguage;
   dotjs: ILanguage;
@@ -129,6 +131,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   polymer: ILanguage;
   pony: ILanguage;
   postcss: ILanguage;
+  prisma: ILanguage;
   processinglang: ILanguage;
   prolog: ILanguage;
   prometheus: ILanguage;

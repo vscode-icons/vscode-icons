@@ -581,6 +581,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'biml',
+      extensions: [],
+      languages: [languages.biml],
+      format: FileFormat.svg,
+    },
+    {
       // http://www.file-extensions.org/filetype/extension/name/binary-files
       icon: 'binary',
       extensions: [
@@ -1031,7 +1037,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'docker',
-      extensions: ['.dockerignore'],
+      extensions: [],
       filenamesGlob: [
         'docker-compose',
         'docker-compose.ci-build',
@@ -1042,12 +1048,12 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yml'],
       filename: true,
-      languages: [languages.dockerfile],
+      languages: [languages.dockerfile, languages.dockerignore],
       format: FileFormat.svg,
     },
     {
       icon: 'docker2',
-      extensions: ['.dockerignore'],
+      extensions: [],
       filenamesGlob: [
         'docker-compose',
         'docker-compose.ci-build',
@@ -1058,7 +1064,7 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yml'],
       filename: true,
-      languages: [languages.dockerfile],
+      languages: [languages.dockerfile, languages.dockerignore],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -2676,6 +2682,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'prisma',
+      extensions: [],
+      languages: [languages.prisma],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'processinglang',
       extensions: [],
       languages: [languages.processinglang],
@@ -2871,6 +2884,14 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['.remarkrc'],
       extensionsGlob: ['js', 'json', 'yml', 'yaml'],
       light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'renovate',
+      extensions: ['.renovaterc'],
+      filenamesGlob: ['renovate', '.renovaterc'],
+      extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
     },

@@ -39,6 +39,6 @@
   "nonNestDetectedPresetTrue": "%extensionName% detectou um projeto não NestJS, mas a configuração 'Predefinição' é definida como 'true'. É altamente recomendado remover a 'Predefinição' completamente das configurações. Selecionar 'Reiniciar' abilitará os ícones de NestJS.",
   "projectDetectionReset": "Padrões de detecção de projeto serão reinicializados.",
   "conflictProjectsDetected": "%extensionName% detectou ícones do projeto conflitantes. Escolha quais projeto ícones para usar. Nota: Esta ação irá criar uma predefinição nas configurações do seu espaço de trabalho.",
-  "unsupportedVersion": "",
-  "integrityFailure": ""
+  "unsupportedVersion": "A versão do VS Code não é suportada:",
+  "integrityFailure": "A integriadade da extensão está comprometida. Não há guarantia que a extensão funcionará conforme projetada."
 }
