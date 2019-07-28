@@ -581,6 +581,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'biml',
+      extensions: [],
+      languages: [languages.biml],
+      format: FileFormat.svg,
+    },
+    {
       // http://www.file-extensions.org/filetype/extension/name/binary-files
       icon: 'binary',
       extensions: [
@@ -2676,6 +2682,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'prisma',
+      extensions: [],
+      languages: [languages.prisma],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'processinglang',
       extensions: [],
       languages: [languages.processinglang],
@@ -2863,6 +2876,14 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['.remarkrc'],
       extensionsGlob: ['js', 'json', 'yml', 'yaml'],
       light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'renovate',
+      extensions: ['.renovaterc'],
+      filenamesGlob: ['renovate', '.renovaterc'],
+      extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
     },
