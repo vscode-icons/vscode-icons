@@ -35,7 +35,7 @@
     "email": "roberto.huertas@outlook.com"
   },
   "engines": {
-    "vscode": "^1.26.1",
+    "vscode": "^1.36.0",
     "node": ">=8.9.3"
   },
   "categories": [
