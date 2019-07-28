@@ -41,8 +41,7 @@ jobs:
       install:
         - npm run preinstall
         - npm i vscode-icons/wpilgenerator --no-save
-        - npm run postinstall
-      before_script:
+      before_script: false
       script: npm run compile
       after_success: wpilgen
 
@@ -53,28 +52,27 @@ jobs:
       install:
         - npm run preinstall
         - npm i vsce --no-save
-        - npm run postinstall
-      before_script:
+      before_script: false
       script: vsce publish -p $VSCE_TOKEN
-      after_success:
+      after_success: false
 
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       sudo: required
       language: generic
-      install:
-      before_script:
+      install: false
+      before_script: false
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
-      after_success:
+      after_success: false
 
     - stage: docker vsi:tag
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       sudo: required
       language: generic
-      install:
-      before_script:
+      install: false
+      before_script: false
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
-      after_success:
+      after_success: false
 
 # See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines

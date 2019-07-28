@@ -39,6 +39,6 @@
   "nonNestDetectedPresetTrue": "%extensionName% ha rilevato un progetto non NestJS ma l'impostazione 'preset' è impostata su 'true'. È altamente raccomandato rimuovere completamente l'impostazione 'preset'. Selezionando 'Riavvia' le icone di NestJS verranno abilitate.",
   "projectDetectionReset": "Impostazioni Rilevazione Progetto Predefinite saranno ripristinate.",
   "conflictProjectsDetected": "%extensionName% ha individuato conflitti tra le icone di progetto. Scegli quali icone di progetto usare. Nota: Questa azione inserirà una pre impostazione nelle tua impostazioni dell'area di lavoro.",
-  "unsupportedVersion": "",
-  "integrityFailure": ""
+  "unsupportedVersion": "Versioni di 'VS Code' non supportate:",
+  "integrityFailure": "L'integrità dell'estensione è compromessa. NON c'é nessuna garanzia che l'estensione funzionerà come previsto."
 }
