@@ -1,6 +1,6 @@
 # Change Log
 
-## 9.0.0 (July 29, 2019)
+## 9.1.0 (July 29, 2019)
 
 - Enhancement: Updated `Nuxt` icon. ([@Atinux](https://github.com/Atinux) in [#2172](https://github.com/vscode-icons/vscode-icons/pull/2172))
 - Fix: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#2171](https://github.com/vscode-icons/vscode-icons/pull/2171))
