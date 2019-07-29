@@ -3023,7 +3023,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'sequelize',
-      extensions: ['.sequelizerc', '.sequelizerc.js', '.sequelizerc.json'],
+      extensions: ['.sequelizerc'],
+      filenamesGlob: ['.sequelizerc'],
+      extensionsGlob: ['js', 'json'],
       filename: true,
       format: FileFormat.svg,
     },
