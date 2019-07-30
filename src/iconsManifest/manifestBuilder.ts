@@ -86,7 +86,6 @@ export class ManifestBuilder {
     return this.buildJsonStructure(files, folders, schema);
   }
 
-  private static iconsManifestDirPath: string;
   private static iconsDirRelativeBasePath: string;
   private static customIconDirPath: string;
 
@@ -183,9 +182,7 @@ export class ManifestBuilder {
           iconFileLightType,
         );
         const iconFileDefinition = `${sts.definitionFilePrefix}${icon}`;
-        const iconFileLightDefinition = `${
-          sts.definitionFileLightPrefix
-        }${icon}`;
+        const iconFileLightDefinition = `${sts.definitionFileLightPrefix}${icon}`;
         const isFilename = current.filename;
 
         defs[iconFileDefinition] = {
@@ -302,9 +299,7 @@ export class ManifestBuilder {
         const openFolderPath = `${folderPath}_opened`;
         const openFolderLightPath = `${folderLightPath}_opened`;
         const iconFolderDefinition = `${sts.definitionFolderPrefix}${icon}`;
-        const iconFolderLightDefinition = `${
-          sts.definitionFolderLightPrefix
-        }${icon}`;
+        const iconFolderLightDefinition = `${sts.definitionFolderLightPrefix}${icon}`;
         const iconOpenFolderDefinition = `${iconFolderDefinition}_open`;
         const iconOpenFolderLightDefinition = `${iconFolderLightDefinition}_open`;
 
@@ -335,9 +330,7 @@ export class ManifestBuilder {
             iconPath: `${folderLightPath}${sts.iconSuffix}${iconFileExtension}`,
           };
           defs[iconOpenFolderLightDefinition] = {
-            iconPath: `${openFolderLightPath}${
-              sts.iconSuffix
-            }${iconFileExtension}`,
+            iconPath: `${openFolderLightPath}${sts.iconSuffix}${iconFileExtension}`,
           };
         }
 
@@ -375,12 +368,13 @@ export class ManifestBuilder {
     if (!hasCustomIcon) {
       return this.iconsDirRelativeBasePath;
     }
-    const sanitizedFolderPath = Utils.belongToSameDrive(
+    const belongToSameDrive: boolean = Utils.belongToSameDrive(
       absPath,
-      this.iconsManifestDirPath,
-    )
-      ? this.iconsManifestDirPath
-      : Utils.overwriteDrive(absPath, this.iconsManifestDirPath);
+      ConfigManager.sourceDir,
+    );
+    const sanitizedFolderPath: string = belongToSameDrive
+      ? ConfigManager.sourceDir
+      : Utils.overwriteDrive(absPath, ConfigManager.sourceDir);
     return Utils.getRelativePath(sanitizedFolderPath, absPath, false);
   }
 
