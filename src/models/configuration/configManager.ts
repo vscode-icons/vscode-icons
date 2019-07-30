@@ -3,6 +3,7 @@ import { ConfigurationTarget } from '../vscode';
 
 export interface IConfigManager {
   vsicons: IVSIcons;
+  updateVSIconsConfigState(): void;
   hasConfigChanged(
     currentConfig: IVSIcons | undefined,
     sections?: string[],

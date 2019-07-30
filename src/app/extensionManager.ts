@@ -432,7 +432,7 @@ export class ExtensionManager implements models.IExtensionManager {
     // If the preset is the same as the toggle value then trigger an explicit reload
     // Note: This condition works also for auto-reload handling
     if (this.configManager.vsicons.presets[cbArgs[0]] === cbArgs[1]) {
-      this.executeAndReload(this.applyCustomization, cbArgs);
+      this.executeAndReload(this.applyCustomization);
     } else {
       if (cbArgs.length !== 3) {
         throw new Error('Arguments mismatch');
@@ -449,7 +449,7 @@ export class ExtensionManager implements models.IExtensionManager {
     if (
       !projectDetectionResults ||
       !projectDetectionResults.length ||
-      !projectDetectionResults.every(pdr => pdr.apply)
+      projectDetectionResults.every(pdr => !pdr.apply)
     ) {
       return;
     }
@@ -598,6 +598,7 @@ export class ExtensionManager implements models.IExtensionManager {
         ]);
       if (configChanged) {
         this.applyCustomizationCommand([models.LangResourceKeys.dontShowThis]);
+        this.configManager.updateVSIconsConfigState();
       }
     }
     return;

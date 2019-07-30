@@ -202,7 +202,7 @@ export class ConfigManager implements IConfigManager {
   }
 
   private readonly configuration: IVSCodeWorkspaceConfiguration;
-  private readonly initVSIconsConfig: IVSIcons;
+  private initVSIconsConfig: IVSIcons;
 
   constructor(private vscodeManager: IVSCodeManager) {
     // Acts as a static reference to configuration
@@ -211,6 +211,13 @@ export class ConfigManager implements IConfigManager {
     // use the `vsicons` function instead
     this.configuration = this.vscodeManager.workspace.getConfiguration();
 
+    this.initVSIconsConfig = this.vsicons;
+  }
+
+  public updateVSIconsConfigState(): void {
+    if (!this.vscodeManager.supportsThemesReload) {
+      return;
+    }
     this.initVSIconsConfig = this.vsicons;
   }
 

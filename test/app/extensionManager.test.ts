@@ -835,10 +835,7 @@ describe('ExtensionManager: tests', function () {
                   .called,
               ).to.be.false;
               expect(
-                executeAndReloadStub.calledOnceWith(
-                  applyCustomizationStub,
-                  cbArgs,
-                ),
+                executeAndReloadStub.calledOnceWith(applyCustomizationStub),
               ).to.be.true;
             });
           });
