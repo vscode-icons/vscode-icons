@@ -74,9 +74,9 @@ export class ProjectAutoDetectionManager
     };
 
     // We need to check only the 'workspaceValue' ('user' setting should be ignored)
-    const preset = this.configManager.getPreset<boolean>(
-      _getPresetName(project),
-    ).workspaceValue;
+    const _getPreset = (proj: models.Projects) =>
+      this.configManager.getPreset<boolean>(_getPresetName(proj))
+        .workspaceValue;
 
     const iconsDisabled: boolean = await ManifestReader.iconsDisabled(project);
 
@@ -84,6 +84,7 @@ export class ProjectAutoDetectionManager
     // 1. Preset is set to 'false' and icons are not present in the manifest file
     // 2. Preset is set to 'true' and icons are present in the manifest file
     // For this cases PAD will not display a message
+    const preset = _getPreset(project);
     let bypass =
       preset != null &&
       ((!preset && iconsDisabled) || (preset && !iconsDisabled));
@@ -112,9 +113,7 @@ export class ProjectAutoDetectionManager
     // bypass, if user explicitly has any preset of a conficting project set
     // and those icons are enabled
     for (const cp of conflictingProjects) {
-      bypass =
-        this.configManager.getPreset<boolean>(_getPresetName(cp)) &&
-        !(await ManifestReader.iconsDisabled(cp));
+      bypass = _getPreset(cp);
       if (bypass) {
         break;
       }

@@ -38,7 +38,7 @@ describe('ConfigManager: tests', function () {
     let configManager: IConfigManager;
     let splitter: (content: string) => string[];
 
-    beforeEach(() => {
+    beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync');
@@ -1057,6 +1057,51 @@ describe('ConfigManager: tests', function () {
               removeLastEntryTrailingCommaStub.returned(expected),
             ).to.be.true;
           });
+        });
+      });
+    });
+
+    context(`function 'updateVSIconsConfigState'`, function () {
+      let supportsThemesReloadStub: sinon.SinonStub;
+
+      beforeEach(function () {
+        supportsThemesReloadStub = sandbox.stub(
+          vscodeManagerStub,
+          'supportsThemesReload',
+        );
+      });
+
+      context(`when editor supports themes reload`, function () {
+        beforeEach(function () {
+          supportsThemesReloadStub.value(true);
+        });
+
+        it(`updates the initial configuration state`, function () {
+          // @ts-ignore
+          const initConfig = configManager.initVSIconsConfig;
+          vsiconsClone.presets.angular = true;
+
+          configManager.updateVSIconsConfigState();
+
+          // @ts-ignore
+          expect(configManager.initVSIconsConfig).to.not.be.eql(initConfig);
+        });
+      });
+
+      context(`when editor does NOT support themes reload`, function () {
+        beforeEach(function () {
+          supportsThemesReloadStub.value(false);
+        });
+
+        it(`does NOT update the initial configuration state`, function () {
+          // @ts-ignore
+          const initConfig = configManager.initVSIconsConfig;
+          vsiconsClone.presets.angular = true;
+
+          configManager.updateVSIconsConfigState();
+
+          // @ts-ignore
+          expect(configManager.initVSIconsConfig).to.be.eql(initConfig);
         });
       });
     });

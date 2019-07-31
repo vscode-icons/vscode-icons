@@ -702,7 +702,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             const res = await padManager.detectProjects([Projects.nestjs]);
             const firstResult = res[0];
 
-            expect(iconsDisabledStub.callCount).to.be.equal(2);
+            expect(iconsDisabledStub.callCount).to.be.equal(1);
             expect(res).to.be.an('array');
             expect(firstResult).to.be.an('object');
             expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);

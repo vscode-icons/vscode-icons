@@ -69,9 +69,12 @@ export class CustomsMerger {
     for (const presetName of presetNames) {
       const name: string = models.PresetNames[presetName];
       const project: string = models.Projects[name];
-      const projectDetectionResult = (projectDetectionResults || []).find(
-        pdr => pdr.project === project,
-      );
+      const projectDetectionResult:
+        | models.IProjectDetectionResult
+        | undefined = (
+        (Array.isArray(projectDetectionResults) && projectDetectionResults) ||
+        []
+      ).find(pdr => pdr.project === project);
       const preset: boolean = await this.getPreset(
         name,
         project,
