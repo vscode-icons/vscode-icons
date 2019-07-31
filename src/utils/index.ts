@@ -13,7 +13,7 @@ import {
 } from '../common/fsAsync';
 import { set } from 'lodash';
 import { homedir, tmpdir } from 'os';
-import { isAbsolute, posix, relative, resolve } from 'path';
+import { isAbsolute, posix, sep, relative, resolve } from 'path';
 import { FileFormat } from '../models';
 
 export class Utils {
@@ -62,10 +62,10 @@ export class Utils {
       return curDir;
     };
     await dirPath
-      .split(posix.sep)
+      .split(sep)
       .reduce(
         callbackFn,
-        Promise.resolve(isAbsolute(dirPath) ? posix.sep : ''),
+        Promise.resolve(isAbsolute(dirPath) ? sep : ''),
       );
   }
 

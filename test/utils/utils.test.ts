@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import * as os from 'os';
 import * as proxyq from 'proxyquire';
 import * as sinon from 'sinon';
+import * as path from 'path';
 import * as fsAsync from '../../src/common/fsAsync';
 import { FileFormat } from '../../src/models';
 import { Utils } from '../../src/utils';
@@ -24,7 +25,7 @@ describe('Utils: tests', function () {
 
     context(`the 'getAppDataDirPath' function`, function () {
       context(`returns the correct 'vscode' path`, function () {
-        context(` when the process platform is`, function () {
+        context(`when the process platform is`, function () {
           let envStub: sinon.SinonStub;
           let platformStub: sinon.SinonStub;
 
@@ -34,34 +35,34 @@ describe('Utils: tests', function () {
           });
 
           it('darwin (macOS)', function () {
-            const path = `${os.homedir()}/Library/Application Support`;
+            const dirPath = `${os.homedir()}/Library/Application Support`;
             platformStub.value('darwin');
 
-            expect(Utils.getAppDataDirPath()).to.be.equal(path);
+            expect(Utils.getAppDataDirPath()).to.be.equal(dirPath);
           });
 
           it('linux', function () {
-            const path = `${os.homedir()}/.config`;
+            const dirPath = `${os.homedir()}/.config`;
             platformStub.value('linux');
 
-            expect(Utils.getAppDataDirPath()).to.be.equal(path);
+            expect(Utils.getAppDataDirPath()).to.be.equal(dirPath);
           });
 
           it('win32 (windows)', function () {
-            const path = 'C:\\Users\\User\\AppData\\Roaming';
+            const dirPath = 'C:\\Users\\User\\AppData\\Roaming';
             envStub.value({
-              APPDATA: path,
+              APPDATA: dirPath,
             });
             platformStub.value('win32');
 
-            expect(Utils.getAppDataDirPath()).to.be.equal(path);
+            expect(Utils.getAppDataDirPath()).to.be.equal(dirPath);
           });
 
           it('NOT implemented', function () {
-            const path = '/var/local';
+            const dirPath = '/var/local';
             platformStub.value('freebsd');
 
-            expect(Utils.getAppDataDirPath()).to.be.equal(path);
+            expect(Utils.getAppDataDirPath()).to.be.equal(dirPath);
           });
         });
       });
@@ -89,37 +90,67 @@ describe('Utils: tests', function () {
     });
 
     context(`the 'createDirectoryRecursively' function`, function () {
-      it('creates a directory and all subdirectories asynchronously', async function () {
-        const mkdirAsyncStub = sandbox.stub(fsAsync, 'mkdirAsync').resolves();
-        const testCase = async (
-          directoryPath: string,
-          dirExists: boolean,
-          expectedCounts: number,
-        ) => {
-          const fileCheck = existsAsyncStub.callsFake(
-            (path: string) =>
-              dirExists || directoryPath.split('/').indexOf(path) !== -1,
-          );
-          const createDirectory = mkdirAsyncStub.resolves();
+      context('creates all directories asynchronously', function () {
+        context(`when the process platform is`, function () {
+          let pathSepStub: sinon.SinonStub;
+          let mkdirAsyncStub: sinon.SinonStub;
 
-          fileCheck.resetHistory();
-          createDirectory.resetHistory();
+          beforeEach(function () {
+            pathSepStub = sandbox.stub(path, 'sep');
+            mkdirAsyncStub = sandbox.stub(fsAsync, 'mkdirAsync').resolves();
+          });
 
-          await Utils.createDirectoryRecursively(directoryPath);
+          const testCase = async (
+            directoryPath: string,
+            dirExists: boolean,
+            expectedCounts: number,
+          ) => {
+            const fileCheck = existsAsyncStub.callsFake(
+              (dirPath: string) =>
+                dirExists ||
+                directoryPath.split(path.sep).indexOf(dirPath) !== -1,
+            );
+            const createDirectory = mkdirAsyncStub.resolves();
 
-          expect(fileCheck.callCount).to.be.equal(
-            dirExists ? expectedCounts + 2 : expectedCounts,
-          );
-          expect(createDirectory.callCount).to.equal(expectedCounts);
-        };
+            fileCheck.resetHistory();
+            createDirectory.resetHistory();
 
-        // Directory Exists
-        await testCase('path/to', true, 0);
-        // Create Directory
-        // - Absolute path
-        await testCase('/path/to', false, 3);
-        // - Relative path
-        await testCase('path/to', false, 2);
+            await Utils.createDirectoryRecursively(directoryPath);
+
+            expect(fileCheck.callCount).to.be.equal(
+              dirExists ? expectedCounts + 2 : expectedCounts,
+            );
+            expect(createDirectory.callCount).to.equal(expectedCounts);
+          };
+
+          it('win32 (windows)', async function () {
+            pathSepStub.value('\\');
+
+            // Directory Exists
+            await testCase('path\\to', true, 0);
+
+            // Create Directory
+            // - Relative path
+            await testCase('.\\path', false, 2);
+
+            // - Absolute path
+            await testCase('C:\\path\\to', false, 3);
+          });
+
+          it('*nix', async function () {
+            pathSepStub.value('/');
+
+            // Directory Exists
+            await testCase('path/to', true, 0);
+
+            // Create Directory
+            // - Relative path
+            await testCase('path/to', false, 2);
+
+            // - Absolute path
+            await testCase('/path/to', false, 3);
+          });
+        });
       });
     });
 

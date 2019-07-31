@@ -25,19 +25,19 @@ describe('Specifications of supported extensions: tests', function () {
       const iconsDirPath = ConfigManager.iconsDir;
 
       context('extension', function () {
-        it('has an associated icon file', function () {
-          files.supported.forEach(async (file: IFileExtension) => {
+        it('has an associated icon file', async function () {
+          for (const supportedFile of files.supported) {
             const filename =
-              `${constants.iconsManifest.fileTypePrefix}${file.icon}` +
+              `${constants.iconsManifest.fileTypePrefix}${supportedFile.icon}` +
               `${constants.iconsManifest.iconSuffix}.${
-                FileFormat[file.format]
+                FileFormat[supportedFile.format]
               }`;
             const iconFilePath = join(iconsDirPath, filename);
 
             const pathExists = await existsAsync(iconFilePath);
 
             expect(pathExists).to.be.true;
-          });
+          }
         });
 
         context('does NOT have', function () {
@@ -83,21 +83,21 @@ describe('Specifications of supported extensions: tests', function () {
         });
 
         context('that has a light theme version', function () {
-          it('has an associated icon file', function () {
-            files.supported
-              .filter((file: IFileExtension) => file.light)
-              .forEach(async (file: IFileExtension) => {
-                const filename = `${
-                  constants.iconsManifest.fileTypeLightPrefix
-                }${file.icon}${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[file.format]
-                }`;
-                const iconFilePath = join(iconsDirPath, filename);
+          it('has an associated icon file', async function () {
+            for (const supportedFile of files.supported.filter(
+              (file: IFileExtension) => file.light,
+            )) {
+              const filename = `${constants.iconsManifest.fileTypeLightPrefix}${
+                supportedFile.icon
+              }${constants.iconsManifest.iconSuffix}.${
+                FileFormat[supportedFile.format]
+              }`;
+              const iconFilePath = join(iconsDirPath, filename);
 
-                const pathExists = await existsAsync(iconFilePath);
+              const pathExists = await existsAsync(iconFilePath);
 
-                expect(pathExists).to.be.true;
-              });
+              expect(pathExists).to.be.true;
+            }
           });
         });
       });
