@@ -1,5 +1,12 @@
 # Change Log
 
+## 9.1.0 (July 29, 2019)
+
+- Enhancement: Updated `Nuxt` icon. ([@Atinux](https://github.com/Atinux) in [#2172](https://github.com/vscode-icons/vscode-icons/pull/2172))
+- Fix: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#2171](https://github.com/vscode-icons/vscode-icons/pull/2171))
+- Fix: Corrected vscode engine version. ([@JimiC](https://github.com/JimiC) in [#2168](https://github.com/vscode-icons/vscode-icons/pull/2168))
+- Enhancement: Support for more `Sequelize` extensions. ([@papb](https://github.com/papb) in [#2166](https://github.com/vscode-icons/vscode-icons/pull/2166))
+
 ## 9.0.0 (July 28, 2019)
 
 - Fix: Use same vscode engine version. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2164](https://github.com/vscode-icons/vscode-icons/pull/2164))
