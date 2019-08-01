@@ -1,5 +1,12 @@
 # Change Log
 
+## 9.2.0 (August 01, 2019)
+
+- Fix: Improved PAD logic. ([@JimiC](https://github.com/JimiC) in [#2183](https://github.com/vscode-icons/vscode-icons/pull/2183))
+- Fix: Fixed custom icons directory detection. ([@JimiC](https://github.com/JimiC) in [#2182](https://github.com/vscode-icons/vscode-icons/pull/2182))
+- Fix: Fixed test cases. ([@JimiC](https://github.com/JimiC) in [#2181](https://github.com/vscode-icons/vscode-icons/pull/2181))
+- Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#2179](https://github.com/vscode-icons/vscode-icons/pull/2179))
+
 ## 9.1.0 (July 29, 2019)
 
 - Enhancement: Updated `Nuxt` icon. ([@Atinux](https://github.com/Atinux) in [#2172](https://github.com/vscode-icons/vscode-icons/pull/2172))
