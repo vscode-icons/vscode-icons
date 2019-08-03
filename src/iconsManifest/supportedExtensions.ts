@@ -1650,6 +1650,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'informix',
+      extensions: [],
+      languages: [languages.informix],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ini',
       extensions: [],
       languages: [languages.ini],
