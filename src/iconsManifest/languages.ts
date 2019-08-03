@@ -167,6 +167,14 @@ export const languages: ILanguageCollection = {
   php: { ids: 'php', defaultExtension: 'php' },
   pip: { ids: 'pip-requirements', defaultExtension: 'requirements.txt' },
   plaintext: { ids: 'plaintext', defaultExtension: 'txt' },
+  platformio: {
+    ids: [
+      'platformio-debug.disassembly',
+      'platformio-debug.memoryview',
+      'platformio-debug.asm',
+    ],
+    defaultExtension: 'dbgasm',
+  },
   plsql: { ids: ['plsql', 'oracle'], defaultExtension: 'ddl' },
   polymer: { ids: 'polymer', defaultExtension: 'polymer' },
   pony: { ids: 'pony', defaultExtension: 'pony' },
