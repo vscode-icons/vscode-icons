@@ -2293,6 +2293,12 @@ export const extensions: IFileCollection = {
       languages: [languages.nim],
       format: FileFormat.svg,
     },
+    {
+      icon: 'ninja',
+      extensions: ['build.ninja'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'njsproj', extensions: ['njsproj'], format: FileFormat.svg },
     {
       icon: 'node',
