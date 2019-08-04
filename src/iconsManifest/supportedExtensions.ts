@@ -2566,7 +2566,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'platformio',
-      extensions: [],
+      extensions: ['platformio.ini'],
+      filename: true,
       languages: [languages.platformio],
       format: FileFormat.svg,
     },
