@@ -31,7 +31,7 @@
   "restart": "Değişikliklerin uygulanması için yeniden başlatın.",
   "ngDetected": "%extensionName%, Angular projesi tespit etti. Yeniden başlatarak Angular simgelerini ektinleştirin.",
   "nonNgDetected": "%extensionName%, Angular olmayan bir proje tespit etti. Yeniden başlatarak Angular simgelerini devre dışı bırakın.",
-  "ngDetectedPresetFalse": "",
+  "ngDetectedPresetFalse": "%extensionName% bir Angular projesi tespit etti, fakat 'preset' ayarı 'false' olarak belirlenmiş. 'preset 'i ayarlardan çıkartmanız şiddetle tavsiye edilir. Yeniden başlatmak, Angular simgelerini devredışı bırakacaktır.",
   "nonNgDetectedPresetTrue": "",
   "nestDetected": "%extensionName%, NestJS projesi tespit etti. Yeniden başlatarak NestJS simgelerini ektinleştirin.",
   "nonNestDetected": "%extensionName%, NestJS olmayan bir proje tespit etti. Yeniden başlatarak NestJS simgelerini devre dışı bırakın.",
@@ -39,6 +39,6 @@
   "nonNestDetectedPresetTrue": "",
   "projectDetectionReset": "Proje Algılama varsayılanları sıfırlandı.",
   "conflictProjectsDetected": "",
-  "unsupportedVersion": "",
-  "integrityFailure": ""
+  "unsupportedVersion": "Desteklenmeyen 'VS Code' versiyonu:",
+  "integrityFailure": "Eklentinin bütünlüğünde uyumsuzluklar mevcut. Tasarlandığı gibi çalışması garanti EDİLEMEZ."
 }
