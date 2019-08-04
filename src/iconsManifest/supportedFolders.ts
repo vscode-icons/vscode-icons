@@ -229,6 +229,12 @@ export const extensions: IFolderCollection = {
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
     { icon: 'json', extensions: ['json'], format: FileFormat.svg },
     {
+      icon: 'json_official',
+      extensions: ['json'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'kubernetes',
       extensions: [
         'kubernetes',
