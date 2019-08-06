@@ -1680,6 +1680,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'janet',
+      extensions: [],
+      languages: [languages.janet],
+      format: FileFormat.svg,
+    },
     { icon: 'jar', extensions: ['jar'], format: FileFormat.svg },
     {
       icon: 'java',

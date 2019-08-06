@@ -111,6 +111,7 @@ export const languages: ILanguageCollection = {
   innosetup: { ids: 'innosetup', defaultExtension: 'iss' },
   io: { ids: 'io', defaultExtension: 'io' },
   latex: { ids: 'latex', defaultExtension: 'tex' },
+  janet: { ids: 'janet', defaultExtension: 'janet' },
   java: { ids: 'java', defaultExtension: 'java' },
   javascript: { ids: 'javascript', defaultExtension: 'js' },
   javascriptreact: { ids: 'javascriptreact', defaultExtension: 'jsx' },
