@@ -49,6 +49,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    {
+      icon: 'ada',
+      extensions: [],
+      languages: [languages.ada],
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
