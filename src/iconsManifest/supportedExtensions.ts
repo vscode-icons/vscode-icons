@@ -3609,6 +3609,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wendi',
+      extensions: ['wendifile.yaml', 'wendifile.yml'],
+      filename: true,
+      languages: [languages.wendi],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wercker',
       extensions: ['wercker.yml'],
       filename: true,
