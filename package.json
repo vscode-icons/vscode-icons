@@ -304,7 +304,7 @@
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "proxyquire": "^2.1.1",
-    "rimraf": "^2.6.3",
+    "rimraf": "^3.0.0",
     "sinon": "^7.3.2",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
