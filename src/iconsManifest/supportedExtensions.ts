@@ -452,6 +452,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ats',
+      extensions: [],
+      languages: [languages.ats],
+      format: FileFormat.svg,
+    },
+    {
       // https://en.wikipedia.org/wiki/Audio_file_format
       icon: 'audio',
       extensions: [
@@ -1647,6 +1653,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'infopath',
       extensions: ['infopathxml', 'xsn', 'xsf', 'xtp2'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'informix',
+      extensions: [],
+      languages: [languages.informix],
       format: FileFormat.svg,
     },
     {
