@@ -14,6 +14,7 @@ export const languages: ILanguageCollection = {
   asciidoc: { ids: 'asciidoc', defaultExtension: 'adoc' },
   asp: { ids: ['asp', 'asp (html)'], defaultExtension: 'asp' },
   assembly: { ids: ['arm', 'asm'], defaultExtension: 'asm' },
+  ats: { ids: ['ats'], defaultExtension: 'ats' },
   autohotkey: { ids: 'ahk', defaultExtension: 'ahk' },
   autoit: { ids: 'autoit', defaultExtension: 'au3' },
   avro: { ids: 'avro', defaultExtension: 'avcs' },
