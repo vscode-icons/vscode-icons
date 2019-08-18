@@ -89,6 +89,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   informix: ILanguage;
   ink: ILanguage;
   innosetup: ILanguage;
+  janet: ILanguage;
   jekyll: ILanguage;
   jenkins: ILanguage;
   jinja: ILanguage;
