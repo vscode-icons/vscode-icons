@@ -230,9 +230,9 @@ export const extensions: IFolderCollection = {
     {
       icon: 'kubernetes',
       extensions: [
-        'kubernetes', 
-        'k8s',        
-        'kube',        
+        'kubernetes',
+        'k8s',
+        'kube',
         'kuber',
         '.kubernetes',
         '.k8s',
@@ -328,6 +328,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'paket', extensions: ['.paket'], format: FileFormat.svg },
     { icon: 'php', extensions: ['php'], format: FileFormat.svg },
+    {
+      icon: 'platformio',
+      extensions: ['.pio', '.pioenvs'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'plugin',
       extensions: [

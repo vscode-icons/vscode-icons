@@ -49,6 +49,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    {
+      icon: 'ada',
+      extensions: [],
+      languages: [languages.ada],
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
@@ -449,6 +456,12 @@ export const extensions: IFileCollection = {
       icon: 'assembly',
       extensions: [],
       languages: [languages.assembly],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ats',
+      extensions: [],
+      languages: [languages.ats],
       format: FileFormat.svg,
     },
     {
@@ -1650,6 +1663,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'informix',
+      extensions: [],
+      languages: [languages.informix],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ini',
       extensions: [],
       languages: [languages.ini],
@@ -1678,6 +1697,12 @@ export const extensions: IFileCollection = {
       icon: 'jake',
       extensions: ['jakefile', 'jakefile.js'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'janet',
+      extensions: [],
+      languages: [languages.janet],
       format: FileFormat.svg,
     },
     { icon: 'jar', extensions: ['jar'], format: FileFormat.svg },
@@ -2293,6 +2318,12 @@ export const extensions: IFileCollection = {
       languages: [languages.nim],
       format: FileFormat.svg,
     },
+    {
+      icon: 'ninja',
+      extensions: ['build.ninja'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'njsproj', extensions: ['njsproj'], format: FileFormat.svg },
     {
       icon: 'node',
@@ -2562,6 +2593,13 @@ export const extensions: IFileCollection = {
       extensions: ['pipfile', 'pipfile.lock'],
       languages: [languages.pip],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'platformio',
+      extensions: ['platformio.ini'],
+      filename: true,
+      languages: [languages.platformio],
       format: FileFormat.svg,
     },
     {
