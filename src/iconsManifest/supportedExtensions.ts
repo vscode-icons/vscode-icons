@@ -384,6 +384,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'affectscript',
+      extensions: [],
+      languages: [languages.affectscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ansible',
       extensions: [],
       languages: [languages.ansible],
