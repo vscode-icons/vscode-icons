@@ -2596,6 +2596,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'platformio',
+      extensions: ['platformio.ini'],
+      filename: true,
+      languages: [languages.platformio],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'plantuml',
       extensions: ['pu', 'plantuml', 'iuml', 'puml'],
       format: FileFormat.svg,
