@@ -107,6 +107,7 @@ export const languages: ILanguageCollection = {
   http: { ids: 'http', defaultExtension: 'http' },
   icl: { ids: 'icl', defaultExtension: 'icl' },
   imba: { ids: 'imba', defaultExtension: 'imba' },
+  informix: { ids: '4GL', defaultExtension: '4gl' },
   ini: { ids: 'ini', defaultExtension: 'ini' },
   ink: { ids: 'ink', defaultExtension: 'ink' },
   innosetup: { ids: 'innosetup', defaultExtension: 'iss' },
