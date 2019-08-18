@@ -14,6 +14,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   applescript: ILanguage;
   asciidoc: ILanguage;
   asp: ILanguage;
+  ats: ILanguage;
   assembly: ILanguage;
   autohotkey: ILanguage;
   autoit: ILanguage;
@@ -85,6 +86,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   http: ILanguage;
   icl: ILanguage;
   imba: ILanguage;
+  informix: ILanguage;
   ink: ILanguage;
   innosetup: ILanguage;
   jekyll: ILanguage;
