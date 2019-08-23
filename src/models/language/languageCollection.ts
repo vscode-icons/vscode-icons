@@ -132,6 +132,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   pddlplan: ILanguage;
   pddlhappenings: ILanguage;
   pgsql: ILanguage;
+  pine: ILanguage;
   pip: ILanguage;
   platformio: ILanguage;
   plsql: ILanguage;
