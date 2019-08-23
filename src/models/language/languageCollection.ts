@@ -3,6 +3,8 @@ import { INativeLanguageCollection } from './nativeLanguageCollection';
 
 export interface ILanguageCollection extends INativeLanguageCollection {
   actionscript: ILanguage;
+  ada: ILanguage;
+  affectscript: ILanguage;
   al: ILanguage;
   ansible: ILanguage;
   antlr: ILanguage;
@@ -23,6 +25,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   azurepipelines: ILanguage;
   ballerina: ILanguage;
   bazel: ILanguage;
+  befunge: ILanguage;
   bibtex: ILanguage;
   biml: ILanguage;
   blade: ILanguage;
@@ -86,8 +89,10 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   http: ILanguage;
   icl: ILanguage;
   imba: ILanguage;
+  informix: ILanguage;
   ink: ILanguage;
   innosetup: ILanguage;
+  janet: ILanguage;
   jekyll: ILanguage;
   jenkins: ILanguage;
   jinja: ILanguage;
@@ -127,7 +132,9 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   pddlplan: ILanguage;
   pddlhappenings: ILanguage;
   pgsql: ILanguage;
+  pine: ILanguage;
   pip: ILanguage;
+  platformio: ILanguage;
   plsql: ILanguage;
   polymer: ILanguage;
   pony: ILanguage;

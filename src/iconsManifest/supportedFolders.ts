@@ -336,6 +336,11 @@ export const extensions: IFolderCollection = {
     { icon: 'paket', extensions: ['.paket'], format: FileFormat.svg },
     { icon: 'php', extensions: ['php'], format: FileFormat.svg },
     {
+      icon: 'platformio',
+      extensions: ['.pio', '.pioenvs'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'plugin',
       extensions: [
         'plugin',
