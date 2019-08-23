@@ -4,6 +4,7 @@ import { INativeLanguageCollection } from './nativeLanguageCollection';
 export interface ILanguageCollection extends INativeLanguageCollection {
   actionscript: ILanguage;
   ada: ILanguage;
+  affectscript: ILanguage;
   al: ILanguage;
   ansible: ILanguage;
   antlr: ILanguage;
