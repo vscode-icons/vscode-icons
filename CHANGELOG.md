@@ -1,5 +1,20 @@
 # Change Log
 
+## 9.3.0 (August 23, 2019)
+
+- Feature: Support for `Befunge93` & `Befunge98`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2209](https://github.com/vscode-icons/vscode-icons/pull/2209))
+- Feature: Support for `Pine Script`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2208](https://github.com/vscode-icons/vscode-icons/pull/2208))
+- Enhancement: Fix white bleeding on `Storybook` icon. ([@ghengeveld](https://github.com/ghengeveld) in [#2204](https://github.com/vscode-icons/vscode-icons/pull/2204))
+- Feature: Support for `AffeScript`. ([@dsa28s](https://github.com/dsa28s) in [#2203](https://github.com/vscode-icons/vscode-icons/pull/2203))
+- Feature: Support for `Ada`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2197](https://github.com/vscode-icons/vscode-icons/pull/2197))
+- Feature: Support for `Janet`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2196](https://github.com/vscode-icons/vscode-icons/pull/2196))
+- Feature: Support for `Ninja`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2193](https://github.com/vscode-icons/vscode-icons/pull/2193))
+- Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#2191](https://github.com/vscode-icons/vscode-icons/pull/2191))
+- Feature: Support for `Informix 4GL`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2190](https://github.com/vscode-icons/vscode-icons/pull/2190))
+- Feature: Support for `json` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2189](https://github.com/vscode-icons/vscode-icons/pull/2189))
+- Feature: Support for `PlatformIO`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2188](https://github.com/vscode-icons/vscode-icons/pull/2188))
+- Feature: Support for `ATS`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2187](https://github.com/vscode-icons/vscode-icons/pull/2187))
+
 ## 9.2.0 (August 01, 2019)
 
 - Fix: Improved PAD logic. ([@JimiC](https://github.com/JimiC) in [#2183](https://github.com/vscode-icons/vscode-icons/pull/2183))
