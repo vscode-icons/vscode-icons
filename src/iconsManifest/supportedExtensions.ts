@@ -600,6 +600,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'befunge',
+      extensions: [],
+      languages: [languages.befunge],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'biml',
       extensions: [],
       languages: [languages.biml],
