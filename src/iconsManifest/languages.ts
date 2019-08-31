@@ -3,6 +3,7 @@ import { ILanguageCollection } from '../models';
 export const languages: ILanguageCollection = {
   actionscript: { ids: 'nextgenas', defaultExtension: 'as' },
   ada: { ids: 'ada', defaultExtension: 'ada' },
+  affectscript: { ids: 'affectscript', defaultExtension: 'affect' },
   al: { ids: 'al', defaultExtension: 'al' },
   ansible: { ids: 'ansible', defaultExtension: 'ansible' },
   antlr: { ids: 'antlr', defaultExtension: 'g4' },
@@ -27,6 +28,7 @@ export const languages: ILanguageCollection = {
   ballerina: { ids: 'ballerina', defaultExtension: 'bal' },
   bat: { ids: 'bat', defaultExtension: 'bat' },
   bazel: { ids: 'bazel', defaultExtension: 'bzl' },
+  befunge: { ids: ['befunge', 'befunge98'], defaultExtension: 'bf' },
   bibtex: { ids: 'bibtex', defaultExtension: 'bib' },
   biml: { ids: 'biml', defaultExtension: 'biml' },
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
@@ -169,6 +171,7 @@ export const languages: ILanguageCollection = {
   perl6: { ids: 'perl6', defaultExtension: 'pl6' },
   pgsql: { ids: 'pgsql', defaultExtension: 'pgsql' },
   php: { ids: 'php', defaultExtension: 'php' },
+  pine: { ids: 'pine', defaultExtension: 'pine' },
   pip: { ids: 'pip-requirements', defaultExtension: 'requirements.txt' },
   plaintext: { ids: 'plaintext', defaultExtension: 'txt' },
   platformio: {

@@ -384,6 +384,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'affectscript',
+      extensions: [],
+      languages: [languages.affectscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ansible',
       extensions: [],
       languages: [languages.ansible],
@@ -591,6 +597,12 @@ export const extensions: IFileCollection = {
       extensions: ['.bazelrc', 'bazel.rc', 'bazel.bazelrc'],
       filename: true,
       languages: [languages.bazel],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'befunge',
+      extensions: [],
+      languages: [languages.befunge],
       format: FileFormat.svg,
     },
     {
@@ -2586,6 +2598,12 @@ export const extensions: IFileCollection = {
       icon: 'phraseapp',
       extensions: ['.phraseapp.yml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pine',
+      extensions: [],
+      languages: [languages.pine],
       format: FileFormat.svg,
     },
     {
