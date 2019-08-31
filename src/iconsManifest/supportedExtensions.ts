@@ -3551,6 +3551,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'vlang',
+      extensions: [],
+      languages: [languages.vlang],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'volt',
       extensions: [],
       languages: [languages.volt],
