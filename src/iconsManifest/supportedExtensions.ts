@@ -3227,6 +3227,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'styled',
+      extensions: [],
+      languages: [languages.styled],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'stylus',
       extensions: [],
       languages: [languages.stylus],

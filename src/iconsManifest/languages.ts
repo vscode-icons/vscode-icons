@@ -235,6 +235,7 @@ export const languages: ILanguageCollection = {
   stencil: { ids: 'stencil', defaultExtension: 'stencil' },
   stencilhtml: { ids: 'stencil-html', defaultExtension: 'html.stencil' },
   stylable: { ids: 'stylable', defaultExtension: 'st.css' },
+  styled: { ids: 'source.css.styled', defaultExtension: 'styled' },
   stylus: { ids: 'stylus', defaultExtension: 'styl' },
   svelte: { ids: 'svelte', defaultExtension: 'svelte' },
   swagger: { ids: ['Swagger', 'swagger'], defaultExtension: 'swagger' },
