@@ -10,7 +10,7 @@
   "command.foldersAllDefaultIconPreset.title": "Seçilen Bir Klasörün Simgesini Değiştir (Kullanıcı Düzeyi)",
   "command.hideExplorerArrowsPreset.title": "Explorer Klasör Oklarının Görünürlüğünü Değiştir (Kullanıcı Düzeyi)",
   "command.restoreIcons.title": "Varsayılan Simge Ayarlarını Geri Yükle",
-  "command.resetProjectDetectionDefaults.title": "Proje Algılama Ayarlarını Sıfırla",
+  "command.resetProjectDetectionDefaults.title": "Proje Algılama Varsayılanlarını Sıfırla",
   "configuration.title": "vscode-icons ayarları",
   "configuration.dontShowNewVersionMessage.description": "'true' olarak ayarlanırsa, yeni sürüm mesajı artık gösterilmez.",
   "configuration.dontShowConfigManuallyChangedMessage.description": "'true' olarak ayarlanırsa, konfigürasyonları manuel olarak değiştirirken, yeniden başlat mesajı gösterilmeyecek.",
