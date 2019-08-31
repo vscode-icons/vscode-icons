@@ -176,6 +176,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   stencil: ILanguage;
   stencilhtml: ILanguage;
   stylable: ILanguage;
+  styled: ILanguage;
   stylus: ILanguage;
   svelte: ILanguage;
   swagger: ILanguage;
