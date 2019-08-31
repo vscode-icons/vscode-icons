@@ -3605,6 +3605,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'vueconfig',
+      extensions: ['.vuerc', 'vue.config.js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wallaby',
       extensions: [],
       filenamesGlob: ['wallaby', 'wallaby.conf', '.wallaby', '.wallaby.conf'],
