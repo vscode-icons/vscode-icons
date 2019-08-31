@@ -140,12 +140,12 @@ describe('Bundler: tests', function () {
 
     context(`function 'copyPackageResources'`, function () {
       it(`copies all package resource files`, async function () {
-        await Bundler.copyPackageResources(
-          join(__dirname, '../../../locale/package'),
-          '.',
-        );
+        const localePackagePath = join(__dirname, '../../../locale/package');
+        const packageFiles = await fsAsync.readdirAsync(localePackagePath);
 
-        expect(writeFileAsyncStub.callCount).to.equal(10);
+        await Bundler.copyPackageResources(localePackagePath, '.');
+
+        expect(writeFileAsyncStub.callCount).to.equal(packageFiles.length);
       });
 
       context(`when environment is`, function () {
