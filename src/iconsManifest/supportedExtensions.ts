@@ -709,6 +709,13 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'c3',
+      extensions: [],
+      languages: [languages.c],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'c_al',
       extensions: [],
       languages: [languages.c_al],
@@ -941,6 +948,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    {
+      icon: 'cpp3',
+      extensions: [],
+      languages: [languages.cpp],
+      format: FileFormat.svg,
+      disabled: true,
+    },
     { icon: 'cppheader', extensions: ['hpp'], format: FileFormat.svg },
     {
       icon: 'crowdin',
@@ -960,6 +974,13 @@ export const extensions: IFileCollection = {
       extensions: ['csx'],
       languages: [languages.csharp],
       format: FileFormat.svg,
+    },
+    {
+      icon: 'csharp2',
+      extensions: ['csx'],
+      languages: [languages.csharp],
+      format: FileFormat.svg,
+      disabled: true,
     },
     { icon: 'csproj', extensions: ['csproj'], format: FileFormat.svg },
     {
