@@ -3248,6 +3248,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'styled',
+      extensions: [],
+      languages: [languages.styled],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'stylus',
       extensions: [],
       languages: [languages.stylus],
@@ -3569,6 +3575,12 @@ export const extensions: IFileCollection = {
       extensions: ['.vimrc', '.gvimrc'],
       filename: true,
       languages: [languages.viml],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'vlang',
+      extensions: [],
+      languages: [languages.vlang],
       format: FileFormat.svg,
     },
     {

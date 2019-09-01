@@ -176,6 +176,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   stencil: ILanguage;
   stencilhtml: ILanguage;
   stylable: ILanguage;
+  styled: ILanguage;
   stylus: ILanguage;
   svelte: ILanguage;
   swagger: ILanguage;
@@ -199,6 +200,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   verilog: ILanguage;
   vhdl: ILanguage;
   viml: ILanguage;
+  vlang: ILanguage;
   volt: ILanguage;
   vue: ILanguage;
   wasm: ILanguage;
