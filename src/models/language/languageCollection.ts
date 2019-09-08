@@ -87,6 +87,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   homeassistant: ILanguage;
   hosts: ILanguage;
   http: ILanguage;
+  hunspell: ILanguage;
   icl: ILanguage;
   imba: ILanguage;
   informix: ILanguage;
