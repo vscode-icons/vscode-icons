@@ -3,6 +3,7 @@ import { ILanguageCollection } from '../models';
 export const languages: ILanguageCollection = {
   actionscript: { ids: 'nextgenas', defaultExtension: 'as' },
   ada: { ids: 'ada', defaultExtension: 'ada' },
+  advpl: { ids: 'advpl', defaultExtension: 'prw' },
   affectscript: { ids: 'affectscript', defaultExtension: 'affect' },
   al: { ids: 'al', defaultExtension: 'al' },
   ansible: { ids: 'ansible', defaultExtension: 'ansible' },
