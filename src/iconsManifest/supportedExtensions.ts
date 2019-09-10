@@ -1733,7 +1733,7 @@ export const extensions: IFileCollection = {
         'jest.config.json',
         '.jestrc',
         '.jestrc.js',
-        '.jestrc.json'
+        '.jestrc.json',
       ],
       filename: true,
       format: FileFormat.svg,
