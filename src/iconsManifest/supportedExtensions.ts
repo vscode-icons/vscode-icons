@@ -1670,6 +1670,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'inc',
+      extensions: ['inc', 'include'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'infopath',
       extensions: ['infopathxml', 'xsn', 'xsf', 'xtp2'],
       format: FileFormat.svg,
