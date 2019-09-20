@@ -125,7 +125,20 @@ export const extensions: IFolderCollection = {
     { icon: 'debian', extensions: ['debian'], format: FileFormat.svg },
     {
       icon: 'dist',
-      extensions: ['dist', 'out', 'export', 'build', 'release', 'target'],
+      extensions: [
+        'dist',
+        'dists',
+        'out',
+        'outs',
+        'export',
+        'exports',
+        'build',
+        'builds',
+        'release',
+        'releases',
+        'target',
+        'targets',
+      ],
       format: FileFormat.svg,
     },
     {
