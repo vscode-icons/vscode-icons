@@ -1,11 +1,10 @@
+import { coerce, gte, parse } from 'semver';
+import * as manifest from '../../../package.json';
 import * as models from '../models';
 import { Utils } from '../utils';
-import { gte } from 'semver';
-import * as manifest from '../../../package.json';
 
 export class VSCodeManager implements models.IVSCodeManager {
   private appUserDirPath: string;
-  private supportedVersion: string = '1.28.1';
   private supportsThemeReloadVersion: string = '1.34.0';
 
   constructor(
@@ -53,7 +52,11 @@ export class VSCodeManager implements models.IVSCodeManager {
   }
 
   public get isSupportedVersion(): boolean {
-    return gte(this.version, this.supportedVersion);
+    const minVersion = (
+      (manifest && manifest.engines && coerce(manifest.engines.vscode)) ||
+      parse('1.0.0')
+    ).version;
+    return gte(this.version, minVersion);
   }
 
   public getWorkspacePaths(): string[] {
