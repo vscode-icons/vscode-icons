@@ -1648,6 +1648,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hunspell',
+      extensions: [],
+      languages: [languages.hunspell],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'husky',
       extensions: ['.huskyrc'],
       filenamesGlob: ['.huskyrc'],
