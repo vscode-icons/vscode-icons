@@ -2740,16 +2740,19 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.powershell],
       format: FileFormat.svg,
+      disabled: true,
     },
     {
       icon: 'powershell_psm2',
       extensions: ['psm1'],
       format: FileFormat.svg,
+      disabled: true,
     },
     {
       icon: 'powershell_psd2',
       extensions: ['psd1'],
       format: FileFormat.svg,
+      disabled: true,
     },
     {
       icon: 'precommit',
