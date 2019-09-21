@@ -2,11 +2,12 @@
 // tslint:disable no-unused-expression
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
+import * as manifest from '../../../package.json';
 import { IVSCodeManager } from '../../src/models';
 import { Utils } from '../../src/utils';
-import { vscode } from '../fixtures/vscode';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
+import { vscode } from '../fixtures/vscode';
 
 describe('VSCodeManager: tests', function () {
   context('ensures that', function () {
@@ -87,14 +88,45 @@ describe('VSCodeManager: tests', function () {
       context(`when editor version`, function () {
         context(`is NOT supported`, function () {
           it(`returns 'false'`, function () {
-            vscode.version = '1.28.0';
+            vscode.version = '1.26.0';
 
             expect(vscodeManager.isSupportedVersion).to.be.false;
           });
+        });
 
-          context(`is supported`, function () {
+        context(`is supported`, function () {
+          it(`returns 'true'`, function () {
+            vscode.version = '1.34.0';
+
+            expect(vscodeManager.isSupportedVersion).to.be.true;
+          });
+        });
+      });
+
+      context(`when minimum supported version`, function () {
+        context(`can NOT be determined`, function () {
+          let manifestVSCodeEngineOriginalValue: string;
+
+          beforeEach(function () {
+            manifestVSCodeEngineOriginalValue = manifest.engines.vscode;
+            vscode.version = '1.26.0';
+          });
+
+          afterEach(function () {
+            manifest.engines = { vscode };
+            manifest.engines.vscode = manifestVSCodeEngineOriginalValue;
+          });
+
+          context(`by the 'vscode' property`, function () {
             it(`returns 'true'`, function () {
-              vscode.version = '1.34.0';
+              manifest.engines.vscode = undefined;
+
+              expect(vscodeManager.isSupportedVersion).to.be.true;
+            });
+          });
+          context(`by the 'engines' property`, function () {
+            it(`returns 'true'`, function () {
+              manifest.engines = undefined;
 
               expect(vscodeManager.isSupportedVersion).to.be.true;
             });
