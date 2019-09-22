@@ -1,7 +1,7 @@
 # vscode-icons
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Installs](https://vsmarketplacebadge.apphb.com/installs/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
 [![Build Status](https://travis-ci.org/vscode-icons/vscode-icons.svg?branch=master)](https://travis-ci.org/vscode-icons/vscode-icons)
