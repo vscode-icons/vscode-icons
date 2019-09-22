@@ -2726,6 +2726,35 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'powershell_format',
+      extensions: ['format.ps1xml'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'powershell_types',
+      extensions: ['types.ps1xml'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'powershell2',
+      extensions: [],
+      languages: [languages.powershell],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'powershell_psm2',
+      extensions: ['psm1'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'powershell_psd2',
+      extensions: ['psd1'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'precommit',
       extensions: ['.pre-commit-config.yaml'],
       filename: true,
