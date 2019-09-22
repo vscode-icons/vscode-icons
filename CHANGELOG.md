@@ -1,5 +1,22 @@
 # Change Log
 
+## 9.4.0 (September 21, 2019)
+
+- Enhancement: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#2240](https://github.com/vscode-icons/vscode-icons/pull/2240))
+- Enhancement: Added more `Jest` extensions. ([@9KwHCUDP](https://github.com/9KwHCUDP) in [#2237](https://github.com/vscode-icons/vscode-icons/pull/2237))
+- Enhancement: Added `pkg` to `packages` folder. ([@thiloilg](https://github.com/thiloilg) in [#2236](https://github.com/vscode-icons/vscode-icons/pull/2236))
+- Enhancement: Added new extensions to `dist` folder. ([@3GOMESz](https://github.com/3GOMESz) in [#2234](https://github.com/vscode-icons/vscode-icons/pull/2234))
+- Feature: Support for `Hunspell`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2233](https://github.com/vscode-icons/vscode-icons/pull/2233))
+- Enhancement: Fix `GitHub` folder icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2232](https://github.com/vscode-icons/vscode-icons/pull/2232))
+- Feature: Support for `TOTVS`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2231](https://github.com/vscode-icons/vscode-icons/pull/2231))
+- Feature: Support for `include`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2230](https://github.com/vscode-icons/vscode-icons/pull/2230))
+- Fix: Fixed minimum supported editor version. ([@JimiC](https://github.com/JimiC) in [#2223](https://github.com/vscode-icons/vscode-icons/pull/2223))
+- Feature: Support for `V`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2221](https://github.com/vscode-icons/vscode-icons/pull/2221))
+- Feature: Support for `Styled Components`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2220](https://github.com/vscode-icons/vscode-icons/pull/2220))
+- Feature: Support for `Vue config`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2219](https://github.com/vscode-icons/vscode-icons/pull/2219))
+- Enhancement: Update `blade` files with `Laravel` logo. ([vicainelli](https://github.com/vicainelli) in [#2217](https://github.com/vscode-icons/vscode-icons/pull/2217))
+- Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#2214](https://github.com/vscode-icons/vscode-icons/pull/2214))
+
 ## 9.3.0 (August 23, 2019)
 
 - Feature: Support for `Befunge93` & `Befunge98`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2209](https://github.com/vscode-icons/vscode-icons/pull/2209))

@@ -56,6 +56,12 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'advpl',
+      extensions: [],
+      languages: [languages.advpl],
+      format: FileFormat.svg,
+    },
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
@@ -1663,6 +1669,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hunspell',
+      extensions: [],
+      languages: [languages.hunspell],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'husky',
       extensions: ['.huskyrc'],
       filenamesGlob: ['.huskyrc'],
@@ -1688,6 +1700,11 @@ export const extensions: IFileCollection = {
       icon: 'imba',
       extensions: [],
       languages: [languages.imba],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'inc',
+      extensions: ['inc', 'include'],
       format: FileFormat.svg,
     },
     {
@@ -1753,6 +1770,8 @@ export const extensions: IFileCollection = {
         'jest.json',
         'jest.config.json',
         '.jestrc',
+        '.jestrc.js',
+        '.jestrc.json',
       ],
       filename: true,
       format: FileFormat.svg,
@@ -2726,6 +2745,35 @@ export const extensions: IFileCollection = {
       icon: 'powershell_psd',
       extensions: ['psd1'],
       format: FileFormat.svg,
+    },
+    {
+      icon: 'powershell_format',
+      extensions: ['format.ps1xml'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'powershell_types',
+      extensions: ['types.ps1xml'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'powershell2',
+      extensions: [],
+      languages: [languages.powershell],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'powershell_psm2',
+      extensions: ['psm1'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'powershell_psd2',
+      extensions: ['psd1'],
+      format: FileFormat.svg,
+      disabled: true,
     },
     {
       icon: 'precommit',
