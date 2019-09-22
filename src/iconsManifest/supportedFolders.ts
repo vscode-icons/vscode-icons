@@ -160,6 +160,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'favicon',
+      extensions: ['favicon', 'favicons'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
       format: FileFormat.svg,
