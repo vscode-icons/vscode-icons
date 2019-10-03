@@ -79,7 +79,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'cli',
-      extensions: ['cli', 'command', 'commands', 'commandline', 'console'],
+      extensions: ['cli', 'cmd', 'command', 'commands', 'commandline', 'console'],
       format: FileFormat.svg,
     },
     { icon: 'client', extensions: ['client'], format: FileFormat.svg },
