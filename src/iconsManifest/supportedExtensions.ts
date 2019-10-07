@@ -1504,7 +1504,12 @@ export const extensions: IFileCollection = {
       languages: [languages.godot],
       format: FileFormat.svg,
     },
-    { icon: 'gradle', extensions: ['gradle'], format: FileFormat.svg },
+    {
+      icon: 'gradle',
+      extensions: ['gradle'],
+      format: FileFormat.svg,
+      light: true,
+    },
     {
       icon: 'graphql',
       extensions: ['.gqlconfig'],
