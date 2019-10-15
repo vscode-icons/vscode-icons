@@ -315,7 +315,7 @@
   "dependencies": {
     "inversify": "^5.0.1",
     "lodash": "^4.17.15",
-    "open": "^6.4.0",
+    "open": "^7.0.0",
     "nsri": "^4.5.1",
     "reflect-metadata": "^0.1.13",
     "semver": "^6.3.0"
