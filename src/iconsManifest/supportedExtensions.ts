@@ -3022,6 +3022,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'razzle',
+      extensions: [],
+      filenamesGlob: ['razzle.config'],
+      extensionsGlob: ['js'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'reactjs',
       extensions: [],
       languages: [languages.javascriptreact],
