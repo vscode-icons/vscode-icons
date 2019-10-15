@@ -79,7 +79,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'cli',
-      extensions: ['cli', 'command', 'commands', 'commandline', 'console'],
+      extensions: ['cli', 'cmd', 'command', 'commands', 'commandline', 'console'],
       format: FileFormat.svg,
     },
     { icon: 'client', extensions: ['client'], format: FileFormat.svg },
@@ -183,6 +183,12 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'github', extensions: ['.github'], format: FileFormat.svg },
     { icon: 'gitlab', extensions: ['.gitlab'], format: FileFormat.svg },
+    {
+      icon: 'gradle',
+      extensions: ['gradle', '.gradle'],
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
     { icon: 'grunt', extensions: ['grunt'], format: FileFormat.svg },
     {
