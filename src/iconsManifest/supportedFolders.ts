@@ -125,7 +125,20 @@ export const extensions: IFolderCollection = {
     { icon: 'debian', extensions: ['debian'], format: FileFormat.svg },
     {
       icon: 'dist',
-      extensions: ['dist', 'out', 'export', 'build', 'release', 'target'],
+      extensions: [
+        'dist',
+        'dists',
+        'out',
+        'outs',
+        'export',
+        'exports',
+        'build',
+        'builds',
+        'release',
+        'releases',
+        'target',
+        'targets',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -144,6 +157,11 @@ export const extensions: IFolderCollection = {
       icon: 'electron',
       extensions: ['electron'],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'favicon',
+      extensions: ['favicon', 'favicons'],
       format: FileFormat.svg,
     },
     {
@@ -282,6 +300,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
+    {
+      icon: 'memcached',
+      extensions: ['memcached', '.memcached'],
+      format: FileFormat.svg,
+    },
     { icon: 'middleware', extensions: ['middleware'], format: FileFormat.svg },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
@@ -330,7 +353,7 @@ export const extensions: IFolderCollection = {
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
     {
       icon: 'package',
-      extensions: ['package', 'packages', '.package', '.packages'],
+      extensions: ['package', 'packages', '.package', '.packages', 'pkg'],
       format: FileFormat.svg,
     },
     { icon: 'paket', extensions: ['.paket'], format: FileFormat.svg },

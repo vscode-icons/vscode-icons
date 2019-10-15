@@ -4,6 +4,7 @@ import { INativeLanguageCollection } from './nativeLanguageCollection';
 export interface ILanguageCollection extends INativeLanguageCollection {
   actionscript: ILanguage;
   ada: ILanguage;
+  advpl: ILanguage;
   affectscript: ILanguage;
   al: ILanguage;
   ansible: ILanguage;
@@ -87,6 +88,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   homeassistant: ILanguage;
   hosts: ILanguage;
   http: ILanguage;
+  hunspell: ILanguage;
   icl: ILanguage;
   imba: ILanguage;
   informix: ILanguage;

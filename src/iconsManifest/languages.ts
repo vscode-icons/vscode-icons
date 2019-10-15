@@ -3,6 +3,7 @@ import { ILanguageCollection } from '../models';
 export const languages: ILanguageCollection = {
   actionscript: { ids: 'nextgenas', defaultExtension: 'as' },
   ada: { ids: 'ada', defaultExtension: 'ada' },
+  advpl: { ids: 'advpl', defaultExtension: 'prw' },
   affectscript: { ids: 'affectscript', defaultExtension: 'affect' },
   al: { ids: 'al', defaultExtension: 'al' },
   ansible: { ids: 'ansible', defaultExtension: 'ansible' },
@@ -108,6 +109,7 @@ export const languages: ILanguageCollection = {
   hosts: { ids: 'hosts', defaultExtension: 'hosts' },
   html: { ids: 'html', defaultExtension: 'html' },
   http: { ids: 'http', defaultExtension: 'http' },
+  hunspell: { ids: ['hunspell.aff', 'hunspell.dic'], defaultExtension: 'aff' },
   icl: { ids: 'icl', defaultExtension: 'icl' },
   imba: { ids: 'imba', defaultExtension: 'imba' },
   informix: { ids: '4GL', defaultExtension: '4gl' },
