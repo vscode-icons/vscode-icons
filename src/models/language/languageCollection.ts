@@ -183,6 +183,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   svelte: ILanguage;
   swagger: ILanguage;
   swig: ILanguage;
+  systemd: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
   templatetoolkit: ILanguage;

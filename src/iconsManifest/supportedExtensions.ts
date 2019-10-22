@@ -3420,6 +3420,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'systemd',
+      extensions: [],
+      languages: [languages.systemd],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'systemverilog',
       extensions: [],
       languages: [languages.systemverilog],
