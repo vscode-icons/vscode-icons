@@ -2131,7 +2131,7 @@ export const extensions: IFileCollection = {
         'xvc',
       ],
       languages: [languages.matlab],
-      format: FileFormat.png,
+      format: FileFormat.svg,
     },
     {
       icon: 'maxscript',
