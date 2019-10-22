@@ -1,5 +1,25 @@
 # Change Log
 
+## 9.5.0 (October 22, 2019)
+
+- Feature: Support for `Systemd .service` file. ([@adamzerella](https://github.com/adamzerella) in [#2270](https://github.com/vscode-icons/vscode-icons/pull/2270))
+- Enhancement: Update `VLang` icon. ([@Delta456](https://github.com/Delta456) in [#2268](https://github.com/vscode-icons/vscode-icons/pull/2268))
+- Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#2267](https://github.com/vscode-icons/vscode-icons/pull/2267))
+- Enhancement: SVG version for `Matlab`. ([admvx](https://github.com/admvx) & [@KingDarBoja](https://github.com/KingDarBoja) in [#2263](https://github.com/vscode-icons/vscode-icons/pull/2263))
+- Feature: Support for `Razzle`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2262](https://github.com/vscode-icons/vscode-icons/pull/2262))
+- Enhancement: Update `Nuget` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2261](https://github.com/vscode-icons/vscode-icons/pull/2261))
+- Enhancement: Added extensions to `cli` icon. ([@huiyifyj](https://github.com/huiyifyj) in [#2260](https://github.com/vscode-icons/vscode-icons/pull/2260))
+- Enhancement: Update `AL` icon. ([@ajkauffmann](https://github.com/ajkauffmann) in [#2258](https://github.com/vscode-icons/vscode-icons/pull/2258))
+- Enhancement: Update `Office` icons. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2255](https://github.com/vscode-icons/vscode-icons/pull/2255))
+- Feature: Support for `Gradle` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2253](https://github.com/vscode-icons/vscode-icons/pull/2253))
+- Enhancement: Update `Gradle` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2251](https://github.com/vscode-icons/vscode-icons/pull/2251))
+- Enhancement: Abbreviate `installs` badge in the readme. ([@bmalehorn](https://github.com/bmalehorn) in [#2249](https://github.com/vscode-icons/vscode-icons/pull/2249))
+- Feature: Support for `favicon` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2248](https://github.com/vscode-icons/vscode-icons/pull/2248))
+- Feature: Support for `Memcached` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2247](https://github.com/vscode-icons/vscode-icons/pull/2247))
+- Enhancement: Pixel perfect `default file` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2245](https://github.com/vscode-icons/vscode-icons/pull/2245))
+- Enhancement: Add background to `incluce` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2244](https://github.com/vscode-icons/vscode-icons/pull/2244))
+- Feature: Support for `Powershell Format` and `Types`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2243](https://github.com/vscode-icons/vscode-icons/pull/2243))
+
 ## 9.4.0 (September 21, 2019)
 
 - Enhancement: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#2240](https://github.com/vscode-icons/vscode-icons/pull/2240))
