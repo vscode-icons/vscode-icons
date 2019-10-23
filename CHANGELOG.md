@@ -17,7 +17,7 @@
 - Feature: Support for `favicon` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2248](https://github.com/vscode-icons/vscode-icons/pull/2248))
 - Feature: Support for `Memcached` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2247](https://github.com/vscode-icons/vscode-icons/pull/2247))
 - Enhancement: Pixel perfect `default file` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2245](https://github.com/vscode-icons/vscode-icons/pull/2245))
-- Enhancement: Add background to `incluce` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2244](https://github.com/vscode-icons/vscode-icons/pull/2244))
+- Enhancement: Add background to `include` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2244](https://github.com/vscode-icons/vscode-icons/pull/2244))
 - Feature: Support for `Powershell Format` and `Types`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2243](https://github.com/vscode-icons/vscode-icons/pull/2243))
 
 ## 9.4.0 (September 21, 2019)
