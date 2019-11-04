@@ -1353,7 +1353,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'firestore',
-      extensions: ['firestore.rules'],
+      extensions: ['firestore.rules', 'firestore.indexes.json'],
       filename: true,
       format: FileFormat.svg,
     },
