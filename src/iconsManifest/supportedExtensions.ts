@@ -3332,6 +3332,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'sss', extensions: ['sss'], format: FileFormat.svg },
     {
+      icon: 'stan',
+      extensions: [],
+      languages: [languages.stan],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'stata',
       extensions: ['dta'],
       languages: [languages.stata],
