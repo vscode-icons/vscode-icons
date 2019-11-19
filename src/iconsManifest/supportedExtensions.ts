@@ -3937,6 +3937,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'zeit',
+      extensions: ['now.json', '.nowignore'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'zip',
       extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'],
       format: FileFormat.svg,
