@@ -3332,6 +3332,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'sss', extensions: ['sss'], format: FileFormat.svg },
     {
+      icon: 'stan',
+      extensions: [],
+      languages: [languages.stan],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'stata',
       extensions: ['dta'],
       languages: [languages.stata],
@@ -3927,6 +3933,13 @@ export const extensions: IFileCollection = {
     {
       icon: 'yeoman',
       extensions: ['.yo-rc.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'zeit',
+      extensions: ['now.json', '.nowignore'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
