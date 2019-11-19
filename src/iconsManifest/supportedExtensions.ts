@@ -910,7 +910,7 @@ export const extensions: IFileCollection = {
     { icon: 'codekit', extensions: ['kit'], format: FileFormat.svg },
     {
       icon: 'codekit',
-      extensions: ['config.codekit', 'config.codekit2', 'config.codekit3'],
+      extensions: ['config.codekit', 'config.codekit2', 'config.codekit3', '.config.codekit', '.config.codekit2', '.config.codekit3'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1353,7 +1353,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'firestore',
-      extensions: ['firestore.rules'],
+      extensions: ['firestore.rules', 'firestore.indexes.json'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3933,6 +3933,13 @@ export const extensions: IFileCollection = {
     {
       icon: 'yeoman',
       extensions: ['.yo-rc.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'zeit',
+      extensions: ['now.json', '.nowignore'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
