@@ -79,7 +79,14 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'cli',
-      extensions: ['cli', 'cmd', 'command', 'commands', 'commandline', 'console'],
+      extensions: [
+        'cli',
+        'cmd',
+        'command',
+        'commands',
+        'commandline',
+        'console',
+      ],
       format: FileFormat.svg,
     },
     { icon: 'client', extensions: ['client'], format: FileFormat.svg },
@@ -391,6 +398,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'public',
       extensions: ['public', '.public'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'python',
+      extensions: ['.venv', '.virtualenv'],
       format: FileFormat.svg,
     },
     { icon: 'redis', extensions: ['redis'], format: FileFormat.svg },
