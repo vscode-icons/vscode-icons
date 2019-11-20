@@ -1561,7 +1561,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'gridsome',
       extensions: [],
-      filenamesGlob: ['gridsome.config', 'gridsome.server' 'gridsome.client'],
+      filenamesGlob: ['gridsome.config', 'gridsome.server', 'gridsome.client'],
       extensionsGlob: ['js', 'ts'],
       filename: true,
       format: FileFormat.svg,
