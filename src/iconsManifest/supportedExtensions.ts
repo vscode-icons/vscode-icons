@@ -910,7 +910,14 @@ export const extensions: IFileCollection = {
     { icon: 'codekit', extensions: ['kit'], format: FileFormat.svg },
     {
       icon: 'codekit',
-      extensions: ['config.codekit', 'config.codekit2', 'config.codekit3', '.config.codekit', '.config.codekit2', '.config.codekit3'],
+      extensions: [
+        'config.codekit',
+        'config.codekit2',
+        'config.codekit3',
+        '.config.codekit',
+        '.config.codekit2',
+        '.config.codekit3',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -929,6 +936,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'conan',
       extensions: ['conanfile.txt', 'conanfile.py'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'conda',
+      extensions: ['.condarc'],
       filename: true,
       format: FileFormat.svg,
     },
