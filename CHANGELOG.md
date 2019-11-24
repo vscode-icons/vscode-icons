@@ -2,6 +2,7 @@
 
 ## 9.6.0 (November 24, 2019)
 
+- Feature: Support for `Conda`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2293](https://github.com/vscode-icons/vscode-icons/pull/2293))
 - Enhancement: Support for `mjs` extensions for `Rollup`. ([@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#2292](https://github.com/vscode-icons/vscode-icons/pull/2292))
 - Enhancement: Support for `Gridsome.client.js`. ([@tyankatsu0105](https://github.com/tyankatsu0105) in [#2290](https://github.com/vscode-icons/vscode-icons/pull/2290))
 - Enhancement: Support for `Firestore` indexes. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2286](https://github.com/vscode-icons/vscode-icons/pull/2286))
