@@ -1,5 +1,17 @@
 # Change Log
 
+## 9.6.0 (November 24, 2019)
+
+- Feature: Support for `Conda`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2293](https://github.com/vscode-icons/vscode-icons/pull/2293))
+- Enhancement: Support for `mjs` extensions for `Rollup`. ([@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#2292](https://github.com/vscode-icons/vscode-icons/pull/2292))
+- Enhancement: Support for `Gridsome.client.js`. ([@tyankatsu0105](https://github.com/tyankatsu0105) in [#2290](https://github.com/vscode-icons/vscode-icons/pull/2290))
+- Enhancement: Support for `Firestore` indexes. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2286](https://github.com/vscode-icons/vscode-icons/pull/2286))
+- Feature: Support for `Zeit`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2285](https://github.com/vscode-icons/vscode-icons/pull/2285))
+- Feature: Support for `Python` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2282](https://github.com/vscode-icons/vscode-icons/pull/2282))
+- Enhancement: Added hidden `codekit` file extensions. ([@anthony0030](https://github.com/anthony0030) in [#2280](https://github.com/vscode-icons/vscode-icons/pull/2280))
+- Feature: Support for `Stan`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2279](https://github.com/vscode-icons/vscode-icons/pull/2279))
+- Fix: Correct typo in Release Notes. ([@emman27](https://github.com/emman27) in [#2274](https://github.com/vscode-icons/vscode-icons/pull/2274))
+
 ## 9.5.0 (October 22, 2019)
 
 - Feature: Support for `Systemd .service` file. ([@adamzerella](https://github.com/adamzerella) in [#2270](https://github.com/vscode-icons/vscode-icons/pull/2270))
