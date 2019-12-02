@@ -47,6 +47,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
+    { icon: 'bloc', extensions: ['blocs', 'bloc'], format: FileFormat.svg },
     {
       icon: 'blueprint',
       extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
