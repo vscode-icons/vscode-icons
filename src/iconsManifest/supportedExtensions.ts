@@ -3385,6 +3385,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'stylish_haskell',
+      extensions: ['.stylish-haskell.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'stylus',
       extensions: [],
       languages: [languages.stylus],
