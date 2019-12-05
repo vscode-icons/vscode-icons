@@ -2585,6 +2585,7 @@ export const extensions: IFileCollection = {
       icon: 'perl',
       extensions: [],
       languages: [languages.perl],
+      light: true,
       format: FileFormat.svg,
     },
     {
