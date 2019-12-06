@@ -1529,6 +1529,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gnuplot',
+      extensions: [],
+      languages: [languages.gnuplot],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'go',
       extensions: [],
       languages: [languages.go],
