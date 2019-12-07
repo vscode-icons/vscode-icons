@@ -1,18 +1,14 @@
-//@ts-check
+import webpack from 'webpack';
+import { resolve } from 'path';
+import { constants } from './out/src/constants';
 
-'use strict';
-
-const resolve = require('path').resolve;
-const constants = require('./out/src/constants').constants;
-
-/**@type {import('webpack').Configuration}*/
-const config = {
+const config: webpack.Configuration = {
   target: 'node',
   context: resolve(__dirname, 'out'),
   output: {
     path: resolve(__dirname, 'dist/src'),
     filename: constants.extension.distEntryFilename,
-    libraryTarget: "commonjs2"
+    libraryTarget: 'commonjs2',
   },
   node: {
     __dirname: false,
@@ -22,15 +18,15 @@ const config = {
     // The vscode-module is created on-the-fly and must be excluded.
     // Add other modules that cannot be webpack'ed.
     // 📖 -> https://webpack.js.org/configuration/externals/
-    vscode: "commonjs vscode",
-  }
+    vscode: 'commonjs vscode',
+  },
 }
 
 /**
  * @param {any} env
  * @param {{mode: string}} argv
  */
-module.exports = (env, argv) => {
+export = (env: any, argv: { mode: string }) => {
   // development mode only
   if (argv && argv.mode === 'development') {
     config.devtool = 'source-map';
