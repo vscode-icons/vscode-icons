@@ -26,7 +26,7 @@ const config: webpack.Configuration = {
  * @param {any} env
  * @param {{mode: string}} argv
  */
-export = (env: any, argv: { mode: string }) => {
+export = (_env: any, argv: { mode: string }) => {
   // development mode only
   if (argv && argv.mode === 'development') {
     config.devtool = 'source-map';
