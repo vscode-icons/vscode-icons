@@ -1,9 +1,13 @@
-import * as webpack from 'webpack';
 import { resolve } from 'path';
+import { CliConfigOptions, Configuration } from 'webpack';
 import { constants } from './out/src/constants';
 
-export default (_: any, argv: { mode: string }) => {
-  const config: webpack.Configuration = {
+export default (
+  _env: string | Record<string, boolean | number | string>,
+  argv: CliConfigOptions,
+): Configuration => {
+  const config: Configuration = {
+    mode: argv.mode,
     target: 'node',
     context: resolve(__dirname, 'out'),
     output: {
@@ -24,7 +28,7 @@ export default (_: any, argv: { mode: string }) => {
   };
 
   // development mode only
-  if (argv && argv.mode === 'development') {
+  if (config.mode === 'development') {
     config.devtool = 'source-map';
     config.output.devtoolModuleFilenameTemplate = '../../[resource-path]';
     return config;
