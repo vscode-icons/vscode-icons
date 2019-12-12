@@ -47,6 +47,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
+    { icon: 'bloc', extensions: ['blocs', 'bloc'], format: FileFormat.svg },
     {
       icon: 'blueprint',
       extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
@@ -130,6 +131,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'debian', extensions: ['debian'], format: FileFormat.svg },
+    {
+      icon: 'dependabot',
+      extensions: ['.dependabot'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'dist',
       extensions: [
