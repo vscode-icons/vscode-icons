@@ -3111,6 +3111,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rexx',
+      extensions: [],
+      languages: [languages.rexx],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'riot',
       extensions: [],
       languages: [languages.riot],
