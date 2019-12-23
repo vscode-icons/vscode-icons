@@ -2213,6 +2213,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'modernizr',
+      extensions: ['modernizr'],
+      filenamesGlob: ['modernizr', 'modernizrrc', '.modernizr', '.modernizrrc'],
+      extensionsGlob: ['js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mojolicious',
       extensions: [],
       languages: [languages.mojolicious],
