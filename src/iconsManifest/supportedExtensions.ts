@@ -1529,6 +1529,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gnuplot',
+      extensions: [],
+      languages: [languages.gnuplot],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'go',
       extensions: [],
       languages: [languages.go],
@@ -2209,6 +2215,14 @@ export const extensions: IFileCollection = {
       extensions: ['mocha.opts'],
       filenamesGlob: ['.mocharc'],
       extensionsGlob: ['js', 'json', 'jsonc', 'yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'modernizr',
+      extensions: ['modernizr'],
+      filenamesGlob: ['modernizr', 'modernizrrc', '.modernizr', '.modernizrrc'],
+      extensionsGlob: ['js'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3111,6 +3125,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rexx',
+      extensions: [],
+      languages: [languages.rexx],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'riot',
       extensions: [],
       languages: [languages.riot],
@@ -3382,6 +3402,12 @@ export const extensions: IFileCollection = {
       icon: 'styled',
       extensions: [],
       languages: [languages.styled],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'stylish_haskell',
+      extensions: ['.stylish-haskell.yaml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
