@@ -65,12 +65,18 @@ export const extensions: IFolderCollection = {
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     {
       icon: 'controller',
-      extensions: ['controllers', '.controllers', 'handlers', '.handlers'],
+      extensions: [
+        'controller',
+        'controllers',
+        '.controllers',
+        'handlers',
+        '.handlers',
+      ],
       format: FileFormat.svg,
     },
     {
       icon: 'component',
-      extensions: ['components', '.components', 'widgets'],
+      extensions: ['component', 'components', '.components', 'widgets'],
       format: FileFormat.svg,
     },
     {
@@ -140,12 +146,14 @@ export const extensions: IFolderCollection = {
       icon: 'dist',
       extensions: [
         'dist',
+        '.dist',
         'dists',
         'out',
         'outs',
         'export',
         'exports',
         'build',
+        '.build',
         'builds',
         'release',
         'releases',
@@ -324,7 +332,11 @@ export const extensions: IFolderCollection = {
       extensions: ['memcached', '.memcached'],
       format: FileFormat.svg,
     },
-    { icon: 'middleware', extensions: ['middleware'], format: FileFormat.svg },
+    {
+      icon: 'middleware',
+      extensions: ['middleware', 'middlewares'],
+      format: FileFormat.svg,
+    },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
       icon: 'minikube',
@@ -460,7 +472,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'story',
-      extensions: ['stories', '__stories__'],
+      extensions: ['story', 'stories', '__stories__'],
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
