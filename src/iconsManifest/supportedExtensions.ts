@@ -3119,6 +3119,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rexx',
+      extensions: [],
+      languages: [languages.rexx],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'riot',
       extensions: [],
       languages: [languages.riot],
@@ -3390,6 +3396,12 @@ export const extensions: IFileCollection = {
       icon: 'styled',
       extensions: [],
       languages: [languages.styled],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'stylish_haskell',
+      extensions: ['.stylish-haskell.yaml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
