@@ -1,5 +1,8 @@
 {
   "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
   "files.associations": {
     ".huskyrc": "json",
     ".lintstagedrc": "json",
@@ -9,7 +12,6 @@
   "files.exclude": {
     "out": false
   },
-  "prettier.tslintIntegration": true,
   "search.exclude": {
     "out": true,
     "images": true,
