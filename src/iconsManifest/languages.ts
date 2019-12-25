@@ -139,6 +139,7 @@ export const languages: ILanguageCollection = {
   kos: { ids: 'kos', defaultExtension: 'ks' },
   kotlin: { ids: 'kotlin', defaultExtension: 'kt' },
   less: { ids: 'less', defaultExtension: 'less' },
+  lex: { ids: 'lex', defaultExtension: 'flex' },
   lisp: { ids: 'lisp', defaultExtension: 'lisp' },
   literatehaskell: { ids: ['literate haskell'], defaultExtension: 'lhs' },
   lolcode: { ids: 'lolcode', defaultExtension: 'lol' },
@@ -279,6 +280,7 @@ export const languages: ILanguageCollection = {
   xml: { ids: 'xml', defaultExtension: 'xml' },
   xquery: { ids: 'xquery', defaultExtension: 'xquery' },
   xsl: { ids: 'xsl', defaultExtension: 'xsl' },
+  yacc: { ids: 'yacc', defaultExtension: 'bison' },
   yaml: { ids: 'yaml', defaultExtension: 'yaml' },
   yang: { ids: 'yang', defaultExtension: 'yang' },
 };
