@@ -108,6 +108,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   kos: ILanguage;
   kotlin: ILanguage;
   latex: ILanguage;
+  lex: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
   lolcode: ILanguage;
@@ -214,5 +215,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   wurst: ILanguage;
   wxml: ILanguage;
   xquery: ILanguage;
+  yacc: ILanguage;
   yang: ILanguage;
 }
