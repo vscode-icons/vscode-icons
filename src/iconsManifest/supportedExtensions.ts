@@ -2039,6 +2039,12 @@ export const extensions: IFileCollection = {
       languages: [languages.less],
       format: FileFormat.svg,
     },
+    {
+      icon: 'lex',
+      extensions: [],
+      languages: [languages.lex],
+      format: FileFormat.svg,
+    },
     { icon: 'license', extensions: ['enc'], format: FileFormat.svg },
     {
       icon: 'license',
@@ -3937,6 +3943,12 @@ export const extensions: IFileCollection = {
       icon: 'xsl',
       extensions: [],
       languages: [languages.xsl],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'yacc',
+      extensions: [],
+      languages: [languages.yacc],
       format: FileFormat.svg,
     },
     {
