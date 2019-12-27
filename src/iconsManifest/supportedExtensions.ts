@@ -3882,6 +3882,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wenyan',
+      extensions: ['wy', 'wenyan'],
+      languages: [languages.wenyan],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wercker',
       extensions: ['wercker.yml'],
       filename: true,
