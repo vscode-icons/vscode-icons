@@ -1,6 +1,6 @@
 # Change Log
 
-## 9.7.0 (December 26, 2019)
+## 9.7.0 (December 28, 2019)
 
 - Enhancement: Support for `esm` babel & gulp files. ([@ManzDev](https://github.com/ManzDev) in [#2319](https://github.com/vscode-icons/vscode-icons/pull/2319))
 - Feature: Support for `Lex` & `Yacc`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2318](https://github.com/vscode-icons/vscode-icons/pull/2318))
