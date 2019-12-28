@@ -1,5 +1,19 @@
 # Change Log
 
+## 9.7.0 (December 28, 2019)
+
+- Enhancement: Support for `esm` babel & gulp files. ([@ManzDev](https://github.com/ManzDev) in [#2319](https://github.com/vscode-icons/vscode-icons/pull/2319))
+- Feature: Support for `Lex` & `Yacc`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2318](https://github.com/vscode-icons/vscode-icons/pull/2318))
+- Feature: Support for `electron-forge` webpack files. ([@goosewobbler](https://github.com/goosewobbler) in [#2314](https://github.com/vscode-icons/vscode-icons/pull/2314))
+- Enhancement: Use TypeScript for our webpack.config file. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2311](https://github.com/vscode-icons/vscode-icons/pull/2311))
+- Feature: Support for `Gnuplot`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2308](https://github.com/vscode-icons/vscode-icons/pull/2308))
+- Feature: Support for `Modernizr`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2307](https://github.com/vscode-icons/vscode-icons/pull/2307))
+- Feature: Support for `Rexx`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2306](https://github.com/vscode-icons/vscode-icons/pull/2306))
+- Feature: Support for `stylish-haskell`. ([@kutyel](https://github.com/kutyel) in [#2303](https://github.com/vscode-icons/vscode-icons/pull/2303))
+- Feature: Support for `Dependabot` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2299](https://github.com/vscode-icons/vscode-icons/pull/2299))
+- Enhancement: Extend some folder icons with singular and plural names. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2297](https://github.com/vscode-icons/vscode-icons/pull/2297))
+- Feature: Support for `Bloc`. ([@felangel](https://github.com/felangel) in [#2295](https://github.com/vscode-icons/vscode-icons/pull/2295))
+
 ## 9.6.0 (November 24, 2019)
 
 - Feature: Support for `Conda`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2293](https://github.com/vscode-icons/vscode-icons/pull/2293))
