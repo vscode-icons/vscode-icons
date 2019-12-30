@@ -3883,7 +3883,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'wenyan',
-      extensions: ['wy', 'wenyan'],
+      extensions: [],
       languages: [languages.wenyan],
       format: FileFormat.svg,
     },
