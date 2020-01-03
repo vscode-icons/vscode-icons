@@ -1343,6 +1343,13 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'expo',
+      extensions: ['app.json', 'app.config.js', 'app.config.json', 'app.config.json5'],
+      light: true, 
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'falcon',
       extensions: [],
       languages: [languages.falcon],
