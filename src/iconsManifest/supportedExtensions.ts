@@ -68,9 +68,8 @@ export const extensions: IFileCollection = {
       icon: 'actionscript2',
       extensions: [],
       light: true,
-      languages: [languages.actionscript],
+      languages: [languages.actionscript2],
       format: FileFormat.svg,
-      disabled: true,
     },
     {
       icon: 'ada',

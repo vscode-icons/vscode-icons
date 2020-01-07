@@ -3,6 +3,7 @@ import { INativeLanguageCollection } from './nativeLanguageCollection';
 
 export interface ILanguageCollection extends INativeLanguageCollection {
   actionscript: ILanguage;
+  actionscript2: ILanguage;
   ada: ILanguage;
   advpl: ILanguage;
   affectscript: ILanguage;
