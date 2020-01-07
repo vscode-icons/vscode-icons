@@ -75,6 +75,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   gamemaker81: ILanguage;
   gcode: ILanguage;
   glsl: ILanguage;
+  gnuplot: ILanguage;
   godot: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
@@ -107,6 +108,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   kos: ILanguage;
   kotlin: ILanguage;
   latex: ILanguage;
+  lex: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
   lolcode: ILanguage;
@@ -157,6 +159,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   reason: ILanguage;
   red: ILanguage;
   restructuredtext: ILanguage;
+  rexx: ILanguage;
   riot: ILanguage;
   robot: ILanguage;
   san: ILanguage;
@@ -174,6 +177,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   solidity: ILanguage;
   sqf: ILanguage;
   squirrel: ILanguage;
+  stan: ILanguage;
   stata: ILanguage;
   stencil: ILanguage;
   stencilhtml: ILanguage;
@@ -183,6 +187,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   svelte: ILanguage;
   swagger: ILanguage;
   swig: ILanguage;
+  systemd: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
   templatetoolkit: ILanguage;
@@ -210,5 +215,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   wurst: ILanguage;
   wxml: ILanguage;
   xquery: ILanguage;
+  yacc: ILanguage;
   yang: ILanguage;
 }

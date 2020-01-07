@@ -1,5 +1,51 @@
 # Change Log
 
+## 9.7.0 (December 28, 2019)
+
+- Enhancement: Support for `esm` babel & gulp files. ([@ManzDev](https://github.com/ManzDev) in [#2319](https://github.com/vscode-icons/vscode-icons/pull/2319))
+- Feature: Support for `Lex` & `Yacc`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2318](https://github.com/vscode-icons/vscode-icons/pull/2318))
+- Feature: Support for `electron-forge` webpack files. ([@goosewobbler](https://github.com/goosewobbler) in [#2314](https://github.com/vscode-icons/vscode-icons/pull/2314))
+- Enhancement: Use TypeScript for our webpack.config file. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2311](https://github.com/vscode-icons/vscode-icons/pull/2311))
+- Feature: Support for `Gnuplot`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2308](https://github.com/vscode-icons/vscode-icons/pull/2308))
+- Feature: Support for `Modernizr`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2307](https://github.com/vscode-icons/vscode-icons/pull/2307))
+- Feature: Support for `Rexx`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2306](https://github.com/vscode-icons/vscode-icons/pull/2306))
+- Feature: Support for `stylish-haskell`. ([@kutyel](https://github.com/kutyel) in [#2303](https://github.com/vscode-icons/vscode-icons/pull/2303))
+- Feature: Support for `Dependabot` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2299](https://github.com/vscode-icons/vscode-icons/pull/2299))
+- Enhancement: Extend some folder icons with singular and plural names. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2297](https://github.com/vscode-icons/vscode-icons/pull/2297))
+- Feature: Support for `Bloc`. ([@felangel](https://github.com/felangel) in [#2295](https://github.com/vscode-icons/vscode-icons/pull/2295))
+
+## 9.6.0 (November 24, 2019)
+
+- Feature: Support for `Conda`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2293](https://github.com/vscode-icons/vscode-icons/pull/2293))
+- Enhancement: Support for `mjs` extensions for `Rollup`. ([@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#2292](https://github.com/vscode-icons/vscode-icons/pull/2292))
+- Enhancement: Support for `Gridsome.client.js`. ([@tyankatsu0105](https://github.com/tyankatsu0105) in [#2290](https://github.com/vscode-icons/vscode-icons/pull/2290))
+- Enhancement: Support for `Firestore` indexes. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2286](https://github.com/vscode-icons/vscode-icons/pull/2286))
+- Feature: Support for `Zeit`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2285](https://github.com/vscode-icons/vscode-icons/pull/2285))
+- Feature: Support for `Python` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2282](https://github.com/vscode-icons/vscode-icons/pull/2282))
+- Enhancement: Added hidden `codekit` file extensions. ([@anthony0030](https://github.com/anthony0030) in [#2280](https://github.com/vscode-icons/vscode-icons/pull/2280))
+- Feature: Support for `Stan`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2279](https://github.com/vscode-icons/vscode-icons/pull/2279))
+- Fix: Correct typo in Release Notes. ([@emman27](https://github.com/emman27) in [#2274](https://github.com/vscode-icons/vscode-icons/pull/2274))
+
+## 9.5.0 (October 22, 2019)
+
+- Feature: Support for `Systemd .service` file. ([@adamzerella](https://github.com/adamzerella) in [#2270](https://github.com/vscode-icons/vscode-icons/pull/2270))
+- Enhancement: Update `VLang` icon. ([@Delta456](https://github.com/Delta456) in [#2268](https://github.com/vscode-icons/vscode-icons/pull/2268))
+- Enhancement: New translations. ([Official Translators](https://github.com/vscode-icons/vscode-icons/wiki/Translation) in [#2267](https://github.com/vscode-icons/vscode-icons/pull/2267))
+- Enhancement: SVG version for `Matlab`. ([admvx](https://github.com/admvx) & [@KingDarBoja](https://github.com/KingDarBoja) in [#2263](https://github.com/vscode-icons/vscode-icons/pull/2263))
+- Feature: Support for `Razzle`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2262](https://github.com/vscode-icons/vscode-icons/pull/2262))
+- Enhancement: Update `Nuget` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2261](https://github.com/vscode-icons/vscode-icons/pull/2261))
+- Enhancement: Added extensions to `cli` icon. ([@huiyifyj](https://github.com/huiyifyj) in [#2260](https://github.com/vscode-icons/vscode-icons/pull/2260))
+- Enhancement: Update `AL` icon. ([@ajkauffmann](https://github.com/ajkauffmann) in [#2258](https://github.com/vscode-icons/vscode-icons/pull/2258))
+- Enhancement: Update `Office` icons. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2255](https://github.com/vscode-icons/vscode-icons/pull/2255))
+- Feature: Support for `Gradle` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2253](https://github.com/vscode-icons/vscode-icons/pull/2253))
+- Enhancement: Update `Gradle` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2251](https://github.com/vscode-icons/vscode-icons/pull/2251))
+- Enhancement: Abbreviate `installs` badge in the readme. ([@bmalehorn](https://github.com/bmalehorn) in [#2249](https://github.com/vscode-icons/vscode-icons/pull/2249))
+- Feature: Support for `favicon` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2248](https://github.com/vscode-icons/vscode-icons/pull/2248))
+- Feature: Support for `Memcached` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2247](https://github.com/vscode-icons/vscode-icons/pull/2247))
+- Enhancement: Pixel perfect `default file` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2245](https://github.com/vscode-icons/vscode-icons/pull/2245))
+- Enhancement: Add background to `include` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2244](https://github.com/vscode-icons/vscode-icons/pull/2244))
+- Feature: Support for `Powershell Format` and `Types`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2243](https://github.com/vscode-icons/vscode-icons/pull/2243))
+
 ## 9.4.0 (September 21, 2019)
 
 - Enhancement: Updated dependencies. ([@JimiC](https://github.com/JimiC) in [#2240](https://github.com/vscode-icons/vscode-icons/pull/2240))
