@@ -1,8 +1,7 @@
 import { ILanguageCollection } from '../models';
 
 export const languages: ILanguageCollection = {
-  actionscript: { ids: 'nextgenas', defaultExtension: 'as' },
-  actionscript2: { ids: 'actionscript', defaultExtension: 'as' },
+  actionscript: { ids: 'actionscript', defaultExtension: 'as' },
   ada: { ids: 'ada', defaultExtension: 'ada' },
   advpl: { ids: 'advpl', defaultExtension: 'prw' },
   affectscript: { ids: 'affectscript', defaultExtension: 'affect' },
