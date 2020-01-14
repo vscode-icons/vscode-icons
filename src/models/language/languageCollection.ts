@@ -36,6 +36,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   caddyfile: ILanguage;
   cfc: ILanguage;
   cfm: ILanguage;
+  cloudfoundrymanifest: ILanguage;
   cmake: ILanguage;
   cmakecache: ILanguage;
   cobol: ILanguage;

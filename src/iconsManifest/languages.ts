@@ -43,6 +43,7 @@ export const languages: ILanguageCollection = {
   cfm: { ids: 'cfmhtml', defaultExtension: 'cfm' },
   clojure: { ids: 'clojure', defaultExtension: 'clojure' },
   clojurescript: { ids: 'clojurescript', defaultExtension: 'clojurescript' },
+  cloudfoundrymanifest: { ids: 'manifest-yaml', defaultExtension: 'yml' },
   cmake: { ids: 'cmake', defaultExtension: 'cmake' },
   cmakecache: { ids: 'cmake-cache', defaultExtension: 'CMakeCache.txt' },
   cobol: { ids: 'cobol', defaultExtension: 'cbl' },
