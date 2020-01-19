@@ -350,7 +350,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'model',
-      extensions: ['models', '.models', 'entities', '.entities'],
+      extensions: ['model', 'models', '.models', 'entities', '.entities'],
       format: FileFormat.svg,
     },
     {
