@@ -1987,7 +1987,10 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'kitchenci',
-      extensions: ['.kitchen.yml'],
+      extensions: [
+        '.kitchen.yml',
+        'kitchen.yml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
