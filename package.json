@@ -300,7 +300,7 @@
     "examples-generator": "file:submodules/examples-generator",
     "glob": "^7.1.4",
     "husky": "^3.0.5",
-    "lint-staged": "^9.2.5",
+    "lint-staged": "^10.0.3",
     "mocha": "^6.2.0",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
