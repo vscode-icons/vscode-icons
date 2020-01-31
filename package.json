@@ -320,6 +320,6 @@
     "open": "^6.4.0",
     "nsri": "^4.5.1",
     "reflect-metadata": "^0.1.13",
-    "semver": "^6.3.0"
+    "semver": "^7.1.2"
   }
 }
