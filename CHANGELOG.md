@@ -68,7 +68,7 @@
 - Feature: Support for `Befunge93` & `Befunge98`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2209](https://github.com/vscode-icons/vscode-icons/pull/2209))
 - Feature: Support for `Pine Script`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2208](https://github.com/vscode-icons/vscode-icons/pull/2208))
 - Enhancement: Fix white bleeding on `Storybook` icon. ([@ghengeveld](https://github.com/ghengeveld) in [#2204](https://github.com/vscode-icons/vscode-icons/pull/2204))
-- Feature: Support for `AffeScript`. ([@dsa28s](https://github.com/dsa28s) in [#2203](https://github.com/vscode-icons/vscode-icons/pull/2203))
+- Feature: Support for `AffectScript`. ([@dsa28s](https://github.com/dsa28s) in [#2203](https://github.com/vscode-icons/vscode-icons/pull/2203))
 - Feature: Support for `Ada`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2197](https://github.com/vscode-icons/vscode-icons/pull/2197))
 - Feature: Support for `Janet`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2196](https://github.com/vscode-icons/vscode-icons/pull/2196))
 - Feature: Support for `Ninja`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2193](https://github.com/vscode-icons/vscode-icons/pull/2193))
