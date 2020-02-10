@@ -3,6 +3,7 @@ import {
   decorate,
   inject,
   injectable,
+  // eslint-disable-next-line import/named
   interfaces,
   METADATA_KEY,
 } from 'inversify';
@@ -37,7 +38,7 @@ export class CompositionRootService {
     return this.container.get<T>(serviceIdentifier);
   }
 
-  public dispose() {
+  public dispose(): void {
     this.injectableClasses
       .map(injectableClass => injectableClass[0])
       .forEach(klass => {

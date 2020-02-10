@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
 import { join } from 'path';
@@ -48,7 +48,10 @@ describe('Specifications of supported extensions: tests', function () {
           });
 
           it(`same declaration with different 'extensions'`, function () {
-            const checker = (_file: IFileExtension, file: IFileExtension) =>
+            const checker = (
+              _file: IFileExtension,
+              file: IFileExtension,
+            ): boolean =>
               (!Reflect.has(_file, 'disabled') ||
                 _file.disabled !== file.disabled) &&
               !Reflect.has(_file, 'filename') &&
@@ -68,7 +71,7 @@ describe('Specifications of supported extensions: tests', function () {
 
           context(`empty 'extensions' declaration`, function () {
             it(`with 'filename' declaration`, function () {
-              const testCase = (_file: IFileExtension) =>
+              const testCase = (_file: IFileExtension): boolean =>
                 (!!_file.filename || !!_file.light) &&
                 isEmpty(_file.filenamesGlob) &&
                 isEmpty(_file.extensionsGlob) &&

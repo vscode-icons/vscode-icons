@@ -15,6 +15,21 @@ import {
 import { Utils } from '../utils';
 
 export class ConfigManager implements IConfigManager {
+  private static rootdir: string;
+
+  private readonly configuration: IVSCodeWorkspaceConfiguration;
+  private initVSIconsConfig: IVSIcons;
+
+  constructor(private vscodeManager: IVSCodeManager) {
+    // Acts as a static reference to configuration
+    // Should only be used when you want to access the configuration functions
+    // DO NOT use it to access the `vsicons` configuration,
+    // use the `vsicons` function instead
+    this.configuration = this.vscodeManager.workspace.getConfiguration();
+
+    this.initVSIconsConfig = this.vsicons;
+  }
+
   public static get rootDir(): string {
     return this.rootdir || resolve(dirname(__filename), '../../../');
   }
@@ -104,8 +119,6 @@ export class ConfigManager implements IConfigManager {
     return existingInstallations === 1;
   }
 
-  private static rootdir: string;
-
   private static async getAppUserPath(dirPath: string): Promise<string> {
     const vscodeAppName = /[\\|/]\.vscode-oss-dev/i.test(dirPath)
       ? 'code-oss-dev'
@@ -117,7 +130,7 @@ export class ConfigManager implements IConfigManager {
       ? 'Code'
       : 'user-data';
     // workaround until `process.env.VSCODE_PORTABLE` gets available
-    const vscodePortable = async () => {
+    const vscodePortable = async (): Promise<string> => {
       if (vscodeAppName !== 'user-data') {
         return undefined;
       }
@@ -149,7 +162,7 @@ export class ConfigManager implements IConfigManager {
     const findLinesToRemove = (): number[] => {
       const linesToRemove = [];
       const regexp = new RegExp(`^\\s*"${constants.vsicons.name}\\.`);
-      const addTo = (value: string, index: number, array: string[]) => {
+      const addTo = (value: string, index: number, array: string[]): void => {
         if (!regexp.test(value)) {
           return;
         }
@@ -201,19 +214,6 @@ export class ConfigManager implements IConfigManager {
     return source;
   }
 
-  private readonly configuration: IVSCodeWorkspaceConfiguration;
-  private initVSIconsConfig: IVSIcons;
-
-  constructor(private vscodeManager: IVSCodeManager) {
-    // Acts as a static reference to configuration
-    // Should only be used when you want to access the configuration functions
-    // DO NOT use it to access the `vsicons` configuration,
-    // use the `vsicons` function instead
-    this.configuration = this.vscodeManager.workspace.getConfiguration();
-
-    this.initVSIconsConfig = this.vsicons;
-  }
-
   public updateVSIconsConfigState(): void {
     if (!this.vscodeManager.supportsThemesReload) {
       return;
@@ -225,7 +225,7 @@ export class ConfigManager implements IConfigManager {
     currentConfig: IVSIcons | undefined,
     sections?: string[],
   ): boolean {
-    const filter = (obj: IVSIcons, keys: string[]) =>
+    const filter = (obj: IVSIcons, keys: string[]): {} =>
       (Reflect.ownKeys(obj || {}) as string[])
         .filter((key, __, array) => (keys || array).indexOf(key) !== -1)
         .reduce((nObj, key) => ({ ...nObj, [key]: obj[key] }), {});

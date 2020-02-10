@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as proxyq from 'proxyquire';
@@ -27,7 +27,6 @@ describe('Uninstall: tests', function () {
     context(`the 'uninstall' script`, function () {
       it(`calls the 'uninstall' function`, function () {
         const removeSettingsStub = sandbox.stub();
-
         proxyq('../src/uninstall', {
           './configuration/configManager': {
             ConfigManager: { removeSettings: removeSettingsStub },

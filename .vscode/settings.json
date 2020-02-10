@@ -1,33 +1,33 @@
 {
-  "editor.tabSize": 2,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
-  },
-  "files.associations": {
-    ".huskyrc": "json",
-    ".lintstagedrc": "json",
-    ".nsrirc": "json",
-    ".nycrc": "json"
-  },
-  "files.exclude": {
-    "out": false
-  },
-  "search.exclude": {
-    "out": true,
-    "images": true,
-    "icons": true,
-    "examples": true
-  },
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "npm.exclude": "**/submodules/**",
-  "vsicons.projectDetection.disableDetect": true
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.tabSize": 2,
+    "files.associations": {
+        ".huskyrc": "json",
+        ".lintstagedrc": "json",
+        ".nsrirc": "json",
+        ".nycrc": "json"
+    },
+    "files.exclude": {
+        "out": false
+    },
+    "npm.exclude": "**/submodules/**",
+    "search.exclude": {
+        "out": true,
+        "images": true,
+        "icons": true,
+        "examples": true
+    },
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "vsicons.projectDetection.disableDetect": true
 }

@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { ErrorHandler } from '../../src/common/errorHandler';
@@ -107,7 +107,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
     });
 
     context('does NOT detect a project when', function () {
-      const testCase = async (projectNames: Projects[]) => {
+      const testCase = async (projectNames: Projects[]): Promise<void> => {
         const res = await padManager.detectProjects(projectNames);
 
         expect(res).to.not.be.an('object');

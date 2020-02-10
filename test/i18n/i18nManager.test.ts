@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as langResources from '../../../lang.nls.bundle.json';
@@ -164,7 +164,7 @@ describe('LanguageResourceManager: tests', function () {
         });
 
         context('returns properly messages for', function () {
-          const testCase = () => {
+          const testCase = (): void => {
             const msg = i18nManager.localize(LangResourceKeys.welcome);
 
             expect(msg).to.equal(

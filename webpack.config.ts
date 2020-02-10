@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 import { resolve } from 'path';
 import { CliConfigOptions, Configuration } from 'webpack';
 import { constants } from './out/src/constants';
