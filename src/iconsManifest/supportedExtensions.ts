@@ -1312,7 +1312,7 @@ export const extensions: IFileCollection = {
       icon: 'eslint',
       extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
       filenamesGlob: ['.eslintrc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1320,7 +1320,7 @@ export const extensions: IFileCollection = {
       icon: 'eslint2',
       extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
       filenamesGlob: ['.eslintrc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
       disabled: true,
@@ -1335,6 +1335,13 @@ export const extensions: IFileCollection = {
       extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods'],
       format: FileFormat.svg,
       disabled: true,
+    },
+    {
+      icon: 'expo',
+      extensions: ['app.json', 'app.config.js', 'app.config.json', 'app.config.json5'],
+      light: true, 
+      filename: true,
+      format: FileFormat.svg,
     },
     {
       icon: 'falcon',
@@ -1817,13 +1824,13 @@ export const extensions: IFileCollection = {
     {
       icon: 'jest',
       extensions: [
-        'jest.config.js',
         'jest.json',
-        'jest.config.json',
         '.jestrc',
         '.jestrc.js',
         '.jestrc.json',
       ],
+      filenamesGlob: ['jest.config'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1987,7 +1994,10 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'kitchenci',
-      extensions: ['.kitchen.yml'],
+      extensions: [
+        '.kitchen.yml',
+        'kitchen.yml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3577,8 +3587,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tox',
-      extensions: ['.ini'],
-      filenamesGlob: ['tox.ini'],
+      extensions: ['tox.ini'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3883,6 +3892,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wenyan',
+      extensions: [],
+      languages: [languages.wenyan],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wercker',
       extensions: ['wercker.yml'],
       filename: true,
@@ -4005,12 +4020,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'zip',
-      extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'],
+      extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2', 'zipx'],
       format: FileFormat.svg,
     },
     {
       icon: 'zip2',
-      extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'],
+      extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2', 'zipx'],
       format: FileFormat.svg,
       disabled: true,
     },

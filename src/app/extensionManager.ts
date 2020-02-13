@@ -82,7 +82,7 @@ export class ExtensionManager implements models.IExtensionManager {
       this.vscodeManager.context.subscriptions.push(
         this.vscodeManager.commands.registerCommand(
           command.command,
-          Reflect.get(this, command.callbackName) || (() => void 0),
+          Reflect.get(this, command.callbackName) || ((): void => void 0),
           this,
         ),
       ),
