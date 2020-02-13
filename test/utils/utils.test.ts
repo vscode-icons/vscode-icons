@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as os from 'os';
 import * as proxyq from 'proxyquire';
@@ -104,7 +104,7 @@ describe('Utils: tests', function () {
             directoryPath: string,
             dirExists: boolean,
             expectedCounts: number,
-          ) => {
+          ): Promise<void> => {
             const fileCheck = existsAsyncStub.callsFake(
               (dirPath: string) =>
                 dirExists ||
@@ -218,7 +218,9 @@ describe('Utils: tests', function () {
 
       context('returns a relative path that', function () {
         context('has a trailing path separator', function () {
-          const trailingPathSeparatorTest = async (toDirName: string) => {
+          const trailingPathSeparatorTest = async (
+            toDirName: string,
+          ): Promise<void> => {
             const relativePath = await Utils.getRelativePath(
               'path/from',
               toDirName,

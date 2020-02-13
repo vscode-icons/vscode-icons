@@ -35,6 +35,7 @@ export const languages: ILanguageCollection = {
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
   bolt: { ids: 'bolt', defaultExtension: 'bolt' },
   c: { ids: 'c', defaultExtension: 'c' },
+  // eslint-disable-next-line @typescript-eslint/camelcase
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
   cabal: { ids: 'cabal', defaultExtension: 'cabal' },
   caddyfile: { ids: 'caddyfile', defaultExtension: 'Caddyfile' },
