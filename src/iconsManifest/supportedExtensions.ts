@@ -3998,12 +3998,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'zip',
-      extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'],
+      extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2', 'zipx'],
       format: FileFormat.svg,
     },
     {
       icon: 'zip2',
-      extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2'],
+      extensions: ['zip', 'rar', '7z', 'tar', 'gz', 'bzip2', 'xz', 'bz2', 'zipx'],
       format: FileFormat.svg,
       disabled: true,
     },
