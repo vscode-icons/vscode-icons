@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as fsAsync from '../../src/common/fsAsync';
@@ -62,7 +62,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
     context('when detection is enabled', function () {
       let readFileAsyncStub: sinon.SinonStub;
       let iconsDisabledStub: sinon.SinonStub;
-      let packageJsonPath: string = 'package.json';
+      let packageJsonPath = 'package.json';
 
       beforeEach(function () {
         vsicons.projectDetection.disableDetect = false;

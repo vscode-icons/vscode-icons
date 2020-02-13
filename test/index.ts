@@ -26,8 +26,8 @@ export const run = (testsRoot: string): Promise<any> => {
             res();
           }
         });
-      } catch (error) {
-        return rej(error);
+      } catch (err) {
+        return rej(err);
       }
     });
   });

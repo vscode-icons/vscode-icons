@@ -5,7 +5,7 @@ import { Utils } from '../utils';
 
 export class VSCodeManager implements models.IVSCodeManager {
   private appUserDirPath: string;
-  private supportsThemeReloadVersion: string = '1.34.0';
+  private supportsThemeReloadVersion = '1.34.0';
 
   constructor(
     private vscode: models.IVSCode,

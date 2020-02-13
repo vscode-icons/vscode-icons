@@ -1,7 +1,7 @@
 import { ILanguageCollection } from '../models';
 
 export const languages: ILanguageCollection = {
-  actionscript: { ids: 'nextgenas', defaultExtension: 'as' },
+  actionscript: { ids: 'actionscript', defaultExtension: 'as' },
   ada: { ids: 'ada', defaultExtension: 'ada' },
   advpl: { ids: 'advpl', defaultExtension: 'prw' },
   affectscript: { ids: 'affectscript', defaultExtension: 'affect' },
@@ -35,6 +35,7 @@ export const languages: ILanguageCollection = {
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
   bolt: { ids: 'bolt', defaultExtension: 'bolt' },
   c: { ids: 'c', defaultExtension: 'c' },
+  // eslint-disable-next-line @typescript-eslint/camelcase
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
   cabal: { ids: 'cabal', defaultExtension: 'cabal' },
   caddyfile: { ids: 'caddyfile', defaultExtension: 'Caddyfile' },
@@ -274,6 +275,7 @@ export const languages: ILanguageCollection = {
   volt: { ids: 'volt', defaultExtension: 'volt' },
   vue: { ids: 'vue', defaultExtension: 'vue' },
   wasm: { ids: ['wasm', 'wat'], defaultExtension: 'wasm' },
+  wenyan: { ids: 'wenyan', defaultExtension: 'wy' },
   wolfram: { ids: 'wolfram', defaultExtension: 'wl' },
   wurst: { ids: ['wurstlang', 'wurst'], defaultExtension: 'wurst' },
   wxml: { ids: 'wxml', defaultExtension: 'wxml' },

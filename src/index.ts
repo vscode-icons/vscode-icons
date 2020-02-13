@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow-callback */
 import { Debugger } from './common/debugger';
 import { constants } from './constants';
 import { IExtensionManager, IVSCodeExtensionContext, SYMBOLS } from './models';
@@ -14,11 +15,9 @@ export async function activate(
   await extension.activate();
 
   if (!Debugger.isAttached) {
-    // tslint:disable-next-line no-console
+    // eslint-disable-next-line no-console
     console.info(
-      `[${constants.extension.name}] v${
-        constants.extension.version
-      } activated!`,
+      `[${constants.extension.name}] v${constants.extension.version} activated!`,
     );
   }
 }

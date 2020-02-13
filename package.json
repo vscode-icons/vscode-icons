@@ -54,7 +54,9 @@
   "galleryBanner": {
     "color": "#ffdd00"
   },
-  "extensionKind": "ui",
+  "extensionKind": [
+    "ui"
+  ],
   "activationEvents": [
     "*"
   ],
@@ -278,7 +280,7 @@
     "compile:dev": "tsc",
     "postcompile:dev": "npm run bundle:dev",
     "lint-staged": "lint-staged",
-    "lint": "tslint -p .",
+    "lint": "eslint --ext ts .",
     "predist": "npm run build",
     "dist": "webpack --hide-modules --mode production",
     "postdist": "nsri create -s .",
@@ -296,7 +298,14 @@
     "@types/sinon": "^7.0.13",
     "@types/vscode": "1.26",
     "@types/webpack": "^4.41.0",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
     "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "examples-generator": "file:submodules/examples-generator",
     "glob": "^7.1.4",
     "husky": "^3.0.5",
@@ -308,8 +317,6 @@
     "rimraf": "^3.0.0",
     "sinon": "^7.4.2",
     "ts-node": "^8.5.4",
-    "tslint": "^5.20.0",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.6.3",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.8"

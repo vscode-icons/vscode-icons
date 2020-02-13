@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable no-unused-expressions */
+/* eslint-disable prefer-arrow-callback */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as proxyq from 'proxyquire';
@@ -41,14 +41,14 @@ describe('Entry points: tests', function () {
       sandbox.restore();
     });
 
-    context(`when activated`, function () {
+    context('when activated', function () {
       let infoStub: sinon.SinonStub;
 
       beforeEach(function () {
         infoStub = sandbox.stub(console, 'info');
       });
 
-      it(`activates the extension`, function () {
+      it('activates the extension', function () {
         EntryPoint.activate(extensionContext);
 
         expect(extensionStub.activate.calledOnceWithExactly()).to.be.true;
@@ -60,30 +60,28 @@ describe('Entry points: tests', function () {
           debuggerAttachedStub = sandbox.stub(Debugger, 'isAttached');
         });
 
-        context(`NOT attached`, function () {
+        context('NOT attached', function () {
           beforeEach(function () {
             debuggerAttachedStub.value(false);
           });
 
-          it(`prints an activation informative message`, async function () {
+          it('prints an activation informative message', async function () {
             await EntryPoint.activate(extensionContext);
 
             expect(
               infoStub.calledOnceWithExactly(
-                `[${constants.extension.name}] v${
-                  constants.extension.version
-                } activated!`,
+                `[${constants.extension.name}] v${constants.extension.version} activated!`,
               ),
             ).to.be.true;
           });
         });
 
-        context(`attached`, function () {
+        context('attached', function () {
           beforeEach(function () {
             debuggerAttachedStub.value(true);
           });
 
-          it(`does NOT print an activation informative message`, async function () {
+          it('does NOT print an activation informative message', async function () {
             await EntryPoint.activate(extensionContext);
 
             expect(infoStub.called).to.be.false;
@@ -92,8 +90,8 @@ describe('Entry points: tests', function () {
       });
     });
 
-    context(`when deactivated`, function () {
-      it(`does nothing`, function () {
+    context('when deactivated', function () {
+      it('does nothing', function () {
         return EntryPoint.deactivate();
       });
     });

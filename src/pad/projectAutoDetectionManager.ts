@@ -74,7 +74,7 @@ export class ProjectAutoDetectionManager
     };
 
     // We need to check only the 'workspaceValue' ('user' setting should be ignored)
-    const _getPreset = (proj: models.Projects) =>
+    const _getPreset = (proj: models.Projects): boolean =>
       this.configManager.getPreset<boolean>(_getPresetName(proj))
         .workspaceValue;
 
@@ -144,8 +144,10 @@ export class ProjectAutoDetectionManager
     if (!enableIcons) {
       return [];
     }
-    const conflictingProjects = async (conflictProjects: models.Projects[]) => {
-      const projectInfos = [];
+    const conflictingProjects = async (
+      conflictProjects: models.Projects[],
+    ): Promise<models.Projects[]> => {
+      const projectInfos: models.Projects[] = [];
       for (const cp of conflictProjects) {
         const info = await this.getProjectInfo(results, cp);
         if (info) {
@@ -178,7 +180,7 @@ export class ProjectAutoDetectionManager
     }
   }
 
-  private getNgRelatedMessages(enableIcons: boolean, preset: boolean) {
+  private getNgRelatedMessages(enableIcons: boolean, preset: boolean): number {
     return enableIcons
       ? preset === true
         ? models.LangResourceKeys.nonNgDetectedPresetTrue
@@ -188,7 +190,10 @@ export class ProjectAutoDetectionManager
       : models.LangResourceKeys.nonNgDetected;
   }
 
-  private getNestRelatedMessages(enableIcons: boolean, preset: boolean) {
+  private getNestRelatedMessages(
+    enableIcons: boolean,
+    preset: boolean,
+  ): number {
     return enableIcons
       ? preset === true
         ? models.LangResourceKeys.nonNestDetectedPresetTrue
