@@ -3571,8 +3571,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tox',
-      extensions: ['.ini'],
-      filenamesGlob: ['tox.ini'],
+      extensions: ['tox.ini'],
       filename: true,
       format: FileFormat.svg,
     },
