@@ -296,7 +296,7 @@ export const extensions: IFolderCollection = {
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     {
       icon: 'library',
-      extensions: ['lib', '.lib', 'library'],
+      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries'],
       format: FileFormat.svg,
     },
     { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
