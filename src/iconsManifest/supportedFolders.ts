@@ -180,6 +180,12 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    { 
+      icon: 'expo', 
+      extensions: ['.expo', '.expo-shared'], 
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'favicon',
       extensions: ['favicon', 'favicons'],
