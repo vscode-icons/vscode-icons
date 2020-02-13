@@ -4,7 +4,7 @@
     "source.fixAll.tslint": true
   },
   "files.associations": {
-    ".huskyrc": "json",
+    ".huskyrc": "shellscript",
     ".lintstagedrc": "json",
     ".nsrirc": "json",
     ".nycrc": "json"

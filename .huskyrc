@@ -1,6 +1,2 @@
-{
-  "skipCI": true,
-  "hooks": {
-    "pre-commit": "npm run lint-staged"
-  }
-}
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
