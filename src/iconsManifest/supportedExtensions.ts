@@ -857,6 +857,7 @@ export const extensions: IFileCollection = {
       extensions: ['.cfignore'],
       light: true,
       filename: true,
+      languages: [languages.cloudfoundrymanifest],
       format: FileFormat.svg,
     },
     {
