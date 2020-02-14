@@ -219,6 +219,7 @@ export const languages: ILanguageCollection = {
   ruby: { ids: 'ruby', defaultExtension: 'rb' },
   rust: { ids: 'rust', defaultExtension: 'rs' },
   san: { ids: 'san', defaultExtension: 'san' },
+  sas: { ids: 'SAS', defaultExtension: 'sas' },
   sbt: { ids: 'sbt', defaultExtension: 'sbt' },
   scala: { ids: 'scala', defaultExtension: 'scala' },
   scilab: { ids: 'scilab', defaultExtension: 'sce' },
