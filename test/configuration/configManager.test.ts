@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { cloneDeep } from 'lodash';
@@ -79,7 +79,7 @@ describe('ConfigManager: tests', function () {
 
       configManager = new ConfigManager(vscodeManagerStub);
 
-      splitter = (content: string) => content.split('\n');
+      splitter = (content: string): string[] => content.split('\n');
 
       dirnameStub.returns(
         `/path/to/.vscode/extensions/${constants.extension.name}-1.0.0`,

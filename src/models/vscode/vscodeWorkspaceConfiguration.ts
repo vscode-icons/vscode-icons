@@ -9,6 +9,7 @@ export interface IPreset<T> {
 }
 
 export interface IVSCodeWorkspaceConfiguration {
+  readonly [key: string]: any;
   get<T>(section: string): T | undefined;
   get<T>(section: string, defaultValue: T): T;
   has(section: string): boolean;
@@ -18,5 +19,4 @@ export interface IVSCodeWorkspaceConfiguration {
     value: any,
     configurationTarget?: ConfigurationTarget | boolean,
   ): Thenable<void>;
-  readonly [key: string]: any;
 }

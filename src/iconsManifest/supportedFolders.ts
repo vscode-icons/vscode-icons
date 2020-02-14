@@ -180,6 +180,12 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    { 
+      icon: 'expo', 
+      extensions: ['.expo', '.expo-shared'], 
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'favicon',
       extensions: ['favicon', 'favicons'],
@@ -232,7 +238,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'helper',
-      extensions: ['helpers', '.helpers'],
+      extensions: ['helper', '.helper', 'helpers', '.helpers'],
       format: FileFormat.svg,
     },
     { icon: 'idea', extensions: ['.idea'], format: FileFormat.svg },
@@ -296,7 +302,7 @@ export const extensions: IFolderCollection = {
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     {
       icon: 'library',
-      extensions: ['lib', '.lib', 'library'],
+      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries'],
       format: FileFormat.svg,
     },
     { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
@@ -350,7 +356,14 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'model',
-      extensions: ['models', '.models', 'entities', '.entities'],
+      extensions: [
+        'model',
+        '.model',
+        'models',
+        '.models',
+        'entities',
+        '.entities',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -454,7 +467,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'server', extensions: ['server'], format: FileFormat.svg },
-    { icon: 'services', extensions: ['services'], format: FileFormat.svg },
+    {
+      icon: 'services',
+      extensions: ['service', 'services'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'src',
       extensions: ['src', 'source', 'sources'],

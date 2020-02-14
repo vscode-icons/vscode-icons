@@ -7,6 +7,9 @@ import { schema as defaultSchema } from '../models/iconsManifest';
 import { Utils } from '../utils';
 
 export class ManifestBuilder {
+  private static iconsDirRelativeBasePath: string;
+  private static customIconDirPath: string;
+
   public static async buildManifest(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
@@ -85,9 +88,6 @@ export class ManifestBuilder {
     // set the rest of the schema
     return this.buildJsonStructure(files, folders, schema);
   }
-
-  private static iconsDirRelativeBasePath: string;
-  private static customIconDirPath: string;
 
   private static async buildDefaultIconPath(
     defaultExtension: models.IDefaultExtension,
@@ -202,29 +202,29 @@ export class ManifestBuilder {
         }
 
         if (current.languages) {
-          const assignLanguages = langId => {
+          const assignLanguages = (langId: string): void => {
             languageIds[langId] = iconFileDefinition;
           };
-          const assignLanguagesLight = langId => {
+          const assignLanguagesLight = (langId: string): void => {
             light.languageIds[langId] = hasLightVersion
               ? iconFileLightDefinition
               : iconFileDefinition;
           };
 
-          current.languages.forEach(langIds => {
-            if (Array.isArray(langIds.ids)) {
-              langIds.ids.forEach(id => {
+          current.languages.forEach((langId: models.ILanguage): void => {
+            if (Array.isArray(langId.ids)) {
+              langId.ids.forEach(id => {
                 assignLanguages(id);
                 assignLanguagesLight(id);
               });
             } else {
-              assignLanguages(langIds.ids);
-              assignLanguagesLight(langIds.ids);
+              assignLanguages(langId.ids);
+              assignLanguagesLight(langId.ids);
             }
           });
         }
 
-        const populateFn = (extension: string) => {
+        const populateFn = (extension: string): void => {
           if (isFilename) {
             names.fileNames[extension] = iconFileDefinition;
             light.fileNames[extension] = hasLightVersion

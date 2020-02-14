@@ -63,10 +63,7 @@ export class Utils {
     };
     await dirPath
       .split(sep)
-      .reduce(
-        callbackFn,
-        Promise.resolve(isAbsolute(dirPath) ? sep : ''),
-      );
+      .reduce(callbackFn, Promise.resolve(isAbsolute(dirPath) ? sep : ''));
   }
 
   /**
@@ -112,7 +109,7 @@ export class Utils {
   public static async getRelativePath(
     fromDirPath: string,
     toDirName: string,
-    checkDirectory: boolean = true,
+    checkDirectory = true,
   ): Promise<string> {
     if (fromDirPath == null) {
       throw new Error('fromDirPath not defined.');
