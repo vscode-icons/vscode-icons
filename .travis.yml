@@ -4,9 +4,9 @@ os:
   - osx
 node_js:
   - node    # latest node
-  - 10.11.0 # vscode >= 1.36.0
+  - 12.4.0  # vscode >= 1.40.0
+  - 10.11.0 # vscode >= 1.36.0 < 1.40.0
   - 10.2.0  # vscode >= 1.31.0 < 1.36.0
-  - 8.9.3   # vscode >= 1.26.0 < 1.31.0
 git:
   depth: 5
   submodules: false
@@ -48,7 +48,7 @@ jobs:
     - stage: publish
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       os: linux
-      node_js: 8.9.3
+      node_js: 10.2.0
       install:
         - npm run preinstall
         - npm i vsce --no-save
