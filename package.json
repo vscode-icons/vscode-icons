@@ -35,8 +35,8 @@
     "email": "roberto.huertas@outlook.com"
   },
   "engines": {
-    "vscode": "^1.26.1",
-    "node": ">=8.9.3"
+    "vscode": "^1.31.1",
+    "node": ">=10.2.0"
   },
   "categories": [
     "Themes"
@@ -287,46 +287,46 @@
     "example": "example"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.2",
+    "@types/chai": "^4.2.9",
     "@types/glob": "^7.1.1",
-    "@types/lodash": "^4.14.138",
-    "@types/mocha": "^5.2.7",
-    "@types/node": "8",
+    "@types/lodash": "^4.14.149",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "10",
     "@types/open": "^6.2.1",
     "@types/proxyquire": "^1.3.28",
-    "@types/semver": "^6.0.2",
-    "@types/sinon": "^7.0.13",
-    "@types/vscode": "1.26",
-    "@types/webpack": "^4.41.0",
-    "@typescript-eslint/eslint-plugin": "^2.18.0",
-    "@typescript-eslint/eslint-plugin-tslint": "^2.18.0",
-    "@typescript-eslint/parser": "^2.18.0",
+    "@types/semver": "^7.1.0",
+    "@types/sinon": "^7.5.1",
+    "@types/vscode": "1.31",
+    "@types/webpack": "^4.41.6",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
     "examples-generator": "file:submodules/examples-generator",
-    "glob": "^7.1.4",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.2.5",
-    "mocha": "^6.2.0",
-    "nyc": "^14.1.1",
-    "prettier": "^1.18.2",
+    "glob": "^7.1.6",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
     "proxyquire": "^2.1.3",
-    "rimraf": "^3.0.0",
-    "sinon": "^7.4.2",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.6.3",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8"
+    "rimraf": "^3.0.2",
+    "sinon": "^8.1.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   },
   "dependencies": {
     "inversify": "^5.0.1",
     "lodash": "^4.17.15",
-    "open": "^6.4.0",
-    "nsri": "^4.5.1",
+    "open": "^7.0.2",
+    "nsri": "^4.6.0",
     "reflect-metadata": "^0.1.13",
-    "semver": "^6.3.0"
+    "semver": "^7.1.3"
   }
 }

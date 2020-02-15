@@ -155,11 +155,11 @@ describe('Utils: tests', function () {
     });
 
     context(`the 'deleteDirectoryRecursively' function`, function () {
+      let readdirAsyncStub: sinon.SinonStub;
+
       it('deletes a directory and all subdirectories asynchronously', async function () {
+        readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync').resolves();
         const directoryPath = '/path/to';
-        const readdirAsyncStub = sandbox
-          .stub(fsAsync, 'readdirAsync')
-          .resolves();
         const lstatsAsyncStub = sandbox.stub(fsAsync, 'lstatAsync').resolves();
         const fileCheck = existsAsyncStub
           .onFirstCall()
