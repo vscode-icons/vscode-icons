@@ -76,6 +76,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   gamemaker2: ILanguage;
   gamemaker81: ILanguage;
   gcode: ILanguage;
+  genstat: ILanguage;
   glsl: ILanguage;
   gnuplot: ILanguage;
   godot: ILanguage;
