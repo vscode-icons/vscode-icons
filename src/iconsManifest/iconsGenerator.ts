@@ -69,7 +69,7 @@ export class IconsGenerator implements models.IIconsGenerator {
 
   public async persist(
     iconsManifest: models.IIconSchema,
-    updatePackageJson: boolean = false,
+    updatePackageJson = false,
   ): Promise<void> {
     await this.writeIconsManifestToFile(
       constants.iconsManifest.filename,
@@ -102,7 +102,7 @@ export class IconsGenerator implements models.IIconsGenerator {
         ),
       );
 
-      // tslint:disable-next-line no-console
+      // eslint-disable-next-line no-console
       console.info(
         `[${constants.extension.name}] Icons manifest file successfully generated!`,
       );
@@ -131,27 +131,27 @@ export class IconsGenerator implements models.IIconsGenerator {
     }
     const replacer = (rawText: string[]): string[] => {
       // update 'contributes.iconTheme.path'
-      let predicate = (line: string) => line.includes('"path"');
+      let predicate = (line: string): boolean => line.includes('"path"');
       let lineIndex = rawText.findIndex(predicate);
       if (lineIndex > -1) {
         rawText[lineIndex] = rawText[lineIndex].replace(
           oldIconsThemesPath,
           iconsDirRelativePath,
         );
-        // tslint:disable-next-line no-console
+        // eslint-disable-next-line no-console
         console.info(
           `[${constants.extension.name}] Icons path in 'package.json' updated`,
         );
       }
       // update 'main'
-      predicate = (line: string) => line.includes('"main"');
+      predicate = (line: string): boolean => line.includes('"main"');
       lineIndex = rawText.findIndex(predicate);
       if (lineIndex > -1) {
         rawText[lineIndex] = rawText[lineIndex].replace(
           manifest.main,
           entryPath,
         );
-        // tslint:disable-next-line no-console
+        // eslint-disable-next-line no-console
         console.info(
           `[${constants.extension.name}] Entrypoint in 'package.json' updated`,
         );

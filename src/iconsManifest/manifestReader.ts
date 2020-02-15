@@ -9,9 +9,9 @@ export class ManifestReader {
     preset: models.PresetNames,
     presets: models.IPresets,
   ): Promise<boolean> {
-    const isNonIconsRelatedPreset = () =>
+    const isNonIconsRelatedPreset = (): boolean =>
       [models.PresetNames.hideExplorerArrows].some(prst => prst === preset);
-    const isFoldersRelatedPreset = () =>
+    const isFoldersRelatedPreset = (): boolean =>
       [
         models.PresetNames.hideFolders,
         models.PresetNames.foldersAllDefaultIcon,
@@ -27,7 +27,7 @@ export class ManifestReader {
 
   public static async iconsDisabled(
     name: string,
-    isFile: boolean = true,
+    isFile = true,
   ): Promise<boolean> {
     const iconManifest: string = await this.getIconManifest();
     const iconsJson: models.IIconSchema = Utils.parseJSON(iconManifest);

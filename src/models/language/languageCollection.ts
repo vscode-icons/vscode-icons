@@ -31,11 +31,13 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   biml: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
+  // eslint-disable-next-line camelcase
   c_al: ILanguage;
   cabal: ILanguage;
   caddyfile: ILanguage;
   cfc: ILanguage;
   cfm: ILanguage;
+  cloudfoundrymanifest: ILanguage;
   cmake: ILanguage;
   cmakecache: ILanguage;
   cobol: ILanguage;
@@ -163,6 +165,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   riot: ILanguage;
   robot: ILanguage;
   san: ILanguage;
+  sas: ILanguage;
   sbt: ILanguage;
   scala: ILanguage;
   scilab: ILanguage;
@@ -211,6 +214,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   volt: ILanguage;
   vue: ILanguage;
   wasm: ILanguage;
+  wenyan: ILanguage;
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;

@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
 import { join } from 'path';
@@ -33,9 +33,7 @@ describe('Specifications of supported folders: tests', function () {
         it('has an associated opened icon file', function () {
           folders.supported.forEach(async (folder: IFolderExtension) => {
             const filename =
-              `${constants.iconsManifest.folderTypePrefix}${
-                folder.icon
-              }_opened` +
+              `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
               `${constants.iconsManifest.iconSuffix}.${
                 FileFormat[folder.format]
               }`;
@@ -58,7 +56,7 @@ describe('Specifications of supported folders: tests', function () {
             const checker = (
               _folder: IFolderExtension,
               folder: IFolderExtension,
-            ) =>
+            ): boolean =>
               (!Reflect.has(_folder, 'disabled') ||
                 _folder.disabled !== folder.disabled) &&
               !Reflect.has(_folder, 'filename') &&
@@ -107,9 +105,7 @@ describe('Specifications of supported folders: tests', function () {
               .filter(async (folder: IFolderExtension) => folder.light)
               .forEach(async (folder: IFolderExtension) => {
                 const filename =
-                  `${constants.iconsManifest.folderTypePrefix}${
-                    folder.icon
-                  }_opened` +
+                  `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                   `${constants.iconsManifest.iconSuffix}.${
                     FileFormat[folder.format]
                   }`;
