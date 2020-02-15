@@ -3191,6 +3191,12 @@ export const extensions: IFileCollection = {
       languages: [languages.rust],
       format: FileFormat.svg,
     },
+    {
+      icon: 'rust_toolchain',
+      extensions: ['rust-toolchain'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'saltstack', extensions: ['sls'], format: FileFormat.svg },
     {
       icon: 'san',
