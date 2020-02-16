@@ -33,7 +33,7 @@ jobs:
     - stage: wiki pages icons list update
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       os: linux
-      node_js: 8.9.3
+      node_js: 10.2.0
       addons:
         apt:
           sources: [ubuntu-toolchain-r-test]
