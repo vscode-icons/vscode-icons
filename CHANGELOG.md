@@ -1,5 +1,28 @@
 # Change Log
 
+## 10.0.0 (February 16, 2020)
+
+- Feature: Support for `rust-toolchain` file. ([@KingDarBoja](https://github.com/KingDarBoja) & [@robertohuertasm](https://github.com/robertohuertasm) in [#2371](https://github.com/vscode-icons/vscode-icons/pull/2371))
+- Feature: Support for `Genstat`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2370](https://github.com/vscode-icons/vscode-icons/pull/2370))
+- Feature: Support for `zipx` extension. ([@jakeboone02](https://github.com/jakeboone02) in [#2369](https://github.com/vscode-icons/vscode-icons/pull/2369))
+- Fix: Fix `tox` file association. ([@JimiC](https://github.com/JimiC) in [#2367](https://github.com/vscode-icons/vscode-icons/pull/2367))
+- Enhancement: Migrate to `eslint` from `tslint`. ([@JimiC](https://github.com/JimiC) in [#2363](https://github.com/vscode-icons/vscode-icons/pull/2363))
+- Enhancement: Extend folder icons with plural `libs`. ([@Dominic-Preap](https://github.com/Dominic-Preap) in [#2360](https://github.com/vscode-icons/vscode-icons/pull/2360))
+- Feature: Drop support for `Node v8`. ([@JimiC](https://github.com/JimiC) in [#2350](https://github.com/vscode-icons/vscode-icons/pull/2350))
+- Enhancement: Support for `kitchen.yml` as test `Kitchen` file. ([@tas50](https://github.com/tas50) in [#2349](https://github.com/vscode-icons/vscode-icons/pull/2349))
+- Feature: Support for `SAS`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2347](https://github.com/vscode-icons/vscode-icons/pull/2347))
+- Enhancement: Support for `mjs`, `cjs` config file for `Jest`. ([@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#2346](https://github.com/vscode-icons/vscode-icons/pull/2346))
+- Feature: Support for `tsconfig` server file. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2338](https://github.com/vscode-icons/vscode-icons/pull/2338))
+- Enhancement: Add singular for `helpers`, `models` and `services` folders. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2337](https://github.com/vscode-icons/vscode-icons/pull/2337))
+- Enhancement: Replace `actionScript` language id. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2336](https://github.com/vscode-icons/vscode-icons/pull/2336))
+- Enhancement: Support for `mjs`, `cjs` config file for `Babel`. ([@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#2334](https://github.com/vscode-icons/vscode-icons/pull/2334))
+- Fix: Fix typo in the Changelog. ([@JimiC](https://github.com/JimiC) in [#2335](https://github.com/vscode-icons/vscode-icons/pull/2335))
+- Enhancement: Support for `mjs`, `cjs` config file for `eslint`. ([@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#2328](https://github.com/vscode-icons/vscode-icons/pull/2328))
+- Feature: Support for `Expo config` and generated folders. ([@EvanBacon](https://github.com/EvanBacon) in [#2327](https://github.com/vscode-icons/vscode-icons/pull/2327))
+- Feature: Support for `Wenyan Lang`. ([@antfu](https://github.com/antfu) in [#2321](https://github.com/vscode-icons/vscode-icons/pull/2321))
+- Feature: Support for `Nuxt` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2328](https://github.com/vscode-icons/vscode-icons/pull/2328))
+- Enhancement: Enhance the existing `Perl` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2305](https://github.com/vscode-icons/vscode-icons/pull/2305))
+
 ## 9.7.0 (December 28, 2019)
 
 - Enhancement: Support for `esm` babel & gulp files. ([@ManzDev](https://github.com/ManzDev) in [#2319](https://github.com/vscode-icons/vscode-icons/pull/2319))
