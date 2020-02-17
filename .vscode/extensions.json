@@ -2,7 +2,7 @@
   // See http://go.microsoft.com/fwlink/?LinkId=827846
   // for the documentation about the extensions.json format
   "recommendations": [
-    "ms-vscode.vscode-typescript-tslint-plugin",
+    "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "DavidAnson.vscode-markdownlint",
     "esbenp.prettier-vscode"
