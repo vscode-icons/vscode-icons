@@ -2,6 +2,7 @@ language: node_js
 os:
   - linux
   - osx
+version: ~> 1.0
 node_js:
   - node    # latest node
   - 12.4.0  # vscode >= 1.40.0
@@ -10,10 +11,6 @@ node_js:
 git:
   depth: 5
   submodules: false
-matrix:
-  allow_failures:
-    - node_js: node
-  fast_finish: true
 env:
   global:
     - CC_OS_NAME=$(if [[ $TRAVIS_OS_NAME == "osx" ]]; then echo "darwin"; else echo $TRAVIS_OS_NAME; fi)
@@ -29,6 +26,9 @@ after_success:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 jobs:
+  allow_failures:
+    - node_js: node
+  fast_finish: true
   include:
     - stage: wiki pages icons list update
       if: repo =~ ^vscode-icons AND branch = master AND type = push
@@ -58,8 +58,8 @@ jobs:
 
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
-      sudo: required
       language: generic
+      cache: false
       install: false
       before_script: false
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
@@ -67,8 +67,8 @@ jobs:
 
     - stage: docker vsi:tag
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
-      sudo: required
       language: generic
+      cache: false
       install: false
       before_script: false
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
