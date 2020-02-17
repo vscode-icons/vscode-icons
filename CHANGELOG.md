@@ -20,7 +20,7 @@
 - Enhancement: Support for `mjs`, `cjs` config file for `eslint`. ([@xiaoxiangmoe](https://github.com/xiaoxiangmoe) in [#2328](https://github.com/vscode-icons/vscode-icons/pull/2328))
 - Feature: Support for `Expo config` and generated folders. ([@EvanBacon](https://github.com/EvanBacon) in [#2327](https://github.com/vscode-icons/vscode-icons/pull/2327))
 - Feature: Support for `Wenyan Lang`. ([@antfu](https://github.com/antfu) in [#2321](https://github.com/vscode-icons/vscode-icons/pull/2321))
-- Feature: Support for `Nuxt` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2328](https://github.com/vscode-icons/vscode-icons/pull/2328))
+- Feature: Support for `Nuxt` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2298](https://github.com/vscode-icons/vscode-icons/pull/2298))
 - Enhancement: Enhance the existing `Perl` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2305](https://github.com/vscode-icons/vscode-icons/pull/2305))
 
 ## 9.7.0 (December 28, 2019)
