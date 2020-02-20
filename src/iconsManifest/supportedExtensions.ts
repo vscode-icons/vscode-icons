@@ -1110,7 +1110,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'docker',
-      extensions: [],
+      extensions: ['.dockerignore'],
       filenamesGlob: [
         'docker-compose',
         'docker-compose.ci-build',
