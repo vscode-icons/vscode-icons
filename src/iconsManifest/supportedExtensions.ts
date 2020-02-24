@@ -2436,6 +2436,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nimble',
+      extensions: [],
+      languages: [languages.nimble],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ninja',
       extensions: ['build.ninja'],
       filename: true,
