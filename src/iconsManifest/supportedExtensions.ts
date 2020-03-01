@@ -2439,7 +2439,6 @@ export const extensions: IFileCollection = {
       icon: 'nimble',
       extensions: [],
       languages: [languages.nimble],
-      light: true,
       format: FileFormat.svg,
     },
     {
