@@ -70,7 +70,14 @@
     "@typescript-eslint/semi": "error",
     "@typescript-eslint/space-within-parens": ["off", "never"],
     "@typescript-eslint/triple-slash-reference": "error",
-    "@typescript-eslint/type-annotation-spacing": "error",
+    "@typescript-eslint/type-annotation-spacing": ["error", {
+        "property": {
+          "arrow": {
+            "before": true,
+            "after": true
+          }
+        }
+    }],
     "@typescript-eslint/unified-signatures": "error",
     "import/no-unresolved": ["error", { "ignore": ["vscode", "\\.json$"] }],
     "arrow-body-style": "error",
