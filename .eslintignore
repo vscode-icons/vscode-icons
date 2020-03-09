@@ -5,5 +5,5 @@ out
 coverage
 /.*
 /*.*
-*.*
+.*
 *.d.ts
