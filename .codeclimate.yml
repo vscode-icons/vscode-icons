@@ -24,7 +24,7 @@ plugins:
     enabled: true
     channel: "eslint-6"
     config:
-      config: .eslintrc.json
+      config: .eslintrc
       extensions:
       - .ts
 exclude_patterns:
