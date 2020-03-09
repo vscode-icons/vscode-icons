@@ -1,0 +1,9 @@
+node_modules
+submodules
+dist
+out
+coverage
+/.*
+/*.*
+*.*
+*.d.ts
