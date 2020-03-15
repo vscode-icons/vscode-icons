@@ -1569,6 +1569,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'graphql_config',
+      extensions: ['.graphqlconfig'],
+      filenamesGlob: ['.graphqlconfig'],
+      extensionsGlob: ['yml', 'yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'graphviz',
       extensions: [],
       languages: [languages.graphviz],
