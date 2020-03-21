@@ -136,7 +136,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'debian', extensions: ['debian'], format: FileFormat.svg },
+    {
+      icon: 'debian',
+      extensions: ['debian', 'deb'],
+      format: FileFormat.svg
+    },
     {
       icon: 'dependabot',
       extensions: ['.dependabot'],
@@ -180,9 +184,9 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
-    { 
-      icon: 'expo', 
-      extensions: ['.expo', '.expo-shared'], 
+    {
+      icon: 'expo',
+      extensions: ['.expo', '.expo-shared'],
       light: true,
       format: FileFormat.svg,
     },
