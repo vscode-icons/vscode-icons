@@ -143,6 +143,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'devcontainer',
+      extensions: ['.devcontainer'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dist',
       extensions: [
         'dist',
@@ -180,9 +185,9 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
-    { 
-      icon: 'expo', 
-      extensions: ['.expo', '.expo-shared'], 
+    {
+      icon: 'expo',
+      extensions: ['.expo', '.expo-shared'],
       light: true,
       format: FileFormat.svg,
     },
