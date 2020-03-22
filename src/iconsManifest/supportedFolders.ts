@@ -139,7 +139,7 @@ export const extensions: IFolderCollection = {
     {
       icon: 'debian',
       extensions: ['debian', 'deb'],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'dependabot',
