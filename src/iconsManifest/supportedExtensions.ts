@@ -2071,6 +2071,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'liquid', extensions: ['liquid'], format: FileFormat.svg },
     { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
+    { icon: 'lnk', extensions: ['lnk'], format: FileFormat.svg },
     { icon: 'locale', extensions: [], format: FileFormat.svg },
     { icon: 'log', extensions: ['log', 'tlg'], format: FileFormat.svg },
     {
