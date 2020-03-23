@@ -222,4 +222,5 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   xquery: ILanguage;
   yacc: ILanguage;
   yang: ILanguage;
+  zenscript: ILanguage;
 }

@@ -4015,6 +4015,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'zenscript',
+      extensions: ['.zsrc.json'],
+      languages: [languages.zenscript],
+      format: FileFormat.png,
+    },
+    {
       icon: 'zip',
       extensions: [
         'zip',

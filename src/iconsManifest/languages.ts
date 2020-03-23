@@ -288,4 +288,5 @@ export const languages: ILanguageCollection = {
   yacc: { ids: 'yacc', defaultExtension: 'bison' },
   yaml: { ids: 'yaml', defaultExtension: 'yaml' },
   yang: { ids: 'yang', defaultExtension: 'yang' },
+  zenscript: { ids: 'zenscript', defaultExtension: 'zs' },
 };
