@@ -1091,6 +1091,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'devcontainer',
+      extensions: ['devcontainer.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'django',
       extensions: ['djt'],
       languages: [languages.django],

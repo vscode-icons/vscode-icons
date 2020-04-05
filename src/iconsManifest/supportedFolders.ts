@@ -147,6 +147,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'devcontainer',
+      extensions: ['.devcontainer'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dist',
       extensions: [
         'dist',
