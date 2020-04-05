@@ -1821,9 +1821,15 @@ export const extensions: IFileCollection = {
     { icon: 'jbuilder', extensions: ['jbuilder'], format: FileFormat.svg },
     {
       icon: 'jest',
-      extensions: ['jest.json', '.jestrc', '.jestrc.js', '.jestrc.json'],
-      filenamesGlob: ['jest.config'],
-      extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
+      extensions: [
+        'jest.config.json',
+        'jest.json',
+        '.jestrc',
+        '.jestrc.js',
+        '.jestrc.json',
+      ],
+      filenamesGlob: ['jest.config', 'jest.config.babel'],
+      extensionsGlob: ['js', 'cjs', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3194,6 +3200,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'rust_toolchain',
       extensions: ['rust-toolchain'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'sails',
+      extensions: ['.sailsrc'],
       filename: true,
       format: FileFormat.svg,
     },
