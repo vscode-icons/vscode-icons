@@ -8,6 +8,7 @@ export const constants = {
     version: manifest.version,
     customIconFolderName: 'vsicons-custom-icons',
     distEntryFilename: 'vscode-icons.bundle.js',
+    uninstallEntryFilename: 'uninstall.bundle.js',
     outDirName: 'out',
     distDirName: 'dist',
     srcDirName: 'src',
