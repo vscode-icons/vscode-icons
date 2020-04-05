@@ -2756,6 +2756,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'plsql_package_spec', extensions: ['pks'], format: FileFormat.svg },
+    {
+      icon: 'pnpm',
+      extensions: ['pnpmfile.js', 'pnpm-lock.yaml', 'pnpm-workspace.yaml'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
     {
       icon: 'polymer',
