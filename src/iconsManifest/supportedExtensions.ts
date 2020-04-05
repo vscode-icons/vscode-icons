@@ -1091,6 +1091,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'devcontainer',
+      extensions: ['devcontainer.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'django',
       extensions: ['djt'],
       languages: [languages.django],
@@ -1829,9 +1835,15 @@ export const extensions: IFileCollection = {
     { icon: 'jbuilder', extensions: ['jbuilder'], format: FileFormat.svg },
     {
       icon: 'jest',
-      extensions: ['jest.json', '.jestrc', '.jestrc.js', '.jestrc.json'],
-      filenamesGlob: ['jest.config'],
-      extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
+      extensions: [
+        'jest.config.json',
+        'jest.json',
+        '.jestrc',
+        '.jestrc.js',
+        '.jestrc.json',
+      ],
+      filenamesGlob: ['jest.config', 'jest.config.babel'],
+      extensionsGlob: ['js', 'cjs', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2444,6 +2456,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nimble',
+      extensions: [],
+      languages: [languages.nimble],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ninja',
       extensions: ['build.ninja'],
       filename: true,
@@ -2752,6 +2770,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'plsql_package_spec', extensions: ['pks'], format: FileFormat.svg },
+    {
+      icon: 'pnpm',
+      extensions: ['pnpmfile.js', 'pnpm-lock.yaml', 'pnpm-workspace.yaml'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
     {
       icon: 'polymer',
@@ -3202,6 +3227,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'rust_toolchain',
       extensions: ['rust-toolchain'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'sails',
+      extensions: ['.sailsrc'],
       filename: true,
       format: FileFormat.svg,
     },
