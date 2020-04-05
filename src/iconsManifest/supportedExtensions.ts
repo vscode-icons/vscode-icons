@@ -3203,6 +3203,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'sails',
+      extensions: ['.sailsrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'saltstack', extensions: ['sls'], format: FileFormat.svg },
     {
       icon: 'san',
