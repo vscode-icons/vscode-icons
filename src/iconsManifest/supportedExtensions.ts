@@ -4017,6 +4017,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'zenscript',
       extensions: ['.zsrc.json'],
+      filename: true,
       languages: [languages.zenscript],
       format: FileFormat.png,
     },
