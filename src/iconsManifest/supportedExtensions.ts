@@ -449,6 +449,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'api_extractor',
+      extensions: ['api-extractor.json', 'api-extractor-base.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'apl',
       extensions: [],
       languages: [languages.apl],
