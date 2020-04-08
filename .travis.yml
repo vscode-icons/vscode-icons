@@ -13,7 +13,8 @@ git:
   submodules: false
 install:
   - npm install
-cache: npm
+cache:
+  npm: false
 before_script:
   - CC_OS_NAME=$(if [[ $TRAVIS_OS_NAME == "osx" ]]; then echo "darwin"; else echo $TRAVIS_OS_NAME; fi)
   - URL="https://codeclimate.com/downloads/test-reporter/test-reporter-latest-$CC_OS_NAME-amd64"
