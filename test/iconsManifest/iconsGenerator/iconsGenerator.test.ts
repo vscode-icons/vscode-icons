@@ -236,7 +236,7 @@ describe('IconsGenerator: tests', function () {
         await iconsGenerator.persist(iconsManifest);
 
         expect(createDirAsyncStub.calledOnce).to.be.true;
-        expect(createDirAsyncStub.calledWithMatch(/\.*[\/|\\]src/)).to.be.true;
+        expect(createDirAsyncStub.calledWithMatch(/\.*[/|\\]src/)).to.be.true;
       });
 
       context(`writes the icons manifest to storage`, function () {
@@ -296,9 +296,7 @@ describe('IconsGenerator: tests', function () {
           await iconsGenerator.persist(iconsManifest);
 
           expect(createDirAsyncStub.calledOnce).to.be.true;
-          expect(
-            createDirAsyncStub.calledWithMatch(/\.*[\/|\\]src/),
-          ).to.be.true;
+          expect(createDirAsyncStub.calledWithMatch(/\.*[/|\\]src/)).to.be.true;
           expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
         });
 
@@ -476,7 +474,9 @@ describe('IconsGenerator: tests', function () {
 
                 context(`development`, function () {
                   it(`without a filename`, async function () {
-                    const manifestMock = `"main":"${constants.extension.outDirName}/${constants.extension.srcDirName}/"`;
+                    const manifestMock =
+                      '"main": "' +
+                      `${constants.extension.outDirName}/${constants.extension.srcDirName}/"`;
 
                     await iconsGenerator.persist(iconsManifest, true);
 
@@ -484,7 +484,7 @@ describe('IconsGenerator: tests', function () {
                       manifestMock,
                     ])[0];
 
-                    expect(returnedValue).to.equal(`"main":"${newDir}"`);
+                    expect(returnedValue).to.equal(`"main": "${newDir}"`);
                   });
                 });
 
@@ -498,7 +498,9 @@ describe('IconsGenerator: tests', function () {
                   });
 
                   it(`with a filename`, async function () {
-                    const manifestMock = `"main": "${constants.extension.outDirName}/${constants.extension.srcDirName}/"`;
+                    const manifestMock =
+                      '"main": "' +
+                      `${constants.extension.outDirName}/${constants.extension.srcDirName}/"`;
 
                     await iconsGenerator.persist(iconsManifest, true);
 
@@ -535,7 +537,9 @@ describe('IconsGenerator: tests', function () {
             it(`updated`, async function () {
               getRelativePathStub.resolves('some/path/');
               updateFileStub
-                .callsArgWith(1, [`"main":"some/path/"\n"path":""\n"scripts":{"vscode:uninstall":""}`])
+                .callsArgWith(1, [
+                  `"main":"some/path/"\n"path":""\n"scripts":{"vscode:uninstall":""}`,
+                ])
                 .resolves();
 
               await iconsGenerator.persist(iconsManifest, true);

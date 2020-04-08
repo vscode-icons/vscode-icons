@@ -157,8 +157,10 @@ export class ManifestBuilder {
     const sts = constants.iconsManifest;
     return sortedUniq(
       sortBy(
-        files.supported.filter(x => !x.disabled && x.icon),
-        item => item.icon,
+        files.supported.filter(
+          (fileExt: models.IFileExtension) => !fileExt.disabled && fileExt.icon,
+        ),
+        (item: models.IFileExtension) => item.icon,
       ),
     ).reduce(
       async (previous, current): Promise<models.IBuildFiles> => {
@@ -213,7 +215,7 @@ export class ManifestBuilder {
 
           current.languages.forEach((langId: models.ILanguage): void => {
             if (Array.isArray(langId.ids)) {
-              langId.ids.forEach(id => {
+              langId.ids.forEach((id: string) => {
                 assignLanguages(id);
                 assignLanguagesLight(id);
               });
@@ -270,8 +272,11 @@ export class ManifestBuilder {
   ): Promise<models.IBuildFolders> {
     const sts = constants.iconsManifest;
     return sortBy(
-      folders.supported.filter(x => !x.disabled && x.icon),
-      item => item.icon,
+      folders.supported.filter(
+        (folderExt: models.IFolderExtension) =>
+          !folderExt.disabled && folderExt.icon,
+      ),
+      (item: models.IFolderExtension) => item.icon,
     ).reduce(
       async (previous, current): Promise<models.IBuildFolders> => {
         const old = await previous;
@@ -334,7 +339,7 @@ export class ManifestBuilder {
           };
         }
 
-        current.extensions.forEach(extension => {
+        current.extensions.forEach((extension: string) => {
           const key = extension;
           names.folderNames[key] = iconFolderDefinition;
           names.folderNamesExpanded[key] = iconOpenFolderDefinition;

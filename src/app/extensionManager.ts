@@ -26,6 +26,7 @@ export class ExtensionManager implements models.IExtensionManager {
   ) {
     // register event listener for configuration changes
     this.vscodeManager.workspace.onDidChangeConfiguration(
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.didChangeConfigurationListener,
       this,
       this.vscodeManager.context.subscriptions,
@@ -78,7 +79,7 @@ export class ExtensionManager implements models.IExtensionManager {
 
   //#region Private functions
   private registerCommands(commands: any[]): void {
-    commands.forEach(command =>
+    commands.forEach((command: any) =>
       this.vscodeManager.context.subscriptions.push(
         this.vscodeManager.commands.registerCommand(
           command.command,
@@ -179,13 +180,16 @@ export class ExtensionManager implements models.IExtensionManager {
   private async showCustomizationMessage(
     message: models.LangResourceLike,
     items: models.LangResourceLike[],
-    callback?: (...args: any[]) => void,
+    callback?: (...args: any[]) => any,
     cbArgs?: any[],
   ): Promise<void> {
     try {
       if (
         this.vscodeManager.supportsThemesReload &&
-        items.some(item => item === models.LangResourceKeys.reload)
+        items.some(
+          (item: models.LangResourceLike) =>
+            item === models.LangResourceKeys.reload,
+        )
       ) {
         await this.handleAction(
           models.LangResourceKeys.reload,
@@ -220,6 +224,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.reload,
         ...additionalTitles,
       ],
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.applyCustomization,
     );
   }
@@ -233,6 +238,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.restart,
         models.LangResourceKeys.reload,
       ],
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.restoreManifest,
     );
   }
@@ -246,6 +252,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.restart,
         models.LangResourceKeys.reload,
       ],
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.resetProjectDetectionDefaults,
     );
   }
@@ -432,12 +439,14 @@ export class ExtensionManager implements models.IExtensionManager {
     // If the preset is the same as the toggle value then trigger an explicit reload
     // Note: This condition works also for auto-reload handling
     if (this.configManager.vsicons.presets[cbArgs[0]] === cbArgs[1]) {
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.executeAndReload(this.applyCustomization);
     } else {
       if (cbArgs.length !== 3) {
         throw new Error('Arguments mismatch');
       }
       this.doReload = true;
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.callback = this.applyCustomization;
       callback.apply(this.configManager, cbArgs);
     }
@@ -449,22 +458,28 @@ export class ExtensionManager implements models.IExtensionManager {
     if (
       !projectDetectionResults ||
       !projectDetectionResults.length ||
-      projectDetectionResults.every(pdr => !pdr.apply)
+      projectDetectionResults.every(
+        (pdr: models.IProjectDetectionResult) => !pdr.apply,
+      )
     ) {
       return;
     }
 
     const conflict = projectDetectionResults.find(
-      pdr => pdr.conflictingProjects && pdr.conflictingProjects.length,
+      (pdr: models.IProjectDetectionResult) =>
+        pdr.conflictingProjects && pdr.conflictingProjects.length,
     );
     if (!conflict && this.configManager.vsicons.projectDetection.autoReload) {
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.executeAndReload(this.applyCustomization, [projectDetectionResults]);
       return;
     }
     const items = conflict
       ? ([
           models.ProjectNames[conflict.project],
-          ...conflict.conflictingProjects.map(cp => models.ProjectNames[cp]),
+          ...conflict.conflictingProjects.map(
+            (cp: models.Projects) => models.ProjectNames[cp],
+          ),
         ] as string[])
       : [
           models.LangResourceKeys.reload,
@@ -475,6 +490,7 @@ export class ExtensionManager implements models.IExtensionManager {
     return this.showCustomizationMessage(
       projectDetectionResults[0].langResourceKey,
       items,
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.applyCustomization,
       [projectDetectionResults],
     );
@@ -511,6 +527,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys.restart,
         models.LangResourceKeys.reload,
       ],
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.configManager.updatePreset,
       [presetName, toggledValue, configurationTarget],
     );

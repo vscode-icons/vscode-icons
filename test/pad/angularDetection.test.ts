@@ -140,9 +140,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
             'value',
           );
           expect(firstResult).ownProperty('apply').to.be.true;
-          expect(firstResult)
-            .ownProperty('project')
-            .to.equal(Projects.angular);
+          expect(firstResult).ownProperty('project').to.equal(Projects.angular);
           expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
           expect(firstResult)
             .ownProperty('langResourceKey')
@@ -174,9 +172,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
             'value',
           );
           expect(firstResult).ownProperty('apply').to.be.true;
-          expect(firstResult)
-            .ownProperty('project')
-            .to.equal(Projects.angular);
+          expect(firstResult).ownProperty('project').to.equal(Projects.angular);
           expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
           expect(firstResult)
             .ownProperty('langResourceKey')
@@ -695,10 +691,7 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               .onSecondCall()
               .returns({ workspaceValue: true })
               .returns({ workspaceValue: undefined });
-            iconsDisabledStub
-              .onSecondCall()
-              .resolves(false)
-              .resolves(true);
+            iconsDisabledStub.onSecondCall().resolves(false).resolves(true);
 
             const res = await padManager.detectProjects([Projects.angular]);
             const firstResult = res[0];

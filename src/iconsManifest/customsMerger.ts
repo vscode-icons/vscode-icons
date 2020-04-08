@@ -74,7 +74,7 @@ export class CustomsMerger {
         | undefined = (
         (Array.isArray(projectDetectionResults) && projectDetectionResults) ||
         []
-      ).find(pdr => pdr.project === project);
+      ).find((pdr: models.IProjectDetectionResult) => pdr.project === project);
       const preset: boolean = await this.getPreset(
         name,
         project,
@@ -120,11 +120,11 @@ export class CustomsMerger {
         `^${models.IconNames[models.PresetNames[key]]}_.*\\D$`,
       );
       const icons = files.supported
-        .filter(x => regex.test(x.icon))
-        .map(x => x.icon);
+        .filter((file: models.IFileExtension) => regex.test(file.icon))
+        .map((file: models.IFileExtension) => file.icon);
       const defaultIcons = defaultFiles.supported
-        .filter(x => regex.test(x.icon))
-        .map(x => x.icon);
+        .filter((file: models.IFileExtension) => regex.test(file.icon))
+        .map((file: models.IFileExtension) => file.icon);
       const temp = this.togglePreset(disable, icons, files);
       files = this.togglePreset(disable, defaultIcons, temp);
     }
@@ -148,18 +148,23 @@ export class CustomsMerger {
   ): models.IFolderCollection {
     const folderIcons = this.getNonDisabledIcons(customFolders);
     const defaultFolderIcons = defaultFolders.supported
-      .filter(x => !x.disabled)
-      .filter(x =>
+      .filter((folder: models.IFolderExtension) => !folder.disabled)
+      .filter((folder: models.IFolderExtension) =>
         // Exclude overrides
-        customFolders.supported.every(y => y.overrides !== x.icon),
+        customFolders.supported.every(
+          (cFolder: models.IFolderExtension) =>
+            cFolder.overrides !== folder.icon,
+        ),
       )
-      .filter(x =>
+      .filter((folder: models.IFolderExtension) =>
         // Exclude disabled by custom
         customFolders.supported
-          .filter(y => x.icon === y.icon)
-          .every(z => !z.disabled),
+          .filter(
+            (cFolder: models.IFolderExtension) => folder.icon === cFolder.icon,
+          )
+          .every((cFolder: models.IFolderExtension) => !cFolder.disabled),
       )
-      .map(x => x.icon);
+      .map((folder: models.IFolderExtension) => folder.icon);
     const temp = this.togglePreset<models.IFolderCollection>(
       disable,
       folderIcons,
@@ -212,7 +217,9 @@ export class CustomsMerger {
   private static getNonDisabledIcons(
     customFolders: models.IFolderCollection,
   ): any {
-    return customFolders.supported.filter(x => !x.disabled).map(x => x.icon);
+    return customFolders.supported
+      .filter((cFolder: models.IFolderExtension) => !cFolder.disabled)
+      .map((cFolder: models.IFolderExtension) => cFolder.icon);
   }
 
   private static mergeCustoms(
@@ -278,13 +285,18 @@ export class CustomsMerger {
     }
     // start the merge operation
     let final: models.IExtension[] = cloneDeep(supported);
-    custom.forEach(file => {
-      const officialFiles = final.filter(x => x.icon === file.icon);
+    custom.forEach((file: models.IFileExtension) => {
+      const officialFiles = final.filter(
+        (extension: models.IExtension) => extension.icon === file.icon,
+      );
       if (officialFiles.length) {
         // existing icon
         // checking if the icon is disabled
         if (file.disabled != null) {
-          officialFiles.forEach(x => (x.disabled = file.disabled));
+          officialFiles.forEach(
+            (extension: models.IExtension) =>
+              (extension.disabled = file.disabled),
+          );
           if (file.disabled) {
             return;
           }
@@ -297,19 +309,29 @@ export class CustomsMerger {
       // we'll add a new node
       if (file.extends) {
         final
-          .filter(x => x.icon === file.extends)
-          .forEach(x => (x.icon = file.icon));
+          .filter(
+            (extension: models.IExtension) => extension.icon === file.extends,
+          )
+          .forEach(
+            (extension: models.IExtension) => (extension.icon = file.icon),
+          );
       }
       // remove overrides
-      final = final.filter(x => x.icon !== file.overrides);
+      final = final.filter(
+        (extension: models.IExtension) => extension.icon !== file.overrides,
+      );
       // check if file extensions are already in use and remove them
       if (!file.extensions) {
         file.extensions = [];
       }
-      file.extensions.forEach(ext =>
+      file.extensions.forEach((ext: string) =>
         final
-          .filter(x => x.extensions.find(y => y === ext))
-          .forEach(x => remove(x.extensions, el => el === ext)),
+          .filter((extension: models.IExtension) =>
+            extension.extensions.find((el: string) => el === ext),
+          )
+          .forEach((extension: models.IExtension) =>
+            remove(extension.extensions, (el: string) => el === ext),
+          ),
       );
       final.push(file);
     });
@@ -326,8 +348,10 @@ export class CustomsMerger {
     customItems: models.IExtensionCollection<models.IExtension>,
   ): T {
     const workingCopy = cloneDeep(customItems);
-    icons.forEach(icon => {
-      const existing = workingCopy.supported.filter(x => x.icon === icon);
+    icons.forEach((icon: string) => {
+      const existing = workingCopy.supported.filter(
+        (extension: models.IExtension) => extension.icon === icon,
+      );
       if (!existing.length) {
         workingCopy.supported.push({
           icon,
@@ -336,7 +360,9 @@ export class CustomsMerger {
           disabled: disable,
         });
       } else {
-        existing.forEach(x => (x.disabled = disable));
+        existing.forEach(
+          (extension: models.IExtension) => (extension.disabled = disable),
+        );
       }
     });
     return workingCopy as T;

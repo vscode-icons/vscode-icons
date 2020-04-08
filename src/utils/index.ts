@@ -1,6 +1,9 @@
 import open = require('open');
 import { ChildProcess } from 'child_process';
 import { Stats } from 'fs';
+import { set } from 'lodash';
+import { homedir, tmpdir } from 'os';
+import { isAbsolute, posix, relative, resolve, sep } from 'path';
 import {
   existsAsync,
   lstatAsync,
@@ -11,9 +14,6 @@ import {
   unlinkAsync,
   writeFileAsync,
 } from '../common/fsAsync';
-import { set } from 'lodash';
-import { homedir, tmpdir } from 'os';
-import { isAbsolute, posix, sep, relative, resolve } from 'path';
 import { FileFormat } from '../models';
 
 export class Utils {
@@ -124,9 +124,7 @@ export class Utils {
       throw new Error(`Directory '${toDirName}' not found.`);
     }
 
-    return relative(fromDirPath, toDirName)
-      .replace(/\\/g, '/')
-      .concat('/');
+    return relative(fromDirPath, toDirName).replace(/\\/g, '/').concat('/');
   }
 
   public static removeFirstDot(txt: string): string {
@@ -145,13 +143,13 @@ export class Utils {
 
   public static getDrives(...paths: string[]): string[] {
     const rx = new RegExp('^[a-zA-Z]:');
-    return paths.map(x => (rx.exec(x) || [])[0]);
+    return paths.map((path: string) => (rx.exec(path) || [])[0]);
   }
 
   public static combine(array1: any[], array2: any[]): any[] {
     return array1.reduce(
       (previous: string[], current: string) =>
-        previous.concat(array2.map(value => [current, value].join('.'))),
+        previous.concat(array2.map((value: any) => [current, value].join('.'))),
       [],
     );
   }
@@ -161,7 +159,7 @@ export class Utils {
     replaceFn: (rawText: string[]) => string[],
   ): Promise<void> {
     const raw = await readFileAsync(filePath, 'utf8');
-    const lineBreak: string = /\r\n$/.test(raw) ? '\r\n' : '\n';
+    const lineBreak: string = raw.endsWith('\r\n') ? '\r\n' : '\n';
     const allLines: string[] = raw.split(lineBreak);
     const data: string = replaceFn(allLines).join(lineBreak);
     await writeFileAsync(filePath, data);

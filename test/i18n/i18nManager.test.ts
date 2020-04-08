@@ -36,9 +36,9 @@ describe('LanguageResourceManager: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-      numberOfLangResourceKeys = Reflect.ownKeys(LangResourceKeys).filter(
-        (key: string) => isNaN(parseInt(key, 10)),
-      ).length;
+      numberOfLangResourceKeys = Reflect.ownKeys(
+        LangResourceKeys,
+      ).filter((key: string) => isNaN(parseInt(key, 10))).length;
       initResourceCollection = Array(numberOfLangResourceKeys).fill('');
     });
 
@@ -309,7 +309,7 @@ describe('LanguageResourceManager: tests', function () {
         expect(manifest.contributes).to.exist;
         expect(manifest.contributes.commands).to.exist;
         expect(manifest.contributes.commands).to.be.an.instanceOf(Array);
-        manifest.contributes.commands.forEach(command => {
+        manifest.contributes.commands.forEach((command: any) => {
           const title = command.title as string;
           const nlsEntry = title.replace(/%/g, '');
           expect(title).to.exist;

@@ -19,7 +19,7 @@ export const run = (testsRoot: string): Promise<any> => {
           mocha.addFile(path.join(testsRoot, file)),
         );
         // Run the tests
-        mocha.run(failures => {
+        mocha.run((failures: number) => {
           if (failures > 0) {
             rej(new Error(`${failures} tests failed.`));
           } else {

@@ -328,9 +328,11 @@ describe('ManifestReader: tests', function () {
                     [
                       PresetNames.hideFolders,
                       PresetNames.foldersAllDefaultIcon,
-                    ].every(prst => prst !== PresetNames[preset]),
+                    ].every(
+                      (prst: PresetNames) => prst !== PresetNames[preset],
+                    ),
                 )
-                .forEach(async (preset: string) => {
+                .map(async (preset: string) => {
                   try {
                     await ManifestReader.folderIconsDisabled(preset);
                   } catch (error) {

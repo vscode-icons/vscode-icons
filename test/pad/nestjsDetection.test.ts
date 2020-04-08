@@ -139,9 +139,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             'value',
           );
           expect(firstResult).ownProperty('apply').to.be.true;
-          expect(firstResult)
-            .ownProperty('project')
-            .to.equal(Projects.nestjs);
+          expect(firstResult).ownProperty('project').to.equal(Projects.nestjs);
           expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
           expect(firstResult)
             .ownProperty('langResourceKey')
@@ -173,9 +171,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             'value',
           );
           expect(firstResult).ownProperty('apply').to.be.true;
-          expect(firstResult)
-            .ownProperty('project')
-            .to.equal(Projects.nestjs);
+          expect(firstResult).ownProperty('project').to.equal(Projects.nestjs);
           expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
           expect(firstResult)
             .ownProperty('langResourceKey')
@@ -694,10 +690,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               .onSecondCall()
               .returns({ workspaceValue: true })
               .returns({ workspaceValue: undefined });
-            iconsDisabledStub
-              .onSecondCall()
-              .resolves(false)
-              .resolves(true);
+            iconsDisabledStub.onSecondCall().resolves(false).resolves(true);
 
             const res = await padManager.detectProjects([Projects.nestjs]);
             const firstResult = res[0];

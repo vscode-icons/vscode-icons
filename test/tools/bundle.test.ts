@@ -34,7 +34,7 @@ describe('Bundle: tests', function () {
         bundleLangResources: bundleLangResourcesStub,
         copyPackageResources: copyPackageResourcesStub,
       }));
-      bundle = async (): Promise<void> =>
+      bundle = (): void =>
         proxyq('../../src/tools/bundle', {
           '../common/bundler': {
             Bundler: bundlerStub(),

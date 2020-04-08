@@ -42,20 +42,20 @@ describe('CustomsMerger: toggle presets tests', function () {
             extFolders,
             vsicons.presets,
           );
-          return mergedCollection.files.supported.filter(file =>
-            regex.test(file.icon),
+          return mergedCollection.files.supported.filter(
+            (file: IFileExtension) => regex.test(file.icon),
           );
         };
 
         // Set Angular icons as enabled
         let defs = await toggle(true);
 
-        defs.forEach(def => expect(def.disabled).to.be.false);
+        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.false);
 
         // Set Angular icons as disabled
         defs = await toggle(false);
 
-        defs.forEach(def => expect(def.disabled).to.be.true);
+        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
       });
 
       it(`preserved, if enabled by PAD, when toggling any preset`, async function () {
@@ -76,10 +76,14 @@ describe('CustomsMerger: toggle presets tests', function () {
           );
 
           return {
-            ngDefs: files.supported.filter(file => regex.test(file.icon)),
-            jsDefs: files.supported.filter(file => file.icon === IconNames.js),
+            ngDefs: files.supported.filter((file: IFileExtension) =>
+              regex.test(file.icon),
+            ),
+            jsDefs: files.supported.filter(
+              (file: IFileExtension) => file.icon === IconNames.js,
+            ),
             officialJSDefs: files.supported.filter(
-              file => file.icon === IconNames.jsOfficial,
+              (file: IFileExtension) => file.icon === IconNames.jsOfficial,
             ),
           };
         };
@@ -134,39 +138,47 @@ describe('CustomsMerger: toggle presets tests', function () {
       });
 
       it(`disabled, when no 'Angular' project is detected by PAD`, async function () {
-        const defs = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          null,
-          extFolders,
-          vsicons.presets,
-          [
-            {
-              apply: false,
-            },
-          ],
-        )).files.supported.filter(file => regex.test(file.icon));
+        const defs = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+            [
+              {
+                apply: false,
+              },
+            ],
+          )
+        ).files.supported.filter((file: IFileExtension) =>
+          regex.test(file.icon),
+        );
 
-        defs.forEach(def => expect(def.disabled).to.be.true);
+        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
       });
 
       it(`enabled, when an 'Angular' project is detected by PAD`, async function () {
-        const defs = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          null,
-          extFolders,
-          vsicons.presets,
-          [
-            {
-              apply: true,
-              project: Projects.angular,
-              value: true,
-            },
-          ],
-        )).files.supported.filter(file => regex.test(file.icon));
+        const defs = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+            [
+              {
+                apply: true,
+                project: Projects.angular,
+                value: true,
+              },
+            ],
+          )
+        ).files.supported.filter((file: IFileExtension) =>
+          regex.test(file.icon),
+        );
 
-        defs.forEach(def => expect(def.disabled).to.be.false);
+        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.false);
       });
     });
 
@@ -182,20 +194,20 @@ describe('CustomsMerger: toggle presets tests', function () {
             extFolders,
             vsicons.presets,
           );
-          return mergedCollection.files.supported.filter(file =>
-            regex.test(file.icon),
+          return mergedCollection.files.supported.filter(
+            (file: IFileExtension) => regex.test(file.icon),
           );
         };
 
         // Set Angular icons as enabled
         let defs = await toggle(true);
 
-        defs.forEach(def => expect(def.disabled).to.be.false);
+        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.false);
 
         // Set Angular icons as disabled
         defs = await toggle(false);
 
-        defs.forEach(def => expect(def.disabled).to.be.true);
+        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
       });
 
       it(`preserved, if enabled by PAD, when toggling any preset`, async function () {
@@ -216,10 +228,14 @@ describe('CustomsMerger: toggle presets tests', function () {
           );
 
           return {
-            ngDefs: files.supported.filter(file => regex.test(file.icon)),
-            jsDefs: files.supported.filter(file => file.icon === IconNames.js),
+            ngDefs: files.supported.filter((file: IFileExtension) =>
+              regex.test(file.icon),
+            ),
+            jsDefs: files.supported.filter(
+              (file: IFileExtension) => file.icon === IconNames.js,
+            ),
             officialJSDefs: files.supported.filter(
-              file => file.icon === IconNames.jsOfficial,
+              (file: IFileExtension) => file.icon === IconNames.jsOfficial,
             ),
           };
         };
@@ -274,39 +290,47 @@ describe('CustomsMerger: toggle presets tests', function () {
       });
 
       it(`disabled, when no 'NestJS' project is detected by PAD`, async function () {
-        const defs = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          null,
-          extFolders,
-          vsicons.presets,
-          [
-            {
-              apply: false,
-            },
-          ],
-        )).files.supported.filter(file => regex.test(file.icon));
+        const defs = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+            [
+              {
+                apply: false,
+              },
+            ],
+          )
+        ).files.supported.filter((file: IFileExtension) =>
+          regex.test(file.icon),
+        );
 
-        defs.forEach(def => expect(def.disabled).to.be.true);
+        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
       });
 
       it(`enabled, when an 'NestJS' project is detected by PAD`, async function () {
-        const defs = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          null,
-          extFolders,
-          vsicons.presets,
-          [
-            {
-              apply: true,
-              project: Projects.nestjs,
-              value: true,
-            },
-          ],
-        )).files.supported.filter(file => regex.test(file.icon));
+        const defs = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+            [
+              {
+                apply: true,
+                project: Projects.nestjs,
+                value: true,
+              },
+            ],
+          )
+        ).files.supported.filter((file: IFileExtension) =>
+          regex.test(file.icon),
+        );
 
-        defs.forEach(def => expect(def.disabled).to.be.false);
+        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.false);
       });
     });
 
@@ -323,9 +347,11 @@ describe('CustomsMerger: toggle presets tests', function () {
           );
 
           return {
-            defs: files.supported.filter(file => file.icon === IconNames.js),
+            defs: files.supported.filter(
+              (file: IFileExtension) => file.icon === IconNames.js,
+            ),
             officialDefs: files.supported.filter(
-              file => file.icon === IconNames.jsOfficial,
+              (file: IFileExtension) => file.icon === IconNames.jsOfficial,
             ),
           };
         };
@@ -361,15 +387,17 @@ describe('CustomsMerger: toggle presets tests', function () {
           );
 
           return {
-            tsDefs: files.supported.filter(file => file.icon === IconNames.ts),
+            tsDefs: files.supported.filter(
+              (file: IFileExtension) => file.icon === IconNames.ts,
+            ),
             officialTsDefs: files.supported.filter(
-              file => file.icon === IconNames.tsOfficial,
+              (file: IFileExtension) => file.icon === IconNames.tsOfficial,
             ),
             typesDefs: files.supported.filter(
-              file => file.icon === IconNames.tsDef,
+              (file: IFileExtension) => file.icon === IconNames.tsDef,
             ),
             officialTypesDefs: files.supported.filter(
-              file => file.icon === IconNames.tsDefOfficial,
+              (file: IFileExtension) => file.icon === IconNames.tsDefOfficial,
             ),
           };
         };
@@ -423,9 +451,11 @@ describe('CustomsMerger: toggle presets tests', function () {
           );
 
           return {
-            defs: files.supported.filter(file => file.icon === IconNames.json),
+            defs: files.supported.filter(
+              (file: IFileExtension) => file.icon === IconNames.json,
+            ),
             officialDefs: files.supported.filter(
-              file => file.icon === IconNames.jsonOfficial,
+              (file: IFileExtension) => file.icon === IconNames.jsonOfficial,
             ),
           };
         };
@@ -516,7 +546,9 @@ describe('CustomsMerger: toggle presets tests', function () {
 
         expect(folders.default.folder.disabled).to.be.true;
         expect(folders.default.root_folder.disabled).to.be.true;
-        folders.supported.forEach(def => expect(def.disabled).to.be.true);
+        folders.supported.forEach(
+          (def: IFileExtension) => expect(def.disabled).to.be.true,
+        );
       });
     });
 
@@ -583,11 +615,12 @@ describe('CustomsMerger: toggle presets tests', function () {
         expect(folders.default.folder.disabled).to.be.true;
         expect(folders.default.root_folder.disabled).to.be.true;
         expect(
-          folders.supported.find(def => def.icon === 'aws3').disabled,
+          folders.supported.find((def: IFileExtension) => def.icon === 'aws3')
+            .disabled,
         ).to.be.true;
         folders.supported
-          .filter(def => def.icon !== 'aws3')
-          .forEach(def => expect(def.disabled).to.be.true);
+          .filter((def: IFileExtension) => def.icon !== 'aws3')
+          .forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
       });
     });
   });

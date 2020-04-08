@@ -2,9 +2,9 @@ import { Bundler } from '../common/bundler';
 import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';
 
-const bundle = async (argv: any[]): Promise<void> => {
+const bundle = async (argv: string[]): Promise<void> => {
   try {
-    constants.environment.production = argv.some(arg =>
+    constants.environment.production = argv.some((arg: string) =>
       /release|production/.test(arg),
     );
     await Bundler.bundleLangResources(
