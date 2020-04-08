@@ -2097,6 +2097,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'liquid', extensions: ['liquid'], format: FileFormat.svg },
     { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
+    { icon: 'lnk', extensions: ['lnk'], format: FileFormat.svg },
     { icon: 'locale', extensions: [], format: FileFormat.svg },
     { icon: 'log', extensions: ['log', 'tlg'], format: FileFormat.svg },
     {
@@ -3573,6 +3574,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'test', extensions: ['tst'], format: FileFormat.svg },
+    {
+      icon: 'testcafe',
+      extensions: ['.testcaferc.json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'testjs',
       extensions: [],
