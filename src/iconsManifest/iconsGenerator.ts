@@ -112,21 +112,36 @@ export class IconsGenerator implements models.IIconsGenerator {
   }
 
   private async updatePackageJson(): Promise<void> {
-    const oldMainPath = manifest.main;
-    const oldIconsThemesPath = manifest.contributes.iconThemes[0].path;
     const sourceDirRelativePath = await Utils.getRelativePath(
       ConfigManager.rootDir,
       ConfigManager.sourceDir,
     );
+
     const entryFilename = constants.environment.production
       ? constants.extension.distEntryFilename
       : '';
     const entryPath = `${sourceDirRelativePath}${entryFilename}`;
-    const iconsDirRelativePath = `${sourceDirRelativePath}${constants.iconsManifest.filename}`;
+    const oldMainPath = manifest.main;
     const mainPathChanged = oldMainPath && oldMainPath !== entryPath;
+
+    const uninstallEntryFilename = constants.environment.production
+      ? constants.extension.uninstallEntryFilename
+      : 'uninstall.js';
+    const uninstallEntryPath = `node ./${sourceDirRelativePath}${uninstallEntryFilename}`;
+    const oldUninstallScriptPath = manifest.scripts['vscode:uninstall'];
+    const uninstallScriptPathChanged =
+      oldUninstallScriptPath && oldUninstallScriptPath !== uninstallEntryPath;
+
+    const iconsDirRelativePath = `${sourceDirRelativePath}${constants.iconsManifest.filename}`;
+    const oldIconsThemesPath = manifest.contributes.iconThemes[0].path;
     const iconThemePathChanged =
       oldIconsThemesPath && oldIconsThemesPath !== iconsDirRelativePath;
-    if (!iconThemePathChanged && !mainPathChanged) {
+
+    if (
+      !iconThemePathChanged &&
+      !mainPathChanged &&
+      !uninstallScriptPathChanged
+    ) {
       return;
     }
     const replacer = (rawText: string[]): string[] => {
@@ -154,6 +169,20 @@ export class IconsGenerator implements models.IIconsGenerator {
         // eslint-disable-next-line no-console
         console.info(
           `[${constants.extension.name}] Entrypoint in 'package.json' updated`,
+        );
+      }
+      // update 'vscode:uninstall' script
+      predicate = (line: string): boolean =>
+        line.includes('"vscode:uninstall"');
+      lineIndex = rawText.findIndex(predicate);
+      if (lineIndex > -1) {
+        rawText[lineIndex] = rawText[lineIndex].replace(
+          manifest.scripts['vscode:uninstall'],
+          uninstallEntryPath,
+        );
+        // eslint-disable-next-line no-console
+        console.info(
+          `[${constants.extension.name}] Script 'vscode:uninstall' in 'package.json' updated`,
         );
       }
       return rawText;

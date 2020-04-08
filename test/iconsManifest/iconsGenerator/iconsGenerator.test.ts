@@ -374,6 +374,25 @@ describe('IconsGenerator: tests', function () {
               expect(updateFileStub.called).to.be.false;
             });
           });
+
+          context(`when the 'vscode:uninstall' script`, function () {
+            it(`does NOT exist`, async function () {
+              const originalValue = manifest.scripts['vscode:unistall'];
+              delete manifest.scripts['vscode:unistall'];
+
+              await iconsGenerator.persist(iconsManifest, true);
+
+              manifest.scripts['vscode:unistall'] = originalValue;
+
+              expect(updateFileStub.called).to.be.false;
+            });
+
+            it(`does NOT need to be changed`, async function () {
+              await iconsGenerator.persist(iconsManifest, true);
+
+              expect(updateFileStub.called).to.be.false;
+            });
+          });
         });
 
         context(`updated`, function () {
@@ -493,6 +512,41 @@ describe('IconsGenerator: tests', function () {
                   });
                 });
               });
+            });
+          });
+
+          context(`and the 'scripts' property gets`, function () {
+            context(`NOT updated`, function () {
+              it(`when it can NOT be found`, async function () {
+                updateFileStub.callsArgWith(1, ['']).resolves();
+
+                await iconsGenerator.persist(iconsManifest, true);
+
+                expect(updateFileStub.calledOnce).to.be.true;
+                expect(infoStub.calledOnce).to.be.true;
+                expect(
+                  infoStub.calledWithExactly(
+                    `[${constants.extension.name}] Icons manifest file successfully generated!`,
+                  ),
+                ).to.be.true;
+              });
+            });
+
+            it(`updated`, async function () {
+              getRelativePathStub.resolves('some/path/');
+              updateFileStub
+                .callsArgWith(1, [`"main":"some/path/"\n"path":""\n"scripts":{"vscode:uninstall":""}`])
+                .resolves();
+
+              await iconsGenerator.persist(iconsManifest, true);
+
+              expect(updateFileStub.calledOnce).to.be.true;
+              expect(infoStub.callCount).to.equal(4);
+              expect(
+                infoStub.calledWithExactly(
+                  `[${constants.extension.name}] Script 'vscode:uninstall' in 'package.json' updated`,
+                ),
+              ).to.be.true;
             });
           });
         });

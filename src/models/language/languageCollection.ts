@@ -129,6 +129,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mson: ILanguage;
   nearley: ILanguage;
   nim: ILanguage;
+  nimble: ILanguage;
   nsis: ILanguage;
   nunjucks: ILanguage;
   ocaml: ILanguage;

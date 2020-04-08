@@ -449,6 +449,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'api_extractor',
+      extensions: ['api-extractor.json', 'api-extractor-base.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'apl',
       extensions: [],
       languages: [languages.apl],
@@ -1091,6 +1097,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'devcontainer',
+      extensions: ['devcontainer.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'django',
       extensions: ['djt'],
       languages: [languages.django],
@@ -1569,6 +1581,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'graphql_config',
+      extensions: ['.graphqlconfig'],
+      filenamesGlob: ['.graphqlconfig'],
+      extensionsGlob: ['yml', 'yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'graphviz',
       extensions: [],
       languages: [languages.graphviz],
@@ -1821,9 +1841,15 @@ export const extensions: IFileCollection = {
     { icon: 'jbuilder', extensions: ['jbuilder'], format: FileFormat.svg },
     {
       icon: 'jest',
-      extensions: ['jest.json', '.jestrc', '.jestrc.js', '.jestrc.json'],
-      filenamesGlob: ['jest.config'],
-      extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
+      extensions: [
+        'jest.config.json',
+        'jest.json',
+        '.jestrc',
+        '.jestrc.js',
+        '.jestrc.json',
+      ],
+      filenamesGlob: ['jest.config', 'jest.config.babel'],
+      extensionsGlob: ['js', 'cjs', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2071,6 +2097,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'liquid', extensions: ['liquid'], format: FileFormat.svg },
     { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
+    { icon: 'lnk', extensions: ['lnk'], format: FileFormat.svg },
     { icon: 'locale', extensions: [], format: FileFormat.svg },
     { icon: 'log', extensions: ['log', 'tlg'], format: FileFormat.svg },
     {
@@ -2436,6 +2463,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nimble',
+      extensions: [],
+      languages: [languages.nimble],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ninja',
       extensions: ['build.ninja'],
       filename: true,
@@ -2744,6 +2777,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'plsql_package_spec', extensions: ['pks'], format: FileFormat.svg },
+    {
+      icon: 'pnpm',
+      extensions: ['pnpmfile.js', 'pnpm-lock.yaml', 'pnpm-workspace.yaml'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
     {
       icon: 'polymer',
@@ -3197,6 +3237,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'sails',
+      extensions: ['.sailsrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'saltstack', extensions: ['sls'], format: FileFormat.svg },
     {
       icon: 'san',
@@ -3528,6 +3574,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'test', extensions: ['tst'], format: FileFormat.svg },
+    {
+      icon: 'testcafe',
+      extensions: ['.testcaferc.json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'testjs',
       extensions: [],
