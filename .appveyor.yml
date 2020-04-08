@@ -17,8 +17,8 @@ matrix:
 # Define platforms
 platform:
   - x64
-cache:
-  - node_modules
+# cache:
+#   - node_modules
 init:
   # Install the platform version of Node.js
   - ps: Install-Product node $env:node_js $env:platform

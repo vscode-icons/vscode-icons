@@ -37,7 +37,6 @@ jobs:
           sources: [ubuntu-toolchain-r-test]
           packages: [libstdc++-4.9-dev]
       install:
-        - npm run preinstall
         - npm i vscode-icons/wpilgenerator --no-save
       before_script: skip
       script: npm run compile
@@ -49,7 +48,6 @@ jobs:
       os: linux
       node_js: 10.2.0
       install:
-        - npm run preinstall
         - npm i vsce --no-save
       before_script: skip
       script: vsce publish -p $VSCE_TOKEN
