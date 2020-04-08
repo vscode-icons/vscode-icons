@@ -41,7 +41,7 @@ export class LanguageResourceManager
           throw new Error(`Language resource key '${key}' is not valid`);
         }
 
-        key.split('').forEach(char => {
+        key.split('').forEach((char: string) => {
           if (char.match(/[#^*|\\/{}+=]/g)) {
             throw new Error(`${char} is not valid`);
           }
@@ -58,7 +58,9 @@ export class LanguageResourceManager
     if (!message) {
       return undefined;
     }
-    const key = this.currentLangResource.findIndex(res => res === message);
+    const key = this.currentLangResource.findIndex(
+      (res: never) => res === message,
+    );
     return key > -1 ? key : undefined;
   }
 }

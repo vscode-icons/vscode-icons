@@ -13,10 +13,13 @@ describe('Specifications of supported extensions: tests', function () {
   context('ensures that', function () {
     it(`an 'extension' declaration should NOT have a leading dot`, function () {
       files.supported
-        .filter(file => file.extensions.length && !file.filename)
-        .forEach(file =>
+        .filter(
+          (file: IFileExtension) => file.extensions.length && !file.filename,
+        )
+        .forEach((file: IFileExtension) =>
           file.extensions.forEach(
-            extension => expect(extension.startsWith('.')).to.be.false,
+            (extension: string) =>
+              expect(extension.startsWith('.')).to.be.false,
           ),
         );
     });
@@ -56,13 +59,13 @@ describe('Specifications of supported extensions: tests', function () {
                 _file.disabled !== file.disabled) &&
               !Reflect.has(_file, 'filename') &&
               !isEqual(_file.extensions, file.extensions) &&
-              !_file['checked'] &&
+              !_file.checked &&
               _file.icon === file.icon;
 
             files.supported.forEach((file: IFileExtension) => {
-              file['checked'] = true;
+              file.checked = true;
               const otherDeclarations: IFileExtension[] = files.supported.filter(
-                _file => checker(_file, file),
+                (_file: IFileExtension) => checker(_file, file),
               );
 
               expect(otherDeclarations).to.be.empty;

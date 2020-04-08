@@ -15,7 +15,6 @@ export async function activate(
   await extension.activate();
 
   if (!Debugger.isAttached) {
-    // eslint-disable-next-line no-console
     console.info(
       `[${constants.extension.name}] v${constants.extension.version} activated!`,
     );

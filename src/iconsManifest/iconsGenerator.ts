@@ -20,6 +20,7 @@ export class IconsGenerator implements models.IIconsGenerator {
     // register event listener for configuration changes
     if (this.vscodeManager) {
       this.vscodeManager.workspace.onDidChangeConfiguration(
+        // eslint-disable-next-line @typescript-eslint/unbound-method
         this.didChangeConfigurationListener,
         this,
         this.vscodeManager.context.subscriptions,
@@ -102,7 +103,6 @@ export class IconsGenerator implements models.IIconsGenerator {
         ),
       );
 
-      // eslint-disable-next-line no-console
       console.info(
         `[${constants.extension.name}] Icons manifest file successfully generated!`,
       );
@@ -153,7 +153,6 @@ export class IconsGenerator implements models.IIconsGenerator {
           oldIconsThemesPath,
           iconsDirRelativePath,
         );
-        // eslint-disable-next-line no-console
         console.info(
           `[${constants.extension.name}] Icons path in 'package.json' updated`,
         );
@@ -166,7 +165,6 @@ export class IconsGenerator implements models.IIconsGenerator {
           manifest.main,
           entryPath,
         );
-        // eslint-disable-next-line no-console
         console.info(
           `[${constants.extension.name}] Entrypoint in 'package.json' updated`,
         );

@@ -3,9 +3,9 @@ import { constants } from '../constants';
 import { IconsGenerator } from '../iconsManifest/iconsGenerator';
 import { IIconsGenerator } from '../models';
 
-const build = async (argv: any[]): Promise<void> => {
+const build = async (argv: string[]): Promise<void> => {
   try {
-    constants.environment.production = argv.some(arg =>
+    constants.environment.production = argv.some((arg: string) =>
       /release|production/.test(arg),
     );
     const iconsGenerator: IIconsGenerator = new IconsGenerator();

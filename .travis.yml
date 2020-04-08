@@ -11,13 +11,11 @@ node_js:
 git:
   depth: 5
   submodules: false
-env:
-  global:
-    - CC_OS_NAME=$(if [[ $TRAVIS_OS_NAME == "osx" ]]; then echo "darwin"; else echo $TRAVIS_OS_NAME; fi)
 install:
   - npm install
 cache: npm
 before_script:
+  - export CC_OS_NAME=$(if [[ $TRAVIS_OS_NAME == "osx" ]]; then echo "darwin"; else echo $TRAVIS_OS_NAME; fi)
   - curl -sL "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-$CC_OS_NAME-amd64" > cc-test-reporter
   - chmod +x cc-test-reporter
   - ./cc-test-reporter before-build

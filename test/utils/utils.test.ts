@@ -107,8 +107,7 @@ describe('Utils: tests', function () {
           ): Promise<void> => {
             const fileCheck = existsAsyncStub.callsFake(
               (dirPath: string) =>
-                dirExists ||
-                directoryPath.split(path.sep).indexOf(dirPath) !== -1,
+                dirExists || directoryPath.split(path.sep).includes(dirPath),
             );
             const createDirectory = mkdirAsyncStub.resolves();
 
@@ -195,7 +194,7 @@ describe('Utils: tests', function () {
 
         expect(json).to.be.instanceOf(Object);
         expect(Object.getOwnPropertyNames(json)).to.include('test');
-        expect(json['test']).to.be.equal('test');
+        expect(json.test).to.be.equal('test');
       });
 
       it(`returns 'null' when parsing fails`, function () {
@@ -227,7 +226,7 @@ describe('Utils: tests', function () {
               false,
             );
 
-            expect(/\/$/g.test(relativePath)).to.be.true;
+            expect(relativePath.endsWith('/')).to.be.true;
             expect(/\/{2,}$/g.test(relativePath)).to.be.false;
           };
 

@@ -4,9 +4,9 @@ export class ErrorHandler {
       return;
     }
     console.error(
-      `${handled ? 'H' : 'Unh'}andled Error: ${error.stack ||
-        error.message ||
-        error}`,
+      `${handled ? 'H' : 'Unh'}andled Error: ${
+        error.stack || error.message || error
+      }`,
     );
   }
 }

@@ -34,9 +34,7 @@ describe('ErrorHandler: tests', function () {
           ),
         ).to.be.true;
         expect(consoleErrorStub.calledWithMatch(/contextOfStack/)).to.be.true;
-        expect(error)
-          .to.haveOwnProperty('stack')
-          .and.to.equal(error.stack);
+        expect(error).to.haveOwnProperty('stack').and.to.equal(error.stack);
       });
 
       it('the error message, when no error stack is available', function () {
