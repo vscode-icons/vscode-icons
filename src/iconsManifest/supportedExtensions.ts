@@ -3147,7 +3147,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'renovate',
-      extensions: ['.renovaterc'],
+      extensions: ['.renovaterc', 'renovate.js', 'renovate.config.js'],
       filenamesGlob: ['renovate', '.renovaterc'],
       extensionsGlob: ['json'],
       filename: true,
