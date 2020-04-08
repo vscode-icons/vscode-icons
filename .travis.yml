@@ -15,12 +15,11 @@ install:
   - npm install
 cache: npm
 before_script:
-  - export CC_OS_NAME=$(if [[ $TRAVIS_OS_NAME == "osx" ]]; then echo "darwin"; else echo $TRAVIS_OS_NAME; fi)
-  - curl -sL "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-$CC_OS_NAME-amd64" > cc-test-reporter
-  - chmod +x cc-test-reporter
-  - ./cc-test-reporter before-build
+  - CC_OS_NAME=$(if [[ $TRAVIS_OS_NAME == "osx" ]]; then echo "darwin"; else echo $TRAVIS_OS_NAME; fi)
+  - URL="https://codeclimate.com/downloads/test-reporter/test-reporter-latest-$CC_OS_NAME-amd64"
+  - curl -sL $URL > cc-test-reporter && chmod +x cc-test-reporter && ./cc-test-reporter before-build
 script: npm test
-after_success:
+after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 jobs:
@@ -42,6 +41,7 @@ jobs:
       before_script: skip
       script: npm run compile
       after_success: wpilgen
+      after_script: skip
 
     - stage: publish
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
@@ -52,7 +52,7 @@ jobs:
         - npm i vsce --no-save
       before_script: skip
       script: vsce publish -p $VSCE_TOKEN
-      after_success: skip
+      after_script: skip
 
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
@@ -61,7 +61,7 @@ jobs:
       install: skip
       before_script: skip
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
-      after_success: skip
+      after_script: skip
 
     - stage: docker vsi:tag
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
@@ -70,7 +70,7 @@ jobs:
       install: skip
       before_script: skip
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
-      after_success: skip
+      after_script: skip
 
 # See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines
