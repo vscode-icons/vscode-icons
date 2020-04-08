@@ -3569,6 +3569,13 @@ export const extensions: IFileCollection = {
     },
     { icon: 'test', extensions: ['tst'], format: FileFormat.svg },
     {
+      icon: 'testcafe',
+      extensions: ['.testcaferc.json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'testjs',
       extensions: [],
       filenamesGlob: ['test', 'spec'],
