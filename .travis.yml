@@ -1,8 +1,9 @@
-language: node_js
+version: ~> 1.0
+dist: bionic
 os:
   - linux
   - osx
-version: ~> 1.0
+language: node_js
 node_js:
   - node    # latest node
   - 12.8.1  # vscode >= 1.43.0
@@ -27,6 +28,9 @@ after_script:
 jobs:
   allow_failures:
     - node_js: node
+    - stage: wiki pages icons list update
+    - stage: docker vsi:latest
+    - stage: docker vsi:tag
   fast_finish: true
   include:
     - stage: wiki pages icons list update
