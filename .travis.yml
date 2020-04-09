@@ -40,7 +40,7 @@ jobs:
       addons:
         apt:
           sources: [ubuntu-toolchain-r-test]
-          packages: [libstdc++-4.9-dev]
+          packages: [libstdc++-5-dev]
       install:
         - npm i vscode-icons/wpilgenerator --no-save
       before_script: skip
