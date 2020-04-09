@@ -5,7 +5,8 @@ os:
 version: ~> 1.0
 node_js:
   - node    # latest node
-  - 12.4.0  # vscode >= 1.40.0
+  - 12.8.1  # vscode >= 1.43.0
+  - 12.4.0  # vscode >= 1.40.0 < 1.43.0
   - 10.11.0 # vscode >= 1.36.0 < 1.40.0
   - 10.2.0  # vscode >= 1.31.0 < 1.36.0
 git:
