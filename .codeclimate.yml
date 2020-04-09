@@ -21,7 +21,7 @@ plugins:
   nodesecurity:
     enabled: true
   tslint:
-    enabled: true
+    enabled: false
 exclude_patterns:
   - ".*"
   - ".*/"
