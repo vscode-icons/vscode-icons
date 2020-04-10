@@ -1,5 +1,30 @@
 # Change Log
 
+## 10.1.0 (April 10, 2020)
+
+- Enhancement: Delete `.gitmodules` file. ([@JimiC](https://github.com/JimiC) in [#2450](https://github.com/vscode-icons/vscode-icons/pull/2450))
+- Fix: Fix ci configs. ([@JimiC](https://github.com/JimiC) in [#2448](https://github.com/vscode-icons/vscode-icons/pull/2448))
+- Enhancement: Remove 'examples-generator' dependency. ([@JimiC](https://github.com/JimiC) in [#2447](https://github.com/vscode-icons/vscode-icons/pull/2447))
+- Enhancement: Improve travis config. ([@JimiC](https://github.com/JimiC) in [#2446](https://github.com/vscode-icons/vscode-icons/pull/2446))
+- Feature: Support for `TestCafe`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2444](https://github.com/vscode-icons/vscode-icons/pull/2444))
+- Feature: Support for `API-Extractor`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2443](https://github.com/vscode-icons/vscode-icons/pull/2443))
+- Feature: Support for `Lnk`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2428](https://github.com/vscode-icons/vscode-icons/pull/2428))
+- Feature: Support for `pnpm`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2426](https://github.com/vscode-icons/vscode-icons/pull/2426))
+- Feature: Support for `Remote Devcontainer`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2425](https://github.com/vscode-icons/vscode-icons/pull/2425))
+- Enhancement: Extend folder icons with `deb` and trim trailing whitespace. ([@huiyifyj](https://github.com/huiyifyj) in [#2418](https://github.com/vscode-icons/vscode-icons/pull/2418))
+- Feature: Support for `GraphQL` config. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2409](https://github.com/vscode-icons/vscode-icons/pull/2409))
+- Enhancement: Adjust and cleanup eslint rules . ([@JimiC](https://github.com/JimiC) in [#2402](https://github.com/vscode-icons/vscode-icons/pull/2402))
+- Feature: Support for `Sails`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2397](https://github.com/vscode-icons/vscode-icons/pull/2397))
+- Feature: Support for `Nimble`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2389](https://github.com/vscode-icons/vscode-icons/pull/2389))
+- Enhancement: Add support for `jest.config.babel.[js, cjs, mjs]`. ([@JimiC](https://github.com/JimiC) in [#2386](https://github.com/vscode-icons/vscode-icons/pull/2386))
+- Fix: Fix uninstall script. ([@JimiC](https://github.com/JimiC) in [#2385](https://github.com/vscode-icons/vscode-icons/pull/2385))
+- Enhancement: Replace `nim` dark theme icon. ([@747](https://github.com/747) & [@KingDarBoja](https://github.com/KingDarBoja) in [#2384](https://github.com/vscode-icons/vscode-icons/pull/2384))
+- Enhancement: Remove tslint dependency. ([@JimiC](https://github.com/JimiC) in [#2382](https://github.com/vscode-icons/vscode-icons/pull/2382))
+- Fix: Update CHANGELOG. ([@afflexux](https://github.com/afflexux) in [#2380](https://github.com/vscode-icons/vscode-icons/pull/2380))
+- Fix: Fix to link correct pull request. ([@afflexux](https://github.com/afflexux) in [#2377](https://github.com/vscode-icons/vscode-icons/pull/2377))
+- Fix: Fix several issues with project's dependencies. ([@JimiC](https://github.com/JimiC) in [#2376](https://github.com/vscode-icons/vscode-icons/pull/2376))
+- Enhancement: Merge travis matrix and jobs. ([@JimiC](https://github.com/JimiC) in [#2375](https://github.com/vscode-icons/vscode-icons/pull/2375))
+
 ## 10.0.0 (February 16, 2020)
 
 - Feature: Support for `rust-toolchain` file. ([@KingDarBoja](https://github.com/KingDarBoja) & [@robertohuertasm](https://github.com/robertohuertasm) in [#2371](https://github.com/vscode-icons/vscode-icons/pull/2371))
