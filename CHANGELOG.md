@@ -1,5 +1,9 @@
 # Change Log
 
+## 10.1.1 (April 12, 2020)
+
+- Enhancement: Update dependencies. ([@JimiC](https://github.com/JimiC) in [#2453](https://github.com/vscode-icons/vscode-icons/pull/2453))
+
 ## 10.1.0 (April 10, 2020)
 
 - Enhancement: Delete `.gitmodules` file. ([@JimiC](https://github.com/JimiC) in [#2450](https://github.com/vscode-icons/vscode-icons/pull/2450))
