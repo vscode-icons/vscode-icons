@@ -2035,6 +2035,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'latino',
+      extensions: [],
+      languages: [languages.latino],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'layout',
       extensions: ['master', 'layout.html', 'layout.htm'],
       format: FileFormat.svg,
