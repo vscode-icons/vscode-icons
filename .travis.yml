@@ -41,21 +41,17 @@ jobs:
         apt:
           sources: [ubuntu-toolchain-r-test]
           packages: [libstdc++-5-dev]
-      install:
-        - npm i vscode-icons/wpilgenerator --no-save
       before_script: skip
       script: npm run compile
-      after_success: wpilgen
+      after_success: npx vscode-icons/wpilgenerator
       after_script: skip
 
     - stage: publish
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       os: linux
       node_js: 10.2.0
-      install:
-        - npm i vsce --no-save
       before_script: skip
-      script: vsce publish -p $VSCE_TOKEN
+      script: npx vsce publish -p $VSCE_TOKEN
       after_script: skip
 
     - stage: docker vsi:latest
