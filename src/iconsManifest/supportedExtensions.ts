@@ -4067,6 +4067,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'zig',
+      extensions: [],
+      languages: [languages.zig],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'zip',
       extensions: [
         'zip',
