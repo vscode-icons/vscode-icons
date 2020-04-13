@@ -2513,9 +2513,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nsri',
-      extensions: ['.nsrirc', '.nsriignore'],
+      extensions: ['.nsrirc', '.nsriignore', 'nsri.config.js'],
       filenamesGlob: ['.nsrirc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml', 'config.js'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
