@@ -3,6 +3,7 @@ dist: bionic
 os:
   - linux
   - osx
+  - windows
 language: node_js
 node_js:
   - node    # latest node
@@ -18,12 +19,16 @@ install:
 cache:
   npm: false
 before_script:
-  - CC_OS_NAME=$(if [[ $TRAVIS_OS_NAME == "osx" ]]; then echo "darwin"; else echo $TRAVIS_OS_NAME; fi)
-  - URL="https://codeclimate.com/downloads/test-reporter/test-reporter-latest-$CC_OS_NAME-amd64"
-  - curl -sL $URL > cc-test-reporter && chmod +x cc-test-reporter && ./cc-test-reporter before-build
-script: npm test
+  - '[[ $TRAVIS_OS_NAME != "windows" ]]
+    && CC_OS_NAME=$([[ $TRAVIS_OS_NAME == "osx" ]] && echo "darwin" || echo $TRAVIS_OS_NAME)
+    && URL="https://codeclimate.com/downloads/test-reporter/test-reporter-latest-$CC_OS_NAME-amd64"
+    && curl -sL $URL > cc-test-reporter && chmod +x cc-test-reporter && ./cc-test-reporter before-build
+    && echo "Test report initialized"
+    || echo ""'
+script:
+  - npm test
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - '[[ $TRAVIS_OS_NAME != "windows" ]] && ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT || echo ""'
 
 jobs:
   allow_failures:
