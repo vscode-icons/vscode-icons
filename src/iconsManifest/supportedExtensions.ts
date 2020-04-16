@@ -2537,8 +2537,8 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'numpy', 
-      extensions: ['npy', 'npz'], 
+      icon: 'numpy',
+      extensions: ['npy', 'npz'],
       format: FileFormat.svg,
     },
     {
