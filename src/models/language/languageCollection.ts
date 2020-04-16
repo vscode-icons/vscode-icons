@@ -111,6 +111,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   kos: ILanguage;
   kotlin: ILanguage;
   latex: ILanguage;
+  latino: ILanguage;
   lex: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
