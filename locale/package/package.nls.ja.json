@@ -6,7 +6,7 @@
   "command.jsPreset.title": "公式JSプリセットの切り替え (ユーザー設定)",
   "command.tsPreset.title": "公式TSプリセットの切り替え (ユーザー設定)",
   "command.jsonPreset.title": "公式JSONプリセットの切り替え (ユーザー設定)",
-  "command.hideFoldersPreset.title": "フォルダアイコンの表示\/非表示切り替え (ユーザー設定)",
+  "command.hideFoldersPreset.title": "フォルダアイコンの表示/非表示切り替え (ユーザー設定)",
   "command.foldersAllDefaultIconPreset.title": "フォルダ別の特別アイコン切り替え (ユーザー設定)",
   "command.hideExplorerArrowsPreset.title": "エクスプローラーのフォルダ矢印表示の切り替え (ユーザー設定)",
   "command.restoreIcons.title": "アイコン設定の復元",
