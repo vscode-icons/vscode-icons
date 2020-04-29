@@ -8,7 +8,11 @@ export const extensions: IFolderCollection = {
   supported: [
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
     { icon: 'api', extensions: ['api', '.api'], format: FileFormat.svg },
-    { icon: 'app', extensions: ['app', '.app'], format: FileFormat.svg },
+    {
+      icon: 'app',
+      extensions: ['app', '.app', 'application', 'webapp'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'arangodb',
       extensions: ['arangodb', 'arango'],
@@ -431,7 +435,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'private',
-      extensions: ['private', '.private'],
+      extensions: ['private', '.private', 'dev', 'development'],
       format: FileFormat.svg,
     },
     {
