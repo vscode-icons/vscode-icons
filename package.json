@@ -282,7 +282,9 @@
     "lint": "eslint . --ext .ts",
     "predist": "npm run build",
     "dist": "webpack --hide-modules --mode production",
-    "postdist": "nsri create -s ."
+    "postdist": "nsri create -s .",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
@@ -322,6 +324,8 @@
     "open": "^7.0.3",
     "nsri": "^5.0.1",
     "reflect-metadata": "^0.1.13",
-    "semver": "^7.2.2"
-  }
+    "semver": "^7.2.2",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
