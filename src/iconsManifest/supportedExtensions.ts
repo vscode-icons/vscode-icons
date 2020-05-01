@@ -2035,6 +2035,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'kusto',
+      extensions: [],
+      languages: [languages.kusto],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'latino',
       extensions: [],
       languages: [languages.latino],

@@ -110,6 +110,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   kivy: ILanguage;
   kos: ILanguage;
   kotlin: ILanguage;
+  kusto: ILanguage;
   latex: ILanguage;
   latino: ILanguage;
   lex: ILanguage;

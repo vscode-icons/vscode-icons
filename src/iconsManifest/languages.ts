@@ -140,6 +140,7 @@ export const languages: ILanguageCollection = {
   kivy: { ids: 'kivy', defaultExtension: 'kv' },
   kos: { ids: 'kos', defaultExtension: 'ks' },
   kotlin: { ids: 'kotlin', defaultExtension: 'kt' },
+  kusto: { ids: 'kusto', defaultExtension: '.kusto' },
   latex: { ids: 'latex', defaultExtension: 'tex' },
   latino: { ids: 'latino', defaultExtension: 'lat' },
   less: { ids: 'less', defaultExtension: 'less' },
