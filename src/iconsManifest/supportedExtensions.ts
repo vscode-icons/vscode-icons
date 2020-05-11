@@ -4067,7 +4067,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'zeit',
-      extensions: ['now.json', '.nowignore'],
+      extensions: ['now.json', '.nowignore', 'vercel.json', '.vercelignore'],
       light: true,
       filename: true,
       format: FileFormat.svg,
