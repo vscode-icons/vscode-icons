@@ -1870,6 +1870,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'jenkinsfile',
+      extensions: ['jenkinsfile'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'jinja',
       extensions: [],
       languages: [languages.jinja],

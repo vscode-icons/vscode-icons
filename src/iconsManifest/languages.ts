@@ -127,7 +127,7 @@ export const languages: ILanguageCollection = {
   javascriptreact: { ids: 'javascriptreact', defaultExtension: 'jsx' },
   jekyll: { ids: 'jekyll', defaultExtension: 'jekyll' },
   jenkins: {
-    ids: ['jenkins', 'declarative', 'jenkinsfile'],
+    ids: ['jenkins', 'declarative'],
     defaultExtension: 'jenkins',
   },
   jinja: { ids: 'jinja', defaultExtension: 'jinja' },
