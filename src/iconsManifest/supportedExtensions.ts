@@ -685,6 +685,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bosque',
+      extensions: [],
+      languages: [languages.bosque],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bower',
       extensions: ['.bowerrc', 'bower.json'],
       filename: true,

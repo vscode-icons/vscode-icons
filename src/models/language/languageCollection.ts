@@ -31,6 +31,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   biml: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
+  bosque: ILanguage;
   // eslint-disable-next-line camelcase
   c_al: ILanguage;
   cabal: ILanguage;
