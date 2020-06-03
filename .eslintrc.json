@@ -5,7 +5,6 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:import/errors",
@@ -32,13 +31,25 @@
   },
   "plugins": ["@typescript-eslint", "import", "prettier"],
   "rules": {
-    "@typescript-eslint/camelcase": [
+    "@typescript-eslint/naming-convention": [
       "error",
       {
-        "allow": ["file", "folder"]
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "prefix": ["I"]
       }
     ],
+    "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      {
+        "allowAny": true
+      }
+    ],
     "@typescript-eslint/array-type": [
       "error",
       {
@@ -52,7 +63,6 @@
         "ts-ignore": false
       }
     ],
-    "@typescript-eslint/class-name-casing": "error",
     "@typescript-eslint/consistent-type-definitions": "error",
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
@@ -64,10 +74,6 @@
       }
     ],
     "@typescript-eslint/indent": "off",
-    "@typescript-eslint/interface-name-prefix": [
-      "error",
-      { "prefixWithI": "always" }
-    ],
     "@typescript-eslint/member-ordering": "error",
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-parameter-properties": [

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 export class ErrorHandler {
   public static logError(error: Error, handled = false): void {
     if (!error) {

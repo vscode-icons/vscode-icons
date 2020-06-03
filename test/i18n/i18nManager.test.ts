@@ -24,7 +24,7 @@ describe('LanguageResourceManager: tests', function () {
     before(function () {
       proxyq.noCallThru();
 
-      LanguageResourceManager = (resource: {}): any =>
+      LanguageResourceManager = (resource: Record<string, unknown>): any =>
         proxyq('../../src/i18n/languageResourceManager', {
           '../../../lang.nls.bundle.json': resource,
         }).LanguageResourceManager;

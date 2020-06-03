@@ -52,7 +52,7 @@ export class ExtensionManager implements models.IExtensionManager {
       ConfigManager.rootDir = resolve(dirname(__filename), '../../');
 
       if (!(await this.integrityManager.check())) {
-        this.notificationManager.notifyWarning(
+        void this.notificationManager.notifyWarning(
           models.LangResourceKeys.integrityFailure,
         );
       }
@@ -136,12 +136,12 @@ export class ExtensionManager implements models.IExtensionManager {
             await this.activationCommand();
             break;
           case models.LangResourceKeys.aboutOfficialApi: {
-            Utils.open(constants.urlOfficialApi);
+            void Utils.open(constants.urlOfficialApi);
             // Display the message again so the user can choose to activate or not
             return displayMessage();
           }
           case models.LangResourceKeys.seeReadme: {
-            Utils.open(constants.urlReadme);
+            void Utils.open(constants.urlReadme);
             // Display the message again so the user can choose to activate or not
             return displayMessage();
           }
@@ -165,7 +165,7 @@ export class ExtensionManager implements models.IExtensionManager {
       );
       switch (btn) {
         case models.LangResourceKeys.seeReleaseNotes:
-          Utils.open(constants.urlReleaseNote);
+          void Utils.open(constants.urlReleaseNote);
           break;
         case models.LangResourceKeys.dontShowThis:
           return this.configManager.updateDontShowNewVersionMessage(true);
@@ -348,7 +348,7 @@ export class ExtensionManager implements models.IExtensionManager {
       return;
     }
     // reload
-    this.vscodeManager.commands.executeCommand(
+    void this.vscodeManager.commands.executeCommand(
       constants.vscode.reloadWindowActionSetting,
     );
   }
@@ -520,7 +520,7 @@ export class ExtensionManager implements models.IExtensionManager {
       throw Error(`${commandName}${action} is not valid`);
     }
 
-    this.showCustomizationMessage(
+    void this.showCustomizationMessage(
       '%s %s',
       [
         models.LangResourceKeys[`${commandName}${action}`],
@@ -550,22 +550,22 @@ export class ExtensionManager implements models.IExtensionManager {
       customFolders,
       projectDetectionResults,
     );
-    this.iconsGenerator.persist(iconsManifest);
+    void this.iconsGenerator.persist(iconsManifest);
   }
 
   private async restoreManifest(): Promise<void> {
     const iconsManifest = await this.iconsGenerator.generateIconsManifest();
-    this.iconsGenerator.persist(iconsManifest);
+    void this.iconsGenerator.persist(iconsManifest);
   }
 
   private resetProjectDetectionDefaults(): void {
     // We always need a fresh 'vsicons' configuration when checking the values
     // to take into account for user manually changed values
     if (this.configManager.vsicons.projectDetection.autoReload) {
-      this.configManager.updateAutoReload(false);
+      void this.configManager.updateAutoReload(false);
     }
     if (this.configManager.vsicons.projectDetection.disableDetect) {
-      this.configManager.updateDisableDetection(false);
+      void this.configManager.updateDisableDetection(false);
     }
   }
 
@@ -614,7 +614,9 @@ export class ExtensionManager implements models.IExtensionManager {
           constants.vsicons.associations.name,
         ]);
       if (configChanged) {
-        this.applyCustomizationCommand([models.LangResourceKeys.dontShowThis]);
+        void this.applyCustomizationCommand([
+          models.LangResourceKeys.dontShowThis,
+        ]);
         this.configManager.updateVSIconsConfigState();
       }
     }

@@ -225,7 +225,7 @@ export class ConfigManager implements IConfigManager {
     currentConfig: IVSIcons | undefined,
     sections?: string[],
   ): boolean {
-    const filter = (obj: IVSIcons, keys: string[]): {} =>
+    const filter = (obj: IVSIcons, keys: string[]): Record<string, unknown> =>
       (Reflect.ownKeys(obj || {}) as string[])
         .filter((key, __, array) => (keys || array).includes(key))
         .reduce((nObj, key) => ({ ...nObj, [key]: obj[key] }), {});

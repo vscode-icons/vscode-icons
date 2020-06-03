@@ -64,8 +64,8 @@ export class CustomsMerger {
     presets: models.IPresets,
     projectDetectionResults?: models.IProjectDetectionResult[],
     affectedPresets?: models.IPresets,
-  ): Promise<Array<{}>> {
-    const projectPresets = [];
+  ): Promise<Array<Record<string, boolean>>> {
+    const projectPresets: Array<Record<string, boolean>> = [];
     for (const presetName of presetNames) {
       const name: string = models.PresetNames[presetName];
       const project: string = models.Projects[name];
@@ -108,7 +108,7 @@ export class CustomsMerger {
   }
 
   private static toggleProjectPreset(
-    projectPresets: Array<{}>,
+    projectPresets: Array<Record<string, boolean>>,
     customFiles: models.IFileCollection,
     defaultFiles: models.IFileCollection,
   ): models.IFileCollection {

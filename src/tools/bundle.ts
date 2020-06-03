@@ -17,4 +17,4 @@ const bundle = async (argv: string[]): Promise<void> => {
   }
 };
 
-bundle(process.argv);
+void bundle(process.argv);

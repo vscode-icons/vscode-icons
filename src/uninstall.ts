@@ -5,4 +5,4 @@ function uninstall(): Promise<void> {
   return ConfigManager.removeSettings();
 }
 
-uninstall();
+void uninstall();

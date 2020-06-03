@@ -7,7 +7,10 @@ export class Bundler {
     sourceDirPath: string,
     targetFilePath: string,
   ): Promise<void> {
-    const iterator = async (filename: string, bundleObj: {}): Promise<void> => {
+    const iterator = async (
+      filename: string,
+      bundleObj: Record<string, unknown>,
+    ): Promise<void> => {
       const match = /lang\.nls\.([a-zA-Z-]+)\.json/.exec(filename);
       const locale =
         filename === 'lang.nls.json'

@@ -176,7 +176,10 @@ export class Utils {
     return newObj as T;
   }
 
-  public static open(target: string, options?: any): Promise<ChildProcess> {
+  public static open(
+    target: string,
+    options?: open.Options,
+  ): Promise<ChildProcess> {
     return open(target, options);
   }
 }

@@ -16,4 +16,4 @@ const build = async (argv: string[]): Promise<void> => {
   }
 };
 
-build(process.argv);
+void build(process.argv);
