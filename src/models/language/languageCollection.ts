@@ -59,8 +59,9 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dotjs: ILanguage;
   doxygen: ILanguage;
   drools: ILanguage;
-  dylanlang: ILanguage;
   dustjs: ILanguage;
+  dvc: ILanguage;
+  dylanlang: ILanguage;
   edge: ILanguage;
   eex: ILanguage;
   elastic: ILanguage;

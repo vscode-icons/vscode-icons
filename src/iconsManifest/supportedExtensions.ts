@@ -1217,6 +1217,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dvc',
+      extensions: [],
+      languages: [languages.dvc],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dylan',
       extensions: [],
       languages: [languages.dylanlang],
