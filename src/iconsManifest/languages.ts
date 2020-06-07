@@ -72,7 +72,6 @@ export const languages: ILanguageCollection = {
   doxygen: { ids: 'doxygen', defaultExtension: 'dox' },
   drools: { ids: 'drools', defaultExtension: 'drl' },
   dustjs: { ids: 'dustjs', defaultExtension: 'dust' },
-  dvc: { ids: 'dvc', defaultExtension: 'dvc' },
   dylanlang: { ids: ['dylan', 'dylan-lid'], defaultExtension: 'dylan' },
   edge: { ids: 'edge', defaultExtension: 'edge' },
   eex: { ids: ['eex', 'html-eex'], defaultExtension: 'eex' },
