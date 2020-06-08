@@ -3210,6 +3210,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'rmd',
+      extensions: [],
+      languages: [languages.rmd],
+      format: FileFormat.svg,
+    },
     { icon: 'rproj', extensions: ['rproj'], format: FileFormat.svg },
     {
       icon: 'rspec',
