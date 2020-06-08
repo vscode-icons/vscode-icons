@@ -3727,6 +3727,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'unity',
+      extensions: ['.unity'],
+      languages: [],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vagrant',
       extensions: ['vagrantfile'],
       filename: true,
