@@ -95,6 +95,7 @@ export const languages: ILanguageCollection = {
   genstat: { ids: 'genstat', defaultExtension: 'gen' },
   git: { ids: ['git-commit', 'git-rebase'], defaultExtension: 'git' },
   glsl: { ids: 'glsl', defaultExtension: 'glsl' },
+  glyphs: { ids: 'glyphs', defaultExtension: 'glyphs' },
   gnuplot: { ids: 'gnuplot', defaultExtension: 'gp' },
   go: { ids: 'go', defaultExtension: 'go' },
   godot: { ids: 'gdscript', defaultExtension: 'gd' },
