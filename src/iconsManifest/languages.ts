@@ -87,6 +87,7 @@ export const languages: ILanguageCollection = {
   },
   freemarker: { ids: 'ftl', defaultExtension: 'ftl' },
   fsharp: { ids: 'fsharp', defaultExtension: 'fs' },
+  fthtml: { ids: 'fthtml', defaultExtension: 'fthtml' },
   galen: { ids: 'galen', defaultExtension: 'gspec' },
   gamemaker: { ids: 'gml-gms', defaultExtension: 'gml' },
   gamemaker2: { ids: 'gml-gms2', defaultExtension: 'gml' },
