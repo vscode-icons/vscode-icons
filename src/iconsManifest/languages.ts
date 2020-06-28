@@ -180,7 +180,7 @@ export const languages: ILanguageCollection = {
   perl6: { ids: 'perl6', defaultExtension: 'pl6' },
   pgsql: { ids: 'pgsql', defaultExtension: 'pgsql' },
   php: { ids: 'php', defaultExtension: 'php' },
-  pine: { ids: 'pine', defaultExtension: 'pine' },
+  pine: { ids: ['pine', 'pinescript'], defaultExtension: 'pine' },
   pip: { ids: 'pip-requirements', defaultExtension: 'requirements.txt' },
   plaintext: { ids: 'plaintext', defaultExtension: 'txt' },
   platformio: {
