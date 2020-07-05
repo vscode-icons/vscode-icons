@@ -1751,7 +1751,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'husky',
-      extensions: ['.huskyrc'],
+      extensions: ['.huskyrc', 'husky.config.js'],
       filenamesGlob: ['.huskyrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
