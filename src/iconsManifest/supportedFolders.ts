@@ -102,8 +102,6 @@ export const extensions: IFolderCollection = {
       extensions: [
         'conf',
         '.conf',
-        'configs',
-        '.configs',
         'config',
         '.config',
         'configs',
