@@ -605,6 +605,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bats',
+      extensions: [],
+      languages: [languages.bats],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bazaar',
       extensions: ['.bzrignore'],
       filename: true,

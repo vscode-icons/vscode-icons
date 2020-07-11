@@ -28,6 +28,7 @@ export const languages: ILanguageCollection = {
   },
   ballerina: { ids: 'ballerina', defaultExtension: 'bal' },
   bat: { ids: 'bat', defaultExtension: 'bat' },
+  bats: { ids: 'bats', defaultExtension: 'bats' },
   bazel: { ids: 'bazel', defaultExtension: 'bzl' },
   befunge: { ids: ['befunge', 'befunge98'], defaultExtension: 'bf' },
   bibtex: { ids: 'bibtex', defaultExtension: 'bib' },

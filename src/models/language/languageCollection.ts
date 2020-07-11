@@ -25,6 +25,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   azcli: ILanguage;
   azurepipelines: ILanguage;
   ballerina: ILanguage;
+  bats: ILanguage;
   bazel: ILanguage;
   befunge: ILanguage;
   bibtex: ILanguage;
