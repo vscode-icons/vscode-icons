@@ -1569,6 +1569,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'glyphs',
+      extensions: [],
+      languages: [languages.glyphs],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gnuplot',
       extensions: [],
       languages: [languages.gnuplot],
