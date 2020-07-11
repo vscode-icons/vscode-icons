@@ -1480,6 +1480,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fthtml',
+      extensions: [],
+      languages: [languages.fthtml],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fusebox',
       extensions: ['fuse.js'],
       filename: true,

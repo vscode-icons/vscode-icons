@@ -73,6 +73,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   falcon: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
+  fthtml: ILanguage;
   galen: ILanguage;
   gamemaker: ILanguage;
   gamemaker2: ILanguage;
