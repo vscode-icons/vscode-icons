@@ -1,5 +1,37 @@
 # Change Log
 
+## 10.2.0 (July 11, 2020)
+
+- Enhancement: Add `conf` to `Config` folder. ([@georgeherby](https://github.com/georgeherby) in [#2532](https://github.com/vscode-icons/vscode-icons/pull/2532))
+- Enhancement: Extend `husky` to support `husky.config.js`. ([@rifaidev](https://github.com/rifaidev) in [#2528](https://github.com/vscode-icons/vscode-icons/pull/2528))
+- Enhancement: Update `BLoC` folder icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2527](https://github.com/vscode-icons/vscode-icons/pull/2527))
+- Enhancement: Enhance `pinescript` with extra id. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2524](https://github.com/vscode-icons/vscode-icons/pull/2524))
+- Enhancement: Update `Scala` icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2522](https://github.com/vscode-icons/vscode-icons/pull/2522))
+- Feature: Support for `ftHTML`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2520](https://github.com/vscode-icons/vscode-icons/pull/2520))
+- Feature: Support for `Bats`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2519](https://github.com/vscode-icons/vscode-icons/pull/2519))
+- Feature: Support for `Drawio`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2518](https://github.com/vscode-icons/vscode-icons/pull/2518))
+- Feature: Support for `glyphs`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2517](https://github.com/vscode-icons/vscode-icons/pull/2517))
+- Feature: Support for `Unity`. ([@shubham-saudolla](https://github.com/shubham-saudolla) in [#2510](https://github.com/vscode-icons/vscode-icons/pull/2510))
+- Feature: Support for `Rmd`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2508](https://github.com/vscode-icons/vscode-icons/pull/2508))
+- Feature: Support for `jscpd`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2507](https://github.com/vscode-icons/vscode-icons/pull/2507))
+- Feature: Support for `DVC`. ([@shubham-saudolla](https://github.com/shubham-saudolla) in [#2506](https://github.com/vscode-icons/vscode-icons/pull/2506))
+- Enhancement: Extend `zeit` icon to `vercel` files. ([@nvignola](https://github.com/nvignola) in [#2487](https://github.com/vscode-icons/vscode-icons/pull/2487))
+- Feature: Support for `Hy`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2496](https://github.com/vscode-icons/vscode-icons/pull/2496))
+- Feature: Support for `Bosque`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2495](https://github.com/vscode-icons/vscode-icons/pull/2495))
+- Feature: Support for `lighthouse`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2477](https://github.com/vscode-icons/vscode-icons/pull/2477))
+- Feature: Support for `commitlint`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2476](https://github.com/vscode-icons/vscode-icons/pull/2476))
+- Feature: Support for `Kusto`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2475](https://github.com/vscode-icons/vscode-icons/pull/2475))
+- Enhancement: Update `Crowdin` translations. ([@JimiC](https://github.com/JimiC) in [#2471](https://github.com/vscode-icons/vscode-icons/pull/2471))
+- Enhancement: Update `latino` icon. ([@JimiC](https://github.com/JimiC) in [#2465](https://github.com/vscode-icons/vscode-icons/pull/2465))
+- Fix: Correct `nsri` config file association. ([@JimiC](https://github.com/JimiC) in [#2462](https://github.com/vscode-icons/vscode-icons/pull/2462))
+- Enhancement: Allow Windows builds to fail on Travis CI. ([@JimiC](https://github.com/JimiC) in [#2461](https://github.com/vscode-icons/vscode-icons/pull/2461))
+- Feature: Add Travis CI Windows builds. ([@JimiC](https://github.com/JimiC) in [#2460](https://github.com/vscode-icons/vscode-icons/pull/2460))
+- Feature: Support for `Latino`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2458](https://github.com/vscode-icons/vscode-icons/pull/2458))
+- Feature: Support for `Zig`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2457](https://github.com/vscode-icons/vscode-icons/pull/2457))
+- Enhancement: Use `npx` to run `npm` packages. ([@JimiC](https://github.com/JimiC) in [#2456](https://github.com/vscode-icons/vscode-icons/pull/2456))
+- Fix: Correct `eslint` syntax. ([@JimiC](https://github.com/JimiC) in [#2455](https://github.com/vscode-icons/vscode-icons/pull/2455))
+
+
 ## 10.1.1 (April 12, 2020)
 
 - Enhancement: Update dependencies. ([@JimiC](https://github.com/JimiC) in [#2453](https://github.com/vscode-icons/vscode-icons/pull/2453))
