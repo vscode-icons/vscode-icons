@@ -2,6 +2,7 @@
 
 ## 10.2.0 (July 11, 2020)
 
+- Enhancement: Reduce `Bosque` icon size. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2537](https://github.com/vscode-icons/vscode-icons/pull/2537))
 - Enhancement: Add `conf` to `Config` folder. ([@georgeherby](https://github.com/georgeherby) in [#2532](https://github.com/vscode-icons/vscode-icons/pull/2532))
 - Enhancement: Extend `husky` to support `husky.config.js`. ([@rifaidev](https://github.com/rifaidev) in [#2528](https://github.com/vscode-icons/vscode-icons/pull/2528))
 - Enhancement: Update `BLoC` folder icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2527](https://github.com/vscode-icons/vscode-icons/pull/2527))
