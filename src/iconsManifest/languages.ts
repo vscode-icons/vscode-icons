@@ -115,6 +115,7 @@ export const languages: ILanguageCollection = {
   html: { ids: 'html', defaultExtension: 'html' },
   http: { ids: 'http', defaultExtension: 'http' },
   hunspell: { ids: ['hunspell.aff', 'hunspell.dic'], defaultExtension: 'aff' },
+  hy: { ids: 'hy', defaultExtension: 'hy' },
   icl: { ids: 'icl', defaultExtension: 'icl' },
   imba: { ids: 'imba', defaultExtension: 'imba' },
   informix: { ids: '4GL', defaultExtension: '4gl' },

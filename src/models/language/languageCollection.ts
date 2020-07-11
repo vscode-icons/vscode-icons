@@ -94,6 +94,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   hosts: ILanguage;
   http: ILanguage;
   hunspell: ILanguage;
+  hy: ILanguage;
   icl: ILanguage;
   imba: ILanguage;
   informix: ILanguage;
