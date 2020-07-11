@@ -942,6 +942,12 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'commitlint',
+      extensions: ['commitlint.config.js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'compass', extensions: [], format: FileFormat.svg },
     {
       icon: 'composer',
