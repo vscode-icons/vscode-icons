@@ -1204,6 +1204,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'drawio',
+      extensions: ['drawio', 'dio'],
+      filenamesGlob: ['.drawio'],
+      extensionsGlob: ['png', 'svg'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'drone',
       extensions: ['.drone.yml', '.drone.yml.sig'],
       light: true,
