@@ -8,7 +8,7 @@
   "command.jsonPreset.title": "Attiva Preimpostazione ufficiale JSON (a livello Utente)",
   "command.hideFoldersPreset.title": "Attiva Visibilità Icone Cartelle (a livello Utente)",
   "command.foldersAllDefaultIconPreset.title": "Attiva Specifiche icone Cartelle (a livello Utente)",
-  "command.hideExplorerArrowsPreset.title": "Attiva\/disattiva la visibilità delle frecce delle cartelle nell'Explorer (a livello Utente)",
+  "command.hideExplorerArrowsPreset.title": "Attiva/disattiva la visibilità delle frecce delle cartelle nell'Explorer (a livello Utente)",
   "command.restoreIcons.title": "Ripristina Manifesto Icone Predefinito",
   "command.resetProjectDetectionDefaults.title": "Ripristina Impostazioni Rilevazione Progetto Predefinite",
   "configuration.title": "configurazione vscode-icons",
