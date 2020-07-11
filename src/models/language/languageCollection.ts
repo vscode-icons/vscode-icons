@@ -31,6 +31,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   biml: ILanguage;
   blade: ILanguage;
   bolt: ILanguage;
+  bosque: ILanguage;
   // eslint-disable-next-line camelcase
   c_al: ILanguage;
   cabal: ILanguage;
@@ -59,8 +60,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dotjs: ILanguage;
   doxygen: ILanguage;
   drools: ILanguage;
-  dylanlang: ILanguage;
   dustjs: ILanguage;
+  dylanlang: ILanguage;
   edge: ILanguage;
   eex: ILanguage;
   elastic: ILanguage;
@@ -79,6 +80,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   gcode: ILanguage;
   genstat: ILanguage;
   glsl: ILanguage;
+  glyphs: ILanguage;
   gnuplot: ILanguage;
   godot: ILanguage;
   graphql: ILanguage;
@@ -94,6 +96,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   hosts: ILanguage;
   http: ILanguage;
   hunspell: ILanguage;
+  hy: ILanguage;
   icl: ILanguage;
   imba: ILanguage;
   informix: ILanguage;
@@ -111,6 +114,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   kivy: ILanguage;
   kos: ILanguage;
   kotlin: ILanguage;
+  kusto: ILanguage;
   latex: ILanguage;
   latino: ILanguage;
   lex: ILanguage;
@@ -167,6 +171,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   restructuredtext: ILanguage;
   rexx: ILanguage;
   riot: ILanguage;
+  rmd: ILanguage;
   robot: ILanguage;
   san: ILanguage;
   sas: ILanguage;
