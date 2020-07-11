@@ -31,7 +31,6 @@
 - Enhancement: Use `npx` to run `npm` packages. ([@JimiC](https://github.com/JimiC) in [#2456](https://github.com/vscode-icons/vscode-icons/pull/2456))
 - Fix: Correct `eslint` syntax. ([@JimiC](https://github.com/JimiC) in [#2455](https://github.com/vscode-icons/vscode-icons/pull/2455))
 
-
 ## 10.1.1 (April 12, 2020)
 
 - Enhancement: Update dependencies. ([@JimiC](https://github.com/JimiC) in [#2453](https://github.com/vscode-icons/vscode-icons/pull/2453))
