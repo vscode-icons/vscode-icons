@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
@@ -28,17 +28,17 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = (await CustomsMerger.merge(
-          customFiles,
-          extFiles,
-          null,
-          extFolders,
-          vsicons.presets,
-        )).files.default.file_light;
+        const def = (
+          await CustomsMerger.merge(
+            customFiles,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+          )
+        ).files.default.file_light;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFiles.default.file_light.icon);
         expect(def.format).to.equal(customFiles.default.file_light.format);
       });
@@ -51,17 +51,17 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = (await CustomsMerger.merge(
-          customFiles,
-          extFiles,
-          null,
-          extFolders,
-          vsicons.presets,
-        )).files.default.file;
+        const def = (
+          await CustomsMerger.merge(
+            customFiles,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+          )
+        ).files.default.file;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFiles.default.file.icon);
         expect(def.format).to.equal(customFiles.default.file.format);
       });
@@ -73,17 +73,17 @@ describe('CustomsMerger: default extensions tests', function () {
           },
           supported: [],
         };
-        const def = (await CustomsMerger.merge(
-          customFiles,
-          extFiles,
-          null,
-          extFolders,
-          vsicons.presets,
-        )).files.default.file;
+        const def = (
+          await CustomsMerger.merge(
+            customFiles,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+          )
+        ).files.default.file;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFiles.default.file.icon);
         expect(def.format).to.equal(customFiles.default.file.format);
         expect(def.disabled).to.equal(customFiles.default.file.disabled);
@@ -99,17 +99,17 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          customFolders,
-          extFolders,
-          vsicons.presets,
-        )).folders.default.folder_light;
+        const def = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            customFolders,
+            extFolders,
+            vsicons.presets,
+          )
+        ).folders.default.folder_light;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.folder_light.icon);
         expect(def.format).to.equal(customFolders.default.folder_light.format);
         expect(def.disabled).to.be.false;
@@ -123,17 +123,17 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          customFolders,
-          extFolders,
-          vsicons.presets,
-        )).folders.default.folder;
+        const def = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            customFolders,
+            extFolders,
+            vsicons.presets,
+          )
+        ).folders.default.folder;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.folder.icon);
         expect(def.format).to.equal(customFolders.default.folder.format);
         expect(def.disabled).to.be.false;
@@ -146,17 +146,17 @@ describe('CustomsMerger: default extensions tests', function () {
           },
           supported: [],
         };
-        const def = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          customFolders,
-          extFolders,
-          vsicons.presets,
-        )).folders.default.folder;
+        const def = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            customFolders,
+            extFolders,
+            vsicons.presets,
+          )
+        ).folders.default.folder;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.folder.icon);
         expect(def.format).to.equal(customFolders.default.folder.format);
         expect(def.disabled).to.equal(customFolders.default.folder.disabled);
@@ -175,17 +175,17 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          customFolders,
-          extFolders,
-          vsicons.presets,
-        )).folders.default.root_folder_light;
+        const def = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            customFolders,
+            extFolders,
+            vsicons.presets,
+          )
+        ).folders.default.root_folder_light;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.root_folder_light.icon);
         expect(def.format).to.equal(
           customFolders.default.root_folder_light.format,
@@ -201,17 +201,17 @@ describe('CustomsMerger: default extensions tests', function () {
           supported: [],
         };
 
-        const def = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          customFolders,
-          extFolders,
-          vsicons.presets,
-        )).folders.default.root_folder;
+        const def = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            customFolders,
+            extFolders,
+            vsicons.presets,
+          )
+        ).folders.default.root_folder;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.root_folder.icon);
         expect(def.format).to.equal(customFolders.default.root_folder.format);
         expect(def.disabled).to.be.false;
@@ -224,17 +224,17 @@ describe('CustomsMerger: default extensions tests', function () {
           },
           supported: [],
         };
-        const def = (await CustomsMerger.merge(
-          null,
-          extFiles,
-          customFolders,
-          extFolders,
-          vsicons.presets,
-        )).folders.default.root_folder;
+        const def = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            customFolders,
+            extFolders,
+            vsicons.presets,
+          )
+        ).folders.default.root_folder;
 
-        expect(def)
-          .to.be.an('object')
-          .with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.root_folder.icon);
         expect(def.format).to.equal(customFolders.default.root_folder.format);
         expect(def.disabled).to.equal(

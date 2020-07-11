@@ -1,8 +1,8 @@
 import { format } from 'util';
 import {
+  ILanguageResourceManager,
   INotificationManager,
   IVSCodeManager,
-  ILanguageResourceManager,
   LangResourceLike,
 } from '../models';
 
@@ -53,17 +53,17 @@ export class NotificationManager implements INotificationManager {
     ...items: LangResourceLike[]
   ): { msg: string; msgItems: string[] } {
     let msg: string;
-    if (typeof message === 'string' && /%s/.test(message)) {
+    if (typeof message === 'string' && message.includes(' ')) {
       const matchesLength: number = message.match(/%s/g).length;
       const sItems: LangResourceLike[] = items.splice(0, matchesLength);
-      const msgs: string[] = sItems.map(sItem =>
+      const msgs: string[] = sItems.map((sItem: LangResourceLike) =>
         this.i18nManager.localize(sItem),
       );
       msg = format(message, ...msgs);
     } else {
       msg = this.i18nManager.localize(message);
     }
-    const msgItems: string[] = items.map(item =>
+    const msgItems: string[] = items.map((item: LangResourceLike) =>
       this.i18nManager.localize(item),
     );
     return { msg, msgItems };

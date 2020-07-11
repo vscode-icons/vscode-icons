@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as proxyq from 'proxyquire';
 import * as sinon from 'sinon';
@@ -34,7 +34,7 @@ describe('Bundle: tests', function () {
         bundleLangResources: bundleLangResourcesStub,
         copyPackageResources: copyPackageResourcesStub,
       }));
-      bundle = async () =>
+      bundle = (): void =>
         proxyq('../../src/tools/bundle', {
           '../common/bundler': {
             Bundler: bundlerStub(),

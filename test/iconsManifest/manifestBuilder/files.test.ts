@@ -1,11 +1,15 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
-import { IFolderCollection } from '../../../src/models';
+import {
+  IFolderCollection,
+  IFileExtension,
+  ILanguage,
+} from '../../../src/models';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
 
@@ -26,10 +30,12 @@ describe('ManifestBuilder: files icons test', function () {
         .callsFake((txt: string) => txt.replace(/^\./, ''));
       sandbox
         .stub(Utils, 'combine')
-        .callsFake((array1, array2) =>
+        .callsFake((array1: any[], array2: any[]) =>
           array1.reduce(
             (previous: string[], current: string) =>
-              previous.concat(array2.map(value => [current, value].join('.'))),
+              previous.concat(
+                array2.map((value: any) => [current, value].join('.')),
+              ),
             [],
           ),
         );
@@ -94,11 +100,9 @@ describe('ManifestBuilder: files icons test', function () {
               emptyFolderCollection,
             );
             fixtFiles.supported
-              .filter(file => !file.disabled)
-              .forEach(file => {
-                const definition = `${
-                  constants.iconsManifest.definitionFilePrefix
-                }${file.icon}`;
+              .filter((file: IFileExtension) => !file.disabled)
+              .forEach((file: IFileExtension) => {
+                const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                 expect(manifest.iconDefinitions[definition]).to.exist;
               });
@@ -110,11 +114,9 @@ describe('ManifestBuilder: files icons test', function () {
               emptyFolderCollection,
             );
             fixtFiles.supported
-              .filter(file => !file.disabled)
-              .forEach(file => {
-                const definition = `${
-                  constants.iconsManifest.definitionFilePrefix
-                }${file.icon}`;
+              .filter((file: IFileExtension) => !file.disabled)
+              .forEach((file: IFileExtension) => {
+                const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                 expect(manifest.iconDefinitions[definition].iconPath).not.to.be
                   .empty;
@@ -128,17 +130,15 @@ describe('ManifestBuilder: files icons test', function () {
             );
 
             fixtFiles.supported
-              .filter(file => !file.disabled)
-              .forEach(file => {
+              .filter((file: IFileExtension) => !file.disabled)
+              .forEach((file: IFileExtension) => {
                 const filename = `${constants.iconsManifest.fileTypePrefix}${
                   file.icon
                 }${
                   constants.iconsManifest.iconSuffix
                 }${Utils.fileFormatToString(file.format)}`;
 
-                const definition = `${
-                  constants.iconsManifest.definitionFilePrefix
-                }${file.icon}`;
+                const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                 expect(manifest.iconDefinitions[definition].iconPath).to.equal(
                   `${iconsDirRelativeBasePath}/${filename}`,
@@ -153,11 +153,9 @@ describe('ManifestBuilder: files icons test', function () {
                 emptyFolderCollection,
               );
               fixtFiles.supported
-                .filter(file => !file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${
-                    constants.iconsManifest.definitionFilePrefix
-                  }${file.icon}`;
+                .filter((file: IFileExtension) => !file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
+                  const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                   expect(manifest.iconDefinitions[definition]).to.exist;
                 });
@@ -169,11 +167,9 @@ describe('ManifestBuilder: files icons test', function () {
                 emptyFolderCollection,
               );
               fixtFiles.supported
-                .filter(file => !file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${
-                    constants.iconsManifest.definitionFilePrefix
-                  }${file.icon}`;
+                .filter((file: IFileExtension) => !file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
+                  const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                   expect(manifest.iconDefinitions[definition].iconPath).not.to
                     .be.empty;
@@ -187,16 +183,14 @@ describe('ManifestBuilder: files icons test', function () {
               );
 
               fixtFiles.supported
-                .filter(file => !file.light && !file.disabled)
-                .forEach(file => {
+                .filter((file: IFileExtension) => !file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
                   const filename = `${constants.iconsManifest.fileTypePrefix}${
                     file.icon
                   }${
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
-                  const definition = `${
-                    constants.iconsManifest.definitionFilePrefix
-                  }${file.icon}`;
+                  const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                   expect(
                     manifest.iconDefinitions[definition].iconPath,
@@ -212,11 +206,9 @@ describe('ManifestBuilder: files icons test', function () {
                 emptyFolderCollection,
               );
               fixtFiles.supported
-                .filter(file => file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${
-                    constants.iconsManifest.definitionFileLightPrefix
-                  }${file.icon}`;
+                .filter((file: IFileExtension) => file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
+                  const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                   expect(manifest.iconDefinitions[definition]).to.exist;
                 });
@@ -228,11 +220,9 @@ describe('ManifestBuilder: files icons test', function () {
                 emptyFolderCollection,
               );
               fixtFiles.supported
-                .filter(file => file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${
-                    constants.iconsManifest.definitionFileLightPrefix
-                  }${file.icon}`;
+                .filter((file: IFileExtension) => file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
+                  const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                   expect(manifest.iconDefinitions[definition].iconPath).not.to
                     .be.empty;
@@ -246,16 +236,14 @@ describe('ManifestBuilder: files icons test', function () {
               );
 
               fixtFiles.supported
-                .filter(file => file.light && !file.disabled)
-                .forEach(file => {
+                .filter((file: IFileExtension) => file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
                   const filename = `${
                     constants.iconsManifest.fileTypeLightPrefix
                   }${file.icon}${
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
-                  const definition = `${
-                    constants.iconsManifest.definitionFileLightPrefix
-                  }${file.icon}`;
+                  const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                   expect(
                     manifest.iconDefinitions[definition].iconPath,
@@ -274,14 +262,13 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && !file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        !file.filename && !file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.fileExtensions[extension]).to.equal(
                           definition,
                         ),
@@ -298,14 +285,13 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        !file.filename && file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.fileExtensions[extension]).to.equal(
                           definition,
                         ),
@@ -324,18 +310,16 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file =>
+                      (file: IFileExtension) =>
                         file.filename &&
                         !file.light &&
                         !file.languages &&
                         !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -352,18 +336,16 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file =>
+                      (file: IFileExtension) =>
                         file.filename &&
                         !file.languages &&
                         file.light &&
                         !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -381,21 +363,24 @@ describe('ManifestBuilder: files icons test', function () {
                     emptyFolderCollection,
                   );
                   fixtFiles.supported
-                    .filter(file => file.languages && !file.disabled)
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .filter(
+                      (file: IFileExtension) =>
+                        file.languages && !file.disabled,
+                    )
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      const assertLanguage = (language: string) => {
+                      const assertLanguage = (language: string): void => {
                         expect(manifest.languageIds[language]).to.equal(
                           definition,
                         );
                       };
 
-                      file.languages.forEach(langIds => {
+                      file.languages.forEach((langIds: ILanguage) => {
                         if (Array.isArray(langIds.ids)) {
-                          langIds.ids.forEach(id => assertLanguage(id));
+                          langIds.ids.forEach((id: string) =>
+                            assertLanguage(id),
+                          );
                         } else {
                           assertLanguage(langIds.ids);
                         }
@@ -412,22 +397,23 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        file.languages && file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      const assertLanguageLight = (language: string) => {
+                      const assertLanguageLight = (language: string): void => {
                         expect(manifest.languageIds[language]).to.equal(
                           definition,
                         );
                       };
 
-                      file.languages.forEach(langIds => {
+                      file.languages.forEach((langIds: ILanguage) => {
                         if (Array.isArray(langIds.ids)) {
-                          langIds.ids.forEach(id => assertLanguageLight(id));
+                          langIds.ids.forEach((id: string) =>
+                            assertLanguageLight(id),
+                          );
                         } else {
                           assertLanguageLight(langIds.ids);
                         }
@@ -448,14 +434,13 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && !file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        !file.filename && !file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(
                           manifest.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -472,14 +457,13 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        !file.filename && file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFileLightPrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(
                           manifest.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -498,18 +482,16 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file =>
+                      (file: IFileExtension) =>
                         file.filename &&
                         !file.light &&
                         !file.languages &&
                         !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.light.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -526,18 +508,16 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file =>
+                      (file: IFileExtension) =>
                         file.filename &&
                         !file.languages &&
                         file.light &&
                         !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFileLightPrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.light.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -556,22 +536,23 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && !file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        file.languages && !file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      const assertLanguage = (language: string) => {
+                      const assertLanguage = (language: string): void => {
                         expect(manifest.light.languageIds[language]).to.equal(
                           definition,
                         );
                       };
 
-                      file.languages.forEach(langIds => {
+                      file.languages.forEach((langIds: ILanguage) => {
                         if (Array.isArray(langIds.ids)) {
-                          langIds.ids.forEach(id => assertLanguage(id));
+                          langIds.ids.forEach((id: string) =>
+                            assertLanguage(id),
+                          );
                         } else {
                           assertLanguage(langIds.ids);
                         }
@@ -588,22 +569,23 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        file.languages && file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFileLightPrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      const assertLanguageLight = (language: string) => {
+                      const assertLanguageLight = (language: string): void => {
                         expect(manifest.light.languageIds[language]).to.equal(
                           definition,
                         );
                       };
 
-                      file.languages.forEach(langIds => {
+                      file.languages.forEach((langIds: ILanguage) => {
                         if (Array.isArray(langIds.ids)) {
-                          langIds.ids.forEach(id => assertLanguageLight(id));
+                          langIds.ids.forEach((id: string) =>
+                            assertLanguageLight(id),
+                          );
                         } else {
                           assertLanguageLight(langIds.ids);
                         }
@@ -690,11 +672,9 @@ describe('ManifestBuilder: files icons test', function () {
               emptyFolderCollection,
             );
             fixtFiles.supported
-              .filter(file => !file.disabled)
-              .forEach(file => {
-                const definition = `${
-                  constants.iconsManifest.definitionFilePrefix
-                }${file.icon}`;
+              .filter((file: IFileExtension) => !file.disabled)
+              .forEach((file: IFileExtension) => {
+                const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                 expect(manifest.iconDefinitions[definition]).to.exist;
               });
@@ -706,11 +686,9 @@ describe('ManifestBuilder: files icons test', function () {
               emptyFolderCollection,
             );
             fixtFiles.supported
-              .filter(file => !file.disabled)
-              .forEach(file => {
-                const definition = `${
-                  constants.iconsManifest.definitionFilePrefix
-                }${file.icon}`;
+              .filter((file: IFileExtension) => !file.disabled)
+              .forEach((file: IFileExtension) => {
+                const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                 expect(manifest.iconDefinitions[definition].iconPath).not.to.be
                   .empty;
@@ -724,17 +702,15 @@ describe('ManifestBuilder: files icons test', function () {
             );
 
             fixtFiles.supported
-              .filter(file => !file.disabled)
-              .forEach(file => {
+              .filter((file: IFileExtension) => !file.disabled)
+              .forEach((file: IFileExtension) => {
                 const filename = `${constants.iconsManifest.fileTypePrefix}${
                   file.icon
                 }${
                   constants.iconsManifest.iconSuffix
                 }${Utils.fileFormatToString(file.format)}`;
 
-                const definition = `${
-                  constants.iconsManifest.definitionFilePrefix
-                }${file.icon}`;
+                const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                 expect(manifest.iconDefinitions[definition].iconPath).to.equal(
                   `${iconsDirRelativeBasePath}/${filename}`,
@@ -749,11 +725,9 @@ describe('ManifestBuilder: files icons test', function () {
                 emptyFolderCollection,
               );
               fixtFiles.supported
-                .filter(file => !file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${
-                    constants.iconsManifest.definitionFilePrefix
-                  }${file.icon}`;
+                .filter((file: IFileExtension) => !file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
+                  const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                   expect(manifest.iconDefinitions[definition]).to.exist;
                 });
@@ -765,11 +739,9 @@ describe('ManifestBuilder: files icons test', function () {
                 emptyFolderCollection,
               );
               fixtFiles.supported
-                .filter(file => !file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${
-                    constants.iconsManifest.definitionFilePrefix
-                  }${file.icon}`;
+                .filter((file: IFileExtension) => !file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
+                  const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                   expect(manifest.iconDefinitions[definition].iconPath).not.to
                     .be.empty;
@@ -783,16 +755,14 @@ describe('ManifestBuilder: files icons test', function () {
               );
 
               fixtFiles.supported
-                .filter(file => !file.light && !file.disabled)
-                .forEach(file => {
+                .filter((file: IFileExtension) => !file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
                   const filename = `${constants.iconsManifest.fileTypePrefix}${
                     file.icon
                   }${
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
-                  const definition = `${
-                    constants.iconsManifest.definitionFilePrefix
-                  }${file.icon}`;
+                  const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                   expect(
                     manifest.iconDefinitions[definition].iconPath,
@@ -808,11 +778,9 @@ describe('ManifestBuilder: files icons test', function () {
                 emptyFolderCollection,
               );
               fixtFiles.supported
-                .filter(file => file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${
-                    constants.iconsManifest.definitionFileLightPrefix
-                  }${file.icon}`;
+                .filter((file: IFileExtension) => file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
+                  const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                   expect(manifest.iconDefinitions[definition]).to.exist;
                 });
@@ -824,11 +792,9 @@ describe('ManifestBuilder: files icons test', function () {
                 emptyFolderCollection,
               );
               fixtFiles.supported
-                .filter(file => file.light && !file.disabled)
-                .forEach(file => {
-                  const definition = `${
-                    constants.iconsManifest.definitionFileLightPrefix
-                  }${file.icon}`;
+                .filter((file: IFileExtension) => file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
+                  const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                   expect(manifest.iconDefinitions[definition].iconPath).not.to
                     .be.empty;
@@ -842,16 +808,14 @@ describe('ManifestBuilder: files icons test', function () {
               );
 
               fixtFiles.supported
-                .filter(file => file.light && !file.disabled)
-                .forEach(file => {
+                .filter((file: IFileExtension) => file.light && !file.disabled)
+                .forEach((file: IFileExtension) => {
                   const filename = `${
                     constants.iconsManifest.fileTypeLightPrefix
                   }${file.icon}${
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
-                  const definition = `${
-                    constants.iconsManifest.definitionFileLightPrefix
-                  }${file.icon}`;
+                  const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                   expect(
                     manifest.iconDefinitions[definition].iconPath,
@@ -870,14 +834,13 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && !file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        !file.filename && !file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.fileExtensions[extension]).to.equal(
                           definition,
                         ),
@@ -894,14 +857,13 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        !file.filename && file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.fileExtensions[extension]).to.equal(
                           definition,
                         ),
@@ -920,18 +882,16 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file =>
+                      (file: IFileExtension) =>
                         file.filename &&
                         !file.light &&
                         !file.languages &&
                         !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -948,18 +908,16 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file =>
+                      (file: IFileExtension) =>
                         file.filename &&
                         !file.languages &&
                         file.light &&
                         !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -977,21 +935,24 @@ describe('ManifestBuilder: files icons test', function () {
                     emptyFolderCollection,
                   );
                   fixtFiles.supported
-                    .filter(file => file.languages && !file.disabled)
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .filter(
+                      (file: IFileExtension) =>
+                        file.languages && !file.disabled,
+                    )
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      const assertLanguage = (language: string) => {
+                      const assertLanguage = (language: string): void => {
                         expect(manifest.languageIds[language]).to.equal(
                           definition,
                         );
                       };
 
-                      file.languages.forEach(langIds => {
+                      file.languages.forEach((langIds: ILanguage) => {
                         if (Array.isArray(langIds.ids)) {
-                          langIds.ids.forEach(id => assertLanguage(id));
+                          langIds.ids.forEach((id: string) =>
+                            assertLanguage(id),
+                          );
                         } else {
                           assertLanguage(langIds.ids);
                         }
@@ -1008,22 +969,23 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        file.languages && file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      const assertLanguageLight = (language: string) => {
+                      const assertLanguageLight = (language: string): void => {
                         expect(manifest.languageIds[language]).to.equal(
                           definition,
                         );
                       };
 
-                      file.languages.forEach(langIds => {
+                      file.languages.forEach((langIds: ILanguage) => {
                         if (Array.isArray(langIds.ids)) {
-                          langIds.ids.forEach(id => assertLanguageLight(id));
+                          langIds.ids.forEach((id: string) =>
+                            assertLanguageLight(id),
+                          );
                         } else {
                           assertLanguageLight(langIds.ids);
                         }
@@ -1044,14 +1006,13 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && !file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        !file.filename && !file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(
                           manifest.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -1068,14 +1029,13 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => !file.filename && file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        !file.filename && file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFileLightPrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(
                           manifest.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -1094,18 +1054,16 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file =>
+                      (file: IFileExtension) =>
                         file.filename &&
                         !file.light &&
                         !file.languages &&
                         !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.light.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -1122,18 +1080,16 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file =>
+                      (file: IFileExtension) =>
                         file.filename &&
                         !file.languages &&
                         file.light &&
                         !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFileLightPrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      file.extensions.forEach(extension =>
+                      file.extensions.forEach((extension: string) =>
                         expect(manifest.light.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -1152,22 +1108,23 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && !file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        file.languages && !file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFilePrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      const assertLanguage = (language: string) => {
+                      const assertLanguage = (language: string): void => {
                         expect(manifest.light.languageIds[language]).to.equal(
                           definition,
                         );
                       };
 
-                      file.languages.forEach(langIds => {
+                      file.languages.forEach((langIds: ILanguage) => {
                         if (Array.isArray(langIds.ids)) {
-                          langIds.ids.forEach(id => assertLanguage(id));
+                          langIds.ids.forEach((id: string) =>
+                            assertLanguage(id),
+                          );
                         } else {
                           assertLanguage(langIds.ids);
                         }
@@ -1184,22 +1141,23 @@ describe('ManifestBuilder: files icons test', function () {
                   );
                   fixtFiles.supported
                     .filter(
-                      file => file.languages && file.light && !file.disabled,
+                      (file: IFileExtension) =>
+                        file.languages && file.light && !file.disabled,
                     )
-                    .forEach(file => {
-                      const definition = `${
-                        constants.iconsManifest.definitionFileLightPrefix
-                      }${file.icon}`;
+                    .forEach((file: IFileExtension) => {
+                      const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      const assertLanguageLight = (language: string) => {
+                      const assertLanguageLight = (language: string): void => {
                         expect(manifest.light.languageIds[language]).to.equal(
                           definition,
                         );
                       };
 
-                      file.languages.forEach(langIds => {
+                      file.languages.forEach((langIds: ILanguage) => {
                         if (Array.isArray(langIds.ids)) {
-                          langIds.ids.forEach(id => assertLanguageLight(id));
+                          langIds.ids.forEach((id: string) =>
+                            assertLanguageLight(id),
+                          );
                         } else {
                           assertLanguageLight(langIds.ids);
                         }
@@ -1248,9 +1206,7 @@ describe('ManifestBuilder: files icons test', function () {
       it(`that path is NOT used, when it has NOT a custom icon`, async function () {
         existsAsyncStub.resolves(false);
         pathUnixJoinStub.returns(
-          `${iconsDirRelativeBasePath}/${
-            constants.extension.customIconFolderName
-          }`,
+          `${iconsDirRelativeBasePath}/${constants.extension.customIconFolderName}`,
         );
 
         const manifest = await ManifestBuilder.buildManifest(
@@ -1260,9 +1216,7 @@ describe('ManifestBuilder: files icons test', function () {
         );
         expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
         expect(manifest.iconDefinitions._file.iconPath).to.equal(
-          `${iconsDirRelativeBasePath}/${
-            constants.extension.customIconFolderName
-          }`,
+          `${iconsDirRelativeBasePath}/${constants.extension.customIconFolderName}`,
         );
       });
 
@@ -1277,9 +1231,7 @@ describe('ManifestBuilder: files icons test', function () {
 
         expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
         expect(manifest.iconDefinitions._file.iconPath).to.equal(
-          `${iconsDirRelativeBasePath}/${
-            constants.iconsManifest.defaultPrefix
-          }file.svg`,
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file.svg`,
         );
         expect(
           overwriteDriveStub.calledWith(

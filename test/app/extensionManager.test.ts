@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as path from 'path';
@@ -9,7 +9,7 @@ import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
-import { IntegrityManager } from '../../src/integrity/integrityManager.js';
+import { IntegrityManager } from '../../src/integrity/integrityManager';
 import * as models from '../../src/models';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
@@ -22,19 +22,11 @@ describe('ExtensionManager: tests', function () {
     let sandbox: sinon.SinonSandbox;
     let vscodeManagerStub: sinon.SinonStubbedInstance<models.IVSCodeManager>;
     let configManagerStub: sinon.SinonStubbedInstance<models.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<
-      models.ISettingsManager
-    >;
-    let notifyManagerStub: sinon.SinonStubbedInstance<
-      models.INotificationManager
-    >;
+    let settingsManagerStub: sinon.SinonStubbedInstance<models.ISettingsManager>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<
-      models.IProjectAutoDetectionManager
-    >;
-    let integrityManagerStub: sinon.SinonStubbedInstance<
-      models.IIntegrityManager
-    >;
+    let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
+    let integrityManagerStub: sinon.SinonStubbedInstance<models.IIntegrityManager>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let registerCommandStub: sinon.SinonStub;
     let executeCommandStub: sinon.SinonStub;
@@ -269,7 +261,7 @@ describe('ExtensionManager: tests', function () {
 
         context(`development`, function () {
           it(`does NOT change the 'root' directory`, async function () {
-            const baseRegexp = `^[a-zA-Z:\\\\]+|\/`;
+            const baseRegexp = `^[a-zA-Z:\\\\]+|/`;
 
             await extensionManager.activate();
 
@@ -295,7 +287,7 @@ describe('ExtensionManager: tests', function () {
           });
 
           it(`changes the 'root' directory`, async function () {
-            const baseRegexp = `^[a-zA-Z:\\\\]+|\/path`;
+            const baseRegexp = `^[a-zA-Z:\\\\]+|/path`;
 
             await extensionManager.activate();
 
@@ -303,7 +295,7 @@ describe('ExtensionManager: tests', function () {
             expect(ConfigManager.rootDir).to.match(new RegExp(baseRegexp));
             expect(ConfigManager.outDir).to.match(
               new RegExp(
-                `${baseRegexp}[\\\\|\/]${constants.extension.distDirName}`,
+                `${baseRegexp}[\\\\|/]${constants.extension.distDirName}`,
               ),
             );
           });

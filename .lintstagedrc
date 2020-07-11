@@ -1,4 +1,10 @@
 {
-  "src/**/*.ts": ["prettier --write", "tslint", "git add"],
-  "test/**/*.ts": ["prettier --write", "tslint --fix", "git add"]
+  "src/**/*.ts": [
+    "prettier --write",
+    "eslint . --ext .ts"
+  ],
+  "test/**/*.ts": [
+    "prettier --write",
+    "eslint . --ext .ts --fix"
+  ]
 }

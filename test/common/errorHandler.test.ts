@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { ErrorHandler } from '../../src/common/errorHandler';
@@ -34,9 +34,7 @@ describe('ErrorHandler: tests', function () {
           ),
         ).to.be.true;
         expect(consoleErrorStub.calledWithMatch(/contextOfStack/)).to.be.true;
-        expect(error)
-          .to.haveOwnProperty('stack')
-          .and.to.equal(error.stack);
+        expect(error).to.haveOwnProperty('stack').and.to.equal(error.stack);
       });
 
       it('the error message, when no error stack is available', function () {

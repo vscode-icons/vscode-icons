@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import { resolve } from 'path';
@@ -76,9 +76,7 @@ describe('IconsGenerator: tests', function () {
           resolve(
             __dirname,
             '../../../',
-            `${constants.extension.outDirName}/${
-              constants.extension.srcDirName
-            }/`,
+            `${constants.extension.outDirName}/${constants.extension.srcDirName}/`,
           ),
         );
 
@@ -238,7 +236,7 @@ describe('IconsGenerator: tests', function () {
         await iconsGenerator.persist(iconsManifest);
 
         expect(createDirAsyncStub.calledOnce).to.be.true;
-        expect(createDirAsyncStub.calledWithMatch(/\.*[\/|\\]src/)).to.be.true;
+        expect(createDirAsyncStub.calledWithMatch(/\.*[/|\\]src/)).to.be.true;
       });
 
       context(`writes the icons manifest to storage`, function () {
@@ -284,9 +282,7 @@ describe('IconsGenerator: tests', function () {
 
         expect(
           infoStub.calledOnceWithExactly(
-            `[${
-              constants.extension.name
-            }] Icons manifest file successfully generated!`,
+            `[${constants.extension.name}] Icons manifest file successfully generated!`,
           ),
         ).to.be.true;
       });
@@ -300,9 +296,7 @@ describe('IconsGenerator: tests', function () {
           await iconsGenerator.persist(iconsManifest);
 
           expect(createDirAsyncStub.calledOnce).to.be.true;
-          expect(
-            createDirAsyncStub.calledWithMatch(/\.*[\/|\\]src/),
-          ).to.be.true;
+          expect(createDirAsyncStub.calledWithMatch(/\.*[/|\\]src/)).to.be.true;
           expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
         });
 
@@ -331,9 +325,7 @@ describe('IconsGenerator: tests', function () {
         context(`NOT updated`, function () {
           beforeEach(function () {
             getRelativePathStub.resolves(
-              `${constants.extension.outDirName}/${
-                constants.extension.srcDirName
-              }/`,
+              `${constants.extension.outDirName}/${constants.extension.srcDirName}/`,
             );
           });
 
@@ -380,6 +372,25 @@ describe('IconsGenerator: tests', function () {
               expect(updateFileStub.called).to.be.false;
             });
           });
+
+          context(`when the 'vscode:uninstall' script`, function () {
+            it(`does NOT exist`, async function () {
+              const originalValue = manifest.scripts['vscode:unistall'];
+              delete manifest.scripts['vscode:unistall'];
+
+              await iconsGenerator.persist(iconsManifest, true);
+
+              manifest.scripts['vscode:unistall'] = originalValue;
+
+              expect(updateFileStub.called).to.be.false;
+            });
+
+            it(`does NOT need to be changed`, async function () {
+              await iconsGenerator.persist(iconsManifest, true);
+
+              expect(updateFileStub.called).to.be.false;
+            });
+          });
         });
 
         context(`updated`, function () {
@@ -394,9 +405,7 @@ describe('IconsGenerator: tests', function () {
                 expect(infoStub.calledOnce).to.be.true;
                 expect(
                   infoStub.calledWithExactly(
-                    `[${
-                      constants.extension.name
-                    }] Icons manifest file successfully generated!`,
+                    `[${constants.extension.name}] Icons manifest file successfully generated!`,
                   ),
                 ).to.be.true;
               });
@@ -416,9 +425,7 @@ describe('IconsGenerator: tests', function () {
               expect(infoStub.calledTwice).to.be.true;
               expect(
                 infoStub.secondCall.calledWithExactly(
-                  `[${
-                    constants.extension.name
-                  }] Icons path in 'package.json' updated`,
+                  `[${constants.extension.name}] Icons path in 'package.json' updated`,
                 ),
               ).to.be.true;
             });
@@ -435,9 +442,7 @@ describe('IconsGenerator: tests', function () {
                 expect(infoStub.calledOnce).to.be.true;
                 expect(
                   infoStub.calledWithExactly(
-                    `[${
-                      constants.extension.name
-                    }] Icons manifest file successfully generated!`,
+                    `[${constants.extension.name}] Icons manifest file successfully generated!`,
                   ),
                 ).to.be.true;
               });
@@ -455,9 +460,7 @@ describe('IconsGenerator: tests', function () {
               expect(infoStub.calledThrice).to.be.true;
               expect(
                 infoStub.thirdCall.calledWithExactly(
-                  `[${
-                    constants.extension.name
-                  }] Entrypoint in 'package.json' updated`,
+                  `[${constants.extension.name}] Entrypoint in 'package.json' updated`,
                 ),
               ).to.be.true;
             });
@@ -471,9 +474,9 @@ describe('IconsGenerator: tests', function () {
 
                 context(`development`, function () {
                   it(`without a filename`, async function () {
-                    const manifestMock = `"main":"${
-                      constants.extension.outDirName
-                    }/${constants.extension.srcDirName}/"`;
+                    const manifestMock =
+                      '"main": "' +
+                      `${constants.extension.outDirName}/${constants.extension.srcDirName}/"`;
 
                     await iconsGenerator.persist(iconsManifest, true);
 
@@ -481,7 +484,7 @@ describe('IconsGenerator: tests', function () {
                       manifestMock,
                     ])[0];
 
-                    expect(returnedValue).to.equal(`"main":"${newDir}"`);
+                    expect(returnedValue).to.equal(`"main": "${newDir}"`);
                   });
                 });
 
@@ -495,9 +498,9 @@ describe('IconsGenerator: tests', function () {
                   });
 
                   it(`with a filename`, async function () {
-                    const manifestMock = `"main": "${
-                      constants.extension.outDirName
-                    }/${constants.extension.srcDirName}/"`;
+                    const manifestMock =
+                      '"main": "' +
+                      `${constants.extension.outDirName}/${constants.extension.srcDirName}/"`;
 
                     await iconsGenerator.persist(iconsManifest, true);
 
@@ -506,13 +509,48 @@ describe('IconsGenerator: tests', function () {
                     ])[0];
 
                     expect(returnedValue).to.equal(
-                      `"main": "${newDir}${
-                        constants.extension.distEntryFilename
-                      }"`,
+                      `"main": "${newDir}${constants.extension.distEntryFilename}"`,
                     );
                   });
                 });
               });
+            });
+          });
+
+          context(`and the 'scripts' property gets`, function () {
+            context(`NOT updated`, function () {
+              it(`when it can NOT be found`, async function () {
+                updateFileStub.callsArgWith(1, ['']).resolves();
+
+                await iconsGenerator.persist(iconsManifest, true);
+
+                expect(updateFileStub.calledOnce).to.be.true;
+                expect(infoStub.calledOnce).to.be.true;
+                expect(
+                  infoStub.calledWithExactly(
+                    `[${constants.extension.name}] Icons manifest file successfully generated!`,
+                  ),
+                ).to.be.true;
+              });
+            });
+
+            it(`updated`, async function () {
+              getRelativePathStub.resolves('some/path/');
+              updateFileStub
+                .callsArgWith(1, [
+                  `"main":"some/path/"\n"path":""\n"scripts":{"vscode:uninstall":""}`,
+                ])
+                .resolves();
+
+              await iconsGenerator.persist(iconsManifest, true);
+
+              expect(updateFileStub.calledOnce).to.be.true;
+              expect(infoStub.callCount).to.equal(4);
+              expect(
+                infoStub.calledWithExactly(
+                  `[${constants.extension.name}] Script 'vscode:uninstall' in 'package.json' updated`,
+                ),
+              ).to.be.true;
             });
           });
         });

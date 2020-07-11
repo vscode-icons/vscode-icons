@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as proxyq from 'proxyquire';
@@ -35,7 +35,7 @@ describe('Build: tests', function () {
         generateIconsManifest: generateIconsManifestStub,
         persist: persistStub,
       }));
-      build = async (): Promise<void> =>
+      build = (): Promise<void> =>
         proxyq('../../src/tools/build', {
           '../iconsManifest/iconsGenerator': {
             IconsGenerator: iconsGeneratorStub,
@@ -74,7 +74,7 @@ describe('Build: tests', function () {
 
             expect(constants.environment.production).to.be.true;
             expect(ConfigManager.outDir).to.match(
-              new RegExp(`.*[\\\\|\/]${constants.extension.distDirName}$`),
+              new RegExp(`.*[\\\\|/]${constants.extension.distDirName}$`),
             );
           });
 
@@ -85,7 +85,7 @@ describe('Build: tests', function () {
 
             expect(constants.environment.production).to.be.true;
             expect(ConfigManager.outDir).to.match(
-              new RegExp(`.*[\\\\|\/]${constants.extension.distDirName}$`),
+              new RegExp(`.*[\\\\|/]${constants.extension.distDirName}$`),
             );
           });
         });

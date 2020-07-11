@@ -7,9 +7,10 @@ environment:
   # Define versions of Node.js
   matrix:
     - node_js: ''      # latest node
-    - node_js: 10.11.0 # vscode >= 1.36.0
+    - node_js: 12.8.1  # vscode >= 1.43.0
+    - node_js: 12.4.0  # vscode >= 1.40.0 < 1.43.0
+    - node_js: 10.11.0 # vscode >= 1.36.0 < 1.40.0
     - node_js: 10.2.0  # vscode >= 1.31.0 < 1.36.0
-    - node_js: 8.9.3   # vscode >= 1.26.0 < 1.31.0
 matrix:
   fast_finish: true
   allow_failures:
@@ -17,8 +18,8 @@ matrix:
 # Define platforms
 platform:
   - x64
-cache:
-  # - node_modules
+# cache:
+#   - node_modules
 init:
   # Install the platform version of Node.js
   - ps: Install-Product node $env:node_js $env:platform

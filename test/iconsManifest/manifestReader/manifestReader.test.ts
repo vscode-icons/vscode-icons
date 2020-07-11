@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
@@ -328,9 +328,11 @@ describe('ManifestReader: tests', function () {
                     [
                       PresetNames.hideFolders,
                       PresetNames.foldersAllDefaultIcon,
-                    ].every(prst => prst !== PresetNames[preset]),
+                    ].every(
+                      (prst: PresetNames) => prst !== PresetNames[preset],
+                    ),
                 )
-                .forEach(async (preset: string) => {
+                .map(async (preset: string) => {
                   try {
                     await ManifestReader.folderIconsDisabled(preset);
                   } catch (error) {

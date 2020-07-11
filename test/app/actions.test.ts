@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
@@ -19,19 +19,11 @@ describe('ExtensionManager: actions tests', function () {
     let sandbox: sinon.SinonSandbox;
     let vscodeManagerStub: sinon.SinonStubbedInstance<models.IVSCodeManager>;
     let configManagerStub: sinon.SinonStubbedInstance<models.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<
-      models.ISettingsManager
-    >;
-    let notifyManagerStub: sinon.SinonStubbedInstance<
-      models.INotificationManager
-    >;
+    let settingsManagerStub: sinon.SinonStubbedInstance<models.ISettingsManager>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<
-      models.IProjectAutoDetectionManager
-    >;
-    let integrityManagerStub: sinon.SinonStubbedInstance<
-      models.IIntegrityManager
-    >;
+    let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
+    let integrityManagerStub: sinon.SinonStubbedInstance<models.IIntegrityManager>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
     let extensionManager: models.IExtensionManager;

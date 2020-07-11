@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
 import { join } from 'path';
@@ -15,36 +15,38 @@ describe('Specifications of supported folders: tests', function () {
 
     context('each supported', function () {
       context('folder', function () {
-        it('has an associated icon file', function () {
-          folders.supported.forEach(async (folder: IFolderExtension) => {
-            const filename =
-              `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
-              `${constants.iconsManifest.iconSuffix}.${
-                FileFormat[folder.format]
-              }`;
-            const iconFilePath = join(iconsDirPath, filename);
+        it('has an associated icon file', async function () {
+          await Promise.all(
+            folders.supported.map(async (folder: IFolderExtension) => {
+              const filename =
+                `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
+                `${constants.iconsManifest.iconSuffix}.${
+                  FileFormat[folder.format]
+                }`;
+              const iconFilePath = join(iconsDirPath, filename);
 
-            const pathExists = await existsAsync(iconFilePath);
+              const pathExists = await existsAsync(iconFilePath);
 
-            expect(pathExists).to.be.true;
-          });
+              expect(pathExists).to.be.true;
+            }),
+          );
         });
 
-        it('has an associated opened icon file', function () {
-          folders.supported.forEach(async (folder: IFolderExtension) => {
-            const filename =
-              `${constants.iconsManifest.folderTypePrefix}${
-                folder.icon
-              }_opened` +
-              `${constants.iconsManifest.iconSuffix}.${
-                FileFormat[folder.format]
-              }`;
-            const iconFilePath = join(iconsDirPath, filename);
+        it('has an associated opened icon file', async function () {
+          await Promise.all(
+            folders.supported.map(async (folder: IFolderExtension) => {
+              const filename =
+                `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
+                `${constants.iconsManifest.iconSuffix}.${
+                  FileFormat[folder.format]
+                }`;
+              const iconFilePath = join(iconsDirPath, filename);
 
-            const pathExists = await existsAsync(iconFilePath);
+              const pathExists = await existsAsync(iconFilePath);
 
-            expect(pathExists).to.be.true;
-          });
+              expect(pathExists).to.be.true;
+            }),
+          );
         });
 
         context('does NOT have', function () {
@@ -58,18 +60,18 @@ describe('Specifications of supported folders: tests', function () {
             const checker = (
               _folder: IFolderExtension,
               folder: IFolderExtension,
-            ) =>
+            ): boolean =>
               (!Reflect.has(_folder, 'disabled') ||
                 _folder.disabled !== folder.disabled) &&
               !Reflect.has(_folder, 'filename') &&
               !isEqual(_folder.extensions, folder.extensions) &&
-              !_folder['checked'] &&
+              !_folder.checked &&
               _folder.icon === folder.icon;
 
             folders.supported.forEach((folder: IFolderExtension) => {
-              folder['checked'] = true;
+              folder.checked = true;
               const otherDeclarations: IFolderExtension[] = folders.supported.filter(
-                _folder => checker(_folder, folder),
+                (_folder: IFolderExtension) => checker(_folder, folder),
               );
 
               expect(otherDeclarations).to.be.empty;
@@ -85,40 +87,40 @@ describe('Specifications of supported folders: tests', function () {
         });
 
         context('that has a light theme version', function () {
-          it('has an associated icon file', function () {
-            folders.supported
-              .filter(async (folder: IFolderExtension) => folder.light)
-              .forEach(async (folder: IFolderExtension) => {
-                const filename =
-                  `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
-                  `${constants.iconsManifest.iconSuffix}.${
-                    FileFormat[folder.format]
-                  }`;
-                const iconFilePath = join(iconsDirPath, filename);
+          it('has an associated icon file', async function () {
+            await Promise.all(
+              folders.supported
+                .filter((folder: IFolderExtension) => folder.light)
+                .map(async (folder: IFolderExtension) => {
+                  const filename =
+                    `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
+                    `${constants.iconsManifest.iconSuffix}.${
+                      FileFormat[folder.format]
+                    }`;
+                  const iconFilePath = join(iconsDirPath, filename);
+                  const pathExists = await existsAsync(iconFilePath);
 
-                const pathExists = await existsAsync(iconFilePath);
-
-                expect(pathExists).to.be.true;
-              });
+                  expect(pathExists).to.be.true;
+                }),
+            );
           });
 
-          it('has an associated opened icon file', function () {
-            folders.supported
-              .filter(async (folder: IFolderExtension) => folder.light)
-              .forEach(async (folder: IFolderExtension) => {
-                const filename =
-                  `${constants.iconsManifest.folderTypePrefix}${
-                    folder.icon
-                  }_opened` +
-                  `${constants.iconsManifest.iconSuffix}.${
-                    FileFormat[folder.format]
-                  }`;
-                const iconFilePath = join(iconsDirPath, filename);
+          it('has an associated opened icon file', async function () {
+            await Promise.all(
+              folders.supported
+                .filter((folder: IFolderExtension) => folder.light)
+                .map(async (folder: IFolderExtension) => {
+                  const filename =
+                    `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
+                    `${constants.iconsManifest.iconSuffix}.${
+                      FileFormat[folder.format]
+                    }`;
+                  const iconFilePath = join(iconsDirPath, filename);
+                  const pathExists = await existsAsync(iconFilePath);
 
-                const pathExists = await existsAsync(iconFilePath);
-
-                expect(pathExists).to.be.true;
-              });
+                  expect(pathExists).to.be.true;
+                }),
+            );
           });
         });
       });

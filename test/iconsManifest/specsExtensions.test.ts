@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
 import { join } from 'path';
@@ -13,10 +13,13 @@ describe('Specifications of supported extensions: tests', function () {
   context('ensures that', function () {
     it(`an 'extension' declaration should NOT have a leading dot`, function () {
       files.supported
-        .filter(file => file.extensions.length && !file.filename)
-        .forEach(file =>
+        .filter(
+          (file: IFileExtension) => file.extensions.length && !file.filename,
+        )
+        .forEach((file: IFileExtension) =>
           file.extensions.forEach(
-            extension => expect(extension.startsWith('.')).to.be.false,
+            (extension: string) =>
+              expect(extension.startsWith('.')).to.be.false,
           ),
         );
     });
@@ -48,18 +51,21 @@ describe('Specifications of supported extensions: tests', function () {
           });
 
           it(`same declaration with different 'extensions'`, function () {
-            const checker = (_file: IFileExtension, file: IFileExtension) =>
+            const checker = (
+              _file: IFileExtension,
+              file: IFileExtension,
+            ): boolean =>
               (!Reflect.has(_file, 'disabled') ||
                 _file.disabled !== file.disabled) &&
               !Reflect.has(_file, 'filename') &&
               !isEqual(_file.extensions, file.extensions) &&
-              !_file['checked'] &&
+              !_file.checked &&
               _file.icon === file.icon;
 
             files.supported.forEach((file: IFileExtension) => {
-              file['checked'] = true;
+              file.checked = true;
               const otherDeclarations: IFileExtension[] = files.supported.filter(
-                _file => checker(_file, file),
+                (_file: IFileExtension) => checker(_file, file),
               );
 
               expect(otherDeclarations).to.be.empty;
@@ -68,7 +74,7 @@ describe('Specifications of supported extensions: tests', function () {
 
           context(`empty 'extensions' declaration`, function () {
             it(`with 'filename' declaration`, function () {
-              const testCase = (_file: IFileExtension) =>
+              const testCase = (_file: IFileExtension): boolean =>
                 (!!_file.filename || !!_file.light) &&
                 isEmpty(_file.filenamesGlob) &&
                 isEmpty(_file.extensionsGlob) &&

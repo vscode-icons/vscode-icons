@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { cloneDeep } from 'lodash';
@@ -79,7 +79,7 @@ describe('ConfigManager: tests', function () {
 
       configManager = new ConfigManager(vscodeManagerStub);
 
-      splitter = (content: string) => content.split('\n');
+      splitter = (content: string): string[] => content.split('\n');
 
       dirnameStub.returns(
         `/path/to/.vscode/extensions/${constants.extension.name}-1.0.0`,
@@ -143,7 +143,7 @@ describe('ConfigManager: tests', function () {
 
     context(`function 'outDir'`, function () {
       it(`returns the 'out' directory`, function () {
-        const baseRegexp = `^[a-zA-Z:\\\\]+|\/`;
+        const baseRegexp = `^[a-zA-Z:\\\\]+|/`;
         expect(ConfigManager.outDir).to.match(
           new RegExp(`${baseRegexp}${constants.extension.outDirName}`),
         );
@@ -152,10 +152,10 @@ describe('ConfigManager: tests', function () {
 
     context(`function 'sourceDir'`, function () {
       it(`returns the 'source' directory`, function () {
-        const baseRegexp = `^[a-zA-Z:\\\\]+|\/`;
+        const baseRegexp = `^[a-zA-Z:\\\\]+|/`;
         expect(ConfigManager.sourceDir).to.match(
           new RegExp(
-            `${baseRegexp}${constants.extension.outDirName}[\\\\|\/]${constants.extension.srcDirName}`,
+            `${baseRegexp}${constants.extension.outDirName}[\\\\|/]${constants.extension.srcDirName}`,
           ),
         );
       });
@@ -163,7 +163,7 @@ describe('ConfigManager: tests', function () {
 
     context(`function 'iconsDir'`, function () {
       it(`returns the 'icons' directory`, function () {
-        const baseRegexp = `^[a-zA-Z:\\\\]+|\/`;
+        const baseRegexp = `^[a-zA-Z:\\\\]+|/`;
         expect(ConfigManager.iconsDir).to.match(
           new RegExp(`${baseRegexp}${constants.extension.iconsDirName}`),
         );

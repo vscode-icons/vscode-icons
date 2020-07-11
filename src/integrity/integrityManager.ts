@@ -1,7 +1,7 @@
 import { Integrity, IntegrityOptions } from 'nsri';
-import { IIntegrityManager } from '../models/integrity/integrityManager';
 import { ErrorHandler } from '../common';
 import { ConfigManager } from '../configuration/configManager';
+import { IIntegrityManager } from '../models/integrity/integrityManager';
 
 export class IntegrityManager implements IIntegrityManager {
   public async check(): Promise<boolean> {

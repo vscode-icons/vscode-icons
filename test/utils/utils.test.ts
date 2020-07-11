@@ -1,5 +1,5 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as os from 'os';
 import * as proxyq from 'proxyquire';
@@ -104,11 +104,10 @@ describe('Utils: tests', function () {
             directoryPath: string,
             dirExists: boolean,
             expectedCounts: number,
-          ) => {
+          ): Promise<void> => {
             const fileCheck = existsAsyncStub.callsFake(
               (dirPath: string) =>
-                dirExists ||
-                directoryPath.split(path.sep).indexOf(dirPath) !== -1,
+                dirExists || directoryPath.split(path.sep).includes(dirPath),
             );
             const createDirectory = mkdirAsyncStub.resolves();
 
@@ -155,11 +154,11 @@ describe('Utils: tests', function () {
     });
 
     context(`the 'deleteDirectoryRecursively' function`, function () {
+      let readdirAsyncStub: sinon.SinonStub;
+
       it('deletes a directory and all subdirectories asynchronously', async function () {
+        readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync').resolves();
         const directoryPath = '/path/to';
-        const readdirAsyncStub = sandbox
-          .stub(fsAsync, 'readdirAsync')
-          .resolves();
         const lstatsAsyncStub = sandbox.stub(fsAsync, 'lstatAsync').resolves();
         const fileCheck = existsAsyncStub
           .onFirstCall()
@@ -195,7 +194,7 @@ describe('Utils: tests', function () {
 
         expect(json).to.be.instanceOf(Object);
         expect(Object.getOwnPropertyNames(json)).to.include('test');
-        expect(json['test']).to.be.equal('test');
+        expect(json.test).to.be.equal('test');
       });
 
       it(`returns 'null' when parsing fails`, function () {
@@ -218,14 +217,16 @@ describe('Utils: tests', function () {
 
       context('returns a relative path that', function () {
         context('has a trailing path separator', function () {
-          const trailingPathSeparatorTest = async (toDirName: string) => {
+          const trailingPathSeparatorTest = async (
+            toDirName: string,
+          ): Promise<void> => {
             const relativePath = await Utils.getRelativePath(
               'path/from',
               toDirName,
               false,
             );
 
-            expect(/\/$/g.test(relativePath)).to.be.true;
+            expect(relativePath.endsWith('/')).to.be.true;
             expect(/\/{2,}$/g.test(relativePath)).to.be.false;
           };
 
