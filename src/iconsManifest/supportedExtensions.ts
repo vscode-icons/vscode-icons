@@ -1751,7 +1751,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'husky',
-      extensions: ['.huskyrc'],
+      extensions: ['.huskyrc', 'husky.config.js'],
       filenamesGlob: ['.huskyrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
@@ -4073,7 +4073,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'zeit',
-      extensions: ['now.json', '.nowignore'],
+      extensions: ['now.json', '.nowignore', 'vercel.json', '.vercelignore'],
       light: true,
       filename: true,
       format: FileFormat.svg,
