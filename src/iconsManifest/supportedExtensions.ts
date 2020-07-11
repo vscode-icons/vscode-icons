@@ -1229,6 +1229,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dvc',
+      extensions: ['.dvc'],
+      languages: [],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dylan',
       extensions: [],
       languages: [languages.dylanlang],
