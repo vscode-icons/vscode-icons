@@ -3398,7 +3398,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'shaderlab',
-      extensions: ['.unity'],
+      extensions: ['unity'],
       languages: [languages.shaderlab],
       light: true,
       format: FileFormat.svg,
