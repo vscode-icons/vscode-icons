@@ -1939,6 +1939,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'jscpd',
+      extensions: ['.jscpd.json'],
+      filenamesGlob: ['jscpd-report'],
+      extensionsGlob: ['xml', 'json', 'html'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'jshint',
       extensions: ['.jshintrc', '.jshintignore'],
       filename: true,
