@@ -2551,6 +2551,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'nix',
+      extensions: [],
+      languages: [languages.nix],
+      format: FileFormat.svg,
+    },
     { icon: 'njsproj', extensions: ['njsproj'], format: FileFormat.svg },
     {
       icon: 'node',
