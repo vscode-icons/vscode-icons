@@ -171,6 +171,7 @@ export const languages: ILanguageCollection = {
   nearley: { ids: 'nearley', defaultExtension: 'ne' },
   nim: { ids: 'nim', defaultExtension: 'nim' },
   nimble: { ids: 'nimble', defaultExtension: 'nimble' },
+  nix: { ids: 'nix', defaultExtension: 'nix' },
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], defaultExtension: 'nsi' },
   nunjucks: { ids: 'nunjucks', defaultExtension: 'nunjucks' },
   objectivec: { ids: 'objective-c', defaultExtension: 'm' },
