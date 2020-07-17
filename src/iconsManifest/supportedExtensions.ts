@@ -406,6 +406,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'ng_tailwind',
+      extensions: ['ng-tailwind.js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'affectscript',
       extensions: [],
       languages: [languages.affectscript],
@@ -1101,6 +1107,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
+    {
+      icon: 'dependabot',
+      extensions: ['dependabot.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'dependencies',
       extensions: ['dependencies.yml'],
