@@ -4076,6 +4076,12 @@ export const extensions: IFileCollection = {
     { icon: 'xib', extensions: ['xib'], format: FileFormat.svg },
     { icon: 'xliff', extensions: ['xliff', 'xlf'], format: FileFormat.svg },
     {
+      icon: 'xmake',
+      extensions: [],
+      languages: [languages.xmake],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'xml',
       extensions: ['pex', 'tmlanguage'],
       languages: [languages.xml],

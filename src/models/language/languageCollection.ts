@@ -228,6 +228,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;
+  xmake: ILanguage;
   xquery: ILanguage;
   yacc: ILanguage;
   yang: ILanguage;
