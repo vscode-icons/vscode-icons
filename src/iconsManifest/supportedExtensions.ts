@@ -786,6 +786,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cddl',
+      extensions: [],
+      languages: [languages.cddl],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cert',
       extensions: [
         'csr',
