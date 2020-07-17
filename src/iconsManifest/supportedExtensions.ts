@@ -2641,6 +2641,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nx_workspace',
+      extensions: ['nx.json', 'decorate-angular-cli.js'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nyc',
       extensions: ['.nycrc', '.nycrc.json'],
       filename: true,
