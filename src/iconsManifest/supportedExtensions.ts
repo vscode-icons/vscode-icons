@@ -565,6 +565,11 @@ export const extensions: IFileCollection = {
       languages: [languages.avro],
       format: FileFormat.svg,
     },
+    {
+      icon: 'awk',
+      extensions: ['awk'],
+      format: FileFormat.svg,
+    },
     { icon: 'aws', extensions: [], format: FileFormat.svg },
     {
       icon: 'azure',
