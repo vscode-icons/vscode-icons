@@ -500,7 +500,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'story',
-      extensions: ['story', 'stories', '__stories__'],
+      extensions: ['story', 'stories', '__stories__', '.storybook'],
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
