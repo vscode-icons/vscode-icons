@@ -567,7 +567,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'awk',
-      extensions: ['.awk'],
+      extensions: ['awk'],
       format: FileFormat.svg,
     },
     { icon: 'aws', extensions: [], format: FileFormat.svg },
