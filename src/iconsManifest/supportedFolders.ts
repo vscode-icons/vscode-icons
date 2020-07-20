@@ -393,6 +393,7 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    { icon: 'next', extensions: ['.next'], format: FileFormat.svg },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
     {
       icon: 'node',
