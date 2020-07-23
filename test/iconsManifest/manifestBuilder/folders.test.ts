@@ -5,7 +5,11 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
-import { IFileCollection, IFolderExtension } from '../../../src/models';
+import {
+  IFileCollection,
+  IFolderExtension,
+  IIconAssociation,
+} from '../../../src/models';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
 
@@ -238,9 +242,11 @@ describe('ManifestBuilder: folders icons test', function () {
               .filter((folder: IFolderExtension) => !folder.disabled)
               .forEach((folder: IFolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                  .empty;
+                expect(def.iconPath).not.to.be.empty;
               });
           });
 
@@ -253,9 +259,11 @@ describe('ManifestBuilder: folders icons test', function () {
               .filter((folder: IFolderExtension) => !folder.disabled)
               .forEach((folder: IFolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                  .empty;
+                expect(def.iconPath).not.to.be.empty;
               });
           });
 
@@ -276,10 +284,13 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${Utils.fileFormatToString(folder.format)}`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
 
@@ -299,10 +310,13 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${Utils.fileFormatToString(folder.format)}`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
           });
@@ -355,9 +369,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -373,9 +389,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -399,10 +417,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
 
@@ -425,10 +446,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
             });
@@ -481,9 +505,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -499,9 +525,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -525,10 +553,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
 
@@ -551,10 +582,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
             });
@@ -997,9 +1031,11 @@ describe('ManifestBuilder: folders icons test', function () {
               .filter((folder: IFolderExtension) => !folder.disabled)
               .forEach((folder: IFolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                  .empty;
+                expect(def.iconPath).not.to.be.empty;
               });
           });
 
@@ -1012,9 +1048,11 @@ describe('ManifestBuilder: folders icons test', function () {
               .filter((folder: IFolderExtension) => !folder.disabled)
               .forEach((folder: IFolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                  .empty;
+                expect(def.iconPath).not.to.be.empty;
               });
           });
 
@@ -1035,10 +1073,13 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${Utils.fileFormatToString(folder.format)}`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
 
@@ -1058,10 +1099,13 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${Utils.fileFormatToString(folder.format)}`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
           });
@@ -1114,9 +1158,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -1132,9 +1178,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -1158,10 +1206,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
 
@@ -1184,10 +1235,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
             });
@@ -1240,9 +1294,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -1258,9 +1314,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -1284,10 +1342,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
 
@@ -1310,10 +1371,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
             });
@@ -1754,9 +1818,11 @@ describe('ManifestBuilder: folders icons test', function () {
               .filter((folder: IFolderExtension) => !folder.disabled)
               .forEach((folder: IFolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                  .empty;
+                expect(def.iconPath).not.to.be.empty;
               });
           });
 
@@ -1769,9 +1835,11 @@ describe('ManifestBuilder: folders icons test', function () {
               .filter((folder: IFolderExtension) => !folder.disabled)
               .forEach((folder: IFolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                  .empty;
+                expect(def.iconPath).not.to.be.empty;
               });
           });
 
@@ -1792,10 +1860,13 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${Utils.fileFormatToString(folder.format)}`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
 
@@ -1815,10 +1886,13 @@ describe('ManifestBuilder: folders icons test', function () {
                   }${Utils.fileFormatToString(folder.format)}`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
           });
@@ -1871,9 +1945,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -1889,9 +1965,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -1915,10 +1993,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
 
@@ -1941,10 +2022,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
             });
@@ -1997,9 +2081,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -2015,9 +2101,11 @@ describe('ManifestBuilder: folders icons test', function () {
                 )
                 .forEach((folder: IFolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -2041,10 +2129,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
 
@@ -2067,10 +2158,13 @@ describe('ManifestBuilder: folders icons test', function () {
                     }${Utils.fileFormatToString(folder.format)}`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
+                    const def = manifest.iconDefinitions[
+                      definition
+                    ] as IIconAssociation;
 
-                    expect(
-                      manifest.iconDefinitions[definition].iconPath,
-                    ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                    expect(def.iconPath).to.equal(
+                      `${iconsDirRelativeBasePath}/${filename}`,
+                    );
                   });
               });
             });

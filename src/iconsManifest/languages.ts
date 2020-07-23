@@ -37,7 +37,6 @@ export const languages: ILanguageCollection = {
   bolt: { ids: 'bolt', defaultExtension: 'bolt' },
   bosque: { ids: 'bosque', defaultExtension: 'bsq' },
   c: { ids: 'c', defaultExtension: 'c' },
-  // eslint-disable-next-line @typescript-eslint/camelcase
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
   cabal: { ids: 'cabal', defaultExtension: 'cabal' },
   caddyfile: { ids: 'caddyfile', defaultExtension: 'Caddyfile' },

@@ -32,13 +32,6 @@
   },
   "plugins": ["@typescript-eslint", "import", "prettier"],
   "rules": {
-    "@typescript-eslint/camelcase": [
-      "error",
-      {
-        "allow": ["file", "folder"]
-      }
-    ],
-    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/array-type": [
       "error",
       {
@@ -52,7 +45,6 @@
         "ts-ignore": false
       }
     ],
-    "@typescript-eslint/class-name-casing": "error",
     "@typescript-eslint/consistent-type-definitions": "error",
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
@@ -64,11 +56,15 @@
       }
     ],
     "@typescript-eslint/indent": "off",
-    "@typescript-eslint/interface-name-prefix": [
-      "error",
-      { "prefixWithI": "always" }
-    ],
     "@typescript-eslint/member-ordering": "error",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "prefix": ["I"]
+      }
+    ],
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-parameter-properties": [
       "error",

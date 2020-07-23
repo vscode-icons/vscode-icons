@@ -2,12 +2,17 @@
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as manifest from '../../../package.json';
-import { IVSCodeManager } from '../../src/models';
+import * as packageJson from '../../../package.json';
+import {
+  IVSCodeManager,
+  IVSCodeWorkspaceFolder,
+  IVSCodeUri,
+} from '../../src/models';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
 import { vscode } from '../fixtures/vscode';
+import { IPackageManifest } from '../../src/models/packageManifest';
 
 describe('VSCodeManager: tests', function () {
   context('ensures that', function () {
@@ -96,7 +101,7 @@ describe('VSCodeManager: tests', function () {
 
         context(`is supported`, function () {
           it(`returns 'true'`, function () {
-            vscode.version = '1.34.0';
+            vscode.version = '1.99.0';
 
             expect(vscodeManager.isSupportedVersion).to.be.true;
           });
@@ -106,15 +111,16 @@ describe('VSCodeManager: tests', function () {
       context(`when minimum supported version`, function () {
         context(`can NOT be determined`, function () {
           let manifestVSCodeEngineOriginalValue: string;
+          let manifest: IPackageManifest;
 
           beforeEach(function () {
+            manifest = packageJson as IPackageManifest;
             manifestVSCodeEngineOriginalValue = manifest.engines.vscode;
             vscode.version = '1.26.0';
           });
 
           afterEach(function () {
-            manifest.engines = { vscode };
-            manifest.engines.vscode = manifestVSCodeEngineOriginalValue;
+            manifest.engines = { vscode: manifestVSCodeEngineOriginalValue };
           });
 
           context(`by the 'vscode' property`, function () {
@@ -157,8 +163,16 @@ describe('VSCodeManager: tests', function () {
           '/path/to/workspace/folder1/root',
           '/path/to/workspace/folder2/root',
         ];
-        const workspaceFolder: any = { uri: { fsPath: paths[0] } };
-        const workspaceFolder1: any = { uri: { fsPath: paths[1] } };
+        const workspaceFolder: IVSCodeWorkspaceFolder = {
+          uri: { fsPath: paths[0] } as IVSCodeUri,
+          name: '',
+          index: 0,
+        };
+        const workspaceFolder1: IVSCodeWorkspaceFolder = {
+          uri: { fsPath: paths[1] } as IVSCodeUri,
+          name: '',
+          index: 0,
+        };
         vscodeManager.workspace.rootPath = '/path/to/workspace/root';
         vscodeManager.workspace.workspaceFolders = [
           workspaceFolder,

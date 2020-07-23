@@ -64,11 +64,11 @@ export class CustomsMerger {
     presets: models.IPresets,
     projectDetectionResults?: models.IProjectDetectionResult[],
     affectedPresets?: models.IPresets,
-  ): Promise<Array<{}>> {
-    const projectPresets = [];
+  ): Promise<Array<Record<string, boolean>>> {
+    const projectPresets: Array<Record<string, boolean>> = [];
     for (const presetName of presetNames) {
       const name: string = models.PresetNames[presetName];
-      const project: string = models.Projects[name];
+      const project: string = models.Projects[name] as string;
       const projectDetectionResult:
         | models.IProjectDetectionResult
         | undefined = (
@@ -101,23 +101,25 @@ export class CustomsMerger {
     return hasProjectDetectionResult &&
       projectDetectionResult.project === project
       ? projectDetectionResult.value
-      : presets[name] ||
+      : (presets[name] as boolean) ||
           (!!affectedPresets &&
             !affectedPresets[name] &&
             !(await ManifestReader.iconsDisabled(project)));
   }
 
   private static toggleProjectPreset(
-    projectPresets: Array<{}>,
+    projectPresets: Array<Record<string, boolean>>,
     customFiles: models.IFileCollection,
     defaultFiles: models.IFileCollection,
   ): models.IFileCollection {
     let files = customFiles;
     for (const preset of projectPresets) {
-      const key = Object.keys(preset)[0];
-      const disable = preset[key];
+      const key: string = Object.keys(preset)[0];
+      const disable: boolean = preset[key];
       const regex = new RegExp(
-        `^${models.IconNames[models.PresetNames[key]]}_.*\\D$`,
+        `^${
+          models.IconNames[models.PresetNames[key] as string] as string
+        }_.*\\D$`,
       );
       const icons = files.supported
         .filter((file: models.IFileExtension) => regex.test(file.icon))
@@ -216,7 +218,7 @@ export class CustomsMerger {
 
   private static getNonDisabledIcons(
     customFolders: models.IFolderCollection,
-  ): any {
+  ): string[] {
     return customFolders.supported
       .filter((cFolder: models.IFolderExtension) => !cFolder.disabled)
       .map((cFolder: models.IFolderExtension) => cFolder.icon);

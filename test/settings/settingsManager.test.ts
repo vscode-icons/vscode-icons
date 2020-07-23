@@ -46,7 +46,7 @@ describe('SettingsManager: tests', function () {
       settingsManager = new SettingsManager(vscodeManagerStub);
 
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
-      parseJSONStub = sandbox.stub(Utils, 'parseJSON');
+      parseJSONStub = sandbox.stub(Utils, 'parseJSONSafe');
       sandbox.stub(Utils, 'pathUnixJoin');
 
       stateMock = {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IVSCodeUri } from './vscodeUri';
 import { IVSCodeDisposable } from './vscodeDisposable';
 import { IVSCodeWorkspaceFolder } from './vscodeWorkspaceFolder';

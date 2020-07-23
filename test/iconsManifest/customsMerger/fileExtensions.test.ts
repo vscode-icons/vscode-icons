@@ -4,7 +4,11 @@ import { expect } from 'chai';
 import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import { FileFormat, IFileExtension } from '../../../src/models';
+import {
+  FileFormat,
+  IFileExtension,
+  IFileCollection,
+} from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -22,7 +26,7 @@ describe('CustomsMerger: file extensions tests', function () {
     });
 
     it('new extensions are added to existing file icon and respect the format type', async function () {
-      const customFiles: any = {
+      const customFiles: IFileCollection = {
         default: {},
         supported: [
           { icon: 'actionscript', extensions: ['as2'], format: 'svg' },
@@ -52,7 +56,7 @@ describe('CustomsMerger: file extensions tests', function () {
     });
 
     it(`'overrides' removes the specified icon`, async function () {
-      const customFiles: any = {
+      const customFiles: IFileCollection = {
         default: {},
         supported: [
           {
@@ -87,7 +91,7 @@ describe('CustomsMerger: file extensions tests', function () {
     });
 
     it(`'extends' replaces the specified icon`, async function () {
-      const customFiles: any = {
+      const customFiles: IFileCollection = {
         default: {},
         supported: [
           {
@@ -127,7 +131,7 @@ describe('CustomsMerger: file extensions tests', function () {
     });
 
     it('disabled extensions are NOT included into the manifest', async function () {
-      const customFiles: any = {
+      const customFiles: IFileCollection = {
         default: {},
         supported: [
           {
@@ -156,7 +160,7 @@ describe('CustomsMerger: file extensions tests', function () {
     });
 
     it('NOT disabled icons are included into the manifest', async function () {
-      const customFiles: any = {
+      const customFiles: IFileCollection = {
         default: {},
         supported: [
           {
@@ -191,9 +195,15 @@ describe('CustomsMerger: file extensions tests', function () {
     });
 
     it(`if 'extensions' attribute is NOT defined, it gets added internally`, async function () {
-      const customFiles: any = {
+      const customFiles: IFileCollection = {
         default: {},
-        supported: [{ icon: 'actionscript', disabled: false, format: 'svg' }],
+        supported: [
+          {
+            icon: 'actionscript',
+            disabled: false,
+            format: 'svg',
+          },
+        ],
       };
 
       const newDefs = (
@@ -220,7 +230,7 @@ describe('CustomsMerger: file extensions tests', function () {
 
     context('existing icons', function () {
       it('of second set are getting enabled', async function () {
-        const customFiles: any = {
+        const customFiles: IFileCollection = {
           default: {},
           supported: [
             {
@@ -313,7 +323,7 @@ describe('CustomsMerger: file extensions tests', function () {
       });
 
       it(`have its 'extensions' reassigned to new custom icon`, async function () {
-        const customFiles: any = {
+        const customFiles: IFileCollection = {
           default: {},
           supported: [
             {
@@ -351,7 +361,7 @@ describe('CustomsMerger: file extensions tests', function () {
       });
 
       it(`accept 'languageId'`, async function () {
-        const customFiles: any = {
+        const customFiles: IFileCollection = {
           default: {},
           supported: [
             {
@@ -383,7 +393,7 @@ describe('CustomsMerger: file extensions tests', function () {
 
     context('custom icon', function () {
       it(`keeps the correct 'format'`, async function () {
-        const customFiles: any = {
+        const customFiles: IFileCollection = {
           default: {},
           supported: [
             {

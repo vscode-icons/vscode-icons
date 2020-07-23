@@ -83,7 +83,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
       vsicons.projectDetection.disableDetect = false;
       findFilesStub.resolves([{ fsPath: '' }]);
       sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
-      sandbox.stub(Utils, 'parseJSON').returns({
+      sandbox.stub(Utils, 'parseJSONSafe').returns({
         dependencies: {
           angularjs: '1.0.0',
           meteo: '1.0.0',
@@ -145,7 +145,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '' }]);
         sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
-        sandbox.stub(Utils, 'parseJSON').returns({
+        sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',
             '@nestjs/core': '1.0.0',

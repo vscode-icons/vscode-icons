@@ -9,6 +9,7 @@ import {
   IFolderCollection,
   IFileExtension,
   ILanguage,
+  IIconAssociation,
 } from '../../../src/models';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
@@ -30,11 +31,11 @@ describe('ManifestBuilder: files icons test', function () {
         .callsFake((txt: string) => txt.replace(/^\./, ''));
       sandbox
         .stub(Utils, 'combine')
-        .callsFake((array1: any[], array2: any[]) =>
+        .callsFake((array1: string[], array2: string[]) =>
           array1.reduce(
             (previous: string[], current: string) =>
               previous.concat(
-                array2.map((value: any) => [current, value].join('.')),
+                array2.map((value: string) => [current, value].join('.')),
               ),
             [],
           ),
@@ -117,9 +118,11 @@ describe('ManifestBuilder: files icons test', function () {
               .filter((file: IFileExtension) => !file.disabled)
               .forEach((file: IFileExtension) => {
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                  .empty;
+                expect(def.iconPath).not.to.be.empty;
               });
           });
 
@@ -139,8 +142,11 @@ describe('ManifestBuilder: files icons test', function () {
                 }${Utils.fileFormatToString(file.format)}`;
 
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).to.equal(
+                expect(def.iconPath).to.equal(
                   `${iconsDirRelativeBasePath}/${filename}`,
                 );
               });
@@ -170,9 +176,11 @@ describe('ManifestBuilder: files icons test', function () {
                 .filter((file: IFileExtension) => !file.light && !file.disabled)
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -191,10 +199,13 @@ describe('ManifestBuilder: files icons test', function () {
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
           });
@@ -223,9 +234,11 @@ describe('ManifestBuilder: files icons test', function () {
                 .filter((file: IFileExtension) => file.light && !file.disabled)
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -244,10 +257,13 @@ describe('ManifestBuilder: files icons test', function () {
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
           });
@@ -689,9 +705,11 @@ describe('ManifestBuilder: files icons test', function () {
               .filter((file: IFileExtension) => !file.disabled)
               .forEach((file: IFileExtension) => {
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).not.to.be
-                  .empty;
+                expect(def.iconPath).not.to.be.empty;
               });
           });
 
@@ -709,10 +727,12 @@ describe('ManifestBuilder: files icons test', function () {
                 }${
                   constants.iconsManifest.iconSuffix
                 }${Utils.fileFormatToString(file.format)}`;
-
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+                const def = manifest.iconDefinitions[
+                  definition
+                ] as IIconAssociation;
 
-                expect(manifest.iconDefinitions[definition].iconPath).to.equal(
+                expect(def.iconPath).to.equal(
                   `${iconsDirRelativeBasePath}/${filename}`,
                 );
               });
@@ -742,9 +762,11 @@ describe('ManifestBuilder: files icons test', function () {
                 .filter((file: IFileExtension) => !file.light && !file.disabled)
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -763,10 +785,13 @@ describe('ManifestBuilder: files icons test', function () {
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
           });
@@ -795,9 +820,11 @@ describe('ManifestBuilder: files icons test', function () {
                 .filter((file: IFileExtension) => file.light && !file.disabled)
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(manifest.iconDefinitions[definition].iconPath).not.to
-                    .be.empty;
+                  expect(def.iconPath).not.to.be.empty;
                 });
             });
 
@@ -816,10 +843,13 @@ describe('ManifestBuilder: files icons test', function () {
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
+                  const def = manifest.iconDefinitions[
+                    definition
+                  ] as IIconAssociation;
 
-                  expect(
-                    manifest.iconDefinitions[definition].iconPath,
-                  ).to.equal(`${iconsDirRelativeBasePath}/${filename}`);
+                  expect(def.iconPath).to.equal(
+                    `${iconsDirRelativeBasePath}/${filename}`,
+                  );
                 });
             });
           });

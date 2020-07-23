@@ -7,12 +7,17 @@ import { ErrorHandler } from '../../src/common/errorHandler';
 import { constants } from '../../src/constants';
 
 describe('Bundle: tests', function () {
+  interface IBundler {
+    bundleLangResources: (...arg: unknown[]) => Promise<void>;
+    copyPackageResources: (...arg: unknown[]) => Promise<void>;
+  }
+
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
     let bundleLangResourcesStub: sinon.SinonStub;
     let copyPackageResourcesStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
-    let bundle: any;
+    let bundle: () => Promise<void>;
 
     before(function () {
       proxyq.noPreserveCache();
@@ -30,16 +35,15 @@ describe('Bundle: tests', function () {
       copyPackageResourcesStub = sinon.stub().resolves();
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
 
-      const bundlerStub = sandbox.stub().callsFake(() => ({
-        bundleLangResources: bundleLangResourcesStub,
-        copyPackageResources: copyPackageResourcesStub,
-      }));
-      bundle = (): void =>
+      bundle = (): Promise<void> =>
         proxyq('../../src/tools/bundle', {
           '../common/bundler': {
-            Bundler: bundlerStub(),
-          },
-        });
+            Bundler: {
+              bundleLangResources: bundleLangResourcesStub,
+              copyPackageResources: copyPackageResourcesStub,
+            },
+          } as Record<string, IBundler>,
+        }) as Promise<void>;
     });
 
     afterEach(function () {

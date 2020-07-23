@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ConfigurationTarget } from './vscodeConfigurationTarget';
 
 export interface IPreset<T> {
