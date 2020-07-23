@@ -17,8 +17,6 @@
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
 
-[![Wallaby.js](https://img.shields.io/badge/wallaby.js-configured-green.svg)](https://wallabyjs.com)
-
 ---
 
 Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**minimum supported version: `1.31.1`**)
@@ -118,7 +116,7 @@ You can checkout all our changes in our [change log](https://github.com/vscode-i
 
 We like to express our "Special Thanks" to:
 
-* The [Wallaby.js](https://wallabyjs.com) team for creating an **awesome** development tool and for their generosity in providing us with a license.
+* All users that made us their favorite **Icons** theme. We wouldn't be where we are without you.
 
 ## Related extensions
 
