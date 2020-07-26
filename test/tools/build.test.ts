@@ -14,7 +14,7 @@ describe('Build: tests', function () {
     let generateIconsManifestStub: sinon.SinonStub;
     let persistStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
-    let build: any;
+    let build: () => Promise<void>;
 
     before(function () {
       proxyq.noCallThru();
@@ -40,7 +40,7 @@ describe('Build: tests', function () {
           '../iconsManifest/iconsGenerator': {
             IconsGenerator: iconsGeneratorStub,
           },
-        });
+        }) as Promise<void>;
     });
 
     afterEach(function () {

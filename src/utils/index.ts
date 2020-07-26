@@ -98,11 +98,11 @@ export class Utils {
    * Converts a JavaScript Object Notation (JSON) string into an object
    * without throwing an exception.
    */
-  public static parseJSON(text: string): any {
+  public static parseJSONSafe<T>(text: string): T {
     try {
-      return JSON.parse(text);
+      return JSON.parse(text) as T;
     } catch (err) {
-      return null;
+      return {} as T;
     }
   }
 
@@ -146,10 +146,12 @@ export class Utils {
     return paths.map((path: string) => (rx.exec(path) || [])[0]);
   }
 
-  public static combine(array1: any[], array2: any[]): any[] {
+  public static combine(array1: string[], array2: string[]): string[] {
     return array1.reduce(
       (previous: string[], current: string) =>
-        previous.concat(array2.map((value: any) => [current, value].join('.'))),
+        previous.concat(
+          array2.map((value: string) => [current, value].join('.')),
+        ),
       [],
     );
   }
@@ -166,7 +168,7 @@ export class Utils {
   }
 
   public static unflattenProperties<T>(
-    obj: { [key: string]: any },
+    obj: Record<string, unknown>,
     lookupKey: string,
   ): T {
     const newObj = {};
@@ -176,7 +178,10 @@ export class Utils {
     return newObj as T;
   }
 
-  public static open(target: string, options?: any): Promise<ChildProcess> {
+  public static open(
+    target: string,
+    options?: Record<string, unknown>,
+  ): Promise<ChildProcess> {
     return open(target, options);
   }
 }

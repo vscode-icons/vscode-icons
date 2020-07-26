@@ -3,6 +3,7 @@ import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
+import { IPackageManifest } from '../models/packageManifest';
 import { Utils } from '../utils';
 
 export class ProjectAutoDetectionManager
@@ -27,13 +28,13 @@ export class ProjectAutoDetectionManager
     }
 
     try {
-      const results = await (this.configManager.vsicons.projectDetection
+      const results = (await (this.configManager.vsicons.projectDetection
         .disableDetect
         ? Promise.resolve(null)
         : this.vscodeManager.workspace.findFiles(
             '**/package.json',
             '**/node_modules/**',
-          ));
+          ))) as models.IVSCodeUri[];
       return this.detect(results, projects);
     } catch (error) {
       ErrorHandler.logError(error);
@@ -209,7 +210,9 @@ export class ProjectAutoDetectionManager
     let projectInfo: models.IProjectInfo = null;
     for (const result of results) {
       const content: string = await readFileAsync(result.fsPath, 'utf8');
-      const projectJson: { [key: string]: any } = Utils.parseJSON(content);
+      const projectJson: IPackageManifest = Utils.parseJSONSafe<
+        IPackageManifest
+      >(content);
       projectInfo = this.getInfo(projectJson, project);
       if (projectInfo) {
         break;
@@ -219,7 +222,7 @@ export class ProjectAutoDetectionManager
   }
 
   private getInfo(
-    projectJson: { [key: string]: any },
+    projectJson: IPackageManifest,
     name: models.Projects,
   ): models.IProjectInfo {
     if (!projectJson) {

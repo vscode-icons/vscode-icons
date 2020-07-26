@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as path from 'path';
 import * as sinon from 'sinon';
-import * as manifest from '../../../package.json';
+import * as packageJson from '../../../package.json';
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
@@ -16,6 +16,7 @@ import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionM
 import { SettingsManager } from '../../src/settings/settingsManager';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
+import { IPackageManifest } from '../../src/models/packageManifest';
 
 describe('ExtensionManager: tests', function () {
   context('ensures that', function () {
@@ -274,9 +275,11 @@ describe('ExtensionManager: tests', function () {
         });
 
         context(`production`, function () {
+          let manifest: IPackageManifest;
           let manifestMainOriginalValue: string;
 
           beforeEach(function () {
+            manifest = packageJson as IPackageManifest;
             manifestMainOriginalValue = manifest.main;
             manifest.main = constants.extension.distEntryFilename;
             integrityManagerStub.check.resolves(true);
@@ -327,12 +330,16 @@ describe('ExtensionManager: tests', function () {
 
     context(`the execute and reload`, function () {
       let supportsThemesReloadStub: sinon.SinonStub;
+      let executeAndReload: (...arg: unknown[]) => void;
 
       beforeEach(function () {
         supportsThemesReloadStub = sandbox.stub(
           vscodeManagerStub,
           'supportsThemesReload',
         );
+        executeAndReload =
+          // @ts-ignore
+          extensionManager.executeAndReload as (...arg: unknown[]) => void;
       });
 
       context(`when editor theme reload is NOT supported`, function () {
@@ -342,8 +349,7 @@ describe('ExtensionManager: tests', function () {
 
         context(`reloads the editor`, function () {
           it(`without executing the callback, when it's NOT provided`, function () {
-            // @ts-ignore
-            extensionManager.executeAndReload();
+            executeAndReload.call(extensionManager);
 
             expect(
               executeCommandStub.calledOnceWithExactly(
@@ -355,8 +361,7 @@ describe('ExtensionManager: tests', function () {
           it(`executing the callback first`, function () {
             const cb = sinon.fake();
 
-            // @ts-ignore
-            extensionManager.executeAndReload(cb);
+            executeAndReload.call(extensionManager, cb);
 
             expect(cb.calledOnceWithExactly()).to.be.true;
             expect(
@@ -370,8 +375,7 @@ describe('ExtensionManager: tests', function () {
             const cb = sinon.fake();
             const cbArgs = ['arg1', 'arg2'];
 
-            // @ts-ignore
-            extensionManager.executeAndReload(cb, cbArgs);
+            executeAndReload.call(extensionManager, cb, cbArgs);
 
             expect(cb.calledOnceWithExactly(...cbArgs)).to.be.true;
             expect(
@@ -391,8 +395,7 @@ describe('ExtensionManager: tests', function () {
         it(`does NOT reload the editor`, function () {
           const cb = sinon.fake();
 
-          // @ts-ignore
-          extensionManager.executeAndReload(cb);
+          executeAndReload.call(extensionManager, cb);
 
           expect(executeCommandStub.called).to.be.false;
         });
@@ -402,6 +405,7 @@ describe('ExtensionManager: tests', function () {
     context(`the handle action`, function () {
       let executeAndReloadStub: sinon.SinonStub;
       let handleUpdatePresetStub: sinon.SinonStub;
+      let handleAction: (...arg: unknown[]) => Promise<void>;
 
       beforeEach(function () {
         executeAndReloadStub = sandbox.stub(
@@ -414,12 +418,14 @@ describe('ExtensionManager: tests', function () {
           // @ts-ignore
           'handleUpdatePreset',
         );
+        handleAction =
+          // @ts-ignore
+          extensionManager.handleAction as (...arg: unknown[]) => Promise<void>;
       });
 
       context(`when no action is requested`, function () {
         it(`only resets the 'customMsgShown'`, async function () {
-          // @ts-ignore
-          await extensionManager.handleAction();
+          await handleAction.call(extensionManager);
 
           // @ts-ignore
           expect(extensionManager.customMsgShown).to.be.false;
@@ -437,8 +443,8 @@ describe('ExtensionManager: tests', function () {
         context(`does NOT reload the editor`, function () {
           context(`when no callback is provided`, function () {
             it(`and does nothing`, async function () {
-              // @ts-ignore
-              await extensionManager.handleAction(
+              await handleAction.call(
+                extensionManager,
                 models.LangResourceKeys.dontShowThis,
               );
 
@@ -462,8 +468,8 @@ describe('ExtensionManager: tests', function () {
           context(`when a callback is provided`, function () {
             context(`and is NOT 'applyCustomization'`, function () {
               it(`does nothing`, async function () {
-                // @ts-ignore
-                await extensionManager.handleAction(
+                await handleAction.call(
+                  extensionManager,
                   models.LangResourceKeys.dontShowThis,
                   sandbox.spy(),
                 );
@@ -492,8 +498,8 @@ describe('ExtensionManager: tests', function () {
                   value: 'applyCustomization',
                 });
 
-                // @ts-ignore
-                await extensionManager.handleAction(
+                await handleAction.call(
+                  extensionManager,
                   models.LangResourceKeys.dontShowThis,
                   cb,
                 );
@@ -526,8 +532,8 @@ describe('ExtensionManager: tests', function () {
       context(`when the 'disableDetect' action is requested`, function () {
         context(`does NOT reload the editor`, function () {
           it(`but updates the setting`, async function () {
-            // @ts-ignore
-            await extensionManager.handleAction(
+            await handleAction.call(
+              extensionManager,
               models.LangResourceKeys.disableDetect,
             );
 
@@ -561,8 +567,8 @@ describe('ExtensionManager: tests', function () {
             const cb = sinon.fake();
             const cbArgs = [];
 
-            // @ts-ignore
-            await extensionManager.handleAction(
+            await handleAction.call(
+              extensionManager,
               models.LangResourceKeys.autoReload,
               cb,
               cbArgs,
@@ -594,8 +600,8 @@ describe('ExtensionManager: tests', function () {
           it(`when no callback arguments are provided`, async function () {
             const cb = sinon.fake();
 
-            // @ts-ignore
-            await extensionManager.handleAction(
+            await handleAction.call(
+              extensionManager,
               models.LangResourceKeys.reload,
               cb,
             );
@@ -622,8 +628,8 @@ describe('ExtensionManager: tests', function () {
             const cb = sinon.fake();
             const cbArgs = ['arg1', 'arg2'];
 
-            // @ts-ignore
-            await extensionManager.handleAction(
+            await handleAction.call(
+              extensionManager,
               models.LangResourceKeys.reload,
               cb,
               cbArgs,
@@ -653,8 +659,8 @@ describe('ExtensionManager: tests', function () {
             const cb = sinon.fake();
             const cbArgs = ['arg1', 'arg2', 'arg3'];
 
-            // @ts-ignore
-            await extensionManager.handleAction(
+            await handleAction.call(
+              extensionManager,
               models.LangResourceKeys.reload,
               cb,
               cbArgs,
@@ -680,8 +686,10 @@ describe('ExtensionManager: tests', function () {
 
       context(`when NO implemented action is requested`, function () {
         it(`does nothing`, async function () {
-          // @ts-ignore
-          await extensionManager.handleAction(models.LangResourceKeys.activate);
+          await handleAction.call(
+            extensionManager,
+            models.LangResourceKeys.activate,
+          );
 
           // @ts-ignore
           expect(extensionManager.customMsgShown).to.be.undefined;
@@ -701,12 +709,38 @@ describe('ExtensionManager: tests', function () {
       });
 
       context('when conflicting project icons are detected', function () {
+        context(`throws an Error`, function () {
+          it(`when no callback arguments are provided`, async function () {
+            try {
+              await handleAction.call(
+                extensionManager,
+                'Angular',
+                sinon.fake(),
+              );
+            } catch (error) {
+              expect(error).to.match(/Arguments missing/);
+            }
+          });
+
+          it(`when provided callback arguments are empty`, async function () {
+            try {
+              await handleAction.call(
+                extensionManager,
+                'Angular',
+                sinon.fake(),
+                [],
+              );
+            } catch (error) {
+              expect(error).to.match(/Arguments missing/);
+            }
+          });
+        });
+
         it('enables the Angular icons, if they are selected', async function () {
           const cb = sinon.fake();
           const cbArgs = [[{ project: 'ng' }]];
 
-          // @ts-ignore
-          await extensionManager.handleAction('Angular', cb, cbArgs);
+          await handleAction.call(extensionManager, 'Angular', cb, cbArgs);
 
           expect(cbArgs[0][0])
             .to.haveOwnProperty('project')
@@ -727,8 +761,7 @@ describe('ExtensionManager: tests', function () {
           const cb = sinon.fake();
           const cbArgs = [[{ project: 'nest' }]];
 
-          // @ts-ignore
-          await extensionManager.handleAction('NestJS', cb, cbArgs);
+          await handleAction.call(extensionManager, 'NestJS', cb, cbArgs);
 
           expect(cbArgs[0][0])
             .to.haveOwnProperty('project')
@@ -748,37 +781,47 @@ describe('ExtensionManager: tests', function () {
     });
 
     context(`the handle update preset`, function () {
+      let handleUpdatePreset: (...arg: unknown[]) => void;
+
+      beforeEach(function () {
+        handleUpdatePreset =
+          // @ts-ignore
+          extensionManager.handleUpdatePreset as (...arg: unknown[]) => void;
+      });
+
       context(`throws an Error`, function () {
         it(`when no callback is provided`, function () {
-          // @ts-ignore
-          expect(() => extensionManager.handleUpdatePreset()).throw(
-            Error,
-            /Callback function missing/,
-          );
+          expect(
+            () => handleUpdatePreset.call(extensionManager) as void,
+          ).to.throw(Error, /Callback function missing/);
         });
 
-        it(`when no callback arguments are is provided`, function () {
-          expect(() =>
-            // @ts-ignore
-            extensionManager.handleUpdatePreset(sinon.fake()),
+        it(`when no callback arguments are provided`, function () {
+          expect(
+            () =>
+              handleUpdatePreset.call(extensionManager, sinon.fake()) as void,
           ).to.throw(Error, /Arguments missing/);
         });
 
         context(`when provided callback arguments`, function () {
           it(`are empty`, function () {
-            expect(() =>
-              // @ts-ignore
-              extensionManager.handleUpdatePreset(sinon.fake(), []),
+            expect(
+              () =>
+                handleUpdatePreset.call(
+                  extensionManager,
+                  sinon.fake(),
+                  [],
+                ) as void,
             ).to.throw(Error, /Arguments missing/);
           });
 
           it(`are mismatching`, function () {
-            expect(() =>
-              // @ts-ignore
-              extensionManager.handleUpdatePreset(sinon.fake(), [
-                'arg1',
-                'arg2',
-              ]),
+            expect(
+              () =>
+                handleUpdatePreset.call(extensionManager, sinon.fake(), [
+                  'arg1',
+                  'arg2',
+                ]) as void,
             ).to.throw(Error, /Arguments mismatch/);
           });
         });
@@ -810,8 +853,7 @@ describe('ExtensionManager: tests', function () {
                 false,
               ];
 
-              // @ts-ignore
-              extensionManager.handleUpdatePreset(cb, cbArgs);
+              handleUpdatePreset.call(extensionManager, cb, cbArgs);
 
               // @ts-ignore
               expect(extensionManager.customMsgShown).to.be.undefined;
@@ -840,8 +882,7 @@ describe('ExtensionManager: tests', function () {
                 const cb = sinon.fake();
                 const cbArgs = ['arg1', 'arg2', 'arg3'];
 
-                // @ts-ignore
-                extensionManager.handleUpdatePreset(cb, cbArgs);
+                handleUpdatePreset.call(extensionManager, cb, cbArgs);
 
                 // @ts-ignore
                 expect(extensionManager.customMsgShown).to.be.undefined;

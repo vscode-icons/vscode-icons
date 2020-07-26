@@ -21,7 +21,7 @@ describe('Specifications of supported folders: tests', function () {
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
                 `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format]
+                  FileFormat[folder.format] as string
                 }`;
               const iconFilePath = join(iconsDirPath, filename);
 
@@ -38,7 +38,7 @@ describe('Specifications of supported folders: tests', function () {
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                 `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format]
+                  FileFormat[folder.format] as string
                 }`;
               const iconFilePath = join(iconsDirPath, filename);
 
@@ -95,7 +95,7 @@ describe('Specifications of supported folders: tests', function () {
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
                     `${constants.iconsManifest.iconSuffix}.${
-                      FileFormat[folder.format]
+                      FileFormat[folder.format] as string
                     }`;
                   const iconFilePath = join(iconsDirPath, filename);
                   const pathExists = await existsAsync(iconFilePath);
@@ -113,7 +113,7 @@ describe('Specifications of supported folders: tests', function () {
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                     `${constants.iconsManifest.iconSuffix}.${
-                      FileFormat[folder.format]
+                      FileFormat[folder.format] as string
                     }`;
                   const iconFilePath = join(iconsDirPath, filename);
                   const pathExists = await existsAsync(iconFilePath);

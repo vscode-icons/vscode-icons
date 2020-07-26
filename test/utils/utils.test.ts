@@ -1,15 +1,20 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
+import { Stats } from 'fs';
 import * as os from 'os';
+import * as path from 'path';
 import * as proxyq from 'proxyquire';
 import * as sinon from 'sinon';
-import * as path from 'path';
 import * as fsAsync from '../../src/common/fsAsync';
 import { FileFormat } from '../../src/models';
 import { Utils } from '../../src/utils';
 
 describe('Utils: tests', function () {
+  interface IUtils {
+    open: (arg: string) => Promise<void>;
+  }
+
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
     let existsAsyncStub: sinon.SinonStub;
@@ -170,11 +175,11 @@ describe('Utils: tests', function () {
           .onFirstCall()
           .resolves({
             isDirectory: () => true,
-          } as any)
+          } as Stats)
           .onSecondCall()
           .resolves({
             isDirectory: () => false,
-          } as any);
+          } as Stats);
         const deleteFile = sandbox.stub(fsAsync, 'unlinkAsync').resolves();
         const removeDirectory = sandbox.stub(fsAsync, 'rmdirAsync').resolves();
 
@@ -190,15 +195,17 @@ describe('Utils: tests', function () {
 
     context(`the 'parseJSON' function`, function () {
       it('returns an object when parsing succeeds', function () {
-        const json = Utils.parseJSON('{"test": "test"}');
+        const json = Utils.parseJSONSafe<Record<string, string>>(
+          '{"test": "test"}',
+        );
 
         expect(json).to.be.instanceOf(Object);
         expect(Object.getOwnPropertyNames(json)).to.include('test');
         expect(json.test).to.be.equal('test');
       });
 
-      it(`returns 'null' when parsing fails`, function () {
-        expect(Utils.parseJSON('test')).to.be.null;
+      it(`returns an emtpy object when parsing fails`, function () {
+        expect(Utils.parseJSONSafe('test')).to.be.empty;
       });
     });
 
@@ -444,9 +451,9 @@ describe('Utils: tests', function () {
       it(`to call the external module`, async function () {
         const openStub = sandbox.stub().resolves();
         const target = 'target';
-        const utils = proxyq.noCallThru().load('../../src/utils', {
+        const utils = (proxyq.noCallThru().load('../../src/utils', {
           open: openStub,
-        }).Utils;
+        }) as Record<string, IUtils>).Utils;
 
         await utils.open(target);
 

@@ -15,14 +15,15 @@ import { LanguageResourceManager } from '../i18n/languageResourceManager';
 import { IconsGenerator } from '../iconsManifest';
 import { IntegrityManager } from '../integrity/integrityManager';
 import * as models from '../models';
+import { ICompositionRootService } from '../models/services/compositionRootService';
 import { NotificationManager } from '../notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../pad/projectAutoDetectionManager';
 import { SettingsManager } from '../settings/settingsManager';
 import { VSCodeManager } from '../vscode/vscodeManager';
 
-type Class = new (...args: any[]) => any;
+type Class = new (...args: unknown[]) => unknown;
 
-export class CompositionRootService {
+export class CompositionRootService implements ICompositionRootService {
   private readonly container: Container;
   private injectableClasses: ReadonlyArray<[Class, ServiceIdentifierOrFunc[]]>;
 

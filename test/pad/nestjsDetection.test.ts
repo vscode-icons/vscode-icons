@@ -51,7 +51,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
         configManagerStub,
       );
 
-      parseJSONStub = sandbox.stub(Utils, 'parseJSON');
+      parseJSONStub = sandbox.stub(Utils, 'parseJSONSafe');
     });
 
     afterEach(function () {

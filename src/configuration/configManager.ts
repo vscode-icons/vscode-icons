@@ -7,6 +7,7 @@ import {
   ConfigurationTarget,
   IConfigManager,
   IFileExtension,
+  IFolderExtension,
   IPreset,
   IVSCodeManager,
   IVSCodeWorkspaceConfiguration,
@@ -61,21 +62,21 @@ export class ConfigManager implements IConfigManager {
    */
   public get vsicons(): IVSIcons {
     // ALWAYS use 'getConfiguration' to get a fresh copy of the `vsicons` configurations
-    const mergedConfig = cloneDeep(
+    const mergedConfig: IVSIcons = cloneDeep<IVSIcons>(
       this.vscodeManager.workspace.getConfiguration()[constants.vsicons.name],
     );
-    const files = this.configuration.inspect<IFileExtension[]>(
-      constants.vsicons.associations.filesSetting,
-    );
-    mergedConfig.associations.files = unionWith(
+    const files: IPreset<IFileExtension[]> = this.configuration.inspect<
+      IFileExtension[]
+    >(constants.vsicons.associations.filesSetting);
+    mergedConfig.associations.files = unionWith<IFileExtension>(
       files.workspaceValue,
       files.globalValue,
       isEqual,
     );
-    const folders = this.configuration.inspect<IFileExtension[]>(
-      constants.vsicons.associations.foldersSetting,
-    );
-    mergedConfig.associations.folders = unionWith(
+    const folders: IPreset<IFolderExtension[]> = this.configuration.inspect<
+      IFolderExtension[]
+    >(constants.vsicons.associations.foldersSetting);
+    mergedConfig.associations.folders = unionWith<IFolderExtension>(
       folders.workspaceValue,
       folders.globalValue,
       isEqual,
@@ -160,7 +161,7 @@ export class ConfigManager implements IConfigManager {
 
   private static removeVSIconsConfigs(source: string[]): string[] {
     const findLinesToRemove = (): number[] => {
-      const linesToRemove = [];
+      const linesToRemove: number[] = [];
       const regexp = new RegExp(`^\\s*"${constants.vsicons.name}\\.`);
       const addTo = (value: string, index: number, array: string[]): void => {
         if (!regexp.test(value)) {
@@ -225,10 +226,10 @@ export class ConfigManager implements IConfigManager {
     currentConfig: IVSIcons | undefined,
     sections?: string[],
   ): boolean {
-    const filter = (obj: IVSIcons, keys: string[]): {} =>
+    const filter = (obj: IVSIcons, keys: string[]): Record<string, string[]> =>
       (Reflect.ownKeys(obj || {}) as string[])
         .filter((key, __, array) => (keys || array).includes(key))
-        .reduce((nObj, key) => ({ ...nObj, [key]: obj[key] }), {});
+        .reduce((nObj, key) => ({ ...nObj, [key]: obj[key] as string[] }), {});
     const a = filter(this.initVSIconsConfig, sections);
     const b = filter(currentConfig, sections);
     return !isEqual(a, b);

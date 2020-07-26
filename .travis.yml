@@ -7,10 +7,9 @@ os:
 language: node_js
 node_js:
   - node    # latest node
-  - 12.8.1  # vscode >= 1.43.0
+  - 12.13.0 # vscode >= 1.48.0
+  - 12.8.1  # vscode >= 1.43.0 < 1.48.0
   - 12.4.0  # vscode >= 1.40.0 < 1.43.0
-  - 10.11.0 # vscode >= 1.36.0 < 1.40.0
-  - 10.2.0  # vscode >= 1.31.0 < 1.36.0
 git:
   depth: 5
   submodules: false
@@ -19,16 +18,15 @@ install:
 cache:
   npm: false
 before_script:
-  - '[[ $TRAVIS_OS_NAME != "windows" ]]
-    && CC_OS_NAME=$([[ $TRAVIS_OS_NAME == "osx" ]] && echo "darwin" || echo $TRAVIS_OS_NAME)
-    && URL="https://codeclimate.com/downloads/test-reporter/test-reporter-latest-$CC_OS_NAME-amd64"
+  - '[[ $TRAVIS_OS_NAME == "linux" ]]
+    && URL="https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64"
     && curl -sL $URL > cc-test-reporter && chmod +x cc-test-reporter && ./cc-test-reporter before-build
     && echo "Test report initialized"
     || echo ""'
 script:
   - npm test
 after_script:
-  - '[[ $TRAVIS_OS_NAME != "windows" ]] && ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT || echo ""'
+  - '[[ $TRAVIS_OS_NAME == "linux" ]] && ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT || echo ""'
 
 jobs:
   allow_failures:
@@ -41,7 +39,7 @@ jobs:
     - stage: wiki pages icons list update
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       os: linux
-      node_js: 10.2.0
+      node_js: 12.4.0
       addons:
         apt:
           sources: [ubuntu-toolchain-r-test]
@@ -54,7 +52,7 @@ jobs:
     - stage: publish
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       os: linux
-      node_js: 10.2.0
+      node_js: 12.4.0
       before_script: skip
       script: npx vsce publish -p $VSCE_TOKEN
       after_script: skip

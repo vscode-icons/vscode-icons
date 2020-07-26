@@ -19,7 +19,7 @@
 
 ---
 
-Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**minimum supported version: `1.31.1`**)
+Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**minimum supported version: `1.40.2`**)
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 

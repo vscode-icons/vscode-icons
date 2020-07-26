@@ -5,7 +5,7 @@ export class ErrorHandler {
     }
     console.error(
       `${handled ? 'H' : 'Unh'}andled Error: ${
-        error.stack || error.message || error
+        error.stack || error.message || error.toString()
       }`,
     );
   }
