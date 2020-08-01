@@ -1640,6 +1640,12 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'gradle2',
+      extensions: ['gradle'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'graphql',
       extensions: ['.gqlconfig'],
       filename: true,
