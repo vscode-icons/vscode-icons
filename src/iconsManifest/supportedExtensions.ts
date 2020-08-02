@@ -3222,7 +3222,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'reason',
-      extensions: [],
+      extensions: ['res', 'resi'],
       languages: [languages.reason],
       format: FileFormat.svg,
     },
