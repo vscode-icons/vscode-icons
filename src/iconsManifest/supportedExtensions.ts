@@ -3236,7 +3236,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'rego',
       extensions: ['rego'],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'rehype',
