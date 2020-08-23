@@ -3513,6 +3513,11 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'spe',
+      extensions: ['spe'],
+      format: FileFormat.png
+    },
     { icon: 'source', extensions: [], format: FileFormat.svg },
     {
       icon: 'sqf',
