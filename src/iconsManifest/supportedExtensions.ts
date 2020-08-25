@@ -3495,6 +3495,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'spe',
+      extensions: ['spe'],
+      format: FileFormat.png
+    },
+    {
       icon: 'snyk',
       extensions: ['.snyk'],
       filename: true,
