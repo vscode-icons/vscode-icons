@@ -3497,7 +3497,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'spe',
       extensions: ['spe'],
-      format: FileFormat.png
+      format: FileFormat.svg
     },
     {
       icon: 'snyk',
