@@ -3260,6 +3260,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rescript',
+      extensions: [],
+      languages: [languages.rescript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rest',
       extensions: [],
       languages: [languages.restructuredtext],

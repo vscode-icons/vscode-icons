@@ -223,6 +223,7 @@ export const languages: ILanguageCollection = {
   raml: { ids: 'raml', defaultExtension: 'raml' },
   reason: { ids: 'reason', defaultExtension: 're' },
   red: { ids: 'red', defaultExtension: 'red' },
+  rescript: { ids: 'rescript', defaultExtension: 'res' },
   restructuredtext: { ids: 'restructuredtext', defaultExtension: 'rst' },
   rexx: { ids: 'rexx', defaultExtension: 'rex' },
   riot: { ids: 'riot', defaultExtension: 'tag' },
