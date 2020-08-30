@@ -3544,6 +3544,11 @@ export const extensions: IFileCollection = {
     },
     { icon: 'source', extensions: [], format: FileFormat.svg },
     {
+      icon: 'spacengine',
+      extensions: ['spe'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sqf',
       extensions: [],
       languages: [languages.sqf],
