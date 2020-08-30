@@ -171,6 +171,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   raml: ILanguage;
   reason: ILanguage;
   red: ILanguage;
+  rescript: ILanguage;
   restructuredtext: ILanguage;
   rexx: ILanguage;
   riot: ILanguage;
