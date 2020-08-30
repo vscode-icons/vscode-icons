@@ -1916,6 +1916,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'jar', extensions: ['jar'], format: FileFormat.svg },
     {
+      icon: 'jasmine',
+      extensions: ['jasmine.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'java',
       extensions: [],
       languages: [languages.java],
