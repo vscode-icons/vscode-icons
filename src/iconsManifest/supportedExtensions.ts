@@ -2645,6 +2645,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'numpy',
+      extensions: ['npy', 'npz'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nunjucks',
       extensions: ['nunj', 'njs'],
       languages: [languages.nunjucks],
