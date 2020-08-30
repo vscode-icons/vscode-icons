@@ -1837,6 +1837,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hygen',
+      extensions: ['ejs.t'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'icl',
       extensions: [],
       languages: [languages.icl],
