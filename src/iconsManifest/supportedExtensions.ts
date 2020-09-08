@@ -560,6 +560,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'avif',
+      extensions: ['avif'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'avro',
       extensions: [],
       languages: [languages.avro],
