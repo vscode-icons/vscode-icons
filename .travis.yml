@@ -7,8 +7,8 @@ os:
 language: node_js
 node_js:
   - node    # latest node
-  - 12.13.0 # vscode >= 1.48.0
-  - 12.8.1  # vscode >= 1.43.0 < 1.48.0
+  - 12.14.1 # vscode >= 1.49.0
+  - 12.8.1  # vscode >= 1.43.0 < 1.49.0
   - 12.4.0  # vscode >= 1.40.0 < 1.43.0
 git:
   depth: 5
