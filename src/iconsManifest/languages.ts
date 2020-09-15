@@ -164,7 +164,7 @@ export const languages: ILanguageCollection = {
   mel: { ids: 'mel', defaultExtension: 'mel' },
   meson: { ids: 'meson', defaultExtension: 'meson.build' },
   mjml: { ids: 'mjml', defaultExtension: 'mjml' },
-  mlang: { ids: 'powerquery', defaultExtension: 'pq' },
+  mlang: { ids: ['powerquery'], defaultExtension: 'pq' },
   mojolicious: { ids: 'mojolicious', defaultExtension: 'ep' },
   mongo: { ids: 'mongo', defaultExtension: 'mongo' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
