@@ -252,6 +252,7 @@ export const languages: ILanguageCollection = {
   sql: { ids: 'sql', defaultExtension: 'sql' },
   squirrel: { ids: 'squirrel', defaultExtension: 'nut' },
   stan: { ids: 'stan', defaultExtension: 'stan' },
+  starlark: { ids: 'starlark', defaultExtension: 'bazel' },
   stata: { ids: 'stata', defaultExtension: 'do' },
   stencil: { ids: 'stencil', defaultExtension: 'stencil' },
   stencilhtml: { ids: 'stencil-html', defaultExtension: 'html.stencil' },
