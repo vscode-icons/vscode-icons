@@ -696,6 +696,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'blitzbasic',
+      extensions: ['bb'],
+      languages: [languages.blitzbasic],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bolt',
       extensions: [],
       languages: [languages.bolt],
