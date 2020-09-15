@@ -3269,6 +3269,11 @@ export const extensions: IFileCollection = {
     },
     { icon: 'registry', extensions: ['reg'], format: FileFormat.svg },
     {
+      icon: 'rego',
+      extensions: ['rego'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rehype',
       extensions: ['.rehyperc', '.rehypeignore'],
       filenamesGlob: ['.rehyperc'],
