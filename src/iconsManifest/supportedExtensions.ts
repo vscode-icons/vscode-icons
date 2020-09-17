@@ -3358,7 +3358,7 @@ export const extensions: IFileCollection = {
         'rollup.config.dev',
         'rollup.config.prod',
       ],
-      extensionsGlob: ['js', 'mjs', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
