@@ -2,13 +2,13 @@
 
 ## 11.0.0 (September 17, 2020)
 
-- Enhancement: Support for `cjs/json5` for `prettier`. ([@shrujalshah28](https://github.com/**mvshmakov**) in [#2612](https://github.com/vscode-icons/vscode-icons/pull/2612))
+- Enhancement: Support for `cjs/json5` for `prettier`. ([@shrujalshah28](https://github.com/shrujalshah28) in [#2612](https://github.com/vscode-icons/vscode-icons/pull/2612))
 - Enhancement: Update dependencies and fix eslint rules. ([@JimiC](https://github.com/JimiC) in [#2614](https://github.com/vscode-icons/vscode-icons/pull/2614) & [#2563](https://github.com/vscode-icons/vscode-icons/pull/2563))
 - Feature: Support for `AVIF` format. ([@mvshmakov](https://github.com/mvshmakov) in [#2611](https://github.com/vscode-icons/vscode-icons/pull/2611))
 - Feature: Support for `BlitzBasic`. ([@Lukaszeq](https://github.com/Lukaszeq) in [#2609](https://github.com/vscode-icons/vscode-icons/pull/2609))
 - Enhancement: Add `BUILD.bazel` extension and update language id. ([@CaringDev](https://github.com/CaringDev) in [#2605](https://github.com/vscode-icons/vscode-icons/pull/2605))
 - Feature: Support for `Hook(s)` folder. ([@chancegraff](https://github.com/chancegraff) in [#2604](https://github.com/vscode-icons/vscode-icons/pull/2604))
-- Enhancement: Add `cjs` to `rollup`. ([@sant123](https://github.com/sant12) in [#2603](https://github.com/vscode-icons/vscode-icons/pull/2603))
+- Enhancement: Add `cjs` to `rollup`. ([@sant123](https://github.com/sant123) in [#2603](https://github.com/vscode-icons/vscode-icons/pull/2603))
 - Feature: Support for `Rescript`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2600](https://github.com/vscode-icons/vscode-icons/pull/2600))
 - Feature: Support for `Spacengine`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2598](https://github.com/vscode-icons/vscode-icons/pull/2598))
 - Feature: Support for `Jasmine` config file. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2597](https://github.com/vscode-icons/vscode-icons/pull/2597))
