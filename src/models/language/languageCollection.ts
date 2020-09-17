@@ -31,6 +31,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   bibtex: ILanguage;
   biml: ILanguage;
   blade: ILanguage;
+  blitzbasic: ILanguage;
   bolt: ILanguage;
   bosque: ILanguage;
   // eslint-disable-next-line camelcase
@@ -194,6 +195,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   sqf: ILanguage;
   squirrel: ILanguage;
   stan: ILanguage;
+  starlark: ILanguage;
   stata: ILanguage;
   stencil: ILanguage;
   stencilhtml: ILanguage;
