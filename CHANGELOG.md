@@ -1,6 +1,6 @@
 # Change Log
 
-## 11.0.0 (September 15, 2020)
+## 11.0.0 (September 17, 2020)
 
 - Enhancement: Support for `cjs/json5` for `prettier`. ([@shrujalshah28](https://github.com/**mvshmakov**) in [#2612](https://github.com/vscode-icons/vscode-icons/pull/2612))
 - Enhancement: Update dependencies and fix eslint rules. ([@JimiC](https://github.com/JimiC) in [#2614](https://github.com/vscode-icons/vscode-icons/pull/2614) & [#2563](https://github.com/vscode-icons/vscode-icons/pull/2563))
