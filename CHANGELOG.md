@@ -1,8 +1,9 @@
 # Change Log
 
-## 10.3.0 (September 15, 2020)
+## 11.0.0 (September 15, 2020)
 
-- Enhancement: Update dependencies and fix eslint rules. ([@JimiC](https://github.com/JimiC) in [#2614](https://github.com/vscode-icons/vscode-icons/pull/2614))
+- Enhancement: Support for `cjs/json5` for `prettier`. ([@shrujalshah28](https://github.com/**mvshmakov**) in [#2612](https://github.com/vscode-icons/vscode-icons/pull/2612))
+- Enhancement: Update dependencies and fix eslint rules. ([@JimiC](https://github.com/JimiC) in [#2614](https://github.com/vscode-icons/vscode-icons/pull/2614) & [#2563](https://github.com/vscode-icons/vscode-icons/pull/2563))
 - Feature: Support for `AVIF` format. ([@mvshmakov](https://github.com/mvshmakov) in [#2611](https://github.com/vscode-icons/vscode-icons/pull/2611))
 - Feature: Support for `BlitzBasic`. ([@Lukaszeq](https://github.com/Lukaszeq) in [#2609](https://github.com/vscode-icons/vscode-icons/pull/2609))
 - Enhancement: Add `BUILD.bazel` extension and update language id. ([@CaringDev](https://github.com/CaringDev) in [#2605](https://github.com/vscode-icons/vscode-icons/pull/2605))
@@ -21,7 +22,6 @@
 - Enhancement: Deprecate AppVeyor CI. ([@JimiC](https://github.com/JimiC) in [#2566](https://github.com/vscode-icons/vscode-icons/pull/2566))
 - Enhancement: Deprecate Wallaby. ([@JimiC](https://github.com/JimiC) in [#2565](https://github.com/vscode-icons/vscode-icons/pull/2565))
 - Enhancement: Deprecate Greenkeeper. ([@JimiC](https://github.com/JimiC) in [#2564](https://github.com/vscode-icons/vscode-icons/pull/2564))
-- Enhancement: Update dependencies and fix eslint rules violations. ([@JimiC](https://github.com/JimiC) in [#2563](https://github.com/vscode-icons/vscode-icons/pull/2563))
 - Feature: Support for `Next` folder icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2562](https://github.com/vscode-icons/vscode-icons/pull/2562))
 - Feature: Support for `Next`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2561](https://github.com/vscode-icons/vscode-icons/pull/2561))
 - Feature: Support for `AWK`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2557](https://github.com/vscode-icons/vscode-icons/pull/2557))
