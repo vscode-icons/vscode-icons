@@ -560,6 +560,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'avif',
+      extensions: ['avif'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'avro',
       extensions: [],
       languages: [languages.avro],
@@ -629,9 +634,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bazel',
-      extensions: ['.bazelrc', 'bazel.rc', 'bazel.bazelrc'],
+      extensions: ['BUILD.bazel', '.bazelrc', 'bazel.rc', 'bazel.bazelrc'],
       filename: true,
-      languages: [languages.bazel],
+      languages: [languages.bazel, languages.starlark],
       format: FileFormat.svg,
     },
     {
@@ -693,6 +698,12 @@ export const extensions: IFileCollection = {
       icon: 'blade',
       extensions: [],
       languages: [languages.blade],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'blitzbasic',
+      extensions: ['bb'],
+      languages: [languages.blitzbasic],
       format: FileFormat.svg,
     },
     {
@@ -3053,7 +3064,7 @@ export const extensions: IFileCollection = {
       icon: 'prettier',
       extensions: [],
       filenamesGlob: ['prettier.config'],
-      extensionsGlob: ['js', 'ts', 'coffee'],
+      extensionsGlob: ['js', 'cjs', 'ts', 'coffee'],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -3062,7 +3073,7 @@ export const extensions: IFileCollection = {
       icon: 'prettier',
       extensions: [],
       filenamesGlob: ['.prettierrc'],
-      extensionsGlob: ['js', 'json', 'yml', 'yaml'],
+      extensionsGlob: ['js', 'cjs', 'json', 'json5', 'yml', 'yaml'],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -3263,6 +3274,11 @@ export const extensions: IFileCollection = {
     },
     { icon: 'registry', extensions: ['reg'], format: FileFormat.svg },
     {
+      icon: 'rego',
+      extensions: ['rego'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rehype',
       extensions: ['.rehyperc', '.rehypeignore'],
       filenamesGlob: ['.rehyperc'],
@@ -3342,7 +3358,7 @@ export const extensions: IFileCollection = {
         'rollup.config.dev',
         'rollup.config.prod',
       ],
-      extensionsGlob: ['js', 'mjs', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },

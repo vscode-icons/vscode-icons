@@ -73,6 +73,7 @@
       }
     ],
     "@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/no-shadow": "error",
     "@typescript-eslint/prefer-for-of": "error",
     "@typescript-eslint/prefer-function-type": "error",
     "@typescript-eslint/quotes": [
@@ -140,12 +141,6 @@
     "no-new-wrappers": "error",
     "no-return-await": "error",
     "no-sequences": "error",
-    "no-shadow": [
-      "error",
-      {
-        "hoist": "all"
-      }
-    ],
     "no-template-curly-in-string": "error",
     "no-throw-literal": "error",
     "no-trailing-spaces": "error",

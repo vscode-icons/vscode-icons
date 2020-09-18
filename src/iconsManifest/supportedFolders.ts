@@ -252,6 +252,11 @@ export const extensions: IFolderCollection = {
       extensions: ['helper', '.helper', 'helpers', '.helpers'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'hook',
+      extensions: ['hook', '.hook', 'hooks', '.hooks'],
+      format: FileFormat.svg,
+    },
     { icon: 'idea', extensions: ['.idea'], format: FileFormat.svg },
     {
       icon: 'images',
