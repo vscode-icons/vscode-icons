@@ -178,6 +178,7 @@ export const languages: ILanguageCollection = {
   objectivec: { ids: 'objective-c', defaultExtension: 'm' },
   objectivecpp: { ids: 'objective-cpp', defaultExtension: 'mm' },
   ocaml: { ids: ['ocaml', 'ocamllex', 'menhir'], defaultExtension: 'ml' },
+  ogone: { ids: 'ogone', defaultExtension: 'o3' },
   openEdge: { ids: 'abl', defaultExtension: 'w' },
   openHAB: { ids: 'openhab', defaultExtension: 'things' },
   pascal: { ids: ['pascal', 'objectpascal'], defaultExtension: 'pas' },
