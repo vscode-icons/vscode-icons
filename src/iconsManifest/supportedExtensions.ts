@@ -1419,6 +1419,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fauna',
+      extensions: ['.faunarc'],
+      languages: [languages.fauna],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'favicon',
       extensions: ['favicon.ico'],
       filename: true,

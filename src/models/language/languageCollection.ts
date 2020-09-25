@@ -73,6 +73,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erb: ILanguage;
   erlang: ILanguage;
   falcon: ILanguage;
+  fauna: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
   fthtml: ILanguage;

@@ -84,6 +84,7 @@ export const languages: ILanguageCollection = {
   erb: { ids: 'erb', defaultExtension: 'erb' },
   erlang: { ids: 'erlang', defaultExtension: 'erl' },
   falcon: { ids: 'falcon', defaultExtension: 'falcon' },
+  fauna: { ids: 'fql', defaultExtension: 'fql' },
   fortran: {
     ids: ['fortran', 'fortran-modern', 'FortranFreeForm', 'fortran_fixed-form'],
     defaultExtension: 'f',
