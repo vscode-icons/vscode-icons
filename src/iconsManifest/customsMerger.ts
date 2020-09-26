@@ -38,8 +38,12 @@ export class CustomsMerger {
     files = this.toggleOfficialIconsPreset(
       !presets.tsOfficial,
       files,
-      [models.IconNames.tsOfficial, models.IconNames.tsDefOfficial],
-      [models.IconNames.ts, models.IconNames.tsDef],
+      [
+        models.IconNames.tsOfficial,
+        models.IconNames.tsConfigOfficial,
+        models.IconNames.tsDefOfficial,
+      ],
+      [models.IconNames.ts, models.IconNames.tsConfig, models.IconNames.tsDef],
     );
 
     files = this.toggleOfficialIconsPreset(
