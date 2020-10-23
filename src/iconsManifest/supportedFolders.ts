@@ -95,7 +95,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'client', extensions: ['client'], format: FileFormat.svg },
+    {
+      icon: 'client',
+      extensions: ['client', 'clients'],
+      format: FileFormat.svg,
+    },
     { icon: 'cmake', extensions: ['.cmake', 'cmake'], format: FileFormat.svg },
     {
       icon: 'config',
