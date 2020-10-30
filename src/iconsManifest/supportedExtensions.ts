@@ -1853,6 +1853,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hypr',
+      extensions: ['hypr', 'hypr.live'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'icl',
       extensions: [],
       languages: [languages.icl],
