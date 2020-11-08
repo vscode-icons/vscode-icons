@@ -2188,8 +2188,8 @@ export const extensions: IFileCollection = {
     { icon: 'license', extensions: ['enc'], format: FileFormat.svg },
     {
       icon: 'license',
-      extensions: ['license', 'licence'],
-      filenamesGlob: ['license', 'licence'],
+      extensions: ['license', 'licence', 'copying'],
+      filenamesGlob: ['license', 'licence', 'copying'],
       extensionsGlob: ['md', 'txt'],
       filename: true,
       format: FileFormat.svg,
