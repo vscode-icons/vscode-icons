@@ -274,6 +274,7 @@ export const languages: ILanguageCollection = {
   textile: { ids: 'textile', defaultExtension: 'textile' },
   textmatejson: { ids: 'json-tmlanguage', defaultExtension: 'JSON-tmLanguage' },
   textmateyaml: { ids: 'yaml-tmlanguage', defaultExtension: 'YAML-tmLanguage' },
+  tiltfile: { ids: 'tiltfile', defaultExtension: 'Tiltfile' },
   toml: { ids: 'toml', defaultExtension: 'toml' },
   ttcn: { ids: 'ttcn', defaultExtension: 'ttcn3' },
   twig: { ids: 'twig', defaultExtension: 'twig' },

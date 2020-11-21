@@ -215,6 +215,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   textile: ILanguage;
   textmatejson: ILanguage;
   textmateyaml: ILanguage;
+  tiltfile: ILanguage;
   toml: ILanguage;
   ttcn: ILanguage;
   twig: ILanguage;

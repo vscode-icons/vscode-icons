@@ -3789,6 +3789,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tiltfile',
+      extensions: [],
+      languages: [languages.tiltfile],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tfs',
       extensions: ['.tfignore'],
       filename: true,
