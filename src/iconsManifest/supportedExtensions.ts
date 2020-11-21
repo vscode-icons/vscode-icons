@@ -3169,6 +3169,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pytyped',
+      extensions: ['py.typed'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pyup',
       extensions: ['.pyup', '.pyup.yml'],
       filename: true,
