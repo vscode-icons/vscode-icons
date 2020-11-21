@@ -1854,7 +1854,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'hypr',
-      extensions: ['hypr', 'hypr.live'],
+      extensions: [],
+      languages: [languages.hypr],
       format: FileFormat.svg,
     },
     {
