@@ -3890,6 +3890,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'unlicense',
+      extensions: ['unlicense', 'unlicense'],
+      filenamesGlob: ['unlicense', 'unlicense'],
+      extensionsGlob: ['md', 'txt'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vagrant',
       extensions: ['vagrantfile'],
       filename: true,
