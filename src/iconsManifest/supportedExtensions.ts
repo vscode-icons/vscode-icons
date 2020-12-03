@@ -1949,7 +1949,7 @@ export const extensions: IFileCollection = {
         '.jestrc.json',
       ],
       filenamesGlob: ['jest.config', 'jest.config.babel'],
-      extensionsGlob: ['js', 'cjs', 'mjs'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
