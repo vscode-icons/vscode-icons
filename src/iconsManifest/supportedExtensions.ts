@@ -2333,7 +2333,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mdx',
-      extensions: ['mdx'],
+      extensions: [],
+      languages: [languages.mdx],
       light: true,
       format: FileFormat.svg,
     },
