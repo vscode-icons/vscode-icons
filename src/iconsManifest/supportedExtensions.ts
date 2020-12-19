@@ -1716,7 +1716,7 @@ export const extensions: IFileCollection = {
       icon: 'gulp',
       extensions: [],
       filenamesGlob: ['gulpfile', 'gulpfile.esm', 'gulpfile.babel'],
-      extensionsGlob: ['js', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'coffee', 'ts', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
