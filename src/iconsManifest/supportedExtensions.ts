@@ -870,7 +870,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'cheader', extensions: ['h'], format: FileFormat.svg },
+    {
+      icon: 'cheader',
+      extensions: ['h'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'chef',
       extensions: ['chefignore', 'berksfile', 'berksfile.lock', 'policyfile'],
@@ -1033,7 +1037,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'cppheader', extensions: ['hpp'], format: FileFormat.svg },
+    {
+      icon: 'cppheader',
+      extensions: ['hpp', 'hh', 'hxx', 'h++'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'crowdin',
       extensions: ['crowdin.yml'],
@@ -1416,6 +1424,13 @@ export const extensions: IFileCollection = {
       icon: 'falcon',
       extensions: [],
       languages: [languages.falcon],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'fauna',
+      extensions: ['.faunarc'],
+      languages: [languages.fauna],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -1853,6 +1868,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hypr',
+      extensions: [],
+      languages: [languages.hypr],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'icl',
       extensions: [],
       languages: [languages.icl],
@@ -2188,8 +2209,8 @@ export const extensions: IFileCollection = {
     { icon: 'license', extensions: ['enc'], format: FileFormat.svg },
     {
       icon: 'license',
-      extensions: ['license', 'licence'],
-      filenamesGlob: ['license', 'licence'],
+      extensions: ['license', 'licence', 'copying', 'copying.lesser'],
+      filenamesGlob: ['license', 'licence', 'copying', 'copying.lesser'],
       extensionsGlob: ['md', 'txt'],
       filename: true,
       format: FileFormat.svg,
@@ -2669,7 +2690,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nuget',
-      extensions: ['nupkg', 'nuspec', 'psmdcp'],
+      extensions: ['nupkg', 'snupkg', 'nuspec', 'psmdcp'],
       format: FileFormat.svg,
     },
     {
@@ -2714,6 +2735,12 @@ export const extensions: IFileCollection = {
       extensions: ['.merlin'],
       filename: true,
       languages: [languages.ocaml],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ogone',
+      extensions: [],
+      languages: [languages.ogone],
       format: FileFormat.svg,
     },
     {
@@ -3166,6 +3193,12 @@ export const extensions: IFileCollection = {
       icon: 'python',
       extensions: [],
       languages: [languages.python],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pytyped',
+      extensions: ['py.typed'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -3789,6 +3822,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tiltfile',
+      extensions: [],
+      languages: [languages.tiltfile],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tfs',
       extensions: ['.tfignore'],
       filename: true,
@@ -3846,6 +3885,12 @@ export const extensions: IFileCollection = {
       icon: 'ttcn',
       extensions: [],
       languages: [languages.ttcn],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tuc',
+      extensions: [],
+      languages: [languages.tuc],
       format: FileFormat.svg,
     },
     {
