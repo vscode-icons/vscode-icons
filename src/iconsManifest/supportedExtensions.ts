@@ -1964,6 +1964,7 @@ export const extensions: IFileCollection = {
       icon: 'jest',
       extensions: [
         'jest.config.json',
+        'jest.config.ts',
         'jest.json',
         '.jestrc',
         '.jestrc.js',
