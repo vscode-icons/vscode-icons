@@ -2725,6 +2725,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ogone',
+      extensions: [],
+      languages: [languages.ogone],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'onenote',
       extensions: ['one', 'onepkg', 'onetoc', 'onetoc2', 'sig'],
       format: FileFormat.svg,
