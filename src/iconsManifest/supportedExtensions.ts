@@ -1868,6 +1868,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hypr',
+      extensions: [],
+      languages: [languages.hypr],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'icl',
       extensions: [],
       languages: [languages.icl],
