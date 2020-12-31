@@ -870,7 +870,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'cheader', extensions: ['h'], format: FileFormat.svg },
+    {
+      icon: 'cheader',
+      extensions: ['h'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'chef',
       extensions: ['chefignore', 'berksfile', 'berksfile.lock', 'policyfile'],
@@ -1033,7 +1037,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'cppheader', extensions: ['hpp'], format: FileFormat.svg },
+    {
+      icon: 'cppheader',
+      extensions: ['hpp', 'hh', 'hxx', 'h++'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'crowdin',
       extensions: ['crowdin.yml'],
