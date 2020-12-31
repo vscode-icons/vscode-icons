@@ -130,6 +130,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   marko: ILanguage;
   matlab: ILanguage;
   maxscript: ILanguage;
+  mdx: ILanguage;
   mediawiki: ILanguage;
   mel: ILanguage;
   meson: ILanguage;

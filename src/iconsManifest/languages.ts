@@ -163,6 +163,7 @@ export const languages: ILanguageCollection = {
   marko: { ids: 'marko', defaultExtension: 'marko' },
   matlab: { ids: 'matlab', defaultExtension: 'mat' },
   maxscript: { ids: 'maxscript', defaultExtension: 'ms' },
+  mdx: { ids: 'mdx', defaultExtension: 'mdx' },
   mediawiki: { ids: 'mediawiki', defaultExtension: 'mediawiki' },
   mel: { ids: 'mel', defaultExtension: 'mel' },
   meson: { ids: 'meson', defaultExtension: 'meson.build' },
