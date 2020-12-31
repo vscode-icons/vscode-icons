@@ -3938,8 +3938,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'unlicense',
-      extensions: ['unlicense', 'unlicense'],
-      filenamesGlob: ['unlicense', 'unlicense'],
+      extensions: ['unlicense', 'unlicence'],
+      filenamesGlob: ['unlicense', 'unlicence'],
       extensionsGlob: ['md', 'txt'],
       filename: true,
       format: FileFormat.svg,
