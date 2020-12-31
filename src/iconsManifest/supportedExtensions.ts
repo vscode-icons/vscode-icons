@@ -2684,7 +2684,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nuget',
-      extensions: ['nupkg', 'nuspec', 'psmdcp'],
+      extensions: ['nupkg', 'snupkg', 'nuspec', 'psmdcp'],
       format: FileFormat.svg,
     },
     {
