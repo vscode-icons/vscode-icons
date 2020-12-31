@@ -870,7 +870,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'cheader', extensions: ['h'], format: FileFormat.svg },
+    {
+      icon: 'cheader',
+      extensions: ['h'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'chef',
       extensions: ['chefignore', 'berksfile', 'berksfile.lock', 'policyfile'],
@@ -1033,7 +1037,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'cppheader', extensions: ['hpp'], format: FileFormat.svg },
+    {
+      icon: 'cppheader',
+      extensions: ['hpp', 'hh', 'hxx', 'h++'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'crowdin',
       extensions: ['crowdin.yml'],
@@ -1416,6 +1424,13 @@ export const extensions: IFileCollection = {
       icon: 'falcon',
       extensions: [],
       languages: [languages.falcon],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'fauna',
+      extensions: ['.faunarc'],
+      languages: [languages.fauna],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -2717,6 +2732,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ogone',
+      extensions: [],
+      languages: [languages.ogone],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'onenote',
       extensions: ['one', 'onepkg', 'onetoc', 'onetoc2', 'sig'],
       format: FileFormat.svg,
@@ -3873,6 +3894,12 @@ export const extensions: IFileCollection = {
       icon: 'ttcn',
       extensions: [],
       languages: [languages.ttcn],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tuc',
+      extensions: [],
+      languages: [languages.tuc],
       format: FileFormat.svg,
     },
     {

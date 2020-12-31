@@ -84,6 +84,7 @@ export const languages: ILanguageCollection = {
   erb: { ids: 'erb', defaultExtension: 'erb' },
   erlang: { ids: 'erlang', defaultExtension: 'erl' },
   falcon: { ids: 'falcon', defaultExtension: 'falcon' },
+  fauna: { ids: 'fql', defaultExtension: 'fql' },
   fortran: {
     ids: ['fortran', 'fortran-modern', 'FortranFreeForm', 'fortran_fixed-form'],
     defaultExtension: 'f',
@@ -178,6 +179,7 @@ export const languages: ILanguageCollection = {
   objectivec: { ids: 'objective-c', defaultExtension: 'm' },
   objectivecpp: { ids: 'objective-cpp', defaultExtension: 'mm' },
   ocaml: { ids: ['ocaml', 'ocamllex', 'menhir'], defaultExtension: 'ml' },
+  ogone: { ids: 'ogone', defaultExtension: 'o3' },
   openEdge: { ids: 'abl', defaultExtension: 'w' },
   openHAB: { ids: 'openhab', defaultExtension: 'things' },
   pascal: { ids: ['pascal', 'objectpascal'], defaultExtension: 'pas' },
@@ -276,6 +278,7 @@ export const languages: ILanguageCollection = {
   textmateyaml: { ids: 'yaml-tmlanguage', defaultExtension: 'YAML-tmLanguage' },
   toml: { ids: 'toml', defaultExtension: 'toml' },
   ttcn: { ids: 'ttcn', defaultExtension: 'ttcn3' },
+  tuc: { ids: 'tuc', defaultExtension: 'tuc' },
   twig: { ids: 'twig', defaultExtension: 'twig' },
   typescript: { ids: 'typescript', defaultExtension: 'ts' },
   typescriptreact: { ids: 'typescriptreact', defaultExtension: 'tsx' },

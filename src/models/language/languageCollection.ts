@@ -73,6 +73,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erb: ILanguage;
   erlang: ILanguage;
   falcon: ILanguage;
+  fauna: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
   fthtml: ILanguage;
@@ -143,6 +144,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   nsis: ILanguage;
   nunjucks: ILanguage;
   ocaml: ILanguage;
+  ogone: ILanguage;
   openEdge: ILanguage;
   openHAB: ILanguage;
   pascal: ILanguage;
@@ -217,6 +219,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   textmateyaml: ILanguage;
   toml: ILanguage;
   ttcn: ILanguage;
+  tuc: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
   vba: ILanguage;
