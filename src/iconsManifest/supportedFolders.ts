@@ -45,7 +45,11 @@ export const extensions: IFolderCollection = {
       extensions: ['azure-pipelines', '.azure-pipelines'],
       format: FileFormat.svg,
     },
-    { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
+    {
+      icon: 'binary',
+      extensions: ['bin', '.bin', 'error', 'errors'],
+      format: FileFormat.svg,
+    },
     { icon: 'bloc', extensions: ['blocs', 'bloc'], format: FileFormat.svg },
     {
       icon: 'blueprint',
@@ -60,7 +64,11 @@ export const extensions: IFolderCollection = {
       extensions: ['certificates', '.certificates', 'certs', 'certs.'],
       format: FileFormat.svg,
     },
-    { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
+    {
+      icon: 'chef',
+      extensions: ['chef', '.chef', 'usecase', 'usecases', 'use_cases'],
+      format: FileFormat.svg,
+    },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     {
       icon: 'controller',
@@ -75,7 +83,13 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'component',
-      extensions: ['component', 'components', '.components', 'widgets'],
+      extensions: [
+        'component',
+        'components',
+        '.components',
+        'widget',
+        'widgets',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -95,7 +109,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'client', extensions: ['client'], format: FileFormat.svg },
+    {
+      icon: 'client',
+      extensions: ['client', 'presenter', 'ui', 'view'],
+      format: FileFormat.svg,
+    },
     { icon: 'cmake', extensions: ['.cmake', 'cmake'], format: FileFormat.svg },
     {
       icon: 'config',
@@ -179,6 +197,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'docs', extensions: ['docs', 'doc'], format: FileFormat.svg },
+
     { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
     {
       icon: 'elasticbeanstalk',
@@ -318,7 +337,15 @@ export const extensions: IFolderCollection = {
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     {
       icon: 'library',
-      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries'],
+      extensions: [
+        'lib',
+        'libs',
+        '.lib',
+        '.libs',
+        'library',
+        'libraries',
+        'shared',
+      ],
       format: FileFormat.svg,
     },
     { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
@@ -359,7 +386,11 @@ export const extensions: IFolderCollection = {
       extensions: ['middleware', 'middlewares'],
       format: FileFormat.svg,
     },
-    { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
+    {
+      icon: 'mjml',
+      extensions: ['data_sources', 'datasources', 'mjml', '.mjml'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'minikube',
       extensions: ['minikube', 'minik8s', 'minikuber'],
@@ -445,7 +476,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'public',
-      extensions: ['public', '.public'],
+      extensions: ['domain', 'public', '.public'],
       format: FileFormat.svg,
     },
     {
@@ -491,7 +522,7 @@ export const extensions: IFolderCollection = {
     { icon: 'server', extensions: ['server'], format: FileFormat.svg },
     {
       icon: 'services',
-      extensions: ['service', 'services'],
+      extensions: ['infra', 'infrastructure', 'service', 'services'],
       format: FileFormat.svg,
     },
     {
@@ -635,6 +666,10 @@ export const extensions: IFolderCollection = {
       extensions: ['windows', 'win32'],
       format: FileFormat.svg,
     },
-    { icon: 'www', extensions: ['www', 'wwwroot'], format: FileFormat.svg },
+    {
+      icon: 'www',
+      extensions: ['external', 'www', 'wwwroot'],
+      format: FileFormat.svg,
+    },
   ],
 };
