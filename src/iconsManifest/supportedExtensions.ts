@@ -3902,6 +3902,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'typedoc',
+      extensions: [],
+      filenamesGlob: ['typedoc'],
+      extensionsGlob: ['js', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'typescript',
       extensions: [],
       languages: [languages.typescript],
