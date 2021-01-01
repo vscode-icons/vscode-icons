@@ -1,5 +1,24 @@
 # Change Log
 
+## 11.1.0 (January 01, 2021)
+
+- Fix: Differentiate `unlicence` spelling variant. ([@tywmick](https://github.com/tywmick) in [#2674](https://github.com/vscode-icons/vscode-icons/pull/2674))
+- Feature: Support for `TypeDoc`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2669](https://github.com/vscode-icons/vscode-icons/pull/2669))
+- Enhancement: Add `Gulpfile.mjs` support. ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo) in [#2665](https://github.com/vscode-icons/vscode-icons/pull/2665))
+- Enhancement: Make `MDX` a code language. ([@tywmick](https://github.com/tywmick) in [#2661](https://github.com/vscode-icons/vscode-icons/pull/2661))
+- Enhancement: Add `jest.config.ts` extension. ([@carlocorradini](https://github.com/carlocorradini) in [#2657](https://github.com/vscode-icons/vscode-icons/pull/2657))
+- Feature: Support for `Unlicense`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2651](https://github.com/vscode-icons/vscode-icons/pull/2651))
+- Feature: Support for `py.typed`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2650](https://github.com/vscode-icons/vscode-icons/pull/2650))
+- Feature: Support for `Tiltfile`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2649](https://github.com/vscode-icons/vscode-icons/pull/2649))
+- Enhancement: Add `COPYING` filename associations to `license` icon. ([@tywmick](https://github.com/tywmick) in [#2643](https://github.com/vscode-icons/vscode-icons/pull/2643))
+- Feature: Support for `.hypr` & `.hypr.live` files. ([@Temu4](https://github.com/Temu4) in [#2641](https://github.com/vscode-icons/vscode-icons/pull/2641))
+- Enhancement: Add `clients` extension to folder icons. ([@Kleywalker](https://github.com/Kleywalker) in [#2638](https://github.com/vscode-icons/vscode-icons/pull/2638))
+- Feature: Support for `.snupkg` files. ([@teo-tsirpanis](https://github.com/teo-tsirpanis) in [#2632](https://github.com/vscode-icons/vscode-icons/pull/2632))
+- Feature: Support for `FaunaDB`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2629](https://github.com/vscode-icons/vscode-icons/pull/2629))
+- Feature: Support for `Ogone`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2628](https://github.com/vscode-icons/vscode-icons/pull/2628))
+- Enhancement: Extend icon suffix for `cpp` headers. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2621](https://github.com/vscode-icons/vscode-icons/pull/2621))
+- Feature: Support for `tuc`. ([@MortalFlesh](https://github.com/MortalFlesh) & [@KingDarBoja](https://github.com/KingDarBoja) in [#2620](https://github.com/vscode-icons/vscode-icons/pull/2620))
+
 ## 11.0.0 (September 17, 2020)
 
 - Enhancement: Support for `cjs/json5` for `prettier`. ([@shrujalshah28](https://github.com/shrujalshah28) in [#2612](https://github.com/vscode-icons/vscode-icons/pull/2612))
