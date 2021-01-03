@@ -1964,13 +1964,22 @@ export const extensions: IFileCollection = {
       icon: 'jest',
       extensions: [
         'jest.config.json',
+        'jest.config.base.json',
+        'jest.config.common.json',
         'jest.config.ts',
+        'jest.config.base.ts',
+        'jest.config.common.ts',
         'jest.json',
         '.jestrc',
         '.jestrc.js',
         '.jestrc.json',
       ],
-      filenamesGlob: ['jest.config', 'jest.config.babel'],
+      filenamesGlob: [
+        'jest.config',
+        'jest.config.base',
+        'jest.config.common',
+        'jest.config.babel'
+      ],
       extensionsGlob: ['js', 'cjs', 'mjs'],
       filename: true,
       format: FileFormat.svg,
