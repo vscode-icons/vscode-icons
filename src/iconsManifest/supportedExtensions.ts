@@ -1889,7 +1889,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'imba',
-      extensions: [],
+      extensions: ['imba','imba2'],
       languages: [languages.imba],
       format: FileFormat.svg,
     },
