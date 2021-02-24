@@ -380,14 +380,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ng_routing_ts',
-      extensions: ['app-routing.module.ts'],
+      extensions: ['-routing.module.ts'],
       filename: true,
       format: FileFormat.svg,
       disabled: true,
     },
     {
       icon: 'ng_routing_js',
-      extensions: ['app-routing.module.js'],
+      extensions: ['-routing.module.js'],
       filename: true,
       format: FileFormat.svg,
       disabled: true,
@@ -478,14 +478,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ng_routing_ts2',
-      extensions: ['app-routing.module.ts'],
+      extensions: ['-routing.module.ts'],
       filename: true,
       format: FileFormat.svg,
       disabled: true,
     },
     {
       icon: 'ng_routing_js2',
-      extensions: ['app-routing.module.js'],
+      extensions: ['-routing.module.js'],
       filename: true,
       format: FileFormat.svg,
       disabled: true,
