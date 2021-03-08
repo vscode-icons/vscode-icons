@@ -3606,6 +3606,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'sparql',
+      extensions: [],
+      languages: [languages.sparql],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sqf',
       extensions: [],
       languages: [languages.sqf],
