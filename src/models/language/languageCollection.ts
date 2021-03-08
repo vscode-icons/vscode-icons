@@ -196,6 +196,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   smarty: ILanguage;
   snort: ILanguage;
   solidity: ILanguage;
+  sparql: ILanguage;
   sqf: ILanguage;
   squirrel: ILanguage;
   stan: ILanguage;
