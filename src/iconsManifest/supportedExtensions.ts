@@ -3961,6 +3961,7 @@ export const extensions: IFileCollection = {
     { icon: 'vala', extensions: ['vala'], format: FileFormat.svg },
     { icon: 'vapi', extensions: ['vapi'], format: FileFormat.svg },
     { icon: 'vash', extensions: ['vash'], light: true, format: FileFormat.svg },
+    { icon: 'vapor', extensions: ['vapor.yml'], format: FileFormat.svg },
     {
       icon: 'vb',
       extensions: [],
