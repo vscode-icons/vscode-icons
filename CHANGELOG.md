@@ -1,5 +1,25 @@
 # Change Log
 
+## 11.2.0 (March 14, 2021)
+
+- Enhancement: Support for all `Serverless framework` extensions. ([@carlocorradini](https://github.com/carlocorradini) in [#2724](https://github.com/vscode-icons/vscode-icons/pull/2724))
+- Fix: Fix license link in README. ([@tywmick](https://github.com/tywmick) in [#2723](https://github.com/vscode-icons/vscode-icons/pull/2723))
+- Enhancement: Add more alias for `interfaces` folder. ([@george-hm](https://github.com/george-hm) in [#2722](https://github.com/vscode-icons/vscode-icons/pull/2722))
+- Feature: Support for `Laravel Vapor`. ([@d8vjork](https://github.com/d8vjork) in [#2720](https://github.com/vscode-icons/vscode-icons/pull/2720))
+- Feature: Support for `SPARQL`. ([@semkeijsper](https://github.com/semkeijsper) in [#2718](https://github.com/vscode-icons/vscode-icons/pull/2718))
+- Feature: Support for `Husky` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2716](https://github.com/vscode-icons/vscode-icons/pull/2716))
+- Feature: Support for `Bicep`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2715](https://github.com/vscode-icons/vscode-icons/pull/2715))
+- Feature: Support for `Vite`. ([@tmdh](https://github.com/tmdh) in [#2708](https://github.com/vscode-icons/vscode-icons/pull/2708))
+- Fix: Dependency bump. (Snyk & Dependabot in [#2700](https://github.com/vscode-icons/vscode-icons/pull/2700) & [#2721](https://github.com/vscode-icons/vscode-icons/pull/2721))
+- Enhancement: Add more extensions to `stylelint`. ([@vitalytv](https://github.com/vitalytv) in [#2699](https://github.com/vscode-icons/vscode-icons/pull/2699))
+- Enhancement: Add support for`mdx` extensions to `storybook`. ([@JamesBurnside](https://github.com/JamesBurnside) in [#2694](https://github.com/vscode-icons/vscode-icons/pull/2694))
+- Feature: Support for `CASC`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2692](https://github.com/vscode-icons/vscode-icons/pull/2692))
+- Enhancement: Update `Imba` icon to version 2.0. ([@ericvida](https://github.com/ericvida) in [#2684](https://github.com/vscode-icons/vscode-icons/pull/2684))
+- Enhancement: Add `jest common/shared` configuration file. ([@carlocorradini](https://github.com/carlocorradini) in [#2681](https://github.com/vscode-icons/vscode-icons/pull/2681))
+- Enhancement: Add plural forms to `api` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2680](https://github.com/vscode-icons/vscode-icons/pull/2690))
+- Enhancement: Add more language ids for `cfm`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2678](https://github.com/vscode-icons/vscode-icons/pull/2678))
+- Enhancement: Add more language ids for `jinja`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2677](https://github.com/vscode-icons/vscode-icons/pull/2677))
+
 ## 11.1.0 (January 01, 2021)
 
 - Fix: Differentiate `unlicence` spelling variant. ([@tywmick](https://github.com/tywmick) in [#2674](https://github.com/vscode-icons/vscode-icons/pull/2674))
