@@ -3658,7 +3658,7 @@ export const extensions: IFileCollection = {
       icon: 'stylelint',
       extensions: ['.stylelintrc', '.stylelintignore', '.stylelintcache'],
       filenamesGlob: ['stylelint.config', '.stylelintrc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml', 'ts'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml', 'ts', 'cjs'],
       light: true,
       filename: true,
       format: FileFormat.svg,
