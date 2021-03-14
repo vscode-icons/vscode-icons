@@ -295,7 +295,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'interfaces', extensions: ['interfaces'], format: FileFormat.svg },
+    {
+      icon: 'interfaces',
+      extensions: ['interface', 'interfaces'],
+      format: FileFormat.svg,
+    },
     { icon: 'ios', extensions: ['ios'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
     { icon: 'json', extensions: ['json'], format: FileFormat.svg },
