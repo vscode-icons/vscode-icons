@@ -802,6 +802,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'casc',
+      extensions: [],
+      languages: [languages.casc],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cddl',
       extensions: [],
       languages: [languages.cddl],
@@ -1895,7 +1901,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'imba',
-      extensions: [],
+      extensions: ['imba','imba2'],
       languages: [languages.imba],
       format: FileFormat.svg,
     },
@@ -1970,13 +1976,22 @@ export const extensions: IFileCollection = {
       icon: 'jest',
       extensions: [
         'jest.config.json',
+        'jest.config.base.json',
+        'jest.config.common.json',
         'jest.config.ts',
+        'jest.config.base.ts',
+        'jest.config.common.ts',
         'jest.json',
         '.jestrc',
         '.jestrc.js',
         '.jestrc.json',
       ],
-      filenamesGlob: ['jest.config', 'jest.config.babel'],
+      filenamesGlob: [
+        'jest.config',
+        'jest.config.base',
+        'jest.config.common',
+        'jest.config.babel'
+      ],
       extensionsGlob: ['js', 'cjs', 'mjs'],
       filename: true,
       format: FileFormat.svg,
@@ -3658,7 +3673,7 @@ export const extensions: IFileCollection = {
       icon: 'stylelint',
       extensions: ['.stylelintrc', '.stylelintignore', '.stylelintcache'],
       filenamesGlob: ['stylelint.config', '.stylelintrc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml', 'ts'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml', 'ts', 'cjs'],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -3693,7 +3708,7 @@ export const extensions: IFileCollection = {
       icon: 'storybook',
       extensions: [],
       filenamesGlob: ['story', 'stories'],
-      extensionsGlob: ['js', 'jsx', 'ts', 'tsx'],
+      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', '.mdx'],
       format: FileFormat.svg,
     },
     {
