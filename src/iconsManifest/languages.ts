@@ -286,7 +286,6 @@ export const languages: ILanguageCollection = {
   typescript: { ids: 'typescript', defaultExtension: 'ts' },
   typescriptreact: { ids: 'typescriptreact', defaultExtension: 'tsx' },
   typo3: { ids: 'typoscript', defaultExtension: 'typoscript' },
-  vapor: { ids: 'vapor', defaultExtension: 'vapor.yml' },
   vb: { ids: 'vb', defaultExtension: 'vb' },
   vba: { ids: 'vba', defaultExtension: 'cls' },
   vbscript: { ids: 'vbscript', defaultExtension: 'wsf' },

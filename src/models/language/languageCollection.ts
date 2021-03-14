@@ -225,7 +225,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   tuc: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
-  vapor: ILanguage;
   vba: ILanguage;
   vbscript: ILanguage;
   velocity: ILanguage;
