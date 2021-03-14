@@ -3520,7 +3520,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'serverless',
-      extensions: ['serverless.yml'],
+      extensions: [],
+      filenamesGlob: ['serverless'],
+      extensionsGlob: ['yml', 'json', 'js', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
