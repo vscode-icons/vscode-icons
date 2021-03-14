@@ -7,7 +7,11 @@ export const extensions: IFolderCollection = {
   },
   supported: [
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
-    { icon: 'api', extensions: ['api', '.api'], format: FileFormat.svg },
+    {
+      icon: 'api',
+      extensions: ['api', '.api', 'apis', '.apis'],
+      format: FileFormat.svg,
+    },
     { icon: 'app', extensions: ['app', '.app'], format: FileFormat.svg },
     {
       icon: 'arangodb',
@@ -261,6 +265,11 @@ export const extensions: IFolderCollection = {
       extensions: ['hook', '.hook', 'hooks', '.hooks'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'husky',
+      extensions: ['.husky'],
+      format: FileFormat.svg,
+    },
     { icon: 'idea', extensions: ['.idea'], format: FileFormat.svg },
     {
       icon: 'images',
@@ -295,7 +304,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'interfaces', extensions: ['interfaces'], format: FileFormat.svg },
+    {
+      icon: 'interfaces',
+      extensions: ['interface', 'interfaces'],
+      format: FileFormat.svg,
+    },
     { icon: 'ios', extensions: ['ios'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
     { icon: 'json', extensions: ['json'], format: FileFormat.svg },
