@@ -802,6 +802,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'casc',
+      extensions: [],
+      languages: [languages.casc],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cddl',
       extensions: [],
       languages: [languages.cddl],
