@@ -31,6 +31,7 @@ export const languages: ILanguageCollection = {
   bats: { ids: 'bats', defaultExtension: 'bats' },
   bazel: { ids: 'bazel', defaultExtension: 'bzl' },
   befunge: { ids: ['befunge', 'befunge98'], defaultExtension: 'bf' },
+  bicep: { ids: 'bicep', defaultExtension: 'bicep' },
   bibtex: { ids: 'bibtex', defaultExtension: 'bib' },
   biml: { ids: 'biml', defaultExtension: 'biml' },
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
