@@ -3842,7 +3842,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'text',
-      extensions: ['csv'],
+      extensions: ['csv', 'tsv'],
       languages: [languages.plaintext],
       format: FileFormat.svg,
     },
