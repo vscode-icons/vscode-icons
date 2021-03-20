@@ -1627,7 +1627,7 @@ export const extensions: IFileCollection = {
       icon: 'gitpod',
       extensions: [],
       filenamesGlob: ['.gitpod', 'gitpod'],
-      extensionsGlob: ['yaml', 'yml],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
