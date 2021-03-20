@@ -4329,6 +4329,8 @@ export const extensions: IFileCollection = {
         '.yarn-metadata.json',
         '.yarnignore',
       ],
+      filenamesGlob: ['.yarnrc'],
+      extensionsGlob: ['yml'],
       filename: true,
       format: FileFormat.svg,
     },
