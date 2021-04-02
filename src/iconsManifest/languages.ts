@@ -46,7 +46,7 @@ export const languages: ILanguageCollection = {
   cddl: { ids: 'cddl', defaultExtension: 'cddl' },
   ceylon: { ids: 'ceylon', defaultExtension: 'ceylon' },
   cfc: { ids: 'cfc', defaultExtension: 'cfc' },
-  cfm: { ids: ['cfmhtml', 'cfml'], defaultExtension: 'cfm' },
+  cfm: { ids: ['cfmhtml'], defaultExtension: 'cfm' },
   clojure: { ids: 'clojure', defaultExtension: 'clojure' },
   clojurescript: { ids: 'clojurescript', defaultExtension: 'clojurescript' },
   cloudfoundrymanifest: { ids: 'manifest-yaml', defaultExtension: 'yml' },
