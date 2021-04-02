@@ -2956,6 +2956,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pipeline',
+      extensions: ['pipeline'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'platformio',
       extensions: ['platformio.ini'],
       filename: true,
