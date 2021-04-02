@@ -1,5 +1,18 @@
 # Change Log
 
+## 11.3.0 (April 02, 2021)
+
+- Enhancement: Update `JSP` icon to `Jakarta SP`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2743](https://github.com/vscode-icons/vscode-icons/pull/2743))
+- Enhancement: Update `commitlint` extensions. ([@gperdomor](https://github.com/gperdomor) in [#2741](https://github.com/vscode-icons/vscode-icons/pull/2741))
+- Fix: Dependency bump. (Dependabot in [#2739](https://github.com/vscode-icons/vscode-icons/pull/2739))
+- Feature: Support for `Elyra Pipelines`. ([@bourdakos1](https://github.com/bourdakos1) in [#2738](https://github.com/vscode-icons/vscode-icons/pull/2738))
+- Feature: Support for `tailwind.config.json`. ([@mkvlrn](https://github.com/mkvlrn) in [#2732](https://github.com/vscode-icons/vscode-icons/pull/2732))
+- Feature: Support for `tsv`. ([@mMosiur](https://github.com/mMosiur) in [#2731](https://github.com/vscode-icons/vscode-icons/pull/2731))
+- Fix: Fix `mdx` extension for `StoryBook`. ([@JamesBurnside](https://github.com/JamesBurnside) in [#2729](https://github.com/vscode-icons/vscode-icons/pull/2729))
+- Fix: Remove wrong `cfm` language id. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2728](https://github.com/vscode-icons/vscode-icons/pull/2728))
+- Fix: Fix URL typo in Changelog entry. ([@kymckay](https://github.com/kymckay) in [#2727](https://github.com/vscode-icons/vscode-icons/pull/2727))
+- Feature: Support for `Glitter`. ([@robertohuertasm](https://github.com/robertohuertasm) & [@KingDarBoja](https://github.com/KingDarBoja) in [#2726](https://github.com/vscode-icons/vscode-icons/pull/2726))
+
 ## 11.2.0 (March 14, 2021)
 
 - Enhancement: Support for all `Serverless framework` extensions. ([@carlocorradini](https://github.com/carlocorradini) in [#2724](https://github.com/vscode-icons/vscode-icons/pull/2724))
