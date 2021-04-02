@@ -16,7 +16,7 @@
 - Feature: Support for `CASC`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2692](https://github.com/vscode-icons/vscode-icons/pull/2692))
 - Enhancement: Update `Imba` icon to version 2.0. ([@ericvida](https://github.com/ericvida) in [#2684](https://github.com/vscode-icons/vscode-icons/pull/2684))
 - Enhancement: Add `jest common/shared` configuration file. ([@carlocorradini](https://github.com/carlocorradini) in [#2681](https://github.com/vscode-icons/vscode-icons/pull/2681))
-- Enhancement: Add plural forms to `api` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2680](https://github.com/vscode-icons/vscode-icons/pull/2690))
+- Enhancement: Add plural forms to `api` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2680](https://github.com/vscode-icons/vscode-icons/pull/2680))
 - Enhancement: Add more language ids for `cfm`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2678](https://github.com/vscode-icons/vscode-icons/pull/2678))
 - Enhancement: Add more language ids for `jinja`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2677](https://github.com/vscode-icons/vscode-icons/pull/2677))
 
