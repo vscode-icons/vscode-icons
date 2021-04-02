@@ -1636,6 +1636,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'glitter',
+      extensions: ['.glitterrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'glsl',
       extensions: [],
       languages: [languages.glsl],
