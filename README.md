@@ -25,6 +25,11 @@ Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**mini
 
 ---
 
+## Gold Sponsors
+
+<p><a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_vscodeicons.png"></a></br>
+Manage pull requests and conduct code reviews in your IDE with full source-tree context. Comment on any line, not just the diffs. Use jump-to-definition, your favorite keybindings, and code intelligence with more of your workflow.<br> <a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner">Learn More</a></p>
+
 ## Installation
 
 To install the extension just execute the following command:
