@@ -1638,6 +1638,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'glitter',
+      extensions: ['.glitterrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'glsl',
       extensions: [],
       languages: [languages.glsl],
@@ -3718,7 +3724,7 @@ export const extensions: IFileCollection = {
       icon: 'storybook',
       extensions: [],
       filenamesGlob: ['story', 'stories'],
-      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', '.mdx'],
+      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
       format: FileFormat.svg,
     },
     {
@@ -3784,7 +3790,7 @@ export const extensions: IFileCollection = {
       icon: 'tailwind',
       extensions: [],
       filenamesGlob: ['tailwind', 'tailwind.config'],
-      extensionsGlob: ['js', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'coffee', 'ts', 'json'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3844,7 +3850,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'text',
-      extensions: ['csv'],
+      extensions: ['csv', 'tsv'],
       languages: [languages.plaintext],
       format: FileFormat.svg,
     },
