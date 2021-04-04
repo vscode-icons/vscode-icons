@@ -934,6 +934,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'codeql',
+      extensions: [],
+      languages: [languages.codeql],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'codacy',
       extensions: ['.codacy.yml', '.codacy.yaml'],
       light: true,

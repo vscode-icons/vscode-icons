@@ -53,6 +53,7 @@ export const languages: ILanguageCollection = {
   cmake: { ids: 'cmake', defaultExtension: 'cmake' },
   cmakecache: { ids: 'cmake-cache', defaultExtension: 'CMakeCache.txt' },
   cobol: { ids: 'cobol', defaultExtension: 'cbl' },
+  codeql: { ids: 'ql', defaultExtension: 'ql' },
   coffeescript: { ids: 'coffeescript', defaultExtension: 'coffee' },
   coldfusion: { ids: ['cfml', 'lang-cfml'], defaultExtension: 'cfml' },
   confluence: { ids: ['confluence'], defaultExtension: 'confluence' },
