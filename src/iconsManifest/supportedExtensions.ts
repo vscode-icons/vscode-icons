@@ -1638,6 +1638,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gitpod',
+      extensions: [],
+      filenamesGlob: ['.gitpod', 'gitpod'],
+      extensionsGlob: ['yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'glide',
       extensions: ['glide.yml'],
       filename: true,
