@@ -27,6 +27,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   ballerina: ILanguage;
   bats: ILanguage;
   bazel: ILanguage;
+  bicep: ILanguage;
   befunge: ILanguage;
   bibtex: ILanguage;
   biml: ILanguage;
@@ -46,6 +47,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cmake: ILanguage;
   cmakecache: ILanguage;
   cobol: ILanguage;
+  codeql: ILanguage;
   coldfusion: ILanguage;
   confluence: ILanguage;
   cookbook: ILanguage;
@@ -197,6 +199,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   smarty: ILanguage;
   snort: ILanguage;
   solidity: ILanguage;
+  sparql: ILanguage;
   sqf: ILanguage;
   squirrel: ILanguage;
   stan: ILanguage;
