@@ -1,5 +1,10 @@
 # Change Log
 
+## 11.4.0 (April 04, 2021)
+
+- Feature: Support for `CodeQL`. ([@lrecknagel](https://github.com/lrecknagel) in [#2735](https://github.com/vscode-icons/vscode-icons/pull/2735))
+- Feature: Support for `Gitpod` config file. ([@mikenikles](https://github.com/mikenikles) in [#2696](https://github.com/vscode-icons/vscode-icons/pull/2696))
+
 ## 11.3.0 (April 02, 2021)
 
 - Enhancement: Update `JSP` icon to `Jakarta SP`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2743](https://github.com/vscode-icons/vscode-icons/pull/2743))
