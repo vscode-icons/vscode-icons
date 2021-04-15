@@ -2972,7 +2972,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'pipeline',
       extensions: ['pipeline'],
-      filename: true,
       format: FileFormat.svg,
     },
     {
