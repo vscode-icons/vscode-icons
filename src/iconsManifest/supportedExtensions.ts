@@ -1203,6 +1203,7 @@ export const extensions: IFileCollection = {
       icon: 'docker',
       extensions: [],
       filenamesGlob: [
+        'compose',
         'docker-compose',
         'docker-compose.ci-build',
         'docker-compose.override',
@@ -1210,7 +1211,7 @@ export const extensions: IFileCollection = {
         'docker-compose.vs.release',
         'docker-cloud',
       ],
-      extensionsGlob: ['yml'],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
       languages: [languages.dockerfile, languages.dockerignore],
       format: FileFormat.svg,
@@ -1219,6 +1220,7 @@ export const extensions: IFileCollection = {
       icon: 'docker2',
       extensions: [],
       filenamesGlob: [
+        'compose',
         'docker-compose',
         'docker-compose.ci-build',
         'docker-compose.override',
@@ -1226,7 +1228,7 @@ export const extensions: IFileCollection = {
         'docker-compose.vs.release',
         'docker-cloud',
       ],
-      extensionsGlob: ['yml'],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
       languages: [languages.dockerfile, languages.dockerignore],
       format: FileFormat.svg,
