@@ -216,6 +216,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   systemd: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
+  teal: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;
   terraform: ILanguage;

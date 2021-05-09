@@ -3814,6 +3814,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'teal',
+      extensions: [],
+      languages: [languages.teal],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tt',
       extensions: ['tt2'],
       languages: [languages.templatetoolkit],
