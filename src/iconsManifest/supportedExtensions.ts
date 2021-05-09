@@ -2793,6 +2793,12 @@ export const extensions: IFileCollection = {
       extensions: ['one', 'onepkg', 'onetoc', 'onetoc2', 'sig'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'openscad',
+      extensions: [],
+      languages: [languages.scad],
+      format: FileFormat.svg,
+    },
     { icon: 'opencl', extensions: ['cl', 'opencl'], format: FileFormat.svg },
     {
       icon: 'openHAB',
