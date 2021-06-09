@@ -889,7 +889,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'chef',
-      extensions: ['chefignore', 'berksfile', 'berksfile.lock', 'policyfile.rb', 'policyfile.lock.json', ],
+      extensions: ['chefignore', 'berksfile', 'berksfile.lock', 'policyfile.rb', 'policyfile.lock.json'],
       filename: true,
       format: FileFormat.svg,
     },
