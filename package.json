@@ -118,6 +118,11 @@
     "semver": "^7.3.2"
   },
   "preview": false,
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
   "categories": [
     "Themes"
   ],
