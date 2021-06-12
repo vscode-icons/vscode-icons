@@ -32,7 +32,7 @@ Manage pull requests and conduct code reviews in your IDE with full source-tree 
 
 ## Installation
 
-To install the extension just execute the following command:
+To install the extension just execute the following command in the Command Palette of Visual Studio Code:
 
 ```sh
 ext install vscode-icons
