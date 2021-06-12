@@ -134,6 +134,11 @@ export const extensions: IFolderCollection = {
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
     { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
     {
+      icon: 'dapr',
+      extensions: ['.dapr', 'dapr'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'db',
       extensions: [
         'db',
