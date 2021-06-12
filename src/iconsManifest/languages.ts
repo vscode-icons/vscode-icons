@@ -268,6 +268,7 @@ export const languages: ILanguageCollection = {
   san: { ids: 'san', defaultExtension: 'san' },
   sas: { ids: 'SAS', defaultExtension: 'sas' },
   sbt: { ids: 'sbt', defaultExtension: 'sbt' },
+  scad: { ids: 'scad', defaultExtension: 'scad' },
   scala: { ids: 'scala', defaultExtension: 'scala' },
   scilab: { ids: 'scilab', defaultExtension: 'sce' },
   scss: { ids: 'scss', defaultExtension: 'scss' },
