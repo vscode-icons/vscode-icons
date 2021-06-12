@@ -118,6 +118,9 @@
     "semver": "^7.3.2"
   },
   "preview": false,
+  "capabilities": {
+    "virtualWorkspaces": true
+  },
   "categories": [
     "Themes"
   ],
