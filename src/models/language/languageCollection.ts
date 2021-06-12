@@ -188,6 +188,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   san: ILanguage;
   sas: ILanguage;
   sbt: ILanguage;
+  scad: ILanguage;
   scala: ILanguage;
   scilab: ILanguage;
   sdlang: ILanguage;
