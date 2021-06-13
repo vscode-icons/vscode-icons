@@ -119,6 +119,7 @@
   },
   "preview": false,
   "capabilities": {
+    "virtualWorkspaces": true,
     "untrustedWorkspaces": {
       "supported": true
     }
