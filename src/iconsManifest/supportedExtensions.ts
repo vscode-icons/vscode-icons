@@ -3515,6 +3515,7 @@ export const extensions: IFileCollection = {
       icon: 'rust',
       extensions: [],
       languages: [languages.rust],
+      light: true,
       format: FileFormat.svg,
     },
     {
