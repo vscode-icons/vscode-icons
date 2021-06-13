@@ -27,6 +27,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   ballerina: ILanguage;
   bats: ILanguage;
   bazel: ILanguage;
+  bicep: ILanguage;
   befunge: ILanguage;
   bibtex: ILanguage;
   biml: ILanguage;
@@ -46,6 +47,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cmake: ILanguage;
   cmakecache: ILanguage;
   cobol: ILanguage;
+  codeql: ILanguage;
   coldfusion: ILanguage;
   confluence: ILanguage;
   cookbook: ILanguage;
@@ -126,6 +128,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   lex: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
+  log: ILanguage;
   lolcode: ILanguage;
   lsl: ILanguage;
   marko: ILanguage;
@@ -186,6 +189,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   san: ILanguage;
   sas: ILanguage;
   sbt: ILanguage;
+  scad: ILanguage;
   scala: ILanguage;
   scilab: ILanguage;
   sdlang: ILanguage;
@@ -197,6 +201,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   smarty: ILanguage;
   snort: ILanguage;
   solidity: ILanguage;
+  sparql: ILanguage;
   sqf: ILanguage;
   squirrel: ILanguage;
   stan: ILanguage;
@@ -213,6 +218,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   systemd: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
+  teal: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;
   terraform: ILanguage;

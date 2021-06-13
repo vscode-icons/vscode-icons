@@ -134,6 +134,11 @@ export const extensions: IFolderCollection = {
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
     { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
     {
+      icon: 'dapr',
+      extensions: ['.dapr', 'dapr'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'db',
       extensions: [
         'db',
@@ -263,6 +268,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'hook',
       extensions: ['hook', '.hook', 'hooks', '.hooks'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'husky',
+      extensions: ['.husky'],
       format: FileFormat.svg,
     },
     { icon: 'idea', extensions: ['.idea'], format: FileFormat.svg },
