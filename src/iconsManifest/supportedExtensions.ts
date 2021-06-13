@@ -2281,6 +2281,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'licensebat',
+      extensions: ['.licrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lighthouse',
       extensions: [],
       filenamesGlob: ['.lighthouserc'],
