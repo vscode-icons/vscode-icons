@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "11.0.0",
+  "version": "11.4.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -111,13 +111,19 @@
   },
   "dependencies": {
     "inversify": "^5.0.1",
-    "lodash": "^4.17.20",
-    "open": "^7.2.1",
+    "lodash": "^4.17.21",
     "nsri": "^6.0.0",
+    "open": "^7.2.1",
     "reflect-metadata": "^0.1.13",
     "semver": "^7.3.2"
   },
   "preview": false,
+  "capabilities": {
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
   "categories": [
     "Themes"
   ],

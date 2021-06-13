@@ -1,5 +1,62 @@
 # Change Log
 
+## 11.4.0 (April 04, 2021)
+
+- Feature: Support for `CodeQL`. ([@lrecknagel](https://github.com/lrecknagel) in [#2735](https://github.com/vscode-icons/vscode-icons/pull/2735))
+- Feature: Support for `Gitpod` config file. ([@mikenikles](https://github.com/mikenikles) in [#2696](https://github.com/vscode-icons/vscode-icons/pull/2696))
+
+## 11.3.0 (April 02, 2021)
+
+- Enhancement: Update `JSP` icon to `Jakarta SP`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2743](https://github.com/vscode-icons/vscode-icons/pull/2743))
+- Enhancement: Update `commitlint` extensions. ([@gperdomor](https://github.com/gperdomor) in [#2741](https://github.com/vscode-icons/vscode-icons/pull/2741))
+- Fix: Dependency bump. (Dependabot in [#2739](https://github.com/vscode-icons/vscode-icons/pull/2739))
+- Feature: Support for `Elyra Pipelines`. ([@bourdakos1](https://github.com/bourdakos1) in [#2738](https://github.com/vscode-icons/vscode-icons/pull/2738))
+- Feature: Support for `tailwind.config.json`. ([@mkvlrn](https://github.com/mkvlrn) in [#2732](https://github.com/vscode-icons/vscode-icons/pull/2732))
+- Feature: Support for `tsv`. ([@mMosiur](https://github.com/mMosiur) in [#2731](https://github.com/vscode-icons/vscode-icons/pull/2731))
+- Fix: Fix `mdx` extension for `StoryBook`. ([@JamesBurnside](https://github.com/JamesBurnside) in [#2729](https://github.com/vscode-icons/vscode-icons/pull/2729))
+- Fix: Remove wrong `cfm` language id. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2728](https://github.com/vscode-icons/vscode-icons/pull/2728))
+- Fix: Fix URL typo in Changelog entry. ([@kymckay](https://github.com/kymckay) in [#2727](https://github.com/vscode-icons/vscode-icons/pull/2727))
+- Feature: Support for `Glitter`. ([@robertohuertasm](https://github.com/robertohuertasm) & [@KingDarBoja](https://github.com/KingDarBoja) in [#2726](https://github.com/vscode-icons/vscode-icons/pull/2726))
+
+## 11.2.0 (March 14, 2021)
+
+- Enhancement: Support for all `Serverless framework` extensions. ([@carlocorradini](https://github.com/carlocorradini) in [#2724](https://github.com/vscode-icons/vscode-icons/pull/2724))
+- Fix: Fix license link in README. ([@tywmick](https://github.com/tywmick) in [#2723](https://github.com/vscode-icons/vscode-icons/pull/2723))
+- Enhancement: Add more alias for `interfaces` folder. ([@george-hm](https://github.com/george-hm) in [#2722](https://github.com/vscode-icons/vscode-icons/pull/2722))
+- Feature: Support for `Laravel Vapor`. ([@d8vjork](https://github.com/d8vjork) in [#2720](https://github.com/vscode-icons/vscode-icons/pull/2720))
+- Feature: Support for `SPARQL`. ([@semkeijsper](https://github.com/semkeijsper) in [#2718](https://github.com/vscode-icons/vscode-icons/pull/2718))
+- Feature: Support for `Husky` folder. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2716](https://github.com/vscode-icons/vscode-icons/pull/2716))
+- Feature: Support for `Bicep`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2715](https://github.com/vscode-icons/vscode-icons/pull/2715))
+- Feature: Support for `Vite`. ([@tmdh](https://github.com/tmdh) in [#2708](https://github.com/vscode-icons/vscode-icons/pull/2708))
+- Fix: Dependency bump. (Snyk & Dependabot in [#2700](https://github.com/vscode-icons/vscode-icons/pull/2700) & [#2721](https://github.com/vscode-icons/vscode-icons/pull/2721))
+- Enhancement: Add more extensions to `stylelint`. ([@vitalytv](https://github.com/vitalytv) in [#2699](https://github.com/vscode-icons/vscode-icons/pull/2699))
+- Enhancement: Add support for`mdx` extensions to `storybook`. ([@JamesBurnside](https://github.com/JamesBurnside) in [#2694](https://github.com/vscode-icons/vscode-icons/pull/2694))
+- Feature: Support for `CASC`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2692](https://github.com/vscode-icons/vscode-icons/pull/2692))
+- Enhancement: Update `Imba` icon to version 2.0. ([@ericvida](https://github.com/ericvida) in [#2684](https://github.com/vscode-icons/vscode-icons/pull/2684))
+- Enhancement: Add `jest common/shared` configuration file. ([@carlocorradini](https://github.com/carlocorradini) in [#2681](https://github.com/vscode-icons/vscode-icons/pull/2681))
+- Enhancement: Add plural forms to `api` folder. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2680](https://github.com/vscode-icons/vscode-icons/pull/2680))
+- Enhancement: Add more language ids for `cfm`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2678](https://github.com/vscode-icons/vscode-icons/pull/2678))
+- Enhancement: Add more language ids for `jinja`. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2677](https://github.com/vscode-icons/vscode-icons/pull/2677))
+
+## 11.1.0 (January 01, 2021)
+
+- Fix: Differentiate `unlicence` spelling variant. ([@tywmick](https://github.com/tywmick) in [#2674](https://github.com/vscode-icons/vscode-icons/pull/2674))
+- Feature: Support for `TypeDoc`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2669](https://github.com/vscode-icons/vscode-icons/pull/2669))
+- Enhancement: Add `Gulpfile.mjs` support. ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo) in [#2665](https://github.com/vscode-icons/vscode-icons/pull/2665))
+- Enhancement: Make `MDX` a code language. ([@tywmick](https://github.com/tywmick) in [#2661](https://github.com/vscode-icons/vscode-icons/pull/2661))
+- Enhancement: Add `jest.config.ts` extension. ([@carlocorradini](https://github.com/carlocorradini) in [#2657](https://github.com/vscode-icons/vscode-icons/pull/2657))
+- Feature: Support for `Unlicense`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2651](https://github.com/vscode-icons/vscode-icons/pull/2651))
+- Feature: Support for `py.typed`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2650](https://github.com/vscode-icons/vscode-icons/pull/2650))
+- Feature: Support for `Tiltfile`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2649](https://github.com/vscode-icons/vscode-icons/pull/2649))
+- Enhancement: Add `COPYING` filename associations to `license` icon. ([@tywmick](https://github.com/tywmick) in [#2643](https://github.com/vscode-icons/vscode-icons/pull/2643))
+- Feature: Support for `.hypr` & `.hypr.live` files. ([@Temu4](https://github.com/Temu4) in [#2641](https://github.com/vscode-icons/vscode-icons/pull/2641))
+- Enhancement: Add `clients` extension to folder icons. ([@Kleywalker](https://github.com/Kleywalker) in [#2638](https://github.com/vscode-icons/vscode-icons/pull/2638))
+- Feature: Support for `.snupkg` files. ([@teo-tsirpanis](https://github.com/teo-tsirpanis) in [#2632](https://github.com/vscode-icons/vscode-icons/pull/2632))
+- Feature: Support for `FaunaDB`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2629](https://github.com/vscode-icons/vscode-icons/pull/2629))
+- Feature: Support for `Ogone`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2628](https://github.com/vscode-icons/vscode-icons/pull/2628))
+- Enhancement: Extend icon suffix for `cpp` headers. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2621](https://github.com/vscode-icons/vscode-icons/pull/2621))
+- Feature: Support for `tuc`. ([@MortalFlesh](https://github.com/MortalFlesh) & [@KingDarBoja](https://github.com/KingDarBoja) in [#2620](https://github.com/vscode-icons/vscode-icons/pull/2620))
+
 ## 11.0.0 (September 17, 2020)
 
 - Enhancement: Support for `cjs/json5` for `prettier`. ([@shrujalshah28](https://github.com/shrujalshah28) in [#2612](https://github.com/vscode-icons/vscode-icons/pull/2612))

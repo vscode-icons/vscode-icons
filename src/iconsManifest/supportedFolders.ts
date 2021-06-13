@@ -7,7 +7,11 @@ export const extensions: IFolderCollection = {
   },
   supported: [
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
-    { icon: 'api', extensions: ['api', '.api'], format: FileFormat.svg },
+    {
+      icon: 'api',
+      extensions: ['api', '.api', 'apis', '.apis'],
+      format: FileFormat.svg,
+    },
     { icon: 'app', extensions: ['app', '.app'], format: FileFormat.svg },
     {
       icon: 'arangodb',
@@ -95,7 +99,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'client', extensions: ['client'], format: FileFormat.svg },
+    {
+      icon: 'client',
+      extensions: ['client', 'clients'],
+      format: FileFormat.svg,
+    },
     { icon: 'cmake', extensions: ['.cmake', 'cmake'], format: FileFormat.svg },
     {
       icon: 'config',
@@ -125,6 +133,11 @@ export const extensions: IFolderCollection = {
     { icon: 'css', extensions: ['css', '_css'], format: FileFormat.svg },
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
     { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
+    {
+      icon: 'dapr',
+      extensions: ['.dapr', 'dapr'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'db',
       extensions: [
@@ -257,6 +270,11 @@ export const extensions: IFolderCollection = {
       extensions: ['hook', '.hook', 'hooks', '.hooks'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'husky',
+      extensions: ['.husky'],
+      format: FileFormat.svg,
+    },
     { icon: 'idea', extensions: ['.idea'], format: FileFormat.svg },
     {
       icon: 'images',
@@ -291,7 +309,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'interfaces', extensions: ['interfaces'], format: FileFormat.svg },
+    {
+      icon: 'interfaces',
+      extensions: ['interface', 'interfaces'],
+      format: FileFormat.svg,
+    },
     { icon: 'ios', extensions: ['ios'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
     { icon: 'json', extensions: ['json'], format: FileFormat.svg },

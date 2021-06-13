@@ -25,9 +25,14 @@ Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**mini
 
 ---
 
+## Gold Sponsors
+
+<p><a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_vscodeicons.png"></a></br>
+Manage pull requests and conduct code reviews in your IDE with full source-tree context. Comment on any line, not just the diffs. Use jump-to-definition, your favorite keybindings, and code intelligence with more of your workflow.<br> <a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner">Learn More</a></p>
+
 ## Installation
 
-To install the extension just execute the following command:
+To install the extension just execute the following command in the Command Palette of Visual Studio Code:
 
 ```sh
 ext install vscode-icons
@@ -98,7 +103,7 @@ Kudos to all [contributors](https://github.com/vscode-icons/vscode-icons/graphs/
 
 ## License
 
-The source code is licensed under the [MIT](License) license.
+The source code is licensed under the [MIT](LICENSE) license.
 
 The icons are licensed under the [Creative Commons - ShareAlike (CC BY-SA)](https://creativecommons.org/licenses/by-sa/4.0/) license.
 
