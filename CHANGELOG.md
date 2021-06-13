@@ -2,6 +2,7 @@
 
 ## 11.5.0 (June 13, 2021)
 
+- Fix: Set `vsce` version to 1.88.0. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2796](https://github.com/vscode-icons/vscode-icons/pull/2796))
 - Enhancement: Added light version of the  `Rust toolchain` icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2794](https://github.com/vscode-icons/vscode-icons/pull/2794))
 - Feature: Support for `Licensebat` configuration file. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2793](https://github.com/vscode-icons/vscode-icons/pull/2793))
 - Feature: Support for untrusted workspaces. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2792](https://github.com/vscode-icons/vscode-icons/pull/2792))

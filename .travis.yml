@@ -54,7 +54,7 @@ jobs:
       os: linux
       node_js: 12.4.0
       before_script: skip
-      script: npx vsce publish -p $VSCE_TOKEN
+      script: npx vsce@1.88.0 publish -p $VSCE_TOKEN
       after_script: skip
 
     - stage: docker vsi:latest
