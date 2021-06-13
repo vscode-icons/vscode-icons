@@ -3522,6 +3522,7 @@ export const extensions: IFileCollection = {
       icon: 'rust_toolchain',
       extensions: ['rust-toolchain'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
