@@ -5,6 +5,8 @@ export enum IconNames {
   jsOfficial = 'js_official',
   ts = 'typescript',
   tsOfficial = 'typescript_official',
+  tsConfig = 'tsconfig',
+  tsConfigOfficial = 'tsconfig_official',
   tsDef = 'typescriptdef',
   tsDefOfficial = 'typescriptdef_official',
   json = 'json',
