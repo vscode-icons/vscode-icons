@@ -1,5 +1,42 @@
 # Change Log
 
+## 11.5.0 (June 13, 2021)
+
+- Enhancement: Added light version of the  `Rust toolchain` icon. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2794](https://github.com/vscode-icons/vscode-icons/pull/2794))
+- Feature: Support for `Licensebat` configuration file. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2793](https://github.com/vscode-icons/vscode-icons/pull/2793))
+- Feature: Support for untrusted workspaces. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2792](https://github.com/vscode-icons/vscode-icons/pull/2792))
+- Feature: Support for virtual workspaces. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2791](https://github.com/vscode-icons/vscode-icons/pull/2791))
+- Enhancement: Support for `log` language id. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2790](https://github.com/vscode-icons/vscode-icons/pull/2790))
+- Enhancement: Updated readme with more beginner friendly explanation. ([@You-saku](https://github.com/You-saku) in [#2789](https://github.com/vscode-icons/vscode-icons/pull/2789))
+- Fix: Updated `Chef` policy files extensions. ([@tas50](https://github.com/tas50) in [#2784](https://github.com/vscode-icons/vscode-icons/pull/2784))
+- Feature: Support for `Astro`. ([@natemoo-re](https://github.com/natemoo-re) in [#2774](https://github.com/vscode-icons/vscode-icons/pull/2774))
+- Feature: Support for `Dapr` folder icon. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2771](https://github.com/vscode-icons/vscode-icons/pull/2771))
+- Feature: Support for `Teal`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2769](https://github.com/vscode-icons/vscode-icons/pull/2769))
+- Feature: Support for `OpenSCAD`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2768](https://github.com/vscode-icons/vscode-icons/pull/2768))
+- Enhancement: Extend `Docker` with `compose` plus yaml extension. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2767](https://github.com/vscode-icons/vscode-icons/pull/2767))
+- Enhancement: Support `cjs` config file for `postcss` and `tailwind`. ([@KoichiKiyokawa](https://github.com/KoichiKiyokawa) in [#2764](https://github.com/vscode-icons/vscode-icons/pull/2764))
+- Fix: Fix manifest entry for `pipeline`. ([@bourdakos1](https://github.com/bourdakos1) in [#2750](https://github.com/vscode-icons/vscode-icons/pull/2750))
+- Enhancement: Support for official `Rust` icon in light themes. ([@mehcode](https://github.com/mehcode) in [#2683](https://github.com/vscode-icons/vscode-icons/pull/2683))
+- Enhancement: Make official `tsconfig` icon available. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2630](https://github.com/vscode-icons/vscode-icons/pull/2630))
+
+## 11.4.0 (April 04, 2021)
+
+- Feature: Support for `CodeQL`. ([@lrecknagel](https://github.com/lrecknagel) in [#2735](https://github.com/vscode-icons/vscode-icons/pull/2735))
+- Feature: Support for `Gitpod` config file. ([@mikenikles](https://github.com/mikenikles) in [#2696](https://github.com/vscode-icons/vscode-icons/pull/2696))
+
+## 11.3.0 (April 02, 2021)
+
+- Enhancement: Update `JSP` icon to `Jakarta SP`. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2743](https://github.com/vscode-icons/vscode-icons/pull/2743))
+- Enhancement: Update `commitlint` extensions. ([@gperdomor](https://github.com/gperdomor) in [#2741](https://github.com/vscode-icons/vscode-icons/pull/2741))
+- Fix: Dependency bump. (Dependabot in [#2739](https://github.com/vscode-icons/vscode-icons/pull/2739))
+- Feature: Support for `Elyra Pipelines`. ([@bourdakos1](https://github.com/bourdakos1) in [#2738](https://github.com/vscode-icons/vscode-icons/pull/2738))
+- Feature: Support for `tailwind.config.json`. ([@mkvlrn](https://github.com/mkvlrn) in [#2732](https://github.com/vscode-icons/vscode-icons/pull/2732))
+- Feature: Support for `tsv`. ([@mMosiur](https://github.com/mMosiur) in [#2731](https://github.com/vscode-icons/vscode-icons/pull/2731))
+- Fix: Fix `mdx` extension for `StoryBook`. ([@JamesBurnside](https://github.com/JamesBurnside) in [#2729](https://github.com/vscode-icons/vscode-icons/pull/2729))
+- Fix: Remove wrong `cfm` language id. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2728](https://github.com/vscode-icons/vscode-icons/pull/2728))
+- Fix: Fix URL typo in Changelog entry. ([@kymckay](https://github.com/kymckay) in [#2727](https://github.com/vscode-icons/vscode-icons/pull/2727))
+- Feature: Support for `Glitter`. ([@robertohuertasm](https://github.com/robertohuertasm) & [@KingDarBoja](https://github.com/KingDarBoja) in [#2726](https://github.com/vscode-icons/vscode-icons/pull/2726))
+
 ## 11.2.0 (March 14, 2021)
 
 - Enhancement: Support for all `Serverless framework` extensions. ([@carlocorradini](https://github.com/carlocorradini) in [#2724](https://github.com/vscode-icons/vscode-icons/pull/2724))
