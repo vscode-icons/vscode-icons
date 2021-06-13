@@ -119,7 +119,10 @@
   },
   "preview": false,
   "capabilities": {
-    "virtualWorkspaces": true
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
   },
   "categories": [
     "Themes"

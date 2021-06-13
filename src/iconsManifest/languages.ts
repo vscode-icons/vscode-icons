@@ -184,6 +184,7 @@ export const languages: ILanguageCollection = {
   lex: { ids: 'lex', defaultExtension: 'flex' },
   lisp: { ids: 'lisp', defaultExtension: 'lisp' },
   literatehaskell: { ids: ['literate haskell'], defaultExtension: 'lhs' },
+  log: { ids: 'log', defaultExtension: 'log' },
   lolcode: { ids: 'lolcode', defaultExtension: 'lol' },
   lsl: { ids: 'lsl', defaultExtension: 'lsl' },
   lua: { ids: 'lua', defaultExtension: 'lua' },

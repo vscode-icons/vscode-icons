@@ -2315,6 +2315,12 @@ export const extensions: IFileCollection = {
     { icon: 'locale', extensions: [], format: FileFormat.svg },
     { icon: 'log', extensions: ['log', 'tlg'], format: FileFormat.svg },
     {
+      icon: 'log',
+      extensions: ['log', 'tlg'],
+      languages: [languages.log],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lolcode',
       extensions: [],
       languages: [languages.lolcode],
