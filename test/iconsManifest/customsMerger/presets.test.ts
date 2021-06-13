@@ -384,75 +384,85 @@ describe('CustomsMerger: toggle presets tests', function () {
       });
     });
 
-    context(`'Typescript' and 'Definition' official icons can be`, function () {
-      it('enabled and disabled', async function () {
-        const toggle = async (
-          enable: boolean,
-        ): Promise<Record<string, IFileExtension[]>> => {
-          vsicons.presets.tsOfficial = enable;
-          const { files } = await CustomsMerger.merge(
-            null,
-            extFiles,
-            null,
-            extFolders,
-            vsicons.presets,
+    context(
+      `'Typescript', 'Config' and 'Definition' official icons can be`,
+      function () {
+        it('enabled and disabled', async function () {
+          const toggle = async (
+            enable: boolean,
+          ): Promise<Record<string, IFileExtension[]>> => {
+            vsicons.presets.tsOfficial = enable;
+            const { files } = await CustomsMerger.merge(
+              null,
+              extFiles,
+              null,
+              extFolders,
+              vsicons.presets,
+            );
+
+            return {
+              tsDefs: files.supported.filter(
+                (file: IFileExtension) => file.icon === IconNames.ts,
+              ),
+              officialTsDefs: files.supported.filter(
+                (file: IFileExtension) => file.icon === IconNames.tsOfficial,
+              ),
+              tsConfig: files.supported.filter(
+                (file: IFileExtension) => file.icon === IconNames.tsConfig,
+              ),
+              tsConfigOfficial: files.supported.filter(
+                (file: IFileExtension) =>
+                  file.icon === IconNames.tsConfigOfficial,
+              ),
+              typesDefs: files.supported.filter(
+                (file: IFileExtension) => file.icon === IconNames.tsDef,
+              ),
+              officialTypesDefs: files.supported.filter(
+                (file: IFileExtension) => file.icon === IconNames.tsDefOfficial,
+              ),
+            };
+          };
+
+          // Set TS Official icon as enabled
+          let icons = await toggle(true);
+
+          icons.tsDefs.forEach(
+            (def: IFileExtension) => expect(def.disabled).to.be.true,
+          );
+          icons.officialTsDefs.forEach(
+            (officialDef: IFileExtension) =>
+              expect(officialDef.disabled).to.be.false,
           );
 
-          return {
-            tsDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.ts,
-            ),
-            officialTsDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.tsOfficial,
-            ),
-            typesDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.tsDef,
-            ),
-            officialTypesDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.tsDefOfficial,
-            ),
-          };
-        };
+          icons.typesDefs.forEach(
+            (def: IFileExtension) => expect(def.disabled).to.be.true,
+          );
+          icons.officialTypesDefs.forEach(
+            (officialDef: IFileExtension) =>
+              expect(officialDef.disabled).to.be.false,
+          );
 
-        // Set TS Official icon as enabled
-        let icons = await toggle(true);
+          // Set TS Official icon as disabled
+          icons = await toggle(false);
 
-        icons.tsDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
-        );
-        icons.officialTsDefs.forEach(
-          (officialDef: IFileExtension) =>
-            expect(officialDef.disabled).to.be.false,
-        );
+          icons.tsDefs.forEach(
+            (def: IFileExtension) => expect(def.disabled).to.be.false,
+          );
+          icons.officialTsDefs.forEach(
+            (officialDef: IFileExtension) =>
+              expect(officialDef.disabled).to.be.true,
+          );
 
-        icons.typesDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
-        );
-        icons.officialTypesDefs.forEach(
-          (officialDef: IFileExtension) =>
-            expect(officialDef.disabled).to.be.false,
-        );
-
-        // Set TS Official icon as disabled
-        icons = await toggle(false);
-
-        icons.tsDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
-        );
-        icons.officialTsDefs.forEach(
-          (officialDef: IFileExtension) =>
-            expect(officialDef.disabled).to.be.true,
-        );
-
-        icons.typesDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
-        );
-        icons.officialTypesDefs.forEach(
-          (officialDef: IFileExtension) =>
-            expect(officialDef.disabled).to.be.true,
-        );
-      });
-    });
+          icons.typesDefs.forEach(
+            (def: IFileExtension) => expect(def.disabled).to.be.false,
+          );
+          icons.officialTypesDefs.forEach(
+            (officialDef: IFileExtension) =>
+              expect(officialDef.disabled).to.be.true,
+          );
+        });
+      },
+    );
 
     context(`'JSON' official icons can be`, function () {
       it('enabled and disabled', async function () {
