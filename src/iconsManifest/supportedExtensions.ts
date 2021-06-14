@@ -4426,6 +4426,7 @@ export const extensions: IFileCollection = {
       extensions: [
         'yarn.lock',
         '.yarnrc',
+        '.yarnrc.yml',
         '.yarnclean',
         '.yarn-integrity',
         '.yarn-metadata.json',
