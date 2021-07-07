@@ -3070,8 +3070,12 @@ export const extensions: IFileCollection = {
       extensions: [
         '.postcssrc',
         '.postcssrc.json',
+        '.postcssrc.yaml',
         '.postcssrc.yml',
+        '.postcssrc.ts',
         '.postcssrc.js',
+        '.postcssrc.cjs',
+        'postcss.config.ts',
         'postcss.config.js',
         'postcss.config.cjs',
       ],
