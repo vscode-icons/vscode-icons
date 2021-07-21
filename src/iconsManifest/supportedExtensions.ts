@@ -473,6 +473,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'appsemble',
+      extensions: ['.appsemblerc.yaml', 'app-definition.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'appveyor',
       extensions: ['appveyor.yml', '.appveyor.yml'],
       filename: true,
