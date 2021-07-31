@@ -1874,6 +1874,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'horusec',
+      extensions: ['horusec-config.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'host',
       extensions: [],
       languages: [languages.hosts],
