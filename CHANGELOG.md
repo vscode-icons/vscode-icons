@@ -7,7 +7,6 @@
 - Feature: Support for `horusec` config file. ([@lucasbrunozup](https://github.com/lucasbrunozup) in [#2787](https://github.com/vscode-icons/vscode-icons/pull/2787))
 - Feature: Support for `Yarn Berry` config file. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2733](https://github.com/vscode-icons/vscode-icons/pull/2733))
 
-
 ## 11.5.0 (June 13, 2021)
 
 - Fix: Set `vsce` version to 1.88.0. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2796](https://github.com/vscode-icons/vscode-icons/pull/2796))
