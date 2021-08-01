@@ -84,7 +84,7 @@ export const languages: ILanguageCollection = {
   elastic: { ids: 'es', defaultExtension: 'es' },
   elixir: { ids: 'elixir', defaultExtension: 'ex' },
   elm: { ids: 'elm', defaultExtension: 'elm' },
-  erb: { ids: 'erb', defaultExtension: 'erb' },
+  erb: { ids: ['erb', 'html.erb'], defaultExtension: 'erb' },
   erlang: { ids: 'erlang', defaultExtension: 'erl' },
   falcon: { ids: 'falcon', defaultExtension: 'falcon' },
   fauna: { ids: 'fql', defaultExtension: 'fql' },
