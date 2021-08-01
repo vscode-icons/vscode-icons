@@ -1446,12 +1446,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'excel',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
       format: FileFormat.svg,
     },
     {
       icon: 'excel2',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
       format: FileFormat.svg,
       disabled: true,
     },
