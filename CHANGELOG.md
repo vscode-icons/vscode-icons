@@ -2,6 +2,7 @@
 
 ## 11.6.0 (August 01, 2021)
 
+- Enhancement: Added `xlsb` binary extension. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2814](https://github.com/vscode-icons/vscode-icons/pull/2814))
 - Feature: Support for `Appsemble`. ([@remcohaszing](https://github.com/remcohaszing) in [#2809](https://github.com/vscode-icons/vscode-icons/pull/2809))
 - Enhancement: Added missing `postcss` config extensions. ([@remcohaszing](https://github.com/remcohaszing) in [#2803](https://github.com/vscode-icons/vscode-icons/pull/2803))
 - Feature: Support for `horusec` config file. ([@lucasbrunozup](https://github.com/lucasbrunozup) in [#2787](https://github.com/vscode-icons/vscode-icons/pull/2787))
