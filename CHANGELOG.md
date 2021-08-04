@@ -1,5 +1,14 @@
 # Change Log
 
+## 11.6.0 (August 01, 2021)
+
+- Feature: Support for `html.erb` language id. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2815](https://github.com/vscode-icons/vscode-icons/pull/2815))
+- Enhancement: Added `xlsb` binary extension. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2814](https://github.com/vscode-icons/vscode-icons/pull/2814))
+- Feature: Support for `Appsemble`. ([@remcohaszing](https://github.com/remcohaszing) in [#2809](https://github.com/vscode-icons/vscode-icons/pull/2809))
+- Enhancement: Added missing `postcss` config extensions. ([@remcohaszing](https://github.com/remcohaszing) in [#2803](https://github.com/vscode-icons/vscode-icons/pull/2803))
+- Feature: Support for `horusec` config file. ([@lucasbrunozup](https://github.com/lucasbrunozup) in [#2787](https://github.com/vscode-icons/vscode-icons/pull/2787))
+- Feature: Support for `Yarn Berry` config file. ([@KingDarBoja](https://github.com/KingDarBoja) in [#2733](https://github.com/vscode-icons/vscode-icons/pull/2733))
+
 ## 11.5.0 (June 13, 2021)
 
 - Fix: Set `vsce` version to 1.88.0. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2796](https://github.com/vscode-icons/vscode-icons/pull/2796))

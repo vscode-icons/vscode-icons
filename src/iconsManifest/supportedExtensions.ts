@@ -473,6 +473,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'appsemble',
+      extensions: ['.appsemblerc.yaml', 'app-definition.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'appveyor',
       extensions: ['appveyor.yml', '.appveyor.yml'],
       filename: true,
@@ -1440,12 +1446,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'excel',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
       format: FileFormat.svg,
     },
     {
       icon: 'excel2',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -1871,6 +1877,12 @@ export const extensions: IFileCollection = {
       icon: 'homeassistant',
       extensions: [],
       languages: [languages.homeassistant],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'horusec',
+      extensions: ['horusec-config.json'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -3070,8 +3082,12 @@ export const extensions: IFileCollection = {
       extensions: [
         '.postcssrc',
         '.postcssrc.json',
+        '.postcssrc.yaml',
         '.postcssrc.yml',
+        '.postcssrc.ts',
         '.postcssrc.js',
+        '.postcssrc.cjs',
+        'postcss.config.ts',
         'postcss.config.js',
         'postcss.config.cjs',
       ],
