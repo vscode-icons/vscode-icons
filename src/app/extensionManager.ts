@@ -50,7 +50,7 @@ export class ExtensionManager implements models.IExtensionManager {
     }
 
     constants.environment.production = new RegExp(
-      `${constants.extension.distEntryFilename}`,
+      `${constants.extension.distEntryNodeFilename}`,
     ).test(this.manifest.main);
     if (constants.environment.production) {
       ConfigManager.rootDir = resolve(dirname(__filename), '../../');

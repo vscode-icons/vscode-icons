@@ -281,7 +281,7 @@ describe('ExtensionManager: tests', function () {
           beforeEach(function () {
             manifest = packageJson as IPackageManifest;
             manifestMainOriginalValue = manifest.main;
-            manifest.main = constants.extension.distEntryFilename;
+            manifest.main = constants.extension.distEntryNodeFilename;
             integrityManagerStub.check.resolves(true);
           });
 

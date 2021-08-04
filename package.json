@@ -46,7 +46,8 @@
     "portable mode ready"
   ],
   "homepage": "https://github.com/vscode-icons/vscode-icons",
-  "main": "out/src/",
+  "browser": "dist/src/vscode-icons-web.bundle.js",
+  "main": "dist/src/vscode-icons.bundle.js",
   "icon": "images/logo.png",
   "scripts": {
     "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
@@ -64,7 +65,7 @@
     "posttest": "nyc report -r lcov",
     "test:vs": "node ./node_modules/vscode/bin/test",
     "vscode:prepublish": "npm run dist",
-    "vscode:uninstall": "node ./out/src/uninstall.js",
+    "vscode:uninstall": "node ./dist/src/uninstall.bundle.js",
     "precompile": "rimraf ./out ./dist",
     "compile": "tsc -p tsconfig.prod.json",
     "postcompile": "npm run bundle",
@@ -100,6 +101,7 @@
     "lint-staged": "^10.3.0",
     "mocha": "^8.1.3",
     "nyc": "^15.1.0",
+    "path-browserify": "^0.0.1",
     "prettier": "^2.1.1",
     "proxyquire": "^2.1.3",
     "rimraf": "^3.0.2",
@@ -142,7 +144,7 @@
       {
         "id": "vscode-icons",
         "label": "VSCode Icons",
-        "path": "out/src/vsicons-icon-theme.json",
+        "path": "dist/src/vsicons-icon-theme.json",
         "_watch": true
       }
     ],

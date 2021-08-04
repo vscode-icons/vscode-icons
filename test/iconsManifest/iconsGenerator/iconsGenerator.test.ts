@@ -516,7 +516,7 @@ describe('IconsGenerator: tests', function () {
                     const returnedValue = func([manifestMock]);
 
                     expect(returnedValue[0]).to.equal(
-                      `"main": "${newDir}${constants.extension.distEntryFilename}"`,
+                      `"main": "${newDir}${constants.extension.distEntryNodeFilename}"`,
                     );
                   });
                 });

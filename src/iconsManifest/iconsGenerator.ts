@@ -121,14 +121,14 @@ export class IconsGenerator implements models.IIconsGenerator {
     );
 
     const entryFilename = constants.environment.production
-      ? constants.extension.distEntryFilename
+      ? constants.extension.distEntryNodeFilename
       : '';
     const entryPath = `${sourceDirRelativePath}${entryFilename}`;
     const oldMainPath = this.manifest.main;
     const mainPathChanged = oldMainPath && oldMainPath !== entryPath;
 
     const uninstallEntryFilename = constants.environment.production
-      ? constants.extension.uninstallEntryFilename
+      ? constants.extension.uninstallEntryNodeFilename
       : 'uninstall.js';
     const uninstallEntryPath = `node ./${sourceDirRelativePath}${uninstallEntryFilename}`;
     const oldUninstallScriptPath = this.manifest.scripts['vscode:uninstall'];
