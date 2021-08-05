@@ -1856,7 +1856,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'helm',
-      extensions: [],
+      extensions: ['Chart.lock', 'Chart.yaml'],
       languages: [languages.helm],
       format: FileFormat.svg,
     },
