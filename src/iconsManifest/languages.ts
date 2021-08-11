@@ -73,7 +73,7 @@ export const languages: ILanguageCollection = {
   dockerfile: { ids: 'dockerfile', defaultExtension: 'dockerfile' },
   dockerignore: { ids: 'ignore', defaultExtension: 'dockerignore' },
   doctex: { ids: 'doctex', defaultExtension: 'dtx' },
-  dotenv: { ids: 'dotenv', defaultExtension: 'env' },
+  dotenv: { ids: ['dotenv', 'env'], defaultExtension: 'env' },
   dotjs: { ids: 'dotjs', defaultExtension: 'dot' },
   doxygen: { ids: 'doxygen', defaultExtension: 'dox' },
   drools: { ids: 'drools', defaultExtension: 'drl' },
