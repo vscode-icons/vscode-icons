@@ -3182,6 +3182,13 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'preact',
+      filenamesGlob: ['preact.config'],
+      extensionsGlob: ['js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'precommit',
       extensions: ['.pre-commit-config.yaml'],
       filename: true,
