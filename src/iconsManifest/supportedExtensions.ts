@@ -3183,6 +3183,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'preact',
+      extensions: [],
       filenamesGlob: ['preact.config'],
       extensionsGlob: ['js'],
       filename: true,
