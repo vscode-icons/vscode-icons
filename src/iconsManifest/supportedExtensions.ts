@@ -1202,7 +1202,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'devcontainer',
-      extensions: ['devcontainer.json'],
+      extensions: ['devcontainer.json', '.devcontainer.json'],
       filename: true,
       format: FileFormat.svg,
     },
