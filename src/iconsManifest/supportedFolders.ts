@@ -545,6 +545,7 @@ export const extensions: IFolderCollection = {
         '.spec',
         'specs',
         '.specs',
+        'integration',
       ],
       format: FileFormat.svg,
     },
