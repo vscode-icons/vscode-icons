@@ -32,6 +32,17 @@
         "${workspaceFolder}/out/src/**/*.js"
       ],
       "preLaunchTask": "npm: build - dev"
+    },
+    {
+      "name": "Extension in VS Code Web",
+      "type": "extensionHost",
+      "debugWebWorkerHost": true,
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--extensionDevelopmentKind=web"
+      ],
+      "outFiles": ["${workspaceFolder}/dist/src/**/*.js"]
     }
   ]
 }
