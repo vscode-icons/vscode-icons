@@ -1,7 +1,8 @@
 import { cloneDeep, isEqual, unionWith } from 'lodash';
 import { dirname, isAbsolute, resolve } from 'path';
+import { FileType } from 'vscode';
 import { ErrorHandler } from '../common/errorHandler';
-import { existsAsync, readdirAsync } from '../common/fsAsync';
+import { existsAsync, readdirAsync, Uri } from '../common/fsAsync';
 import { constants } from '../constants';
 import {
   ConfigurationTarget,
@@ -115,8 +116,9 @@ export class ConfigManager implements IConfigManager {
       (matches && matches.length > 0 && matches[1]) || './';
     const extensionNameRegExp = new RegExp(`.*${constants.extension.name}`);
     const existingInstallations: number = (
-      await readdirAsync(vscodeExtensionDirPath)
-    ).filter((filename: string) => extensionNameRegExp.test(filename)).length;
+      await readdirAsync(Uri.parse(vscodeExtensionDirPath))
+    ).filter((files: [string, FileType]) => extensionNameRegExp.test(files[0]))
+      .length;
     return existingInstallations === 1;
   }
 
@@ -136,9 +138,11 @@ export class ConfigManager implements IConfigManager {
         return undefined;
       }
       const isInsiders = await existsAsync(
-        Utils.pathUnixJoin(
-          process.env.VSCODE_CWD,
-          'code-insiders-portable-data',
+        Uri.parse(
+          Utils.pathUnixJoin(
+            process.env.VSCODE_CWD,
+            'code-insiders-portable-data',
+          ),
         ),
       );
       let dataDir: string;
@@ -245,7 +249,7 @@ export class ConfigManager implements IConfigManager {
       return dPath;
     }
     const iterator = async (wsp: string): Promise<string> =>
-      (await existsAsync(wsp)) ? wsp : '';
+      (await existsAsync(Uri.parse(wsp))) ? wsp : '';
 
     const promises: Array<Promise<string>> = [];
     workspacePaths.forEach((wsp: string) => promises.push(iterator(wsp)));

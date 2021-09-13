@@ -1,6 +1,12 @@
 import { eq, lt } from 'semver';
 import { ErrorHandler } from '../common/errorHandler';
-import { existsAsync, readFileAsync, unlinkAsync } from '../common/fsAsync';
+import {
+  existsAsync,
+  rawDataToString,
+  readFileAsync,
+  unlinkAsync,
+  Uri,
+} from '../common/fsAsync';
 import { constants } from '../constants';
 import {
   ExtensionStatus,
@@ -85,14 +91,15 @@ export class SettingsManager implements ISettingsManager {
       constants.extension.settingsFilename,
     );
 
-    const pathExists = await existsAsync(extensionSettingsLegacyFilePath);
+    const pathExists = await existsAsync(
+      Uri.file(extensionSettingsLegacyFilePath),
+    );
     if (!pathExists) {
       return SettingsManager.defaultState;
     }
     try {
-      const state = await readFileAsync(
-        extensionSettingsLegacyFilePath,
-        'utf8',
+      const state = rawDataToString(
+        await readFileAsync(Uri.file(extensionSettingsLegacyFilePath)),
       );
       return Utils.parseJSONSafe<IState>(state) || SettingsManager.defaultState;
     } catch (error) {
@@ -108,7 +115,7 @@ export class SettingsManager implements ISettingsManager {
       constants.extension.settingsFilename,
     );
     try {
-      await unlinkAsync(extensionSettingsLegacyFilePath);
+      await unlinkAsync(Uri.file(extensionSettingsLegacyFilePath));
     } catch (error) {
       ErrorHandler.logError(error);
     }

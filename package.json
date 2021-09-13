@@ -108,6 +108,7 @@
     "sinon": "^9.0.3",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2",
+    "vscode": "^1.1.37",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },

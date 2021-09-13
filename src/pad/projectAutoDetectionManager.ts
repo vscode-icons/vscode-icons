@@ -1,5 +1,5 @@
 import { ErrorHandler } from '../common/errorHandler';
-import { readFileAsync } from '../common/fsAsync';
+import { rawDataToString, readFileAsync, Uri } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
@@ -209,7 +209,9 @@ export class ProjectAutoDetectionManager
   ): Promise<models.IProjectInfo> {
     let projectInfo: models.IProjectInfo = null;
     for (const result of results) {
-      const content: string = await readFileAsync(result.fsPath, 'utf8');
+      const content: string = rawDataToString(
+        await readFileAsync(Uri.file(result.fsPath)),
+      );
       const projectJson: IPackageManifest = Utils.parseJSONSafe<
         IPackageManifest
       >(content);

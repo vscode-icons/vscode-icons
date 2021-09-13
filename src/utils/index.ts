@@ -1,6 +1,5 @@
 import open = require('open');
 import { ChildProcess } from 'child_process';
-import { Stats } from 'fs';
 import { set } from 'lodash';
 import { homedir, tmpdir } from 'os';
 import { isAbsolute, posix, relative, resolve, sep } from 'path';
@@ -8,13 +7,17 @@ import {
   existsAsync,
   lstatAsync,
   mkdirAsync,
+  rawDataToString,
   readdirAsync,
   readFileAsync,
   rmdirAsync,
+  stringToRawData,
   unlinkAsync,
+  Uri,
   writeFileAsync,
 } from '../common/fsAsync';
 import { FileFormat } from '../models';
+import { FileStat, FileType } from 'vscode';
 
 export class Utils {
   public static getAppDataDirPath(): string {
@@ -55,9 +58,9 @@ export class Utils {
       childDir: string,
     ): Promise<string> => {
       const curDir = resolve(await parentDir, childDir);
-      const dirExists: boolean = await existsAsync(curDir);
+      const dirExists: boolean = await existsAsync(Uri.parse(curDir));
       if (!dirExists) {
-        await mkdirAsync(curDir);
+        await mkdirAsync(Uri.parse(curDir));
       }
       return curDir;
     };
@@ -72,26 +75,30 @@ export class Utils {
   public static async deleteDirectoryRecursively(
     dirPath: string,
   ): Promise<void> {
-    const dirExists: boolean = await existsAsync(dirPath);
+    const dirExists: boolean = await existsAsync(Uri.parse(dirPath));
     if (!dirExists) {
       return;
     }
     const iterator = async (file: string): Promise<void> => {
       const curPath = `${dirPath}/${file}`;
-      const stats: Stats = await lstatAsync(curPath);
-      if (stats.isDirectory()) {
+      const stats: FileStat = await lstatAsync(Uri.parse(curPath));
+      if (stats.type === FileType.Directory) {
         // recurse
         await this.deleteDirectoryRecursively(curPath);
       } else {
         // delete file
-        await unlinkAsync(curPath);
+        await unlinkAsync(Uri.file(curPath));
       }
     };
     const promises: Array<Promise<void>> = [];
-    const files: string[] = await readdirAsync(dirPath);
+    const files: string[] = (await readdirAsync(Uri.parse(dirPath))).map(
+      (value) => {
+        return value[0];
+      },
+    );
     files.forEach((file: string) => promises.push(iterator(file)));
     await Promise.all(promises);
-    await rmdirAsync(dirPath);
+    await rmdirAsync(Uri.parse(dirPath));
   }
 
   /**
@@ -119,7 +126,7 @@ export class Utils {
       throw new Error('toDirName not defined.');
     }
 
-    const dirExists: boolean = await existsAsync(toDirName);
+    const dirExists: boolean = await existsAsync(Uri.parse(toDirName));
     if (checkDirectory && !dirExists) {
       throw new Error(`Directory '${toDirName}' not found.`);
     }
@@ -160,11 +167,11 @@ export class Utils {
     filePath: string,
     replaceFn: (rawText: string[]) => string[],
   ): Promise<void> {
-    const raw = await readFileAsync(filePath, 'utf8');
+    const raw = rawDataToString(await readFileAsync(Uri.file(filePath)));
     const lineBreak: string = raw.endsWith('\r\n') ? '\r\n' : '\n';
     const allLines: string[] = raw.split(lineBreak);
     const data: string = replaceFn(allLines).join(lineBreak);
-    await writeFileAsync(filePath, data);
+    await writeFileAsync(Uri.file(filePath), stringToRawData(data));
   }
 
   public static unflattenProperties<T>(

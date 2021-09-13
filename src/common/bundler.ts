@@ -1,5 +1,12 @@
 import { join } from 'path';
-import { readdirAsync, readFileAsync, writeFileAsync } from '../common/fsAsync';
+import { FileType } from 'vscode';
+import { stringToRawData } from '.';
+import {
+  readdirAsync,
+  readFileAsync,
+  Uri,
+  writeFileAsync,
+} from '../common/fsAsync';
 import { constants } from '../constants';
 import { Utils } from '../utils';
 
@@ -22,7 +29,9 @@ export class Bundler {
       if (!locale) {
         throw new Error(`No locale found for: ${filename}`);
       }
-      const content = await readFileAsync(join(sourceDirPath, filename));
+      const content = await readFileAsync(
+        Uri.file(join(sourceDirPath, filename)),
+      );
       const translations: Record<string, string> = Utils.parseJSONSafe<
         Record<string, string>
       >(content.toString());
@@ -32,9 +41,9 @@ export class Bundler {
     };
     const bundleJson = {};
     const promises: Array<Promise<void>> = [];
-    const resourseFiles = await readdirAsync(sourceDirPath);
-    resourseFiles.forEach((filename: string) =>
-      promises.push(iterator(filename, bundleJson)),
+    const resourseFiles = await readdirAsync(Uri.parse(sourceDirPath));
+    resourseFiles.forEach((files: [string, FileType]) =>
+      promises.push(iterator(files[0], bundleJson)),
     );
     await Promise.all(promises);
 
@@ -43,11 +52,13 @@ export class Bundler {
     }
 
     await writeFileAsync(
-      targetFilePath,
-      JSON.stringify(
-        bundleJson,
-        null,
-        constants.environment.production ? 0 : 2,
+      Uri.file(targetFilePath),
+      stringToRawData(
+        JSON.stringify(
+          bundleJson,
+          null,
+          constants.environment.production ? 0 : 2,
+        ),
       ),
     );
   }
@@ -57,23 +68,27 @@ export class Bundler {
     targetDirPath: string,
   ): Promise<void> {
     const iterator = async (filename: string): Promise<void> => {
-      const content = await readFileAsync(join(sourceDirPath, filename));
+      const content = await readFileAsync(
+        Uri.file(join(sourceDirPath, filename)),
+      );
       const bundleJson = Utils.parseJSONSafe<Record<string, unknown>>(
         content.toString(),
       );
       await writeFileAsync(
-        join(targetDirPath, filename),
-        JSON.stringify(
-          bundleJson,
-          null,
-          constants.environment.production ? 0 : 2,
+        Uri.file(join(targetDirPath, filename)),
+        stringToRawData(
+          JSON.stringify(
+            bundleJson,
+            null,
+            constants.environment.production ? 0 : 2,
+          ),
         ),
       );
     };
     const promises = [];
-    const resourseFiles = await readdirAsync(sourceDirPath);
-    resourseFiles.forEach((filename: string) =>
-      promises.push(iterator(filename)),
+    const resourseFiles = await readdirAsync(Uri.parse(sourceDirPath));
+    resourseFiles.forEach((files: [string, FileType]) =>
+      promises.push(iterator(files[0])),
     );
     await Promise.all(promises);
   }

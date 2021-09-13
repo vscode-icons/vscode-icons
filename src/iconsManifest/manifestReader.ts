@@ -1,4 +1,4 @@
-import { readFileAsync } from '../common/fsAsync';
+import { rawDataToString, readFileAsync, Uri } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import * as models from '../models';
@@ -86,7 +86,7 @@ export class ManifestReader {
       constants.iconsManifest.filename,
     );
     try {
-      return readFileAsync(manifestFilePath, 'utf8');
+      return rawDataToString(await readFileAsync(Uri.file(manifestFilePath)));
     } catch (err) {
       return null;
     }

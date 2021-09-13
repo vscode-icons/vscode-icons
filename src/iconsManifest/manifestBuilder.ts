@@ -1,5 +1,5 @@
 import { cloneDeep, sortBy, sortedUniq } from 'lodash';
-import { existsAsync } from '../common/fsAsync';
+import { existsAsync, Uri } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import * as models from '../models';
@@ -389,6 +389,6 @@ export class ManifestBuilder {
   ): Promise<boolean> {
     const relativePath = await Utils.getRelativePath('.', folderPath, false);
     const filePath = Utils.pathUnixJoin(relativePath, filename);
-    return existsAsync(filePath);
+    return existsAsync(Uri.file(filePath));
   }
 }

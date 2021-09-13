@@ -1,11 +1,11 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import { Stats } from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import * as proxyq from 'proxyquire';
 import * as sinon from 'sinon';
+import { FileStat, FileType } from 'vscode';
 import * as fsAsync from '../../src/common/fsAsync';
 import { FileFormat } from '../../src/models';
 import { Utils } from '../../src/utils';
@@ -174,12 +174,13 @@ describe('Utils: tests', function () {
         const lstats = lstatsAsyncStub
           .onFirstCall()
           .resolves({
-            isDirectory: () => true,
-          } as Stats)
+            type: FileType.Directory,
+          } as FileStat)
           .onSecondCall()
           .resolves({
-            isDirectory: () => false,
-          } as Stats);
+            type: FileType.File,
+          } as FileStat);
+
         const deleteFile = sandbox.stub(fsAsync, 'unlinkAsync').resolves();
         const removeDirectory = sandbox.stub(fsAsync, 'rmdirAsync').resolves();
 
