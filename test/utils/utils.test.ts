@@ -1,27 +1,36 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import * as sinon from 'sinon';
-import * as proxyq from 'proxyquire';
-import * as fs from 'fs';
+import { Stats } from 'fs';
 import * as os from 'os';
-import { Utils } from '../../src/utils';
+import * as path from 'path';
+import * as proxyq from 'proxyquire';
+import * as sinon from 'sinon';
+import * as fsAsync from '../../src/common/fsAsync';
 import { FileFormat } from '../../src/models';
+import { Utils } from '../../src/utils';
 
 describe('Utils: tests', function () {
+  interface IUtils {
+    open: (arg: string) => Promise<void>;
+  }
+
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
+    let existsAsyncStub: sinon.SinonStub;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
+      existsAsyncStub = sandbox.stub(fsAsync, 'existsAsync').resolves();
     });
 
     afterEach(function () {
       sandbox.restore();
     });
+
     context(`the 'getAppDataDirPath' function`, function () {
       context(`returns the correct 'vscode' path`, function () {
-        context(` when the process platform is`, function () {
+        context(`when the process platform is`, function () {
           let envStub: sinon.SinonStub;
           let platformStub: sinon.SinonStub;
 
@@ -31,34 +40,34 @@ describe('Utils: tests', function () {
           });
 
           it('darwin (macOS)', function () {
-            const path = `${os.homedir()}/Library/Application Support`;
+            const dirPath = `${os.homedir()}/Library/Application Support`;
             platformStub.value('darwin');
 
-            expect(Utils.getAppDataDirPath()).to.be.equal(path);
+            expect(Utils.getAppDataDirPath()).to.be.equal(dirPath);
           });
 
           it('linux', function () {
-            const path = `${os.homedir()}/.config`;
+            const dirPath = `${os.homedir()}/.config`;
             platformStub.value('linux');
 
-            expect(Utils.getAppDataDirPath()).to.be.equal(path);
+            expect(Utils.getAppDataDirPath()).to.be.equal(dirPath);
           });
 
           it('win32 (windows)', function () {
-            const path = 'C:\\Users\\User\\AppData\\Roaming';
+            const dirPath = 'C:\\Users\\User\\AppData\\Roaming';
             envStub.value({
-              APPDATA: path,
+              APPDATA: dirPath,
             });
             platformStub.value('win32');
 
-            expect(Utils.getAppDataDirPath()).to.be.equal(path);
+            expect(Utils.getAppDataDirPath()).to.be.equal(dirPath);
           });
 
           it('NOT implemented', function () {
-            const path = '/var/local';
+            const dirPath = '/var/local';
             platformStub.value('freebsd');
 
-            expect(Utils.getAppDataDirPath()).to.be.equal(path);
+            expect(Utils.getAppDataDirPath()).to.be.equal(dirPath);
           });
         });
       });
@@ -85,59 +94,100 @@ describe('Utils: tests', function () {
       });
     });
 
-    context(`the 'createDirectoryRecursivelySync' function`, function () {
-      it('creates a directory and all subdirectories synchronously', function () {
-        const existsStub = sandbox.stub(fs, 'existsSync');
-        const createDirectory = sandbox.stub(fs, 'mkdirSync');
-        const testCase = (
-          directoryPath: string,
-          dirExists: boolean,
-          expectedCounts: number,
-        ) => {
-          const fileCheck = existsStub.callsFake(
-            (path: string) => dirExists || directoryPath.split('/').indexOf(path) !== -1,
-          );
+    context(`the 'createDirectoryRecursively' function`, function () {
+      context('creates all directories asynchronously', function () {
+        context(`when the process platform is`, function () {
+          let pathSepStub: sinon.SinonStub;
+          let mkdirAsyncStub: sinon.SinonStub;
 
-          existsStub.resetHistory();
-          createDirectory.resetHistory();
+          beforeEach(function () {
+            pathSepStub = sandbox.stub(path, 'sep');
+            mkdirAsyncStub = sandbox.stub(fsAsync, 'mkdirAsync').resolves();
+          });
 
-          Utils.createDirectoryRecursively(directoryPath);
+          const testCase = async (
+            directoryPath: string,
+            dirExists: boolean,
+            expectedCounts: number,
+          ): Promise<void> => {
+            const fileCheck = existsAsyncStub.callsFake(
+              (dirPath: string) =>
+                dirExists || directoryPath.split(path.sep).includes(dirPath),
+            );
+            const createDirectory = mkdirAsyncStub.resolves();
 
-          expect(fileCheck.callCount).to.be.equal(
-            dirExists ? expectedCounts + 2 : expectedCounts,
-          );
-          expect(createDirectory.callCount).to.equal(expectedCounts);
-        };
+            fileCheck.resetHistory();
+            createDirectory.resetHistory();
 
-        // Create directory
-        testCase('path/to', true, 0);
-        // Absolute path
-        testCase('/path/to', false, 3);
-        // Relative path
-        testCase('path/to', false, 2);
+            await Utils.createDirectoryRecursively(directoryPath);
+
+            expect(fileCheck.callCount).to.be.equal(
+              dirExists ? expectedCounts + 2 : expectedCounts,
+            );
+            expect(createDirectory.callCount).to.equal(expectedCounts);
+          };
+
+          it('win32 (windows)', async function () {
+            pathSepStub.value('\\');
+
+            // Directory Exists
+            await testCase('path\\to', true, 0);
+
+            // Create Directory
+            // - Relative path
+            await testCase('.\\path', false, 2);
+
+            // - Absolute path
+            await testCase('C:\\path\\to', false, 3);
+          });
+
+          it('*nix', async function () {
+            pathSepStub.value('/');
+
+            // Directory Exists
+            await testCase('path/to', true, 0);
+
+            // Create Directory
+            // - Relative path
+            await testCase('path/to', false, 2);
+
+            // - Absolute path
+            await testCase('/path/to', false, 3);
+          });
+        });
       });
     });
 
-    context(`the 'deleteDirectoryRecursivelySync' function`, function () {
-      it('deletes a directory and all subdirectories synchronously', function () {
-        const directoryPath = '/path/to';
-        const fileCheck = sandbox
-          .stub(fs, 'existsSync')
-          .callsFake(path => path === directoryPath);
-        const readDirectory = sandbox
-          .stub(fs, 'readdirSync')
-          .callsFake(() => ['dir', 'file.txt']);
-        const stats = sandbox.stub(fs, 'lstatSync').callsFake((path: string) => ({
-          isDirectory: () => path !== '/path/to/file.txt',
-        }) as any);
-        const deleteFile = sandbox.stub(fs, 'unlinkSync');
-        const removeDirectory = sandbox.stub(fs, 'rmdirSync');
+    context(`the 'deleteDirectoryRecursively' function`, function () {
+      let readdirAsyncStub: sinon.SinonStub;
 
-        Utils.deleteDirectoryRecursively(directoryPath);
+      it('deletes a directory and all subdirectories asynchronously', async function () {
+        readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync').resolves();
+        const directoryPath = '/path/to';
+        const lstatsAsyncStub = sandbox.stub(fsAsync, 'lstatAsync').resolves();
+        const fileCheck = existsAsyncStub
+          .onFirstCall()
+          .resolves(true)
+          .onSecondCall()
+          .resolves(false);
+        const readDirectory = readdirAsyncStub.resolves(['dir', 'file.txt']);
+        const lstats = lstatsAsyncStub
+          .onFirstCall()
+          .resolves({
+            isDirectory: () => true,
+          } as Stats)
+          .onSecondCall()
+          .resolves({
+            isDirectory: () => false,
+          } as Stats);
+        const deleteFile = sandbox.stub(fsAsync, 'unlinkAsync').resolves();
+        const removeDirectory = sandbox.stub(fsAsync, 'rmdirAsync').resolves();
+
+        await Utils.deleteDirectoryRecursively(directoryPath);
 
         expect(fileCheck.calledTwice).to.be.true;
         expect(readDirectory.calledOnce).to.be.true;
-        expect(stats.calledTwice).to.be.true;
+        expect(lstats.calledTwice).to.be.true;
         expect(deleteFile.calledOnce).to.be.true;
         expect(removeDirectory.calledOnce).to.be.true;
       });
@@ -145,15 +195,17 @@ describe('Utils: tests', function () {
 
     context(`the 'parseJSON' function`, function () {
       it('returns an object when parsing succeeds', function () {
-        const json = Utils.parseJSON('{"test": "test"}');
+        const json = Utils.parseJSONSafe<Record<string, string>>(
+          '{"test": "test"}',
+        );
 
         expect(json).to.be.instanceOf(Object);
         expect(Object.getOwnPropertyNames(json)).to.include('test');
-        expect(json['test']).to.be.equal('test');
+        expect(json.test).to.be.equal('test');
       });
 
-      it(`returns 'null' when parsing fails`, function () {
-        expect(Utils.parseJSON('test')).to.be.null;
+      it(`returns an emtpy object when parsing fails`, function () {
+        expect(Utils.parseJSONSafe('test')).to.be.empty;
       });
     });
 
@@ -172,54 +224,61 @@ describe('Utils: tests', function () {
 
       context('returns a relative path that', function () {
         context('has a trailing path separator', function () {
-          const trailingPathSeparatorTest = (toDirName: string) => {
-            const relativePath = Utils.getRelativePath(
+          const trailingPathSeparatorTest = async (
+            toDirName: string,
+          ): Promise<void> => {
+            const relativePath = await Utils.getRelativePath(
               'path/from',
               toDirName,
               false,
             );
 
-            expect(/\/$/g.test(relativePath)).to.be.true;
+            expect(relativePath.endsWith('/')).to.be.true;
             expect(/\/{2,}$/g.test(relativePath)).to.be.false;
           };
 
-          it(`if it's provided`, function () {
-            trailingPathSeparatorTest('path/to/');
+          it(`if it's provided`, async function () {
+            await trailingPathSeparatorTest('path/to/');
           });
 
-          it(`if it's NOT provided`, function () {
-            trailingPathSeparatorTest('path/to');
+          it(`if it's NOT provided`, async function () {
+            await trailingPathSeparatorTest('path/to');
           });
 
-          it('that is NOT repeated', function () {
-            trailingPathSeparatorTest('path/to//');
-            trailingPathSeparatorTest('path/to///');
+          it('that is NOT repeated', async function () {
+            await trailingPathSeparatorTest('path/to//');
+            await trailingPathSeparatorTest('path/to///');
           });
         });
       });
 
-      context('throws an Error if', function () {
-        it('the `fromDirPath` parameter is NOT defined', function () {
-          expect(() => Utils.getRelativePath(null, 'path/to')).to.throw(
-            Error,
-            'fromDirPath not defined.',
-          );
+      context('throws an Error', function () {
+        it('if the `fromDirPath` parameter is NOT defined', async function () {
+          try {
+            await Utils.getRelativePath(null, 'path/to');
+          } catch (error) {
+            expect(error).to.match(/fromDirPath not defined\./);
+          }
         });
 
-        it('the `toDirName` parameter is NOT defined', function () {
-          expect(() => Utils.getRelativePath('path/from', null)).to.throw(
-            Error,
-            'toDirName not defined.',
-          );
+        it('if the `toDirName` parameter is NOT defined', async function () {
+          try {
+            await Utils.getRelativePath('path/from', null);
+          } catch (error) {
+            expect(error).to.match(/toDirName not defined\./);
+          }
         });
 
-        it('the destination directory does NOT exists', function () {
+        it('the destination directory does NOT exists', async function () {
           const toDirName = 'path/to';
 
-          expect(() => Utils.getRelativePath('path/from', toDirName)).to.throw(
-            Error,
-            `Directory '${toDirName}' not found.`,
-          );
+          try {
+            await Utils.getRelativePath('path/from', toDirName);
+          } catch (error) {
+            expect(error).to.match(
+              new RegExp(`Directory '${toDirName}' not found.`),
+            );
+          }
         });
       });
     });
@@ -302,72 +361,72 @@ describe('Utils: tests', function () {
     });
 
     context(`the 'updateFile' function`, function () {
-      let readFileStub: sinon.SinonStub;
-      let writeFileStub: sinon.SinonStub;
+      let readFileAsyncStub: sinon.SinonStub;
+      let writeFileAsyncStub: sinon.SinonStub;
       let replacerStub: sinon.SinonStub;
 
       beforeEach(function () {
-        readFileStub = sandbox.stub(fs, 'readFile');
-        writeFileStub = sandbox.stub(fs, 'writeFile');
+        readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
+        writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
         replacerStub = sandbox.stub();
       });
 
-      it('rejects on file read error', function () {
-        readFileStub.yields(new Error('error on read'), null);
-
-        return Utils.updateFile('', replacerStub).then(void 0, err => {
+      it('rejects on file read error', async function () {
+        readFileAsyncStub.rejects(new Error('error on read'));
+        try {
+          await Utils.updateFile('', replacerStub);
+        } catch (err) {
           expect(replacerStub.called).to.be.false;
           expect(err)
             .to.be.an.instanceof(Error)
             .that.matches(/error on read/);
-        });
+        }
       });
 
-      it('rejects on file write error', function () {
-        readFileStub.yields(null, '');
-        writeFileStub.yields(new Error('error on write'));
+      it('rejects on file write error', async function () {
+        readFileAsyncStub.resolves('');
+        writeFileAsyncStub.rejects(new Error('error on write'));
         replacerStub.returns([]);
 
-        return Utils.updateFile('', replacerStub).then(void 0, err => {
+        try {
+          await Utils.updateFile('', replacerStub);
+        } catch (error) {
           expect(replacerStub.calledOnce).to.be.true;
-          expect(err)
+          expect(error)
             .to.be.an.instanceof(Error)
             .that.matches(/error on write/);
-        });
+        }
       });
 
-      it('correctly detects unix style EOL (LF)', function () {
-        readFileStub.yields(null, '\n');
-        writeFileStub.yields(null);
+      it('correctly detects unix style EOL (LF)', async function () {
+        readFileAsyncStub.resolves('\n');
         replacerStub.returns([]);
 
-        return Utils.updateFile('', replacerStub).then(res => {
-          expect(replacerStub.calledOnce).to.be.true;
-          expect(res).to.be.undefined;
-        });
+        const result = await Utils.updateFile('', replacerStub);
+
+        expect(replacerStub.calledOnce).to.be.true;
+        expect(result).to.be.undefined;
       });
 
-      it('correctly detects windows style EOL (CRLF)', function () {
-        readFileStub.yields(null, '\r\n');
-        writeFileStub.yields(null);
+      it('correctly detects windows style EOL (CRLF)', async function () {
+        readFileAsyncStub.resolves('\r\n');
         replacerStub.returns([]);
 
-        return Utils.updateFile('', replacerStub).then(res => {
-          expect(replacerStub.calledOnce).to.be.true;
-          expect(res).to.be.undefined;
-        });
+        const result = await Utils.updateFile('', replacerStub);
+
+        expect(replacerStub.calledOnce).to.be.true;
+        expect(result).to.be.undefined;
       });
 
-      it(`updates the file`, function () {
-        readFileStub.yields(null, 'text\n');
-        writeFileStub.yields(null);
+      it(`updates the file`, async function () {
+        readFileAsyncStub.resolves('text\n');
         // Note: it's up to the replacer to provide the correct replaced context
         replacerStub.returns(['replaced\n']);
 
-        return Utils.updateFile('', replacerStub).then(res => {
-          expect(replacerStub.calledOnce).to.be.true;
-          expect(res).to.be.undefined;
-        });
+        const result = await Utils.updateFile('', replacerStub);
+
+        expect(replacerStub.calledOnce).to.be.true;
+        expect(result).to.be.undefined;
       });
     });
 
@@ -389,16 +448,16 @@ describe('Utils: tests', function () {
     });
 
     context(`the 'open' function`, function () {
-      it(`to call the external module`, function () {
-        const opnStub = sandbox.stub().resolves();
+      it(`to call the external module`, async function () {
+        const openStub = sandbox.stub().resolves();
         const target = 'target';
-        const utils = proxyq('../../src/utils', {
-          opn: opnStub,
-        }).Utils;
+        const utils = (proxyq.noCallThru().load('../../src/utils', {
+          open: openStub,
+        }) as Record<string, IUtils>).Utils;
 
-        return utils.open(target).then(() => {
-          expect(opnStub.calledOnceWithExactly(target, undefined)).to.be.true;
-        });
+        await utils.open(target);
+
+        expect(openStub.calledOnceWithExactly(target, undefined)).to.be.true;
       });
     });
   });

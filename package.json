@@ -2,13 +2,13 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "8.0.0",
-  "publisher": "robertohuertasm",
+  "version": "11.6.0",
+  "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
     "email": "roberto.huertas@outlook.com",
     "name": "Roberto Huertas",
-    "url": "http://codecoding.com"
+    "url": "https://robertohuertas.com"
   },
   "maintainers": [
     {
@@ -19,6 +19,11 @@
       "email": "jenshausdorf@gmail.com",
       "name": "Jens Hausdorf",
       "url": "https://jens-hausdorf.de"
+    },
+    {
+      "email": "stevenbojato04@gmail.com",
+      "name": "Manuel Bojato",
+      "url": "https://kingdarboja.github.io/"
     }
   ],
   "repository": {
@@ -30,12 +35,9 @@
     "email": "roberto.huertas@outlook.com"
   },
   "engines": {
-    "vscode": "^1.18.1",
-    "node": ">=7.9.0"
+    "vscode": "^1.40.2",
+    "node": ">=12.4.0"
   },
-  "categories": [
-    "Themes"
-  ],
   "keywords": [
     "icons",
     "theme",
@@ -43,22 +45,105 @@
     "multi-root ready",
     "portable mode ready"
   ],
-  "preview": false,
   "homepage": "https://github.com/vscode-icons/vscode-icons",
+  "main": "out/src/",
   "icon": "images/logo.png",
+  "scripts": {
+    "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
+    "format": "prettier --loglevel error --write \"{src,test}/**/*.ts\"",
+    "postformat": "npm run lint -- --fix",
+    "prebundle:dev": "rimraf ./*.nls*.json",
+    "bundle:dev": "node ./out/src/tools/bundle.js",
+    "bundle": "npm run bundle:dev -- --release",
+    "prebuild": "npm run compile",
+    "build": "node ./out/src/tools/build.js \"--release\"",
+    "prebuild:dev": "npm run lint && npm run compile:dev",
+    "build:dev": "node ./out/src/tools/build.js",
+    "pretest": "rimraf ./.nyc_output ./coverage && npm run prebuild:dev",
+    "test": "nyc mocha",
+    "posttest": "nyc report -r lcov",
+    "test:vs": "node ./node_modules/vscode/bin/test",
+    "vscode:prepublish": "npm run dist",
+    "vscode:uninstall": "node ./out/src/uninstall.js",
+    "precompile": "rimraf ./out ./dist",
+    "compile": "tsc -p tsconfig.prod.json",
+    "postcompile": "npm run bundle",
+    "compile:w": "npm run compile:dev -- -w",
+    "precompile:dev": "npm run precompile",
+    "compile:dev": "tsc",
+    "postcompile:dev": "npm run bundle:dev",
+    "lint": "eslint --ext .ts .",
+    "predist": "npm run build",
+    "dist": "webpack --hide-modules --mode production",
+    "postdist": "nsri create -s ."
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/glob": "^7.1.3",
+    "@types/lodash": "^4.14.161",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "10",
+    "@types/proxyquire": "^1.3.28",
+    "@types/semver": "^7.3.4",
+    "@types/sinon": "^9.0.5",
+    "@types/vscode": "1.40",
+    "@types/webpack": "^4.41.22",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "chai": "^4.2.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "glob": "^7.1.6",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0",
+    "prettier": "^2.1.1",
+    "proxyquire": "^2.1.3",
+    "rimraf": "^3.0.2",
+    "sinon": "^9.0.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "inversify": "^5.0.1",
+    "lodash": "^4.17.21",
+    "nsri": "^6.0.0",
+    "open": "^7.2.1",
+    "reflect-metadata": "^0.1.13",
+    "semver": "^7.3.2"
+  },
+  "preview": false,
+  "capabilities": {
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "categories": [
+    "Themes"
+  ],
   "galleryBanner": {
     "color": "#ffdd00"
   },
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
   "activationEvents": [
     "*"
   ],
-  "main": "./out/src/",
   "contributes": {
     "iconThemes": [
       {
         "id": "vscode-icons",
         "label": "VSCode Icons",
-        "path": "out/src/icons.json"
+        "path": "out/src/vsicons-icon-theme.json",
+        "_watch": true
       }
     ],
     "commands": [
@@ -79,6 +164,12 @@
         "title": "%command.ngPreset.title%",
         "category": "Icons",
         "callbackName": "toggleAngularPresetCommand"
+      },
+      {
+        "command": "vscode-icons.nestPreset",
+        "title": "%command.nestPreset.title%",
+        "category": "Icons",
+        "callbackName": "toggleNestPresetCommand"
       },
       {
         "command": "vscode-icons.jsPreset",
@@ -157,6 +248,11 @@
           "default": false,
           "description": "%configuration.presets.angular.description%"
         },
+        "vsicons.presets.nestjs": {
+          "type": "boolean",
+          "default": false,
+          "description": "%configuration.presets.nestjs.description%"
+        },
         "vsicons.presets.jsOfficial": {
           "type": "boolean",
           "default": false,
@@ -233,70 +329,6 @@
           "description": "%configuration.associations.folderDefault.root_folder_light.description%"
         }
       }
-    }
-  },
-  "scripts": {
-    "format": "prettier --loglevel error --write \"{src,test}/**/*.ts\"",
-    "postformat": "npm run lint -- --fix",
-    "preinstall": "git submodule update --init --recursive",
-    "postinstall": "vscode-install",
-    "prebuild": "npm run compile",
-    "build": "node ./out/src/build.js",
-    "prebuild:dev": "npm run lint && npm run compile:dev",
-    "build:dev": "node ./out/src/build.js",
-    "pretest": "rimraf ./.nyc_output ./coverage && npm run lint && npm run compile:dev",
-    "test": "nyc -x '' mocha",
-    "posttest": "nyc report -r lcov",
-    "test:vs": "node ./node_modules/vscode/bin/test",
-    "vscode:prepublish": "npm run build",
-    "vscode:uninstall": "node ./out/src/uninstall.js",
-    "precompile": "rimraf ./out",
-    "compile": "tsc -p tsconfig.prod.json",
-    "compile:w": "npm run compile:dev -- -w",
-    "precompile:dev": "npm run precompile",
-    "compile:dev": "tsc",
-    "lint": "tslint -p .",
-    "example": "example"
-  },
-  "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/lodash": "^4.14.119",
-    "@types/mocha": "^5.2.5",
-    "@types/node": "8",
-    "@types/opn": "^5.1.0",
-    "@types/proxyquire": "^1.3.28",
-    "@types/semver": "^5.5.0",
-    "@types/sinon": "^7.0.0",
-    "chai": "^4.2.0",
-    "examples-generator": "file:submodules/examples-generator",
-    "husky": "^1.2.1",
-    "lint-staged": "^8.1.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
-    "prettier": "^1.15.3",
-    "proxyquire": "^2.1.0",
-    "rimraf": "^2.6.2",
-    "sinon": "^7.2.2",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.17.0",
-    "typescript": "^3.2.2",
-    "vscode": "1.1.18"
-  },
-  "dependencies": {
-    "lodash": "^4.17.11",
-    "opn": "^5.4.0",
-    "semver": "^5.6.0"
-  },
-  "lint-staged": {
-    "src/**/*.ts": [
-      "prettier --parser typescript --write",
-      "git add",
-      "tslint"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
     }
   }
 }

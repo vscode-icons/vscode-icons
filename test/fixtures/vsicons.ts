@@ -14,6 +14,7 @@ export const vsicons = Object.freeze({
   },
   presets: {
     angular: false,
+    nestjs: false,
     foldersAllDefaultIcon: false,
     hideExplorerArrows: false,
     hideFolders: false,

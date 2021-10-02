@@ -3,7 +3,9 @@ import { ILanguage } from './language';
 export interface INativeLanguageCollection {
   bat: ILanguage;
   c: ILanguage;
+  ceylon: ILanguage;
   clojure: ILanguage;
+  clojurescript: ILanguage;
   coffeescript: ILanguage;
   cpp: ILanguage;
   css: ILanguage;

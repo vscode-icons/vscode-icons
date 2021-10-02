@@ -1,11 +1,19 @@
 import * as manifest from '../../../package.json';
+import { IPackageManifest } from '../models/packageManifest';
 
 export const constants = {
+  environment: { production: false },
   extension: {
     name: 'vscode-icons',
     settingsFilename: 'vsicons.settings.json',
-    version: manifest.version,
+    version: (manifest as IPackageManifest).version,
     customIconFolderName: 'vsicons-custom-icons',
+    distEntryFilename: 'vscode-icons.bundle.js',
+    uninstallEntryFilename: 'uninstall.bundle.js',
+    outDirName: 'out',
+    distDirName: 'dist',
+    srcDirName: 'src',
+    iconsDirName: 'icons',
   },
   vscode: {
     iconThemeSetting: 'workbench.iconTheme',
@@ -28,6 +36,7 @@ export const constants = {
       name: 'presets',
       fullname: 'vsicons.presets',
       angular: 'vsicons.presets.angular',
+      nestjs: 'vsicons.presets.nestjs',
     },
     projectDetectionAutoReloadSetting: 'vsicons.projectDetection.autoReload',
     projectDetectionDisableDetectSetting:
@@ -40,7 +49,7 @@ export const constants = {
   urlOfficialApi:
     'https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-file-icon-theme',
   iconsManifest: {
-    filename: 'icons.json',
+    filename: 'vsicons-icon-theme.json',
     iconSuffix: '',
     fileTypePrefix: 'file_type_',
     fileTypeLightPrefix: 'file_type_light_',

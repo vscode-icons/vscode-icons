@@ -3,31 +3,32 @@ import { ConfigurationTarget } from '../vscode';
 
 export interface IConfigManager {
   vsicons: IVSIcons;
+  updateVSIconsConfigState(): void;
   hasConfigChanged(
     currentConfig: IVSIcons | undefined,
     sections?: string[],
   ): boolean;
-  getCustomIconsDirPath(path: string): string;
+  getCustomIconsDirPath(path: string): Promise<string>;
   getIconTheme(): string;
   getPreset<T>(
     presetName: string,
   ):
     | {
         key: string;
-        defaultValue?: T;
-        globalValue?: T;
-        workspaceValue?: T;
-        workspaceFolderValue?: T;
+        defaultValue?: Partial<T>;
+        globalValue?: Partial<T>;
+        workspaceValue?: Partial<T>;
+        workspaceFolderValue?: Partial<T>;
       }
     | undefined;
-  updateDontShowNewVersionMessage(value: boolean): Thenable<void>;
-  updateDontShowConfigManuallyChangedMessage(value: boolean): Thenable<void>;
-  updateAutoReload(value: boolean): Thenable<void>;
-  updateDisableDetection(value: boolean): Thenable<void>;
-  updateIconTheme(): Thenable<void>;
+  updateDontShowNewVersionMessage(value: boolean): Promise<void>;
+  updateDontShowConfigManuallyChangedMessage(value: boolean): Promise<void>;
+  updateAutoReload(value: boolean): Promise<void>;
+  updateDisableDetection(value: boolean): Promise<void>;
+  updateIconTheme(): Promise<void>;
   updatePreset(
     presetName: string,
     value: boolean,
     configurationTarget: ConfigurationTarget | boolean,
-  ): Thenable<void>;
+  ): Promise<void>;
 }

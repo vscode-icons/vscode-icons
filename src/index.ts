@@ -1,19 +1,24 @@
+/* eslint-disable prefer-arrow-callback */
+import { Debugger } from './common/debugger';
 import { constants } from './constants';
-import { IVSCodeExtensionContext, IExtensionManager, SYMBOLS } from './models';
+import { IExtensionManager, IVSCodeExtensionContext, SYMBOLS } from './models';
 import { CompositionRootService } from './services/compositionRootService';
 
-export function activate(context: IVSCodeExtensionContext): void {
+export async function activate(
+  context: IVSCodeExtensionContext,
+): Promise<void> {
   const crs = new CompositionRootService(context);
 
   const extension: IExtensionManager = crs.get<IExtensionManager>(
     SYMBOLS.IExtensionManager,
   );
-  extension.activate();
+  await extension.activate();
 
-  // tslint:disable-next-line no-console
-  console.info(
-    `[${constants.extension.name}] v${constants.extension.version} activated!`,
-  );
+  if (!Debugger.isAttached) {
+    console.info(
+      `[${constants.extension.name}] v${constants.extension.version} activated!`,
+    );
+  }
 }
 
 // this method is called when your vscode is closed

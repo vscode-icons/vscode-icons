@@ -3,4 +3,14 @@ export interface IVSCodeWindow {
     message: string,
     ...items: string[]
   ): Thenable<string | undefined>;
+
+  showWarningMessage(
+    message: string,
+    ...items: string[]
+  ): Thenable<string | undefined>;
+
+  showErrorMessage(
+    message: string,
+    ...items: string[]
+  ): Thenable<string | undefined>;
 }

@@ -1,25 +1,29 @@
-import { join } from 'path';
-import { existsSync, writeFileSync, mkdirSync } from 'fs';
-import * as models from '../models';
-import * as manifest from '../../../package.json';
+import * as packageJson from '../../../package.json';
+import { ErrorHandler } from '../common/errorHandler';
+import { existsAsync, writeFileAsync } from '../common/fsAsync';
+import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
+import * as models from '../models';
 import { Utils } from '../utils';
-import { ErrorHandler } from '../errorHandler';
 import { CustomsMerger } from './customsMerger';
 import { ManifestBuilder } from './manifestBuilder';
 import { extensions as extFiles } from './supportedExtensions';
 import { extensions as extFolders } from './supportedFolders';
+import { IPackageManifest } from '../models/packageManifest';
 
 export class IconsGenerator implements models.IIconsGenerator {
+  private readonly manifest: IPackageManifest;
   private affectedPresets: models.IPresets;
 
   constructor(
     private vscodeManager?: models.IVSCodeManager,
     private configManager?: models.IConfigManager,
   ) {
+    this.manifest = packageJson as IPackageManifest;
     // register event listener for configuration changes
     if (this.vscodeManager) {
       this.vscodeManager.workspace.onDidChangeConfiguration(
+        // eslint-disable-next-line @typescript-eslint/unbound-method
         this.didChangeConfigurationListener,
         this,
         this.vscodeManager.context.subscriptions,
@@ -27,11 +31,11 @@ export class IconsGenerator implements models.IIconsGenerator {
     }
   }
 
-  public generateIconsManifest(
+  public async generateIconsManifest(
     files?: models.IFileCollection,
     folders?: models.IFolderCollection,
-    projectDetectionResult?: models.IProjectDetectionResult,
-  ): models.IIconSchema {
+    projectDetectionResults?: models.IProjectDetectionResult[],
+  ): Promise<models.IIconSchema> {
     // default icons manifest
     if (!files && !folders) {
       return ManifestBuilder.buildManifest(extFiles, extFolders);
@@ -42,23 +46,21 @@ export class IconsGenerator implements models.IIconsGenerator {
       throw new ReferenceError(`'configManager' not set to an instance`);
     }
     const vsiconsConfig = this.configManager.vsicons;
-    const merged = CustomsMerger.merge(
+    const mergedCollection = await CustomsMerger.merge(
       files,
       extFiles,
       folders,
       extFolders,
       vsiconsConfig.presets,
-      projectDetectionResult,
+      projectDetectionResults,
       this.affectedPresets,
     );
-    const customIconsDirPath =
-      vsiconsConfig.customIconFolderPath &&
-      this.configManager.getCustomIconsDirPath(
-        vsiconsConfig.customIconFolderPath,
-      );
-    const iconsManifest = ManifestBuilder.buildManifest(
-      merged.files,
-      merged.folders,
+    const customIconsDirPath = await this.configManager.getCustomIconsDirPath(
+      vsiconsConfig.customIconFolderPath,
+    );
+    const iconsManifest = await ManifestBuilder.buildManifest(
+      mergedCollection.files,
+      mergedCollection.folders,
       customIconsDirPath,
     );
 
@@ -69,102 +71,140 @@ export class IconsGenerator implements models.IIconsGenerator {
     return iconsManifest;
   }
 
-  public persist(
+  public async persist(
     iconsManifest: models.IIconSchema,
-    updatePackageJson: boolean = false,
-  ): Thenable<void> {
-    const iconsManifestDirPath = join(__dirname, '../../../', 'out/src');
-    this.writeIconsManifestToFile(
+    updatePackageJson = false,
+  ): Promise<void> {
+    await this.writeIconsManifestToFile(
       constants.iconsManifest.filename,
       iconsManifest,
-      iconsManifestDirPath,
+      ConfigManager.sourceDir,
     );
-    if (updatePackageJson) {
-      const iconsFolderRelativePath = `${Utils.getRelativePath(
-        '.',
-        iconsManifestDirPath,
-      )}${constants.iconsManifest.filename}`;
-      return this.updatePackageJson(iconsFolderRelativePath);
+    if (!updatePackageJson) {
+      return;
     }
-    return Promise.resolve();
+    return this.updatePackageJson();
   }
 
-  private writeIconsManifestToFile(
+  private async writeIconsManifestToFile(
     iconsFilename: string,
     iconsManifest: models.IIconSchema,
     outDir: string,
-  ): void {
+  ): Promise<void> {
     try {
-      if (!existsSync(outDir)) {
-        mkdirSync(outDir);
+      const dirExists = await existsAsync(outDir);
+      if (!dirExists) {
+        await Utils.createDirectoryRecursively(outDir);
       }
 
-      writeFileSync(
+      await writeFileAsync(
         Utils.pathUnixJoin(outDir, iconsFilename),
-        JSON.stringify(iconsManifest, null, 2),
+        JSON.stringify(
+          iconsManifest,
+          null,
+          constants.environment.production ? 0 : 2,
+        ),
       );
-      // tslint:disable-next-line no-console
+
       console.info(
-        `[${
-          constants.extension.name
-        }] Icons manifest file successfully generated!`,
+        `[${constants.extension.name}] Icons manifest file successfully generated!`,
       );
     } catch (error) {
       ErrorHandler.logError(error);
     }
   }
 
-  private updatePackageJson(iconsFolderPath: string): Thenable<void> {
-    const oldIconsThemesFolderPath = manifest.contributes.iconThemes[0].path;
-    const replacer = (rawText: string[]): string[] => {
-      const foundLineIndex = rawText.findIndex(
-        line =>
-          line.includes('"path"') &&
-          line.includes(constants.iconsManifest.filename),
-      );
-      if (foundLineIndex < 0) {
-        return rawText;
-      }
-      const dotEscapedFilename = constants.iconsManifest.filename.replace(
-        '.',
-        '\\.',
-      );
-      rawText[foundLineIndex] = rawText[foundLineIndex].replace(
-        new RegExp(`(.*").*${dotEscapedFilename}(.*".*)`),
-        `$1${iconsFolderPath}$2`,
-      );
-      return rawText;
-    };
+  private async updatePackageJson(): Promise<void> {
+    const sourceDirRelativePath = await Utils.getRelativePath(
+      ConfigManager.rootDir,
+      ConfigManager.sourceDir,
+    );
+
+    const entryFilename = constants.environment.production
+      ? constants.extension.distEntryFilename
+      : '';
+    const entryPath = `${sourceDirRelativePath}${entryFilename}`;
+    const oldMainPath = this.manifest.main;
+    const mainPathChanged = oldMainPath && oldMainPath !== entryPath;
+
+    const uninstallEntryFilename = constants.environment.production
+      ? constants.extension.uninstallEntryFilename
+      : 'uninstall.js';
+    const uninstallEntryPath = `node ./${sourceDirRelativePath}${uninstallEntryFilename}`;
+    const oldUninstallScriptPath = this.manifest.scripts['vscode:uninstall'];
+    const uninstallScriptPathChanged =
+      oldUninstallScriptPath && oldUninstallScriptPath !== uninstallEntryPath;
+
+    const iconsDirRelativePath = `${sourceDirRelativePath}${constants.iconsManifest.filename}`;
+    const iconTheme = this.manifest.contributes.iconThemes[0];
+    const oldIconsThemesPath = iconTheme.path;
+    const iconThemePathChanged =
+      oldIconsThemesPath && oldIconsThemesPath !== iconsDirRelativePath;
+
     if (
-      !oldIconsThemesFolderPath ||
-      oldIconsThemesFolderPath === iconsFolderPath
+      !iconThemePathChanged &&
+      !mainPathChanged &&
+      !uninstallScriptPathChanged
     ) {
-      return Promise.resolve();
+      return;
     }
-    return Utils.updateFile(
-      Utils.pathUnixJoin(__dirname, '../../../', 'package.json'),
-      replacer,
-    ).then(
-      () =>
-        // tslint:disable-next-line no-console
+    const replacer = (rawText: string[]): string[] => {
+      // update 'contributes.iconTheme.path'
+      let predicate = (line: string): boolean => line.includes('"path"');
+      let lineIndex = rawText.findIndex(predicate);
+      if (lineIndex > -1) {
+        rawText[lineIndex] = rawText[lineIndex].replace(
+          oldIconsThemesPath,
+          iconsDirRelativePath,
+        );
         console.info(
           `[${constants.extension.name}] Icons path in 'package.json' updated`,
-        ),
-      (error: Error) => ErrorHandler.logError(error),
-    );
+        );
+      }
+      // update 'main'
+      predicate = (line: string): boolean => line.includes('"main"');
+      lineIndex = rawText.findIndex(predicate);
+      if (lineIndex > -1) {
+        rawText[lineIndex] = rawText[lineIndex].replace(
+          this.manifest.main,
+          entryPath,
+        );
+        console.info(
+          `[${constants.extension.name}] Entrypoint in 'package.json' updated`,
+        );
+      }
+      // update 'vscode:uninstall' script
+      predicate = (line: string): boolean =>
+        line.includes('"vscode:uninstall"');
+      lineIndex = rawText.findIndex(predicate);
+      if (lineIndex > -1) {
+        rawText[lineIndex] = rawText[lineIndex].replace(
+          this.manifest.scripts['vscode:uninstall'],
+          uninstallEntryPath,
+        );
+        // eslint-disable-next-line no-console
+        console.info(
+          `[${constants.extension.name}] Script 'vscode:uninstall' in 'package.json' updated`,
+        );
+      }
+      return rawText;
+    };
+    try {
+      await Utils.updateFile(
+        Utils.pathUnixJoin(ConfigManager.rootDir, 'package.json'),
+        replacer,
+      );
+    } catch (error) {
+      ErrorHandler.logError(error);
+    }
   }
 
   private didChangeConfigurationListener(
     e: models.IVSCodeConfigurationChangeEvent,
   ): void {
-    if (!e || !e.affectsConfiguration) {
-      throw new Error(
-        `Unsupported 'vscode' version: ${this.vscodeManager.version}`,
-      );
-    }
-
     this.affectedPresets = {
       angular: e.affectsConfiguration(constants.vsicons.presets.angular),
+      nestjs: e.affectsConfiguration(constants.vsicons.presets.nestjs),
       jsOfficial: false,
       tsOfficial: false,
       jsonOfficial: false,

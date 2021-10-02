@@ -1,6 +1,6 @@
 import { IIconAssociation } from './iconAssociation';
 
-export interface IIconMapping {
+export interface IIconMapping extends Record<string, unknown> {
   rootFolder: string;
   rootFolderExpanded: string;
   file: string;

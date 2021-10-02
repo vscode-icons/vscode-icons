@@ -1,0 +1,4 @@
+{
+  "exclude": ["!test/**"],
+  "exclude-after-remap": false
+}

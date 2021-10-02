@@ -1,49 +1,51 @@
-import { join } from 'path';
-import { existsSync } from 'fs';
 import { cloneDeep, sortBy, sortedUniq } from 'lodash';
-import * as models from '../models';
-import { Utils } from '../utils';
+import { existsAsync } from '../common/fsAsync';
+import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
+import * as models from '../models';
 import { schema as defaultSchema } from '../models/iconsManifest';
+import { Utils } from '../utils';
 
 export class ManifestBuilder {
-  public static buildManifest(
+  private static iconsDirRelativeBasePath: string;
+  private static customIconDirPath: string;
+
+  public static async buildManifest(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
     customIconsDirPath?: string,
-  ): models.IIconSchema {
+  ): Promise<models.IIconSchema> {
     this.customIconDirPath = customIconsDirPath;
-    this.iconsManifestDirPath = join(__dirname, '../../../', 'out/src');
-    this.iconsDirRelativeBasePath = Utils.getRelativePath(
-      this.iconsManifestDirPath,
-      join(__dirname, '../../../', 'icons'),
+    this.iconsDirRelativeBasePath = await Utils.getRelativePath(
+      ConfigManager.sourceDir,
+      ConfigManager.iconsDir,
     );
 
     const schema = cloneDeep(defaultSchema);
     const defs = schema.iconDefinitions;
 
     // set default icons for dark theme
-    defs._file.iconPath = this.buildDefaultIconPath(
+    defs._file.iconPath = await this.buildDefaultIconPath(
       files.default.file,
       defs._file,
       false,
     );
-    defs._folder.iconPath = this.buildDefaultIconPath(
+    defs._folder.iconPath = await this.buildDefaultIconPath(
       folders.default.folder,
       defs._folder,
       false,
     );
-    defs._folder_open.iconPath = this.buildDefaultIconPath(
+    defs._folder_open.iconPath = await this.buildDefaultIconPath(
       folders.default.folder,
       defs._folder_open,
       true,
     );
-    defs._root_folder.iconPath = this.buildDefaultIconPath(
+    defs._root_folder.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder,
       defs._root_folder,
       false,
     );
-    defs._root_folder_open.iconPath = this.buildDefaultIconPath(
+    defs._root_folder_open.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder,
       defs._root_folder_open,
       true,
@@ -57,27 +59,27 @@ export class ManifestBuilder {
     // and light icons definitions have to be specified for each extension
     // and populate the light section, otherwise they inherit from dark theme
     // and only those in 'light' section get overriden.
-    defs._file_light.iconPath = this.buildDefaultIconPath(
+    defs._file_light.iconPath = await this.buildDefaultIconPath(
       files.default.file_light,
       defs._file_light,
       false,
     );
-    defs._folder_light.iconPath = this.buildDefaultIconPath(
+    defs._folder_light.iconPath = await this.buildDefaultIconPath(
       folders.default.folder_light,
       defs._folder_light,
       false,
     );
-    defs._folder_light_open.iconPath = this.buildDefaultIconPath(
+    defs._folder_light_open.iconPath = await this.buildDefaultIconPath(
       folders.default.folder_light,
       defs._folder_light_open,
       true,
     );
-    defs._root_folder_light.iconPath = this.buildDefaultIconPath(
+    defs._root_folder_light.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder_light,
       defs._root_folder_light,
       false,
     );
-    defs._root_folder_light_open.iconPath = this.buildDefaultIconPath(
+    defs._root_folder_light_open.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder_light,
       defs._root_folder_light_open,
       true,
@@ -87,15 +89,11 @@ export class ManifestBuilder {
     return this.buildJsonStructure(files, folders, schema);
   }
 
-  private static iconsManifestDirPath: string;
-  private static iconsDirRelativeBasePath: string;
-  private static customIconDirPath: string;
-
-  private static buildDefaultIconPath(
+  private static async buildDefaultIconPath(
     defaultExtension: models.IDefaultExtension,
     schemaExtension: models.IIconPath,
     isOpenFolder: boolean,
-  ): string {
+  ): Promise<string> {
     if (!defaultExtension || defaultExtension.disabled) {
       return schemaExtension.iconPath || '';
     }
@@ -107,16 +105,16 @@ export class ManifestBuilder {
     const filename = `${defPrefix}${icon}${openSuffix}${iconSuffix}${Utils.fileFormatToString(
       format,
     )}`;
-    const fPath = this.getIconPath(filename);
+    const fPath = await this.getIconPath(filename);
 
     return Utils.pathUnixJoin(fPath, filename);
   }
 
-  private static buildJsonStructure(
+  private static async buildJsonStructure(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
     schema: models.IIconSchema,
-  ): models.IIconSchema {
+  ): Promise<models.IIconSchema> {
     // check for light files & folders
     const hasDefaultLightFolder =
       schema.iconDefinitions._folder_light.iconPath != null &&
@@ -131,21 +129,23 @@ export class ManifestBuilder {
       folders: this.buildFolders(folders, hasDefaultLightFolder),
     };
     // map structure to the schema
+    const resFiles = await res.files;
+    const resFolders = await res.folders;
     schema.iconDefinitions = {
       ...schema.iconDefinitions,
-      ...res.folders.defs,
-      ...res.files.defs,
+      ...resFolders.defs,
+      ...resFiles.defs,
     };
-    schema.folderNames = res.folders.names.folderNames;
-    schema.folderNamesExpanded = res.folders.names.folderNamesExpanded;
-    schema.fileExtensions = res.files.names.fileExtensions;
-    schema.fileNames = res.files.names.fileNames;
-    schema.languageIds = res.files.languageIds;
-    schema.light.folderNames = res.folders.light.folderNames;
-    schema.light.folderNamesExpanded = res.folders.light.folderNamesExpanded;
-    schema.light.fileExtensions = res.files.light.fileExtensions;
-    schema.light.fileNames = res.files.light.fileNames;
-    schema.light.languageIds = res.files.light.languageIds;
+    schema.folderNames = resFolders.names.folderNames;
+    schema.folderNamesExpanded = resFolders.names.folderNamesExpanded;
+    schema.fileExtensions = resFiles.names.fileExtensions;
+    schema.fileNames = resFiles.names.fileNames;
+    schema.languageIds = resFiles.languageIds;
+    schema.light.folderNames = resFolders.light.folderNames;
+    schema.light.folderNamesExpanded = resFolders.light.folderNamesExpanded;
+    schema.light.fileExtensions = resFiles.light.fileExtensions;
+    schema.light.fileNames = resFiles.light.fileNames;
+    schema.light.languageIds = resFiles.light.languageIds;
 
     return schema;
   }
@@ -153,15 +153,18 @@ export class ManifestBuilder {
   private static buildFiles(
     files: models.IFileCollection,
     hasDefaultLightFile: boolean,
-  ) {
+  ): Promise<models.IBuildFiles> {
     const sts = constants.iconsManifest;
     return sortedUniq(
       sortBy(
-        files.supported.filter(x => !x.disabled && x.icon),
-        item => item.icon,
+        files.supported.filter(
+          (fileExt: models.IFileExtension) => !fileExt.disabled && fileExt.icon,
+        ),
+        (item: models.IFileExtension) => item.icon,
       ),
     ).reduce(
-      (old, current) => {
+      async (previous, current): Promise<models.IBuildFiles> => {
+        const old = await previous;
         const defs = old.defs;
         const names = old.names;
         const languageIds = old.languageIds;
@@ -174,16 +177,14 @@ export class ManifestBuilder {
         const filename = `${
           hasLightVersion ? iconFileLightType : iconFileType
         }${sts.iconSuffix}${iconFileExtension}`;
-        const fileIconPath = this.getIconPath(filename);
+        const fileIconPath = await this.getIconPath(filename);
         const filePath = Utils.pathUnixJoin(fileIconPath, iconFileType);
         const fileLightPath = Utils.pathUnixJoin(
           fileIconPath,
           iconFileLightType,
         );
         const iconFileDefinition = `${sts.definitionFilePrefix}${icon}`;
-        const iconFileLightDefinition = `${
-          sts.definitionFileLightPrefix
-        }${icon}`;
+        const iconFileLightDefinition = `${sts.definitionFileLightPrefix}${icon}`;
         const isFilename = current.filename;
 
         defs[iconFileDefinition] = {
@@ -203,29 +204,29 @@ export class ManifestBuilder {
         }
 
         if (current.languages) {
-          const assignLanguages = langId => {
+          const assignLanguages = (langId: string): void => {
             languageIds[langId] = iconFileDefinition;
           };
-          const assignLanguagesLight = langId => {
+          const assignLanguagesLight = (langId: string): void => {
             light.languageIds[langId] = hasLightVersion
               ? iconFileLightDefinition
               : iconFileDefinition;
           };
 
-          current.languages.forEach(langIds => {
-            if (Array.isArray(langIds.ids)) {
-              langIds.ids.forEach(id => {
+          current.languages.forEach((langId: models.ILanguage): void => {
+            if (Array.isArray(langId.ids)) {
+              langId.ids.forEach((id: string) => {
                 assignLanguages(id);
                 assignLanguagesLight(id);
               });
             } else {
-              assignLanguages(langIds.ids);
-              assignLanguagesLight(langIds.ids);
+              assignLanguages(langId.ids);
+              assignLanguagesLight(langId.ids);
             }
           });
         }
 
-        const populateFn = (extension: string) => {
+        const populateFn = (extension: string): void => {
           if (isFilename) {
             names.fileNames[extension] = iconFileDefinition;
             light.fileNames[extension] = hasLightVersion
@@ -256,25 +257,29 @@ export class ManifestBuilder {
 
         return old;
       },
-      {
+      Promise.resolve({
         defs: {},
         names: { fileExtensions: {}, fileNames: {} },
         light: { fileExtensions: {}, fileNames: {}, languageIds: {} },
         languageIds: {},
-      },
+      }),
     );
   }
 
   private static buildFolders(
     folders: models.IFolderCollection,
     hasDefaultLightFolder: boolean,
-  ) {
+  ): Promise<models.IBuildFolders> {
     const sts = constants.iconsManifest;
     return sortBy(
-      folders.supported.filter(x => !x.disabled && x.icon),
-      item => item.icon,
+      folders.supported.filter(
+        (folderExt: models.IFolderExtension) =>
+          !folderExt.disabled && folderExt.icon,
+      ),
+      (item: models.IFolderExtension) => item.icon,
     ).reduce(
-      (old, current) => {
+      async (previous, current): Promise<models.IBuildFolders> => {
+        const old = await previous;
         const defs = old.defs;
         const names = old.names;
         const light = old.light;
@@ -289,8 +294,8 @@ export class ManifestBuilder {
         const openFolderName = `${
           hasLightVersion ? iconFolderLightType : iconFolderType
         }_opened${sts.iconSuffix}${iconFileExtension}`;
-        const folderIconPath = this.getIconPath(folderName);
-        const openFolderIconPath = this.getIconPath(openFolderName);
+        const folderIconPath = await this.getIconPath(folderName);
+        const openFolderIconPath = await this.getIconPath(openFolderName);
         const folderPath = Utils.pathUnixJoin(folderIconPath, iconFolderType);
         const folderLightPath = Utils.pathUnixJoin(
           folderIconPath,
@@ -299,9 +304,7 @@ export class ManifestBuilder {
         const openFolderPath = `${folderPath}_opened`;
         const openFolderLightPath = `${folderLightPath}_opened`;
         const iconFolderDefinition = `${sts.definitionFolderPrefix}${icon}`;
-        const iconFolderLightDefinition = `${
-          sts.definitionFolderLightPrefix
-        }${icon}`;
+        const iconFolderLightDefinition = `${sts.definitionFolderLightPrefix}${icon}`;
         const iconOpenFolderDefinition = `${iconFolderDefinition}_open`;
         const iconOpenFolderLightDefinition = `${iconFolderLightDefinition}_open`;
 
@@ -332,13 +335,11 @@ export class ManifestBuilder {
             iconPath: `${folderLightPath}${sts.iconSuffix}${iconFileExtension}`,
           };
           defs[iconOpenFolderLightDefinition] = {
-            iconPath: `${openFolderLightPath}${
-              sts.iconSuffix
-            }${iconFileExtension}`,
+            iconPath: `${openFolderLightPath}${sts.iconSuffix}${iconFileExtension}`,
           };
         }
 
-        current.extensions.forEach(extension => {
+        current.extensions.forEach((extension: string) => {
           const key = extension;
           names.folderNames[key] = iconFolderDefinition;
           names.folderNamesExpanded[key] = iconOpenFolderDefinition;
@@ -352,15 +353,15 @@ export class ManifestBuilder {
 
         return old;
       },
-      {
+      Promise.resolve({
         defs: {},
         names: { folderNames: {}, folderNamesExpanded: {} },
         light: { folderNames: {}, folderNamesExpanded: {} },
-      },
+      }),
     );
   }
 
-  private static getIconPath(filename: string): string {
+  private static async getIconPath(filename: string): Promise<string> {
     if (!this.customIconDirPath) {
       return this.iconsDirRelativeBasePath;
     }
@@ -368,21 +369,26 @@ export class ManifestBuilder {
       this.customIconDirPath,
       constants.extension.customIconFolderName,
     );
-    if (!this.hasCustomIcon(absPath, filename)) {
+    const hasCustomIcon = await this.hasCustomIcon(absPath, filename);
+    if (!hasCustomIcon) {
       return this.iconsDirRelativeBasePath;
     }
-    const sanitizedFolderPath = Utils.belongToSameDrive(
+    const belongToSameDrive: boolean = Utils.belongToSameDrive(
       absPath,
-      this.iconsManifestDirPath,
-    )
-      ? this.iconsManifestDirPath
-      : Utils.overwriteDrive(absPath, this.iconsManifestDirPath);
+      ConfigManager.sourceDir,
+    );
+    const sanitizedFolderPath: string = belongToSameDrive
+      ? ConfigManager.sourceDir
+      : Utils.overwriteDrive(absPath, ConfigManager.sourceDir);
     return Utils.getRelativePath(sanitizedFolderPath, absPath, false);
   }
 
-  private static hasCustomIcon(folderPath: string, filename: string): boolean {
-    const relativePath = Utils.getRelativePath('.', folderPath, false);
+  private static async hasCustomIcon(
+    folderPath: string,
+    filename: string,
+  ): Promise<boolean> {
+    const relativePath = await Utils.getRelativePath('.', folderPath, false);
     const filePath = Utils.pathUnixJoin(relativePath, filename);
-    return existsSync(filePath);
+    return existsAsync(filePath);
   }
 }

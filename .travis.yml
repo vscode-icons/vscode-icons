@@ -1,74 +1,79 @@
-language: node_js
+version: ~> 1.0
+dist: bionic
 os:
   - linux
   - osx
+  - windows
+language: node_js
 node_js:
-  - node   # latest node
-  - 10.2.0 # insiders
-  - 8.9.3  # vscode >= 1.26.0
-  - 7.9.0  # vscode >= 1.16.0 < 1.26.0
+  - node    # latest node
+  - 12.14.1 # vscode >= 1.49.0
+  - 12.8.1  # vscode >= 1.43.0 < 1.49.0
+  - 12.4.0  # vscode >= 1.40.0 < 1.43.0
 git:
   depth: 5
   submodules: false
-matrix:
-  allow_failures:
-    - node_js: node
-  fast_finish: true
-cache: yarn
-before_install:
-  - curl -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
+install:
+  - npm install
+cache:
+  npm: false
 before_script:
-  - npm i codeclimate-test-reporter codecov --no-save
-  - npm run postinstall
-script: npm test
-after_success:
-  - if [[ $CODECLIMATE_REPO_TOKEN ]] ; then codeclimate-test-reporter < ./coverage/lcov.info ; fi
-  - codecov --disable=gcov
+  - '[[ $TRAVIS_OS_NAME == "linux" ]]
+    && URL="https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64"
+    && curl -sL $URL > cc-test-reporter && chmod +x cc-test-reporter && ./cc-test-reporter before-build
+    && echo "Test report initialized"
+    || echo ""'
+script:
+  - npm test
+after_script:
+  - '[[ $TRAVIS_OS_NAME == "linux" ]] && ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT || echo ""'
 
 jobs:
+  allow_failures:
+    - node_js: node
+    - stage: wiki pages icons list update
+    - stage: docker vsi:latest
+    - stage: docker vsi:tag
+  fast_finish: true
   include:
     - stage: wiki pages icons list update
       if: repo =~ ^vscode-icons AND branch = master AND type = push
       os: linux
-      node_js: 8.9.3
+      node_js: 12.4.0
       addons:
         apt:
           sources: [ubuntu-toolchain-r-test]
-          packages: [libstdc++-4.9-dev]
-      before_script:
-        - npm i vscode-icons/wpilgenerator --no-save
-        - npm run postinstall
+          packages: [libstdc++-5-dev]
+      before_script: skip
       script: npm run compile
-      after_success: wpilgen
+      after_success: npx vscode-icons/wpilgenerator
+      after_script: skip
 
     - stage: publish
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
       os: linux
-      node_js: 8.9.3
-      before_script:
-        - npm i vsce --no-save
-        - npm run postinstall
-      script: vsce publish -p $VSCE_TOKEN
-      after_success:
+      node_js: 12.4.0
+      before_script: skip
+      script: npx vsce@1.88.0 publish -p $VSCE_TOKEN
+      after_script: skip
 
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
-      sudo: required
       language: generic
-      before_install:
-      before_script:
+      cache: false
+      install: skip
+      before_script: skip
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN
-      after_success:
+      after_script: skip
 
     - stage: docker vsi:tag
       if: repo =~ ^vscode-icons AND tag IS present AND type = push
-      sudo: required
       language: generic
-      before_install:
-      before_script:
+      cache: false
+      install: skip
+      before_script: skip
       script: curl -L $DOCKER_TRIGGER_URL | bash -s -- --token $TRAVIS_TOKEN --tag $TRAVIS_TAG
-      after_success:
+      after_script: skip
 
 # See this if we need to test the extension via vscode:
 # https://code.visualstudio.com/Docs/extensions/testing-extensions#_running-tests-automatically-on-travis-ci-build-machines

@@ -1,53 +1,66 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { readFileAsync } from '../common/fsAsync';
+import { ConfigManager } from '../configuration/configManager';
+import { constants } from '../constants';
 import * as models from '../models';
 import { Utils } from '../utils';
-import { constants } from '../constants';
 
 export class ManifestReader {
-  public static getToggledValue(
+  public static async getToggledValue(
     preset: models.PresetNames,
     presets: models.IPresets,
-  ): boolean {
-    const isNonIconsRelatedPreset = () =>
-      [models.PresetNames.hideExplorerArrows].some(prst => prst === preset);
-    const isFoldersRelatedPreset = () =>
+  ): Promise<boolean> {
+    const isNonIconsRelatedPreset = (): boolean =>
+      [models.PresetNames.hideExplorerArrows].some(
+        (prst: models.PresetNames) => prst === preset,
+      );
+    const isFoldersRelatedPreset = (): boolean =>
       [
         models.PresetNames.hideFolders,
         models.PresetNames.foldersAllDefaultIcon,
-      ].some(prst => prst === preset);
+      ].some((prst: models.PresetNames) => prst === preset);
     const presetName = models.PresetNames[preset];
 
     return isNonIconsRelatedPreset()
       ? !presets[presetName]
       : isFoldersRelatedPreset()
-      ? !ManifestReader.folderIconsDisabled(presetName)
+      ? !(await ManifestReader.folderIconsDisabled(presetName))
       : ManifestReader.iconsDisabled(models.IconNames[presetName]);
   }
 
-  public static iconsDisabled(name: string, isFile: boolean = true): boolean {
-    const iconManifest: string = this.getIconManifest();
-    const iconsJson: models.IIconSchema = Utils.parseJSON(iconManifest);
+  public static async iconsDisabled(
+    name: string,
+    isFile = true,
+  ): Promise<boolean> {
+    const iconManifest: string = await this.getIconManifest();
+    const iconsJson: models.IIconSchema = Utils.parseJSONSafe<
+      models.IIconSchema
+    >(iconManifest);
     const prefix: string = isFile
       ? constants.iconsManifest.definitionFilePrefix
       : constants.iconsManifest.definitionFolderPrefix;
     const suffix: string = Reflect.ownKeys(models.Projects).some(
-      key => models.Projects[key] === name,
+      (key: string | number | symbol) => models.Projects[key] === name,
     )
       ? '_'
       : '';
     const defNamePattern = `${prefix}${name}${suffix}`;
     return (
       !iconsJson ||
-      !Reflect.ownKeys(iconsJson.iconDefinitions).filter(key =>
+      !Reflect.ownKeys(
+        iconsJson.iconDefinitions,
+      ).filter((key: string | number | symbol) =>
         key.toString().startsWith(defNamePattern),
       ).length
     );
   }
 
-  public static folderIconsDisabled(presetName: string): boolean {
-    const manifest: string = this.getIconManifest();
-    const iconsJson: models.IIconSchema = Utils.parseJSON(manifest);
+  public static async folderIconsDisabled(
+    presetName: string,
+  ): Promise<boolean> {
+    const manifest: string = await this.getIconManifest();
+    const iconsJson: models.IIconSchema = Utils.parseJSONSafe<
+      models.IIconSchema
+    >(manifest);
     if (!iconsJson) {
       return true;
     }
@@ -67,14 +80,13 @@ export class ManifestReader {
     }
   }
 
-  private static getIconManifest(): string {
-    const manifestFilePath = join(
-      __dirname,
-      '..',
+  private static async getIconManifest(): Promise<string> {
+    const manifestFilePath = Utils.pathUnixJoin(
+      ConfigManager.sourceDir,
       constants.iconsManifest.filename,
     );
     try {
-      return readFileSync(manifestFilePath, 'utf8');
+      return readFileAsync(manifestFilePath, 'utf8');
     } catch (err) {
       return null;
     }

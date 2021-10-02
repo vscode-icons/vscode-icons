@@ -1,17 +1,17 @@
-import { existsSync, readFileSync, unlinkSync } from 'fs';
 import { eq, lt } from 'semver';
+import { ErrorHandler } from '../common/errorHandler';
+import { existsAsync, readFileAsync, unlinkAsync } from '../common/fsAsync';
+import { constants } from '../constants';
 import {
-  IState,
-  ISettingsManager,
   ExtensionStatus,
+  ISettingsManager,
+  IState,
   IVSCodeManager,
 } from '../models';
 import { Utils } from '../utils';
-import { ErrorHandler } from '../errorHandler';
-import { constants } from '../constants';
 
 export class SettingsManager implements ISettingsManager {
-  private defaultState: IState = {
+  public static defaultState: IState = {
     version: '0.0.0',
     status: ExtensionStatus.deactivated,
     welcomeShown: false,
@@ -31,78 +31,84 @@ export class SettingsManager implements ISettingsManager {
     const state = this.vscodeManager.context.globalState.get<IState>(
       constants.vsicons.name,
     );
-    return state || this.defaultState;
+    return state || SettingsManager.defaultState;
   }
 
-  public setState(state: IState): Thenable<void> {
-    return this.vscodeManager.context.globalState
-      .update(constants.vsicons.name, state)
-      .then(
-        () => {
-          return void 0;
-        },
-        reason => {
-          return ErrorHandler.logError(reason);
-        },
+  public async setState(state: IState): Promise<void> {
+    try {
+      await this.vscodeManager.context.globalState.update(
+        constants.vsicons.name,
+        state,
       );
+    } catch (reason) {
+      ErrorHandler.logError(reason);
+    }
   }
 
-  public updateStatus(status?: ExtensionStatus): IState {
+  public async updateStatus(status?: ExtensionStatus): Promise<IState> {
     const state = this.getState();
     state.version = constants.extension.version;
     state.status = status == null ? state.status : status;
     state.welcomeShown = true;
-    this.setState(state);
+    await this.setState(state);
     return state;
   }
 
-  public deleteState(): Thenable<void> {
-    return this.vscodeManager.context.globalState
-      .update(constants.vsicons.name, undefined)
-      .then(void 0, reason => ErrorHandler.logError(reason));
+  public async deleteState(): Promise<void> {
+    try {
+      await this.vscodeManager.context.globalState.update(
+        constants.vsicons.name,
+        undefined,
+      );
+    } catch (error) {
+      ErrorHandler.logError(error);
+    }
   }
 
-  public moveStateFromLegacyPlace(): Thenable<void> {
+  public async moveStateFromLegacyPlace(): Promise<void> {
     // read state from legacy place
-    const state: IState = this.getStateLegacy();
+    const state: IState = await this.getStateLegacy();
     // state not found in legacy place
-    if (eq(state.version, this.defaultState.version)) {
-      return Promise.resolve();
+    if (eq(state.version, SettingsManager.defaultState.version)) {
+      return;
     }
     // store in new place: 'globalState'
-    return this.setState(state).then(() =>
-      // delete state from legacy place
-      this.deleteStateLegacy(),
-    );
+    await this.setState(state);
+    // delete state from legacy place
+    return this.deleteStateLegacy();
   }
 
   /** Obsolete */
-  private getStateLegacy(): IState {
+  private async getStateLegacy(): Promise<IState> {
     const extensionSettingsLegacyFilePath = Utils.pathUnixJoin(
       this.vscodeManager.getAppUserDirPath(),
       constants.extension.settingsFilename,
     );
 
-    if (!existsSync(extensionSettingsLegacyFilePath)) {
-      return this.defaultState;
+    const pathExists = await existsAsync(extensionSettingsLegacyFilePath);
+    if (!pathExists) {
+      return SettingsManager.defaultState;
     }
     try {
-      const state = readFileSync(extensionSettingsLegacyFilePath, 'utf8');
-      return (Utils.parseJSON(state) as IState) || this.defaultState;
+      const state = await readFileAsync(
+        extensionSettingsLegacyFilePath,
+        'utf8',
+      );
+      return Utils.parseJSONSafe<IState>(state) || SettingsManager.defaultState;
     } catch (error) {
       ErrorHandler.logError(error, true);
-      return this.defaultState;
+      return SettingsManager.defaultState;
     }
   }
 
   /** Obsolete */
-  private deleteStateLegacy(): void {
+  private async deleteStateLegacy(): Promise<void> {
     const extensionSettingsLegacyFilePath = Utils.pathUnixJoin(
       this.vscodeManager.getAppUserDirPath(),
       constants.extension.settingsFilename,
     );
     try {
-      unlinkSync(extensionSettingsLegacyFilePath);
+      await unlinkAsync(extensionSettingsLegacyFilePath);
     } catch (error) {
       ErrorHandler.logError(error);
     }

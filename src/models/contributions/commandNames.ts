@@ -4,6 +4,7 @@ export enum CommandNames {
   restoreIcons,
   resetProjectDetectionDefaults,
   ngPreset,
+  nestPreset,
   jsPreset,
   tsPreset,
   jsonPreset,

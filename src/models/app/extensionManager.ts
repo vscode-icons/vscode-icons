@@ -1,3 +1,3 @@
 export interface IExtensionManager {
-  activate(): void;
+  activate(): Promise<void>;
 }

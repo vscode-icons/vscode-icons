@@ -1,0 +1,6 @@
+*
+*/
+!icons/
+!dist/**/*bundle*.js
+!*bundle.json
+!package.nls*.json

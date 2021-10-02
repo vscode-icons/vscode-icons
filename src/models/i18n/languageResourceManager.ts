@@ -1,6 +1,7 @@
+import { LangResourceLike } from '../notification/notificationManager';
 import { LangResourceKeys } from './langResourceKeys';
 
 export interface ILanguageResourceManager {
-  getMessage(...keys: Array<LangResourceKeys | string>): string;
+  localize(...keys: LangResourceLike[]): string;
   getLangResourceKey(message?: string): LangResourceKeys | undefined;
 }

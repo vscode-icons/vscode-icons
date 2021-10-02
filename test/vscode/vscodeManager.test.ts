@@ -1,12 +1,18 @@
-// tslint:disable only-arrow-functions
-// tslint:disable no-unused-expression
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { IVSCodeManager } from '../../src/models';
+import * as packageJson from '../../../package.json';
+import {
+  IVSCodeManager,
+  IVSCodeWorkspaceFolder,
+  IVSCodeUri,
+} from '../../src/models';
 import { Utils } from '../../src/utils';
-import { vscode } from '../fixtures/vscode';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
+import { vscode } from '../fixtures/vscode';
+import { IPackageManifest } from '../../src/models/packageManifest';
 
 describe('VSCodeManager: tests', function () {
   context('ensures that', function () {
@@ -63,6 +69,78 @@ describe('VSCodeManager: tests', function () {
       expect(vscodeManager.workspace).to.equal(vscode.workspace);
     });
 
+    context(`function 'supportsThemesReload'`, function () {
+      context(`when editor theme reload`, function () {
+        context(`is NOT supported`, function () {
+          it(`returns 'false'`, function () {
+            vscode.version = '1.33.0';
+
+            expect(vscodeManager.supportsThemesReload).to.be.false;
+          });
+
+          context(`is supported`, function () {
+            it(`returns 'true'`, function () {
+              vscode.version = '1.34.0';
+
+              expect(vscodeManager.supportsThemesReload).to.be.true;
+            });
+          });
+        });
+      });
+    });
+
+    context(`function 'isSupportedVersion'`, function () {
+      context(`when editor version`, function () {
+        context(`is NOT supported`, function () {
+          it(`returns 'false'`, function () {
+            vscode.version = '1.26.0';
+
+            expect(vscodeManager.isSupportedVersion).to.be.false;
+          });
+        });
+
+        context(`is supported`, function () {
+          it(`returns 'true'`, function () {
+            vscode.version = '1.99.0';
+
+            expect(vscodeManager.isSupportedVersion).to.be.true;
+          });
+        });
+      });
+
+      context(`when minimum supported version`, function () {
+        context(`can NOT be determined`, function () {
+          let manifestVSCodeEngineOriginalValue: string;
+          let manifest: IPackageManifest;
+
+          beforeEach(function () {
+            manifest = packageJson as IPackageManifest;
+            manifestVSCodeEngineOriginalValue = manifest.engines.vscode;
+            vscode.version = '1.26.0';
+          });
+
+          afterEach(function () {
+            manifest.engines = { vscode: manifestVSCodeEngineOriginalValue };
+          });
+
+          context(`by the 'vscode' property`, function () {
+            it(`returns 'true'`, function () {
+              manifest.engines.vscode = undefined;
+
+              expect(vscodeManager.isSupportedVersion).to.be.true;
+            });
+          });
+          context(`by the 'engines' property`, function () {
+            it(`returns 'true'`, function () {
+              manifest.engines = undefined;
+
+              expect(vscodeManager.isSupportedVersion).to.be.true;
+            });
+          });
+        });
+      });
+    });
+
     context(`function 'getWorkspacePaths'`, function () {
       it(`returns an empty array, when no 'workspaceFolders' and no 'rootPath'`, function () {
         vscodeManager.workspace.rootPath = undefined;
@@ -85,8 +163,16 @@ describe('VSCodeManager: tests', function () {
           '/path/to/workspace/folder1/root',
           '/path/to/workspace/folder2/root',
         ];
-        const workspaceFolder: any = { uri: { fsPath: paths[0] } };
-        const workspaceFolder1: any = { uri: { fsPath: paths[1] } };
+        const workspaceFolder: IVSCodeWorkspaceFolder = {
+          uri: { fsPath: paths[0] } as IVSCodeUri,
+          name: '',
+          index: 0,
+        };
+        const workspaceFolder1: IVSCodeWorkspaceFolder = {
+          uri: { fsPath: paths[1] } as IVSCodeUri,
+          name: '',
+          index: 0,
+        };
         vscodeManager.workspace.rootPath = '/path/to/workspace/root';
         vscodeManager.workspace.workspaceFolders = [
           workspaceFolder,
@@ -107,7 +193,7 @@ describe('VSCodeManager: tests', function () {
           .returns('path/to/app/data/dir/');
       });
 
-      context(`'when getting it more than once`, function () {
+      context(`when getting it more than once`, function () {
         it('returns the same path', function () {
           pathUnixJoinStub.returns('path/to/app/user/dir/');
           const path = vscodeManager.getAppUserDirPath();

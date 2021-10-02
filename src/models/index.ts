@@ -5,6 +5,7 @@ export * from './extensions';
 export * from './i18n';
 export * from './iconsManifest';
 export * from './iconSchema';
+export * from './integrity/integrityManager';
 export * from './ioc/symbols';
 export * from './language';
 export * from './notification/notificationManager';

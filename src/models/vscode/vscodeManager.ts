@@ -11,6 +11,8 @@ export interface IVSCodeManager {
   version: string;
   window: IVSCodeWindow;
   workspace: IVSCodeWorkspace;
+  supportsThemesReload: boolean;
+  isSupportedVersion: boolean;
   getWorkspacePaths(): string[];
   getAppUserDirPath(): string;
 }
