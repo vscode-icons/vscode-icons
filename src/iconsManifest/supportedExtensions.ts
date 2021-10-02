@@ -2456,6 +2456,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'megalinter',
+      extensions: ['.mega-linter.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mercurial',
       extensions: ['.hgignore'],
       filename: true,
