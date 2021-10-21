@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="folder_type_yarn_opened.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="27.28125"
+     inkscape:cx="8.7789233"
+     inkscape:cy="16"
+     inkscape:window-width="2498"
+     inkscape:window-height="1417"
+     inkscape:window-x="2552"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <title
+     id="title2">default_folder_opened</title>
+  <path
+     d="M27.4,5.5H18.2L16.1,9.7H4.3V26.5H29.5V5.5Zm0,18.7H6.6V11.8H27.4Zm0-14.5H19.2l1-2.1h7.1V9.7Z"
+     style="fill:#7abddc;fill-opacity:1"
+     id="path4" />
+  <polygon
+     points="25.7 13.7 0.5 13.7 4.3 26.5 29.5 26.5 25.7 13.7"
+     style="fill:#7abddc;fill-opacity:1"
+     id="polygon6" />
+  <path
+     d="m 30.423048,26.272342 a 5.234528,5.2466657 0 0 0 -1.974983,0.911028 11.84441,11.871875 0 0 1 -2.910842,1.321042 0.81413796,0.81602577 0 0 1 -0.490379,0.275009 31.043001,31.114982 0 0 1 -3.216144,0.288509 c -0.580173,0.0045 -0.93586,-0.150005 -1.034634,-0.388012 a 0.78470528,0.78652483 0 0 1 0.432012,-1.037033 1.8752112,1.8795593 0 0 1 -0.256414,-0.189506 c -0.08531,-0.0855 -0.175598,-0.257008 -0.202536,-0.194006 -0.112244,0.275008 -0.171109,0.94703 -0.47242,1.250039 -0.414053,0.419513 -1.197261,0.279509 -1.660203,0.036 -0.508337,-0.270508 0.03592,-0.906528 0.03592,-0.906528 a 0.3641671,0.36501153 0 0 1 -0.494868,-0.171506 2.4179698,2.4235765 0 0 1 -0.332739,-1.474546 2.6808685,2.6870848 0 0 1 0.872505,-1.447546 4.6563503,4.6671474 0 0 1 0.328249,-2.200069 5.2105827,5.2226649 0 0 1 1.578889,-1.830558 c 0,0 -0.966789,-1.073534 -0.606613,-2.038565 0.233965,-0.63102 0.328249,-0.62652 0.405074,-0.654021 a 1.8123549,1.8165574 0 0 0 0.724343,-0.428513 2.6264929,2.6325831 0 0 1 2.199968,-0.850027 c 0,0 0.586659,-1.776056 1.12393,-1.431045 a 9.1535646,9.1747897 0 0 1 0.764751,1.443045 c 0,0 0.639038,-0.374011 0.710874,-0.234507 a 5.6540684,5.6671789 0 0 1 0.260903,3.066097 6.9890152,7.0052212 0 0 1 -1.297033,2.705586 c -0.06735,0.112503 0.77373,0.469014 1.304516,1.943561 0.490379,1.350043 0.05388,2.480078 0.130701,2.606082 0.01347,0.0225 0.01796,0.0315 0.01796,0.0315 0,0 0.562214,0.045 1.691631,-0.65402 a 4.2403019,4.2501342 0 0 1 2.13362,-0.802026 0.53926663,0.54051707 0 0 1 0.233965,1.055034 z"
+     style="fill:#2188b6;stroke-width:0.499437"
+     id="path4-9" />
+  <metadata
+     id="metadata22">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>default_folder_opened</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
