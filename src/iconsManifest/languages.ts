@@ -89,7 +89,13 @@ export const languages: ILanguageCollection = {
   falcon: { ids: 'falcon', defaultExtension: 'falcon' },
   fauna: { ids: 'fql', defaultExtension: 'fql' },
   fortran: {
-    ids: ['fortran', 'fortran-modern', 'FortranFreeForm', 'fortran_fixed-form'],
+    ids: [
+      'fortran',
+      'fortran-modern',
+      'FortranFreeForm',
+      'FortranFixedForm',
+      'fortran_fixed-form',
+    ],
     defaultExtension: 'f',
   },
   freemarker: { ids: 'ftl', defaultExtension: 'ftl' },
