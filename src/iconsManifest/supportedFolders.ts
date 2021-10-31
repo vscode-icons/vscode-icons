@@ -659,5 +659,10 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'www', extensions: ['www', 'wwwroot'], format: FileFormat.svg },
+    {
+      icon: 'yarn',
+      extensions: ['.yarn'],
+      format: FileFormat.svg,
+    },
   ],
 };
