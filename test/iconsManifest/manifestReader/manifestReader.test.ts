@@ -17,7 +17,7 @@ describe('ManifestReader: tests', function () {
       sandbox = sinon.createSandbox();
 
       readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
-      parseJSONStub = sandbox.stub(Utils, 'parseJSON');
+      parseJSONStub = sandbox.stub(Utils, 'parseJSONSafe');
     });
 
     afterEach(function () {

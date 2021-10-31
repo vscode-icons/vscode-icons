@@ -1,11 +1,9 @@
-import { IVSCodeExtensionContext } from '../../src/models';
-
-const memento: any = {};
+import { IVSCodeExtensionContext, IVSCodeMemento } from '../../src/models';
 
 export const context: IVSCodeExtensionContext = {
   extensionPath: undefined,
-  globalState: memento,
+  globalState: {} as IVSCodeMemento,
   storagePath: undefined,
   subscriptions: [],
-  workspaceState: memento,
+  workspaceState: {} as IVSCodeMemento,
 };

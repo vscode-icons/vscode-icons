@@ -56,7 +56,9 @@ describe('ErrorHandler: tests', function () {
         delete error.message;
         ErrorHandler.logError(error);
         expect(
-          consoleErrorStub.calledOnceWithExactly(`Unhandled Error: ${error}`),
+          consoleErrorStub.calledOnceWithExactly(
+            `Unhandled Error: ${error.toString()}`,
+          ),
         ).to.be.true;
         expect(error).to.not.haveOwnProperty('stack').to.be.true;
         expect(error).to.not.haveOwnProperty('message').to.be.true;
@@ -78,7 +80,9 @@ describe('ErrorHandler: tests', function () {
         delete error.message;
         ErrorHandler.logError(error);
         expect(
-          consoleErrorStub.calledOnceWithExactly(`Unhandled Error: ${error}`),
+          consoleErrorStub.calledOnceWithExactly(
+            `Unhandled Error: ${error.toString()}`,
+          ),
         ).to.be.true;
       });
     });

@@ -27,22 +27,27 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   ballerina: ILanguage;
   bats: ILanguage;
   bazel: ILanguage;
+  bicep: ILanguage;
   befunge: ILanguage;
   bibtex: ILanguage;
   biml: ILanguage;
   blade: ILanguage;
+  blitzbasic: ILanguage;
   bolt: ILanguage;
   bosque: ILanguage;
   // eslint-disable-next-line camelcase
   c_al: ILanguage;
   cabal: ILanguage;
   caddyfile: ILanguage;
+  casc: ILanguage;
+  cddl: ILanguage;
   cfc: ILanguage;
   cfm: ILanguage;
   cloudfoundrymanifest: ILanguage;
   cmake: ILanguage;
   cmakecache: ILanguage;
   cobol: ILanguage;
+  codeql: ILanguage;
   coldfusion: ILanguage;
   confluence: ILanguage;
   cookbook: ILanguage;
@@ -71,6 +76,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erb: ILanguage;
   erlang: ILanguage;
   falcon: ILanguage;
+  fauna: ILanguage;
   fortran: ILanguage;
   freemarker: ILanguage;
   fthtml: ILanguage;
@@ -98,6 +104,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   http: ILanguage;
   hunspell: ILanguage;
   hy: ILanguage;
+  hypr: ILanguage;
   icl: ILanguage;
   imba: ILanguage;
   informix: ILanguage;
@@ -121,11 +128,13 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   lex: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
+  log: ILanguage;
   lolcode: ILanguage;
   lsl: ILanguage;
   marko: ILanguage;
   matlab: ILanguage;
   maxscript: ILanguage;
+  mdx: ILanguage;
   mediawiki: ILanguage;
   mel: ILanguage;
   meson: ILanguage;
@@ -137,9 +146,11 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   nearley: ILanguage;
   nim: ILanguage;
   nimble: ILanguage;
+  nix: ILanguage;
   nsis: ILanguage;
   nunjucks: ILanguage;
   ocaml: ILanguage;
+  ogone: ILanguage;
   openEdge: ILanguage;
   openHAB: ILanguage;
   pascal: ILanguage;
@@ -169,6 +180,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   raml: ILanguage;
   reason: ILanguage;
   red: ILanguage;
+  rescript: ILanguage;
   restructuredtext: ILanguage;
   rexx: ILanguage;
   riot: ILanguage;
@@ -177,6 +189,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   san: ILanguage;
   sas: ILanguage;
   sbt: ILanguage;
+  scad: ILanguage;
   scala: ILanguage;
   scilab: ILanguage;
   sdlang: ILanguage;
@@ -188,9 +201,11 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   smarty: ILanguage;
   snort: ILanguage;
   solidity: ILanguage;
+  sparql: ILanguage;
   sqf: ILanguage;
   squirrel: ILanguage;
   stan: ILanguage;
+  starlark: ILanguage;
   stata: ILanguage;
   stencil: ILanguage;
   stencilhtml: ILanguage;
@@ -203,6 +218,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   systemd: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
+  teal: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;
   terraform: ILanguage;
@@ -210,8 +226,10 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   textile: ILanguage;
   textmatejson: ILanguage;
   textmateyaml: ILanguage;
+  tiltfile: ILanguage;
   toml: ILanguage;
   ttcn: ILanguage;
+  tuc: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
   vba: ILanguage;
@@ -228,6 +246,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;
+  xmake: ILanguage;
   xquery: ILanguage;
   yacc: ILanguage;
   yang: ILanguage;

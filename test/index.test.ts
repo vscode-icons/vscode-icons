@@ -10,10 +10,15 @@ import { context as extensionContext } from './fixtures/extensionContext';
 import { Debugger } from '../src/common';
 
 describe('Entry points: tests', function () {
+  interface IEntrypoint {
+    activate: (arg: unknown) => unknown;
+    deactivate: () => unknown;
+  }
+
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
     let extensionStub: sinon.SinonStubbedInstance<IExtensionManager>;
-    let EntryPoint: any;
+    let EntryPoint: IEntrypoint;
 
     before(function () {
       proxyq.noCallThru();
@@ -26,7 +31,7 @@ describe('Entry points: tests', function () {
             .stub()
             .returns({ get: sinon.stub().returns(extensionStub) }),
         },
-      });
+      }) as IEntrypoint;
     });
 
     after(function () {

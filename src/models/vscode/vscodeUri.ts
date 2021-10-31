@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export interface IVSCodeUri {
   readonly scheme: string;
   readonly authority: string;

@@ -4,12 +4,14 @@ import * as models from '../models';
 
 export class LanguageResourceManager
   implements models.ILanguageResourceManager {
-  private defaultLangResource: [];
-  private currentLangResource: [];
+  private defaultLangResource: string[];
+  private currentLangResource: string[];
+
   constructor(private locale: string) {
-    this.defaultLangResource = langResources.en;
+    const languages = langResources as Record<string, string[]>;
+    this.defaultLangResource = languages.en;
     this.currentLangResource =
-      (this.locale && langResources[this.locale]) || this.defaultLangResource;
+      (this.locale && languages[this.locale]) || this.defaultLangResource;
   }
 
   public localize(...keys: models.LangResourceLike[]): string {
@@ -18,9 +20,8 @@ export class LanguageResourceManager
       .filter(
         (key: models.LangResourceLike) => key !== null && key !== undefined,
       )
-      .forEach((key: models.LangResourceLike) => {
-        if (typeof key === 'number') {
-          const resourceKey = key as number;
+      .forEach((resourceKey: models.LangResourceLike) => {
+        if (typeof resourceKey === 'number') {
           if (this.currentLangResource.length > resourceKey) {
             // If no message is found fallback to english message
             let message: string | models.IOSSpecific =
@@ -38,10 +39,12 @@ export class LanguageResourceManager
             msg += message;
             return;
           }
-          throw new Error(`Language resource key '${key}' is not valid`);
+          throw new Error(
+            `Language resource key '${resourceKey}' is not valid`,
+          );
         }
 
-        key.split('').forEach((char: string) => {
+        resourceKey.split('').forEach((char: string) => {
           if (char.match(/[#^*|\\/{}+=]/g)) {
             throw new Error(`${char} is not valid`);
           }

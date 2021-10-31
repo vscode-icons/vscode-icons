@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import { resolve } from 'path';
 import * as sinon from 'sinon';
-import * as manifest from '../../../../package.json';
+import * as packageJson from '../../../../package.json';
 import { ErrorHandler } from '../../../src/common/errorHandler';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { ConfigManager } from '../../../src/configuration/configManager';
@@ -21,10 +21,12 @@ import {
   IFileCollection,
   IFolderCollection,
   IIconsGenerator,
+  IPresets,
   IVSCodeManager,
   IVSIcons,
   schema as iconsManifest,
 } from '../../../src/models';
+import { IPackageManifest } from '../../../src/models/packageManifest/package';
 import { Utils } from '../../../src/utils';
 import { VSCodeManager } from '../../../src/vscode/vscodeManager';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
@@ -323,7 +325,10 @@ describe('IconsGenerator: tests', function () {
 
       context(`the 'package.json' file gets`, function () {
         context(`NOT updated`, function () {
+          let manifest: IPackageManifest;
+
           beforeEach(function () {
+            manifest = packageJson as IPackageManifest;
             getRelativePathStub.resolves(
               `${constants.extension.outDirName}/${constants.extension.srcDirName}/`,
             );
@@ -480,11 +485,12 @@ describe('IconsGenerator: tests', function () {
 
                     await iconsGenerator.persist(iconsManifest, true);
 
-                    const returnedValue = updateFileStub.args[0][1]([
-                      manifestMock,
-                    ])[0];
+                    const func = updateFileStub.args[0][1] as (
+                      arg: string[],
+                    ) => string[];
+                    const returnedValue: string[] = func([manifestMock]);
 
-                    expect(returnedValue).to.equal(`"main": "${newDir}"`);
+                    expect(returnedValue[0]).to.equal(`"main": "${newDir}"`);
                   });
                 });
 
@@ -504,11 +510,12 @@ describe('IconsGenerator: tests', function () {
 
                     await iconsGenerator.persist(iconsManifest, true);
 
-                    const returnedValue = updateFileStub.args[0][1]([
-                      manifestMock,
-                    ])[0];
+                    const func = updateFileStub.args[0][1] as (
+                      arg: string[],
+                    ) => string[];
+                    const returnedValue = func([manifestMock]);
 
-                    expect(returnedValue).to.equal(
+                    expect(returnedValue[0]).to.equal(
                       `"main": "${newDir}${constants.extension.distEntryFilename}"`,
                     );
                   });
@@ -565,7 +572,9 @@ describe('IconsGenerator: tests', function () {
           });
 
           // @ts-ignore
-          expect(iconsGenerator.affectedPresets.angular).to.be.true;
+          const affectedPresets = iconsGenerator.affectedPresets as IPresets;
+
+          expect(affectedPresets.angular).to.be.true;
         });
 
         it(`false`, function () {
@@ -574,7 +583,9 @@ describe('IconsGenerator: tests', function () {
           });
 
           // @ts-ignore
-          expect(iconsGenerator.affectedPresets.angular).to.be.false;
+          const affectedPresets = iconsGenerator.affectedPresets as IPresets;
+
+          expect(affectedPresets.angular).to.be.false;
         });
       });
     });

@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "10.1.1",
+  "version": "11.6.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -35,12 +35,9 @@
     "email": "roberto.huertas@outlook.com"
   },
   "engines": {
-    "vscode": "^1.31.1",
-    "node": ">=10.2.0"
+    "vscode": "^1.40.2",
+    "node": ">=12.4.0"
   },
-  "categories": [
-    "Themes"
-  ],
   "keywords": [
     "icons",
     "theme",
@@ -48,19 +45,98 @@
     "multi-root ready",
     "portable mode ready"
   ],
-  "preview": false,
   "homepage": "https://github.com/vscode-icons/vscode-icons",
+  "main": "out/src/",
   "icon": "images/logo.png",
+  "scripts": {
+    "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
+    "format": "prettier --loglevel error --write \"{src,test}/**/*.ts\"",
+    "postformat": "npm run lint -- --fix",
+    "prebundle:dev": "rimraf ./*.nls*.json",
+    "bundle:dev": "node ./out/src/tools/bundle.js",
+    "bundle": "npm run bundle:dev -- --release",
+    "prebuild": "npm run compile",
+    "build": "node ./out/src/tools/build.js \"--release\"",
+    "prebuild:dev": "npm run lint && npm run compile:dev",
+    "build:dev": "node ./out/src/tools/build.js",
+    "pretest": "rimraf ./.nyc_output ./coverage && npm run prebuild:dev",
+    "test": "nyc mocha",
+    "posttest": "nyc report -r lcov",
+    "test:vs": "node ./node_modules/vscode/bin/test",
+    "vscode:prepublish": "npm run dist",
+    "vscode:uninstall": "node ./out/src/uninstall.js",
+    "precompile": "rimraf ./out ./dist",
+    "compile": "tsc -p tsconfig.prod.json",
+    "postcompile": "npm run bundle",
+    "compile:w": "npm run compile:dev -- -w",
+    "precompile:dev": "npm run precompile",
+    "compile:dev": "tsc",
+    "postcompile:dev": "npm run bundle:dev",
+    "lint": "eslint --ext .ts .",
+    "predist": "npm run build",
+    "dist": "webpack --hide-modules --mode production",
+    "postdist": "nsri create -s ."
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/glob": "^7.1.3",
+    "@types/lodash": "^4.14.161",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "10",
+    "@types/proxyquire": "^1.3.28",
+    "@types/semver": "^7.3.4",
+    "@types/sinon": "^9.0.5",
+    "@types/vscode": "1.40",
+    "@types/webpack": "^4.41.22",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "chai": "^4.2.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "glob": "^7.1.6",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0",
+    "mocha": "^8.1.3",
+    "nyc": "^15.1.0",
+    "prettier": "^2.1.1",
+    "proxyquire": "^2.1.3",
+    "rimraf": "^3.0.2",
+    "sinon": "^9.0.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "inversify": "^5.0.1",
+    "lodash": "^4.17.21",
+    "nsri": "^6.0.0",
+    "open": "^7.2.1",
+    "reflect-metadata": "^0.1.13",
+    "semver": "^7.3.2"
+  },
+  "preview": false,
+  "capabilities": {
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "categories": [
+    "Themes"
+  ],
   "galleryBanner": {
     "color": "#ffdd00"
   },
   "extensionKind": [
-    "ui"
+    "ui",
+    "workspace"
   ],
   "activationEvents": [
     "*"
   ],
-  "main": "out/src/",
   "contributes": {
     "iconThemes": [
       {
@@ -254,74 +330,5 @@
         }
       }
     }
-  },
-  "scripts": {
-    "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
-    "format": "prettier --loglevel error --write \"{src,test}/**/*.ts\"",
-    "postformat": "npm run lint -- --fix",
-    "prebundle:dev": "rimraf ./*.nls*.json",
-    "bundle:dev": "node ./out/src/tools/bundle.js",
-    "bundle": "npm run bundle:dev -- --release",
-    "prebuild": "npm run compile",
-    "build": "node ./out/src/tools/build.js \"--release\"",
-    "prebuild:dev": "npm run lint && npm run compile:dev",
-    "build:dev": "node ./out/src/tools/build.js",
-    "pretest": "rimraf ./.nyc_output ./coverage && npm run prebuild:dev",
-    "test": "nyc mocha",
-    "posttest": "nyc report -r lcov",
-    "test:vs": "node ./node_modules/vscode/bin/test",
-    "vscode:prepublish": "npm run dist",
-    "vscode:uninstall": "node ./out/src/uninstall.js",
-    "precompile": "rimraf ./out ./dist",
-    "compile": "tsc -p tsconfig.prod.json",
-    "postcompile": "npm run bundle",
-    "compile:w": "npm run compile:dev -- -w",
-    "precompile:dev": "npm run precompile",
-    "compile:dev": "tsc",
-    "postcompile:dev": "npm run bundle:dev",
-    "lint": "eslint . --ext .ts",
-    "predist": "npm run build",
-    "dist": "webpack --hide-modules --mode production",
-    "postdist": "nsri create -s ."
-  },
-  "devDependencies": {
-    "@types/chai": "^4.2.11",
-    "@types/glob": "^7.1.1",
-    "@types/lodash": "^4.14.149",
-    "@types/mocha": "^7.0.2",
-    "@types/node": "10",
-    "@types/proxyquire": "^1.3.28",
-    "@types/semver": "^7.1.0",
-    "@types/sinon": "^9.0.0",
-    "@types/vscode": "1.31",
-    "@types/webpack": "^4.41.10",
-    "@typescript-eslint/eslint-plugin": "^2.27.0",
-    "@typescript-eslint/parser": "^2.27.0",
-    "chai": "^4.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-prettier": "^3.1.2",
-    "glob": "^7.1.6",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.1.3",
-    "mocha": "^7.1.1",
-    "nyc": "^15.0.1",
-    "prettier": "^2.0.4",
-    "proxyquire": "^2.1.3",
-    "rimraf": "^3.0.2",
-    "sinon": "^9.0.2",
-    "ts-node": "^8.8.2",
-    "typescript": "^3.8.3",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
-  },
-  "dependencies": {
-    "inversify": "^5.0.1",
-    "lodash": "^4.17.15",
-    "open": "^7.0.3",
-    "nsri": "^5.0.1",
-    "reflect-metadata": "^0.1.13",
-    "semver": "^7.2.2"
   }
 }

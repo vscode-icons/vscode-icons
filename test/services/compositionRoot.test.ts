@@ -1,33 +1,37 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
-import 'reflect-metadata';
 import { expect } from 'chai';
-import * as sinon from 'sinon';
 import * as proxyq from 'proxyquire';
-import * as models from '../../src/models';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { ConfigManager } from '../../src/configuration/configManager';
-import { SettingsManager } from '../../src/settings/settingsManager';
-import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
-import { NotificationManager } from '../../src/notification/notificationManager';
-import { IconsGenerator } from '../../src/iconsManifest';
-import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import 'reflect-metadata';
+import * as sinon from 'sinon';
 import { ExtensionManager } from '../../src/app/extensionManager';
+import { ConfigManager } from '../../src/configuration/configManager';
+import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
+import { IconsGenerator } from '../../src/iconsManifest';
+import * as models from '../../src/models';
+import { ICompositionRootService } from '../../src/models/services/compositionRootService';
+import { NotificationManager } from '../../src/notification/notificationManager';
+import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import { SettingsManager } from '../../src/settings/settingsManager';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
 import { vscode } from '../fixtures/vscode';
 
 describe('CompositionRootService: tests', function () {
+  type CompositionRootService = new (
+    ...args: unknown[]
+  ) => ICompositionRootService;
+
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let CompositionRootService: any;
-    let crs: any;
+    let CRService: CompositionRootService;
+    let crs: ICompositionRootService;
 
     before(function () {
       proxyq.noCallThru();
-      CompositionRootService = proxyq(
-        '../../src/services/compositionRootService',
-        { vscode },
-      ).CompositionRootService;
+      CRService = (proxyq('../../src/services/compositionRootService', {
+        vscode,
+      }) as Record<string, CompositionRootService>).CompositionRootService;
     });
 
     after(function () {
@@ -43,7 +47,7 @@ describe('CompositionRootService: tests', function () {
       sandbox.stub(ConfigManager.prototype, 'vsicons').get(() => ({
         vsicons: sandbox.stub(),
       }));
-      crs = new CompositionRootService(extensionContext);
+      crs = new CRService(extensionContext);
     });
 
     afterEach(function () {

@@ -1,13 +1,17 @@
 import { join } from 'path';
 import { readdirAsync, readFileAsync, writeFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
+import { Utils } from '../utils';
 
 export class Bundler {
   public static async bundleLangResources(
     sourceDirPath: string,
     targetFilePath: string,
   ): Promise<void> {
-    const iterator = async (filename: string, bundleObj: {}): Promise<void> => {
+    const iterator = async (
+      filename: string,
+      bundleObj: Record<string, unknown>,
+    ): Promise<void> => {
       const match = /lang\.nls\.([a-zA-Z-]+)\.json/.exec(filename);
       const locale =
         filename === 'lang.nls.json'
@@ -19,7 +23,9 @@ export class Bundler {
         throw new Error(`No locale found for: ${filename}`);
       }
       const content = await readFileAsync(join(sourceDirPath, filename));
-      const translations = JSON.parse(content.toString());
+      const translations: Record<string, string> = Utils.parseJSONSafe<
+        Record<string, string>
+      >(content.toString());
       bundleObj[locale] = Reflect.ownKeys(translations).map(
         (key: string) => translations[key],
       );
@@ -52,7 +58,9 @@ export class Bundler {
   ): Promise<void> {
     const iterator = async (filename: string): Promise<void> => {
       const content = await readFileAsync(join(sourceDirPath, filename));
-      const bundleJson = JSON.parse(content.toString());
+      const bundleJson = Utils.parseJSONSafe<Record<string, unknown>>(
+        content.toString(),
+      );
       await writeFileAsync(
         join(targetDirPath, filename),
         JSON.stringify(

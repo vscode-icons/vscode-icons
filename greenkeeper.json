@@ -1,6 +1,0 @@
-{
-  "ignore": [
-    "@types/node",
-    "@types/vscode"
-  ]
-}

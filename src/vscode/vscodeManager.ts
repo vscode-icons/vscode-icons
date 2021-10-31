@@ -1,7 +1,12 @@
 import { coerce, gte, parse } from 'semver';
-import * as manifest from '../../../package.json';
+import * as packageJson from '../../../package.json';
 import * as models from '../models';
 import { Utils } from '../utils';
+import {
+  IPackageManifest,
+  IVSCodeManifest,
+  IVSCodeIconTheme,
+} from '../models/packageManifest';
 
 export class VSCodeManager implements models.IVSCodeManager {
   private appUserDirPath: string;
@@ -44,14 +49,18 @@ export class VSCodeManager implements models.IVSCodeManager {
   }
 
   public get supportsThemesReload(): boolean {
-    const watchable =
+    const manifest: IVSCodeManifest = packageJson as IVSCodeManifest;
+    const watchable: boolean =
       manifest &&
       manifest.contributes &&
-      manifest.contributes.iconThemes.some((theme: any) => theme._watch);
+      manifest.contributes.iconThemes.some(
+        (theme: IVSCodeIconTheme) => theme._watch,
+      );
     return gte(this.version, this.supportsThemeReloadVersion) && watchable;
   }
 
   public get isSupportedVersion(): boolean {
+    const manifest: IPackageManifest = packageJson as IPackageManifest;
     const minVersion = (
       (manifest && manifest.engines && coerce(manifest.engines.vscode)) ||
       parse('1.0.0')

@@ -33,7 +33,7 @@ describe('Specifications of supported extensions: tests', function () {
             const filename =
               `${constants.iconsManifest.fileTypePrefix}${supportedFile.icon}` +
               `${constants.iconsManifest.iconSuffix}.${
-                FileFormat[supportedFile.format]
+                FileFormat[supportedFile.format] as string
               }`;
             const iconFilePath = join(iconsDirPath, filename);
 
@@ -96,7 +96,7 @@ describe('Specifications of supported extensions: tests', function () {
               const filename = `${constants.iconsManifest.fileTypeLightPrefix}${
                 supportedFile.icon
               }${constants.iconsManifest.iconSuffix}.${
-                FileFormat[supportedFile.format]
+                FileFormat[supportedFile.format] as string
               }`;
               const iconFilePath = join(iconsDirPath, filename);
 

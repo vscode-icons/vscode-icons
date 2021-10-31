@@ -94,7 +94,7 @@ export class SettingsManager implements ISettingsManager {
         extensionSettingsLegacyFilePath,
         'utf8',
       );
-      return (Utils.parseJSON(state) as IState) || SettingsManager.defaultState;
+      return Utils.parseJSONSafe<IState>(state) || SettingsManager.defaultState;
     } catch (error) {
       ErrorHandler.logError(error, true);
       return SettingsManager.defaultState;

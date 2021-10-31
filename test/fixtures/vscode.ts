@@ -1,9 +1,15 @@
-import { IVSCode } from '../../src/models';
+import {
+  IVSCode,
+  IVSCodeEnv,
+  IVSCodeCommands,
+  IVSCodeWindow,
+  IVSCodeWorkspace,
+} from '../../src/models';
 
-const env: any = {};
-const commands: any = {};
-const window: any = {};
-const workspace: any = {};
+const env: IVSCodeEnv = {} as IVSCodeEnv;
+const commands: IVSCodeCommands = {} as IVSCodeCommands;
+const window: IVSCodeWindow = {} as IVSCodeWindow;
+const workspace: IVSCodeWorkspace = {} as IVSCodeWorkspace;
 
 export const vscode: IVSCode = {
   env,

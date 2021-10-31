@@ -4,7 +4,11 @@ import { expect } from 'chai';
 import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import { FileFormat, IFolderExtension } from '../../../src/models';
+import {
+  FileFormat,
+  IFolderExtension,
+  IFolderCollection,
+} from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -22,7 +26,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it('new extensions are added to existing folder icon and respect the format type', async function () {
-      const customFolders: any = {
+      const customFolders: IFolderCollection = {
         default: {},
         supported: [{ icon: 'aws', extensions: ['aws3'], format: 'svg' }],
       };
@@ -51,7 +55,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it(`'overrides' removes the specified icon`, async function () {
-      const customFolders: any = {
+      const customFolders: IFolderCollection = {
         default: {},
         supported: [
           {
@@ -89,7 +93,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it(`'extends' replaces the specified icon`, async function () {
-      const customFolders: any = {
+      const customFolders: IFolderCollection = {
         default: {},
         supported: [
           {
@@ -132,7 +136,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it('disabled icons are NOT included into the manifest', async function () {
-      const customFolders: any = {
+      const customFolders: IFolderCollection = {
         default: {},
         supported: [
           { icon: 'aws', extensions: [], disabled: true, format: 'svg' },
@@ -157,7 +161,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it('NOT disabled icons are included into the manifest', async function () {
-      const customFolders: any = {
+      const customFolders: IFolderCollection = {
         default: {},
         supported: [
           { icon: 'aws', extensions: [], disabled: false, format: 'svg' },
@@ -190,7 +194,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it(`if 'extensions' is NOT defined, it gets added internally`, async function () {
-      const customFolders: any = {
+      const customFolders: IFolderCollection = {
         default: {},
         supported: [{ icon: 'aws', disabled: false, format: 'svg' }],
       };
@@ -219,7 +223,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it(`existing icon have its 'extensions' reassigned to new custom icon`, async function () {
-      const customFolders: any = {
+      const customFolders: IFolderCollection = {
         default: {},
         supported: [
           { icon: 'newIcon', extensions: ['aws', '.aws'], format: 'svg' },
@@ -256,7 +260,7 @@ describe('CustomsMerger: folder extensions tests', function () {
 
     context('custom icon', function () {
       it(`keeps the correct 'format'`, async function () {
-        const customFolders: any = {
+        const customFolders: IFolderCollection = {
           default: {},
           supported: [
             {

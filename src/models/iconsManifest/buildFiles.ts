@@ -1,6 +1,15 @@
+import { IIconAssociation } from '../iconSchema/iconAssociation';
+
 export interface IBuildFiles {
-  defs: {};
-  names: { fileExtensions: {}; fileNames: {} };
-  light: { fileExtensions: {}; fileNames: {}; languageIds: {} };
-  languageIds: {};
+  defs: Record<string, unknown>;
+  names: {
+    fileExtensions: IIconAssociation;
+    fileNames: IIconAssociation;
+  };
+  light: {
+    fileExtensions: IIconAssociation;
+    fileNames: IIconAssociation;
+    languageIds: IIconAssociation;
+  };
+  languageIds: IIconAssociation;
 }
