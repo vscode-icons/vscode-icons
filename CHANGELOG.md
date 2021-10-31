@@ -1,5 +1,20 @@
 # Change Log
 
+## 11.7.0 (October 31, 2021)
+
+- Fix: Dependency bump. (Dependabot in [#2853](https://github.com/vscode-icons/vscode-icons/pull/2853))
+- Feature: Support for `Vanilla Extract`. ([@douglaseggleton](https://github.com/douglaseggleton) in [#2852](https://github.com/vscode-icons/vscode-icons/pull/2852))
+- Enhancement: Add `mjs` extension to `Next.js`. ([@kripod](https://github.com/kripod) in [#2850](https://github.com/vscode-icons/vscode-icons/pull/2850))
+- Feature: Support for `Yarn` folder. ([@oliversalzburg](https://github.com/oliversalzburg) in [#2848](https://github.com/vscode-icons/vscode-icons/pull/2848))
+- Enhancement: Add support for `FortranFixedForm`. ([@gnikit](https://github.com/gnikit) in [#2840](https://github.com/vscode-icons/vscode-icons/pull/2840))
+- Enhancement: Update `Fortran` icon. ([@jacobwilliams](https://github.com/jacobwilliams) in [#2833](https://github.com/vscode-icons/vscode-icons/pull/2833))
+- Fix: Add `.devcontainer.json` to `devcontainer` file extensions. ([@willfrey](https://github.com/willfrey) in [#2829](https://github.com/vscode-icons/vscode-icons/pull/2829))
+- Feature: Support for `Cypress` test folder. ([@RobertoPegoraro](https://github.com/RobertoPegoraro) in [#2828](https://github.com/vscode-icons/vscode-icons/pull/2828))
+- Feature: Support for `Preact`. ([@Snazzah](https://github.com/Snazzah) in [#2827](https://github.com/vscode-icons/vscode-icons/pull/2827))
+- Feature: Support for `.env` extension. ([@kid1412621](https://github.com/kid1412621) in [#2821](https://github.com/vscode-icons/vscode-icons/pull/2821))
+- Enhancement: Add missing extensions for `remark`, `rehype` & `retext`. ([@remcohaszing](https://github.com/remcohaszing) in [#2819](https://github.com/vscode-icons/vscode-icons/pull/2819))
+- Feature: Support for `Chart.lock` & `Chart.yamml` for `Helm`. ([@remcohaszing](https://github.com/remcohaszing) in [#2818](https://github.com/vscode-icons/vscode-icons/pull/2818))
+
 ## 11.6.0 (August 01, 2021)
 
 - Feature: Support for `html.erb` language id. ([@robertohuertasm](https://github.com/robertohuertasm) in [#2815](https://github.com/vscode-icons/vscode-icons/pull/2815))
