@@ -106,7 +106,7 @@ export const languages: ILanguageCollection = {
   gamemaker81: { ids: 'gml-gm81', defaultExtension: 'gml' },
   gcode: { ids: 'gcode', defaultExtension: 'gcode' },
   genstat: { ids: 'genstat', defaultExtension: 'gen' },
-  git: { ids: ['git-commit', 'git-rebase'], defaultExtension: 'git' },
+  git: { ids: ['git-commit', 'git-rebase', 'ignore'], defaultExtension: 'git' },
   glsl: { ids: 'glsl', defaultExtension: 'glsl' },
   glyphs: { ids: 'glyphs', defaultExtension: 'glyphs' },
   gnuplot: { ids: 'gnuplot', defaultExtension: 'gp' },
