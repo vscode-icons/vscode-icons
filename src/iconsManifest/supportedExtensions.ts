@@ -102,6 +102,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fba',
+      extensions: ['fba'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
