@@ -88,6 +88,7 @@ export const languages: ILanguageCollection = {
   erlang: { ids: 'erlang', defaultExtension: 'erl' },
   falcon: { ids: 'falcon', defaultExtension: 'falcon' },
   fauna: { ids: 'fql', defaultExtension: 'fql' },
+  fba: { ids: 'fba', defaultExtension: 'fba' },
   fortran: {
     ids: [
       'fortran',
