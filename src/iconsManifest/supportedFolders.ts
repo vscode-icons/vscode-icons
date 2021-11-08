@@ -319,7 +319,7 @@ export const extensions: IFolderCollection = {
     {
       icon: 'json',
       extensions: ['json', 'jsons'],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'json_official',
@@ -344,7 +344,7 @@ export const extensions: IFolderCollection = {
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     {
       icon: 'library',
-      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries',],
+      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries'],
       format: FileFormat.svg,
     },
     { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
