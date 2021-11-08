@@ -337,14 +337,14 @@ export const extensions: IFolderCollection = {
         '.kubernetes',
         '.k8s',
         '.kube',
-        '.kuber'
+        '.kuber',
       ],
       format: FileFormat.svg,
     },
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     {
       icon: 'library',
-      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries'],
+      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries',],
       format: FileFormat.svg,
     },
     { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
