@@ -316,7 +316,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'ios', extensions: ['ios'], format: FileFormat.svg },
     { icon: 'js', extensions: ['js'], format: FileFormat.svg },
-    { icon: 'json', extensions: ['json'], format: FileFormat.svg },
+    {
+      icon: 'json',
+      extensions: ['json', 'jsons'],
+      format: FileFormat.svg
+    },
     {
       icon: 'json_official',
       extensions: ['json'],
@@ -333,7 +337,7 @@ export const extensions: IFolderCollection = {
         '.kubernetes',
         '.k8s',
         '.kube',
-        '.kuber',
+        '.kuber'
       ],
       format: FileFormat.svg,
     },
