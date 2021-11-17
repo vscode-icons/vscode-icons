@@ -4515,7 +4515,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'file_type_ndst',
+      icon: 'ndst',
       extensions: ['ndst.yaml', 'ndst.yml', 'ndst.json'],
       format: FileFormat.svg,
     },
