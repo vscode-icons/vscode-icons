@@ -1715,6 +1715,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'goctl',
+      extensions: [],
+      languages: [languages.goctl],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'godot',
       extensions: [],
       languages: [languages.godot],
