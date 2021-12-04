@@ -112,6 +112,7 @@ export const languages: ILanguageCollection = {
   glyphs: { ids: 'glyphs', defaultExtension: 'glyphs' },
   gnuplot: { ids: 'gnuplot', defaultExtension: 'gp' },
   go: { ids: 'go', defaultExtension: 'go' },
+  goctl: { ids: 'goctl', defaultExtension: 'api' },
   godot: { ids: 'gdscript', defaultExtension: 'gd' },
   graphql: { ids: 'graphql', defaultExtension: 'gql' },
   graphviz: { ids: 'dot', defaultExtension: 'gv' },

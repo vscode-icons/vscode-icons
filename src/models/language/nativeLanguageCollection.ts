@@ -14,6 +14,7 @@ export interface INativeLanguageCollection {
   fsharp: ILanguage;
   git: ILanguage;
   go: ILanguage;
+  goctl: ILanguage;
   groovy: ILanguage;
   handlebars: ILanguage;
   hlsl: ILanguage;
