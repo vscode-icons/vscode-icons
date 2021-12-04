@@ -3983,6 +3983,7 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.toit],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
