@@ -965,6 +965,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'codeowners',
+      extensions: ['codeowners'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'codacy',
       extensions: ['.codacy.yml', '.codacy.yaml'],
       light: true,
