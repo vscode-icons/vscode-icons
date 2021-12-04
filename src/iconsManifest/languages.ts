@@ -318,6 +318,7 @@ export const languages: ILanguageCollection = {
   textmatejson: { ids: 'json-tmlanguage', defaultExtension: 'JSON-tmLanguage' },
   textmateyaml: { ids: 'yaml-tmlanguage', defaultExtension: 'YAML-tmLanguage' },
   tiltfile: { ids: 'tiltfile', defaultExtension: 'Tiltfile' },
+  toit: { ids: 'toit', defaultExtension: 'toit' },
   toml: { ids: 'toml', defaultExtension: 'toml' },
   ttcn: { ids: 'ttcn', defaultExtension: 'ttcn3' },
   tuc: { ids: 'tuc', defaultExtension: 'tuc' },

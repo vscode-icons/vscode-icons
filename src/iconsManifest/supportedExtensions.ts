@@ -3979,6 +3979,14 @@ export const extensions: IFileCollection = {
     },
     { icon: 'todo', extensions: ['todo'], light: true, format: FileFormat.svg },
     {
+      icon: 'toit',
+      extensions: [],
+      languages: [languages.toit],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'toml',
       extensions: [],
       languages: [languages.toml],
