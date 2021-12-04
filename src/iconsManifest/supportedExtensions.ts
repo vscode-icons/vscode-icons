@@ -102,6 +102,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fitbit',
+      extensions: ['fba'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
@@ -965,6 +970,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'codeowners',
+      extensions: ['codeowners'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'codacy',
       extensions: ['.codacy.yml', '.codacy.yaml'],
       light: true,
@@ -1027,6 +1039,12 @@ export const extensions: IFileCollection = {
       extensions: ['plist'],
       languages: [languages.properties, languages.dotenv],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'commitizen',
+      extensions: ['.czrc', '.cz.json'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -1715,6 +1733,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'goctl',
+      extensions: [],
+      languages: [languages.goctl],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'godot',
       extensions: [],
       languages: [languages.godot],
@@ -2355,6 +2379,11 @@ export const extensions: IFileCollection = {
       icon: 'lua',
       extensions: [],
       languages: [languages.lua],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'luau',
+      extensions: ['luau'],
       format: FileFormat.svg,
     },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
@@ -3215,7 +3244,7 @@ export const extensions: IFileCollection = {
       icon: 'prettier',
       extensions: [],
       filenamesGlob: ['.prettierrc'],
-      extensionsGlob: ['js', 'cjs', 'json', 'json5', 'yml', 'yaml'],
+      extensionsGlob: ['js', 'cjs', 'json', 'json5', 'yml', 'yaml', 'toml'],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -3965,6 +3994,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'todo', extensions: ['todo'], light: true, format: FileFormat.svg },
+    {
+      icon: 'toit',
+      extensions: [],
+      languages: [languages.toit],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'toml',
       extensions: [],

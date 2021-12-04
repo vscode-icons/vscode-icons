@@ -226,6 +226,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   textmatejson: ILanguage;
   textmateyaml: ILanguage;
   tiltfile: ILanguage;
+  toit: ILanguage;
   toml: ILanguage;
   ttcn: ILanguage;
   tuc: ILanguage;
