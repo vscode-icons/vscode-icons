@@ -2381,6 +2381,11 @@ export const extensions: IFileCollection = {
       languages: [languages.lua],
       format: FileFormat.svg,
     },
+    {
+      icon: 'luau',
+      extensions: ['luau'],
+      format: FileFormat.svg,
+    },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
     {
       icon: 'makefile',
