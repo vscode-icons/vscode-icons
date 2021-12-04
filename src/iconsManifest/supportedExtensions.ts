@@ -102,7 +102,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'fba',
+      icon: 'fitbit',
       extensions: ['fba'],
       format: FileFormat.svg,
     },
