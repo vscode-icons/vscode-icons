@@ -1037,6 +1037,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'commitizen',
+      extensions: ['.czrc', '.cz.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'commitlint',
       extensions: ['commitlint.config.js'],
       filenamesGlob: ['.commitlintrc'],
