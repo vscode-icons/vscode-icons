@@ -4,7 +4,7 @@
 [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
-[![Build Status](https://app.travis-ci.com/vscode-icons/vscode-icons.svg?branch=master)](https://app.travis-ci.com/github/vscode-icons/vscode-icons)
+[![Build Status](https://cdn.travis-ci.com/vscode-icons/vscode-icons.svg?branch=master)](https://app.travis-ci.com/github/vscode-icons/vscode-icons)
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/vscode-icons/vscode-icons?branch=master&svg=true)](https://ci.appveyor.com/project/vscode-icons-team/vscode-icons)
 
 [![Dependencies Status](https://david-dm.org/vscode-icons/vscode-icons/status.svg)](https://david-dm.org/vscode-icons/vscode-icons)
