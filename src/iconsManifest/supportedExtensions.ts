@@ -1199,6 +1199,19 @@ export const extensions: IFileCollection = {
       languages: [languages.dart],
       format: FileFormat.svg,
     },
+    {
+      icon: 'dartlang_generated',
+      extensions: ['g.dart'],
+      languages: [],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dartlang_ignore',
+      extensions: ['.pubignore'],
+      filename: true,
+      languages: [],
+      format: FileFormat.svg,
+    },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
       icon: 'dependabot',

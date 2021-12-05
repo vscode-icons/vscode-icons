@@ -1,5 +1,7 @@
 # Change Log
 
+We dropped support of this changelog file on December, 2021. If you want to see the changelog [go to the release GitHub page](https://github.com/vscode-icons/vscode-icons/releases).
+
 ## 11.7.0 (October 31, 2021)
 
 - Fix: Dependency bump. (Dependabot in [#2853](https://github.com/vscode-icons/vscode-icons/pull/2853))
