@@ -1257,7 +1257,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'docker',
-      extensions: [],
+      extensions: ['.dockerignore'],
       filenamesGlob: [
         'compose',
         'docker-compose',
@@ -1269,12 +1269,12 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yaml', 'yml'],
       filename: true,
-      languages: [languages.dockerfile, languages.dockerignore],
+      languages: [languages.dockerfile],
       format: FileFormat.svg,
     },
     {
       icon: 'docker2',
-      extensions: [],
+      extensions: ['.dockerignore'],
       filenamesGlob: [
         'compose',
         'docker-compose',
@@ -1286,7 +1286,7 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yaml', 'yml'],
       filename: true,
-      languages: [languages.dockerfile, languages.dockerignore],
+      languages: [languages.dockerfile],
       format: FileFormat.svg,
       disabled: true,
     },
