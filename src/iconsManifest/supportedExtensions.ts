@@ -2536,6 +2536,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ndst',
+      extensions: ['ndst.yaml', 'ndst.yml', 'ndst.json'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nearly',
       extensions: [],
       languages: [languages.nearley],
@@ -4513,11 +4518,6 @@ export const extensions: IFileCollection = {
       ],
       format: FileFormat.svg,
       disabled: true,
-    },
-    {
-      icon: 'ndst',
-      extensions: ['ndst.yaml', 'ndst.yml', 'ndst.json'],
-      format: FileFormat.svg,
     },
   ],
 };
