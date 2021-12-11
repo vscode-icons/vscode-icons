@@ -4023,6 +4023,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'config',
+      extensions: ['.tool-versions'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tox',
       extensions: ['tox.ini'],
       filename: true,
