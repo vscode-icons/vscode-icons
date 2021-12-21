@@ -63,7 +63,7 @@ export const languages: ILanguageCollection = {
   csharp: { ids: 'csharp', defaultExtension: 'cs' },
   css: { ids: 'css', defaultExtension: 'css' },
   cucumber: { ids: 'feature', defaultExtension: 'feature' },
-  cuda: { ids: 'cuda', defaultExtension: 'cu' },
+  cuda: { ids: ['cuda', 'cuda-cpp'], defaultExtension: 'cu' },
   cython: { ids: 'cython', defaultExtension: 'pyx' },
   dal: { ids: 'dal', defaultExtension: 'dal' },
   dart: { ids: 'dart', defaultExtension: 'dart' },
