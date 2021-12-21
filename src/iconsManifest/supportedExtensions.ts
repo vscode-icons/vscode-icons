@@ -1199,6 +1199,19 @@ export const extensions: IFileCollection = {
       languages: [languages.dart],
       format: FileFormat.svg,
     },
+    {
+      icon: 'dartlang_generated',
+      extensions: ['g.dart'],
+      languages: [],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dartlang_ignore',
+      extensions: ['.pubignore'],
+      filename: true,
+      languages: [],
+      format: FileFormat.svg,
+    },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
       icon: 'dependabot',
@@ -1244,7 +1257,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'docker',
-      extensions: [],
+      extensions: ['.dockerignore'],
       filenamesGlob: [
         'compose',
         'docker-compose',
@@ -1256,12 +1269,12 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yaml', 'yml'],
       filename: true,
-      languages: [languages.dockerfile, languages.dockerignore],
+      languages: [languages.dockerfile],
       format: FileFormat.svg,
     },
     {
       icon: 'docker2',
-      extensions: [],
+      extensions: ['.dockerignore'],
       filenamesGlob: [
         'compose',
         'docker-compose',
@@ -1273,7 +1286,7 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yaml', 'yml'],
       filename: true,
-      languages: [languages.dockerfile, languages.dockerignore],
+      languages: [languages.dockerfile],
       format: FileFormat.svg,
       disabled: true,
     },
