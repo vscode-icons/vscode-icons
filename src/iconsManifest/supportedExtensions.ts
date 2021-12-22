@@ -1036,7 +1036,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'config',
-      extensions: ['plist'],
+      extensions: ['plist', '.tool-versions'],
       languages: [languages.properties, languages.dotenv],
       light: true,
       format: FileFormat.svg,
@@ -4020,12 +4020,6 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.toml],
       light: true,
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'config',
-      extensions: ['.tool-versions'],
-      filename: true,
       format: FileFormat.svg,
     },
     {
