@@ -1056,9 +1056,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'commitlint',
-      extensions: ['commitlint.config.js'],
+      extensions: [
+        'commitlint.config.js',
+        'commitlint.config.cjs',
+        'commitlint.config.ts',
+      ],
       filenamesGlob: ['.commitlintrc'],
-      extensionsGlob: ['js', 'json', 'yml'],
+      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
