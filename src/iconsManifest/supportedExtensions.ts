@@ -4378,7 +4378,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vueconfig',
-      extensions: ['.vuerc', 'vue.config.js'],
+      extensions: [
+        '.vuerc',
+        'vue.config.js',
+        'vue.config.cjs',
+        'vue.config.mjs',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
