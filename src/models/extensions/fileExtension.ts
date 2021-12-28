@@ -4,8 +4,20 @@ import { ILanguage } from '../language';
 export interface IFileExtension extends IExtension {
   /** @interal */
   checked?: boolean;
-  filename?: boolean; // set to true if the extension represents the whole file name.
-  languages?: ILanguage[]; // collection of languages associated to the icon.
-  filenamesGlob?: string[]; // array of file names to generate with file extensions to associate to the icon.
-  extensionsGlob?: string[]; // array of file extensions to generate with file names to associate to the icon.
+  /**
+   * set to true if the extension represents the whole file name.
+   */
+  filename?: boolean;
+  /**
+   * collection of languages associated to the icon.
+   */
+  languages?: ILanguage[];
+  /**
+   * array of file names to generate with file extensions to associate to the icon.
+   */
+  filenamesGlob?: string[];
+  /**
+   * array of file extensions to generate with file names to associate to the icon.
+   */
+  extensionsGlob?: string[];
 }
