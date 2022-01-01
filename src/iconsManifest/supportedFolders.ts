@@ -484,7 +484,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'redux',
-      extensions: ['redux'],
+      extensions: ['redux', 'store', 'stores'],
       light: true,
       format: FileFormat.svg,
     },
