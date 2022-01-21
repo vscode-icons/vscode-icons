@@ -3819,6 +3819,17 @@ export const extensions: IFileCollection = {
       languages: [languages.stencil, languages.stencilhtml],
       format: FileFormat.svg,
     },
+    {
+      icon: 'stryker',
+      extensionsGlob: ['js', 'conf', 'json'],
+      filenamesGlob: [
+        'stryker.conf',
+        'stryker-config',
+        'stryker.*.conf',
+        'stryker4s',
+      ],
+      format: FileFormat.svg,
+    },
     { icon: 'style', extensions: [], format: FileFormat.svg },
     {
       icon: 'stylelint',
