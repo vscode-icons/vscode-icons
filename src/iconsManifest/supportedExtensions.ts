@@ -4135,7 +4135,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'typescriptdef', extensions: ['d.ts', 'd.cts', 'd.mts'], format: FileFormat.svg },
+    {
+      icon: 'typescriptdef',
+      extensions: ['d.ts', 'd.cts', 'd.mts'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'typescriptdef_official',
       extensions: ['d.ts', 'd.cts', 'd.mts'],
