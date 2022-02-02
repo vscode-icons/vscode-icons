@@ -4543,6 +4543,14 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+
+    {
+      icon: 'turbo1',
+      extensions: ['turbo.json'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'zip',
       extensions: [
