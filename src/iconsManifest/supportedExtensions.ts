@@ -1680,7 +1680,7 @@ export const extensions: IFileCollection = {
         'gatsby-browser',
         'gatsby-ssr',
       ],
-      extensionsGlob: ['js', 'ts'],
+      extensionsGlob: ['js', 'ts','tsx'],
       filename: true,
       format: FileFormat.svg,
     },
