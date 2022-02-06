@@ -1042,6 +1042,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'config',
+      extensions: ['.tool-versions'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'commitizen',
       extensions: ['.czrc', '.cz.json'],
       filename: true,
