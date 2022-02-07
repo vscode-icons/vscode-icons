@@ -118,6 +118,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   julia: ILanguage;
   io: ILanguage;
   iodine: ILanguage;
+  k: ILanguage;
   kivy: ILanguage;
   kos: ILanguage;
   kotlin: ILanguage;
