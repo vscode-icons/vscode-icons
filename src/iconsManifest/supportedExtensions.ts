@@ -2173,7 +2173,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'jsmap',
-      extensions: ['js.map'],
+      extensions: ['js.map', 'cjs.map', 'mjs.map'],
       light: true,
       format: FileFormat.svg,
     },
@@ -4146,10 +4146,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'typescriptdef', extensions: ['d.ts'], format: FileFormat.svg },
+    {
+      icon: 'typescriptdef',
+      extensions: ['d.ts', 'd.cts', 'd.mts'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'typescriptdef_official',
-      extensions: ['d.ts'],
+      extensions: ['d.ts', 'd.cts', 'd.mts'],
       format: FileFormat.svg,
       disabled: true,
     },
