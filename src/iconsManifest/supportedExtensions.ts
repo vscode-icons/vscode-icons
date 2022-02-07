@@ -2247,6 +2247,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'k',
+      extensions: [],
+      languages: [languages.k],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'karma',
       extensions: [],
       filenamesGlob: ['karma.conf'],
@@ -2582,6 +2588,11 @@ export const extensions: IFileCollection = {
       icon: 'mustache',
       extensions: ['mustache', 'mst'],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ndst',
+      extensions: ['ndst.yaml', 'ndst.yml', 'ndst.json'],
       format: FileFormat.svg,
     },
     {

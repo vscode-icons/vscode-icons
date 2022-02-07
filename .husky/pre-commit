@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# prevent CI running
+[ -n "$CI" ] && exit 0
+
+npx lint-staged
