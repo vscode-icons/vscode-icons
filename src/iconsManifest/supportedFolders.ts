@@ -422,6 +422,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'next', extensions: ['.next'], format: FileFormat.svg },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
+    { 
+      icon: 'nix', 
+      extensions: ['.niv', '.nix', 'nix', 'niv'], 
+      format: FileFormat.svg 
+    },
     {
       icon: 'node',
       extensions: ['node_modules'],
