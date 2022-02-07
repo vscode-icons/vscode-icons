@@ -2247,6 +2247,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'k',
+      extensions: [],
+      languages: [languages.k],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'karma',
       extensions: [],
       filenamesGlob: ['karma.conf'],

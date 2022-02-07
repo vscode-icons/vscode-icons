@@ -180,6 +180,7 @@ export const languages: ILanguageCollection = {
   json5: { ids: 'json5', defaultExtension: 'json5' },
   julia: { ids: ['julia', 'juliamarkdown'], defaultExtension: 'jl' },
   iodine: { ids: 'iodine', defaultExtension: 'id' },
+  k: { ids: 'k', defaultExtension: 'k' },
   kivy: { ids: 'kivy', defaultExtension: 'kv' },
   kos: { ids: 'kos', defaultExtension: 'ks' },
   kotlin: { ids: 'kotlin', defaultExtension: 'kt' },
