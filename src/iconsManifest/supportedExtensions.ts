@@ -1208,7 +1208,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'dartlang_generated',
-      extensions: ['g.dart'],
+      extensions: ['g.dart', 'freezed.dart'],
       languages: [],
       format: FileFormat.svg,
     },
