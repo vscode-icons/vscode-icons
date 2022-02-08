@@ -1674,7 +1674,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'gatsby',
       extensions: [],
-      filenamesGlob: ['gatsby-browser'],
+      filenamesGlob: ['gatsby-browser', 'gatsby-ssr'],
       extensionsGlob: ['js', 'ts', 'tsx'],
       filename: true,
       format: FileFormat.svg,
@@ -1682,7 +1682,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'gatsby',
       extensions: [],
-      filenamesGlob: ['gatsby-config', 'gatsby-node', 'gatsby-ssr'],
+      filenamesGlob: ['gatsby-config', 'gatsby-node'],
       extensionsGlob: ['js', 'ts'],
       filename: true,
       format: FileFormat.svg,
