@@ -1208,7 +1208,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'dartlang_generated',
-      extensions: ['g.dart'],
+      extensions: ['g.dart', 'freezed.dart'],
       languages: [],
       format: FileFormat.svg,
     },
@@ -2173,7 +2173,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'jsmap',
-      extensions: ['js.map'],
+      extensions: ['js.map', 'cjs.map', 'mjs.map'],
       light: true,
       format: FileFormat.svg,
     },
@@ -2244,6 +2244,12 @@ export const extensions: IFileCollection = {
       icon: 'iodine',
       extensions: [],
       languages: [languages.iodine],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'k',
+      extensions: [],
+      languages: [languages.k],
       format: FileFormat.svg,
     },
     {
@@ -3929,7 +3935,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'tailwind',
       extensions: [],
-      filenamesGlob: ['tailwind', 'tailwind.config'],
+      filenamesGlob: ['tailwind', 'tailwind.config', '.tailwind', '.tailwindrc'],
       extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json'],
       filename: true,
       format: FileFormat.svg,
@@ -4140,10 +4146,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'typescriptdef', extensions: ['d.ts'], format: FileFormat.svg },
+    {
+      icon: 'typescriptdef',
+      extensions: ['d.ts', 'd.cts', 'd.mts'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'typescriptdef_official',
-      extensions: ['d.ts'],
+      extensions: ['d.ts', 'd.cts', 'd.mts'],
       format: FileFormat.svg,
       disabled: true,
     },
