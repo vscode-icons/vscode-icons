@@ -4562,6 +4562,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'turbo',
+      extensions: ['turbo.json'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'zip',
       extensions: [
         'zip',
