@@ -49,13 +49,13 @@ jobs:
       after_success: npx vscode-icons/wpilgenerator
       after_script: skip
 
-    - stage: publish
-      if: repo =~ ^vscode-icons AND tag IS present AND type = push
-      os: linux
-      node_js: 12.4.0
-      before_script: skip
-      script: npx vsce@1.88.0 publish -p $VSCE_TOKEN
-      after_script: skip
+    # - stage: publish
+    #   if: repo =~ ^vscode-icons AND tag IS present AND type = push
+    #   os: linux
+    #   node_js: 12.4.0
+    #   before_script: skip
+    #   script: npx vsce@1.88.0 publish -p $VSCE_TOKEN
+    #   after_script: skip
 
     - stage: docker vsi:latest
       if: repo =~ ^vscode-icons AND branch = master AND type = push
