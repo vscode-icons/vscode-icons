@@ -4056,6 +4056,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'trunk',
+      extensions: ['trunk.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tsconfig',
       extensions: [],
       filenamesGlob: [
