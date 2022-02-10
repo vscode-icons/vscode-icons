@@ -79,7 +79,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'component',
-      extensions: ['component', 'components', '.components', 'widgets'],
+      extensions: ['component', 'components', '.components', 'ui', 'widgets'],
       format: FileFormat.svg,
     },
     {
@@ -422,6 +422,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'next', extensions: ['.next'], format: FileFormat.svg },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
+    { 
+      icon: 'nix', 
+      extensions: ['.niv', '.nix', 'nix', 'niv'], 
+      format: FileFormat.svg 
+    },
     {
       icon: 'node',
       extensions: ['node_modules'],
@@ -564,6 +569,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'tools',
       extensions: ['tool', 'tools', '.tools', 'util', 'utils'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'trunk',
+      extensions: ['.trunk'],
       format: FileFormat.svg,
     },
     {
