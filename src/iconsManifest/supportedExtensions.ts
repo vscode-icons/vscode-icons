@@ -3951,7 +3951,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'tailwind',
       extensions: [],
-      filenamesGlob: ['tailwind', 'tailwind.config', '.tailwind', '.tailwindrc'],
+      filenamesGlob: [
+        'tailwind',
+        'tailwind.config',
+        '.tailwind',
+        '.tailwindrc',
+      ],
       extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json'],
       filename: true,
       format: FileFormat.svg,
