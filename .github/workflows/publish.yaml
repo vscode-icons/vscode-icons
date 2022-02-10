@@ -16,4 +16,4 @@ jobs:
           node-version: 12.14.1
       - run: npm ci
       - name: Publish to Visual Studio Marketplace
-        run: npx vsce@1.88.0 publish -p $VSCE_TOKEN
+        run: npx vsce@1.88.0 publish -p ${{ secrets.VSCE_TOKEN }}
