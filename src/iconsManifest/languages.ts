@@ -189,7 +189,7 @@ export const languages: ILanguageCollection = {
   latino: { ids: 'latino', defaultExtension: 'lat' },
   less: { ids: 'less', defaultExtension: 'less' },
   lex: { ids: 'lex', defaultExtension: 'flex' },
-  lisp: { ids: 'lisp', defaultExtension: 'lisp' },
+  lisp: { ids: ['lisp', 'autolisp', 'autolispdcl'], defaultExtension: 'lisp' },
   literatehaskell: { ids: ['literate haskell'], defaultExtension: 'lhs' },
   log: { ids: 'log', defaultExtension: 'log' },
   lolcode: { ids: 'lolcode', defaultExtension: 'lol' },
