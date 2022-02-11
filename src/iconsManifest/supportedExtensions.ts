@@ -2467,6 +2467,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'markdownlint_ignore',
+      extensions: ['.markdownlintignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'marko',
       extensions: [],
       languages: [languages.marko],
