@@ -43,7 +43,7 @@ export const constants = {
       'vsicons.projectDetection.disableDetect',
   },
   urlReleaseNote:
-    'https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md',
+    'https://github.com/vscode-icons/vscode-icons/releases',
   urlReadme:
     'https://github.com/vscode-icons/vscode-icons/blob/master/README.md',
   urlOfficialApi:
