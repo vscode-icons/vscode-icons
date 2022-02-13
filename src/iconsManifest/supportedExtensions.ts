@@ -4341,6 +4341,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      // Taken from https://vitest.dev/logo.svg
+      icon: 'vitest',
+      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
+      extensions: ['vitest.config.ts', 'vitest.config.js', 'vitest.config.mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vlang',
       extensions: [],
       languages: [languages.vlang],
