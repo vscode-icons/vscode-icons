@@ -3003,6 +3003,14 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      // Taken from https://peeky.dev/logo.svg
+      icon: 'peeky',
+      // See: https://peeky.dev/guide/config.html
+      extensions: ['peeky.config.ts', 'peeky.config.js', 'peeky.config.mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'perl',
       extensions: [],
       languages: [languages.perl],
