@@ -3003,6 +3003,14 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      // Taken from https://peeky.dev/logo.svg
+      icon: 'peeky',
+      // See: https://peeky.dev/guide/config.html
+      extensions: ['peeky.config.ts', 'peeky.config.js', 'peeky.config.mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'perl',
       extensions: [],
       languages: [languages.perl],
@@ -3872,9 +3880,10 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'stryker',
-      extensionsGlob: ['mjs', 'cjs', 'js', 'conf', 'json'],
       extensions: [],
       filenamesGlob: ['stryker.conf', 'stryker-config', 'stryker4s'],
+      extensionsGlob: ['mjs', 'cjs', 'js', 'conf', 'json'],
+      filename: true,
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: [], format: FileFormat.svg },
@@ -4341,6 +4350,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      // Taken from https://vitest.dev/logo.svg
+      icon: 'vitest',
+      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
+      extensions: ['vitest.config.ts', 'vitest.config.js', 'vitest.config.mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vlang',
       extensions: [],
       languages: [languages.vlang],
@@ -4484,6 +4501,14 @@ export const extensions: IFileCollection = {
     {
       icon: 'wercker',
       extensions: ['wercker.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      // Taken from https://windicss.org/assets/logo.svg
+      icon: 'windi',
+      // See: https://windicss.org/guide/configuration.html#config-file
+      extensions: ['windi.config.ts', 'windi.config.js'],
       filename: true,
       format: FileFormat.svg,
     },
