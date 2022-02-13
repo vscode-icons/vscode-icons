@@ -4488,6 +4488,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      // Taken from https://windicss.org/assets/logo.svg
+      icon: 'windi',
+      // See: https://windicss.org/guide/configuration.html#config-file
+      extensions: ['windi.config.ts', 'windi.config.js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wolfram',
       extensions: [],
       languages: [languages.wolfram],
