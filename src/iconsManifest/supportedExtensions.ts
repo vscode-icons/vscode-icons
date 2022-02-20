@@ -3749,6 +3749,11 @@ export const extensions: IFileCollection = {
       languages: [languages.shellscript],
       format: FileFormat.svg,
     },
+    {
+      icon: 'siyuan',
+      extensions: ['sy'],
+      format: FileFormat.svg,
+    },
     { icon: 'sketch', extensions: ['sketch'], format: FileFormat.svg },
     {
       icon: 'slang',
