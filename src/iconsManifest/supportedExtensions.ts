@@ -1591,6 +1591,7 @@ export const extensions: IFileCollection = {
       extensions: [],
       filenamesGlob: ['formkit.config'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
