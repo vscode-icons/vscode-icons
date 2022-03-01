@@ -58,6 +58,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cython: ILanguage;
   dal: ILanguage;
   dart: ILanguage;
+  dhall: ILanguage;
   django: ILanguage;
   dlang: ILanguage;
   doctex: ILanguage;

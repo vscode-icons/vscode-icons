@@ -1249,6 +1249,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dhall',
+      extensions: [],
+      light: true,
+      languages: [languages.dhall],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'django',
       extensions: ['djt'],
       languages: [languages.django],
