@@ -2383,6 +2383,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lilypond',
+      extensions: [],
+      languages: [languages.lilypond],
+      format: FileFormat.png,
+    },
+    {
       icon: 'lisp',
       extensions: [],
       languages: [languages.lisp],
