@@ -1056,9 +1056,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'commitlint',
-      extensions: ['commitlint.config.js'],
+      extensions: [
+        'commitlint.config.js',
+        'commitlint.config.cjs',
+        'commitlint.config.ts',
+      ],
       filenamesGlob: ['.commitlintrc'],
-      extensionsGlob: ['js', 'json', 'yml'],
+      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2337,11 +2341,29 @@ export const extensions: IFileCollection = {
       languages: [languages.lex],
       format: FileFormat.svg,
     },
-    { icon: 'license', extensions: ['enc'], format: FileFormat.svg },
     {
       icon: 'license',
-      extensions: ['license', 'licence', 'copying', 'copying.lesser'],
-      filenamesGlob: ['license', 'licence', 'copying', 'copying.lesser'],
+      extensions: ['enc', 'license', 'lic'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'license',
+      extensions: [
+        'license',
+        'licence',
+        'copying',
+        'copying.lesser',
+        'license-mit',
+        'license-apache',
+      ],
+      filenamesGlob: [
+        'license',
+        'licence',
+        'copying',
+        'copying.lesser',
+        'license-mit',
+        'license-apache',
+      ],
       extensionsGlob: ['md', 'txt'],
       filename: true,
       format: FileFormat.svg,
@@ -2375,9 +2397,18 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lintstagedrc',
-      extensions: ['.lintstagedrc', 'lint-staged.config.js'],
-      filenamesGlob: ['.lintstagedrc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      extensions: [
+        '.lintstagedrc',
+        '.lintstagedrc.json',
+        '.lintstagedrc.yaml',
+        '.lintstagedrc.yml',
+        '.lintstagedrc.mjs',
+        '.lintstagedrc.js',
+        '.lintstagedrc.cjs',
+        'lint-staged.config.mjs',
+        'lint-staged.config.js',
+        'lint-staged.config.cjs',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2450,6 +2481,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'markdownlint',
       extensions: ['.markdownlint.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'markdownlint_ignore',
+      extensions: ['.markdownlintignore'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2964,6 +3001,14 @@ export const extensions: IFileCollection = {
       extensions: ['pdf'],
       format: FileFormat.svg,
       disabled: true,
+    },
+    {
+      // Taken from https://peeky.dev/logo.svg
+      icon: 'peeky',
+      // See: https://peeky.dev/guide/config.html
+      extensions: ['peeky.config.ts', 'peeky.config.js', 'peeky.config.mjs'],
+      filename: true,
+      format: FileFormat.svg,
     },
     {
       icon: 'perl',
@@ -3833,6 +3878,14 @@ export const extensions: IFileCollection = {
       languages: [languages.stencil, languages.stencilhtml],
       format: FileFormat.svg,
     },
+    {
+      icon: 'stryker',
+      extensions: [],
+      filenamesGlob: ['stryker.conf', 'stryker-config', 'stryker4s'],
+      extensionsGlob: ['mjs', 'cjs', 'js', 'conf', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'style', extensions: [], format: FileFormat.svg },
     {
       icon: 'stylelint',
@@ -3938,7 +3991,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'tailwind',
       extensions: [],
-      filenamesGlob: ['tailwind', 'tailwind.config', '.tailwind', '.tailwindrc'],
+      filenamesGlob: [
+        'tailwind',
+        'tailwind.config',
+        '.tailwind',
+        '.tailwindrc',
+      ],
       extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json'],
       filename: true,
       format: FileFormat.svg,
@@ -4292,6 +4350,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      // Taken from https://vitest.dev/logo.svg
+      icon: 'vitest',
+      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
+      extensions: ['vitest.config.ts', 'vitest.config.js', 'vitest.config.mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vlang',
       extensions: [],
       languages: [languages.vlang],
@@ -4353,7 +4419,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vueconfig',
-      extensions: ['.vuerc', 'vue.config.js'],
+      extensions: [
+        '.vuerc',
+        'vue.config.js',
+        'vue.config.cjs',
+        'vue.config.mjs',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4430,6 +4501,14 @@ export const extensions: IFileCollection = {
     {
       icon: 'wercker',
       extensions: ['wercker.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      // Taken from https://windicss.org/assets/logo.svg
+      icon: 'windi',
+      // See: https://windicss.org/guide/configuration.html#config-file
+      extensions: ['windi.config.ts', 'windi.config.js'],
       filename: true,
       format: FileFormat.svg,
     },

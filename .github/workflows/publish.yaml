@@ -1,0 +1,19 @@
+name: Publish Extension
+
+on:
+  # push:
+  #   tags:
+  #     - "v*.*.*"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.14.1
+      - run: npm ci
+      - name: Publish to Visual Studio Marketplace
+        run: npx vsce@1.88.0 publish -p ${{ secrets.VSCE_TOKEN }}
