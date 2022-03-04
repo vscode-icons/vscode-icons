@@ -4648,6 +4648,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'doppler',
+      extensions: ['doppler.yaml', 'doppler-template.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'zip',
       extensions: [
         'zip',
