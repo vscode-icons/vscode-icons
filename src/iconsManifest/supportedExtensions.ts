@@ -1392,6 +1392,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'earthly',
+      extensions: ['.earthlyignore'],
+      filename: true,
+      filenamesGlob: ['Earthfile'],
+      languages: [languages.earthfile],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'edge',
       extensions: [],
       languages: [languages.edge],
