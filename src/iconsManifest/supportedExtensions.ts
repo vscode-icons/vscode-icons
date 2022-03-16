@@ -3459,6 +3459,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'quasar',
       extensions: ['quasar.conf.js'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
