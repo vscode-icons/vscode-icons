@@ -3757,6 +3757,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'slashup',
+      extensions: [],
+      filenamesGlob: ['slash-up.config'],
+      extensionsGlob: ['js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'slice',
       extensions: [],
       languages: [languages.slice],
