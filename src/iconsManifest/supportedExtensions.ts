@@ -519,7 +519,7 @@ export const extensions: IFileCollection = {
       filename: true,
       filenamesGlob: ['astro.config'],
       extensions: [],
-      extensionsGlob: ['js', 'cjs', 'mjs'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts'],
       format: FileFormat.svg,
     },
     {
