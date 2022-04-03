@@ -2823,7 +2823,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nix',
-      extensions: [],
+      extensions: ['flake.lock'],
       languages: [languages.nix],
       format: FileFormat.svg,
     },
