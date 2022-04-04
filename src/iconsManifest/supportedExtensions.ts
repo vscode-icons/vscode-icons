@@ -1350,7 +1350,7 @@ export const extensions: IFileCollection = {
       icon: 'drawio',
       extensions: ['drawio', 'dio'],
       filenamesGlob: ['.drawio'],
-      extensionsGlob: ['png', 'svg'],
+      extensionsGlob: [],
       format: FileFormat.svg,
     },
     {
