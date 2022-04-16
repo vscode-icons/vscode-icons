@@ -78,6 +78,7 @@ export const languages: ILanguageCollection = {
   drools: { ids: 'drools', defaultExtension: 'drl' },
   dustjs: { ids: 'dustjs', defaultExtension: 'dust' },
   dylanlang: { ids: ['dylan', 'dylan-lid'], defaultExtension: 'dylan' },
+  earthfile: { ids: 'earthfile', defaultExtension: 'earthfile' },
   edge: { ids: 'edge', defaultExtension: 'edge' },
   eex: { ids: ['eex', 'html-eex'], defaultExtension: 'eex' },
   elastic: { ids: 'es', defaultExtension: 'es' },
