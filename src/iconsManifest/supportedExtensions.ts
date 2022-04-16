@@ -3903,7 +3903,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'stryker',
       extensions: [],
-      filenamesGlob: ['stryker.conf', 'stryker-config', 'stryker4s'],
+      filenamesGlob: [
+        'stryker.conf',
+        '.stryker.conf',
+        'stryker-config',
+        'stryker4s',
+      ],
       extensionsGlob: ['mjs', 'cjs', 'js', 'conf', 'json'],
       filename: true,
       format: FileFormat.svg,
