@@ -519,7 +519,7 @@ export const extensions: IFileCollection = {
       filename: true,
       filenamesGlob: ['astro.config'],
       extensions: [],
-      extensionsGlob: ['js', 'cjs', 'mjs'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts'],
       format: FileFormat.svg,
     },
     {
@@ -1056,6 +1056,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'commitlint',
+      extensions: ['.commitlintrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'commitlint',
       extensions: [
         'commitlint.config.js',
         'commitlint.config.cjs',
@@ -1344,7 +1350,7 @@ export const extensions: IFileCollection = {
       icon: 'drawio',
       extensions: ['drawio', 'dio'],
       filenamesGlob: ['.drawio'],
-      extensionsGlob: ['png', 'svg'],
+      extensionsGlob: [],
       format: FileFormat.svg,
     },
     {
