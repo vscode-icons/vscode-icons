@@ -68,6 +68,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   drools: ILanguage;
   dustjs: ILanguage;
   dylanlang: ILanguage;
+  earthfile: ILanguage;
   edge: ILanguage;
   eex: ILanguage;
   elastic: ILanguage;
