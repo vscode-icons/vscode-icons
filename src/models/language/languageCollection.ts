@@ -58,6 +58,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cython: ILanguage;
   dal: ILanguage;
   dart: ILanguage;
+  dhall: ILanguage;
   django: ILanguage;
   dlang: ILanguage;
   doctex: ILanguage;
@@ -67,6 +68,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   drools: ILanguage;
   dustjs: ILanguage;
   dylanlang: ILanguage;
+  earthfile: ILanguage;
   edge: ILanguage;
   eex: ILanguage;
   elastic: ILanguage;
