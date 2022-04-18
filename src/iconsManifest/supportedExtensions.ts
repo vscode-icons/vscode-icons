@@ -1607,6 +1607,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'formkit',
+      extensions: [],
+      filenamesGlob: ['formkit.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fortran',
       extensions: [],
       languages: [languages.fortran],
