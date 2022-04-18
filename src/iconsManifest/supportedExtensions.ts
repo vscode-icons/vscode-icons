@@ -2855,6 +2855,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'noc',
+      extensions: ['noc'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nix',
       extensions: [],
       languages: [languages.nix],
