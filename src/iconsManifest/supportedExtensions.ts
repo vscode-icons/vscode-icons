@@ -3658,6 +3658,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ron',
+      extensions: ['ron'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rmd',
       extensions: [],
       languages: [languages.rmd],
