@@ -519,7 +519,7 @@ export const extensions: IFileCollection = {
       filename: true,
       filenamesGlob: ['astro.config'],
       extensions: [],
-      extensionsGlob: ['js', 'cjs', 'mjs'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts'],
       format: FileFormat.svg,
     },
     {
@@ -1056,6 +1056,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'commitlint',
+      extensions: ['.commitlintrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'commitlint',
       extensions: [
         'commitlint.config.js',
         'commitlint.config.cjs',
@@ -1249,6 +1255,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dhall',
+      extensions: [],
+      light: true,
+      languages: [languages.dhall],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'django',
       extensions: ['djt'],
       languages: [languages.django],
@@ -1344,7 +1357,7 @@ export const extensions: IFileCollection = {
       icon: 'drawio',
       extensions: ['drawio', 'dio'],
       filenamesGlob: ['.drawio'],
-      extensionsGlob: ['png', 'svg'],
+      extensionsGlob: [],
       format: FileFormat.svg,
     },
     {
@@ -1389,6 +1402,13 @@ export const extensions: IFileCollection = {
       icon: 'editorconfig',
       extensions: ['.editorconfig'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'earthly',
+      extensions: ['.earthlyignore', 'Earthfile'],
+      filename: true,
+      languages: [languages.earthfile],
       format: FileFormat.svg,
     },
     {
@@ -2194,21 +2214,21 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'json',
-      extensions: [],
+      extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
       light: true,
       format: FileFormat.svg,
     },
     {
       icon: 'json_official',
-      extensions: [],
+      extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
       format: FileFormat.svg,
       disabled: true,
     },
     {
       icon: 'json2',
-      extensions: [],
+      extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
       format: FileFormat.svg,
       disabled: true,
@@ -3466,7 +3486,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'quasar',
-      extensions: ['quasar.conf.js'],
+      extensions: ['quasar.config.js', 'quasar.conf.js'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
@@ -3765,6 +3786,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'slashup',
+      extensions: [],
+      filenamesGlob: ['slash-up.config'],
+      extensionsGlob: ['js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'slice',
       extensions: [],
       languages: [languages.slice],
@@ -3889,7 +3918,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'stryker',
       extensions: [],
-      filenamesGlob: ['stryker.conf', 'stryker-config', 'stryker4s'],
+      filenamesGlob: [
+        'stryker.conf',
+        '.stryker.conf',
+        'stryker-config',
+        'stryker4s',
+      ],
       extensionsGlob: ['mjs', 'cjs', 'js', 'conf', 'json'],
       filename: true,
       format: FileFormat.svg,
@@ -4138,6 +4172,7 @@ export const extensions: IFileCollection = {
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
         'tsconfig.server',
@@ -4162,6 +4197,7 @@ export const extensions: IFileCollection = {
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
         'tsconfig.server',
@@ -4652,6 +4688,12 @@ export const extensions: IFileCollection = {
       icon: 'turbo',
       extensions: ['turbo.json'],
       light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'doppler',
+      extensions: ['doppler.yaml', 'doppler-template.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
