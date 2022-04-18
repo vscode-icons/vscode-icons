@@ -102,6 +102,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'appscript',
+      extensions: ['gs'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fitbit',
       extensions: ['fba'],
       format: FileFormat.svg,
@@ -1607,6 +1612,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'formkit',
+      extensions: [],
+      filenamesGlob: ['formkit.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fortran',
       extensions: [],
       languages: [languages.fortran],
@@ -2842,6 +2855,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'noc',
+      extensions: ['noc'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nix',
       extensions: [],
       languages: [languages.nix],
@@ -3770,6 +3788,11 @@ export const extensions: IFileCollection = {
       languages: [languages.shellscript],
       format: FileFormat.svg,
     },
+    {
+      icon: 'siyuan',
+      extensions: ['sy'],
+      format: FileFormat.svg,
+    },
     { icon: 'sketch', extensions: ['sketch'], format: FileFormat.svg },
     {
       icon: 'slang',
@@ -4164,6 +4187,7 @@ export const extensions: IFileCollection = {
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
         'tsconfig.server',
@@ -4188,6 +4212,7 @@ export const extensions: IFileCollection = {
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
         'tsconfig.server',
@@ -4678,6 +4703,12 @@ export const extensions: IFileCollection = {
       icon: 'turbo',
       extensions: ['turbo.json'],
       light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'doppler',
+      extensions: ['doppler.yaml', 'doppler-template.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
