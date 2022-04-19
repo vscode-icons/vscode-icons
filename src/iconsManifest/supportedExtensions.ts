@@ -1742,6 +1742,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gnu',
+      extensions: ['ld'],
+      languages: [languages.makefile],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gnuplot',
       extensions: [],
       languages: [languages.gnuplot],
@@ -2447,12 +2453,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
-    {
-      icon: 'makefile',
-      extensions: ['makefile'],
-      languages: [languages.makefile],
-      format: FileFormat.svg,
-    },
     {
       icon: 'manifest',
       extensions: ['manifest'],
