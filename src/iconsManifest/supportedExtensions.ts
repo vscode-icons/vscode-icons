@@ -1182,7 +1182,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cypress',
-      extensions: [`cypress.json`, `cypress.env.json`],
+      extensions: ['cypress.json', 'cypress.env.json'],
+      filenamesGlob: ['cypress.config'],
+      extensionsGlob: ['js', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4037,7 +4039,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'testjs',
       extensions: [],
-      filenamesGlob: ['test', 'spec'],
+      filenamesGlob: ['test', 'spec', 'cy'],
       extensionsGlob: ['js', 'jsx', 'mjs'],
       light: true,
       format: FileFormat.svg,
@@ -4045,7 +4047,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'testts',
       extensions: [],
-      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
+      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec', 'cy'],
       extensionsGlob: ['ts', 'tsx'],
       format: FileFormat.svg,
     },
