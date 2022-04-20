@@ -1184,7 +1184,7 @@ export const extensions: IFileCollection = {
       icon: 'cypress',
       extensions: ['cypress.json', 'cypress.env.json'],
       filenamesGlob: ['cypress.config'],
-      extensionsGlob: ['js', 'ts'],
+      extensionsGlob: ['js', 'ts', 'mjs', 'cjs'],
       filename: true,
       format: FileFormat.svg,
     },
