@@ -465,6 +465,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'prisma', extensions: ['prisma'], format: FileFormat.svg },
     {
       icon: 'private',
       extensions: ['private', '.private'],
