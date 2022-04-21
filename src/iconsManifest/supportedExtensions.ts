@@ -1206,7 +1206,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cypress_spec',
-      extensions: [`cy.js`, `cy.mjs`, `cy.coffee`, `cy.ts`, `cy.tsx`, `cy.jsx`],
+      extensions: [`cy.js`, `cy.mjs`, `cy.cjs`, `cy.coffee`, `cy.ts`, `cy.tsx`, `cy.jsx`],
       filename: false,
       light: true,
       format: FileFormat.svg,
