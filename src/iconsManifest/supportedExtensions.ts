@@ -1198,6 +1198,7 @@ export const extensions: IFileCollection = {
         `cypress.env.json`,
         `cypress.config.js`,
         `cypress.config.ts`,
+        `cypress.config.cjs`,
         `cypress.config.mjs`,
       ],
       filename: true,
