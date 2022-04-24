@@ -1573,13 +1573,21 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
       icon: 'fla',
       extensions: ['fla'],
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'flareact',
+      extensions: [],
+      filenamesGlob: ['flareact.config'],
+      extensionsGlob: ['js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
       icon: 'floobits',
       extensions: ['.flooignore'],
