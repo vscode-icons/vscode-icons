@@ -10,7 +10,7 @@ jobs:
     name: Run tests
     strategy:
       matrix:
-        os: ubuntu-latest, macos-latest, windows-latest
+        os: [ubuntu-latest, macos-latest, windows-latest]
         node: ['lts/*', 12.14.1, 12.8.1, 12.4.0]
     runs-on: ${{ matrix.os }}
     steps:
