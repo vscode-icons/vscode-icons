@@ -15,7 +15,7 @@ on:
 
 jobs:
   test:
-    name: 'Run tests: Node v${{ matrix.node }} on ${{ matrix.os }}'
+    name: 'Run tests: Node ${{ matrix.node }} on ${{ matrix.os }}'
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Cloning repository
         uses: actions/checkout@v3
-      - name: "Setting up Node.js: ${{ matrix.node }}"
+      - name: "Setting up Node.js ${{ matrix.node }}"
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
