@@ -23,7 +23,7 @@ jobs:
         send-coverage: [false]
         include:
           - os: ubuntu-latest
-            node-version: 12.4.0
+            node: 12.4.0
             send-coverage: true
     runs-on: ${{ matrix.os }}
     steps:
