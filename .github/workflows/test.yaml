@@ -7,17 +7,30 @@ on:
 
 jobs:
   test:
-    name: Run tests
+    name: 'Run tests: Node v${{ matrix.node }} on ${{ matrix.os }}'
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         node: [16, 12.14.1, 12.8.1, 12.4.0]
+        send-coverage: [false]
+        include:
+          - os: ubuntu-latest
+            node-version: 12.4.0
+            send-coverage: true
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Cloning repository
+        uses: actions/checkout@v2
+      - name: "Setting up Node.js: ${{ matrix.node }}"
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
-      - run: npm ci
+      - name: Installing Dependencies
+        run: npm ci
       - name: Test
         run: npm test
+      - name: Send coverage report
+        if: (success() && matrix.send-coverage && secrets.CC_TEST_REPORTER_ID && github.actor != 'dependabot[bot]')
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
