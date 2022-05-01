@@ -19,18 +19,13 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        node: [16, 12.14.1, 12.8.1, 12.4.0]
-        send-coverage: [false]
-        include:
-          - os: ubuntu-latest
-            node: 12.4.0
-            send-coverage: true
+        node: ['lts/*', 12.14.1, 12.8.1, 12.4.0]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Cloning repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: "Setting up Node.js: ${{ matrix.node }}"
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
       - name: Installing Dependencies
@@ -38,7 +33,7 @@ jobs:
       - name: Test
         run: npm test
       - name: Send coverage report
-        if: (success() && matrix.send-coverage && github.repository_owner == 'wscode-icons' && github.actor != 'dependabot[bot]')
+        if: (success() && matrix.os == 'ubuntu-latest' && matrix.node == '12.4.0' && github.repository_owner == 'wscode-icons' && github.actor != 'dependabot[bot]')
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}

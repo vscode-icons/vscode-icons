@@ -13,9 +13,9 @@ jobs:
     if: github.repository == 'vscode-icons/vscode-icons'
     steps:
       - name: Cloning repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setting up Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 12.14.1
       - name: Installing Dependencies
