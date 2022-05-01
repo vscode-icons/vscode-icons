@@ -2,7 +2,15 @@ name: Tests
 
 on:
   push:
+    tags:
+      - '!*'
+    branches:
+      - '*'
   pull_request:
+    tags:
+      - '!*'
+    branches:
+      - '*'
   workflow_dispatch:
 
 jobs:
@@ -30,7 +38,7 @@ jobs:
       - name: Test
         run: npm test
       - name: Send coverage report
-        if: (success() && matrix.send-coverage && secrets.CC_TEST_REPORTER_ID && github.actor != 'dependabot[bot]')
+        if: (success() && matrix.send-coverage && github.repository_owner == 'wscode-icons' && github.actor != 'dependabot[bot]')
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
