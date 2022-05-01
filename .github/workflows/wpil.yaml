@@ -12,11 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'vscode-icons/vscode-icons'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Cloning repository
+        uses: actions/checkout@v2
+      - name: Setting up Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12.14.1
-      - run: npm ci
+      - name: Installing Dependencies
+        run: npm ci
       - name: Compile
         run: npm run compile
       - name: Update Wiki Page Icons List
