@@ -2498,9 +2498,9 @@ export const extensions: IFileCollection = {
     },
     { icon: 'markojs', extensions: ['marko.js'], format: FileFormat.svg },
     {
-      icon: 'master-ui',
+      icon: 'master-co',
       extensions: [],
-      filenamesGlob: ['master.styles', 'master'],
+      filenamesGlob: ['master', 'master.styles'],
       extensionsGlob: ['js', 'ts', 'mjs', 'json'],
       filename: true,
       format: FileFormat.svg,
