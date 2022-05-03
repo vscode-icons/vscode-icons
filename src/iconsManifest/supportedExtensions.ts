@@ -2898,8 +2898,8 @@ export const extensions: IFileCollection = {
     {
       icon: 'nuxt',
       extensions: [],
-      filenamesGlob: ['nuxt.config'],
-      extensionsGlob: ['js', 'ts'],
+      filenamesGlob: ['nuxt.config', '.nuxtrc', '.nuxtignore'],
+      extensionsGlob: ['js', 'ts', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
