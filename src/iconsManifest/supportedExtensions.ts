@@ -3147,6 +3147,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'playwright',
+      extensions: [],
+      filenamesGlob: ['playwright.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'plsql',
       extensions: [],
       languages: [languages.plsql],
