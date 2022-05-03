@@ -2500,8 +2500,8 @@ export const extensions: IFileCollection = {
     {
       icon: 'master-ui',
       extensions: [],
-      filenamesGlob: ['master.styles'],
-      extensionsGlob: ['js', 'ts'],
+      filenamesGlob: ['master.styles', 'master'],
+      extensionsGlob: ['js', 'ts', 'mjs', 'json'],
       filename: true,
       format: FileFormat.svg,
     },
