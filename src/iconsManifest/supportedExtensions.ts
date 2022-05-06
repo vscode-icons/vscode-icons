@@ -4064,6 +4064,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tauri',
+      extensions: ['tauri.conf.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'teal',
       extensions: [],
       languages: [languages.teal],
