@@ -3561,6 +3561,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'replit',
+      extensions: ['.replit', 'replit.nix'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rescript',
       extensions: [],
       languages: [languages.rescript],
