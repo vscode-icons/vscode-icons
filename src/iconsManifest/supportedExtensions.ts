@@ -1497,7 +1497,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'eslint',
       extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
-      filenamesGlob: ['.eslintrc', 'tsconfig.eslint.json'],
+      filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
@@ -4192,6 +4192,7 @@ export const extensions: IFileCollection = {
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.eslint',
         'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
