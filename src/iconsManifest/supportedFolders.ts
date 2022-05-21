@@ -282,6 +282,7 @@ export const extensions: IFolderCollection = {
         'images',
         'image',
         'img',
+        'imgs',
         'icons',
         'icon',
         'ico',
