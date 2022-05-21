@@ -4192,6 +4192,7 @@ export const extensions: IFileCollection = {
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.eslint',
         'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
