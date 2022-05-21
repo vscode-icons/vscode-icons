@@ -282,6 +282,7 @@ export const extensions: IFolderCollection = {
         'images',
         'image',
         'img',
+        'imgs',
         'icons',
         'icon',
         'ico',
@@ -465,6 +466,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'prisma', extensions: ['prisma'], format: FileFormat.svg },
     {
       icon: 'private',
       extensions: ['private', '.private'],
