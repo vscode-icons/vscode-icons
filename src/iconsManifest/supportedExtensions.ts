@@ -1657,6 +1657,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'funding',
+      extensions: ['funding.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fusebox',
       extensions: ['fuse.js'],
       filename: true,
