@@ -2042,7 +2042,7 @@ export const extensions: IFileCollection = {
     { icon: 'idrispkg', extensions: ['ipkg'], format: FileFormat.svg },
     {
       icon: 'image',
-      extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'tiff', 'ico'],
+      extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'tiff', 'ico', 'webp'],
       format: FileFormat.svg,
     },
     {
@@ -4517,11 +4517,6 @@ export const extensions: IFileCollection = {
       icon: 'wasm',
       extensions: ['wasm'],
       languages: [languages.wasm],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'webp',
-      extensions: ['webp'],
       format: FileFormat.svg,
     },
     {
