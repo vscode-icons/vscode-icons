@@ -1690,6 +1690,7 @@ export const extensions: IFileCollection = {
         '.gitmodules',
         '.gitkeep',
         '.mailmap',
+        '.issuetracker',
       ],
       filename: true,
       languages: [languages.git],
