@@ -546,6 +546,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
+    { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
     {
       icon: 'test',
       extensions: [
