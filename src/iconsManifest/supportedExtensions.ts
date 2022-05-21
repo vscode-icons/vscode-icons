@@ -1913,6 +1913,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hardhat',
+      extensions: [],
+      filenamesGlob: ['hardhat.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'haskell',
       extensions: [],
       languages: [languages.haskell, languages.literatehaskell],
