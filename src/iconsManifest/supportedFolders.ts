@@ -79,7 +79,14 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'component',
-      extensions: ['component', 'components', '.components', 'ui', 'widgets'],
+      extensions: [
+        'component',
+        'components',
+        '.components',
+        'gui',
+        'ui',
+        'widgets',
+      ],
       format: FileFormat.svg,
     },
     {
