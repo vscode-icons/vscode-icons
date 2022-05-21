@@ -23,7 +23,7 @@
   "configuration.presets.jsonOfficial.description": "Если установлено значение 'true', будет применяться официальный значок JSON файла.",
   "configuration.presets.hideFolders.description": "Если установлено значение 'true', все значки папок будут скрыты.",
   "configuration.presets.foldersAllDefaultIcon.description": "Если установлено значение 'true', все папки будут иметь стандартный значок.",
-  "configuration.presets.hideExplorerArrows.description": "Если установлено значение 'true', стрелка возле значка папки будет скрыта.",
+  "configuration.presets.hideExplorerArrows.description": "Если установлено значение 'true', стрелки возле значка папок будут скрыты.",
   "configuration.customIconFolderPath.description": "Абсолютный путь до директории на этом компьютере в которой находится папка с пользовательскими значками.",
   "configuration.associations.files.description": "Эти настройки переопределят настройки значков файлов по-умолчанию.",
   "configuration.associations.folders.description": "Эти настройки переопределят настройки значков папок по-умолчанию.",
