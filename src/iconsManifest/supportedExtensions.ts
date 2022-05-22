@@ -1587,13 +1587,21 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
       icon: 'fla',
       extensions: ['fla'],
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'flareact',
+      extensions: [],
+      filenamesGlob: ['flareact.config'],
+      extensionsGlob: ['js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
       icon: 'floobits',
       extensions: ['.flooignore'],
@@ -1924,6 +1932,14 @@ export const extensions: IFileCollection = {
       icon: 'harbour',
       extensions: [],
       languages: [languages.harbour],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'hardhat',
+      extensions: [],
+      filenamesGlob: ['hardhat.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -2981,6 +2997,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'objidconfig',
+      extensions: ['.objidconfig'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ocaml',
       extensions: ['.merlin'],
       filename: true,
@@ -3203,6 +3226,14 @@ export const extensions: IFileCollection = {
     {
       icon: 'plantuml',
       extensions: ['pu', 'plantuml', 'iuml', 'puml'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'playwright',
+      extensions: [],
+      filenamesGlob: ['playwright.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
