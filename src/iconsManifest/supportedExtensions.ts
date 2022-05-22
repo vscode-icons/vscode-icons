@@ -1194,12 +1194,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'cypress',
       extensions: [
-        `cypress.json`,
-        `cypress.env.json`,
-        `cypress.config.js`,
-        `cypress.config.ts`,
-        `cypress.config.cjs`,
-        `cypress.config.mjs`,
+        'cypress.json',
+        'cypress.env.json',
+        'cypress.config.js',
+        'cypress.config.ts',
+        'cypress.config.cjs',
+        'cypress.config.mjs',
       ],
       filename: true,
       light: true,
@@ -1207,8 +1207,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cypress_spec',
-      extensions: [`cy.js`, `cy.mjs`, `cy.cjs`, `cy.coffee`, `cy.ts`, `cy.tsx`, `cy.jsx`],
-      filename: false,
+      extensions: ['cy.js', 'cy.mjs', 'cy.cjs', 'cy.coffee', 'cy.ts', 'cy.tsx', 'cy.jsx'],
       light: true,
       format: FileFormat.svg,
     },
@@ -1376,8 +1375,8 @@ export const extensions: IFileCollection = {
     {
       icon: 'drawio',
       extensions: ['drawio', 'dio'],
-      filenamesGlob: ['.drawio'],
-      extensionsGlob: [],
+      filenamesGlob: ['.drawio', '.dio'],
+      extensionsGlob: ['png', 'svg'],
       format: FileFormat.svg,
     },
     {
@@ -1672,6 +1671,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'funding',
+      extensions: ['funding.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fusebox',
       extensions: ['fuse.js'],
       filename: true,
@@ -1699,6 +1704,7 @@ export const extensions: IFileCollection = {
         '.gitmodules',
         '.gitkeep',
         '.mailmap',
+        '.issuetracker',
       ],
       filename: true,
       languages: [languages.git],
@@ -2051,7 +2057,7 @@ export const extensions: IFileCollection = {
     { icon: 'idrispkg', extensions: ['ipkg'], format: FileFormat.svg },
     {
       icon: 'image',
-      extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'tiff', 'ico'],
+      extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'tiff', 'ico', 'webp'],
       format: FileFormat.svg,
     },
     {
@@ -3615,6 +3621,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'replit',
+      extensions: ['.replit', 'replit.nix'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rescript',
       extensions: [],
       languages: [languages.rescript],
@@ -4079,6 +4092,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tauri',
+      extensions: ['tauri.conf.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'teal',
       extensions: [],
       languages: [languages.teal],
@@ -4207,6 +4226,7 @@ export const extensions: IFileCollection = {
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.eslint',
         'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
@@ -4525,11 +4545,6 @@ export const extensions: IFileCollection = {
       icon: 'wasm',
       extensions: ['wasm'],
       languages: [languages.wasm],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'webp',
-      extensions: ['webp'],
       format: FileFormat.svg,
     },
     {
