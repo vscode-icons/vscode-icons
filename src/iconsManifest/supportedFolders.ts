@@ -583,12 +583,12 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'typings',
-      extensions: ['typings', '@types'],
+      extensions: ['typings', 'types', '@types'],
       format: FileFormat.svg,
     },
     {
       icon: 'typings2',
-      extensions: ['typings', '@types'],
+      extensions: ['typings', 'types', '@types'],
       format: FileFormat.svg,
       disabled: true,
     },
