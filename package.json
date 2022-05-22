@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "11.11.0",
+  "version": "11.12.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -106,7 +106,7 @@
     "sinon": "^9.0.3",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2",
-    "webpack": "^4.44.1",
+    "webpack": "^5.72.1",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
