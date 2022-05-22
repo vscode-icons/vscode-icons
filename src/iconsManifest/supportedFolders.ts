@@ -79,7 +79,14 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'component',
-      extensions: ['component', 'components', '.components', 'ui', 'widgets'],
+      extensions: [
+        'component',
+        'components',
+        '.components',
+        'gui',
+        'ui',
+        'widgets',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -282,6 +289,7 @@ export const extensions: IFolderCollection = {
         'images',
         'image',
         'img',
+        'imgs',
         'icons',
         'icon',
         'ico',
@@ -538,6 +546,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
+    { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
     {
       icon: 'test',
       extensions: [
