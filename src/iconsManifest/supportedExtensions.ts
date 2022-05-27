@@ -1450,6 +1450,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'eleventy2',
+      extensions: ['eleventy.js'],
+      light: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'elixir',
       extensions: [],
       languages: [languages.elixir],
