@@ -3837,6 +3837,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'spwn',
+      extensions: [],
+      languages: [languages.spwn],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sqf',
       extensions: [],
       languages: [languages.sqf],
