@@ -1,0 +1,16 @@
+name: Other Issues
+description: Any other issues
+body:
+  - type: checkboxes
+    id: housekeeping
+    attributes:
+      label: Housekeeping
+      options:
+        - label: I'm sure this issue is _not_ a duplicate
+          required: true
+  - type: textarea
+    id: info
+    attributes:
+      label: 'Information:'
+    validations:
+      required: true
