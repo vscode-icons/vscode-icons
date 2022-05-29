@@ -87,6 +87,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'allcontributors',
+      extensions: ['.all-contributorsrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'affinitydesigner',
       extensions: ['afdesign', 'affinitydesigner'],
       format: FileFormat.svg,
