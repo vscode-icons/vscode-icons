@@ -498,7 +498,7 @@ export const extensions: IFolderCollection = {
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
     {
       icon: 'route',
-      extensions: ['route', 'routes', '_route', '_routes', 'routers'],
+      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
       format: FileFormat.svg,
     },
     {
