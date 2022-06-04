@@ -3265,6 +3265,15 @@ export const extensions: IFileCollection = {
     },
     { icon: 'plsql_package_spec', extensions: ['pks'], format: FileFormat.svg },
     {
+      icon: 'pm2',
+      extensions: [
+        'ecosystem.config.js',
+        'ecosystem.config.cjs',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pnpm',
       extensions: ['pnpmfile.js', 'pnpm-lock.yaml', 'pnpm-workspace.yaml'],
       light: true,
