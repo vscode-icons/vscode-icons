@@ -3274,7 +3274,9 @@ export const extensions: IFileCollection = {
     { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
     {
       icon: 'poetry',
-      extensions: ['poetry.lock'],
+      extensions: [],
+      filenamesGlob: ['poetry'],
+      extensionsGlob: ['lock'],
       filename: true,
       format: FileFormat.svg,
     },
