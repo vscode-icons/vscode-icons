@@ -3270,6 +3270,7 @@ export const extensions: IFileCollection = {
         'ecosystem.config.js',
         'ecosystem.config.cjs',
         'ecosystem.config.json',
+        'ecosystem.config.yml',
         'ecosystem.config.yaml',
       ],
       filename: true,
