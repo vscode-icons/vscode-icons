@@ -3266,13 +3266,9 @@ export const extensions: IFileCollection = {
     { icon: 'plsql_package_spec', extensions: ['pks'], format: FileFormat.svg },
     {
       icon: 'pm2',
-      extensions: [
-        'ecosystem.config.js',
-        'ecosystem.config.cjs',
-        'ecosystem.config.json',
-        'ecosystem.config.yml',
-        'ecosystem.config.yaml',
-      ],
+      extensions: [],
+      filenamesGlob: ['ecosystem.config'],
+      extensionsGlob: ['js', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
