@@ -3269,6 +3269,8 @@ export const extensions: IFileCollection = {
       extensions: [
         'ecosystem.config.js',
         'ecosystem.config.cjs',
+        'ecosystem.config.json',
+        'ecosystem.config.yaml',
       ],
       filename: true,
       format: FileFormat.svg,
