@@ -4644,6 +4644,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wikitext',
+      extensions: ['wikitext'],
+      languages: [languages.wikitext],
+      format: FileFormat.svg,
+    },
+    {
       // Taken from https://windicss.org/assets/logo.svg
       icon: 'windi',
       // See: https://windicss.org/guide/configuration.html#config-file
