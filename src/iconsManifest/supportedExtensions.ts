@@ -1540,6 +1540,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'esphome',
+      extensions: [],
+      languages: [languages.esphome],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'excel',
       extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
       format: FileFormat.svg,
