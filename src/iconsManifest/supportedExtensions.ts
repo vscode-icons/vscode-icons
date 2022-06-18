@@ -3453,7 +3453,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'progress',
-      extensions: [],
+      extensions: ['p', 'w', 'i', 'cls'],
       languages: [languages.openEdge],
       format: FileFormat.svg,
     },
