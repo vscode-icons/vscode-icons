@@ -220,6 +220,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   systemd: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
+  tailwindcss: ILanguage;
   teal: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;

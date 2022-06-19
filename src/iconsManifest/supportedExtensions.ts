@@ -4125,6 +4125,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tailwind',
+      languages: [languages.tailwindcss],
       extensions: [],
       filenamesGlob: [
         'tailwind',
