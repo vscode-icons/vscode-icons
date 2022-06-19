@@ -294,6 +294,14 @@ export const languages: ILanguageCollection = {
   snort: { ids: ['snort'], defaultExtension: 'snort' },
   solidity: { ids: ['solidity'], defaultExtension: 'sol' },
   sparql: { ids: 'sparql', defaultExtension: 'rq' },
+  springbootproperties: {
+    ids: 'spring-boot-properties',
+    defaultExtension: 'properties',
+  },
+  springbootpropertiesyaml: {
+    ids: 'spring-boot-properties-yaml',
+    defaultExtension: 'yml',
+  },
   sqf: { ids: 'sqf', defaultExtension: 'sqf' },
   sql: { ids: 'sql', defaultExtension: 'sql' },
   squirrel: { ids: 'squirrel', defaultExtension: 'nut' },

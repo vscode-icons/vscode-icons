@@ -1048,7 +1048,11 @@ export const extensions: IFileCollection = {
     {
       icon: 'config',
       extensions: ['plist'],
-      languages: [languages.properties, languages.dotenv],
+      languages: [
+        languages.properties,
+        languages.dotenv,
+        languages.springbootproperties,
+      ],
       light: true,
       format: FileFormat.svg,
     },
@@ -4724,7 +4728,11 @@ export const extensions: IFileCollection = {
     {
       icon: 'yaml',
       extensions: [],
-      languages: [languages.yaml, languages.textmateyaml],
+      languages: [
+        languages.yaml,
+        languages.textmateyaml,
+        languages.springbootpropertiesyaml,
+      ],
       light: true,
       format: FileFormat.svg,
     },
