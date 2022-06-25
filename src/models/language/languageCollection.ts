@@ -91,6 +91,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   glyphs: ILanguage;
   gnuplot: ILanguage;
   godot: ILanguage;
+  gdscript: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
@@ -231,6 +232,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   tiltfile: ILanguage;
   toit: ILanguage;
   toml: ILanguage;
+  tres: ILanguage;
+  tscn: ILanguage;
   ttcn: ILanguage;
   tuc: ILanguage;
   twig: ILanguage;

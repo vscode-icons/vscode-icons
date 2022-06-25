@@ -1848,6 +1848,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gdscript',
+      extensions: [],
+      languages: [languages.gdscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gradle',
       extensions: ['gradle'],
       format: FileFormat.svg,
@@ -4255,9 +4261,21 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tres',
+      extensions: [],
+      languages: [languages.tres],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'trunk',
       extensions: ['trunk.yaml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tscn',
+      extensions: [],
+      languages: [languages.tscn],
       format: FileFormat.svg,
     },
     {
