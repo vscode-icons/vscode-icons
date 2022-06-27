@@ -3523,6 +3523,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pythowo',
+      extensions: ['.pyowo'],
+      languages: [languages.pythowo],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pytyped',
       extensions: ['py.typed'],
       filename: true,

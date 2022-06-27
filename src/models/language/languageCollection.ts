@@ -175,6 +175,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   puppet: ILanguage;
   purescript: ILanguage;
   pyret: ILanguage;
+  pythowo: ILanguage;
   qlik: ILanguage;
   qml: ILanguage;
   qsharp: ILanguage;
