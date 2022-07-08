@@ -778,6 +778,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bun',
+      extensions: ['bun', 'lockb'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
       format: FileFormat.svg,
@@ -785,6 +790,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'bunfig',
+      extensions: ['bunfig.toml'],
       filename: true,
       format: FileFormat.svg,
     },
