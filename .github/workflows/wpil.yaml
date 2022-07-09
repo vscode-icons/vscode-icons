@@ -11,6 +11,7 @@ jobs:
     name: Update Wiki Pages
     runs-on: ubuntu-latest
     if: github.repository == 'vscode-icons/vscode-icons'
+    continue-on-error: true
     steps:
       - name: Cloning repository
         uses: actions/checkout@v3
