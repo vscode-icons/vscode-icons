@@ -32,3 +32,8 @@ jobs:
         run: npm ci
       - name: Test
         run: npm test
+      - name: Send coverage report
+        if: (success() && matrix.os == 'ubuntu-latest' && matrix.node == '12.4.0' && github.repository_owner == 'vscode-icons' && github.actor != 'dependabot[bot]')
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
