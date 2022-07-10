@@ -38,7 +38,6 @@ jobs:
             fs.writeFileSync('${{github.workspace}}/coverage.zip', Buffer.from(download.data));
       - name: Unzipping artifact
         run: unzip coverage.zip
-      - run: ls -la
       - name: Send coverage report
         if: >
           (
@@ -50,4 +49,4 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageLocations: |
-            ${{github.workspace}}/coverage/lcov.info:lcov
+            ${{github.workspace}}/lcov.info:lcov
