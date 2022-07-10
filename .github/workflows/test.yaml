@@ -33,14 +33,22 @@ jobs:
     steps:
       - name: Cloning repository
         uses: actions/checkout@v3
+
+      - run: |
+          echo ${{ env.GITHUB_SHA}}
+          echo ${{ env.GITHUB_BRANCH}}
+
       - name: "Setting up Node.js ${{ matrix.node }}"
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+
       - name: Installing Dependencies
         run: npm ci
+
       - name: Test
         run: npm test
+
       - name: Uploading code coverage artifacts
         if: >
           (

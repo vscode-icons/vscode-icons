@@ -1,5 +1,8 @@
 name: Update Wiki Page Icons List
 
+env:
+  NODE_VERSION: 12.4.1
+
 on:
   push:
     branches:
@@ -17,10 +20,12 @@ jobs:
     steps:
       - name: Cloning repository
         uses: actions/checkout@v3
-      - name: Setting up Node.js
+
+      - name: "Setting up Node.js ${{ env.NODE_VERSION }}"
         uses: actions/setup-node@v3
         with:
-          node-version: 12.14.1
+          node-version: ${{ env.NODE_VERSION }}
+
       - name: Installing Dependencies
         run: npm ci
       - name: Compile
