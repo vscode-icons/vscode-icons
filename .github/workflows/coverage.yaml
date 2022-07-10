@@ -16,6 +16,8 @@ jobs:
       github.actor != 'dependabot[bot]'
       }}
     steps:
+      - name: Cloning repository
+        uses: actions/checkout@v3
       - name: 'Download artifact'
         uses: actions/github-script@v3.1.0
         with:
