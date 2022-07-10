@@ -87,6 +87,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'allcontributors',
+      extensions: ['.all-contributorsrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'affinitydesigner',
       extensions: ['afdesign', 'affinitydesigner'],
       format: FileFormat.svg,
@@ -772,6 +778,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bun',
+      extensions: ['bun', 'lockb'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
       format: FileFormat.svg,
@@ -779,6 +790,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'bunfig',
+      extensions: ['bunfig.toml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1563,6 +1580,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fantasticon',
+      extensions: [
+        '.fantasticonrc',
+        'fantasticonrc',
+        '.fantasticonrc.json',
+        'fantasticonrc.json',
+        '.fantasticonrc.js',
+        'fantasticonrc.js',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fauna',
       extensions: ['.faunarc'],
       languages: [languages.fauna],
@@ -1765,6 +1795,12 @@ export const extensions: IFileCollection = {
       icon: 'gcode',
       extensions: [],
       languages: [languages.gcode],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'gcloud',
+      extensions: ['.gcloudignore'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -4622,7 +4658,7 @@ export const extensions: IFileCollection = {
         'webpack.rules',
         'webpack.test.conf',
       ],
-      extensionsGlob: ['js', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
