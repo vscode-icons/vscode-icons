@@ -1798,6 +1798,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gcloud',
+      extensions: ['.gcloudignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'genstat',
       extensions: [],
       languages: [languages.genstat],
