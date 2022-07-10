@@ -1,0 +1,55 @@
+name: Icon Request
+description: Request an Icon
+title: '[Icon Request]: '
+body:
+  - type: checkboxes
+    id: housekeeping
+    attributes:
+      label: Housekeeping
+      options:
+        - label: I'm sure this issue is _not_ a duplicate
+          required: true
+  - type: checkboxes
+    id: icon-category
+    attributes:
+      label: Icon Type
+      description: What type of icon are you requesting?
+      options:
+        - label: File Icon
+        - label: Folder Icon
+  - type: markdown
+    attributes:
+      value: |
+        Possible values for the `Icon Type` are:
+          * `Extension`, when the request refers to file extension/s (i.e. `.txt`).
+          * `Filename`, when the request refers to filename/s (i.e. `tailwind.config.js`).
+          * `Language ID`, when the request refers to a, vscode or a 3rd party extension
+
+        There are cases where an icon can be supported via more than one way. For example an icon could show up using a 'language id' but the extension registering it doesn't support a certain file extension or filename.
+  - type: checkboxes
+    id: icon-type
+    attributes:
+      label: Icon Type
+      description: What type of icon are you requesting?
+      options:
+        - label: Extension
+        - label: Filename
+        - label: Language ID
+  - type: textarea
+    id: original-icon
+    attributes:
+      label: Original Icon
+      description: Attach the original icon (in .svg format only) here.
+    validations:
+      required: true
+  - type: textarea
+    id: icon-info
+    attributes:
+      label: Icon Information
+      description: Write information here about the icon type.
+    validations:
+      required: true
+  - type: textarea
+    id: more-info
+    attributes:
+      label: 'More Information:'
