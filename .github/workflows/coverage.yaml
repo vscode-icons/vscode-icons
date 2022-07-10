@@ -23,7 +23,7 @@ jobs:
       - name: Cloning repository
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.workflow_run.head_branch }}
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - name: 'Download artifact'
         uses: actions/github-script@v3.1.0
