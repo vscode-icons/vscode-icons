@@ -1866,6 +1866,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'go_work',
+      extensions: ['go.work'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'goctl',
       extensions: [],
       languages: [languages.goctl],
