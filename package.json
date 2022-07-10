@@ -74,7 +74,7 @@
     "postcompile:dev": "npm run bundle:dev",
     "lint": "eslint --ext .ts .",
     "predist": "npm run build",
-    "dist": "webpack --hide-modules --mode production",
+    "dist": "webpack --mode production",
     "postdist": "nsri create -s .",
     "prepare": "husky install"
   },
