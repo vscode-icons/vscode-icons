@@ -38,13 +38,14 @@ jobs:
             fs.writeFileSync('${{github.workspace}}/coverage.zip', Buffer.from(download.data));
       - name: Unzipping artifact
         run: unzip coverage.zip
+      - run: ls -la
       - name: Send coverage report
         if: >
           (
           success() &&
           github.actor != 'dependabot[bot]'
           )
-        uses: paambaati/codeclimate-action@v2.7.1
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
