@@ -1855,14 +1855,19 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'go',
-      extensions: ['go.work'],
-      filename: true,
+      extensions: [],
       languages: [languages.go],
       format: FileFormat.svg,
     },
     {
       icon: 'go_package',
       extensions: ['go.sum', 'go.mod'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'go_work',
+      extensions: ['go.work'],
       filename: true,
       format: FileFormat.svg,
     },
