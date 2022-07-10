@@ -20,13 +20,13 @@ jobs:
       matrix:
         os: [
          ubuntu-latest,
-         macos-latest,
-         windows-latest
+        #  macos-latest,
+        #  windows-latest
         ]
         node: [
-          'lts/*', # latest node
-          12.14.1, # vscode >= 1.49.0
-          12.8.1,  # vscode >= 1.43.0 < 1.49.0
+          # 'lts/*', # latest node
+          # 12.14.1, # vscode >= 1.49.0
+          # 12.8.1,  # vscode >= 1.43.0 < 1.49.0
           12.4.0,  # vscode >= 1.40.0 < 1.43.0
         ]
     runs-on: ${{ matrix.os }}
