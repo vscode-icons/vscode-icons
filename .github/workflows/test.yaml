@@ -6,7 +6,7 @@ on:
       - '!*'
     branches:
       - '*'
-  pull_request:
+  pull_request_target:
     tags:
       - '!*'
     branches:
@@ -38,5 +38,6 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
+          coverageCommand: npm test
           coverageLocations: |
             ${{github.workspace}}/coverage/lcov.info:lcov
