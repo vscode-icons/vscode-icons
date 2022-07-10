@@ -1,0 +1,32 @@
+name: Code Coverage
+
+on:
+  workflow_run:
+    workflows: ["Tests"]
+    types:
+      - completed
+
+jobs:
+  code-climate:
+    name: 'Send coverage report to Code Climate'
+    runs-on: ubuntu-latest
+    # if: >
+    #   ${{ github.event.workflow_run.event == 'pull_request' &&
+    #   github.event.workflow_run.conclusion == 'success' &&
+    #   github.actor != 'dependabot[bot]'
+    #   }}
+    steps:
+      - name: Downloading code coverage artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage
+      - name: Display structure of downloaded files
+        run: ls -R
+      - name: Send coverage report
+        if: (success() && matrix.os == 'ubuntu-latest' && matrix.node == '12.4.0' && github.repository_owner == 'vscode-icons' && github.actor != 'dependabot[bot]')
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageLocations: |
+            ${{github.workspace}}/coverage/lcov.info:lcov
