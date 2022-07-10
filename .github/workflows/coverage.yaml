@@ -35,11 +35,11 @@ jobs:
                archive_format: 'zip',
             });
             var fs = require('fs');
-            fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
-      - name: Unzipping artifact
-        run: unzip coverage.zip
+            fs.writeFileSync('${{github.workspace}}/coverage.zip', Buffer.from(download.data));
       - name: Display structure of downloaded files
         run: ls -R
+      - name: Unzipping artifact
+        run: unzip coverage.zip
       - name: Send coverage report
         if: (success() && matrix.os == 'ubuntu-latest' && matrix.node == '12.4.0' && github.repository_owner == 'vscode-icons' && github.actor != 'dependabot[bot]')
         uses: paambaati/codeclimate-action@v3.0.0
