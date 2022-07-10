@@ -10,11 +10,11 @@ jobs:
   code-climate:
     name: 'Send coverage report to Code Climate'
     runs-on: ubuntu-latest
-    if: >
-      ${{ github.event.workflow_run.event == 'pull_request' &&
-      github.event.workflow_run.conclusion == 'success' &&
-      github.actor != 'dependabot[bot]'
-      }}
+    # if: >
+    #   ${{ github.event.workflow_run.event == 'pull_request' &&
+    #   github.event.workflow_run.conclusion == 'success' &&
+    #   github.actor != 'dependabot[bot]'
+    #   }}
     steps:
       - name: Downloading code coverage artifacts
         uses: actions/download-artifact@v3
