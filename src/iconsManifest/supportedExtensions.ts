@@ -1569,6 +1569,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fantasticon',
+      extensions: [
+        '.fantasticonrc',
+        'fantasticonrc',
+        '.fantasticonrc.json',
+        'fantasticonrc.json',
+        '.fantasticonrc.js',
+        'fantasticonrc.js',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fauna',
       extensions: ['.faunarc'],
       languages: [languages.fauna],
