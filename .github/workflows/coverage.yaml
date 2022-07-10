@@ -18,8 +18,7 @@ jobs:
     steps:
       - name: Cloning repository
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.workflow_run.head_branch }}
+
       - name: 'Download artifact'
         uses: actions/github-script@v3.1.0
         with:
@@ -40,8 +39,10 @@ jobs:
             });
             var fs = require('fs');
             fs.writeFileSync('${{github.workspace}}/coverage.zip', Buffer.from(download.data));
+
       - name: Unzipping artifact
         run: unzip coverage.zip
+
       - name: Send coverage report
         if: >
           (
