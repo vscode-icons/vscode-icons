@@ -1,8 +1,5 @@
 name: Code Coverage
 
-env:
-  NODE_VERSION: 12.4.0
-
 on:
   workflow_run:
     workflows: ["Tests"]
@@ -19,14 +16,6 @@ jobs:
       github.actor != 'dependabot[bot]'
       }}
     steps:
-      - name: Cloning repository
-        uses: actions/checkout@v3
-      - name: "Setting up Node.js ${{ env.NODE_VERSION }}"
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - name: Installing Dependencies
-        run: npm ci
       - name: Downloading code coverage artifacts
         uses: actions/download-artifact@v3
         with:
