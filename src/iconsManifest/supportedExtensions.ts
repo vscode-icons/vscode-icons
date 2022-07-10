@@ -778,6 +778,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bun',
+      extensions: ['bun', 'lockb'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
       format: FileFormat.svg,
@@ -785,6 +790,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'bunfig',
+      extensions: ['bunfig.toml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1569,6 +1580,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fantasticon',
+      extensions: [
+        '.fantasticonrc',
+        'fantasticonrc',
+        '.fantasticonrc.json',
+        'fantasticonrc.json',
+        '.fantasticonrc.js',
+        'fantasticonrc.js',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fauna',
       extensions: ['.faunarc'],
       languages: [languages.fauna],
@@ -1774,6 +1798,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gcloud',
+      extensions: ['.gcloudignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'genstat',
       extensions: [],
       languages: [languages.genstat],
@@ -1832,6 +1862,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'go_package',
       extensions: ['go.sum', 'go.mod'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'go_work',
+      extensions: ['go.work'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4163,7 +4199,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'terraform',
-      extensions: ['tfstate'],
+      extensions: ['tfstate', 'tfvars', 'tf', 'tf.json'],
       languages: [languages.terraform],
       format: FileFormat.svg,
     },
@@ -4627,7 +4663,7 @@ export const extensions: IFileCollection = {
         'webpack.rules',
         'webpack.test.conf',
       ],
-      extensionsGlob: ['js', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
