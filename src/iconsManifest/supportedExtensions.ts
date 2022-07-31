@@ -3254,6 +3254,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'phpstan',
+      extensions: [],
+      filenamesGlob: ['phpstan', 'phpstan.dist'],
+      extensionsGlob: ['neon'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'phpunit',
       extensions: ['phpunit', 'phpunit.xml', 'phpunit.xml.dist'],
       filename: true,
