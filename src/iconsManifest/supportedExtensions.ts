@@ -1276,7 +1276,7 @@ export const extensions: IFileCollection = {
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
       icon: 'dependabot',
-      extensions: ['dependabot.yml'],
+      extensions: ['dependabot.yml', 'dependabot.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1798,6 +1798,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gcloud',
+      extensions: ['.gcloudignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'genstat',
       extensions: [],
       languages: [languages.genstat],
@@ -1856,6 +1862,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'go_package',
       extensions: ['go.sum', 'go.mod'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'go_work',
+      extensions: ['go.work'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3509,12 +3521,6 @@ export const extensions: IFileCollection = {
     },
     { icon: 'publisher', extensions: ['pub', 'puz'], format: FileFormat.svg },
     {
-      icon: 'puppet',
-      extensions: [],
-      languages: [languages.puppet],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'pug',
       extensions: [
         '.jade-lintrc',
@@ -3525,6 +3531,20 @@ export const extensions: IFileCollection = {
       ],
       filename: true,
       languages: [languages.pug],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pulumi',
+      extensions: [],
+      filenamesGlob: ['Pulumi', 'Pulumi.dev', 'Pulumi.prod'],
+      extensionsGlob: ['yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'puppet',
+      extensions: [],
+      languages: [languages.puppet],
       format: FileFormat.svg,
     },
     {
@@ -4187,7 +4207,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'terraform',
-      extensions: ['tfstate'],
+      extensions: ['tfstate', 'tfvars', 'tf', 'tf.json'],
       languages: [languages.terraform],
       format: FileFormat.svg,
     },
@@ -4653,7 +4673,7 @@ export const extensions: IFileCollection = {
         'webpack.rules',
         'webpack.test.conf',
       ],
-      extensionsGlob: ['js', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4832,6 +4852,7 @@ export const extensions: IFileCollection = {
         'xz',
         'bz2',
         'zipx',
+        'br',
       ],
       format: FileFormat.svg,
     },
@@ -4849,6 +4870,7 @@ export const extensions: IFileCollection = {
         'xz',
         'bz2',
         'zipx',
+        'br',
       ],
       format: FileFormat.svg,
       disabled: true,

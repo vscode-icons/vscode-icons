@@ -1,7 +1,7 @@
 name: Update Wiki Page Icons List
 
 env:
-  NODE_VERSION: 12.4.1
+  NODE_VERSION: 12.14.1
 
 on:
   push:
