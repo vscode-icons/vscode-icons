@@ -1534,6 +1534,14 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'esbuild',
+      extensions: [],
+      filenamesGlob: ['esbuild', 'esbuild.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'eslint',
       extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
       filenamesGlob: ['.eslintrc'],
