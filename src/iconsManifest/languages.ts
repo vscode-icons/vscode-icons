@@ -312,6 +312,7 @@ export const languages: ILanguageCollection = {
   systemd: { ids: 'systemd-unit-file', defaultExtension: 'link' },
   systemverilog: { ids: 'systemverilog', defaultExtension: 'sv' },
   t4: { ids: 't4', defaultExtension: 'tt' },
+  tailwindcss: { ids: 'tailwindcss', defaultExtension: 'css' },
   teal: { ids: 'teal', defaultExtension: 'teal' },
   templatetoolkit: { ids: 'tt', defaultExtension: 'tt3' },
   tera: { ids: 'tera', defaultExtension: 'tera' },
