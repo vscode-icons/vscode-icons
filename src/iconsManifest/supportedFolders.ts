@@ -56,6 +56,7 @@ export const extensions: IFolderCollection = {
       extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
       format: FileFormat.svg,
     },
+    { icon: 'bot', extensions: ['bot', '.bot'], format: FileFormat.svg },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
@@ -112,6 +113,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'cmake', extensions: ['.cmake', 'cmake'], format: FileFormat.svg },
+    {
+      icon: 'common',
+      extensions: ['common'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'config',
       extensions: [
@@ -533,6 +539,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'services',
       extensions: ['service', 'services'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'shared',
+      extensions: ['share', 'shared', '.share', '.shared'],
       format: FileFormat.svg,
     },
     {
