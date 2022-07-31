@@ -4513,14 +4513,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vite',
-      extensions: [
-        'vite.config.js',
-        'vite.config.mjs',
-        'vite.config.ts',
-        'vite.config.cjs',
-        'vite.config.mts',
-        'vite.config.cts',
-      ],
+      filenamesGlob: ['vite.config'],
+      extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4528,14 +4522,8 @@ export const extensions: IFileCollection = {
       // Taken from https://vitest.dev/logo.svg
       icon: 'vitest',
       // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
-      extensions: [
-        'vitest.config.ts',
-        'vitest.config.mts',
-        'vitest.config.cts',
-        'vitest.config.js',
-        'vitest.config.mjs',
-        'vitest.config.cjs',
-      ],
+      filenamesGlob: ['vitest.config'],
+      extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
