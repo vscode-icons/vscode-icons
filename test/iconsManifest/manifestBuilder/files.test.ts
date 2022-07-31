@@ -1,6 +1,7 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
+import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
@@ -56,6 +57,28 @@ describe('ManifestBuilder: files icons test', function () {
     });
 
     context(`if a default 'light' icon is NOT defined`, function () {
+      context('and useBundledIcon is enabled', function () {
+        it(`the 'default' file icon path has the correct structure`, async function () {
+          const filename = `${constants.iconsManifest.fileTypePrefix}${
+            fixtFiles.default.file.icon
+          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
+            fixtFiles.default.file.format,
+          )}`;
+
+          const files = cloneDeep(fixtFiles);
+          files.default.file.useBundledIcon = true;
+
+          const manifest = await ManifestBuilder.buildManifest(
+            files,
+            emptyFolderCollection,
+          );
+
+          expect(manifest.iconDefinitions._file.iconPath).to.equal(
+            `${iconsDirRelativeBasePath}/${filename}`,
+          );
+        });
+      });
+
       context(`the 'default' file`, function () {
         it(`has an icon path`, async function () {
           const manifest = await ManifestBuilder.buildManifest(
@@ -622,6 +645,28 @@ describe('ManifestBuilder: files icons test', function () {
 
       afterEach(function () {
         fixtFiles.default.file_light = undefined;
+      });
+
+      context('and useBundledIcon is enabled', function () {
+        it(`the 'default' file icon path has the correct structure`, async function () {
+          const filename = `${constants.iconsManifest.fileTypePrefix}${
+            fixtFiles.default.file.icon
+          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
+            fixtFiles.default.file.format,
+          )}`;
+
+          const files = cloneDeep(fixtFiles);
+          files.default.file.useBundledIcon = true;
+
+          const manifest = await ManifestBuilder.buildManifest(
+            files,
+            emptyFolderCollection,
+          );
+
+          expect(manifest.iconDefinitions._file.iconPath).to.equal(
+            `${iconsDirRelativeBasePath}/${filename}`,
+          );
+        });
       });
 
       context(`the 'default' file`, function () {
