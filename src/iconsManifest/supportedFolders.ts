@@ -499,7 +499,7 @@ export const extensions: IFolderCollection = {
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
     {
       icon: 'route',
-      extensions: ['route', 'routes', '_route', '_routes', 'routers'],
+      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
       format: FileFormat.svg,
     },
     {
@@ -599,12 +599,12 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'typings',
-      extensions: ['typings', '@types'],
+      extensions: ['typings', 'types', '@types'],
       format: FileFormat.svg,
     },
     {
       icon: 'typings2',
-      extensions: ['typings', '@types'],
+      extensions: ['typings', 'types', '@types'],
       format: FileFormat.svg,
       disabled: true,
     },

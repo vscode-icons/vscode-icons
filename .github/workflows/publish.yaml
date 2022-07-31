@@ -1,19 +1,28 @@
 name: Publish Extension
 
+env:
+  NODE_VERSION: 14.14.0
+
 on:
-  # push:
-  #   tags:
-  #     - "v*.*.*"
+  push:
+    tags:
+      - "v*.*.*"
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Cloning repository
+        uses: actions/checkout@v2
+
+      - name: "Setting up Node.js ${{ env.NODE_VERSION }}"
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.14.1
-      - run: npm ci
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Installing dependencies
+        run: npm ci
+
       - name: Publish to Visual Studio Marketplace
-        run: npx vsce@1.88.0 publish -p ${{ secrets.VSCE_TOKEN }}
+        run: npx vsce@2.9.2 publish -p ${{ secrets.VSCE_TOKEN }}
