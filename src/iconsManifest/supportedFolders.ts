@@ -56,6 +56,7 @@ export const extensions: IFolderCollection = {
       extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
       format: FileFormat.svg,
     },
+    { icon: 'bot', extensions: ['bot', '.bot'], format: FileFormat.svg },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
