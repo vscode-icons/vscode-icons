@@ -3521,12 +3521,6 @@ export const extensions: IFileCollection = {
     },
     { icon: 'publisher', extensions: ['pub', 'puz'], format: FileFormat.svg },
     {
-      icon: 'puppet',
-      extensions: [],
-      languages: [languages.puppet],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'pug',
       extensions: [
         '.jade-lintrc',
@@ -3537,6 +3531,20 @@ export const extensions: IFileCollection = {
       ],
       filename: true,
       languages: [languages.pug],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pulumi',
+      extensions: [],
+      filenamesGlob: ['Pulumi', 'Pulumi.dev', 'Pulumi.prod'],
+      extensionsGlob: ['yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'puppet',
+      extensions: [],
+      languages: [languages.puppet],
       format: FileFormat.svg,
     },
     {
