@@ -3046,6 +3046,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nx',
+      extensions: [],
+      filenamesGlob: ['nx'],
+      extensionsGlob: ['json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nyc',
       extensions: ['.nycrc', '.nycrc.json'],
       filename: true,
