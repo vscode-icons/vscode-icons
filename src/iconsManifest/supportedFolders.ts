@@ -56,6 +56,7 @@ export const extensions: IFolderCollection = {
       extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
       format: FileFormat.svg,
     },
+    { icon: 'bot', extensions: ['bot', '.bot'], format: FileFormat.svg },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
@@ -498,7 +499,7 @@ export const extensions: IFolderCollection = {
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
     {
       icon: 'route',
-      extensions: ['route', 'routes', '_route', '_routes', 'routers'],
+      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
       format: FileFormat.svg,
     },
     {
@@ -598,12 +599,12 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'typings',
-      extensions: ['typings', '@types'],
+      extensions: ['typings', 'types', '@types'],
       format: FileFormat.svg,
     },
     {
       icon: 'typings2',
-      extensions: ['typings', '@types'],
+      extensions: ['typings', 'types', '@types'],
       format: FileFormat.svg,
       disabled: true,
     },
