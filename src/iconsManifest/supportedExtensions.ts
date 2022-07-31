@@ -1275,6 +1275,15 @@ export const extensions: IFileCollection = {
     },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
+      icon: 'deno',
+      extensions: [],
+      filenamesGlob: ['deno'],
+      extensionsGlob: ['json', 'jsonc'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dependabot',
       extensions: ['dependabot.yml', 'dependabot.yaml'],
       filename: true,
