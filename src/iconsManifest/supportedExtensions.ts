@@ -2642,8 +2642,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'markdownlint',
-      extensions: [],
-      filenamesGlob: ['markdownlint', 'markdownlint-cli2'],
+      filename: true,
+      extensions: ['.markdownlintrc'],
+      filenamesGlob: ['.markdownlint', '.markdownlint-cli2'],
       extensionsGlob: ['json', 'jsonc', 'yml', 'yaml', 'cjs'],
       format: FileFormat.svg,
     },
