@@ -128,6 +128,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   latex: ILanguage;
   latino: ILanguage;
   lex: ILanguage;
+  lilypond: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
   log: ILanguage;
@@ -222,6 +223,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   systemd: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
+  tailwindcss: ILanguage;
   teal: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;
@@ -248,6 +250,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   vue: ILanguage;
   wasm: ILanguage;
   wenyan: ILanguage;
+  wikitext: ILanguage;
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;
