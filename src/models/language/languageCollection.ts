@@ -205,6 +205,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   snort: ILanguage;
   solidity: ILanguage;
   sparql: ILanguage;
+  springbootproperties: ILanguage;
+  springbootpropertiesyaml: ILanguage;
   sqf: ILanguage;
   squirrel: ILanguage;
   stan: ILanguage;
