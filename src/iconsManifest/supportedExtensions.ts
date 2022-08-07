@@ -3558,13 +3558,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'progress',
-      extensions: ['p', 'w', 'i', 'cls'],
+      extensions: [],
       languages: [languages.openEdge],
       format: FileFormat.svg,
     },
     {
       icon: 'prolog',
-      extensions: ['pro', 'P'],
+      extensions: ['pro'],
       languages: [languages.prolog],
       format: FileFormat.svg,
     },
