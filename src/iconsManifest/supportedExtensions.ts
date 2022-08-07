@@ -3564,7 +3564,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'prolog',
-      extensions: ['pro', 'P'],
+      extensions: ['pro'],
       languages: [languages.prolog],
       format: FileFormat.svg,
     },
