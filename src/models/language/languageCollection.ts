@@ -128,6 +128,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   latex: ILanguage;
   latino: ILanguage;
   lex: ILanguage;
+  lilypond: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
   log: ILanguage;

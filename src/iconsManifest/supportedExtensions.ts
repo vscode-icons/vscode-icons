@@ -2528,6 +2528,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lilypond',
+      extensions: [],
+      languages: [languages.lilypond],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lisp',
       extensions: [],
       languages: [languages.lisp],
