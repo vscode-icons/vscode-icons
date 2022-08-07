@@ -12,12 +12,16 @@ jobs:
   test:
     name: 'Run tests: Node ${{ matrix.node }} on ${{ matrix.os }}'
     strategy:
+      fail-fast: false
       matrix:
         os: [
          ubuntu-latest,
          macos-latest,
          windows-latest
         ]
+        # https://code.visualstudio.com/updates
+        # https://www.electronjs.org/releases/stable
+        # https://github.com/microsoft/vscode/blob/main/package.json#L138
         node: [
           'lts/*', # latest node
           12.14.1, # vscode >= 1.49.0
