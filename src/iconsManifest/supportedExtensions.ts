@@ -1477,6 +1477,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'eas-metadata',
+      extensions: ['store.config.json'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'edge',
       extensions: [],
       languages: [languages.edge],
