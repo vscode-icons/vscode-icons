@@ -4775,6 +4775,7 @@ export const extensions: IFileCollection = {
         'webpack.common',
         'webpack.config',
         'webpack.config.base',
+        'webpack.config.build',
         'webpack.config.common',
         'webpack.config.dev',
         'webpack.config.development',
