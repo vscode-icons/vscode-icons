@@ -4391,10 +4391,8 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'truffle',
-      extensions: [],
-      filenamesGlob: ['truffle-config'],
-      extensionsGlob: ['js', 'ts'],
+      icon: 'tree',
+      extensions: ['.tree'],
       filename: true,
       format: FileFormat.svg,
     },
