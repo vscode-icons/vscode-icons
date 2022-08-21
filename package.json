@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "11.12.0",
+  "version": "11.15.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -74,7 +74,7 @@
     "postcompile:dev": "npm run bundle:dev",
     "lint": "eslint --ext .ts .",
     "predist": "npm run build",
-    "dist": "webpack --hide-modules --mode production",
+    "dist": "webpack --mode production",
     "postdist": "nsri create -s .",
     "prepare": "husky install"
   },
@@ -106,8 +106,8 @@
     "sinon": "^9.0.3",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
   },
   "dependencies": {
     "inversify": "^5.0.1",

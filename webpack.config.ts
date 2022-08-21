@@ -1,9 +1,9 @@
 /* eslint-disable import/no-internal-modules */
 import { resolve } from 'path';
-import { CliConfigOptions, Configuration } from 'webpack';
+import { Configuration } from 'webpack';
 import { constants } from './out/src/constants';
 
-const getConfig = (argv: CliConfigOptions): Configuration => ({
+const getConfig = (argv: any): Configuration => ({
   context: resolve(__dirname, 'out'),
   // development mode only
   devtool: argv.mode === 'development' ? 'source-map' : false,
@@ -31,19 +31,19 @@ const getConfig = (argv: CliConfigOptions): Configuration => ({
 export default [
   (
     _env: string | Record<string, boolean | number | string>,
-    argv: CliConfigOptions,
+    argv: any,
   ): Configuration => {
     const config: Configuration = getConfig(argv);
-    config.output.filename = constants.extension.distEntryFilename;
+    config.output!.filename = constants.extension.distEntryFilename;
     return config;
   },
   (
     _env: string | Record<string, boolean | number | string>,
-    argv: CliConfigOptions,
+    argv: any,
   ): Configuration => {
     const config: Configuration = getConfig(argv);
     config.entry = './src/uninstall.js';
-    config.output.filename = constants.extension.uninstallEntryFilename;
+    config.output!.filename = constants.extension.uninstallEntryFilename;
     return config;
   },
 ];
