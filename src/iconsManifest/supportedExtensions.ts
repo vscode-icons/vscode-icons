@@ -82,7 +82,13 @@ export const extensions: IFileCollection = {
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
       icon: 'al',
-      extensions: [],
+      extensions: ['al'],
+      languages: [languages.al],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'al_dal',
+      extensions: ['dal'],
       languages: [languages.al],
       format: FileFormat.svg,
     },
