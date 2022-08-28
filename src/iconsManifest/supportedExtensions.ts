@@ -4506,6 +4506,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'unison',
+      extensions: ['u'],
+      languages: [languages.unison],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'unlicense',
       extensions: ['unlicense', 'unlicence'],
       filenamesGlob: ['unlicense', 'unlicence'],
