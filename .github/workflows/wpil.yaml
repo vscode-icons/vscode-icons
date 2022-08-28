@@ -1,0 +1,41 @@
+name: Update Wiki Page Icons List
+
+env:
+  NODE_VERSION: 12.14.1
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - src/iconsManifest
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Update Wiki Pages
+    runs-on: ubuntu-latest
+    if: github.repository == 'vscode-icons/vscode-icons'
+    continue-on-error: true
+    steps:
+      - name: Cloning repository
+        uses: actions/checkout@v3
+
+      - name: "Setting up Node.js ${{ env.NODE_VERSION }}"
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Installing Dependencies
+        run: npm ci
+      - name: Compile
+        run: npm run compile
+      - name: Update Wiki Page Icons List
+        run: npx vscode-icons/wpilgenerator
+        env:
+          TRAVIS_SECURE_ENV_VARS: 'true'
+          TRAVIS_PULL_REQUEST: 'false'
+          TRAVIS_BRANCH: master
+          TRAVIS_OS_NAME: linux
+          TRAVIS_REPO_SLUG: vscode-icons/vscode-icons
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
