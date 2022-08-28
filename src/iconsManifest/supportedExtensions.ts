@@ -4377,7 +4377,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['truffle-config'],
       extensionsGlob: ['js', 'ts'],
       filename: true,
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'trunk',
