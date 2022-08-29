@@ -2537,7 +2537,7 @@ export const extensions: IFileCollection = {
       icon: 'lighthouse',
       extensions: [],
       filenamesGlob: ['.lighthouserc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      extensionsGlob: ['cjs', 'js', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
