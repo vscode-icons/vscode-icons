@@ -87,6 +87,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'allcontributors',
+      extensions: ['.all-contributorsrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'affinitydesigner',
       extensions: ['afdesign', 'affinitydesigner'],
       format: FileFormat.svg,
@@ -99,6 +105,11 @@ export const extensions: IFileCollection = {
     {
       icon: 'affinitypublisher',
       extensions: ['afpub', 'affinitypublisher'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'appscript',
+      extensions: ['gs'],
       format: FileFormat.svg,
     },
     {
@@ -519,7 +530,7 @@ export const extensions: IFileCollection = {
       filename: true,
       filenamesGlob: ['astro.config'],
       extensions: [],
-      extensionsGlob: ['js', 'cjs', 'mjs'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts'],
       format: FileFormat.svg,
     },
     {
@@ -767,6 +778,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bun',
+      extensions: ['bun', 'lockb'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
       format: FileFormat.svg,
@@ -774,6 +790,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'bunfig',
+      extensions: ['bunfig.toml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1037,7 +1059,11 @@ export const extensions: IFileCollection = {
     {
       icon: 'config',
       extensions: ['plist'],
-      languages: [languages.properties, languages.dotenv],
+      languages: [
+        languages.properties,
+        languages.dotenv,
+        languages.springbootproperties,
+      ],
       light: true,
       format: FileFormat.svg,
     },
@@ -1051,6 +1077,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'commitizen',
       extensions: ['.czrc', '.cz.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'commitlint',
+      extensions: ['.commitlintrc'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1142,6 +1174,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    {
+      icon: 'cspell',
+      extensions: [],
+      filenamesGlob: ['cspell.config', 'cspell', '.cspell'],
+      extensionsGlob: ['json', 'js', 'cjs', 'yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'csproj', extensions: ['csproj'], format: FileFormat.svg },
     {
       icon: 'css',
@@ -1182,8 +1222,30 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cypress',
-      extensions: [`cypress.json`, `cypress.env.json`],
+      extensions: [
+        'cypress.json',
+        'cypress.env.json',
+        'cypress.config.js',
+        'cypress.config.ts',
+        'cypress.config.cjs',
+        'cypress.config.mjs',
+      ],
       filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'cypress_spec',
+      extensions: [
+        'cy.js',
+        'cy.mjs',
+        'cy.cjs',
+        'cy.coffee',
+        'cy.ts',
+        'cy.tsx',
+        'cy.jsx',
+      ],
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -1225,8 +1287,17 @@ export const extensions: IFileCollection = {
     },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
+      icon: 'deno',
+      extensions: [],
+      filenamesGlob: ['deno'],
+      extensionsGlob: ['json', 'jsonc'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dependabot',
-      extensions: ['dependabot.yml'],
+      extensions: ['dependabot.yml', 'dependabot.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1246,6 +1317,13 @@ export const extensions: IFileCollection = {
       icon: 'devcontainer',
       extensions: ['devcontainer.json', '.devcontainer.json'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dhall',
+      extensions: [],
+      light: true,
+      languages: [languages.dhall],
       format: FileFormat.svg,
     },
     {
@@ -1343,7 +1421,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'drawio',
       extensions: ['drawio', 'dio'],
-      filenamesGlob: ['.drawio'],
+      filenamesGlob: ['.drawio', '.dio'],
       extensionsGlob: ['png', 'svg'],
       format: FileFormat.svg,
     },
@@ -1388,6 +1466,20 @@ export const extensions: IFileCollection = {
     {
       icon: 'editorconfig',
       extensions: ['.editorconfig'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'earthly',
+      extensions: ['.earthlyignore', 'Earthfile'],
+      filename: true,
+      languages: [languages.earthfile],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'eas-metadata',
+      extensions: ['store.config.json'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
@@ -1470,8 +1562,21 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'esbuild',
+      extensions: [],
+      filenamesGlob: ['esbuild', 'esbuild.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'eslint',
-      extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
+      extensions: [
+        '.eslintrc',
+        '.eslintignore',
+        '.eslintcache',
+        'eslint.config.js',
+      ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
@@ -1479,7 +1584,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'eslint2',
-      extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
+      extensions: [
+        '.eslintrc',
+        '.eslintignore',
+        '.eslintcache',
+        'eslint.config.js',
+      ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
@@ -1516,6 +1626,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fantasticon',
+      extensions: [
+        '.fantasticonrc',
+        'fantasticonrc',
+        '.fantasticonrc.json',
+        'fantasticonrc.json',
+        '.fantasticonrc.js',
+        'fantasticonrc.js',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fauna',
       extensions: ['.faunarc'],
       languages: [languages.fauna],
@@ -1548,13 +1671,21 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
       icon: 'fla',
       extensions: ['fla'],
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'flareact',
+      extensions: [],
+      filenamesGlob: ['flareact.config'],
+      extensionsGlob: ['js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
       icon: 'floobits',
       extensions: ['.flooignore'],
@@ -1584,6 +1715,14 @@ export const extensions: IFileCollection = {
       icon: 'font',
       extensions: ['woff', 'woff2', 'ttf', 'otf', 'eot', 'pfa', 'pfb', 'sfd'],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'formkit',
+      extensions: [],
+      filenamesGlob: ['formkit.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -1624,6 +1763,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'funding',
+      extensions: ['funding.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fusebox',
       extensions: ['fuse.js'],
       filename: true,
@@ -1651,6 +1796,7 @@ export const extensions: IFileCollection = {
         '.gitmodules',
         '.gitkeep',
         '.mailmap',
+        '.issuetracker',
       ],
       filename: true,
       languages: [languages.git],
@@ -1695,6 +1841,12 @@ export const extensions: IFileCollection = {
       icon: 'gcode',
       extensions: [],
       languages: [languages.gcode],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'gcloud',
+      extensions: ['.gcloudignore'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -1756,6 +1908,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'go_package',
       extensions: ['go.sum', 'go.mod'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'go_work',
+      extensions: ['go.work'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1877,6 +2035,14 @@ export const extensions: IFileCollection = {
       extensions: ['hcl2', 'sentinel'],
       languages: [languages.hcl],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'hardhat',
+      extensions: [],
+      filenamesGlob: ['hardhat.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -2010,7 +2176,7 @@ export const extensions: IFileCollection = {
     { icon: 'idrispkg', extensions: ['ipkg'], format: FileFormat.svg },
     {
       icon: 'image',
-      extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'tiff', 'ico'],
+      extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'tiff', 'ico', 'webp'],
       format: FileFormat.svg,
     },
     {
@@ -2092,9 +2258,11 @@ export const extensions: IFileCollection = {
         'jest.config.json',
         'jest.config.base.json',
         'jest.config.common.json',
+        'jest.config.e2e.json',
         'jest.config.ts',
         'jest.config.base.ts',
         'jest.config.common.ts',
+        'jest.config.e2e.ts',
         'jest.json',
         '.jestrc',
         '.jestrc.js',
@@ -2105,6 +2273,7 @@ export const extensions: IFileCollection = {
         'jest.config.base',
         'jest.config.common',
         'jest.config.babel',
+        'jest.config.e2e',
       ],
       extensionsGlob: ['js', 'cjs', 'mjs'],
       filename: true,
@@ -2193,21 +2362,21 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'json',
-      extensions: [],
+      extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
       light: true,
       format: FileFormat.svg,
     },
     {
       icon: 'json_official',
-      extensions: [],
+      extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
       format: FileFormat.svg,
       disabled: true,
     },
     {
       icon: 'json2',
-      extensions: [],
+      extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
       format: FileFormat.svg,
       disabled: true,
@@ -2390,6 +2559,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lilypond',
+      extensions: [],
+      languages: [languages.lilypond],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lisp',
       extensions: [],
       languages: [languages.lisp],
@@ -2487,8 +2662,10 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'markdownlint',
-      extensions: ['.markdownlint.json'],
       filename: true,
+      extensions: ['.markdownlintrc'],
+      filenamesGlob: ['.markdownlint', '.markdownlint-cli2'],
+      extensionsGlob: ['json', 'jsonc', 'yml', 'yaml', 'cjs'],
       format: FileFormat.svg,
     },
     {
@@ -2829,6 +3006,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'noc',
+      extensions: ['noc'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nix',
       extensions: [],
       languages: [languages.nix],
@@ -2911,6 +3093,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nx',
+      extensions: [],
+      filenamesGlob: ['nx'],
+      extensionsGlob: ['json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nyc',
       extensions: ['.nycrc', '.nycrc.json'],
       filename: true,
@@ -2926,6 +3117,13 @@ export const extensions: IFileCollection = {
       icon: 'objectivecpp',
       extensions: [],
       languages: [languages.objectivecpp],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'objidconfig',
+      extensions: ['.objidconfig'],
+      light: true,
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -3112,6 +3310,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'phpstan',
+      extensions: [],
+      filenamesGlob: ['phpstan', 'phpstan.dist'],
+      extensionsGlob: ['neon'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'phpunit',
       extensions: ['phpunit', 'phpunit.xml', 'phpunit.xml.dist'],
       filename: true,
@@ -3154,6 +3360,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'playwright',
+      extensions: [],
+      filenamesGlob: ['playwright.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'plsql',
       extensions: [],
       languages: [languages.plsql],
@@ -3167,6 +3381,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'plsql_package_spec', extensions: ['pks'], format: FileFormat.svg },
+    {
+      icon: 'pm2',
+      extensions: [],
+      filenamesGlob: ['ecosystem.config'],
+      extensionsGlob: ['js', 'cjs', 'json', 'yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'pnpm',
       extensions: ['pnpmfile.js', 'pnpm-lock.yaml', 'pnpm-workspace.yaml'],
@@ -3362,7 +3584,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'prolog',
-      extensions: ['pro', 'P'],
+      extensions: ['pro'],
       languages: [languages.prolog],
       format: FileFormat.svg,
     },
@@ -3388,12 +3610,6 @@ export const extensions: IFileCollection = {
     },
     { icon: 'publisher', extensions: ['pub', 'puz'], format: FileFormat.svg },
     {
-      icon: 'puppet',
-      extensions: [],
-      languages: [languages.puppet],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'pug',
       extensions: [
         '.jade-lintrc',
@@ -3404,6 +3620,20 @@ export const extensions: IFileCollection = {
       ],
       filename: true,
       languages: [languages.pug],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pulumi',
+      extensions: [],
+      filenamesGlob: ['Pulumi', 'Pulumi.dev', 'Pulumi.prod'],
+      extensionsGlob: ['yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'puppet',
+      extensions: [],
+      languages: [languages.puppet],
       format: FileFormat.svg,
     },
     {
@@ -3465,7 +3695,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'quasar',
-      extensions: ['quasar.conf.js'],
+      extensions: ['quasar.config.js', 'quasar.conf.js'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
@@ -3568,6 +3799,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'replit',
+      extensions: ['.replit', 'replit.nix'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rescript',
       extensions: [],
       languages: [languages.rescript],
@@ -3623,6 +3861,11 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ron',
+      extensions: ['ron'],
       format: FileFormat.svg,
     },
     {
@@ -3756,11 +3999,24 @@ export const extensions: IFileCollection = {
       languages: [languages.shellscript],
       format: FileFormat.svg,
     },
+    {
+      icon: 'siyuan',
+      extensions: ['sy'],
+      format: FileFormat.svg,
+    },
     { icon: 'sketch', extensions: ['sketch'], format: FileFormat.svg },
     {
       icon: 'slang',
       extensions: [],
       languages: [languages.slang],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'slashup',
+      extensions: [],
+      filenamesGlob: ['slash-up.config'],
+      extensionsGlob: ['js'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -3888,7 +4144,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'stryker',
       extensions: [],
-      filenamesGlob: ['stryker.conf', 'stryker-config', 'stryker4s'],
+      filenamesGlob: [
+        'stryker.conf',
+        '.stryker.conf',
+        'stryker-config',
+        'stryker4s',
+      ],
       extensionsGlob: ['mjs', 'cjs', 'js', 'conf', 'json'],
       filename: true,
       format: FileFormat.svg,
@@ -3997,6 +4258,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tailwind',
+      languages: [languages.tailwindcss],
       extensions: [],
       filenamesGlob: [
         'tailwind',
@@ -4005,6 +4267,12 @@ export const extensions: IFileCollection = {
         '.tailwindrc',
       ],
       extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tauri',
+      extensions: ['tauri.conf.json'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4029,7 +4297,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'terraform',
-      extensions: ['tfstate'],
+      extensions: ['tfstate', 'tfvars', 'tf', 'tf.json'],
       languages: [languages.terraform],
       format: FileFormat.svg,
     },
@@ -4121,6 +4389,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'truffle',
+      extensions: [],
+      filenamesGlob: ['truffle-config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'trunk',
       extensions: ['trunk.yaml'],
       filename: true,
@@ -4133,10 +4409,13 @@ export const extensions: IFileCollection = {
         'tsconfig',
         'tsconfig.app',
         'tsconfig.base',
+        'tsconfig.build',
         'tsconfig.common',
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.eslint',
+        'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
         'tsconfig.server',
@@ -4157,10 +4436,12 @@ export const extensions: IFileCollection = {
         'tsconfig',
         'tsconfig.app',
         'tsconfig.base',
+        'tsconfig.build',
         'tsconfig.common',
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
         'tsconfig.server',
@@ -4244,6 +4525,12 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'unison',
+      extensions: ['u'],
+      languages: [languages.unison],
       format: FileFormat.svg,
     },
     {
@@ -4352,7 +4639,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vite',
-      extensions: ['vite.config.js', 'vite.config.ts'],
+      filenamesGlob: ['vite.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4360,7 +4649,9 @@ export const extensions: IFileCollection = {
       // Taken from https://vitest.dev/logo.svg
       icon: 'vitest',
       // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
-      extensions: ['vitest.config.ts', 'vitest.config.js', 'vitest.config.mjs'],
+      filenamesGlob: ['vitest.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4456,11 +4747,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'webp',
-      extensions: ['webp'],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'webpack',
       extensions: [],
       filenamesGlob: [
@@ -4495,7 +4781,7 @@ export const extensions: IFileCollection = {
         'webpack.rules',
         'webpack.test.conf',
       ],
-      extensionsGlob: ['js', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4509,6 +4795,12 @@ export const extensions: IFileCollection = {
       icon: 'wercker',
       extensions: ['wercker.yml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wikitext',
+      extensions: ['wikitext'],
+      languages: [languages.wikitext],
       format: FileFormat.svg,
     },
     {
@@ -4592,7 +4884,11 @@ export const extensions: IFileCollection = {
     {
       icon: 'yaml',
       extensions: [],
-      languages: [languages.yaml, languages.textmateyaml],
+      languages: [
+        languages.yaml,
+        languages.textmateyaml,
+        languages.springbootpropertiesyaml,
+      ],
       light: true,
       format: FileFormat.svg,
     },
@@ -4655,6 +4951,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'doppler',
+      extensions: ['doppler.yaml', 'doppler-template.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'zip',
       extensions: [
         'zip',
@@ -4668,6 +4970,7 @@ export const extensions: IFileCollection = {
         'xz',
         'bz2',
         'zipx',
+        'br',
       ],
       format: FileFormat.svg,
     },
@@ -4685,6 +4988,7 @@ export const extensions: IFileCollection = {
         'xz',
         'bz2',
         'zipx',
+        'br',
       ],
       format: FileFormat.svg,
       disabled: true,

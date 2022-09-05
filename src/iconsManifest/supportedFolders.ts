@@ -56,6 +56,7 @@ export const extensions: IFolderCollection = {
       extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
       format: FileFormat.svg,
     },
+    { icon: 'bot', extensions: ['bot', '.bot'], format: FileFormat.svg },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
@@ -79,7 +80,14 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'component',
-      extensions: ['component', 'components', '.components', 'ui', 'widgets'],
+      extensions: [
+        'component',
+        'components',
+        '.components',
+        'gui',
+        'ui',
+        'widgets',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -105,6 +113,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'cmake', extensions: ['.cmake', 'cmake'], format: FileFormat.svg },
+    {
+      icon: 'common',
+      extensions: ['common'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'config',
       extensions: [
@@ -132,7 +145,12 @@ export const extensions: IFolderCollection = {
     { icon: 'coverage', extensions: ['coverage'], format: FileFormat.svg },
     { icon: 'css', extensions: ['css', '_css'], format: FileFormat.svg },
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
-    { icon: 'cypress', extensions: ['cypress'], format: FileFormat.svg },
+    {
+      icon: 'cypress',
+      extensions: ['cypress'],
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'dapr',
       extensions: ['.dapr', 'dapr'],
@@ -282,6 +300,7 @@ export const extensions: IFolderCollection = {
         'images',
         'image',
         'img',
+        'imgs',
         'icons',
         'icon',
         'ico',
@@ -465,6 +484,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'prisma', extensions: ['prisma'], format: FileFormat.svg },
     {
       icon: 'private',
       extensions: ['private', '.private'],
@@ -484,7 +504,7 @@ export const extensions: IFolderCollection = {
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
     {
       icon: 'route',
-      extensions: ['route', 'routes', '_route', '_routes', 'routers'],
+      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
       format: FileFormat.svg,
     },
     {
@@ -522,6 +542,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'shared',
+      extensions: ['share', 'shared', '.share', '.shared'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'src',
       extensions: ['src', 'source', 'sources'],
       format: FileFormat.svg,
@@ -537,6 +562,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
+    { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
     {
       icon: 'test',
       extensions: [
@@ -583,12 +609,12 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'typings',
-      extensions: ['typings', '@types'],
+      extensions: ['typings', 'types', '@types'],
       format: FileFormat.svg,
     },
     {
       icon: 'typings2',
-      extensions: ['typings', '@types'],
+      extensions: ['typings', 'types', '@types'],
       format: FileFormat.svg,
       disabled: true,
     },
