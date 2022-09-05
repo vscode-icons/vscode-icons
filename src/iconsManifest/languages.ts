@@ -121,6 +121,7 @@ export const languages: ILanguageCollection = {
   harbour: { ids: 'harbour', defaultExtension: 'prg' },
   haskell: { ids: 'haskell', defaultExtension: 'hs' },
   haxe: { ids: ['haxe', 'hxml', 'Haxe AST dump'], defaultExtension: 'haxe' },
+  hcl: { ids: ['hcl'], defaultExtension: 'hcl' },
   helm: { ids: 'helm', defaultExtension: 'helm.tpl' },
   hjson: { ids: 'hjson', defaultExtension: 'hjson' },
   hlsl: { ids: 'hlsl', defaultExtension: 'hlsl' },
