@@ -1571,7 +1571,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'eslint',
-      extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
+      extensions: [
+        '.eslintrc',
+        '.eslintignore',
+        '.eslintcache',
+        'eslint.config.js',
+      ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
@@ -1579,7 +1584,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'eslint2',
-      extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
+      extensions: [
+        '.eslintrc',
+        '.eslintignore',
+        '.eslintcache',
+        'eslint.config.js',
+      ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
