@@ -2675,6 +2675,14 @@ export const extensions: IFileCollection = {
     },
     { icon: 'markojs', extensions: ['marko.js'], format: FileFormat.svg },
     {
+      icon: 'master-co',
+      extensions: [],
+      filenamesGlob: ['master', 'master.css'],
+      extensionsGlob: ['js', 'ts', 'mjs', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'matlab',
       extensions: [
         'fig',
