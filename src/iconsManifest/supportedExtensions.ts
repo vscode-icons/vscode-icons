@@ -4791,6 +4791,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wgsl',
+      extensions: [],
+      languages: [languages.wgsl],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wikitext',
       extensions: ['wikitext'],
       languages: [languages.wikitext],
