@@ -3013,7 +3013,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nix',
-      extensions: [],
+      extensions: ['flake.lock'],
+      filename: true,
       languages: [languages.nix],
       format: FileFormat.svg,
     },
