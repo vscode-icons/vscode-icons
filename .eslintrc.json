@@ -85,6 +85,13 @@
     ],
     "@typescript-eslint/semi": "error",
     "@typescript-eslint/unified-signatures": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "import/no-unresolved": [
       "error",
       {
