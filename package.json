@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "11.15.0",
+  "version": "11.16.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -46,6 +46,9 @@
     "portable mode ready"
   ],
   "homepage": "https://github.com/vscode-icons/vscode-icons",
+  "sponsor": {
+    "url": "https://github.com/sponsors/vscode-icons"
+  },
   "main": "out/src/",
   "icon": "images/logo.png",
   "scripts": {
