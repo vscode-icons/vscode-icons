@@ -4392,7 +4392,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tree',
-      extensions: ['.tree'],
+      extensions: ['tree'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'truffle',
+      extensions: [],
+      filenamesGlob: ['truffle-config'],
+      extensionsGlob: ['js', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
