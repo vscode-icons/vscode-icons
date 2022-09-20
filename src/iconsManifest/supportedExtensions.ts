@@ -1601,6 +1601,7 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.esphome],
       format: FileFormat.svg,
+      light: true,
     },
     {
       icon: 'excel',
