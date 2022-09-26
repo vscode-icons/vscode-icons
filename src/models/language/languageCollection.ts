@@ -98,6 +98,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
+  hcl: ILanguage;
   helm: ILanguage;
   hjson: ILanguage;
   homeassistant: ILanguage;

@@ -2031,6 +2031,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hashicorp',
+      extensions: ['hcl2', 'sentinel'],
+      languages: [languages.hcl],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'hardhat',
       extensions: [],
       filenamesGlob: ['hardhat.config'],
