@@ -28,26 +28,29 @@ export class ManifestBuilder {
     defs._file.iconPath = await this.buildDefaultIconPath(
       files.default.file,
       defs._file,
-      false,
     );
     defs._folder.iconPath = await this.buildDefaultIconPath(
       folders.default.folder,
       defs._folder,
+      true,
       false,
     );
     defs._folder_open.iconPath = await this.buildDefaultIconPath(
       folders.default.folder,
       defs._folder_open,
       true,
+      true,
     );
     defs._root_folder.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder,
       defs._root_folder,
+      true,
       false,
     );
     defs._root_folder_open.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder,
       defs._root_folder_open,
+      true,
       true,
     );
 
@@ -62,26 +65,29 @@ export class ManifestBuilder {
     defs._file_light.iconPath = await this.buildDefaultIconPath(
       files.default.file_light,
       defs._file_light,
-      false,
     );
     defs._folder_light.iconPath = await this.buildDefaultIconPath(
       folders.default.folder_light,
       defs._folder_light,
+      true,
       false,
     );
     defs._folder_light_open.iconPath = await this.buildDefaultIconPath(
       folders.default.folder_light,
       defs._folder_light_open,
       true,
+      true,
     );
     defs._root_folder_light.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder_light,
       defs._root_folder_light,
+      true,
       false,
     );
     defs._root_folder_light_open.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder_light,
       defs._root_folder_light_open,
+      true,
       true,
     );
 
@@ -92,12 +98,17 @@ export class ManifestBuilder {
   private static async buildDefaultIconPath(
     defaultExtension: models.IDefaultExtension,
     schemaExtension: models.IIconPath,
-    isOpenFolder: boolean,
+    isFolder = false,
+    isOpenFolder = false,
   ): Promise<string> {
     if (!defaultExtension || defaultExtension.disabled) {
       return schemaExtension.iconPath || '';
     }
-    const defPrefix = constants.iconsManifest.defaultPrefix;
+    const defPrefix = !defaultExtension.useBundledIcon
+      ? constants.iconsManifest.defaultPrefix
+      : isFolder
+      ? constants.iconsManifest.folderTypePrefix
+      : constants.iconsManifest.fileTypePrefix;
     const openSuffix = isOpenFolder ? '_opened' : '';
     const iconSuffix = constants.iconsManifest.iconSuffix;
     const icon = defaultExtension.icon;
