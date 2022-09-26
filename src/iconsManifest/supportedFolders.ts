@@ -521,7 +521,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'nuxt',
-      extensions: ['.nuxt'],
+      extensions: ['nuxt', '.nuxt'],
       format: FileFormat.svg,
     },
     {
