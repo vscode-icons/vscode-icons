@@ -4737,6 +4737,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wally',
+      extensions: ['wally.toml', 'wally.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'watchmanconfig',
       extensions: ['.watchmanconfig'],
       filename: true,
