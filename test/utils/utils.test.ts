@@ -204,7 +204,7 @@ describe('Utils: tests', function () {
         expect(json.test).to.be.equal('test');
       });
 
-      it(`returns an emtpy object when parsing fails`, function () {
+      it(`returns an empty object when parsing fails`, function () {
         expect(Utils.parseJSONSafe('test')).to.be.empty;
       });
     });
