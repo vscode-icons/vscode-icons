@@ -87,6 +87,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'al_dal',
+      extensions: ['dal'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'allcontributors',
       extensions: ['.all-contributorsrc'],
       filename: true,
@@ -2044,6 +2049,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hashicorp',
+      extensions: ['hcl2', 'sentinel'],
+      languages: [languages.hcl],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'hardhat',
       extensions: [],
       filenamesGlob: ['hardhat.config'],
@@ -2817,6 +2829,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'motif',
+      extensions: ['motif.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mson',
       extensions: [],
       languages: [languages.mson],
@@ -3026,7 +3044,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nix',
-      extensions: [],
+      extensions: ['flake.lock'],
+      filename: true,
       languages: [languages.nix],
       format: FileFormat.svg,
     },
@@ -4745,6 +4764,12 @@ export const extensions: IFileCollection = {
       extensions: [],
       filenamesGlob: ['wallaby', 'wallaby.conf', '.wallaby', '.wallaby.conf'],
       extensionsGlob: ['json', 'js', 'ts', 'coffee'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wally',
+      extensions: ['wally.toml', 'wally.lock'],
       filename: true,
       format: FileFormat.svg,
     },
