@@ -688,13 +688,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { 
-      icon: 'webpack', 
-      extensions: [
-        'webpack',
-        '.webpack'
-      ], 
-      format: FileFormat.svg },
+    {
+      icon: 'webpack',
+      extensions: ['webpack'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'windows',
       extensions: ['windows', 'win32'],
