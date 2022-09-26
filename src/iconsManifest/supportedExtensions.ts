@@ -2811,6 +2811,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'motif',
+      extensions: ['motif.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mson',
       extensions: [],
       languages: [languages.mson],
