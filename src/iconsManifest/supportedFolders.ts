@@ -690,7 +690,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'webpack',
-      extensions: ['webpack'],
+      extensions: ['webpack', '.webpack'],
       format: FileFormat.svg,
     },
     {
