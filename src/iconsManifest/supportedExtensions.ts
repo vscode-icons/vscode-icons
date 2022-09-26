@@ -1571,7 +1571,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'eslint',
-      extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
+      extensions: [
+        '.eslintrc',
+        '.eslintignore',
+        '.eslintcache',
+        'eslint.config.js',
+      ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
@@ -1579,7 +1584,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'eslint2',
-      extensions: ['.eslintrc', '.eslintignore', '.eslintcache'],
+      extensions: [
+        '.eslintrc',
+        '.eslintignore',
+        '.eslintcache',
+        'eslint.config.js',
+      ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
@@ -2018,6 +2028,13 @@ export const extensions: IFileCollection = {
       icon: 'harbour',
       extensions: [],
       languages: [languages.harbour],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'hashicorp',
+      extensions: ['hcl2', 'sentinel'],
+      languages: [languages.hcl],
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -2537,7 +2554,7 @@ export const extensions: IFileCollection = {
       icon: 'lighthouse',
       extensions: [],
       filenamesGlob: ['.lighthouserc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      extensionsGlob: ['cjs', 'js', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2665,6 +2682,14 @@ export const extensions: IFileCollection = {
     },
     { icon: 'markojs', extensions: ['marko.js'], format: FileFormat.svg },
     {
+      icon: 'master-co',
+      extensions: [],
+      filenamesGlob: ['master', 'master.css'],
+      extensionsGlob: ['js', 'ts', 'mjs', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'matlab',
       extensions: [
         'fig',
@@ -2782,6 +2807,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'monotone',
       extensions: ['.mtn-ignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'motif',
+      extensions: ['motif.json'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2995,7 +3026,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nix',
-      extensions: [],
+      extensions: ['flake.lock'],
+      filename: true,
       languages: [languages.nix],
       format: FileFormat.svg,
     },
@@ -4718,6 +4750,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wally',
+      extensions: ['wally.toml', 'wally.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'watchmanconfig',
       extensions: ['.watchmanconfig'],
       filename: true,
@@ -4778,6 +4816,12 @@ export const extensions: IFileCollection = {
       icon: 'wercker',
       extensions: ['wercker.yml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wgsl',
+      extensions: [],
+      languages: [languages.wgsl],
       format: FileFormat.svg,
     },
     {
