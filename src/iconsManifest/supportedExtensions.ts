@@ -87,6 +87,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'al_dal',
+      extensions: ['dal'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'allcontributors',
       extensions: ['.all-contributorsrc'],
       filename: true,
