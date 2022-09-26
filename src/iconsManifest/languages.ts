@@ -353,6 +353,7 @@ export const languages: ILanguageCollection = {
   vue: { ids: 'vue', defaultExtension: 'vue' },
   wasm: { ids: ['wasm', 'wat'], defaultExtension: 'wasm' },
   wenyan: { ids: 'wenyan', defaultExtension: 'wy' },
+  wgsl: { ids: 'wgsl', defaultExtension: 'wgsl' },
   wikitext: { ids: 'wikitext', defaultExtension: 'wt' },
   wolfram: { ids: 'wolfram', defaultExtension: 'wl' },
   wurst: { ids: ['wurstlang', 'wurst'], defaultExtension: 'wurst' },

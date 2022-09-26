@@ -2554,7 +2554,7 @@ export const extensions: IFileCollection = {
       icon: 'lighthouse',
       extensions: [],
       filenamesGlob: ['.lighthouserc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml'],
+      extensionsGlob: ['cjs', 'js', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2681,6 +2681,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'markojs', extensions: ['marko.js'], format: FileFormat.svg },
+    {
+      icon: 'master-co',
+      extensions: [],
+      filenamesGlob: ['master', 'master.css'],
+      extensionsGlob: ['js', 'ts', 'mjs', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'matlab',
       extensions: [
@@ -3012,7 +3020,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nix',
-      extensions: [],
+      extensions: ['flake.lock'],
+      filename: true,
       languages: [languages.nix],
       format: FileFormat.svg,
     },
@@ -4735,6 +4744,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wally',
+      extensions: ['wally.toml', 'wally.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'watchmanconfig',
       extensions: ['.watchmanconfig'],
       filename: true,
@@ -4795,6 +4810,12 @@ export const extensions: IFileCollection = {
       icon: 'wercker',
       extensions: ['wercker.yml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wgsl',
+      extensions: [],
+      languages: [languages.wgsl],
       format: FileFormat.svg,
     },
     {

@@ -252,6 +252,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   vue: ILanguage;
   wasm: ILanguage;
   wenyan: ILanguage;
+  wgsl: ILanguage;
   wikitext: ILanguage;
   wolfram: ILanguage;
   wurst: ILanguage;
