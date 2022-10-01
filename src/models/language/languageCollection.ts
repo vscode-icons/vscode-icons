@@ -98,6 +98,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   harbour: ILanguage;
   haskell: ILanguage;
   haxe: ILanguage;
+  hcl: ILanguage;
   helm: ILanguage;
   hjson: ILanguage;
   homeassistant: ILanguage;
@@ -128,6 +129,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   latex: ILanguage;
   latino: ILanguage;
   lex: ILanguage;
+  lilypond: ILanguage;
   lisp: ILanguage;
   literatehaskell: ILanguage;
   log: ILanguage;
@@ -204,6 +206,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   snort: ILanguage;
   solidity: ILanguage;
   sparql: ILanguage;
+  springbootproperties: ILanguage;
+  springbootpropertiesyaml: ILanguage;
   sqf: ILanguage;
   squirrel: ILanguage;
   stan: ILanguage;
@@ -220,6 +224,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   systemd: ILanguage;
   systemverilog: ILanguage;
   t4: ILanguage;
+  tailwindcss: ILanguage;
   teal: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;
@@ -235,6 +240,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   tuc: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
+  unison: ILanguage;
   vba: ILanguage;
   vbscript: ILanguage;
   velocity: ILanguage;
@@ -246,6 +252,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   vue: ILanguage;
   wasm: ILanguage;
   wenyan: ILanguage;
+  wgsl: ILanguage;
+  wikitext: ILanguage;
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;
