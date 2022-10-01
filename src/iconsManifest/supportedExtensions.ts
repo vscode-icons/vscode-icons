@@ -1774,6 +1774,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gdscript',
+      extensions: [],
+      languages: [languages.gdscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'genstat',
       extensions: [],
       languages: [languages.genstat],
@@ -1843,14 +1849,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'godot',
-      extensions: [],
-      languages: [languages.godot],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'gdscript',
-      extensions: [],
-      languages: [languages.gdscript],
+      extensions: ['godot'],
       format: FileFormat.svg,
     },
     {
@@ -4262,8 +4261,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tres',
-      extensions: [],
-      languages: [languages.tres],
+      extensions: ['tres'],
       format: FileFormat.svg,
     },
     {
@@ -4274,8 +4272,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tscn',
-      extensions: [],
-      languages: [languages.tscn],
+      extensions: ['tscn'],
       format: FileFormat.svg,
     },
     {

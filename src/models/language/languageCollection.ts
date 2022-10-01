@@ -86,12 +86,11 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   gamemaker2: ILanguage;
   gamemaker81: ILanguage;
   gcode: ILanguage;
+  gdscript: ILanguage;
   genstat: ILanguage;
   glsl: ILanguage;
   glyphs: ILanguage;
   gnuplot: ILanguage;
-  godot: ILanguage;
-  gdscript: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
@@ -232,8 +231,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   tiltfile: ILanguage;
   toit: ILanguage;
   toml: ILanguage;
-  tres: ILanguage;
-  tscn: ILanguage;
   ttcn: ILanguage;
   tuc: ILanguage;
   twig: ILanguage;
