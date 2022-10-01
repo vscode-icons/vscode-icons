@@ -521,7 +521,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'nuxt',
-      extensions: ['.nuxt'],
+      extensions: ['nuxt', '.nuxt'],
       format: FileFormat.svg,
     },
     {
@@ -688,7 +688,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
-    { icon: 'webpack', extensions: ['webpack'], format: FileFormat.svg },
+    {
+      icon: 'webpack',
+      extensions: ['webpack', '.webpack'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'windows',
       extensions: ['windows', 'win32'],
