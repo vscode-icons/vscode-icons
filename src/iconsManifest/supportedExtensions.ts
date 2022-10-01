@@ -1900,7 +1900,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'gnu',
-      extensions: ['ld'],
+      extensions: ['ld', 'makefile'],
       languages: [languages.makefile],
       format: FileFormat.svg,
     },
