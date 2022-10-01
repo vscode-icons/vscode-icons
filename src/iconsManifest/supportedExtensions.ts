@@ -1849,6 +1849,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gdscript',
+      extensions: [],
+      languages: [languages.gdscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gcloud',
       extensions: ['.gcloudignore'],
       filename: true,
@@ -1936,8 +1942,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'godot',
-      extensions: [],
-      languages: [languages.godot],
+      extensions: ['godot'],
       format: FileFormat.svg,
     },
     {
@@ -4412,6 +4417,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tres',
+      extensions: ['tres'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'truffle',
       extensions: [],
       filenamesGlob: ['truffle-config'],
@@ -4423,6 +4433,11 @@ export const extensions: IFileCollection = {
       icon: 'trunk',
       extensions: ['trunk.yaml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tscn',
+      extensions: ['tscn'],
       format: FileFormat.svg,
     },
     {
