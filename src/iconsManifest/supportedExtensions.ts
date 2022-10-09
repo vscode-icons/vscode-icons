@@ -1849,6 +1849,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gdscript',
+      extensions: [],
+      languages: [languages.gdscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gcloud',
       extensions: ['.gcloudignore'],
       filename: true,
@@ -1899,6 +1905,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gnu',
+      extensions: ['ld', 'makefile'],
+      languages: [languages.makefile],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gnuplot',
       extensions: [],
       languages: [languages.gnuplot],
@@ -1930,8 +1942,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'godot',
-      extensions: [],
-      languages: [languages.godot],
+      extensions: ['godot'],
       format: FileFormat.svg,
     },
     {
@@ -2629,12 +2640,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
-    {
-      icon: 'makefile',
-      extensions: ['makefile'],
-      languages: [languages.makefile],
-      format: FileFormat.svg,
-    },
     {
       icon: 'manifest',
       extensions: ['manifest'],
@@ -3412,6 +3417,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
+    {
+      icon: 'poetry',
+      extensions: [],
+      filenamesGlob: ['poetry'],
+      extensionsGlob: ['lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'polymer',
       extensions: [],
@@ -4410,6 +4423,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tres',
+      extensions: ['tres'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'truffle',
       extensions: [],
       filenamesGlob: ['truffle-config'],
@@ -4421,6 +4439,11 @@ export const extensions: IFileCollection = {
       icon: 'trunk',
       extensions: ['trunk.yaml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tscn',
+      extensions: ['tscn'],
       format: FileFormat.svg,
     },
     {

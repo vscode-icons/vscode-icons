@@ -114,7 +114,7 @@ export const languages: ILanguageCollection = {
   gnuplot: { ids: 'gnuplot', defaultExtension: 'gp' },
   go: { ids: 'go', defaultExtension: 'go' },
   goctl: { ids: 'goctl', defaultExtension: 'api' },
-  godot: { ids: 'gdscript', defaultExtension: 'gd' },
+  gdscript: { ids: 'gdscript', defaultExtension: 'gd' },
   graphql: { ids: 'graphql', defaultExtension: 'gql' },
   graphviz: { ids: 'dot', defaultExtension: 'gv' },
   groovy: { ids: 'groovy', defaultExtension: 'groovy' },
