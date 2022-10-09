@@ -594,7 +594,7 @@ export const extensions: IFolderCollection = {
     { icon: 'travis', extensions: ['.travis'], format: FileFormat.svg },
     {
       icon: 'tools',
-      extensions: ['tool', 'tools', '.tools', 'util', 'utils'],
+      extensions: ['tool', 'tools', '.tools', 'util', 'utils', 'utilities'],
       format: FileFormat.svg,
     },
     {

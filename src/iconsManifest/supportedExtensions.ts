@@ -1862,6 +1862,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gdscript',
+      extensions: [],
+      languages: [languages.gdscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gcloud',
       extensions: ['.gcloudignore'],
       filename: true,
@@ -1949,8 +1955,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'godot',
-      extensions: [],
-      languages: [languages.godot],
+      extensions: ['godot'],
       format: FileFormat.svg,
     },
     {
@@ -3426,6 +3431,14 @@ export const extensions: IFileCollection = {
     },
     { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
     {
+      icon: 'poetry',
+      extensions: [],
+      filenamesGlob: ['poetry'],
+      extensionsGlob: ['lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'polymer',
       extensions: [],
       languages: [languages.polymer],
@@ -3681,6 +3694,12 @@ export const extensions: IFileCollection = {
       icon: 'python',
       extensions: [],
       languages: [languages.python],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pythowo',
+      extensions: ['pyowo'],
+      languages: [languages.pythowo],
       format: FileFormat.svg,
     },
     {
@@ -4417,6 +4436,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tres',
+      extensions: ['tres'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'truffle',
       extensions: [],
       filenamesGlob: ['truffle-config'],
@@ -4428,6 +4452,11 @@ export const extensions: IFileCollection = {
       icon: 'trunk',
       extensions: ['trunk.yaml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tscn',
+      extensions: ['tscn'],
       format: FileFormat.svg,
     },
     {
