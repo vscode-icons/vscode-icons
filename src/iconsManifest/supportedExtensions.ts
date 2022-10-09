@@ -3685,7 +3685,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pythowo',
-      extensions: ['.pyowo'],
+      extensions: ['pyowo'],
       languages: [languages.pythowo],
       format: FileFormat.svg,
     },
