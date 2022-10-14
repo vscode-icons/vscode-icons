@@ -1290,6 +1290,13 @@ export const extensions: IFileCollection = {
       languages: [],
       format: FileFormat.svg,
     },
+    {
+      icon: 'datadog',
+      extensions: ['service.datadog.yaml', 'datadog-ci.json'],
+      filename: true,
+      languages: [],
+      format: FileFormat.svg,
+    },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
       icon: 'deno',
@@ -4369,7 +4376,7 @@ export const extensions: IFileCollection = {
       icon: 'testts',
       extensions: [],
       filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
-      extensionsGlob: ['ts', 'tsx'],
+      extensionsGlob: ['ts', 'tsx', 'mts'],
       format: FileFormat.svg,
     },
     {
