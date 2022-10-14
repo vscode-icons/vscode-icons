@@ -2655,6 +2655,13 @@ export const extensions: IFileCollection = {
     },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
     {
+      icon: 'mailing',
+      extensions: ['mailing.config.json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'manifest',
       extensions: ['manifest'],
       filename: true,
@@ -4369,7 +4376,7 @@ export const extensions: IFileCollection = {
       icon: 'testts',
       extensions: [],
       filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
-      extensionsGlob: ['ts', 'tsx'],
+      extensionsGlob: ['ts', 'tsx', 'mts'],
       format: FileFormat.svg,
     },
     {
