@@ -50,6 +50,7 @@
     "url": "https://github.com/sponsors/vscode-icons"
   },
   "main": "out/src/",
+  "browser": "dist/src/vscode-icons.web.bundle.js",
   "icon": "images/logo.png",
   "scripts": {
     "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
@@ -79,7 +80,8 @@
     "predist": "npm run build",
     "dist": "webpack --mode production",
     "postdist": "nsri create -s .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "serve": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
@@ -94,6 +96,7 @@
     "@types/webpack": "^4.41.22",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "@vscode/test-web": "^0.0.31",
     "chai": "^4.2.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
@@ -145,7 +148,7 @@
       {
         "id": "vscode-icons",
         "label": "VSCode Icons",
-        "path": "out/src/vsicons-icon-theme.json",
+        "path": "dist/src/vsicons-icon-theme.json",
         "_watch": true
       }
     ],
