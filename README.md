@@ -1,6 +1,6 @@
 <div align="center">
 <h1>
-<img src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/logo.svg" alt="logo" width="300">
+<img src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/logo-svg.png" alt="logo" width="250">
 
 <b>vscode-icons</b>
 </h1>
