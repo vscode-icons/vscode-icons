@@ -141,7 +141,7 @@
     "workspace"
   ],
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "contributes": {
     "iconThemes": [
