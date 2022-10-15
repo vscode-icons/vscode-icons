@@ -134,7 +134,8 @@
     "Themes"
   ],
   "galleryBanner": {
-    "color": "#ffdd00"
+    "color": "#031016",
+    "theme": "dark"
   },
   "extensionKind": [
     "ui",
