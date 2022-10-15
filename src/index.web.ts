@@ -1,5 +1,4 @@
 /* eslint-disable prefer-arrow-callback */
-import { Debugger } from './common/debugger';
 import { constants } from './constants';
 import { IVSCodeExtensionContext } from './models';
 
@@ -8,11 +7,9 @@ import { IVSCodeExtensionContext } from './models';
 // No commands are available.
 
 export function activate(_context: IVSCodeExtensionContext): void {
-  if (!Debugger.isAttached) {
-    console.info(
-      `[${constants.extension.name}] v${constants.extension.version} activated!`,
-    );
-  }
+  console.info(
+    `[${constants.extension.name}] v${constants.extension.version} activated!`,
+  );
 }
 
 // this method is called when your vscode is closed
