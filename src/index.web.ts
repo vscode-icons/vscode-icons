@@ -8,7 +8,7 @@ import { IVSCodeExtensionContext } from './models';
 
 export function activate(_context: IVSCodeExtensionContext): void {
   console.info(
-    `[${constants.extension.name}] v${constants.extension.version} activated!`,
+    `[${constants.extension.name}] v${constants.extension.version} (WEB) activated!`,
   );
 }
 
