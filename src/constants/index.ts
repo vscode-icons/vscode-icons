@@ -9,6 +9,7 @@ export const constants = {
     version: (manifest as IPackageManifest).version,
     customIconFolderName: 'vsicons-custom-icons',
     distEntryFilename: 'vscode-icons.bundle.js',
+    distEntryFilenameWeb: 'vscode-icons.web.bundle.js',
     uninstallEntryFilename: 'uninstall.bundle.js',
     outDirName: 'out',
     distDirName: 'dist',
