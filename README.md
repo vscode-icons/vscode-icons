@@ -1,11 +1,12 @@
 <div align="center">
-
+<h1>
 <img src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/logo.svg" alt="logo" width="300">
 
-<h2 style="font-size: x-large" align="center"><b>vscode-icons</b></h2>
+<b>vscode-icons</b>
+</h1>
 
-<h2>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h2>
-<p style="font-size:10px:">minimum supported version: <b>1.40.2</b></p>
+<h3>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h3>
+<p style="font-size:10px;">minimum supported version: <b>1.40.2</b></p>
 <br/>
 
 [![Version](https://vsmarketplacebadge.apphb.com/version-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
