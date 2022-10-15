@@ -1,13 +1,12 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/logo.png" alt="logo" width="200">
+<img src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/logo.svg" alt="logo" width="300">
 
 <h2 style="font-size: x-large" align="center"><b>vscode-icons</b></h2>
 
 <h2>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h2>
 <p style="font-size:10px:">minimum supported version: <b>1.40.2</b></p>
 <br/>
-
 
 [![Version](https://vsmarketplacebadge.apphb.com/version-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
@@ -21,7 +20,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/maintainability)](https://codeclimate.com/github/vscode-icons/vscode-icons/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/test_coverage)](https://codeclimate.com/github/vscode-icons/vscode-icons/test_coverage)
 
-
 <h3>Sponsored by</h3>
 <br/>
 <p style="font-size: 10px"><a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_vscodeicons.png"></a></br>
@@ -32,7 +30,6 @@ Manage pull requests and conduct code reviews in your IDE with full source-tree 
 ---
 
 <br/>
-
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
@@ -114,7 +111,6 @@ For those using [Docker](https://www.docker.com/) checkout the [docker section](
 On the other hand, if you want to show the world your artistic side, checkout the [contributing section](https://github.com/vscode-icons/vscode-icons/wiki/Contributing).
 
 In any case, please follow our [contribution guidelines](https://github.com/vscode-icons/vscode-icons/blob/master/.github/CONTRIBUTING.md).
-
 
 ## Security
 
