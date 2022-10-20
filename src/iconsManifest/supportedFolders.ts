@@ -85,6 +85,7 @@ export const extensions: IFolderCollection = {
         'components',
         '.components',
         'gui',
+        'src-ui',
         'ui',
         'widgets',
       ],
