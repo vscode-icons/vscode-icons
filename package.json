@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "12.0.0",
+  "version": "12.0.1",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -134,7 +134,7 @@
     "Themes"
   ],
   "galleryBanner": {
-    "color": "#00558eff",
+    "color": "#00558e",
     "theme": "dark"
   },
   "extensionKind": [
