@@ -4055,6 +4055,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'shellcheck',
+      extensions: ['.shellcheckrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'siyuan',
       extensions: ['sy'],
       format: FileFormat.svg,
