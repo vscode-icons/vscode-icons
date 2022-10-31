@@ -3847,9 +3847,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'renovate',
-      extensions: ['.renovaterc'],
-      filenamesGlob: ['renovate', '.renovaterc'],
-      extensionsGlob: ['json'],
+      extensions: ['.renovaterc', '.renovaterc.json'],
+      filenamesGlob: ['renovate'],
+      extensionsGlob: ['json', 'json5'],
       filename: true,
       format: FileFormat.svg,
     },
