@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+ <defs>
+  <symbol id="svg_1" viewBox="0 0 450.75 996.8" xmlns="http://www.w3.org/2000/svg">
+   <path d="m320.9,290.4l-34.25,34.25l0,460.4l0,0l191.1,191.15l16.55,-16.5l0,-0.05l-173.4,-208.85l0,-460.4m382.2,0l0,460.5l-0.25,0.3l34.5,-34.5l0,-477.7l-182.55,-182.55l-25,25l173.3,208.9l0,0.05z" fill="#95e8e8" transform="translate(-286.6 -13.65)"/>
+   <polygon fill="#254fb9" points="34.3 713.1 34.3 737.15 225.4 967.35 416.25 737.5 416.5 574.9 34.3 713.1"/>
+   <path d="m529.75,81.5l25,-25l-42.75,-42.85l-225.35,225.35l0,85.65l62.15,-62.15l-0.05,-0.05l-27.85,27.9l191.1,-230.2l17.75,21.35m207.6,703.6l0,-68.45l-34.5,34.5l-190.85,229.85l-17.7,-21.3l-16.55,16.5l34.25,34.25l225.35,-225.35m-34.5,-34l0.25,-0.3l-48.4,48.4l48.15,-48.1z" fill="#5280dd" transform="translate(-286.6 -13.65)"/>
+   <path d="m703.1,588.55l0,-270.9l-382.2,202.9l0,206.2l382.2,-138.2z" fill="#729ef4" transform="translate(-286.6 -13.65)"/>
+   <path d="m320.9,290.35l191.1,-230.2l191.1,230.2l0,27.3l-382.2,202.9l0,-230.2z" fill="#254fb9" transform="translate(-286.6 -13.65)"/>
+  </symbol>
+ </defs>
+ <g class="layer">
+  <title>file-type-sapphire-framework</title>
+  <use id="svg_2" transform="matrix(0.975643 0 0 0.929892 -16.0956 -17.4471)" x="16.9" xlink:href="#svg_1" y="19.97"/>
+ </g>
+</svg>

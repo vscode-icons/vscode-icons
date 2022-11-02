@@ -1,5 +1,5 @@
-import { FileFormat, IFileCollection } from '../models';
 import { languages } from './languages';
+import { FileFormat, IFileCollection } from '../models';
 
 export const extensions: IFileCollection = {
   default: {
@@ -5121,6 +5121,12 @@ export const extensions: IFileCollection = {
       icon: 'rome',
       light: true,
       extensions: ['rome.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'file-type-sapphire-framework',
+      extensions: ['.sapphirerc.json', '.sapphirerc'],
       filename: true,
       format: FileFormat.svg,
     },
