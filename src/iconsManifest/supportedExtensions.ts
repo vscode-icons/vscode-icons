@@ -5125,7 +5125,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'file_type_sapphire_framework_cli',
+      icon: 'sapphire_framework_cli',
       extensions: ['.sapphirerc.json', '.sapphirerc'],
       filename: true,
       format: FileFormat.svg,
