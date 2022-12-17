@@ -1,0 +1,18 @@
+<svg viewBox="0 0 388 193.53" xmlns="http://www.w3.org/2000/svg">
+  <style>
+		path, circle {
+			fill: #6E45E2;
+		}
+		@media ( prefers-color-scheme: dark ) {
+			path, circle {
+				fill: #eeeeee;
+			}
+		}
+	</style>
+  <g>
+    <path d="M290.3,0V193.53c53.44,0,96.77-43.32,96.77-96.77S343.74,0,290.3,0Z"></path>
+    <circle cx="193.53" cy="96.77" r="96.77"></circle>
+    <path d="M0,96.77c0,53.44,43.32,96.77,96.77,96.77V0C43.32,0,0,43.32,0,96.77Z"></path>
+  </g>
+</svg>
+
