@@ -1814,6 +1814,7 @@ export const extensions: IFileCollection = {
         '.gitignore',
         '.gitmodules',
         '.gitkeep',
+        '.git-blame-ignore-revs',
         '.mailmap',
         '.issuetracker',
       ],
