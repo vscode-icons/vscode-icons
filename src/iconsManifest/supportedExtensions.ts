@@ -2023,7 +2023,7 @@ export const extensions: IFileCollection = {
       icon: 'grunt',
       extensions: [],
       filenamesGlob: ['gruntfile', 'gruntfile.babel'],
-      extensionsGlob: ['js', 'coffee', 'ts'],
+      extensionsGlob: ['js', 'cjs', 'coffee', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
