@@ -674,7 +674,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bazel',
-      extensions: ['BUILD.bazel', '.bazelrc', 'bazel.rc', 'bazel.bazelrc'],
+      extensions: ['BUILD.bazel', '.bazelrc', 'bazel.rc', 'bazel.bazelrc', '.bazelversion', '.bazelignore'],
       filename: true,
       languages: [languages.bazel, languages.starlark],
       format: FileFormat.svg,
