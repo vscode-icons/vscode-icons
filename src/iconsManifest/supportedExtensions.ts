@@ -4056,9 +4056,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'shellcheck',
+      extensions: ['.shellcheckrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'shuttle',
       extensions: ['Shuttle.toml'],
-      languages: [],
       filename: true,
       format: FileFormat.svg,
     },
