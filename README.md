@@ -1,31 +1,40 @@
-# vscode-icons
+<div align="center">
+<h1>
+<img src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/logo@3x.png" alt="logo" width="250">
 
-[![Version](https://vsmarketplacebadge.apphb.com/version/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Ratings](https://vsmarketplacebadge.apphb.com/rating/vscode-icons-team.vscode-icons.svg)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+<b>vscode-icons</b>
+</h1>
 
-[![Build Status](https://cdn.travis-ci.com/vscode-icons/vscode-icons.svg?branch=master)](https://app.travis-ci.com/github/vscode-icons/vscode-icons)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/vscode-icons/vscode-icons?branch=master&svg=true)](https://ci.appveyor.com/project/vscode-icons-team/vscode-icons)
+<h3>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h3>
+<p style="font-size:10px;">minimum supported version: <b>1.40.2</b></p>
+<br/>
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/maintainability)](https://codeclimate.com/github/vscode-icons/vscode-icons/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/test_coverage)](https://codeclimate.com/github/vscode-icons/vscode-icons/test_coverage)
-[![Known Vulnerabilities](https://snyk.io/test/github/vscode-icons/vscode-icons/badge.svg)](https://snyk.io/test/github/vscode-icons/vscode-icons)
-
-[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Average time to resolve an issue")
-[![Percentage of issues still open](https://isitmaintained.com/badge/open/vscode-icons/vscode-icons.svg)](https://isitmaintained.com/project/vscode-icons/vscode-icons "Percentage of issues still open")
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Downloads](https://vsmarketplacebadge.apphb.com/downloads-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
 ---
 
-Bring icons to your [Visual Studio Code](https://code.visualstudio.com/) (**minimum supported version: `1.40.2`**)
+<br>
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/maintainability)](https://codeclimate.com/github/vscode-icons/vscode-icons/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/test_coverage)](https://codeclimate.com/github/vscode-icons/vscode-icons/test_coverage)
+
+<h3>Sponsored by</h3>
+<br/>
+<p style="font-size: 10px"><a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_vscodeicons.png"></a></br>
+Manage pull requests and conduct code reviews in your IDE with full source-tree context. Comment on any line, not just the diffs. Use jump-to-definition, your favorite keybindings, and code intelligence with more of your workflow.<br> <a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner">Learn More</a></p>
+
+</div>
+
+---
+
+<br/>
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
 ---
-
-## Gold Sponsors
-
-<p><a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_vscodeicons.png"></a></br>
-Manage pull requests and conduct code reviews in your IDE with full source-tree context. Comment on any line, not just the diffs. Use jump-to-definition, your favorite keybindings, and code intelligence with more of your workflow.<br> <a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner">Learn More</a></p>
 
 ## Installation
 
@@ -45,10 +54,6 @@ ext install icons
 ext install "vscode-icons"
 ```
 
-## Security
-
-`vscode-icons` utilizes [NSRI](https://www.npmjs.com/package/nsri) for its subresources integrity check and protection against code injection.
-
 ## Usage
 
 Once installed and after reloading `vscode`, you will be presented with a message to `Activate` the icons.
@@ -62,9 +67,33 @@ In case this doesn't happen, navigate to:
 
 `vscode-icons` is being shipped with a lot of features, like:
 
-* [Icons Customization](https://github.com/vscode-icons/vscode-icons/wiki/Customization)
-* [Project Auto-Detection](https://github.com/vscode-icons/vscode-icons/wiki/Pad)
-* [Custom Configuration](https://github.com/vscode-icons/vscode-icons/wiki/Configuration)
+### Icons Customization
+
+Choose the icon you prefer for any particular file extension.
+
+[Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Customization)
+
+### Bring your own icons
+
+You don't see the icon you like...? No worries, we got you covered. This link will show you how you can use your own custom icon!
+
+[Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Configuration)
+
+### Project Auto Detection
+
+Are you using Angular? This feature will detect it and enable the icons for you. It also works with other frameworks.
+
+[Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Pad)
+
+## Documentation
+
+In our [wiki](https://github.com/vscode-icons/vscode-icons/wiki) you can find more information about the extension features and more.
+
+Some examples:
+
+* [Extension's History](https://github.com/vscode-icons/vscode-icons/wiki/History)
+* [Supported file icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFiles).
+* [Supported folder icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFolders).
 
 ## Globalization
 
@@ -84,15 +113,9 @@ On the other hand, if you want to show the world your artistic side, checkout th
 
 In any case, please follow our [contribution guidelines](https://github.com/vscode-icons/vscode-icons/blob/master/.github/CONTRIBUTING.md).
 
-## Documentation
+## Security
 
-In our [wiki](https://github.com/vscode-icons/vscode-icons/wiki) you can find info, like:
-
-* [Extension's History](https://github.com/vscode-icons/vscode-icons/wiki/History)
-* [Supported file icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFiles).
-* [Supported folder icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFolders).
-
-and more.
+`vscode-icons` utilizes [NSRI](https://www.npmjs.com/package/nsri) for its subresources integrity check and protection against code injection.
 
 ## Credits
 

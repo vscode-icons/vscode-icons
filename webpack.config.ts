@@ -46,4 +46,13 @@ export default [
     config.output!.filename = constants.extension.uninstallEntryFilename;
     return config;
   },
+  (
+    _env: string | Record<string, boolean | number | string>,
+    argv: any,
+  ): Configuration => {
+    const config: Configuration = getConfig(argv);
+    config.entry = './src/index.web.js';
+    config.output!.filename = constants.extension.distEntryFilenameWeb;
+    return config;
+  },
 ];
