@@ -2207,7 +2207,17 @@ export const extensions: IFileCollection = {
     { icon: 'idrispkg', extensions: ['ipkg'], format: FileFormat.svg },
     {
       icon: 'image',
-      extensions: ['jpeg', 'jpg', 'gif', 'png', 'bmp', 'tiff', 'ico', 'icns', 'webp'],
+      extensions: [
+        'jpeg',
+        'jpg',
+        'gif',
+        'png',
+        'bmp',
+        'tiff',
+        'ico',
+        'icns',
+        'webp',
+      ],
       format: FileFormat.svg,
     },
     {
