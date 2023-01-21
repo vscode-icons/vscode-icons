@@ -1852,7 +1852,7 @@ export const extensions: IFileCollection = {
       icon: 'gatsby',
       extensions: [],
       filenamesGlob: ['gatsby-config', 'gatsby-node'],
-      extensionsGlob: ['js', 'ts'],
+      extensionsGlob: ['js', 'ts', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
