@@ -1302,7 +1302,7 @@ export const extensions: IFileCollection = {
       icon: 'deno',
       extensions: [],
       filenamesGlob: ['deno'],
-      extensionsGlob: ['json', 'jsonc'],
+      extensionsGlob: ['json', 'jsonc', 'lock'],
       filename: true,
       light: true,
       format: FileFormat.svg,
