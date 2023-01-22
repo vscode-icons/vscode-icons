@@ -680,6 +680,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bazel_ignore',
+      extensions: ['.bazelignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'bazel_version',
+      extensions: ['.bazelversion'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'befunge',
       extensions: [],
       languages: [languages.befunge],
