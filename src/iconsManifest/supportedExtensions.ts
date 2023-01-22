@@ -4479,6 +4479,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tree',
+      extensions: ['tree'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tres',
       extensions: ['tres'],
       format: FileFormat.svg,
