@@ -4012,6 +4012,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'sapphire_framework_cli',
+      extensions: ['.sapphirerc.json', '.sapphirerc.yml', '.sapphirerc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sas',
       extensions: [],
       languages: [languages.sas],
@@ -5123,12 +5129,6 @@ export const extensions: IFileCollection = {
       ],
       format: FileFormat.svg,
       disabled: true,
-    },
-    {
-      icon: 'sapphire_framework_cli',
-      extensions: ['.sapphirerc.json', '.sapphirerc.yml', '.sapphirerc'],
-      filename: true,
-      format: FileFormat.svg,
     },
   ],
 };
