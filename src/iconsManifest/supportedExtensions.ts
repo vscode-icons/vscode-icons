@@ -1535,6 +1535,19 @@ export const extensions: IFileCollection = {
     },
     { icon: 'elasticbeanstalk', extensions: [], format: FileFormat.svg },
     {
+      icon: 'eleventy',
+      extensions: ['eleventy.js'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'eleventy2',
+      extensions: ['eleventy.js'],
+      light: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'elixir',
       extensions: [],
       languages: [languages.elixir],
