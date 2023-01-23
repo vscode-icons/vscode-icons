@@ -2848,6 +2848,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mondoo',
+      extensions: ['mql.yaml', 'mql.yml'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mongo',
       extensions: [],
       languages: [languages.mongo],
