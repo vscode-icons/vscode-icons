@@ -3952,6 +3952,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rome',
+      light: true,
+      extensions: ['rome.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rmd',
       extensions: [],
       languages: [languages.rmd],
@@ -4002,6 +4009,12 @@ export const extensions: IFileCollection = {
       icon: 'san',
       extensions: [],
       languages: [languages.san],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'sapphire_framework_cli',
+      extensions: ['.sapphirerc.json', '.sapphirerc.yml', '.sapphirerc'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -5116,13 +5129,6 @@ export const extensions: IFileCollection = {
       ],
       format: FileFormat.svg,
       disabled: true,
-    },
-    {
-      icon: 'rome',
-      light: true,
-      extensions: ['rome.json'],
-      filename: true,
-      format: FileFormat.svg,
     },
   ],
 };
