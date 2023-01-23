@@ -5117,5 +5117,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    {
+      icon: 'rome',
+      light: true,
+      extensions: ['rome.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
   ],
 };
