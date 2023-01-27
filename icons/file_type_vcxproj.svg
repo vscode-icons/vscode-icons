@@ -9,7 +9,10 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"><defs
      id="defs33"><filter
        id="filter0_dd"
        x="6.03194"
@@ -216,7 +219,7 @@
      id="title9">file_type_vcxproj</title><g
      style="fill:none"
      id="g405"
-     transform="matrix(0.16290411,0,0,0.16290411,0.2797561,0.21539295)"><g
+     transform="matrix(0.16290088,0,0,0.16290411,0.27978281,0.21539295)"><g
        clip-path="url(#clip1)"
        id="g218"><mask
          id="mask0"
@@ -277,4 +280,6 @@
      id="polygon25" /><polygon
      points="26.985 22.895 26.985 21.137 28.743 21.137 28.743 22.895 30.5 22.895 30.5 24.652 28.743 24.652 28.743 26.409 26.985 26.409 26.985 24.652 25.228 24.652 25.228 22.894 26.985 22.895"
      style="fill:#984c93"
-     id="polygon27" /></svg>
+     id="polygon27" /><metadata
+     id="metadata567"><rdf:RDF><cc:Work
+         rdf:about=""><dc:title>file_type_vcxproj</dc:title></cc:Work></rdf:RDF></metadata></svg>
