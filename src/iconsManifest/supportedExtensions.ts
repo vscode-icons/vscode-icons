@@ -4814,7 +4814,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vscode',
-      extensions: ['code-workspace'],
+      extensions: ['code-snippets', 'code-workspace'],
       filenamesGlob: [],
       extensionsGlob: [],
       filename: false,
@@ -4831,7 +4831,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vscode2',
-      extensions: ['code-workspace'],
+      extensions: ['code-snippets', 'code-workspace'],
       filenamesGlob: [],
       extensionsGlob: [],
       filename: false,
@@ -4849,7 +4849,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vscode3',
-      extensions: ['code-workspace'],
+      extensions: ['code-snippets', 'code-workspace'],
       filenamesGlob: [],
       extensionsGlob: [],
       filename: false,
