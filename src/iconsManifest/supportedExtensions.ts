@@ -1302,16 +1302,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'denoify',
-      extensions: [
-        '.denoifyrc',
-        '.denoifyrc.json',
-        '.denoifyrc.yaml',
-        '.denoifyrc.yml',
-        '.denoifyrc.js',
-        '.denoifyrc.cjs',
-        'denoify.config.js',
-        'denoify.config.cjs',
-      ],
+      filenamesGlob: ['denoify.config'],
+	    extensionsGlob: ['json', 'js', 'cjs'],
       filename: true,
       format: FileFormat.svg,
     },
