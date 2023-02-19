@@ -4,6 +4,7 @@ out
 examples
 coverage
 .vscode-test
+.vscode-test-web
 .nyc_output
 .DS_Store
 *.vsix
