@@ -511,6 +511,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.venv', '.virtualenv'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'vercel',
+      extensions: ['.vercel'],
+      format: FileFormat.svg,
+    },
     { icon: 'redis', extensions: ['redis'], format: FileFormat.svg },
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
     {

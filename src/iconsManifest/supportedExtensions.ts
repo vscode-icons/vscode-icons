@@ -5123,7 +5123,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'zeit',
+      icon: 'vercel',
       extensions: ['now.json', '.nowignore', 'vercel.json', '.vercelignore'],
       light: true,
       filename: true,
