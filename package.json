@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "11.20.0",
+  "version": "12.2.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -45,11 +45,12 @@
     "multi-root ready",
     "portable mode ready"
   ],
-  "homepage": "https://github.com/vscode-icons/vscode-icons",
+  "homepage": "https://vscodeicons.team",
   "sponsor": {
     "url": "https://github.com/sponsors/vscode-icons"
   },
   "main": "out/src/",
+  "browser": "dist/src/vscode-icons.web.bundle.js",
   "icon": "images/logo.png",
   "scripts": {
     "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
@@ -79,7 +80,8 @@
     "predist": "npm run build",
     "dist": "webpack --mode production",
     "postdist": "nsri create -s .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "serve": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",
@@ -94,6 +96,7 @@
     "@types/webpack": "^4.41.22",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
+    "@vscode/test-web": "^0.0.31",
     "chai": "^4.2.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
@@ -131,14 +134,15 @@
     "Themes"
   ],
   "galleryBanner": {
-    "color": "#ffdd00"
+    "color": "#00558e",
+    "theme": "dark"
   },
   "extensionKind": [
     "ui",
     "workspace"
   ],
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "contributes": {
     "iconThemes": [
@@ -154,73 +158,85 @@
         "command": "vscode-icons.activateIcons",
         "title": "%command.activateIcons.title%",
         "category": "Icons",
-        "callbackName": "activationCommand"
+        "callbackName": "activationCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.regenerateIcons",
         "title": "%command.regenerateIcons.title%",
         "category": "Icons",
-        "callbackName": "applyCustomizationCommand"
+        "callbackName": "applyCustomizationCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.ngPreset",
         "title": "%command.ngPreset.title%",
         "category": "Icons",
-        "callbackName": "toggleAngularPresetCommand"
+        "callbackName": "toggleAngularPresetCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.nestPreset",
         "title": "%command.nestPreset.title%",
         "category": "Icons",
-        "callbackName": "toggleNestPresetCommand"
+        "callbackName": "toggleNestPresetCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.jsPreset",
         "title": "%command.jsPreset.title%",
         "category": "Icons",
-        "callbackName": "toggleJsPresetCommand"
+        "callbackName": "toggleJsPresetCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.tsPreset",
         "title": "%command.tsPreset.title%",
         "category": "Icons",
-        "callbackName": "toggleTsPresetCommand"
+        "callbackName": "toggleTsPresetCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.jsonPreset",
         "title": "%command.jsonPreset.title%",
         "category": "Icons",
-        "callbackName": "toggleJsonPresetCommand"
+        "callbackName": "toggleJsonPresetCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.hideFoldersPreset",
         "title": "%command.hideFoldersPreset.title%",
         "category": "Icons",
-        "callbackName": "toggleHideFoldersPresetCommand"
+        "callbackName": "toggleHideFoldersPresetCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.foldersAllDefaultIconPreset",
         "title": "%command.foldersAllDefaultIconPreset.title%",
         "category": "Icons",
-        "callbackName": "toggleFoldersAllDefaultIconPresetCommand"
+        "callbackName": "toggleFoldersAllDefaultIconPresetCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.hideExplorerArrowsPreset",
         "title": "%command.hideExplorerArrowsPreset.title%",
         "category": "Icons",
-        "callbackName": "toggleHideExplorerArrowsPresetCommand"
+        "callbackName": "toggleHideExplorerArrowsPresetCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.restoreIcons",
         "title": "%command.restoreIcons.title%",
         "category": "Icons",
-        "callbackName": "restoreDefaultManifestCommand"
+        "callbackName": "restoreDefaultManifestCommand",
+        "enablement": "!isWeb"
       },
       {
         "command": "vscode-icons.resetProjectDetectionDefaults",
         "title": "%command.resetProjectDetectionDefaults.title%",
         "category": "Icons",
-        "callbackName": "resetProjectDetectionDefaultsCommand"
+        "callbackName": "resetProjectDetectionDefaultsCommand",
+        "enablement": "!isWeb"
       }
     ],
     "configuration": {

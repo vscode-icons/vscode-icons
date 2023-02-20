@@ -85,6 +85,7 @@ export const extensions: IFolderCollection = {
         'components',
         '.components',
         'gui',
+        'src-ui',
         'ui',
         'widgets',
       ],
@@ -154,6 +155,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'dapr',
       extensions: ['.dapr', 'dapr'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'datadog',
+      extensions: ['datadog', '.datadog'],
       format: FileFormat.svg,
     },
     {
