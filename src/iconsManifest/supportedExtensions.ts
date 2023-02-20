@@ -1322,7 +1322,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'denoify',
       filenamesGlob: ['denoify.config'],
-	    extensionsGlob: ['json', 'js', 'cjs'],
+      extensionsGlob: ['json', 'js'],
       filename: true,
       format: FileFormat.svg,
     },
