@@ -3387,7 +3387,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'phpcsfixer',
-      extensions: ['.php_cs', '.php_cs.dist'],
+      extensions: ['.php-cs-fixer.php', '.php-cs-fixer.dist.php', '.php_cs', '.php_cs.dist'],
       filename: true,
       format: FileFormat.svg,
     },
