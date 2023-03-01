@@ -460,7 +460,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'notebooks',
-      extensions: ['notebooks'],
+      extensions: ['notebooks', 'notebook'],
       format: FileFormat.svg,
     },
     {
