@@ -16,7 +16,16 @@ export const languages: ILanguageCollection = {
   applescript: { ids: 'applescript', defaultExtension: 'applescript' },
   asciidoc: { ids: 'asciidoc', defaultExtension: 'adoc' },
   asp: { ids: ['asp', 'asp (html)'], defaultExtension: 'asp' },
-  assembly: { ids: ['arm', 'asm'], defaultExtension: 'asm' },
+  assembly: {
+    ids: [
+      'arm',
+      'asm',
+      'asm-intel-x86-generic',
+      'platformio-debug.asm',
+      'asm-collection',
+    ],
+    defaultExtension: 'asm',
+  },
   ats: { ids: ['ats'], defaultExtension: 'ats' },
   autohotkey: { ids: 'ahk', defaultExtension: 'ahk' },
   autoit: { ids: 'autoit', defaultExtension: 'au3' },

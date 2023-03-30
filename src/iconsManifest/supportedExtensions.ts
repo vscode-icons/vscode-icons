@@ -521,7 +521,7 @@ export const extensions: IFileCollection = {
     { icon: 'aspx', extensions: ['aspx', 'ascx'], format: FileFormat.svg },
     {
       icon: 'assembly',
-      extensions: [],
+      extensions: ['asm', 's'],
       languages: [languages.assembly],
       format: FileFormat.svg,
     },
