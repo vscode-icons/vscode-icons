@@ -4916,6 +4916,7 @@ export const extensions: IFileCollection = {
         'webpack.config.production.babel',
         'webpack.dev',
         'webpack.dev.conf',
+        'webpack.local',
         'webpack.prod',
         'webpack.prod.conf',
         'webpack.main.config',
