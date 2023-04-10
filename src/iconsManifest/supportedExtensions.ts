@@ -4384,6 +4384,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tamagui',
+      extensions: [],
+      filenamesGlob: ['tamagui', 'tamagui.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tailwind',
       languages: [languages.tailwindcss],
       extensions: [],
