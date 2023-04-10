@@ -303,6 +303,7 @@ export const languages: ILanguageCollection = {
   slice: { ids: ['slice'], defaultExtension: 'ice' },
   slim: { ids: ['slim'], defaultExtension: 'slim' },
   silverstripe: { ids: 'silverstripe', defaultExtension: 'ss' },
+  sino: { ids: 'sino', defaultExtension: 'sn' },
   skipper: { ids: ['eskip'], defaultExtension: 'eskip' },
   smarty: { ids: ['smarty'], defaultExtension: 'tpl' },
   snort: { ids: ['snort'], defaultExtension: 'snort' },
