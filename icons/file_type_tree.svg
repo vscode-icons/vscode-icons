@@ -1,6 +1,1 @@
-<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="15" y="10" width="9.23077" height="129.231" fill="white"/>
-<rect width="110.769" height="9.23077" transform="matrix(-1 0 0 1 135 130)" fill="white"/>
-<rect width="78.4615" height="9.23077" transform="matrix(-1 0 0 1 102.692 88.4615)" fill="white"/>
-<rect width="36.9231" height="9.23077" transform="matrix(-1 0 0 1 61.1538 42.3077)" fill="white"/>
-</svg>
+<svg version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title>file_type_tree</title><g transform="matrix(.21632 0 0 .21632 14.082 12.619)" fill="#d2d2d2"><rect x="-51.131" y="-48.987" width="9.2308" height="129.23"/><rect transform="scale(-1,1)" x="-68.869" y="71.013" width="110.77" height="9.2308"/><rect transform="scale(-1,1)" x="-36.561" y="29.474" width="78.462" height="9.2308"/><rect transform="scale(-1,1)" x="4.9774" y="-16.68" width="36.923" height="9.2308"/></g></svg>
