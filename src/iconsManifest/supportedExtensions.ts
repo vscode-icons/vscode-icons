@@ -4384,12 +4384,9 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: "tamagui",
+      icon: 'tamagui',
       extensions: [],
-      filenamesGlob: [
-        'tamagui',
-        'tamagui.config',
-      ],
+      filenamesGlob: ['tamagui', 'tamagui.config'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
       filename: true,
       format: FileFormat.svg,
