@@ -459,6 +459,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'notebooks',
+      extensions: ['notebooks', 'notebook'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'notification',
       extensions: ['notification', 'notifications', 'event', 'events'],
       format: FileFormat.svg,
