@@ -1998,6 +1998,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'grain',
+      extensions: ['gr'],
+      languages: [languages.grain],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'graphql',
       extensions: ['.gqlconfig'],
       filename: true,
