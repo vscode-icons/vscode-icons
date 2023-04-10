@@ -523,8 +523,8 @@ export const extensions: IFileCollection = {
       extensions: [],
       format: FileFormat.svg,
       filename: true,
-      filenamesGlob: ["Taskfile", "Taskfile.dist"],
-      extensionsGlob: ["yml", "yaml"],
+      filenamesGlob: ['Taskfile', 'Taskfile.dist'],
+      extensionsGlob: ['yml', 'yaml'],
     },
     {
       icon: 'typescript',
