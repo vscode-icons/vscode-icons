@@ -237,19 +237,19 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ng_routing_dart',
-      extensions: ['routing.dart'],
+      extensions: ['routing.dart', 'routes.dart'],
       format: FileFormat.svg,
       disabled: true,
     },
     {
       icon: 'ng_routing_ts',
-      extensions: ['routing.ts'],
+      extensions: ['routing.ts', 'routes.ts'],
       format: FileFormat.svg,
       disabled: true,
     },
     {
       icon: 'ng_routing_js',
-      extensions: ['routing.js'],
+      extensions: ['routing.js', 'routes.js'],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -378,13 +378,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ng_routing_ts2',
-      extensions: ['routing.ts'],
+      extensions: ['routing.ts', 'routes.ts'],
       format: FileFormat.svg,
       disabled: true,
     },
     {
       icon: 'ng_routing_js2',
-      extensions: ['routing.js'],
+      extensions: ['routing.js', 'routes.js'],
       format: FileFormat.svg,
       disabled: true,
     },
