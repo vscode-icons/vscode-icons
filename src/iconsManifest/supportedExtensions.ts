@@ -4685,6 +4685,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'unocss',
+      filenamesGlob: ['uno.config', 'unocss.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vagrant',
       extensions: ['vagrantfile'],
       filename: true,
