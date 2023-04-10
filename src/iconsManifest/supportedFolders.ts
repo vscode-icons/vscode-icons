@@ -700,6 +700,11 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     {
+      icon: 'wit',
+      extensions: ['wit'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'webpack',
       extensions: ['webpack', '.webpack'],
       format: FileFormat.svg,
