@@ -287,12 +287,12 @@ describe('CustomsMerger: file extensions tests', function () {
             },
             {
               icon: 'ng_routing_ts2',
-              extensions: ['routing.ts'],
+              extensions: ['routing.ts', 'routes.ts'],
               format: 'svg',
             },
             {
               icon: 'ng_routing_js2',
-              extensions: ['routing.js'],
+              extensions: ['routing.js', 'routes.js'],
               format: 'svg',
             },
           ],
