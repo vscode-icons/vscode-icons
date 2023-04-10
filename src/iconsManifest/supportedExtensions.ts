@@ -4125,6 +4125,12 @@ export const extensions: IFileCollection = {
       extensions: ['sy'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'sino',
+      extensions: [],
+      languages: [languages.sino],
+      format: FileFormat.svg,
+    },
     { icon: 'sketch', extensions: ['sketch'], format: FileFormat.svg },
     {
       icon: 'slang',
