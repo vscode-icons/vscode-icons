@@ -796,7 +796,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'buf',
-      extensions: ['buf.yaml', 'buf.yml', 'buf.gen.yml', 'buf.gen.yaml', 'buf.work.yaml', 'buf.work.yml'],
+      extensions: [
+        'buf.yaml',
+        'buf.yml',
+        'buf.gen.yml',
+        'buf.gen.yaml',
+        'buf.work.yaml',
+        'buf.work.yml',
+      ],
       languages: [languages.buf],
       format: FileFormat.svg,
     },
