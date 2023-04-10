@@ -521,7 +521,7 @@ export const extensions: IFileCollection = {
     { icon: 'aspx', extensions: ['aspx', 'ascx'], format: FileFormat.svg },
     {
       icon: 'assembly',
-      extensions: [],
+      extensions: ['asm', 's'],
       languages: [languages.assembly],
       format: FileFormat.svg,
     },
@@ -4125,6 +4125,12 @@ export const extensions: IFileCollection = {
       extensions: ['sy'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'sino',
+      extensions: [],
+      languages: [languages.sino],
+      format: FileFormat.svg,
+    },
     { icon: 'sketch', extensions: ['sketch'], format: FileFormat.svg },
     {
       icon: 'slang',
@@ -4679,6 +4685,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'unocss',
+      filenamesGlob: ['uno.config', 'unocss.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vagrant',
       extensions: ['vagrantfile'],
       filename: true,
@@ -4916,6 +4930,7 @@ export const extensions: IFileCollection = {
         'webpack.config.production.babel',
         'webpack.dev',
         'webpack.dev.conf',
+        'webpack.local',
         'webpack.prod',
         'webpack.prod.conf',
         'webpack.main.config',
