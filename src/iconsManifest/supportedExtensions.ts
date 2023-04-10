@@ -5011,6 +5011,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wit',
+      extensions: ['wit'],
+      languages: [languages.wai],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wolfram',
       extensions: [],
       languages: [languages.wolfram],

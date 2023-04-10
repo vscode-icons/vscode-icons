@@ -365,6 +365,7 @@ export const languages: ILanguageCollection = {
   vlang: { ids: 'v', defaultExtension: 'v' },
   volt: { ids: 'volt', defaultExtension: 'volt' },
   vue: { ids: 'vue', defaultExtension: 'vue' },
+  wai: { ids: ['wai'], defaultExtension: 'wai' },
   wasm: { ids: ['wasm', 'wat'], defaultExtension: 'wasm' },
   wenyan: { ids: 'wenyan', defaultExtension: 'wy' },
   wgsl: { ids: 'wgsl', defaultExtension: 'wgsl' },
