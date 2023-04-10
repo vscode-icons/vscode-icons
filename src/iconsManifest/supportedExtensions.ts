@@ -2532,7 +2532,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'kotlin',
-      extensions: [],
+      extensions: ['ktm'],
       languages: [languages.kotlin],
       format: FileFormat.svg,
     },
