@@ -459,6 +459,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'notebooks',
+      extensions: ['notebooks', 'notebook'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'notification',
       extensions: ['notification', 'notifications', 'event', 'events'],
       format: FileFormat.svg,
@@ -698,6 +703,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.vscode-test'],
       format: FileFormat.svg,
       disabled: true,
+    },
+    {
+      icon: 'wit',
+      extensions: ['wit'],
+      format: FileFormat.svg,
     },
     {
       icon: 'webpack',
