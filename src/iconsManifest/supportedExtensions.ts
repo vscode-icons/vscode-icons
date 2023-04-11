@@ -4889,7 +4889,10 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vscode-insiders',
-      extensions: ['code-workspace'],
+      extensions: ['code-snippets', 'code-workspace'],
+      filenamesGlob: [],
+      extensionsGlob: [],
+      filename: false,
       format: FileFormat.svg,
       disabled: true,
     },
