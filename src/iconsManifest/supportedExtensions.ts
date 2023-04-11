@@ -4196,6 +4196,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'snaplet',
+      extensions: ['snaplet.config.js', 'snaplet.config.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'snort',
       extensions: [],
       languages: [languages.snort],
