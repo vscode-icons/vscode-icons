@@ -1998,6 +1998,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'grain',
+      extensions: ['gr'],
+      languages: [languages.grain],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'graphql',
       extensions: ['.gqlconfig'],
       filename: true,
@@ -4227,6 +4233,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'spin',
+      extensions: ['spin.toml'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sqf',
       extensions: [],
       languages: [languages.sqf],
@@ -5017,6 +5030,12 @@ export const extensions: IFileCollection = {
       // See: https://windicss.org/guide/configuration.html#config-file
       extensions: ['windi.config.ts', 'windi.config.js'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wit',
+      extensions: ['wit'],
+      languages: [languages.wai],
       format: FileFormat.svg,
     },
     {

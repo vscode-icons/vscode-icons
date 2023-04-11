@@ -92,6 +92,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   glsl: ILanguage;
   glyphs: ILanguage;
   gnuplot: ILanguage;
+  grain: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
@@ -253,6 +254,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   vlang: ILanguage;
   volt: ILanguage;
   vue: ILanguage;
+  wai: ILanguage;
   wasm: ILanguage;
   wenyan: ILanguage;
   wgsl: ILanguage;
