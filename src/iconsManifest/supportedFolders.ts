@@ -555,7 +555,6 @@ export const extensions: IFolderCollection = {
     {
       icon: 'snaplet',
       extensions: ['.snaplet'],
-      light: true,
       format: FileFormat.svg,
     },
     {
