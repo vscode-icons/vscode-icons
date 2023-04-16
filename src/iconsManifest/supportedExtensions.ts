@@ -1435,7 +1435,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'dotenv',
       extensions: [],
-      light: true,
       languages: [languages.dotenv],
       format: FileFormat.svg,
     },
