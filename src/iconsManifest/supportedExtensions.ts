@@ -3224,6 +3224,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ocaml_intf',
+      extensions: ['mli'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ogone',
       extensions: [],
       languages: [languages.ogone],
