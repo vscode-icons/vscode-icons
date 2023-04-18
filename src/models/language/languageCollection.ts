@@ -143,6 +143,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mdx: ILanguage;
   mediawiki: ILanguage;
   mel: ILanguage;
+  mermaid: ILanguage;
   meson: ILanguage;
   mjml: ILanguage;
   mlang: ILanguage;

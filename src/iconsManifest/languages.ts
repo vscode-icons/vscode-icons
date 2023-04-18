@@ -218,6 +218,7 @@ export const languages: ILanguageCollection = {
   mdx: { ids: 'mdx', defaultExtension: 'mdx' },
   mediawiki: { ids: 'mediawiki', defaultExtension: 'mediawiki' },
   mel: { ids: 'mel', defaultExtension: 'mel' },
+  mermaid: { ids: 'mermaid', defaultExtension: 'mmd' },
   meson: { ids: 'meson', defaultExtension: 'meson.build' },
   mjml: { ids: 'mjml', defaultExtension: 'mjml' },
   mlang: { ids: ['powerquery'], defaultExtension: 'pq' },
