@@ -3061,6 +3061,7 @@ export const extensions: IFileCollection = {
       icon: 'netlify',
       extensions: ['netlify.toml'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
