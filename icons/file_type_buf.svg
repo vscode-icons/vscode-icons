@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <title>file_type_buf</title>
-  <path d="M 2.28611,0 H 0 v 25.14259 h 2.28611 z" fill="#77e1ff" id="path2" style="stroke-width:0.092219" />
-  <path d="M 6.85743,0 H 4.57132 v 25.14259 h 2.28611 z" fill="#77e1ff" id="path4" style="stroke-width:0.092219" />
-  <path d="M 11.4288,0 H 9.14265 v 25.14259 h 2.28615 z" fill="#77e1ff" id="path6" style="stroke-width:0.092219" />
-  <path d="M 16,0 H 13.71389 V 25.14259 H 16 Z" fill="#77e1ff" id="path8" style="stroke-width:0.092219" />
-  <path d="m 20.57222,0 h -2.28611 v 25.14259 h 2.28611 z" fill="#77e1ff" id="path10" style="stroke-width:0.092219" />
-  <path d="m 25.14342,0 h -2.28611 v 25.14259 h 2.28611 z" fill="#77e1ff" id="path12" style="stroke-width:0.092219" />
-  <path d="M 9.14346,6.85744 H 6.85735 v 25.14255 h 2.28611 z" fill="#161ede" id="path14" style="stroke-width:0.092219" />
-  <path d="M 13.71481,6.85744 H 11.4287 v 25.14255 h 2.28611 z" fill="#161ede" id="path16" style="stroke-width:0.092219" />
-  <path d="M 18.28611,6.85744 H 16 v 25.14255 h 2.28611 z" fill="#161ede" id="path18" style="stroke-width:0.092219" />
-  <path d="M 22.85741,6.85744 H 20.5713 v 25.14255 h 2.28611 z" fill="#161ede" id="path20" style="stroke-width:0.092219" />
-  <path d="M 27.4288,6.85744 H 25.14269 V 31.99999 H 27.4288 Z" fill="#161ede" id="path22" style="stroke-width:0.092219" />
-  <path d="M 32,6.85744 H 29.71389 V 31.99999 H 32 Z" fill="#161ede" id="path24" style="stroke-width:0.092219" />
-</svg>
+<svg version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title>file_type_buf</title><g transform="matrix(.87288 0 0 .87288 2.0339 2.0339)" stroke-width=".092219"><g fill="#77e1ff"><path d="m2.2861 0h-2.2861v25.143h2.2861z"/><path d="m6.8574 0h-2.2861v25.143h2.2861z"/><path d="m11.429 0h-2.2862v25.143h2.2862z"/><path d="m16 0h-2.2861v25.143h2.2861z"/><path d="m20.572 0h-2.2861v25.143h2.2861z"/><path d="m25.143 0h-2.2861v25.143h2.2861z"/></g><g fill="#161ede"><path d="m9.1435 6.8574h-2.2861v25.143h2.2861z"/><path d="m13.715 6.8574h-2.2861v25.143h2.2861z"/><path d="m18.286 6.8574h-2.2861v25.143h2.2861z"/><path d="m22.857 6.8574h-2.2861v25.143h2.2861z"/><path d="m27.429 6.8574h-2.2861v25.143h2.2861z"/><path d="m32 6.8574h-2.2861v25.143h2.2861z"/></g></g></svg>
