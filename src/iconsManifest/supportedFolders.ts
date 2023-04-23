@@ -12,7 +12,11 @@ export const extensions: IFolderCollection = {
       extensions: ['api', '.api', 'apis', '.apis'],
       format: FileFormat.svg,
     },
-    { icon: 'app', extensions: ['app', 'apps', '.app'], format: FileFormat.svg },
+    {
+      icon: 'app',
+      extensions: ['app', 'apps', '.app'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'arangodb',
       extensions: ['arangodb', 'arango'],
