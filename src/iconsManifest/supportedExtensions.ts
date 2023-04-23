@@ -2832,6 +2832,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mermaid',
+      extensions: [],
+      languages: [languages.mermaid],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'meson',
       extensions: [],
       languages: [languages.meson],
