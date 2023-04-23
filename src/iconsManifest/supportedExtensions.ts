@@ -795,6 +795,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'buf',
+      extensions: [
+        'buf.yaml',
+        'buf.yml',
+        'buf.gen.yml',
+        'buf.gen.yaml',
+        'buf.work.yaml',
+        'buf.work.yml',
+      ],
+      languages: [languages.buf],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bun',
       extensions: ['bun', 'lockb'],
       format: FileFormat.svg,
@@ -1076,11 +1089,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'config',
       extensions: ['plist'],
-      languages: [
-        languages.properties,
-        languages.dotenv,
-        languages.springbootproperties,
-      ],
+      languages: [languages.properties, languages.springbootproperties],
       light: true,
       format: FileFormat.svg,
     },
@@ -1434,6 +1443,12 @@ export const extensions: IFileCollection = {
       icon: 'dojo',
       extensions: ['.dojorc'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv',
+      extensions: [],
+      languages: [languages.dotenv],
       format: FileFormat.svg,
     },
     {
@@ -2817,6 +2832,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mermaid',
+      extensions: [],
+      languages: [languages.mermaid],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'meson',
       extensions: [],
       languages: [languages.meson],
@@ -3059,6 +3080,7 @@ export const extensions: IFileCollection = {
       icon: 'netlify',
       extensions: ['netlify.toml'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -3219,6 +3241,11 @@ export const extensions: IFileCollection = {
       extensions: ['.merlin'],
       filename: true,
       languages: [languages.ocaml],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ocaml_intf',
+      extensions: ['mli'],
       format: FileFormat.svg,
     },
     {
@@ -4192,6 +4219,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'snapcraft',
       extensions: ['snapcraft.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'snaplet',
+      extensions: ['snaplet.config.js', 'snaplet.config.ts'],
       filename: true,
       format: FileFormat.svg,
     },
