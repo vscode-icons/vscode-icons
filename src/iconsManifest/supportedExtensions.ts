@@ -2832,6 +2832,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mermaid',
+      extensions: [],
+      languages: [languages.mermaid],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'meson',
       extensions: [],
       languages: [languages.meson],
@@ -3074,6 +3080,7 @@ export const extensions: IFileCollection = {
       icon: 'netlify',
       extensions: ['netlify.toml'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -3234,6 +3241,11 @@ export const extensions: IFileCollection = {
       extensions: ['.merlin'],
       filename: true,
       languages: [languages.ocaml],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ocaml_intf',
+      extensions: ['mli'],
       format: FileFormat.svg,
     },
     {
