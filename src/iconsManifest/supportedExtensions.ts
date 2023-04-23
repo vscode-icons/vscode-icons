@@ -1076,11 +1076,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'config',
       extensions: ['plist'],
-      languages: [
-        languages.properties,
-        languages.dotenv,
-        languages.springbootproperties,
-      ],
+      languages: [languages.properties, languages.springbootproperties],
       light: true,
       format: FileFormat.svg,
     },
@@ -1434,6 +1430,12 @@ export const extensions: IFileCollection = {
       icon: 'dojo',
       extensions: ['.dojorc'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv',
+      extensions: [],
+      languages: [languages.dotenv],
       format: FileFormat.svg,
     },
     {
@@ -4192,6 +4194,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'snapcraft',
       extensions: ['snapcraft.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'snaplet',
+      extensions: ['snaplet.config.js', 'snaplet.config.ts'],
       filename: true,
       format: FileFormat.svg,
     },
