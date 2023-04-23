@@ -1089,11 +1089,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'config',
       extensions: ['plist'],
-      languages: [
-        languages.properties,
-        languages.dotenv,
-        languages.springbootproperties,
-      ],
+      languages: [languages.properties, languages.springbootproperties],
       light: true,
       format: FileFormat.svg,
     },
@@ -1447,6 +1443,12 @@ export const extensions: IFileCollection = {
       icon: 'dojo',
       extensions: ['.dojorc'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv',
+      extensions: [],
+      languages: [languages.dotenv],
       format: FileFormat.svg,
     },
     {
