@@ -3731,6 +3731,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'publiccode',
+      extensions: ['publiccode.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'publisher', extensions: ['pub', 'puz'], format: FileFormat.svg },
     {
       icon: 'pug',
