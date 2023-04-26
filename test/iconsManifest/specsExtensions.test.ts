@@ -39,7 +39,7 @@ describe('Specifications of supported extensions: tests', function () {
 
             const pathExists = await existsAsync(iconFilePath);
 
-            expect(pathExists).to.be.true;
+            expect(pathExists, `${iconFilePath} does not exist`).to.be.true;
           }
         });
 
