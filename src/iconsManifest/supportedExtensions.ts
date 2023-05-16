@@ -3556,6 +3556,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'postman',
+      extensions: [
+        'postman_collection.json',
+        'postman_environment.json',
+        'postman_globals.json',
+      ],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'powerpoint',
       extensions: [
         'pot',
