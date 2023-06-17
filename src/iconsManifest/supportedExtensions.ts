@@ -1330,6 +1330,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'denoify',
+      extensions: ['.denoifyrc'],
       filenamesGlob: ['denoify.config'],
       extensionsGlob: ['json', 'js'],
       filename: true,
