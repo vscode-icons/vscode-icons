@@ -12,7 +12,11 @@ export const extensions: IFolderCollection = {
       extensions: ['api', '.api', 'apis', '.apis'],
       format: FileFormat.svg,
     },
-    { icon: 'app', extensions: ['app', '.app'], format: FileFormat.svg },
+    {
+      icon: 'app',
+      extensions: ['app', 'apps', '.app'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'arangodb',
       extensions: ['arangodb', 'arango'],
@@ -65,6 +69,7 @@ export const extensions: IFolderCollection = {
       extensions: ['certificates', '.certificates', 'certs', 'certs.'],
       format: FileFormat.svg,
     },
+    { icon: 'changesets', extensions: ['.changeset'], format: FileFormat.svg },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     {
@@ -459,6 +464,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'notebooks',
+      extensions: ['notebooks', 'notebook'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'notification',
       extensions: ['notification', 'notifications', 'event', 'events'],
       format: FileFormat.svg,
@@ -550,6 +560,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'shared',
       extensions: ['share', 'shared', '.share', '.shared'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'snaplet',
+      extensions: ['.snaplet'],
       format: FileFormat.svg,
     },
     {
@@ -693,6 +708,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.vscode-test'],
       format: FileFormat.svg,
       disabled: true,
+    },
+    {
+      icon: 'wit',
+      extensions: ['wit'],
+      format: FileFormat.svg,
     },
     {
       icon: 'webpack',
