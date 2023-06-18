@@ -4320,6 +4320,8 @@ export const extensions: IFileCollection = {
       filenamesGlob: [
         'stryker.conf',
         '.stryker.conf',
+        'stryker.config',
+        '.stryker.config',
         'stryker-config',
         'stryker4s',
       ],
