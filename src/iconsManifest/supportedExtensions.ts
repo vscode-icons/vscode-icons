@@ -4335,6 +4335,8 @@ export const extensions: IFileCollection = {
       filenamesGlob: [
         'stryker.conf',
         '.stryker.conf',
+        'stryker.config',
+        '.stryker.config',
         'stryker-config',
         'stryker4s',
       ],
@@ -4402,6 +4404,12 @@ export const extensions: IFileCollection = {
       icon: 'swagger',
       extensions: [],
       languages: [languages.swagger],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'swc',
+      extensions: ['.swcrc'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
