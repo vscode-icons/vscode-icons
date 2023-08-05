@@ -4476,7 +4476,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tauri',
-      extensions: ['tauri.conf.json'],
+      extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4880,6 +4880,16 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['vitest.config'],
       extensions: [],
       extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      // Taken from https://vitest.dev/logo.svg
+      icon: 'vitest',
+      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
+      filenamesGlob: ['vitest.workspace', 'vitest.projects'],
+      extensions: [],
+      extensionsGlob: ['json', 'js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
