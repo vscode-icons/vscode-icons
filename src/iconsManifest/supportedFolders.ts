@@ -220,7 +220,11 @@ export const extensions: IFolderCollection = {
       extensions: ['docker', '.docker'],
       format: FileFormat.svg,
     },
-    { icon: 'docs', extensions: ['docs', 'doc'], format: FileFormat.svg },
+    {
+      icon: 'docs',
+      extensions: ['docs', 'doc', 'document', 'documents'],
+      format: FileFormat.svg,
+    },
     { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
     {
       icon: 'elasticbeanstalk',
@@ -573,6 +577,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'spin',
+      extensions: ['.spin'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'src',
       extensions: ['src', 'source', 'sources'],
       format: FileFormat.svg,
@@ -729,7 +738,11 @@ export const extensions: IFolderCollection = {
       extensions: ['windows', 'win32'],
       format: FileFormat.svg,
     },
-    { icon: 'www', extensions: ['www', 'wwwroot'], format: FileFormat.svg },
+    {
+      icon: 'www',
+      extensions: ['www', 'wwwroot', 'web'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'yarn',
       extensions: ['.yarn'],
