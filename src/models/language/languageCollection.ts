@@ -35,6 +35,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   blitzbasic: ILanguage;
   bolt: ILanguage;
   bosque: ILanguage;
+  buf: ILanguage;
   // eslint-disable-next-line camelcase
   c_al: ILanguage;
   cabal: ILanguage;
@@ -143,6 +144,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mdx: ILanguage;
   mediawiki: ILanguage;
   mel: ILanguage;
+  mermaid: ILanguage;
   meson: ILanguage;
   mjml: ILanguage;
   mlang: ILanguage;

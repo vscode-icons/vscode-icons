@@ -12,7 +12,11 @@ export const extensions: IFolderCollection = {
       extensions: ['api', '.api', 'apis', '.apis'],
       format: FileFormat.svg,
     },
-    { icon: 'app', extensions: ['app', '.app'], format: FileFormat.svg },
+    {
+      icon: 'app',
+      extensions: ['app', 'apps', '.app'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'arangodb',
       extensions: ['arangodb', 'arango'],
@@ -65,6 +69,7 @@ export const extensions: IFolderCollection = {
       extensions: ['certificates', '.certificates', 'certs', 'certs.'],
       format: FileFormat.svg,
     },
+    { icon: 'changesets', extensions: ['.changeset'], format: FileFormat.svg },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     {
@@ -215,7 +220,11 @@ export const extensions: IFolderCollection = {
       extensions: ['docker', '.docker'],
       format: FileFormat.svg,
     },
-    { icon: 'docs', extensions: ['docs', 'doc'], format: FileFormat.svg },
+    {
+      icon: 'docs',
+      extensions: ['docs', 'doc', 'document', 'documents'],
+      format: FileFormat.svg,
+    },
     { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
     {
       icon: 'elasticbeanstalk',
@@ -568,6 +577,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'spin',
+      extensions: ['.spin'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'src',
       extensions: ['src', 'source', 'sources'],
       format: FileFormat.svg,
@@ -724,7 +738,11 @@ export const extensions: IFolderCollection = {
       extensions: ['windows', 'win32'],
       format: FileFormat.svg,
     },
-    { icon: 'www', extensions: ['www', 'wwwroot'], format: FileFormat.svg },
+    {
+      icon: 'www',
+      extensions: ['www', 'wwwroot', 'web'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'yarn',
       extensions: ['.yarn'],
