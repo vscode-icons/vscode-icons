@@ -572,6 +572,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'spin',
+      extensions: ['.spin'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'src',
       extensions: ['src', 'source', 'sources'],
       format: FileFormat.svg,
