@@ -2457,6 +2457,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'json_schema',
+      extensions: ['schema.json'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'json2',
       extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
@@ -3556,6 +3562,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'postman',
+      extensions: [
+        'postman_collection.json',
+        'postman_environment.json',
+        'postman_globals.json',
+      ],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'powerpoint',
       extensions: [
         'pot',
@@ -4041,8 +4056,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ruby',
-      extensions: [],
+      extensions: ['rbs'],
       languages: [languages.ruby],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ruby',
+      extensions: ['.ruby-version'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
