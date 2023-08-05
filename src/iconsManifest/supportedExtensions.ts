@@ -4035,7 +4035,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ruby',
-      extensions: ['.rbs'],
+      extensions: ['rbs'],
       languages: [languages.ruby],
       format: FileFormat.svg,
     },
