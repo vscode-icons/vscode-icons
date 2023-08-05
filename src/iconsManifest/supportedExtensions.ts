@@ -1329,6 +1329,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'denoify',
+      extensions: ['.denoifyrc'],
+      filenamesGlob: ['denoify.config'],
+      extensionsGlob: ['json', 'js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dependabot',
       extensions: ['dependabot.yml', 'dependabot.yaml'],
       filename: true,
