@@ -2457,6 +2457,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'json_schema',
+      extensions: ['schema.json'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'json2',
       extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
