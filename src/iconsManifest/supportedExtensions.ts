@@ -4399,6 +4399,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'swc',
+      extensions: ['.swcrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'swift',
       extensions: ['package.pins'],
       filename: true,
