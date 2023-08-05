@@ -4083,7 +4083,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'rust_toolchain',
-      extensions: ['rust-toolchain'],
+      extensions: ['rust-toolchain', 'rust-toolchain.toml'],
       filename: true,
       light: true,
       format: FileFormat.svg,
