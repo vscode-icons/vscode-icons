@@ -4470,7 +4470,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tauri',
-      extensions: ['tauri.conf.json'],
+      extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
       format: FileFormat.svg,
     },
