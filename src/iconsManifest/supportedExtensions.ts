@@ -1329,6 +1329,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'denoify',
+      extensions: ['.denoifyrc'],
+      filenamesGlob: ['denoify.config'],
+      extensionsGlob: ['json', 'js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dependabot',
       extensions: ['dependabot.yml', 'dependabot.yaml'],
       filename: true,
@@ -2457,6 +2465,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'json_schema',
+      extensions: ['schema.json'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'json2',
       extensions: ['jsonl', 'ndjson'],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
@@ -3556,6 +3570,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'postman',
+      extensions: [
+        'postman_collection.json',
+        'postman_environment.json',
+        'postman_globals.json',
+      ],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'powerpoint',
       extensions: [
         'pot',
@@ -3737,6 +3760,12 @@ export const extensions: IFileCollection = {
       extensions: [],
       filenamesGlob: ['protractor.conf'],
       extensionsGlob: ['js', 'coffee', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'publiccode',
+      extensions: ['publiccode.yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4035,8 +4064,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ruby',
-      extensions: [],
+      extensions: ['rbs'],
       languages: [languages.ruby],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ruby',
+      extensions: ['.ruby-version'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -4329,6 +4364,8 @@ export const extensions: IFileCollection = {
       filenamesGlob: [
         'stryker.conf',
         '.stryker.conf',
+        'stryker.config',
+        '.stryker.config',
         'stryker-config',
         'stryker4s',
       ],
@@ -4399,6 +4436,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'swc',
+      extensions: ['.swcrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'swift',
       extensions: ['package.pins'],
       filename: true,
@@ -4462,7 +4505,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tauri',
-      extensions: ['tauri.conf.json'],
+      extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4870,6 +4913,16 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['vitest.config'],
       extensions: [],
       extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      // Taken from https://vitest.dev/logo.svg
+      icon: 'vitest',
+      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
+      filenamesGlob: ['vitest.workspace', 'vitest.projects'],
+      extensions: [],
+      extensionsGlob: ['json', 'js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
