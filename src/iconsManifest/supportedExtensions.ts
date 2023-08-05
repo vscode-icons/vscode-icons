@@ -2888,6 +2888,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mojo',
+      extensions: ['mojo', '🔥'],
+      languages: [languages.mojo],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mojolicious',
       extensions: [],
       languages: [languages.mojolicious],
