@@ -9,10 +9,10 @@
 <p style="font-size:10px;">minimum supported version: <b>1.40.2</b></p>
 <br/>
 
-[![Version](https://vsmarketplacebadges.dev/version-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Installs](https://vsmarketplacebadges.dev/installs-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Downloads](https://vsmarketplacebadges.dev/downloads-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Ratings](https://vsmarketplacebadges.dev/rating/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Ratings](https://img.shields.io/visual-studio-marketplace/r/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
 ---
 
