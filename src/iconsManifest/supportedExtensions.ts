@@ -4631,6 +4631,7 @@ export const extensions: IFileCollection = {
         'tsconfig.spec',
         'tsconfig.staging',
         'tsconfig.test',
+        'tsconfig.types',
         'tsconfig.lib',
         'tsconfig.lib.prod',
       ],
