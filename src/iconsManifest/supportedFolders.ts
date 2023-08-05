@@ -220,7 +220,11 @@ export const extensions: IFolderCollection = {
       extensions: ['docker', '.docker'],
       format: FileFormat.svg,
     },
-    { icon: 'docs', extensions: ['docs', 'doc', document, documents], format: FileFormat.svg },
+    {
+      icon: 'docs',
+      extensions: ['docs', 'doc', 'document', 'documents'],
+      format: FileFormat.svg,
+    },
     { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
     {
       icon: 'elasticbeanstalk',
