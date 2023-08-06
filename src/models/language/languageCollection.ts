@@ -35,6 +35,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   blitzbasic: ILanguage;
   bolt: ILanguage;
   bosque: ILanguage;
+  buf: ILanguage;
   // eslint-disable-next-line camelcase
   c_al: ILanguage;
   cabal: ILanguage;
@@ -92,6 +93,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   glsl: ILanguage;
   glyphs: ILanguage;
   gnuplot: ILanguage;
+  grain: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
   groovy: ILanguage;
@@ -142,9 +144,11 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mdx: ILanguage;
   mediawiki: ILanguage;
   mel: ILanguage;
+  mermaid: ILanguage;
   meson: ILanguage;
   mjml: ILanguage;
   mlang: ILanguage;
+  mojo: ILanguage;
   mojolicious: ILanguage;
   mongo: ILanguage;
   mson: ILanguage;
@@ -203,6 +207,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   slice: ILanguage;
   slim: ILanguage;
   silverstripe: ILanguage;
+  sino: ILanguage;
   skipper: ILanguage;
   smarty: ILanguage;
   snort: ILanguage;
@@ -252,6 +257,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   vlang: ILanguage;
   volt: ILanguage;
   vue: ILanguage;
+  wai: ILanguage;
   wasm: ILanguage;
   wenyan: ILanguage;
   wgsl: ILanguage;
