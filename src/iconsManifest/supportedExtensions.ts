@@ -1473,6 +1473,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'drizzle',
+      extensions: [],
+      filenamesGlob: ['drizzle.config'],
+      extensionsGlob: ['ts', 'js', 'json'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'drone',
       extensions: ['.drone.yml', '.drone.yml.sig'],
       light: true,
