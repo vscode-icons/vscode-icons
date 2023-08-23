@@ -3317,7 +3317,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pandacss',
-      extensions: ['panda.config.ts'],
+      filenamesGlob: ['panda.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'mjs', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
