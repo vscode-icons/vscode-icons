@@ -643,6 +643,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'turbo',
+      extensions: ['.turbo'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'typescript',
       extensions: ['typescript', 'ts'],
       format: FileFormat.svg,
