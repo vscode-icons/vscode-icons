@@ -70,6 +70,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'changesets', extensions: ['.changeset'], format: FileFormat.svg },
+    { icon: 'checkly', extensions: ['__checks__'], format: FileFormat.svg },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     {
