@@ -1132,6 +1132,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'checkly',
+      extensions: ['check.js', 'check.ts'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'checkly',
+      extensions: ['checkly.config.js', 'checkly.config.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'chef_cookbook',
       extensions: [],
       languages: [languages.cookbook],
