@@ -5069,7 +5069,7 @@ export const extensions: IFileCollection = {
       extensions: [],
       filenamesGlob: ['wdio', 'wdio.conf'],
       filename: true,
-      extensionsGlob: ['json', 'js', 'ts'],
+      extensionsGlob: ['json', 'js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
       format: FileFormat.svg,
     },
     {
