@@ -5065,6 +5065,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wdio',
+      extensions: [],
+      filenamesGlob: ['wdio', 'wdio.conf'],
+      filename: true,
+      extensionsGlob: ['json', 'js', 'ts'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'webpack',
       extensions: [],
       filenamesGlob: [
