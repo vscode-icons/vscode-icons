@@ -9,10 +9,10 @@
 <p style="font-size:10px;">minimum supported version: <b>1.40.2</b></p>
 <br/>
 
-[![Version](https://vsmarketplacebadges.dev/version-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Installs](https://vsmarketplacebadges.dev/installs-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Downloads](https://vsmarketplacebadges.dev/downloads-short/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Ratings](https://vsmarketplacebadges.dev/rating/vscode-icons-team.vscode-icons.svg?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
+[![Ratings](https://img.shields.io/visual-studio-marketplace/r/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
 
 ---
 
@@ -20,11 +20,6 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/maintainability)](https://codeclimate.com/github/vscode-icons/vscode-icons/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/test_coverage)](https://codeclimate.com/github/vscode-icons/vscode-icons/test_coverage)
-
-<h3>Sponsored by</h3>
-<br/>
-<p style="font-size: 10px"><a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_vscodeicons.png"></a></br>
-Manage pull requests and conduct code reviews in your IDE with full source-tree context. Comment on any line, not just the diffs. Use jump-to-definition, your favorite keybindings, and code intelligence with more of your workflow.<br> <a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=vscodeicons&amp;utm_medium=banner">Learn More</a></p>
 
 </div>
 
