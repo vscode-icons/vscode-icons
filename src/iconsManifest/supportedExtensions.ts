@@ -4423,6 +4423,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'sublime',
+      extensions: ['sublime-project'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'subversion',
       extensions: ['.svnignore'],
       filename: true,
