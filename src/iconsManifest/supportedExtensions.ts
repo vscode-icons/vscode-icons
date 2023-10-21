@@ -5036,6 +5036,14 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'vscode_test',
+      filenamesGlob: ['.vscode-test'],
+      extensions: [],
+      extensionsGlob: ['js', 'json', 'mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vscode-insiders',
       extensions: ['.vscodeignore'],
       filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
