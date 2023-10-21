@@ -518,7 +518,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'python',
-      extensions: ['.venv', '.virtualenv'],
+      extensions: ['.venv', '.virtualenv', '__pycache__', '.pytest_cache'],
       format: FileFormat.svg,
     },
     {
@@ -646,6 +646,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'trunk',
       extensions: ['.trunk'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'turbo',
+      extensions: ['.turbo'],
       format: FileFormat.svg,
     },
     {

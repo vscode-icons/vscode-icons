@@ -3828,6 +3828,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'biome',
+      extensions: ['biome.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'python',
       extensions: [],
       languages: [languages.python],
@@ -4672,6 +4678,11 @@ export const extensions: IFileCollection = {
       icon: 'trunk',
       extensions: ['trunk.yaml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tsbuildinfo',
+      extensions: ['tsbuildinfo'],
       format: FileFormat.svg,
     },
     {
