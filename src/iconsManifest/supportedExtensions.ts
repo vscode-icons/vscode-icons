@@ -4783,6 +4783,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'uiua',
+      extensions: ['ua'],
+      languages: [languages.uiua],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'unibeautify',
       extensions: ['.unibeautifyrc', 'unibeautify.config.js'],
       filenamesGlob: ['.unibeautifyrc'],
