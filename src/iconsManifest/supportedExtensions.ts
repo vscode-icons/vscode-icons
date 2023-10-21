@@ -1993,7 +1993,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'go_work',
-      extensions: ['go.work'],
+      extensions: ['go.work', 'go.work.sum'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4429,6 +4429,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'sublime',
+      extensions: ['sublime-project'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'subversion',
       extensions: ['.svnignore'],
       filename: true,
@@ -4438,6 +4443,12 @@ export const extensions: IFileCollection = {
       icon: 'svelte',
       extensions: [],
       languages: [languages.svelte],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'svelteconfig',
+      extensions: ['svelte.config.js'],
+      filename: true,
       format: FileFormat.svg,
     },
     { icon: 'svg', extensions: ['svg'], format: FileFormat.svg },
@@ -4784,6 +4795,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'uiua',
+      extensions: ['ua'],
+      languages: [languages.uiua],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'unibeautify',
       extensions: ['.unibeautifyrc', 'unibeautify.config.js'],
       filenamesGlob: ['.unibeautifyrc'],
@@ -5068,6 +5085,14 @@ export const extensions: IFileCollection = {
       icon: 'wasm',
       extensions: ['wasm'],
       languages: [languages.wasm],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wdio',
+      extensions: [],
+      filenamesGlob: ['wdio', 'wdio.conf'],
+      filename: true,
+      extensionsGlob: ['json', 'js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
       format: FileFormat.svg,
     },
     {
