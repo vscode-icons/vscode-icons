@@ -247,6 +247,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   tuc: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
+  uiua: ILanguage;
   unison: ILanguage;
   vba: ILanguage;
   vbscript: ILanguage;

@@ -1993,7 +1993,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'go_work',
-      extensions: ['go.work'],
+      extensions: ['go.work', 'go.work.sum'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4423,6 +4423,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'sublime',
+      extensions: ['sublime-project'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'subversion',
       extensions: ['.svnignore'],
       filename: true,
@@ -4775,6 +4780,12 @@ export const extensions: IFileCollection = {
       icon: 'typo3',
       extensions: [],
       languages: [languages.typo3],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'uiua',
+      extensions: ['ua'],
+      languages: [languages.uiua],
       format: FileFormat.svg,
     },
     {
