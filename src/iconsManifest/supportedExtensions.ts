@@ -4961,14 +4961,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'vscode',
-      filenamesGlob: ['.vscode-test'],
-      extensions: [],
-      extensionsGlob: ['js', 'json', 'mjs'],
-      filename: true,
-      format: FileFormat.svg,
-    },
-    {
       icon: 'vscode2',
       extensions: ['.vscodeignore'],
       filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
@@ -4985,14 +4977,6 @@ export const extensions: IFileCollection = {
       filename: false,
       format: FileFormat.svg,
       disabled: true,
-    },
-    {
-      icon: 'vscode2',
-      filenamesGlob: ['.vscode-test'],
-      extensions: [],
-      extensionsGlob: ['js', 'json', 'mjs'],
-      filename: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'vscode3',
@@ -5013,7 +4997,7 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'vscode3',
+      icon: 'vscode_test',
       filenamesGlob: ['.vscode-test'],
       extensions: [],
       extensionsGlob: ['js', 'json', 'mjs'],
@@ -5037,14 +5021,6 @@ export const extensions: IFileCollection = {
       filename: false,
       format: FileFormat.svg,
       disabled: true,
-    },
-    {
-      icon: 'vscode-insiders',
-      filenamesGlob: ['.vscode-test'],
-      extensions: [],
-      extensionsGlob: ['js', 'json', 'mjs'],
-      filename: true,
-      format: FileFormat.svg,
     },
     { icon: 'vsix', extensions: ['vsix'], light: true, format: FileFormat.svg },
     {
