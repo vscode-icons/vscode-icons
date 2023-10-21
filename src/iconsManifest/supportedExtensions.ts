@@ -1993,7 +1993,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'go_work',
-      extensions: ['go.work'],
+      extensions: ['go.work', 'go.work.sum'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4420,6 +4420,11 @@ export const extensions: IFileCollection = {
       extensions: [],
       filenamesGlob: ['story', 'stories'],
       extensionsGlob: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'sublime',
+      extensions: ['sublime-project'],
       format: FileFormat.svg,
     },
     {
