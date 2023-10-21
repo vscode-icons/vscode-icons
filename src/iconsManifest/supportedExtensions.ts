@@ -1993,7 +1993,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'go_work',
-      extensions: ['go.work'],
+      extensions: ['go.work', 'go.work.sum'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3817,6 +3817,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'biome',
+      extensions: ['biome.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'python',
       extensions: [],
       languages: [languages.python],
@@ -4423,6 +4429,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'sublime',
+      extensions: ['sublime-project'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'subversion',
       extensions: ['.svnignore'],
       filename: true,
@@ -4432,6 +4443,12 @@ export const extensions: IFileCollection = {
       icon: 'svelte',
       extensions: [],
       languages: [languages.svelte],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'svelteconfig',
+      extensions: ['svelte.config.js'],
+      filename: true,
       format: FileFormat.svg,
     },
     { icon: 'svg', extensions: ['svg'], format: FileFormat.svg },
@@ -4653,6 +4670,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tsbuildinfo',
+      extensions: ['tsbuildinfo'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tscn',
       extensions: ['tscn'],
       format: FileFormat.svg,
@@ -4775,6 +4797,12 @@ export const extensions: IFileCollection = {
       icon: 'typo3',
       extensions: [],
       languages: [languages.typo3],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'uiua',
+      extensions: ['ua'],
+      languages: [languages.uiua],
       format: FileFormat.svg,
     },
     {
@@ -5070,6 +5098,14 @@ export const extensions: IFileCollection = {
       icon: 'wasm',
       extensions: ['wasm'],
       languages: [languages.wasm],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wdio',
+      extensions: [],
+      filenamesGlob: ['wdio', 'wdio.conf'],
+      filename: true,
+      extensionsGlob: ['json', 'js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
       format: FileFormat.svg,
     },
     {
