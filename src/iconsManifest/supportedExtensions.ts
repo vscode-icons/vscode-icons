@@ -1993,7 +1993,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'go_work',
-      extensions: ['go.work'],
+      extensions: ['go.work', 'go.work.sum'],
       filename: true,
       format: FileFormat.svg,
     },
