@@ -356,6 +356,7 @@ export const languages: ILanguageCollection = {
   typescript: { ids: 'typescript', defaultExtension: 'ts' },
   typescriptreact: { ids: 'typescriptreact', defaultExtension: 'tsx' },
   typo3: { ids: 'typoscript', defaultExtension: 'typoscript' },
+  uiua: { ids: 'uiua', defaultExtension: 'ua' },
   unison: { ids: 'unison', defaultExtension: 'u' },
   vb: { ids: 'vb', defaultExtension: 'vb' },
   vba: { ids: 'vba', defaultExtension: 'cls' },
