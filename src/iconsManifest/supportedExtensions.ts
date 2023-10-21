@@ -4664,6 +4664,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tsbuildinfo',
+      extensions: ['tsbuildinfo'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tscn',
       extensions: ['tscn'],
       format: FileFormat.svg,
