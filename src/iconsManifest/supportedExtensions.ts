@@ -4439,6 +4439,12 @@ export const extensions: IFileCollection = {
       languages: [languages.svelte],
       format: FileFormat.svg,
     },
+    {
+      icon: 'svelteconfig',
+      extensions: ['svelte.config.js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'svg', extensions: ['svg'], format: FileFormat.svg },
     {
       icon: 'swagger',
