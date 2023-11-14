@@ -77,6 +77,15 @@ export const languages: ILanguageCollection = {
   cython: { ids: 'cython', defaultExtension: 'pyx' },
   dal: { ids: 'dal', defaultExtension: 'dal' },
   dart: { ids: 'dart', defaultExtension: 'dart' },
+  debian: {
+    ids: [
+      'debian-changelog',
+      'debian-control',
+      'debian-copyright',
+      'debian-upstream-metadata',
+    ],
+    defaultExtension: 'txt',
+  },
   dhall: { ids: 'dhall', defaultExtension: 'dhall' },
   django: { ids: ['django-html', 'django-txt'], defaultExtension: 'html' },
   diff: { ids: 'diff', defaultExtension: 'diff' },
