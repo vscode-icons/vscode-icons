@@ -259,6 +259,7 @@ export const languages: ILanguageCollection = {
     defaultExtension: 'dbgasm',
   },
   plsql: { ids: ['plsql', 'oracle', 'oraclesql'], defaultExtension: 'ddl' },
+  po: { ids: 'po', defaultExtension: 'po' },
   polymer: { ids: 'polymer', defaultExtension: 'polymer' },
   pony: { ids: 'pony', defaultExtension: 'pony' },
   postcss: { ids: 'postcss', defaultExtension: 'pcss' },

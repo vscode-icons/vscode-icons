@@ -171,6 +171,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   pip: ILanguage;
   platformio: ILanguage;
   plsql: ILanguage;
+  po: ILanguage;
   polymer: ILanguage;
   pony: ILanguage;
   postcss: ILanguage;
