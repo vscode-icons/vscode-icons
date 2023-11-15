@@ -62,6 +62,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dhall: ILanguage;
   django: ILanguage;
   dlang: ILanguage;
+  dockercompose: ILanguage;
   doctex: ILanguage;
   dotenv: ILanguage;
   dotjs: ILanguage;
