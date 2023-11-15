@@ -1514,6 +1514,7 @@ export const extensions: IFileCollection = {
       icon: 'editorconfig',
       extensions: ['.editorconfig'],
       filename: true,
+      languages: [languages.editorconfig],
       format: FileFormat.svg,
     },
     {
