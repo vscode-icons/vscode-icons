@@ -4125,7 +4125,12 @@ export const extensions: IFileCollection = {
       languages: [languages.sas],
       format: FileFormat.svg,
     },
-    { icon: 'sass', extensions: ['sass'], format: FileFormat.svg },
+    {
+      icon: 'sass',
+      extensions: ['sass'],
+      languages: [languages.sass],
+      format: FileFormat.svg,
+    },
     {
       icon: 'sbt',
       extensions: [],

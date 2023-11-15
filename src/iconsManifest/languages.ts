@@ -294,6 +294,7 @@ export const languages: ILanguageCollection = {
   rust: { ids: 'rust', defaultExtension: 'rs' },
   san: { ids: 'san', defaultExtension: 'san' },
   sas: { ids: 'SAS', defaultExtension: 'sas' },
+  sass: { ids: ['sass', 'sass.hover'], defaultExtension: 'sass' },
   sbt: { ids: 'sbt', defaultExtension: 'sbt' },
   scad: { ids: 'scad', defaultExtension: 'scad' },
   scala: { ids: 'scala', defaultExtension: 'scala' },
