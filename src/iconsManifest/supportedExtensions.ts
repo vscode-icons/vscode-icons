@@ -1470,6 +1470,7 @@ export const extensions: IFileCollection = {
       extensions: ['drawio', 'dio'],
       filenamesGlob: ['.drawio', '.dio'],
       extensionsGlob: ['png', 'svg'],
+      languages: [languages.drawio],
       format: FileFormat.svg,
     },
     {

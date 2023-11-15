@@ -66,6 +66,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dotenv: ILanguage;
   dotjs: ILanguage;
   doxygen: ILanguage;
+  drawio: ILanguage;
   drools: ILanguage;
   dustjs: ILanguage;
   dylanlang: ILanguage;
