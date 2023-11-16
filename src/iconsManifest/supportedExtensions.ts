@@ -2453,14 +2453,24 @@ export const extensions: IFileCollection = {
     {
       icon: 'json',
       extensions: ['jsonl', 'ndjson'],
-      languages: [languages.json, languages.textmatejson, languages.jsonc],
+      languages: [
+        languages.json,
+        languages.textmatejson,
+        languages.jsonc,
+        languages.jsonl,
+      ],
       light: true,
       format: FileFormat.svg,
     },
     {
       icon: 'json_official',
       extensions: ['jsonl', 'ndjson'],
-      languages: [languages.json, languages.textmatejson, languages.jsonc],
+      languages: [
+        languages.json,
+        languages.textmatejson,
+        languages.jsonc,
+        languages.jsonl,
+      ],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -2473,7 +2483,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'json2',
       extensions: ['jsonl', 'ndjson'],
-      languages: [languages.json, languages.textmatejson, languages.jsonc],
+      languages: [
+        languages.json,
+        languages.textmatejson,
+        languages.jsonc,
+        languages.jsonl,
+      ],
       format: FileFormat.svg,
       disabled: true,
     },
