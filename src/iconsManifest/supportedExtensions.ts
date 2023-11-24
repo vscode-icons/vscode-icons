@@ -5298,6 +5298,7 @@ export const extensions: IFileCollection = {
         '.yarnignore',
       ],
       filename: true,
+      languages: [languages.yarnlock],
       format: FileFormat.svg,
     },
     {

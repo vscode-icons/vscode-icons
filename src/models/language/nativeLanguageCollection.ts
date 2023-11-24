@@ -55,4 +55,5 @@ export interface INativeLanguageCollection {
   xml: ILanguage;
   xsl: ILanguage;
   yaml: ILanguage;
+  yarnlock: ILanguage;
 }
