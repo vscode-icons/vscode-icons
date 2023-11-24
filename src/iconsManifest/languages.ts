@@ -72,6 +72,17 @@ export const languages: ILanguageCollection = {
   crystal: { ids: 'crystal', defaultExtension: 'cr' },
   csharp: { ids: 'csharp', defaultExtension: 'cs' },
   css: { ids: 'css', defaultExtension: 'css' },
+  csv: {
+    ids: [
+      'csv',
+      'csv (pipe)',
+      'csv (semicolon)',
+      'csv (whitespace)',
+      'dynamic csv',
+      'tsv',
+    ],
+    defaultExtension: 'csv',
+  },
   cucumber: { ids: 'feature', defaultExtension: 'feature' },
   cuda: { ids: ['cuda', 'cuda-cpp'], defaultExtension: 'cu' },
   cython: { ids: 'cython', defaultExtension: 'pyx' },
