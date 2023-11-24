@@ -210,6 +210,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   sino: ILanguage;
   skipper: ILanguage;
   smarty: ILanguage;
+  snippets: ILanguage;
   snort: ILanguage;
   solidity: ILanguage;
   sparql: ILanguage;
