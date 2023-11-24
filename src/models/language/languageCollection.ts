@@ -226,6 +226,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   styled: ILanguage;
   stylus: ILanguage;
   svelte: ILanguage;
+  svg: ILanguage;
   swagger: ILanguage;
   swig: ILanguage;
   systemd: ILanguage;
