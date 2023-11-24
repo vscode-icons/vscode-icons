@@ -305,6 +305,7 @@ export const languages: ILanguageCollection = {
   slang: { ids: 'slang', defaultExtension: 'slang' },
   slice: { ids: ['slice'], defaultExtension: 'ice' },
   slim: { ids: ['slim'], defaultExtension: 'slim' },
+  sln: { ids: 'sln', defaultExtension: 'sln' },
   silverstripe: { ids: 'silverstripe', defaultExtension: 'ss' },
   sino: { ids: 'sino', defaultExtension: 'sn' },
   skipper: { ids: ['eskip'], defaultExtension: 'eskip' },
