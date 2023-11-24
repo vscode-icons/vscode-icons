@@ -376,6 +376,7 @@ export const languages: ILanguageCollection = {
   wolfram: { ids: 'wolfram', defaultExtension: 'wl' },
   wurst: { ids: ['wurstlang', 'wurst'], defaultExtension: 'wurst' },
   wxml: { ids: 'wxml', defaultExtension: 'wxml' },
+  xcompose: { ids: 'xcompose', defaultExtension: 'xcompose' },
   xmake: { ids: 'xmake', defaultExtension: 'xmake.lua' },
   xml: { ids: 'xml', defaultExtension: 'xml' },
   xquery: { ids: 'xquery', defaultExtension: 'xquery' },
