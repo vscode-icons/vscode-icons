@@ -17,6 +17,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   applescript: ILanguage;
   asciidoc: ILanguage;
   asp: ILanguage;
+  astro: ILanguage;
   ats: ILanguage;
   assembly: ILanguage;
   autohotkey: ILanguage;
