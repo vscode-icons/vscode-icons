@@ -239,6 +239,7 @@ export const languages: ILanguageCollection = {
   ogone: { ids: 'ogone', defaultExtension: 'o3' },
   openEdge: { ids: 'abl', defaultExtension: 'w' },
   openHAB: { ids: 'openhab', defaultExtension: 'things' },
+  org: { ids: 'org', defaultExtension: 'org' },
   pascal: { ids: ['pascal', 'objectpascal'], defaultExtension: 'pas' },
   pddl: { ids: 'pddl', defaultExtension: 'pddl' },
   pddlplan: { ids: 'plan', defaultExtension: 'plan' },
