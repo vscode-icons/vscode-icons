@@ -98,6 +98,7 @@ export const languages: ILanguageCollection = {
   erb: { ids: ['erb', 'html.erb'], defaultExtension: 'erb' },
   erlang: { ids: 'erlang', defaultExtension: 'erl' },
   esphome: { ids: 'esphome', defaultExtension: 'yaml' },
+  excel: { ids: 'excel', defaultExtension: 'xlsx' },
   falcon: { ids: 'falcon', defaultExtension: 'falcon' },
   fauna: { ids: 'fql', defaultExtension: 'fql' },
   fortran: {

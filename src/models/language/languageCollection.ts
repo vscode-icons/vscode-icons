@@ -78,6 +78,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erb: ILanguage;
   erlang: ILanguage;
   esphome: ILanguage;
+  excel: ILanguage;
   falcon: ILanguage;
   fauna: ILanguage;
   fortran: ILanguage;
