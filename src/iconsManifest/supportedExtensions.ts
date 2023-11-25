@@ -3823,6 +3823,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pyenv',
+      extensions: ['.python-version'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'python',
       extensions: [],
       languages: [languages.python],
