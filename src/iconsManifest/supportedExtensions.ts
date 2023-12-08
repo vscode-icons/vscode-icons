@@ -1665,12 +1665,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'excel',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'xlsb'],
       format: FileFormat.svg,
     },
     {
       icon: 'excel2',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'xlsb'],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -2611,6 +2611,36 @@ export const extensions: IFileCollection = {
       icon: 'lex',
       extensions: [],
       languages: [languages.lex],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_base',
+      extensions: ['odb', 'otb'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_calc',
+      extensions: ['fods', 'ods', 'ots'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_draw',
+      extensions: ['odg', 'otg'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_impress',
+      extensions: ['odp', 'otp'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_math',
+      extensions: ['odf', 'otf'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_writer',
+      extensions: ['odt', 'ott'],
       format: FileFormat.svg,
     },
     {
