@@ -4874,6 +4874,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'vento',
+      extensions: ['vto', 'vento'],
+      languages: [languages.vento],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'verilog',
       extensions: [],
       languages: [languages.verilog],
