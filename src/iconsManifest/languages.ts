@@ -125,6 +125,7 @@ export const languages: ILanguageCollection = {
   gnuplot: { ids: 'gnuplot', defaultExtension: 'gp' },
   go: { ids: 'go', defaultExtension: 'go' },
   goctl: { ids: 'goctl', defaultExtension: 'api' },
+  gotmpl: { ids: 'gotmpl', defaultExtension: 'go' },
   gdscript: { ids: 'gdscript', defaultExtension: 'gd' },
   grain: { ids: 'grain', defaultExtension: 'gr' },
   graphql: { ids: 'graphql', defaultExtension: 'gql' },

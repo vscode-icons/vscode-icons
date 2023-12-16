@@ -2009,6 +2009,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gotmpl',
+      extensions: ['gotmpl', 'tmpl'],
+      languages: [languages.gotmpl],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gradle',
       extensions: ['gradle'],
       format: FileFormat.svg,
