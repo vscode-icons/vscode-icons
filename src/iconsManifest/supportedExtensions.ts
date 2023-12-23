@@ -3344,7 +3344,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pdm',
-      extensions: [],
+      extensions: ['.pdm-python'],
       filenamesGlob: ['pdm'],
       extensionsGlob: ['lock', 'toml'],
       filename: true,
