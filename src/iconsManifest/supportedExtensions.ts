@@ -2009,12 +2009,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'gotmpl',
-      extensions: ['gotmpl', 'tmpl'],
-      languages: [languages.gotmpl],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'gradle',
       extensions: ['gradle'],
       format: FileFormat.svg,
@@ -4542,6 +4536,12 @@ export const extensions: IFileCollection = {
       icon: 'teal',
       extensions: [],
       languages: [languages.teal],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'templ',
+      extensions: ['templ'],
+      languages: [languages.templ],
       format: FileFormat.svg,
     },
     {

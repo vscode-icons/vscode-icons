@@ -93,7 +93,6 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   glsl: ILanguage;
   glyphs: ILanguage;
   gnuplot: ILanguage;
-  gotmpl: ILanguage;
   grain: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
@@ -234,6 +233,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   t4: ILanguage;
   tailwindcss: ILanguage;
   teal: ILanguage;
+  templ: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;
   terraform: ILanguage;
