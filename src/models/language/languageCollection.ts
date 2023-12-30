@@ -93,6 +93,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   glsl: ILanguage;
   glyphs: ILanguage;
   gnuplot: ILanguage;
+  gomod: ILanguage;
+  gowork: ILanguage;
   grain: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;

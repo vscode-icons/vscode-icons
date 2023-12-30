@@ -1990,11 +1990,13 @@ export const extensions: IFileCollection = {
       extensions: ['go.sum', 'go.mod'],
       filename: true,
       format: FileFormat.svg,
+      languages: [languages.gomod],
     },
     {
       icon: 'go_work',
       extensions: ['go.work', 'go.work.sum'],
       filename: true,
+      languages: [languages.gowork],
       format: FileFormat.svg,
     },
     {
