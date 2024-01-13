@@ -1313,7 +1313,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'datadog',
-      extensions: ['service.datadog.yaml', 'datadog-ci.json'],
+      extensions: [
+        'service.datadog.yaml',
+        'datadog-ci.json',
+        'static-analyisis.yml',
+        'static-analysis.yaml',
+      ],
       filename: true,
       languages: [],
       format: FileFormat.svg,
