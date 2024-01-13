@@ -1316,8 +1316,8 @@ export const extensions: IFileCollection = {
       extensions: [
         'service.datadog.yaml',
         'datadog-ci.json',
-        'static-analyisis.yml',
-        'static-analysis.yaml',
+        'static-analyisis.datadog.yml',
+        'static-analysis.datadog.yaml',
       ],
       filename: true,
       languages: [],
