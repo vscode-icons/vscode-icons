@@ -1406,6 +1406,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: [
         'compose',
         'docker-compose',
+        'docker-compose.debug',
         'docker-compose.ci-build',
         'docker-compose.override',
         'docker-compose.vs.debug',
@@ -1423,6 +1424,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: [
         'compose',
         'docker-compose',
+        'docker-compose.debug',
         'docker-compose.ci-build',
         'docker-compose.override',
         'docker-compose.vs.debug',

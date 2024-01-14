@@ -56,6 +56,7 @@ export const extensions: IFileCollection = {
       extensions: ['.dockerignore'],
       filenamesGlob: [
         'docker-compose',
+        'docker-compose.debug',
         'docker-compose.ci-build',
         'docker-compose.override',
         'docker-compose.vs.debug',
