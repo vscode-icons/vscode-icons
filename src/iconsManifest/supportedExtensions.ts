@@ -793,6 +793,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bruno',
+      extensions: [],
+      languages: [languages.bruno],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'buckbuild',
       extensions: ['.buckconfig'],
       filename: true,

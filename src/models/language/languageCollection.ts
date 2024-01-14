@@ -37,6 +37,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   bolt: ILanguage;
   bosque: ILanguage;
   browserslist: ILanguage;
+  bruno: ILanguage;
   buf: ILanguage;
   // eslint-disable-next-line camelcase
   c_al: ILanguage;

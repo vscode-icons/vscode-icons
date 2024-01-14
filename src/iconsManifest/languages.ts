@@ -49,6 +49,7 @@ export const languages: ILanguageCollection = {
   bolt: { ids: 'bolt', defaultExtension: 'bolt' },
   bosque: { ids: 'bosque', defaultExtension: 'bsq' },
   browserslist: { ids: 'browserslist', defaultExtension: 'browserslist' },
+  bruno: { ids: 'bruno', defaultExtension: 'bru' },
   buf: { ids: ['buf', 'buf-gen'], defaultExtension: 'buf.yaml' },
   c: { ids: 'c', defaultExtension: 'c' },
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
