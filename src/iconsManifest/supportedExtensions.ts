@@ -3539,7 +3539,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
+    {
+      icon: 'poedit',
+      extensions: ['po', 'mo'],
+      languages: [languages.po],
+      format: FileFormat.svg,
+    },
     {
       icon: 'poetry',
       extensions: [],
