@@ -9,6 +9,7 @@ export interface INativeLanguageCollection {
   coffeescript: ILanguage;
   cpp: ILanguage;
   css: ILanguage;
+  csv: ILanguage;
   diff: ILanguage;
   dockerfile: ILanguage;
   fsharp: ILanguage;

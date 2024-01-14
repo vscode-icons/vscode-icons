@@ -4637,7 +4637,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'text',
       extensions: ['csv', 'tsv'],
-      languages: [languages.plaintext],
+      languages: [languages.csv, languages.plaintext],
       format: FileFormat.svg,
     },
     {
