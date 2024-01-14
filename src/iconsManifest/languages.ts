@@ -222,6 +222,7 @@ export const languages: ILanguageCollection = {
   jsonl: { ids: 'jsonl', defaultExtension: 'jsonl' },
   jsonnet: { ids: 'jsonnet', defaultExtension: 'jsonnet' },
   json5: { ids: 'json5', defaultExtension: 'json5' },
+  juice: { ids: 'juice', defaultExtension: 'juice' },
   julia: { ids: ['julia', 'juliamarkdown'], defaultExtension: 'jl' },
   iodine: { ids: 'iodine', defaultExtension: 'id' },
   k: { ids: 'k', defaultExtension: 'k' },

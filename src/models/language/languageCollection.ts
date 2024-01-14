@@ -130,6 +130,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   jinja: ILanguage;
   jsonnet: ILanguage;
   json5: ILanguage;
+  juice: ILanguage;
   julia: ILanguage;
   io: ILanguage;
   iodine: ILanguage;
