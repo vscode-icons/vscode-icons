@@ -2842,6 +2842,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mdx-components',
+      extensions: [],
+      filenamesGlob: ['mdx-components'],
+      extensionsGlob: ['cjs', 'cts', 'js', 'jsx', 'mjs', 'mts', 'ts', 'tsx'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mediawiki',
       extensions: [],
       languages: [languages.mediawiki],
