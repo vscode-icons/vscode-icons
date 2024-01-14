@@ -248,6 +248,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   t4: ILanguage;
   tailwindcss: ILanguage;
   teal: ILanguage;
+  templ: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;
   terraform: ILanguage;

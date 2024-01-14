@@ -375,6 +375,7 @@ export const languages: ILanguageCollection = {
   t4: { ids: 't4', defaultExtension: 'tt' },
   tailwindcss: { ids: 'tailwindcss', defaultExtension: 'css' },
   teal: { ids: 'teal', defaultExtension: 'teal' },
+  templ: { ids: 'templ', defaultExtension: 'templ' },
   templatetoolkit: { ids: 'tt', defaultExtension: 'tt3' },
   tera: { ids: 'tera', defaultExtension: 'tera' },
   terraform: { ids: 'terraform', defaultExtension: 'tf' },
