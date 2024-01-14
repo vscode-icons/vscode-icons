@@ -786,6 +786,7 @@ export const extensions: IFileCollection = {
       icon: 'browserslist',
       extensions: ['.browserslistrc', 'browserslist'],
       filename: true,
+      languages: [languages.browserslist],
       format: FileFormat.svg,
     },
     {
@@ -1313,7 +1314,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'datadog',
-      extensions: ['service.datadog.yaml', 'datadog-ci.json'],
+      extensions: [
+        'service.datadog.yaml',
+        'datadog-ci.json',
+        'static-analyisis.datadog.yml',
+        'static-analysis.datadog.yaml',
+      ],
       filename: true,
       languages: [],
       format: FileFormat.svg,
@@ -1399,7 +1405,7 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yaml', 'yml'],
       filename: true,
-      languages: [languages.dockerfile],
+      languages: [languages.dockercompose, languages.dockerfile],
       format: FileFormat.svg,
     },
     {
@@ -1416,7 +1422,7 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yaml', 'yml'],
       filename: true,
-      languages: [languages.dockerfile],
+      languages: [languages.dockercompose, languages.dockerfile],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -1470,6 +1476,7 @@ export const extensions: IFileCollection = {
       extensions: ['drawio', 'dio'],
       filenamesGlob: ['.drawio', '.dio'],
       extensionsGlob: ['png', 'svg'],
+      languages: [languages.drawio],
       format: FileFormat.svg,
     },
     {
@@ -1514,6 +1521,7 @@ export const extensions: IFileCollection = {
       icon: 'editorconfig',
       extensions: ['.editorconfig'],
       filename: true,
+      languages: [languages.editorconfig],
       format: FileFormat.svg,
     },
     {
@@ -2849,6 +2857,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mdx-components',
+      extensions: [],
+      filenamesGlob: ['mdx-components'],
+      extensionsGlob: ['cjs', 'cts', 'js', 'jsx', 'mjs', 'mts', 'ts', 'tsx'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mediawiki',
       extensions: [],
       languages: [languages.mediawiki],
@@ -3546,7 +3563,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'poedit', extensions: ['po', 'mo'], format: FileFormat.svg },
+    {
+      icon: 'poedit',
+      extensions: ['po', 'mo'],
+      languages: [languages.po],
+      format: FileFormat.svg,
+    },
     {
       icon: 'poetry',
       extensions: [],
@@ -4140,7 +4162,12 @@ export const extensions: IFileCollection = {
       languages: [languages.sas],
       format: FileFormat.svg,
     },
-    { icon: 'sass', extensions: ['sass'], format: FileFormat.svg },
+    {
+      icon: 'sass',
+      extensions: ['sass'],
+      languages: [languages.sass],
+      format: FileFormat.svg,
+    },
     {
       icon: 'sbt',
       extensions: [],

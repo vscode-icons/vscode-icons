@@ -35,6 +35,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   blitzbasic: ILanguage;
   bolt: ILanguage;
   bosque: ILanguage;
+  browserslist: ILanguage;
   buf: ILanguage;
   // eslint-disable-next-line camelcase
   c_al: ILanguage;
@@ -62,15 +63,18 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dhall: ILanguage;
   django: ILanguage;
   dlang: ILanguage;
+  dockercompose: ILanguage;
   doctex: ILanguage;
   dotenv: ILanguage;
   dotjs: ILanguage;
   doxygen: ILanguage;
+  drawio: ILanguage;
   drools: ILanguage;
   dustjs: ILanguage;
   dylanlang: ILanguage;
   earthfile: ILanguage;
   edge: ILanguage;
+  editorconfig: ILanguage;
   eex: ILanguage;
   elastic: ILanguage;
   elixir: ILanguage;
@@ -171,6 +175,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   pip: ILanguage;
   platformio: ILanguage;
   plsql: ILanguage;
+  po: ILanguage;
   polymer: ILanguage;
   pony: ILanguage;
   postcss: ILanguage;
@@ -198,6 +203,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   robot: ILanguage;
   san: ILanguage;
   sas: ILanguage;
+  sass: ILanguage;
   sbt: ILanguage;
   scad: ILanguage;
   scala: ILanguage;
