@@ -268,6 +268,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   vba: ILanguage;
   vbscript: ILanguage;
   velocity: ILanguage;
+  vento: ILanguage;
   verilog: ILanguage;
   vhdl: ILanguage;
   viml: ILanguage;
