@@ -329,6 +329,7 @@ export const languages: ILanguageCollection = {
   sino: { ids: 'sino', defaultExtension: 'sn' },
   skipper: { ids: ['eskip'], defaultExtension: 'eskip' },
   smarty: { ids: ['smarty'], defaultExtension: 'tpl' },
+  snippets: { ids: 'snippets', defaultExtension: 'code-snippets' },
   snort: { ids: ['snort'], defaultExtension: 'snort' },
   solidity: { ids: ['solidity'], defaultExtension: 'sol' },
   sparql: { ids: 'sparql', defaultExtension: 'rq' },
