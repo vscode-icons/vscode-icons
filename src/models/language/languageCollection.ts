@@ -166,6 +166,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   ogone: ILanguage;
   openEdge: ILanguage;
   openHAB: ILanguage;
+  org: ILanguage;
   pascal: ILanguage;
   pddl: ILanguage;
   pddlplan: ILanguage;

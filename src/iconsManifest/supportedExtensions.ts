@@ -3325,7 +3325,12 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
-    { icon: 'org', extensions: ['org'], format: FileFormat.svg },
+    {
+      icon: 'org',
+      extensions: ['org'],
+      languages: [languages.org],
+      format: FileFormat.svg,
+    },
     {
       icon: 'outlook',
       extensions: ['pst', 'bcmx', 'otm', 'msg', 'oft'],
