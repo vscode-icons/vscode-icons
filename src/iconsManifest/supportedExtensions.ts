@@ -528,6 +528,8 @@ export const extensions: IFileCollection = {
     {
       icon: 'astro',
       extensions: ['astro'],
+      languages: [languages.astro],
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -536,6 +538,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['astro.config'],
       extensions: [],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts'],
+      light: true,
       format: FileFormat.svg,
     },
     {

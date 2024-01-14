@@ -26,6 +26,7 @@ export const languages: ILanguageCollection = {
     ],
     defaultExtension: 'asm',
   },
+  astro: { ids: 'astro', defaultExtension: 'astro' },
   ats: { ids: ['ats'], defaultExtension: 'ats' },
   autohotkey: { ids: 'ahk', defaultExtension: 'ahk' },
   autoit: { ids: 'autoit', defaultExtension: 'au3' },
