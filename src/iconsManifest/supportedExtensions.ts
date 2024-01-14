@@ -4294,7 +4294,12 @@ export const extensions: IFileCollection = {
       languages: [languages.slim],
       format: FileFormat.svg,
     },
-    { icon: 'sln', extensions: ['sln'], format: FileFormat.svg },
+    {
+      icon: 'sln',
+      extensions: ['sln'],
+      languages: [languages.sln],
+      format: FileFormat.svg,
+    },
     {
       icon: 'sln2',
       extensions: ['sln'],
