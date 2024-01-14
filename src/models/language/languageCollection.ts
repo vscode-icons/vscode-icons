@@ -202,6 +202,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   robot: ILanguage;
   san: ILanguage;
   sas: ILanguage;
+  sass: ILanguage;
   sbt: ILanguage;
   scad: ILanguage;
   scala: ILanguage;
