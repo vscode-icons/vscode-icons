@@ -17,6 +17,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   applescript: ILanguage;
   asciidoc: ILanguage;
   asp: ILanguage;
+  astro: ILanguage;
   ats: ILanguage;
   assembly: ILanguage;
   autohotkey: ILanguage;
@@ -35,6 +36,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   blitzbasic: ILanguage;
   bolt: ILanguage;
   bosque: ILanguage;
+  browserslist: ILanguage;
   buf: ILanguage;
   // eslint-disable-next-line camelcase
   c_al: ILanguage;
@@ -59,18 +61,22 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   cython: ILanguage;
   dal: ILanguage;
   dart: ILanguage;
+  debian: ILanguage;
   dhall: ILanguage;
   django: ILanguage;
   dlang: ILanguage;
+  dockercompose: ILanguage;
   doctex: ILanguage;
   dotenv: ILanguage;
   dotjs: ILanguage;
   doxygen: ILanguage;
+  drawio: ILanguage;
   drools: ILanguage;
   dustjs: ILanguage;
   dylanlang: ILanguage;
   earthfile: ILanguage;
   edge: ILanguage;
+  editorconfig: ILanguage;
   eex: ILanguage;
   elastic: ILanguage;
   elixir: ILanguage;
@@ -78,6 +84,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   erb: ILanguage;
   erlang: ILanguage;
   esphome: ILanguage;
+  excel: ILanguage;
   falcon: ILanguage;
   fauna: ILanguage;
   fortran: ILanguage;
@@ -93,6 +100,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   glsl: ILanguage;
   glyphs: ILanguage;
   gnuplot: ILanguage;
+  gomod: ILanguage;
+  gowork: ILanguage;
   grain: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;
@@ -162,6 +171,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   ogone: ILanguage;
   openEdge: ILanguage;
   openHAB: ILanguage;
+  org: ILanguage;
   pascal: ILanguage;
   pddl: ILanguage;
   pddlplan: ILanguage;
@@ -171,6 +181,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   pip: ILanguage;
   platformio: ILanguage;
   plsql: ILanguage;
+  po: ILanguage;
   polymer: ILanguage;
   pony: ILanguage;
   postcss: ILanguage;
@@ -198,6 +209,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   robot: ILanguage;
   san: ILanguage;
   sas: ILanguage;
+  sass: ILanguage;
   sbt: ILanguage;
   scad: ILanguage;
   scala: ILanguage;
@@ -206,10 +218,12 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   slang: ILanguage;
   slice: ILanguage;
   slim: ILanguage;
+  sln: ILanguage;
   silverstripe: ILanguage;
   sino: ILanguage;
   skipper: ILanguage;
   smarty: ILanguage;
+  snippets: ILanguage;
   snort: ILanguage;
   solidity: ILanguage;
   sparql: ILanguage;
@@ -226,6 +240,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   styled: ILanguage;
   stylus: ILanguage;
   svelte: ILanguage;
+  svg: ILanguage;
   swagger: ILanguage;
   swig: ILanguage;
   systemd: ILanguage;
@@ -233,6 +248,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   t4: ILanguage;
   tailwindcss: ILanguage;
   teal: ILanguage;
+  templ: ILanguage;
   templatetoolkit: ILanguage;
   tera: ILanguage;
   terraform: ILanguage;
@@ -266,6 +282,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   wolfram: ILanguage;
   wurst: ILanguage;
   wxml: ILanguage;
+  xcompose: ILanguage;
   xmake: ILanguage;
   xquery: ILanguage;
   yacc: ILanguage;
