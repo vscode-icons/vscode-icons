@@ -1329,6 +1329,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
+      icon: 'debian',
+      extensions: ['deb'],
+      languages: [languages.debian],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'deno',
       extensions: [],
       filenamesGlob: ['deno'],
