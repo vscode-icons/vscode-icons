@@ -3390,6 +3390,14 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'pandacss',
+      filenamesGlob: ['panda.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'mjs', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
     { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
     {
