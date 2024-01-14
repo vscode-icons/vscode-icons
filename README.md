@@ -6,7 +6,7 @@
 </h1>
 
 <h3>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h3>
-<p style="font-size:10px;">minimum supported version: <b>1.40.2</b></p>
+<p style="font-size:10px;">minimum supported version: <b>1.71.0</b></p>
 <br/>
 
 [![Version](https://img.shields.io/visual-studio-marketplace/v/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)

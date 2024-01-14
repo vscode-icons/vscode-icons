@@ -1,0 +1,38 @@
+name: Code Coverage
+
+on:
+  workflow_run:
+    workflows:
+      - Tests
+    types:
+      - completed
+
+jobs:
+  code-climate:
+    name: Send code coverage report to Code Climate
+    runs-on: ubuntu-latest
+    if: >
+      (
+        github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.event == 'pull_request' &&
+        github.repository_owner == 'vscode-icons' &&
+        github.actor != 'dependabot[bot]'
+      )
+    steps:
+      - name: Cloning repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          run_id: ${{ github.event.workflow_run.id }}
+          name: code-coverage-report
+
+      - name: Uploading code coverage report
+        uses: paambaati/codeclimate-action@v5
+        with:
+          coverageLocations: lcov.info:lcov
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}

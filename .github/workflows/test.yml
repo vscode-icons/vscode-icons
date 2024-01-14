@@ -1,0 +1,114 @@
+name: Tests
+
+on:
+  push:
+    tags-ignore:
+      - '*'
+    branches:
+      - 'master'
+      - 'main'
+  pull_request:
+    branches:
+      - 'master'
+      - 'main'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Node.js ${{ matrix.node }} | ${{ matrix.os }} | ${{ matrix.arch }}
+    strategy:
+      max-parallel: 3
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        # https://code.visualstudio.com/updates
+        # https://www.electronjs.org/releases/stable
+        # https://github.com/microsoft/vscode/blob/main/package.json#L138
+        node:
+          - 18.15.0 # vscode >= 1.82.0
+          - 16.17.1 # vscode >= 1.78.0 < 1.82.0
+          - 16.14.2 # vscode >= 1.71.0 < 1.78.0
+        arch:
+          - x64
+        experimental:
+          - false
+        include:
+          - os: ubuntu-latest
+            node: node # latest node
+            arch: x64
+            experimental: true
+          - os: macos-latest
+            node: node # latest node
+            arch: x64
+            experimental: true
+          - os: windows-latest
+            node: node # latest node
+            arch: x64
+            experimental: true
+          - os: ubuntu-latest
+            node: lts/* # latest lts node
+            arch: x64
+            experimental: true
+          - os: macos-latest
+            node: lts/* # latest lts node
+            arch: x64
+            experimental: true
+          - os: windows-latest
+            node: lts/* # latest lts node
+            arch: x64
+            experimental: true
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Setting up Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Cloning repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 5
+
+      - name: Installing Dependencies
+        run: npm ci
+
+      - name: Test
+        continue-on-error: ${{ matrix.experimental }}
+        run: npm test
+
+      - name: Uploading code coverage report
+        if: >
+          (
+            success() &&
+            matrix.os == 'ubuntu-latest' &&
+            matrix.node == '16.14.2' &&
+            github.event_name == 'push' &&
+            github.repository_owner == 'vscode-icons' &&
+            github.actor != 'dependabot[bot]'
+          )
+        uses: paambaati/codeclimate-action@v5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+
+      - name: Uploading code coverage artifact
+        if: >
+          (
+            success() &&
+            matrix.os == 'ubuntu-latest' &&
+            matrix.node == '16.14.2' &&
+            github.event_name == 'pull_request' &&
+            github.repository_owner == 'vscode-icons' &&
+            github.actor != 'dependabot[bot]'
+          )
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: coverage/lcov.info
+          retention-days: 1

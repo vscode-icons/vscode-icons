@@ -4,9 +4,9 @@ import {
   inject,
   injectable,
   METADATA_KEY,
+  interfaces,
 } from 'inversify';
-import { ServiceIdentifierOrFunc } from 'inversify/dts/annotation/inject';
-import { interfaces } from 'inversify/dts/interfaces/interfaces';
+import { ServiceIdentifierOrFunc } from 'inversify/lib/annotation/lazy_service_identifier';
 import 'reflect-metadata';
 import * as vscode from 'vscode';
 import { ExtensionManager } from '../app/extensionManager';
@@ -25,7 +25,9 @@ type Class = new (...args: unknown[]) => unknown;
 
 export class CompositionRootService implements ICompositionRootService {
   private readonly container: Container;
-  private injectableClasses: ReadonlyArray<[Class, ServiceIdentifierOrFunc[]]>;
+  private injectableClasses: ReadonlyArray<
+    [Class, Array<ServiceIdentifierOrFunc<symbol>>]
+  >;
 
   constructor(private context: models.IVSCodeExtensionContext) {
     this.container = new Container({ defaultScope: 'Singleton' });
@@ -41,7 +43,7 @@ export class CompositionRootService implements ICompositionRootService {
   public dispose(): void {
     this.injectableClasses
       .map(
-        (injectableClass: [Class, ServiceIdentifierOrFunc[]]) =>
+        (injectableClass: [Class, Array<ServiceIdentifierOrFunc<symbol>>]) =>
           injectableClass[0],
       )
       .forEach((klass: Class) => {
@@ -96,14 +98,16 @@ export class CompositionRootService implements ICompositionRootService {
 
   private initDecorations(): void {
     this.injectableClasses.forEach(
-      (injectableClass: [Class, ServiceIdentifierOrFunc[]]) => {
+      (injectableClass: [Class, Array<ServiceIdentifierOrFunc<symbol>>]) => {
         // declare classes as injectables
         const klass: Class = injectableClass[0];
         decorate(injectable(), klass);
         // declare injectable parameters
-        const params: ServiceIdentifierOrFunc[] = injectableClass[1];
-        params.forEach((identifier: ServiceIdentifierOrFunc, index: number) =>
-          decorate(inject(identifier), klass, index),
+        const params: Array<ServiceIdentifierOrFunc<symbol>> =
+          injectableClass[1];
+        params.forEach(
+          (identifier: ServiceIdentifierOrFunc<symbol>, index: number) =>
+            decorate(inject(identifier), klass, index),
         );
       },
     );

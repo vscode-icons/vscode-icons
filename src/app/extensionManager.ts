@@ -69,9 +69,11 @@ export class ExtensionManager implements models.IExtensionManager {
     await this.manageIntroMessage();
     await this.manageCustomizations();
 
-    const detectionResults: models.IProjectDetectionResult[] = await this.projectAutoDetectionManager.detectProjects(
-      [models.Projects.angular, models.Projects.nestjs],
-    );
+    const detectionResults: models.IProjectDetectionResult[] =
+      await this.projectAutoDetectionManager.detectProjects([
+        models.Projects.angular,
+        models.Projects.nestjs,
+      ]);
     await this.applyProjectDetection(detectionResults);
 
     // Update the version in settings
@@ -87,7 +89,8 @@ export class ExtensionManager implements models.IExtensionManager {
       this.vscodeManager.context.subscriptions.push(
         this.vscodeManager.commands.registerCommand(
           command.command,
-          Reflect.get(this, command.callbackName) || ((): void => void 0),
+          (Reflect.get(this, command.callbackName) as CallableFunction) ||
+            ((): void => void 0),
           this,
         ),
       ),
@@ -151,7 +154,7 @@ export class ExtensionManager implements models.IExtensionManager {
           default:
             break;
         }
-      } catch (error) {
+      } catch (error: unknown) {
         ErrorHandler.logError(error);
       }
     };
@@ -174,7 +177,7 @@ export class ExtensionManager implements models.IExtensionManager {
         default:
           break;
       }
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
   }
@@ -206,7 +209,7 @@ export class ExtensionManager implements models.IExtensionManager {
         );
         await this.handleAction(btn, callback, cbArgs);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
   }
@@ -521,8 +524,8 @@ export class ExtensionManager implements models.IExtensionManager {
         ? 'Disabled'
         : 'Enabled'
       : toggledValue
-      ? 'Enabled'
-      : 'Disabled';
+        ? 'Enabled'
+        : 'Disabled';
 
     if (!Reflect.has(models.LangResourceKeys, `${commandName}${action}`)) {
       throw Error(`${commandName}${action} is not valid`);
@@ -534,7 +537,7 @@ export class ExtensionManager implements models.IExtensionManager {
         models.LangResourceKeys[`${commandName}${action}`],
         models.LangResourceKeys.restart,
         models.LangResourceKeys.reload,
-      ],
+      ] as models.LangResourceLike[],
       // eslint-disable-next-line @typescript-eslint/unbound-method
       this.configManager.updatePreset,
       [presetName, toggledValue, configurationTarget],
@@ -592,7 +595,7 @@ export class ExtensionManager implements models.IExtensionManager {
       if (this.settingsManager.getState().status !== status) {
         try {
           await this.settingsManager.updateStatus(status);
-        } catch (error) {
+        } catch (error: unknown) {
           ErrorHandler.logError(error);
         }
       }

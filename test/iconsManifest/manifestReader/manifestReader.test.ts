@@ -252,9 +252,8 @@ describe('ManifestReader: tests', function () {
                 '"_fd_aws": {} }, "folderNames": { "aws": "_fd_aws" } }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              const sut = await ManifestReader.folderIconsDisabled(
-                'hideFolders',
-              );
+              const sut =
+                await ManifestReader.folderIconsDisabled('hideFolders');
 
               expect(sut).to.be.false;
             });
@@ -265,9 +264,8 @@ describe('ManifestReader: tests', function () {
                 '"folderNames": {} }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              const sut = await ManifestReader.folderIconsDisabled(
-                'hideFolders',
-              );
+              const sut =
+                await ManifestReader.folderIconsDisabled('hideFolders');
 
               expect(sut).to.be.false;
             });
@@ -278,9 +276,8 @@ describe('ManifestReader: tests', function () {
                 '"folderNames": {} }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              const sut = await ManifestReader.folderIconsDisabled(
-                'hideFolders',
-              );
+              const sut =
+                await ManifestReader.folderIconsDisabled('hideFolders');
 
               expect(sut).to.be.true;
             });
@@ -321,7 +318,7 @@ describe('ManifestReader: tests', function () {
                 '"_fd_aws": {} }, "folderNames": { "aws": "_fd_aws" } }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              Reflect.ownKeys(PresetNames)
+              void Reflect.ownKeys(PresetNames)
                 .filter(
                   (preset: string) =>
                     isNaN(parseInt(preset, 10)) &&

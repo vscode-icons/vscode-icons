@@ -9,6 +9,7 @@ export interface INativeLanguageCollection {
   coffeescript: ILanguage;
   cpp: ILanguage;
   css: ILanguage;
+  csv: ILanguage;
   diff: ILanguage;
   dockerfile: ILanguage;
   fsharp: ILanguage;
@@ -25,6 +26,7 @@ export interface INativeLanguageCollection {
   javascriptreact: ILanguage;
   json: ILanguage;
   jsonc: ILanguage;
+  jsonl: ILanguage;
   less: ILanguage;
   lua: ILanguage;
   makefile: ILanguage;
@@ -55,4 +57,5 @@ export interface INativeLanguageCollection {
   xml: ILanguage;
   xsl: ILanguage;
   yaml: ILanguage;
+  yarnlock: ILanguage;
 }

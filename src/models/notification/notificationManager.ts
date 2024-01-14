@@ -1,6 +1,6 @@
 import { LangResourceKeys } from '../i18n';
 
-export type LangResourceLike = string | LangResourceKeys;
+export type LangResourceLike = string | number | LangResourceKeys;
 
 export interface INotificationManager {
   notifyInfo(

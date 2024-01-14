@@ -70,9 +70,10 @@ describe('Specifications of supported folders: tests', function () {
 
             folders.supported.forEach((folder: IFolderExtension) => {
               folder.checked = true;
-              const otherDeclarations: IFolderExtension[] = folders.supported.filter(
-                (_folder: IFolderExtension) => checker(_folder, folder),
-              );
+              const otherDeclarations: IFolderExtension[] =
+                folders.supported.filter((_folder: IFolderExtension) =>
+                  checker(_folder, folder),
+                );
 
               expect(otherDeclarations).to.be.empty;
             });

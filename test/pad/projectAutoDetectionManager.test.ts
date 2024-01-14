@@ -30,15 +30,13 @@ describe('ProjectAutoDetectionManager: tests', function () {
     beforeEach(() => {
       sandbox = sinon.createSandbox();
 
-      configManagerStub = sandbox.createStubInstance<IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<IConfigManager>(ConfigManager);
 
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
 
-      vscodeManagerStub = sandbox.createStubInstance<IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({

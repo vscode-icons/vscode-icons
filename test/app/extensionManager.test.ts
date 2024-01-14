@@ -37,9 +37,8 @@ describe('ExtensionManager: tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
 
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
@@ -55,31 +54,29 @@ describe('ExtensionManager: tests', function () {
         executeCommand: executeCommandStub,
       }));
 
-      configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
-      settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager,
-      );
+      settingsManagerStub =
+        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
 
-      notifyManagerStub = sandbox.createStubInstance<
-        models.INotificationManager
-      >(NotificationManager);
+      notifyManagerStub =
+        sandbox.createStubInstance<models.INotificationManager>(
+          NotificationManager,
+        );
 
-      iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator,
-      );
+      iconsGeneratorStub =
+        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
 
-      padMngStub = sandbox.createStubInstance<
-        models.IProjectAutoDetectionManager
-      >(ProjectAutoDetectionManager);
+      padMngStub =
+        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+          ProjectAutoDetectionManager,
+        );
 
-      integrityManagerStub = sandbox.createStubInstance<
-        models.IIntegrityManager
-      >(IntegrityManager);
+      integrityManagerStub =
+        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
 
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
@@ -177,6 +174,7 @@ describe('ExtensionManager: tests', function () {
 
         expect(
           applyProjectDetectionStub.calledImmediatelyAfter(
+            // eslint-disable-next-line @typescript-eslint/unbound-method
             padMngStub.detectProjects,
           ),
         ).to.be.true;
@@ -201,15 +199,15 @@ describe('ExtensionManager: tests', function () {
 
         expect(
           settingsManagerStub.updateStatus.calledAfter(
+            // eslint-disable-next-line @typescript-eslint/unbound-method
             padMngStub.detectProjects,
           ),
         ).to.be.true;
 
         expect(vscodeManagerStub.isSupportedVersion).to.be.true;
         expect(settingsManagerStub.isNewVersion).to.be.true;
-        expect(
-          settingsManagerStub.updateStatus.calledOnceWithExactly(),
-        ).to.be.true;
+        expect(settingsManagerStub.updateStatus.calledOnceWithExactly()).to.be
+          .true;
         expect(notifyManagerStub.notifyError.called).to.be.false;
       });
 
@@ -234,9 +232,8 @@ describe('ExtensionManager: tests', function () {
 
           expect(vscodeManagerStub.isSupportedVersion).to.be.false;
           expect(notifyManagerStub.notifyError.called).to.be.true;
-          expect(
-            settingsManagerStub.moveStateFromLegacyPlace.called,
-          ).to.be.false;
+          expect(settingsManagerStub.moveStateFromLegacyPlace.called).to.be
+            .false;
           expect(registerCommandsStub.called).to.be.false;
           expect(manageIntroMessageStub.called).to.be.false;
           expect(manageCustomizationsStub.called).to.be.false;
@@ -451,9 +448,8 @@ describe('ExtensionManager: tests', function () {
               // @ts-ignore
               expect(extensionManager.customMsgShown).to.be.undefined;
               expect(executeAndReloadStub.called).to.be.false;
-              expect(
-                configManagerStub.updateDisableDetection.called,
-              ).to.be.false;
+              expect(configManagerStub.updateDisableDetection.called).to.be
+                .false;
               expect(configManagerStub.updateAutoReload.called).to.be.false;
               // @ts-ignore
               expect(extensionManager.doReload).to.be.false;
@@ -477,9 +473,8 @@ describe('ExtensionManager: tests', function () {
                 // @ts-ignore
                 expect(extensionManager.customMsgShown).to.be.undefined;
                 expect(executeAndReloadStub.called).to.be.false;
-                expect(
-                  configManagerStub.updateDisableDetection.called,
-                ).to.be.false;
+                expect(configManagerStub.updateDisableDetection.called).to.be
+                  .false;
                 expect(configManagerStub.updateAutoReload.called).to.be.false;
                 // @ts-ignore
                 expect(extensionManager.doReload).to.be.false;
@@ -507,9 +502,8 @@ describe('ExtensionManager: tests', function () {
                 // @ts-ignore
                 expect(extensionManager.customMsgShown).to.be.false;
                 expect(executeAndReloadStub.called).to.be.false;
-                expect(
-                  configManagerStub.updateDisableDetection.called,
-                ).to.be.false;
+                expect(configManagerStub.updateDisableDetection.called).to.be
+                  .false;
                 expect(configManagerStub.updateAutoReload.called).to.be.false;
                 // @ts-ignore
                 expect(extensionManager.doReload).to.be.false;
@@ -588,9 +582,8 @@ describe('ExtensionManager: tests', function () {
             expect(
               configManagerStub.updateAutoReload.calledOnceWithExactly(true),
             ).to.be.true;
-            expect(
-              handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs),
-            ).to.be.true;
+            expect(handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)).to
+              .be.true;
           });
         });
       });
@@ -619,9 +612,8 @@ describe('ExtensionManager: tests', function () {
             expect(configManagerStub.updateDisableDetection.called).to.be.false;
             expect(configManagerStub.updateAutoReload.called).to.be.false;
             expect(handleUpdatePresetStub.called).to.be.false;
-            expect(
-              executeAndReloadStub.calledOnceWithExactly(cb, undefined),
-            ).to.be.true;
+            expect(executeAndReloadStub.calledOnceWithExactly(cb, undefined)).to
+              .be.true;
           });
 
           it(`when callback arguments length is NOT the expected`, async function () {
@@ -648,9 +640,8 @@ describe('ExtensionManager: tests', function () {
             expect(configManagerStub.updateDisableDetection.called).to.be.false;
             expect(configManagerStub.updateAutoReload.called).to.be.false;
             expect(handleUpdatePresetStub.called).to.be.false;
-            expect(
-              executeAndReloadStub.calledOnceWithExactly(cb, cbArgs),
-            ).to.be.true;
+            expect(executeAndReloadStub.calledOnceWithExactly(cb, cbArgs)).to.be
+              .true;
           });
         });
 
@@ -677,9 +668,8 @@ describe('ExtensionManager: tests', function () {
             ).to.be.false;
             expect(configManagerStub.updateDisableDetection.called).to.be.false;
             expect(configManagerStub.updateAutoReload.called).to.be.false;
-            expect(
-              handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs),
-            ).to.be.true;
+            expect(handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)).to
+              .be.true;
           });
         });
       });
@@ -752,9 +742,8 @@ describe('ExtensionManager: tests', function () {
               models.ConfigurationTarget.Workspace,
             ),
           ).to.be.true;
-          expect(
-            handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs),
-          ).to.be.true;
+          expect(handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)).to.be
+            .true;
         });
 
         it('enables the NestJS icons, if they are selected', async function () {
@@ -773,9 +762,8 @@ describe('ExtensionManager: tests', function () {
               models.ConfigurationTarget.Workspace,
             ),
           ).to.be.true;
-          expect(
-            handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs),
-          ).to.be.true;
+          expect(handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)).to.be
+            .true;
         });
       });
     });
@@ -861,9 +849,8 @@ describe('ExtensionManager: tests', function () {
               expect(extensionManager.doReload).to.be.undefined;
               // @ts-ignore
               expect(extensionManager.callback).to.be.undefined;
-              expect(
-                configManagerStub.updateDisableDetection.called,
-              ).to.be.false;
+              expect(configManagerStub.updateDisableDetection.called).to.be
+                .false;
               expect(
                 configManagerStub.updateDontShowConfigManuallyChangedMessage
                   .called,
@@ -892,9 +879,8 @@ describe('ExtensionManager: tests', function () {
                 expect(extensionManager.callback).to.equal(
                   applyCustomizationStub,
                 );
-                expect(
-                  configManagerStub.updateDisableDetection.called,
-                ).to.be.false;
+                expect(configManagerStub.updateDisableDetection.called).to.be
+                  .false;
                 expect(
                   configManagerStub.updateDontShowConfigManuallyChangedMessage
                     .called,
