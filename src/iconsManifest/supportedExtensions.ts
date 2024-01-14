@@ -2551,7 +2551,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'juice',
       extensions: ['juice'],
-      languages: [languages.juice],
       format: FileFormat.svg,
     },
     {
