@@ -178,10 +178,11 @@ export class Utils {
     return newObj as T;
   }
 
-  public static open(
+  public static async open(
     target: string,
-    options?: Record<string, unknown>,
+    options?: open.Options,
   ): Promise<ChildProcess> {
-    return open(target, options);
+    await open(target, options);
+    return;
   }
 }

@@ -12,7 +12,10 @@
       "command": "npm",
       // show the output window only if unrecognized errors occur.
       "presentation": {
-        "reveal": "silent"
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "revealProblems": "onProblem",
+        "close": true
       },
       // we run the custom script "build:dev" as defined in package.json
       "args": ["run", "build:dev", "--loglevel", "silent"],

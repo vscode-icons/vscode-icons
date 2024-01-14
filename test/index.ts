@@ -2,33 +2,29 @@ import * as path from 'path';
 import * as Mocha from 'mocha';
 import * as glob from 'glob';
 
-export const run = (testsRoot: string): Promise<void> => {
+export const run = async (testsRoot: string): Promise<void | Error> => {
   const mocha = new Mocha({
     ui: 'bdd',
     timeout: 15000,
     color: true,
   });
-  return new Promise((res, rej) => {
-    glob('**/**.test.js', { cwd: testsRoot }, (error, files) => {
-      if (error) {
-        return rej(error);
-      }
-      try {
-        // Fill into Mocha
-        files.forEach((file: string) =>
-          mocha.addFile(path.join(testsRoot, file)),
-        );
-        // Run the tests
-        mocha.run((failures: number) => {
-          if (failures > 0) {
-            rej(new Error(`${failures} tests failed.`));
-          } else {
-            res();
-          }
-        });
-      } catch (err) {
-        return rej(err);
-      }
+  try {
+    // Add files into Mocha
+    const files: string[] = await glob.glob('**/**.test.js', {
+      cwd: testsRoot,
     });
-  });
+    files.forEach((file: string) => mocha.addFile(path.join(testsRoot, file)));
+    // Run the tests
+    mocha.run((failures: number) => {
+      if (failures > 0) {
+        throw new Error(`${failures} tests failed.`);
+      }
+      mocha.dispose();
+    });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return error;
+    }
+    throw new Error(`Failed to run tests: ${error as string}`);
+  }
 };

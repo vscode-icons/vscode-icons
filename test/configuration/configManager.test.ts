@@ -56,9 +56,8 @@ describe('ConfigManager: tests', function () {
         VSCODE_CWD: '/VSCode/Path/Insiders/To/OSS/Installation/Dev/Dir',
       });
 
-      vscodeManagerStub = sandbox.createStubInstance<IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
 
       getStub = sandbox.stub();
       inspectStub = sandbox.stub().returns({
@@ -970,9 +969,8 @@ describe('ConfigManager: tests', function () {
             expect(updateFileStub.calledOnce).to.be.true;
             expect(updateFileStub.firstCall.callback).to.be.a('function');
             expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
-            expect(
-              removeLastEntryTrailingCommaStub.returned(expected),
-            ).to.be.true;
+            expect(removeLastEntryTrailingCommaStub.returned(expected)).to.be
+              .true;
           });
 
           it('when there is an EOF extra line', async function () {
@@ -989,9 +987,8 @@ describe('ConfigManager: tests', function () {
             expect(updateFileStub.calledOnce).to.be.true;
             expect(updateFileStub.firstCall.callback).to.be.a('function');
             expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
-            expect(
-              removeLastEntryTrailingCommaStub.returned(expected),
-            ).to.be.true;
+            expect(removeLastEntryTrailingCommaStub.returned(expected)).to.be
+              .true;
           });
 
           it(`when the last entry is of 'object' type`, async function () {
@@ -1020,9 +1017,8 @@ describe('ConfigManager: tests', function () {
             expect(updateFileStub.calledOnce).to.be.true;
             expect(updateFileStub.firstCall.callback).to.be.a('function');
             expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
-            expect(
-              removeLastEntryTrailingCommaStub.returned(expected),
-            ).to.be.true;
+            expect(removeLastEntryTrailingCommaStub.returned(expected)).to.be
+              .true;
           });
 
           it(`when the last entry is of 'array' type`, async function () {
@@ -1053,9 +1049,8 @@ describe('ConfigManager: tests', function () {
             expect(updateFileStub.calledOnce).to.be.true;
             expect(updateFileStub.firstCall.callback).to.be.a('function');
             expect(removeLastEntryTrailingCommaStub.calledOnce).to.be.true;
-            expect(
-              removeLastEntryTrailingCommaStub.returned(expected),
-            ).to.be.true;
+            expect(removeLastEntryTrailingCommaStub.returned(expected)).to.be
+              .true;
           });
         });
       });
@@ -1164,9 +1159,8 @@ describe('ConfigManager: tests', function () {
         it(`it's an absolute path`, async function () {
           const customIconsDirPath = '/Path/To/Custom/Icons/Dir/';
 
-          const dirPath = await configManager.getCustomIconsDirPath(
-            customIconsDirPath,
-          );
+          const dirPath =
+            await configManager.getCustomIconsDirPath(customIconsDirPath);
 
           expect(dirPath).to.be.equal(customIconsDirPath);
         });
@@ -1175,9 +1169,8 @@ describe('ConfigManager: tests', function () {
           const customIconsDirPath = './Path/To/Custom/Icons/Dir/';
           vscodeManagerStub.getWorkspacePaths.returns(undefined);
 
-          const dirPath = await configManager.getCustomIconsDirPath(
-            customIconsDirPath,
-          );
+          const dirPath =
+            await configManager.getCustomIconsDirPath(customIconsDirPath);
 
           expect(dirPath).to.be.equal(customIconsDirPath);
         });
@@ -1186,9 +1179,8 @@ describe('ConfigManager: tests', function () {
           const customIconsDirPath = './Path/To/Custom/Icons/Dir/';
           vscodeManagerStub.getWorkspacePaths.returns([]);
 
-          const dirPath = await configManager.getCustomIconsDirPath(
-            customIconsDirPath,
-          );
+          const dirPath =
+            await configManager.getCustomIconsDirPath(customIconsDirPath);
 
           expect(dirPath).to.be.equal(customIconsDirPath);
         });
@@ -1201,9 +1193,8 @@ describe('ConfigManager: tests', function () {
           sandbox.stub(fsAsync, 'existsAsync').resolves(false);
           pathUnixJoinStub.returns(joinedDir);
 
-          const dirPath = await configManager.getCustomIconsDirPath(
-            customIconsDirPath,
-          );
+          const dirPath =
+            await configManager.getCustomIconsDirPath(customIconsDirPath);
 
           expect(dirPath).to.be.equal(joinedDir);
         });
@@ -1218,9 +1209,8 @@ describe('ConfigManager: tests', function () {
           sandbox.stub(fsAsync, 'existsAsync').resolves(true);
           pathUnixJoinStub.returns(joinedDir);
 
-          const dirPath = await configManager.getCustomIconsDirPath(
-            customIconsDirPath,
-          );
+          const dirPath =
+            await configManager.getCustomIconsDirPath(customIconsDirPath);
 
           expect(dirPath).to.be.equal(joinedDir);
         });
@@ -1232,18 +1222,16 @@ describe('ConfigManager: tests', function () {
         getStub.returns(constants.vsicons.name);
 
         expect(configManager.getIconTheme()).to.equal(constants.vsicons.name);
-        expect(
-          getStub.calledOnceWith(constants.vscode.iconThemeSetting),
-        ).to.be.true;
+        expect(getStub.calledOnceWith(constants.vscode.iconThemeSetting)).to.be
+          .true;
       });
 
       it(`returns 'undefined' if the icon theme setting does NOT exists`, function () {
         getStub.returns(undefined);
 
         expect(configManager.getIconTheme()).to.be.undefined;
-        expect(
-          getStub.calledOnceWith(constants.vscode.iconThemeSetting),
-        ).to.be.true;
+        expect(getStub.calledOnceWith(constants.vscode.iconThemeSetting)).to.be
+          .true;
       });
     });
 

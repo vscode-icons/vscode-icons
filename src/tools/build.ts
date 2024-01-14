@@ -11,7 +11,7 @@ const build = async (argv: string[]): Promise<void> => {
     const iconsGenerator: IIconsGenerator = new IconsGenerator();
     const iconsManifest = await iconsGenerator.generateIconsManifest();
     await iconsGenerator.persist(iconsManifest, /* updatePackageJson */ true);
-  } catch (error) {
+  } catch (error: unknown) {
     ErrorHandler.logError(error);
   }
 };
