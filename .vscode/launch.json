@@ -11,7 +11,6 @@
       "request": "launch",
       "runtimeExecutable": "${execPath}",
       "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
-      "stopOnEntry": false,
       "sourceMaps": true,
       "outFiles": ["${workspaceFolder}/out/src/**/*.js"],
       "preLaunchTask": "npm: build - dev"
@@ -36,13 +35,12 @@
         "--extensionDevelopmentPath=${workspaceFolder}",
         "--extensionTestsPath=${workspaceFolder}/out/test"
       ],
-      "stopOnEntry": false,
       "sourceMaps": true,
       "outFiles": [
         "${workspaceFolder}/out/test/**/*.js",
         "${workspaceFolder}/out/src/**/*.js"
       ],
-      "preLaunchTask": "npm: build - dev"
+      "preLaunchTask": "npm: build - dev",
     }
   ]
 }

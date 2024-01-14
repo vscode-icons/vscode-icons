@@ -8,7 +8,7 @@ import { IVSCodeConfigurationChangeEvent } from './vscodeConfigurationChangeEven
 
 export interface IVSCodeWorkspace {
   rootPath: string | undefined;
-  workspaceFolders: IVSCodeWorkspaceFolder[] | undefined;
+  workspaceFolders: readonly IVSCodeWorkspaceFolder[] | undefined;
   onDidChangeConfiguration: IVSCodeEvent<IVSCodeConfigurationChangeEvent>;
   getConfiguration(
     section?: string,
@@ -30,7 +30,8 @@ export type IVSCodeEvent<T> = (
 
 type GlobPattern = string | IVSCodeRelativePattern;
 
-interface IVSCodeRelativePattern {
+export interface IVSCodeRelativePattern {
+  baseUri: IVSCodeUri;
   base: string;
   pattern: string;
   new (base: IVSCodeWorkspaceFolder | string, pattern: string);

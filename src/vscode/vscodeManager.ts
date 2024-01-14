@@ -1,12 +1,12 @@
 import { coerce, gte, parse } from 'semver';
 import * as packageJson from '../../../package.json';
 import * as models from '../models';
-import { Utils } from '../utils';
 import {
   IPackageManifest,
-  IVSCodeManifest,
   IVSCodeIconTheme,
+  IVSCodeManifest,
 } from '../models/packageManifest';
+import { Utils } from '../utils';
 
 export class VSCodeManager implements models.IVSCodeManager {
   private appUserDirPath: string;
@@ -97,12 +97,12 @@ export class VSCodeManager implements models.IVSCodeManager {
     const appDataDirName = process.env.VSCODE_PORTABLE
       ? 'user-data'
       : isInsiders
-      ? 'Code - Insiders'
-      : isOSS
-      ? 'Code - OSS'
-      : isDev
-      ? 'code-oss-dev'
-      : 'Code';
+        ? 'Code - Insiders'
+        : isOSS
+          ? 'Code - OSS'
+          : isDev
+            ? 'code-oss-dev'
+            : 'Code';
     const appDataDirPath =
       process.env.VSCODE_PORTABLE || Utils.getAppDataDirPath();
     this.appUserDirPath = Utils.pathUnixJoin(

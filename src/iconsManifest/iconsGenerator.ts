@@ -109,7 +109,7 @@ export class IconsGenerator implements models.IIconsGenerator {
       console.info(
         `[${constants.extension.name}] Icons manifest file successfully generated!`,
       );
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
   }
@@ -194,7 +194,7 @@ export class IconsGenerator implements models.IIconsGenerator {
         Utils.pathUnixJoin(ConfigManager.rootDir, 'package.json'),
         replacer,
       );
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
   }

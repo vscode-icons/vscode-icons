@@ -40,8 +40,8 @@ export class SettingsManager implements ISettingsManager {
         constants.vsicons.name,
         state,
       );
-    } catch (reason) {
-      ErrorHandler.logError(reason);
+    } catch (error: unknown) {
+      ErrorHandler.logError(error);
     }
   }
 
@@ -60,7 +60,7 @@ export class SettingsManager implements ISettingsManager {
         constants.vsicons.name,
         undefined,
       );
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
   }
@@ -95,7 +95,7 @@ export class SettingsManager implements ISettingsManager {
         'utf8',
       );
       return Utils.parseJSONSafe<IState>(state) || SettingsManager.defaultState;
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error, true);
       return SettingsManager.defaultState;
     }
@@ -109,7 +109,7 @@ export class SettingsManager implements ISettingsManager {
     );
     try {
       await unlinkAsync(extensionSettingsLegacyFilePath);
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
   }

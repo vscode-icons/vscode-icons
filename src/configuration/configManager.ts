@@ -35,10 +35,6 @@ export class ConfigManager implements IConfigManager {
     return this.rootdir || resolve(dirname(__filename), '../../../');
   }
 
-  public static set rootDir(value: string) {
-    this.rootdir = value || this.rootdir;
-  }
-
   public static get outDir(): string {
     const dirName = constants.environment.production
       ? constants.extension.distDirName
@@ -63,7 +59,9 @@ export class ConfigManager implements IConfigManager {
   public get vsicons(): IVSIcons {
     // ALWAYS use 'getConfiguration' to get a fresh copy of the `vsicons` configurations
     const mergedConfig: IVSIcons = cloneDeep<IVSIcons>(
-      this.vscodeManager.workspace.getConfiguration()[constants.vsicons.name],
+      this.vscodeManager.workspace.getConfiguration()[
+        constants.vsicons.name
+      ] as IVSIcons,
     );
     const files: IPreset<IFileExtension[]> = this.configuration.inspect<
       IFileExtension[]
@@ -84,6 +82,10 @@ export class ConfigManager implements IConfigManager {
     return mergedConfig;
   }
 
+  public static set rootDir(value: string) {
+    this.rootdir = value || this.rootdir;
+  }
+
   public static async removeSettings(): Promise<void> {
     const isSingleInstallation = await this.isSingleInstallation();
     if (!isSingleInstallation) {
@@ -101,7 +103,7 @@ export class ConfigManager implements IConfigManager {
     };
     try {
       await Utils.updateFile(vscodeSettingsFilePath, replacer);
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
   }
@@ -124,12 +126,12 @@ export class ConfigManager implements IConfigManager {
     const vscodeAppName = /[\\|/]\.vscode-oss-dev/i.test(dirPath)
       ? 'code-oss-dev'
       : /[\\|/]\.vscode-oss/i.test(dirPath)
-      ? 'Code - OSS'
-      : /[\\|/]\.vscode-insiders/i.test(dirPath)
-      ? 'Code - Insiders'
-      : /[\\|/]\.vscode/i.test(dirPath)
-      ? 'Code'
-      : 'user-data';
+        ? 'Code - OSS'
+        : /[\\|/]\.vscode-insiders/i.test(dirPath)
+          ? 'Code - Insiders'
+          : /[\\|/]\.vscode/i.test(dirPath)
+            ? 'Code'
+            : 'user-data';
     // workaround until `process.env.VSCODE_PORTABLE` gets available
     const vscodePortable = async (): Promise<string> => {
       if (vscodeAppName !== 'user-data') {
