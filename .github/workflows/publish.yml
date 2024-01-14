@@ -6,7 +6,7 @@ env:
 on:
   push:
     tags:
-      - "v*.*.*"
+      - 'v*.*.*'
   workflow_dispatch:
 
 jobs:
@@ -43,6 +43,7 @@ jobs:
           tag: ${{ github.ref }}
 
       - name: Publish to Open VSX Registry
+        continue-on-error: true
         uses: HaaLeo/publish-vscode-extension@v1
         with:
           pat: ${{ secrets.OPEN_VSX_TOKEN }}
@@ -54,4 +55,3 @@ jobs:
           pat: ${{ secrets.VSCE_TOKEN }}
           registryUrl: https://marketplace.visualstudio.com
           extensionFile: ${{ steps.packageExtension.outputs.vsixPath }}
-
