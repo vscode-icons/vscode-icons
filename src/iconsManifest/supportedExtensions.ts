@@ -3407,6 +3407,14 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'pdm',
+      extensions: ['.pdm-python'],
+      filenamesGlob: ['pdm'],
+      extensionsGlob: ['lock', 'toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       // Taken from https://peeky.dev/logo.svg
       icon: 'peeky',
       // See: https://peeky.dev/guide/config.html
