@@ -5318,6 +5318,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'xorg',
+      extensions: ['.xcompose'],
+      filename: true,
+      languages: [languages.xcompose],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'xquery',
       extensions: [],
       languages: [languages.xquery],
