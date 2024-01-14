@@ -350,6 +350,7 @@ export const languages: ILanguageCollection = {
   styled: { ids: 'source.css.styled', defaultExtension: 'styled' },
   stylus: { ids: 'stylus', defaultExtension: 'styl' },
   svelte: { ids: 'svelte', defaultExtension: 'svelte' },
+  svg: { ids: 'svg', defaultExtension: 'svg' },
   swagger: { ids: ['Swagger', 'swagger'], defaultExtension: 'swagger' },
   swift: { ids: 'swift', defaultExtension: 'swift' },
   swig: { ids: 'swig', defaultExtension: 'swig' },
