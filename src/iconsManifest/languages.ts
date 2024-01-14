@@ -195,6 +195,7 @@ export const languages: ILanguageCollection = {
   },
   json: { ids: 'json', defaultExtension: 'json' },
   jsonc: { ids: 'jsonc', defaultExtension: 'jsonc' },
+  jsonl: { ids: 'jsonl', defaultExtension: 'jsonl' },
   jsonnet: { ids: 'jsonnet', defaultExtension: 'jsonnet' },
   json5: { ids: 'json5', defaultExtension: 'json5' },
   julia: { ids: ['julia', 'juliamarkdown'], defaultExtension: 'jl' },
