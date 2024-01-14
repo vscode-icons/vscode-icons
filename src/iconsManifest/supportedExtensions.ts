@@ -2555,6 +2555,11 @@ export const extensions: IFileCollection = {
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
     { icon: 'jss', extensions: ['jss'], format: FileFormat.svg },
     {
+      icon: 'juice',
+      extensions: ['juice'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'julia',
       extensions: [],
       languages: [languages.julia],
