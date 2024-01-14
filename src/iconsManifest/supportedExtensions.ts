@@ -786,6 +786,7 @@ export const extensions: IFileCollection = {
       icon: 'browserslist',
       extensions: ['.browserslistrc', 'browserslist'],
       filename: true,
+      languages: [languages.browserslist],
       format: FileFormat.svg,
     },
     {

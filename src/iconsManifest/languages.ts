@@ -47,6 +47,7 @@ export const languages: ILanguageCollection = {
   blitzbasic: { ids: ['blitzbasic'], defaultExtension: 'blitzbasic' },
   bolt: { ids: 'bolt', defaultExtension: 'bolt' },
   bosque: { ids: 'bosque', defaultExtension: 'bsq' },
+  browserslist: { ids: 'browserslist', defaultExtension: 'browserslist' },
   buf: { ids: ['buf', 'buf-gen'], defaultExtension: 'buf.yaml' },
   c: { ids: 'c', defaultExtension: 'c' },
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
