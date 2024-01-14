@@ -150,6 +150,8 @@ export const languages: ILanguageCollection = {
   glyphs: { ids: 'glyphs', defaultExtension: 'glyphs' },
   gnuplot: { ids: 'gnuplot', defaultExtension: 'gp' },
   go: { ids: 'go', defaultExtension: 'go' },
+  gomod: { ids: 'go.mod', defaultExtension: 'mod' },
+  gowork: { ids: 'go.work', defaultExtension: 'work' },
   goctl: { ids: 'goctl', defaultExtension: 'api' },
   gdscript: { ids: 'gdscript', defaultExtension: 'gd' },
   grain: { ids: 'grain', defaultExtension: 'gr' },
