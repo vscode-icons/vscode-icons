@@ -82,6 +82,7 @@ export const languages: ILanguageCollection = {
   django: { ids: ['django-html', 'django-txt'], defaultExtension: 'html' },
   diff: { ids: 'diff', defaultExtension: 'diff' },
   dlang: { ids: ['d', 'dscript', 'dml', 'diet'], defaultExtension: 'd' },
+  dockercompose: { ids: 'dockercompose', defaultExtension: 'yml' },
   dockerfile: { ids: 'dockerfile', defaultExtension: 'dockerfile' },
   doctex: { ids: 'doctex', defaultExtension: 'dtx' },
   dotenv: { ids: ['dotenv', 'env'], defaultExtension: 'env' },
