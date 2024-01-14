@@ -94,6 +94,7 @@ export const languages: ILanguageCollection = {
   dylanlang: { ids: ['dylan', 'dylan-lid'], defaultExtension: 'dylan' },
   earthfile: { ids: 'earthfile', defaultExtension: 'earthfile' },
   edge: { ids: 'edge', defaultExtension: 'edge' },
+  editorconfig: { ids: 'editorconfig', defaultExtension: 'editorconfig' },
   eex: { ids: ['eex', 'html-eex'], defaultExtension: 'eex' },
   elastic: { ids: 'es', defaultExtension: 'es' },
   elixir: { ids: 'elixir', defaultExtension: 'ex' },

@@ -74,6 +74,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   dylanlang: ILanguage;
   earthfile: ILanguage;
   edge: ILanguage;
+  editorconfig: ILanguage;
   eex: ILanguage;
   elastic: ILanguage;
   elixir: ILanguage;
