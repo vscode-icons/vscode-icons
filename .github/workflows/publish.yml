@@ -1,7 +1,7 @@
 name: Publish Extension
 
 env:
-  NODE_VERSION: 14.14.0
+  NODE_VERSION: 16.14.2
 
 on:
   push:
@@ -13,13 +13,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: 'Setting up Node.js ${{ env.NODE_VERSION }}'
+      - name: Setting up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cloning repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: npm ci
