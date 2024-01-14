@@ -18,13 +18,15 @@ export class ManifestReader {
         models.PresetNames.hideFolders,
         models.PresetNames.foldersAllDefaultIcon,
       ].some((prst: models.PresetNames) => prst === preset);
-    const presetName = models.PresetNames[preset];
+    const presetName: string = models.PresetNames[preset];
+    const iconName: string =
+      models.IconNames[presetName as keyof typeof models.IconNames]?.toString();
 
     return isNonIconsRelatedPreset()
       ? !presets[presetName]
       : isFoldersRelatedPreset()
-      ? !(await ManifestReader.folderIconsDisabled(presetName))
-      : ManifestReader.iconsDisabled(models.IconNames[presetName]);
+        ? !(await ManifestReader.folderIconsDisabled(presetName))
+        : ManifestReader.iconsDisabled(iconName);
   }
 
   public static async iconsDisabled(
@@ -32,9 +34,8 @@ export class ManifestReader {
     isFile = true,
   ): Promise<boolean> {
     const iconManifest: string = await this.getIconManifest();
-    const iconsJson: models.IIconSchema = Utils.parseJSONSafe<
-      models.IIconSchema
-    >(iconManifest);
+    const iconsJson: models.IIconSchema =
+      Utils.parseJSONSafe<models.IIconSchema>(iconManifest);
     const prefix: string = isFile
       ? constants.iconsManifest.definitionFilePrefix
       : constants.iconsManifest.definitionFolderPrefix;
@@ -46,10 +47,9 @@ export class ManifestReader {
     const defNamePattern = `${prefix}${name}${suffix}`;
     return (
       !iconsJson ||
-      !Reflect.ownKeys(
-        iconsJson.iconDefinitions,
-      ).filter((key: string | number | symbol) =>
-        key.toString().startsWith(defNamePattern),
+      !Reflect.ownKeys(iconsJson.iconDefinitions).filter(
+        (key: string | number | symbol) =>
+          key.toString().startsWith(defNamePattern),
       ).length
     );
   }
@@ -58,9 +58,8 @@ export class ManifestReader {
     presetName: string,
   ): Promise<boolean> {
     const manifest: string = await this.getIconManifest();
-    const iconsJson: models.IIconSchema = Utils.parseJSONSafe<
-      models.IIconSchema
-    >(manifest);
+    const iconsJson: models.IIconSchema =
+      Utils.parseJSONSafe<models.IIconSchema>(manifest);
     if (!iconsJson) {
       return true;
     }

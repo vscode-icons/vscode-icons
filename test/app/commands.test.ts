@@ -32,9 +32,8 @@ describe('ExtensionManager: commands tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -48,28 +47,26 @@ describe('ExtensionManager: commands tests', function () {
         executeCommand: sandbox.stub(),
       }));
 
-      configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
 
-      settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager,
-      );
-      notifyManagerStub = sandbox.createStubInstance<
-        models.INotificationManager
-      >(NotificationManager);
+      settingsManagerStub =
+        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
+      notifyManagerStub =
+        sandbox.createStubInstance<models.INotificationManager>(
+          NotificationManager,
+        );
 
-      iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator,
-      );
+      iconsGeneratorStub =
+        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
 
-      padMngStub = sandbox.createStubInstance<
-        models.IProjectAutoDetectionManager
-      >(ProjectAutoDetectionManager);
+      padMngStub =
+        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+          ProjectAutoDetectionManager,
+        );
 
-      integrityManagerStub = sandbox.createStubInstance<
-        models.IIntegrityManager
-      >(IntegrityManager);
+      integrityManagerStub =
+        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
 
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
@@ -131,30 +128,30 @@ describe('ExtensionManager: commands tests', function () {
         registerCommandStub.callArg(1);
 
         expect(reflectGetSpy.returned(undefined)).to.be.true;
-        expect(
-          registerCommandStub.calledOnceWith(commands[0].command),
-        ).to.be.true;
+        expect(registerCommandStub.calledOnceWith(commands[0].command)).to.be
+          .true;
       });
     });
 
     context(`the activation command`, function () {
       it(`updates the icon theme setting`, function () {
-        // @ts-ignore
-        const activationCommand = extensionManager.activationCommand as () => void;
+        const activationCommand =
+          // @ts-ignore
+          extensionManager.activationCommand as () => void;
 
         activationCommand.call(extensionManager);
 
-        expect(
-          configManagerStub.updateIconTheme.calledOnceWithExactly(),
-        ).to.be.true;
+        expect(configManagerStub.updateIconTheme.calledOnceWithExactly()).to.be
+          .true;
       });
     });
 
     context(`the apply customization command`, function () {
       context(`shows the customization message`, function () {
         it(`with 'applyCustomization' as callback`, function () {
-          // @ts-ignore
-          const applyCustomizationCommand = extensionManager.applyCustomizationCommand as () => void;
+          const applyCustomizationCommand =
+            // @ts-ignore
+            extensionManager.applyCustomizationCommand as () => void;
           const applyCustomizationStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -182,8 +179,9 @@ describe('ExtensionManager: commands tests', function () {
     context(`the restore default manifest command`, function () {
       context(`shows the customization message`, function () {
         it(`with 'restoreManifest' as callback`, function () {
-          // @ts-ignore
-          const restoreDefaultManifestCommand = extensionManager.restoreDefaultManifestCommand as () => void;
+          const restoreDefaultManifestCommand =
+            // @ts-ignore
+            extensionManager.restoreDefaultManifestCommand as () => void;
           const restoreManifestStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -278,8 +276,9 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle js preset command`, function () {
       it(`toggles the js preset`, function () {
-        // @ts-ignore
-        const toggleJsPresetCommand = extensionManager.toggleJsPresetCommand as () => void;
+        const toggleJsPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleJsPresetCommand as () => void;
 
         toggleJsPresetCommand.call(extensionManager);
 
@@ -296,8 +295,9 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle ts preset command`, function () {
       it(`toggles the ts preset`, function () {
-        // @ts-ignore
-        const toggleTsPresetCommand = extensionManager.toggleTsPresetCommand as () => void;
+        const toggleTsPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleTsPresetCommand as () => void;
 
         toggleTsPresetCommand.call(extensionManager);
 
@@ -314,8 +314,9 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle json preset command`, function () {
       it(`toggles the json preset`, function () {
-        // @ts-ignore
-        const toggleJsonPresetCommand = extensionManager.toggleJsonPresetCommand as () => void;
+        const toggleJsonPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleJsonPresetCommand as () => void;
 
         toggleJsonPresetCommand.call(extensionManager);
 

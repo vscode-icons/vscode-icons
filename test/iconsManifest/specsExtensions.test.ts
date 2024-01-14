@@ -64,9 +64,10 @@ describe('Specifications of supported extensions: tests', function () {
 
             files.supported.forEach((file: IFileExtension) => {
               file.checked = true;
-              const otherDeclarations: IFileExtension[] = files.supported.filter(
-                (_file: IFileExtension) => checker(_file, file),
-              );
+              const otherDeclarations: IFileExtension[] =
+                files.supported.filter((_file: IFileExtension) =>
+                  checker(_file, file),
+                );
 
               expect(otherDeclarations).to.be.empty;
             });

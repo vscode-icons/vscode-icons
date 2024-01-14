@@ -32,7 +32,8 @@ jobs:
         # https://www.electronjs.org/releases/stable
         # https://github.com/microsoft/vscode/blob/main/package.json#L138
         node:
-          - 16.17.1 # vscode >= 1.78.0
+          - 18.15.0 # vscode >= 1.82.0
+          - 16.17.1 # vscode >= 1.78.0 < 1.82.0
           - 16.14.2 # vscode >= 1.71.0 < 1.78.0
         arch:
           - x64

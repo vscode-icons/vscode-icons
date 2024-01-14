@@ -37,9 +37,8 @@ describe('ExtensionManager: messages tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -47,34 +46,32 @@ describe('ExtensionManager: messages tests', function () {
         onDidChangeConfiguration: sandbox.stub(),
       }));
 
-      configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
-      settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager,
-      );
+      settingsManagerStub =
+        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
       isNewVersionStub = sandbox
         .stub(settingsManagerStub, 'isNewVersion')
         .get(() => false);
 
-      notifyManagerStub = sandbox.createStubInstance<
-        models.INotificationManager
-      >(NotificationManager);
+      notifyManagerStub =
+        sandbox.createStubInstance<models.INotificationManager>(
+          NotificationManager,
+        );
 
-      iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator,
-      );
+      iconsGeneratorStub =
+        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
 
-      padMngStub = sandbox.createStubInstance<
-        models.IProjectAutoDetectionManager
-      >(ProjectAutoDetectionManager);
+      padMngStub =
+        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+          ProjectAutoDetectionManager,
+        );
 
-      integrityManagerStub = sandbox.createStubInstance<
-        models.IIntegrityManager
-      >(IntegrityManager);
+      integrityManagerStub =
+        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
 
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
@@ -180,9 +177,8 @@ describe('ExtensionManager: messages tests', function () {
 
             expect(settingsManagerStub.isNewVersion).to.be.true;
             expect(showWelcomeMessageStub.called).to.be.false;
-            expect(
-              showNewVersionMessageStub.calledOnceWithExactly(),
-            ).to.be.true;
+            expect(showNewVersionMessageStub.calledOnceWithExactly()).to.be
+              .true;
           });
 
           it(`when the 'dontShowNewVersionMessage' setting is 'false'`, async function () {
@@ -190,9 +186,8 @@ describe('ExtensionManager: messages tests', function () {
 
             expect(settingsManagerStub.isNewVersion).to.be.true;
             expect(showWelcomeMessageStub.called).to.be.false;
-            expect(
-              showNewVersionMessageStub.calledOnceWithExactly(),
-            ).to.be.true;
+            expect(showNewVersionMessageStub.calledOnceWithExactly()).to.be
+              .true;
           });
         });
 
@@ -247,9 +242,8 @@ describe('ExtensionManager: messages tests', function () {
             await manageCustomizations.call(extensionManager);
 
             expect(settingsManagerStub.isNewVersion).to.be.true;
-            expect(
-              applyCustomizationCommandStub.calledOnceWithExactly(),
-            ).to.be.true;
+            expect(applyCustomizationCommandStub.calledOnceWithExactly()).to.be
+              .true;
           });
         });
       });
@@ -386,9 +380,8 @@ describe('ExtensionManager: messages tests', function () {
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
-            expect(
-              openStub.calledOnceWithExactly(constants.urlOfficialApi),
-            ).to.be.true;
+            expect(openStub.calledOnceWithExactly(constants.urlOfficialApi)).to
+              .be.true;
           });
         });
 
@@ -410,9 +403,8 @@ describe('ExtensionManager: messages tests', function () {
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
-            expect(
-              openStub.calledOnceWithExactly(constants.urlReadme),
-            ).to.be.true;
+            expect(openStub.calledOnceWithExactly(constants.urlReadme)).to.be
+              .true;
           });
         });
       });
@@ -458,9 +450,8 @@ describe('ExtensionManager: messages tests', function () {
               ),
             ).to.be.true;
             expect(openStub.called).to.be.false;
-            expect(
-              configManagerStub.updateDontShowNewVersionMessage.called,
-            ).to.be.false;
+            expect(configManagerStub.updateDontShowNewVersionMessage.called).to
+              .be.false;
           });
         });
 
@@ -480,9 +471,8 @@ describe('ExtensionManager: messages tests', function () {
                 models.LangResourceKeys.dontShowThis,
               ),
             ).to.be.true;
-            expect(
-              openStub.calledOnceWithExactly(constants.urlReleaseNote),
-            ).to.be.true;
+            expect(openStub.calledOnceWithExactly(constants.urlReleaseNote)).to
+              .be.true;
           });
         });
 
@@ -557,9 +547,8 @@ describe('ExtensionManager: messages tests', function () {
               ...items,
             ),
           ).to.be.true;
-          expect(
-            handleActionStub.calledOnceWithExactly('btn', cb, cbArgs),
-          ).to.be.true;
+          expect(handleActionStub.calledOnceWithExactly('btn', cb, cbArgs)).to
+            .be.true;
         });
       });
 

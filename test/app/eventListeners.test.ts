@@ -37,9 +37,8 @@ describe('ExtensionManager: event listeners tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -48,30 +47,28 @@ describe('ExtensionManager: event listeners tests', function () {
         onDidChangeConfiguration: onDidChangeConfigurationStub,
       }));
 
-      configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
-      settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager,
-      );
-      notifyManagerStub = sandbox.createStubInstance<
-        models.INotificationManager
-      >(NotificationManager);
+      settingsManagerStub =
+        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
+      notifyManagerStub =
+        sandbox.createStubInstance<models.INotificationManager>(
+          NotificationManager,
+        );
 
-      iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator,
-      );
+      iconsGeneratorStub =
+        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
 
-      padMngStub = sandbox.createStubInstance<
-        models.IProjectAutoDetectionManager
-      >(ProjectAutoDetectionManager);
+      padMngStub =
+        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+          ProjectAutoDetectionManager,
+        );
 
-      integrityManagerStub = sandbox.createStubInstance<
-        models.IIntegrityManager
-      >(IntegrityManager);
+      integrityManagerStub =
+        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
 
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
@@ -270,9 +267,8 @@ describe('ExtensionManager: event listeners tests', function () {
 
               timer.tick(500);
 
-              expect(
-                executeAndReloadStub.calledOnceWithExactly(undefined),
-              ).to.be.true;
+              expect(executeAndReloadStub.calledOnceWithExactly(undefined)).to
+                .be.true;
 
               timer.restore();
             });
@@ -358,7 +354,8 @@ describe('ExtensionManager: event listeners tests', function () {
                 });
 
                 it(`when set NOT to show the custom message`, function () {
-                  configManagerStub.vsicons.dontShowConfigManuallyChangedMessage = true;
+                  configManagerStub.vsicons.dontShowConfigManuallyChangedMessage =
+                    true;
 
                   onDidChangeConfigurationStub.callArgOnWith(
                     0,
