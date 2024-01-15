@@ -4385,6 +4385,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'snakemake',
+      languages: [languages.snakemake],
+      extensions: [],
+      extensionsGlob: ['.smk', '.Snakefile'],
+      filenamesGlob: ['Snakefile'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'snapcraft',
       extensions: ['snapcraft.yaml'],
       filename: true,
