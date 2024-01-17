@@ -44,6 +44,7 @@ export const languages: ILanguageCollection = {
   bicep: { ids: 'bicep', defaultExtension: 'bicep' },
   bibtex: { ids: 'bibtex', defaultExtension: 'bib' },
   biml: { ids: 'biml', defaultExtension: 'biml' },
+  binary: { ids: 'code-text-binary', defaultExtension: 'bin' },
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
   blitzbasic: { ids: ['blitzbasic'], defaultExtension: 'blitzbasic' },
   bolt: { ids: 'bolt', defaultExtension: 'bolt' },

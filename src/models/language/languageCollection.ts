@@ -32,6 +32,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   befunge: ILanguage;
   bibtex: ILanguage;
   biml: ILanguage;
+  binary: ILanguage;
   blade: ILanguage;
   blitzbasic: ILanguage;
   bolt: ILanguage;
