@@ -741,6 +741,7 @@ export const extensions: IFileCollection = {
         'scptd',
         'so',
       ],
+      languages: [languages.binary],
       format: FileFormat.svg,
     },
     {
