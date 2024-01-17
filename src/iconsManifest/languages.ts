@@ -299,7 +299,10 @@ export const languages: ILanguageCollection = {
   processinglang: { ids: 'pde', defaultExtension: 'pde' },
   prolog: { ids: 'prolog', defaultExtension: 'pro' },
   prometheus: { ids: 'prometheus', defaultExtension: 'rules' },
-  properties: { ids: 'properties', defaultExtension: 'properties' },
+  properties: {
+    ids: ['java-properties', 'properties'],
+    defaultExtension: 'properties',
+  },
   protobuf: { ids: ['proto3', 'proto'], defaultExtension: 'proto' },
   pug: { ids: 'jade', defaultExtension: 'pug' },
   puppet: { ids: 'puppet', defaultExtension: 'pp' },
