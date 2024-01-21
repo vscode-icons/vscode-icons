@@ -163,6 +163,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mongo: ILanguage;
   mson: ILanguage;
   nearley: ILanguage;
+  nginx: ILanguage;
   nim: ILanguage;
   nimble: ILanguage;
   nix: ILanguage;
