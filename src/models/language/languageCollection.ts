@@ -200,6 +200,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   qsharp: ILanguage;
   racket: ILanguage;
   raml: ILanguage;
+  rast: ILanguage;
   reason: ILanguage;
   red: ILanguage;
   rescript: ILanguage;

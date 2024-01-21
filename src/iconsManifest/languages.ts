@@ -314,6 +314,7 @@ export const languages: ILanguageCollection = {
   racket: { ids: 'racket', defaultExtension: 'rkt' },
   razor: { ids: ['razor', 'aspnetcorerazor'], defaultExtension: 'cshtml' },
   raml: { ids: 'raml', defaultExtension: 'raml' },
+  rast: { ids: 'ra_syntax_tree', defaultExtension: 'rast' },
   reason: { ids: 'reason', defaultExtension: 're' },
   red: { ids: 'red', defaultExtension: 'red' },
   rescript: { ids: 'rescript', defaultExtension: 'res' },
