@@ -258,6 +258,7 @@ export const languages: ILanguageCollection = {
   mongo: { ids: 'mongo', defaultExtension: 'mongo' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
   nearley: { ids: 'nearley', defaultExtension: 'ne' },
+  nginx: { ids: ['nginx'], defaultExtension: 'nginx' },
   nim: { ids: 'nim', defaultExtension: 'nim' },
   nimble: { ids: 'nimble', defaultExtension: 'nimble' },
   nix: { ids: 'nix', defaultExtension: 'nix' },
