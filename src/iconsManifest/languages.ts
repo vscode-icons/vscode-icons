@@ -155,6 +155,7 @@ export const languages: ILanguageCollection = {
   gowork: { ids: 'go.work', defaultExtension: 'work' },
   goctl: { ids: 'goctl', defaultExtension: 'api' },
   gdscript: { ids: 'gdscript', defaultExtension: 'gd' },
+  gradle: { ids: 'gradle-kotlin-dsl', defaultExtension: 'gradle.kts' },
   grain: { ids: 'grain', defaultExtension: 'gr' },
   graphql: { ids: 'graphql', defaultExtension: 'gql' },
   graphviz: { ids: 'dot', defaultExtension: 'gv' },
