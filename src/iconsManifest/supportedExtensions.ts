@@ -4008,6 +4008,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ra_syntax_tree',
+      extensions: ['rast'],
+      languages: [languages.rast],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'razor',
       extensions: [],
       languages: [languages.razor],
