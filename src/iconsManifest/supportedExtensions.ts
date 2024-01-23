@@ -4739,6 +4739,13 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'tmux',
+      extensions: ['.tmux.conf'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'todo', extensions: ['todo'], light: true, format: FileFormat.svg },
     {
       icon: 'toit',
