@@ -6,7 +6,7 @@
   <style>
     @import url("https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css");
 
-    svg {
+    tspan {
       font-family: 'Hack', monospace;
     }
   </style>
