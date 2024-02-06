@@ -2,63 +2,45 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg width="135.46666mm" height="135.46666mm" viewBox="0 0 135.46666 135.46666" version="1.1" id="svg1"
-  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-  <style>
-    @import url("https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css");
-
-    tspan {
-      font-family: 'Hack', monospace;
-    }
-  </style>
-  <defs id="defs1">
-    <linearGradient id="linearGradient111">
-      <stop style="stop-color:#ffffff;stop-opacity:1;" offset="0" id="stop111" />
-    </linearGradient>
-    <linearGradient id="linearGradient110">
-      <stop style="stop-color:#6d67fb;stop-opacity:1;" offset="0" id="stop110" />
-    </linearGradient>
-    <linearGradient id="linearGradient24">
-      <stop style="stop-color:#0900ec;stop-opacity:0.40671641;" offset="0" id="stop26" />
-      <stop style="stop-color:#1f0a35;stop-opacity:1;" offset="1" id="stop25" />
-    </linearGradient>
-    <radialGradient xlink:href="#linearGradient111" id="radialGradient37-1" cx="90.01741" cy="85.048279" fx="90.01741"
-      fy="85.048279" r="44.651917" gradientTransform="matrix(1,0,0,0.73528271,-2.6458725,22.513711)"
-      gradientUnits="userSpaceOnUse" />
-    <radialGradient xlink:href="#linearGradient110" id="radialGradient37-1-4" cx="90.01741" cy="85.048279" fx="90.01741"
-      fy="85.048279" r="44.651917" gradientTransform="matrix(1,0,0,0.73528271,-2.6458735,22.513715)"
-      gradientUnits="userSpaceOnUse" />
-    <filter style="color-interpolation-filters:sRGB" id="filter110" x="-0.082944936" y="-0.11949119" width="1.1658899"
-      height="1.2389824">
-      <feGaussianBlur stdDeviation="1.6025906" id="feGaussianBlur110" />
-    </filter>
-    <radialGradient xlink:href="#linearGradient24" id="radialGradient26-3" cx="31.982552" cy="99.438805" fx="31.982552"
-      fy="99.438805" r="67.73333" gradientUnits="userSpaceOnUse"
-      gradientTransform="matrix(-0.53334102,2.2923877,-2.4225986,-0.56363547,288.78309,-14.387249)" />
-  </defs>
-  <g id="layer1" transform="translate(-22.284042,-17.314934)" style="display:inline">
-    <circle style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke-width:1.39954" id="path1" cx="90.017372"
-      cy="85.048264" r="67.73333" />
-    <circle style="display:inline;fill:url(#radialGradient26-3);fill-opacity:1;fill-rule:nonzero;stroke-width:1.39954"
-      id="path1-2" cx="90.017372" cy="85.048264" r="67.73333" />
-    <text xml:space="preserve"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;mix-blend-mode:normal;fill:url(#radialGradient37-1-4);fill-opacity:1;fill-rule:nonzero;stroke:#6d67fb;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill;filter:url(#filter110)"
-      x="31.591959" y="108.57828" id="text29-1-6">
-      <tspan id="tspan29-4-1"
-        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-5.29167px;fill:url(#radialGradient37-1-4);fill-opacity:1;stroke:#6d67fb;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
-        x="31.591959" y="108.57828">[λ]</tspan>
-      <tspan
-        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:url(#radialGradient37-1-4);fill-opacity:1;stroke:#6d67fb;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
-        x="31.591959" y="196.77278" id="tspan30-2-7" />
-    </text>
-    <text xml:space="preserve"
-      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-5.29167px;display:inline;mix-blend-mode:normal;fill:url(#radialGradient37-1);fill-opacity:1;fill-rule:nonzero;stroke:#7f69f8;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.705882;paint-order:markers stroke fill"
-      x="31.591957" y="108.57829" id="text29-1">
-      <tspan id="tspan29-4"
-        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-5.29167px;fill:url(#radialGradient37-1);fill-opacity:1;stroke:#7f69f8;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.705882;paint-order:markers stroke fill"
-        x="31.591957" y="108.57829">[λ]</tspan>
-      <tspan
-        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:70.5556px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-5.29167px;fill:url(#radialGradient37-1);fill-opacity:1;stroke:#7f69f8;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.705882;paint-order:markers stroke fill"
-        x="31.591957" y="196.7728" id="tspan30-2" />
-    </text>
-  </g>
+   xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+   <defs id="defs1">
+      <linearGradient id="linearGradient111">
+         <stop style="stop-color:#ffffff;stop-opacity:1;" offset="0" id="stop111" />
+      </linearGradient>
+      <linearGradient id="linearGradient110">
+         <stop style="stop-color:#6d67fb;stop-opacity:1;" offset="0" id="stop110" />
+      </linearGradient>
+      <linearGradient id="linearGradient24">
+         <stop style="stop-color:#0900ec;stop-opacity:0.40671641;" offset="0" id="stop26" />
+         <stop style="stop-color:#1f0a35;stop-opacity:1;" offset="1" id="stop25" />
+      </linearGradient>
+      <radialGradient xlink:href="#linearGradient111" id="radialGradient37-1" cx="90.01741" cy="85.048279" fx="90.01741"
+         fy="85.048279" r="44.651917" gradientTransform="matrix(1,0,0,0.73528271,-2.6458725,22.513711)"
+         gradientUnits="userSpaceOnUse" />
+      <radialGradient xlink:href="#linearGradient110" id="radialGradient37-1-4" cx="90.01741" cy="85.048279"
+         fx="90.01741" fy="85.048279" r="44.651917" gradientTransform="matrix(1,0,0,0.73528271,-2.6458735,22.513715)"
+         gradientUnits="userSpaceOnUse" />
+      <filter style="color-interpolation-filters:sRGB" id="filter110" x="-0.082944937" y="-0.11949119" width="1.1658899"
+         height="1.2389824">
+         <feGaussianBlur stdDeviation="1.6025906" id="feGaussianBlur110" />
+      </filter>
+      <radialGradient xlink:href="#linearGradient24" id="radialGradient26-3" cx="31.982552" cy="99.438805"
+         fx="31.982552" fy="99.438805" r="67.73333" gradientUnits="userSpaceOnUse"
+         gradientTransform="matrix(-0.53334102,2.2923877,-2.4225986,-0.56363547,288.78309,-14.387249)" />
+   </defs>
+   <g id="layer1" transform="translate(-22.284042,-17.314934)" style="display:inline">
+      <circle style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke-width:1.39954" id="path1" cx="90.017372"
+         cy="85.048264" r="67.73333" />
+      <circle style="display:inline;fill:url(#radialGradient26-3);fill-opacity:1;fill-rule:nonzero;stroke-width:1.39954"
+         id="path1-2" cx="90.017372" cy="85.048264" r="67.73333" />
+      <path
+         style="font-size:70.5556px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';letter-spacing:-5.29167px;fill:url(#radialGradient37-1-4);stroke:#6d67fb;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill;filter:url(#filter110)"
+         d="m 42.719625,52.216478 h 21.49741 v 4.926489 h -15.15843 v 55.810583 h 15.15843 v 4.92649 H 42.719625 Z M 88.036442,71.577927 85.487069,64.756634 Q 84.625795,62.448418 82.903246,61.44934 81.180697,60.41581 78.562423,60.41581 h -1.688098 v -5.443254 l 2.411568,0.0689 q 4.58198,0.137804 7.544765,1.550294 2.962784,1.41249 4.065215,4.409725 l 17.776707,47.576805 h -6.71794 L 91.13703,80.052868 77.838952,108.57828 h -6.71794 z m 27.781268,41.375623 h 15.15843 V 57.177418 h -15.15843 v -4.92649 h 21.49741 v 65.629112 h -21.49741 z"
+         id="text29-1-6" aria-label="       [λ]           " />
+      <path
+         d="m 42.719623,52.216493 h 21.49741 v 4.92649 h -15.15843 v 55.810587 h 15.15843 v 4.92649 H 42.719623 Z M 88.03644,71.577942 85.487068,64.756649 q -0.861275,-2.308216 -2.583824,-3.307294 -1.722549,-1.033529 -4.340823,-1.033529 h -1.688098 v -5.443255 l 2.411569,0.0689 q 4.58198,0.137804 7.544764,1.550294 2.962784,1.41249 4.065215,4.409725 l 17.776709,47.5768 h -6.71794 L 91.137028,80.052883 77.83895,108.57829 h -6.71794 z m 27.78127,41.375628 h 15.15843 V 57.177434 h -15.15843 v -4.92649 h 21.49741 v 65.629116 h -21.49741 z"
+         id="text29-1"
+         style="font-size:70.5556px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';letter-spacing:-5.29167px;fill:url(#radialGradient37-1);stroke:#7f69f8;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.705882;paint-order:markers stroke fill"
+         aria-label="       [λ]           " />
+   </g>
 </svg>
