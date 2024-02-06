@@ -331,6 +331,7 @@ export const languages: ILanguageCollection = {
   scad: { ids: 'scad', defaultExtension: 'scad' },
   scala: { ids: 'scala', defaultExtension: 'scala' },
   scilab: { ids: 'scilab', defaultExtension: 'sce' },
+  scilisp: { ids: ['scilisp', 'slisp'], defaultExtension: 'sl' },
   scss: { ids: 'scss', defaultExtension: 'scss' },
   sdlang: { ids: 'sdl', defaultExtension: 'sdl' },
   shaderlab: { ids: 'shaderlab', defaultExtension: 'shader' },

@@ -4264,6 +4264,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'scilisp',
+      extensions: ['sl', 'slisp'],
+      languages: [languages.scilisp],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sdlang',
       extensions: [],
       languages: [languages.sdlang],
