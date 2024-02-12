@@ -30,6 +30,7 @@ export const languages: ILanguageCollection = {
   ats: { ids: ['ats'], defaultExtension: 'ats' },
   autohotkey: { ids: 'ahk', defaultExtension: 'ahk' },
   autoit: { ids: 'autoit', defaultExtension: 'au3' },
+  automake: { ids: 'automake', defaultExtension: 'am' },
   avro: { ids: 'avro', defaultExtension: 'avcs' },
   azcli: { ids: 'azcli', defaultExtension: 'azcli' },
   azurepipelines: {
@@ -241,7 +242,8 @@ export const languages: ILanguageCollection = {
   lolcode: { ids: 'lolcode', defaultExtension: 'lol' },
   lsl: { ids: 'lsl', defaultExtension: 'lsl' },
   lua: { ids: 'lua', defaultExtension: 'lua' },
-  makefile: { ids: 'makefile', defaultExtension: 'mk' },
+  m4: { ids: 'm4', defaultExtension: 'm4' },
+  makefile: { ids: ['makefile', 'makefile2'], defaultExtension: 'mk' },
   markdown: { ids: 'markdown', defaultExtension: 'md' },
   marko: { ids: 'marko', defaultExtension: 'marko' },
   matlab: { ids: 'matlab', defaultExtension: 'mat' },
