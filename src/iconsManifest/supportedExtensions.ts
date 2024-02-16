@@ -2944,13 +2944,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mivascript',
-      extensions: ['mv'],
+      extensions: [],
       languages: [languages.mv],
       format: FileFormat.svg
     },
     {
       icon: 'mvt',
-      extensions: ['mvt'],
+      extensions: [],
       languages: [languages.mvt],
       format: FileFormat.svg
     },
@@ -2958,7 +2958,6 @@ export const extensions: IFileCollection = {
       icon: 'mvtcss',
       extensions: [],
       extensionsGlob: [
-        'mvt',
         '*.css.mvt',
         'css/*.mvt'
       ],
@@ -2969,7 +2968,6 @@ export const extensions: IFileCollection = {
       icon: 'mvtjs',
       extensions: [],
       extensionsGlob: [
-        'mvt',
         '*.js.mvt',
         'js/*.mvt'
       ],
