@@ -3013,6 +3013,38 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mivascript',
+      extensions: [],
+      languages: [languages.mv],
+      format: FileFormat.svg
+    },
+    {
+      icon: 'mvt',
+      extensions: [],
+      languages: [languages.mvt],
+      format: FileFormat.svg
+    },
+    {
+      icon: 'mvtcss',
+      extensions: [],
+      extensionsGlob: [
+        '*.css.mvt',
+        'css/*.mvt'
+      ],
+      languages: [languages.mvtcss],
+      format: FileFormat.svg
+    },
+    {
+      icon: 'mvtjs',
+      extensions: [],
+      extensionsGlob: [
+        '*.js.mvt',
+        'js/*.mvt'
+      ],
+      languages: [languages.mvtjs],
+      format: FileFormat.svg
+    },
+    {
       icon: 'ndst',
       extensions: ['ndst.yaml', 'ndst.yml', 'ndst.json'],
       format: FileFormat.svg,
