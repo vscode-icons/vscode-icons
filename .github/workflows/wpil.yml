@@ -21,7 +21,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Upgrade npm
-        run: npm i -g npm@latest
+        run: npm i -g npm@9
 
       - name: Cloning repository
         uses: actions/checkout@v3
