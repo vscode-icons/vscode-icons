@@ -4467,7 +4467,9 @@ export const extensions: IFileCollection = {
     {
       icon: 'sst',
       extensions: [],
-      filenamesGlob: ['sst-env.d.ts', 'sst.config.ts'],
+      filenamesGlob: ['sst-env', 'sst.config'],
+      extensionsGlob: ['d.ts', 'ts', 'js'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
