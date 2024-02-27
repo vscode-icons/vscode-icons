@@ -4464,6 +4464,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'sss', extensions: ['sss'], format: FileFormat.svg },
+    { icon: 'sst', extensions: ['sst'], format: FileFormat.svg },
     {
       icon: 'stan',
       extensions: [],
