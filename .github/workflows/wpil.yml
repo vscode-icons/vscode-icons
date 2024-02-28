@@ -1,7 +1,7 @@
 name: Update Wiki Page Icons List
 
 env:
-  NODE_VERSION: 14.21.3
+  NODE_VERSION: 16.14.2
 
 on:
   push:
@@ -15,28 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - name: "Setting up Node.js ${{ env.NODE_VERSION }}"
+      - name: Setting up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-
-      - name: Upgrade npm
-        run: npm i -g npm@latest
-
-      - name: Cloning repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Installing Dependencies
-        run: npm ci
-
-      - name: Compile
-        run: npm run compile
 
       - name: Update Wiki Page Icons List
         timeout-minutes: 2
         run: npx --yes vscode-icons/wpilgenerator
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
