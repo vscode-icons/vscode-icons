@@ -4729,7 +4729,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tiltfile',
-      extensions: [],
+      extensions: ['.tiltignore'],
       languages: [languages.tiltfile],
       format: FileFormat.svg,
     },
