@@ -3241,6 +3241,7 @@ export const extensions: IFileCollection = {
       extensions: [
         '.npmignore',
         '.npmrc',
+        '.package-lock.json',
         'package.json',
         'package-lock.json',
         'npm-shrinkwrap.json',
