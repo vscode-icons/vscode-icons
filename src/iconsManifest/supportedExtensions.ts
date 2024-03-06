@@ -4680,6 +4680,12 @@ export const extensions: IFileCollection = {
       languages: [languages.terraform],
       format: FileFormat.svg,
     },
+    {
+      icon: 'tm',
+      extensions: ['tm', 'tm.hcl'],
+      format: FileFormat.svg,
+      light: true,
+    },
     { icon: 'test', extensions: ['tst'], format: FileFormat.svg },
     {
       icon: 'testcafe',
