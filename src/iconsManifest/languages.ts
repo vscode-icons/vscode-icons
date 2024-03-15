@@ -371,7 +371,10 @@ export const languages: ILanguageCollection = {
   swagger: { ids: ['Swagger', 'swagger'], defaultExtension: 'swagger' },
   swift: { ids: 'swift', defaultExtension: 'swift' },
   swig: { ids: 'swig', defaultExtension: 'swig' },
-  systemd: { ids: 'systemd-unit-file', defaultExtension: 'link' },
+  systemd: {
+    ids: ['systemd-conf', 'systemd-unit-file'],
+    defaultExtension: 'link',
+  },
   systemverilog: { ids: 'systemverilog', defaultExtension: 'sv' },
   t4: { ids: 't4', defaultExtension: 'tt' },
   tailwindcss: { ids: 'tailwindcss', defaultExtension: 'css' },
