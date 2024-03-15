@@ -280,7 +280,7 @@ export const languages: ILanguageCollection = {
   php: { ids: 'php', defaultExtension: 'php' },
   pine: { ids: ['pine', 'pinescript'], defaultExtension: 'pine' },
   pip: { ids: 'pip-requirements', defaultExtension: 'requirements.txt' },
-  plaintext: { ids: 'plaintext', defaultExtension: 'txt' },
+  plaintext: { ids: ['plaintext', 'vim-help'], defaultExtension: 'txt' },
   platformio: {
     ids: [
       'platformio-debug.disassembly',
@@ -402,7 +402,7 @@ export const languages: ILanguageCollection = {
   vento: { ids: 'vento', defaultExtension: 'vto' },
   verilog: { ids: 'verilog', defaultExtension: 'v' },
   vhdl: { ids: 'vhdl', defaultExtension: 'vhdl' },
-  viml: { ids: 'viml', defaultExtension: 'vim' },
+  viml: { ids: ['viml', 'vim-snippet'], defaultExtension: 'vim' },
   vlang: { ids: 'v', defaultExtension: 'v' },
   volt: { ids: 'volt', defaultExtension: 'volt' },
   vue: { ids: 'vue', defaultExtension: 'vue' },
