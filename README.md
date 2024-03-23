@@ -72,7 +72,7 @@ Choose the icon you prefer for any particular file extension.
 
 You don't see the icon you like...? No worries, we got you covered. This link will show you how you can use your own custom icon!
 
-[Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Configuration)
+[Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Custom)
 
 ### Project Auto Detection
 
