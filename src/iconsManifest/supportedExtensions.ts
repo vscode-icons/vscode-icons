@@ -507,6 +507,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'arduino', extensions: ['ino', 'pde'], format: FileFormat.svg },
     {
+      icon: 'arkts',
+      extensions: [],
+      languages: [languages.arkts],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'asciidoc',
       extensions: [],
       languages: [languages.asciidoc],
