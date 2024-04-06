@@ -4639,7 +4639,7 @@ export const extensions: IFileCollection = {
         '.tailwind',
         '.tailwindrc',
       ],
-      extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json'],
+      extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
