@@ -4356,13 +4356,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'sln',
-      extensions: ['sln'],
+      extensions: ['sln', slnx'],
       languages: [languages.sln],
       format: FileFormat.svg,
     },
     {
       icon: 'sln2',
-      extensions: ['sln'],
+      extensions: ['sln', slnx'],
       format: FileFormat.svg,
       disabled: true,
     },
