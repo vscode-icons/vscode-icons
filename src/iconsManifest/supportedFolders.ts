@@ -249,6 +249,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'frontcommerce',
+      extensions: ['.front-commerce'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
       format: FileFormat.svg,
