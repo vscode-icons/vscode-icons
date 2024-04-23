@@ -390,6 +390,7 @@ export const languages: ILanguageCollection = {
   ttcn: { ids: 'ttcn', defaultExtension: 'ttcn3' },
   tuc: { ids: 'tuc', defaultExtension: 'tuc' },
   turtle: { ids: 'turtle', defaultExtension: 'ttl' },
+  turtlestar: { ids: 'turtlestar', defaultExtension: 'ttls' },
   twig: { ids: 'twig', defaultExtension: 'twig' },
   typescript: { ids: 'typescript', defaultExtension: 'ts' },
   typescriptreact: { ids: 'typescriptreact', defaultExtension: 'tsx' },
