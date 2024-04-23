@@ -260,6 +260,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   tiltfile: ILanguage;
   toit: ILanguage;
   toml: ILanguage;
+  trig: ILanguage;
   ttcn: ILanguage;
   tuc: ILanguage;
   turtle: ILanguage;

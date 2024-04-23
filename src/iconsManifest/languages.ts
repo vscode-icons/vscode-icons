@@ -387,6 +387,7 @@ export const languages: ILanguageCollection = {
   tiltfile: { ids: 'tiltfile', defaultExtension: 'Tiltfile' },
   toit: { ids: 'toit', defaultExtension: 'toit' },
   toml: { ids: 'toml', defaultExtension: 'toml' },
+  trig: { ids: 'trig', defaultExtension: 'trig' },
   ttcn: { ids: 'ttcn', defaultExtension: 'ttcn3' },
   tuc: { ids: 'tuc', defaultExtension: 'tuc' },
   turtle: { ids: 'turtle', defaultExtension: 'ttl' },
