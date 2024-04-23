@@ -4763,6 +4763,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'trigstar',
+      extensions: [],
+      languages: [languages.trigstar],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tox',
       extensions: ['tox.ini'],
       filename: true,
