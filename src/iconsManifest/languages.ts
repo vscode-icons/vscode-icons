@@ -318,6 +318,7 @@ export const languages: ILanguageCollection = {
   razor: { ids: ['razor', 'aspnetcorerazor'], defaultExtension: 'cshtml' },
   raml: { ids: 'raml', defaultExtension: 'raml' },
   rdfjson: { ids: 'rdfjson', defaultExtension: 'rj' },
+  rdfxml: { ids: 'rdfxml', defaultExtension: 'rdf' },
   reason: { ids: 'reason', defaultExtension: 're' },
   red: { ids: 'red', defaultExtension: 'red' },
   rescript: { ids: 'rescript', defaultExtension: 'res' },

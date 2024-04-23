@@ -205,6 +205,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   raml: ILanguage;
   reason: ILanguage;
   rdfjson: ILanguage;
+  rdfxml: ILanguage;
   red: ILanguage;
   rescript: ILanguage;
   restructuredtext: ILanguage;

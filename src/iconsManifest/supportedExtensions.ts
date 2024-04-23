@@ -4012,6 +4012,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rdfxml',
+      extensions: ['rdf', 'rdfs', 'owl'],
+      languages: [languages.rdfxml],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'racket',
       extensions: [],
       languages: [languages.racket],
