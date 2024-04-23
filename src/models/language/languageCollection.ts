@@ -262,6 +262,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   toml: ILanguage;
   ttcn: ILanguage;
   tuc: ILanguage;
+  turtle: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
   uiua: ILanguage;

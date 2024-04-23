@@ -4879,6 +4879,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'turtle',
+      extensions: [],
+      languages: [languages.turtle],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'twig',
       extensions: [],
       languages: [languages.twig],
