@@ -263,6 +263,7 @@ export const languages: ILanguageCollection = {
   nimble: { ids: 'nimble', defaultExtension: 'nimble' },
   nix: { ids: 'nix', defaultExtension: 'nix' },
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], defaultExtension: 'nsi' },
+  ntriple: { ids: 'ntriple', defaultExtension: 'nt' },
   nunjucks: { ids: 'nunjucks', defaultExtension: 'nunjucks' },
   objectivec: { ids: 'objective-c', defaultExtension: 'm' },
   objectivecpp: { ids: 'objective-cpp', defaultExtension: 'mm' },
