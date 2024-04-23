@@ -265,6 +265,7 @@ export const languages: ILanguageCollection = {
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], defaultExtension: 'nsi' },
   ntriple: { ids: 'ntriple', defaultExtension: 'nt' },
   nunjucks: { ids: 'nunjucks', defaultExtension: 'nunjucks' },
+  nquads: { ids: 'nquads', defaultExtension: 'nq' },
   objectivec: { ids: 'objective-c', defaultExtension: 'm' },
   objectivecpp: { ids: 'objective-cpp', defaultExtension: 'mm' },
   ocaml: { ids: ['ocaml', 'ocamllex', 'menhir'], defaultExtension: 'ml' },

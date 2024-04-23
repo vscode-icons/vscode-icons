@@ -3199,6 +3199,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nquads',
+      extensions: [],
+      languages: [languages.nquads],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nim',
       extensions: [],
       languages: [languages.nim],
