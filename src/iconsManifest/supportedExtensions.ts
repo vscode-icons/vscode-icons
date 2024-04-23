@@ -4006,6 +4006,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rdfjson',
+      extensions: [],
+      languages: [languages.rdfjson],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'racket',
       extensions: [],
       languages: [languages.racket],
