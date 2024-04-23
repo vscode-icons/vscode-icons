@@ -162,6 +162,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mojolicious: ILanguage;
   mongo: ILanguage;
   mson: ILanguage;
+  n3: ILanguage;
   nearley: ILanguage;
   nim: ILanguage;
   nimble: ILanguage;

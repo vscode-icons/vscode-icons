@@ -257,6 +257,7 @@ export const languages: ILanguageCollection = {
   mojolicious: { ids: 'mojolicious', defaultExtension: 'ep' },
   mongo: { ids: 'mongo', defaultExtension: 'mongo' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
+  n3: { ids: 'n3', defaultExtension: 'n3' },
   nearley: { ids: 'nearley', defaultExtension: 'ne' },
   nim: { ids: 'nim', defaultExtension: 'nim' },
   nimble: { ids: 'nimble', defaultExtension: 'nimble' },
