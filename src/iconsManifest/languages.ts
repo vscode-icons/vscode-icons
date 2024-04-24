@@ -112,6 +112,7 @@ export const languages: ILanguageCollection = {
   doxygen: { ids: 'doxygen', defaultExtension: 'dox' },
   drawio: { ids: 'drawio', defaultExtension: 'drawio' },
   drools: { ids: 'drools', defaultExtension: 'drl' },
+  dtd: { ids: 'dtd', defaultExtension: 'dtd' },
   dustjs: { ids: 'dustjs', defaultExtension: 'dust' },
   dylanlang: { ids: ['dylan', 'dylan-lid'], defaultExtension: 'dylan' },
   earthfile: { ids: 'earthfile', defaultExtension: 'earthfile' },
