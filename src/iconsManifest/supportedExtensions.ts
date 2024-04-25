@@ -3925,6 +3925,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pyscript',
+      extensions: [],
+      languages: [languages.pyscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'python',
       extensions: [],
       languages: [languages.python],
