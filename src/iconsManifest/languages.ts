@@ -191,6 +191,7 @@ export const languages: ILanguageCollection = {
     ids: ['jenkins', 'declarative', 'jenkinsfile'],
     defaultExtension: 'jenkins',
   },
+  jestsnapshot: { ids: 'jest-snapshot', defaultExtension: 'Jest-snap' },
   jinja: {
     ids: [
       'jinja',
@@ -403,6 +404,7 @@ export const languages: ILanguageCollection = {
   verilog: { ids: 'verilog', defaultExtension: 'v' },
   vhdl: { ids: 'vhdl', defaultExtension: 'vhdl' },
   viml: { ids: 'viml', defaultExtension: 'vim' },
+  vitestsnapshot: { ids: 'vitest-snapshot', defaultExtension: 'Vitest-snap' },
   vlang: { ids: 'v', defaultExtension: 'v' },
   volt: { ids: 'volt', defaultExtension: 'volt' },
   vue: { ids: 'vue', defaultExtension: 'vue' },
