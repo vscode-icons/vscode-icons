@@ -321,6 +321,7 @@ export const languages: ILanguageCollection = {
   rexx: { ids: 'rexx', defaultExtension: 'rex' },
   riot: { ids: 'riot', defaultExtension: 'tag' },
   rmd: { ids: 'rmd', defaultExtension: 'rmd' },
+  rnc: { ids: 'rnc', defaultExtension: 'rnc' },
   robot: { ids: 'robot', defaultExtension: 'robot' },
   ruby: { ids: 'ruby', defaultExtension: 'rb' },
   rust: { ids: 'rust', defaultExtension: 'rs' },
