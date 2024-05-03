@@ -2009,8 +2009,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'gnu',
-      extensions: ['ld', 'makefile'],
-      languages: [languages.makefile],
+      extensions: ['am', 'ld', 'm4', 'makefile'],
+      languages: [languages.automake, languages.m4, languages.makefile],
       format: FileFormat.svg,
     },
     {

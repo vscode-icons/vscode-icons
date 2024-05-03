@@ -22,6 +22,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   assembly: ILanguage;
   autohotkey: ILanguage;
   autoit: ILanguage;
+  automake: ILanguage;
   avro: ILanguage;
   azcli: ILanguage;
   azurepipelines: ILanguage;
@@ -149,6 +150,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   log: ILanguage;
   lolcode: ILanguage;
   lsl: ILanguage;
+  m4: ILanguage;
   marko: ILanguage;
   matlab: ILanguage;
   maxscript: ILanguage;
