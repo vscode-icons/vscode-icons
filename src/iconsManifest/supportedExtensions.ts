@@ -2946,7 +2946,7 @@ export const extensions: IFileCollection = {
       icon: 'mocha',
       extensions: ['mocha.opts'],
       filenamesGlob: ['.mocharc'],
-      extensionsGlob: ['js', 'json', 'jsonc', 'yaml', 'yml'],
+      extensionsGlob: ['cjs', 'js', 'json', 'jsonc', 'mjs', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
