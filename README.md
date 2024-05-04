@@ -130,7 +130,7 @@ Branded icons are licensed under their copyright license.
 
 ## Change Log
 
-You can checkout all our changes in our [change log](https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md).
+You can check out all our changes in our [change log](https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md).
 
 ## Acknowledgements
 
