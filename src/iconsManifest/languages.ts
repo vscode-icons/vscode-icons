@@ -196,6 +196,7 @@ export const languages: ILanguageCollection = {
   jinja: {
     ids: [
       'jinja',
+      'jinja-java',
       'jinja-html',
       'jinja-xml',
       'jinja-css',
