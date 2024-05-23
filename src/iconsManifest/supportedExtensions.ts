@@ -1570,7 +1570,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'eex',
-      extensions: ['eex', 'heex'],
+      extensions: ['eex', 'heex', 'phoenix-heex', 'html-heex'],
       languages: [languages.eex],
       format: FileFormat.svg,
     },
