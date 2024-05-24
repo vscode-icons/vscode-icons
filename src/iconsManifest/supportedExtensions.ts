@@ -4357,6 +4357,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'slint',
+      extensions: [],
+      languages: [languages.slint],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sln',
       extensions: ['sln', 'slnx'],
       languages: [languages.sln],

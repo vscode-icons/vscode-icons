@@ -341,6 +341,7 @@ export const languages: ILanguageCollection = {
   slang: { ids: 'slang', defaultExtension: 'slang' },
   slice: { ids: ['slice'], defaultExtension: 'ice' },
   slim: { ids: ['slim'], defaultExtension: 'slim' },
+  slint: {ids: ['slint'], defaultExtension: 'slint' },
   sln: { ids: 'sln', defaultExtension: 'sln' },
   silverstripe: { ids: 'silverstripe', defaultExtension: 'ss' },
   sino: { ids: 'sino', defaultExtension: 'sn' },
