@@ -4206,7 +4206,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 's-lang',
-      extensions: ['.isisrc', '.slshrc'],
+      extensions: ['.slshrc', '.isisrc', '.jedrc'],
       extensionsGlob: ['sl'],
       languages: [languages.s_lang],
       filename: true,
