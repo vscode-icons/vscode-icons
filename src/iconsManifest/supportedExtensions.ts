@@ -3181,6 +3181,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nextflow',
+      extensions: ['.nf'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nginx',
       extensions: ['nginx.conf'],
       filename: true,
