@@ -174,6 +174,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mvtjs: ILanguage;
   nearley: ILanguage;
   nextflow: ILanguage;
+  nginx: ILanguage;
   nim: ILanguage;
   nimble: ILanguage;
   nix: ILanguage;

@@ -269,6 +269,7 @@ export const languages: ILanguageCollection = {
   mvtjs: { ids: 'mvtjs', defaultExtension: 'mvt' },
   nearley: { ids: 'nearley', defaultExtension: 'ne' },
   nextflow: { ids: 'nextflow', defaultExtension: 'nf' },
+  nginx: { ids: ['nginx'], defaultExtension: 'nginx' },
   nim: { ids: 'nim', defaultExtension: 'nim' },
   nimble: { ids: 'nimble', defaultExtension: 'nimble' },
   nix: { ids: 'nix', defaultExtension: 'nix' },

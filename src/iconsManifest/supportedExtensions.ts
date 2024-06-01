@@ -3269,6 +3269,7 @@ export const extensions: IFileCollection = {
       icon: 'nginx',
       extensions: ['nginx.conf'],
       filename: true,
+      languages: [languages.nginx],
       format: FileFormat.svg,
     },
     {
