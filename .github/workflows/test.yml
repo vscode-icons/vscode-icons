@@ -79,6 +79,10 @@ jobs:
       - name: Installing Dependencies
         run: npm ci
 
+      # - name: Setup tmate session
+      #   if: (matrix.os == 'ubuntu-latest' && matrix.node == '16.14.2')
+      #   uses: mxschmitt/action-tmate@v3
+
       - name: Test
         continue-on-error: ${{ matrix.experimental }}
         run: npm test
