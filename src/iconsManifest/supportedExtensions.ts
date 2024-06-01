@@ -4414,8 +4414,6 @@ export const extensions: IFileCollection = {
       icon: 'snakemake',
       languages: [languages.snakemake],
       extensions: [],
-      extensionsGlob: ['smk', 'Snakefile'],
-      filenamesGlob: ['Snakefile'],
       format: FileFormat.svg,
     },
     {
