@@ -19,7 +19,10 @@ describe('Specifications of supported extensions: tests', function () {
         .forEach((file: IFileExtension) =>
           file.extensions.forEach(
             (extension: string) =>
-              expect(extension.startsWith('.')).to.be.false,
+              expect(
+                extension.startsWith('.'),
+                `Offender extension: ${extension}`,
+              ).to.be.false,
           ),
         );
     });
