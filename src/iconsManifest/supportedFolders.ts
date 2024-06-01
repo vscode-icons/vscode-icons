@@ -411,8 +411,19 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
     {
+      icon: 'mediawiki',
+      extensions: ['mediawiki'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'memcached',
       extensions: ['memcached', '.memcached'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'meteor',
+      extensions: ['.meteor'],
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -424,6 +435,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'minikube',
       extensions: ['minikube', 'minik8s', 'minikuber'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mojo',
+      extensions: ['mojo'],
       format: FileFormat.svg,
     },
     {
@@ -459,6 +475,7 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
+
     { icon: 'next', extensions: ['.next'], format: FileFormat.svg },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
     {
@@ -543,17 +560,7 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
-    {
-      icon: 'meteor',
-      extensions: ['.meteor'],
-      light: true,
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'mojo',
-      extensions: ['mojo'],
-      format: FileFormat.svg,
-    },
+
     {
       icon: 'nuxt',
       extensions: ['nuxt', '.nuxt'],
@@ -773,11 +780,6 @@ export const extensions: IFolderCollection = {
     {
       icon: 'yarn',
       extensions: ['.yarn'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'mediawiki',
-      extensions: ['mediawiki'],
       format: FileFormat.svg,
     },
   ],
