@@ -5552,7 +5552,6 @@ export const extensions: IFileCollection = {
         'knip.config.ts',
         'knip.config.js',
       ],
-      light: true,
       filename: true,
       format: FileFormat.svg,
     },
