@@ -1866,7 +1866,6 @@ export const extensions: IFileCollection = {
       icon: 'frontcommerce',
       extensions: ['.front-commerce.js', 'front-commerce.config.ts'],
       filename: true,
-      light: true,
       format: FileFormat.svg,
     },
     {
