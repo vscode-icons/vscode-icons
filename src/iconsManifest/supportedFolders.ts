@@ -770,5 +770,10 @@ export const extensions: IFolderCollection = {
       extensions: ['.yarn'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'mediawiki',
+      extensions: ['mediawiki'],
+      format: FileFormat.svg,
+    },
   ],
 };
