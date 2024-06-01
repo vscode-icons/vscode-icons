@@ -306,4 +306,5 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   yacc: ILanguage;
   yang: ILanguage;
   zig: ILanguage;
+  zip: ILanguage;
 }

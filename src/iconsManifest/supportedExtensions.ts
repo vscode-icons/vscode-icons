@@ -5620,6 +5620,7 @@ export const extensions: IFileCollection = {
         'zipx',
         'br',
       ],
+      languages: [languages.zip],
       format: FileFormat.svg,
     },
     {

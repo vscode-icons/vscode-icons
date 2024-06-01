@@ -443,4 +443,5 @@ export const languages: ILanguageCollection = {
   yang: { ids: 'yang', defaultExtension: 'yang' },
   yarnlock: { ids: 'yarnlock', defaultExtension: 'lock' },
   zig: { ids: 'zig', defaultExtension: 'zig' },
+  zip: { ids: 'zip', defaultExtension: 'zip' },
 };
