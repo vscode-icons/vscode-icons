@@ -573,7 +573,14 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'shared',
-      extensions: ['share', 'shared', '.share', '.shared'],
+      extensions: [
+        'share',
+        'shared',
+        '.share',
+        '.shared',
+        '__shared__',
+        '__share__',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -761,6 +768,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'yarn',
       extensions: ['.yarn'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mediawiki',
+      extensions: ['mediawiki'],
       format: FileFormat.svg,
     },
   ],
