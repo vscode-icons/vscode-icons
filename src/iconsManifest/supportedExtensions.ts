@@ -3186,6 +3186,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nextflow',
+      extensions: ['.nf'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nginx',
       extensions: ['nginx.conf'],
       filename: true,
@@ -4736,6 +4742,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'tiltfile',
       extensions: ['.tiltignore'],
+      filename: true,
       languages: [languages.tiltfile],
       format: FileFormat.svg,
     },
