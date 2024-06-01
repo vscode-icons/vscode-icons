@@ -221,8 +221,10 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   scilab: ILanguage;
   sdlang: ILanguage;
   slang: ILanguage;
+  s_lang: ILanguage;
   slice: ILanguage;
   slim: ILanguage;
+  slint: ILanguage;
   sln: ILanguage;
   silverstripe: ILanguage;
   sino: ILanguage;
