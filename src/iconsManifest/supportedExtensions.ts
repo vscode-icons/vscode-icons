@@ -4215,6 +4215,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 's-lang',
+      extensions: ['.slshrc', '.isisrc', '.jedrc'],
+      extensionsGlob: ['sl'],
+      languages: [languages.s_lang],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sails',
       extensions: ['.sailsrc'],
       filename: true,
