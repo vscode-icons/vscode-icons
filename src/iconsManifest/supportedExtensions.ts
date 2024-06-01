@@ -3021,33 +3021,25 @@ export const extensions: IFileCollection = {
       icon: 'mivascript',
       extensions: [],
       languages: [languages.mv],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'mvt',
       extensions: [],
       languages: [languages.mvt],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'mvtcss',
       extensions: [],
-      extensionsGlob: [
-        '*.css.mvt',
-        'css/*.mvt'
-      ],
       languages: [languages.mvtcss],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'mvtjs',
       extensions: [],
-      extensionsGlob: [
-        '*.js.mvt',
-        'js/*.mvt'
-      ],
       languages: [languages.mvtjs],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'ndst',
