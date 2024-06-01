@@ -328,6 +328,7 @@ export const languages: ILanguageCollection = {
   robot: { ids: 'robot', defaultExtension: 'robot' },
   ruby: { ids: 'ruby', defaultExtension: 'rb' },
   rust: { ids: 'rust', defaultExtension: 'rs' },
+  s_lang: { ids: 's-lang', defaultExtension: 'sl' },
   san: { ids: 'san', defaultExtension: 'san' },
   sas: { ids: 'SAS', defaultExtension: 'sas' },
   sass: { ids: ['sass', 'sass.hover'], defaultExtension: 'sass' },
