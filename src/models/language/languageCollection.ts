@@ -165,12 +165,15 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mojolicious: ILanguage;
   mongo: ILanguage;
   mson: ILanguage;
+  n3: ILanguage;
   nearley: ILanguage;
   nextflow: ILanguage;
   nim: ILanguage;
   nimble: ILanguage;
   nix: ILanguage;
+  ntriple: ILanguage;
   nsis: ILanguage;
+  nquads: ILanguage;
   nunjucks: ILanguage;
   ocaml: ILanguage;
   ogone: ILanguage;
@@ -205,6 +208,8 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   racket: ILanguage;
   raml: ILanguage;
   reason: ILanguage;
+  rdfjson: ILanguage;
+  rdfxml: ILanguage;
   red: ILanguage;
   rescript: ILanguage;
   restructuredtext: ILanguage;
@@ -265,8 +270,12 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   tiltfile: ILanguage;
   toit: ILanguage;
   toml: ILanguage;
+  trig: ILanguage;
+  trigstar: ILanguage;
   ttcn: ILanguage;
   tuc: ILanguage;
+  turtle: ILanguage;
+  turtlestar: ILanguage;
   twig: ILanguage;
   typo3: ILanguage;
   uiua: ILanguage;

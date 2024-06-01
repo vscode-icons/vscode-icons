@@ -3198,6 +3198,24 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'n3',
+      extensions: [],
+      languages: [languages.n3],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ntriple',
+      extensions: [],
+      languages: [languages.ntriple],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'nquads',
+      extensions: [],
+      languages: [languages.nquads],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nim',
       extensions: [],
       languages: [languages.nim],
@@ -4000,6 +4018,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rdfjson',
+      extensions: [],
+      languages: [languages.rdfjson],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'rdfxml',
+      extensions: ['rdf', 'rdfs', 'owl'],
+      languages: [languages.rdfxml],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'racket',
       extensions: [],
       languages: [languages.racket],
@@ -4777,6 +4807,20 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'trig',
+      extensions: [],
+      languages: [languages.trig],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'trigstar',
+      extensions: [],
+      languages: [languages.trigstar],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tox',
       extensions: ['tox.ini'],
       filename: true,
@@ -4897,6 +4941,18 @@ export const extensions: IFileCollection = {
       icon: 'tuc',
       extensions: [],
       languages: [languages.tuc],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'turtle',
+      extensions: [],
+      languages: [languages.turtle],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'turtlestar',
+      extensions: [],
+      languages: [languages.turtlestar],
       format: FileFormat.svg,
     },
     {
