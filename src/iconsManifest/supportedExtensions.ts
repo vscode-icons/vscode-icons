@@ -741,6 +741,7 @@ export const extensions: IFileCollection = {
         'scptd',
         'so',
       ],
+      languages: [languages.binary],
       format: FileFormat.svg,
     },
     {
@@ -1326,7 +1327,7 @@ export const extensions: IFileCollection = {
       extensions: [
         'service.datadog.yaml',
         'datadog-ci.json',
-        'static-analyisis.datadog.yml',
+        'static-analysis.datadog.yml',
         'static-analysis.datadog.yaml',
       ],
       filename: true,
@@ -2008,8 +2009,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'gnu',
-      extensions: ['ld', 'makefile'],
-      languages: [languages.makefile],
+      extensions: ['am', 'ld', 'm4', 'makefile'],
+      languages: [languages.automake, languages.m4, languages.makefile],
       format: FileFormat.svg,
     },
     {
@@ -2945,7 +2946,7 @@ export const extensions: IFileCollection = {
       icon: 'mocha',
       extensions: ['mocha.opts'],
       filenamesGlob: ['.mocharc'],
-      extensionsGlob: ['js', 'json', 'jsonc', 'yaml', 'yml'],
+      extensionsGlob: ['cjs', 'js', 'json', 'jsonc', 'mjs', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3247,6 +3248,7 @@ export const extensions: IFileCollection = {
       extensions: [
         '.npmignore',
         '.npmrc',
+        '.package-lock.json',
         'package.json',
         'package-lock.json',
         'npm-shrinkwrap.json',
@@ -4362,13 +4364,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'sln',
-      extensions: ['sln'],
+      extensions: ['sln', 'slnx'],
       languages: [languages.sln],
       format: FileFormat.svg,
     },
     {
       icon: 'sln2',
-      extensions: ['sln'],
+      extensions: ['sln', 'slnx'],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -4645,7 +4647,7 @@ export const extensions: IFileCollection = {
         '.tailwind',
         '.tailwindrc',
       ],
-      extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json'],
+      extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4735,7 +4737,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'tiltfile',
-      extensions: [],
+      extensions: ['.tiltignore'],
       languages: [languages.tiltfile],
       format: FileFormat.svg,
     },
