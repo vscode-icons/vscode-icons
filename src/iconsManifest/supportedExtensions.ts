@@ -2687,6 +2687,36 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'libreoffice_base',
+      extensions: ['odb', 'otb'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_calc',
+      extensions: ['fods', 'ods', 'ots'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_draw',
+      extensions: ['odg', 'otg'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_impress',
+      extensions: ['odp', 'otp'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_math',
+      extensions: ['odf', 'otf'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'libreoffice_writer',
+      extensions: ['odt', 'ott'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'license',
       extensions: ['enc', 'license', 'lic'],
       format: FileFormat.svg,
