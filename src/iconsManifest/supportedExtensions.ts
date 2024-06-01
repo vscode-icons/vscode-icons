@@ -4603,6 +4603,14 @@ export const extensions: IFileCollection = {
     },
     { icon: 'sss', extensions: ['sss'], format: FileFormat.svg },
     {
+      icon: 'sst',
+      extensions: [],
+      filenamesGlob: ['sst-env', 'sst.config'],
+      extensionsGlob: ['d.ts', 'ts', 'js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'stan',
       extensions: [],
       languages: [languages.stan],
