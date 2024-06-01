@@ -1517,6 +1517,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dtd',
+      extensions: ['dtd'],
+      languages: [languages.dtd],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dustjs',
       extensions: [],
       languages: [languages.dustjs],
