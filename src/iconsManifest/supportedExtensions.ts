@@ -5430,6 +5430,28 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'xo',
+      extensions: ['.xo-config'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'xo',
+      extensions: [],
+      filenamesGlob: ['xo.config'],
+      extensionsGlob: ['js', 'cjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'xo',
+      extensions: [],
+      filenamesGlob: ['.xo-config'],
+      extensionsGlob: ['js', 'json', 'cjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'xorg',
       extensions: ['.xcompose'],
       filename: true,
