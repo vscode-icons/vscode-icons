@@ -4363,6 +4363,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'search_result',
+      extensions: [],
+      languages: [languages.searchresult],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sentry',
       extensions: ['.sentryclirc'],
       filename: true,

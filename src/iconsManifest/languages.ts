@@ -349,6 +349,7 @@ export const languages: ILanguageCollection = {
   scilab: { ids: 'scilab', defaultExtension: 'sce' },
   scss: { ids: 'scss', defaultExtension: 'scss' },
   sdlang: { ids: 'sdl', defaultExtension: 'sdl' },
+  searchresult: { ids: 'search-result', defaultExtension: 'code-search' },
   shaderlab: { ids: 'shaderlab', defaultExtension: 'shader' },
   shellscript: { ids: 'shellscript', defaultExtension: 'sh' },
   slang: { ids: 'slang', defaultExtension: 'slang' },
