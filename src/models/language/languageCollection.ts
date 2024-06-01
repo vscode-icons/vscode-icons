@@ -131,6 +131,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   janet: ILanguage;
   jekyll: ILanguage;
   jenkins: ILanguage;
+  jestsnapshot: ILanguage;
   jinja: ILanguage;
   jsonnet: ILanguage;
   json5: ILanguage;
@@ -287,6 +288,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   verilog: ILanguage;
   vhdl: ILanguage;
   viml: ILanguage;
+  vitestsnapshot: ILanguage;
   vlang: ILanguage;
   volt: ILanguage;
   vue: ILanguage;
