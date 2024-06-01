@@ -22,6 +22,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   assembly: ILanguage;
   autohotkey: ILanguage;
   autoit: ILanguage;
+  automake: ILanguage;
   avro: ILanguage;
   azcli: ILanguage;
   azurepipelines: ILanguage;
@@ -32,6 +33,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   befunge: ILanguage;
   bibtex: ILanguage;
   biml: ILanguage;
+  binary: ILanguage;
   blade: ILanguage;
   blitzbasic: ILanguage;
   bolt: ILanguage;
@@ -73,6 +75,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   doxygen: ILanguage;
   drawio: ILanguage;
   drools: ILanguage;
+  dtd: ILanguage;
   dustjs: ILanguage;
   dylanlang: ILanguage;
   earthfile: ILanguage;
@@ -128,6 +131,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   janet: ILanguage;
   jekyll: ILanguage;
   jenkins: ILanguage;
+  jestsnapshot: ILanguage;
   jinja: ILanguage;
   jsonnet: ILanguage;
   json5: ILanguage;
@@ -148,6 +152,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   log: ILanguage;
   lolcode: ILanguage;
   lsl: ILanguage;
+  m4: ILanguage;
   marko: ILanguage;
   matlab: ILanguage;
   maxscript: ILanguage;
@@ -162,7 +167,12 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   mojolicious: ILanguage;
   mongo: ILanguage;
   mson: ILanguage;
+  mv: ILanguage;
+  mvt: ILanguage;
+  mvtcss: ILanguage;
+  mvtjs: ILanguage;
   nearley: ILanguage;
+  nextflow: ILanguage;
   nim: ILanguage;
   nimble: ILanguage;
   nix: ILanguage;
@@ -194,6 +204,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   puppet: ILanguage;
   purescript: ILanguage;
   pyret: ILanguage;
+  pyscript: ILanguage;
   pythowo: ILanguage;
   qlik: ILanguage;
   qml: ILanguage;
@@ -207,6 +218,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   rexx: ILanguage;
   riot: ILanguage;
   rmd: ILanguage;
+  rnc: ILanguage;
   robot: ILanguage;
   san: ILanguage;
   sas: ILanguage;
@@ -217,13 +229,16 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   scilab: ILanguage;
   sdlang: ILanguage;
   slang: ILanguage;
+  s_lang: ILanguage;
   slice: ILanguage;
   slim: ILanguage;
+  slint: ILanguage;
   sln: ILanguage;
   silverstripe: ILanguage;
   sino: ILanguage;
   skipper: ILanguage;
   smarty: ILanguage;
+  snakemake: ILanguage;
   snippets: ILanguage;
   snort: ILanguage;
   solidity: ILanguage;
@@ -273,6 +288,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   verilog: ILanguage;
   vhdl: ILanguage;
   viml: ILanguage;
+  vitestsnapshot: ILanguage;
   vlang: ILanguage;
   volt: ILanguage;
   vue: ILanguage;
