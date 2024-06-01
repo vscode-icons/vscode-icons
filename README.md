@@ -55,7 +55,7 @@ Once installed and after reloading `vscode`, you will be presented with a messag
 
 In case this doesn't happen, navigate to:
 
-* `Linux` & `Windows` `=>` **File > Preferences > File Icon Theme > VSCode Icons**.
+* `Linux` & `Windows` `=>` **File > Preferences > Theme > File Icon Theme > VSCode Icons**.
 * `MacOS` `=>` **Code > Preferences > File Icon Theme > VSCode Icons**.
 
 ## Features
@@ -72,7 +72,7 @@ Choose the icon you prefer for any particular file extension.
 
 You don't see the icon you like...? No worries, we got you covered. This link will show you how you can use your own custom icon!
 
-[Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Configuration)
+[Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Custom)
 
 ### Project Auto Detection
 
@@ -130,7 +130,7 @@ Branded icons are licensed under their copyright license.
 
 ## Change Log
 
-You can checkout all our changes in our [change log](https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md).
+You can check out all our changes in our [change log](https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md).
 
 ## Acknowledgements
 
