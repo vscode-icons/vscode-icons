@@ -1,12 +1,12 @@
 export class ErrorHandler {
-  public static logError(error: Error, handled = false): void {
+  public static logError(error: unknown, handled = false): void {
     if (!error) {
       return;
     }
-    console.error(
-      `${handled ? 'H' : 'Unh'}andled Error: ${
-        error.stack || error.message || error.toString()
-      }`,
-    );
+    const msg: string =
+      error instanceof Error
+        ? error.stack ?? (error.message || error.toString())
+        : (error as string);
+    console.error(`${handled ? 'H' : 'Unh'}andled Error: ${msg}`);
   }
 }

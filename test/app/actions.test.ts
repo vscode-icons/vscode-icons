@@ -32,9 +32,8 @@ describe('ExtensionManager: actions tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -43,30 +42,28 @@ describe('ExtensionManager: actions tests', function () {
         onDidChangeConfiguration: onDidChangeConfigurationStub,
       }));
 
-      configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
-      settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager,
-      );
-      notifyManagerStub = sandbox.createStubInstance<
-        models.INotificationManager
-      >(NotificationManager);
+      settingsManagerStub =
+        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
+      notifyManagerStub =
+        sandbox.createStubInstance<models.INotificationManager>(
+          NotificationManager,
+        );
 
-      iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator,
-      );
+      iconsGeneratorStub =
+        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
 
-      padMngStub = sandbox.createStubInstance<
-        models.IProjectAutoDetectionManager
-      >(ProjectAutoDetectionManager);
+      padMngStub =
+        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+          ProjectAutoDetectionManager,
+        );
 
-      integrityManagerStub = sandbox.createStubInstance<
-        models.IIntegrityManager
-      >(IntegrityManager);
+      integrityManagerStub =
+        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
 
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
@@ -236,6 +233,7 @@ describe('ExtensionManager: actions tests', function () {
                 models.LangResourceKeys.restart,
                 models.LangResourceKeys.reload,
               ],
+              // eslint-disable-next-line @typescript-eslint/unbound-method
               configManagerStub.updatePreset,
               [
                 models.PresetNames[models.PresetNames.tsOfficial],
@@ -273,6 +271,7 @@ describe('ExtensionManager: actions tests', function () {
                   models.LangResourceKeys.restart,
                   models.LangResourceKeys.reload,
                 ],
+                // eslint-disable-next-line @typescript-eslint/unbound-method
                 configManagerStub.updatePreset,
                 [
                   models.PresetNames[models.PresetNames.hideFolders],
@@ -307,6 +306,7 @@ describe('ExtensionManager: actions tests', function () {
                   models.LangResourceKeys.restart,
                   models.LangResourceKeys.reload,
                 ],
+                // eslint-disable-next-line @typescript-eslint/unbound-method
                 configManagerStub.updatePreset,
                 [
                   models.PresetNames[models.PresetNames.hideFolders],
@@ -345,6 +345,7 @@ describe('ExtensionManager: actions tests', function () {
                   models.LangResourceKeys.restart,
                   models.LangResourceKeys.reload,
                 ],
+                // eslint-disable-next-line @typescript-eslint/unbound-method
                 configManagerStub.updatePreset,
                 [
                   models.PresetNames[models.PresetNames.jsonOfficial],
@@ -379,6 +380,7 @@ describe('ExtensionManager: actions tests', function () {
                   models.LangResourceKeys.restart,
                   models.LangResourceKeys.reload,
                 ],
+                // eslint-disable-next-line @typescript-eslint/unbound-method
                 configManagerStub.updatePreset,
                 [
                   models.PresetNames[models.PresetNames.jsonOfficial],
@@ -464,9 +466,8 @@ describe('ExtensionManager: actions tests', function () {
               undefined,
             ),
           ).to.be.true;
-          expect(
-            iconsGeneratorStub.persist.calledOnceWith(models.schema),
-          ).to.be.true;
+          expect(iconsGeneratorStub.persist.calledOnceWith(models.schema)).to.be
+            .true;
         });
 
         it(`including the project detection result`, async function () {
@@ -506,12 +507,10 @@ describe('ExtensionManager: actions tests', function () {
 
         await restoreManifest.call(extensionManager);
 
-        expect(
-          iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly(),
-        ).to.be.true;
-        expect(
-          iconsGeneratorStub.persist.calledOnceWithExactly(models.schema),
-        ).to.be.true;
+        expect(iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly())
+          .to.be.true;
+        expect(iconsGeneratorStub.persist.calledOnceWithExactly(models.schema))
+          .to.be.true;
       });
     });
 

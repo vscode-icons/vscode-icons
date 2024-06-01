@@ -7,7 +7,8 @@ import { IPackageManifest } from '../models/packageManifest';
 import { Utils } from '../utils';
 
 export class ProjectAutoDetectionManager
-  implements models.IProjectAutoDetectionManager {
+  implements models.IProjectAutoDetectionManager
+{
   constructor(
     private vscodeManager: models.IVSCodeManager,
     private configManager: models.IConfigManager,
@@ -36,7 +37,7 @@ export class ProjectAutoDetectionManager
             '**/node_modules/**',
           ))) as models.IVSCodeUri[];
       return this.detect(results, projects);
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
   }
@@ -50,10 +51,8 @@ export class ProjectAutoDetectionManager
       return detectionResults;
     }
     for (const project of projects) {
-      const detectionResult: models.IProjectDetectionResult = await this.checkForProject(
-        results,
-        project,
-      );
+      const detectionResult: models.IProjectDetectionResult =
+        await this.checkForProject(results, project);
       detectionResults.push(detectionResult);
     }
     return detectionResults;
@@ -186,8 +185,8 @@ export class ProjectAutoDetectionManager
         ? models.LangResourceKeys.nonNgDetectedPresetTrue
         : models.LangResourceKeys.ngDetected
       : preset === false
-      ? models.LangResourceKeys.ngDetectedPresetFalse
-      : models.LangResourceKeys.nonNgDetected;
+        ? models.LangResourceKeys.ngDetectedPresetFalse
+        : models.LangResourceKeys.nonNgDetected;
   }
 
   private getNestRelatedMessages(
@@ -199,8 +198,8 @@ export class ProjectAutoDetectionManager
         ? models.LangResourceKeys.nonNestDetectedPresetTrue
         : models.LangResourceKeys.nestDetected
       : preset === false
-      ? models.LangResourceKeys.nestDetectedPresetFalse
-      : models.LangResourceKeys.nonNestDetected;
+        ? models.LangResourceKeys.nestDetectedPresetFalse
+        : models.LangResourceKeys.nonNestDetected;
   }
 
   private async getProjectInfo(
@@ -210,9 +209,8 @@ export class ProjectAutoDetectionManager
     let projectInfo: models.IProjectInfo = null;
     for (const result of results) {
       const content: string = await readFileAsync(result.fsPath, 'utf8');
-      const projectJson: IPackageManifest = Utils.parseJSONSafe<
-        IPackageManifest
-      >(content);
+      const projectJson: IPackageManifest =
+        Utils.parseJSONSafe<IPackageManifest>(content);
       projectInfo = this.getInfo(projectJson, project);
       if (projectInfo) {
         break;

@@ -17,7 +17,7 @@ export class IntegrityManager implements IIntegrityManager {
         options,
       );
       return pass;
-    } catch (error) {
+    } catch (error: unknown) {
       ErrorHandler.logError(error, true);
       return true;
     }

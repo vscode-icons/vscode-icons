@@ -22,9 +22,8 @@ describe('Entry points: tests', function () {
 
     before(function () {
       proxyq.noCallThru();
-      extensionStub = sinon.createStubInstance<IExtensionManager>(
-        ExtensionManager,
-      );
+      extensionStub =
+        sinon.createStubInstance<IExtensionManager>(ExtensionManager);
       EntryPoint = proxyq('../src/index', {
         './services/compositionRootService': {
           CompositionRootService: sinon

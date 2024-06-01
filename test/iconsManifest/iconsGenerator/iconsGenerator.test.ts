@@ -50,9 +50,8 @@ describe('IconsGenerator: tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sinon.createStubInstance<IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sinon.createStubInstance<IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -63,9 +62,8 @@ describe('IconsGenerator: tests', function () {
       sandbox.stub(vscodeManagerStub, 'version');
       vscodeManagerStub.getAppUserDirPath.returns('/path/to/app/user/dir/');
 
-      configManagerStub = sandbox.createStubInstance<IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 

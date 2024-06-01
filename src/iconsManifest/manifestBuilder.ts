@@ -107,8 +107,8 @@ export class ManifestBuilder {
     const defPrefix = !defaultExtension.useBundledIcon
       ? constants.iconsManifest.defaultPrefix
       : isFolder
-      ? constants.iconsManifest.folderTypePrefix
-      : constants.iconsManifest.fileTypePrefix;
+        ? constants.iconsManifest.folderTypePrefix
+        : constants.iconsManifest.fileTypePrefix;
     const openSuffix = isOpenFolder ? '_opened' : '';
     const iconSuffix = constants.iconsManifest.iconSuffix;
     const icon = defaultExtension.icon;
