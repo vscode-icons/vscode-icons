@@ -5506,6 +5506,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'wxml', extensions: ['wxml'], format: FileFormat.svg },
     { icon: 'wxss', extensions: ['wxss'], format: FileFormat.svg },
+    {
+      icon: 'wxt',
+      extensions: ['wxt.config.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'xcode', extensions: ['xcodeproj'], format: FileFormat.svg },
     {
       icon: 'xfl',
