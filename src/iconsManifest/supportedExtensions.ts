@@ -4093,6 +4093,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'raku',
+      extensions: [],
+      languages: [languages.raku],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'raml',
       extensions: [],
       languages: [languages.raml],
