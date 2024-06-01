@@ -3182,7 +3182,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nextflow',
-      extensions: ['.nf'],
+      extensions: ['nf'],
       filename: true,
       format: FileFormat.svg,
     },
