@@ -1155,6 +1155,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'coverage',
+      extensions: ['.coverage', 'lcov.info'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'coverage',
+      extensions: ['lcov'],
+      filename: false,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coveralls',
       extensions: ['.coveralls.yml'],
       filename: true,
