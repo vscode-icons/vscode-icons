@@ -1664,6 +1664,8 @@ export const extensions: IFileCollection = {
         '.eslintignore',
         '.eslintcache',
         'eslint.config.js',
+        'eslint.config.mjs',
+        'eslint.config.cjs',
       ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
@@ -1677,6 +1679,8 @@ export const extensions: IFileCollection = {
         '.eslintignore',
         '.eslintcache',
         'eslint.config.js',
+        'eslint.config.mjs',
+        'eslint.config.cjs',
       ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
@@ -3014,6 +3018,30 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mivascript',
+      extensions: [],
+      languages: [languages.mv],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mvt',
+      extensions: [],
+      languages: [languages.mvt],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mvtcss',
+      extensions: [],
+      languages: [languages.mvtcss],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mvtjs',
+      extensions: [],
+      languages: [languages.mvtjs],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ndst',
       extensions: ['ndst.yaml', 'ndst.yml', 'ndst.json'],
       format: FileFormat.svg,
@@ -3179,6 +3207,12 @@ export const extensions: IFileCollection = {
       extensions: ['next.config.js', 'next.config.cjs', 'next.config.mjs'],
       filename: true,
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'nextflow',
+      extensions: ['.nf'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -4205,6 +4239,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 's-lang',
+      extensions: ['.slshrc', '.isisrc', '.jedrc'],
+      extensionsGlob: ['sl'],
+      languages: [languages.s_lang],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sails',
       extensions: ['.sailsrc'],
       filename: true,
@@ -4357,6 +4399,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'slint',
+      extensions: [],
+      languages: [languages.slint],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sln',
       extensions: ['sln', 'slnx'],
       languages: [languages.sln],
@@ -4384,6 +4432,12 @@ export const extensions: IFileCollection = {
       icon: 'smarty',
       extensions: [],
       languages: [languages.smarty],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'snakemake',
+      languages: [languages.snakemake],
+      extensions: [],
       format: FileFormat.svg,
     },
     {
@@ -4732,6 +4786,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'tiltfile',
       extensions: ['.tiltignore'],
+      filename: true,
       languages: [languages.tiltfile],
       format: FileFormat.svg,
     },
@@ -5536,6 +5591,21 @@ export const extensions: IFileCollection = {
       ],
       format: FileFormat.svg,
       disabled: true,
+    },
+    {
+      icon: 'knip',
+      extensions: [
+        'knip.json',
+        'knip.jsonc',
+        '.knip.json',
+        '.knip.jsonc',
+        'knip.ts',
+        'knip.js',
+        'knip.config.ts',
+        'knip.config.js',
+      ],
+      filename: true,
+      format: FileFormat.svg,
     },
   ],
 };
