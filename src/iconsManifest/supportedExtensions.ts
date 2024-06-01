@@ -1886,6 +1886,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'frontcommerce',
+      extensions: ['.front-commerce.js', 'front-commerce.config.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fthtml',
       extensions: [],
       languages: [languages.fthtml],
