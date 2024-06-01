@@ -101,6 +101,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   gcode: ILanguage;
   gdscript: ILanguage;
   genstat: ILanguage;
+  gleam: ILanguage;
   glsl: ILanguage;
   glyphs: ILanguage;
   gnuplot: ILanguage;

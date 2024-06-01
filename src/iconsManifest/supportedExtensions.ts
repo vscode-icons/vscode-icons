@@ -2006,6 +2006,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gleam',
+      extensions: ['gleam'],
+      languages: [languages.gleam],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'gleamconfig',
+      extensions: ['gleam.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'glide',
       extensions: ['glide.yml'],
       filename: true,

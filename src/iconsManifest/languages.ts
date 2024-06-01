@@ -150,6 +150,7 @@ export const languages: ILanguageCollection = {
   gcode: { ids: 'gcode', defaultExtension: 'gcode' },
   genstat: { ids: 'genstat', defaultExtension: 'gen' },
   git: { ids: ['git-commit', 'git-rebase', 'ignore'], defaultExtension: 'git' },
+  gleam: { ids: 'gleam', defaultExtension: 'gleam' },
   glsl: { ids: 'glsl', defaultExtension: 'glsl' },
   glyphs: { ids: 'glyphs', defaultExtension: 'glyphs' },
   gnuplot: { ids: 'gnuplot', defaultExtension: 'gp' },
