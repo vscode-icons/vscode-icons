@@ -216,6 +216,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   rexx: ILanguage;
   riot: ILanguage;
   rmd: ILanguage;
+  rnc: ILanguage;
   robot: ILanguage;
   san: ILanguage;
   sas: ILanguage;

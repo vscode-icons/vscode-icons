@@ -4162,6 +4162,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rnc',
+      extensions: ['rnc'],
+      languages: [languages.rnc],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'robotframework',
       extensions: [],
       languages: [languages.robot],
