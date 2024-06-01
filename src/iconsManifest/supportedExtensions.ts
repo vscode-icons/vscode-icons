@@ -5540,5 +5540,20 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    {
+      icon: 'knip',
+      extensions: [
+        'knip.json',
+        'knip.jsonc',
+        '.knip.json',
+        '.knip.jsonc',
+        'knip.ts',
+        'knip.js',
+        'knip.config.ts',
+        'knip.config.js',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
   ],
 };
