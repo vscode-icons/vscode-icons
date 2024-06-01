@@ -106,6 +106,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   gnuplot: ILanguage;
   gomod: ILanguage;
   gowork: ILanguage;
+  gradle: ILanguage;
   grain: ILanguage;
   graphql: ILanguage;
   graphviz: ILanguage;

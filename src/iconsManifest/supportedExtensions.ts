@@ -2076,6 +2076,7 @@ export const extensions: IFileCollection = {
       icon: 'gradle',
       extensions: ['gradle'],
       format: FileFormat.svg,
+      languages: [languages.gradle],
       light: true,
     },
     {
