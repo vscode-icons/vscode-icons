@@ -4366,7 +4366,6 @@ export const extensions: IFileCollection = {
       icon: 'search_result',
       extensions: [],
       languages: [languages.searchresult],
-      light: true,
       format: FileFormat.svg,
     },
     {
