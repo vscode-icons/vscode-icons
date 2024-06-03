@@ -15,6 +15,7 @@ export interface ILanguageCollection extends INativeLanguageCollection {
   apib: ILanguage;
   apl: ILanguage;
   applescript: ILanguage;
+  arkts: ILanguage;
   asciidoc: ILanguage;
   asp: ILanguage;
   astro: ILanguage;
