@@ -4019,7 +4019,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'biome',
-      extensions: ['biome.json'],
+      extensions: ['biome.json', 'biome.jsonc'],
       filename: true,
       format: FileFormat.svg,
     },
