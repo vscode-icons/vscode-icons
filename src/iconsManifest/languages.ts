@@ -1,6 +1,6 @@
-import { ILanguageCollection } from '../models';
+import { ILanguage } from '../models';
 
-export const languages: ILanguageCollection = {
+export const languages = {
   actionscript: { ids: 'actionscript', defaultExtension: 'as' },
   ada: { ids: 'ada', defaultExtension: 'ada' },
   advpl: { ids: 'advpl', defaultExtension: 'prw' },
@@ -453,4 +453,4 @@ export const languages: ILanguageCollection = {
   yarnlock: { ids: 'yarnlock', defaultExtension: 'lock' },
   zig: { ids: 'zig', defaultExtension: 'zig' },
   zip: { ids: 'zip', defaultExtension: 'zip' },
-};
+} satisfies Record<string, ILanguage>;
