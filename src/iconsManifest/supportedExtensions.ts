@@ -4734,6 +4734,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'svgo',
+      extensions: [],
+      filenamesGlob: ['svgo.config'],
+      extensionsGlob: ['cjs', 'js', 'mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'swagger',
       extensions: [],
       languages: [languages.swagger],
