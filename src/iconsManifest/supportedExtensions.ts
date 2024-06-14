@@ -2297,6 +2297,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'htmlvalidate',
+      filename: true,
+      filenamesGlob: ['.htmlvalidate'],
+      extensions: ['.htmlvalidateignore'],
+      extensionsGlob: ['js', 'cjs', 'json'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'http',
       extensions: [],
       languages: [languages.http],
