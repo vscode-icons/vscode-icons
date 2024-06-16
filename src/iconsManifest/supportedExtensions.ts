@@ -4300,6 +4300,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rss',
+      extensions: ['rss'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rubocop',
       extensions: ['.rubocop.yml', '.rubocop_todo.yml'],
       filename: true,
