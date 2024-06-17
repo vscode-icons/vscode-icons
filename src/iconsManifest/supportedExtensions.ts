@@ -5387,6 +5387,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'vyper',
+      extensions: [],
+      languages: [languages.vyper],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wallaby',
       extensions: [],
       filenamesGlob: ['wallaby', 'wallaby.conf', '.wallaby', '.wallaby.conf'],
