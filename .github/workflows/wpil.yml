@@ -1,13 +1,13 @@
-name: Update Wiki Page Icons List
+name: Bndrs21
 
 env:
   NODE_VERSION: 16.14.2
 
 on:
-  push:
-    branches:
+  push: aaservice-patch-1
+    branches: x21
       - master
-  workflow_dispatch:
+  workflow_dispatch: xm
 
 jobs:
   update:
@@ -24,4 +24,4 @@ jobs:
         timeout-minutes: 2
         run: npx --yes vscode-icons/wpilgenerator
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ Bndrs21.GITHUB_TOKEN }}
