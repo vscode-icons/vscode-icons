@@ -824,6 +824,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bundlemon',
+      extensions: [
+        '.bundlemonrc',
+        'bundlemon.config.js',
+        'bundlemon.config.mjs',
+        'bundlemon.config.cjs',
+      ],
+      filenamesGlob: ['.bundlemonrc'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
       format: FileFormat.svg,
