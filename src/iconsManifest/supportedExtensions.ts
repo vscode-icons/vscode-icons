@@ -3694,7 +3694,7 @@ export const extensions: IFileCollection = {
       icon: 'playwright',
       extensions: [],
       filenamesGlob: ['playwright.config'],
-      extensionsGlob: ['js', 'ts'],
+      extensionsGlob: ['js', 'ts', 'mts'],
       filename: true,
       format: FileFormat.svg,
     },
