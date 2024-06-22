@@ -200,6 +200,7 @@ export const languages = {
   jinja: {
     ids: [
       'jinja',
+      'jinja-java',
       'jinja-html',
       'jinja-xml',
       'jinja-css',
