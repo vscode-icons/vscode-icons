@@ -622,6 +622,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
     {
+      icon: 'supabase',
+      extensions: ['supabase'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'svelte',
       extensions: ['svelte', '.svelte-kit'],
       format: FileFormat.svg,
