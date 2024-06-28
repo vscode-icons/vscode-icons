@@ -5388,7 +5388,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vyper',
-      extensions: [],
+      extensions: ['vyi'],
       languages: [languages.vyper],
       format: FileFormat.svg,
     },
