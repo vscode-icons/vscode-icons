@@ -345,6 +345,7 @@ export const languages = {
   ruby: { ids: 'ruby', defaultExtension: 'rb' },
   rust: { ids: 'rust', defaultExtension: 'rs' },
   s_lang: { ids: 's-lang', defaultExtension: 'sl' },
+  safetensors: { ids: 'safetensors', defaultExtension: 'safetensors' },
   san: { ids: 'san', defaultExtension: 'san' },
   sas: { ids: 'SAS', defaultExtension: 'sas' },
   sass: { ids: ['sass', 'sass.hover'], defaultExtension: 'sass' },
