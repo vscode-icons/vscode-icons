@@ -4341,6 +4341,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'safetensors',
+      extensions: [],
+      languages: [languages.safetensors],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sails',
       extensions: ['.sailsrc'],
       filename: true,
