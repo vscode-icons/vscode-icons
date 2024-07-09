@@ -4342,8 +4342,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'safetensors',
-      extensions: [],
-      languages: [languages.safetensors],
+      extensions: ['safetensors'],
+      light: true,
       format: FileFormat.svg,
     },
     {
