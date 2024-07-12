@@ -5663,6 +5663,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'liara',
+      extensions: ['liara.json', '.liaraignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'zig',
       extensions: [],
       languages: [languages.zig],
