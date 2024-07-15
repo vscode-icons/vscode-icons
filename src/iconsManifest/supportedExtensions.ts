@@ -1507,6 +1507,7 @@ export const extensions: IFileCollection = {
         '.env.sample',
       ],
       languages: [languages.dotenv],
+      filename: true,
       format: FileFormat.svg,
     },
     {
