@@ -148,6 +148,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'core', extensions: ['core', '_core'], format: FileFormat.svg },
     { icon: 'coverage', extensions: ['coverage'], format: FileFormat.svg },
     { icon: 'css', extensions: ['css', '_css'], format: FileFormat.svg },
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
