@@ -627,7 +627,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'azurepipelines',
-      extensions: ['azure-pipelines.yml', '.vsts-ci.yml'],
+      extensions: ['azure-pipelines.yml', '.vsts-ci.yml', 'azure-pipelines.yaml', '.vsts-ci.yaml'],
       filename: true,
       languages: [languages.azurepipelines],
       format: FileFormat.svg,
