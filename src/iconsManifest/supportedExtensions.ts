@@ -495,13 +495,23 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'appsemble',
-      extensions: ['.appsemblerc.yaml', 'app-definition.yaml', '.appsemblerc.yml', 'app-definition.yml'],
+      extensions: [
+        '.appsemblerc.yaml',
+        'app-definition.yaml',
+        '.appsemblerc.yml',
+        'app-definition.yml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
     {
       icon: 'appveyor',
-      extensions: ['appveyor.yml', '.appveyor.yml', 'appveyor.yaml', '.appveyor.yaml'],
+      extensions: [
+        'appveyor.yml',
+        '.appveyor.yml',
+        'appveyor.yaml',
+        '.appveyor.yaml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -627,7 +637,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'azurepipelines',
-      extensions: ['azure-pipelines.yml', '.vsts-ci.yml', 'azure-pipelines.yaml', '.vsts-ci.yaml'],
+      extensions: [
+        'azure-pipelines.yml',
+        '.vsts-ci.yml',
+        'azure-pipelines.yaml',
+        '.vsts-ci.yaml',
+      ],
       filename: true,
       languages: [languages.azurepipelines],
       format: FileFormat.svg,
@@ -1055,7 +1070,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'codecov',
-      extensions: ['codecov.yml', '.codecov.yml', 'codecov.yaml', '.codecov.yaml'],
+      extensions: [
+        'codecov.yml',
+        '.codecov.yml',
+        'codecov.yaml',
+        '.codecov.yaml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1512,7 +1532,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'drone',
-      extensions: ['.drone.yml', '.drone.yml.sig', '.drone.yaml', '.drone.yaml.sig'],
+      extensions: [
+        '.drone.yml',
+        '.drone.yml.sig',
+        '.drone.yaml',
+        '.drone.yaml.sig',
+      ],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -2654,7 +2679,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'kitchenci',
-      extensions: ['.kitchen.yml', 'kitchen.yml', '.kitchen.yaml', 'kitchen.yaml'],
+      extensions: [
+        '.kitchen.yml',
+        'kitchen.yml',
+        '.kitchen.yaml',
+        'kitchen.yaml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3723,7 +3753,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pnpm',
-      extensions: ['pnpmfile.js', 'pnpm-lock.yaml', 'pnpm-workspace.yaml', 'pnpm-lock.yml', 'pnpm-workspace.yml'],
+      extensions: [
+        'pnpmfile.js',
+        'pnpm-lock.yaml',
+        'pnpm-workspace.yaml',
+        'pnpm-lock.yml',
+        'pnpm-workspace.yml',
+      ],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -4302,7 +4338,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'rubocop',
-      extensions: ['.rubocop.yml', '.rubocop_todo.yml', '.rubocop.yaml', '.rubocop_todo.yaml'],
+      extensions: [
+        '.rubocop.yml',
+        '.rubocop_todo.yml',
+        '.rubocop.yaml',
+        '.rubocop_todo.yaml',
+      ],
       filename: true,
       light: true,
       format: FileFormat.svg,
@@ -4356,7 +4397,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'sapphire_framework_cli',
-      extensions: ['.sapphirerc.json', '.sapphirerc.yml', '.sapphirerc', '.sapphirerc.yaml'],
+      extensions: [
+        '.sapphirerc.json',
+        '.sapphirerc.yml',
+        '.sapphirerc',
+        '.sapphirerc.yaml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5679,7 +5725,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'doppler',
-      extensions: ['doppler.yaml', 'doppler-template.yaml', 'doppler.yml', 'doppler-template.yml'],
+      extensions: [
+        'doppler.yaml',
+        'doppler-template.yaml',
+        'doppler.yml',
+        'doppler-template.yml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
