@@ -495,13 +495,23 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'appsemble',
-      extensions: ['.appsemblerc.yaml', 'app-definition.yaml'],
+      extensions: [
+        '.appsemblerc.yaml',
+        'app-definition.yaml',
+        '.appsemblerc.yml',
+        'app-definition.yml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
     {
       icon: 'appveyor',
-      extensions: ['appveyor.yml', '.appveyor.yml'],
+      extensions: [
+        'appveyor.yml',
+        '.appveyor.yml',
+        'appveyor.yaml',
+        '.appveyor.yaml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -627,7 +637,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'azurepipelines',
-      extensions: ['azure-pipelines.yml', '.vsts-ci.yml'],
+      extensions: [
+        'azure-pipelines.yml',
+        '.vsts-ci.yml',
+        'azure-pipelines.yaml',
+        '.vsts-ci.yaml',
+      ],
       filename: true,
       languages: [languages.azurepipelines],
       format: FileFormat.svg,
@@ -752,7 +767,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bitbucketpipeline',
-      extensions: ['bitbucket-pipelines.yml'],
+      extensions: ['bitbucket-pipelines.yml', 'bitbucket-pipelines.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -989,7 +1004,7 @@ export const extensions: IFileCollection = {
     { icon: 'class', extensions: ['class'], format: FileFormat.svg },
     {
       icon: 'circleci',
-      extensions: ['circle.yml'],
+      extensions: ['circle.yml', 'circle.yaml'],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -1048,14 +1063,19 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'codeclimate',
-      extensions: ['.codeclimate.yml'],
+      extensions: ['.codeclimate.yml', '.codeclimate.yaml'],
       light: true,
       filename: true,
       format: FileFormat.svg,
     },
     {
       icon: 'codecov',
-      extensions: ['codecov.yml', '.codecov.yml'],
+      extensions: [
+        'codecov.yml',
+        '.codecov.yml',
+        'codecov.yaml',
+        '.codecov.yaml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1168,7 +1188,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'coveralls',
-      extensions: ['.coveralls.yml'],
+      extensions: ['.coveralls.yml', '.coveralls.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1199,7 +1219,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'crowdin',
-      extensions: ['crowdin.yml'],
+      extensions: ['crowdin.yml', 'crowdin.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1338,6 +1358,7 @@ export const extensions: IFileCollection = {
       icon: 'datadog',
       extensions: [
         'service.datadog.yaml',
+        'service.datadog.yml',
         'datadog-ci.json',
         'static-analysis.datadog.yml',
         'static-analysis.datadog.yaml',
@@ -1378,7 +1399,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'dependencies',
-      extensions: ['dependencies.yml'],
+      extensions: ['dependencies.yml', 'dependencies.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1458,13 +1479,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'dockertest',
-      extensions: ['docker-compose.test.yml'],
+      extensions: ['docker-compose.test.yml', 'docker-compose.test.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
     {
       icon: 'dockertest2',
-      extensions: ['docker-compose.test.yml'],
+      extensions: ['docker-compose.test.yml', 'docker-compose.test.yaml'],
       filename: true,
       format: FileFormat.svg,
       disabled: true,
@@ -1511,7 +1532,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'drone',
-      extensions: ['.drone.yml', '.drone.yml.sig'],
+      extensions: [
+        '.drone.yml',
+        '.drone.yml.sig',
+        '.drone.yaml',
+        '.drone.yaml.sig',
+      ],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -1836,7 +1862,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'flutter_package',
-      extensions: ['pubspec.lock', 'pubspec.yaml', '.packages'],
+      extensions: ['pubspec.lock', 'pubspec.yaml', '.packages', 'pubspec.yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1899,7 +1925,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'funding',
-      extensions: ['funding.yml'],
+      extensions: ['funding.yml', 'funding.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1999,7 +2025,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'gitlab',
-      extensions: ['.gitlab-ci.yml'],
+      extensions: ['.gitlab-ci.yml', '.gitlab-ci.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2025,7 +2051,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'glide',
-      extensions: ['glide.yml'],
+      extensions: ['glide.yml', 'glide.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2248,7 +2274,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'helm',
-      extensions: ['chart.lock', 'chart.yaml'],
+      extensions: ['chart.lock', 'chart.yaml', 'chart.yml'],
       filename: true,
       languages: [languages.helm],
       format: FileFormat.svg,
@@ -2653,7 +2679,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'kitchenci',
-      extensions: ['.kitchen.yml', 'kitchen.yml'],
+      extensions: [
+        '.kitchen.yml',
+        'kitchen.yml',
+        '.kitchen.yaml',
+        'kitchen.yaml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3656,7 +3687,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'phraseapp',
-      extensions: ['.phraseapp.yml'],
+      extensions: ['.phraseapp.yml', '.phraseapp.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3722,7 +3753,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pnpm',
-      extensions: ['pnpmfile.js', 'pnpm-lock.yaml', 'pnpm-workspace.yaml'],
+      extensions: [
+        'pnpmfile.js',
+        'pnpm-lock.yaml',
+        'pnpm-workspace.yaml',
+        'pnpm-lock.yml',
+        'pnpm-workspace.yml',
+      ],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -3881,7 +3918,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'precommit',
-      extensions: ['.pre-commit-config.yaml'],
+      extensions: ['.pre-commit-config.yaml', '.pre-commit-config.yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3972,7 +4009,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'publiccode',
-      extensions: ['publiccode.yml'],
+      extensions: ['publiccode.yml', 'publiccode.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4055,7 +4092,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pyup',
-      extensions: ['.pyup', '.pyup.yml'],
+      extensions: ['.pyup', '.pyup.yml', '.pyup.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4301,7 +4338,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'rubocop',
-      extensions: ['.rubocop.yml', '.rubocop_todo.yml'],
+      extensions: [
+        '.rubocop.yml',
+        '.rubocop_todo.yml',
+        '.rubocop.yaml',
+        '.rubocop_todo.yaml',
+      ],
       filename: true,
       light: true,
       format: FileFormat.svg,
@@ -4355,7 +4397,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'sapphire_framework_cli',
-      extensions: ['.sapphirerc.json', '.sapphirerc.yml', '.sapphirerc'],
+      extensions: [
+        '.sapphirerc.json',
+        '.sapphirerc.yml',
+        '.sapphirerc',
+        '.sapphirerc.yaml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4423,7 +4470,7 @@ export const extensions: IFileCollection = {
       icon: 'serverless',
       extensions: [],
       filenamesGlob: ['serverless'],
-      extensionsGlob: ['yml', 'json', 'js', 'ts'],
+      extensionsGlob: ['yml', 'yaml', 'json', 'js', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4542,7 +4589,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'snapcraft',
-      extensions: ['snapcraft.yaml'],
+      extensions: ['snapcraft.yaml', 'snapcraft.yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4685,7 +4732,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'stylish_haskell',
-      extensions: ['.stylish-haskell.yaml'],
+      extensions: ['.stylish-haskell.yaml', '.stylish-haskell.yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4941,7 +4988,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'travis',
-      extensions: ['.travis.yml'],
+      extensions: ['.travis.yml', '.travis.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4966,7 +5013,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'trunk',
-      extensions: ['trunk.yaml'],
+      extensions: ['trunk.yaml', 'trunk.yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5149,7 +5196,7 @@ export const extensions: IFileCollection = {
     { icon: 'vash', extensions: ['vash'], light: true, format: FileFormat.svg },
     {
       icon: 'vapor',
-      extensions: ['vapor.yml'],
+      extensions: ['vapor.yml', 'vapor.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5469,7 +5516,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'wercker',
-      extensions: ['wercker.yml'],
+      extensions: ['wercker.yml', 'wercker.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5640,6 +5687,7 @@ export const extensions: IFileCollection = {
         'yarn.lock',
         '.yarnrc',
         '.yarnrc.yml',
+        '.yarnrc.yaml',
         '.yarnclean',
         '.yarn-integrity',
         '.yarn-metadata.json',
@@ -5677,7 +5725,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'doppler',
-      extensions: ['doppler.yaml', 'doppler-template.yaml'],
+      extensions: [
+        'doppler.yaml',
+        'doppler-template.yaml',
+        'doppler.yml',
+        'doppler-template.yml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
