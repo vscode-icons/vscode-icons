@@ -1099,7 +1099,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'config',
-      extensions: ['plist'],
+      extensions: ['plist', 'config'],
       languages: [languages.properties, languages.springbootproperties],
       light: true,
       format: FileFormat.svg,
