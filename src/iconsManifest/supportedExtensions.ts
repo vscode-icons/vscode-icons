@@ -5553,7 +5553,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'xml',
-      extensions: ['pex', 'tmlanguage'],
+      extensions: ['pex', 'tmlanguage', 'xaml'],
       languages: [languages.xml],
       format: FileFormat.svg,
     },
