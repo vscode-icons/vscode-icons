@@ -2782,7 +2782,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lighthouse',
-      extensions: [],
+      extensions: ['budget.json', 'budgets.json'],
       filenamesGlob: ['.lighthouserc'],
       extensionsGlob: ['cjs', 'js', 'json', 'yaml', 'yml'],
       filename: true,
