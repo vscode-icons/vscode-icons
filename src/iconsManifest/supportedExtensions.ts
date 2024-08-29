@@ -3958,7 +3958,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'protobuf',
-      extensions: [],
+      extensions: ['proto'],
       languages: [languages.protobuf],
       format: FileFormat.svg,
     },
