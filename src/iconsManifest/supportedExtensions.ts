@@ -4133,7 +4133,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'razor',
-      extensions: [],
+      extensions: ['razor'],
       languages: [languages.razor],
       format: FileFormat.svg,
     },
