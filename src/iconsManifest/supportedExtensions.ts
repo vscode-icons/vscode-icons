@@ -1074,6 +1074,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'coderabbit',
+      extensions: ['.coderabbit.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coffeelint',
       extensions: ['coffeelint.json', '.coffeelintignore'],
       filename: true,
