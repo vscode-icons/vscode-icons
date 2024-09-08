@@ -2093,6 +2093,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gpg',
+      extensions: ['gpg', 'pgp'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gradle',
       extensions: ['gradle'],
       format: FileFormat.svg,
