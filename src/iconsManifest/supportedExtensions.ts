@@ -1074,6 +1074,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'coderabbit',
+      extensions: ['.coderabbit.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coffeelint',
       extensions: ['coffeelint.json', '.coffeelintignore'],
       filename: true,
@@ -1128,10 +1134,12 @@ export const extensions: IFileCollection = {
       extensions: [
         'commitlint.config.js',
         'commitlint.config.cjs',
+        'commitlint.config.mjs',
         'commitlint.config.ts',
+        'commitlint.config.cts',
       ],
       filenamesGlob: ['.commitlintrc'],
-      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'ts'],
+      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'mjs', 'ts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2091,6 +2099,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gpg',
+      extensions: ['gpg', 'pgp'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gradle',
       extensions: ['gradle'],
       format: FileFormat.svg,
@@ -2782,7 +2795,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lighthouse',
-      extensions: [],
+      extensions: ['budget.json', 'budgets.json'],
       filenamesGlob: ['.lighthouserc'],
       extensionsGlob: ['cjs', 'js', 'json', 'yaml', 'yml'],
       filename: true,
@@ -4731,6 +4744,14 @@ export const extensions: IFileCollection = {
       icon: 'svg',
       extensions: ['svg'],
       languages: [languages.svg],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'svgo',
+      extensions: [],
+      filenamesGlob: ['svgo.config'],
+      extensionsGlob: ['cjs', 'js', 'mjs'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
