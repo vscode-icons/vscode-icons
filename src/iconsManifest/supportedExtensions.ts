@@ -2007,7 +2007,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'gitlab',
-      extensions: ['.gitlab-ci.yml'],
+      extensions: ['.gitlab-ci.yml', '.gitlab-ci.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
