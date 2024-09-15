@@ -3312,7 +3312,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'next',
-      extensions: ['next.config.js', 'next.config.cjs', 'next.config.mjs'],
+      extensions: [
+        'next.config.js',
+        'next.config.cjs',
+        'next.config.mjs',
+        'next.config.ts',
+      ],
       filename: true,
       light: true,
       format: FileFormat.svg,
