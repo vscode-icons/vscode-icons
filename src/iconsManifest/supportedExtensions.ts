@@ -4931,6 +4931,26 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'testplane',
+      extensions: [],
+      filenamesGlob: ['testplane.conf', 'testplane.config'],
+      extensionsGlob: ['ts', 'js', 'cts', 'cjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'testplane',
+      extensions: [
+        'testplane.ts',
+        'testplane.js',
+        'testplane.cts',
+        'testplane.cjs',
+        'testplane.tsx',
+        'testplane.jsx',
+      ],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'testts',
       extensions: [],
       filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec', 'test-d'],
