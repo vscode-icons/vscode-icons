@@ -2390,6 +2390,7 @@ export const extensions: IFileCollection = {
         'png',
         'bmp',
         'tiff',
+        'heic',
         'ico',
         'icns',
         'webp',
