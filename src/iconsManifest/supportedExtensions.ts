@@ -542,6 +542,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'atom',
+      extensions: ['atom'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ats',
       extensions: [],
       languages: [languages.ats],
