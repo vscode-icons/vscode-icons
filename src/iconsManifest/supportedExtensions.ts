@@ -4922,7 +4922,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'testts',
       extensions: [],
-      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
+      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec', 'test-d'],
       extensionsGlob: ['ts', 'tsx', 'mts'],
       format: FileFormat.svg,
     },
