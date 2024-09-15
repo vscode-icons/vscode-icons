@@ -4948,6 +4948,7 @@ export const extensions: IFileCollection = {
         'testplane.tsx',
         'testplane.jsx',
       ],
+      filename: false,
       format: FileFormat.svg,
     },
     {
