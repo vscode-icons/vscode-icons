@@ -542,6 +542,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'atom',
+      extensions: ['atom'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ats',
       extensions: [],
       languages: [languages.ats],
@@ -824,6 +829,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bundlemon',
+      extensions: [
+        '.bundlemonrc',
+        'bundlemon.config.js',
+        'bundlemon.config.mjs',
+        'bundlemon.config.cjs',
+      ],
+      filenamesGlob: ['.bundlemonrc'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
       format: FileFormat.svg,
@@ -1074,6 +1092,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'coderabbit',
+      extensions: ['.coderabbit.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coffeelint',
       extensions: ['coffeelint.json', '.coffeelintignore'],
       filename: true,
@@ -1128,10 +1152,12 @@ export const extensions: IFileCollection = {
       extensions: [
         'commitlint.config.js',
         'commitlint.config.cjs',
+        'commitlint.config.mjs',
         'commitlint.config.ts',
+        'commitlint.config.cts',
       ],
       filenamesGlob: ['.commitlintrc'],
-      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'ts'],
+      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'mjs', 'ts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2091,6 +2117,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gpg',
+      extensions: ['gpg', 'pgp'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gradle',
       extensions: ['gradle'],
       format: FileFormat.svg,
@@ -2297,6 +2328,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'htmlvalidate',
+      filename: true,
+      filenamesGlob: ['.htmlvalidate'],
+      extensions: ['.htmlvalidateignore'],
+      extensionsGlob: ['js', 'cjs', 'json'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'http',
       extensions: [],
       languages: [languages.http],
@@ -2351,6 +2390,7 @@ export const extensions: IFileCollection = {
         'png',
         'bmp',
         'tiff',
+        'heic',
         'ico',
         'icns',
         'webp',
@@ -2782,7 +2822,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lighthouse',
-      extensions: [],
+      extensions: ['budget.json', 'budgets.json'],
       filenamesGlob: ['.lighthouserc'],
       extensionsGlob: ['cjs', 'js', 'json', 'yaml', 'yml'],
       filename: true,
@@ -3272,7 +3312,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'next',
-      extensions: ['next.config.js', 'next.config.cjs', 'next.config.mjs'],
+      extensions: [
+        'next.config.js',
+        'next.config.cjs',
+        'next.config.mjs',
+        'next.config.ts',
+      ],
       filename: true,
       light: true,
       format: FileFormat.svg,
@@ -3392,7 +3437,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'nuxt',
       extensions: ['.nuxtignore', '.nuxtrc'],
-      filenamesGlob: ['nuxt.config'],
+      filenamesGlob: ['nuxt.config', 'nuxt'],
       extensionsGlob: ['js', 'ts', 'mjs'],
       filename: true,
       format: FileFormat.svg,
@@ -3694,7 +3739,7 @@ export const extensions: IFileCollection = {
       icon: 'playwright',
       extensions: [],
       filenamesGlob: ['playwright.config'],
-      extensionsGlob: ['js', 'ts'],
+      extensionsGlob: ['js', 'ts', 'mts', 'mjs', 'cts', 'cjs'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4300,6 +4345,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rss',
+      extensions: ['rss'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rubocop',
       extensions: ['.rubocop.yml', '.rubocop_todo.yml'],
       filename: true,
@@ -4338,6 +4388,12 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['sl'],
       languages: [languages.s_lang],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'safetensors',
+      extensions: ['safetensors'],
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -4734,6 +4790,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'svgo',
+      extensions: [],
+      filenamesGlob: ['svgo.config'],
+      extensionsGlob: ['cjs', 'js', 'mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'swagger',
       extensions: [],
       languages: [languages.swagger],
@@ -4867,9 +4931,29 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'testplane',
+      extensions: [],
+      filenamesGlob: ['testplane.conf', 'testplane.config'],
+      extensionsGlob: ['ts', 'js', 'cts', 'cjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'testplane',
+      extensions: [
+        'testplane.ts',
+        'testplane.js',
+        'testplane.cts',
+        'testplane.cjs',
+        'testplane.tsx',
+        'testplane.jsx',
+      ],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'testts',
       extensions: [],
-      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
+      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec', 'test-d'],
       extensionsGlob: ['ts', 'tsx', 'mts'],
       format: FileFormat.svg,
     },
@@ -5384,6 +5468,12 @@ export const extensions: IFileCollection = {
         'vue.config.mjs',
       ],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'vyper',
+      extensions: ['vyi'],
+      languages: [languages.vyper],
       format: FileFormat.svg,
     },
     {

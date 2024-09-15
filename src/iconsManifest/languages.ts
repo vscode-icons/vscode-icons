@@ -200,6 +200,7 @@ export const languages = {
   jinja: {
     ids: [
       'jinja',
+      'jinja-java',
       'jinja-html',
       'jinja-xml',
       'jinja-css',
@@ -316,7 +317,10 @@ export const languages = {
     ids: ['java-properties', 'properties'],
     defaultExtension: 'properties',
   },
-  protobuf: { ids: ['proto3', 'proto'], defaultExtension: 'proto' },
+  protobuf: {
+    ids: ['proto3', 'proto', 'prototext'],
+    defaultExtension: 'proto',
+  },
   pug: { ids: 'jade', defaultExtension: 'pug' },
   puppet: { ids: 'puppet', defaultExtension: 'pp' },
   purescript: { ids: 'purescript', defaultExtension: 'purs' },
@@ -434,6 +438,7 @@ export const languages = {
   vlang: { ids: 'v', defaultExtension: 'v' },
   volt: { ids: 'volt', defaultExtension: 'volt' },
   vue: { ids: 'vue', defaultExtension: 'vue' },
+  vyper: { ids: 'vyper', defaultExtension: 'vy' },
   wai: { ids: ['wai'], defaultExtension: 'wai' },
   wasm: { ids: ['wasm', 'wat'], defaultExtension: 'wasm' },
   wenyan: { ids: 'wenyan', defaultExtension: 'wy' },
