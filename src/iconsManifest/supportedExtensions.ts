@@ -4391,6 +4391,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'safetensors',
+      extensions: ['safetensors'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'sails',
       extensions: ['.sailsrc'],
       filename: true,
