@@ -4956,6 +4956,7 @@ export const extensions: IFileCollection = {
         'testplane.tsx',
         'testplane.jsx',
       ],
+      filename: false,
       format: FileFormat.svg,
     },
     {
@@ -5757,6 +5758,12 @@ export const extensions: IFileCollection = {
       icon: 'vercel',
       extensions: ['now.json', '.nowignore', 'vercel.json', '.vercelignore'],
       light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'liara',
+      extensions: ['liara.json', '.liaraignore'],
       filename: true,
       format: FileFormat.svg,
     },
