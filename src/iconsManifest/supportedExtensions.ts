@@ -5734,6 +5734,7 @@ export const extensions: IFileCollection = {
         '.yarnclean',
         '.yarn-integrity',
         '.yarn-metadata.json',
+        '.yarn-state.yml',
         '.yarnignore',
       ],
       filename: true,
