@@ -5150,8 +5150,8 @@ export const extensions: IFileCollection = {
     {
       icon: 'typedoc',
       extensions: [],
-      filenamesGlob: ['typedoc'],
-      extensionsGlob: ['js', 'json'],
+      filenamesGlob: ['typedoc', 'typedoc.config'],
+      extensionsGlob: ['cjs', 'js', 'json', 'json5', 'mjs'],
       filename: true,
       format: FileFormat.svg,
     },
