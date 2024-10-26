@@ -1,4 +1,4 @@
 {
-  "exclude": ["!test/**"],
-  "exclude-after-remap": false
+  "include": ["!test/**"],
+  "include-after-remap": false
 }
