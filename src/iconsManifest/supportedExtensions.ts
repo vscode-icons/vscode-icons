@@ -4315,7 +4315,7 @@ export const extensions: IFileCollection = {
         'rolldown.config.dev',
         'rolldown.config.prod',
       ],
-      extensionsGlob: ['js', 'cjs', 'mjs'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts', 'mts', 'cts'],
       filename: true,
       format: FileFormat.svg,
     },
