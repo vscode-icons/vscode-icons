@@ -4197,6 +4197,15 @@ export const extensions: IFileCollection = {
       languages: [languages.javascriptreact],
       format: FileFormat.svg,
     },
+    {
+      icon: 'reactrouter',
+      extensions: [],
+      filenamesGlob: ['react-router.config'],
+      extensionsGlob: ['js', 'ts'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'reacttemplate', extensions: ['rt'], format: FileFormat.svg },
     {
       icon: 'reactts',
