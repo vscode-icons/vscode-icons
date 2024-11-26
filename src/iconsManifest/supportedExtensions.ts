@@ -907,6 +907,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'capnp',
+      extensions: ['capnp'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cargo',
       extensions: ['cargo.toml', 'cargo.lock'],
       filename: true,
