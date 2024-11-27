@@ -2348,6 +2348,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'humanstxt',
+      extensions: ['humans.txt'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'husky',
       extensions: ['.huskyrc', 'husky.config.js'],
       filenamesGlob: ['.huskyrc'],
