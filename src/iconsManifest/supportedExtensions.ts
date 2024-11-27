@@ -1867,6 +1867,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'flyio',
+      extensions: ['fly.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'font',
       extensions: ['woff', 'woff2', 'ttf', 'otf', 'eot', 'pfa', 'pfb', 'sfd'],
       light: true,
