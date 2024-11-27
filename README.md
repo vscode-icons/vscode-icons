@@ -144,3 +144,4 @@ We like to express our "Special Thanks" to:
 * [vscode-icons-js](https://github.com/dderevjanik/vscode-icons-js) by [@dderevjanik](https://github.com/dderevjanik) get file/folder specific icon from `vscode-icons` icons.
 
 **Enjoy!**
+Alteração das informações do repositorio forkado
