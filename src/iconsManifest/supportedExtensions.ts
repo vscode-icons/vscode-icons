@@ -1672,6 +1672,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'ensime', extensions: ['ensime'], format: FileFormat.svg },
     { icon: 'eps', extensions: ['eps'], format: FileFormat.svg },
+    { icon: 'epub', extensions: ['epub'], format: FileFormat.svg },
     {
       icon: 'erb',
       extensions: [],
