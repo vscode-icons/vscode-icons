@@ -2752,6 +2752,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'language_configuration',
+      extensions: ['language-configuration.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'language_configuration',
+      extensions: ['language-configuration.json'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'layout',
       extensions: ['master', 'layout.html', 'layout.htm'],
       format: FileFormat.svg,
