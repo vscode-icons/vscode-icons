@@ -2649,6 +2649,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
+    {
+      icon: 'jsr',
+      extensions: ['jsr.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'jss', extensions: ['jss'], format: FileFormat.svg },
     {
       icon: 'juice',
