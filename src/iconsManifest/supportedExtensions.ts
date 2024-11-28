@@ -908,7 +908,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'capnp',
-      extensions: ['capnp'],
+      extensions: [],
+      languages: [languages.capnproto],
       format: FileFormat.svg,
     },
     {
