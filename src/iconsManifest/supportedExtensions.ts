@@ -4236,7 +4236,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'reactjs',
+      icon: 'jsx',
       extensions: [],
       languages: [languages.javascriptreact],
       format: FileFormat.svg,
@@ -4252,7 +4252,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'reacttemplate', extensions: ['rt'], format: FileFormat.svg },
     {
-      icon: 'reactts',
+      icon: 'tsx',
       extensions: [],
       languages: [languages.typescriptreact],
       format: FileFormat.svg,
