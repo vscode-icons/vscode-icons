@@ -3802,7 +3802,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pnpm',
-      extensions: ['pnpmfile.js', 'pnpm-lock.yaml', 'pnpm-workspace.yaml'],
+      extensions: [
+        '.pnpmfile.cjs',
+        'pnpmfile.js',
+        'pnpm-lock.yaml',
+        'pnpm-workspace.yaml',
+      ],
       light: true,
       filename: true,
       format: FileFormat.svg,
