@@ -1230,6 +1230,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'craco',
+      extensions: [
+        'craco.config.ts',
+        'craco.config.js',
+        'craco.config.cjs',
+        '.cracorc.ts',
+        '.cracorc.js',
+        '.cracorc',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'crowdin',
       extensions: ['crowdin.yml'],
       filename: true,
