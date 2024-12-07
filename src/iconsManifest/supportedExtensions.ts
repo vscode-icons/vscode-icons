@@ -553,6 +553,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'attw',
+      extensions: ['.attw.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       // https://en.wikipedia.org/wiki/Audio_file_format
       icon: 'audio',
       extensions: [
@@ -1391,7 +1397,6 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['deno'],
       extensionsGlob: ['json', 'jsonc', 'lock'],
       filename: true,
-      light: true,
       format: FileFormat.svg,
     },
     {
@@ -1678,6 +1683,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'ensime', extensions: ['ensime'], format: FileFormat.svg },
     { icon: 'eps', extensions: ['eps'], format: FileFormat.svg },
+    { icon: 'epub', extensions: ['epub'], format: FileFormat.svg },
     {
       icon: 'erb',
       extensions: [],
@@ -1869,6 +1875,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'flutter_package',
       extensions: ['pubspec.lock', 'pubspec.yaml', '.packages'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'flyio',
+      extensions: ['fly.toml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2354,6 +2366,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'humanstxt',
+      extensions: ['humans.txt'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'husky',
       extensions: ['.huskyrc', 'husky.config.js'],
       filenamesGlob: ['.huskyrc'],
@@ -2642,6 +2660,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
+    {
+      icon: 'jsr',
+      extensions: ['jsr.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'jss', extensions: ['jss'], format: FileFormat.svg },
     {
       icon: 'juice',
@@ -2731,6 +2755,17 @@ export const extensions: IFileCollection = {
       icon: 'latino',
       extensions: [],
       languages: [languages.latino],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'language_configuration',
+      extensions: ['language-configuration.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'language_configuration',
+      extensions: ['language-configuration.json'],
       format: FileFormat.svg,
     },
     {
@@ -3818,11 +3853,17 @@ export const extensions: IFileCollection = {
         '.postcssrc.yaml',
         '.postcssrc.yml',
         '.postcssrc.ts',
+        '.postcssrc.cts',
+        '.postcssrc.mts',
         '.postcssrc.js',
         '.postcssrc.cjs',
+        '.postcssrc.mjs',
         'postcss.config.ts',
+        'postcss.config.cts',
+        'postcss.config.mts',
         'postcss.config.js',
         'postcss.config.cjs',
+        'postcss.config.mjs',
       ],
       filename: true,
       format: FileFormat.svg,
@@ -4072,6 +4113,7 @@ export const extensions: IFileCollection = {
       icon: 'biome',
       extensions: ['biome.json', 'biome.jsonc'],
       filename: true,
+      languages: [languages.biomesyntaxtree],
       format: FileFormat.svg,
     },
     {
@@ -4138,7 +4180,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'quasar',
-      extensions: ['quasar.config.js', 'quasar.conf.js'],
+      extensions: ['quasar.conf.js'],
+      filenamesGlob: ['quasar.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -4201,6 +4245,15 @@ export const extensions: IFileCollection = {
       icon: 'reactjs',
       extensions: [],
       languages: [languages.javascriptreact],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'reactrouter',
+      extensions: [],
+      filenamesGlob: ['react-router.config'],
+      extensionsGlob: ['js', 'ts'],
+      light: true,
+      filename: true,
       format: FileFormat.svg,
     },
     { icon: 'reacttemplate', extensions: ['rt'], format: FileFormat.svg },
@@ -5740,6 +5793,7 @@ export const extensions: IFileCollection = {
         '.yarnclean',
         '.yarn-integrity',
         '.yarn-metadata.json',
+        '.yarn-state.yml',
         '.yarnignore',
       ],
       filename: true,

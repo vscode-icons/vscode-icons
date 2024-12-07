@@ -46,6 +46,7 @@ export const languages = {
   bibtex: { ids: 'bibtex', defaultExtension: 'bib' },
   biml: { ids: 'biml', defaultExtension: 'biml' },
   binary: { ids: 'code-text-binary', defaultExtension: 'bin' },
+  biomesyntaxtree: { ids: 'biome_syntax_tree', defaultExtension: 'rast' },
   blade: { ids: ['blade', 'laravel-blade'], defaultExtension: 'blade.php' },
   blitzbasic: { ids: ['blitzbasic'], defaultExtension: 'blitzbasic' },
   bolt: { ids: 'bolt', defaultExtension: 'bolt' },
