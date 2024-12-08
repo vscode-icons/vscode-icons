@@ -4360,6 +4360,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rolldown',
+      extensions: [],
+      filenamesGlob: [
+        'rolldown.config',
+        'rolldown.config.common',
+        'rolldown.config.dev',
+        'rolldown.config.prod',
+      ],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts', 'mts', 'cts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rollup',
       extensions: [],
       filenamesGlob: [
