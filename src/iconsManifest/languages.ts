@@ -91,6 +91,7 @@ export const languages = {
   },
   cucumber: { ids: 'feature', defaultExtension: 'feature' },
   cuda: { ids: ['cuda', 'cuda-cpp'], defaultExtension: 'cu' },
+  cypher: { ids: 'cypher', defaultExtension: 'cypher' },
   cython: { ids: 'cython', defaultExtension: 'pyx' },
   dal: { ids: 'dal', defaultExtension: 'dal' },
   dart: { ids: 'dart', defaultExtension: 'dart' },
