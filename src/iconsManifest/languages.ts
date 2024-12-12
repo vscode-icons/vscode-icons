@@ -274,7 +274,7 @@ export const languages = {
       'options-txt',
       'snbt',
     ],
-    defaultExtension: 'mjml',
+    defaultExtension: 'mcfunction',
   },
   mjml: { ids: 'mjml', defaultExtension: 'mjml' },
   mlang: { ids: ['powerquery'], defaultExtension: 'pq' },
