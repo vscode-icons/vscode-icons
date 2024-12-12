@@ -3175,7 +3175,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'minecraft',
-      extensions: ['.mca', '.mcmeta'],
+      extensions: ['mca', 'mcmeta'],
       languages: [languages.minecraft],
       format: FileFormat.svg,
     },
