@@ -470,7 +470,7 @@ export const languages = {
   xmake: { ids: 'xmake', defaultExtension: 'xmake.lua' },
   xml: { ids: 'xml', defaultExtension: 'xml' },
   xquery: { ids: 'xquery', defaultExtension: 'xquery' },
-  xsl: { ids: 'xsl', defaultExtension: 'xsl' },
+  xsl: { ids: ['xsl', 'xslt'], defaultExtension: 'xsl' },
   yacc: { ids: 'yacc', defaultExtension: 'bison' },
   yaml: { ids: 'yaml', defaultExtension: 'yaml' },
   yang: { ids: 'yang', defaultExtension: 'yang' },
