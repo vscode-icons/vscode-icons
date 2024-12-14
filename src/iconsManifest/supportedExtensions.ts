@@ -445,6 +445,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'antlers_html',
+      extensions: ['antlers.html'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'antlr',
       extensions: [],
       languages: [languages.antlr],
