@@ -58,6 +58,7 @@ export const languages = {
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
   cabal: { ids: 'cabal', defaultExtension: 'cabal' },
   caddyfile: { ids: 'caddyfile', defaultExtension: 'Caddyfile' },
+  capnproto: { ids: ['capnp', 'capnproto'], defaultExtension: 'capnp' },
   casc: { ids: 'casc', defaultExtension: 'casc' },
   cddl: { ids: 'cddl', defaultExtension: 'cddl' },
   ceylon: { ids: 'ceylon', defaultExtension: 'ceylon' },
