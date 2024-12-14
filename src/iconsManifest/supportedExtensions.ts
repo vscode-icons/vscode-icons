@@ -1411,6 +1411,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'debian',
+      extensions: ['aptfile'],
+      filename: true,
+      languages: [],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'deno',
       extensions: [],
       filenamesGlob: ['deno'],
