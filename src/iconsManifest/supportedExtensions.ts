@@ -3240,6 +3240,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'neo4j',
+      extensions: [],
+      languages: [languages.cypher],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nestjs',
       extensions: [
         '.nest-cli.json',
