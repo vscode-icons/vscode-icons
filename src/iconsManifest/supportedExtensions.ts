@@ -3600,6 +3600,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'opentofu',
+      extensions: ['tofu', 'tofu.json', 'tofutest.hcl', 'tofutest.json'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'org',
       extensions: ['org'],
       languages: [languages.org],
