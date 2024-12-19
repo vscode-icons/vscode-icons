@@ -1541,6 +1541,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'docusaurus',
+      extensions: [],
+      filenamesGlob: ['docusaurus.config'],
+      extensionsGlob: ['.ts', '.mts', '.cts', '.js', '.mjs', '.cjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'docz',
       extensions: ['.doczrc'],
       filenamesGlob: ['docz', '.docz', 'doczrc', 'docz.config'],
