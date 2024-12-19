@@ -837,7 +837,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bun',
-      extensions: ['bun', 'lockb', 'bun.lock'],
+      extensions: ['.bunfig.toml', 'bunfig.toml', 'bun.lockb', 'bun.lock'],
+      languages: [languages.bunlockb],
+      filename: true,
       format: FileFormat.svg,
     },
     {
