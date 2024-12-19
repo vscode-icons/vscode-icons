@@ -1,4 +1,4 @@
-version: "2"
+version: '2'
 checks:
   file-lines:
     enabled: false
@@ -23,9 +23,9 @@ plugins:
   tslint:
     enabled: false
 exclude_patterns:
-  - ".*"
-  - ".*/"
-  - "*.*"
-  - "!*.md"
-  - "!src/**/*.ts"
-  - "!test/**/*.ts"
+  - '.*'
+  - '.*/'
+  - '*.*'
+  - '!*.md'
+  - '!src/**/*.ts'
+  - '!test/**/*.ts'
