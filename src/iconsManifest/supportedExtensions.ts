@@ -5656,6 +5656,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'weblate',
+      extensions: ['.weblate', '.weblate.ini', 'weblate', 'weblate.ini'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'webpack',
       extensions: [],
       filenamesGlob: [
