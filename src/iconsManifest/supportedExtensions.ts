@@ -5016,6 +5016,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'taplo',
+      languages: [],
+      extensions: ['.taplo.toml', 'taplo.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tauri',
       extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
