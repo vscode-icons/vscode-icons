@@ -14,7 +14,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'app',
-      extensions: ['app', 'apps', '.app'],
+      extensions: ['app', 'apps', '.app', 'application', 'applications'],
       format: FileFormat.svg,
     },
     {
@@ -432,6 +432,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
+    {
+      icon: 'minecraft',
+      extensions: ['.minecraft'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'minikube',
       extensions: ['minikube', 'minik8s', 'minikuber'],
