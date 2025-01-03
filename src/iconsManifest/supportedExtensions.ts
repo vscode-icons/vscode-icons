@@ -114,6 +114,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'agda',
+      extensions: [],
       languages: [languages.agda],
       light: true,
       format: FileFormat.svg,
