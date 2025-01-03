@@ -780,6 +780,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'blender',
+      extensions: ['blend'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'blitzbasic',
       extensions: ['bb'],
       languages: [languages.blitzbasic],
