@@ -669,6 +669,11 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'bak',
+      extensions: ['bak'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ballerina',
       extensions: [],
       languages: [languages.ballerina],
