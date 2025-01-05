@@ -1548,6 +1548,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'docusaurus',
+      extensions: [],
+      filenamesGlob: ['docusaurus.config'],
+      extensionsGlob: ['.ts', '.mts', '.cts', '.js', '.mjs', '.cjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'docz',
       extensions: ['.doczrc'],
       filenamesGlob: ['docz', '.docz', 'doczrc', 'docz.config'],
@@ -3629,6 +3637,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'opentofu',
+      extensions: ['tofu', 'tofu.json', 'tofutest.hcl', 'tofutest.json'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'org',
       extensions: ['org'],
       languages: [languages.org],
@@ -5023,6 +5036,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'taplo',
+      languages: [],
+      extensions: ['.taplo.toml', 'taplo.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tauri',
       extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
@@ -5660,6 +5680,12 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['wdio', 'wdio.conf'],
       filename: true,
       extensionsGlob: ['json', 'js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'weblate',
+      extensions: ['.weblate', '.weblate.ini', 'weblate', 'weblate.ini'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
