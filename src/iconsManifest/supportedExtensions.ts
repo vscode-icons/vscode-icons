@@ -1317,11 +1317,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'cssmap', extensions: ['css.map'], format: FileFormat.svg },
-    { 
+    {
       icon: 'css2map',
       extensions: ['css.map'],
       format: FileFormat.svg,
-      disabled: true, 
+      disabled: true,
     },
     {
       icon: 'cucumber',
