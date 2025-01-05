@@ -152,13 +152,13 @@ export const extensions: IFolderCollection = {
     {
       icon: 'css',
       extensions: ['css', '_css'],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'css2',
       extensions: ['css', '_css'],
       format: FileFormat.svg,
-      disabled: true
+      disabled: true,
     },
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
     {
