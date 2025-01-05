@@ -1303,7 +1303,8 @@ export const extensions: IFileCollection = {
       languages: [languages.css],
       format: FileFormat.svg,
       disabled: true,
-    },    {
+    },
+    {
       icon: 'csscomb',
       extensions: ['.csscomb.json'],
       filename: true,
