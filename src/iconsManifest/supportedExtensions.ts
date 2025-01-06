@@ -3646,14 +3646,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
-    { 
+    {
       icon: 'oxlint',
-      extensions: [
-        '.oxlintignore',
-        '.oxlintrc.json',
-      ],
+      extensions: ['.oxlintignore', '.oxlintrc.json'],
       filename: true,
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
     {
