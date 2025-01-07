@@ -1065,6 +1065,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'codemagic',
+      extensions: ['codemagic.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'codeql',
       extensions: [],
       languages: [languages.codeql],
