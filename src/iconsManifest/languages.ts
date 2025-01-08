@@ -5,6 +5,10 @@ export const languages = {
   ada: { ids: 'ada', defaultExtension: 'ada' },
   advpl: { ids: 'advpl', defaultExtension: 'prw' },
   affectscript: { ids: 'affectscript', defaultExtension: 'affect' },
+  agda: {
+    ids: ['agda', 'lagda-md', 'lagda-rst', 'lagda-tex'],
+    defaultExtension: 'agda',
+  },
   al: { ids: 'al', defaultExtension: 'al' },
   ansible: { ids: 'ansible', defaultExtension: 'ansible' },
   antlr: { ids: 'antlr', defaultExtension: 'g4' },
