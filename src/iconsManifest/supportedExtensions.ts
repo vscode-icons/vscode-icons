@@ -1,5 +1,5 @@
-import { FileFormat, IFileCollection } from '../models';
-import { languages } from './languages';
+import { FileFormat, IFileCollection } from '../models'
+import { languages } from './languages'
 
 export const extensions: IFileCollection = {
   default: {
@@ -3661,10 +3661,7 @@ export const extensions: IFileCollection = {
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     {
       icon: 'oxlint',
-      extensions: [
-        '.oxlintignore',
-        '.oxlintrc.json',
-      ],
+      extensions: ['.oxlintignore', '.oxlintrc.json'],
       filename: true,
       format: FileFormat.svg,
     },
