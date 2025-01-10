@@ -592,6 +592,11 @@ export const extensions: IFolderCollection = {
       extensions: ['script', 'scripts'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'seedkit',
+      extensions: ['seedkit', '.seedkit'],
+      format: FileFormat.svg,
+    },
     { icon: 'server', extensions: ['server'], format: FileFormat.svg },
     {
       icon: 'services',
