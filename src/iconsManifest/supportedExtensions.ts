@@ -3281,6 +3281,7 @@ export const extensions: IFileCollection = {
       icon: 'mypy',
       extensions: ['mypy.ini', '.mypy.ini'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
