@@ -484,7 +484,6 @@ export const extensions: IFolderCollection = {
       extensions: ['mongodb', 'mongo'],
       format: FileFormat.svg,
     },
-    // https://github.com/python/mypy/blob/65193350d87fcc75636b1e3f4404693d57309e4f/docs/source/mypy_light.svg
     {
       icon: 'mypy',
       extensions: ['.mypy_cache'],
