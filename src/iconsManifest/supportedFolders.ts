@@ -270,7 +270,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'fonts',
-      extensions: ['fonts', 'font', 'fnt'],
+      extensions: ['fonts', 'font', 'fnt', 'webfonts'],
       light: true,
       format: FileFormat.svg,
     },
