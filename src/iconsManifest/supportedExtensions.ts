@@ -2441,6 +2441,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hugo',
+      extensions: ['hugo.json', 'hugo.toml', 'hugo.yaml', '.hugo_build.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'humanstxt',
       extensions: ['humans.txt'],
       filename: true,
