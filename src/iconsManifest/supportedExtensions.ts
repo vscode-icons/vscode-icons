@@ -1336,6 +1336,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cursorrules',
+      extensions: ['.cursorrules'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cython',
       extensions: [],
       languages: [languages.cython],
