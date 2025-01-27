@@ -91,7 +91,7 @@ export const languages = {
     ],
     defaultExtension: 'csv',
   },
-  cucumber: { ids: 'feature', defaultExtension: 'feature' },
+  cucumber: { ids: ['cucumber', 'feature'], defaultExtension: 'feature' },
   cuda: { ids: ['cuda', 'cuda-cpp'], defaultExtension: 'cu' },
   cypher: { ids: 'cypher', defaultExtension: 'cypher' },
   cython: { ids: 'cython', defaultExtension: 'pyx' },
