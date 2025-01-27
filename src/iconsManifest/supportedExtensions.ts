@@ -1888,6 +1888,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fastly',
+      extensions: ['fastly.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'favicon',
       extensions: ['favicon.ico'],
       filename: true,
