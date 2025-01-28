@@ -1298,6 +1298,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'css2',
+      extensions: [],
+      languages: [languages.css],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'csscomb',
       extensions: ['.csscomb.json'],
       filename: true,
@@ -1310,6 +1317,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'cssmap', extensions: ['css.map'], format: FileFormat.svg },
+    {
+      icon: 'css2map',
+      extensions: ['css.map'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
     {
       icon: 'cucumber',
       extensions: [],
@@ -2958,11 +2971,17 @@ export const extensions: IFileCollection = {
         '.lintstagedrc.yaml',
         '.lintstagedrc.yml',
         '.lintstagedrc.mjs',
+        '.lintstagedrc.mts',
         '.lintstagedrc.js',
+        '.lintstagedrc.ts',
         '.lintstagedrc.cjs',
+        '.lintstagedrc.cts',
         'lint-staged.config.mjs',
+        'lint-staged.config.mts',
         'lint-staged.config.js',
+        'lint-staged.config.ts',
         'lint-staged.config.cjs',
+        'lint-staged.config.cts',
       ],
       filename: true,
       format: FileFormat.svg,
@@ -3646,14 +3665,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
-    { 
+    {
       icon: 'oxlint',
-      extensions: [
-        '.oxlintignore',
-        '.oxlintrc.json',
-      ],
+      extensions: ['.oxlintignore', '.oxlintrc.json'],
       filename: true,
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
     {
