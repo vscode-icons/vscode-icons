@@ -389,7 +389,16 @@ export const extensions: IFolderCollection = {
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     {
       icon: 'library',
-      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries'],
+      extensions: [
+        'lib',
+        'libs',
+        '.lib',
+        '.libs',
+        '__lib__',
+        '__libs__',
+        'library',
+        'libraries',
+      ],
       format: FileFormat.svg,
     },
     { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
@@ -622,7 +631,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'src',
-      extensions: ['src', 'source', 'sources'],
+      extensions: ['src', 'source', 'sources', '__src__'],
       format: FileFormat.svg,
     },
     {
