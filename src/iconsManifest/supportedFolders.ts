@@ -494,6 +494,12 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mypy',
+      extensions: ['.mypy_cache'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mysql',
       extensions: ['mysqldb', 'mysql'],
       light: true,
