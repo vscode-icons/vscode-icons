@@ -1701,14 +1701,24 @@ export const extensions: IFileCollection = {
     { icon: 'elasticbeanstalk', extensions: [], format: FileFormat.svg },
     {
       icon: 'eleventy',
-      extensions: ['.eleventy.js', 'eleventy.config.js', 'eleventy.config.cjs'],
+      extensions: [
+        '.eleventy.js',
+        'eleventy.config.js',
+        'eleventy.config.cjs',
+        'eleventy.config.mjs',
+      ],
       filename: true,
       light: true,
       format: FileFormat.svg,
     },
     {
       icon: 'eleventy2',
-      extensions: ['.eleventy.js', 'eleventy.config.js', 'eleventy.config.cjs'],
+      extensions: [
+        '.eleventy.js',
+        'eleventy.config.js',
+        'eleventy.config.cjs',
+        'eleventy.config.mjs',
+      ],
       filename: true,
       light: true,
       format: FileFormat.svg,
