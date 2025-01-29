@@ -2390,6 +2390,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'histoire',
+      extensions: [
+        'histoire.config.ts',
+        'histoire.config.js',
+        '.histoire.ts',
+        '.histoire.js',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'hjson',
       extensions: [],
       languages: [languages.hjson],
