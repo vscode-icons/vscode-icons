@@ -670,7 +670,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bak',
-      extensions: ['bak'],
+      extensions: ['back', 'backup', 'bak'],
       format: FileFormat.svg,
     },
     {
