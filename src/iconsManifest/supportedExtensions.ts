@@ -2201,6 +2201,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gltf',
+      extensions: ['glb', 'gltf'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'glyphs',
       extensions: [],
       languages: [languages.glyphs],
