@@ -1586,7 +1586,7 @@ export const extensions: IFileCollection = {
       icon: 'docusaurus',
       extensions: [],
       filenamesGlob: ['docusaurus.config'],
-      extensionsGlob: ['.ts', '.mts', '.cts', '.js', '.mjs', '.cjs'],
+      extensionsGlob: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs'],
       filename: true,
       format: FileFormat.svg,
     },
