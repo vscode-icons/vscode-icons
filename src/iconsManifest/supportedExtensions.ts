@@ -4311,6 +4311,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pytest',
+      extensions: ['pytest.ini', '.pytest.ini'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'python',
       extensions: [],
       languages: [languages.python],

@@ -573,8 +573,13 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pytest',
+      extensions: ['.pytest_cache'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'python',
-      extensions: ['.venv', '.virtualenv', '__pycache__', '.pytest_cache'],
+      extensions: ['.venv', '.virtualenv', '__pycache__'],
       format: FileFormat.svg,
     },
     {
