@@ -235,6 +235,7 @@ export const languages = {
   jsonnet: { ids: 'jsonnet', defaultExtension: 'jsonnet' },
   json5: { ids: 'json5', defaultExtension: 'json5' },
   julia: { ids: ['julia', 'juliamarkdown'], defaultExtension: 'jl' },
+  just: { ids: 'just', defaultExtension: 'justfile' },
   iodine: { ids: 'iodine', defaultExtension: 'id' },
   k: { ids: 'k', defaultExtension: 'k' },
   kivy: { ids: 'kivy', defaultExtension: 'kv' },

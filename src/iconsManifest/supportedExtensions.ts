@@ -2780,6 +2780,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'jupyter', extensions: ['ipynb'], format: FileFormat.svg },
     {
+      icon: 'just',
+      extensions: [],
+      languages: [languages.just],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'io',
       extensions: [],
       languages: [languages.io],
