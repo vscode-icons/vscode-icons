@@ -1207,6 +1207,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'copilot',
+      extensions: ['copilot-instructions.md', 'github-copilot.xml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'coverage',
       extensions: ['.coverage', 'lcov.info'],
       filename: true,
