@@ -2907,6 +2907,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lark',
+      extensions: [],
+      languages: [languages.lark],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'layout',
       extensions: ['layout.html', 'layout.htm'],
       filename: true,

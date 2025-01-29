@@ -243,6 +243,7 @@ export const languages = {
   kotlin: { ids: ['kotlin', 'kotlinscript'], defaultExtension: 'kt' },
   kusto: { ids: 'kusto', defaultExtension: '.kusto' },
   latex: { ids: 'latex', defaultExtension: 'tex' },
+  lark: { ids: 'lark', defaultExtension: 'lark' },
   latino: { ids: 'latino', defaultExtension: 'lat' },
   less: { ids: 'less', defaultExtension: 'less' },
   lex: { ids: 'lex', defaultExtension: 'flex' },
