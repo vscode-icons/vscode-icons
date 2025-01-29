@@ -323,7 +323,10 @@ export const languages = {
     ],
     defaultExtension: 'dbgasm',
   },
-  plsql: { ids: ['plsql', 'oracle', 'oraclesql'], defaultExtension: 'ddl' },
+  plsql: {
+    ids: ['plsql', 'oracle', 'oraclesql', 'oracle-sql'],
+    defaultExtension: 'ddl',
+  },
   po: { ids: 'po', defaultExtension: 'po' },
   polymer: { ids: 'polymer', defaultExtension: 'polymer' },
   pony: { ids: 'pony', defaultExtension: 'pony' },
