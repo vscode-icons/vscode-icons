@@ -307,6 +307,16 @@ export class ExtensionManager implements models.IExtensionManager {
   }
 
   // @ts-ignore: Called via reflection
+  private toggleYamlPresetCommand(): Promise<void> {
+    return this.togglePreset(
+      models.PresetNames.yamlOfficial,
+      models.CommandNames.yamlPreset,
+      false,
+      models.ConfigurationTarget.Global,
+    );
+  }
+
+  // @ts-ignore: Called via reflection
   private toggleHideFoldersPresetCommand(): Promise<void> {
     return this.togglePreset(
       models.PresetNames.hideFolders,

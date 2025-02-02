@@ -22,6 +22,8 @@
   "tsPresetDisabled": "Ícone oficial de TS será desativado.",
   "jsonPresetEnabled": "Ícone oficial de JSON será habilitado.",
   "jsonPresetDisabled": "Ícone oficial de JSON será desativado.",
+  "yamlPresetEnabled": "Ícone oficial de YAML será habilitado.",
+  "yamlPresetDisabled": "Ícone oficial de YAML será desativado.",
   "hideFoldersPresetEnabled": "Visibilidade de ícones de pasta será habilitada.",
   "hideFoldersPresetDisabled": "Visibilidade de ícones de pasta será desativada.",
   "foldersAllDefaultIconPresetEnabled": "Ícones específicos de pasta serão habilitados.",

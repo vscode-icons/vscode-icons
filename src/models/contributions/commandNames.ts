@@ -11,4 +11,5 @@ export enum CommandNames {
   hideFoldersPreset,
   foldersAllDefaultIconPreset,
   hideExplorerArrowsPreset,
+  yamlPreset,
 }

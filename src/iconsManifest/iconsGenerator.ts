@@ -4,12 +4,12 @@ import { existsAsync, writeFileAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import * as models from '../models';
+import { IPackageManifest } from '../models/packageManifest';
 import { Utils } from '../utils';
 import { CustomsMerger } from './customsMerger';
 import { ManifestBuilder } from './manifestBuilder';
 import { extensions as extFiles } from './supportedExtensions';
 import { extensions as extFolders } from './supportedFolders';
-import { IPackageManifest } from '../models/packageManifest';
 
 export class IconsGenerator implements models.IIconsGenerator {
   private readonly manifest: IPackageManifest;
@@ -211,6 +211,7 @@ export class IconsGenerator implements models.IIconsGenerator {
       foldersAllDefaultIcon: false,
       hideExplorerArrows: false,
       hideFolders: false,
+      yamlOfficial: false,
     };
   }
 }

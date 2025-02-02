@@ -21,5 +21,6 @@ export const vsicons = Object.freeze({
     jsOfficial: false,
     jsonOfficial: false,
     tsOfficial: false,
+    yamlOfficial: false,
   },
 });

@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { ManifestReader } from '../../../src/iconsManifest';
-import { Projects, PresetNames, IPresets } from '../../../src/models';
+import { IPresets, PresetNames, Projects } from '../../../src/models';
 import { Utils } from '../../../src/utils';
 
 describe('ManifestReader: tests', function () {
@@ -37,6 +37,7 @@ describe('ManifestReader: tests', function () {
           foldersAllDefaultIcon: false,
           hideFolders: false,
           hideExplorerArrows: false,
+          yamlOfficial: false,
         };
       });
 

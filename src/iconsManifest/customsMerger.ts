@@ -53,6 +53,13 @@ export class CustomsMerger {
       [models.IconNames.json],
     );
 
+    files = this.toggleOfficialIconsPreset(
+      !presets.yamlOfficial,
+      files,
+      [models.IconNames.yamlOfficial],
+      [models.IconNames.yaml],
+    );
+
     folders = this.toggleFoldersAllDefaultIconPreset(
       presets.foldersAllDefaultIcon,
       folders,

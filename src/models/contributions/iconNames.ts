@@ -11,4 +11,6 @@ export enum IconNames {
   tsDefOfficial = 'typescriptdef_official',
   json = 'json',
   jsonOfficial = 'json_official',
+  yaml = 'yaml',
+  yamlOfficial = 'yaml_official',
 }

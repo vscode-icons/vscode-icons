@@ -520,6 +520,37 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'yaml',
+      extensions: [],
+      languages: [
+        languages.yaml,
+        languages.textmateyaml,
+        languages.springbootpropertiesyaml,
+      ],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'yaml_official',
+      extensions: [],
+      languages: [
+        languages.yaml,
+        languages.textmateyaml,
+        languages.springbootpropertiesyaml,
+      ],
+      light: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'taskfile',
+      extensions: [],
+      format: FileFormat.svg,
+      filename: true,
+      filenamesGlob: ['Taskfile', 'Taskfile.dist'],
+      extensionsGlob: ['yml', 'yaml'],
+    },
+    {
       icon: 'typescript',
       extensions: [],
       languages: [languages.typescript],
