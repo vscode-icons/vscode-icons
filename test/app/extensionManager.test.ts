@@ -9,14 +9,13 @@ import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
-import { IntegrityManager } from '../../src/integrity/integrityManager';
 import * as models from '../../src/models';
+import { IPackageManifest } from '../../src/models/packageManifest';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
-import { IPackageManifest } from '../../src/models/packageManifest';
 
 describe('ExtensionManager: tests', function () {
   context('ensures that', function () {
@@ -27,7 +26,6 @@ describe('ExtensionManager: tests', function () {
     let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
     let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
-    let integrityManagerStub: sinon.SinonStubbedInstance<models.IIntegrityManager>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let registerCommandStub: sinon.SinonStub;
     let executeCommandStub: sinon.SinonStub;
@@ -75,9 +73,6 @@ describe('ExtensionManager: tests', function () {
           ProjectAutoDetectionManager,
         );
 
-      integrityManagerStub =
-        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
-
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
         configManagerStub,
@@ -85,7 +80,6 @@ describe('ExtensionManager: tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
-        integrityManagerStub,
       );
     });
 
@@ -279,7 +273,6 @@ describe('ExtensionManager: tests', function () {
             manifest = packageJson as IPackageManifest;
             manifestMainOriginalValue = manifest.main;
             manifest.main = constants.extension.distEntryFilename;
-            integrityManagerStub.check.resolves(true);
           });
 
           afterEach(function () {
@@ -305,20 +298,6 @@ describe('ExtensionManager: tests', function () {
               await extensionManager.activate();
 
               expect(notifyManagerStub.notifyWarning.called).to.be.false;
-            });
-          });
-
-          context(`shows a warning message`, function () {
-            it(`when the integrity check fails`, async function () {
-              integrityManagerStub.check.resolves(false);
-
-              await extensionManager.activate();
-
-              expect(
-                notifyManagerStub.notifyWarning.calledOnceWithExactly(
-                  models.LangResourceKeys.integrityFailure,
-                ),
-              ).to.be.true;
             });
           });
         });
