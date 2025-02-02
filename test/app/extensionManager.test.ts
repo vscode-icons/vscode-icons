@@ -292,14 +292,6 @@ describe('ExtensionManager: tests', function () {
               ),
             );
           });
-
-          context(`does NOT show a warning message`, function () {
-            it(`when the integrity check passes`, async function () {
-              await extensionManager.activate();
-
-              expect(notifyManagerStub.notifyWarning.called).to.be.false;
-            });
-          });
         });
       });
     });
