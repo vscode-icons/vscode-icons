@@ -79,7 +79,6 @@
     "lint": "eslint .",
     "predist": "npm run build",
     "dist": "webpack --mode production",
-    "postdist": "nsri create -s .",
     "serve": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
   },
   "devDependencies": {
@@ -117,7 +116,6 @@
   "dependencies": {
     "inversify": "^6.0.1",
     "lodash": "^4.17.21",
-    "nsri": "^7.0.0",
     "open": "^8.4.2",
     "reflect-metadata": "^0.1.13",
     "semver": "^7.5.4"
