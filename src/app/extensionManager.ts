@@ -1,5 +1,7 @@
+import { dirname, resolve } from 'path';
 import * as packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
+import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
@@ -49,6 +51,10 @@ export class ExtensionManager implements models.IExtensionManager {
     constants.environment.production = new RegExp(
       `${constants.extension.distEntryFilename}`,
     ).test(this.manifest.main);
+
+    if (constants.environment.production) {
+      ConfigManager.rootDir = resolve(dirname(__filename), '../../');
+    }
 
     // function calls has to be done in this order strictly
     await this.settingsManager.moveStateFromLegacyPlace();
