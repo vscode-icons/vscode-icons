@@ -1030,6 +1030,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'changie',
+      extensions: ['.changie.yaml', '.changie.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'chef',
       extensions: [
         'chefignore',
