@@ -5156,8 +5156,6 @@ export const extensions: IFileCollection = {
         'syncpack.config.js',
         'syncpack.config.cjs',
       ],
-      filenamesGlob: ['.syncpackrc'],
-      extensionsGlob: ['js', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
