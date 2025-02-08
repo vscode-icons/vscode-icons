@@ -1,7 +1,7 @@
 name: SVG Icon Check
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - master
     paths:
@@ -150,7 +150,7 @@ jobs:
         uses: peter-evans/find-comment@v3
         id: find-comment
         with:
-          token: ${{ secrets.IMAGES_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
           body-includes: <!-- svg-preview-comment -->
@@ -159,7 +159,7 @@ jobs:
         if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
         uses: peter-evans/create-or-update-comment@v3
         with:
-          token: ${{ secrets.IMAGES_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           body: |
