@@ -5072,7 +5072,7 @@ export const extensions: IFileCollection = {
       icon: 'storybook',
       extensions: [],
       filenamesGlob: ['story', 'stories'],
-      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', 'mdx', 'svelte'],
       format: FileFormat.svg,
     },
     {
