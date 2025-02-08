@@ -192,5 +192,10 @@
         "markers": ["#region", "#endregion"]
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"]
+    }
+  ]
 }
