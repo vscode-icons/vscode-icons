@@ -70,11 +70,20 @@ jobs:
           filesCount=$(echo "$FILTERED_FILES" | grep -c . || true)
           echo "filesCount=$filesCount"
 
+          # Get file sizes
+          SIZES=""
+          for file in $FILTERED_FILES; do
+            size=$(stat --format="%s" "$file")  # Linux: stat --format="%s", macOS: stat -f%z
+            SIZES+="$size "
+          done
+
           # If files were found, set the output
           if [ "$filesCount" -gt 0 ]; then 
             echo "SVG_CHANGED=true" >> $GITHUB_OUTPUT
             echo "files=$(echo "$FILTERED_FILES" | tr '\n' ' ')" >> $GITHUB_OUTPUT
             echo "files=$FILTERED_FILES"
+            echo "sizes=$(echo "$SIZES" | tr '\n' ' ')" >> $GITHUB_OUTPUT 
+            echo "sizes=$SIZES"
           else
             echo "SVG_CHANGED=false" >> $GITHUB_OUTPUT
           fi
@@ -108,8 +117,12 @@ jobs:
           sudo apt-get install -y jq
           COMMENT_BODY="## Icons Background Test\n\n"
 
-          for svg_file in ${{ steps.changed-svgs.outputs.files }}; do
-            filename=$(basename "$svg_file" .svg)
+          file_list=(${{ steps.changed-svgs.outputs.files }})
+          size_list=(${{ steps.changed-svgs.outputs.sizes }})
+
+          for index in "${!file_list[@]}"; do
+            filename=$(basename "${file_list[$index]}" .svg)
+            size="${size_list[$index]}"
             png_file="previews/${filename}-preview.png"
             
             # Upload to image host
@@ -123,7 +136,7 @@ jobs:
             echo "Uploaded: $image_url"
             
             # Build comment body
-            COMMENT_BODY+="#### ${filename}\n"
+            COMMENT_BODY+="#### ${filename} (${size} bytes)\n"
             COMMENT_BODY+="![Preview]($image_url)\n\n"
           done
 
