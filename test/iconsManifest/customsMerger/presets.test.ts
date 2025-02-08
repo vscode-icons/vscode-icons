@@ -82,10 +82,11 @@ describe('CustomsMerger: toggle presets tests', function () {
               regex.test(file.icon),
             ),
             jsDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js,
+              (file: IFileExtension) => file.icon === IconNames.js.toString(),
             ),
             officialJSDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.jsOfficial,
+              (file: IFileExtension) =>
+                file.icon === IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -234,10 +235,11 @@ describe('CustomsMerger: toggle presets tests', function () {
               regex.test(file.icon),
             ),
             jsDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js,
+              (file: IFileExtension) => file.icon === IconNames.js.toString(),
             ),
             officialJSDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.jsOfficial,
+              (file: IFileExtension) =>
+                file.icon === IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -352,10 +354,11 @@ describe('CustomsMerger: toggle presets tests', function () {
 
           return {
             defs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js,
+              (file: IFileExtension) => file.icon === IconNames.js.toString(),
             ),
             officialDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.jsOfficial,
+              (file: IFileExtension) =>
+                file.icon === IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -402,23 +405,27 @@ describe('CustomsMerger: toggle presets tests', function () {
 
             return {
               tsDefs: files.supported.filter(
-                (file: IFileExtension) => file.icon === IconNames.ts,
+                (file: IFileExtension) => file.icon === IconNames.ts.toString(),
               ),
               officialTsDefs: files.supported.filter(
-                (file: IFileExtension) => file.icon === IconNames.tsOfficial,
+                (file: IFileExtension) =>
+                  file.icon === IconNames.tsOfficial.toString(),
               ),
               tsConfig: files.supported.filter(
-                (file: IFileExtension) => file.icon === IconNames.tsConfig,
+                (file: IFileExtension) =>
+                  file.icon === IconNames.tsConfig.toString(),
               ),
               tsConfigOfficial: files.supported.filter(
                 (file: IFileExtension) =>
-                  file.icon === IconNames.tsConfigOfficial,
+                  file.icon === IconNames.tsConfigOfficial.toString(),
               ),
               typesDefs: files.supported.filter(
-                (file: IFileExtension) => file.icon === IconNames.tsDef,
+                (file: IFileExtension) =>
+                  file.icon === IconNames.tsDef.toString(),
               ),
               officialTypesDefs: files.supported.filter(
-                (file: IFileExtension) => file.icon === IconNames.tsDefOfficial,
+                (file: IFileExtension) =>
+                  file.icon === IconNames.tsDefOfficial.toString(),
               ),
             };
           };
@@ -480,10 +487,11 @@ describe('CustomsMerger: toggle presets tests', function () {
 
           return {
             defs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.json,
+              (file: IFileExtension) => file.icon === IconNames.json.toString(),
             ),
             officialDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.jsonOfficial,
+              (file: IFileExtension) =>
+                file.icon === IconNames.jsonOfficial.toString(),
             ),
           };
         };

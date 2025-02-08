@@ -19,7 +19,10 @@ describe('Specifications of supported extensions: tests', function () {
         .forEach((file: IFileExtension) =>
           file.extensions.forEach(
             (extension: string) =>
-              expect(extension.startsWith('.')).to.be.false,
+              expect(
+                extension.startsWith('.'),
+                `Offender extension: ${extension}`,
+              ).to.be.false,
           ),
         );
     });
@@ -64,9 +67,10 @@ describe('Specifications of supported extensions: tests', function () {
 
             files.supported.forEach((file: IFileExtension) => {
               file.checked = true;
-              const otherDeclarations: IFileExtension[] = files.supported.filter(
-                (_file: IFileExtension) => checker(_file, file),
-              );
+              const otherDeclarations: IFileExtension[] =
+                files.supported.filter((_file: IFileExtension) =>
+                  checker(_file, file),
+                );
 
               expect(otherDeclarations).to.be.empty;
             });

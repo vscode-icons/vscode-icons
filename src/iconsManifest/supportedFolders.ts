@@ -14,7 +14,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'app',
-      extensions: ['app', 'apps', '.app'],
+      extensions: ['app', 'apps', '.app', 'application', 'applications'],
       format: FileFormat.svg,
     },
     {
@@ -149,7 +149,17 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'coverage', extensions: ['coverage'], format: FileFormat.svg },
-    { icon: 'css', extensions: ['css', '_css'], format: FileFormat.svg },
+    {
+      icon: 'css',
+      extensions: ['css', '_css'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'css2',
+      extensions: ['css', '_css'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
     {
       icon: 'cypress',
@@ -249,13 +259,18 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'frontcommerce',
+      extensions: ['.front-commerce'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
       format: FileFormat.svg,
     },
     {
       icon: 'fonts',
-      extensions: ['fonts', 'font', 'fnt'],
+      extensions: ['fonts', 'font', 'fnt', 'webfonts'],
       light: true,
       format: FileFormat.svg,
     },
@@ -374,7 +389,16 @@ export const extensions: IFolderCollection = {
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     {
       icon: 'library',
-      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries'],
+      extensions: [
+        'lib',
+        'libs',
+        '.lib',
+        '.libs',
+        '__lib__',
+        '__libs__',
+        'library',
+        'libraries',
+      ],
       format: FileFormat.svg,
     },
     { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
@@ -406,8 +430,19 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
     {
+      icon: 'mediawiki',
+      extensions: ['mediawiki'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'memcached',
       extensions: ['memcached', '.memcached'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'meteor',
+      extensions: ['.meteor'],
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -417,8 +452,18 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
+      icon: 'minecraft',
+      extensions: ['.minecraft'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'minikube',
       extensions: ['minikube', 'minik8s', 'minikuber'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mojo',
+      extensions: ['mojo'],
       format: FileFormat.svg,
     },
     {
@@ -449,9 +494,21 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mypy',
+      extensions: ['.mypy_cache'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mysql',
       extensions: ['mysqldb', 'mysql'],
       light: true,
+      format: FileFormat.svg,
+    },
+
+    {
+      icon: 'netlify',
+      extensions: ['netlify'],
       format: FileFormat.svg,
     },
     { icon: 'next', extensions: ['.next'], format: FileFormat.svg },
@@ -516,8 +573,13 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pytest',
+      extensions: ['.pytest_cache'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'python',
-      extensions: ['.venv', '.virtualenv', '__pycache__', '.pytest_cache'],
+      extensions: ['.venv', '.virtualenv', '__pycache__'],
       format: FileFormat.svg,
     },
     {
@@ -538,17 +600,7 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
-    {
-      icon: 'meteor',
-      extensions: ['.meteor'],
-      light: true,
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'mojo',
-      extensions: ['mojo'],
-      format: FileFormat.svg,
-    },
+
     {
       icon: 'nuxt',
       extensions: ['nuxt', '.nuxt'],
@@ -565,6 +617,11 @@ export const extensions: IFolderCollection = {
       extensions: ['script', 'scripts'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'seedkit',
+      extensions: ['seedkit', '.seedkit'],
+      format: FileFormat.svg,
+    },
     { icon: 'server', extensions: ['server'], format: FileFormat.svg },
     {
       icon: 'services',
@@ -573,7 +630,14 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'shared',
-      extensions: ['share', 'shared', '.share', '.shared'],
+      extensions: [
+        'share',
+        'shared',
+        '.share',
+        '.shared',
+        '__shared__',
+        '__share__',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -588,7 +652,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'src',
-      extensions: ['src', 'source', 'sources'],
+      extensions: ['src', 'source', 'sources', '__src__'],
       format: FileFormat.svg,
     },
     {
@@ -602,6 +666,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
+    {
+      icon: 'supabase',
+      extensions: ['supabase'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'svelte',
       extensions: ['svelte', '.svelte-kit'],
@@ -645,6 +714,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'trunk',
       extensions: ['.trunk'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'turbo',
+      extensions: ['.turbo'],
       format: FileFormat.svg,
     },
     {
@@ -750,7 +824,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'www',
-      extensions: ['www', 'wwwroot', 'web'],
+      extensions: ['.web', 'www', 'wwwroot', 'web'],
       format: FileFormat.svg,
     },
     {

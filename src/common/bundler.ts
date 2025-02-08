@@ -17,8 +17,8 @@ export class Bundler {
         filename === 'lang.nls.json'
           ? 'en'
           : match && match.length > 1
-          ? match[1]
-          : undefined;
+            ? match[1]
+            : undefined;
       if (!locale) {
         throw new Error(`No locale found for: ${filename}`);
       }

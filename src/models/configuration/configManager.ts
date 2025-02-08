@@ -10,9 +10,7 @@ export interface IConfigManager {
   ): boolean;
   getCustomIconsDirPath(path: string): Promise<string>;
   getIconTheme(): string;
-  getPreset<T>(
-    presetName: string,
-  ):
+  getPreset<T>(presetName: string):
     | {
         key: string;
         defaultValue?: Partial<T>;
