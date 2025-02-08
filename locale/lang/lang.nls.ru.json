@@ -39,6 +39,5 @@
   "nonNestDetectedPresetTrue": "%extensionName% обнаружил проект отличный от NestJS, но параметру 'preset' установлено значение 'true'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' включит значки NestJS.",
   "projectDetectionReset": "Определение проекта будет установлено по умолчанию.",
   "conflictProjectsDetected": "",
-  "unsupportedVersion": "",
-  "integrityFailure": ""
+  "unsupportedVersion": ""
 }

@@ -1,0 +1,168 @@
+name: SVG Icon Check
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'icons/*.svg'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  test_icon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          path: fork
+          sparse-checkout-cone-mode: false
+          sparse-checkout: 'icons/'
+
+      - name: Checkout Base
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: base
+          sparse-checkout-cone-mode: false
+          sparse-checkout: 'icons/'
+
+      - name: Ensure Base is Up-to-Date
+        working-directory: base
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          git reset --hard origin/${{ github.event.pull_request.base.ref }}
+
+      - name: Find modified SVGs
+        id: changed-svgs
+        working-directory: base
+        run: |
+          # Ensure directories exist
+          if [ ! -d "../base" ] || [ ! -d "../fork" ]; then
+            echo "Error: One or both directories do not exist."
+            exit 1
+          fi
+
+          # Check raw output from git diff
+          FILES=$(git diff --no-index ../base ../fork --diff-filter=ACMRTUX --name-only | grep -v '^../fork/.git/' || true)
+          echo "Raw git diff output:"
+          echo "$FILES"
+
+          # Ensure git diff is not empty
+          if [ -z "$FILES" ]; then
+            echo "No differences found. Exiting."
+            echo "SVG_CHANGED=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Filter only SVG files
+          FILTERED_FILES=$(echo "$FILES" | grep '^\.\./fork/icons/.*\.svg$' || true)
+          echo "Filtered files:"
+          echo "$FILTERED_FILES"
+
+          # Ensure we count only non-empty lines
+          filesCount=$(echo "$FILTERED_FILES" | grep -c . || true)
+          echo "filesCount=$filesCount"
+
+          # Get file sizes
+          SIZES=""
+          for file in $FILTERED_FILES; do
+            size=$(stat --format="%s" "$file")  # Linux: stat --format="%s", macOS: stat -f%z
+            SIZES+="$size "
+          done
+
+          # If files were found, set the output
+          if [ "$filesCount" -gt 0 ]; then 
+            echo "SVG_CHANGED=true" >> $GITHUB_OUTPUT
+            echo "files=$(echo "$FILTERED_FILES" | tr '\n' ' ')" >> $GITHUB_OUTPUT
+            echo "files=$FILTERED_FILES"
+            echo "sizes=$(echo "$SIZES" | tr '\n' ' ')" >> $GITHUB_OUTPUT 
+            echo "sizes=$SIZES"
+          else
+            echo "SVG_CHANGED=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download CLI Tool
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        working-directory: base
+        run: |
+          LATEST_URL="https://github.com/robertohuertasm/svg-icon-check/releases/latest/download/svg-icon-check"
+          curl -L $LATEST_URL -o svg-icon-check
+          chmod +x svg-icon-check
+
+      - name: Generate Preview Images
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        working-directory: base
+        run: |
+          mkdir -p previews
+          for svg_file in ${{ steps.changed-svgs.outputs.files }}; do
+            echo "Processing: $svg_file"
+            ./svg-icon-check "$svg_file" -b 30,30,30 40,42,54 46,52,64 47,54,59 39,40,34 60,63,65 88,110,117 89,91,79 120,120,120 253,246,227 236,239,244 242,242,242 250,250,250 -o "previews/$(basename "$svg_file" .svg)-preview.png"
+          done
+
+      - name: Upload to Permanent Hosting and Generate Comment
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        id: generate-comment
+        working-directory: base
+        env:
+          IMAGE_UPLOAD: ${{ secrets.IMAGES_API_KEY }}
+        run: |
+          # Install jq for JSON parsing
+          sudo apt-get install -y jq
+          COMMENT_BODY="## Icons Background Test\n\n"
+
+          file_list=(${{ steps.changed-svgs.outputs.files }})
+          size_list=(${{ steps.changed-svgs.outputs.sizes }})
+
+          for index in "${!file_list[@]}"; do
+            filename=$(basename "${file_list[$index]}" .svg)
+            size="${size_list[$index]}"
+            png_file="previews/${filename}-preview.png"
+            
+            # Upload to image host
+            response=$(curl -s --location 'https://freeimage.host/json' \
+              --form "source=@$png_file" \
+              --form "type=file" \
+              --form "action=upload" \
+              --form "auth_token=$IMAGE_UPLOAD")
+            
+            image_url=$(echo "$response" | jq -r '.image.url')
+            echo "Uploaded: $image_url"
+            
+            # Build comment body
+            COMMENT_BODY+="#### ${filename} (${size} bytes)\n"
+            COMMENT_BODY+="![Preview]($image_url)\n\n"
+          done
+
+          # Set output for next step
+          echo "comment_body<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$COMMENT_BODY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Find comment ID if it exists
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: <!-- svg-preview-comment -->
+
+      - name: Post/Update Comment
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          body: |
+            ${{ steps.generate-comment.outputs.comment_body }}
+            <!-- svg-preview-comment -->
+          edit-mode: replace

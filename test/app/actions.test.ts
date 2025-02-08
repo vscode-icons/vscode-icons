@@ -6,7 +6,6 @@ import * as sinon from 'sinon';
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { IconsGenerator, ManifestReader } from '../../src/iconsManifest';
-import { IntegrityManager } from '../../src/integrity/integrityManager';
 import * as models from '../../src/models';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
@@ -23,7 +22,6 @@ describe('ExtensionManager: actions tests', function () {
     let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
     let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
-    let integrityManagerStub: sinon.SinonStubbedInstance<models.IIntegrityManager>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
     let extensionManager: models.IExtensionManager;
@@ -62,9 +60,6 @@ describe('ExtensionManager: actions tests', function () {
           ProjectAutoDetectionManager,
         );
 
-      integrityManagerStub =
-        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
-
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
         configManagerStub,
@@ -72,7 +67,6 @@ describe('ExtensionManager: actions tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
-        integrityManagerStub,
       );
 
       showCustomizationMessageStub = sandbox.stub(

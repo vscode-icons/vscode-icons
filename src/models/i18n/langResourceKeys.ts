@@ -40,5 +40,4 @@ export enum LangResourceKeys {
   projectDetectionReset,
   conflictProjectsDetected,
   unsupportedVersion,
-  integrityFailure,
 }
