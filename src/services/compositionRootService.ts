@@ -3,8 +3,8 @@ import {
   decorate,
   inject,
   injectable,
-  METADATA_KEY,
   interfaces,
+  METADATA_KEY,
 } from 'inversify';
 import { ServiceIdentifierOrFunc } from 'inversify/lib/annotation/lazy_service_identifier';
 import 'reflect-metadata';
@@ -13,7 +13,6 @@ import { ExtensionManager } from '../app/extensionManager';
 import { ConfigManager } from '../configuration/configManager';
 import { LanguageResourceManager } from '../i18n/languageResourceManager';
 import { IconsGenerator } from '../iconsManifest';
-import { IntegrityManager } from '../integrity/integrityManager';
 import * as models from '../models';
 import { ICompositionRootService } from '../models/services/compositionRootService';
 import { NotificationManager } from '../notification/notificationManager';
@@ -66,7 +65,6 @@ export class CompositionRootService implements ICompositionRootService {
           models.SYMBOLS.INotificationManager,
           models.SYMBOLS.IIconsGenerator,
           models.SYMBOLS.IProjectAutoDetectionManager,
-          models.SYMBOLS.IIntegrityManager,
         ],
       ],
       [ConfigManager, [models.SYMBOLS.IVSCodeManager]],
@@ -91,7 +89,6 @@ export class CompositionRootService implements ICompositionRootService {
         VSCodeManager,
         [models.SYMBOLS.IVSCode, models.SYMBOLS.IVSCodeExtensionContext],
       ],
-      [IntegrityManager, []],
     ];
     this.dispose();
   }
@@ -145,9 +142,6 @@ export class CompositionRootService implements ICompositionRootService {
     bind<models.IProjectAutoDetectionManager>(
       models.SYMBOLS.IProjectAutoDetectionManager,
     ).to(ProjectAutoDetectionManager);
-    bind<models.IIntegrityManager>(models.SYMBOLS.IIntegrityManager).to(
-      IntegrityManager,
-    );
     bind<models.IVSCodeManager>(models.SYMBOLS.IVSCodeManager).to(
       VSCodeManager,
     );

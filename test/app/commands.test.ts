@@ -5,13 +5,12 @@ import * as sinon from 'sinon';
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { IconsGenerator } from '../../src/iconsManifest';
-import { IntegrityManager } from '../../src/integrity/integrityManager';
 import * as models from '../../src/models';
+import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
 
 describe('ExtensionManager: commands tests', function () {
   context('ensures that', function () {
@@ -22,7 +21,6 @@ describe('ExtensionManager: commands tests', function () {
     let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
     let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
-    let integrityManagerStub: sinon.SinonStubbedInstance<models.IIntegrityManager>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let registerCommandStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
@@ -65,9 +63,6 @@ describe('ExtensionManager: commands tests', function () {
           ProjectAutoDetectionManager,
         );
 
-      integrityManagerStub =
-        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
-
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
         configManagerStub,
@@ -75,7 +70,6 @@ describe('ExtensionManager: commands tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
-        integrityManagerStub,
       );
 
       showCustomizationMessageStub = sandbox.stub(

@@ -108,10 +108,6 @@ On the other hand, if you want to show the world your artistic side, checkout th
 
 In any case, please follow our [contribution guidelines](https://github.com/vscode-icons/vscode-icons/blob/master/.github/CONTRIBUTING.md).
 
-## Security
-
-`vscode-icons` utilizes [NSRI](https://www.npmjs.com/package/nsri) for its subresources integrity check and protection against code injection.
-
 ## Credits
 
 Kudos to all [contributors](https://github.com/vscode-icons/vscode-icons/graphs/contributors) that made this extension what it is.

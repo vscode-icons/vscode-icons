@@ -39,6 +39,5 @@
   "nonNestDetectedPresetTrue": "%extensionName% has detected a non NestJS project, but the 'preset' setting is set to 'true'. It's highly recommended to remove the 'preset' from the settings entirely. Selecting 'Restart' will enable the NestJS icons.",
   "projectDetectionReset": "Project Detection defaults will be reset.",
   "conflictProjectsDetected": "%extensionName% has detected conflicting project icons. Choose which project icons to use. Note: This action will set a preset in your workspace settings.",
-  "unsupportedVersion": "Unsupported 'VS Code' version:",
-  "integrityFailure": "The integrity of the extension is compromised. There is NO guarantee that the extension will work as designed."
+  "unsupportedVersion": "Unsupported 'VS Code' version:"
 }

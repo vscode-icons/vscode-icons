@@ -8,7 +8,6 @@ import { ErrorHandler } from '../../src/common/errorHandler';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
-import { IntegrityManager } from '../../src/integrity/integrityManager';
 import * as models from '../../src/models';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
@@ -26,7 +25,6 @@ describe('ExtensionManager: messages tests', function () {
     let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
     let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
-    let integrityManagerStub: sinon.SinonStubbedInstance<models.IIntegrityManager>;
     let isNewVersionStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
 
@@ -70,9 +68,6 @@ describe('ExtensionManager: messages tests', function () {
           ProjectAutoDetectionManager,
         );
 
-      integrityManagerStub =
-        sandbox.createStubInstance<models.IIntegrityManager>(IntegrityManager);
-
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
         configManagerStub,
@@ -80,7 +75,6 @@ describe('ExtensionManager: messages tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
-        integrityManagerStub,
       );
 
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
