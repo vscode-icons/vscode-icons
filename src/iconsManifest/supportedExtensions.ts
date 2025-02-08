@@ -5151,6 +5151,21 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'syncpack',
+      extensions: [
+        '.syncpackrc',
+        '.syncpackrc.json',
+        '.syncpackrc.yaml',
+        '.syncpackrc.yml',
+        '.syncpackrc.js',
+        '.syncpackrc.cjs',
+        'syncpack.config.js',
+        'syncpack.config.cjs',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'systemd',
       extensions: [],
       languages: [languages.systemd],
