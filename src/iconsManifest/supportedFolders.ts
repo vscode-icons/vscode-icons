@@ -271,7 +271,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'fonts',
-      extensions: ['fonts', 'font', 'fnt'],
+      extensions: ['fonts', 'font', 'fnt', 'webfonts'],
       light: true,
       format: FileFormat.svg,
     },
@@ -390,7 +390,16 @@ export const extensions: IFolderCollection = {
     { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
     {
       icon: 'library',
-      extensions: ['lib', 'libs', '.lib', '.libs', 'library', 'libraries'],
+      extensions: [
+        'lib',
+        'libs',
+        '.lib',
+        '.libs',
+        '__lib__',
+        '__libs__',
+        'library',
+        'libraries',
+      ],
       format: FileFormat.svg,
     },
     { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
@@ -486,12 +495,23 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mypy',
+      extensions: ['.mypy_cache'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mysql',
       extensions: ['mysqldb', 'mysql'],
       light: true,
       format: FileFormat.svg,
     },
 
+    {
+      icon: 'netlify',
+      extensions: ['netlify'],
+      format: FileFormat.svg,
+    },
     { icon: 'next', extensions: ['.next'], format: FileFormat.svg },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
     {
@@ -554,8 +574,13 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pytest',
+      extensions: ['.pytest_cache'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'python',
-      extensions: ['.venv', '.virtualenv', '__pycache__', '.pytest_cache'],
+      extensions: ['.venv', '.virtualenv', '__pycache__'],
       format: FileFormat.svg,
     },
     {
@@ -593,6 +618,11 @@ export const extensions: IFolderCollection = {
       extensions: ['script', 'scripts'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'seedkit',
+      extensions: ['seedkit', '.seedkit'],
+      format: FileFormat.svg,
+    },
     { icon: 'server', extensions: ['server'], format: FileFormat.svg },
     {
       icon: 'services',
@@ -623,7 +653,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'src',
-      extensions: ['src', 'source', 'sources'],
+      extensions: ['src', 'source', 'sources', '__src__'],
       format: FileFormat.svg,
     },
     {

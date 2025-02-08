@@ -18,6 +18,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npx eslint .
+
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npx prettier --check .
+
   test:
     name: Node.js ${{ matrix.node }} | ${{ matrix.os }} | ${{ matrix.arch }}
     strategy:
@@ -67,12 +83,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setting up Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
       - name: Cloning repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 5
 
@@ -111,7 +127,7 @@ jobs:
             github.repository_owner == 'vscode-icons' &&
             github.actor != 'dependabot[bot]'
           )
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: code-coverage-report
           path: coverage/lcov.info
