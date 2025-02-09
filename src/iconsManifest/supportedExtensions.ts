@@ -5209,6 +5209,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'taskfile',
+      extensions: [],
+      format: FileFormat.svg,
+      filename: true,
+      filenamesGlob: ['taskfile', 'taskfile.dist'],
+      extensionsGlob: ['yml', 'yaml'],
+    },
+    {
       icon: 'tauri',
       extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
