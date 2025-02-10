@@ -22,8 +22,6 @@
   "tsPresetDisabled": "Официальный значок TS файлов будет отключен.",
   "jsonPresetEnabled": "Официальный значок JSON файлов будет включен.",
   "jsonPresetDisabled": "Официальный значок JSON файлов будет отключен.",
-  "yamlPresetEnabled": "Официальный значок YAML файлов будет включен.",
-  "yamlPresetDisabled": "Официальный значок YAML файлов будет отключен.",
   "hideFoldersPresetEnabled": "Отображение значка папки будет включено.",
   "hideFoldersPresetDisabled": "Отображение значка папки будет отключено.",
   "foldersAllDefaultIconPresetEnabled": "Нестандартные значки папок будут включены.",
@@ -39,7 +37,5 @@
   "nonNestDetected": "%extensionName% обнаружил проект отличный от NestJS. Нажмите 'Перезапустить' чтобы отключить значки NestJS.",
   "nestDetectedPresetFalse": "%extensionName% обнаружил проект NestJS, но параметру 'preset' установлено значение 'false'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' отключит значки NestJS.",
   "nonNestDetectedPresetTrue": "%extensionName% обнаружил проект отличный от NestJS, но параметру 'preset' установлено значение 'true'. Рекомендуется полностью удалить параметр 'preset' из настроек. Выбор 'Перезапустить' включит значки NestJS.",
-  "projectDetectionReset": "Определение проекта будет установлено по умолчанию.",
-  "conflictProjectsDetected": "",
-  "unsupportedVersion": ""
+  "projectDetectionReset": "Определение проекта будет установлено по умолчанию."
 }
