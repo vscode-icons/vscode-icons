@@ -384,7 +384,7 @@ describe('LanguageResourceManager: tests', function () {
           const nlsEntry = description.replace(/%/g, '');
           expect(description).to.exist;
           expect(description).to.be.a('string');
-          expect(nls[nlsEntry]).to.exist;
+          expect(nls[nlsEntry], `description: ${description}`).to.exist;
         }
       });
     });

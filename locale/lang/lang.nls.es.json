@@ -22,6 +22,8 @@
   "tsPresetDisabled": "El icono oficial de TS procederá a desactivarse.",
   "jsonPresetEnabled": "El icono oficial de JSON procederá a activarse.",
   "jsonPresetDisabled": "El icono oficial de JSON procederá a desactivarse.",
+  "yamlPresetEnabled": "El icono oficial de YAML procederá a activarse.",
+  "yamlPresetDisabled": "El icono oficial de YAML procederá a desactivarse.",
   "hideFoldersPresetEnabled": "La visibilidad de los iconos de carpeta procederá a activarse.",
   "hideFoldersPresetDisabled": "La visibilidad de los iconos de carpeta procederá a desactivarse.",
   "foldersAllDefaultIconPresetEnabled": "Los iconos de carpeta específicos procederán a activarse.",

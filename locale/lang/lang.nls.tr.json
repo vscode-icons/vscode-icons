@@ -22,6 +22,8 @@
   "tsPresetDisabled": "Resmi TS simgesi devre dışı bırakılacak.",
   "jsonPresetEnabled": "Resmi JSON simgesi etkinleştirilecektir.",
   "jsonPresetDisabled": "Resmi JSON simgesi devre dışı bırakılacak.",
+  "yamlPresetEnabled": "Resmi YAML simgesi etkinleştirilecektir.",
+  "yamlPresetDisabled": "Resmi YAML simgesi devre dışı bırakılacak.",
   "hideFoldersPresetEnabled": "Klasör simgeleri görünürlüğü etkinleştirilecektir.",
   "hideFoldersPresetDisabled": "Klasör simgeleri görünürlüğü devre dışı bırakılacak.",
   "foldersAllDefaultIconPresetEnabled": "Spesifik klasör simgeleri etkinleştirilecektir.",

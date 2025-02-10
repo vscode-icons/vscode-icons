@@ -22,6 +22,8 @@
   "tsPresetDisabled": "Официальный значок TS файлов будет отключен.",
   "jsonPresetEnabled": "Официальный значок JSON файлов будет включен.",
   "jsonPresetDisabled": "Официальный значок JSON файлов будет отключен.",
+  "yamlPresetEnabled": "Официальный значок YAML файлов будет включен.",
+  "yamlPresetDisabled": "Официальный значок YAML файлов будет отключен.",
   "hideFoldersPresetEnabled": "Отображение значка папки будет включено.",
   "hideFoldersPresetDisabled": "Отображение значка папки будет отключено.",
   "foldersAllDefaultIconPresetEnabled": "Нестандартные значки папок будут включены.",

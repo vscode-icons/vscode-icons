@@ -6065,6 +6065,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'yaml_official',
+      extensions: [],
+      languages: [
+        languages.yaml,
+        languages.textmateyaml,
+        languages.springbootpropertiesyaml,
+      ],
+      light: true,
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
       icon: 'yamllint',
       extensions: ['.yamllint'],
       filename: true,
