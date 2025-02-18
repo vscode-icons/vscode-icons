@@ -3329,6 +3329,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'msl',
+      extensions: [],
+      languages: [languages.msl],
+      format: FileFormat.svg
+    },
+    {
       icon: 'mson',
       extensions: [],
       languages: [languages.mson],

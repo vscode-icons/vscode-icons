@@ -290,6 +290,7 @@ export const languages = {
   mojo: { ids: 'mojo', defaultExtension: 'mojo' },
   mojolicious: { ids: 'mojolicious', defaultExtension: 'ep' },
   mongo: { ids: 'mongo', defaultExtension: 'mongo' },
+  msl: { ids: 'msl', defaultExtension: 'msl' },
   mson: { ids: 'mson', defaultExtension: 'mson' },
   mv: { ids: 'mv', defaultExtension: 'mv' },
   mvt: { ids: 'mvt', defaultExtension: 'mvt' },
