@@ -3259,7 +3259,7 @@ export const extensions: IFileCollection = {
       icon: 'metal',
       extensions: [],
       languages: [languages.metal],
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     { icon: 'meteor', extensions: [], format: FileFormat.svg },
     {
