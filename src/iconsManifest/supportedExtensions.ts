@@ -3255,6 +3255,12 @@ export const extensions: IFileCollection = {
       languages: [languages.meson],
       format: FileFormat.svg,
     },
+    {
+      icon: 'metal',
+      extensions: [],
+      languages: [languages.metal],
+      format: FileFormat.svg
+    },
     { icon: 'meteor', extensions: [], format: FileFormat.svg },
     {
       icon: 'mjml',
@@ -3327,12 +3333,6 @@ export const extensions: IFileCollection = {
       extensions: ['motif.json'],
       filename: true,
       format: FileFormat.svg,
-    },
-    {
-      icon: 'msl',
-      extensions: [],
-      languages: [languages.msl],
-      format: FileFormat.svg
     },
     {
       icon: 'mson',
