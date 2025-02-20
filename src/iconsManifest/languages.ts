@@ -269,6 +269,7 @@ export const languages = {
   mel: { ids: 'mel', defaultExtension: 'mel' },
   mermaid: { ids: 'mermaid', defaultExtension: 'mmd' },
   meson: { ids: 'meson', defaultExtension: 'meson.build' },
+  metal: { ids: 'metal', defaultExtension: 'metal' },
   minecraft: {
     ids: [
       'bc-mcfunction',

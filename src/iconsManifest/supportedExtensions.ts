@@ -2953,6 +2953,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lefthook',
+      extensions: ['lefthook.yml', 'lefthook.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lerna',
       extensions: ['lerna.json'],
       light: true,
@@ -3258,6 +3264,12 @@ export const extensions: IFileCollection = {
       icon: 'meson',
       extensions: [],
       languages: [languages.meson],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'metal',
+      extensions: [],
+      languages: [languages.metal],
       format: FileFormat.svg,
     },
     { icon: 'meteor', extensions: [], format: FileFormat.svg },
