@@ -3762,7 +3762,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'opam',
-      extensions: ['.opam'],
+      extensions: ['opam'],
       filenamesGlob: [],
       extensionsGlob: [],
       filename: false,
