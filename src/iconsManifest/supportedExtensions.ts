@@ -3756,7 +3756,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'dune',
       extensions: ['dune', 'dune-project', 'dune-workspace'],
-      filenamesGlob: ['dune', 'dune-project', 'dune-workspace'],
+      filenamesGlob: [],
       filename: true,
       format: FileFormat.svg,
     },
