@@ -3759,6 +3759,21 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dune',
+      extensions: ['dune', 'dune-project', 'dune-workspace'],
+      filenamesGlob: [],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'opam',
+      extensions: ['opam'],
+      filenamesGlob: [],
+      extensionsGlob: [],
+      filename: false,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ogone',
       extensions: [],
       languages: [languages.ogone],
