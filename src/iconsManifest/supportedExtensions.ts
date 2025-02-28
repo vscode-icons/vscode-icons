@@ -1049,6 +1049,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'class', extensions: ['class'], format: FileFormat.svg },
     {
+      icon: 'claude',
+      extensions: ['claude.md'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'circleci',
       extensions: ['circle.yml'],
       light: true,
