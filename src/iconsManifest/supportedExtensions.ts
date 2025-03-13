@@ -2102,6 +2102,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'git',
       extensions: [
+        '.git',
         '.gitattributes',
         '.gitconfig',
         '.gitignore',
