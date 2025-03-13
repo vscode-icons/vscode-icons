@@ -4910,13 +4910,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'sln',
-      extensions: ['sln', 'slnx'],
+      extensions: ['sln', 'slnx', 'slnf'],
       languages: [languages.sln],
       format: FileFormat.svg,
     },
     {
       icon: 'sln2',
-      extensions: ['sln', 'slnx'],
+      extensions: ['sln', 'slnx', 'slnf'],
       format: FileFormat.svg,
       disabled: true,
     },
