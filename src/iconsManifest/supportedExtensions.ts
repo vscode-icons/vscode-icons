@@ -5039,6 +5039,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'stackblitz',
+      extensions: ['.stackblitzrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'stan',
       extensions: [],
       languages: [languages.stan],
