@@ -3841,12 +3841,17 @@ export const extensions: IFileCollection = {
       icon: 'packship',
       extensions: [
         '.packshiprc',
+        '.packshiprc.json',
+        '.packshiprc.js',
+        '.packshiprc.ts',
         'packship.config.js',
-        'packship.config.mjs',
         'packship.config.ts',
+        'packship.config.mjs',
         'packship.config.mts',
+        'packship.config.json'
       ],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
