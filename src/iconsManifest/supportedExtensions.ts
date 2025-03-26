@@ -1049,6 +1049,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'class', extensions: ['class'], format: FileFormat.svg },
     {
+      icon: 'claude',
+      extensions: ['claude.md'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'circleci',
       extensions: ['circle.yml'],
       light: true,
@@ -3615,7 +3621,7 @@ export const extensions: IFileCollection = {
     { icon: 'njsproj', extensions: ['njsproj'], format: FileFormat.svg },
     {
       icon: 'node',
-      extensions: ['.node-version', '.nvmrc'],
+      extensions: ['.node-version', '.nvmrc', 'node.config.json'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5041,6 +5047,12 @@ export const extensions: IFileCollection = {
       extensions: [],
       filenamesGlob: ['sst-env', 'sst.config'],
       extensionsGlob: ['d.ts', 'ts', 'js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'stackblitz',
+      extensions: ['.stackblitzrc'],
       filename: true,
       format: FileFormat.svg,
     },
