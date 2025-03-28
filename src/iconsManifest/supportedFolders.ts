@@ -337,6 +337,8 @@ export const extensions: IFolderCollection = {
         'screenshot',
         'screenshots',
         'svg',
+        'texture',
+        'textures',
       ],
       format: FileFormat.svg,
     },
