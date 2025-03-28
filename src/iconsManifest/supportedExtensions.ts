@@ -3186,6 +3186,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['.markuplintrc', 'markuplint.config'],
       extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'mjs', 'ts'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
