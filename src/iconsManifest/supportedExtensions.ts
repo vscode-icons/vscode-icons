@@ -5515,6 +5515,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tsdoc',
+      extensions: ['tsdoc.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tslint',
       extensions: ['tslint.json', 'tslint.yaml', 'tslint.yml'],
       filename: true,
