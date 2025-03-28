@@ -5,9 +5,9 @@ import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
-import { Utils } from '../utils';
-import { IVSCodeCommand } from '../models/vscode/vscodeCommand';
 import { IPackageManifest } from '../models/packageManifest/package';
+import { IVSCodeCommand } from '../models/vscode/vscodeCommand';
+import { Utils } from '../utils';
 
 export class ExtensionManager implements models.IExtensionManager {
   //#region Properties
@@ -25,7 +25,6 @@ export class ExtensionManager implements models.IExtensionManager {
     private notificationManager: models.INotificationManager,
     private iconsGenerator: models.IIconsGenerator,
     private projectAutoDetectionManager: models.IProjectAutoDetectionManager,
-    private integrityManager: models.IIntegrityManager,
   ) {
     this.manifest = packageJson as IPackageManifest;
     // register event listener for configuration changes
@@ -52,14 +51,9 @@ export class ExtensionManager implements models.IExtensionManager {
     constants.environment.production = new RegExp(
       `${constants.extension.distEntryFilename}`,
     ).test(this.manifest.main);
+
     if (constants.environment.production) {
       ConfigManager.rootDir = resolve(dirname(__filename), '../../');
-
-      if (!(await this.integrityManager.check())) {
-        void this.notificationManager.notifyWarning(
-          models.LangResourceKeys.integrityFailure,
-        );
-      }
     }
 
     // function calls has to be done in this order strictly
@@ -307,6 +301,16 @@ export class ExtensionManager implements models.IExtensionManager {
     return this.togglePreset(
       models.PresetNames.jsonOfficial,
       models.CommandNames.jsonPreset,
+      false,
+      models.ConfigurationTarget.Global,
+    );
+  }
+
+  // @ts-ignore: Called via reflection
+  private toggleYamlPresetCommand(): Promise<void> {
+    return this.togglePreset(
+      models.PresetNames.yamlOfficial,
+      models.CommandNames.yamlPreset,
       false,
       models.ConfigurationTarget.Global,
     );

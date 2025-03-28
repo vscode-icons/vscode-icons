@@ -7,4 +7,5 @@ export enum PresetNames {
   hideFolders,
   foldersAllDefaultIcon,
   hideExplorerArrows,
+  yamlOfficial,
 }

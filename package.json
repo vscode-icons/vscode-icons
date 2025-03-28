@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "12.8.0",
+  "version": "12.11.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -11,6 +11,11 @@
     "url": "https://robertohuertas.com"
   },
   "maintainers": [
+    {
+      "email": "remcohaszing@gmail.com",
+      "name": "Remco Haszing",
+      "url": "https://remcohaszing.nl"
+    },
     {
       "email": "jimikar@gmail.com",
       "name": "Jimi (Dimitris) Charalampidis"
@@ -49,14 +54,14 @@
   "icon": "images/logo.png",
   "scripts": {
     "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
-    "format": "prettier --loglevel error --write \"{src,test}/**/*.ts\"",
+    "format": "prettier --loglevel error --write .",
     "postformat": "npm run lint -- --fix",
     "prebundle:dev": "rimraf --glob ./*.nls*.json",
     "bundle:dev": "node ./out/src/tools/bundle.js",
     "bundle": "npm run bundle:dev -- --release",
     "prebuild": "npm run compile",
     "build": "node ./out/src/tools/build.js \"--release\"",
-    "prebuild:dev": "npm run lint && npm run compile:dev",
+    "prebuild:dev": "npm run compile:dev",
     "build:dev": "node ./out/src/tools/build.js",
     "pretest": "rimraf ./.nyc_output ./coverage && npm run prebuild:dev",
     "test": "nyc mocha",
@@ -71,10 +76,9 @@
     "precompile:dev": "npm run precompile",
     "compile:dev": "tsc",
     "postcompile:dev": "npm run bundle:dev",
-    "lint": "eslint --ext .ts .",
+    "lint": "eslint .",
     "predist": "npm run build",
     "dist": "webpack --mode production",
-    "postdist": "nsri create -s .",
     "serve": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
   },
   "devDependencies": {
@@ -112,7 +116,6 @@
   "dependencies": {
     "inversify": "^6.0.1",
     "lodash": "^4.17.21",
-    "nsri": "^7.0.0",
     "open": "^8.4.2",
     "reflect-metadata": "^0.1.13",
     "semver": "^7.5.4"
@@ -198,6 +201,13 @@
         "enablement": "!isWeb"
       },
       {
+        "command": "vscode-icons.yamlPreset",
+        "title": "%command.yamlPreset.title%",
+        "category": "Icons",
+        "callbackName": "toggleYamlPresetCommand",
+        "enablement": "!isWeb"
+      },
+      {
         "command": "vscode-icons.hideFoldersPreset",
         "title": "%command.hideFoldersPreset.title%",
         "category": "Icons",
@@ -280,6 +290,11 @@
           "type": "boolean",
           "default": false,
           "description": "%configuration.presets.jsonOfficial.description%"
+        },
+        "vsicons.presets.yamlOfficial": {
+          "type": "boolean",
+          "default": false,
+          "description": "%configuration.presets.yamlOfficial.description%"
         },
         "vsicons.presets.hideFolders": {
           "type": "boolean",

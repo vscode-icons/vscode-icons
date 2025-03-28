@@ -16,6 +16,19 @@
       "preLaunchTask": "npm: build - dev"
     },
     {
+      "name": "Launch Extension - without extensions",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--disable-extensions"
+      ],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/out/src/**/*.js"],
+      "preLaunchTask": "npm: build - dev"
+    },
+    {
       "name": "Run Web Extension in VS Code",
       "type": "pwa-extensionHost",
       "debugWebWorkerHost": true,
@@ -40,7 +53,7 @@
         "${workspaceFolder}/out/test/**/*.js",
         "${workspaceFolder}/out/src/**/*.js"
       ],
-      "preLaunchTask": "npm: build - dev",
+      "preLaunchTask": "npm: build - dev"
     }
   ]
 }

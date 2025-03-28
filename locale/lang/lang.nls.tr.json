@@ -22,6 +22,8 @@
   "tsPresetDisabled": "Resmi TS simgesi devre dışı bırakılacak.",
   "jsonPresetEnabled": "Resmi JSON simgesi etkinleştirilecektir.",
   "jsonPresetDisabled": "Resmi JSON simgesi devre dışı bırakılacak.",
+  "yamlPresetEnabled": "Resmi YAML simgesi etkinleştirilecektir.",
+  "yamlPresetDisabled": "Resmi YAML simgesi devre dışı bırakılacak.",
   "hideFoldersPresetEnabled": "Klasör simgeleri görünürlüğü etkinleştirilecektir.",
   "hideFoldersPresetDisabled": "Klasör simgeleri görünürlüğü devre dışı bırakılacak.",
   "foldersAllDefaultIconPresetEnabled": "Spesifik klasör simgeleri etkinleştirilecektir.",
@@ -39,6 +41,5 @@
   "nonNestDetectedPresetTrue": "%extensionName% bir NestJS olmayan proje tespit etti, fakat 'preset' ayarı 'true' olarak belirlenmiş. 'preset' i ayarlardan çıkartmanız şiddetle tavsiye edilir. Yeniden başlatmak, NestJS simgelerini etkinleştirecektir.",
   "projectDetectionReset": "Proje Algılama varsayılanları sıfırlanacaktır.",
   "conflictProjectsDetected": "%extensionName% birbiriyle çakışan proje simgeleri tespit etti. Hangi proje simgeleriyle çalışacağınızı seçin. Not: Bu işlem çalışma alanı ayarlarınızda bir hazır ayar belirler.",
-  "unsupportedVersion": "Desteklenmeyen 'VS Code' versiyonu:",
-  "integrityFailure": "Eklentinin bütünlüğünde uyumsuzluklar mevcut. Tasarlandığı gibi çalışması garanti EDİLEMEZ."
+  "unsupportedVersion": "Desteklenmeyen 'VS Code' versiyonu:"
 }

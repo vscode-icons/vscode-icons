@@ -1,5 +1,5 @@
-import { FileFormat, IFileCollection } from '../../src/models';
 import { languages } from '../../src/iconsManifest/languages';
+import { FileFormat, IFileCollection } from '../../src/models';
 
 export const extensions: IFileCollection = {
   default: {
@@ -516,6 +516,29 @@ export const extensions: IFileCollection = {
       icon: 'json_official',
       extensions: [],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
+      format: FileFormat.svg,
+      disabled: true,
+    },
+    {
+      icon: 'yaml',
+      extensions: [],
+      languages: [
+        languages.yaml,
+        languages.textmateyaml,
+        languages.springbootpropertiesyaml,
+      ],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'yaml_official',
+      extensions: [],
+      languages: [
+        languages.yaml,
+        languages.textmateyaml,
+        languages.springbootpropertiesyaml,
+      ],
+      light: true,
       format: FileFormat.svg,
       disabled: true,
     },
