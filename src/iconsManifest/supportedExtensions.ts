@@ -3181,6 +3181,15 @@ export const extensions: IFileCollection = {
     },
     { icon: 'markojs', extensions: ['marko.js'], format: FileFormat.svg },
     {
+      icon: 'markuplint',
+      extensions: ['.markuplintrc'],
+      filenamesGlob: ['.markuplintrc', 'markuplint.config'],
+      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'mjs', 'ts'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'master-co',
       extensions: [],
       filenamesGlob: ['master', 'master.css'],
