@@ -22,6 +22,8 @@
   "tsPresetDisabled": "取消使用官方的 TS 图标",
   "jsonPresetEnabled": "使用官方的 JSON 图标",
   "jsonPresetDisabled": "取消使用官方的 JSON 图标",
+  "yamlPresetEnabled": "使用官方的 YAML 图标",
+  "yamlPresetDisabled": "取消使用官方的 YAML 图标",
   "hideFoldersPresetEnabled": "现在使用文件夹图标",
   "hideFoldersPresetDisabled": "现在隐藏文件夹图标",
   "foldersAllDefaultIconPresetEnabled": "现在使用指定的文件夹图标",

@@ -520,6 +520,55 @@ describe('CustomsMerger: toggle presets tests', function () {
       });
     });
 
+    context(`'YAML' official icons can be`, function () {
+      it('enabled and disabled', async function () {
+        const toggle = async (
+          enable: boolean,
+        ): Promise<Record<string, IFileExtension[]>> => {
+          vsicons.presets.yamlOfficial = enable;
+          const { files } = await CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            extFolders,
+            vsicons.presets,
+          );
+
+          return {
+            defs: files.supported.filter(
+              (file: IFileExtension) => file.icon === IconNames.yaml.toString(),
+            ),
+            officialDefs: files.supported.filter(
+              (file: IFileExtension) =>
+                file.icon === IconNames.yamlOfficial.toString(),
+            ),
+          };
+        };
+
+        // Set YAML Official icon as enabled
+        let icons = await toggle(true);
+
+        icons.defs.forEach(
+          (def: IFileExtension) => expect(def.disabled).to.be.true,
+        );
+        icons.officialDefs.forEach(
+          (officialDef: IFileExtension) =>
+            expect(officialDef.disabled).to.be.false,
+        );
+
+        // Set YAML Official icon as disabled
+        icons = await toggle(false);
+
+        icons.defs.forEach(
+          (def: IFileExtension) => expect(def.disabled).to.be.false,
+        );
+        icons.officialDefs.forEach(
+          (officialDef: IFileExtension) =>
+            expect(officialDef.disabled).to.be.true,
+        );
+      });
+    });
+
     context('all specific folders icons can be', function () {
       it('disabled and enabled', async function () {
         const toggle = async (enabled: boolean): Promise<IFolderCollection> => {

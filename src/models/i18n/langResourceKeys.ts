@@ -22,6 +22,8 @@ export enum LangResourceKeys {
   tsPresetDisabled,
   jsonPresetEnabled,
   jsonPresetDisabled,
+  yamlPresetEnabled,
+  yamlPresetDisabled,
   hideFoldersPresetEnabled,
   hideFoldersPresetDisabled,
   foldersAllDefaultIconPresetEnabled,

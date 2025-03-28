@@ -22,6 +22,8 @@
   "tsPresetDisabled": "Offizielles TS Icon wird deaktiviert.",
   "jsonPresetEnabled": "Offizielles JSON Icon wird aktiviert.",
   "jsonPresetDisabled": "Offizielles JSON Icon wird deaktiviert.",
+  "yamlPresetEnabled": "Offizielles YAML Icon wird aktiviert.",
+  "yamlPresetDisabled": "Offizielles YAML Icon wird deaktiviert.",
   "hideFoldersPresetEnabled": "Ordner-Icons werden aktiviert.",
   "hideFoldersPresetDisabled": "Ordner-Icons werden deaktiviert.",
   "foldersAllDefaultIconPresetEnabled": "Spezifischer Ordner-Icons werden aktiviert.",

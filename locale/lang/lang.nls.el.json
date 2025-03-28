@@ -22,6 +22,8 @@
   "tsPresetDisabled": "Το επίσημο εικονίδιο TS θα απενεργοποιηθεί.",
   "jsonPresetEnabled": "Το επίσημο εικονίδιο JSON θα ενεργοποιηθεί.",
   "jsonPresetDisabled": "Το επίσημο εικονίδιο JSON θα απενεργοποιηθεί.",
+  "yamlPresetEnabled": "Το επίσημο εικονίδιο YAML θα ενεργοποιηθεί.",
+  "yamlPresetDisabled": "Το επίσημο εικονίδιο YAML θα απενεργοποιηθεί.",
   "hideFoldersPresetEnabled": "Η ορατότητα των εικονιδίων φακέλου θα ενεργοποιηθεί.",
   "hideFoldersPresetDisabled": "Η ορατότητα των εικονιδίων φακέλου θα απενεργοποιηθεί.",
   "foldersAllDefaultIconPresetEnabled": "Τα ιδιαίτερα εικονίδια φακέλου θα ενεργοποιηθούν.",

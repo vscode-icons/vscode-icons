@@ -1030,6 +1030,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'changie',
+      extensions: ['.changie.yaml', '.changie.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'chef',
       extensions: [
         'chefignore',
@@ -1042,6 +1048,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'class', extensions: ['class'], format: FileFormat.svg },
+    {
+      icon: 'claude',
+      extensions: ['claude.md'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'circleci',
       extensions: ['circle.yml'],
@@ -2096,6 +2108,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'git',
       extensions: [
+        '.git',
         '.gitattributes',
         '.gitconfig',
         '.gitignore',
@@ -2942,6 +2955,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lefthook',
+      extensions: ['lefthook.yml', 'lefthook.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lerna',
       extensions: ['lerna.json'],
       light: true,
@@ -3255,6 +3274,12 @@ export const extensions: IFileCollection = {
       icon: 'meson',
       extensions: [],
       languages: [languages.meson],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'metal',
+      extensions: [],
+      languages: [languages.metal],
       format: FileFormat.svg,
     },
     { icon: 'meteor', extensions: [], format: FileFormat.svg },
@@ -3605,7 +3630,7 @@ export const extensions: IFileCollection = {
     { icon: 'njsproj', extensions: ['njsproj'], format: FileFormat.svg },
     {
       icon: 'node',
-      extensions: ['.node-version', '.nvmrc'],
+      extensions: ['.node-version', '.nvmrc', 'node.config.json'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3741,6 +3766,21 @@ export const extensions: IFileCollection = {
     {
       icon: 'ocaml_intf',
       extensions: ['mli'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dune',
+      extensions: ['dune', 'dune-project', 'dune-workspace'],
+      filenamesGlob: [],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'opam',
+      extensions: ['opam'],
+      filenamesGlob: [],
+      extensionsGlob: [],
+      filename: false,
       format: FileFormat.svg,
     },
     {
@@ -4885,13 +4925,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'sln',
-      extensions: ['sln', 'slnx'],
+      extensions: ['sln', 'slnx', 'slnf'],
       languages: [languages.sln],
       format: FileFormat.svg,
     },
     {
       icon: 'sln2',
-      extensions: ['sln', 'slnx'],
+      extensions: ['sln', 'slnx', 'slnf'],
       format: FileFormat.svg,
       disabled: true,
     },
@@ -5008,6 +5048,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'stackblitz',
+      extensions: ['.stackblitzrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'stan',
       extensions: [],
       languages: [languages.stan],
@@ -5080,7 +5126,7 @@ export const extensions: IFileCollection = {
       icon: 'storybook',
       extensions: [],
       filenamesGlob: ['story', 'stories'],
-      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', 'mdx', 'svelte'],
       format: FileFormat.svg,
     },
     {
@@ -5215,6 +5261,14 @@ export const extensions: IFileCollection = {
       extensions: ['.taplo.toml', 'taplo.toml'],
       filename: true,
       format: FileFormat.svg,
+    },
+    {
+      icon: 'taskfile',
+      extensions: [],
+      format: FileFormat.svg,
+      filename: true,
+      filenamesGlob: ['taskfile', 'taskfile.dist'],
+      extensionsGlob: ['yml', 'yaml'],
     },
     {
       icon: 'tauri',
@@ -6057,6 +6111,18 @@ export const extensions: IFileCollection = {
       ],
       light: true,
       format: FileFormat.svg,
+    },
+    {
+      icon: 'yaml_official',
+      extensions: [],
+      languages: [
+        languages.yaml,
+        languages.textmateyaml,
+        languages.springbootpropertiesyaml,
+      ],
+      light: true,
+      format: FileFormat.svg,
+      disabled: true,
     },
     {
       icon: 'yamllint',

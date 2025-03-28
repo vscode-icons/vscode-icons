@@ -325,6 +325,25 @@ describe('ExtensionManager: commands tests', function () {
       });
     });
 
+    context(`the toggle yaml preset command`, function () {
+      it(`toggles the yaml preset`, function () {
+        const toggleYamlPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleYamlPresetCommand as () => void;
+
+        toggleYamlPresetCommand.call(extensionManager);
+
+        expect(
+          togglePresetStub.calledOnceWithExactly(
+            models.PresetNames.yamlOfficial,
+            models.CommandNames.yamlPreset,
+            false,
+            models.ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
+      });
+    });
+
     context(`the toggle hide folders preset command`, function () {
       it(`toggles the hide folders preset`, function () {
         const toggleHideFoldersPresetCommand =
