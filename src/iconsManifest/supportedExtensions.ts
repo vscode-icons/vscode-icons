@@ -3858,7 +3858,7 @@ export const extensions: IFileCollection = {
         'packship.config.ts',
         'packship.config.mjs',
         'packship.config.mts',
-        'packship.config.json'
+        'packship.config.json',
       ],
       filename: true,
       light: true,
