@@ -2108,6 +2108,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'git',
       extensions: [
+        '.git',
         '.gitattributes',
         '.gitconfig',
         '.gitignore',
@@ -3179,6 +3180,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'markojs', extensions: ['marko.js'], format: FileFormat.svg },
+    {
+      icon: 'markuplint',
+      extensions: ['.markuplintrc'],
+      filenamesGlob: ['.markuplintrc', 'markuplint.config'],
+      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'mjs', 'ts'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'master-co',
       extensions: [],
@@ -5528,6 +5538,12 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['json'],
       filename: true,
       disabled: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tsdoc',
+      extensions: ['tsdoc.json'],
+      filename: true,
       format: FileFormat.svg,
     },
     {

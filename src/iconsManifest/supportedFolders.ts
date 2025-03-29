@@ -327,9 +327,13 @@ export const extensions: IFolderCollection = {
     {
       icon: 'images',
       extensions: [
+        '.fig',
+        '.figs',
         'images',
         'image',
+        '.img',
         'img',
+        '.imgs',
         'imgs',
         'icons',
         'icon',
@@ -337,6 +341,8 @@ export const extensions: IFolderCollection = {
         'screenshot',
         'screenshots',
         'svg',
+        'texture',
+        'textures',
       ],
       format: FileFormat.svg,
     },
