@@ -3848,6 +3848,23 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'packship',
+      extensions: [
+        '.packshiprc',
+        '.packshiprc.json',
+        '.packshiprc.js',
+        '.packshiprc.ts',
+        'packship.config.js',
+        'packship.config.ts',
+        'packship.config.mjs',
+        'packship.config.mts',
+        'packship.config.json',
+      ],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pandacss',
       filenamesGlob: ['panda.config'],
       extensions: [],
