@@ -905,9 +905,8 @@ export const extensions: IFileCollection = {
     {
       icon: 'c3',
       extensions: [],
-      languages: [languages.c],
+      languages: [languages.c3],
       format: FileFormat.svg,
-      disabled: true,
     },
     {
       icon: 'c_al',

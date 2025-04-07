@@ -60,6 +60,7 @@ export const languages = {
   buf: { ids: ['buf', 'buf-gen'], defaultExtension: 'buf.yaml' },
   bunlockb: { ids: 'bun.lockb', defaultExtension: 'lockb' },
   c: { ids: 'c', defaultExtension: 'c' },
+  c3: { ids: 'c3', defaultExtension: 'c3' },
   c_al: { ids: 'c-al', defaultExtension: 'cal' },
   cabal: { ids: 'cabal', defaultExtension: 'cabal' },
   caddyfile: { ids: 'caddyfile', defaultExtension: 'Caddyfile' },
