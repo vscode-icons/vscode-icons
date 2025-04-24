@@ -6086,7 +6086,7 @@ export const extensions: IFileCollection = {
       icon: 'xo',
       extensions: [],
       filenamesGlob: ['xo.config'],
-      extensionsGlob: ['js', 'cjs'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
       filename: true,
       format: FileFormat.svg,
     },
