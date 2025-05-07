@@ -1378,7 +1378,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cursorrules',
-      extensions: ['.cursorrules'],
+      extensions: ['.cursorignore', '.cursorrules'],
       filename: true,
       format: FileFormat.svg,
     },
