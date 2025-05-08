@@ -526,6 +526,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'aseprite',
+      extensions: ['ase', 'aseprite'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'asp',
       extensions: [],
       languages: [languages.asp],
