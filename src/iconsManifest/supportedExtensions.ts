@@ -2402,7 +2402,7 @@ export const extensions: IFileCollection = {
       icon: 'hardhat',
       extensions: [],
       filenamesGlob: ['hardhat.config'],
-      extensionsGlob: ['js', 'ts'],
+      extensionsGlob: ['cjs', 'js', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
