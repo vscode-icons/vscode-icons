@@ -2955,6 +2955,25 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lean',
+      extensions: [],
+      light: true,
+      languages: [languages.lean],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'leanconfig',
+      extensions: [
+        'lakefile.lean',
+        'lakefile.toml',
+        'lake-manifest.json',
+        'lean-toolchain',
+      ],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lefthook',
       extensions: ['lefthook.yml', 'lefthook.yaml'],
       filename: true,
