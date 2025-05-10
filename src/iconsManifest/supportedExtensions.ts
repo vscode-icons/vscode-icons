@@ -2181,6 +2181,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'geojson',
+      extensions: ['geojson'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gitlab',
       extensions: ['.gitlab-ci.yml'],
       filename: true,
