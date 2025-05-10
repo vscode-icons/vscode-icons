@@ -81,6 +81,10 @@ export const languages = {
   coldfusion: { ids: ['cfml', 'lang-cfml'], defaultExtension: 'cfml' },
   confluence: { ids: ['confluence'], defaultExtension: 'confluence' },
   cookbook: { ids: 'cookbook', defaultExtension: 'ckbk' },
+  copilot: {
+    ids: ['instructions', 'prompt'],
+    defaultExtension: 'instructions.md',
+  },
   cpp: { ids: 'cpp', defaultExtension: 'cpp' },
   crystal: { ids: 'crystal', defaultExtension: 'cr' },
   csharp: { ids: 'csharp', defaultExtension: 'cs' },
