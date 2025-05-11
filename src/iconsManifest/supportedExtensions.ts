@@ -1565,7 +1565,11 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yaml', 'yml'],
       filename: true,
-      languages: [languages.dockercompose, languages.dockerfile],
+      languages: [
+        languages.dockerbake,
+        languages.dockercompose,
+        languages.dockerfile,
+      ],
       format: FileFormat.svg,
     },
     {
@@ -1583,7 +1587,11 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['yaml', 'yml'],
       filename: true,
-      languages: [languages.dockercompose, languages.dockerfile],
+      languages: [
+        languages.dockerbake,
+        languages.dockercompose,
+        languages.dockerfile,
+      ],
       format: FileFormat.svg,
       disabled: true,
     },

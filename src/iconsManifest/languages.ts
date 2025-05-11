@@ -119,6 +119,7 @@ export const languages = {
   django: { ids: ['django-html', 'django-txt'], defaultExtension: 'html' },
   diff: { ids: 'diff', defaultExtension: 'diff' },
   dlang: { ids: ['d', 'dscript', 'dml', 'diet'], defaultExtension: 'd' },
+  dockerbake: { ids: 'dockerbake', defaultExtension: 'hcl' },
   dockercompose: { ids: 'dockercompose', defaultExtension: 'yml' },
   dockerfile: { ids: 'dockerfile', defaultExtension: 'dockerfile' },
   doctex: { ids: 'doctex', defaultExtension: 'dtx' },
