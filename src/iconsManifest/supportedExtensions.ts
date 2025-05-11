@@ -1243,6 +1243,7 @@ export const extensions: IFileCollection = {
       icon: 'copilot',
       extensions: ['copilot-instructions.md', 'github-copilot.xml'],
       filename: true,
+      languages: [languages.copilot],
       light: true,
       format: FileFormat.svg,
     },
