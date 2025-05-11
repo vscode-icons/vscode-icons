@@ -1985,6 +1985,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'firebasestorage',
+      extensions: ['storage.rules'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'firestore',
       extensions: ['firestore.rules', 'firestore.indexes.json'],
       filename: true,
