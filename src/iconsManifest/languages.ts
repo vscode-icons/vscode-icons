@@ -255,6 +255,7 @@ export const languages = {
   latex: { ids: 'latex', defaultExtension: 'tex' },
   lark: { ids: 'lark', defaultExtension: 'lark' },
   latino: { ids: 'latino', defaultExtension: 'lat' },
+  lean: { ids: ['lean4', 'lean4markdown'], defaultExtension: 'lean' },
   less: { ids: 'less', defaultExtension: 'less' },
   lex: { ids: 'lex', defaultExtension: 'flex' },
   lilypond: { ids: 'lilypond', defaultExtension: 'ly' },
