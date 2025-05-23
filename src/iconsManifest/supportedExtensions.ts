@@ -4941,6 +4941,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'shadcn',
+      extensions: ['components.json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'shell',
       extensions: ['fish'],
       languages: [languages.shellscript],
