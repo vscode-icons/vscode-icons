@@ -2239,7 +2239,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'glimmer',
-      extensions: ['.gjs', '.gts'],
+      extensions: [],
+      languages: [languages.glimmer],
       format: FileFormat.svg,
     },
     {
