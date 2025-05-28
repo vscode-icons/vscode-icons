@@ -2238,6 +2238,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'glimmer',
+      extensions: [],
+      languages: [languages.glimmer],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'glitter',
       extensions: ['.glitterrc'],
       filename: true,

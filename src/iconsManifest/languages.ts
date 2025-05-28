@@ -165,6 +165,7 @@ export const languages = {
   genstat: { ids: 'genstat', defaultExtension: 'gen' },
   git: { ids: ['git-commit', 'git-rebase', 'ignore'], defaultExtension: 'git' },
   gleam: { ids: 'gleam', defaultExtension: 'gleam' },
+  glimmer: { ids: ['glimmer-js', 'glimmer-ts'], defaultExtension: 'gjs' },
   glsl: { ids: 'glsl', defaultExtension: 'glsl' },
   glyphs: { ids: 'glyphs', defaultExtension: 'glyphs' },
   gnuplot: { ids: 'gnuplot', defaultExtension: 'gp' },
