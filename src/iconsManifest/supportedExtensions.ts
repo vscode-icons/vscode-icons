@@ -5033,6 +5033,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'smithery',
+      extensions: ['smithery.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'snakemake',
       languages: [languages.snakemake],
       extensions: [],
