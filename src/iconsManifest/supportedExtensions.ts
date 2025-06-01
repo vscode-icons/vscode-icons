@@ -3742,6 +3742,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nsjs',
+      extensions: ['nsjs'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nsri',
       extensions: ['.nsrirc', '.nsriignore', 'nsri.config.js'],
       filenamesGlob: ['.nsrirc'],
