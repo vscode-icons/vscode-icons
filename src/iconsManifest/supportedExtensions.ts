@@ -6270,7 +6270,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'turbo',
-      extensions: ['turbo.json'],
+      extensions: ['turbo.json', 'turbo.jsonc'],
       light: true,
       filename: true,
       format: FileFormat.svg,
