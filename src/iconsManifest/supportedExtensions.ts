@@ -446,6 +446,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'alloy',
+      extensions: [],
+      languages: [languages.alloy],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ansible',
       extensions: [],
       languages: [languages.ansible],
