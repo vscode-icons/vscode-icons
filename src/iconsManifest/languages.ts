@@ -10,6 +10,7 @@ export const languages = {
     defaultExtension: 'agda',
   },
   al: { ids: 'al', defaultExtension: 'al' },
+  alloy: { ids: 'alloy', defaultExtension: 'alloy' },
   ansible: { ids: 'ansible', defaultExtension: 'ansible' },
   antlr: { ids: 'antlr', defaultExtension: 'g4' },
   anyscript: { ids: 'anyscript', defaultExtension: 'any' },
