@@ -2238,6 +2238,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'glimmer',
+      extensions: [],
+      languages: [languages.glimmer],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'glitter',
       extensions: ['.glitterrc'],
       filename: true,
@@ -3883,6 +3889,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
+    {
+      icon: 'paket',
+      extensions: ['paket.references', 'paket.template'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'paket',
       extensions: [],
@@ -6259,7 +6270,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'turbo',
-      extensions: ['turbo.json'],
+      extensions: ['turbo.json', 'turbo.jsonc'],
       light: true,
       filename: true,
       format: FileFormat.svg,
