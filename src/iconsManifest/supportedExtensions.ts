@@ -5233,7 +5233,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'svelteconfig',
-      extensions: ['svelte.config.js'],
+      extensions: ['svelte.config.js', 'svelte.config.ts'],
       filename: true,
       format: FileFormat.svg,
     },
