@@ -1,7 +1,7 @@
 name: Publish Extension
 
 env:
-  NODE_VERSION: 16.14.2
+  NODE_VERSION: 18.15.0
 
 on:
   push:
