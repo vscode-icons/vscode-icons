@@ -53,6 +53,13 @@ export class CustomsMerger {
       [models.IconNames.json],
     );
 
+    files = this.toggleOfficialIconsPreset(
+      !presets.yamlOfficial,
+      files,
+      [models.IconNames.yamlOfficial],
+      [models.IconNames.yaml],
+    );
+
     folders = this.toggleFoldersAllDefaultIconPreset(
       presets.foldersAllDefaultIcon,
       folders,
@@ -73,12 +80,14 @@ export class CustomsMerger {
     for (const presetName of presetNames) {
       const name: string = models.PresetNames[presetName];
       const project: string = models.Projects[name] as string;
-      const projectDetectionResult:
-        | models.IProjectDetectionResult
-        | undefined = (
-        (Array.isArray(projectDetectionResults) && projectDetectionResults) ||
-        []
-      ).find((pdr: models.IProjectDetectionResult) => pdr.project === project);
+      const projectDetectionResult: models.IProjectDetectionResult | undefined =
+        (
+          (Array.isArray(projectDetectionResults) && projectDetectionResults) ||
+          []
+        ).find(
+          (pdr: models.IProjectDetectionResult) =>
+            pdr.project?.toString() === project,
+        );
       const preset: boolean = await this.getPreset(
         name,
         project,
@@ -103,7 +112,7 @@ export class CustomsMerger {
       typeof projectDetectionResult === 'object' &&
       'value' in projectDetectionResult;
     return hasProjectDetectionResult &&
-      projectDetectionResult.project === project
+      projectDetectionResult.project.toString() === project
       ? projectDetectionResult.value
       : (presets[name] as boolean) ||
           (!!affectedPresets &&
@@ -122,7 +131,9 @@ export class CustomsMerger {
       const disable: boolean = preset[key];
       const regex = new RegExp(
         `^${
-          models.IconNames[models.PresetNames[key] as string] as string
+          models.IconNames[
+            models.PresetNames[key] as keyof typeof models.IconNames
+          ]
         }_.*\\D$`,
       );
       const icons = files.supported
@@ -347,7 +358,7 @@ export class CustomsMerger {
   // Note: generics and union types don't work very well :(
   // that's why we had to use IExtensionCollection<> instead of T
   private static togglePreset<
-    T extends models.IFileCollection | models.IFolderCollection
+    T extends models.IFileCollection | models.IFolderCollection,
   >(
     disable: boolean,
     icons: string[],

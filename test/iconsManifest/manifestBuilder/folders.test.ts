@@ -122,9 +122,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._folder_open.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._folder_open.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -160,9 +159,8 @@ describe('ManifestBuilder: folders icons test', function () {
           fixtFolders,
         );
 
-        expect(
-          manifest.iconDefinitions._folder_light_open.iconPath,
-        ).to.be.empty;
+        expect(manifest.iconDefinitions._folder_light_open.iconPath).to.be
+          .empty;
       });
 
       context(`the 'root' folder`, function () {
@@ -172,9 +170,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._root_folder.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._root_folder.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -202,9 +199,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._root_folder_open.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._root_folder_open.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -231,9 +227,8 @@ describe('ManifestBuilder: folders icons test', function () {
           fixtFolders,
         );
 
-        expect(
-          manifest.iconDefinitions._root_folder_light.iconPath,
-        ).to.be.empty;
+        expect(manifest.iconDefinitions._root_folder_light.iconPath).to.be
+          .empty;
       });
 
       it(`the 'root' 'light' open folder has NOT an icon path`, async function () {
@@ -242,9 +237,8 @@ describe('ManifestBuilder: folders icons test', function () {
           fixtFolders,
         );
 
-        expect(
-          manifest.iconDefinitions._root_folder_light_open.iconPath,
-        ).to.be.empty;
+        expect(manifest.iconDefinitions._root_folder_light_open.iconPath).to.be
+          .empty;
       });
 
       context('each supported', function () {
@@ -913,9 +907,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._folder_open.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._folder_open.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -943,9 +936,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._folder_light.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._folder_light.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -973,9 +965,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._folder_light_open.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._folder_light_open.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -1005,9 +996,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._root_folder.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._root_folder.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -1035,9 +1025,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._root_folder_open.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._root_folder_open.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -1064,9 +1053,8 @@ describe('ManifestBuilder: folders icons test', function () {
           fixtFolders,
         );
 
-        expect(
-          manifest.iconDefinitions._root_folder_light.iconPath,
-        ).to.be.empty;
+        expect(manifest.iconDefinitions._root_folder_light.iconPath).to.be
+          .empty;
       });
 
       it(`the 'root' 'light' open folder has NOT an icon path`, async function () {
@@ -1075,9 +1063,8 @@ describe('ManifestBuilder: folders icons test', function () {
           fixtFolders,
         );
 
-        expect(
-          manifest.iconDefinitions._root_folder_light_open.iconPath,
-        ).to.be.empty;
+        expect(manifest.iconDefinitions._root_folder_light_open.iconPath).to.be
+          .empty;
       });
 
       context('each supported', function () {
@@ -1702,9 +1689,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._folder_open.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._folder_open.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -1740,9 +1726,8 @@ describe('ManifestBuilder: folders icons test', function () {
           fixtFolders,
         );
 
-        expect(
-          manifest.iconDefinitions._folder_light_open.iconPath,
-        ).to.be.empty;
+        expect(manifest.iconDefinitions._folder_light_open.iconPath).to.be
+          .empty;
       });
 
       context(`the 'root' folder`, function () {
@@ -1752,9 +1737,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._root_folder.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._root_folder.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -1782,9 +1766,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._root_folder_open.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._root_folder_open.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -1812,9 +1795,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._root_folder_light.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._root_folder_light.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -1842,9 +1824,8 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders,
           );
 
-          expect(
-            manifest.iconDefinitions._root_folder_light_open.iconPath,
-          ).not.to.be.empty;
+          expect(manifest.iconDefinitions._root_folder_light_open.iconPath).not
+            .to.be.empty;
         });
 
         it(`icon path has the correct structure`, async function () {

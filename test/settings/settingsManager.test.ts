@@ -30,9 +30,8 @@ describe('SettingsManager: tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
 
       globalStateGetStub = sandbox.stub();
       globalStateUpdateStub = sandbox.stub();
@@ -107,9 +106,8 @@ describe('SettingsManager: tests', function () {
 
             expect(existsAsyncStub.calledOnce).to.be.true;
             expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(
-              semverSpy.calledOnceWithExactly('0.0.0', '0.0.0'),
-            ).to.be.true;
+            expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
+              .true;
             expect(globalStateUpdateStub.called).to.be.false;
             expect(unlinkFileAsyncStub.called).to.be.false;
           });
@@ -123,9 +121,8 @@ describe('SettingsManager: tests', function () {
 
             expect(existsAsyncStub.calledOnce).to.be.true;
             expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(
-              semverSpy.calledOnceWithExactly('0.0.0', '0.0.0'),
-            ).to.be.true;
+            expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
+              .true;
             expect(globalStateUpdateStub.called).to.be.false;
             expect(unlinkFileAsyncStub.called).to.be.false;
           });
@@ -142,9 +139,8 @@ describe('SettingsManager: tests', function () {
 
             expect(existsAsyncStub.calledOnce).to.be.true;
             expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(
-              semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'),
-            ).to.be.true;
+            expect(semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'))
+              .to.be.true;
             expect(
               globalStateUpdateStub.calledOnceWithExactly(
                 constants.vsicons.name,
@@ -167,9 +163,8 @@ describe('SettingsManager: tests', function () {
             expect(logErrorStub.calledOnceWithExactly(error, true)).to.be.true;
             expect(existsAsyncStub.calledOnce).to.be.true;
             expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(
-              semverSpy.calledOnceWithExactly('0.0.0', '0.0.0'),
-            ).to.be.true;
+            expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
+              .true;
             expect(globalStateUpdateStub.called).to.be.false;
             expect(unlinkFileAsyncStub.called).to.be.false;
           });
@@ -187,18 +182,16 @@ describe('SettingsManager: tests', function () {
 
             expect(existsAsyncStub.calledOnce).to.be.true;
             expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(
-              semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'),
-            ).to.be.true;
+            expect(semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'))
+              .to.be.true;
             expect(
               globalStateUpdateStub.calledOnceWithExactly(
                 constants.vsicons.name,
                 stateMock,
               ),
             ).to.be.true;
-            expect(
-              unlinkFileAsyncStub.calledOnceWithExactly(undefined),
-            ).to.be.true;
+            expect(unlinkFileAsyncStub.calledOnceWithExactly(undefined)).to.be
+              .true;
             expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
           });
         });
@@ -242,9 +235,8 @@ describe('SettingsManager: tests', function () {
 
       const state = await settingsManager.updateStatus(status);
 
-      expect(
-        globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
-      ).to.be.true;
+      expect(globalStateGetStub.calledOnceWithExactly(constants.vsicons.name))
+        .to.be.true;
       expect(
         globalStateUpdateStub.calledOnceWithExactly(
           constants.vsicons.name,
@@ -260,9 +252,8 @@ describe('SettingsManager: tests', function () {
 
       const state = await settingsManager.updateStatus();
 
-      expect(
-        globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
-      ).to.be.true;
+      expect(globalStateGetStub.calledOnceWithExactly(constants.vsicons.name))
+        .to.be.true;
       expect(
         globalStateUpdateStub.calledOnceWithExactly(
           constants.vsicons.name,
@@ -312,9 +303,8 @@ describe('SettingsManager: tests', function () {
         expect(Reflect.ownKeys(state)).to.have.lengthOf(3);
         expect(state).to.have.all.keys('version', 'status', 'welcomeShown');
         expect(state.version).to.be.equal('0.0.0');
-        expect(
-          globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
-        ).to.be.true;
+        expect(globalStateGetStub.calledOnceWithExactly(constants.vsicons.name))
+          .to.be.true;
       });
 
       it('returns the state', function () {
@@ -327,9 +317,8 @@ describe('SettingsManager: tests', function () {
         expect(Object.keys(state)).to.have.lengthOf(3);
         expect(state).to.have.all.keys('version', 'status', 'welcomeShown');
         expect(state.version).to.be.equal('1.0.0');
-        expect(
-          globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
-        ).to.be.true;
+        expect(globalStateGetStub.calledOnceWithExactly(constants.vsicons.name))
+          .to.be.true;
       });
     });
 
@@ -339,9 +328,8 @@ describe('SettingsManager: tests', function () {
         globalStateGetStub.returns(stateMock);
 
         expect(settingsManager.isNewVersion).to.be.true;
-        expect(
-          globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
-        ).to.be.true;
+        expect(globalStateGetStub.calledOnceWithExactly(constants.vsicons.name))
+          .to.be.true;
       });
 
       it('falsy for the same extension version', function () {
@@ -349,9 +337,8 @@ describe('SettingsManager: tests', function () {
         globalStateGetStub.returns(stateMock);
 
         expect(settingsManager.isNewVersion).to.be.false;
-        expect(
-          globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
-        ).to.be.true;
+        expect(globalStateGetStub.calledOnceWithExactly(constants.vsicons.name))
+          .to.be.true;
       });
 
       it('falsy for an older extension version', function () {
@@ -359,9 +346,8 @@ describe('SettingsManager: tests', function () {
         globalStateGetStub.returns(stateMock);
 
         expect(settingsManager.isNewVersion).to.be.false;
-        expect(
-          globalStateGetStub.calledOnceWithExactly(constants.vsicons.name),
-        ).to.be.true;
+        expect(globalStateGetStub.calledOnceWithExactly(constants.vsicons.name))
+          .to.be.true;
       });
     });
   });

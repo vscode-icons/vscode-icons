@@ -1,0 +1,27 @@
+name: Update Wiki Page Icons List
+
+env:
+  NODE_VERSION: 18.15.0
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Update Wiki Pages
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Setting up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Update Wiki Page Icons List
+        timeout-minutes: 2
+        run: npx --yes vscode-icons/wpilgenerator
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

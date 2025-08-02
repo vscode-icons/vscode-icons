@@ -29,9 +29,11 @@ describe('CompositionRootService: tests', function () {
 
     before(function () {
       proxyq.noCallThru();
-      CRService = (proxyq('../../src/services/compositionRootService', {
-        vscode,
-      }) as Record<string, CompositionRootService>).CompositionRootService;
+      CRService = (
+        proxyq('../../src/services/compositionRootService', {
+          vscode,
+        }) as Record<string, CompositionRootService>
+      ).CompositionRootService;
     });
 
     after(function () {

@@ -11,7 +11,19 @@
       "request": "launch",
       "runtimeExecutable": "${execPath}",
       "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
-      "stopOnEntry": false,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/out/src/**/*.js"],
+      "preLaunchTask": "npm: build - dev"
+    },
+    {
+      "name": "Launch Extension - without extensions",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--disable-extensions"
+      ],
       "sourceMaps": true,
       "outFiles": ["${workspaceFolder}/out/src/**/*.js"],
       "preLaunchTask": "npm: build - dev"
@@ -36,7 +48,6 @@
         "--extensionDevelopmentPath=${workspaceFolder}",
         "--extensionTestsPath=${workspaceFolder}/out/test"
       ],
-      "stopOnEntry": false,
       "sourceMaps": true,
       "outFiles": [
         "${workspaceFolder}/out/test/**/*.js",

@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { ManifestReader } from '../../../src/iconsManifest';
-import { Projects, PresetNames, IPresets } from '../../../src/models';
+import { IPresets, PresetNames, Projects } from '../../../src/models';
 import { Utils } from '../../../src/utils';
 
 describe('ManifestReader: tests', function () {
@@ -37,6 +37,7 @@ describe('ManifestReader: tests', function () {
           foldersAllDefaultIcon: false,
           hideFolders: false,
           hideExplorerArrows: false,
+          yamlOfficial: false,
         };
       });
 
@@ -252,9 +253,8 @@ describe('ManifestReader: tests', function () {
                 '"_fd_aws": {} }, "folderNames": { "aws": "_fd_aws" } }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              const sut = await ManifestReader.folderIconsDisabled(
-                'hideFolders',
-              );
+              const sut =
+                await ManifestReader.folderIconsDisabled('hideFolders');
 
               expect(sut).to.be.false;
             });
@@ -265,9 +265,8 @@ describe('ManifestReader: tests', function () {
                 '"folderNames": {} }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              const sut = await ManifestReader.folderIconsDisabled(
-                'hideFolders',
-              );
+              const sut =
+                await ManifestReader.folderIconsDisabled('hideFolders');
 
               expect(sut).to.be.false;
             });
@@ -278,9 +277,8 @@ describe('ManifestReader: tests', function () {
                 '"folderNames": {} }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              const sut = await ManifestReader.folderIconsDisabled(
-                'hideFolders',
-              );
+              const sut =
+                await ManifestReader.folderIconsDisabled('hideFolders');
 
               expect(sut).to.be.true;
             });
@@ -321,7 +319,7 @@ describe('ManifestReader: tests', function () {
                 '"_fd_aws": {} }, "folderNames": { "aws": "_fd_aws" } }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              Reflect.ownKeys(PresetNames)
+              void Reflect.ownKeys(PresetNames)
                 .filter(
                   (preset: string) =>
                     isNaN(parseInt(preset, 10)) &&

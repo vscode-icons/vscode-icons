@@ -12,7 +12,7 @@ const bundle = async (argv: string[]): Promise<void> => {
       './lang.nls.bundle.json',
     );
     await Bundler.copyPackageResources('./locale/package', '.');
-  } catch (error) {
+  } catch (error: unknown) {
     ErrorHandler.logError(error);
   }
 };

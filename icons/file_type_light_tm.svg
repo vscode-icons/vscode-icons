@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg7"
+   sodipodi:docname="file_type_light_tm.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showguides="true"
+     inkscape:zoom="14.26367"
+     inkscape:cx="11.848283"
+     inkscape:cy="17.246614"
+     inkscape:window-width="1278"
+     inkscape:window-height="1520"
+     inkscape:window-x="-7"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg7">
+    <sodipodi:guide
+       position="16.061967,30"
+       orientation="0,1"
+       id="guide7"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="20.05267,2"
+       orientation="0,1"
+       id="guide8"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="2,15.392719"
+       orientation="-1,0"
+       id="guide9"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+    <sodipodi:guide
+       position="30,12.443067"
+       orientation="-1,0"
+       id="guide10"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,134,229)" />
+  </sodipodi:namedview>
+  <defs
+     id="defs7">
+    <radialGradient
+       id="a"
+       cx="-492.035"
+       cy="-883.37"
+       r="13.998"
+       gradientTransform="matrix(0.866, -0.5, -0.3, -0.52, 177.106, -689.033)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#7d7d7d"
+         id="stop1" />
+      <stop
+         offset="0.267"
+         stop-color="#7e7c7a"
+         id="stop2" />
+      <stop
+         offset="0.45"
+         stop-color="#817871"
+         id="stop3" />
+      <stop
+         offset="0.608"
+         stop-color="#867162"
+         id="stop4" />
+      <stop
+         offset="0.753"
+         stop-color="#8d684c"
+         id="stop5" />
+      <stop
+         offset="0.886"
+         stop-color="#965c30"
+         id="stop6" />
+      <stop
+         offset="1"
+         stop-color="#a04f12"
+         id="stop7" />
+    </radialGradient>
+    <linearGradient
+       id="_Linear1"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(25,-25,25,25,0,25)">
+      <stop
+         offset="0"
+         style="stop-color:rgb(10,0,178);stop-opacity:0.65"
+         id="stop16" />
+      <stop
+         offset="0.5"
+         style="stop-color:rgb(255,0,0);stop-opacity:0.65"
+         id="stop17" />
+      <stop
+         offset="1"
+         style="stop-color:rgb(255,252,0);stop-opacity:0.65"
+         id="stop18" />
+    </linearGradient>
+  </defs>
+  <title
+     id="title7">file_type_tm</title>
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>file_type_tm</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     fill-rule="evenodd"
+     clip-rule="evenodd"
+     d="m 7.2929698,4.4150201 c 0.17568,0.12326 0.28055,0.3263 0.28055,0.54316 V 12.5542 c 0,0.5878 -0.69953,0.8825 -1.10918,0.4672 l -3.27352,-3.3183899 c -0.12217,-0.12384 -0.19082,-0.29195 -0.19082,-0.46725 v -0.98701 -5.58744 c 0,-0.53224 0.5883,-0.84568 1.01945,-0.54316 z M 16.4896,22.0781 C 16.237,22.3419 15.8209,22.345 15.5644,22.085 L 8.7360998,15.1622 c -0.12215,-0.1238 -0.19079,-0.2919 -0.19079,-0.4672 V 6.5396701 c 0,-0.53221 0.58825,-0.84566 1.01941,-0.54319 l 2.5368802,1.77968 c 0.1086,0.07617 0.2375,0.11697 0.3694,0.11697 h 7.155 c 0.132,0 0.2609,-0.04081 0.3695,-0.11702 l 2.4695,-1.73283 c 0.4311,-0.30255 1.0194,0.01089 1.0194,0.54314 V 14.5056 c 0,0.1719 -0.066,0.337 -0.184,0.4603 z M 28.8159,9.3872201 C 28.934,9.2639801 29,9.0988301 29,8.9268901 v -0.60741 -5.5877 c 0,-0.53219 -0.5882,-0.84564 -1.0194,-0.54322 l -3.2413,2.27343 c -0.1757,0.12326 -0.2806,0.32632 -0.2806,0.54322 V 12.3109 c 0,0.5925 0.7091,0.885 1.1159,0.4603 z M 3.2043098,25.8601 c -0.13039,-0.1247 -0.20431,-0.2986 -0.20431,-0.4805 v -5.5313 c 0,-0.5853 0.69449,-0.8811 1.10558,-0.4708 l 3.00612,3.0002 c 0.12544,0.1252 0.19557,0.2966 0.19441,0.4752 l -0.03514,5.3735 c -0.00377,0.5766 -0.68243,0.8715 -1.09567,0.4761 z M 16.2298,23.5528 c -0.0249,0.0257 -0.0548,0.0453 -0.0876,0.0579 -0.0329,0.0126 -0.0678,0.0206 -0.1028,0.0241 -0.0065,6e-4 -0.013,0.001 -0.0196,0.0012 -0.0319,0 -0.0635,-0.0064 -0.093,-0.0188 -0.0295,-0.0124 -0.0563,-0.0306 -0.0788,-0.0535 l -1.5057,-1.5262 c -0.4097,-0.4152 -1.1092,-0.1206 -1.1092,0.4673 v 4.6916 c 0,0.1769 0.07,0.3464 0.1941,0.4705 l 2.1445,2.1435 c 0.2561,0.2559 0.6679,0.2523 0.9197,-0.008 l 1.9257,-1.9913 c 0.1194,-0.1234 0.1863,-0.2895 0.1863,-0.4626 V 22.7 c 0,-0.5925 -0.7091,-0.885 -1.1159,-0.4603 z m 9.5575,-3.342 c -0.4064,0.4196 -1.1094,0.13 -1.1133,-0.4586 l -0.0307,-4.6988 c -0.0011,-0.1735 0.065,-0.3404 0.184,-0.4647 l 3.056,-3.1909 c 0.4068,-0.4247 1.1159,-0.1322 1.1159,0.4603 v 4.7669 c 0,0.1732 -0.067,0.3395 -0.1866,0.463 z M 7.3539798,15.2294 c 0.00115,-0.1768 -0.06759,-0.3467 -0.19081,-0.4716 l -3.054,-3.0958 c -0.40966,-0.4153 -1.10917,-0.1206 -1.10917,0.4673 v 4.8457 c 0,0.1771 0.07007,0.3468 0.19447,0.4709 l 3.02298,3.0164 c 0.40963,0.4087 1.10172,0.1167 1.10551,-0.4666 z M 24.6912,22.6516 c -0.0012,-0.1747 0.066,-0.3428 0.1866,-0.4673 l 3.0082,-3.1046 c 0.4079,-0.4211 1.1133,-0.1277 1.1133,0.463 v 5.9075 c 0,0.182 -0.074,0.3559 -0.2044,0.4806 l -2.9718,2.8425 c -0.4133,0.3954 -1.0919,0.1003 -1.0956,-0.4762 z"
+     fill="url(#paint0_linear_20_533)"
+     id="path2"
+     style="display:inline;fill:#222222;fill-opacity:1" />
+</svg>
