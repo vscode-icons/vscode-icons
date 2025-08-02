@@ -35,8 +35,8 @@
     "email": "roberto.huertas@outlook.com"
   },
   "engines": {
-    "vscode": "^1.71.0",
-    "node": ">=16.14.2"
+    "vscode": "^1.82.0",
+    "node": ">=18.15.0"
   },
   "keywords": [
     "icons",
@@ -86,11 +86,11 @@
     "@types/glob": "^8.1.0",
     "@types/lodash": "^4.14.196",
     "@types/mocha": "^10.0.1",
-    "@types/node": "16",
+    "@types/node": "18.15.0",
     "@types/proxyquire": "^1.3.28",
     "@types/semver": "^7.5.0",
     "@types/sinon": "^10.0.16",
-    "@types/vscode": "1.71",
+    "@types/vscode": "1.82.0",
     "@types/webpack": "^4.41.22",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
