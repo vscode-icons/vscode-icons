@@ -94,7 +94,7 @@
     "@types/webpack": "^4.41.22",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
-    "@vscode/test-web": "^0.0.50",
+    "@vscode/test-web": "^0.0.71",
     "chai": "^4.3.7",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
