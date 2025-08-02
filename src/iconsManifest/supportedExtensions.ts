@@ -141,6 +141,22 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nanostaged',
+      extensions: [
+        '.nano-staged.js',
+        'nano-staged.js',
+        '.nano-staged.cjs',
+        'nano-staged.cjs',
+        '.nano-staged.mjs',
+        'nano-staged.mjs',
+        '.nano-staged.json',
+        'nano-staged.json',
+        '.nanostagedrc',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ng_component_dart',
       extensions: ['component.dart'],
       format: FileFormat.svg,
