@@ -124,7 +124,7 @@ jobs:
             github.repository_owner == 'vscode-icons' &&
             github.actor != 'dependabot[bot]'
           )
-        uses: paambaati/codeclimate-action@v5
+        uses: paambaati/codeclimate-action@v9
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
