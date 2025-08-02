@@ -75,9 +75,15 @@ export const extensions: IFolderCollection = {
     {
       icon: 'controller',
       extensions: [
+        '__controller__',
+        '__controllers__',
         'controller',
         'controllers',
         '.controllers',
+        '__handler__',
+        '__handlers__',
+        'handler',
+        '.handler',
         'handlers',
         '.handlers',
       ],
