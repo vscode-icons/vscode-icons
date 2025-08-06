@@ -1,29 +1,11 @@
 <div align="center">
-<h1>
-<img src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/logo@3x.png" alt="logo" width="250">
 
-<b>vscode-icons</b>
-</h1>
 
 <h3>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h3>
-<p style="font-size:10px;">minimum supported version: <b>1.71.0</b></p>
-<br/>
-
-[![Version](https://img.shields.io/visual-studio-marketplace/v/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Downloads](https://img.shields.io/visual-studio-marketplace/d/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-[![Ratings](https://img.shields.io/visual-studio-marketplace/r/vscode-icons-team.vscode-icons?style=for-the-badge&colorA=252525&colorB=0079CC)](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
-
----
-
-<br>
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/maintainability)](https://codeclimate.com/github/vscode-icons/vscode-icons/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/4f02368ebeb7be1490bb/test_coverage)](https://codeclimate.com/github/vscode-icons/vscode-icons/test_coverage)
+<p style="font-size:10px;">minimum supported version: <b>1.82.0</b></p>
 
 </div>
 
----
 
 <br/>
 

@@ -47,10 +47,21 @@ jobs:
         # https://code.visualstudio.com/updates
         # https://www.electronjs.org/releases/stable
         # https://github.com/microsoft/vscode/blob/main/package.json#L138
+        # https://github.com/ewanharris/vscode-versions
         node:
-          - 18.15.0 # vscode >= 1.82.0
-          - 16.17.1 # vscode >= 1.78.0 < 1.82.0
-          - 16.14.2 # vscode >= 1.71.0 < 1.78.0
+          - 22.15.1 # vscode >= 1.101.0 - May 2025
+          # - 22.19.0 # vscode >= 1.100 <= 1.100.3
+          # - 20.18.3 # vscode >= 1.99.0 <= 1.99.3
+          # - 20.18.2 # vscode >= 1.98.0 <= 1.98.2
+          # - 20.18.1 # vscode >= 1.96.0 <= 1.97.2
+          # - 20.18.0 # vscode >= 1.95.0 <= 1.95.3
+          # - 20.16.0 # vscode >= 1.94.0 <= 1.94.2
+          - 20.15.1 # vscode >= 1.93.0 <= 1.93.1 - Aug 2024
+          # - 20.14.0 # vscode >= 1.92.0 <= 1.92.2
+          # - 20.9.0 # vscode >= 1.90.0 <= 1.91.0 - May 2024
+          # - 18.18.2 # vscode >= 1.88.0 <= 1.89.1
+          # - 18.17.1 # vscode >= 1.86.0 <= 1.87.2
+          - 18.15.0 # vscode >= 1.82.0 <= 1.85.2 - Aug 2023
         arch:
           - x64
         experimental:
@@ -96,7 +107,7 @@ jobs:
         run: npm ci
 
       # - name: Setup tmate session
-      #   if: (matrix.os == 'ubuntu-latest' && matrix.node == '16.14.2')
+      #   if: (matrix.os == 'ubuntu-latest' && matrix.node == '18.15.0')
       #   uses: mxschmitt/action-tmate@v3
 
       - name: Test
@@ -108,12 +119,12 @@ jobs:
           (
             success() &&
             matrix.os == 'ubuntu-latest' &&
-            matrix.node == '16.14.2' &&
+            matrix.node == '18.15.0' &&
             github.event_name == 'push' &&
             github.repository_owner == 'vscode-icons' &&
             github.actor != 'dependabot[bot]'
           )
-        uses: paambaati/codeclimate-action@v5
+        uses: paambaati/codeclimate-action@v9
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
@@ -122,7 +133,7 @@ jobs:
           (
             success() &&
             matrix.os == 'ubuntu-latest' &&
-            matrix.node == '16.14.2' &&
+            matrix.node == '18.15.0' &&
             github.event_name == 'pull_request' &&
             github.repository_owner == 'vscode-icons' &&
             github.actor != 'dependabot[bot]'

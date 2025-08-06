@@ -141,6 +141,22 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nanostaged',
+      extensions: [
+        '.nano-staged.js',
+        'nano-staged.js',
+        '.nano-staged.cjs',
+        'nano-staged.cjs',
+        '.nano-staged.mjs',
+        'nano-staged.mjs',
+        '.nano-staged.json',
+        'nano-staged.json',
+        '.nanostagedrc',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'ng_component_dart',
       extensions: ['component.dart'],
       format: FileFormat.svg,
@@ -443,6 +459,12 @@ export const extensions: IFileCollection = {
       icon: 'affectscript',
       extensions: [],
       languages: [languages.affectscript],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'alloy',
+      extensions: [],
+      languages: [languages.alloy],
       format: FileFormat.svg,
     },
     {
@@ -1333,7 +1355,7 @@ export const extensions: IFileCollection = {
       icon: 'cspell',
       extensions: [],
       filenamesGlob: ['cspell.config', 'cspell', '.cspell'],
-      extensionsGlob: ['json', 'js', 'cjs', 'yaml', 'yml'],
+      extensionsGlob: ['json', 'js', 'mjs', 'cjs', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -3891,6 +3913,11 @@ export const extensions: IFileCollection = {
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
     {
       icon: 'paket',
+      extensions: ['paket.references', 'paket.template'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'paket',
       extensions: [],
       filenamesGlob: ['paket'],
       extensionsGlob: [
@@ -4936,6 +4963,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'shadcn',
+      extensions: ['components.json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'shell',
       extensions: ['fish'],
       languages: [languages.shellscript],
@@ -5025,6 +5059,12 @@ export const extensions: IFileCollection = {
       icon: 'smarty',
       extensions: [],
       languages: [languages.smarty],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'smithery',
+      extensions: ['smithery.yaml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -5222,7 +5262,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'svelteconfig',
-      extensions: ['svelte.config.js'],
+      extensions: ['svelte.config.js', 'svelte.config.ts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5698,6 +5738,12 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['uno.config', 'unocss.config'],
       extensions: [],
       extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'uv',
+      extensions: ['uv.lock'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -6265,7 +6311,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'turbo',
-      extensions: ['turbo.json'],
+      extensions: ['turbo.json', 'turbo.jsonc'],
       light: true,
       filename: true,
       format: FileFormat.svg,
