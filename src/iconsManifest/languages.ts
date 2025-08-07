@@ -385,6 +385,7 @@ export const languages = {
   rmd: { ids: 'rmd', defaultExtension: 'rmd' },
   rnc: { ids: 'rnc', defaultExtension: 'rnc' },
   robot: { ids: 'robot', defaultExtension: 'robot' },
+  rpy: { ids: 'rpy', defaultExtension: 'rpy' },
   ruby: { ids: 'ruby', defaultExtension: 'rb' },
   rust: { ids: 'rust', defaultExtension: 'rs' },
   s_lang: { ids: 's-lang', defaultExtension: 'sl' },
