@@ -27,6 +27,7 @@ export const extensions: IFolderCollection = {
       extensions: ['assets', '.assets'],
       format: FileFormat.svg,
     },
+    { icon: 'astro', extensions: ['.astro'], format: FileFormat.svg },
     {
       icon: 'aurelia',
       extensions: ['aurelia_project'],
