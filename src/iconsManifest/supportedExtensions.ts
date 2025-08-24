@@ -3332,6 +3332,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mdxlint',
+      extensions: ['.mdxlintrc', '.mdxlintignore'],
+      filenamesGlob: ['.mdxlintrc'],
+      extensionsGlob: ['cjs', 'js', 'json', 'mjs', 'yml', 'yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mediawiki',
       extensions: [],
       languages: [languages.mediawiki],
