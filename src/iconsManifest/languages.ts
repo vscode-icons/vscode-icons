@@ -71,6 +71,7 @@ export const languages = {
   ceylon: { ids: 'ceylon', defaultExtension: 'ceylon' },
   cfc: { ids: 'cfc', defaultExtension: 'cfc' },
   cfm: { ids: ['cfmhtml'], defaultExtension: 'cfm' },
+  circom: { ids: 'circom', defaultExtension: 'circom' },
   clojure: { ids: 'clojure', defaultExtension: 'clojure' },
   clojurescript: { ids: 'clojurescript', defaultExtension: 'clojurescript' },
   cloudfoundrymanifest: { ids: 'manifest-yaml', defaultExtension: 'yml' },
