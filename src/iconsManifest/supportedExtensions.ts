@@ -2738,7 +2738,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'jekyll',
-      extensions: [],
+      extensions: ['.nojekyll'],
+      filename: true,
       languages: [languages.jekyll],
       format: FileFormat.svg,
     },
