@@ -5651,6 +5651,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tsdown',
+      filenamesGlob: ['tsdown.config'],
+      extensions: [],
+      extensionsGlob: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tslint',
       extensions: ['tslint.json', 'tslint.yaml', 'tslint.yml'],
       filename: true,
