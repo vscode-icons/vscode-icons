@@ -24,6 +24,16 @@ describe('ErrorHandler: tests', function () {
     });
 
     context('it logs', function () {
+      it('the error as a string', function () {
+        const error = 'error';
+        ErrorHandler.logError(error);
+        expect(
+          consoleErrorStub.calledOnceWithExactly(`Unhandled Error: ${error}`),
+        ).to.be.true;
+        expect(error).to.not.haveOwnProperty('stack').to.be.true;
+        expect(error).to.not.haveOwnProperty('message').to.be.true;
+      });
+
       it('the error stack', function () {
         const error = new Error();
         error.stack = 'contextOfStack';

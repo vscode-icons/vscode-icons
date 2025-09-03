@@ -7,4 +7,5 @@ export interface IPresets {
   hideFolders: boolean;
   foldersAllDefaultIcon: boolean;
   hideExplorerArrows: boolean;
+  yamlOfficial: boolean;
 }

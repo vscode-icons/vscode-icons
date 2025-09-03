@@ -22,6 +22,8 @@
   "tsPresetDisabled": "公式TSアイコンが無効になります。",
   "jsonPresetEnabled": "公式JSONアイコンが有効になります。",
   "jsonPresetDisabled": "公式JSONアイコンが無効になります。",
+  "yamlPresetEnabled": "公式YMALアイコンが有効になります。",
+  "yamlPresetDisabled": "公式YAMLアイコンが無効になります。",
   "hideFoldersPresetEnabled": "フォルダアイコン表示が有効になります。",
   "hideFoldersPresetDisabled": "フォルダアイコン表示が無効になります。",
   "foldersAllDefaultIconPresetEnabled": "フォルダ別の特別アイコンが有効になります。",
@@ -39,6 +41,5 @@
   "nonNestDetectedPresetTrue": "%extensionName%: NestJSプロジェクトではないと判断しましたが、'preset'設定が'true'に設定されています。全ての設定から'preset'を削除することを強く推奨します。「再読み込み」を選ぶとNestJSのアイコンは有効になります。",
   "projectDetectionReset": "プロジェクト検出設定をリセットします。",
   "conflictProjectsDetected": "%extensionName%: プロジェクトアイコン設定の衝突を検出しました。どのアイコンを用いるか選択してください。なお、選択結果はワークスペース設定として保存されます。",
-  "unsupportedVersion": "非対応のVS Codeバージョンです:",
-  "integrityFailure": "拡張機能の整合性がありません。拡張機能は設計通りに動作しない可能性があります。"
+  "unsupportedVersion": "非対応のVS Codeバージョンです:"
 }

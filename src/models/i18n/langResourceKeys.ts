@@ -22,6 +22,8 @@ export enum LangResourceKeys {
   tsPresetDisabled,
   jsonPresetEnabled,
   jsonPresetDisabled,
+  yamlPresetEnabled,
+  yamlPresetDisabled,
   hideFoldersPresetEnabled,
   hideFoldersPresetDisabled,
   foldersAllDefaultIconPresetEnabled,
@@ -40,5 +42,4 @@ export enum LangResourceKeys {
   projectDetectionReset,
   conflictProjectsDetected,
   unsupportedVersion,
-  integrityFailure,
 }

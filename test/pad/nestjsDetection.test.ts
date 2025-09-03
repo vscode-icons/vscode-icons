@@ -30,16 +30,15 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
     beforeEach(() => {
       sandbox = sinon.createSandbox();
 
-      configManagerStub = sandbox.createStubInstance<IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<IConfigManager>(ConfigManager);
 
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       getPresetStub = configManagerStub.getPreset;
 
-      vscodeManagerStub = sandbox.createStubInstance<IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
@@ -89,9 +88,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
-          expect(firstResult)
-            .to.have.all.keys('apply')
-            .and.ownProperty('apply').to.be.false;
+          expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
+            .to.be.false;
         });
 
         it('in a sub folder', async function () {
@@ -110,9 +108,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
-          expect(firstResult)
-            .to.have.all.keys('apply')
-            .and.ownProperty('apply').to.be.false;
+          expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
+            .to.be.false;
         });
       });
 
@@ -125,9 +122,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           const res = await padManager.detectProjects([Projects.nestjs]);
           const firstResult = res[0];
 
-          expect(
-            readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'),
-          ).to.be.true;
+          expect(readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'))
+            .to.be.true;
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
@@ -157,9 +153,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           const res = await padManager.detectProjects([Projects.nestjs]);
           const firstResult = res[0];
 
-          expect(
-            readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'),
-          ).to.be.true;
+          expect(readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'))
+            .to.be.true;
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
@@ -192,15 +187,13 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           const res = await padManager.detectProjects([Projects.nestjs]);
           const firstResult = res[0];
 
-          expect(
-            readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-          ).to.be.true;
+          expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
+            .be.true;
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
-          expect(firstResult)
-            .to.have.all.keys('apply')
-            .and.ownProperty('apply').to.be.false;
+          expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
+            .to.be.false;
         });
 
         it('devDependencies', async function () {
@@ -210,15 +203,13 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           const res = await padManager.detectProjects([Projects.nestjs]);
           const firstResult = res[0];
 
-          expect(
-            readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-          ).to.be.true;
+          expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
+            .be.true;
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
-          expect(firstResult)
-            .to.have.all.keys('apply')
-            .and.ownProperty('apply').to.be.false;
+          expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
+            .to.be.false;
         });
       });
 
@@ -242,9 +233,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
-          expect(firstResult)
-            .to.have.all.keys('apply')
-            .and.ownProperty('apply').to.be.false;
+          expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
+            .to.be.false;
         });
 
         it('no project json object is provided', async function () {
@@ -261,9 +251,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
-          expect(firstResult)
-            .to.have.all.keys('apply')
-            .and.ownProperty('apply').to.be.false;
+          expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
+            .to.be.false;
         });
 
         it('no dependencies and devDependecies exists', async function () {
@@ -280,9 +269,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
-          expect(firstResult)
-            .to.have.all.keys('apply')
-            .and.ownProperty('apply').to.be.false;
+          expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
+            .to.be.false;
         });
 
         it('project name does NOT exists', async function () {
@@ -297,15 +285,13 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           const res = await padManager.detectProjects([Projects.angularjs]);
           const firstResult = res[0];
 
-          expect(
-            readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-          ).to.be.true;
+          expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
+            .be.true;
           expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
-          expect(firstResult)
-            .to.have.all.keys('apply')
-            .and.ownProperty('apply').to.be.false;
+          expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
+            .to.be.false;
         });
       });
 
@@ -325,9 +311,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               const res = await padManager.detectProjects([Projects.nestjs]);
               const firstResult = res[0];
 
-              expect(
-                readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-              ).to.be.true;
+              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
+                .to.be.true;
               expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
@@ -342,9 +327,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult)
                 .ownProperty('project')
                 .to.equal(Projects.nestjs);
-              expect(firstResult).ownProperty(
-                'conflictingProjects',
-              ).to.be.empty;
+              expect(firstResult).ownProperty('conflictingProjects').to.be
+                .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
                 .to.equal(LangResourceKeys.nonNestDetectedPresetTrue);
@@ -375,9 +359,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult)
                 .ownProperty('project')
                 .to.equal(Projects.nestjs);
-              expect(firstResult).ownProperty(
-                'conflictingProjects',
-              ).to.be.empty;
+              expect(firstResult).ownProperty('conflictingProjects').to.be
+                .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
                 .to.equal(LangResourceKeys.nestDetected);
@@ -397,9 +380,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               const res = await padManager.detectProjects([Projects.nestjs]);
               const firstResult = res[0];
 
-              expect(
-                readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-              ).to.be.true;
+              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
+                .to.be.true;
               expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
@@ -414,9 +396,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult)
                 .ownProperty('project')
                 .to.equal(Projects.nestjs);
-              expect(firstResult).ownProperty(
-                'conflictingProjects',
-              ).to.be.empty;
+              expect(firstResult).ownProperty('conflictingProjects').to.be
+                .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
                 .to.equal(LangResourceKeys.nonNestDetectedPresetTrue);
@@ -440,9 +421,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               const res = await padManager.detectProjects([Projects.nestjs]);
               const firstResult = res[0];
 
-              expect(
-                readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-              ).to.be.true;
+              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
+                .to.be.true;
               expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
@@ -457,9 +437,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult)
                 .ownProperty('project')
                 .to.equal(Projects.nestjs);
-              expect(firstResult).ownProperty(
-                'conflictingProjects',
-              ).to.be.empty;
+              expect(firstResult).ownProperty('conflictingProjects').to.be
+                .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
                 .to.equal(LangResourceKeys.nestDetectedPresetFalse);
@@ -473,9 +452,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               const res = await padManager.detectProjects([Projects.nestjs]);
               const firstResult = res[0];
 
-              expect(
-                readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-              ).to.be.true;
+              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
+                .to.be.true;
               expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
@@ -490,9 +468,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult)
                 .ownProperty('project')
                 .to.equal(Projects.nestjs);
-              expect(firstResult).ownProperty(
-                'conflictingProjects',
-              ).to.be.empty;
+              expect(firstResult).ownProperty('conflictingProjects').to.be
+                .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
                 .to.equal(LangResourceKeys.nonNestDetected);
@@ -514,9 +491,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               const res = await padManager.detectProjects([Projects.nestjs]);
               const firstResult = res[0];
 
-              expect(
-                readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-              ).to.be.true;
+              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
+                .to.be.true;
               expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
@@ -531,9 +507,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult)
                 .ownProperty('project')
                 .to.equal(Projects.nestjs);
-              expect(firstResult).ownProperty(
-                'conflictingProjects',
-              ).to.be.empty;
+              expect(firstResult).ownProperty('conflictingProjects').to.be
+                .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
                 .to.equal(LangResourceKeys.nestDetectedPresetFalse);
@@ -577,9 +552,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               const res = await padManager.detectProjects([Projects.nestjs]);
               const firstResult = res[0];
 
-              expect(
-                readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-              ).to.be.true;
+              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
+                .to.be.true;
               expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
@@ -642,9 +616,8 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               const res = await padManager.detectProjects([Projects.nestjs]);
               const firstResult = res[0];
 
-              expect(
-                readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'),
-              ).to.be.true;
+              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
+                .to.be.true;
               expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);

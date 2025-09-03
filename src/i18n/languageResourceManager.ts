@@ -3,7 +3,8 @@ import { constants } from '../constants';
 import * as models from '../models';
 
 export class LanguageResourceManager
-  implements models.ILanguageResourceManager {
+  implements models.ILanguageResourceManager
+{
   private defaultLangResource: string[];
   private currentLangResource: string[];
 

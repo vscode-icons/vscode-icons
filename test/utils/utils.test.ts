@@ -1,6 +1,7 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
+import { ChildProcess } from 'child_process';
 import { Stats } from 'fs';
 import * as os from 'os';
 import * as path from 'path';
@@ -12,7 +13,7 @@ import { Utils } from '../../src/utils';
 
 describe('Utils: tests', function () {
   interface IUtils {
-    open: (arg: string) => Promise<void>;
+    open: (target: string, options?: object) => Promise<ChildProcess>;
   }
 
   context('ensures that', function () {
@@ -195,9 +196,8 @@ describe('Utils: tests', function () {
 
     context(`the 'parseJSON' function`, function () {
       it('returns an object when parsing succeeds', function () {
-        const json = Utils.parseJSONSafe<Record<string, string>>(
-          '{"test": "test"}',
-        );
+        const json =
+          Utils.parseJSONSafe<Record<string, string>>('{"test": "test"}');
 
         expect(json).to.be.instanceOf(Object);
         expect(Object.getOwnPropertyNames(json)).to.include('test');
@@ -295,15 +295,13 @@ describe('Utils: tests', function () {
 
     context(`the 'belongToSameDrive' function`, function () {
       it(`returns 'false', when paths do NOT belong to the same drive`, function () {
-        expect(
-          Utils.belongToSameDrive('C:\\path\\to', 'D:\\path\to'),
-        ).to.be.false;
+        expect(Utils.belongToSameDrive('C:\\path\\to', 'D:\\path\to')).to.be
+          .false;
       });
 
       it(`returns 'true', when paths do belong to the same drive`, function () {
-        expect(
-          Utils.belongToSameDrive('C:\\path\\to', 'C:\\anotherpath\to'),
-        ).to.be.true;
+        expect(Utils.belongToSameDrive('C:\\path\\to', 'C:\\anotherpath\to')).to
+          .be.true;
       });
     });
 
@@ -441,9 +439,8 @@ describe('Utils: tests', function () {
         expect(Utils.unflattenProperties(obj, 'default'))
           .to.be.an('object')
           .with.ownProperty('vsicons')
-          .and.that.to.haveOwnProperty(
-            'dontShowNewVersionMessage',
-          ).and.that.to.be.false;
+          .and.that.to.haveOwnProperty('dontShowNewVersionMessage').and.that.to
+          .be.false;
       });
     });
 
@@ -451,9 +448,11 @@ describe('Utils: tests', function () {
       it(`to call the external module`, async function () {
         const openStub = sandbox.stub().resolves();
         const target = 'target';
-        const utils = (proxyq.noCallThru().load('../../src/utils', {
-          open: openStub,
-        }) as Record<string, IUtils>).Utils;
+        const utils = (
+          proxyq.noCallThru().load('../../src/utils', {
+            open: openStub,
+          }) as Record<string, IUtils>
+        ).Utils;
 
         await utils.open(target);
 

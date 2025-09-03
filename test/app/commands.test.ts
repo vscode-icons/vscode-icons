@@ -5,13 +5,12 @@ import * as sinon from 'sinon';
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { IconsGenerator } from '../../src/iconsManifest';
-import { IntegrityManager } from '../../src/integrity/integrityManager';
 import * as models from '../../src/models';
+import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
 
 describe('ExtensionManager: commands tests', function () {
   context('ensures that', function () {
@@ -22,7 +21,6 @@ describe('ExtensionManager: commands tests', function () {
     let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
     let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
     let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
-    let integrityManagerStub: sinon.SinonStubbedInstance<models.IIntegrityManager>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let registerCommandStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
@@ -32,9 +30,8 @@ describe('ExtensionManager: commands tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -48,28 +45,23 @@ describe('ExtensionManager: commands tests', function () {
         executeCommand: sandbox.stub(),
       }));
 
-      configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
 
-      settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager,
-      );
-      notifyManagerStub = sandbox.createStubInstance<
-        models.INotificationManager
-      >(NotificationManager);
+      settingsManagerStub =
+        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
+      notifyManagerStub =
+        sandbox.createStubInstance<models.INotificationManager>(
+          NotificationManager,
+        );
 
-      iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator,
-      );
+      iconsGeneratorStub =
+        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
 
-      padMngStub = sandbox.createStubInstance<
-        models.IProjectAutoDetectionManager
-      >(ProjectAutoDetectionManager);
-
-      integrityManagerStub = sandbox.createStubInstance<
-        models.IIntegrityManager
-      >(IntegrityManager);
+      padMngStub =
+        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+          ProjectAutoDetectionManager,
+        );
 
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
@@ -78,7 +70,6 @@ describe('ExtensionManager: commands tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
-        integrityManagerStub,
       );
 
       showCustomizationMessageStub = sandbox.stub(
@@ -131,30 +122,30 @@ describe('ExtensionManager: commands tests', function () {
         registerCommandStub.callArg(1);
 
         expect(reflectGetSpy.returned(undefined)).to.be.true;
-        expect(
-          registerCommandStub.calledOnceWith(commands[0].command),
-        ).to.be.true;
+        expect(registerCommandStub.calledOnceWith(commands[0].command)).to.be
+          .true;
       });
     });
 
     context(`the activation command`, function () {
       it(`updates the icon theme setting`, function () {
-        // @ts-ignore
-        const activationCommand = extensionManager.activationCommand as () => void;
+        const activationCommand =
+          // @ts-ignore
+          extensionManager.activationCommand as () => void;
 
         activationCommand.call(extensionManager);
 
-        expect(
-          configManagerStub.updateIconTheme.calledOnceWithExactly(),
-        ).to.be.true;
+        expect(configManagerStub.updateIconTheme.calledOnceWithExactly()).to.be
+          .true;
       });
     });
 
     context(`the apply customization command`, function () {
       context(`shows the customization message`, function () {
         it(`with 'applyCustomization' as callback`, function () {
-          // @ts-ignore
-          const applyCustomizationCommand = extensionManager.applyCustomizationCommand as () => void;
+          const applyCustomizationCommand =
+            // @ts-ignore
+            extensionManager.applyCustomizationCommand as () => void;
           const applyCustomizationStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -182,8 +173,9 @@ describe('ExtensionManager: commands tests', function () {
     context(`the restore default manifest command`, function () {
       context(`shows the customization message`, function () {
         it(`with 'restoreManifest' as callback`, function () {
-          // @ts-ignore
-          const restoreDefaultManifestCommand = extensionManager.restoreDefaultManifestCommand as () => void;
+          const restoreDefaultManifestCommand =
+            // @ts-ignore
+            extensionManager.restoreDefaultManifestCommand as () => void;
           const restoreManifestStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -278,8 +270,9 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle js preset command`, function () {
       it(`toggles the js preset`, function () {
-        // @ts-ignore
-        const toggleJsPresetCommand = extensionManager.toggleJsPresetCommand as () => void;
+        const toggleJsPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleJsPresetCommand as () => void;
 
         toggleJsPresetCommand.call(extensionManager);
 
@@ -296,8 +289,9 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle ts preset command`, function () {
       it(`toggles the ts preset`, function () {
-        // @ts-ignore
-        const toggleTsPresetCommand = extensionManager.toggleTsPresetCommand as () => void;
+        const toggleTsPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleTsPresetCommand as () => void;
 
         toggleTsPresetCommand.call(extensionManager);
 
@@ -314,8 +308,9 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle json preset command`, function () {
       it(`toggles the json preset`, function () {
-        // @ts-ignore
-        const toggleJsonPresetCommand = extensionManager.toggleJsonPresetCommand as () => void;
+        const toggleJsonPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleJsonPresetCommand as () => void;
 
         toggleJsonPresetCommand.call(extensionManager);
 
@@ -323,6 +318,25 @@ describe('ExtensionManager: commands tests', function () {
           togglePresetStub.calledOnceWithExactly(
             models.PresetNames.jsonOfficial,
             models.CommandNames.jsonPreset,
+            false,
+            models.ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
+      });
+    });
+
+    context(`the toggle yaml preset command`, function () {
+      it(`toggles the yaml preset`, function () {
+        const toggleYamlPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleYamlPresetCommand as () => void;
+
+        toggleYamlPresetCommand.call(extensionManager);
+
+        expect(
+          togglePresetStub.calledOnceWithExactly(
+            models.PresetNames.yamlOfficial,
+            models.CommandNames.yamlPreset,
             false,
             models.ConfigurationTarget.Global,
           ),

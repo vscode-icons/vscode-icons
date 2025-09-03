@@ -13,5 +13,6 @@
 1. Fill in the provided pull request template.
 1. Reference issues whenever possible.
 1. Try to make your code clean and observe the TSLint Rules.
+1. Make sure to create a branch (do not push on master).
 
 Thanks for helping out! :smile:

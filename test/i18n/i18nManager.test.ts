@@ -35,9 +35,11 @@ describe('LanguageResourceManager: tests', function () {
       LanguageResourceManager = (
         resource: Record<string, unknown>,
       ): LanguageResourceManager =>
-        (proxyq('../../src/i18n/languageResourceManager', {
-          '../../../lang.nls.bundle.json': resource,
-        }) as Record<string, LanguageResourceManager>).LanguageResourceManager;
+        (
+          proxyq('../../src/i18n/languageResourceManager', {
+            '../../../lang.nls.bundle.json': resource,
+          }) as Record<string, LanguageResourceManager>
+        ).LanguageResourceManager;
     });
 
     after(function () {
@@ -46,9 +48,9 @@ describe('LanguageResourceManager: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-      numberOfLangResourceKeys = Reflect.ownKeys(
-        LangResourceKeys,
-      ).filter((key: string) => isNaN(parseInt(key, 10))).length;
+      numberOfLangResourceKeys = Reflect.ownKeys(LangResourceKeys).filter(
+        (key: string) => isNaN(parseInt(key, 10)),
+      ).length;
       initResourceCollection = Array(numberOfLangResourceKeys).fill(
         '',
       ) as string[];
@@ -382,7 +384,7 @@ describe('LanguageResourceManager: tests', function () {
           const nlsEntry = description.replace(/%/g, '');
           expect(description).to.exist;
           expect(description).to.be.a('string');
-          expect(nls[nlsEntry]).to.exist;
+          expect(nls[nlsEntry], `description: ${description}`).to.exist;
         }
       });
     });
@@ -396,7 +398,9 @@ describe('LanguageResourceManager: tests', function () {
       });
 
       it('template match nls', function () {
-        for (const key of Reflect.ownKeys(nlsTemplateJson) as string[]) {
+        for (const key of Reflect.ownKeys(
+          nlsTemplateJson as object,
+        ) as string[]) {
           expect(nls[key]).to.exist;
         }
       });
