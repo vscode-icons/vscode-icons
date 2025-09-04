@@ -113,6 +113,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'agents',
+      extensions: ['agents.md'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'agda',
       extensions: [],
       languages: [languages.agda],
