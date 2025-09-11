@@ -7,6 +7,7 @@ export const extensions: IFolderCollection = {
   },
   supported: [
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
+    { icon: 'angular', extensions: ['.angular'], format: FileFormat.svg },
     {
       icon: 'api',
       extensions: ['api', '.api', 'apis', '.apis'],
