@@ -31,7 +31,7 @@ jobs:
           name: code-coverage-report
 
       - name: Uploading code coverage report
-        uses: paambaati/codeclimate-action@v5
+        uses: paambaati/codeclimate-action@v9
         with:
           coverageLocations: lcov.info:lcov
         env:
