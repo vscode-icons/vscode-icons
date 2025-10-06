@@ -845,5 +845,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.yarn'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'postgres',
+      extensions: ['postgres', 'postgresql', 'postgresdb', 'postgresqldb'],
+      light: true,
+      format: FileFormat.svg,
+    },
   ],
 };
