@@ -2211,6 +2211,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gdshader',
+      extensions: ['gdshader'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gcloud',
       extensions: ['.gcloudignore'],
       filename: true,
