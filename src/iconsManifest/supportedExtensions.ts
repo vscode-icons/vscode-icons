@@ -4804,6 +4804,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'rproj', extensions: ['rproj'], format: FileFormat.svg },
     {
+      icon: 'rpy',
+      extensions: ['rpy'],
+      languages: [languages.rpy],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rspec',
       extensions: ['.rspec'],
       filename: true,
