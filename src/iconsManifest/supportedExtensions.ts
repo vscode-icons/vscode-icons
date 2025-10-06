@@ -6396,5 +6396,14 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'pixi',
+      extensions: [
+        'pixi.lock',
+        'pixi.toml',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
   ],
 };
