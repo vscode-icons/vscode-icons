@@ -194,6 +194,8 @@ export const extensions: IFolderCollection = {
         'repo',
         'repository',
         'repositories',
+        'store',
+        'stores'
       ],
       format: FileFormat.svg,
     },
