@@ -3914,8 +3914,8 @@ export const extensions: IFileCollection = {
     },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     {
-      icon: 'oxlint',
-      extensions: ['.oxlintignore', '.oxlintrc.json'],
+      icon: 'oxc',
+      extensions: ['.oxlintignore', '.oxlintrc.json', '.oxfmtrc.json'],
       filename: true,
       format: FileFormat.svg,
     },
