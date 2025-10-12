@@ -383,6 +383,7 @@ export const languages = {
   restructuredtext: { ids: 'restructuredtext', defaultExtension: 'rst' },
   rexx: { ids: 'rexx', defaultExtension: 'rex' },
   riot: { ids: 'riot', defaultExtension: 'tag' },
+  ripple: { ids: 'ripple', defaultExtension: 'ripple' },
   rmd: { ids: 'rmd', defaultExtension: 'rmd' },
   rnc: { ids: 'rnc', defaultExtension: 'rnc' },
   robot: { ids: 'robot', defaultExtension: 'robot' },

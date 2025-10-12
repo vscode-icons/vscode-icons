@@ -4759,6 +4759,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ripple',
+      extensions: ['ripple'],
+      languages: [languages.ripple],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rnc',
       extensions: ['rnc'],
       languages: [languages.rnc],
