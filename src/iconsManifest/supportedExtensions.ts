@@ -1098,7 +1098,6 @@ export const extensions: IFileCollection = {
       icon: 'circom',
       extensions: [],
       languages: [languages.circom],
-      light: true,
       format: FileFormat.svg,
     },
     {
