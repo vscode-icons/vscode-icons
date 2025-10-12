@@ -180,6 +180,7 @@ export const languages = {
   grain: { ids: 'grain', defaultExtension: 'gr' },
   graphql: { ids: 'graphql', defaultExtension: 'gql' },
   graphviz: { ids: 'dot', defaultExtension: 'gv' },
+  grit: { ids: 'grit', defaultExtension: 'grit' },
   groovy: { ids: 'groovy', defaultExtension: 'groovy' },
   haml: { ids: 'haml', defaultExtension: 'haml' },
   handlebars: { ids: 'handlebars', defaultExtension: 'hbs' },

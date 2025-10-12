@@ -113,6 +113,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'agents',
+      extensions: ['agents.md'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'agda',
       extensions: [],
       languages: [languages.agda],
@@ -1413,7 +1420,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cursorrules',
-      extensions: ['.cursorignore', '.cursorrules'],
+      extensions: ['.cursorignore', '.cursorindexingignore', '.cursorrules'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2398,6 +2405,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'grit',
+      extensions: [],
+      languages: [languages.grit],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'groovy',
       extensions: [],
       languages: [languages.groovy],
@@ -2745,7 +2758,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'jekyll',
-      extensions: [],
+      extensions: ['.nojekyll'],
+      filename: true,
       languages: [languages.jekyll],
       format: FileFormat.svg,
     },
@@ -3339,6 +3353,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mdxlint',
+      extensions: ['.mdxlintrc', '.mdxlintignore'],
+      filenamesGlob: ['.mdxlintrc'],
+      extensionsGlob: ['cjs', 'js', 'json', 'mjs', 'yml', 'yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mediawiki',
       extensions: [],
       languages: [languages.mediawiki],
@@ -3912,8 +3934,8 @@ export const extensions: IFileCollection = {
     },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     {
-      icon: 'oxlint',
-      extensions: ['.oxlintignore', '.oxlintrc.json'],
+      icon: 'oxc',
+      extensions: ['.oxlintignore', '.oxlintrc.json', '.oxfmtrc.json'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4095,7 +4117,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'phpcsfixer',
-      extensions: ['.php_cs', '.php_cs.dist'],
+      extensions: [
+        '.php-cs-fixer.php',
+        '.php-cs-fixer.dist.php',
+        '.php_cs',
+        '.php_cs.dist',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5595,6 +5622,7 @@ export const extensions: IFileCollection = {
         'tsconfig.build',
         'tsconfig.cjs',
         'tsconfig.common',
+        'tsconfig.debug',
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
@@ -5604,6 +5632,7 @@ export const extensions: IFileCollection = {
         'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
+        'tsconfig.release',
         'tsconfig.server',
         'tsconfig.spec',
         'tsconfig.staging',
@@ -5646,6 +5675,14 @@ export const extensions: IFileCollection = {
     {
       icon: 'tsdoc',
       extensions: ['tsdoc.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'tsdown',
+      filenamesGlob: ['tsdown.config'],
+      extensions: [],
+      extensionsGlob: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs', 'json'],
       filename: true,
       format: FileFormat.svg,
     },
