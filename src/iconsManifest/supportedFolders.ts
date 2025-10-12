@@ -24,6 +24,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'argo-cd',
+      extensions: ['.argo-cd'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'asset',
       extensions: ['assets', '.assets'],
       format: FileFormat.svg,
