@@ -1095,6 +1095,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'circom',
+      extensions: [],
+      languages: [languages.circom],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'clojure',
       extensions: ['cjm', 'cljc'],
       languages: [languages.clojure],
