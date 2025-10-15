@@ -824,6 +824,11 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     {
+      icon: 'wasm',
+      extensions: ['wasm', 'WASM', 'webassembly', 'WebAssembly'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wit',
       extensions: ['wit'],
       format: FileFormat.svg,
