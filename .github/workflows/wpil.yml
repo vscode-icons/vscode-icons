@@ -15,18 +15,18 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - name: Checkout vscode-icons repository
-        uses: actions/checkout@v4
+      # - name: Checkout vscode-icons repository
+      #   uses: actions/checkout@v4
 
       - name: Setting up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Install and build vscode-icons
-        run: |
-          npm install
-          npm run build
+      # - name: Install and build vscode-icons
+      #   run: |
+      #     npm install
+      #     npm run build
 
       - name: Checkout wpilgenerator repository
         uses: actions/checkout@v4
