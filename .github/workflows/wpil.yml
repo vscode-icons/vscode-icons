@@ -15,13 +15,26 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
+      - name: Checkout vscode-icons repository
+        uses: actions/checkout@v4
+
       - name: Setting up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
+      - name: Checkout wpilgenerator repository
+        uses: actions/checkout@v4
+        with:
+          repository: vscode-icons/wpilgenerator
+          path: wpilgenerator
+
       - name: Update Wiki Page Icons List
         timeout-minutes: 2
-        run: npx --yes vscode-icons/wpilgenerator
+        run: |
+          cd wpilgenerator
+          npm install
+          cd ..
+          node wpilgenerator/bin/index.js
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
