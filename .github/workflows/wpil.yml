@@ -32,6 +32,6 @@ jobs:
       - name: Update Wiki Page Icons List
         timeout-minutes: 2
         run: |
-          node wpilgenerator/lib/index.js
+          node wpilgenerator/lib/wpilgen.js
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
