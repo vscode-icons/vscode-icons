@@ -34,6 +34,11 @@ jobs:
           repository: vscode-icons/wpilgenerator
           path: wpilgenerator
 
+      - name: Configure git identity
+        run: |
+          git config --global user.email "vscode-icons-bot[bot]@users.noreply.github.com"
+          git config --global user.name "vscode-icons-bot[bot]"
+
       - name: Update Wiki Page Icons List
         timeout-minutes: 2
         run: |
