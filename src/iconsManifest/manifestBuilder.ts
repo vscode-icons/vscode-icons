@@ -3,7 +3,10 @@ import { existsAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import * as models from '../models';
-import { schema as defaultSchema } from '../models/iconsManifest';
+import {
+  schema as defaultSchema,
+  zedSchema as defaultZedSchema,
+} from '../models/iconsManifest';
 import { Utils } from '../utils';
 
 export class ManifestBuilder {
@@ -14,44 +17,61 @@ export class ManifestBuilder {
     files: models.IFileCollection,
     folders: models.IFolderCollection,
     customIconsDirPath?: string,
-  ): Promise<models.IIconSchema> {
+  ): Promise<models.IIconManifest> {
     this.customIconDirPath = customIconsDirPath;
     this.iconsDirRelativeBasePath = await Utils.getRelativePath(
       ConfigManager.sourceDir,
       ConfigManager.iconsDir,
     );
 
-    const schema = cloneDeep(defaultSchema);
-    const defs = schema.iconDefinitions;
+    const vscSchema = cloneDeep(defaultSchema);
+    const zedSchema = cloneDeep(defaultZedSchema);
+    const vscDefs = vscSchema.iconDefinitions;
 
     // set default icons for dark theme
-    defs._file.iconPath = await this.buildDefaultIconPath(
+    // vscode only
+    vscDefs._file.iconPath = await this.buildDefaultIconPath(
       files.default.file,
-      defs._file,
+      vscDefs._file,
     );
-    defs._folder.iconPath = await this.buildDefaultIconPath(
-      folders.default.folder,
-      defs._folder,
+
+    vscDefs._root_folder.iconPath = await this.buildDefaultIconPath(
+      folders.default.root_folder,
+      vscDefs._root_folder,
       true,
       false,
     );
-    defs._folder_open.iconPath = await this.buildDefaultIconPath(
-      folders.default.folder,
-      defs._folder_open,
+
+    vscDefs._root_folder_open.iconPath = await this.buildDefaultIconPath(
+      folders.default.root_folder,
+      vscDefs._root_folder_open,
       true,
       true,
     );
-    defs._root_folder.iconPath = await this.buildDefaultIconPath(
-      folders.default.root_folder,
-      defs._root_folder,
+
+    // common
+    const defaultFolderIconPath = await this.buildDefaultIconPath(
+      folders.default.folder,
+      vscDefs._folder,
       true,
       false,
     );
-    defs._root_folder_open.iconPath = await this.buildDefaultIconPath(
-      folders.default.root_folder,
-      defs._root_folder_open,
+
+    vscDefs._folder.iconPath = defaultFolderIconPath;
+    zedSchema.themes[0].directory_icons.collapsed = this.toZedPath(
+      defaultFolderIconPath,
+    );
+
+    const defaultOpenFolderIconPath = await this.buildDefaultIconPath(
+      folders.default.folder,
+      vscDefs._folder_open,
       true,
       true,
+    );
+
+    vscDefs._folder_open.iconPath = defaultOpenFolderIconPath;
+    zedSchema.themes[0].directory_icons.expanded = this.toZedPath(
+      defaultOpenFolderIconPath,
     );
 
     // set default icons for light theme
@@ -62,37 +82,64 @@ export class ManifestBuilder {
     // and light icons definitions have to be specified for each extension
     // and populate the light section, otherwise they inherit from dark theme
     // and only those in 'light' section get overriden.
-    defs._file_light.iconPath = await this.buildDefaultIconPath(
+
+    // vscode only
+    vscDefs._file_light.iconPath = await this.buildDefaultIconPath(
       files.default.file_light,
-      defs._file_light,
+      vscDefs._file_light,
     );
-    defs._folder_light.iconPath = await this.buildDefaultIconPath(
-      folders.default.folder_light,
-      defs._folder_light,
+
+    vscDefs._root_folder_light.iconPath = await this.buildDefaultIconPath(
+      folders.default.root_folder_light,
+      vscDefs._root_folder_light,
       true,
       false,
     );
-    defs._folder_light_open.iconPath = await this.buildDefaultIconPath(
-      folders.default.folder_light,
-      defs._folder_light_open,
-      true,
-      true,
-    );
-    defs._root_folder_light.iconPath = await this.buildDefaultIconPath(
+
+    vscDefs._root_folder_light_open.iconPath = await this.buildDefaultIconPath(
       folders.default.root_folder_light,
-      defs._root_folder_light,
-      true,
-      false,
-    );
-    defs._root_folder_light_open.iconPath = await this.buildDefaultIconPath(
-      folders.default.root_folder_light,
-      defs._root_folder_light_open,
+      vscDefs._root_folder_light_open,
       true,
       true,
     );
 
+    // common
+    const defaultFolderLightIconPath = await this.buildDefaultIconPath(
+      folders.default.folder_light,
+      vscDefs._folder_light,
+      true,
+      false,
+    );
+
+    vscDefs._folder_light.iconPath = defaultFolderLightIconPath;
+    zedSchema.themes[1].directory_icons.collapsed =
+      this.toZedPath(defaultFolderLightIconPath) ||
+      zedSchema.themes[0].directory_icons.collapsed;
+
+    const defaultOpenFolderLightIconPath = await this.buildDefaultIconPath(
+      folders.default.folder_light,
+      vscDefs._folder_light_open,
+      true,
+      true,
+    );
+
+    vscDefs._folder_light_open.iconPath = defaultOpenFolderLightIconPath;
+    zedSchema.themes[1].directory_icons.expanded =
+      this.toZedPath(defaultOpenFolderLightIconPath) ||
+      zedSchema.themes[0].directory_icons.expanded;
+
     // set the rest of the schema
-    return this.buildJsonStructure(files, folders, schema);
+    const finalManifest = await this.buildJsonStructure(
+      files,
+      folders,
+      vscSchema,
+      zedSchema,
+    );
+    return finalManifest;
+  }
+
+  private static toZedPath(iconPath: string): string {
+    return iconPath.replace(/^.*?(\/icons\/)/, './icons/');
   }
 
   private static async buildDefaultIconPath(
@@ -124,15 +171,18 @@ export class ManifestBuilder {
   private static async buildJsonStructure(
     files: models.IFileCollection,
     folders: models.IFolderCollection,
-    schema: models.IIconSchema,
-  ): Promise<models.IIconSchema> {
+    vscSchema: models.IIconSchema,
+    zedSchema: models.IZedIconSchema,
+  ): Promise<models.IIconManifest> {
     // check for light files & folders
+    // NOTE: We're checking VS Code schema but bear in mind that Zed use the same icons.
+    // So it's guaranteed that if there is a light folder/file in VS Code schema, Zed will have it too.
     const hasDefaultLightFolder =
-      schema.iconDefinitions._folder_light.iconPath != null &&
-      schema.iconDefinitions._folder_light.iconPath !== '';
+      vscSchema.iconDefinitions._folder_light.iconPath != null &&
+      vscSchema.iconDefinitions._folder_light.iconPath !== '';
     const hasDefaultLightFile =
-      schema.iconDefinitions._file_light.iconPath != null &&
-      schema.iconDefinitions._file_light.iconPath !== '';
+      vscSchema.iconDefinitions._file_light.iconPath != null &&
+      vscSchema.iconDefinitions._file_light.iconPath !== '';
     const res = {
       //  files section
       files: this.buildFiles(files, hasDefaultLightFile),
@@ -142,21 +192,123 @@ export class ManifestBuilder {
     // map structure to the schema
     const resFiles = await res.files;
     const resFolders = await res.folders;
+
+    const vscFinalSchema = this.buildVSCJsonStructure(
+      resFiles,
+      resFolders,
+      vscSchema,
+    );
+
+    const zedFinalSchema = this.buildZedJsonStructure(
+      resFiles,
+      resFolders,
+      zedSchema,
+    );
+
+    return { vscode: vscFinalSchema, zed: zedFinalSchema };
+  }
+
+  private static buildVSCJsonStructure(
+    files: models.IBuildFiles,
+    folders: models.IBuildFolders,
+    schema: models.IIconSchema,
+  ): models.IIconSchema {
     schema.iconDefinitions = {
       ...schema.iconDefinitions,
-      ...resFolders.defs,
-      ...resFiles.defs,
+      ...folders.defs,
+      ...files.defs,
     };
-    schema.folderNames = resFolders.names.folderNames;
-    schema.folderNamesExpanded = resFolders.names.folderNamesExpanded;
-    schema.fileExtensions = resFiles.names.fileExtensions;
-    schema.fileNames = resFiles.names.fileNames;
-    schema.languageIds = resFiles.languageIds;
-    schema.light.folderNames = resFolders.light.folderNames;
-    schema.light.folderNamesExpanded = resFolders.light.folderNamesExpanded;
-    schema.light.fileExtensions = resFiles.light.fileExtensions;
-    schema.light.fileNames = resFiles.light.fileNames;
-    schema.light.languageIds = resFiles.light.languageIds;
+
+    schema.folderNames = folders.names.folderNames;
+    schema.folderNamesExpanded = folders.names.folderNamesExpanded;
+    schema.fileExtensions = files.names.fileExtensions;
+    schema.fileNames = files.names.fileNames;
+    schema.languageIds = files.languageIds;
+    schema.light.folderNames = folders.light.folderNames;
+    schema.light.folderNamesExpanded = folders.light.folderNamesExpanded;
+    schema.light.fileExtensions = files.light.fileExtensions;
+    schema.light.fileNames = files.light.fileNames;
+    schema.light.languageIds = files.light.languageIds;
+
+    return schema;
+  }
+
+  private static buildZedJsonStructure(
+    files: models.IBuildFiles,
+    folders: models.IBuildFolders,
+    schema: models.IZedIconSchema,
+  ): models.IZedIconSchema {
+    const darkSchema = schema.themes[0];
+    const lightSchema = schema.themes[1];
+
+    // zed file icons
+    const darkFileIcons: models.IZedFileIcons = {};
+    const lightFileIcons: models.IZedFileIcons = {};
+
+    Object.entries(files.defs).forEach(([key, def]) => {
+      const iconDef = def as models.IIconPath;
+      darkFileIcons[key] = { path: this.toZedPath(iconDef.iconPath) };
+      lightFileIcons[key] = { path: this.toZedPath(iconDef.iconPath) };
+      if (key.includes('_light')) {
+        // delete it from the dark icons version
+        delete darkFileIcons[key];
+        // delete the dark version from the light icons version if exists
+        const darkKey = key.replace('_light', '');
+        if (lightFileIcons[darkKey]) {
+          delete lightFileIcons[darkKey];
+        }
+      }
+    });
+
+    darkSchema.file_icons = darkFileIcons;
+    lightSchema.file_icons = lightFileIcons;
+
+    // zed file stems (file names)
+    darkSchema.file_stems = files.names.fileNames;
+    lightSchema.file_stems = files.light.fileNames;
+
+    // zed file suffixes (file extensions)
+    darkSchema.file_suffixes = files.names.fileExtensions;
+    lightSchema.file_suffixes = files.light.fileExtensions;
+
+    // zed folder icons
+    // NOTE: the light folder list contains all the folders, so we can use it to build both themes
+    // with just one iteration. On the other hand, we will leverage naming conventions to find the
+    // correct icon paths depending on the theme and the state (collapsed/expanded).
+    const darkFolderIcons: models.IZedFolderIcons = {};
+    const lightFolderIcons: models.IZedFolderIcons = {};
+
+    Object.entries(folders.light.folderNames).forEach(([dirName, key]) => {
+      const fd = folders.defs[key] as models.IIconPath;
+      const fdOpen = folders.defs[`${key}_open`] as models.IIconPath;
+
+      lightFolderIcons[dirName] = {
+        collapsed: this.toZedPath(fd.iconPath),
+        expanded: this.toZedPath(fdOpen.iconPath),
+      };
+
+      // if we have a light version icon, we need to find the dark version icon key.
+      if (key.includes('_light')) {
+        const darkKey = key.replace('_light', '');
+        const darkFd = folders.defs[darkKey] as models.IIconPath;
+        const darkFdOpen = folders.defs[`${darkKey}_open`] as models.IIconPath;
+
+        darkFolderIcons[dirName] = {
+          collapsed: this.toZedPath(darkFd.iconPath),
+          expanded: this.toZedPath(darkFdOpen.iconPath),
+        };
+      } else {
+        // no light version, so both themes use the same icon paths
+        darkFolderIcons[dirName] = lightFolderIcons[dirName];
+      }
+    });
+
+    darkSchema.named_directory_icons = darkFolderIcons;
+    lightSchema.named_directory_icons = lightFolderIcons;
+
+    // TODO: (ROB) pending to solve the language id mappging... use default extension first as a workaround.
+    // Then think about extending the language with extensions or make the default extension an array?
+    // Try to find out if the default extension is used in any way... I think it was not.
 
     return schema;
   }

@@ -35,7 +35,7 @@ export class IconsGenerator implements models.IIconsGenerator {
     files?: models.IFileCollection,
     folders?: models.IFolderCollection,
     projectDetectionResults?: models.IProjectDetectionResult[],
-  ): Promise<models.IIconSchema> {
+  ): Promise<models.IIconManifest> {
     // default icons manifest
     if (!files && !folders) {
       return ManifestBuilder.buildManifest(extFiles, extFolders);
@@ -58,28 +58,34 @@ export class IconsGenerator implements models.IIconsGenerator {
     const customIconsDirPath = await this.configManager.getCustomIconsDirPath(
       vsiconsConfig.customIconFolderPath,
     );
-    const iconsManifest = await ManifestBuilder.buildManifest(
+    const manifest = await ManifestBuilder.buildManifest(
       mergedCollection.files,
       mergedCollection.folders,
       customIconsDirPath,
     );
 
     // apply non icons related config settings
-    iconsManifest.hidesExplorerArrows =
+    manifest.vscode.hidesExplorerArrows =
       vsiconsConfig.presets.hideExplorerArrows;
 
-    return iconsManifest;
+    return manifest;
   }
 
   public async persist(
-    iconsManifest: models.IIconSchema,
+    iconsManifest: models.IIconManifest,
     updatePackageJson = false,
   ): Promise<void> {
     await this.writeIconsManifestToFile(
       constants.iconsManifest.filename,
-      iconsManifest,
+      iconsManifest.vscode,
       ConfigManager.sourceDir,
     );
+    await this.writeIconsManifestToFile(
+      constants.iconsManifest.zedFilename,
+      iconsManifest.zed,
+      ConfigManager.sourceDir,
+    );
+
     if (!updatePackageJson) {
       return;
     }
@@ -88,7 +94,7 @@ export class IconsGenerator implements models.IIconsGenerator {
 
   private async writeIconsManifestToFile(
     iconsFilename: string,
-    iconsManifest: models.IIconSchema,
+    iconsManifest: models.IIconSchema | models.IZedIconSchema,
     outDir: string,
   ): Promise<void> {
     try {

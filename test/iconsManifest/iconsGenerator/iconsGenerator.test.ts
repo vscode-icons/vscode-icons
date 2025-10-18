@@ -20,11 +20,13 @@ import {
   IConfigManager,
   IFileCollection,
   IFolderCollection,
+  IIconManifest,
   IIconsGenerator,
   IPresets,
   IVSCodeManager,
   IVSIcons,
-  schema as iconsManifest,
+  schema as defaultVSCodeSchema,
+  zedSchema as defaultZedSchema,
 } from '../../../src/models';
 import { IPackageManifest } from '../../../src/models/packageManifest/package';
 import { Utils } from '../../../src/utils';
@@ -46,6 +48,11 @@ describe('IconsGenerator: tests', function () {
     let filesCollection: IFileCollection;
     let foldersCollection: IFolderCollection;
     let vsiconsClone: IVSIcons;
+
+    const defaultManifest: IIconManifest = {
+      vscode: defaultVSCodeSchema,
+      zed: defaultZedSchema,
+    };
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
@@ -201,7 +208,7 @@ describe('IconsGenerator: tests', function () {
               fixtFiles,
               fixtFolders,
             );
-            expect(iconManifest.hidesExplorerArrows).to.be.true;
+            expect(iconManifest.vscode.hidesExplorerArrows).to.be.true;
           });
         });
       });
@@ -233,7 +240,7 @@ describe('IconsGenerator: tests', function () {
       it(`creates the 'out' directory, when it doesn't exist`, async function () {
         existsAsyncStub.resolves(false);
 
-        await iconsGenerator.persist(iconsManifest);
+        await iconsGenerator.persist(defaultManifest);
 
         expect(createDirAsyncStub.calledOnce).to.be.true;
         expect(createDirAsyncStub.calledWithMatch(/\.*[/|\\]src/)).to.be.true;
@@ -242,11 +249,11 @@ describe('IconsGenerator: tests', function () {
       context(`writes the icons manifest to storage`, function () {
         context(`with identation`, function () {
           it(`on development`, async function () {
-            const stringified = JSON.stringify(iconsManifest, null, 2);
+            const stringified = JSON.stringify(defaultManifest, null, 2);
             const filePath = `./${constants.iconsManifest.filename}`;
             pathUnixJoinStub.returns(filePath);
 
-            await iconsGenerator.persist(iconsManifest);
+            await iconsGenerator.persist(defaultManifest);
 
             expect(
               writeFileAsyncStub.calledOnceWithExactly(filePath, stringified),
@@ -264,11 +271,11 @@ describe('IconsGenerator: tests', function () {
           });
 
           it(`on production`, async function () {
-            const stringified = JSON.stringify(iconsManifest, null, 0);
+            const stringified = JSON.stringify(defaultManifest, null, 0);
             const filePath = `./${constants.iconsManifest.filename}`;
             pathUnixJoinStub.returns(filePath);
 
-            await iconsGenerator.persist(iconsManifest);
+            await iconsGenerator.persist(defaultManifest);
 
             expect(
               writeFileAsyncStub.calledOnceWithExactly(filePath, stringified),
@@ -278,7 +285,7 @@ describe('IconsGenerator: tests', function () {
       });
 
       it(`prints a success message to 'console' stdout`, async function () {
-        await iconsGenerator.persist(iconsManifest);
+        await iconsGenerator.persist(defaultManifest);
 
         expect(
           infoStub.calledOnceWithExactly(
@@ -293,7 +300,7 @@ describe('IconsGenerator: tests', function () {
           const error = new Error('test');
           createDirAsyncStub.rejects(error);
 
-          await iconsGenerator.persist(iconsManifest);
+          await iconsGenerator.persist(defaultManifest);
 
           expect(createDirAsyncStub.calledOnce).to.be.true;
           expect(createDirAsyncStub.calledWithMatch(/\.*[/|\\]src/)).to.be.true;
@@ -304,7 +311,7 @@ describe('IconsGenerator: tests', function () {
           const error = new Error('test');
           writeFileAsyncStub.rejects(error);
 
-          await iconsGenerator.persist(iconsManifest);
+          await iconsGenerator.persist(defaultManifest);
 
           expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
         });
@@ -314,7 +321,7 @@ describe('IconsGenerator: tests', function () {
           updateFileStub.rejects(error);
           getRelativePathStub.resolves('./');
 
-          await iconsGenerator.persist(iconsManifest, true);
+          await iconsGenerator.persist(defaultManifest, true);
 
           expect(updateFileStub.calledOnce).to.be.true;
           expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
@@ -333,7 +340,7 @@ describe('IconsGenerator: tests', function () {
           });
 
           it(`when set NOT to`, async function () {
-            await iconsGenerator.persist(iconsManifest, false);
+            await iconsGenerator.persist(defaultManifest, false);
 
             expect(updateFileStub.called).to.be.false;
           });
@@ -343,7 +350,7 @@ describe('IconsGenerator: tests', function () {
               const originalValue = manifest.contributes.iconThemes[0].path;
               delete manifest.contributes.iconThemes[0].path;
 
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               manifest.contributes.iconThemes[0].path = originalValue;
 
@@ -351,7 +358,7 @@ describe('IconsGenerator: tests', function () {
             });
 
             it(`does NOT need to be changed`, async function () {
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.called).to.be.false;
             });
@@ -362,7 +369,7 @@ describe('IconsGenerator: tests', function () {
               const originalValue = manifest.main;
               delete manifest.main;
 
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               manifest.main = originalValue;
 
@@ -370,7 +377,7 @@ describe('IconsGenerator: tests', function () {
             });
 
             it(`does NOT need to be changed`, async function () {
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.called).to.be.false;
             });
@@ -381,7 +388,7 @@ describe('IconsGenerator: tests', function () {
               const originalValue = manifest.scripts['vscode:unistall'];
               delete manifest.scripts['vscode:unistall'];
 
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               manifest.scripts['vscode:unistall'] = originalValue;
 
@@ -389,7 +396,7 @@ describe('IconsGenerator: tests', function () {
             });
 
             it(`does NOT need to be changed`, async function () {
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.called).to.be.false;
             });
@@ -402,7 +409,7 @@ describe('IconsGenerator: tests', function () {
               it(`when it can NOT be found`, async function () {
                 updateFileStub.callsArgWith(1, ['']).resolves();
 
-                await iconsGenerator.persist(iconsManifest, true);
+                await iconsGenerator.persist(defaultManifest, true);
 
                 expect(updateFileStub.calledOnce).to.be.true;
                 expect(infoStub.calledOnce).to.be.true;
@@ -422,7 +429,7 @@ describe('IconsGenerator: tests', function () {
                 ])
                 .resolves();
 
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.calledOnce).to.be.true;
               expect(infoStub.calledTwice).to.be.true;
@@ -439,7 +446,7 @@ describe('IconsGenerator: tests', function () {
               it(`when it can NOT be found`, async function () {
                 updateFileStub.callsArgWith(1, ['']).resolves();
 
-                await iconsGenerator.persist(iconsManifest, true);
+                await iconsGenerator.persist(defaultManifest, true);
 
                 expect(updateFileStub.calledOnce).to.be.true;
                 expect(infoStub.calledOnce).to.be.true;
@@ -457,7 +464,7 @@ describe('IconsGenerator: tests', function () {
                 .callsArgWith(1, [`"main":"some/path/"\n"path":""`])
                 .resolves();
 
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.calledOnce).to.be.true;
               expect(infoStub.calledThrice).to.be.true;
@@ -481,7 +488,7 @@ describe('IconsGenerator: tests', function () {
                       '"main": "' +
                       `${constants.extension.outDirName}/${constants.extension.srcDirName}/"`;
 
-                    await iconsGenerator.persist(iconsManifest, true);
+                    await iconsGenerator.persist(defaultManifest, true);
 
                     const func = updateFileStub.args[0][1] as (
                       arg: string[],
@@ -506,7 +513,7 @@ describe('IconsGenerator: tests', function () {
                       '"main": "' +
                       `${constants.extension.outDirName}/${constants.extension.srcDirName}/"`;
 
-                    await iconsGenerator.persist(iconsManifest, true);
+                    await iconsGenerator.persist(defaultManifest, true);
 
                     const func = updateFileStub.args[0][1] as (
                       arg: string[],
@@ -527,7 +534,7 @@ describe('IconsGenerator: tests', function () {
               it(`when it can NOT be found`, async function () {
                 updateFileStub.callsArgWith(1, ['']).resolves();
 
-                await iconsGenerator.persist(iconsManifest, true);
+                await iconsGenerator.persist(defaultManifest, true);
 
                 expect(updateFileStub.calledOnce).to.be.true;
                 expect(infoStub.calledOnce).to.be.true;
@@ -547,7 +554,7 @@ describe('IconsGenerator: tests', function () {
                 ])
                 .resolves();
 
-              await iconsGenerator.persist(iconsManifest, true);
+              await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.calledOnce).to.be.true;
               expect(infoStub.callCount).to.equal(4);

@@ -50,6 +50,7 @@ export const constants = {
     'https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-file-icon-theme',
   iconsManifest: {
     filename: 'vsicons-icon-theme.json',
+    zedFilename: 'vsicons-icon-theme-zed.json',
     iconSuffix: '',
     fileTypePrefix: 'file_type_',
     fileTypeLightPrefix: 'file_type_light_',
