@@ -5,6 +5,7 @@ export const constants = {
   environment: { production: false },
   extension: {
     name: 'vscode-icons',
+    zedName: 'vscode-icons-zed',
     settingsFilename: 'vsicons.settings.json',
     version: (manifest as IPackageManifest).version,
     customIconFolderName: 'vsicons-custom-icons',

@@ -79,11 +79,13 @@ export class IconsGenerator implements models.IIconsGenerator {
       constants.iconsManifest.filename,
       iconsManifest.vscode,
       ConfigManager.sourceDir,
+      constants.extension.name,
     );
     await this.writeIconsManifestToFile(
       constants.iconsManifest.zedFilename,
       iconsManifest.zed,
       ConfigManager.sourceDir,
+      constants.extension.zedName,
     );
 
     if (!updatePackageJson) {
@@ -96,6 +98,7 @@ export class IconsGenerator implements models.IIconsGenerator {
     iconsFilename: string,
     iconsManifest: models.IIconSchema | models.IZedIconSchema,
     outDir: string,
+    extensionName: string,
   ): Promise<void> {
     try {
       const dirExists = await existsAsync(outDir);
@@ -113,7 +116,7 @@ export class IconsGenerator implements models.IIconsGenerator {
       );
 
       console.info(
-        `[${constants.extension.name}] Icons manifest file successfully generated!`,
+        `[${extensionName}] Icons manifest file successfully generated!`,
       );
     } catch (error: unknown) {
       ErrorHandler.logError(error);

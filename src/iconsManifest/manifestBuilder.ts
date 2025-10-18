@@ -135,6 +135,7 @@ export class ManifestBuilder {
       vscSchema,
       zedSchema,
     );
+
     return finalManifest;
   }
 
