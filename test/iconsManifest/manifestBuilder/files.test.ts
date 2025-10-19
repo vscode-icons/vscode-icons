@@ -638,6 +638,53 @@ describe('ManifestBuilder: files icons test', function () {
           });
         });
       });
+
+      context('zed theme', function () {
+        it('should get official icons for official theme', async function () {
+          const files = cloneDeep(fixtFiles);
+
+          const manifest = await ManifestBuilder.buildManifest(
+            files,
+            emptyFolderCollection,
+          );
+
+          const officialTheme = manifest.zed.themes[1];
+
+          // should have js
+          const jsId = officialTheme.file_suffixes.js;
+          expect(jsId.endsWith('official')).to.be.true;
+
+          // should not have json
+          const jsonId = officialTheme.file_suffixes.json;
+          expect(jsonId.endsWith('official')).to.be.false;
+        });
+
+        it('should not have light theme defs in dark themes', async function () {
+          const files = cloneDeep(fixtFiles);
+
+          const manifest = await ManifestBuilder.buildManifest(
+            files,
+            emptyFolderCollection,
+          );
+
+          const darkTheme = manifest.zed.themes[0];
+          const lightTheme = manifest.zed.themes[4];
+
+          const jsDark = darkTheme.file_suffixes.js;
+          const jsLight = lightTheme.file_suffixes.js;
+
+          expect(jsDark).to.not.include('light_');
+          expect(jsLight).to.include('light_');
+
+          // Check that dark theme has only the dark version
+          expect(darkTheme.file_icons).to.have.property('_f_js');
+          expect(darkTheme.file_icons).to.not.have.property('_f_light_js');
+
+          // Check that light theme has only the light version
+          expect(lightTheme.file_icons).to.have.property('_f_light_js');
+          expect(lightTheme.file_icons).to.not.have.property('_f_js');
+        });
+      });
     });
 
     context(`if a default 'light' icon is defined`, function () {
