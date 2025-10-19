@@ -1,5 +1,5 @@
-import { IIconMapping } from './iconMapping';
 import { IIconDefinition } from './iconDefinition';
+import { IIconMapping } from './iconMapping';
 
 export interface IIconSchema extends IIconMapping {
   iconDefinitions: IIconDefinition;
