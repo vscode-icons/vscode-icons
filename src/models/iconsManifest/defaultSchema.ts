@@ -40,7 +40,7 @@ export const schema: IIconSchema = {
 
 export const zedSchema: IZedIconSchema = {
   $schema: 'https://zed.dev/schema/icon_themes/v0.3.0.json',
-  name: 'VSCode Icons for Zed',
+  name: 'VSCode Icons Original',
   author: 'Roberto Huertas <roberto.huertas@outlook.com>',
   themes: [
     {
