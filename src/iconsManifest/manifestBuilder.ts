@@ -57,11 +57,6 @@ export class ManifestBuilder {
       false,
     );
 
-    vscDefs._folder.iconPath = defaultFolderIconPath;
-    zedSchema.themes[0].directory_icons.collapsed = this.toZedPath(
-      defaultFolderIconPath,
-    );
-
     const defaultOpenFolderIconPath = await this.buildDefaultIconPath(
       folders.default.folder,
       vscDefs._folder_open,
@@ -69,10 +64,16 @@ export class ManifestBuilder {
       true,
     );
 
+    vscDefs._folder.iconPath = defaultFolderIconPath;
     vscDefs._folder_open.iconPath = defaultOpenFolderIconPath;
-    zedSchema.themes[0].directory_icons.expanded = this.toZedPath(
-      defaultOpenFolderIconPath,
-    );
+
+    const zedFolderIconPath = this.toZedPath(defaultFolderIconPath);
+    const zedOpenFolderIconPath = this.toZedPath(defaultOpenFolderIconPath);
+
+    for (let i = 0; i < 4; i++) {
+      zedSchema.themes[i].directory_icons.collapsed = zedFolderIconPath;
+      zedSchema.themes[i].directory_icons.expanded = zedOpenFolderIconPath;
+    }
 
     // set default icons for light theme
     // default file and folder related icon paths if not set,
@@ -111,11 +112,6 @@ export class ManifestBuilder {
       false,
     );
 
-    vscDefs._folder_light.iconPath = defaultFolderLightIconPath;
-    zedSchema.themes[1].directory_icons.collapsed =
-      this.toZedPath(defaultFolderLightIconPath) ||
-      zedSchema.themes[0].directory_icons.collapsed;
-
     const defaultOpenFolderLightIconPath = await this.buildDefaultIconPath(
       folders.default.folder_light,
       vscDefs._folder_light_open,
@@ -123,10 +119,17 @@ export class ManifestBuilder {
       true,
     );
 
+    vscDefs._folder_light.iconPath = defaultFolderLightIconPath;
     vscDefs._folder_light_open.iconPath = defaultOpenFolderLightIconPath;
-    zedSchema.themes[1].directory_icons.expanded =
-      this.toZedPath(defaultOpenFolderLightIconPath) ||
-      zedSchema.themes[0].directory_icons.expanded;
+
+    for (let i = 4; i < 8; i++) {
+      zedSchema.themes[i].directory_icons.collapsed =
+        this.toZedPath(defaultFolderLightIconPath) ||
+        zedSchema.themes[0].directory_icons.collapsed;
+      zedSchema.themes[i].directory_icons.expanded =
+        this.toZedPath(defaultOpenFolderLightIconPath) ||
+        zedSchema.themes[0].directory_icons.expanded;
+    }
 
     // set the rest of the schema
     const finalManifest = await this.buildJsonStructure(
@@ -187,12 +190,33 @@ export class ManifestBuilder {
     const res = {
       //  files section
       files: this.buildFiles(files, hasDefaultLightFile),
+      filesOfficial: this.buildFiles(
+        files,
+        hasDefaultLightFile,
+        'officialIcons',
+      ),
+      filesAngular: this.buildFiles(files, hasDefaultLightFile, 'angularIcons'),
+      filesNest: this.buildFiles(files, hasDefaultLightFile, 'nestIcons'),
       // folders section
       folders: this.buildFolders(folders, hasDefaultLightFolder),
+      foldersOfficial: this.buildFolders(folders, hasDefaultLightFolder, true),
     };
     // map structure to the schema
-    const resFiles = await res.files;
-    const resFolders = await res.folders;
+    const [
+      resFiles,
+      resFilesOfficial,
+      resFolders,
+      resFoldersOfficial,
+      resFilesAngular,
+      resFilesNest,
+    ] = await Promise.all([
+      res.files,
+      res.filesOfficial,
+      res.folders,
+      res.foldersOfficial,
+      res.filesAngular,
+      res.filesNest,
+    ]);
 
     const vscFinalSchema = this.buildVSCJsonStructure(
       resFiles,
@@ -200,10 +224,43 @@ export class ManifestBuilder {
       vscSchema,
     );
 
-    const zedFinalSchema = this.buildZedJsonStructure(
+    // zed has several themes:
+    // DARK:
+    //    [0] dark,
+    //    [1] official dark,
+    //    [2] angular official dark,
+    //    [3] nest official dark,
+    // LIGHT:
+    //    [4] light,
+    //    [5] official light,
+    //    [6] angular official light,
+    //    [7] nest official light
+    let zedFinalSchema = this.buildZedJsonStructure(
       resFiles,
       resFolders,
       zedSchema,
+      [0, 4],
+    );
+
+    zedFinalSchema = this.buildZedJsonStructure(
+      resFilesOfficial,
+      resFoldersOfficial,
+      zedFinalSchema,
+      [1, 5],
+    );
+
+    zedFinalSchema = this.buildZedJsonStructure(
+      resFilesAngular,
+      resFoldersOfficial,
+      zedFinalSchema,
+      [2, 6],
+    );
+
+    zedFinalSchema = this.buildZedJsonStructure(
+      resFilesNest,
+      resFoldersOfficial,
+      zedFinalSchema,
+      [3, 7],
     );
 
     return { vscode: vscFinalSchema, zed: zedFinalSchema };
@@ -238,9 +295,10 @@ export class ManifestBuilder {
     files: models.IBuildFiles,
     folders: models.IBuildFolders,
     schema: models.IZedIconSchema,
+    themePosition: [number, number],
   ): models.IZedIconSchema {
-    const darkSchema = schema.themes[0];
-    const lightSchema = schema.themes[1];
+    const darkSchema = schema.themes[themePosition[0]];
+    const lightSchema = schema.themes[themePosition[1]];
 
     // zed file icons
     const darkFileIcons: models.IZedFileIcons = {};
@@ -328,15 +386,48 @@ export class ManifestBuilder {
   private static buildFiles(
     files: models.IFileCollection,
     hasDefaultLightFile: boolean,
+    options?: 'officialIcons' | 'angularIcons' | 'nestIcons',
   ): Promise<models.IBuildFiles> {
     const sts = constants.iconsManifest;
+
+    let collection = files.supported;
+
+    const officialFilter = (f: models.IFileExtension): boolean =>
+      f.icon &&
+      (!f.disabled ||
+        (f.icon.endsWith('_official') && f.icon !== 'json_official'));
+
+    const angularFilter = (f: models.IFileExtension): boolean =>
+      f.icon &&
+      (!f.disabled || (f.icon.startsWith('ng_') && !f.icon.endsWith('2')));
+
+    const nestFilter = (f: models.IFileExtension): boolean =>
+      f.icon && (!f.disabled || f.icon.startsWith('nest_'));
+
+    switch (options) {
+      case 'officialIcons':
+        collection = files.supported.filter(officialFilter);
+        break;
+
+      case 'angularIcons':
+        collection = files.supported.filter(
+          f => officialFilter(f) || angularFilter(f),
+        );
+        break;
+
+      case 'nestIcons':
+        collection = files.supported.filter(
+          f => officialFilter(f) || nestFilter(f),
+        );
+        break;
+
+      default:
+        collection = files.supported.filter(f => !f.disabled && f.icon);
+        break;
+    }
+
     return sortedUniq(
-      sortBy(
-        files.supported.filter(
-          (fileExt: models.IFileExtension) => !fileExt.disabled && fileExt.icon,
-        ),
-        (item: models.IFileExtension) => item.icon,
-      ),
+      sortBy(collection, (item: models.IFileExtension) => item.icon),
     ).reduce(
       async (previous, current): Promise<models.IBuildFiles> => {
         const old = await previous;
@@ -470,13 +561,19 @@ export class ManifestBuilder {
   private static buildFolders(
     folders: models.IFolderCollection,
     hasDefaultLightFolder: boolean,
+    officialIcons = false,
   ): Promise<models.IBuildFolders> {
     const sts = constants.iconsManifest;
+    const collection = officialIcons
+      ? folders.supported.filter(
+          f =>
+            f.icon &&
+            (!f.disabled ||
+              (f.icon.endsWith('_official') && f.icon !== 'json_official')),
+        )
+      : folders.supported.filter(f => !f.disabled && f.icon);
     return sortBy(
-      folders.supported.filter(
-        (folderExt: models.IFolderExtension) =>
-          !folderExt.disabled && folderExt.icon,
-      ),
+      collection,
       (item: models.IFolderExtension) => item.icon,
     ).reduce(
       async (previous, current): Promise<models.IBuildFolders> => {
