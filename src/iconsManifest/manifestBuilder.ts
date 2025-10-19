@@ -224,12 +224,12 @@ export class ManifestBuilder {
     schema.folderNamesExpanded = folders.names.folderNamesExpanded;
     schema.fileExtensions = files.names.fileExtensions;
     schema.fileNames = files.names.fileNames;
-    schema.languageIds = files.languageIds;
+    schema.languageIds = files.language.languageIds;
     schema.light.folderNames = folders.light.folderNames;
     schema.light.folderNamesExpanded = folders.light.folderNamesExpanded;
     schema.light.fileExtensions = files.light.fileExtensions;
     schema.light.fileNames = files.light.fileNames;
-    schema.light.languageIds = files.light.languageIds;
+    schema.light.languageIds = files.light.language.languageIds;
 
     return schema;
   }
@@ -264,13 +264,28 @@ export class ManifestBuilder {
     darkSchema.file_icons = darkFileIcons;
     lightSchema.file_icons = lightFileIcons;
 
+    // language id icons are going to go first,
+    // and we will overwrite them with the supported file extensions and filenames if available
+
     // zed file stems (file names)
-    darkSchema.file_stems = files.names.fileNames;
-    lightSchema.file_stems = files.light.fileNames;
+    darkSchema.file_stems = {
+      ...files.language.fileNames,
+      ...files.names.fileNames,
+    };
+    lightSchema.file_stems = {
+      ...files.light.language.fileNames,
+      ...files.light.fileNames,
+    };
 
     // zed file suffixes (file extensions)
-    darkSchema.file_suffixes = files.names.fileExtensions;
-    lightSchema.file_suffixes = files.light.fileExtensions;
+    darkSchema.file_suffixes = {
+      ...files.language.fileExtensions,
+      ...files.names.fileExtensions,
+    };
+    lightSchema.file_suffixes = {
+      ...files.light.language.fileExtensions,
+      ...files.light.fileExtensions,
+    };
 
     // zed folder icons
     // NOTE: the light folder list contains all the folders, so we can use it to build both themes
@@ -307,10 +322,6 @@ export class ManifestBuilder {
     darkSchema.named_directory_icons = darkFolderIcons;
     lightSchema.named_directory_icons = lightFolderIcons;
 
-    // TODO: (ROB) pending to solve the language id mappging... use default extension first as a workaround.
-    // Then think about extending the language with extensions or make the default extension an array?
-    // Try to find out if the default extension is used in any way... I think it was not.
-
     return schema;
   }
 
@@ -331,7 +342,7 @@ export class ManifestBuilder {
         const old = await previous;
         const defs = old.defs;
         const names = old.names;
-        const languageIds = old.languageIds;
+        const language = old.language;
         const light = old.light;
         const icon = current.icon;
         const hasLightVersion = current.light;
@@ -368,24 +379,46 @@ export class ManifestBuilder {
         }
 
         if (current.languages) {
-          const assignLanguages = (langId: string): void => {
-            languageIds[langId] = iconFileDefinition;
-          };
-          const assignLanguagesLight = (langId: string): void => {
-            light.languageIds[langId] = hasLightVersion
-              ? iconFileLightDefinition
-              : iconFileDefinition;
+          const assignLanguages = (
+            langId: string,
+            lang: models.ILanguage,
+          ): void => {
+            language.languageIds[langId] = iconFileDefinition;
+            // assign known extensions and filenames
+            lang.knownExtensions?.forEach(ext => {
+              language.fileExtensions[ext] = iconFileDefinition;
+            });
+            lang.knownFilenames?.forEach(name => {
+              language.fileNames[name] = iconFileDefinition;
+            });
           };
 
-          current.languages.forEach((langId: models.ILanguage): void => {
-            if (Array.isArray(langId.ids)) {
-              langId.ids.forEach((id: string) => {
-                assignLanguages(id);
-                assignLanguagesLight(id);
+          const assignLanguagesLight = (
+            langId: string,
+            lang: models.ILanguage,
+          ): void => {
+            const iconDef = hasLightVersion
+              ? iconFileLightDefinition
+              : iconFileDefinition;
+            light.language.languageIds[langId] = iconDef;
+            // assign known extensions and filenames
+            lang.knownExtensions?.forEach(ext => {
+              light.language.fileExtensions[ext] = iconDef;
+            });
+            lang.knownFilenames?.forEach(name => {
+              light.language.fileNames[name] = iconDef;
+            });
+          };
+
+          current.languages.forEach((lang: models.ILanguage): void => {
+            if (Array.isArray(lang.ids)) {
+              lang.ids.forEach((id: string) => {
+                assignLanguages(id, lang);
+                assignLanguagesLight(id, lang);
               });
             } else {
-              assignLanguages(langId.ids);
-              assignLanguagesLight(langId.ids);
+              assignLanguages(lang.ids, lang);
+              assignLanguagesLight(lang.ids, lang);
             }
           });
         }
@@ -424,9 +457,13 @@ export class ManifestBuilder {
       Promise.resolve({
         defs: {},
         names: { fileExtensions: {}, fileNames: {} },
-        light: { fileExtensions: {}, fileNames: {}, languageIds: {} },
-        languageIds: {},
-      }),
+        light: {
+          fileExtensions: {},
+          fileNames: {},
+          language: { fileExtensions: {}, fileNames: {}, languageIds: {} },
+        },
+        language: { fileExtensions: {}, fileNames: {}, languageIds: {} },
+      } as models.IBuildFiles),
     );
   }
 
