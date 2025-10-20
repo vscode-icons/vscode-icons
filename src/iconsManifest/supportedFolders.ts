@@ -67,6 +67,11 @@ export const extensions: IFolderCollection = {
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
     {
+      icon: 'cargo',
+      extensions: ['cargo', '.cargo', 'crates'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'certificate',
       extensions: ['certificates', '.certificates', 'certs', 'certs.'],
       format: FileFormat.svg,
