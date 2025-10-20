@@ -866,5 +866,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.yarn'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'zed',
+      extensions: ['.zed'],
+      light: true,
+      format: FileFormat.svg,
+    },
   ],
 };
