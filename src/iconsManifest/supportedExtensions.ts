@@ -978,7 +978,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cargo',
-      extensions: ['cargo.toml', 'cargo.lock'],
+      extensions: ['Cargo.toml', 'Cargo.lock'],
       filename: true,
       format: FileFormat.svg,
     },
