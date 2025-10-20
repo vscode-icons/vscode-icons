@@ -2236,6 +2236,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gemini',
+      extensions: ['gemini.md', 'GEMINI.md'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'genstat',
       extensions: [],
       languages: [languages.genstat],
