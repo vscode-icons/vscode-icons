@@ -1080,13 +1080,6 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'class', extensions: ['class'], format: FileFormat.svg },
-    {
-      icon: 'claude',
-      extensions: ['claude.md'],
-      filename: true,
-      format: FileFormat.svg,
-    },
     {
       icon: 'circleci',
       extensions: ['circle.yml'],
@@ -1100,6 +1093,13 @@ export const extensions: IFileCollection = {
       languages: [languages.circom],
       format: FileFormat.svg,
     },
+    { icon: 'class', extensions: ['class'], format: FileFormat.svg },
+    {
+      icon: 'claude',
+      extensions: ['claude.md'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'clojure',
       extensions: ['cjm', 'cljc'],
@@ -1110,6 +1110,12 @@ export const extensions: IFileCollection = {
       icon: 'clojurescript',
       extensions: ['cljs'],
       languages: [languages.clojurescript],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'cloudflare',
+      extensions: ['wrangler.toml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
