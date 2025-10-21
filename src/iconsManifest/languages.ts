@@ -665,7 +665,7 @@ export const languages = {
     knownExtensions: ['yaml', 'yml'],
   },
   yang: { ids: 'yang', knownExtensions: ['yang'] },
-  yarnlock: { ids: 'yarnlock', knownExtensions: ['lock'] },
+  yarnlock: { ids: 'yarnlock', knownFilenames: ['yarn.lock'] },
   zig: { ids: 'zig', knownExtensions: ['zig'] },
   zip: { ids: 'zip', knownExtensions: ['zip'] },
 } satisfies Record<string, ILanguage>;
