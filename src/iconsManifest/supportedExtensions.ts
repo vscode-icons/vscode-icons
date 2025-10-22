@@ -4814,6 +4814,7 @@ export const extensions: IFileCollection = {
       icon: 'robots',
       extensions: ['robots.txt'],
       filename: true,
+      languages: [languages.robotstxt],
       format: FileFormat.svg,
     },
     {
