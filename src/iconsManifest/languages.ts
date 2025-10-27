@@ -441,6 +441,7 @@ export const languages = {
   polymer: { ids: 'polymer', knownExtensions: ['polymer'] },
   pony: { ids: 'pony', knownExtensions: ['pony'] },
   postcss: { ids: 'postcss', knownExtensions: ['pcss'] },
+  postscript: { ids: 'postscript', knownExtensions: ['ps'] },
   powershell: { ids: 'powershell', knownExtensions: ['ps1'] },
   prisma: { ids: 'prisma', knownExtensions: ['prisma'] },
   processinglang: { ids: 'pde', knownExtensions: ['pde'] },

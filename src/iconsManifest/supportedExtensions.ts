@@ -4423,6 +4423,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'postscript',
+      extensions: [],
+      languages: [languages.postscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'powerpoint',
       extensions: [
         'pot',
