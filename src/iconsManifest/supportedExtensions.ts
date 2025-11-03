@@ -6391,7 +6391,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'turbo',
-      extensions: ['turbo.json', 'turbo.jsonc'],
+      extensions: ['turbo.json', 'turbo.jsonc', 'microfrontends.json', 'microfrontends.jsonc'],
       light: true,
       filename: true,
       format: FileFormat.svg,
