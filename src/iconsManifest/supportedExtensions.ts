@@ -4569,7 +4569,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pytest',
-      extensions: ['pytest.ini', '.pytest.ini'],
+      extensions: ['pytest.ini', '.pytest.ini', 'pytest.toml', '.pytest.toml'],
       filename: true,
       format: FileFormat.svg,
     },
