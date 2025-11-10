@@ -336,6 +336,7 @@ export const languages = {
   marko: { ids: 'marko', knownExtensions: ['marko'] },
   matlab: { ids: 'matlab', knownExtensions: ['mat'] },
   maxscript: { ids: 'maxscript', knownExtensions: ['ms'] },
+  mdc: { ids: 'mdc', knownExtensions: ['mdc'] },
   mdx: { ids: 'mdx', knownExtensions: ['mdx'] },
   mediawiki: { ids: 'mediawiki', knownExtensions: ['mediawiki'] },
   mel: { ids: 'mel', knownExtensions: ['mel'] },
