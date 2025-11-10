@@ -3365,7 +3365,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mdc',
-      extensions: ['mdc'],
+      extensions: [],
       languages: [languages.mdc],
       light: true,
       format: FileFormat.svg,
