@@ -180,6 +180,12 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
     {
+      icon: 'cursor',
+      extensions: ['.cursor'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cypress',
       extensions: ['cypress'],
       light: true,
