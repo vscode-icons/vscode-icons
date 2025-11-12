@@ -35,7 +35,7 @@ export class IconsGenerator implements models.IIconsGenerator {
     files?: models.IFileCollection,
     folders?: models.IFolderCollection,
     projectDetectionResults?: models.IProjectDetectionResult[],
-  ): Promise<models.IIconSchema> {
+  ): Promise<models.IIconManifest> {
     // default icons manifest
     if (!files && !folders) {
       return ManifestBuilder.buildManifest(extFiles, extFolders);
@@ -58,28 +58,36 @@ export class IconsGenerator implements models.IIconsGenerator {
     const customIconsDirPath = await this.configManager.getCustomIconsDirPath(
       vsiconsConfig.customIconFolderPath,
     );
-    const iconsManifest = await ManifestBuilder.buildManifest(
+    const manifest = await ManifestBuilder.buildManifest(
       mergedCollection.files,
       mergedCollection.folders,
       customIconsDirPath,
     );
 
     // apply non icons related config settings
-    iconsManifest.hidesExplorerArrows =
+    manifest.vscode.hidesExplorerArrows =
       vsiconsConfig.presets.hideExplorerArrows;
 
-    return iconsManifest;
+    return manifest;
   }
 
   public async persist(
-    iconsManifest: models.IIconSchema,
+    iconsManifest: models.IIconManifest,
     updatePackageJson = false,
   ): Promise<void> {
     await this.writeIconsManifestToFile(
       constants.iconsManifest.filename,
-      iconsManifest,
+      iconsManifest.vscode,
       ConfigManager.sourceDir,
+      constants.extension.name,
     );
+    await this.writeIconsManifestToFile(
+      constants.iconsManifest.zedFilename,
+      iconsManifest.zed,
+      ConfigManager.sourceDir,
+      constants.extension.zedName,
+    );
+
     if (!updatePackageJson) {
       return;
     }
@@ -88,8 +96,9 @@ export class IconsGenerator implements models.IIconsGenerator {
 
   private async writeIconsManifestToFile(
     iconsFilename: string,
-    iconsManifest: models.IIconSchema,
+    iconsManifest: models.IIconSchema | models.IZedIconSchema,
     outDir: string,
+    extensionName: string,
   ): Promise<void> {
     try {
       const dirExists = await existsAsync(outDir);
@@ -107,7 +116,7 @@ export class IconsGenerator implements models.IIconsGenerator {
       );
 
       console.info(
-        `[${constants.extension.name}] Icons manifest file successfully generated!`,
+        `[${extensionName}] Icons manifest file successfully generated!`,
       );
     } catch (error: unknown) {
       ErrorHandler.logError(error);
