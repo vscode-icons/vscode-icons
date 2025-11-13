@@ -638,6 +638,7 @@ export const languages = {
   vitestsnapshot: { ids: 'vitest-snapshot', knownExtensions: ['Vitest-snap'] },
   vlang: { ids: 'v', knownExtensions: ['v'] },
   volt: { ids: 'volt', knownExtensions: ['volt'] },
+  vroom: { ids: 'vroom', knownExtensions: ['vroom'] },
   vue: {
     ids: 'vue',
     knownExtensions: ['vue', 'vue2', 'vue3', 'vues', 'vuex', 'vuerc'],
