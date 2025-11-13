@@ -1567,6 +1567,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'design_tokens',
+      extensions: [
+        'resolver.json',
+        'resolver.json5',
+        'resolver.jsonc',
+        'tokens.json',
+        'tokens.json5',
+        'tokens.jsonc',
+      ],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dhall',
       extensions: [],
       light: true,
