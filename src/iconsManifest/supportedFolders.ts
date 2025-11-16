@@ -859,6 +859,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'windsurf',
+      extensions: ['.windsurf'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'www',
       extensions: ['.web', 'www', 'wwwroot', 'web'],
       format: FileFormat.svg,
