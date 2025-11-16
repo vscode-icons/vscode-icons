@@ -404,6 +404,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
     {
       icon: 'kubernetes',
       extensions: [
@@ -860,6 +861,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'windows',
       extensions: ['windows', 'win32'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'windsurf',
+      extensions: ['.windsurf'],
       format: FileFormat.svg,
     },
     {
