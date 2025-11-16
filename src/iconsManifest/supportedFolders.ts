@@ -399,6 +399,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
     {
       icon: 'kubernetes',
       extensions: [
