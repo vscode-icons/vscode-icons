@@ -192,6 +192,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dart',
+      extensions: ['dart', '.dart_tool'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'datadog',
       extensions: ['datadog', '.datadog'],
       format: FileFormat.svg,
