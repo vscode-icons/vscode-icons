@@ -613,6 +613,7 @@ export const languages = {
   tiltfile: { ids: 'tiltfile', knownFilenames: ['Tiltfile'] },
   toit: { ids: 'toit', knownExtensions: ['toit'] },
   toml: { ids: 'toml', knownExtensions: ['toml'] },
+  toon: { ids: 'toon', knownExtensions: ['toon'] },
   ttcn: { ids: 'ttcn', knownExtensions: ['ttcn3'] },
   tuc: { ids: 'tuc', knownExtensions: ['tuc'] },
   twig: { ids: 'twig', knownExtensions: ['twig'] },
