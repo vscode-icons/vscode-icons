@@ -82,7 +82,7 @@ export class ManifestBuilder {
     // If the icon paths get set then they override the dark theme section
     // and light icons definitions have to be specified for each extension
     // and populate the light section, otherwise they inherit from dark theme
-    // and only those in 'light' section get overriden.
+    // and only those in 'light' section get overridden.
 
     // vscode only
     vscDefs._file_light.iconPath = await this.buildDefaultIconPath(
