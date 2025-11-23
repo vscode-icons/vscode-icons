@@ -965,7 +965,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'capacitor',
       extensions: [],
-      extensionsGlob: ['json'],
+      extensionsGlob: ['json', 'ts'],
       filename: true,
       filenamesGlob: ['capacitor.config'],
       format: FileFormat.svg,
