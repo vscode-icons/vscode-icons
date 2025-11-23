@@ -560,6 +560,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'assembly_script',
+      extensions: ['asconfig.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'asp',
       extensions: [],
       languages: [languages.asp],
