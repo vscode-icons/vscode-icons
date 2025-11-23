@@ -620,6 +620,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.vercel'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'vitepress',
+      extensions: ['.vitepress'],
+      format: FileFormat.svg,
+    },
     { icon: 'redis', extensions: ['redis'], format: FileFormat.svg },
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
     {
