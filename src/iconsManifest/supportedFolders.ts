@@ -406,6 +406,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
     {
+      icon: 'kotlin',
+      extensions: ['kotlin', 'Kotlin', '.kotlin'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'kubernetes',
       extensions: [
         'kubernetes',
