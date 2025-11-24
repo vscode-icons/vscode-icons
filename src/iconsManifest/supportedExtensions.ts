@@ -2067,7 +2067,11 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'flutter',
-      extensions: ['.flutter-plugins', '.metadata'],
+      extensions: [
+        '.flutter-plugins',
+        '.metadata',
+        '.flutter-plugins-dependencies',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
