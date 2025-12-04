@@ -6306,8 +6306,8 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'vvvvv',
-      extensions: ['vvvvv'],
+      icon: 'vvvvvv',
+      extensions: ['vvvvvv'],
       format: FileFormat.svg,
     },
     {
