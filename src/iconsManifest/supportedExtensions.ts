@@ -2257,6 +2257,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'gimp',
+      extensions: ['xcf'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gitlab',
       extensions: ['.gitlab-ci.yml'],
       filename: true,
