@@ -5122,6 +5122,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'sitemap',
+      extensions: ['sitemap.xml', 'sitemap.rss', 'sitemap.txt', 'sitemap.atom'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'skipper',
       extensions: ['eskip'],
       languages: [languages.skipper],
