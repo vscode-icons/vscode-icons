@@ -6265,7 +6265,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'xaml',
-      extensions: ['xaml'],
+      extensions: ['xaml', 'axaml'],
       format: FileFormat.svg,
     },
     {
