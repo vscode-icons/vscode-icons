@@ -376,6 +376,7 @@ export const languages = {
   nix: { ids: 'nix', knownExtensions: ['nix'] },
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], knownExtensions: ['nsi'] },
   nunjucks: { ids: 'nunjucks', knownExtensions: ['nunjucks'] },
+  nushell: { ids: 'nushell', knownExtensions: ['nu'] },
   objectivec: { ids: 'objective-c', knownExtensions: ['m'] },
   objectivecpp: { ids: 'objective-cpp', knownExtensions: ['mm'] },
   ocaml: { ids: ['ocaml', 'ocamllex', 'menhir'], knownExtensions: ['ml'] },

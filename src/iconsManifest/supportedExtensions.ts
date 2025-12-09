@@ -3854,6 +3854,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nushell',
+      extensions: [],
+      languages: [languages.nushell],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nuxt',
       extensions: ['.nuxtignore', '.nuxtrc'],
       filenamesGlob: ['nuxt.config', 'nuxt'],
