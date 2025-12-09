@@ -9,6 +9,11 @@ export const extensions: IFolderCollection = {
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
     { icon: 'angular', extensions: ['.angular'], format: FileFormat.svg },
     {
+      icon: 'apache',
+      extensions: ['apache', 'apache2', 'httpd'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'api',
       extensions: ['api', '.api', 'apis', '.apis'],
       format: FileFormat.svg,
