@@ -4264,6 +4264,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'polyglot',
+      extensions: [],
+      languages: [languages.polyglot],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'polymer',
       extensions: [],
       languages: [languages.polymer],
