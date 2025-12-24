@@ -3063,7 +3063,16 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lefthook',
-      extensions: ['lefthook.yml', 'lefthook.yaml'],
+      extensions: [
+        '.lefthook.json',
+        '.lefthook.toml',
+        '.lefthook.yaml',
+        '.lefthook.yml',
+        'lefthook.json',
+        'lefthook.toml',
+        'lefthook.yaml',
+        'lefthook.yml',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
