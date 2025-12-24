@@ -4196,6 +4196,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pixi',
+      extensions: ['pixi.lock', 'pixi.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'platformio',
       extensions: ['platformio.ini'],
       filename: true,
