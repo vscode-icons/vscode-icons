@@ -3965,6 +3965,7 @@ export const extensions: IFileCollection = {
     },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     {
+      // Taken from https://github.com/oxc-project/oxc-project.github.io/blob/d8960bf260016b7f6c8927ccc9be288f583b96b3/public/logo-without-border.svg
       icon: 'oxc',
       extensions: ['.oxlintignore', '.oxlintrc.json', '.oxfmtrc.json'],
       filename: true,
@@ -4822,6 +4823,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      // Taken from https://github.com/rolldown/rolldown/blob/c7844dfddcde90eb57e68eb7e3c5603328c7688d/docs/public/logo-without-border.svg
       icon: 'rolldown',
       extensions: [],
       filenamesGlob: [
@@ -5932,6 +5934,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      // Taken from https://github.com/vitejs/vite/blob/dc3821d70ee8ae22dd81be1135e354b22d5cde35/docs/public/logo-without-border.svg
       icon: 'vite',
       filenamesGlob: ['vite.config'],
       extensions: [],
@@ -5940,7 +5943,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      // Taken from https://vitest.dev/logo.svg
+      // Taken from https://github.com/vitest-dev/vitest/blob/f9271a0811147d4ca71488ebd4fc442733d014e5/docs/public/logo-without-border.svg
       icon: 'vitest',
       // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.config'],
