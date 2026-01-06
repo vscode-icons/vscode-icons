@@ -3965,10 +3965,11 @@ export const extensions: IFileCollection = {
     },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     {
-      // Taken from https://github.com/oxc-project/oxc-project.github.io/blob/rebrand/public/logo-without-border.svg
+      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'oxc',
       extensions: ['.oxlintignore', '.oxlintrc.json', '.oxfmtrc.json'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
@@ -4823,7 +4824,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      // Taken from https://github.com/rolldown/rolldown/blob/rebrand/docs/public/logo-without-border.svg
+      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'rolldown',
       extensions: [],
       filenamesGlob: [
@@ -4834,6 +4835,7 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['js', 'cjs', 'mjs', 'coffee', 'ts', 'mts', 'cts'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -5934,16 +5936,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      // Taken from https://github.com/vitejs/vite/blob/rebrand/docs/public/logo-without-border.svg
+      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'vite',
       filenamesGlob: ['vite.config'],
       extensions: [],
       extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
-      // Taken from https://github.com/vitest-dev/vitest/blob/rebrand/docs/public/logo-without-border.svg
+      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'vitest',
       // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.config'],
@@ -5951,16 +5954,18 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       languages: [languages.vitestsnapshot],
+      light: true,
       format: FileFormat.svg,
     },
     {
-      // Taken from https://vitest.dev/logo.svg
+      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'vitest',
       // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.workspace', 'vitest.projects'],
       extensions: [],
       extensionsGlob: ['json', 'js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
