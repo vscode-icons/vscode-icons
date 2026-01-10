@@ -5973,6 +5973,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'vroom',
+      extensions: [],
+      languages: [languages.vroom],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'vscode',
       extensions: ['.vscodeignore'],
       filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
