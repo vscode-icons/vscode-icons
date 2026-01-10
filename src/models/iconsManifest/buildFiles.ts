@@ -9,7 +9,15 @@ export interface IBuildFiles {
   light: {
     fileExtensions: IIconAssociation;
     fileNames: IIconAssociation;
+    language: {
+      fileExtensions: IIconAssociation;
+      fileNames: IIconAssociation;
+      languageIds: IIconAssociation;
+    };
+  };
+  language: {
+    fileExtensions: IIconAssociation;
+    fileNames: IIconAssociation;
     languageIds: IIconAssociation;
   };
-  languageIds: IIconAssociation;
 }

@@ -67,6 +67,11 @@ export const extensions: IFolderCollection = {
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
     {
+      icon: 'cargo',
+      extensions: ['cargo', '.cargo', 'crates'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'certificate',
       extensions: ['certificates', '.certificates', 'certs', 'certs.'],
       format: FileFormat.svg,
@@ -74,6 +79,12 @@ export const extensions: IFolderCollection = {
     { icon: 'changesets', extensions: ['.changeset'], format: FileFormat.svg },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
+    { icon: 'claude', extensions: ['.claude'], format: FileFormat.svg },
+    {
+      icon: 'cloudflare',
+      extensions: ['.cloudflare', 'cloudflare'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'controller',
       extensions: [
@@ -178,6 +189,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'dapr',
       extensions: ['.dapr', 'dapr'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dart',
+      extensions: ['dart', '.dart_tool'],
       format: FileFormat.svg,
     },
     {
@@ -388,6 +404,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
       disabled: true,
     },
+    { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
     {
       icon: 'kubernetes',
       extensions: [
@@ -724,7 +741,15 @@ export const extensions: IFolderCollection = {
     { icon: 'travis', extensions: ['.travis'], format: FileFormat.svg },
     {
       icon: 'tools',
-      extensions: ['tool', 'tools', '.tools', 'util', 'utils', 'utilities'],
+      extensions: [
+        'tool',
+        'tools',
+        '.tools',
+        'util',
+        'utils',
+        'utilities',
+        'tooling',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -824,6 +849,11 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     {
+      icon: 'wasm',
+      extensions: ['wasm', 'WASM', 'webassembly', 'WebAssembly'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wit',
       extensions: ['wit'],
       format: FileFormat.svg,
@@ -839,6 +869,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'windsurf',
+      extensions: ['.windsurf'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'www',
       extensions: ['.web', 'www', 'wwwroot', 'web'],
       format: FileFormat.svg,
@@ -846,6 +881,12 @@ export const extensions: IFolderCollection = {
     {
       icon: 'yarn',
       extensions: ['.yarn'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'zed',
+      extensions: ['.zed'],
+      light: true,
       format: FileFormat.svg,
     },
   ],

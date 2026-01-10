@@ -63,7 +63,7 @@ export const extensions: IFileCollection = {
         'docker-compose.vs.release',
         'docker-cloud',
       ],
-      extensionsGlob: ['yml'],
+      extensionsGlob: ['yml', 'yaml'],
       filename: true,
       languages: [languages.dockerfile],
       format: FileFormat.svg,
