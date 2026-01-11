@@ -6358,6 +6358,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'vvvvvv',
+      extensions: ['vvvvvv'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'yacc',
       extensions: [],
       languages: [languages.yacc],
