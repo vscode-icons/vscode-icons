@@ -6301,6 +6301,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'xaml',
+      extensions: ['xaml', 'axaml'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'xo',
       extensions: ['.xo-config'],
       filename: true,
