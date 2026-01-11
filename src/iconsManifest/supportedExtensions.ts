@@ -474,6 +474,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'alchemy',
+      extensions: ['alchemy.run.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'alloy',
       extensions: [],
       languages: [languages.alloy],
