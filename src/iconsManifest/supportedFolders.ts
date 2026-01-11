@@ -301,6 +301,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'flutter',
+      extensions: ['flutter', 'Flutter'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fonts',
       extensions: ['fonts', 'font', 'fnt', 'webfonts'],
       light: true,
