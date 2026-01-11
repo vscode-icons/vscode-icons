@@ -2985,6 +2985,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'jetbrains',
+      extensions: ['iml'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'k',
       extensions: [],
       languages: [languages.k],
