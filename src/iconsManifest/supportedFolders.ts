@@ -352,6 +352,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'histoire',
+      extensions: ['.histoire'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'hook',
       extensions: ['hook', '.hook', 'hooks', '.hooks'],
       format: FileFormat.svg,
