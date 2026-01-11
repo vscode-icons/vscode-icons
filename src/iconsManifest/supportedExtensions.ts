@@ -1557,6 +1557,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'delphi',
+      extensions: [],
+      languages: [languages.pascal],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'deno',
       extensions: [],
       filenamesGlob: ['deno'],
@@ -1585,18 +1591,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'delphi',
-      extensions: [],
-      languages: [languages.pascal],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'devcontainer',
-      extensions: ['devcontainer.json', '.devcontainer.json'],
-      filename: true,
-      format: FileFormat.svg,
-    },
-    {
       icon: 'design_tokens',
       extensions: [
         'resolver.json',
@@ -1606,6 +1600,33 @@ export const extensions: IFileCollection = {
         'tokens.json5',
         'tokens.jsonc',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'devcontainer',
+      extensions: ['devcontainer.json', '.devcontainer.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'devvit',
+      filename: true,
+      filenamesGlob: ['devvit', 'devvit.dev', 'devvit.prod', 'devvit.test'],
+      extensions: [],
+      extensionsGlob: ['json'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'devvit',
+      filename: true,
+      filenamesGlob: [
+        'devvit.config',
+        'devvit.config.dev',
+        'devvit.config.prod',
+        'devvit.config.test',
+      ],
+      extensions: [],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'mts'],
       format: FileFormat.svg,
     },
     {
