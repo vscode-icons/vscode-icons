@@ -4564,6 +4564,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'prismaconfig',
+      extensions: [],
+      filenamesGlob: ['prisma.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'processinglang',
       extensions: [],
       languages: [languages.processinglang],
