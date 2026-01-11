@@ -1802,6 +1802,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'elasticbeanstalk', extensions: [], format: FileFormat.svg },
     {
+      icon: 'electron',
+      extensions: ['forge.config.js', 'forge.config.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'eleventy',
       extensions: [
         '.eleventy.js',
