@@ -2235,7 +2235,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'gduid',
-      extensions: ['.gd.uid'],
+      extensions: ['gd.uid'],
       format: FileFormat.svg,
     },
     {
