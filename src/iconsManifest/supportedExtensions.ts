@@ -78,6 +78,11 @@ export const extensions: IFileCollection = {
       languages: [languages.advpl],
       format: FileFormat.svg,
     },
+    {
+      icon: 'affinity',
+      extensions: ['af', 'aftemplate'],
+      format: FileFormat.svg,
+    },
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
@@ -98,8 +103,16 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'affinity',
-      extensions: ['af', 'aftemplate'],
+      icon: 'allure',
+      extensions: [
+        'allurerc.js',
+        'allurerc.mjs',
+        'allurerc.cjs',
+        'allurerc.json',
+        'allurerc.yaml',
+        'allurerc.yml',
+      ],
+      filename: true,
       format: FileFormat.svg,
     },
     {
