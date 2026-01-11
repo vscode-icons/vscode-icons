@@ -4024,7 +4024,13 @@ export const extensions: IFileCollection = {
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     {
       icon: 'oxc',
-      extensions: ['.oxlintignore', '.oxlintrc.json', '.oxfmtrc.json'],
+      extensions: [
+        '.oxlintignore',
+        '.oxlintrc.json',
+        '.oxlintrc.jsonc',
+        '.oxfmtrc.json',
+        '.oxfmtrc.jsonc',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
