@@ -437,6 +437,7 @@ export const languages = {
     knownExtensions: ['ddl'],
   },
   po: { ids: 'po', knownExtensions: ['po'] },
+  polyglot: { ids: 'polyglot-notebook', knownExtensions: ['dib'] },
   polymer: { ids: 'polymer', knownExtensions: ['polymer'] },
   pony: { ids: 'pony', knownExtensions: ['pony'] },
   postcss: { ids: 'postcss', knownExtensions: ['pcss'] },
