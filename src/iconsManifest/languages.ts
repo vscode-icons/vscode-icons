@@ -503,7 +503,7 @@ export const languages = {
   rmd: { ids: 'rmd', knownExtensions: ['rmd'] },
   rnc: { ids: 'rnc', knownExtensions: ['rnc'] },
   robot: { ids: 'robot', knownExtensions: ['robot'] },
-  robotstxt: { ids: 'robot-txt', knownFilenames: ['robots.txt'] },
+  robotstxt: { ids: 'robots-txt', knownFilenames: ['robots.txt'] },
   ruby: {
     ids: 'ruby',
     knownExtensions: [
