@@ -4691,6 +4691,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pypi',
+      extensions: ['pyproject.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pyscript',
       extensions: [],
       languages: [languages.pyscript],
