@@ -57,7 +57,7 @@ export const extensions: IFolderCollection = {
     { icon: 'azure', extensions: ['azure', '.azure'], format: FileFormat.svg },
     {
       icon: 'azurepipelines',
-      extensions: ['azure-pipelines', '.azure-pipelines'],
+      extensions: ['azure-pipelines', '.azure-pipelines', '.azuredevops', '.vsts'],
       format: FileFormat.svg,
     },
     { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
