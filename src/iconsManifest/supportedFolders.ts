@@ -317,6 +317,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'gcp', extensions: ['gcp', '.gcp'], format: FileFormat.svg },
+    { icon: 'gemini', extensions: ['.gemini'], format: FileFormat.svg },
     {
       icon: 'git',
       extensions: ['.git', 'submodules', '.submodules'],
