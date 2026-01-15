@@ -1789,7 +1789,7 @@ export const extensions: IFileCollection = {
       icon: 'duckdb',
       format: FileFormat.svg,
       light: true,
-      extensions: ['.duckdb'],
+      extensions: ['duckdb'],
     },
     {
       icon: 'dustjs',
