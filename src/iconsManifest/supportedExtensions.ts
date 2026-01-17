@@ -1338,8 +1338,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cpp',
-      extensions: [],
+      extensions: ['cpp', 'cc', 'cxx'],
       languages: [languages.cpp],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'cppheader',
+      extensions: ['h', 'hpp', 'hh', 'hxx', 'h++'],
       format: FileFormat.svg,
     },
     {
@@ -1355,11 +1360,6 @@ export const extensions: IFileCollection = {
       languages: [languages.cpp],
       format: FileFormat.svg,
       disabled: true,
-    },
-    {
-      icon: 'cppheader',
-      extensions: ['hpp', 'hh', 'hxx', 'h++'],
-      format: FileFormat.svg,
     },
     {
       icon: 'craco',
