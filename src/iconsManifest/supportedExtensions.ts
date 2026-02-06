@@ -5205,6 +5205,13 @@ export const extensions: IFileCollection = {
     },
     { icon: 'sketch', extensions: ['sketch'], format: FileFormat.svg },
     {
+      icon: 'skill',
+      extensions: [],
+      languages: [languages.skill],
+      format: FileFormat.svg,
+      light: true,
+    },
+    {
       icon: 'slang',
       extensions: [],
       languages: [languages.slang],
