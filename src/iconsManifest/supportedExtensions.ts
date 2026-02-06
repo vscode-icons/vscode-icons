@@ -5525,12 +5525,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'syncpack',
-      extensions: ['.syncpackrc'],
-      filenamesGlob: [
+      extensions: [
         '.syncpackrc',
-        'syncpack.config'
+        '.syncpackrc.json',
+        '.syncpackrc.yaml',
+        '.syncpackrc.yml',
       ],
-      extensionsGlob: ['json', 'yaml', 'yml', 'js', 'ts', 'mjs', 'cjs'],
+      filenamesGlob: ['.syncpackrc', 'syncpack.config'],
+      extensionsGlob: ['js', 'ts', 'mjs', 'cjs'],
       filename: true,
       format: FileFormat.svg,
     },
