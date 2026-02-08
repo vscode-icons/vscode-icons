@@ -4070,6 +4070,7 @@ export const extensions: IFileCollection = {
         '.oxlintrc.jsonc',
         '.oxfmtrc.json',
         '.oxfmtrc.jsonc',
+        'oxlint.config.ts',
       ],
       filename: true,
       light: true,
