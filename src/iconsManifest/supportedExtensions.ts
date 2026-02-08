@@ -3512,6 +3512,14 @@ export const extensions: IFileCollection = {
       languages: [languages.metal],
       format: FileFormat.svg,
     },
+    {
+      icon: 'mise',
+      extensions: [],
+      filenamesGlob: ['mise', '.mise', 'mise.local', '.mise.local'],
+      extensionsGlob: ['toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'meteor', extensions: [], format: FileFormat.svg },
     {
       icon: 'mjml',
