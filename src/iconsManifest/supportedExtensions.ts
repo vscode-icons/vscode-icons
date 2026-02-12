@@ -595,6 +595,12 @@ export const extensions: IFileCollection = {
       languages: [languages.asp],
       format: FileFormat.svg,
     },
+    {
+      icon: 'aspire',
+      extensions: ['aspire.cs', 'apphost.cs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'aspx', extensions: ['aspx', 'ascx'], format: FileFormat.svg },
     {
       icon: 'assembly',
