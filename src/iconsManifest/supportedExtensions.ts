@@ -4789,6 +4789,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'rails', extensions: [], format: FileFormat.svg },
+    {
+      icon: 'railway',
+      extensions: ['railway.toml', 'railway.json'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'rake', extensions: ['rake'], format: FileFormat.svg },
     {
       icon: 'rake',
