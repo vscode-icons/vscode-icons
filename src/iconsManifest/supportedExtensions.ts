@@ -3159,6 +3159,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lemon',
+      extensions: ['lemon'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lerna',
       extensions: ['lerna.json'],
       light: true,
