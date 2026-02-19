@@ -65,6 +65,12 @@ test/                               # Test files (mirrors src/)
     specsFolders.test.ts            # Validates all folder icon entries
 ```
 
+### Key File Landmarks
+
+- **`src/iconsManifest/supportedExtensions.ts`**: The `supported` array starts at **line 8**. Entries are alphabetically ordered by `icon` name (first entry: `access`, last: ~`knip`). New entries must be inserted in alphabetical order within this array.
+- **`src/iconsManifest/supportedFolders.ts`**: The `supported` array starts at **line 8**. Entries are alphabetically ordered by `icon` name (first: `android`, last: `zed`).
+- **`src/iconsManifest/languages.ts`**: The languages object starts at **line 3**. Entries are alphabetically ordered by key (first: `actionscript`, last: `zip`).
+
 ## Adding a File Icon
 
 1. Create SVG icon at `icons/file_type_{name}.svg`
