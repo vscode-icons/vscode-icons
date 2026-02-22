@@ -2245,6 +2245,7 @@ export const extensions: IFileCollection = {
         '.gitattributes',
         '.gitconfig',
         '.gitignore',
+        '.gitmessage',
         '.gitmodules',
         '.gitkeep',
         '.git-blame-ignore-revs',
