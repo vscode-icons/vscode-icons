@@ -864,6 +864,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'lte',
+      extensions: ['lte'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'blender',
       extensions: ['blend'],
       format: FileFormat.svg,
