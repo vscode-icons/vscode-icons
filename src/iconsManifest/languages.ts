@@ -560,7 +560,7 @@ export const languages = {
   sln: { ids: 'sln', knownExtensions: ['sln'] },
   silverstripe: { ids: 'silverstripe', knownExtensions: ['ss'] },
   sino: { ids: 'sino', knownExtensions: ['sn'] },
-  skill: { ids: 'skill', knownExtensions: ['skill.md'] },
+  skill: { ids: 'skill', knownFilenames: ['skill.md'] },
   skipper: { ids: ['eskip'], knownExtensions: ['eskip'] },
   smarty: { ids: ['smarty'], knownExtensions: ['tpl'] },
   snakemake: { ids: ['snakemake'], knownExtensions: ['smk'] },
