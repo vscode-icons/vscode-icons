@@ -4070,6 +4070,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'orval',
+      extensions: [],
+      filenamesGlob: ['orval.config'],
+      extensionsGlob: ['js', 'ts', 'mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'outlook',
       extensions: ['pst', 'bcmx', 'otm', 'msg', 'oft'],
       format: FileFormat.svg,
