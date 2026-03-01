@@ -4074,6 +4074,12 @@ export const extensions: IFileCollection = {
       extensions: ['pst', 'bcmx', 'otm', 'msg', 'oft'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'overmind',
+      extensions: ['.overmind.env'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     {
       // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
