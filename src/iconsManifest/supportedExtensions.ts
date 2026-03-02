@@ -4092,6 +4092,11 @@ export const extensions: IFileCollection = {
     },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
     {
+      icon: 'parquet',
+      extensions: ['parquet'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'paket',
       extensions: ['paket.references', 'paket.template'],
       format: FileFormat.svg,
