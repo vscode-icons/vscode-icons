@@ -330,7 +330,7 @@ export const languages = {
   m4: { ids: 'm4', knownExtensions: ['m4'] },
   makefile: { ids: ['makefile', 'makefile2'], knownExtensions: ['mk'] },
   markdown: {
-    ids: 'markdown',
+    ids: ['chatagent', 'markdown'],
     knownExtensions: ['md', 'markdown', 'mdown', 'mkd'],
   },
   marko: { ids: 'marko', knownExtensions: ['marko'] },
