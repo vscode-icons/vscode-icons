@@ -330,7 +330,7 @@ export const languages = {
   m4: { ids: 'm4', knownExtensions: ['m4'] },
   makefile: { ids: ['makefile', 'makefile2'], knownExtensions: ['mk'] },
   markdown: {
-    ids: 'markdown',
+    ids: ['chatagent', 'markdown'],
     knownExtensions: ['md', 'markdown', 'mdown', 'mkd'],
   },
   marko: { ids: 'marko', knownExtensions: ['marko'] },
@@ -560,6 +560,7 @@ export const languages = {
   sln: { ids: 'sln', knownExtensions: ['sln'] },
   silverstripe: { ids: 'silverstripe', knownExtensions: ['ss'] },
   sino: { ids: 'sino', knownExtensions: ['sn'] },
+  skill: { ids: 'skill', knownFilenames: ['skill.md'] },
   skipper: { ids: ['eskip'], knownExtensions: ['eskip'] },
   smarty: { ids: ['smarty'], knownExtensions: ['tpl'] },
   snakemake: { ids: ['snakemake'], knownExtensions: ['smk'] },
