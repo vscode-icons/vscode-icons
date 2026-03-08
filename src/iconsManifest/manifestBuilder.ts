@@ -131,6 +131,21 @@ export class ManifestBuilder {
         zedSchema.themes[0].directory_icons.expanded;
     }
 
+    // When folders are hidden, remove the folder mapping references
+    // so VS Code doesn't reserve space for invisible folder icons.
+    // This prevents the misleading indentation gap described in issue #3353.
+    const foldersDisabled = folders.default.folder?.disabled;
+    if (foldersDisabled) {
+      delete vscSchema.folder;
+      delete vscSchema.folderExpanded;
+      delete vscSchema.rootFolder;
+      delete vscSchema.rootFolderExpanded;
+      delete vscSchema.light.folder;
+      delete vscSchema.light.folderExpanded;
+      delete vscSchema.light.rootFolder;
+      delete vscSchema.light.rootFolderExpanded;
+    }
+
     // set the rest of the schema
     const finalManifest = await this.buildJsonStructure(
       files,
