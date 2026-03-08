@@ -918,7 +918,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bun',
-      extensions: ['.bunfig.toml', 'bunfig.toml', 'bun.lockb', 'bun.lock'],
+      extensions: [
+        '.bun-version',
+        '.bunfig.toml',
+        'bunfig.toml',
+        'bun.lockb',
+        'bun.lock',
+      ],
       languages: [languages.bunlockb],
       filename: true,
       format: FileFormat.svg,
