@@ -3003,6 +3003,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cmrc',
+      extensions: ['cmrc'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'julia',
       extensions: [],
       languages: [languages.julia],
