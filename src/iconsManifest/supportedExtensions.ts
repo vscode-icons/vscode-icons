@@ -3979,9 +3979,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nx',
-      extensions: [],
-      filenamesGlob: ['nx'],
-      extensionsGlob: ['json'],
+      extensions: ['.nxignore', 'nx.json'],
       filename: true,
       light: true,
       format: FileFormat.svg,
