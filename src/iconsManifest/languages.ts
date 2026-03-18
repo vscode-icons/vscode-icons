@@ -52,6 +52,7 @@ export const languages = {
   biml: { ids: 'biml', knownExtensions: ['biml'] },
   binary: { ids: 'code-text-binary', knownExtensions: ['bin'] },
   biomesyntaxtree: { ids: 'biome_syntax_tree', knownExtensions: ['rast'] },
+  bison: { ids: 'bison', knownExtensions: ['y', 'yy', 'ypp', 'bison'] },
   blade: { ids: ['blade', 'laravel-blade'], knownExtensions: ['blade.php'] },
   blitzbasic: { ids: ['blitzbasic'], knownExtensions: ['blitzbasic'] },
   bolt: { ids: 'bolt', knownExtensions: ['bolt'] },
@@ -183,6 +184,7 @@ export const languages = {
   excel: { ids: 'excel', knownExtensions: ['xlsx'] },
   falcon: { ids: 'falcon', knownExtensions: ['falcon'] },
   fauna: { ids: 'fql', knownExtensions: ['fql'] },
+  flex: { ids: 'flex', knownExtensions: ['l', 'll', 'lex', 'flex'] },
   fortran: {
     ids: [
       'fortran',
