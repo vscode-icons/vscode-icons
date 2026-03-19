@@ -839,7 +839,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bison',
-      extensions: ['y', 'yy', 'ypp', 'bison'],
+      extensions: [],
       languages: [languages.bison],
       format: FileFormat.svg,
     },
@@ -2129,8 +2129,8 @@ export const extensions: IFileCollection = {
     { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
       icon: 'flex',
-      extensions: ['l', 'll', 'lex', 'flex'],
-      languages: [languages.flex],
+      extensions: [],
+      languages: [languages.lex],
       format: FileFormat.svg,
     },
     {

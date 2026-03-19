@@ -52,7 +52,7 @@ export const languages = {
   biml: { ids: 'biml', knownExtensions: ['biml'] },
   binary: { ids: 'code-text-binary', knownExtensions: ['bin'] },
   biomesyntaxtree: { ids: 'biome_syntax_tree', knownExtensions: ['rast'] },
-  bison: { ids: 'bison', knownExtensions: ['y', 'yy', 'ypp', 'bison'] },
+  bison: { ids: ['bison', 'yacc'], knownExtensions: ['y', 'yy', 'ypp', 'bison'] },
   blade: { ids: ['blade', 'laravel-blade'], knownExtensions: ['blade.php'] },
   blitzbasic: { ids: ['blitzbasic'], knownExtensions: ['blitzbasic'] },
   bolt: { ids: 'bolt', knownExtensions: ['bolt'] },
@@ -184,7 +184,6 @@ export const languages = {
   excel: { ids: 'excel', knownExtensions: ['xlsx'] },
   falcon: { ids: 'falcon', knownExtensions: ['falcon'] },
   fauna: { ids: 'fql', knownExtensions: ['fql'] },
-  flex: { ids: 'flex', knownExtensions: ['l', 'll', 'lex', 'flex'] },
   fortran: {
     ids: [
       'fortran',
@@ -321,7 +320,7 @@ export const languages = {
   latino: { ids: 'latino', knownExtensions: ['lat'] },
   lean: { ids: ['lean4', 'lean4markdown'], knownExtensions: ['lean'] },
   less: { ids: 'less', knownExtensions: ['less'] },
-  lex: { ids: 'lex', knownExtensions: ['flex'] },
+  lex: { ids: 'lex', knownExtensions: ['l', 'll', 'lex', 'flex'] },
   lilypond: { ids: 'lilypond', knownExtensions: ['ly'] },
   lisp: { ids: ['lisp', 'autolisp', 'autolispdcl'], knownExtensions: ['lisp'] },
   literatehaskell: { ids: ['literate haskell'], knownExtensions: ['lhs'] },
