@@ -6,8 +6,8 @@ import * as sinon from 'sinon';
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
 import {
   FileFormat,
-  IFileExtension,
   IFileCollection,
+  IFileExtension,
 } from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
@@ -368,7 +368,7 @@ describe('CustomsMerger: file extensions tests', function () {
               icon: 'actionscript',
               extensions: [],
               format: 'svg',
-              languages: [{ ids: 'newlang', defaultExtension: 'newlang' }],
+              languages: [{ ids: 'newlang', knownExtensions: ['newlang'] }],
             },
           ],
         };

@@ -27,6 +27,11 @@ describe('ExtensionManager: actions tests', function () {
     let extensionManager: models.IExtensionManager;
     let vsiconsClone: models.IVSIcons;
 
+    const defaultManifest: models.IIconManifest = {
+      vscode: models.schema,
+      zed: models.zedSchema,
+    };
+
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
@@ -442,7 +447,7 @@ describe('ExtensionManager: actions tests', function () {
             default: associations.folderDefault,
             supported: associations.folders,
           };
-          iconsGeneratorStub.generateIconsManifest.resolves(models.schema);
+          iconsGeneratorStub.generateIconsManifest.resolves(defaultManifest);
           applyCustomization =
             // @ts-ignore
             extensionManager.applyCustomization as (
@@ -460,8 +465,8 @@ describe('ExtensionManager: actions tests', function () {
               undefined,
             ),
           ).to.be.true;
-          expect(iconsGeneratorStub.persist.calledOnceWith(models.schema)).to.be
-            .true;
+          expect(iconsGeneratorStub.persist.calledOnceWith(defaultManifest)).to
+            .be.true;
         });
 
         it(`including the project detection result`, async function () {
@@ -484,7 +489,7 @@ describe('ExtensionManager: actions tests', function () {
             ),
           ).to.be.true;
           expect(
-            iconsGeneratorStub.persist.calledOnceWithExactly(models.schema),
+            iconsGeneratorStub.persist.calledOnceWithExactly(defaultManifest),
           ).to.be.true;
         });
       });
@@ -492,7 +497,7 @@ describe('ExtensionManager: actions tests', function () {
 
     context(`restoring the manifest`, function () {
       it(`generates and saves a default icons manifest`, async function () {
-        iconsGeneratorStub.generateIconsManifest.resolves(models.schema);
+        iconsGeneratorStub.generateIconsManifest.resolves(defaultManifest);
         const restoreManifest =
           // @ts-ignore
           extensionManager.restoreManifest as (
@@ -503,8 +508,9 @@ describe('ExtensionManager: actions tests', function () {
 
         expect(iconsGeneratorStub.generateIconsManifest.calledOnceWithExactly())
           .to.be.true;
-        expect(iconsGeneratorStub.persist.calledOnceWithExactly(models.schema))
-          .to.be.true;
+        expect(
+          iconsGeneratorStub.persist.calledOnceWithExactly(defaultManifest),
+        ).to.be.true;
       });
     });
 

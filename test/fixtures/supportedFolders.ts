@@ -21,5 +21,12 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    { icon: 'json', extensions: ['json'], format: FileFormat.svg },
+    {
+      icon: 'json_official',
+      extensions: ['json'],
+      format: FileFormat.svg,
+      disabled: true,
+    },
   ],
 };

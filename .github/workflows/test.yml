@@ -115,15 +115,16 @@ jobs:
         run: npm test
 
       - name: Uploading code coverage report
-        if: >
-          (
-            success() &&
-            matrix.os == 'ubuntu-latest' &&
-            matrix.node == '18.15.0' &&
-            github.event_name == 'push' &&
-            github.repository_owner == 'vscode-icons' &&
-            github.actor != 'dependabot[bot]'
-          )
+        # if: >
+        #   (
+        #     success() &&
+        #     matrix.os == 'ubuntu-latest' &&
+        #     matrix.node == '18.15.0' &&
+        #     github.event_name == 'push' &&
+        #     github.repository_owner == 'vscode-icons' &&
+        #     github.actor != 'dependabot[bot]'
+        #   )
+        if: false
         uses: paambaati/codeclimate-action@v9
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}

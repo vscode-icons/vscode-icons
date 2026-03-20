@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "12.14.0",
+  "version": "12.17.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -100,7 +100,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "glob": "^10.3.3",
+    "glob": "^10.5.0",
     "husky": "^8.0.3",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
@@ -110,12 +110,12 @@
     "sinon": "^15.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
-    "webpack": "^5.94.0",
+    "webpack": "^5.105.0",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "inversify": "^6.0.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "open": "^8.4.2",
     "reflect-metadata": "^0.1.13",
     "semver": "^7.5.4"

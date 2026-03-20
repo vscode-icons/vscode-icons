@@ -7,6 +7,12 @@ export const extensions: IFolderCollection = {
   },
   supported: [
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
+    { icon: 'angular', extensions: ['.angular'], format: FileFormat.svg },
+    {
+      icon: 'apache',
+      extensions: ['apache', 'apache2', 'httpd'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'api',
       extensions: ['api', '.api', 'apis', '.apis'],
@@ -51,7 +57,12 @@ export const extensions: IFolderCollection = {
     { icon: 'azure', extensions: ['azure', '.azure'], format: FileFormat.svg },
     {
       icon: 'azurepipelines',
-      extensions: ['azure-pipelines', '.azure-pipelines'],
+      extensions: [
+        'azure-pipelines',
+        '.azure-pipelines',
+        '.azuredevops',
+        '.vsts',
+      ],
       format: FileFormat.svg,
     },
     { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
@@ -66,6 +77,11 @@ export const extensions: IFolderCollection = {
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
     {
+      icon: 'cargo',
+      extensions: ['cargo', '.cargo', 'crates'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'certificate',
       extensions: ['certificates', '.certificates', 'certs', 'certs.'],
       format: FileFormat.svg,
@@ -73,6 +89,12 @@ export const extensions: IFolderCollection = {
     { icon: 'changesets', extensions: ['.changeset'], format: FileFormat.svg },
     { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
+    { icon: 'claude', extensions: ['.claude'], format: FileFormat.svg },
+    {
+      icon: 'cloudflare',
+      extensions: ['.cloudflare', 'cloudflare'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'controller',
       extensions: [
@@ -169,6 +191,12 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
     {
+      icon: 'cursor',
+      extensions: ['.cursor'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cypress',
       extensions: ['cypress'],
       light: true,
@@ -177,6 +205,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'dapr',
       extensions: ['.dapr', 'dapr'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dart',
+      extensions: ['dart', '.dart_tool'],
       format: FileFormat.svg,
     },
     {
@@ -194,6 +227,8 @@ export const extensions: IFolderCollection = {
         'repo',
         'repository',
         'repositories',
+        'store',
+        'stores',
       ],
       format: FileFormat.svg,
     },
@@ -276,12 +311,18 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'flutter',
+      extensions: ['flutter', 'Flutter'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fonts',
       extensions: ['fonts', 'font', 'fnt', 'webfonts'],
       light: true,
       format: FileFormat.svg,
     },
     { icon: 'gcp', extensions: ['gcp', '.gcp'], format: FileFormat.svg },
+    { icon: 'gemini', extensions: ['.gemini'], format: FileFormat.svg },
     {
       icon: 'git',
       extensions: ['.git', 'submodules', '.submodules'],
@@ -289,6 +330,7 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'github', extensions: ['.github'], format: FileFormat.svg },
     { icon: 'gitlab', extensions: ['.gitlab'], format: FileFormat.svg },
+    { icon: 'godot', extensions: ['godot', '.godot'], format: FileFormat.svg },
     {
       icon: 'gradle',
       extensions: ['gradle', '.gradle'],
@@ -318,6 +360,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'helper',
       extensions: ['helper', '.helper', 'helpers', '.helpers'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'histoire',
+      extensions: ['.histoire'],
       format: FileFormat.svg,
     },
     {
@@ -384,6 +431,12 @@ export const extensions: IFolderCollection = {
       extensions: ['json'],
       format: FileFormat.svg,
       disabled: true,
+    },
+    { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
+    {
+      icon: 'kotlin',
+      extensions: ['kotlin', 'Kotlin', '.kotlin'],
+      format: FileFormat.svg,
     },
     {
       icon: 'kubernetes',
@@ -600,6 +653,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.vercel'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'vitepress',
+      extensions: ['.vitepress'],
+      format: FileFormat.svg,
+    },
     { icon: 'redis', extensions: ['redis'], format: FileFormat.svg },
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
     {
@@ -721,7 +779,15 @@ export const extensions: IFolderCollection = {
     { icon: 'travis', extensions: ['.travis'], format: FileFormat.svg },
     {
       icon: 'tools',
-      extensions: ['tool', 'tools', '.tools', 'util', 'utils', 'utilities'],
+      extensions: [
+        'tool',
+        'tools',
+        '.tools',
+        'util',
+        'utils',
+        'utilities',
+        'tooling',
+      ],
       format: FileFormat.svg,
     },
     {
@@ -821,6 +887,11 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     {
+      icon: 'wasm',
+      extensions: ['wasm', 'WASM', 'webassembly', 'WebAssembly'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wit',
       extensions: ['wit'],
       format: FileFormat.svg,
@@ -836,6 +907,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'windsurf',
+      extensions: ['.windsurf'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'www',
       extensions: ['.web', 'www', 'wwwroot', 'web'],
       format: FileFormat.svg,
@@ -843,6 +919,12 @@ export const extensions: IFolderCollection = {
     {
       icon: 'yarn',
       extensions: ['.yarn'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'zed',
+      extensions: ['.zed'],
+      light: true,
       format: FileFormat.svg,
     },
   ],

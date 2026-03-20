@@ -1,5 +1,5 @@
-import { IIconSchema } from '../iconSchema';
 import { IFileCollection, IFolderCollection } from '../extensions';
+import { IIconSchema, IZedIconSchema } from '../iconSchema';
 import { IProjectDetectionResult } from '../projectDetector';
 
 export interface IIconsGenerator {
@@ -7,9 +7,14 @@ export interface IIconsGenerator {
     files?: IFileCollection,
     folders?: IFolderCollection,
     projectDetectionResults?: IProjectDetectionResult[],
-  ): Promise<IIconSchema>;
+  ): Promise<{ vscode: IIconSchema; zed: IZedIconSchema }>;
   persist(
-    iconsManifest: IIconSchema,
+    iconsManifest: IIconManifest,
     updatePackageJson?: boolean,
   ): Promise<void>;
+}
+
+export interface IIconManifest {
+  vscode: IIconSchema;
+  zed: IZedIconSchema;
 }

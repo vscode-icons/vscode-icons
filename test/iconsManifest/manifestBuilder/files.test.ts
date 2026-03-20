@@ -7,10 +7,10 @@ import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
 import {
-  IFolderCollection,
   IFileExtension,
-  ILanguage,
+  IFolderCollection,
   IIconAssociation,
+  ILanguage,
 } from '../../../src/models';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
@@ -73,7 +73,7 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.iconDefinitions._file.iconPath).to.equal(
+          expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
             `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
@@ -86,7 +86,8 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
+          expect(manifest.vscode.iconDefinitions._file.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -101,7 +102,7 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.iconDefinitions._file.iconPath).to.equal(
+          expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
             `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
@@ -113,7 +114,8 @@ describe('ManifestBuilder: files icons test', function () {
           emptyFolderCollection,
         );
 
-        expect(manifest.iconDefinitions._file_light.iconPath).to.be.empty;
+        expect(manifest.vscode.iconDefinitions._file_light.iconPath).to.be
+          .empty;
       });
 
       context('each supported', function () {
@@ -128,7 +130,7 @@ describe('ManifestBuilder: files icons test', function () {
               .forEach((file: IFileExtension) => {
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                expect(manifest.iconDefinitions[definition]).to.exist;
+                expect(manifest.vscode.iconDefinitions[definition]).to.exist;
               });
           });
 
@@ -141,7 +143,7 @@ describe('ManifestBuilder: files icons test', function () {
               .filter((file: IFileExtension) => !file.disabled)
               .forEach((file: IFileExtension) => {
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
-                const def = manifest.iconDefinitions[
+                const def = manifest.vscode.iconDefinitions[
                   definition
                 ] as IIconAssociation;
 
@@ -165,7 +167,7 @@ describe('ManifestBuilder: files icons test', function () {
                 }${Utils.fileFormatToString(file.format)}`;
 
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
-                const def = manifest.iconDefinitions[
+                const def = manifest.vscode.iconDefinitions[
                   definition
                 ] as IIconAssociation;
 
@@ -186,7 +188,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                  expect(manifest.iconDefinitions[definition]).to.exist;
+                  expect(manifest.vscode.iconDefinitions[definition]).to.exist;
                 });
             });
 
@@ -199,7 +201,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .filter((file: IFileExtension) => !file.light && !file.disabled)
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
-                  const def = manifest.iconDefinitions[
+                  const def = manifest.vscode.iconDefinitions[
                     definition
                   ] as IIconAssociation;
 
@@ -222,7 +224,7 @@ describe('ManifestBuilder: files icons test', function () {
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
-                  const def = manifest.iconDefinitions[
+                  const def = manifest.vscode.iconDefinitions[
                     definition
                   ] as IIconAssociation;
 
@@ -244,7 +246,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                  expect(manifest.iconDefinitions[definition]).to.exist;
+                  expect(manifest.vscode.iconDefinitions[definition]).to.exist;
                 });
             });
 
@@ -257,7 +259,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .filter((file: IFileExtension) => file.light && !file.disabled)
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
-                  const def = manifest.iconDefinitions[
+                  const def = manifest.vscode.iconDefinitions[
                     definition
                   ] as IIconAssociation;
 
@@ -280,7 +282,7 @@ describe('ManifestBuilder: files icons test', function () {
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
-                  const def = manifest.iconDefinitions[
+                  const def = manifest.vscode.iconDefinitions[
                     definition
                   ] as IIconAssociation;
 
@@ -308,9 +310,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.fileExtensions[extension]).to.equal(
-                          definition,
-                        ),
+                        expect(
+                          manifest.vscode.fileExtensions[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -331,9 +333,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.fileExtensions[extension]).to.equal(
-                          definition,
-                        ),
+                        expect(
+                          manifest.vscode.fileExtensions[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -359,7 +361,7 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.fileNames[extension]).to.equal(
+                        expect(manifest.vscode.fileNames[extension]).to.equal(
                           definition,
                         ),
                       );
@@ -385,7 +387,7 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.fileNames[extension]).to.equal(
+                        expect(manifest.vscode.fileNames[extension]).to.equal(
                           definition,
                         ),
                       );
@@ -410,7 +412,7 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       const assertLanguage = (language: string): void => {
-                        expect(manifest.languageIds[language]).to.equal(
+                        expect(manifest.vscode.languageIds[language]).to.equal(
                           definition,
                         );
                       };
@@ -443,7 +445,7 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       const assertLanguageLight = (language: string): void => {
-                        expect(manifest.languageIds[language]).to.equal(
+                        expect(manifest.vscode.languageIds[language]).to.equal(
                           definition,
                         );
                       };
@@ -481,7 +483,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach((extension: string) =>
                         expect(
-                          manifest.light.fileExtensions[extension],
+                          manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
                       );
                     });
@@ -504,7 +506,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach((extension: string) =>
                         expect(
-                          manifest.light.fileExtensions[extension],
+                          manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
                       );
                     });
@@ -531,9 +533,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.light.fileNames[extension]).to.equal(
-                          definition,
-                        ),
+                        expect(
+                          manifest.vscode.light.fileNames[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -557,9 +559,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.light.fileNames[extension]).to.equal(
-                          definition,
-                        ),
+                        expect(
+                          manifest.vscode.light.fileNames[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -582,9 +584,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       const assertLanguage = (language: string): void => {
-                        expect(manifest.light.languageIds[language]).to.equal(
-                          definition,
-                        );
+                        expect(
+                          manifest.vscode.light.languageIds[language],
+                        ).to.equal(definition);
                       };
 
                       file.languages.forEach((langIds: ILanguage) => {
@@ -615,9 +617,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                       const assertLanguageLight = (language: string): void => {
-                        expect(manifest.light.languageIds[language]).to.equal(
-                          definition,
-                        );
+                        expect(
+                          manifest.vscode.light.languageIds[language],
+                        ).to.equal(definition);
                       };
 
                       file.languages.forEach((langIds: ILanguage) => {
@@ -634,6 +636,53 @@ describe('ManifestBuilder: files icons test', function () {
               });
             });
           });
+        });
+      });
+
+      context('zed theme', function () {
+        it('should get official icons for official theme', async function () {
+          const files = cloneDeep(fixtFiles);
+
+          const manifest = await ManifestBuilder.buildManifest(
+            files,
+            emptyFolderCollection,
+          );
+
+          const officialTheme = manifest.zed.themes[1];
+
+          // should have js
+          const jsId = officialTheme.file_suffixes.js;
+          expect(jsId.endsWith('official')).to.be.true;
+
+          // should not have json
+          const jsonId = officialTheme.file_suffixes.json;
+          expect(jsonId.endsWith('official')).to.be.false;
+        });
+
+        it('should not have light theme defs in dark themes', async function () {
+          const files = cloneDeep(fixtFiles);
+
+          const manifest = await ManifestBuilder.buildManifest(
+            files,
+            emptyFolderCollection,
+          );
+
+          const darkTheme = manifest.zed.themes[0];
+          const lightTheme = manifest.zed.themes[4];
+
+          const jsDark = darkTheme.file_suffixes.js;
+          const jsLight = lightTheme.file_suffixes.js;
+
+          expect(jsDark).to.not.include('light_');
+          expect(jsLight).to.include('light_');
+
+          // Check that dark theme has only the dark version
+          expect(darkTheme.file_icons).to.have.property('_f_js');
+          expect(darkTheme.file_icons).to.not.have.property('_f_light_js');
+
+          // Check that light theme has only the light version
+          expect(lightTheme.file_icons).to.have.property('_f_light_js');
+          expect(lightTheme.file_icons).to.not.have.property('_f_js');
         });
       });
     });
@@ -663,7 +712,7 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.iconDefinitions._file.iconPath).to.equal(
+          expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
             `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
@@ -676,7 +725,8 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
+          expect(manifest.vscode.iconDefinitions._file.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -691,7 +741,7 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.iconDefinitions._file.iconPath).to.equal(
+          expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
             `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
@@ -704,7 +754,8 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.iconDefinitions._file_light.iconPath).not.to.be.empty;
+          expect(manifest.vscode.iconDefinitions._file_light.iconPath).not.to.be
+            .empty;
         });
 
         it(`icon path has the correct structure`, async function () {
@@ -719,7 +770,7 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.iconDefinitions._file_light.iconPath).to.equal(
+          expect(manifest.vscode.iconDefinitions._file_light.iconPath).to.equal(
             `${iconsDirRelativeBasePath}/${filename}`,
           );
         });
@@ -737,7 +788,7 @@ describe('ManifestBuilder: files icons test', function () {
               .forEach((file: IFileExtension) => {
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                expect(manifest.iconDefinitions[definition]).to.exist;
+                expect(manifest.vscode.iconDefinitions[definition]).to.exist;
               });
           });
 
@@ -750,7 +801,7 @@ describe('ManifestBuilder: files icons test', function () {
               .filter((file: IFileExtension) => !file.disabled)
               .forEach((file: IFileExtension) => {
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
-                const def = manifest.iconDefinitions[
+                const def = manifest.vscode.iconDefinitions[
                   definition
                 ] as IIconAssociation;
 
@@ -773,7 +824,7 @@ describe('ManifestBuilder: files icons test', function () {
                   constants.iconsManifest.iconSuffix
                 }${Utils.fileFormatToString(file.format)}`;
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
-                const def = manifest.iconDefinitions[
+                const def = manifest.vscode.iconDefinitions[
                   definition
                 ] as IIconAssociation;
 
@@ -794,7 +845,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                  expect(manifest.iconDefinitions[definition]).to.exist;
+                  expect(manifest.vscode.iconDefinitions[definition]).to.exist;
                 });
             });
 
@@ -807,7 +858,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .filter((file: IFileExtension) => !file.light && !file.disabled)
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
-                  const def = manifest.iconDefinitions[
+                  const def = manifest.vscode.iconDefinitions[
                     definition
                   ] as IIconAssociation;
 
@@ -830,7 +881,7 @@ describe('ManifestBuilder: files icons test', function () {
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
-                  const def = manifest.iconDefinitions[
+                  const def = manifest.vscode.iconDefinitions[
                     definition
                   ] as IIconAssociation;
 
@@ -852,7 +903,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                  expect(manifest.iconDefinitions[definition]).to.exist;
+                  expect(manifest.vscode.iconDefinitions[definition]).to.exist;
                 });
             });
 
@@ -865,7 +916,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .filter((file: IFileExtension) => file.light && !file.disabled)
                 .forEach((file: IFileExtension) => {
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
-                  const def = manifest.iconDefinitions[
+                  const def = manifest.vscode.iconDefinitions[
                     definition
                   ] as IIconAssociation;
 
@@ -888,7 +939,7 @@ describe('ManifestBuilder: files icons test', function () {
                     constants.iconsManifest.iconSuffix
                   }${Utils.fileFormatToString(file.format)}`;
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
-                  const def = manifest.iconDefinitions[
+                  const def = manifest.vscode.iconDefinitions[
                     definition
                   ] as IIconAssociation;
 
@@ -916,9 +967,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.fileExtensions[extension]).to.equal(
-                          definition,
-                        ),
+                        expect(
+                          manifest.vscode.fileExtensions[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -939,9 +990,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.fileExtensions[extension]).to.equal(
-                          definition,
-                        ),
+                        expect(
+                          manifest.vscode.fileExtensions[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -967,7 +1018,7 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.fileNames[extension]).to.equal(
+                        expect(manifest.vscode.fileNames[extension]).to.equal(
                           definition,
                         ),
                       );
@@ -993,7 +1044,7 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.fileNames[extension]).to.equal(
+                        expect(manifest.vscode.fileNames[extension]).to.equal(
                           definition,
                         ),
                       );
@@ -1018,7 +1069,7 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       const assertLanguage = (language: string): void => {
-                        expect(manifest.languageIds[language]).to.equal(
+                        expect(manifest.vscode.languageIds[language]).to.equal(
                           definition,
                         );
                       };
@@ -1051,7 +1102,7 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       const assertLanguageLight = (language: string): void => {
-                        expect(manifest.languageIds[language]).to.equal(
+                        expect(manifest.vscode.languageIds[language]).to.equal(
                           definition,
                         );
                       };
@@ -1089,7 +1140,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach((extension: string) =>
                         expect(
-                          manifest.light.fileExtensions[extension],
+                          manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
                       );
                     });
@@ -1112,7 +1163,7 @@ describe('ManifestBuilder: files icons test', function () {
 
                       file.extensions.forEach((extension: string) =>
                         expect(
-                          manifest.light.fileExtensions[extension],
+                          manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
                       );
                     });
@@ -1139,9 +1190,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.light.fileNames[extension]).to.equal(
-                          definition,
-                        ),
+                        expect(
+                          manifest.vscode.light.fileNames[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -1165,9 +1216,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                       file.extensions.forEach((extension: string) =>
-                        expect(manifest.light.fileNames[extension]).to.equal(
-                          definition,
-                        ),
+                        expect(
+                          manifest.vscode.light.fileNames[extension],
+                        ).to.equal(definition),
                       );
                     });
                 });
@@ -1190,9 +1241,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
                       const assertLanguage = (language: string): void => {
-                        expect(manifest.light.languageIds[language]).to.equal(
-                          definition,
-                        );
+                        expect(
+                          manifest.vscode.light.languageIds[language],
+                        ).to.equal(definition);
                       };
 
                       file.languages.forEach((langIds: ILanguage) => {
@@ -1223,9 +1274,9 @@ describe('ManifestBuilder: files icons test', function () {
                       const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
                       const assertLanguageLight = (language: string): void => {
-                        expect(manifest.light.languageIds[language]).to.equal(
-                          definition,
-                        );
+                        expect(
+                          manifest.vscode.light.languageIds[language],
+                        ).to.equal(definition);
                       };
 
                       file.languages.forEach((langIds: ILanguage) => {
@@ -1272,8 +1323,8 @@ describe('ManifestBuilder: files icons test', function () {
           customIconDirPath,
         );
 
-        expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
-        expect(manifest.iconDefinitions._file.iconPath).to.equal(
+        expect(manifest.vscode.iconDefinitions._file.iconPath).not.to.be.empty;
+        expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
           `${customIconDirPath}/${constants.extension.customIconFolderName}`,
         );
       });
@@ -1289,8 +1340,8 @@ describe('ManifestBuilder: files icons test', function () {
           emptyFolderCollection,
           customIconDirPath,
         );
-        expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
-        expect(manifest.iconDefinitions._file.iconPath).to.equal(
+        expect(manifest.vscode.iconDefinitions._file.iconPath).not.to.be.empty;
+        expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
           `${iconsDirRelativeBasePath}/${constants.extension.customIconFolderName}`,
         );
       });
@@ -1304,8 +1355,8 @@ describe('ManifestBuilder: files icons test', function () {
           customIconDirPath,
         );
 
-        expect(manifest.iconDefinitions._file.iconPath).not.to.be.empty;
-        expect(manifest.iconDefinitions._file.iconPath).to.equal(
+        expect(manifest.vscode.iconDefinitions._file.iconPath).not.to.be.empty;
+        expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
           `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file.svg`,
         );
         expect(
