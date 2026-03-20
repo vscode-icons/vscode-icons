@@ -597,7 +597,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'aspire',
-      extensions: ['aspire.cs', 'apphost.cs'],
+      extensions: ['apphost.ts', 'apphost.cs'],
       filename: true,
       format: FileFormat.svg,
     },
