@@ -369,6 +369,7 @@ export const languages = {
   mvtcss: { ids: 'mvtcss', knownExtensions: ['mvt'] },
   mvtjs: { ids: 'mvtjs', knownExtensions: ['mvt'] },
   nearley: { ids: 'nearley', knownExtensions: ['ne'] },
+  neuralang: { ids: 'neuralang', knownExtensions: ['nl'] },
   nextflow: { ids: 'nextflow', knownExtensions: ['nf'] },
   nginx: { ids: ['nginx'], knownExtensions: ['nginx'] },
   nim: { ids: 'nim', knownExtensions: ['nim'] },
