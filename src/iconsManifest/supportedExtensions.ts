@@ -3665,6 +3665,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'neuralang',
+      extensions: ['nl'],
+      languages: [languages.neuralang],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'neo4j',
       extensions: [],
       languages: [languages.cypher],
