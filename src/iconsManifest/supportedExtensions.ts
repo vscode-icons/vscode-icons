@@ -4140,6 +4140,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    { icon: 'parquet', extensions: ['parquet'], format: FileFormat.svg },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
     { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
     {
