@@ -4699,7 +4699,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'biome',
-      extensions: ['biome.json', 'biome.jsonc'],
+      extensions: ['biome.json', 'biome.jsonc', '.biome.json', '.biome.jsonc'],
       filename: true,
       languages: [languages.biomesyntaxtree],
       format: FileFormat.svg,
