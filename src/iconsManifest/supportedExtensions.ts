@@ -1403,7 +1403,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'cspell',
       extensions: [],
-      filenamesGlob: ['cspell.config', 'cspell', '.cspell'],
+      filenamesGlob: ['.cspell.config', 'cspell.config', 'cspell', '.cspell'],
       extensionsGlob: ['json', 'js', 'mjs', 'cjs', 'yaml', 'yml'],
       filename: true,
       format: FileFormat.svg,
@@ -2245,6 +2245,7 @@ export const extensions: IFileCollection = {
         '.gitattributes',
         '.gitconfig',
         '.gitignore',
+        '.gitmessage',
         '.gitmodules',
         '.gitkeep',
         '.git-blame-ignore-revs',
@@ -3156,6 +3157,11 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['json', 'toml', 'yaml', 'yml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'lemon',
+      extensions: ['lemon'],
       format: FileFormat.svg,
     },
     {
@@ -5226,6 +5232,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'sketch', extensions: ['sketch'], format: FileFormat.svg },
+    {
+      icon: 'skill',
+      extensions: [],
+      languages: [languages.skill],
+      format: FileFormat.svg,
+      light: true,
+    },
     {
       icon: 'slang',
       extensions: [],
