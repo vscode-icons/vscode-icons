@@ -5058,6 +5058,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ruff',
+      extensions: ['ruff.toml', '.ruff.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rust',
       extensions: [],
       languages: [languages.rust],
