@@ -885,6 +885,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'brew',
+      extensions: ['.Brewfile', 'Brewfile'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'browserslist',
       extensions: ['.browserslistrc', 'browserslist'],
       filename: true,
