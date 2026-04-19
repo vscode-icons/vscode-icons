@@ -243,6 +243,28 @@ describe('ManifestBuilder: folders icons test', function () {
           .to.be.empty;
       });
 
+
+      context(`when the default folder is disabled`, function () {
+        it(`removes folder mapping references from the vscode schema`, async function () {
+          const folders = cloneDeep(fixtFolders);
+          folders.default.folder.disabled = true;
+
+          const manifest = await ManifestBuilder.buildManifest(
+            emptyFileCollection,
+            folders,
+          );
+
+          expect(manifest.vscode.folder).to.be.undefined;
+          expect(manifest.vscode.folderExpanded).to.be.undefined;
+          expect(manifest.vscode.rootFolder).to.be.undefined;
+          expect(manifest.vscode.rootFolderExpanded).to.be.undefined;
+          expect(manifest.vscode.light.folder).to.be.undefined;
+          expect(manifest.vscode.light.folderExpanded).to.be.undefined;
+          expect(manifest.vscode.light.rootFolder).to.be.undefined;
+          expect(manifest.vscode.light.rootFolderExpanded).to.be.undefined;
+        });
+      });
+
       context('each supported', function () {
         context('folder', function () {
           it('has a definition', async function () {
