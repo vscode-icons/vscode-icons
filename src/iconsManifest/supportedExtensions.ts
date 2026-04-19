@@ -1786,6 +1786,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'duckdb',
+      extensions: ['duckdb'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dustjs',
       extensions: [],
       languages: [languages.dustjs],
