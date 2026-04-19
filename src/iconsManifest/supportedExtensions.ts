@@ -2202,6 +2202,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fritzing',
+      extensions: ['fzz', 'fz', 'fzpz', 'fzp', 'fzbz', 'fzb'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'frontcommerce',
       extensions: ['.front-commerce.js', 'front-commerce.config.ts'],
       filename: true,
@@ -4634,6 +4639,11 @@ export const extensions: IFileCollection = {
       icon: 'protobuf',
       extensions: [],
       languages: [languages.protobuf],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'proteus',
+      extensions: ['pdsprj', 'dsn'],
       format: FileFormat.svg,
     },
     {
