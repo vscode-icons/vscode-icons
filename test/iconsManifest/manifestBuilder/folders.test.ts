@@ -243,7 +243,6 @@ describe('ManifestBuilder: folders icons test', function () {
           .to.be.empty;
       });
 
-
       context(`when the default folder is disabled`, function () {
         it(`removes folder mapping references from the vscode schema`, async function () {
           const folders = cloneDeep(fixtFolders);
