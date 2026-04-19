@@ -1,11 +1,2 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-	<style>
-		.s0 { fill: #1a1a1a } 
-		.s1 { fill: #fff100 } 
-	</style>
-	<path fill-rule="evenodd" class="s0" d="m16 30c-7.74 0-14-6.26-14-14 0-7.74 6.26-14 14-14 7.74 0 14 6.26 14 14 0 7.74-6.26 14-14 14z"/>
-	<g>
-		<path fill-rule="evenodd" class="s1" d="m12.64 21.79c-3.2 0-5.79-2.59-5.79-5.79 0-3.2 2.59-5.79 5.79-5.79 3.21 0 5.79 2.59 5.79 5.79 0 3.2-2.58 5.79-5.79 5.79z"/>
-		<path class="s1" d="m23.06 13.92h-2.75v4.16h2.75c1.15 0 2.09-0.93 2.09-2.08 0-1.15-0.94-2.08-2.09-2.08z"/>
-	</g>
-</svg>
+<svg width="32" height="32" version="1.2" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><style>.s0 { fill: #1a1a1a } 
+		.s1 { fill: #fff100 }</style><path class="s0" d="m16 30c-7.74 0-14-6.26-14-14s6.26-14 14-14 14 6.26 14 14-6.26 14-14 14z" fill-rule="evenodd"/><path class="s1" d="m12.64 21.79c-3.2 0-5.79-2.59-5.79-5.79s2.59-5.79 5.79-5.79c3.21 0 5.79 2.59 5.79 5.79s-2.58 5.79-5.79 5.79z" fill-rule="evenodd"/><path class="s1" d="m23.06 13.92h-2.75v4.16h2.75c1.15 0 2.09-0.93 2.09-2.08s-0.94-2.08-2.09-2.08z"/></svg>
