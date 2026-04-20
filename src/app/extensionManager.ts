@@ -56,6 +56,12 @@ export class ExtensionManager implements models.IExtensionManager {
       ConfigManager.rootDir = resolve(dirname(__filename), '../../');
     }
 
+    // Mark extension state for Settings Sync so welcome-shown
+    // status is preserved across synced machines
+    this.vscodeManager.context.globalState.setKeysForSync([
+      constants.vsicons.name,
+    ]);
+
     // function calls has to be done in this order strictly
     await this.settingsManager.moveStateFromLegacyPlace();
 

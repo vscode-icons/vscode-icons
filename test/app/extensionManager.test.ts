@@ -40,6 +40,7 @@ describe('ExtensionManager: tests', function () {
 
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
+        globalState: { setKeysForSync: sandbox.stub() },
       }));
       onDidChangeConfigurationStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
