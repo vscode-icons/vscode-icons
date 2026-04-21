@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "12.17.0",
+  "version": "12.18.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -115,7 +115,7 @@
   },
   "dependencies": {
     "inversify": "^6.0.1",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "open": "^8.4.2",
     "reflect-metadata": "^0.1.13",
     "semver": "^7.5.4"

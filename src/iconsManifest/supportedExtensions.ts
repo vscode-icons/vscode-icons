@@ -885,6 +885,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'brew',
+      extensions: ['.Brewfile', 'Brewfile'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'browserslist',
       extensions: ['.browserslistrc', 'browserslist'],
       filename: true,
@@ -918,7 +924,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bun',
-      extensions: ['.bunfig.toml', 'bunfig.toml', 'bun.lockb', 'bun.lock'],
+      extensions: [
+        '.bun-version',
+        '.bunfig.toml',
+        'bunfig.toml',
+        'bun.lockb',
+        'bun.lock',
+      ],
       languages: [languages.bunlockb],
       filename: true,
       format: FileFormat.svg,
@@ -1535,6 +1547,10 @@ export const extensions: IFileCollection = {
       extensions: [
         'service.datadog.yaml',
         'datadog-ci.json',
+        'code-security.datadog.yaml',
+        'code-security.datadog.yml',
+        'repository.datadog.yaml',
+        'repository.datadog.yml',
         'static-analysis.datadog.yml',
         'static-analysis.datadog.yaml',
       ],
@@ -1783,6 +1799,12 @@ export const extensions: IFileCollection = {
       icon: 'dtd',
       extensions: ['dtd'],
       languages: [languages.dtd],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'duckdb',
+      extensions: ['duckdb'],
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -3979,9 +4001,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'nx',
-      extensions: [],
-      filenamesGlob: ['nx'],
-      extensionsGlob: ['json'],
+      extensions: ['.nxignore', 'nx.json'],
       filename: true,
       light: true,
       format: FileFormat.svg,
@@ -4075,6 +4095,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'orval',
+      extensions: [],
+      filenamesGlob: ['orval.config'],
+      extensionsGlob: ['js', 'ts', 'mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'outlook',
       extensions: ['pst', 'bcmx', 'otm', 'msg', 'oft'],
       format: FileFormat.svg,
@@ -4097,6 +4125,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
+    {
+      icon: 'parquet',
+      extensions: ['parquet'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'paket',
       extensions: ['paket.references', 'paket.template'],
@@ -4319,6 +4352,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'pipeline',
       extensions: ['pipeline'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pixi',
+      extensions: ['pixi.lock', 'pixi.toml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -5054,6 +5093,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'ruby',
       extensions: ['.ruby-version'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ruff',
+      extensions: ['ruff.toml', '.ruff.toml'],
       filename: true,
       format: FileFormat.svg,
     },
