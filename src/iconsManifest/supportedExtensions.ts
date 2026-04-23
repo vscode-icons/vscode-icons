@@ -4946,7 +4946,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-     {
+    {
       icon: 'render',
       extensions: ['render.yaml'],
       filename: true,
