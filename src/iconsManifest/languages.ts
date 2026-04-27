@@ -86,7 +86,13 @@ export const languages = {
   cmakecache: { ids: 'cmake-cache', knownFilenames: ['CMakeCache.txt'] },
   cobol: { ids: 'cobol', knownExtensions: ['cbl'] },
   codeql: { ids: 'ql', knownExtensions: ['ql'] },
-  coffeescript: { ids: 'coffeescript', knownExtensions: ['coffee'] },
+  coffeescript: {
+    ids: 'coffeescript',
+    knownExtensions: [
+      'coffee',
+      'litcoffee'
+    ],
+  },
   coldfusion: { ids: ['cfml', 'lang-cfml'], knownExtensions: ['cfml'] },
   confluence: { ids: ['confluence'], knownExtensions: ['confluence'] },
   cookbook: { ids: 'cookbook', knownExtensions: ['ckbk'] },
