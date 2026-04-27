@@ -838,6 +838,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'bison',
+      extensions: [],
+      languages: [languages.bison],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bithound',
       extensions: ['.bithoundrc'],
       filename: true,
@@ -2143,6 +2149,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
+    {
+      icon: 'flex',
+      extensions: [],
+      languages: [languages.lex],
+      format: FileFormat.svg,
+    },
     {
       icon: 'floobits',
       extensions: ['.flooignore'],
