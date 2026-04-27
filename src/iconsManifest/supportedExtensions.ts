@@ -2224,6 +2224,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fritzing',
+      extensions: ['fzz', 'fz', 'fzpz', 'fzp', 'fzbz', 'fzb'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'frontcommerce',
       extensions: ['.front-commerce.js', 'front-commerce.config.ts'],
       filename: true,
