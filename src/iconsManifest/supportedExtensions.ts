@@ -4089,6 +4089,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'opentofu',
+      extensions: ['.opentofu-version'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'org',
       extensions: ['org'],
       languages: [languages.org],
