@@ -4819,6 +4819,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'qrc',
+      extensions: ['qrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'qsharp',
       extensions: [],
       languages: [languages.qsharp],
