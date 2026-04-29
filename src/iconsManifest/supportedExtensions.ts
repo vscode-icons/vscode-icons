@@ -4181,6 +4181,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
+    {
+      icon: 'pawn',
+      extensions: [],
+      languages: [languages.pawn],
+      format: FileFormat.svg,
+    },
     { icon: 'pcl', extensions: ['pcd'], light: true, format: FileFormat.svg },
     {
       icon: 'pddl',

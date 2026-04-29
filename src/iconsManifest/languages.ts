@@ -385,6 +385,7 @@ export const languages = {
   openHAB: { ids: 'openhab', knownExtensions: ['things'] },
   org: { ids: 'org', knownExtensions: ['org'] },
   pascal: { ids: ['pascal', 'objectpascal'], knownExtensions: ['pas'] },
+  pawn: { ids: ['pawn'], knownExtensions: ['p', 'pwn', 'inc', 'sma'] },
   pddl: { ids: 'pddl', knownExtensions: ['pddl'] },
   pddlplan: { ids: 'plan', knownExtensions: ['plan'] },
   pddlhappenings: { ids: 'happenings', knownExtensions: ['happenings'] },
