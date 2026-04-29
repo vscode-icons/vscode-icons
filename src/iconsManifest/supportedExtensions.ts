@@ -4953,6 +4953,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'render',
+      extensions: ['render.yaml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'renovate',
       extensions: ['.renovaterc', '.renovaterc.json'],
       filenamesGlob: ['renovate'],
