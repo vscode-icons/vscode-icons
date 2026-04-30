@@ -1141,6 +1141,12 @@ export const extensions: IFileCollection = {
       languages: [languages.circom],
       format: FileFormat.svg,
     },
+    {
+      icon: 'clangd',
+      extensions: ['.clangd'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'class', extensions: ['class'], format: FileFormat.svg },
     {
       icon: 'claude',
