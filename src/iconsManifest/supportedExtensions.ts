@@ -1139,7 +1139,7 @@ export const extensions: IFileCollection = {
       icon: 'clangd',
       extensions: ['.clangd'],
       filename: true,
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     { icon: 'class', extensions: ['class'], format: FileFormat.svg },
     {
