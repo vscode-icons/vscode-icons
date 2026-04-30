@@ -1005,6 +1005,12 @@ export const extensions: IFileCollection = {
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
     {
+      icon: 'cangjie',
+      extensions: [],
+      languages: [languages.cangjie],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'capacitor',
       extensions: [],
       extensionsGlob: ['json', 'ts'],
