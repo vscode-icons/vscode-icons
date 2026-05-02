@@ -454,7 +454,7 @@ export const languages = {
     knownExtensions: ['properties'],
   },
   protobuf: {
-    ids: ['proto3', 'proto', 'prototext'],
+    ids: ['proto3', 'proto', 'prototext', 'textproto'],
     knownExtensions: ['proto'],
   },
   pug: { ids: 'jade', knownExtensions: ['pug'] },
