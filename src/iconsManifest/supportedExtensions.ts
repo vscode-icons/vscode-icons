@@ -5822,6 +5822,20 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'textlint',
+      extensions: [
+        '.textlintrc',
+        '.textlintrc.js',
+        '.textlintrc.cjs',
+        '.textlintrc.json',
+        '.textlintrc.yml',
+        '.textlintrc.yaml',
+        '.textlintignore',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tiltfile',
       extensions: ['.tiltignore'],
       filename: true,
