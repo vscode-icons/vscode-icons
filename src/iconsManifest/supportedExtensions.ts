@@ -5826,6 +5826,7 @@ export const extensions: IFileCollection = {
       extensions: [
         '.textlintrc',
         '.textlintrc.js',
+        '.textlintrc.cjs',
         '.textlintrc.json',
         '.textlintrc.yml',
         '.textlintrc.yaml',
