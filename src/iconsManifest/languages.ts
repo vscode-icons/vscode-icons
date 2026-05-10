@@ -236,6 +236,7 @@ export const languages = {
   hosts: { ids: 'hosts', knownExtensions: ['hosts'] },
   html: { ids: 'html', knownExtensions: ['html'] },
   http: { ids: 'http', knownExtensions: ['http'] },
+  huff: { ids: 'huff', knownExtensions: ['huff'] },
   hunspell: { ids: ['hunspell.aff', 'hunspell.dic'], knownExtensions: ['aff'] },
   hy: { ids: 'hy', knownExtensions: ['hy'] },
   hypr: { ids: 'hypr', knownExtensions: ['hypr'] },
