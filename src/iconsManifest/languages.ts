@@ -184,6 +184,7 @@ export const languages = {
   excel: { ids: 'excel', knownExtensions: ['xlsx'] },
   falcon: { ids: 'falcon', knownExtensions: ['falcon'] },
   fauna: { ids: 'fql', knownExtensions: ['fql'] },
+  flatbuffers: { ids: 'flatbuffers', knownExtensions: ['fbs'] },
   fortran: {
     ids: [
       'fortran',
