@@ -1769,6 +1769,48 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dotenv-production',
+      extensions: ['.env.production', '.env.prod'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv-development',
+      extensions: ['.env.development', '.env.dev'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv-test',
+      extensions: ['.env.test'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv-local',
+      extensions: ['.env.local'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv-qa',
+      extensions: ['.env.qa'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv-staging',
+      extensions: ['.env.staging'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'dotenv-uat',
+      extensions: ['.env.uat'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dotenv',
       extensions: [],
       languages: [languages.dotenv],
