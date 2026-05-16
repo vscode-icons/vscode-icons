@@ -146,7 +146,7 @@
       {
         "id": "vscode-icons",
         "label": "VSCode Icons",
-        "path": "dist/src/vsicons-icon-theme.json",
+        "path": "out/src/vsicons-icon-theme.json",
         "_watch": true
       }
     ],
