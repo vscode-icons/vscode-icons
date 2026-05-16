@@ -2071,6 +2071,7 @@ export const extensions: IFileCollection = {
         'app.config.js',
         'app.config.json',
         'app.config.json5',
+        'eas.json',
       ],
       light: true,
       filename: true,
