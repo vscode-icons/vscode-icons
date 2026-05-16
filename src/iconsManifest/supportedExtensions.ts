@@ -3026,7 +3026,7 @@ export const extensions: IFileCollection = {
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
     {
       icon: 'jsr',
-      extensions: ['jsr.json'],
+      extensions: ['jsr.json', 'jsr.jsonc'],
       filename: true,
       format: FileFormat.svg,
     },
