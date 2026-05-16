@@ -1789,6 +1789,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dotenv-example',
+      extensions: ['.env.example', '.env.sample'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dotenv-production',
       extensions: ['.env.production', '.env.prod'],
       filename: true,
