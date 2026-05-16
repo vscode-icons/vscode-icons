@@ -68,7 +68,7 @@
     "posttest": "nyc report -r lcov",
     "test:vs": "node ./node_modules/vscode/bin/test",
     "vscode:prepublish": "npm run dist",
-    "vscode:uninstall": "node ./dist/src/uninstall.bundle.js",
+    "vscode:uninstall": "node ./out/src/uninstall.js",
     "precompile": "rimraf ./out ./dist",
     "compile": "tsc -p tsconfig.prod.json",
     "postcompile": "npm run bundle",
