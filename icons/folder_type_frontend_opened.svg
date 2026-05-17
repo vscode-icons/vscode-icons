@@ -1,54 +1,58 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  width="32"
-  height="32"
-  viewBox="0 0 32 32"
+  width="36"
+  height="36"
+  viewBox="0 0 36 36"
   fill="none"
 >
-  <defs>
-    <mask id="folder-mask-open">
-      <rect width="32" height="32" fill="white" />
+  <g transform="translate(2 2)">
+    <defs>
+      <mask id="folder-mask-open">
+        <rect width="32" height="32" fill="white" />
+        <path
+          d="M7 11.2H28V17.2L26.8 13H7Z"
+          fill="black"
+        />
+        <path
+          d="M22 6.5H28V8.6H20.5Z"
+          fill="black"
+        />
+      </mask>
+    </defs>
+
+    <g mask="url(#folder-mask-open)">
       <path
-        d="M7 11.2H28V17.2L26.8 13H7Z"
-        fill="black"
+        d="M5 9H17.2L20 4.8H30V23H28.4L26.9 13H5Z"
+        fill="#78bafd"
       />
       <path
-        d="M22 6.5H28V8.6H20.5Z"
-        fill="black"
+        d="M2 13H28.2L29.2 22.5V26.5H5Z"
+        fill="#78bafd"
       />
-    </mask>
-  </defs>
-  <g mask="url(#folder-mask-open)">
-    <path
-      d="M5 9H17.2L20 4.8H30V23H28.4L26.9 13H5Z"
-      fill="#78bafd"
-    />
-    <path
-      d="M2 13H28.2L29.2 22.5V26.5H5Z"
-      fill="#78bafd"
-    />
-  </g>
-  <g transform="translate(13 10) scale(0.22)">
-    <rect
-      x="15"
-      y="18"
-      width="70"
-      height="64"
-      rx="6"
-      ry="6"
-      fill="none"
-      stroke="#1c7de6"
-      stroke-width="3"
-    />
-    <rect
-      x="21"
-      y="34"
-      width="58"
-      height="42"
-      fill="#1c7de6"
-    />
-    <circle cx="60.5" cy="26" r="2.5" fill="#1c7de6" />
-    <circle cx="68.5" cy="26" r="2.5" fill="#1c7de6" />
-    <circle cx="76.5" cy="26" r="2.5" fill="#1c7de6" />
+    </g>
+
+    <g transform="translate(13 10) scale(0.22)">
+      <rect
+        x="15"
+        y="18"
+        width="70"
+        height="64"
+        rx="6"
+        ry="6"
+        fill="none"
+        stroke="#1c7de6"
+        stroke-width="3"
+      />
+      <rect
+        x="21"
+        y="34"
+        width="58"
+        height="42"
+        fill="#1c7de6"
+      />
+      <circle cx="60.5" cy="26" r="2.5" fill="#1c7de6" />
+      <circle cx="68.5" cy="26" r="2.5" fill="#1c7de6" />
+      <circle cx="76.5" cy="26" r="2.5" fill="#1c7de6" />
+    </g>
   </g>
 </svg>
