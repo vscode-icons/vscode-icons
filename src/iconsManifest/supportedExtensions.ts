@@ -2718,6 +2718,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'huff',
+      extensions: [],
+      languages: [languages.huff],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'hunspell',
       extensions: [],
       languages: [languages.hunspell],
