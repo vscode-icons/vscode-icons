@@ -2157,6 +2157,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
     {
+      icon: 'flatbuffers',
+      extensions: [],
+      languages: [languages.flatbuffers],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'floobits',
       extensions: ['.flooignore'],
       filename: true,
