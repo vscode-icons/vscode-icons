@@ -50,10 +50,6 @@ export const zedSchema: IZedIconSchema = {
         collapsed: '',
         expanded: '',
       },
-      chevron_icons: {
-        collapsed: '',
-        expanded: '',
-      },
       named_directory_icons: {},
       file_stems: {},
       file_suffixes: {},
@@ -63,10 +59,6 @@ export const zedSchema: IZedIconSchema = {
       name: 'VSCode Icons for Zed (Dark Official Icons)',
       appearance: 'dark',
       directory_icons: {
-        collapsed: '',
-        expanded: '',
-      },
-      chevron_icons: {
         collapsed: '',
         expanded: '',
       },
@@ -82,10 +74,6 @@ export const zedSchema: IZedIconSchema = {
         collapsed: '',
         expanded: '',
       },
-      chevron_icons: {
-        collapsed: '',
-        expanded: '',
-      },
       named_directory_icons: {},
       file_stems: {},
       file_suffixes: {},
@@ -95,10 +83,6 @@ export const zedSchema: IZedIconSchema = {
       name: 'VSCode Icons for Zed (Dark NestJS)',
       appearance: 'dark',
       directory_icons: {
-        collapsed: '',
-        expanded: '',
-      },
-      chevron_icons: {
         collapsed: '',
         expanded: '',
       },
@@ -114,10 +98,6 @@ export const zedSchema: IZedIconSchema = {
         collapsed: '',
         expanded: '',
       },
-      chevron_icons: {
-        collapsed: '',
-        expanded: '',
-      },
       named_directory_icons: {},
       file_stems: {},
       file_suffixes: {},
@@ -127,10 +107,6 @@ export const zedSchema: IZedIconSchema = {
       name: 'VSCode Icons for Zed (Light Official Icons)',
       appearance: 'light',
       directory_icons: {
-        collapsed: '',
-        expanded: '',
-      },
-      chevron_icons: {
         collapsed: '',
         expanded: '',
       },
@@ -146,10 +122,6 @@ export const zedSchema: IZedIconSchema = {
         collapsed: '',
         expanded: '',
       },
-      chevron_icons: {
-        collapsed: '',
-        expanded: '',
-      },
       named_directory_icons: {},
       file_stems: {},
       file_suffixes: {},
@@ -159,10 +131,6 @@ export const zedSchema: IZedIconSchema = {
       name: 'VSCode Icons for Zed (Light NestJS)',
       appearance: 'light',
       directory_icons: {
-        collapsed: '',
-        expanded: '',
-      },
-      chevron_icons: {
         collapsed: '',
         expanded: '',
       },

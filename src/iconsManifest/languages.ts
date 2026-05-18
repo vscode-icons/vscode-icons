@@ -68,6 +68,7 @@ export const languages = {
   c_al: { ids: 'c-al', knownExtensions: ['cal'] },
   cabal: { ids: 'cabal', knownExtensions: ['cabal'] },
   caddyfile: { ids: 'caddyfile', knownFilenames: ['Caddyfile'] },
+  cangjie: { ids: 'Cangjie', knownExtensions: ['cj'] },
   capnproto: { ids: ['capnp', 'capnproto'], knownExtensions: ['capnp'] },
   casc: { ids: 'casc', knownExtensions: ['casc'] },
   cddl: { ids: 'cddl', knownExtensions: ['cddl'] },
@@ -183,6 +184,7 @@ export const languages = {
   excel: { ids: 'excel', knownExtensions: ['xlsx'] },
   falcon: { ids: 'falcon', knownExtensions: ['falcon'] },
   fauna: { ids: 'fql', knownExtensions: ['fql'] },
+  flatbuffers: { ids: 'flatbuffers', knownExtensions: ['fbs'] },
   fortran: {
     ids: [
       'fortran',
@@ -235,6 +237,7 @@ export const languages = {
   hosts: { ids: 'hosts', knownExtensions: ['hosts'] },
   html: { ids: 'html', knownExtensions: ['html'] },
   http: { ids: 'http', knownExtensions: ['http'] },
+  huff: { ids: 'huff', knownExtensions: ['huff'] },
   hunspell: { ids: ['hunspell.aff', 'hunspell.dic'], knownExtensions: ['aff'] },
   hy: { ids: 'hy', knownExtensions: ['hy'] },
   hypr: { ids: 'hypr', knownExtensions: ['hypr'] },
@@ -385,6 +388,7 @@ export const languages = {
   openHAB: { ids: 'openhab', knownExtensions: ['things'] },
   org: { ids: 'org', knownExtensions: ['org'] },
   pascal: { ids: ['pascal', 'objectpascal'], knownExtensions: ['pas'] },
+  pawn: { ids: ['pawn'], knownExtensions: ['p', 'pwn', 'inc', 'sma'] },
   pddl: { ids: 'pddl', knownExtensions: ['pddl'] },
   pddlplan: { ids: 'plan', knownExtensions: ['plan'] },
   pddlhappenings: { ids: 'happenings', knownExtensions: ['happenings'] },
@@ -452,7 +456,7 @@ export const languages = {
     knownExtensions: ['properties'],
   },
   protobuf: {
-    ids: ['proto3', 'proto', 'prototext'],
+    ids: ['proto3', 'proto', 'prototext', 'textproto'],
     knownExtensions: ['proto'],
   },
   pug: { ids: 'jade', knownExtensions: ['pug'] },

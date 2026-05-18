@@ -24,11 +24,6 @@ export interface IZedTheme {
     expanded: string;
   };
 
-  chevron_icons: {
-    collapsed: string;
-    expanded: string;
-  };
-
   named_directory_icons: IZedFolderIcons;
 
   file_stems: IIconAssociation;
