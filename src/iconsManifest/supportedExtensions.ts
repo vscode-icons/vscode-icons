@@ -2139,6 +2139,7 @@ export const extensions: IFileCollection = {
         'app.config.js',
         'app.config.json',
         'app.config.json5',
+        'eas.json',
       ],
       light: true,
       filename: true,
@@ -2223,6 +2224,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
+    {
+      icon: 'flatbuffers',
+      extensions: [],
+      languages: [languages.flatbuffers],
+      format: FileFormat.svg,
+    },
     {
       icon: 'floobits',
       extensions: ['.flooignore'],
@@ -2785,6 +2792,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'huff',
+      extensions: [],
+      languages: [languages.huff],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'hunspell',
       extensions: [],
       languages: [languages.hunspell],
@@ -3094,7 +3108,7 @@ export const extensions: IFileCollection = {
     { icon: 'jsp', extensions: ['jsp'], format: FileFormat.svg },
     {
       icon: 'jsr',
-      extensions: ['jsr.json'],
+      extensions: ['jsr.json', 'jsr.jsonc'],
       filename: true,
       format: FileFormat.svg,
     },
