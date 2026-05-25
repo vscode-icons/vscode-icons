@@ -1,0 +1,9 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <title>file_type_fritzing</title>
+  <rect fill="#d33020" width="29.771517" height="29.771519" x="1.1142416" y="1.1142406" rx="6.6" ry="6.6" />
+  <g transform="translate(0.0375785,0.00104886)">
+    <path fill="none" stroke="#ffffff" stroke-width="2.98583" stroke-linecap="round" stroke-linejoin="round" d="M 20.875398,6.0359477 C 20.875398,6.0359477 19.134335,6.0044707 16.272524,6.0735064 15.389401,6.09481 14.31222,7.1529085 14.289468,7.8012059 14.258852,8.6734925 14.325853,20.289468 14.325853,20.289468" />
+    <path fill="none" stroke="#ffffff" stroke-width="2.98583" stroke-linecap="round" stroke-linejoin="round" d="M 11.049445,12.508819 H 18.854864" />
+    <circle fill="none" stroke="#ffffff" stroke-width="2.22992" stroke-linecap="round" stroke-linejoin="round" cx="14.403525" cy="23.774418" r="2.57254" />
+  </g>
+</svg>
