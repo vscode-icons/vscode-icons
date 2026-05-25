@@ -4955,6 +4955,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'readthedocs',
+      extensions: ['.readthedocs.yaml'],
+      languages: [],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'reason',
       extensions: [],
       languages: [languages.reason],
