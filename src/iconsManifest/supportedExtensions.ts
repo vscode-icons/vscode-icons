@@ -3572,6 +3572,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mikro_orm',
+      filenamesGlob: ['mikro-orm.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mise',
       extensions: [],
       filenamesGlob: ['mise', '.mise', 'mise.local', '.mise.local'],
