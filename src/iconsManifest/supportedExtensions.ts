@@ -1498,6 +1498,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cue',
+      extensions: [],
+      languages: [languages.cue],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cursorrules',
       extensions: ['.cursorignore', '.cursorindexingignore', '.cursorrules'],
       filename: true,
