@@ -127,6 +127,7 @@ export const languages = {
   },
   cucumber: { ids: ['cucumber', 'feature'], knownExtensions: ['feature'] },
   cuda: { ids: ['cuda', 'cuda-cpp'], knownExtensions: ['cu'] },
+  cue: { ids: 'cue', knownExtensions: ['cue'] },
   cypher: { ids: 'cypher', knownExtensions: ['cypher'] },
   cython: { ids: 'cython', knownExtensions: ['pyx'] },
   dal: { ids: 'dal', knownExtensions: ['dal'] },
