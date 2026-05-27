@@ -1427,7 +1427,15 @@ export const extensions: IFileCollection = {
     {
       icon: 'cspell',
       extensions: [],
-      filenamesGlob: ['.cspell.config', 'cspell.config', 'cspell', '.cspell'],
+      filenamesGlob: ['cspell', '.cspell'],
+      extensionsGlob: ['json', 'jsonc', 'yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'cspell',
+      extensions: [],
+      filenamesGlob: ['cspell.config', '.cspell.config'],
       extensionsGlob: [
         'json',
         'jsonc',
