@@ -1501,6 +1501,7 @@ export const extensions: IFileCollection = {
       icon: 'cue',
       extensions: [],
       languages: [languages.cue],
+      light: true,
       format: FileFormat.svg,
     },
     {
