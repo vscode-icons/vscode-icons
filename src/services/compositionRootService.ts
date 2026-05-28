@@ -6,7 +6,6 @@ import {
   interfaces,
   METADATA_KEY,
 } from 'inversify';
-import { ServiceIdentifierOrFunc } from 'inversify/lib/annotation/lazy_service_identifier';
 import 'reflect-metadata';
 import * as vscode from 'vscode';
 import { ExtensionManager } from '../app/extensionManager';
@@ -25,7 +24,7 @@ type Class = new (...args: unknown[]) => unknown;
 export class CompositionRootService implements ICompositionRootService {
   private readonly container: Container;
   private injectableClasses: ReadonlyArray<
-    [Class, Array<ServiceIdentifierOrFunc<symbol>>]
+    [Class, Array<interfaces.ServiceIdentifier<symbol>>]
   >;
 
   constructor(private context: models.IVSCodeExtensionContext) {
@@ -42,8 +41,9 @@ export class CompositionRootService implements ICompositionRootService {
   public dispose(): void {
     this.injectableClasses
       .map(
-        (injectableClass: [Class, Array<ServiceIdentifierOrFunc<symbol>>]) =>
-          injectableClass[0],
+        (
+          injectableClass: [Class, Array<interfaces.ServiceIdentifier<symbol>>],
+        ) => injectableClass[0],
       )
       .forEach((klass: Class) => {
         Reflect.deleteMetadata(METADATA_KEY.PARAM_TYPES, klass);
@@ -95,15 +95,17 @@ export class CompositionRootService implements ICompositionRootService {
 
   private initDecorations(): void {
     this.injectableClasses.forEach(
-      (injectableClass: [Class, Array<ServiceIdentifierOrFunc<symbol>>]) => {
+      (
+        injectableClass: [Class, Array<interfaces.ServiceIdentifier<symbol>>],
+      ) => {
         // declare classes as injectables
         const klass: Class = injectableClass[0];
         decorate(injectable(), klass);
         // declare injectable parameters
-        const params: Array<ServiceIdentifierOrFunc<symbol>> =
+        const params: Array<interfaces.ServiceIdentifier<symbol>> =
           injectableClass[1];
         params.forEach(
-          (identifier: ServiceIdentifierOrFunc<symbol>, index: number) =>
+          (identifier: interfaces.ServiceIdentifier<symbol>, index: number) =>
             decorate(inject(identifier), klass, index),
         );
       },
