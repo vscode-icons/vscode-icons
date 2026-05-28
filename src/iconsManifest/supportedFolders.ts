@@ -747,6 +747,11 @@ export const extensions: IFolderCollection = {
       extensions: ['svelte', '.svelte-kit'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'swagger',
+      extensions: ['swagger'],
+      format: FileFormat.svg,
+    },
     { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
     {
       icon: 'test',
