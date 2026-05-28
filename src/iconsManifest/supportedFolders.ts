@@ -290,6 +290,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'environments',
+      extensions: ['environments'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'expo',
       extensions: ['.expo', '.expo-shared'],
       light: true,
