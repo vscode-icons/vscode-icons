@@ -1,4 +1,4 @@
-/* eslint-disable import/no-internal-modules */
+/* eslint-disable import-x/no-internal-modules */
 import { resolve } from 'path';
 import { Configuration } from 'webpack';
 import { constants } from './out/src/constants';

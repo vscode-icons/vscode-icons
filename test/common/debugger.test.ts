@@ -1,5 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { Debugger } from '../../src/common/debugger';
