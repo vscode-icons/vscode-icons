@@ -1150,7 +1150,7 @@ export const extensions: IFileCollection = {
     { icon: 'class', extensions: ['class'], format: FileFormat.svg },
     {
       icon: 'claude',
-      extensions: ['claude.md'],
+      extensions: ['claude.md', 'claude.local.md'],
       filename: true,
       format: FileFormat.svg,
     },
