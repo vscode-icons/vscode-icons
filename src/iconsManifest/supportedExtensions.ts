@@ -2921,7 +2921,7 @@ export const extensions: IFileCollection = {
         'jest.config.integration',
         'jest.config.unit',
       ],
-      extensionsGlob: ['js', 'cjs', 'mjs', 'json', 'ts'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'json', 'ts', 'cts', 'mts'],
       filename: true,
       format: FileFormat.svg,
     },
