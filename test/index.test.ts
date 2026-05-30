@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable prefer-arrow-callback */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import * as proxyq from 'proxyquire';
