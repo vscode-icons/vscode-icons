@@ -2202,6 +2202,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    { icon: 'flowgorithm', extensions: ['fprg'], format: FileFormat.svg },
     {
       icon: 'flutter',
       extensions: [
