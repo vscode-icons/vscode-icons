@@ -3332,7 +3332,7 @@ export const extensions: IFileCollection = {
         'LICENSE-AGPL',
         'license-agpl',
       ],
-      extensionsGlob: ['md', 'txt'],
+      extensionsGlob: ['md', 'rst', 'txt'],
       filename: true,
       format: FileFormat.svg,
     },
