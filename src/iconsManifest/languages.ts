@@ -206,7 +206,7 @@ export const languages = {
   gcode: { ids: 'gcode', knownExtensions: ['gcode'] },
   genstat: { ids: 'genstat', knownExtensions: ['gen'] },
   git: {
-    ids: ['git-commit', 'git-rebase', 'ignore'],
+    ids: ['git-commit', 'git-rebase', 'ignore', 'gitignore'],
     knownExtensions: ['git'],
   },
   gleam: { ids: 'gleam', knownExtensions: ['gleam'] },
