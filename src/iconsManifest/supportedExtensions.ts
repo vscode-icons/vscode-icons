@@ -2784,7 +2784,6 @@ export const extensions: IFileCollection = {
       icon: 'hurl',
       extensions: [],
       languages: [languages.hurl],
-      light: true,
       format: FileFormat.svg,
     },
     {
