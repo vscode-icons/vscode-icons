@@ -4925,6 +4925,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'quokka',
+      extensions: ['.quokka'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'r',
       extensions: [],
       languages: [languages.r],
