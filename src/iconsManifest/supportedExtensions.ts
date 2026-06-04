@@ -3605,6 +3605,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'metro',
+      filenamesGlob: ['metro.config'],
+      extensions: [],
+      extensionsGlob: ['json', 'js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mikro_orm',
       filenamesGlob: ['mikro-orm.config'],
       extensions: [],
