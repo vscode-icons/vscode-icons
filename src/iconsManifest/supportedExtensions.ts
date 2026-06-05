@@ -3599,6 +3599,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'meson',
+      extensions: ['meson.options', 'meson_options.txt'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'metal',
       extensions: [],
       languages: [languages.metal],
