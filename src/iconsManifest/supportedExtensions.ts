@@ -3606,7 +3606,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'metro',
-      filenamesGlob: ['metro.config'],
+      filenamesGlob: ['metro', 'metro.config'],
       extensions: [],
       extensionsGlob: ['json', 'js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
       filename: true,
