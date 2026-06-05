@@ -3432,6 +3432,12 @@ export const extensions: IFileCollection = {
       extensions: ['luau'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'lychee',
+      extensions: ['lychee.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
     {
       icon: 'mailing',
