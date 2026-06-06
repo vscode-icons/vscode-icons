@@ -206,7 +206,7 @@ export const languages = {
   gcode: { ids: 'gcode', knownExtensions: ['gcode'] },
   genstat: { ids: 'genstat', knownExtensions: ['gen'] },
   git: {
-    ids: ['git-commit', 'git-rebase', 'ignore'],
+    ids: ['git-commit', 'git-rebase', 'ignore', 'gitignore'],
     knownExtensions: ['git'],
   },
   gleam: { ids: 'gleam', knownExtensions: ['gleam'] },
@@ -240,6 +240,7 @@ export const languages = {
   http: { ids: 'http', knownExtensions: ['http'] },
   huff: { ids: 'huff', knownExtensions: ['huff'] },
   hunspell: { ids: ['hunspell.aff', 'hunspell.dic'], knownExtensions: ['aff'] },
+  hurl: { ids: 'hurl', knownExtensions: ['hurl'] },
   hy: { ids: 'hy', knownExtensions: ['hy'] },
   hypr: { ids: 'hypr', knownExtensions: ['hypr'] },
   icl: { ids: 'icl', knownExtensions: ['icl'] },

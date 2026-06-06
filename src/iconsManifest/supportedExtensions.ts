@@ -2782,6 +2782,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hurl',
+      extensions: [],
+      languages: [languages.hurl],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'husky',
       extensions: ['.huskyrc', 'husky.config.js'],
       filenamesGlob: ['.huskyrc'],
@@ -3427,6 +3433,12 @@ export const extensions: IFileCollection = {
       extensions: ['luau'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'lychee',
+      extensions: ['lychee.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
     {
       icon: 'mailing',
@@ -3597,6 +3609,14 @@ export const extensions: IFileCollection = {
       icon: 'metal',
       extensions: [],
       languages: [languages.metal],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'metro',
+      filenamesGlob: ['metro', 'metro.config'],
+      extensions: [],
+      extensionsGlob: ['json', 'js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -4916,6 +4936,12 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['quasar.config'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
       light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'quokka',
+      extensions: ['.quokka'],
       filename: true,
       format: FileFormat.svg,
     },
