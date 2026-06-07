@@ -309,7 +309,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'frontend',
-      extensions: ['frontend', '.frontend', 'ui', 'gui', 'src-ui'],
+      extensions: ['frontend', '.frontend', 'front-end', '.front-end', 'ui', 'gui', 'src-ui'],
       format: FileFormat.svg,
     },
     {
