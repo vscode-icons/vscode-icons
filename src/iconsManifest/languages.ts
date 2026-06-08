@@ -328,6 +328,7 @@ export const languages = {
   lilypond: { ids: 'lilypond', knownExtensions: ['ly'] },
   lisp: { ids: ['lisp', 'autolisp', 'autolispdcl'], knownExtensions: ['lisp'] },
   literatehaskell: { ids: ['literate haskell'], knownExtensions: ['lhs'] },
+  liquid: { ids: ['liquid'], knownExtensions: ['liquid'] },
   log: { ids: 'log', knownExtensions: ['log'] },
   lolcode: { ids: 'lolcode', knownExtensions: ['lol'] },
   lsl: { ids: 'lsl', knownExtensions: ['lsl'] },
