@@ -3398,7 +3398,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'liquid', extensions: ['liquid'], format: FileFormat.svg },
+    {
+      icon: 'liquid',
+      extensions: [],
+      languages: [languages.liquid],
+      format: FileFormat.svg,
+    },
     { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
     { icon: 'lnk', extensions: ['lnk'], format: FileFormat.svg },
     { icon: 'locale', extensions: [], format: FileFormat.svg },
