@@ -4892,6 +4892,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pythonconfig',
+      extensions: ['.pdbrc'],
+      languages: [],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pythowo',
       extensions: ['pyowo'],
       languages: [languages.pythowo],
