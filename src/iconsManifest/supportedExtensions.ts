@@ -2190,6 +2190,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fleet',
+      extensions: ['fleet.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'floobits',
       extensions: ['.flooignore'],
       filename: true,
