@@ -3,7 +3,7 @@ import { ChildProcess } from 'child_process';
 import { Stats } from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
 import * as fsAsync from '../../src/common/fsAsync';
 import { FileFormat } from '../../src/models';
