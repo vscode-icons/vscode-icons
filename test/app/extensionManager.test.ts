@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
-import * as path from 'path';
+import path from 'path';
 import * as sinon from 'sinon';
 import * as packageJson from '../../../package.json';
 import { ExtensionManager } from '../../src/app/extensionManager';
@@ -749,37 +749,31 @@ describe('ExtensionManager: tests', function () {
 
       context(`throws an Error`, function () {
         it(`when no callback is provided`, function () {
-          expect(
-            () => handleUpdatePreset.call(extensionManager),
-          ).to.throw(Error, /Callback function missing/);
+          expect(() => handleUpdatePreset.call(extensionManager)).to.throw(
+            Error,
+            /Callback function missing/,
+          );
         });
 
         it(`when no callback arguments are provided`, function () {
-          expect(
-            () =>
-              handleUpdatePreset.call(extensionManager, sinon.fake()),
+          expect(() =>
+            handleUpdatePreset.call(extensionManager, sinon.fake()),
           ).to.throw(Error, /Arguments missing/);
         });
 
         context(`when provided callback arguments`, function () {
           it(`are empty`, function () {
-            expect(
-              () =>
-                handleUpdatePreset.call(
-                  extensionManager,
-                  sinon.fake(),
-                  [],
-                ),
+            expect(() =>
+              handleUpdatePreset.call(extensionManager, sinon.fake(), []),
             ).to.throw(Error, /Arguments missing/);
           });
 
           it(`are mismatching`, function () {
-            expect(
-              () =>
-                handleUpdatePreset.call(extensionManager, sinon.fake(), [
-                  'arg1',
-                  'arg2',
-                ]),
+            expect(() =>
+              handleUpdatePreset.call(extensionManager, sinon.fake(), [
+                'arg1',
+                'arg2',
+              ]),
             ).to.throw(Error, /Arguments mismatch/);
           });
         });
