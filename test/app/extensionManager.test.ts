@@ -750,14 +750,14 @@ describe('ExtensionManager: tests', function () {
       context(`throws an Error`, function () {
         it(`when no callback is provided`, function () {
           expect(
-            () => handleUpdatePreset.call(extensionManager) as void,
+            () => handleUpdatePreset.call(extensionManager),
           ).to.throw(Error, /Callback function missing/);
         });
 
         it(`when no callback arguments are provided`, function () {
           expect(
             () =>
-              handleUpdatePreset.call(extensionManager, sinon.fake()) as void,
+              handleUpdatePreset.call(extensionManager, sinon.fake()),
           ).to.throw(Error, /Arguments missing/);
         });
 
@@ -769,7 +769,7 @@ describe('ExtensionManager: tests', function () {
                   extensionManager,
                   sinon.fake(),
                   [],
-                ) as void,
+                ),
             ).to.throw(Error, /Arguments missing/);
           });
 
@@ -779,7 +779,7 @@ describe('ExtensionManager: tests', function () {
                 handleUpdatePreset.call(extensionManager, sinon.fake(), [
                   'arg1',
                   'arg2',
-                ]) as void,
+                ]),
             ).to.throw(Error, /Arguments mismatch/);
           });
         });
