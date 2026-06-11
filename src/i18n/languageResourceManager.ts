@@ -1,4 +1,4 @@
-import * as langResources from '../../../lang.nls.bundle.json';
+import langResources from '../../../lang.nls.bundle.json';
 import { constants } from '../constants';
 import * as models from '../models';
 

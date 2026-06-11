@@ -1,16 +1,16 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as packageJson from '../../../package.json';
+import packageJson from '../../../package.json';
 import {
   IVSCodeManager,
-  IVSCodeWorkspaceFolder,
   IVSCodeUri,
+  IVSCodeWorkspaceFolder,
 } from '../../src/models';
+import { IPackageManifest } from '../../src/models/packageManifest';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
 import { vscode } from '../fixtures/vscode';
-import { IPackageManifest } from '../../src/models/packageManifest';
 
 describe('VSCodeManager: tests', function () {
   context('ensures that', function () {

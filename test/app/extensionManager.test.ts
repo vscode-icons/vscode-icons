@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import path from 'path';
 import * as sinon from 'sinon';
-import * as packageJson from '../../../package.json';
+import packageJson from '../../../package.json';
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
