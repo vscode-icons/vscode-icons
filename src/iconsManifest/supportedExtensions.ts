@@ -6563,6 +6563,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wesl',
+      extensions: [],
+      languages: [languages.wesl],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wgsl',
       extensions: [],
       languages: [languages.wgsl],
