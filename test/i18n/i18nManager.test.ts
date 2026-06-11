@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
 import * as langResourcesJson from '../../../lang.nls.bundle.json';
 import * as nlsTemplateJson from '../../../locale/package.nls.template.json';
