@@ -4587,12 +4587,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'postgres',
-      extensions: [],
-      languages: [languages.postgres],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'postman',
       extensions: [
         'postman_collection.json',
