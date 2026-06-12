@@ -1605,6 +1605,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
+      icon: 'dbt',
+      extensions: ['dbt_project.yml', 'dbt_cloud.yml', '.dbtignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'debian',
       extensions: ['deb'],
       languages: [languages.debian],
