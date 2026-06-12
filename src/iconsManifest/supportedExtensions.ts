@@ -1335,6 +1335,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'context7',
+      extensions: ['context7.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'copilot',
       extensions: ['copilot-instructions.md', 'github-copilot.xml'],
       filename: true,
