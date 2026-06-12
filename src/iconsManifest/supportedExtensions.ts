@@ -6708,6 +6708,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'warp',
+      extensions: ['warp.md'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'yacc',
       extensions: [],
       languages: [languages.yacc],
