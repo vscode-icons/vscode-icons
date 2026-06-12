@@ -6854,6 +6854,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'zizmor',
+      extensions: ['zizmor.yaml', 'zizmor.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'knip',
       extensions: [
         'knip.json',
