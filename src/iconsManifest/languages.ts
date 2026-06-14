@@ -690,6 +690,7 @@ export const languages = {
     ids: ['wasm', 'wat'],
     knownExtensions: ['wasm', 'wat', 'wast', 'wsm', 'wast.js', 'wit', 'witx'],
   },
+  wasp: { ids: 'wasp', knownExtensions: ['wasp'] },
   wenyan: { ids: 'wenyan', knownExtensions: ['wy'] },
   wesl: { ids: 'wesl', knownExtensions: ['wesl'] },
   wgsl: { ids: 'wgsl', knownExtensions: ['wgsl'] },
