@@ -1588,6 +1588,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'databricks',
+      extensions: ['databricks.yml', 'databricks.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'datadog',
       extensions: [
         'service.datadog.yaml',
