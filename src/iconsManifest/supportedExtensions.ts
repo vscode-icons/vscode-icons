@@ -3174,6 +3174,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'knex',
+      extensions: [],
+      filenamesGlob: ['knexfile'],
+      extensionsGlob: ['js', 'ts', 'coffee', 'ls', 'eg'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'kos',
       extensions: [],
       languages: [languages.kos],
