@@ -6502,7 +6502,7 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'wasm',
+      icon: 'wasp',
       extensions: ['wasp.ts'],
       languages: [languages.wasp],
       format: FileFormat.svg,
