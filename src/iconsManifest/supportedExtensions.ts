@@ -4182,6 +4182,13 @@ export const extensions: IFileCollection = {
     },
     { icon: 'opencl', extensions: ['cl', 'opencl'], format: FileFormat.svg },
     {
+      icon: 'opencode',
+      extensions: ['opencode.json', 'opencode.jsonc'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'openHAB',
       extensions: [],
       languages: [languages.openHAB],
