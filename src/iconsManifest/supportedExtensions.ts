@@ -4180,6 +4180,7 @@ export const extensions: IFileCollection = {
       languages: [languages.scad],
       format: FileFormat.svg,
     },
+    { icon: 'opencl', extensions: ['cl', 'opencl'], format: FileFormat.svg },
     {
       icon: 'opencode',
       extensions: ['opencode.json', 'opencode.jsonc'],
@@ -4187,7 +4188,6 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
-    { icon: 'opencl', extensions: ['cl', 'opencl'], format: FileFormat.svg },
     {
       icon: 'openHAB',
       extensions: [],
