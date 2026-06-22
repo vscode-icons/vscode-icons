@@ -214,7 +214,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'databricks',
-      extensions: ['databricks', '.databricks'],
+      extensions: ['.databricks'],
       format: FileFormat.svg,
     },
     {
