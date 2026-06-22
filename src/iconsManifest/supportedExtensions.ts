@@ -1605,6 +1605,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
     {
+      icon: 'dbt',
+      extensions: ['dbt_project.yml', 'dbt_cloud.yml', '.dbtignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'debian',
       extensions: ['deb'],
       languages: [languages.debian],
@@ -4182,6 +4188,13 @@ export const extensions: IFileCollection = {
     },
     { icon: 'opencl', extensions: ['cl', 'opencl'], format: FileFormat.svg },
     {
+      icon: 'opencode',
+      extensions: ['opencode.json', 'opencode.jsonc'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'openHAB',
       extensions: [],
       languages: [languages.openHAB],
@@ -6718,6 +6731,13 @@ export const extensions: IFileCollection = {
     {
       icon: 'vvvvvv',
       extensions: ['vvvvvv'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'warp',
+      extensions: ['warp.md'],
+      filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
