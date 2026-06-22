@@ -6029,6 +6029,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'trivy',
+      extensions: ['.trivyignore', 'trivy.yaml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'truffle',
       extensions: [],
       filenamesGlob: ['truffle-config'],
