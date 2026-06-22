@@ -1168,7 +1168,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cloudflare',
-      extensions: ['wrangler.toml'],
+      extensions: ['wrangler.json', 'wrangler.jsonc', 'wrangler.toml'],
       filename: true,
       format: FileFormat.svg,
     },
