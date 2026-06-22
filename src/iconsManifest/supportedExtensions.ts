@@ -6022,7 +6022,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'trivy',
-      extensions: ['.trivyignore', '.trivyignore.yaml', 'trivy.yaml'],
+      extensions: ['.trivyignore', 'trivy.yaml'],
       filename: true,
       light: true,
       format: FileFormat.svg,
