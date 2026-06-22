@@ -213,6 +213,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'databricks',
+      extensions: ['.databricks'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'datadog',
       extensions: ['datadog', '.datadog'],
       format: FileFormat.svg,
