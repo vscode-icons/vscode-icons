@@ -3704,6 +3704,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'modernjs',
+      extensions: [],
+      filenamesGlob: ['modern.config', 'modern.runtime', 'modern.server'],
+      extensionsGlob: ['js', 'mjs', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mojo',
       extensions: ['mojo', '🔥'],
       languages: [languages.mojo],
