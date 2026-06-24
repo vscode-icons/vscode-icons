@@ -1820,6 +1820,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'doxyfile',
+      extensions: ['Doxyfile'],
+      languages: [languages.doxyfile],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'doxygen',
       extensions: [],
       languages: [languages.doxygen],
