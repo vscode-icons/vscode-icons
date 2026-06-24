@@ -478,6 +478,10 @@ export const languages = {
   pony: { ids: 'pony', knownExtensions: ['pony'] },
   postcss: { ids: 'postcss', knownExtensions: ['pcss'] },
   postscript: { ids: 'postscript', knownExtensions: ['ps'] },
+  powerbi: {
+    ids: ['powerbi-desktop', 'powerbi-api'],
+    knownExtensions: ['pbix', 'pbinb'],
+  },
   powershell: { ids: 'powershell', knownExtensions: ['ps1'] },
   prisma: { ids: 'prisma', knownExtensions: ['prisma'] },
   processinglang: { ids: 'pde', knownExtensions: ['pde'] },
