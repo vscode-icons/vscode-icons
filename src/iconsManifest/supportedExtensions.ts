@@ -3773,6 +3773,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'msw',
+      extensions: ['mockServiceWorker.js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mustache',
       extensions: ['mustache', 'mst'],
       light: true,
