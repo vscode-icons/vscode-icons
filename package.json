@@ -119,6 +119,11 @@
     "reflect-metadata": "^0.2.2",
     "semver": "^7.5.4"
   },
+  "allowScripts": {
+    "@playwright/browser-chromium": false,
+    "fsevents": false,
+    "unrs-resolver": false
+  },
   "preview": false,
   "capabilities": {
     "virtualWorkspaces": true,
