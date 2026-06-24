@@ -4327,6 +4327,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'parcel',
+      extensions: ['.parcelrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'patch', extensions: ['patch'], format: FileFormat.svg },
     {
       icon: 'pawn',
