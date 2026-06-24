@@ -166,7 +166,7 @@ export const languages = {
   doctex: { ids: 'doctex', knownExtensions: ['dtx'] },
   dotenv: { ids: ['dotenv', 'env'], knownExtensions: ['env'] },
   dotjs: { ids: 'dotjs', knownExtensions: ['dot'] },
-  doxygen: { ids: 'doxygen', knownExtensions: ['dox'] },
+  doxygen: { ids: ['doxygen', 'doxyfile'], knownExtensions: ['dox'] },
   drawio: { ids: 'drawio', knownExtensions: ['drawio'] },
   drools: { ids: 'drools', knownExtensions: ['drl'] },
   dtd: { ids: 'dtd', knownExtensions: ['dtd'] },
