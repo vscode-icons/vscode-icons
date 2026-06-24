@@ -4893,7 +4893,15 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'pythonconfig',
-      extensions: ['.pdbrc'],
+      extensions: [
+        '.pdbrc',
+        '.pdbrc.py',
+        '.python_history',
+        'conf.py',
+        'config.py',
+        'setup.py',
+        'settings.py',
+      ],
       languages: [],
       filename: true,
       format: FileFormat.svg,
