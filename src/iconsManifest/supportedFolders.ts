@@ -253,6 +253,12 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'devenv',
+      extensions: ['.devenv'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dist',
       extensions: [
         'dist',
