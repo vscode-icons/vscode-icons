@@ -1947,6 +1947,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'eleventy',
       extensions: [
+        '.eleventyignore',
         '.eleventy.js',
         'eleventy.config.js',
         'eleventy.config.cjs',
