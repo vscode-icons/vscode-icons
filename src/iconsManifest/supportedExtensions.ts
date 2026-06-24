@@ -6575,6 +6575,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wasp',
+      extensions: ['wasp.ts'],
+      languages: [languages.wasp],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wdio',
       extensions: [],
       filenamesGlob: ['wdio', 'wdio.conf'],
