@@ -6267,7 +6267,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'uv',
-      extensions: ['uv.lock'],
+      extensions: ['uv.lock', 'uv.toml'],
       filename: true,
       format: FileFormat.svg,
     },
