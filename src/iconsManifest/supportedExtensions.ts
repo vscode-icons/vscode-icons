@@ -1821,8 +1821,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'doxygen',
-      extensions: [],
+      extensions: ['Doxyfile'],
       languages: [languages.doxygen],
+      filename: true,
       format: FileFormat.svg,
     },
     {
