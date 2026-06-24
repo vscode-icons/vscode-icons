@@ -5977,6 +5977,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'thinkscript',
+      extensions: [],
+      languages: [languages.thinkscript],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tiltfile',
       extensions: ['.tiltignore'],
       filename: true,
