@@ -620,6 +620,7 @@ export const languages = {
   stata: { ids: 'stata', knownExtensions: ['do'] },
   stencil: { ids: 'stencil', knownExtensions: ['stencil'] },
   stencilhtml: { ids: 'stencil-html', knownExtensions: ['html.stencil'] },
+  strings: { ids: 'strings', knownExtensions: ['strings'] },
   stylable: { ids: 'stylable', knownExtensions: ['st.css'] },
   styled: { ids: 'source.css.styled', knownExtensions: ['styled'] },
   stylus: { ids: 'stylus', knownExtensions: ['styl'] },

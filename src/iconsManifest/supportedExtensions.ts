@@ -3446,7 +3446,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
     { icon: 'lnk', extensions: ['lnk'], format: FileFormat.svg },
-    { icon: 'locale', extensions: [], format: FileFormat.svg },
+    {
+      icon: 'locale',
+      extensions: [],
+      languages: [languages.strings],
+      format: FileFormat.svg,
+    },
     { icon: 'log', extensions: ['log', 'tlg'], format: FileFormat.svg },
     {
       icon: 'log',
