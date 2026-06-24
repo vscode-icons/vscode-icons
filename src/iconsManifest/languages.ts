@@ -649,6 +649,7 @@ export const languages = {
     ids: 'yaml-tmlanguage',
     knownExtensions: ['YAML-tmLanguage'],
   },
+  thinkscript: { ids: 'thinkscript', knownExtensions: ['tosts'], },
   tiltfile: { ids: 'tiltfile', knownFilenames: ['Tiltfile'] },
   toit: { ids: 'toit', knownExtensions: ['toit'] },
   toml: { ids: 'toml', knownExtensions: ['toml'] },
