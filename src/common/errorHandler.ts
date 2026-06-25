@@ -5,7 +5,7 @@ export class ErrorHandler {
     }
     const msg: string =
       error instanceof Error
-        ? error.stack ?? (error.message || error.toString())
+        ? (error.stack ?? (error.message || error.toString()))
         : (error as string);
     console.error(`${handled ? 'H' : 'Unh'}andled Error: ${msg}`);
   }

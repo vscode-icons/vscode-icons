@@ -191,7 +191,6 @@ export class IconsGenerator implements models.IIconsGenerator {
           this.manifest.scripts['vscode:uninstall'],
           uninstallEntryPath,
         );
-        // eslint-disable-next-line no-console
         console.info(
           `[${constants.extension.name}] Script 'vscode:uninstall' in 'package.json' updated`,
         );

@@ -210,6 +210,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'databricks',
+      extensions: ['.databricks'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'datadog',
       extensions: ['datadog', '.datadog'],
       format: FileFormat.svg,
@@ -242,6 +247,12 @@ export const extensions: IFolderCollection = {
     {
       icon: 'devcontainer',
       extensions: ['.devcontainer'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'devenv',
+      extensions: ['.devenv'],
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -284,6 +295,11 @@ export const extensions: IFolderCollection = {
       icon: 'electron',
       extensions: ['electron'],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'environments',
+      extensions: ['environments'],
       format: FileFormat.svg,
     },
     {
@@ -747,6 +763,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'svelte',
       extensions: ['svelte', '.svelte-kit'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'swagger',
+      extensions: ['swagger'],
       format: FileFormat.svg,
     },
     { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },

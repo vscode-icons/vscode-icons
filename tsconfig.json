@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "target": "es6",
     "outDir": "out",
-    "lib": ["es6"],
+    "lib": ["es2022"],
     "sourceMap": true,
     "rootDir": "."
   },

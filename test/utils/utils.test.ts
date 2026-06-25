@@ -1,5 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { ChildProcess } from 'child_process';
 import { Stats } from 'fs';

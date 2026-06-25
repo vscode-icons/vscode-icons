@@ -1,5 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
 import { join } from 'path';
