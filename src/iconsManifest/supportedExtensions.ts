@@ -1848,6 +1848,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'drizzle_orm',
+      extensions: [],
+      filenamesGlob: ['drizzle.config'],
+      extensionsGlob: ['json', 'js', 'ts'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'drone',
       extensions: ['.drone.yml', '.drone.yml.sig'],
       light: true,
@@ -1864,15 +1873,6 @@ export const extensions: IFileCollection = {
       icon: 'dotjs',
       extensions: [],
       languages: [languages.dotjs],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'drizzle_orm',
-      extensions: [],
-      filenamesGlob: ['drizzle.config'],
-      extensionsGlob: ['json', 'js', 'ts'],
-      filename: true,
-      light: true,
       format: FileFormat.svg,
     },
     {
