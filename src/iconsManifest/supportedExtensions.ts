@@ -4866,6 +4866,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'proteus',
+      extensions: ['pdsprj', 'dsn'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'protractor',
       extensions: [],
       filenamesGlob: ['protractor.conf'],
