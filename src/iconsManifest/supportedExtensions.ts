@@ -1867,6 +1867,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'drizzle_orm',
+      extensions: [],
+      filenamesGlob: ['drizzle.config'],
+      extensionsGlob: ['json', 'js', 'ts'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dtd',
       extensions: ['dtd'],
       languages: [languages.dtd],
