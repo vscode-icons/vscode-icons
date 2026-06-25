@@ -1,5 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as proxyq from 'proxyquire';
 import * as sinon from 'sinon';
@@ -80,10 +78,7 @@ describe('LanguageResourceManager: tests', function () {
 
     context(`function 'localize'`, function () {
       it(`filters out 'null' keys`, function () {
-        resourceCollection = { en: initResourceCollection } as Record<
-          string,
-          string[]
-        >;
+        resourceCollection = { en: initResourceCollection };
 
         i18nManager = new (LanguageResourceManager(resourceCollection))(
           'en',
@@ -95,10 +90,7 @@ describe('LanguageResourceManager: tests', function () {
       });
 
       it(`filters out 'undefined' keys`, function () {
-        resourceCollection = { en: initResourceCollection } as Record<
-          string,
-          string[]
-        >;
+        resourceCollection = { en: initResourceCollection };
 
         i18nManager = new (LanguageResourceManager(resourceCollection))(
           'en',

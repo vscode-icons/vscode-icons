@@ -25,6 +25,6 @@ export const run = async (testsRoot: string): Promise<void | Error> => {
     if (error instanceof Error) {
       return error;
     }
-    throw new Error(`Failed to run tests: ${error as string}`);
+    throw new Error('Failed to run tests', { cause: error });
   }
 };

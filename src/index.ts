@@ -1,4 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
 import { Debugger } from './common/debugger';
 import { constants } from './constants';
 import { IExtensionManager, IVSCodeExtensionContext, SYMBOLS } from './models';

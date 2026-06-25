@@ -1,5 +1,3 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
@@ -348,8 +346,7 @@ describe('ExtensionManager: event listeners tests', function () {
                 });
 
                 it(`when set NOT to show the custom message`, function () {
-                  configManagerStub.vsicons.dontShowConfigManuallyChangedMessage =
-                    true;
+                  configManagerStub.vsicons.dontShowConfigManuallyChangedMessage = true;
 
                   onDidChangeConfigurationStub.callArgOnWith(
                     0,
