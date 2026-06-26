@@ -913,6 +913,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'wasp',
+      extensions: ['wasp'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wit',
       extensions: ['wit'],
       format: FileFormat.svg,
