@@ -6240,6 +6240,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'txt',
+      extensions: ['txt'],
+      languages: [languages.plaintext],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'typedoc',
       extensions: [],
       filenamesGlob: ['typedoc', 'typedoc.config'],
