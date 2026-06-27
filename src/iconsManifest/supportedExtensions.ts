@@ -721,6 +721,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'azurestreamanalytics',
+      extensions: [],
+      languages: [languages.azurestreamanalytics],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'babel',
       extensions: ['.babelrc', '.babelignore'],
       filenamesGlob: ['.babelrc', 'babel.config'],
