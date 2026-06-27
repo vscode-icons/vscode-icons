@@ -6019,6 +6019,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'text',
+      extensions: ['txt'],
+      languages: [languages.plaintext],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'textile',
       extensions: [],
       languages: [languages.textile],
