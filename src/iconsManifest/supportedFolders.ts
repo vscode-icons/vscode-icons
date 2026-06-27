@@ -547,6 +547,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mobile',
+      extensions: ['mobile', 'mobiles', '.mobile', '.mobiles'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mojo',
       extensions: ['mojo'],
       format: FileFormat.svg,
