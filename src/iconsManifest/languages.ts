@@ -42,6 +42,7 @@ export const languages = {
     ids: 'azure-pipelines',
     knownExtensions: ['azure-pipelines.yml'],
   },
+  azurestreamanalytics: { ids: 'asaql', knownExtensions: ['asaql'] },
   ballerina: { ids: 'ballerina', knownExtensions: ['bal'] },
   bat: { ids: 'bat', knownExtensions: ['bat'] },
   bats: { ids: 'bats', knownExtensions: ['bats'] },
