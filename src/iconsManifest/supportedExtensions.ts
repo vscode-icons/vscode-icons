@@ -3467,6 +3467,13 @@ export const extensions: IFileCollection = {
       languages: [languages.liquid],
       format: FileFormat.svg,
     },
+    {
+      icon: 'livekit',
+      extensions: ['livekit.yaml', 'livekit.toml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'livescript', extensions: ['ls'], format: FileFormat.svg },
     { icon: 'lnk', extensions: ['lnk'], format: FileFormat.svg },
     {
