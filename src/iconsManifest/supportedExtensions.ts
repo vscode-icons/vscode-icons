@@ -53,7 +53,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'actionscript',
-      extensions: [],
+      extensions: ['.part'],
       languages: [languages.actionscript],
       format: FileFormat.svg,
     },
