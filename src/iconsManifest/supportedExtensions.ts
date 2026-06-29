@@ -6801,7 +6801,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'xml',
-      extensions: ['pex', 'tmlanguage'],
+      extensions: ['pex',
+        'tmlanguage',
+        '.actionScriptProperties',
+        '.flexLibProperties',
+        '.project',
+        '.flexProperties'],
       languages: [languages.xml],
       format: FileFormat.svg,
     },
