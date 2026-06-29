@@ -4047,6 +4047,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mxml',
+      extensions: [],
+      languages: [languages.mxml],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mypy',
       extensions: ['mypy.ini', '.mypy.ini'],
       filename: true,
