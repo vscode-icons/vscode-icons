@@ -2230,7 +2230,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
+    { icon: 'flash', extensions: ['swf', 'swc', 'swf.cache', 'swc.cache'], format: FileFormat.svg },
     {
       icon: 'flatbuffers',
       extensions: [],
