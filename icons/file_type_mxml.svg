@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 85 85">
+
+    <defs>
+        <style>
+            .accent {
+                fill: #C41718;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 700;
+                font-size: 38px;
+            }
+
+            .stroke {
+                fill: none;
+                stroke: #C41718;
+                stroke-width: 6;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+        </style>
+    </defs>
+
+    <polyline class="stroke"
+        points="18,21 4,41 18,61"/>
+
+    <polyline class="stroke"
+        points="67,21 81,41 67,61"/>
+
+    <text class="accent"
+          x="18"
+          y="51">Mx</text>
+
+</svg>
