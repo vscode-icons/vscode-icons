@@ -422,13 +422,7 @@ export const languages = {
   org: { ids: 'org', knownExtensions: ['org'] },
   packer: {
     ids: ['packer', 'packervars'],
-    knownExtensions: [
-      'pkr.hcl',
-      'pkr.json',
-      'pkrtpl.hcl',
-      'pkrvars.hcl',
-      'pkrvars.json',
-    ],
+    knownExtensions: ['pkr.hcl', 'pkrvars.hcl'],
   },
   pascal: { ids: ['pascal', 'objectpascal'], knownExtensions: ['pas'] },
   pawn: { ids: ['pawn'], knownExtensions: ['p', 'pwn', 'inc', 'sma'] },
