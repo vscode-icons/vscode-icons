@@ -5163,6 +5163,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'rector',
+      extensions: ['rector.php'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'red',
       extensions: [],
       languages: [languages.red],
