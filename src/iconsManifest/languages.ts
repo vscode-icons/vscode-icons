@@ -334,7 +334,7 @@ export const languages = {
   log: { ids: 'log', knownExtensions: ['log'] },
   lolcode: { ids: 'lolcode', knownExtensions: ['lol'] },
   lsl: { ids: 'lsl', knownExtensions: ['lsl'] },
-  lua: { ids: 'lua', knownExtensions: ['lua'] },
+  lua: { ids: ['lua', 'glua'], knownExtensions: ['lua'] },
   m4: { ids: 'm4', knownExtensions: ['m4'] },
   makefile: { ids: ['makefile', 'makefile2'], knownExtensions: ['mk'] },
   markdown: {
