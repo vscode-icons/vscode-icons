@@ -404,6 +404,7 @@ export const languages = {
   mvt: { ids: 'mvt', knownExtensions: ['mvt'] },
   mvtcss: { ids: 'mvtcss', knownExtensions: ['mvt'] },
   mvtjs: { ids: 'mvtjs', knownExtensions: ['mvt'] },
+  mxml: { ids: 'mxml', knownExtensions: ['mxml'] },
   nearley: { ids: 'nearley', knownExtensions: ['ne'] },
   nextflow: { ids: 'nextflow', knownExtensions: ['nf'] },
   nginx: { ids: ['nginx'], knownExtensions: ['nginx'] },
