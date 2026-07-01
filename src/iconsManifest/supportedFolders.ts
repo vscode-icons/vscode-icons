@@ -65,7 +65,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { 
+    {
       icon: 'backend',
       extensions: ['backend', '.backend'],
       format: FileFormat.svg,
