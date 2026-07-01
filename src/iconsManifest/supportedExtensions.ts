@@ -4322,6 +4322,18 @@ export const extensions: IFileCollection = {
     },
     { icon: 'package', extensions: ['pkg'], format: FileFormat.svg },
     {
+      icon: 'packer',
+      extensions: [
+        'pkr.hcl',
+        'pkr.json',
+        'pkrtpl.hcl',
+        'pkrvars.hcl',
+        'pkrvars.json',
+      ],
+      languages: [languages.packer],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'parquet',
       extensions: ['parquet'],
       format: FileFormat.svg,

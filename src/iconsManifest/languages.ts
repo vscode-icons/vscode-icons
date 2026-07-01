@@ -420,6 +420,10 @@ export const languages = {
   openEdge: { ids: 'abl', knownExtensions: ['w'] },
   openHAB: { ids: 'openhab', knownExtensions: ['things'] },
   org: { ids: 'org', knownExtensions: ['org'] },
+  packer: {
+    ids: ['packer', 'packervars'],
+    knownExtensions: ['pkr.hcl', 'pkrvars.hcl'],
+  },
   pascal: { ids: ['pascal', 'objectpascal'], knownExtensions: ['pas'] },
   pawn: { ids: ['pawn'], knownExtensions: ['p', 'pwn', 'inc', 'sma'] },
   pddl: { ids: 'pddl', knownExtensions: ['pddl'] },
