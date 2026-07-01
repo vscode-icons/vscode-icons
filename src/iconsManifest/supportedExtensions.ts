@@ -488,7 +488,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'alchemy',
-      extensions: ['alchemy.run.ts'],
+      extensions: [],
+      filenamesGlob: ['alchemy.run'],
+      extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
       filename: true,
       format: FileFormat.svg,
     },
