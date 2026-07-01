@@ -701,7 +701,7 @@ export const languages = {
   wasp: { ids: 'wasp', knownExtensions: ['wasp'] },
   wenyan: { ids: 'wenyan', knownExtensions: ['wy'] },
   wesl: { ids: 'wesl', knownExtensions: ['wesl'] },
-  wgsl: { ids: 'wgsl', knownExtensions: ['wgsl'] },
+  wgsl: { ids: ['wgsl', 'WGSL'], knownExtensions: ['wgsl'] },
   wikitext: { ids: 'wikitext', knownExtensions: ['wt'] },
   wolfram: { ids: 'wolfram', knownExtensions: ['wl'] },
   wurst: { ids: ['wurstlang', 'wurst'], knownExtensions: ['wurst'] },
