@@ -130,6 +130,7 @@ export const extensions: IFolderCollection = {
       extensions: ['composer', '.composer'],
       format: FileFormat.svg,
     },
+    { icon: 'core', extensions: ['core'], format: FileFormat.svg },
     {
       icon: 'cli',
       extensions: [
