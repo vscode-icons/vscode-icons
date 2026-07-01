@@ -1625,6 +1625,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'dbt_bouncer',
+      extensions: ['dbt-bouncer.yml', 'dbt-bouncer.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'debian',
       extensions: ['deb'],
       languages: [languages.debian],
