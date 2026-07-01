@@ -234,6 +234,8 @@ export const extensions: IFolderCollection = {
         'repositories',
         'store',
         'stores',
+        'storage',
+        'storages',
       ],
       format: FileFormat.svg,
     },
@@ -449,6 +451,7 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
+    { icon: 'kiro', extensions: ['.kiro'], format: FileFormat.svg },
     {
       icon: 'kotlin',
       extensions: ['kotlin', 'Kotlin', '.kotlin'],
@@ -541,6 +544,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'minikube',
       extensions: ['minikube', 'minik8s', 'minikuber'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mobile',
+      extensions: ['mobile', 'mobiles', '.mobile', '.mobiles'],
       format: FileFormat.svg,
     },
     {
@@ -910,6 +918,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'wasm',
       extensions: ['wasm', 'WASM', 'webassembly', 'WebAssembly'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wasp',
+      extensions: ['wasp'],
       format: FileFormat.svg,
     },
     {
