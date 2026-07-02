@@ -922,7 +922,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'wasp',
-      extensions: ['wasp'],
+      extensions: ['.wasp'],
       format: FileFormat.svg,
     },
     {
