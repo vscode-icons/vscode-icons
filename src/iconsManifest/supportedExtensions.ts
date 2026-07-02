@@ -4227,6 +4227,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ocx',
+      extensions: ['ocx.toml', 'ocx.lock'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dune',
       extensions: ['dune', 'dune-project', 'dune-workspace'],
       filenamesGlob: [],
