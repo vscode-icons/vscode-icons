@@ -3522,6 +3522,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'lync', extensions: ['crec', 'ocrec'], format: FileFormat.svg },
     {
+      icon: 'madge',
+      extensions: ['.madgerc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mailing',
       extensions: ['mailing.config.json'],
       filename: true,
