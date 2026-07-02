@@ -1626,7 +1626,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'dbt_bouncer',
-      extensions: ['dbt-bouncer.yml', 'dbt-bouncer.toml'],
+      extensions: ['dbt-bouncer.yml', 'dbt-bouncer.yaml', 'dbt-bouncer.toml'],
       filename: true,
       format: FileFormat.svg,
     },
