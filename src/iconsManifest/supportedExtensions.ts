@@ -1010,6 +1010,12 @@ export const extensions: IFileCollection = {
       languages: [languages.caddyfile],
       format: FileFormat.svg,
     },
+    {
+      icon: 'cairo',
+      extensions: [],
+      languages: [languages.cairo],
+      format: FileFormat.svg,
+    },
     { icon: 'cake', extensions: ['cake'], format: FileFormat.svg },
     { icon: 'cakephp', extensions: [], format: FileFormat.svg },
     {
