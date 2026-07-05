@@ -504,7 +504,7 @@ export const extensions: IFolderCollection = {
         'g11n',
         'l10n',
         'translation',
-        'translations'
+        'translations',
       ],
       format: FileFormat.svg,
     },
