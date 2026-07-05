@@ -503,6 +503,8 @@ export const extensions: IFolderCollection = {
         'i18n',
         'g11n',
         'l10n',
+        'translation',
+        'translations'
       ],
       format: FileFormat.svg,
     },
