@@ -1960,7 +1960,12 @@ export const extensions: IFileCollection = {
       languages: [languages.eex],
       format: FileFormat.svg,
     },
-    { icon: 'ejs', extensions: ['ejs'], format: FileFormat.svg },
+    {
+      icon: 'ejs',
+      extensions: ['ejs'],
+      languages: [languages.ejs],
+      format: FileFormat.svg,
+    },
     {
       icon: 'elastic',
       extensions: [],

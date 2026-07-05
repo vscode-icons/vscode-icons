@@ -179,6 +179,7 @@ export const languages = {
   edge: { ids: 'edge', knownExtensions: ['edge'] },
   editorconfig: { ids: 'editorconfig', knownFilenames: ['.editorconfig'] },
   eex: { ids: ['eex', 'html-eex'], knownExtensions: ['eex'] },
+  ejs: { ids: 'ejs', knownExtensions: ['ejs'] },
   elastic: { ids: 'es', knownExtensions: ['es'] },
   elixir: { ids: 'elixir', knownExtensions: ['ex'] },
   elm: { ids: 'elm', knownExtensions: ['elm'] },
