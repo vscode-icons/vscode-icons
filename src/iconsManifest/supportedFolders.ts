@@ -779,7 +779,7 @@ export const extensions: IFolderCollection = {
     { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
     {
       icon: 'telegram',
-      extensions: ['telegram', '.telegram'],
+      extensions: ['telegram', '.telegram', 'Telegram', 'TelegramDesktop'],
       format: FileFormat.svg,
     },
     {
