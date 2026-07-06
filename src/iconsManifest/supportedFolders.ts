@@ -53,6 +53,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    {
+      icon: 'auth',
+      extensions: ['auth', 'authentication'],
+      format: FileFormat.svg,
+    },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
     { icon: 'azure', extensions: ['azure', '.azure'], format: FileFormat.svg },
     {
