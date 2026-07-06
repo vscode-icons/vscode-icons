@@ -3243,6 +3243,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'kodiak',
+      extensions: ['.kodiak.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'kos',
       extensions: [],
       languages: [languages.kos],
