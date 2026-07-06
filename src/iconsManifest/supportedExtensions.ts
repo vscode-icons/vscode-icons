@@ -1650,6 +1650,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'deepsource',
+      extensions: ['.deepsource.toml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'delphi',
       extensions: [],
       languages: [languages.pascal],
