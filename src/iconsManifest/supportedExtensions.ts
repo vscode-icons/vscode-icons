@@ -2307,7 +2307,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'fnox',
-      extensions: ['fnox.toml', 'fnox.local.toml'],
+      filenamesGlob: ['fnox', '.fnox', 'fnox.local', '.fnox.local'],
+      extensionsGlob: ['toml'],
       filename: true,
       format: FileFormat.svg,
     },
