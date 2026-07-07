@@ -4896,6 +4896,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['prisma', 'prisma.config'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
