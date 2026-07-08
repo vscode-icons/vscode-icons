@@ -6973,7 +6973,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'vercel',
-      extensions: ['now.json', '.nowignore', 'vercel.json', '.vercelignore'],
+      extensions: [
+        'now.json',
+        '.nowignore',
+        '.vercelignore',
+        '.vercel.approvers',
+      ],
+      filenamesGlob: ['vercel'],
+      extensionsGlob: ['json', 'js', 'cjs', 'mjs', 'ts', 'mts'],
       light: true,
       filename: true,
       format: FileFormat.svg,
