@@ -4064,6 +4064,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'next',
+      extensions: [],
       filenamesGlob: ['next.config'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'mts'],
       filename: true,
