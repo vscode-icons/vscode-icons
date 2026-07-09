@@ -723,6 +723,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'azureresourcemanager',
+      extensions: [
+        'azuredeploy.json',
+        'azuredeploy.parameters.json',
+        'azuredeploy.parameters.us.json',
+        'createUiDefinition.json',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'azurestreamanalytics',
       extensions: [],
       languages: [languages.azurestreamanalytics],
