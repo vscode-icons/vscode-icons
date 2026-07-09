@@ -506,7 +506,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { 
+    {
       icon: 'log',
       extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
       format: FileFormat.svg,
