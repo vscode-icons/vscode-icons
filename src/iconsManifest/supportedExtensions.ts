@@ -802,6 +802,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'behat',
+      extensions: ['behat.yaml.dist', 'behat.yml.dist'],
+      filenamesGlob: ['behat', 'behat.dist'],
+      extensionsGlob: ['yaml', 'yml', 'php'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bicep',
       extensions: [],
       languages: [languages.bicep],
