@@ -3686,7 +3686,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mcp',
-      extensions: ['mcp.json'],
+      extensions: ['.mcp.json', 'mcp.json'],
       light: true,
       filename: true,
       format: FileFormat.svg,
