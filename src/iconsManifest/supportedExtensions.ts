@@ -2242,12 +2242,14 @@ export const extensions: IFileCollection = {
     {
       icon: 'firebasestorage',
       extensions: ['storage.rules'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
     {
       icon: 'firestore',
       extensions: ['firestore.rules', 'firestore.indexes.json'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
