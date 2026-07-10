@@ -86,6 +86,12 @@ export const extensions: IFileCollection = {
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
+      icon: 'aikido',
+      extensions: ['.aikido'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'al',
       extensions: [],
       languages: [languages.al],
