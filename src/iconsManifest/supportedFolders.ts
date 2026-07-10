@@ -96,6 +96,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'codex',
+      extensions: ['codex', '.codex'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'controller',
       extensions: [
         '__controller__',
