@@ -4120,6 +4120,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nitro',
+      extensions: ['.nitrorc'],
+      filenamesGlob: ['nitro.config'],
+      extensionsGlob: ['js', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'noc',
       extensions: ['noc'],
       format: FileFormat.svg,
