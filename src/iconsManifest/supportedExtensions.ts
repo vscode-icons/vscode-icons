@@ -3765,8 +3765,15 @@ export const extensions: IFileCollection = {
     {
       icon: 'mise',
       extensions: [],
-      filenamesGlob: ['mise', '.mise', 'mise.local', '.mise.local'],
-      extensionsGlob: ['toml'],
+      filenamesGlob: [
+        'mise',
+        '.mise',
+        'mise.*',
+        '.mise.*',
+        'mise.*.local',
+        '.mise.*.local',
+      ],
+      extensionsGlob: ['toml', 'lock'],
       filename: true,
       format: FileFormat.svg,
     },
