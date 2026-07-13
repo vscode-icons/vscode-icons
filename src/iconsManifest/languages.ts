@@ -404,7 +404,7 @@ export const languages = {
   mson: { ids: 'mson', knownExtensions: ['mson'] },
   mustache: {
     ids: 'mustache',
-    knownExtensions: ['mustche', 'mst', 'mu', 'stache'],
+    knownExtensions: ['mustache', 'mst', 'mu', 'stache'],
   },
   mv: { ids: 'mv', knownExtensions: ['mv'] },
   mvt: { ids: 'mvt', knownExtensions: ['mvt'] },
