@@ -402,6 +402,10 @@ export const languages = {
   mojolicious: { ids: 'mojolicious', knownExtensions: ['ep'] },
   mongo: { ids: 'mongo', knownExtensions: ['mongo'] },
   mson: { ids: 'mson', knownExtensions: ['mson'] },
+  mustache: {
+    ids: 'mustache',
+    knownExtensions: ['mustche', 'mst', 'mu', 'stache'],
+  },
   mv: { ids: 'mv', knownExtensions: ['mv'] },
   mvt: { ids: 'mvt', knownExtensions: ['mvt'] },
   mvtcss: { ids: 'mvtcss', knownExtensions: ['mvt'] },
