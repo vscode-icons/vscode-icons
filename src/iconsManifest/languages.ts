@@ -134,6 +134,7 @@ export const languages = {
   cython: { ids: 'cython', knownExtensions: ['pyx'] },
   dal: { ids: 'dal', knownExtensions: ['dal'] },
   dart: { ids: 'dart', knownExtensions: ['dart'] },
+  dbml: { ids: 'dbml', knownExtensions: ['dbml'] },
   debian: {
     ids: [
       'debian-changelog',
