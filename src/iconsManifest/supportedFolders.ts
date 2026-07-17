@@ -778,6 +778,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
     {
+      icon: 'telegram',
+      extensions: ['telegram', '.telegram', 'Telegram', 'TelegramDesktop'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'test',
       extensions: [
         'tests',
@@ -922,7 +927,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'wasp',
-      extensions: ['wasp'],
+      extensions: ['.wasp'],
       format: FileFormat.svg,
     },
     {
