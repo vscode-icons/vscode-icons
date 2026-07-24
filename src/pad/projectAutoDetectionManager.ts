@@ -5,6 +5,7 @@ import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
 import { IPackageManifest } from '../models/packageManifest';
 import { Utils } from '../utils';
+import { basename } from 'node:path';
 
 export class ProjectAutoDetectionManager
   implements models.IProjectAutoDetectionManager
@@ -29,17 +30,29 @@ export class ProjectAutoDetectionManager
     }
 
     try {
-      const results = (await (this.configManager.vsicons.projectDetection
-        .disableDetect
-        ? Promise.resolve(null)
-        : this.vscodeManager.workspace.findFiles(
-            '**/package.json',
-            '**/node_modules/**',
-          ))) as models.IVSCodeUri[];
+      const results = this.configManager.vsicons.projectDetection.disableDetect
+        ? null
+        : await this.findProjectFiles();
       return this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
+  }
+
+  private async findProjectFiles(): Promise<models.IVSCodeUri[]> {
+    const patterns = [
+      '**/package.json',
+      '**/nest-cli.json',
+      '**/.nest-cli.json',
+      '**/nestconfig.json',
+      '**/.nestconfig.json',
+    ];
+    const results = await Promise.all(
+      patterns.map(pattern =>
+        this.vscodeManager.workspace.findFiles(pattern, '**/node_modules/**'),
+      ),
+    );
+    return results.flat();
   }
 
   private async detect(
@@ -208,6 +221,11 @@ export class ProjectAutoDetectionManager
   ): Promise<models.IProjectInfo> {
     let projectInfo: models.IProjectInfo = null;
     for (const result of results) {
+      const fileName = basename(result.fsPath);
+      if (project === models.Projects.nestjs && this.isNestProjectFile(fileName)) {
+        projectInfo = { name: project, version: '' };
+        break;
+      }
       const content: string = await readFileAsync(result.fsPath, 'utf8');
       const projectJson: IPackageManifest =
         Utils.parseJSONSafe<IPackageManifest>(content);
@@ -217,6 +235,15 @@ export class ProjectAutoDetectionManager
       }
     }
     return projectInfo;
+  }
+
+  private isNestProjectFile(fileName: string): boolean {
+    return [
+      'nest-cli.json',
+      '.nest-cli.json',
+      'nestconfig.json',
+      '.nestconfig.json',
+    ].includes(fileName);
   }
 
   private getInfo(
