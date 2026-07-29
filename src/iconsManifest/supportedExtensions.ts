@@ -5272,7 +5272,6 @@ export const extensions: IFileCollection = {
       icon: 'replit',
       extensions: ['.replit', 'replit.nix'],
       filename: true,
-      light: true,
       format: FileFormat.svg,
     },
     {
