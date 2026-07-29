@@ -3563,7 +3563,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lychee',
-      extensions: ['lychee.toml'],
+      extensions: ['.lycheeignore', 'lychee.toml'],
       filename: true,
       format: FileFormat.svg,
     },
