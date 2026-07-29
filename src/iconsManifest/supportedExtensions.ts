@@ -4707,6 +4707,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'poml',
+      extensions: [],
+      languages: [languages.poml],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pony',
       extensions: [],
       languages: [languages.pony],

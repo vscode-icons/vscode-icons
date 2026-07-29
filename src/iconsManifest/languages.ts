@@ -478,6 +478,7 @@ export const languages = {
   po: { ids: 'po', knownExtensions: ['po'] },
   polyglot: { ids: 'polyglot-notebook', knownExtensions: ['dib'] },
   polymer: { ids: 'polymer', knownExtensions: ['polymer'] },
+  poml: { ids: 'poml', knownExtensions: ['poml'] },
   pony: { ids: 'pony', knownExtensions: ['pony'] },
   postcss: { ids: 'postcss', knownExtensions: ['pcss'] },
   postscript: { ids: 'postscript', knownExtensions: ['ps'] },
