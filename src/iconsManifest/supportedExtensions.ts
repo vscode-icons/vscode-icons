@@ -1777,6 +1777,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'direnv',
+      extensions: ['.envrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'docker',
       extensions: ['.dockerignore'],
       filenamesGlob: [
