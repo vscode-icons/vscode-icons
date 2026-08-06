@@ -627,6 +627,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'asyncapi',
+      extensions: [],
+      filenamesGlob: ['asyncapi'],
+      extensionsGlob: ['json', 'yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'atom',
       extensions: ['atom'],
       format: FileFormat.svg,
