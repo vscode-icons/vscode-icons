@@ -2953,6 +2953,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'imgbot',
+      extensions: ['.imgbotconfig'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'inc',
       extensions: ['inc', 'include'],
       format: FileFormat.svg,
