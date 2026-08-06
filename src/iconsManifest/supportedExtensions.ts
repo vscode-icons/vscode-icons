@@ -6274,6 +6274,7 @@ export const extensions: IFileCollection = {
         'tsconfig.types',
         'tsconfig.lib',
         'tsconfig.lib.prod',
+        'tsfmt',
       ],
       extensionsGlob: ['json'],
       filename: true,
