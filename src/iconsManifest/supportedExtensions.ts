@@ -627,6 +627,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'asyncapi',
+      extensions: [],
+      filenamesGlob: ['asyncapi'],
+      extensionsGlob: ['json', 'yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'atom',
       extensions: ['atom'],
       format: FileFormat.svg,
@@ -2950,6 +2958,12 @@ export const extensions: IFileCollection = {
       icon: 'imba',
       extensions: ['imba', 'imba2'],
       languages: [languages.imba],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'imgbot',
+      extensions: ['.imgbotconfig'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
