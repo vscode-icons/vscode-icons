@@ -7,6 +7,16 @@ export const extensions: IFileCollection = {
   },
   supported: [
     {
+      icon: 'subatom',
+      extensions: [
+        'subatom.config.js',
+        'subatom.config.ts',
+        'subatom.config.mjs',
+        'subatom.config.cjs',
+      ],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'access',
       extensions: [
         'accdb',
