@@ -86,6 +86,12 @@ export const extensions: IFileCollection = {
     { icon: 'ai', extensions: ['ai'], format: FileFormat.svg },
     { icon: 'ai2', extensions: ['ai'], format: FileFormat.svg, disabled: true },
     {
+      icon: 'aikido',
+      extensions: ['.aikido'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'al',
       extensions: [],
       languages: [languages.al],
@@ -618,6 +624,14 @@ export const extensions: IFileCollection = {
       extensions: [],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'asyncapi',
+      extensions: [],
+      filenamesGlob: ['asyncapi'],
+      extensionsGlob: ['json', 'yaml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -1633,6 +1647,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
+    {
+      icon: 'dbml',
+      extensions: [],
+      languages: [languages.dbml],
+      format: FileFormat.svg,
+    },
     {
       icon: 'dbt',
       extensions: ['dbt_project.yml', 'dbt_cloud.yml', '.dbtignore'],
@@ -2941,6 +2961,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'imgbot',
+      extensions: ['.imgbotconfig'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'inc',
       extensions: ['inc', 'include'],
       format: FileFormat.svg,
@@ -3563,7 +3589,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'lychee',
-      extensions: ['lychee.toml'],
+      extensions: ['.lycheeignore', 'lychee.toml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -4368,9 +4394,11 @@ export const extensions: IFileCollection = {
         '.oxlintrc.json',
         '.oxlintrc.jsonc',
         'oxlint.config.ts',
+        'oxlint.config.mts',
         '.oxfmtrc.json',
         '.oxfmtrc.jsonc',
         'oxfmt.config.ts',
+        'oxfmt.config.mts',
       ],
       filename: true,
       light: true,
@@ -4702,6 +4730,12 @@ export const extensions: IFileCollection = {
       icon: 'polymer',
       extensions: [],
       languages: [languages.polymer],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'poml',
+      extensions: [],
+      languages: [languages.poml],
       format: FileFormat.svg,
     },
     {
@@ -5272,7 +5306,6 @@ export const extensions: IFileCollection = {
       icon: 'replit',
       extensions: ['.replit', 'replit.nix'],
       filename: true,
-      light: true,
       format: FileFormat.svg,
     },
     {
@@ -5523,6 +5556,24 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['seedkit.config'],
       extensionsGlob: ['js', 'ts', 'mjs'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'semanticrelease',
+      extensions: ['.releaserc'],
+      filenamesGlob: ['.releaserc'],
+      extensionsGlob: ['js', 'cjs', 'ts', 'mjs', 'json', 'yaml', 'yml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'semanticrelease',
+      extensions: [],
+      filenamesGlob: ['release.config'],
+      extensionsGlob: ['js', 'cjs', 'ts', 'mjs'],
+      filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
