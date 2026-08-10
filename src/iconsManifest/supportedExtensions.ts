@@ -6365,6 +6365,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ty',
+      extensions: ['ty.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'typedoc',
       extensions: [],
       filenamesGlob: ['typedoc', 'typedoc.config'],
