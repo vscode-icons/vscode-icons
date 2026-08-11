@@ -53,7 +53,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'actionscript',
-      extensions: [],
+      extensions: ['.part'],
       languages: [languages.actionscript],
       format: FileFormat.svg,
     },
@@ -2285,7 +2285,7 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'flash', extensions: ['swf', 'swc'], format: FileFormat.svg },
+    { icon: 'flash', extensions: ['swf', 'swc', 'swf.cache', 'swc.cache'], format: FileFormat.svg },
     {
       icon: 'flatbuffers',
       extensions: [],
@@ -3923,6 +3923,12 @@ export const extensions: IFileCollection = {
       icon: 'mvtjs',
       extensions: [],
       languages: [languages.mvtjs],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'mxml',
+      extensions: [],
+      languages: [languages.mxml],
       format: FileFormat.svg,
     },
     {
@@ -6917,7 +6923,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'xml',
-      extensions: ['pex', 'tmlanguage'],
+      extensions: ['pex',
+        'tmlanguage',
+        '.actionScriptProperties',
+        '.flexLibProperties',
+        '.project',
+        '.flexProperties'],
       languages: [languages.xml],
       format: FileFormat.svg,
     },
