@@ -4331,11 +4331,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ohpm',
-      extensions: [
-        '.ohpmrc',
-        'oh-package.json5',
-        'oh-package-lock.json5',
-      ],
+      extensions: ['.ohpmrc', 'oh-package.json5', 'oh-package-lock.json5'],
       filename: true,
       format: FileFormat.svg,
     },
