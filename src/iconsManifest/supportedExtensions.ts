@@ -7,6 +7,19 @@ export const extensions: IFileCollection = {
   },
   supported: [
     {
+      icon: 'zsh',
+      extensions: [
+        '.zlogin',
+        '.zprofile',
+        '.zshrc',
+        'zlogin',
+        'zprofile',
+        'zshrc',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'access',
       extensions: [
         'accdb',
