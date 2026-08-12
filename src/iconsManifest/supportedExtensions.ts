@@ -5147,6 +5147,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'quarkdown',
+      extensions: [],
+      languages: [languages.quarkdown],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'quasar',
       extensions: ['quasar.conf.js'],
       filenamesGlob: ['quasar.config'],
@@ -6362,6 +6369,12 @@ export const extensions: IFileCollection = {
       icon: 'twig',
       extensions: [],
       languages: [languages.twig],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ty',
+      extensions: ['ty.toml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
