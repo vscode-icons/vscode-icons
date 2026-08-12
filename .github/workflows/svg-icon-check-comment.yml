@@ -82,11 +82,11 @@ jobs:
               continue
             fi
 
-            response=$(curl -s --location 'https://freeimage.host/json' \
+            response=$(curl -s --location 'https://freeimage.host/api/1/upload' \
               --form "source=@${png_file}" \
-              --form "type=file" \
               --form "action=upload" \
-              --form "auth_token=${IMAGE_UPLOAD}")
+              --form "format=json" \
+              --form "key=${IMAGE_UPLOAD}")
 
             image_url=$(echo "$response" | jq -r '.image.url // empty')
             if [ -z "$image_url" ]; then
