@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Download previews artifact
         id: download
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: svg-previews
           path: previews
@@ -115,7 +115,7 @@ jobs:
 
       - name: Find comment ID if it exists
         if: steps.pr.outputs.found == 'true'
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@v4
         id: find-comment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -125,7 +125,7 @@ jobs:
 
       - name: Post/Update Comment
         if: steps.pr.outputs.found == 'true'
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ steps.pr.outputs.pr_number }}
