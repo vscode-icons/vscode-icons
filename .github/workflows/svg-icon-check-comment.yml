@@ -55,7 +55,20 @@ jobs:
           IMAGE_UPLOAD: ${{ secrets.IMAGES_API_KEY }}
         run: |
           sudo apt-get install -y jq
+
           COMMENT_BODY="## Icons Background Test\n\n"
+
+          if [ -z "$IMAGE_UPLOAD" ]; then
+            echo "::error::IMAGES_API_KEY secret is not set; cannot upload previews."
+            COMMENT_BODY+="> [!WARNING]\n"
+            COMMENT_BODY+="> Preview images could not be generated because the \`IMAGES_API_KEY\` secret is not configured in this repository.\n"
+            {
+              echo "comment_body<<EOF"
+              echo -e "$COMMENT_BODY"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
 
           while IFS=$'\t' read -r base_name size png_name; do
             [ -z "$png_name" ] && continue
@@ -75,7 +88,14 @@ jobs:
               --form "action=upload" \
               --form "auth_token=${IMAGE_UPLOAD}")
 
-            image_url=$(echo "$response" | jq -r '.image.url')
+            image_url=$(echo "$response" | jq -r '.image.url // empty')
+            if [ -z "$image_url" ]; then
+              error_msg=$(echo "$response" | jq -r '.error.message // "unknown error"' 2>/dev/null || echo "unknown error")
+              echo "::error::Upload failed for ${safe_name}: ${error_msg}"
+              COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
+              COMMENT_BODY+="⚠️ _Preview upload failed: ${error_msg}_\n\n"
+              continue
+            fi
             echo "Uploaded: $image_url"
 
             COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
