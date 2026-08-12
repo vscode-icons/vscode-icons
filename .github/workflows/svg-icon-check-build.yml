@@ -1,0 +1,74 @@
+name: SVG Icon Check (Build)
+
+# Safe half of the two-step handoff: runs untrusted fork code with NO secrets.
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'icons/*.svg'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: svg-icon-check-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build_previews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find modified SVGs
+        id: changed-svgs
+        run: |
+          git fetch origin "${{ github.base_ref }}"
+          FILES=$(git diff --name-only --diff-filter=ACMRT "origin/${{ github.base_ref }}...HEAD" -- 'icons/*.svg' || true)
+          echo "Changed SVGs:"
+          echo "$FILES"
+          if [ -z "$FILES" ]; then
+            echo "SVG_CHANGED=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "SVG_CHANGED=true" >> "$GITHUB_OUTPUT"
+          printf '%s\n' "$FILES" > changed_files.txt
+
+      - name: Download CLI Tool
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        run: |
+          LATEST_URL="https://github.com/robertohuertasm/svg-icon-check/releases/latest/download/svg-icon-check"
+          curl -L "$LATEST_URL" -o svg-icon-check
+          chmod +x svg-icon-check
+
+      - name: Generate Preview Images and Manifest
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        run: |
+          mkdir -p previews
+          : > previews/manifest.tsv
+          while IFS= read -r svg_file; do
+            [ -z "$svg_file" ] && continue
+            [ -f "$svg_file" ] || continue
+            echo "Processing: $svg_file"
+            base_name=$(basename "$svg_file" .svg)
+            size=$(stat -c "%s" "$svg_file")
+            png_name="${base_name}-preview.png"
+            ./svg-icon-check "$svg_file" -b 30,30,30 40,42,54 46,52,64 47,54,59 39,40,34 60,63,65 88,110,117 89,91,79 120,120,120 253,246,227 236,239,244 242,242,242 250,250,250 -o "previews/${png_name}"
+            printf '%s\t%s\t%s\n' "$base_name" "$size" "$png_name" >> previews/manifest.tsv
+          done < changed_files.txt
+
+      - name: Save PR number
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        run: echo "${{ github.event.pull_request.number }}" > previews/pr_number.txt
+
+      - name: Upload previews artifact
+        if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: svg-previews
+          path: previews/
+          retention-days: 1
