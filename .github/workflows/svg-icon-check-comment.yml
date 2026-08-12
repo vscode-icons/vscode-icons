@@ -58,6 +58,9 @@ jobs:
 
           COMMENT_BODY="## Icons Background Test\n\n"
 
+          # Strip any stray whitespace/newlines picked up when the secret was pasted.
+          IMAGE_UPLOAD=$(printf '%s' "$IMAGE_UPLOAD" | tr -d '[:space:]')
+
           if [ -z "$IMAGE_UPLOAD" ]; then
             echo "::error::IMAGES_API_KEY secret is not set; cannot upload previews."
             COMMENT_BODY+="> [!WARNING]\n"
@@ -90,6 +93,8 @@ jobs:
 
             image_url=$(echo "$response" | jq -r '.image.url // empty')
             if [ -z "$image_url" ]; then
+              # Full response is safe to log: the API key is only sent in the request, never returned.
+              echo "freeimage.host raw response for ${safe_name}: ${response}"
               error_msg=$(echo "$response" | jq -r '.error.message // "unknown error"' 2>/dev/null || echo "unknown error")
               echo "::error::Upload failed for ${safe_name}: ${error_msg}"
               COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
