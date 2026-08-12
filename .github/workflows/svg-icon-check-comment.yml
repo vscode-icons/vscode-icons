@@ -1,0 +1,111 @@
+name: SVG Icon Check (Comment)
+
+# Trusted half of the two-step handoff: runs from the default branch with secrets,
+# and only consumes the artifact produced by the build workflow (never fork code).
+on:
+  workflow_run:
+    workflows: ['SVG Icon Check (Build)']
+    types:
+      - completed
+
+permissions:
+  contents: read
+  pull-requests: write
+  actions: read
+
+concurrency:
+  group: svg-icon-check-comment-${{ github.event.workflow_run.id }}
+  cancel-in-progress: true
+
+jobs:
+  post_comment:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download previews artifact
+        id: download
+        uses: actions/download-artifact@v4
+        with:
+          name: svg-previews
+          path: previews
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read PR number
+        id: pr
+        run: |
+          if [ ! -f previews/pr_number.txt ]; then
+            echo "No PR number found; nothing to do."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          pr_number=$(tr -cd '0-9' < previews/pr_number.txt)
+          if [ -z "$pr_number" ]; then
+            echo "PR number empty; nothing to do."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "pr_number=$pr_number" >> "$GITHUB_OUTPUT"
+          echo "found=true" >> "$GITHUB_OUTPUT"
+
+      - name: Upload previews and build comment body
+        if: steps.pr.outputs.found == 'true'
+        id: generate-comment
+        env:
+          IMAGE_UPLOAD: ${{ secrets.IMAGES_API_KEY }}
+        run: |
+          sudo apt-get install -y jq
+          COMMENT_BODY="## Icons Background Test\n\n"
+
+          while IFS=$'\t' read -r base_name size png_name; do
+            [ -z "$png_name" ] && continue
+            # Sanitize fork-controlled values before using them in shell/markdown.
+            safe_name=$(printf '%s' "$base_name" | tr -cd 'A-Za-z0-9._-')
+            safe_size=$(printf '%s' "$size" | tr -cd '0-9')
+            png_file="previews/$(printf '%s' "$png_name" | tr -cd 'A-Za-z0-9._-')"
+
+            if [ ! -f "$png_file" ]; then
+              echo "Skipping missing preview: $png_file"
+              continue
+            fi
+
+            response=$(curl -s --location 'https://freeimage.host/json' \
+              --form "source=@${png_file}" \
+              --form "type=file" \
+              --form "action=upload" \
+              --form "auth_token=${IMAGE_UPLOAD}")
+
+            image_url=$(echo "$response" | jq -r '.image.url')
+            echo "Uploaded: $image_url"
+
+            COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
+            COMMENT_BODY+="![Preview](${image_url})\n\n"
+          done < previews/manifest.tsv
+
+          {
+            echo "comment_body<<EOF"
+            echo -e "$COMMENT_BODY"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Find comment ID if it exists
+        if: steps.pr.outputs.found == 'true'
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ steps.pr.outputs.pr_number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: <!-- svg-preview-comment -->
+
+      - name: Post/Update Comment
+        if: steps.pr.outputs.found == 'true'
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ steps.pr.outputs.pr_number }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          body: |
+            ${{ steps.generate-comment.outputs.comment_body }}
+            <!-- svg-preview-comment -->
+          edit-mode: replace
