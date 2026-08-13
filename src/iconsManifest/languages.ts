@@ -646,6 +646,7 @@ export const languages = {
   systemverilog: { ids: 'systemverilog', knownExtensions: ['sv'] },
   t4: { ids: 't4', knownExtensions: ['tt'] },
   tailwindcss: { ids: 'tailwindcss', knownExtensions: ['css'] },
+  tablegen: { ids: 'tablegen', knownExtensions: ['td'] },
   teal: { ids: 'teal', knownExtensions: ['teal'] },
   templ: { ids: 'templ', knownExtensions: ['templ'] },
   templatetoolkit: { ids: 'tt', knownExtensions: ['tt3'] },
