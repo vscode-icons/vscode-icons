@@ -533,6 +533,7 @@ export const languages = {
   qlik: { ids: 'qlik', knownExtensions: ['qvs'] },
   qml: { ids: 'qml', knownExtensions: ['qml'] },
   qsharp: { ids: 'qsharp', knownExtensions: ['qs'] },
+  quarkdown: { ids: 'quarkdown', knownExtensions: ['qd'] },
   r: { ids: 'r', knownExtensions: ['r'] },
   racket: { ids: 'racket', knownExtensions: ['rkt'] },
   raku: { ids: 'raku', knownExtensions: ['raku'] },
