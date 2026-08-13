@@ -627,6 +627,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'asyncapi',
+      extensions: [],
+      filenamesGlob: ['asyncapi'],
+      extensionsGlob: ['json', 'yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'atom',
       extensions: ['atom'],
       format: FileFormat.svg,
@@ -1639,6 +1647,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'db', extensions: ['db'], light: true, format: FileFormat.svg },
+    {
+      icon: 'dbml',
+      extensions: [],
+      languages: [languages.dbml],
+      format: FileFormat.svg,
+    },
     {
       icon: 'dbt',
       extensions: ['dbt_project.yml', 'dbt_cloud.yml', '.dbtignore'],
@@ -2950,6 +2964,12 @@ export const extensions: IFileCollection = {
       icon: 'imba',
       extensions: ['imba', 'imba2'],
       languages: [languages.imba],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'imgbot',
+      extensions: ['.imgbotconfig'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -5133,6 +5153,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'quarkdown',
+      extensions: [],
+      languages: [languages.quarkdown],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'quasar',
       extensions: ['quasar.conf.js'],
       filenamesGlob: ['quasar.config'],
@@ -6348,6 +6375,12 @@ export const extensions: IFileCollection = {
       icon: 'twig',
       extensions: [],
       languages: [languages.twig],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'ty',
+      extensions: ['ty.toml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
