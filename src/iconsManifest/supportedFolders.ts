@@ -356,6 +356,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
+    { icon: 'grok', extensions: ['.grok'], format: FileFormat.svg },
     { icon: 'grunt', extensions: ['grunt'], format: FileFormat.svg },
     {
       icon: 'gulp',
