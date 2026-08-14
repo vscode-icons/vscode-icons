@@ -2709,6 +2709,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'grok',
+      extensions: ['grok.md', 'GROK.md'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'groovy',
       extensions: [],
       languages: [languages.groovy],
