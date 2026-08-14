@@ -936,7 +936,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'buckbuild',
-      extensions: ['.buckconfig'],
+      extensions: ['.buckconfig', '.buckconfig.local', '.buckjavaargs', 'BUCK'],
       filename: true,
       format: FileFormat.svg,
     },
