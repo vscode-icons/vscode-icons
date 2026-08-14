@@ -1963,7 +1963,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'dvc',
-      extensions: ['.dvc'],
+      extensions: ['.dvc', '.dvcignore', 'dvc.yaml', 'dvc.lock'],
       languages: [],
       filename: true,
       format: FileFormat.svg,
