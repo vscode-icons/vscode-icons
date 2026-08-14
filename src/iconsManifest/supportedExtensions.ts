@@ -3317,6 +3317,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'krita',
+      extensions: ['kra'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'kusto',
       extensions: [],
       languages: [languages.kusto],
