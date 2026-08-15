@@ -936,7 +936,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'buckbuild',
-      extensions: ['.buckconfig'],
+      extensions: ['.buckconfig', '.buckconfig.local', '.buckjavaargs', 'BUCK'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -1378,6 +1378,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'convex',
+      extensions: ['convex.json', 'convex.config.js', 'convex.config.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'copilot',
       extensions: ['copilot-instructions.md', 'github-copilot.xml'],
       filename: true,
@@ -1791,6 +1797,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'direnv',
+      extensions: ['.envrc'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'docker',
       extensions: ['.dockerignore'],
       filenamesGlob: [
@@ -1951,7 +1963,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'dvc',
-      extensions: ['.dvc'],
+      extensions: ['.dvc', '.dvcignore', 'dvc.yaml', 'dvc.lock'],
       languages: [],
       filename: true,
       format: FileFormat.svg,
@@ -2697,6 +2709,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'grok',
+      extensions: ['grok.md', 'GROK.md'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'groovy',
       extensions: [],
       languages: [languages.groovy],
@@ -3308,6 +3327,11 @@ export const extensions: IFileCollection = {
       icon: 'kotlin',
       extensions: ['ktm'],
       languages: [languages.kotlin],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'krita',
+      extensions: ['kra'],
       format: FileFormat.svg,
     },
     {
