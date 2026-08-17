@@ -4139,6 +4139,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'naux',
+      extensions: [],
+      languages: [languages.naux],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nextflow',
       extensions: ['.nf'],
       filename: true,
