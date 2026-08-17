@@ -1535,6 +1535,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'csv',
+      extensions: ['csv', 'tsv'],
+      languages: [languages.csv],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cucumber',
       extensions: [],
       languages: [languages.cucumber],
@@ -6176,8 +6182,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'text',
-      extensions: ['csv', 'tsv'],
-      languages: [languages.csv, languages.plaintext],
+      extensions: ['txt'],
+      languages: [languages.plaintext],
       format: FileFormat.svg,
     },
     {
