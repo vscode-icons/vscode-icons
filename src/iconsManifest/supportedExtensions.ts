@@ -5904,6 +5904,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'styleci',
+      extensions: ['.styleci.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'styled',
       extensions: [],
       languages: [languages.styled],
