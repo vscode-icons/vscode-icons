@@ -534,6 +534,7 @@ export const languages = {
   qml: { ids: 'qml', knownExtensions: ['qml'] },
   qsharp: { ids: 'qsharp', knownExtensions: ['qs'] },
   quarkdown: { ids: 'quarkdown', knownExtensions: ['qd'] },
+  quarto: { ids: 'quarto', knownExtensions: ['qmd'] },
   r: { ids: 'r', knownExtensions: ['r'] },
   racket: { ids: 'racket', knownExtensions: ['rkt'] },
   raku: { ids: 'raku', knownExtensions: ['raku'] },
