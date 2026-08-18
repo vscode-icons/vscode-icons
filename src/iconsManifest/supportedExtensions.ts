@@ -4152,6 +4152,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ng-packagr',
+      extensions: ['ng-package.json', 'ng-package.js'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'nim',
       extensions: [],
       languages: [languages.nim],
