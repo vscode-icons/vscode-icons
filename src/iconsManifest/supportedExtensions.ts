@@ -5948,6 +5948,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'subatom',
+      extensions: [
+        'subatom.config.js',
+        'subatom.config.ts',
+        'subatom.config.mjs',
+        'subatom.config.cjs',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'svelte',
       extensions: [],
       languages: [languages.svelte],
