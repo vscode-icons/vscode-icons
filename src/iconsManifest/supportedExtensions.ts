@@ -4354,6 +4354,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'ohpm',
+      extensions: ['.ohpmrc', 'oh-package.json5', 'oh-package-lock.json5'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'onenote',
       extensions: ['one', 'onepkg', 'onetoc', 'onetoc2', 'sig'],
       format: FileFormat.svg,
