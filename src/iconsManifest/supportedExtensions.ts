@@ -3915,7 +3915,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mustache',
-      extensions: ['mustache', 'mst'],
+      extensions: [],
+      languages: [languages.mustache],
       light: true,
       format: FileFormat.svg,
     },
