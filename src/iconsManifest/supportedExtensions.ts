@@ -2131,6 +2131,7 @@ export const extensions: IFileCollection = {
         'eslint.config.ts',
         'eslint.config.mts',
         'eslint.config.cts',
+        'eslint-suppressions.json',
       ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: [
@@ -2159,6 +2160,7 @@ export const extensions: IFileCollection = {
         'eslint.config.ts',
         'eslint.config.mts',
         'eslint.config.cts',
+        'eslint-suppressions.json',
       ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: [
