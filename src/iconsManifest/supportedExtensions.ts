@@ -1148,6 +1148,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'checkov',
+      extensions: ['.checkov.yaml', '.checkov.yml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'changie',
       extensions: ['.changie.yaml', '.changie.yml'],
       filename: true,
