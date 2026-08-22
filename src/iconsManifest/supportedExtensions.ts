@@ -3758,6 +3758,7 @@ export const extensions: IFileCollection = {
       ],
       extensionsGlob: ['toml', 'lock'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     { icon: 'meteor', extensions: [], format: FileFormat.svg },
