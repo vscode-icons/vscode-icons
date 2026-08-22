@@ -6008,7 +6008,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'swift',
-      extensions: ['package.pins'],
+      extensions: ['package.pins', '.swift-version'],
       filename: true,
       languages: [languages.swift],
       format: FileFormat.svg,
@@ -6952,6 +6952,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'xcode', extensions: ['xcodeproj'], format: FileFormat.svg },
+    {
+      icon: 'xcode',
+      extensions: ['.xcode-version'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'xfl',
       extensions: ['xfl'],
