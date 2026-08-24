@@ -6880,6 +6880,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'werf',
+      extensions: ['werf.yaml', 'werf-giterminism.yaml', 'werf-includes.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wesl',
       extensions: [],
       languages: [languages.wesl],
