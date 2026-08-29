@@ -7224,5 +7224,18 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'zsh',
+      extensions: [
+        '.zlogin',
+        '.zprofile',
+        '.zshrc',
+        'zlogin',
+        'zprofile',
+        'zshrc',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
   ],
 };
