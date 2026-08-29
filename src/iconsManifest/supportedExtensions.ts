@@ -951,6 +951,7 @@ export const extensions: IFileCollection = {
         'buf.work.yml',
       ],
       languages: [languages.buf],
+      filename: true,
       format: FileFormat.svg,
     },
     {
