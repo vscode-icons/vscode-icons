@@ -5206,6 +5206,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'quarto',
+      extensions: [],
+      languages: [languages.quarto],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'quartoconfig',
+      extensions: ['_quarto.yaml', '_quarto.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'quasar',
       extensions: ['quasar.conf.js'],
       filenamesGlob: ['quasar.config'],
