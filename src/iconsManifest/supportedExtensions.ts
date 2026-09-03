@@ -6116,6 +6116,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tablegen',
+      extensions: ['td'],
+      languages: [languages.tablegen],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'teal',
       extensions: [],
       languages: [languages.teal],
