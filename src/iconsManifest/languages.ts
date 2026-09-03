@@ -134,6 +134,7 @@ export const languages = {
   cython: { ids: 'cython', knownExtensions: ['pyx'] },
   dal: { ids: 'dal', knownExtensions: ['dal'] },
   dart: { ids: 'dart', knownExtensions: ['dart'] },
+  dbml: { ids: 'dbml', knownExtensions: ['dbml'] },
   debian: {
     ids: [
       'debian-changelog',
@@ -478,6 +479,7 @@ export const languages = {
   po: { ids: 'po', knownExtensions: ['po'] },
   polyglot: { ids: 'polyglot-notebook', knownExtensions: ['dib'] },
   polymer: { ids: 'polymer', knownExtensions: ['polymer'] },
+  poml: { ids: 'poml', knownExtensions: ['poml'] },
   pony: { ids: 'pony', knownExtensions: ['pony'] },
   postcss: { ids: 'postcss', knownExtensions: ['pcss'] },
   postscript: { ids: 'postscript', knownExtensions: ['ps'] },
@@ -531,6 +533,7 @@ export const languages = {
   qlik: { ids: 'qlik', knownExtensions: ['qvs'] },
   qml: { ids: 'qml', knownExtensions: ['qml'] },
   qsharp: { ids: 'qsharp', knownExtensions: ['qs'] },
+  quarkdown: { ids: 'quarkdown', knownExtensions: ['qd'] },
   r: { ids: 'r', knownExtensions: ['r'] },
   racket: { ids: 'racket', knownExtensions: ['rkt'] },
   raku: { ids: 'raku', knownExtensions: ['raku'] },
