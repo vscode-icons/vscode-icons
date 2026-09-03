@@ -2400,6 +2400,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fresh',
+      extensions: ['fresh.gen.ts', 'fresh.config.ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fritzing',
       extensions: ['fzz', 'fz', 'fzpz', 'fzp', 'fzbz', 'fzb'],
       format: FileFormat.svg,
