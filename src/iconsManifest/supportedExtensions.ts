@@ -4323,6 +4323,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'nxd',
+      extensions: ['nxd'],
+      languages:[languages.nxd],
+      format: FileFormat.svg,
+    }
+    {
       icon: 'nyc',
       extensions: ['.nycrc', '.nycrc.json'],
       filename: true,

@@ -413,6 +413,7 @@ export const languages = {
   nim: { ids: 'nim', knownExtensions: ['nim'] },
   nimble: { ids: 'nimble', knownExtensions: ['nimble'] },
   nix: { ids: 'nix', knownExtensions: ['nix'] },
+  nxd: { ids: 'nxd', knownExtensions: ['nxd']},
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], knownExtensions: ['nsi'] },
   nunjucks: { ids: 'nunjucks', knownExtensions: ['nunjucks'] },
   nushell: { ids: 'nushell', knownExtensions: ['nu'] },
