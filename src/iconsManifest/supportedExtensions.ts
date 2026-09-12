@@ -6682,6 +6682,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'vlt',
+      extensions: ['vlt.json', 'vlt-lock.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'volt',
       extensions: [],
       languages: [languages.volt],
