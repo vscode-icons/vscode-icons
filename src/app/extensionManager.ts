@@ -1,5 +1,5 @@
 import { dirname, resolve } from 'path';
-import * as packageJson from '../../../package.json';
+import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';

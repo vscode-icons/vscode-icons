@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 
 describe('Uninstall: tests', function () {
   context('ensures that', function () {
