@@ -2964,6 +2964,7 @@ export const extensions: IFileCollection = {
       languages: [languages.icl],
       format: FileFormat.svg,
     },
+    { icon: 'ida', extensions: ['i64'], format: FileFormat.svg },
     { icon: 'idris', extensions: ['idr', 'lidr'], format: FileFormat.svg },
     { icon: 'idrisbin', extensions: ['ibc'], format: FileFormat.svg },
     { icon: 'idrispkg', extensions: ['ipkg'], format: FileFormat.svg },
