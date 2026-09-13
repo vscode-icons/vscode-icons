@@ -7052,6 +7052,7 @@ export const extensions: IFileCollection = {
         'java_init.list',
         'native_init.list',
         'scope.list',
+        'xposed/module.prop',
       ],
       filename: true,
       format: FileFormat.svg,
