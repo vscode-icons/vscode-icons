@@ -869,6 +869,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'binary_ninja',
+      extensions: ['bndb'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'bithound',
       extensions: ['.bithoundrc'],
       filename: true,
