@@ -2837,6 +2837,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'hip',
       extensions: ['hip'],
+      languages: [languages.hip],
       light: true,
       format: FileFormat.svg,
     },
