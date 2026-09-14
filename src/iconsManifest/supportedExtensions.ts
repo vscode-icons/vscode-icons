@@ -3351,6 +3351,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'kysely',
+      extensions: [],
+      filenamesGlob: ['kysely.config'],
+      extensionsGlob: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'latino',
       extensions: [],
       languages: [languages.latino],
