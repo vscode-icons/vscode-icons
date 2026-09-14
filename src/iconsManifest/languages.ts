@@ -61,7 +61,7 @@ export const languages = {
     ids: 'browserslist',
     knownFilenames: ['browserslist', '.browserslistrc'],
   },
-  bruno: { ids: 'bruno', knownExtensions: ['bru'] },
+  bruno: { ids: 'bru', knownExtensions: ['bru'] },
   buf: { ids: ['buf', 'buf-gen'], knownExtensions: ['buf.yaml'] },
   bunlockb: { ids: 'bun.lockb', knownExtensions: ['lockb'] },
   c: { ids: 'c', knownExtensions: ['c'] },
