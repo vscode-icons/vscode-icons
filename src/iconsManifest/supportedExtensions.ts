@@ -2835,6 +2835,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hip',
+      extensions: ['hip'],
+      languages: [languages.hip],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'histoire',
       extensions: [
         'histoire.config.ts',
