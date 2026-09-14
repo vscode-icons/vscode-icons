@@ -6281,6 +6281,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tombi',
+      extensions: ['tombi.toml', '.tombi.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'toml',
       extensions: [],
       languages: [languages.toml],
