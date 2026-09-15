@@ -1,4 +1,4 @@
-import * as manifest from '../../../package.json';
+import manifest from '../../../package.json';
 import { IPackageManifest } from '../models/packageManifest';
 
 export const constants = {
