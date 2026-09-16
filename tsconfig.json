@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["es2022"],
+    "lib": ["es2022", "DOM"],
     "module": "node16",
     "noImplicitAny": false,
     "noUnusedLocals": true,
@@ -11,7 +11,8 @@
     "sourceMap": true,
     "strictFunctionTypes": false,
     "strictNullChecks": false,
-    "target": "es6"
+    "target": "es6",
+    "types": ["node"]
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }
