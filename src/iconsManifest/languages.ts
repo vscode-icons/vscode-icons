@@ -237,6 +237,7 @@ export const languages = {
   haxe: { ids: ['haxe', 'hxml', 'Haxe AST dump'], knownExtensions: ['haxe'] },
   hcl: { ids: ['hcl'], knownExtensions: ['hcl'] },
   helm: { ids: 'helm', knownExtensions: ['helm.tpl'] },
+  hip: { ids: 'hip', knownExtensions: ['hip'] },
   hjson: { ids: 'hjson', knownExtensions: ['hjson'] },
   hlsl: { ids: 'hlsl', knownExtensions: ['hlsl'] },
   homeassistant: { ids: 'home-assistant', knownExtensions: ['yaml'] },

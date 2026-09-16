@@ -2131,6 +2131,7 @@ export const extensions: IFileCollection = {
         'eslint.config.ts',
         'eslint.config.mts',
         'eslint.config.cts',
+        'eslint-suppressions.json',
       ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: [
@@ -2159,6 +2160,7 @@ export const extensions: IFileCollection = {
         'eslint.config.ts',
         'eslint.config.mts',
         'eslint.config.cts',
+        'eslint-suppressions.json',
       ],
       filenamesGlob: ['.eslintrc'],
       extensionsGlob: [
@@ -2274,12 +2276,14 @@ export const extensions: IFileCollection = {
     {
       icon: 'firebasestorage',
       extensions: ['storage.rules'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
     {
       icon: 'firestore',
       extensions: ['firestore.rules', 'firestore.indexes.json'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
@@ -2831,6 +2835,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'hip',
+      extensions: ['hip'],
+      languages: [languages.hip],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'histoire',
       extensions: [
         'histoire.config.ts',
@@ -3347,6 +3358,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'kysely',
+      extensions: [],
+      filenamesGlob: ['kysely.config'],
+      extensionsGlob: ['ts', 'mts', 'cts', 'js', 'mjs', 'cjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'latino',
       extensions: [],
       languages: [languages.latino],
@@ -3742,7 +3761,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mcp',
-      extensions: ['mcp.json'],
+      extensions: ['.mcp.json', 'mcp.json'],
       light: true,
       filename: true,
       format: FileFormat.svg,
@@ -5008,6 +5027,7 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['prisma', 'prisma.config'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -6276,6 +6296,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tombi',
+      extensions: ['tombi.toml', '.tombi.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'toml',
       extensions: [],
       languages: [languages.toml],
@@ -6371,6 +6397,7 @@ export const extensions: IFileCollection = {
         'tsconfig.types',
         'tsconfig.lib',
         'tsconfig.lib.prod',
+        'tsfmt',
       ],
       extensionsGlob: ['json'],
       filename: true,
