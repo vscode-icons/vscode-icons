@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <title>file_type_android</title>
-  <!-- The Android mark is scaled to the 32x32 canvas with a 2px vertical margin. -->
-  <g transform="translate(-12.86 -10.06) scale(1.3)">
+  <!-- The Android mark is scaled to the 32x32 canvas with a consistent 2px margin. -->
+  <g transform="translate(-18.59 -10.12) scale(1.56 1.3)">
     <path
       d="M16.864 15.831h10.644a.437.437 0 0 0 .428-.528 5.884 5.884 0 0 0-2.87-3.909l.91-1.642a.23.23 0 0 0-.4-.223l-.917 1.654a5.889 5.889 0 0 0-4.94 0L18.8 9.529a.23.23 0 1 0-.4.223l.91 1.642a5.884 5.884 0 0 0-2.87 3.909.437.437 0 0 0 .424.528Zm8.5-2.447a.495.495 0 1 1-.495-.495.495.495 0 0 1 .495.495Zm-5.864-.495a.495.495 0 1 1-.495.495.495.495 0 0 1 .495-.495Z"
       fill="#aac148"
