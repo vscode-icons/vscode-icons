@@ -4,7 +4,7 @@
     Source reference: the IDA Pro 9.0 application icon (ida.ico) from an installed distribution.
     Vectorized from the original PNG with VTracer; this SVG contains vector paths only.
   -->
-  <g transform="translate(2 0.13) scale(0.2205 0.2333)">
+  <g transform="translate(2 1.13) scale(0.21875)">
     <g fill="#B5B6B6">
     <path d="M46,9c0,0,0,0-1-1Z"/>
     <path d="M105,108v1h1v-1h-1Z"/>
