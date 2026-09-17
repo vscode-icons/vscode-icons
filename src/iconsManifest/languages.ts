@@ -681,6 +681,7 @@ export const languages = {
   typo3: { ids: 'typoscript', knownExtensions: ['typoscript'] },
   uiua: { ids: 'uiua', knownExtensions: ['ua'] },
   unison: { ids: 'unison', knownExtensions: ['u'] },
+  uvue: { ids: 'uvue', knownExtensions: ['uvue'] },
   vb: { ids: 'vb', knownExtensions: ['vb'] },
   vba: { ids: 'vba', knownExtensions: ['cls'] },
   vbscript: { ids: 'vbscript', knownExtensions: ['wsf'] },
