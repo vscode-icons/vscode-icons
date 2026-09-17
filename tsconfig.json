@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "lib": ["es2022"],
+    "module": "node16",
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "skipLibCheck": true,
-    "target": "es6",
     "outDir": "out",
-    "lib": ["es2022"],
+    "rootDir": ".",
+    "skipLibCheck": true,
     "sourceMap": true,
-    "rootDir": "."
+    "strictFunctionTypes": false,
+    "strictNullChecks": false,
+    "target": "es6"
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }
