@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["es2022", "DOM"],
+    "lib": ["es2022"],
     "module": "node16",
     "noImplicitAny": false,
     "noUnusedLocals": true,
