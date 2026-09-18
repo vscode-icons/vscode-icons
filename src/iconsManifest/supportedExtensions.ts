@@ -2654,6 +2654,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'golangci',
+      extensions: [
+        '.golangci.yml',
+        '.golangci.yaml',
+        '.golangci.toml',
+        '.golangci.json',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gpg',
       extensions: ['gpg', 'pgp'],
       format: FileFormat.svg,
