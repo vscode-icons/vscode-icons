@@ -7077,6 +7077,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'xposed',
+      extensions: [
+        'xposed_init',
+        'native_init',
+        'java_init.list',
+        'native_init.list',
+        'scope.list',
+        'xposed/module.prop',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'xquery',
       extensions: [],
       languages: [languages.xquery],
