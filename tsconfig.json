@@ -11,7 +11,8 @@
     "sourceMap": true,
     "strictFunctionTypes": false,
     "strictNullChecks": false,
-    "target": "es6"
+    "target": "es6",
+    "types": ["node"]
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }
