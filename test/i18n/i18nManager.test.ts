@@ -1,10 +1,10 @@
 import { expect } from 'chai';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
-import * as langResourcesJson from '../../../lang.nls.bundle.json';
-import * as nlsTemplateJson from '../../../locale/package.nls.template.json';
-import * as nlsJson from '../../../locale/package/package.nls.json';
-import * as packageJson from '../../../package.json';
+import langResourcesJson from '../../../lang.nls.bundle.json';
+import nlsTemplateJson from '../../../locale/package.nls.template.json';
+import nlsJson from '../../../locale/package/package.nls.json';
+import packageJson from '../../../package.json';
 import {
   ILanguageResourceManager,
   LangResourceKeys,

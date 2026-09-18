@@ -356,6 +356,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
+    { icon: 'grok', extensions: ['.grok'], format: FileFormat.svg },
     { icon: 'grunt', extensions: ['grunt'], format: FileFormat.svg },
     {
       icon: 'gulp',
@@ -506,7 +507,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    { icon: 'log', extensions: ['log', 'logs'], format: FileFormat.svg },
+    {
+      icon: 'log',
+      extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
+      format: FileFormat.svg,
+    },
     { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
     {
       icon: 'mariadb',
@@ -778,6 +783,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
     {
+      icon: 'telegram',
+      extensions: ['telegram', '.telegram', 'Telegram', 'TelegramDesktop'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'test',
       extensions: [
         'tests',
@@ -922,7 +932,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'wasp',
-      extensions: ['wasp'],
+      extensions: ['.wasp'],
       format: FileFormat.svg,
     },
     {
