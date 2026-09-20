@@ -5511,6 +5511,23 @@ export const extensions: IFileCollection = {
     },
     { icon: 'rproj', extensions: ['rproj'], format: FileFormat.svg },
     {
+      icon: 'rspack',
+      extensions: ['rslint.json', 'rslint.jsonc'],
+      filenamesGlob: [
+        'rstack.config',
+        'rspack.config',
+        'rsbuild.config',
+        'rslib.config',
+        'rspress.config',
+        'rsdoctor.config',
+        'rstest.config',
+        'rslint.config',
+      ],
+      extensionsGlob: ['js', 'ts', 'mjs', 'mts', 'cjs', 'cts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rspec',
       extensions: ['.rspec'],
       filename: true,
