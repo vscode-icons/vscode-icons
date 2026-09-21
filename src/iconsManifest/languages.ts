@@ -314,7 +314,7 @@ export const languages = {
       'jinja-php',
       'jinja-rust',
     ],
-    knownExtensions: ['jinja'],
+    knownExtensions: ['jinja', 'jinja2', 'j2'],
   },
   json: { ids: 'json', knownExtensions: ['json'] },
   jsonc: { ids: 'jsonc', knownExtensions: ['jsonc'] },
