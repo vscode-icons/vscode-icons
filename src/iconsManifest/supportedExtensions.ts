@@ -5430,6 +5430,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'reuse',
+      extensions: ['REUSE.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rexx',
       extensions: [],
       languages: [languages.rexx],
