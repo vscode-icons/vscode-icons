@@ -1233,6 +1233,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'codegen',
+      extensions: ['codegen.config.js'],
+      filenamesGlob: ['codegen', '.codegenrc'],
+      extensionsGlob: ['js', 'ts', 'json', 'yaml', 'yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'codemagic',
       extensions: ['codemagic.yaml'],
       filename: true,
