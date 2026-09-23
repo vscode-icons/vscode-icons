@@ -5742,6 +5742,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'shaderlab',
+      extensions: ['global-metadata.dat'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'shadcn',
       extensions: ['components.json'],
       filename: true,
