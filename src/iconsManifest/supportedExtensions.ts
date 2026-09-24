@@ -3861,7 +3861,12 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    { icon: 'meteor', extensions: [], format: FileFormat.svg },
+    {
+      icon: 'meteor',
+      extensions: ['.meteorignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'mjml',
       extensions: [],
