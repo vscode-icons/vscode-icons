@@ -5742,6 +5742,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'shaderslang',
+      extensions: [],
+      languages: [languages.shaderslang],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'shadcn',
       extensions: ['components.json'],
       filename: true,
