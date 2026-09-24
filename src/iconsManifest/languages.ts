@@ -592,6 +592,7 @@ export const languages = {
   sdlang: { ids: 'sdl', knownExtensions: ['sdl'] },
   searchresult: { ids: 'search-result', knownExtensions: ['code-search'] },
   shaderlab: { ids: 'shaderlab', knownExtensions: ['shader'] },
+  shaderslang: { ids: 'slang', knownExtensions: ['slang', 'slangh'] },
   shellscript: {
     ids: 'shellscript',
     knownExtensions: ['sh', 'bash', 'zsh', 'ksh', 'fish'],
