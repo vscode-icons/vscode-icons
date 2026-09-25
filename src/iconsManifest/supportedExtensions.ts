@@ -3837,6 +3837,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'meteor',
+      extensions: ['.meteorignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'metro',
       filenamesGlob: ['metro', 'metro.config'],
       extensions: [],
@@ -3858,12 +3864,6 @@ export const extensions: IFileCollection = {
       extensions: [],
       filenamesGlob: ['mise', '.mise', 'mise.local', '.mise.local'],
       extensionsGlob: ['toml'],
-      filename: true,
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'meteor',
-      extensions: ['.meteorignore'],
       filename: true,
       format: FileFormat.svg,
     },
