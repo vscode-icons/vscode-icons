@@ -954,6 +954,7 @@ export const extensions: IFileCollection = {
         'buf.work.yml',
       ],
       languages: [languages.buf],
+      filename: true,
       format: FileFormat.svg,
     },
     {
@@ -1148,6 +1149,13 @@ export const extensions: IFileCollection = {
     {
       icon: 'cheader',
       extensions: ['h'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'checkov',
+      extensions: ['.checkov.yaml', '.checkov.yml'],
+      filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -5261,6 +5269,18 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'quarto',
+      extensions: [],
+      languages: [languages.quarto],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'quartoconfig',
+      extensions: ['_quarto.yaml', '_quarto.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'quasar',
       extensions: ['quasar.conf.js'],
       filenamesGlob: ['quasar.config'],
@@ -6763,6 +6783,12 @@ export const extensions: IFileCollection = {
       icon: 'vlang',
       extensions: [],
       languages: [languages.vlang],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'vlt',
+      extensions: ['vlt.json', 'vlt-lock.json'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
