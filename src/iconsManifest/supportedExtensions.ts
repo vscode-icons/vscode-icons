@@ -933,8 +933,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'bruno',
-      extensions: [],
+      extensions: ['bru'],
       languages: [languages.bruno],
+      filename: false,
       format: FileFormat.svg,
     },
     {
