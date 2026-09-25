@@ -5819,9 +5819,9 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
-      icon: 'slang',
+      icon: 'slangacademic',
       extensions: [],
-      languages: [languages.slang],
+      languages: [languages.slangacademic],
       format: FileFormat.svg,
     },
     {

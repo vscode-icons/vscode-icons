@@ -606,7 +606,7 @@ export const languages = {
       '.zprofile',
     ],
   },
-  slang: { ids: 'slang', knownExtensions: ['slang'] },
+  slangacademic: { ids: 'slang-academic', knownExtensions: ['slang'] },
   slice: { ids: ['slice'], knownExtensions: ['ice'] },
   slim: { ids: ['slim'], knownExtensions: ['slim'] },
   slint: { ids: ['slint'], knownExtensions: ['slint'] },
