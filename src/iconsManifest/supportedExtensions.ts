@@ -5976,6 +5976,7 @@ export const extensions: IFileCollection = {
       extensions: ['sqlite', 'sqlite3', 'db3'],
       format: FileFormat.svg,
     },
+    { icon: 'sqlproj', extensions: ['sqlproj'], format: FileFormat.svg },
     {
       icon: 'squirrel',
       extensions: [],
