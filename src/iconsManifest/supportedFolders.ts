@@ -485,6 +485,7 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
+    { icon: 'kadence', extensions: ['.kadence'], format: FileFormat.svg },
     { icon: 'kiro', extensions: ['.kiro'], format: FileFormat.svg },
     {
       icon: 'kotlin',
