@@ -1147,6 +1147,14 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'changelogen',
+      extensions: ['.changelogrc', '.changelogenrc'],
+      filenamesGlob: ['changelog.config'],
+      extensionsGlob: ['ts', 'js', 'mjs', 'cjs', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cheader',
       extensions: ['h'],
       format: FileFormat.svg,
