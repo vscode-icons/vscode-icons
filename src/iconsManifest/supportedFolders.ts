@@ -713,6 +713,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'schema',
+      extensions: ['schema', 'schemas'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'script',
       extensions: ['script', 'scripts'],
       format: FileFormat.svg,
