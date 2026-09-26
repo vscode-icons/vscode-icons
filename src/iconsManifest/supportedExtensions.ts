@@ -3965,6 +3965,7 @@ export const extensions: IFileCollection = {
       icon: 'mongo',
       extensions: [],
       languages: [languages.mongo],
+      light: true,
       format: FileFormat.svg,
     },
     {
