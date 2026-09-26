@@ -1770,6 +1770,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'devprune',
+      extensions: ['.devprune.json', 'ignore.devprune.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'devvit',
       filename: true,
       filenamesGlob: ['devvit', 'devvit.dev', 'devvit.prod', 'devvit.test'],
