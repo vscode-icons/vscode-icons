@@ -2859,6 +2859,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'heroku',
+      extensions: ['heroku.yml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'hip',
       extensions: ['hip'],
       languages: [languages.hip],
