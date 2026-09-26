@@ -919,6 +919,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'brakeman',
+      extensions: ['brakeman.yml', 'brakeman.ignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'brew',
       extensions: ['.Brewfile', 'Brewfile'],
       filename: true,
