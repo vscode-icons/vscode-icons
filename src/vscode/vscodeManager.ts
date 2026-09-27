@@ -1,5 +1,5 @@
 import { coerce, gte, parse } from 'semver';
-import * as packageJson from '../../../package.json';
+import packageJson from '../../../package.json';
 import * as models from '../models';
 import {
   IPackageManifest,

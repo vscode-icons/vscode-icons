@@ -53,6 +53,11 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    {
+      icon: 'auth',
+      extensions: ['auth', 'authentication', 'authorisation', 'authorization'],
+      format: FileFormat.svg,
+    },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
     { icon: 'azure', extensions: ['azure', '.azure'], format: FileFormat.svg },
     {
@@ -158,6 +163,10 @@ export const extensions: IFolderCollection = {
       extensions: [
         'conf',
         '.conf',
+        'cfg',
+        '.cfg',
+        'cfgs',
+        '.cfgs',
         'config',
         '.config',
         'configs',
@@ -356,6 +365,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
+    { icon: 'grok', extensions: ['.grok'], format: FileFormat.svg },
     { icon: 'grunt', extensions: ['grunt'], format: FileFormat.svg },
     {
       icon: 'gulp',
@@ -503,10 +513,16 @@ export const extensions: IFolderCollection = {
         'i18n',
         'g11n',
         'l10n',
+        'translation',
+        'translations',
       ],
       format: FileFormat.svg,
     },
-    { icon: 'log', extensions: ['log', 'logs'], format: FileFormat.svg },
+    {
+      icon: 'log',
+      extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
+      format: FileFormat.svg,
+    },
     { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
     {
       icon: 'mariadb',
@@ -625,6 +641,13 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
+    { icon: 'ohpm', extensions: ['oh_modules'], format: FileFormat.svg },
+    {
+      icon: 'ocx',
+      extensions: ['.ocx'],
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'package',
       extensions: ['package', 'packages', '.package', '.packages', 'pkg'],
@@ -708,6 +731,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'schema',
+      extensions: ['schema', 'schemas'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'script',
       extensions: ['script', 'scripts'],
       format: FileFormat.svg,
@@ -777,6 +805,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
+    {
+      icon: 'telegram',
+      extensions: ['telegram', '.telegram', 'Telegram', 'TelegramDesktop'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'test',
       extensions: [
@@ -922,7 +955,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'wasp',
-      extensions: ['wasp'],
+      extensions: ['.wasp'],
       format: FileFormat.svg,
     },
     {
