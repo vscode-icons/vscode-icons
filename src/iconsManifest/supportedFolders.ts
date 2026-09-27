@@ -6,6 +6,12 @@ export const extensions: IFolderCollection = {
     root_folder: { icon: 'root_folder', format: FileFormat.svg },
   },
   supported: [
+    {
+      icon: 'alpine',
+      extensions: ['alpine'],
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
     { icon: 'angular', extensions: ['.angular'], format: FileFormat.svg },
     {
@@ -26,6 +32,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'arangodb',
       extensions: ['arangodb', 'arango'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'arch',
+      extensions: ['arch'],
       format: FileFormat.svg,
     },
     {
@@ -328,6 +339,12 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fedora',
+      extensions: ['fedora'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'frontcommerce',
       extensions: ['.front-commerce'],
       format: FileFormat.svg,
@@ -349,6 +366,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'gcp', extensions: ['gcp', '.gcp'], format: FileFormat.svg },
+    {
+      icon: 'gentoo',
+      extensions: ['gentoo'],
+      format: FileFormat.svg,
+    },
     { icon: 'gemini', extensions: ['.gemini'], format: FileFormat.svg },
     {
       icon: 'git',
@@ -713,6 +735,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'redhat',
+      extensions: ['redhat', 'rhel'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'redux',
       extensions: ['redux'],
       light: true,
@@ -764,6 +791,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'slackware',
+      extensions: ['slackware'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'snaplet',
       extensions: ['.snaplet'],
       format: FileFormat.svg,
@@ -792,6 +824,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'supabase',
       extensions: ['supabase'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'suse',
+      extensions: ['suse', 'opensuse'],
       format: FileFormat.svg,
     },
     {
@@ -905,6 +942,11 @@ export const extensions: IFolderCollection = {
         '_page',
         '_pages',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'void',
+      extensions: ['void'],
       format: FileFormat.svg,
     },
     { icon: 'vs', extensions: ['.vs'], format: FileFormat.svg },
