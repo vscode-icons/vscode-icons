@@ -86,7 +86,7 @@ export class ManifestReader {
     );
     try {
       return readFileAsync(manifestFilePath, 'utf8');
-    } catch (err) {
+    } catch {
       return null;
     }
   }

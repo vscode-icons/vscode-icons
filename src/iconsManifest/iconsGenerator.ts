@@ -1,4 +1,4 @@
-import * as packageJson from '../../../package.json';
+import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, writeFileAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
@@ -191,7 +191,6 @@ export class IconsGenerator implements models.IIconsGenerator {
           this.manifest.scripts['vscode:uninstall'],
           uninstallEntryPath,
         );
-        // eslint-disable-next-line no-console
         console.info(
           `[${constants.extension.name}] Script 'vscode:uninstall' in 'package.json' updated`,
         );

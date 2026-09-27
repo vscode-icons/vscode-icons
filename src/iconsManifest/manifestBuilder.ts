@@ -405,7 +405,7 @@ export class ManifestBuilder {
   ): Promise<models.IBuildFiles> {
     const sts = constants.iconsManifest;
 
-    let collection = files.supported;
+    let collection: models.IFileExtension[];
 
     const officialFilter = (f: models.IFileExtension): boolean =>
       f.icon &&
@@ -560,7 +560,7 @@ export class ManifestBuilder {
 
         return old;
       },
-      Promise.resolve({
+      Promise.resolve<models.IBuildFiles>({
         defs: {},
         names: { fileExtensions: {}, fileNames: {} },
         light: {
@@ -569,7 +569,7 @@ export class ManifestBuilder {
           language: { fileExtensions: {}, fileNames: {}, languageIds: {} },
         },
         language: { fileExtensions: {}, fileNames: {}, languageIds: {} },
-      } as models.IBuildFiles),
+      }),
     );
   }
 

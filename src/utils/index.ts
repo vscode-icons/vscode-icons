@@ -101,7 +101,7 @@ export class Utils {
   public static parseJSONSafe<T>(text: string): T {
     try {
       return JSON.parse(text) as T;
-    } catch (err) {
+    } catch {
       return {} as T;
     }
   }

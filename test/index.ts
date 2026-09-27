@@ -1,6 +1,6 @@
-import * as path from 'path';
-import * as Mocha from 'mocha';
 import * as glob from 'glob';
+import Mocha from 'mocha';
+import path from 'path';
 
 export const run = async (testsRoot: string): Promise<void | Error> => {
   const mocha = new Mocha({
@@ -25,6 +25,6 @@ export const run = async (testsRoot: string): Promise<void | Error> => {
     if (error instanceof Error) {
       return error;
     }
-    throw new Error(`Failed to run tests: ${error as string}`);
+    throw new Error('Failed to run tests', { cause: error });
   }
 };

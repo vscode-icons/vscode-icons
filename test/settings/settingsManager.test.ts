@@ -1,7 +1,5 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import * as semver from 'semver';
+import semver from 'semver';
 import * as sinon from 'sinon';
 import { ErrorHandler } from '../../src/common/errorHandler';
 import * as fsAsync from '../../src/common/fsAsync';

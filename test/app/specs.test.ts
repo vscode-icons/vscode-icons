@@ -1,7 +1,5 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import * as packageJson from '../../../package.json';
+import packageJson from '../../../package.json';
 import { constants } from '../../src/constants';
 import { IVSCodeManifest } from '../../src/models/packageManifest/vscode';
 import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';

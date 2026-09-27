@@ -49,7 +49,12 @@ jobs:
         # https://github.com/microsoft/vscode/blob/main/package.json#L138
         # https://github.com/ewanharris/vscode-versions
         node:
-          - 22.15.1 # vscode >= 1.101.0 - May 2025
+          # - 24.18.0 # vscode >= 1.129.0 <= 1.133.0 - July 2026
+          # - 24.17.0 # vscode >= 1.128.0 <= 1.128.1 - July 2026
+          - 24.15.0 # vscode >= 1.123.0 <= 1.127.0 - June 2026
+          # - 22.18.0 # vscode >= 1.104.0 <= 1.104.3 - August 2025
+          # - 22.17.0 # vscode >= 1.103.0 <= 1.103.2 - July 2025
+          - 22.15.1 # vscode >= 1.101.0 <= 1.102.3 - May 2025
           # - 22.19.0 # vscode >= 1.100 <= 1.100.3
           # - 20.18.3 # vscode >= 1.99.0 <= 1.99.3
           # - 20.18.2 # vscode >= 1.98.0 <= 1.98.2
@@ -61,7 +66,7 @@ jobs:
           # - 20.9.0 # vscode >= 1.90.0 <= 1.91.0 - May 2024
           # - 18.18.2 # vscode >= 1.88.0 <= 1.89.1
           # - 18.17.1 # vscode >= 1.86.0 <= 1.87.2
-          - 18.15.0 # vscode >= 1.82.0 <= 1.85.2 - Aug 2023
+          # - 18.15.0 # vscode >= 1.82.0 <= 1.85.2 - Aug 2023
         arch:
           - x64
         experimental:

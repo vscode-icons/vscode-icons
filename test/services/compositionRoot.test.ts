@@ -1,7 +1,5 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import 'reflect-metadata';
 import * as sinon from 'sinon';
 import { ExtensionManager } from '../../src/app/extensionManager';
