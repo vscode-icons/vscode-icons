@@ -5830,6 +5830,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'shaderlab',
+      extensions: ['global-metadata.dat'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'shaderslang',
       extensions: [],
       languages: [languages.shaderslang],
