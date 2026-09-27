@@ -288,6 +288,8 @@ export const extensions: IFolderCollection = {
         'dists',
         'out',
         'outs',
+        'output',
+        'outputs',
         'export',
         'exports',
         'build',
