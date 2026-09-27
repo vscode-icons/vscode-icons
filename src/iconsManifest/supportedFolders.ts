@@ -632,6 +632,12 @@ export const extensions: IFolderCollection = {
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
     { icon: 'ohpm', extensions: ['oh_modules'], format: FileFormat.svg },
     {
+      icon: 'ocx',
+      extensions: ['.ocx'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'package',
       extensions: ['package', 'packages', '.package', '.packages', 'pkg'],
       format: FileFormat.svg,
