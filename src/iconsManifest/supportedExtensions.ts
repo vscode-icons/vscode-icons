@@ -4015,6 +4015,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'moniq',
+      extensions: [],
+      filenamesGlob: ['moniq.config'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'monotone',
       extensions: ['.mtn-ignore'],
       filename: true,
