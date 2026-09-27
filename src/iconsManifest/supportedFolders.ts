@@ -6,6 +6,11 @@ export const extensions: IFolderCollection = {
     root_folder: { icon: 'root_folder', format: FileFormat.svg },
   },
   supported: [
+    {
+      icon: 'agents',
+      extensions: ['agents', '.agents'],
+      format: FileFormat.svg,
+    },
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
     { icon: 'angular', extensions: ['.angular'], format: FileFormat.svg },
     {
