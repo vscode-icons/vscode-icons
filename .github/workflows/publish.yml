@@ -55,3 +55,15 @@ jobs:
           pat: ${{ secrets.VSCE_TOKEN }}
           registryUrl: https://marketplace.visualstudio.com
           extensionFile: ${{ steps.packageExtension.outputs.vsixPath }}
+
+  notify-zed:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify vscode-icons-zed of new release
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          # PAT with repo scope, since GITHUB_TOKEN can't dispatch to another repository
+          token: ${{ secrets.ZED_SYNC_PAT }}
+          repository: vscode-icons/vscode-icons-zed
+          event-type: icons-updated
