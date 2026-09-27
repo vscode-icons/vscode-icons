@@ -1044,6 +1044,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cadence',
+      extensions: [],
+      languages: [languages.cadence],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cairo',
       extensions: [],
       languages: [languages.cairo],

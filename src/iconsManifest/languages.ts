@@ -69,6 +69,7 @@ export const languages = {
   c_al: { ids: 'c-al', knownExtensions: ['cal'] },
   cabal: { ids: 'cabal', knownExtensions: ['cabal'] },
   caddyfile: { ids: 'caddyfile', knownFilenames: ['Caddyfile'] },
+  cadence: { ids: 'cadence', knownExtensions: ['cdc'] },
   cairo: { ids: 'cairo', knownExtensions: ['cairo'] },
   cangjie: { ids: 'Cangjie', knownExtensions: ['cj'] },
   capnproto: { ids: ['capnp', 'capnproto'], knownExtensions: ['capnp'] },
