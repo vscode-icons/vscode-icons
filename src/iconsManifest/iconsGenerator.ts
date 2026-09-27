@@ -1,4 +1,4 @@
-import * as packageJson from '../../../package.json';
+import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, writeFileAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
