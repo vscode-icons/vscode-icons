@@ -11,6 +11,7 @@ on:
 
 jobs:
   deploy:
+    if: github.repository == 'vscode-icons/vscode-icons'
     runs-on: ubuntu-latest
     steps:
       - name: Setting up Node.js ${{ env.NODE_VERSION }}
