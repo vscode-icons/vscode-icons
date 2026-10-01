@@ -6456,7 +6456,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'text',
-      extensions: ['txt'],
+      extensions: [],
       languages: [languages.plaintext],
       format: FileFormat.svg,
     },
