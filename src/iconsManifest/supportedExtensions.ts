@@ -5508,9 +5508,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'readthedocs',
-      extensions: ['.readthedocs.yaml'],
+      extensions: [],
+      filenamesGlob: ['.readthedocs', 'readthedocs'],
+      extensionsGlob: ['yaml', 'yml'],
       languages: [],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
