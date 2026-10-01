@@ -6353,6 +6353,12 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['yml', 'yaml'],
     },
     {
+      icon: 'tasks_json',
+      extensions: ['tasks.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tauri',
       extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
@@ -6951,7 +6957,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      filenamesGlob: ['launch', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -6968,7 +6974,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode2',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      filenamesGlob: ['launch', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -6987,7 +6993,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode3',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      filenamesGlob: ['launch', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -7014,7 +7020,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode-insiders',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      filenamesGlob: ['launch', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
