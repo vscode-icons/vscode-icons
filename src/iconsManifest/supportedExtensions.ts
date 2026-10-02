@@ -4582,6 +4582,12 @@ export const extensions: IFileCollection = {
       extensions: ['pst', 'bcmx', 'otm', 'msg', 'oft'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'overmind',
+      extensions: ['.overmind.env'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
     {
       // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
@@ -5502,9 +5508,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'readthedocs',
-      extensions: ['.readthedocs.yaml'],
+      extensions: [],
+      filenamesGlob: ['.readthedocs', 'readthedocs'],
+      extensionsGlob: ['yaml', 'yml'],
       languages: [],
       filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
@@ -6350,6 +6359,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'tablegen',
+      extensions: ['td'],
+      languages: [languages.tablegen],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'teal',
       extensions: [],
       languages: [languages.teal],
@@ -6444,7 +6459,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'text',
-      extensions: ['txt'],
+      extensions: [],
       languages: [languages.plaintext],
       format: FileFormat.svg,
     },

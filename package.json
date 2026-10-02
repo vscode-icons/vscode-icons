@@ -2,7 +2,7 @@
   "name": "vscode-icons",
   "displayName": "vscode-icons",
   "description": "Icons for Visual Studio Code",
-  "version": "12.19.0",
+  "version": "13.0.0",
   "publisher": "vscode-icons-team",
   "license": "MIT",
   "author": {
@@ -35,8 +35,8 @@
     "email": "roberto.huertas@outlook.com"
   },
   "engines": {
-    "vscode": "^1.93.0",
-    "node": ">=20.15.1"
+    "vscode": "^1.104.3",
+    "node": ">=22.18.0"
   },
   "keywords": [
     "icons",
@@ -100,7 +100,7 @@
     "eslint-import-resolver-typescript": "^4.0.0",
     "glob": "^10.5.0",
     "husky": "^8.0.3",
-    "mocha": "^10.2.0",
+    "mocha": "^12.0.2",
     "nyc": "^18.0.0",
     "prettier": "^3.0.1",
     "proxyquire": "^2.1.3",

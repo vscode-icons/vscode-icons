@@ -99,7 +99,7 @@ describe('VSCodeManager: tests', function () {
 
         context(`is supported`, function () {
           it(`returns 'true'`, function () {
-            vscode.version = '1.99.0';
+            vscode.version = '1.104.3';
 
             expect(vscodeManager.isSupportedVersion).to.be.true;
           });
