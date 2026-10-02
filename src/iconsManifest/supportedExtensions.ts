@@ -7473,6 +7473,15 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'zed',
+      extensions: ['.zedignore'],
+      filenamesGlob: ['.zed/launch', '.zed/tasks', 'zedignore'],
+      extensionsGlob: ['json'],
+      light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'zip',
       extensions: [
         'zip',
