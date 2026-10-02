@@ -1,0 +1,47 @@
+<svg width="32" height="32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g transform="scale(1.1667)" fill-rule="evenodd">
+
+    <path d="M0 0h24v24H0z" />
+
+    <path
+      d="M24 0v24H0V0zm-13.067 15.89h-4.093v5.52h4.198v-.93H7.955v-1.503h2.77v-.93h-2.77v-1.224h2.978v-.934zm2.146 0h-1.084v5.52h1.035v-3.6l2.226 3.6h1.118v-5.52h-1.036v3.686l-2.259-3.687zm5.117 0h-1.208l1.973 5.52h1.19l1.976-5.52h-1.182l-1.352 4.085-1.397-4.086zm-12.796 3.79h-1.68v1.68h1.68z"
+      fill="#ecd53f"
+      fill-rule="nonzero"
+    />
+
+    <path
+      d="M14 0H24V10H17Q14 10 14 7Z"
+      fill="#F4511E"
+      fill-rule="nonzero"
+    />
+
+    <polygon
+      points="14,0 24,0 24,10"
+      fill="#000000"
+      opacity="0.1"
+      fill-rule="nonzero"
+    />
+
+    <g
+      transform="translate(15.1,1.05) scale(0.32)"
+      stroke="white"
+      stroke-width="2.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    >
+      <path d="M12 20v-9" />
+      <path d="M14 7a4 4 0 0 1 4 4v3a6 6 0 0 1-12 0v-3a4 4 0 0 1 4-4z" />
+      <path d="M14.12 3.88 16 2" />
+      <path d="M21 21a4 4 0 0 0-3.81-4" />
+      <path d="M21 5a4 4 0 0 1-3.55 3.97" />
+      <path d="M22 13h-4" />
+      <path d="M3 21a4 4 0 0 1 3.81-4" />
+      <path d="M3 5a4 4 0 0 0 3.55 3.97" />
+      <path d="M6 13H2" />
+      <path d="m8 2 1.88 1.88" />
+      <path d="M9 7.13V6a3 3 0 1 1 6 0v1.13" />
+    </g>
+
+  </g>
+</svg>
