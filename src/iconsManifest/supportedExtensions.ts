@@ -7475,7 +7475,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'zed',
       extensions: ['.zedignore'],
-      filenamesGlob: ['.zed/launch', '.zed/tasks', 'zedignore'],
+      filenamesGlob: ['.zed/launch', '.zed/debug', '.zed/tasks', 'zedignore'],
       extensionsGlob: ['json'],
       light: true,
       filename: true,
