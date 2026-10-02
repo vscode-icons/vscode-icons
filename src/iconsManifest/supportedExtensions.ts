@@ -7020,7 +7020,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode-insiders',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
