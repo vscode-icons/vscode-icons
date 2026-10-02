@@ -53,7 +53,7 @@
   "browser": "dist/src/vscode-icons.web.bundle.js",
   "icon": "images/logo.png",
   "scripts": {
-    "dependencies": "husky install",
+    "postinstall": "husky install",
     "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
     "format": "prettier --log-level error --write .",
     "postformat": "npm run lint -- --fix",
