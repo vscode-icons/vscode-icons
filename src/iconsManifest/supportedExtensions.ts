@@ -6957,7 +6957,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -6974,7 +6974,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode2',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -6993,7 +6993,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode3',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
