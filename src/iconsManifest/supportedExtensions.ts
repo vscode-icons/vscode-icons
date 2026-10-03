@@ -1106,14 +1106,10 @@ export const extensions: IFileCollection = {
       languages: [languages.cddl],
       format: FileFormat.svg,
     },
-    { 
-      icon: 'cdp', 
-      extensions: [
-        'cdp', 
-        'codrop', 
-        'cdp1'
-      ], 
-      format: FileFormat.svg, 
+    {
+      icon: 'cdp',
+      extensions: ['cdp', 'codrop', 'cdp1'],
+      format: FileFormat.svg,
     },
     {
       icon: 'cert',
