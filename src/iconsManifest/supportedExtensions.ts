@@ -1107,6 +1107,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cdp',
+      extensions: ['cdp', 'codrop', 'cdp1'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cert',
       extensions: [
         'csr',
