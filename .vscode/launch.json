@@ -30,14 +30,19 @@
     },
     {
       "name": "Run Web Extension in VS Code",
-      "type": "pwa-extensionHost",
+      "type": "extensionHost",
       "debugWebWorkerHost": true,
       "request": "launch",
       "args": [
         "--extensionDevelopmentPath=${workspaceFolder}",
         "--extensionDevelopmentKind=web"
       ],
-      "outFiles": ["${workspaceFolder}/dist/src/**/*.js"]
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/out/src/**/*.js",
+        "${workspaceFolder}/dist/src/**/*.js"
+      ],
+      "preLaunchTask": "npm: dist - dev"
     },
     {
       "name": "Launch Tests",

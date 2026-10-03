@@ -23,7 +23,7 @@ const getConfig = (argv: any): Configuration => ({
     libraryTarget: 'commonjs2',
     // development mode only
     devtoolModuleFilenameTemplate:
-      argv.mode === 'development' ? '../../[resource-path]' : '',
+      argv.mode === 'development' ? '../../out/[resource-path]' : '',
   },
   target: 'node',
 });
