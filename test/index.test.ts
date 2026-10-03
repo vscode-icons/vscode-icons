@@ -1,11 +1,11 @@
 import { expect } from 'chai';
-import * as sinon from 'sinon';
 import proxyq from 'proxyquire';
+import * as sinon from 'sinon';
+import { ExtensionManager } from '../src/app/extensionManager';
+import { Debugger } from '../src/common';
 import { constants } from '../src/constants';
 import { IExtensionManager } from '../src/models';
-import { ExtensionManager } from '../src/app/extensionManager';
 import { context as extensionContext } from './fixtures/extensionContext';
-import { Debugger } from '../src/common';
 
 describe('Entry points: tests', function () {
   interface IEntrypoint {

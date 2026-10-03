@@ -1,7 +1,7 @@
-import { IVSCodeEnv } from './vscodeEnv';
-import { IVSCodeWorkspace } from './vscodeWorkspace';
-import { IVSCodeWindow } from './vscodeWindow';
 import { IVSCodeCommands } from './vscodeCommands';
+import { IVSCodeEnv } from './vscodeEnv';
+import { IVSCodeWindow } from './vscodeWindow';
+import { IVSCodeWorkspace } from './vscodeWorkspace';
 
 export interface IVSCode {
   env: IVSCodeEnv;

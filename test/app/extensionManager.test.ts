@@ -1,6 +1,6 @@
+import path from 'path';
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
-import path from 'path';
 import * as sinon from 'sinon';
 import packageJson from '../../../package.json';
 import { ExtensionManager } from '../../src/app/extensionManager';
