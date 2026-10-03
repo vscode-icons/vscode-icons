@@ -1,7 +1,7 @@
-import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import os from 'os';
 import path from 'path';
+import { expect } from 'chai';
+import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 import { ErrorHandler } from '../../src/common/errorHandler';
 import * as fsAsync from '../../src/common/fsAsync';

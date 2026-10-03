@@ -1,6 +1,6 @@
 import { IExtensionCollection } from './extensionCollection';
-import { IFolderExtension } from './folderExtension';
 import { IFolderDefault } from './folderDefault';
+import { IFolderExtension } from './folderExtension';
 
 export interface IFolderCollection extends IExtensionCollection<IFolderExtension> {
   default: IFolderDefault;

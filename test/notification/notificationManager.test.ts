@@ -1,13 +1,13 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
 import {
   IVSCodeManager,
   INotificationManager,
   ILanguageResourceManager,
 } from '../../src/models';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
 import { NotificationManager } from '../../src/notification/notificationManager';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
 describe('NotificationManager: tests', function () {
   context('ensures that', function () {

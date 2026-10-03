@@ -1,7 +1,7 @@
-import js from '@eslint/js';
-import { importX } from 'eslint-plugin-import-x';
-import { defineConfig, includeIgnoreFile } from 'eslint/config';
 import { join } from 'node:path';
+import js from '@eslint/js';
+import { defineConfig, includeIgnoreFile } from 'eslint/config';
+import { importX } from 'eslint-plugin-import-x';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig(
@@ -73,7 +73,12 @@ export default defineConfig(
           markers: ['#region', '#endregion'],
         },
       ],
-
+      'import-x/order': [
+        'error',
+        {
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
       'import-x/namespace': 'off',
       'import-x/no-unresolved': [
         'error',

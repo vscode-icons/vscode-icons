@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
 import langResourcesJson from '../../../lang.nls.bundle.json';
-import nlsTemplateJson from '../../../locale/package.nls.template.json';
 import nlsJson from '../../../locale/package/package.nls.json';
+import nlsTemplateJson from '../../../locale/package.nls.template.json';
 import packageJson from '../../../package.json';
 import {
   ILanguageResourceManager,

@@ -1,9 +1,9 @@
-import open = require('open');
 import { ChildProcess } from 'child_process';
 import { Stats } from 'fs';
-import { set } from 'lodash';
 import { homedir, tmpdir } from 'os';
 import { isAbsolute, posix, relative, resolve, sep } from 'path';
+import { set } from 'lodash';
+import open = require('open');
 import {
   existsAsync,
   lstatAsync,

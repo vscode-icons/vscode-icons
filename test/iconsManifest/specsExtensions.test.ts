@@ -1,6 +1,6 @@
+import { join } from 'path';
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
-import { join } from 'path';
 import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';

@@ -1,6 +1,6 @@
+import { resolve } from 'path';
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
-import { resolve } from 'path';
 import * as sinon from 'sinon';
 import packageJson from '../../../../package.json';
 import { ErrorHandler } from '../../../src/common/errorHandler';

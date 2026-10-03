@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IVSCodeUri } from './vscodeUri';
-import { IVSCodeDisposable } from './vscodeDisposable';
-import { IVSCodeWorkspaceFolder } from './vscodeWorkspaceFolder';
 import { IVSCodeCancellationToken } from './vscodeCancellationToken';
-import { IVSCodeWorkspaceConfiguration } from './vscodeWorkspaceConfiguration';
 import { IVSCodeConfigurationChangeEvent } from './vscodeConfigurationChangeEvent';
+import { IVSCodeDisposable } from './vscodeDisposable';
+import { IVSCodeUri } from './vscodeUri';
+import { IVSCodeWorkspaceConfiguration } from './vscodeWorkspaceConfiguration';
+import { IVSCodeWorkspaceFolder } from './vscodeWorkspaceFolder';
 
 export interface IVSCodeWorkspace {
   rootPath: string | undefined;
