@@ -67,7 +67,6 @@
     "pretest": "rimraf ./.nyc_output ./coverage && npm run prebuild:dev",
     "test": "nyc mocha",
     "posttest": "nyc report -r lcov",
-    "test:vs": "node ./node_modules/vscode/bin/test",
     "vscode:prepublish": "npm run dist",
     "vscode:uninstall": "node ./out/src/uninstall.js",
     "precompile": "rimraf ./out ./dist",

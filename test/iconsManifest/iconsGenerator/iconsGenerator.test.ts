@@ -232,7 +232,7 @@ describe('IconsGenerator: tests', function () {
         writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
         logErrorStub = sandbox.stub(ErrorHandler, 'logError');
         pathUnixJoinStub = sandbox.stub(Utils, 'pathUnixJoin').returns('');
-        infoStub = sandbox.stub(console, 'info');
+        infoStub = sandbox.stub(console, 'info').get(() => infoStub);
         getRelativePathStub = sandbox.stub(Utils, 'getRelativePath');
         updateFileStub = sandbox.stub(Utils, 'updateFile');
       });
