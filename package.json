@@ -53,8 +53,9 @@
   "browser": "dist/src/vscode-icons.web.bundle.js",
   "icon": "images/logo.png",
   "scripts": {
+    "prepare": "husky install",
     "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
-    "format": "prettier --loglevel error --write .",
+    "format": "prettier --log-level error --write .",
     "postformat": "npm run lint -- --fix",
     "prebundle:dev": "rimraf --glob ./*.nls*.json",
     "bundle:dev": "node ./out/src/tools/bundle.js",
