@@ -1,6 +1,6 @@
-import { IFileCollection, IFolderCollection } from '../extensions';
-import { IIconSchema, IZedIconSchema } from '../iconSchema';
-import { IProjectDetectionResult } from '../projectDetector';
+import type { IFileCollection, IFolderCollection } from '../extensions';
+import type { IIconSchema, IZedIconSchema } from '../iconSchema';
+import type { IProjectDetectionResult } from '../projectDetector';
 
 export interface IIconsGenerator {
   generateIconsManifest(

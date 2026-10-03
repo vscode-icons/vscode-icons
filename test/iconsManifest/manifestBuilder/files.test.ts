@@ -1,15 +1,17 @@
-import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
-import * as sinon from 'sinon';
-import * as fsAsync from '../../../src/common/fsAsync';
-import { constants } from '../../../src/constants';
-import { ManifestBuilder } from '../../../src/iconsManifest';
-import {
+import type {
   IFileExtension,
   IFolderCollection,
   IIconAssociation,
   ILanguage,
 } from '../../../src/models';
+
+import { expect } from 'chai';
+import { cloneDeep } from 'lodash';
+import * as sinon from 'sinon';
+
+import * as fsAsync from '../../../src/common/fsAsync';
+import { constants } from '../../../src/constants';
+import { ManifestBuilder } from '../../../src/iconsManifest';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
 

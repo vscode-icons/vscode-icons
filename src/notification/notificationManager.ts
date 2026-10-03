@@ -1,10 +1,11 @@
-import { format } from 'util';
-import {
+import type {
   ILanguageResourceManager,
   INotificationManager,
   IVSCodeManager,
   LangResourceLike,
 } from '../models';
+
+import { format } from 'util';
 
 export class NotificationManager implements INotificationManager {
   constructor(

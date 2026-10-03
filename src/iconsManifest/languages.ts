@@ -1,4 +1,4 @@
-import { ILanguage } from '../models';
+import type { ILanguage } from '../models';
 
 export const languages = {
   actionscript: { ids: 'actionscript', knownExtensions: ['as'] },

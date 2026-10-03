@@ -1,8 +1,11 @@
+import type { IPresets } from '../../../src/models';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import * as fsAsync from '../../../src/common/fsAsync';
 import { ManifestReader } from '../../../src/iconsManifest';
-import { IPresets, PresetNames, Projects } from '../../../src/models';
+import { PresetNames, Projects } from '../../../src/models';
 import { Utils } from '../../../src/utils';
 
 describe('ManifestReader: tests', function () {

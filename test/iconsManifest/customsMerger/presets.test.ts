@@ -1,14 +1,15 @@
-import { expect } from 'chai';
-import * as sinon from 'sinon';
-import { CustomsMerger, ManifestReader } from '../../../src/iconsManifest';
-import {
-  IconNames,
+import type {
   IFileExtension,
   IFolderCollection,
   IPresets,
   IProjectDetectionResult,
-  Projects,
 } from '../../../src/models';
+
+import { expect } from 'chai';
+import * as sinon from 'sinon';
+
+import { CustomsMerger, ManifestReader } from '../../../src/iconsManifest';
+import { IconNames, Projects } from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';

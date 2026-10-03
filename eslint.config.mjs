@@ -1,7 +1,8 @@
-import js from '@eslint/js';
-import { importX } from 'eslint-plugin-import-x';
-import { defineConfig, includeIgnoreFile } from 'eslint/config';
 import { join } from 'node:path';
+
+import js from '@eslint/js';
+import { defineConfig, includeIgnoreFile } from 'eslint/config';
+import { importX } from 'eslint-plugin-import-x';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig(
@@ -30,7 +31,7 @@ export default defineConfig(
           allow: ['info', 'error'],
         },
       ],
-      'no-duplicate-imports': 'error',
+      'no-duplicate-imports': ['error', { allowSeparateTypeImports: true }],
       'no-eval': 'error',
       'no-extra-bind': 'error',
       'no-invalid-this': 'error',
@@ -73,7 +74,24 @@ export default defineConfig(
           markers: ['#region', '#endregion'],
         },
       ],
-
+      'sort-imports': ['error', { ignoreDeclarationSort: true }],
+      'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+      'import-x/first': 'error',
+      'import-x/newline-after-import': 'error',
+      'import-x/order': [
+        'error',
+        {
+          alphabetize: { order: 'asc' },
+          groups: [
+            'type',
+            'builtin',
+            'external',
+            ['parent', 'sibling', 'index'],
+          ],
+          'newlines-between': 'always',
+          sortTypesGroup: true,
+        },
+      ],
       'import-x/namespace': 'off',
       'import-x/no-unresolved': [
         'error',
@@ -109,6 +127,7 @@ export default defineConfig(
         },
       ],
       '@typescript-eslint/consistent-type-definitions': 'error',
+      '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {

@@ -1,7 +1,21 @@
+import type {
+  IConfigManager,
+  IFileCollection,
+  IFolderCollection,
+  IIconManifest,
+  IIconsGenerator,
+  IPresets,
+  IVSCodeManager,
+  IVSIcons,
+} from '../../../src/models';
+import type { IPackageManifest } from '../../../src/models/packageManifest/package';
+
+import { resolve } from 'path';
+
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
-import { resolve } from 'path';
 import * as sinon from 'sinon';
+
 import packageJson from '../../../../package.json';
 import { ErrorHandler } from '../../../src/common/errorHandler';
 import * as fsAsync from '../../../src/common/fsAsync';
@@ -15,18 +29,9 @@ import {
 import { extensions as extFiles } from '../../../src/iconsManifest/supportedExtensions';
 import { extensions as extFolders } from '../../../src/iconsManifest/supportedFolders';
 import {
-  IConfigManager,
-  IFileCollection,
-  IFolderCollection,
-  IIconManifest,
-  IIconsGenerator,
-  IPresets,
-  IVSCodeManager,
-  IVSIcons,
   schema as defaultVSCodeSchema,
   zedSchema as defaultZedSchema,
 } from '../../../src/models';
-import { IPackageManifest } from '../../../src/models/packageManifest/package';
 import { Utils } from '../../../src/utils';
 import { VSCodeManager } from '../../../src/vscode/vscodeManager';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
