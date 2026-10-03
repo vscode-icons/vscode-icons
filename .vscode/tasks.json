@@ -19,10 +19,10 @@
       },
       // we run the custom script "build:dev" as defined in package.json
       "args": ["run", "build:dev", "--loglevel", "silent"],
-      // The tsc compiler is running in the background
-      "isBackground": true,
-      // use the standard tsc in watch mode problem matcher to find compile problems in the output.
-      "problemMatcher": "$tsc-watch"
+      // The tsc compiler is not running in the background
+      "isBackground": false,
+      // use the standard tsc problem matcher to find compile problems in the output.
+      "problemMatcher": "$tsc"
     }
   ]
 }

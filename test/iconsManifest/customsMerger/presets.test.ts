@@ -27,6 +27,8 @@ describe('CustomsMerger: toggle presets tests', function () {
     });
 
     afterEach(function () {
+      vsicons.presets.foldersAllDefaultIcon = false;
+      vsicons.presets.hideFolders = false;
       sandbox.restore();
     });
 

@@ -2,7 +2,7 @@ import * as glob from 'glob';
 import Mocha from 'mocha';
 import path from 'path';
 
-export const run = async (testsRoot: string): Promise<void | Error> => {
+export const run = async (testsRoot: string): Promise<void> => {
   const mocha = new Mocha({
     ui: 'bdd',
     timeout: 15000,
@@ -15,15 +15,19 @@ export const run = async (testsRoot: string): Promise<void | Error> => {
     });
     files.forEach((file: string) => mocha.addFile(path.join(testsRoot, file)));
     // Run the tests
-    mocha.run((failures: number) => {
-      if (failures > 0) {
-        throw new Error(`${failures} tests failed.`);
-      }
-      mocha.dispose();
+    await new Promise<void>((resolve, reject) => {
+      mocha.run((failures: number) => {
+        mocha.dispose();
+        if (failures > 0) {
+          return reject(new Error(`${failures} tests failed.`));
+        }
+        resolve();
+      });
     });
   } catch (error: unknown) {
     if (error instanceof Error) {
-      return error;
+      error.stack = error.message;
+      throw error;
     }
     throw new Error('Failed to run tests', { cause: error });
   }
