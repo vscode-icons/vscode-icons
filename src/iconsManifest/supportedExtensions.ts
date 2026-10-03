@@ -1107,6 +1107,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'cdp',
+      extensions: ['cdp', 'codrop', 'cdp1'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cert',
       extensions: [
         'csr',
@@ -6353,6 +6358,12 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['yml', 'yaml'],
     },
     {
+      icon: 'tasks_json',
+      extensions: ['tasks.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'tauri',
       extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
@@ -6951,7 +6962,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -6968,7 +6979,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode2',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -6987,7 +6998,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode3',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -7014,7 +7025,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'vscode-insiders',
       extensions: ['.vscodeignore'],
-      filenamesGlob: ['launch', 'tasks', 'vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
       extensionsGlob: ['json'],
       filename: true,
       format: FileFormat.svg,
@@ -7463,6 +7474,15 @@ export const extensions: IFileCollection = {
     {
       icon: 'doppler',
       extensions: ['doppler.yaml', 'doppler-template.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'zed',
+      extensions: ['.zedignore'],
+      filenamesGlob: ['.zed/launch', '.zed/debug', '.zed/tasks', 'zedignore'],
+      extensionsGlob: ['json'],
+      light: true,
       filename: true,
       format: FileFormat.svg,
     },
