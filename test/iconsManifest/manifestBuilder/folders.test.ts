@@ -242,23 +242,30 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`when the default folder is disabled`, function () {
-        it(`removes folder mapping references from the vscode schema`, async function () {
+        it(`folder mapping references in vscode schema are empty`, async function () {
           const folders = cloneDeep(fixtFolders);
-          folders.default.folder.disabled = true;
+          const disabled = true;
+          folders.default.folder.disabled = disabled;
+          folders.default.root_folder.disabled = disabled;
+          folders.supported.forEach(folder => (folder.disabled = disabled));
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             folders,
           );
 
-          expect(manifest.vscode.folder).to.be.undefined;
-          expect(manifest.vscode.folderExpanded).to.be.undefined;
-          expect(manifest.vscode.rootFolder).to.be.undefined;
-          expect(manifest.vscode.rootFolderExpanded).to.be.undefined;
-          expect(manifest.vscode.light.folder).to.be.undefined;
-          expect(manifest.vscode.light.folderExpanded).to.be.undefined;
-          expect(manifest.vscode.light.rootFolder).to.be.undefined;
-          expect(manifest.vscode.light.rootFolderExpanded).to.be.undefined;
+          expect(manifest.vscode.folder).to.be.empty;
+          expect(manifest.vscode.folderExpanded).to.be.empty;
+          expect(manifest.vscode.rootFolder).to.be.empty;
+          expect(manifest.vscode.rootFolderExpanded).to.be.empty;
+          expect(manifest.vscode.folderNames).to.be.empty;
+          expect(manifest.vscode.folderNamesExpanded).to.be.empty;
+          expect(manifest.vscode.light.folder).to.be.empty;
+          expect(manifest.vscode.light.folderExpanded).to.be.empty;
+          expect(manifest.vscode.light.rootFolder).to.be.empty;
+          expect(manifest.vscode.light.rootFolderExpanded).to.be.empty;
+          expect(manifest.vscode.light.folderNames).to.be.empty;
+          expect(manifest.vscode.light.folderNamesExpanded).to.be.empty;
         });
       });
 
