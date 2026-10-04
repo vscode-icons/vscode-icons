@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
+
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ErrorHandler } from '../../src/common/errorHandler';
 import { ConfigManager } from '../../src/configuration/configManager';

@@ -1,5 +1,6 @@
+import type { IPackageManifest } from '../models/packageManifest';
+
 import manifest from '../../../package.json';
-import { IPackageManifest } from '../models/packageManifest';
 
 export const constants = {
   environment: { production: false },

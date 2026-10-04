@@ -1,4 +1,6 @@
-import { FileFormat, IFileCollection } from '../models';
+import type { IFileCollection } from '../models';
+
+import { FileFormat } from '../models';
 import { languages } from './languages';
 
 export const extensions: IFileCollection = {

@@ -1,5 +1,5 @@
-import { IState } from './state';
-import { ExtensionStatus } from './extensionStatus';
+import type { ExtensionStatus } from './extensionStatus';
+import type { IState } from './state';
 
 export interface ISettingsManager {
   isNewVersion: boolean;

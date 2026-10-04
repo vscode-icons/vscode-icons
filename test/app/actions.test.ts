@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
+
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { IconsGenerator, ManifestReader } from '../../src/iconsManifest';

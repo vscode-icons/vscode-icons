@@ -1,4 +1,6 @@
-import { FileFormat, IFolderCollection } from '../models';
+import type { IFolderCollection } from '../models';
+
+import { FileFormat } from '../models';
 
 export const extensions: IFolderCollection = {
   default: {

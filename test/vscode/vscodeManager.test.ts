@@ -1,12 +1,14 @@
-import { expect } from 'chai';
-import * as sinon from 'sinon';
-import packageJson from '../../../package.json';
-import {
+import type {
   IVSCodeManager,
   IVSCodeUri,
   IVSCodeWorkspaceFolder,
 } from '../../src/models';
-import { IPackageManifest } from '../../src/models/packageManifest';
+import type { IPackageManifest } from '../../src/models/packageManifest';
+
+import { expect } from 'chai';
+import * as sinon from 'sinon';
+
+import packageJson from '../../../package.json';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';

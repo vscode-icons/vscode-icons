@@ -1,15 +1,18 @@
-import open = require('open');
-import { ChildProcess } from 'child_process';
-import { Stats } from 'fs';
-import { set } from 'lodash';
+import type { ChildProcess } from 'child_process';
+import type { Stats } from 'fs';
+
 import { homedir, tmpdir } from 'os';
 import { isAbsolute, posix, relative, resolve, sep } from 'path';
+
+import { set } from 'lodash';
+import open = require('open');
+
 import {
   existsAsync,
   lstatAsync,
   mkdirAsync,
-  readdirAsync,
   readFileAsync,
+  readdirAsync,
   rmdirAsync,
   unlinkAsync,
   writeFileAsync,

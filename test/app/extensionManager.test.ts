@@ -1,14 +1,17 @@
+import type { IPackageManifest } from '../../src/models/packageManifest';
+
+import path from 'path';
+
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
-import path from 'path';
 import * as sinon from 'sinon';
+
 import packageJson from '../../../package.json';
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
 import * as models from '../../src/models';
-import { IPackageManifest } from '../../src/models/packageManifest';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';

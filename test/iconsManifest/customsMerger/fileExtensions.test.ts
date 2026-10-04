@@ -1,12 +1,11 @@
+import type { IFileCollection, IFileExtension } from '../../../src/models';
+
 import { expect } from 'chai';
 import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
+
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import {
-  FileFormat,
-  IFileCollection,
-  IFileExtension,
-} from '../../../src/models';
+import { FileFormat } from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';

@@ -1,11 +1,15 @@
+import type { IFolderExtension } from '../../src/models';
+
+import { join } from 'path';
+
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
-import { join } from 'path';
+
 import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { extensions as folders } from '../../src/iconsManifest/supportedFolders';
-import { FileFormat, IFolderExtension } from '../../src/models';
+import { FileFormat } from '../../src/models';
 
 describe('Specifications of supported folders: tests', function () {
   context('ensures that', function () {

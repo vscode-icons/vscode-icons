@@ -1,12 +1,14 @@
+import type { IPackageManifest } from '../models/packageManifest/package';
+import type { IVSCodeCommand } from '../models/vscode/vscodeCommand';
+
 import { dirname, resolve } from 'path';
+
 import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
-import { IPackageManifest } from '../models/packageManifest/package';
-import { IVSCodeCommand } from '../models/vscode/vscodeCommand';
 import { Utils } from '../utils';
 
 export class ExtensionManager implements models.IExtensionManager {

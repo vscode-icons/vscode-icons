@@ -1,4 +1,4 @@
-import { IVSCodeProperties } from './vscodeProperties';
+import type { IVSCodeProperties } from './vscodeProperties';
 
 export interface IVSCodeConfiguration {
   title: string;
