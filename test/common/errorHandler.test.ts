@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
 
 describe('ErrorHandler: tests', function () {

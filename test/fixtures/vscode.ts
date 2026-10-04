@@ -1,7 +1,7 @@
-import {
+import type {
   IVSCode,
-  IVSCodeEnv,
   IVSCodeCommands,
+  IVSCodeEnv,
   IVSCodeWindow,
   IVSCodeWorkspace,
 } from '../../src/models';

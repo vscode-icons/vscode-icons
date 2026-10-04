@@ -1,4 +1,4 @@
-import { IExtension } from './extension';
+import type { IExtension } from './extension';
 
 export interface IFolderExtension extends IExtension {
   /** @internal */

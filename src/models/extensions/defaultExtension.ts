@@ -1,4 +1,4 @@
-import { FileFormat } from './fileFormat';
+import type { FileFormat } from './fileFormat';
 
 export interface IDefaultExtension {
   /**

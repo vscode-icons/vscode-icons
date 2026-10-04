@@ -1,6 +1,8 @@
+import type { IExtensionManager, IVSCodeExtensionContext } from './models';
+
 import { Debugger } from './common/debugger';
 import { constants } from './constants';
-import { IExtensionManager, IVSCodeExtensionContext, SYMBOLS } from './models';
+import { SYMBOLS } from './models';
 import { CompositionRootService } from './services/compositionRootService';
 
 export async function activate(

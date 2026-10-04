@@ -1,6 +1,7 @@
+import path from 'path';
+
 import * as glob from 'glob';
 import Mocha from 'mocha';
-import path from 'path';
 
 export const run = async (testsRoot: string): Promise<void> => {
   const mocha = new Mocha({

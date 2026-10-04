@@ -1,8 +1,10 @@
+import type * as models from '../models';
+
 import { cloneDeep, sortBy, sortedUniq } from 'lodash';
+
 import { existsAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
-import * as models from '../models';
 import {
   schema as defaultSchema,
   zedSchema as defaultZedSchema,

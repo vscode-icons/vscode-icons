@@ -1,4 +1,4 @@
-import { IIconAssociation } from './iconAssociation';
+import type { IIconAssociation } from './iconAssociation';
 
 export interface IIconMapping extends Record<string, unknown> {
   rootFolder: string;

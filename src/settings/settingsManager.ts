@@ -1,13 +1,11 @@
+import type { ISettingsManager, IState, IVSCodeManager } from '../models';
+
 import { eq, lt } from 'semver';
+
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, readFileAsync, unlinkAsync } from '../common/fsAsync';
 import { constants } from '../constants';
-import {
-  ExtensionStatus,
-  ISettingsManager,
-  IState,
-  IVSCodeManager,
-} from '../models';
+import { ExtensionStatus } from '../models';
 import { Utils } from '../utils';
 
 export class SettingsManager implements ISettingsManager {
