@@ -47,11 +47,11 @@ describe('Entry points: tests', function () {
       let infoStub: sinon.SinonStub;
 
       beforeEach(function () {
-        infoStub = sandbox.stub(console, 'info');
+        infoStub = sandbox.stub(console, 'info').get(() => infoStub);
       });
 
-      it('activates the extension', function () {
-        EntryPoint.activate(extensionContext);
+      it('activates the extension', async function () {
+        await EntryPoint.activate(extensionContext);
 
         expect(extensionStub.activate.calledOnceWithExactly()).to.be.true;
       });

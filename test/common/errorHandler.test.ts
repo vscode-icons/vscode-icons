@@ -9,7 +9,9 @@ describe('ErrorHandler: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-      consoleErrorStub = sandbox.stub(console, 'error');
+      consoleErrorStub = sandbox
+        .stub(console, 'error')
+        .get(() => consoleErrorStub);
     });
 
     afterEach(function () {

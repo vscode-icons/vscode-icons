@@ -147,6 +147,8 @@ export default defineConfig(
     rules: {
       'prefer-arrow-callback': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
     },
   },
 );
