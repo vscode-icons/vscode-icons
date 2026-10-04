@@ -23,6 +23,26 @@
       "isBackground": true,
       // use the standard tsc in watch mode problem matcher to find compile problems in the output.
       "problemMatcher": "$tsc-watch"
+    },
+    {
+      "label": "npm: dist - dev",
+      // the command is a shell script
+      "type": "shell",
+      // we want to run npm
+      "command": "npm",
+      // show the output window only if unrecognized errors occur.
+      "presentation": {
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "revealProblems": "onProblem",
+        "close": true
+      },
+      // we run the custom script "dist:dev" as defined in package.json
+      "args": ["run", "dist:dev", "--loglevel", "silent"],
+      // The tsc compiler is not running in the background
+      "isBackground": false,
+      // use the standard tsc problem matcher to find compile problems in the output.
+      "problemMatcher": "$tsc"
     }
   ]
 }
