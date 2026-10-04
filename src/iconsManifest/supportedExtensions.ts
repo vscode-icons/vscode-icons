@@ -658,10 +658,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'aube',
-      extensions: [
-        'aube-lock.yaml',
-        'aube-workspace.yaml',
-      ],
+      extensions: ['aube-lock.yaml', 'aube-workspace.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
