@@ -7,33 +7,32 @@ on:
     types:
       - completed
 
+permissions:
+  contents: read
+  code-quality: write
+  actions: read
+
 jobs:
-  code-climate:
-    name: Send code coverage report to Code Climate
+  code_coverage:
+    name: Send code coverage report to GitHub Code Quality
     runs-on: ubuntu-latest
-    # if: >
-    #   (
-    #     github.event.workflow_run.conclusion == 'success' &&
-    #     github.event.workflow_run.event == 'pull_request' &&
-    #     github.repository_owner == 'vscode-icons' &&
-    #     github.actor != 'dependabot[bot]'
-    #   )
-    if: false
+    if: |
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.repository_owner == 'vscode-icons' &&
+      github.actor != 'dependabot[bot]'
     steps:
-      - name: Cloning repository
-        uses: actions/checkout@v3
+      - name: Download coverage artifact
+        uses: actions/download-artifact@v7
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          name: code-coverage-report-${{ github.event.workflow_run.id }}
+          path: coverage
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Download artifact
-        uses: dawidd6/action-download-artifact@v6
+      - name: Upload code coverage report
+        uses: actions/upload-code-coverage@v1
         with:
-          run_id: ${{ github.event.workflow_run.id }}
-          name: code-coverage-report
-
-      - name: Uploading code coverage report
-        uses: paambaati/codeclimate-action@v9
-        with:
-          coverageLocations: lcov.info:lcov
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          file: coverage/cobertura-coverage.xml
+          language: TypeScript
+          label: code-coverage/nyc
