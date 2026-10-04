@@ -13,10 +13,6 @@ on:
       - 'main'
   workflow_dispatch:
 
-permissions:
-  contents: read
-  code-quality: write
-
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -64,27 +60,21 @@ jobs:
         include:
           - os: ubuntu-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: macos-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: windows-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: ubuntu-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
           - os: macos-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
           - os: windows-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
     runs-on: ${{ matrix.os }}
     steps:
@@ -109,7 +99,7 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
         run: npm test
 
-      - name: Upload coverage report
+      - name: Upload coverage artifact
         if: |
           success() &&
           matrix.os == 'ubuntu-latest' &&
@@ -117,8 +107,8 @@ jobs:
           github.event_name == 'pull_request' &&
           github.repository_owner == 'vscode-icons' &&
           github.actor != 'dependabot[bot]'
-        uses: actions/upload-code-coverage@v1
+        uses: actions/upload-artifact@v7
         with:
-          file: coverage/cobertura-coverage.xml
-          language: TypeScript
-          label: code-coverage/nyc
+          name: code-coverage-report-${{ github.run_id }}
+          path: coverage/cobertura-coverage.xml
+          retention-days: 1
