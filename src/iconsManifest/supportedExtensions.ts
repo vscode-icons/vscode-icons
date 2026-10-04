@@ -6038,6 +6038,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'smolmachine',
+      extensions: ['smolfile'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'smolmachine',
+      extensions: ['.smolmachine', 'smolfile.toml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'snakemake',
       languages: [languages.snakemake],
       extensions: [],
