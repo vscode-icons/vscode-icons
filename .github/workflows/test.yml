@@ -13,6 +13,10 @@ on:
       - 'main'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  code-quality: write
+
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -105,33 +109,13 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
         run: npm test
 
-      - name: Uploading code coverage report
-        # if: >
-        #   (
-        #     success() &&
-        #     matrix.os == 'ubuntu-latest' &&
-        #     matrix.node == '22.18.0' &&
-        #     github.event_name == 'push' &&
-        #     github.repository_owner == 'vscode-icons' &&
-        #     github.actor != 'dependabot[bot]'
-        #   )
-        if: false
-        uses: paambaati/codeclimate-action@v9
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-
-      - name: Uploading code coverage artifact
-        if: >
-          (
-            success() &&
-            matrix.os == 'ubuntu-latest' &&
-            matrix.node == '22.18.0' &&
-            github.event_name == 'pull_request' &&
-            github.repository_owner == 'vscode-icons' &&
-            github.actor != 'dependabot[bot]'
-          )
-        uses: actions/upload-artifact@v4
+      - name: Upload coverage report
+        if: |
+          matrix.os == 'ubuntu-latest' &&
+          matrix.node == '22.18.0' &&
+          (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: actions/upload-code-coverage@v1
         with:
-          name: code-coverage-report
-          path: coverage/lcov.info
-          retention-days: 1
+          file: coverage/cobertura-coverage.xml
+          language: TypeScript
+          label: code-coverage/nyc
