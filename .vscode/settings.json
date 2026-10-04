@@ -10,13 +10,9 @@
     "files.trimFinalNewlines": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
+    "source.fixAll.eslint": "explicit"
   },
   "editor.tabSize": 2,
-  "files.associations": {
-    ".nsriignore": "ignore"
-  },
   "files.exclude": {
     "out": false
   },
@@ -27,6 +23,6 @@
     "icons": true,
     "examples": true
   },
-  "typescript.tsdk": "./node_modules/typescript/lib",
+  "js/ts.tsdk.path": "./node_modules/typescript/lib",
   "vsicons.projectDetection.disableDetect": true
 }

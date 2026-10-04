@@ -1,4 +1,4 @@
-import { IIconSchema, IZedIconSchema } from '..';
+import type { IIconSchema, IZedIconSchema } from '..';
 
 export const schema: IIconSchema = {
   iconDefinitions: {

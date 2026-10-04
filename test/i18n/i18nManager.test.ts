@@ -1,16 +1,16 @@
+import type { ILanguageResourceManager } from '../../src/models/i18n';
+import type { IVSCodeManifest } from '../../src/models/packageManifest';
+import type { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
+
 import { expect } from 'chai';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
-import * as langResourcesJson from '../../../lang.nls.bundle.json';
-import * as nlsTemplateJson from '../../../locale/package.nls.template.json';
-import * as nlsJson from '../../../locale/package/package.nls.json';
-import * as packageJson from '../../../package.json';
-import {
-  ILanguageResourceManager,
-  LangResourceKeys,
-} from '../../src/models/i18n';
-import { IVSCodeManifest } from '../../src/models/packageManifest';
-import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
+
+import langResourcesJson from '../../../lang.nls.bundle.json';
+import nlsJson from '../../../locale/package/package.nls.json';
+import nlsTemplateJson from '../../../locale/package.nls.template.json';
+import packageJson from '../../../package.json';
+import { LangResourceKeys } from '../../src/models/i18n';
 
 describe('LanguageResourceManager: tests', function () {
   type LanguageResourceManager = (arg?: string) => void;

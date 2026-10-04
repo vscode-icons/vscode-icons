@@ -20,7 +20,7 @@ vscode-icons is a VS Code (and Zed editor) extension providing 1400+ file and fo
 - **Tests**: Mocha + Chai + Sinon
 - **Bundler**: Webpack
 - **Linting**: ESLint + Prettier
-- **Node**: >= 18.15.0
+- **Node**: >= 22.18.0
 
 ## Setup & Verification
 

@@ -1,14 +1,17 @@
+import type { IPackageManifest } from '../../src/models/packageManifest';
+
+import path from 'path';
+
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
-import * as path from 'path';
 import * as sinon from 'sinon';
-import * as packageJson from '../../../package.json';
+
+import packageJson from '../../../package.json';
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
 import * as models from '../../src/models';
-import { IPackageManifest } from '../../src/models/packageManifest';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
@@ -749,37 +752,31 @@ describe('ExtensionManager: tests', function () {
 
       context(`throws an Error`, function () {
         it(`when no callback is provided`, function () {
-          expect(
-            () => handleUpdatePreset.call(extensionManager) as void,
-          ).to.throw(Error, /Callback function missing/);
+          expect(() => handleUpdatePreset.call(extensionManager)).to.throw(
+            Error,
+            /Callback function missing/,
+          );
         });
 
         it(`when no callback arguments are provided`, function () {
-          expect(
-            () =>
-              handleUpdatePreset.call(extensionManager, sinon.fake()) as void,
+          expect(() =>
+            handleUpdatePreset.call(extensionManager, sinon.fake()),
           ).to.throw(Error, /Arguments missing/);
         });
 
         context(`when provided callback arguments`, function () {
           it(`are empty`, function () {
-            expect(
-              () =>
-                handleUpdatePreset.call(
-                  extensionManager,
-                  sinon.fake(),
-                  [],
-                ) as void,
+            expect(() =>
+              handleUpdatePreset.call(extensionManager, sinon.fake(), []),
             ).to.throw(Error, /Arguments missing/);
           });
 
           it(`are mismatching`, function () {
-            expect(
-              () =>
-                handleUpdatePreset.call(extensionManager, sinon.fake(), [
-                  'arg1',
-                  'arg2',
-                ]) as void,
+            expect(() =>
+              handleUpdatePreset.call(extensionManager, sinon.fake(), [
+                'arg1',
+                'arg2',
+              ]),
             ).to.throw(Error, /Arguments mismatch/);
           });
         });

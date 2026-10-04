@@ -1,4 +1,6 @@
-import { FileFormat, IFolderCollection } from '../models';
+import type { IFolderCollection } from '../models';
+
+import { FileFormat } from '../models';
 
 export const extensions: IFolderCollection = {
   default: {
@@ -6,6 +8,12 @@ export const extensions: IFolderCollection = {
     root_folder: { icon: 'root_folder', format: FileFormat.svg },
   },
   supported: [
+    {
+      icon: 'alpine',
+      extensions: ['alpine'],
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'android', extensions: ['android'], format: FileFormat.svg },
     { icon: 'angular', extensions: ['.angular'], format: FileFormat.svg },
     {
@@ -26,6 +34,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'arangodb',
       extensions: ['arangodb', 'arango'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'arch',
+      extensions: ['arch'],
       format: FileFormat.svg,
     },
     {
@@ -51,6 +64,11 @@ export const extensions: IFolderCollection = {
         'sounds',
         '.sounds',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'auth',
+      extensions: ['auth', 'authentication', 'authorisation', 'authorization'],
       format: FileFormat.svg,
     },
     { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
@@ -158,6 +176,10 @@ export const extensions: IFolderCollection = {
       extensions: [
         'conf',
         '.conf',
+        'cfg',
+        '.cfg',
+        'cfgs',
+        '.cfgs',
         'config',
         '.config',
         'configs',
@@ -268,6 +290,8 @@ export const extensions: IFolderCollection = {
         'dists',
         'out',
         'outs',
+        'output',
+        'outputs',
         'export',
         'exports',
         'build',
@@ -319,6 +343,12 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fedora',
+      extensions: ['fedora'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'frontcommerce',
       extensions: ['.front-commerce'],
       format: FileFormat.svg,
@@ -340,6 +370,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'gcp', extensions: ['gcp', '.gcp'], format: FileFormat.svg },
+    {
+      icon: 'gentoo',
+      extensions: ['gentoo'],
+      format: FileFormat.svg,
+    },
     { icon: 'gemini', extensions: ['.gemini'], format: FileFormat.svg },
     {
       icon: 'git',
@@ -356,6 +391,7 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
+    { icon: 'grok', extensions: ['.grok'], format: FileFormat.svg },
     { icon: 'grunt', extensions: ['grunt'], format: FileFormat.svg },
     {
       icon: 'gulp',
@@ -451,6 +487,7 @@ export const extensions: IFolderCollection = {
       disabled: true,
     },
     { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
+    { icon: 'kadence', extensions: ['.kadence'], format: FileFormat.svg },
     { icon: 'kiro', extensions: ['.kiro'], format: FileFormat.svg },
     {
       icon: 'kotlin',
@@ -503,10 +540,16 @@ export const extensions: IFolderCollection = {
         'i18n',
         'g11n',
         'l10n',
+        'translation',
+        'translations',
       ],
       format: FileFormat.svg,
     },
-    { icon: 'log', extensions: ['log', 'logs'], format: FileFormat.svg },
+    {
+      icon: 'log',
+      extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
+      format: FileFormat.svg,
+    },
     { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
     {
       icon: 'mariadb',
@@ -625,6 +668,13 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
+    { icon: 'ohpm', extensions: ['oh_modules'], format: FileFormat.svg },
+    {
+      icon: 'ocx',
+      extensions: ['.ocx'],
+      light: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'package',
       extensions: ['package', 'packages', '.package', '.packages', 'pkg'],
@@ -690,6 +740,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'redhat',
+      extensions: ['redhat', 'rhel'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'redux',
       extensions: ['redux'],
       light: true,
@@ -705,6 +760,11 @@ export const extensions: IFolderCollection = {
       icon: 'sass',
       extensions: ['sass', 'scss', '_sass', '_scss'],
       light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'schema',
+      extensions: ['schema', 'schemas'],
       format: FileFormat.svg,
     },
     {
@@ -736,6 +796,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'slackware',
+      extensions: ['slackware'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'snaplet',
       extensions: ['.snaplet'],
       format: FileFormat.svg,
@@ -764,6 +829,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'supabase',
       extensions: ['supabase'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'suse',
+      extensions: ['suse', 'opensuse'],
       format: FileFormat.svg,
     },
     {
@@ -877,6 +947,11 @@ export const extensions: IFolderCollection = {
         '_page',
         '_pages',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'void',
+      extensions: ['void'],
       format: FileFormat.svg,
     },
     { icon: 'vs', extensions: ['.vs'], format: FileFormat.svg },

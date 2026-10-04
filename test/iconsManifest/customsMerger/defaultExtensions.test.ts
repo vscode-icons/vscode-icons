@@ -1,7 +1,9 @@
+import type { IFileCollection, IFolderCollection } from '../../../src/models';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import { IFileCollection, IFolderCollection } from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';

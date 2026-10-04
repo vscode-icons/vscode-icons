@@ -1,4 +1,4 @@
-import { IIconAssociation } from '../iconSchema/iconAssociation';
+import type { IIconAssociation } from '../iconSchema/iconAssociation';
 
 export interface IBuildFolders {
   defs: Record<string, unknown>;

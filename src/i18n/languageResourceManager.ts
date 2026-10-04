@@ -1,6 +1,7 @@
-import * as langResources from '../../../lang.nls.bundle.json';
+import type * as models from '../models';
+
+import langResources from '../../../lang.nls.bundle.json';
 import { constants } from '../constants';
-import * as models from '../models';
 
 export class LanguageResourceManager
   implements models.ILanguageResourceManager

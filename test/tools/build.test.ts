@@ -1,10 +1,11 @@
 import { expect } from 'chai';
+import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
-import * as proxyq from 'proxyquire';
-import { schema } from '../../src/models/iconsManifest/defaultSchema';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
-import { constants } from '../../src/constants';
 import { ConfigManager } from '../../src/configuration/configManager';
+import { constants } from '../../src/constants';
+import { schema } from '../../src/models/iconsManifest/defaultSchema';
 
 describe('Build: tests', function () {
   context('ensures that', function () {

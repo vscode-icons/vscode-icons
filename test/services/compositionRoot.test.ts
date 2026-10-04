@@ -1,13 +1,15 @@
+import type { ICompositionRootService } from '../../src/models/services/compositionRootService';
+
 import { expect } from 'chai';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import 'reflect-metadata';
 import * as sinon from 'sinon';
+
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
 import { IconsGenerator } from '../../src/iconsManifest';
 import * as models from '../../src/models';
-import { ICompositionRootService } from '../../src/models/services/compositionRootService';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';

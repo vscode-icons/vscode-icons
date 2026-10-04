@@ -49,19 +49,10 @@ jobs:
         # https://github.com/microsoft/vscode/blob/main/package.json#L138
         # https://github.com/ewanharris/vscode-versions
         node:
-          - 22.15.1 # vscode >= 1.101.0 - May 2025
-          # - 22.19.0 # vscode >= 1.100 <= 1.100.3
-          # - 20.18.3 # vscode >= 1.99.0 <= 1.99.3
-          # - 20.18.2 # vscode >= 1.98.0 <= 1.98.2
-          # - 20.18.1 # vscode >= 1.96.0 <= 1.97.2
-          # - 20.18.0 # vscode >= 1.95.0 <= 1.95.3
-          # - 20.16.0 # vscode >= 1.94.0 <= 1.94.2
-          - 20.15.1 # vscode >= 1.93.0 <= 1.93.1 - Aug 2024
-          # - 20.14.0 # vscode >= 1.92.0 <= 1.92.2
-          # - 20.9.0 # vscode >= 1.90.0 <= 1.91.0 - May 2024
-          # - 18.18.2 # vscode >= 1.88.0 <= 1.89.1
-          # - 18.17.1 # vscode >= 1.86.0 <= 1.87.2
-          - 18.15.0 # vscode >= 1.82.0 <= 1.85.2 - Aug 2023
+          # - 24.18.0 # vscode >= 1.129.0 <= 1.133.0 - Jul-Aug 2026
+          # - 24.17.0 # vscode >= 1.128.0 <= 1.128.1 - July 2026
+          - 24.15.0 # vscode >= 1.123.0 <= 1.127.0 - June 2026
+          - 22.18.0 # vscode >= 1.104.0 <= 1.104.3 - August 2025
         arch:
           - x64
         experimental:
@@ -69,27 +60,21 @@ jobs:
         include:
           - os: ubuntu-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: macos-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: windows-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: ubuntu-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
           - os: macos-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
           - os: windows-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
     runs-on: ${{ matrix.os }}
     steps:
@@ -107,40 +92,23 @@ jobs:
         run: npm ci
 
       # - name: Setup tmate session
-      #   if: (matrix.os == 'ubuntu-latest' && matrix.node == '18.15.0')
+      #   if: (matrix.os == 'ubuntu-latest' && matrix.node == '22.18.0')
       #   uses: mxschmitt/action-tmate@v3
 
       - name: Test
         continue-on-error: ${{ matrix.experimental }}
         run: npm test
 
-      - name: Uploading code coverage report
-        # if: >
-        #   (
-        #     success() &&
-        #     matrix.os == 'ubuntu-latest' &&
-        #     matrix.node == '18.15.0' &&
-        #     github.event_name == 'push' &&
-        #     github.repository_owner == 'vscode-icons' &&
-        #     github.actor != 'dependabot[bot]'
-        #   )
-        if: false
-        uses: paambaati/codeclimate-action@v9
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-
-      - name: Uploading code coverage artifact
-        if: >
-          (
-            success() &&
-            matrix.os == 'ubuntu-latest' &&
-            matrix.node == '18.15.0' &&
-            github.event_name == 'pull_request' &&
-            github.repository_owner == 'vscode-icons' &&
-            github.actor != 'dependabot[bot]'
-          )
-        uses: actions/upload-artifact@v4
+      - name: Upload coverage artifact
+        if: |
+          success() &&
+          matrix.os == 'ubuntu-latest' &&
+          matrix.node == '22.18.0' &&
+          github.event_name == 'pull_request' &&
+          github.repository_owner == 'vscode-icons' &&
+          github.actor != 'dependabot[bot]'
+        uses: actions/upload-artifact@v7
         with:
-          name: code-coverage-report
-          path: coverage/lcov.info
+          name: code-coverage-report-${{ github.run_id }}
+          path: coverage/cobertura-coverage.xml
           retention-days: 1

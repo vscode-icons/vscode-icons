@@ -1,5 +1,7 @@
+import type { IFileCollection } from '../../src/models';
+
 import { languages } from '../../src/iconsManifest/languages';
-import { FileFormat, IFileCollection } from '../../src/models';
+import { FileFormat } from '../../src/models';
 
 export const extensions: IFileCollection = {
   default: {

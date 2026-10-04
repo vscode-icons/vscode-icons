@@ -1,11 +1,13 @@
-import { coerce, gte, parse } from 'semver';
-import * as packageJson from '../../../package.json';
-import * as models from '../models';
-import {
+import type * as models from '../models';
+import type {
   IPackageManifest,
   IVSCodeIconTheme,
   IVSCodeManifest,
 } from '../models/packageManifest';
+
+import { coerce, gte, parse } from 'semver';
+
+import packageJson from '../../../package.json';
 import { Utils } from '../utils';
 
 export class VSCodeManager implements models.IVSCodeManager {

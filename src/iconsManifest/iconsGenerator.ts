@@ -1,10 +1,11 @@
-import * as packageJson from '../../../package.json';
+import type * as models from '../models';
+import type { IPackageManifest } from '../models/packageManifest';
+
+import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, writeFileAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
-import * as models from '../models';
-import { IPackageManifest } from '../models/packageManifest';
 import { Utils } from '../utils';
 import { CustomsMerger } from './customsMerger';
 import { ManifestBuilder } from './manifestBuilder';

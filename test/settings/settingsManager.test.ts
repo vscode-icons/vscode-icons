@@ -1,15 +1,17 @@
-import { expect } from 'chai';
-import * as semver from 'semver';
-import * as sinon from 'sinon';
-import { ErrorHandler } from '../../src/common/errorHandler';
-import * as fsAsync from '../../src/common/fsAsync';
-import { constants } from '../../src/constants';
-import {
-  ExtensionStatus,
+import type {
   ISettingsManager,
   IState,
   IVSCodeManager,
 } from '../../src/models';
+
+import { expect } from 'chai';
+import semver from 'semver';
+import * as sinon from 'sinon';
+
+import { ErrorHandler } from '../../src/common/errorHandler';
+import * as fsAsync from '../../src/common/fsAsync';
+import { constants } from '../../src/constants';
+import { ExtensionStatus } from '../../src/models';
 import { SettingsManager } from '../../src/settings/settingsManager';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
