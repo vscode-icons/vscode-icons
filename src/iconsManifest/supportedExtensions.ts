@@ -5665,6 +5665,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'robotcode',
+      extensions: ['.robot.toml', 'robot.toml', '.robotignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'robotframework',
       extensions: [],
       languages: [languages.robot],
