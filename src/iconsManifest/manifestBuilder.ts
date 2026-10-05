@@ -353,10 +353,12 @@ export class ManifestBuilder {
     darkSchema.file_stems = {
       ...files.language.fileNames,
       ...files.names.fileNames,
+      ...files.zedFileNames,
     };
     lightSchema.file_stems = {
       ...files.light.language.fileNames,
       ...files.light.fileNames,
+      ...files.light.zedFileNames,
     };
 
     // zed file suffixes (file extensions)
@@ -554,6 +556,12 @@ export class ManifestBuilder {
         };
 
         current.extensions.forEach(populateFn);
+        current.zedFileNames?.forEach(zedFileName => {
+          old.zedFileNames[zedFileName] = iconFileDefinition;
+          old.light.zedFileNames[zedFileName] = hasLightVersion
+            ? iconFileLightDefinition
+            : iconFileDefinition;
+        });
 
         const hasGlobDefinitions =
           current.filenamesGlob &&
@@ -572,9 +580,11 @@ export class ManifestBuilder {
       Promise.resolve<models.IBuildFiles>({
         defs: {},
         names: { fileExtensions: {}, fileNames: {} },
+        zedFileNames: {},
         light: {
           fileExtensions: {},
           fileNames: {},
+          zedFileNames: {},
           language: { fileExtensions: {}, fileNames: {}, languageIds: {} },
         },
         language: { fileExtensions: {}, fileNames: {}, languageIds: {} },

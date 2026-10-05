@@ -58,12 +58,7 @@ describe('ManifestBuilder: files icons test', function () {
     });
 
     context('Aspire AppHost filenames', function () {
-      for (const filename of [
-        'apphost.ts',
-        'apphost.mts',
-        'apphost.cs',
-        'AppHost.cs',
-      ]) {
+      for (const filename of ['apphost.ts', 'apphost.mts', 'apphost.cs']) {
         it(`maps '${filename}' to the Aspire icon in VS Code`, async function () {
           const files = cloneDeep(fixtFiles);
           files.supported = supportedFiles.supported.filter(
@@ -75,8 +70,7 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          // VS Code matches fileNames case-insensitively.
-          expect(manifest.vscode.fileNames[filename.toLowerCase()]).to.equal(
+          expect(manifest.vscode.fileNames[filename]).to.equal(
             `${constants.iconsManifest.definitionFilePrefix}aspire`,
           );
           expect(Object.keys(manifest.vscode.fileNames)).to.have.members([
@@ -88,7 +82,7 @@ describe('ManifestBuilder: files icons test', function () {
         });
       }
 
-      it('preserves the AppHost filename mappings in every Zed theme', async function () {
+      it('preserves exact AppHost filename mappings in every Zed theme', async function () {
         const files = cloneDeep(fixtFiles);
         files.supported = supportedFiles.supported.filter(
           file => file.icon === 'aspire',
@@ -104,6 +98,7 @@ describe('ManifestBuilder: files icons test', function () {
             'apphost.ts': `${constants.iconsManifest.definitionFilePrefix}aspire`,
             'apphost.mts': `${constants.iconsManifest.definitionFilePrefix}aspire`,
             'apphost.cs': `${constants.iconsManifest.definitionFilePrefix}aspire`,
+            'AppHost.cs': `${constants.iconsManifest.definitionFilePrefix}aspire`,
           });
           expect(theme.file_suffixes).to.be.empty;
         }
