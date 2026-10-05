@@ -21,16 +21,16 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
-      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v5
       - run: npm ci
       - run: npx eslint .
 
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
-      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v5
       - run: npm ci
       - run: npx prettier --check .
 
@@ -79,12 +79,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setting up Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node }}
 
       - name: Cloning repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 5
 
