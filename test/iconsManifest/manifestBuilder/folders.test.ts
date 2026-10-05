@@ -25,15 +25,13 @@ describe('ManifestBuilder: folders icons test', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      sandbox.stub(Utils, 'fileFormatToString').returns('.svg');
-
       sandbox.stub(Utils, 'getRelativePath').resolves(iconsDirRelativeBasePath);
       pathUnixJoinStub = sandbox
         .stub(Utils, 'pathUnixJoin')
         .callsFake((fpath: string, file: string) => `${fpath}/${file}`);
 
       emptyFileCollection = {
-        default: { file: { icon: 'file', format: 'svg' } },
+        default: { file: { icon: 'file' } },
         supported: [],
       };
     });
@@ -47,9 +45,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`the 'default' folder icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.folderTypePrefix}${
             fixtFolders.default.folder.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg}`;
 
           const folders = cloneDeep(fixtFolders);
 
@@ -68,9 +64,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`the 'default' open folder icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.folderTypePrefix}${
             fixtFolders.default.folder.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const folders = cloneDeep(fixtFolders);
 
@@ -101,9 +95,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -130,9 +122,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -179,9 +169,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.root_folder.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -208,9 +196,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(fixtFolders.default.root_folder.format)}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -348,9 +334,7 @@ describe('ManifestBuilder: folders icons test', function () {
                 .forEach((folder: IFolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
-                  }${folder.icon}${
-                    constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(folder.format)}`;
+                  }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
@@ -376,7 +360,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}_opened${
                     constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(folder.format)}`;
+                  }.svg`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
@@ -481,9 +465,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   .forEach((folder: IFolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
-                    }${folder.icon}${
-                      constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
@@ -512,7 +494,7 @@ describe('ManifestBuilder: folders icons test', function () {
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
                       constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
@@ -617,9 +599,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   .forEach((folder: IFolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
-                    }${folder.icon}${
-                      constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
@@ -648,7 +628,7 @@ describe('ManifestBuilder: folders icons test', function () {
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
                       constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
@@ -850,7 +830,6 @@ describe('ManifestBuilder: folders icons test', function () {
       beforeEach(function () {
         fixtFolders.default.folder_light = {
           icon: 'folder_light',
-          format: 'svg',
         };
       });
 
@@ -862,9 +841,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`the 'default' folder icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.folderTypePrefix}${
             fixtFolders.default.folder.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const folders = cloneDeep(fixtFolders);
 
@@ -883,9 +860,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`the 'default' open folder icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.folderTypePrefix}${
             fixtFolders.default.folder.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const folders = cloneDeep(fixtFolders);
 
@@ -916,9 +891,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -945,9 +918,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -974,9 +945,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder_light.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder_light.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1003,11 +972,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder_light.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(
-            fixtFolders.default.folder_light.format,
-          )}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1034,9 +999,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.root_folder.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1063,9 +1026,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(fixtFolders.default.root_folder.format)}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1175,9 +1136,7 @@ describe('ManifestBuilder: folders icons test', function () {
                 .forEach((folder: IFolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
-                  }${folder.icon}${
-                    constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(folder.format)}`;
+                  }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
@@ -1203,7 +1162,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}_opened${
                     constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(folder.format)}`;
+                  }.svg`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
@@ -1308,9 +1267,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   .forEach((folder: IFolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
-                    }${folder.icon}${
-                      constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
@@ -1339,7 +1296,7 @@ describe('ManifestBuilder: folders icons test', function () {
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
                       constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
@@ -1444,9 +1401,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   .forEach((folder: IFolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
-                    }${folder.icon}${
-                      constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
@@ -1475,7 +1430,7 @@ describe('ManifestBuilder: folders icons test', function () {
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
                       constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
@@ -1677,7 +1632,6 @@ describe('ManifestBuilder: folders icons test', function () {
       beforeEach(function () {
         fixtFolders.default.root_folder_light = {
           icon: 'root_file_light',
-          format: 'svg',
         };
       });
 
@@ -1699,9 +1653,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.folder.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1728,9 +1680,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.folder.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1777,9 +1727,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.root_folder.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1806,9 +1754,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(fixtFolders.default.root_folder.format)}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1835,9 +1781,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder_light.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFolders.default.root_folder_light.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1865,11 +1809,7 @@ describe('ManifestBuilder: folders icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFolders.default.root_folder_light.icon
-          }_opened${
-            constants.iconsManifest.iconSuffix
-          }${Utils.fileFormatToString(
-            fixtFolders.default.root_folder_light.format,
-          )}`;
+          }_opened${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
@@ -1959,9 +1899,7 @@ describe('ManifestBuilder: folders icons test', function () {
                 .forEach((folder: IFolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
-                  }${folder.icon}${
-                    constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(folder.format)}`;
+                  }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
@@ -1987,7 +1925,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}_opened${
                     constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(folder.format)}`;
+                  }.svg`;
 
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
@@ -2092,9 +2030,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   .forEach((folder: IFolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
-                    }${folder.icon}${
-                      constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
@@ -2123,7 +2059,7 @@ describe('ManifestBuilder: folders icons test', function () {
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
                       constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
@@ -2228,9 +2164,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   .forEach((folder: IFolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
-                    }${folder.icon}${
-                      constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
@@ -2259,7 +2193,7 @@ describe('ManifestBuilder: folders icons test', function () {
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
                       constants.iconsManifest.iconSuffix
-                    }${Utils.fileFormatToString(folder.format)}`;
+                    }.svg`;
 
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[

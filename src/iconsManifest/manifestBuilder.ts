@@ -187,10 +187,7 @@ export class ManifestBuilder {
     const openSuffix = isOpenFolder ? '_opened' : '';
     const iconSuffix = constants.iconsManifest.iconSuffix;
     const icon = defaultExtension.icon;
-    const format = defaultExtension.format;
-    const filename = `${defPrefix}${icon}${openSuffix}${iconSuffix}${Utils.fileFormatToString(
-      format,
-    )}`;
+    const filename = `${defPrefix}${icon}${openSuffix}${iconSuffix}.svg`;
     const fPath = await this.getIconPath(filename);
 
     return Utils.pathUnixJoin(fPath, filename);
@@ -463,7 +460,7 @@ export class ManifestBuilder {
         const hasLightVersion = current.light;
         const iconFileType = `${sts.fileTypePrefix}${icon}`;
         const iconFileLightType = `${sts.fileTypeLightPrefix}${icon}`;
-        const iconFileExtension = Utils.fileFormatToString(current.format);
+        const iconFileExtension = '.svg';
         const filename = `${
           hasLightVersion ? iconFileLightType : iconFileType
         }${sts.iconSuffix}${iconFileExtension}`;
@@ -609,7 +606,7 @@ export class ManifestBuilder {
         const hasLightVersion = current.light;
         const iconFolderType = `${sts.folderTypePrefix}${icon}`;
         const iconFolderLightType = `${sts.folderTypeLightPrefix}${icon}`;
-        const iconFileExtension = Utils.fileFormatToString(current.format);
+        const iconFileExtension = '.svg';
         const folderName = `${
           hasLightVersion ? iconFolderLightType : iconFolderType
         }${sts.iconSuffix}${iconFileExtension}`;

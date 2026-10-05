@@ -5,7 +5,6 @@ import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
 
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import { FileFormat } from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -25,9 +24,7 @@ describe('CustomsMerger: file extensions tests', function () {
     it('new extensions are added to existing file icon and respect the format type', async function () {
       const customFiles: IFileCollection = {
         default: {},
-        supported: [
-          { icon: 'actionscript', extensions: ['as2'], format: 'svg' },
-        ],
+        supported: [{ icon: 'actionscript', extensions: ['as2'] }],
       };
 
       const newDefs = (
@@ -46,7 +43,6 @@ describe('CustomsMerger: file extensions tests', function () {
 
       newDefs.forEach((def: IFileExtension) => {
         expect(def.icon).to.equal(customFiles.supported[0].icon);
-        expect(def.format).to.equals(FileFormat.svg);
       });
       expect(newDefs[0].extensions).to.eql(['as']);
       expect(newDefs[1].extensions).to.eql(['as2']);
@@ -60,7 +56,6 @@ describe('CustomsMerger: file extensions tests', function () {
             icon: 'actionscript2',
             extensions: ['as2'],
             overrides: 'actionscript',
-            format: 'svg',
           },
         ],
       };
@@ -84,7 +79,6 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs).to.be.an('array').with.lengthOf(1);
       expect(newDefs[0].icon).to.equal(customFiles.supported[0].icon);
       expect(newDefs[0].extensions).to.eql(customFiles.supported[0].extensions);
-      expect(newDefs[0].format).to.equals(customFiles.supported[0].format);
     });
 
     it(`'extends' replaces the specified icon`, async function () {
@@ -95,7 +89,6 @@ describe('CustomsMerger: file extensions tests', function () {
             icon: 'newIcon',
             extensions: ['newExt'],
             extends: 'actionscript',
-            format: 'png',
           },
         ],
       };
@@ -121,10 +114,8 @@ describe('CustomsMerger: file extensions tests', function () {
         expect(def.icon).to.equal(customFiles.supported[0].icon);
       });
       expect(newDefs[0].extensions).to.eql(['as']);
-      expect(newDefs[0].format).to.equals(FileFormat.svg);
 
       expect(newDefs[1].extensions).to.eql(customFiles.supported[0].extensions);
-      expect(newDefs[1].format).to.equals(customFiles.supported[0].format);
     });
 
     it('disabled extensions are NOT included into the manifest', async function () {
@@ -135,7 +126,6 @@ describe('CustomsMerger: file extensions tests', function () {
             icon: 'actionscript',
             extensions: [],
             disabled: true,
-            format: 'svg',
           },
         ],
       };
@@ -164,7 +154,6 @@ describe('CustomsMerger: file extensions tests', function () {
             icon: 'actionscript',
             extensions: ['myExt'],
             disabled: false,
-            format: 'svg',
           },
         ],
       };
@@ -184,7 +173,6 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs).to.be.an('array').with.lengthOf(2);
       newDefs.forEach((def: IFileExtension) => {
         expect(def.icon).to.equal(customFiles.supported[0].icon);
-        expect(def.format).to.equal(FileFormat.svg);
         expect(def.disabled).to.be.false;
       });
       expect(newDefs[0].extensions).to.eql(['as']);
@@ -198,7 +186,6 @@ describe('CustomsMerger: file extensions tests', function () {
           {
             icon: 'actionscript',
             disabled: false,
-            format: 'svg',
           },
         ],
       };
@@ -219,7 +206,6 @@ describe('CustomsMerger: file extensions tests', function () {
       newDefs.forEach((def: IFileExtension) => {
         expect(def.icon).to.equal(customFiles.supported[0].icon);
         expect(def.disabled).to.be.false;
-        expect(def.format).to.equal(FileFormat.svg);
       });
       expect(newDefs[0].extensions).to.eql(['as']);
       expect(newDefs[1].extensions).to.eql([]);
@@ -233,64 +219,52 @@ describe('CustomsMerger: file extensions tests', function () {
             {
               icon: 'ng_component_ts2',
               extensions: ['component.ts'],
-              format: 'svg',
             },
             {
               icon: 'ng_component_js2',
               extensions: ['component.js'],
-              format: 'svg',
             },
             {
               icon: 'ng_smart_component_ts2',
               extensions: ['page.ts', 'container.ts'],
-              format: 'svg',
             },
             {
               icon: 'ng_smart_component_js2',
               extensions: ['page.js', 'container.js'],
-              format: 'svg',
             },
             {
               icon: 'ng_directive_ts2',
               extensions: ['directive.ts'],
-              format: 'svg',
             },
             {
               icon: 'ng_directive_js2',
               extensions: ['directive.js'],
-              format: 'svg',
             },
-            { icon: 'ng_pipe_ts2', extensions: ['pipe.ts'], format: 'svg' },
-            { icon: 'ng_pipe_js2', extensions: ['pipe.js'], format: 'svg' },
+            { icon: 'ng_pipe_ts2', extensions: ['pipe.ts'] },
+            { icon: 'ng_pipe_js2', extensions: ['pipe.js'] },
             {
               icon: 'ng_service_ts2',
               extensions: ['service.ts'],
-              format: 'svg',
             },
             {
               icon: 'ng_service_js2',
               extensions: ['service.js'],
-              format: 'svg',
             },
             {
               icon: 'ng_module_ts2',
               extensions: ['module.ts'],
-              format: 'svg',
             },
             {
               icon: 'ng_module_js2',
               extensions: ['module.js'],
-              format: 'svg',
             },
             {
               icon: 'ng_routing_ts2',
               extensions: ['routing.ts', 'routes.ts'],
-              format: 'svg',
             },
             {
               icon: 'ng_routing_js2',
               extensions: ['routing.js', 'routes.js'],
-              format: 'svg',
             },
           ],
         };
@@ -311,9 +285,7 @@ describe('CustomsMerger: file extensions tests', function () {
         ngGroup.forEach((file: IFileExtension) => {
           const ng = customFiles.supported.find(
             (cf: IFileExtension) =>
-              cf.icon === file.icon &&
-              isEqual(cf.extensions, file.extensions) &&
-              cf.format === file.format,
+              cf.icon === file.icon && isEqual(cf.extensions, file.extensions),
           );
           expect(ng).to.exist;
         });
@@ -326,7 +298,6 @@ describe('CustomsMerger: file extensions tests', function () {
             {
               icon: 'newIcon',
               extensions: ['aspx', 'ascx'],
-              format: 'svg',
             },
           ],
         };
@@ -364,7 +335,6 @@ describe('CustomsMerger: file extensions tests', function () {
             {
               icon: 'actionscript',
               extensions: [],
-              format: 'svg',
               languages: [{ ids: 'newlang', knownExtensions: ['newlang'] }],
             },
           ],
@@ -396,7 +366,6 @@ describe('CustomsMerger: file extensions tests', function () {
             {
               icon: 'custom_icon',
               extensions: ['custom'],
-              format: 'svg',
             },
           ],
         };
@@ -414,8 +383,6 @@ describe('CustomsMerger: file extensions tests', function () {
         );
 
         expect(newDefs).to.be.an('array').with.lengthOf(1);
-
-        expect(newDefs[0].format).to.equal(customFiles.supported[0].format);
       });
     });
   });

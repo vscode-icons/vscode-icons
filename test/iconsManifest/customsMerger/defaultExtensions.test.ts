@@ -24,7 +24,7 @@ describe('CustomsMerger: default extensions tests', function () {
       it('added', async function () {
         const customFiles: IFileCollection = {
           default: {
-            file_light: { icon: 'customFileIconLight', format: 'svg' },
+            file_light: { icon: 'customFileIconLight' },
           },
           supported: [],
         };
@@ -41,13 +41,12 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFiles.default.file_light.icon);
-        expect(def.format).to.equal(customFiles.default.file_light.format);
       });
 
       it('overriden', async function () {
         const customFiles: IFileCollection = {
           default: {
-            file: { icon: 'customFileIcon', format: 'svg' },
+            file: { icon: 'customFileIcon' },
           },
           supported: [],
         };
@@ -64,13 +63,12 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFiles.default.file.icon);
-        expect(def.format).to.equal(customFiles.default.file.format);
       });
 
       it('disabled', async function () {
         const customFiles: IFileCollection = {
           default: {
-            file: { icon: '', format: 'svg', disabled: true },
+            file: { icon: '', disabled: true },
           },
           supported: [],
         };
@@ -86,7 +84,6 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFiles.default.file.icon);
-        expect(def.format).to.equal(customFiles.default.file.format);
         expect(def.disabled).to.equal(customFiles.default.file.disabled);
       });
     });
@@ -95,7 +92,7 @@ describe('CustomsMerger: default extensions tests', function () {
       it('added', async function () {
         const customFolders: IFolderCollection = {
           default: {
-            folder_light: { icon: 'customFolderIconLight', format: 'svg' },
+            folder_light: { icon: 'customFolderIconLight' },
           },
           supported: [],
         };
@@ -112,14 +109,13 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.folder_light.icon);
-        expect(def.format).to.equal(customFolders.default.folder_light.format);
         expect(def.disabled).to.be.false;
       });
 
       it('overriden', async function () {
         const customFolders: IFolderCollection = {
           default: {
-            folder: { icon: 'customFolderIcon', format: 'svg' },
+            folder: { icon: 'customFolderIcon' },
           },
           supported: [],
         };
@@ -136,14 +132,13 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.folder.icon);
-        expect(def.format).to.equal(customFolders.default.folder.format);
         expect(def.disabled).to.be.false;
       });
 
       it('disabled', async function () {
         const customFolders: IFolderCollection = {
           default: {
-            folder: { icon: '', format: 'svg', disabled: true },
+            folder: { icon: '', disabled: true },
           },
           supported: [],
         };
@@ -159,7 +154,6 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.folder.icon);
-        expect(def.format).to.equal(customFolders.default.folder.format);
         expect(def.disabled).to.equal(customFolders.default.folder.disabled);
       });
     });
@@ -170,7 +164,6 @@ describe('CustomsMerger: default extensions tests', function () {
           default: {
             root_folder_light: {
               icon: 'customRootFolderIconLight',
-              format: 'svg',
             },
           },
           supported: [],
@@ -188,16 +181,13 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.root_folder_light.icon);
-        expect(def.format).to.equal(
-          customFolders.default.root_folder_light.format,
-        );
         expect(def.disabled).to.be.false;
       });
 
       it('overriden', async function () {
         const customFolders: IFolderCollection = {
           default: {
-            root_folder: { icon: 'customRootFolderIcon', format: 'svg' },
+            root_folder: { icon: 'customRootFolderIcon' },
           },
           supported: [],
         };
@@ -214,14 +204,13 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.root_folder.icon);
-        expect(def.format).to.equal(customFolders.default.root_folder.format);
         expect(def.disabled).to.be.false;
       });
 
       it('disabled', async function () {
         const customFolders: IFolderCollection = {
           default: {
-            root_folder: { icon: '', format: 'svg', disabled: true },
+            root_folder: { icon: '', disabled: true },
           },
           supported: [],
         };
@@ -237,7 +226,6 @@ describe('CustomsMerger: default extensions tests', function () {
 
         expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
         expect(def.icon).to.equal(customFolders.default.root_folder.icon);
-        expect(def.format).to.equal(customFolders.default.root_folder.format);
         expect(def.disabled).to.equal(
           customFolders.default.root_folder.disabled,
         );
