@@ -608,6 +608,12 @@ export const extensions: IFileCollection = {
       languages: [languages.asp],
       format: FileFormat.svg,
     },
+    {
+      icon: 'aspire',
+      extensions: ['apphost.ts', 'apphost.cs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'aspx', extensions: ['aspx', 'ascx'], format: FileFormat.svg },
     {
       icon: 'assembly',
@@ -5635,6 +5641,13 @@ export const extensions: IFileCollection = {
       icon: 'rnc',
       extensions: ['rnc'],
       languages: [languages.rnc],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'robocop',
+      extensions: ['.robocop', 'robocop.toml'],
+      filename: true,
+      light: true,
       format: FileFormat.svg,
     },
     {
