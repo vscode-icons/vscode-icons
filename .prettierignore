@@ -1,12 +1,11 @@
 *.md
-*.svg
-*.png
-*.gif
 *.sh
-.husky/
 .editorconfig
 .git*
 .*ignore
 .*rc
-!.prettierrc
 LICENSE
+.husky/
+icons/
+images/
+!.prettierrc
