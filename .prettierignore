@@ -9,3 +9,4 @@ LICENSE
 icons/
 images/
 !.prettierrc
+!.nrcrc
