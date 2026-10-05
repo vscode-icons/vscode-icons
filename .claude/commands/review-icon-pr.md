@@ -1,8 +1,8 @@
-Review an icon contribution PR for vscode-icons.
+# Review an icon contribution PR for vscode-icons
 
 The user will provide a PR number or URL.
 
-## Steps:
+## Steps
 
 1. **Fetch PR details**: Use `gh pr view` and `gh pr diff` to understand the changes.
 

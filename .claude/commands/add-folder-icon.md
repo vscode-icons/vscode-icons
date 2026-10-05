@@ -1,8 +1,8 @@
-Add a new folder icon to vscode-icons.
+# Add a new folder icon to vscode-icons
 
 The user will provide the folder icon name and the folder names it should match.
 
-## Steps:
+## Steps
 
 1. **Research**: Search the web for the tool/technology to understand what folder names it uses and its official branding/colors.
 
@@ -14,9 +14,10 @@ The user will provide the folder icon name and the folder names it should match.
    The opened variant should visually indicate an open/expanded folder. Try to match the official branding as closely as possible.
 
 4. **Add configuration**: Add an entry to `src/iconsManifest/supportedFolders.ts` in alphabetical order:
-   ```typescript
-   { icon: 'name', extensions: ['foldername', '.foldername'], format: FileFormat.svg },
-   ```
+
+    ```typescript
+    { icon: 'name', extensions: ['foldername', '.foldername'], format: FileFormat.svg },
+    ```
 
 5. **Validate**: Run `npm test` to ensure all specs pass.
 

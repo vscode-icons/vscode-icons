@@ -1,8 +1,8 @@
-Add a new file icon to vscode-icons.
+# Add a new file icon to vscode-icons
 
 The user will provide the icon name and the file extensions/filenames it should match.
 
-## Steps:
+## Steps
 
 1. **Research**: Search the web for the tool/technology to understand what file extensions and config filenames it uses. Also look for official brand colors and logo design.
 
