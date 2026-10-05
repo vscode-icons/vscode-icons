@@ -610,7 +610,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'aspire',
-      extensions: ['apphost.ts', 'apphost.cs'],
+      extensions: ['apphost.ts', 'apphost.mts', 'apphost.cs', 'AppHost.cs'],
       filename: true,
       format: FileFormat.svg,
     },
