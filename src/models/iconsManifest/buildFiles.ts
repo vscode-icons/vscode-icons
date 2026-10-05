@@ -6,11 +6,9 @@ export interface IBuildFiles {
     fileExtensions: IIconAssociation;
     fileNames: IIconAssociation;
   };
-  zedFileNames: IIconAssociation;
   light: {
     fileExtensions: IIconAssociation;
     fileNames: IIconAssociation;
-    zedFileNames: IIconAssociation;
     language: {
       fileExtensions: IIconAssociation;
       fileNames: IIconAssociation;

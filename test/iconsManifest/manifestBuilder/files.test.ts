@@ -82,7 +82,7 @@ describe('ManifestBuilder: files icons test', function () {
         });
       }
 
-      it('preserves exact AppHost filename mappings in every Zed theme', async function () {
+      it('preserves the lowercase AppHost filename mappings in every Zed theme', async function () {
         const files = cloneDeep(fixtFiles);
         files.supported = supportedFiles.supported.filter(
           file => file.icon === 'aspire',
@@ -98,7 +98,6 @@ describe('ManifestBuilder: files icons test', function () {
             'apphost.ts': `${constants.iconsManifest.definitionFilePrefix}aspire`,
             'apphost.mts': `${constants.iconsManifest.definitionFilePrefix}aspire`,
             'apphost.cs': `${constants.iconsManifest.definitionFilePrefix}aspire`,
-            'AppHost.cs': `${constants.iconsManifest.definitionFilePrefix}aspire`,
           });
           expect(theme.file_suffixes).to.be.empty;
         }

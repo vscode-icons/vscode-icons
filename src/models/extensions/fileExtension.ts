@@ -9,10 +9,6 @@ export interface IFileExtension extends IExtension {
    */
   filename?: boolean;
   /**
-   * Additional exact file names to associate with the icon in Zed themes only.
-   */
-  zedFileNames?: string[];
-  /**
    * collection of languages associated to the icon.
    */
   languages?: ILanguage[];
