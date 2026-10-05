@@ -100,13 +100,14 @@ jobs:
         run: npm test
 
       - name: Upload coverage artifact
-        if: |
-          success() &&
-          matrix.os == 'ubuntu-latest' &&
-          matrix.node == '22.18.0' &&
-          github.event_name == 'pull_request' &&
-          github.repository_owner == 'vscode-icons' &&
-          github.actor != 'dependabot[bot]'
+        # if: |
+        #   success() &&
+        #   matrix.os == 'ubuntu-latest' &&
+        #   matrix.node == '22.18.0' &&
+        #   github.event_name == 'pull_request' &&
+        #   github.repository_owner == 'vscode-icons' &&
+        #   github.actor != 'dependabot[bot]'
+        if: false
         uses: actions/upload-artifact@v7
         with:
           name: code-coverage-report-${{ github.run_id }}
