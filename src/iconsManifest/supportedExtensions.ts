@@ -663,6 +663,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'aube',
+      extensions: ['aube-lock.yaml', 'aube-workspace.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       // https://en.wikipedia.org/wiki/Audio_file_format
       icon: 'audio',
       extensions: [
