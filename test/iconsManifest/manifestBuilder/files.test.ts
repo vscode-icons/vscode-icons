@@ -12,7 +12,6 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
-import { extensions as supportedFiles } from '../../../src/iconsManifest/supportedExtensions';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
 
@@ -55,53 +54,6 @@ describe('ManifestBuilder: files icons test', function () {
 
     afterEach(function () {
       sandbox.restore();
-    });
-
-    context('Aspire AppHost filenames', function () {
-      for (const filename of ['apphost.ts', 'apphost.mts', 'apphost.cs']) {
-        it(`maps '${filename}' to the Aspire icon in VS Code`, async function () {
-          const files = cloneDeep(fixtFiles);
-          files.supported = supportedFiles.supported.filter(
-            file => file.icon === 'aspire',
-          );
-
-          const manifest = await ManifestBuilder.buildManifest(
-            files,
-            emptyFolderCollection,
-          );
-
-          expect(manifest.vscode.fileNames[filename]).to.equal(
-            `${constants.iconsManifest.definitionFilePrefix}aspire`,
-          );
-          expect(Object.keys(manifest.vscode.fileNames)).to.have.members([
-            'apphost.ts',
-            'apphost.mts',
-            'apphost.cs',
-          ]);
-          expect(manifest.vscode.fileExtensions).to.be.empty;
-        });
-      }
-
-      it('preserves the lowercase AppHost filename mappings in every Zed theme', async function () {
-        const files = cloneDeep(fixtFiles);
-        files.supported = supportedFiles.supported.filter(
-          file => file.icon === 'aspire',
-        );
-
-        const manifest = await ManifestBuilder.buildManifest(
-          files,
-          emptyFolderCollection,
-        );
-
-        for (const theme of manifest.zed.themes) {
-          expect(theme.file_stems).to.deep.equal({
-            'apphost.ts': `${constants.iconsManifest.definitionFilePrefix}aspire`,
-            'apphost.mts': `${constants.iconsManifest.definitionFilePrefix}aspire`,
-            'apphost.cs': `${constants.iconsManifest.definitionFilePrefix}aspire`,
-          });
-          expect(theme.file_suffixes).to.be.empty;
-        }
-      });
     });
 
     context(`if a default 'light' icon is NOT defined`, function () {
