@@ -37,10 +37,8 @@ jobs:
   markdownlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v5
       - uses: actions/checkout@v5
-      - run: npm ci
-      - run: npx markdownlint-cli2 1>/dev/null
+      - uses: DavidAnson/markdownlint-cli2-action@v20
 
   test:
     name: Node.js ${{ matrix.node }} | ${{ matrix.os }} | ${{ matrix.arch }}
