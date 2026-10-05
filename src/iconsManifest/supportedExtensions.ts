@@ -5638,6 +5638,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'robocop',
+      extensions: ['.robocop', 'robocop.toml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'robotframework',
       extensions: [],
       languages: [languages.robot],
