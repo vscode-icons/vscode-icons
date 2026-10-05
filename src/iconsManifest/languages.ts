@@ -565,7 +565,7 @@ export const languages = {
   ripple: { ids: 'ripple', knownExtensions: ['ripple'] },
   rmd: { ids: 'rmd', knownExtensions: ['rmd'] },
   rnc: { ids: 'rnc', knownExtensions: ['rnc'] },
-  robot: { ids: 'robot', knownExtensions: ['robot'] },
+  robot: { ids: ['robot', 'robotframework'], knownExtensions: ['robot'] },
   robotstxt: { ids: 'robots-txt', knownFilenames: ['robots.txt'] },
   ruby: {
     ids: 'ruby',

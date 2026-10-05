@@ -16,7 +16,7 @@ import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
-import packageJson from '../../../../package.json';
+import packageJson from '../../../package.json';
 import { ErrorHandler } from '../../../src/common/errorHandler';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { ConfigManager } from '../../../src/configuration/configManager';
@@ -381,7 +381,7 @@ describe('IconsGenerator: tests', function () {
           let manifest: IPackageManifest;
 
           beforeEach(function () {
-            manifest = packageJson as IPackageManifest;
+            manifest = packageJson;
             getRelativePathStub.resolves(
               `${constants.extension.outDirName}/${constants.extension.srcDirName}/`,
             );

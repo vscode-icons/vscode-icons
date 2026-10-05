@@ -99,16 +99,19 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
         run: npm test
 
-      - name: Upload coverage artifact
+      - name: Upload coverage to Codecov
         if: |
           success() &&
+          env.CODECOV_TOKEN != '' &&
           matrix.os == 'ubuntu-latest' &&
           matrix.node == '22.18.0' &&
-          github.event_name == 'pull_request' &&
           github.repository_owner == 'vscode-icons' &&
-          github.actor != 'dependabot[bot]'
-        uses: actions/upload-artifact@v7
+          github.actor != 'dependabot[bot]' &&
+          (github.event_name == 'push' || github.event_name == 'pull_request')
+        uses: codecov/codecov-action@v7
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
-          name: code-coverage-report-${{ github.run_id }}
-          path: coverage/cobertura-coverage.xml
-          retention-days: 1
+          files: coverage/lcov.info
+          token: ${{ env.CODECOV_TOKEN }}
+          fail_ci_if_error: false

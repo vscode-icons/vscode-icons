@@ -608,6 +608,12 @@ export const extensions: IFileCollection = {
       languages: [languages.asp],
       format: FileFormat.svg,
     },
+    {
+      icon: 'aspire',
+      extensions: ['apphost.ts', 'apphost.cs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     { icon: 'aspx', extensions: ['aspx', 'ascx'], format: FileFormat.svg },
     {
       icon: 'assembly',
@@ -653,6 +659,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'attw',
       extensions: ['.attw.json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'aube',
+      extensions: ['aube-lock.yaml', 'aube-workspace.yaml'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -2411,6 +2423,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'flowgorithm', extensions: ['fprg'], format: FileFormat.svg },
+    {
+      icon: 'flue',
+      extensions: [],
+      filenamesGlob: ['flue.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'cts', 'mts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
     {
       icon: 'flutter',
       extensions: [
@@ -5638,6 +5658,19 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'robocop',
+      extensions: ['.robocop', 'robocop.toml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'robotcode',
+      extensions: ['.robot.toml', 'robot.toml', '.robotignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'robotframework',
       extensions: [],
       languages: [languages.robot],
@@ -6034,6 +6067,17 @@ export const extensions: IFileCollection = {
     {
       icon: 'smithery',
       extensions: ['smithery.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'smolmachine',
+      extensions: ['smolfile'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'smolmachine',
+      extensions: ['.smolmachine', 'smolfile.toml'],
       filename: true,
       format: FileFormat.svg,
     },
