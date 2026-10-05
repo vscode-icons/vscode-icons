@@ -5601,6 +5601,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'renpy',
+      extensions: ['rpy'],
+      languages: [languages.renpy],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'replit',
       extensions: ['.replit', 'replit.nix'],
       filename: true,
