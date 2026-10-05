@@ -12,7 +12,8 @@
     "strictFunctionTypes": false,
     "strictNullChecks": false,
     "target": "es6",
-    "types": ["node"]
+    "types": ["node"],
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts", "test/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts", "webpack.config.ts"]
 }

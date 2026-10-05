@@ -103,7 +103,6 @@ export default defineConfig(
   },
   {
     files: ['**/*.ts'],
-    ignores: ['webpack.config.ts'],
     extends: [
       tseslint.configs.recommendedTypeChecked,
       importX.flatConfigs.typescript,
