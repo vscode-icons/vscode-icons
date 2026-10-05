@@ -1,9 +1,16 @@
-/* eslint-disable import-x/no-internal-modules */
-import { resolve } from 'path';
-import { Configuration } from 'webpack';
-import { constants } from './out/src/constants';
+import type { Configuration } from 'webpack';
 
-const getConfig = (argv: any): Configuration => ({
+import { resolve } from 'path';
+
+import { constants } from './src/constants';
+
+interface IWebpackArgv {
+  [key: string]: unknown;
+  mode?: 'development' | 'production' | 'none';
+  env?: Record<string, unknown>;
+}
+
+const getConfig = (argv: IWebpackArgv): Configuration => ({
   context: resolve(__dirname, 'out'),
   // development mode only
   devtool: argv.mode === 'development' ? 'source-map' : false,
@@ -31,28 +38,28 @@ const getConfig = (argv: any): Configuration => ({
 export default [
   (
     _env: string | Record<string, boolean | number | string>,
-    argv: any,
+    argv: IWebpackArgv,
   ): Configuration => {
     const config: Configuration = getConfig(argv);
-    config.output!.filename = constants.extension.distEntryFilename;
+    config.output.filename = constants.extension.distEntryFilename;
     return config;
   },
   (
     _env: string | Record<string, boolean | number | string>,
-    argv: any,
+    argv: IWebpackArgv,
   ): Configuration => {
     const config: Configuration = getConfig(argv);
     config.entry = './src/uninstall.js';
-    config.output!.filename = constants.extension.uninstallEntryFilename;
+    config.output.filename = constants.extension.uninstallEntryFilename;
     return config;
   },
   (
     _env: string | Record<string, boolean | number | string>,
-    argv: any,
+    argv: IWebpackArgv,
   ): Configuration => {
     const config: Configuration = getConfig(argv);
     config.entry = './src/index.web.js';
-    config.output!.filename = constants.extension.distEntryFilenameWeb;
+    config.output.filename = constants.extension.distEntryFilenameWeb;
     return config;
   },
 ];
