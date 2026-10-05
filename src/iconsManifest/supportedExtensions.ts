@@ -2418,6 +2418,14 @@ export const extensions: IFileCollection = {
     },
     { icon: 'flowgorithm', extensions: ['fprg'], format: FileFormat.svg },
     {
+      icon: 'flue',
+      extensions: [],
+      filenamesGlob: ['flue.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'cts', 'mts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'flutter',
       extensions: [
         '.flutter-plugins',
