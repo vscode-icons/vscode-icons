@@ -610,7 +610,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'aspire',
-      extensions: ['apphost.ts', 'apphost.cs'],
+      extensions: ['apphost.ts', 'apphost.mts', 'apphost.cs', 'AppHost.cs'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5671,6 +5671,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'robotcode',
+      extensions: ['.robot.toml', 'robot.toml', '.robotignore'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'robotframework',
       extensions: [],
       languages: [languages.robot],
@@ -6067,6 +6073,17 @@ export const extensions: IFileCollection = {
     {
       icon: 'smithery',
       extensions: ['smithery.yaml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'smolmachine',
+      extensions: ['smolfile'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'smolmachine',
+      extensions: ['.smolmachine', 'smolfile.toml'],
       filename: true,
       format: FileFormat.svg,
     },

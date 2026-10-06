@@ -21,16 +21,16 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
-      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v5
       - run: npm ci
       - run: npx eslint .
 
   prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
-      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v5
       - run: npm ci
       - run: npx prettier --check .
 
@@ -79,12 +79,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setting up Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node }}
 
       - name: Cloning repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 5
 
@@ -99,16 +99,16 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
         run: npm test
 
-      - name: Upload coverage artifact
+      - name: Upload coverage to Codecov
         if: |
           success() &&
           matrix.os == 'ubuntu-latest' &&
           matrix.node == '22.18.0' &&
-          github.event_name == 'pull_request' &&
           github.repository_owner == 'vscode-icons' &&
-          github.actor != 'dependabot[bot]'
-        uses: actions/upload-artifact@v7
+          github.actor != 'dependabot[bot]' &&
+          (github.event_name == 'push' || github.event_name == 'pull_request')
+        uses: codecov/codecov-action@v7
         with:
-          name: code-coverage-report-${{ github.run_id }}
-          path: coverage/cobertura-coverage.xml
-          retention-days: 1
+          files: coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
