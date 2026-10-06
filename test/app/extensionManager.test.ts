@@ -141,7 +141,14 @@ describe('ExtensionManager: tests', function () {
           'applyProjectDetection',
         );
 
-        padMngStub.detectProjects.resolves();
+        padMngStub.detectProjects = sandbox.stub<
+          [projectNames: models.Projects[]],
+          Promise<models.IProjectDetectionResult[]>
+        >();
+        settingsManagerStub.updateStatus = sandbox.stub<
+          [status?: models.ExtensionStatus],
+          Promise<models.IState>
+        >();
       });
 
       it(`functions are called with the specific order`, async function () {
