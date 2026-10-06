@@ -150,11 +150,6 @@ describe('ExtensionManager: tests', function () {
         await extensionManager.activate();
 
         expect(
-          registerCommandsStub.calledImmediatelyAfter(
-            settingsManagerStub.moveStateFromLegacyPlace,
-          ),
-        ).to.be.true;
-        expect(
           manageIntroMessageStub.calledImmediatelyAfter(registerCommandsStub),
         ).to.be.true;
         expect(
@@ -181,9 +176,6 @@ describe('ExtensionManager: tests', function () {
         ).to.be.true;
 
         expect(vscodeManagerStub.isSupportedVersion).to.be.true;
-        expect(
-          settingsManagerStub.moveStateFromLegacyPlace.calledOnceWithExactly(),
-        ).to.be.true;
         expect(settingsManagerStub.isNewVersion).to.be.true;
         expect(notifyManagerStub.notifyError.called).to.be.false;
       });
@@ -228,8 +220,6 @@ describe('ExtensionManager: tests', function () {
 
           expect(vscodeManagerStub.isSupportedVersion).to.be.false;
           expect(notifyManagerStub.notifyError.called).to.be.true;
-          expect(settingsManagerStub.moveStateFromLegacyPlace.called).to.be
-            .false;
           expect(registerCommandsStub.called).to.be.false;
           expect(manageIntroMessageStub.called).to.be.false;
           expect(manageCustomizationsStub.called).to.be.false;
