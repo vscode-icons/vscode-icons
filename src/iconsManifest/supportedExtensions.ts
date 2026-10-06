@@ -5602,7 +5602,6 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'renpy',
-      extensions: ['rpy'],
       languages: [languages.renpy],
       format: FileFormat.svg,
     },
