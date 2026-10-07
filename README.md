@@ -2,12 +2,11 @@
 
 <div align="center">
 
-<h3>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h3>
-<p style="font-size:10px;">minimum supported version: <b>1.104.3</b></p>
+### Bring real icons to your [Visual Studio Code](https://code.visualstudio.com)
+
+<p><small>minimum supported version: <strong>1.104.3</strong></small></p>
 
 </div>
-
-<br/>
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
