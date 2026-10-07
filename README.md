@@ -116,13 +116,6 @@ We like to express our "Special Thanks" to:
 
 ## Related extensions
 
-### Maintained
-
 * [folder-icon-maker](https://github.com/vscode-icons/folder-icon-maker) by [@NaufalK25](https://github.com/NaufalK25) make [`vscode-icons` folders](https://vscode-icons.github.io/folder-icon-maker/) from your file icons.
-
-### Unmaintained
-
-* [vscode-icons for GitHub](https://github.com/dderevjanik/github-vscode-icons) by [@dderevjanik](https://github.com/dderevjanik) will allow you to see all `GitHub`'s files with `vscode-icons` icons.
-* [vscode-icons-js](https://github.com/dderevjanik/vscode-icons-js) by [@dderevjanik](https://github.com/dderevjanik) get file/folder specific icon from `vscode-icons` icons.
 
 **Enjoy!**
