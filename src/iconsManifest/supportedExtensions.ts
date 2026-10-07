@@ -2319,6 +2319,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fallow',
+      extensions: [
+        '.fallowrc.json',
+        '.fallowrc.jsonc',
+        'fallow.toml',
+        '.fallow.toml',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fantasticon',
       extensions: [
         '.fantasticonrc',
