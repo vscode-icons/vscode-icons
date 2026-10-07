@@ -1,11 +1,9 @@
 <div align="center">
 
-
 <h3>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h3>
 <p style="font-size:10px;">minimum supported version: <b>1.104.3</b></p>
 
 </div>
-
 
 <br/>
 
@@ -117,6 +115,12 @@ We like to express our "Special Thanks" to:
 * All users that made us their favorite **Icons** theme. We wouldn't be where we are without you.
 
 ## Related extensions
+
+### Maintaned
+
+* [folder-icon-maker](https://github.com/vscode-icons/folder-icon-maker) by [@NaufalK25](https://github.com/NaufalK25) make [`vscode-icons` folders](https://vscode-icons.github.io/folder-icon-maker/) from your file icons.
+
+### Unmaintaned
 
 * [vscode-icons for GitHub](https://github.com/dderevjanik/github-vscode-icons) by [@dderevjanik](https://github.com/dderevjanik) will allow you to see all `GitHub`'s files with `vscode-icons` icons.
 * [vscode-icons-js](https://github.com/dderevjanik/vscode-icons-js) by [@dderevjanik](https://github.com/dderevjanik) get file/folder specific icon from `vscode-icons` icons.
