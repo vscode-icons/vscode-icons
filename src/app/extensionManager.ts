@@ -65,8 +65,6 @@ export class ExtensionManager implements models.IExtensionManager {
     ]);
 
     // function calls has to be done in this order strictly
-    await this.settingsManager.moveStateFromLegacyPlace();
-
     this.registerCommands(this.manifest.contributes.commands);
     await this.manageIntroMessage();
     await this.manageCustomizations();
