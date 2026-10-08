@@ -9,7 +9,6 @@ import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
 
 import * as fsAsync from '../../src/common/fsAsync';
-import { FileFormat } from '../../src/models';
 import { Utils } from '../../src/utils';
 
 describe('Utils: tests', function () {
@@ -86,13 +85,6 @@ describe('Utils: tests', function () {
     context(`the 'tempPath' function`, function () {
       it('returns the path to the OS temporary directory', function () {
         expect(Utils.tempPath()).to.equal(os.tmpdir());
-      });
-    });
-
-    context(`the 'fileFormatToString' function`, function () {
-      it(`returns the string representation of the 'FileFormat'`, function () {
-        expect(Utils.fileFormatToString('svg')).to.equal('.svg');
-        expect(Utils.fileFormatToString(FileFormat.svg)).to.equal('.svg');
       });
     });
 

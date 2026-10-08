@@ -17,7 +17,6 @@ import {
   unlinkAsync,
   writeFileAsync,
 } from '../common/fsAsync';
-import { FileFormat } from '../models';
 
 export class Utils {
   public static getAppDataDirPath(): string {
@@ -39,12 +38,6 @@ export class Utils {
 
   public static tempPath(): string {
     return tmpdir();
-  }
-
-  public static fileFormatToString(extension: FileFormat | string): string {
-    return `.${
-      typeof extension === 'string' ? extension.trim() : FileFormat[extension]
-    }`;
   }
 
   /**

@@ -319,7 +319,6 @@ export class CustomsMerger {
             return;
           }
         }
-        file.format = officialFiles[0].format;
       }
       // extends? => copy the icon name to the existing ones.
       // override? => remove overriden extension.
@@ -374,7 +373,6 @@ export class CustomsMerger {
         workingCopy.supported.push({
           icon,
           extensions: [],
-          format: models.FileFormat.svg,
           disabled: disable,
         });
       } else {

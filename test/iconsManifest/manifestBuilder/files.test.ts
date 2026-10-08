@@ -26,7 +26,6 @@ describe('ManifestBuilder: files icons test', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      sandbox.stub(Utils, 'fileFormatToString').returns('.svg');
       sandbox
         .stub(Utils, 'removeFirstDot')
         .callsFake((txt: string) => txt.replace(/^\./, ''));
@@ -47,7 +46,7 @@ describe('ManifestBuilder: files icons test', function () {
         .callsFake((fpath: string, file: string) => `${fpath}/${file}`);
 
       emptyFolderCollection = {
-        default: { folder: { icon: 'folder', format: 'svg' } },
+        default: { folder: { icon: 'folder' } },
         supported: [],
       };
     });
@@ -61,9 +60,7 @@ describe('ManifestBuilder: files icons test', function () {
         it(`the 'default' file icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.fileTypePrefix}${
             fixtFiles.default.file.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFiles.default.file.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const files = cloneDeep(fixtFiles);
           files.default.file.useBundledIcon = true;
@@ -93,9 +90,7 @@ describe('ManifestBuilder: files icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFiles.default.file.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFiles.default.file.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             fixtFiles,
@@ -162,9 +157,7 @@ describe('ManifestBuilder: files icons test', function () {
               .forEach((file: IFileExtension) => {
                 const filename = `${constants.iconsManifest.fileTypePrefix}${
                   file.icon
-                }${
-                  constants.iconsManifest.iconSuffix
-                }${Utils.fileFormatToString(file.format)}`;
+                }${constants.iconsManifest.iconSuffix}.svg`;
 
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
                 const def = manifest.vscode.iconDefinitions[
@@ -220,9 +213,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .forEach((file: IFileExtension) => {
                   const filename = `${constants.iconsManifest.fileTypePrefix}${
                     file.icon
-                  }${
-                    constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(file.format)}`;
+                  }${constants.iconsManifest.iconSuffix}.svg`;
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
@@ -278,9 +269,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .forEach((file: IFileExtension) => {
                   const filename = `${
                     constants.iconsManifest.fileTypeLightPrefix
-                  }${file.icon}${
-                    constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(file.format)}`;
+                  }${file.icon}${constants.iconsManifest.iconSuffix}.svg`;
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
@@ -689,7 +678,7 @@ describe('ManifestBuilder: files icons test', function () {
 
     context(`if a default 'light' icon is defined`, function () {
       beforeEach(function () {
-        fixtFiles.default.file_light = { icon: 'file_light', format: 'svg' };
+        fixtFiles.default.file_light = { icon: 'file_light' };
       });
 
       afterEach(function () {
@@ -700,9 +689,7 @@ describe('ManifestBuilder: files icons test', function () {
         it(`the 'default' file icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.fileTypePrefix}${
             fixtFiles.default.file.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFiles.default.file.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const files = cloneDeep(fixtFiles);
           files.default.file.useBundledIcon = true;
@@ -732,9 +719,7 @@ describe('ManifestBuilder: files icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFiles.default.file.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFiles.default.file.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             fixtFiles,
@@ -761,9 +746,7 @@ describe('ManifestBuilder: files icons test', function () {
         it(`icon path has the correct structure`, async function () {
           const filename = `${constants.iconsManifest.defaultPrefix}${
             fixtFiles.default.file_light.icon
-          }${constants.iconsManifest.iconSuffix}${Utils.fileFormatToString(
-            fixtFiles.default.file_light.format,
-          )}`;
+          }${constants.iconsManifest.iconSuffix}.svg`;
 
           const manifest = await ManifestBuilder.buildManifest(
             fixtFiles,
@@ -820,9 +803,7 @@ describe('ManifestBuilder: files icons test', function () {
               .forEach((file: IFileExtension) => {
                 const filename = `${constants.iconsManifest.fileTypePrefix}${
                   file.icon
-                }${
-                  constants.iconsManifest.iconSuffix
-                }${Utils.fileFormatToString(file.format)}`;
+                }${constants.iconsManifest.iconSuffix}.svg`;
                 const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
                 const def = manifest.vscode.iconDefinitions[
                   definition
@@ -877,9 +858,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .forEach((file: IFileExtension) => {
                   const filename = `${constants.iconsManifest.fileTypePrefix}${
                     file.icon
-                  }${
-                    constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(file.format)}`;
+                  }${constants.iconsManifest.iconSuffix}.svg`;
                   const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
@@ -935,9 +914,7 @@ describe('ManifestBuilder: files icons test', function () {
                 .forEach((file: IFileExtension) => {
                   const filename = `${
                     constants.iconsManifest.fileTypeLightPrefix
-                  }${file.icon}${
-                    constants.iconsManifest.iconSuffix
-                  }${Utils.fileFormatToString(file.format)}`;
+                  }${file.icon}${constants.iconsManifest.iconSuffix}.svg`;
                   const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition

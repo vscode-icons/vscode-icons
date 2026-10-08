@@ -97,11 +97,11 @@ describe('IconsGenerator: tests', function () {
       iconsGenerator = new IconsGenerator(vscodeManagerStub, configManagerStub);
 
       filesCollection = {
-        default: { file: { icon: 'file', format: 'svg' } },
+        default: { file: { icon: 'file' } },
         supported: [],
       };
       foldersCollection = {
-        default: { folder: { icon: 'folder', format: 'svg' } },
+        default: { folder: { icon: 'folder' } },
         supported: [],
       };
     });

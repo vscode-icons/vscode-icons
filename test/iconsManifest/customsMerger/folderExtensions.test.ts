@@ -5,7 +5,6 @@ import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
 
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import { FileFormat } from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -25,7 +24,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     it('new extensions are added to existing folder icon and respect the format type', async function () {
       const customFolders: IFolderCollection = {
         default: {},
-        supported: [{ icon: 'aws', extensions: ['aws3'], format: 'svg' }],
+        supported: [{ icon: 'aws', extensions: ['aws3'] }],
       };
 
       const newDefs = (
@@ -45,7 +44,6 @@ describe('CustomsMerger: folder extensions tests', function () {
 
       newDefs.forEach((def: IFolderExtension) => {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
-        expect(def.format).to.equals(FileFormat.svg);
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
       expect(newDefs[1].extensions).to.eql(['aws3']);
@@ -59,7 +57,6 @@ describe('CustomsMerger: folder extensions tests', function () {
             icon: 'aws3',
             extensions: ['aws'],
             overrides: 'aws',
-            format: 'svg',
           },
         ],
       };
@@ -86,7 +83,6 @@ describe('CustomsMerger: folder extensions tests', function () {
       expect(newDefs[0].extensions).to.eql(
         customFolders.supported[0].extensions,
       );
-      expect(newDefs[0].format).to.equals(customFolders.supported[0].format);
     });
 
     it(`'extends' replaces the specified icon`, async function () {
@@ -97,7 +93,6 @@ describe('CustomsMerger: folder extensions tests', function () {
             icon: 'newIcon',
             extensions: ['newExt'],
             extends: 'aws',
-            format: 'png',
           },
         ],
       };
@@ -124,20 +119,16 @@ describe('CustomsMerger: folder extensions tests', function () {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
-      expect(newDefs[0].format).to.equals(FileFormat.svg);
 
       expect(newDefs[1].extensions).to.eql(
         customFolders.supported[0].extensions,
       );
-      expect(newDefs[1].format).to.equals(customFolders.supported[0].format);
     });
 
     it('disabled icons are NOT included into the manifest', async function () {
       const customFolders: IFolderCollection = {
         default: {},
-        supported: [
-          { icon: 'aws', extensions: [], disabled: true, format: 'svg' },
-        ],
+        supported: [{ icon: 'aws', extensions: [], disabled: true }],
       };
 
       const newDefs = (
@@ -160,9 +151,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     it('NOT disabled icons are included into the manifest', async function () {
       const customFolders: IFolderCollection = {
         default: {},
-        supported: [
-          { icon: 'aws', extensions: [], disabled: false, format: 'svg' },
-        ],
+        supported: [{ icon: 'aws', extensions: [], disabled: false }],
       };
 
       const newDefs = (
@@ -181,7 +170,6 @@ describe('CustomsMerger: folder extensions tests', function () {
       expect(newDefs).to.be.an('array').with.lengthOf(2);
       newDefs.forEach((def: IFolderExtension) => {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
-        expect(def.format).to.equal(FileFormat.svg);
         expect(def.disabled).to.be.false;
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
@@ -193,7 +181,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     it(`if 'extensions' is NOT defined, it gets added internally`, async function () {
       const customFolders: IFolderCollection = {
         default: {},
-        supported: [{ icon: 'aws', disabled: false, format: 'svg' }],
+        supported: [{ icon: 'aws', disabled: false }],
       };
 
       const newDefs = (
@@ -213,7 +201,6 @@ describe('CustomsMerger: folder extensions tests', function () {
       newDefs.forEach((def: IFolderExtension) => {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
         expect(def.disabled).to.be.false;
-        expect(def.format).to.equal(FileFormat.svg);
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
       expect(newDefs[1].extensions).to.eql([]);
@@ -222,9 +209,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     it(`existing icon have its 'extensions' reassigned to new custom icon`, async function () {
       const customFolders: IFolderCollection = {
         default: {},
-        supported: [
-          { icon: 'newIcon', extensions: ['aws', '.aws'], format: 'svg' },
-        ],
+        supported: [{ icon: 'newIcon', extensions: ['aws', '.aws'] }],
       };
 
       const { folders } = await CustomsMerger.merge(
@@ -263,7 +248,6 @@ describe('CustomsMerger: folder extensions tests', function () {
             {
               icon: 'custom_icon',
               extensions: ['custom'],
-              format: 'svg',
             },
           ],
         };
@@ -282,8 +266,6 @@ describe('CustomsMerger: folder extensions tests', function () {
         );
 
         expect(newDefs).to.be.an('array').with.lengthOf(1);
-
-        expect(newDefs[0].format).to.equal(customFolders.supported[0].format);
       });
     });
   });

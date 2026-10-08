@@ -9,7 +9,6 @@ import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { extensions as files } from '../../src/iconsManifest/supportedExtensions';
-import { FileFormat } from '../../src/models';
 
 describe('Specifications of supported extensions: tests', function () {
   context('ensures that', function () {
@@ -35,11 +34,7 @@ describe('Specifications of supported extensions: tests', function () {
       context('extension', function () {
         it('has an associated icon file', async function () {
           for (const supportedFile of files.supported) {
-            const filename =
-              `${constants.iconsManifest.fileTypePrefix}${supportedFile.icon}` +
-              `${constants.iconsManifest.iconSuffix}.${
-                FileFormat[supportedFile.format] as string
-              }`;
+            const filename = `${constants.iconsManifest.fileTypePrefix}${supportedFile.icon}${constants.iconsManifest.iconSuffix}.svg`;
             const iconFilePath = join(iconsDirPath, filename);
 
             const pathExists = await existsAsync(iconFilePath);
@@ -101,9 +96,7 @@ describe('Specifications of supported extensions: tests', function () {
             )) {
               const filename = `${constants.iconsManifest.fileTypeLightPrefix}${
                 supportedFile.icon
-              }${constants.iconsManifest.iconSuffix}.${
-                FileFormat[supportedFile.format] as string
-              }`;
+              }${constants.iconsManifest.iconSuffix}.svg`;
               const iconFilePath = join(iconsDirPath, filename);
 
               const pathExists = await existsAsync(iconFilePath);

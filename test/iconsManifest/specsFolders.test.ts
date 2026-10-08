@@ -9,7 +9,6 @@ import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { extensions as folders } from '../../src/iconsManifest/supportedFolders';
-import { FileFormat } from '../../src/models';
 
 describe('Specifications of supported folders: tests', function () {
   context('ensures that', function () {
@@ -20,11 +19,7 @@ describe('Specifications of supported folders: tests', function () {
         it('has an associated icon file', async function () {
           await Promise.all(
             folders.supported.map(async (folder: IFolderExtension) => {
-              const filename =
-                `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
-                `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format] as string
-                }`;
+              const filename = `${constants.iconsManifest.folderTypePrefix}${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
               const iconFilePath = join(iconsDirPath, filename);
 
               const pathExists = await existsAsync(iconFilePath);
@@ -37,11 +32,7 @@ describe('Specifications of supported folders: tests', function () {
         it('has an associated opened icon file', async function () {
           await Promise.all(
             folders.supported.map(async (folder: IFolderExtension) => {
-              const filename =
-                `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
-                `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format] as string
-                }`;
+              const filename = `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened${constants.iconsManifest.iconSuffix}.svg`;
               const iconFilePath = join(iconsDirPath, filename);
 
               const pathExists = await existsAsync(iconFilePath);
@@ -95,11 +86,7 @@ describe('Specifications of supported folders: tests', function () {
               folders.supported
                 .filter((folder: IFolderExtension) => folder.light)
                 .map(async (folder: IFolderExtension) => {
-                  const filename =
-                    `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
-                    `${constants.iconsManifest.iconSuffix}.${
-                      FileFormat[folder.format] as string
-                    }`;
+                  const filename = `${constants.iconsManifest.folderTypePrefix}${folder.icon}${constants.iconsManifest.iconSuffix}.svg`;
                   const iconFilePath = join(iconsDirPath, filename);
                   const pathExists = await existsAsync(iconFilePath);
 
@@ -113,11 +100,7 @@ describe('Specifications of supported folders: tests', function () {
               folders.supported
                 .filter((folder: IFolderExtension) => folder.light)
                 .map(async (folder: IFolderExtension) => {
-                  const filename =
-                    `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
-                    `${constants.iconsManifest.iconSuffix}.${
-                      FileFormat[folder.format] as string
-                    }`;
+                  const filename = `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened${constants.iconsManifest.iconSuffix}.svg`;
                   const iconFilePath = join(iconsDirPath, filename);
                   const pathExists = await existsAsync(iconFilePath);
 
