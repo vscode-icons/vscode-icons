@@ -708,6 +708,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'protobuf',
+      extensions: ['protobuf', 'proto', 'protos'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'public',
       extensions: ['public', '.public'],
       format: FileFormat.svg,
