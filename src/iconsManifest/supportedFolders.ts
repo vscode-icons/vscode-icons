@@ -316,7 +316,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'domain',
-      extensions: ['domain'],
+      extensions: ['domain', 'domains'],
       format: FileFormat.svg,
     },
     { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
