@@ -1,5 +1,13 @@
 {
   "singleQuote": true,
   "trailingComma": "all",
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "overrides": [
+    {
+      "files": ["*.json", "*.jsonc", "*.json5"],
+      "options": {
+        "trailingComma": "none"
+      }
+    }
+  ]
 }

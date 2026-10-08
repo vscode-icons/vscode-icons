@@ -7,7 +7,7 @@ vscode-icons is a VS Code (and Zed editor) extension providing 1400+ file and fo
 ## Quick Reference
 
 | Task | Files to Change |
-|------|----------------|
+| - | - |
 | New file icon | `icons/file_type_{name}.svg` + `src/iconsManifest/supportedExtensions.ts` |
 | New folder icon | `icons/folder_type_{name}.svg` + `icons/folder_type_{name}_opened.svg` + `src/iconsManifest/supportedFolders.ts` |
 | New language ID | `src/iconsManifest/languages.ts` + `src/iconsManifest/supportedExtensions.ts` |
@@ -44,7 +44,7 @@ npm run build:dev          # Compile + generate icon manifests
 
 ## Project Structure
 
-```
+```txt
 icons/                              # SVG icon files (~1475 files)
 src/
   iconsManifest/
@@ -76,32 +76,32 @@ test/                               # Test files (mirrors src/)
 1. Create SVG icon at `icons/file_type_{name}.svg`
 2. Add entry to `src/iconsManifest/supportedExtensions.ts` in **alphabetical order**:
 
-```typescript
-// By filename (e.g., config files):
-{ icon: 'name', extensions: ['.configrc'], filename: true, format: FileFormat.svg },
+    ```typescript
+    // By filename (e.g., config files):
+    { icon: 'name', extensions: ['.configrc'], filename: true, format: FileFormat.svg },
 
-// By file extension (NO leading dot):
-{ icon: 'name', extensions: ['ext1', 'ext2'], format: FileFormat.svg },
+    // By file extension (NO leading dot):
+    { icon: 'name', extensions: ['ext1', 'ext2'], format: FileFormat.svg },
 
-// By language ID:
-{ icon: 'name', extensions: [], languages: [languages.langName], format: FileFormat.svg },
+    // By language ID:
+    { icon: 'name', extensions: [], languages: [languages.langName], format: FileFormat.svg },
 
-// With filename glob combinations:
-{
-  icon: 'name',
-  extensions: ['.babelrc'],
-  filenamesGlob: ['.babelrc', 'babel.config'],
-  extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
-  filename: true,
-  format: FileFormat.svg,
-},
-```
+    // With filename glob combinations:
+    {
+      icon: 'name',
+      extensions: ['.babelrc'],
+      filenamesGlob: ['.babelrc', 'babel.config'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    ```
 
 3. If using language IDs, add to `src/iconsManifest/languages.ts`:
 
-```typescript
-langName: { ids: 'vscode-language-id', knownExtensions: ['ext'] },
-```
+    ```typescript
+    langName: { ids: 'vscode-language-id', knownExtensions: ['ext'] },
+    ```
 
 4. Optional: Create `icons/file_type_light_{name}.svg` if setting `light: true`
 5. Run `npm test` to validate.
@@ -113,9 +113,9 @@ langName: { ids: 'vscode-language-id', knownExtensions: ['ext'] },
    - `icons/folder_type_{name}_opened.svg` (expanded)
 2. Add entry to `src/iconsManifest/supportedFolders.ts` in **alphabetical order**:
 
-```typescript
-{ icon: 'name', extensions: ['foldername', '.foldername'], format: FileFormat.svg },
-```
+    ```typescript
+    { icon: 'name', extensions: ['foldername', '.foldername'], format: FileFormat.svg },
+    ```
 
 3. Optional: Create light variants `folder_type_light_{name}.svg` + `folder_type_light_{name}_opened.svg`
 4. Run `npm test` to validate.
@@ -191,7 +191,7 @@ Tests automatically validate:
 
 Use conventional commits with scope:
 
-```
+```txt
 feat(icon): add support for parcel
 feat(folder): add cargo folder icon
 fix(icon): correct extension for typescript

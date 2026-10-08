@@ -1,8 +1,8 @@
-Validate an icon entry in vscode-icons.
+# Validate an icon entry in vscode-icons
 
 The user will provide an icon name to check.
 
-## Steps:
+## Steps
 
 1. **Find the config entry**: Search for the icon name in `src/iconsManifest/supportedExtensions.ts` and `src/iconsManifest/supportedFolders.ts`.
 

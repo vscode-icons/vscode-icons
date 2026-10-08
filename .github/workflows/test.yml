@@ -32,7 +32,13 @@ jobs:
       - uses: actions/setup-node@v5
       - uses: actions/checkout@v5
       - run: npm ci
-      - run: npx prettier --check .
+      - run: npx prettier --log-level=error --check .
+
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: DavidAnson/markdownlint-cli2-action@v20
 
   test:
     name: Node.js ${{ matrix.node }} | ${{ matrix.os }} | ${{ matrix.arch }}
