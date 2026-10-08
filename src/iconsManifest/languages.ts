@@ -439,7 +439,10 @@ export const languages = {
     knownExtensions: ['pkr.hcl', 'pkrvars.hcl'],
   },
   pascal: { ids: ['pascal', 'objectpascal'], knownExtensions: ['pas'] },
-  pawn: { ids: ['pawn'], knownExtensions: ['p', 'pwn', 'inc', 'sma'] },
+  pawn: {
+    ids: ['pawn', 'amxxpawn'],
+    knownExtensions: ['p', 'pwn', 'inc', 'sma'],
+  },
   pddl: { ids: 'pddl', knownExtensions: ['pddl'] },
   pddlplan: { ids: 'plan', knownExtensions: ['plan'] },
   pddlhappenings: { ids: 'happenings', knownExtensions: ['happenings'] },
