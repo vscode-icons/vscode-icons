@@ -29,6 +29,28 @@ describe('Specifications of supported extensions: tests', function () {
         );
     });
 
+    it('all Angular icons are disabled by default', function () {
+      const ngIcons = files.supported.filter((file: IFileExtension) =>
+        file.icon.startsWith('ng_'),
+      );
+
+      expect(ngIcons).to.not.be.empty;
+      ngIcons.forEach((file: IFileExtension) => {
+        expect(file.disabled).to.be.true;
+      });
+    });
+
+    it('all Nest icons are disabled by default', function () {
+      const nestIcons = files.supported.filter((file: IFileExtension) =>
+        file.icon.startsWith('nest_'),
+      );
+
+      expect(nestIcons).to.not.be.empty;
+      nestIcons.forEach((file: IFileExtension) => {
+        expect(file.disabled).to.be.true;
+      });
+    });
+
     context('each supported', function () {
       const iconsDirPath = ConfigManager.iconsDir;
 
