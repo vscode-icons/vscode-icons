@@ -3790,7 +3790,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'manifest',
-      extensions: ['manifest'],
+      extensions: ['manifest', 'MANIFEST.in'],
       filename: true,
       format: FileFormat.svg,
     },
