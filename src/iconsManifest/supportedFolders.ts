@@ -796,6 +796,12 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'skill',
+      extensions: ['.skills', '.skill', 'skills', 'skill'],
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'slackware',
       extensions: ['slackware'],
       format: FileFormat.svg,
