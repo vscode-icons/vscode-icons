@@ -718,6 +718,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'autohotkey2',
+      extensions: [],
+      languages: [languages.autohotkey2],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'autoit',
       extensions: [],
       languages: [languages.autoit],
