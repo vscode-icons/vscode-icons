@@ -801,6 +801,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'slides',
+      extensions: ['slides'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'snaplet',
       extensions: ['.snaplet'],
       format: FileFormat.svg,
