@@ -5588,6 +5588,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'relay',
+      extensions: [],
+      filenamesGlob: ['relay.config'],
+      extensionsGlob: ['json', 'js', 'mjs', 'ts'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'remark',
       extensions: ['.remarkrc', '.remarkignore'],
       filenamesGlob: ['.remarkrc'],
