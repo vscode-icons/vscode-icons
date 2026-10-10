@@ -1,16 +1,12 @@
 {
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
+  "[json][jsonc][typescript][javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "editor.defaultFormatter": "unifiedjs.vscode-remark"
   },
   "[svg]": {
-    "files.insertFinalNewline": false,
-    "files.trimFinalNewlines": true
+    "files.insertFinalNewline": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"

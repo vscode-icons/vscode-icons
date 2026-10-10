@@ -6357,6 +6357,14 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'svglint',
+      extensions: [],
+      filenamesGlob: ['.svglintrc'],
+      extensionsGlob: ['cjs', 'js', 'mjs'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'svgo',
       extensions: [],
       filenamesGlob: ['svgo.config'],

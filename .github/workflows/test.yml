@@ -18,31 +18,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  eslint:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v5
+        with:
+          node-version: 22.18.0
       - uses: actions/checkout@v5
       - run: npm ci
-      - run: npx eslint .
-
-  prettier:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v5
-      - uses: actions/checkout@v5
-      - run: npm ci
-      - run: npx prettier --check .
-
-  remark:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v5
-      - uses: actions/checkout@v5
-      - run: npm ci
-      - run: npx remark . --frail
+      - name: Prettier
+        run: npx prettier --log-level=error --check .
+      - name: ESLint
+        run: npx eslint --quiet .
+      - name: remark
+        run: npx remark --quiet --frail .
+      - name: SVGLint
+        run: npx svglint --no-summary --ci **/*.svg
 
   test:
+    needs: lint
     name: Node.js ${{ matrix.node }} | ${{ matrix.os }} | ${{ matrix.arch }}
     strategy:
       max-parallel: 3
