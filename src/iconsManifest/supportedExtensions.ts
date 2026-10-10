@@ -490,6 +490,7 @@ export const extensions: IFileCollection = {
       extensions: ['ng-tailwind.js'],
       filename: true,
       format: FileFormat.svg,
+      disabled: true,
     },
     {
       icon: 'affectscript',
