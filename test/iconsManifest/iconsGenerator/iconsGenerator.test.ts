@@ -303,25 +303,14 @@ describe('IconsGenerator: tests', function () {
               null,
               0,
             );
-            const zedStringified = JSON.stringify(defaultManifest.zed, null, 0);
 
-            pathUnixJoinStub.onFirstCall().returns(vscFilePath);
-            pathUnixJoinStub.onSecondCall().returns(zedFilePath);
+            pathUnixJoinStub.returns(vscFilePath);
 
             await iconsGenerator.persist(defaultManifest);
 
-            expect(writeFileAsyncStub.calledTwice).to.be.true;
+            expect(writeFileAsyncStub.calledOnce).to.be.true;
             expect(
-              writeFileAsyncStub.firstCall.calledWithExactly(
-                vscFilePath,
-                vscStringified,
-              ),
-            ).to.be.true;
-            expect(
-              writeFileAsyncStub.secondCall.calledWithExactly(
-                zedFilePath,
-                zedStringified,
-              ),
+              writeFileAsyncStub.calledWithExactly(vscFilePath, vscStringified),
             ).to.be.true;
           });
         });
