@@ -550,6 +550,7 @@ export const extensions: IFolderCollection = {
       extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
       format: FileFormat.svg,
     },
+    { icon: 'lua', extensions: ['lua'], format: FileFormat.svg },
     { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
     {
       icon: 'mariadb',
