@@ -1,16 +1,16 @@
 import type * as models from '../models';
 import type { IPackageManifest } from '../models/packageManifest';
 
+import { CustomsMerger } from './customsMerger';
+import { ManifestBuilder } from './manifestBuilder';
+import { extensions as extFiles } from './supportedExtensions';
+import { extensions as extFolders } from './supportedFolders';
 import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, writeFileAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { Utils } from '../utils';
-import { CustomsMerger } from './customsMerger';
-import { ManifestBuilder } from './manifestBuilder';
-import { extensions as extFiles } from './supportedExtensions';
-import { extensions as extFolders } from './supportedFolders';
 
 export class IconsGenerator implements models.IIconsGenerator {
   private readonly manifest: IPackageManifest;
@@ -82,12 +82,15 @@ export class IconsGenerator implements models.IIconsGenerator {
       ConfigManager.sourceDir,
       constants.extension.name,
     );
-    await this.writeIconsManifestToFile(
-      constants.iconsManifest.zedFilename,
-      iconsManifest.zed,
-      ConfigManager.sourceDir,
-      constants.extension.zedName,
-    );
+
+    if (!constants.environment.production) {
+      await this.writeIconsManifestToFile(
+        constants.iconsManifest.zedFilename,
+        iconsManifest.zed,
+        ConfigManager.sourceDir,
+        constants.extension.zedName,
+      );
+    }
 
     if (!updatePackageJson) {
       return;
