@@ -5,6 +5,9 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[markdown]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-remark"
+  },
   "[svg]": {
     "files.insertFinalNewline": false,
     "files.trimFinalNewlines": true
