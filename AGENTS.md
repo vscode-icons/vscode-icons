@@ -19,7 +19,8 @@ vscode-icons is a VS Code (and Zed editor) extension providing 1400+ file and fo
 - **DI**: inversify
 - **Tests**: Mocha + Chai + Sinon
 - **Bundler**: Webpack
-- **Linting**: ESLint + Prettier
+- Formatting: Prettier
+- **Linting**: ESLint + Markdownlint
 - **Node**: >= 22.18.0
 
 ## Setup & Verification
@@ -27,8 +28,9 @@ vscode-icons is a VS Code (and Zed editor) extension providing 1400+ file and fo
 ```bash
 npm install                # Install dependencies
 npm test                   # Compile + run tests (validates all icon entries)
-npm run lint               # ESLint check
-npm run format             # Prettier + ESLint fix
+npm run lint               # ESLint fix  
+npm run lint:md            # Markdownlint fix
+npm run format             # Prettier fix + ESLint fix + Markdownlint fix
 npm run compile:dev        # Compile TypeScript (dev, with tests)
 npm run build:dev          # Compile + generate icon manifests
 ```
@@ -40,7 +42,7 @@ npm run build:dev          # Compile + generate icon manifests
 - Interfaces prefixed with `I` (e.g., `IFileExtension`)
 - Explicit member accessibility (public/private/protected)
 - No `console.log` (use `console.info` or `console.error`)
-- Pre-commit hooks enforce Prettier + ESLint via lint-staged
+- Pre-commit hooks enforce Prettier + ESLint + Markdownlint via lint-staged
 
 ## Project Structure
 
