@@ -56,7 +56,7 @@
     "prepare": "husky install",
     "reinstall": "rimraf ./package-lock.json ./node_modules && npm i",
     "format": "prettier --log-level error --write .",
-    "postformat": "npm run lint",
+    "postformat": "npm run lint && npm run lint:md",
     "lint": "eslint --fix",
     "lint:md": "markdownlint-cli2 --fix 1>/dev/null",
     "prebundle:dev": "rimraf --glob ./*.nls*.json",

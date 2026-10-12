@@ -8,9 +8,6 @@
 
 </div>
 
-
-<br/>
-
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
 ---
