@@ -7282,6 +7282,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'woke',
+      extensions: ['.woke.yaml', '.woke.yml'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'wolfram',
       extensions: [],
       languages: [languages.wolfram],
