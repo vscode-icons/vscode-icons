@@ -5346,6 +5346,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pyinstaller',
+      extensions: ['pyinstaller.spec'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pypi',
       extensions: ['pyproject.toml'],
       filename: true,
