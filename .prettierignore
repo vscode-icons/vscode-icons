@@ -4,7 +4,6 @@
 .git*
 .*ignore
 .*rc
-LICENSE
 .husky/
 icons/
 images/

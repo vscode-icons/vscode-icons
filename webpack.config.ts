@@ -21,7 +21,7 @@ const getConfig = (argv: IWebpackArgv): Configuration => ({
     new BannerPlugin({
       banner: `vscode-icons <https://vscode-icons.github.io/vscode-icons/>
 Copyright The vscode-icons Contributors
-Source code released under MIT license <https://raw.githubusercontent.com/vscode-icons/vscode-icons/refs/heads/master/LICENSE>
+Source code released under MIT license <https://github.com/vscode-icons/vscode-icons?tab=MIT-1-ov-file>
 Icons are licensed under the Creative Commons - ShareAlike (CC BY-SA) license <https://creativecommons.org/licenses/by-sa/4.0/>
 Branded icons are licensed under their copyright license`,
     }),
