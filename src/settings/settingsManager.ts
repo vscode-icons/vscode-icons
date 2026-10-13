@@ -1,12 +1,10 @@
 import type { ISettingsManager, IState, IVSCodeManager } from '../models';
 
-import { eq, lt } from 'semver';
+import { lt } from 'semver';
 
 import { ErrorHandler } from '../common/errorHandler';
-import { existsAsync, readFileAsync, unlinkAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ExtensionStatus } from '../models';
-import { Utils } from '../utils';
 
 export class SettingsManager implements ISettingsManager {
   public static defaultState: IState = {
@@ -58,55 +56,6 @@ export class SettingsManager implements ISettingsManager {
         constants.vsicons.name,
         undefined,
       );
-    } catch (error: unknown) {
-      ErrorHandler.logError(error);
-    }
-  }
-
-  public async moveStateFromLegacyPlace(): Promise<void> {
-    // read state from legacy place
-    const state: IState = await this.getStateLegacy();
-    // state not found in legacy place
-    if (eq(state.version, SettingsManager.defaultState.version)) {
-      return;
-    }
-    // store in new place: 'globalState'
-    await this.setState(state);
-    // delete state from legacy place
-    return this.deleteStateLegacy();
-  }
-
-  /** Obsolete */
-  private async getStateLegacy(): Promise<IState> {
-    const extensionSettingsLegacyFilePath = Utils.pathUnixJoin(
-      this.vscodeManager.getAppUserDirPath(),
-      constants.extension.settingsFilename,
-    );
-
-    const pathExists = await existsAsync(extensionSettingsLegacyFilePath);
-    if (!pathExists) {
-      return SettingsManager.defaultState;
-    }
-    try {
-      const state = await readFileAsync(
-        extensionSettingsLegacyFilePath,
-        'utf8',
-      );
-      return Utils.parseJSONSafe<IState>(state) || SettingsManager.defaultState;
-    } catch (error: unknown) {
-      ErrorHandler.logError(error, true);
-      return SettingsManager.defaultState;
-    }
-  }
-
-  /** Obsolete */
-  private async deleteStateLegacy(): Promise<void> {
-    const extensionSettingsLegacyFilePath = Utils.pathUnixJoin(
-      this.vscodeManager.getAppUserDirPath(),
-      constants.extension.settingsFilename,
-    );
-    try {
-      await unlinkAsync(extensionSettingsLegacyFilePath);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
     }

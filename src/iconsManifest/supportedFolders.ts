@@ -550,6 +550,7 @@ export const extensions: IFolderCollection = {
       extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
       format: FileFormat.svg,
     },
+    { icon: 'lua', extensions: ['lua'], format: FileFormat.svg },
     { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
     {
       icon: 'mariadb',
@@ -798,6 +799,12 @@ export const extensions: IFolderCollection = {
         '__shared__',
         '__share__',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'skill',
+      extensions: ['.skills', '.skill', 'skills', 'skill'],
+      light: true,
       format: FileFormat.svg,
     },
     {
