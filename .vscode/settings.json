@@ -13,6 +13,9 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.tabSize": 2,
+  "files.associations": {
+    "LICENSE": "plaintext"
+  },
   "files.exclude": {
     "out": false
   },
