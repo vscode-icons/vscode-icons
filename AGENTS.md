@@ -30,7 +30,8 @@ existing icon associations.
 npm install                # Install dependencies
 npm test                   # Compile + run tests (validates all icon entries)
 npm run lint               # ESLint check
-npm run format             # Prettier + ESLint fix
+npm run lint:md            # remark check
+npm run format             # Prettier + ESLint fix + remark fix
 npm run compile:dev        # Compile TypeScript (dev, with tests)
 npm run build:dev          # Compile + generate icon manifests
 ```
