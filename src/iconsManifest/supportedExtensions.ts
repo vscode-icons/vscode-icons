@@ -1448,7 +1448,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'contributing',
-      extensions: ['CONTRIBUTING.md'],
+      extensions: [
+        'CONTRIBUTING.md',
+        'CONTRIBUTING.markdown',
+        'CONTRIBUTING.rst',
+        'CONTRIBUTING.txt',
+        'CONTRIBUTING',
+      ],
       filename: true,
       format: FileFormat.svg,
     },
