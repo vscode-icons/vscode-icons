@@ -100,9 +100,10 @@ On the other hand, if you want to show the world your artistic side, checkout
 the
 [contributing section](https://github.com/vscode-icons/vscode-icons/wiki/Contributing).
 
-To make a folder icon from an existing file icon, checkout the [folder icons section](https://github.com/vscode-icons/vscode-icons/wiki/FolderIcons).
+To make a folder icon from an existing file icon, checkout the
+[folder icons section](https://github.com/vscode-icons/vscode-icons/wiki/FolderIcons).
 
-In any case, please follow our 
+In any case, please follow our
 [contribution guidelines](https://github.com/vscode-icons/vscode-icons/blob/master/.github/CONTRIBUTING.md).
 
 ## Credits

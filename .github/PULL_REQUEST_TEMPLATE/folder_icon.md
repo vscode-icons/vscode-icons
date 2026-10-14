@@ -15,7 +15,8 @@ _**Fixes #IssueNumber**_
 - [ ] Fix
 - [ ] Prepare
 
-**Made with [folder-icon-maker](https://github.com/vscode-icons/folder-icon-maker)?**
+**Made with
+[folder-icon-maker](https://github.com/vscode-icons/folder-icon-maker)?**
 
 - [ ] Yes, with default settings
 - [ ] Yes, with custom settings (describe below)
