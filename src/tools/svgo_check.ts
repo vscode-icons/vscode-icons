@@ -3,11 +3,13 @@ import type { Config } from 'svgo' with { 'resolution-mode': 'import' };
 import { readFileSync } from 'fs';
 import { styleText } from 'node:util';
 
+import { globSync } from 'glob';
+
 async function check_optimized(argv: string[]): Promise<void> {
   const { loadConfig, optimize } = await import('svgo');
 
   const config: Config = await loadConfig('./svgo.config.mjs');
-  const files: string[] = argv.slice(2);
+  const files: string[] = globSync(argv.slice(2), { nodir: true });
   const failed: string[] = [];
 
   if (!files.length) {
