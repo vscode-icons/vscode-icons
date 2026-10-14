@@ -5572,6 +5572,23 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'readme',
+      extensions: [
+        'README',
+        'README.md',
+        'README.markdown',
+        'README.rst',
+        'README.txt',
+        'INDEX',
+        'INDEX.md',
+        'INDEX.markdown',
+        'INDEX.rst',
+        'INDEX.txt',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'readthedocs',
       extensions: [],
       filenamesGlob: ['.readthedocs', 'readthedocs'],
