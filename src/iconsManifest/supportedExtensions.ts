@@ -3256,6 +3256,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'jitpack',
+      extensions: ['jitpack.yml', '.jitpack.yml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'jpm',
       extensions: ['.jpmignore'],
       filename: true,
