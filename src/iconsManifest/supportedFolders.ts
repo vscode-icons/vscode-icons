@@ -314,6 +314,17 @@ export const extensions: IFolderCollection = {
       extensions: ['docs', 'doc', 'document', 'documents'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'domain',
+      extensions: ['domain', 'domains'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'drizzle_orm',
+      extensions: ['drizzle'],
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
     {
       icon: 'elasticbeanstalk',
@@ -706,6 +717,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'private',
       extensions: ['private', '.private'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'protobuf',
+      extensions: ['protobuf', 'proto', 'protos'],
       format: FileFormat.svg,
     },
     {
