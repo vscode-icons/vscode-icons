@@ -34,6 +34,8 @@ jobs:
         run: npx remark --quiet --frail .
       - name: SVGLint
         run: npx svglint --no-summary --ci **/*.svg
+      - name: Check SVG optimization
+        run: npm run lint:svgo **/*.svg
 
   test:
     needs: lint
