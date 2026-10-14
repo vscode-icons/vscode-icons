@@ -314,6 +314,17 @@ export const extensions: IFolderCollection = {
       extensions: ['docs', 'doc', 'document', 'documents'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'domain',
+      extensions: ['domain', 'domains'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'drizzle_orm',
+      extensions: ['drizzle'],
+      light: true,
+      format: FileFormat.svg,
+    },
     { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
     {
       icon: 'elasticbeanstalk',
@@ -550,6 +561,7 @@ export const extensions: IFolderCollection = {
       extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
       format: FileFormat.svg,
     },
+    { icon: 'lua', extensions: ['lua'], format: FileFormat.svg },
     { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
     {
       icon: 'mariadb',
@@ -708,6 +720,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'protobuf',
+      extensions: ['protobuf', 'proto', 'protos'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'public',
       extensions: ['public', '.public'],
       format: FileFormat.svg,
@@ -793,6 +810,12 @@ export const extensions: IFolderCollection = {
         '__shared__',
         '__share__',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'skill',
+      extensions: ['.skills', '.skill', 'skills', 'skill'],
+      light: true,
       format: FileFormat.svg,
     },
     {

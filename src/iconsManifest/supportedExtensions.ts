@@ -490,6 +490,7 @@ export const extensions: IFileCollection = {
       extensions: ['ng-tailwind.js'],
       filename: true,
       format: FileFormat.svg,
+      disabled: true,
     },
     {
       icon: 'affectscript',
@@ -715,6 +716,12 @@ export const extensions: IFileCollection = {
       icon: 'autohotkey',
       extensions: [],
       languages: [languages.autohotkey],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'autohotkey2',
+      extensions: [],
+      languages: [languages.autohotkey2],
       format: FileFormat.svg,
     },
     {
@@ -2319,6 +2326,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'fallow',
+      extensions: [
+        '.fallowrc.json',
+        '.fallowrc.jsonc',
+        'fallow.toml',
+        '.fallow.toml',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'fantasticon',
       extensions: [
         '.fantasticonrc',
@@ -3238,6 +3256,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'jitpack',
+      extensions: ['jitpack.yml', '.jitpack.yml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'jpm',
       extensions: ['.jpmignore'],
       filename: true,
@@ -3779,7 +3804,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'manifest',
-      extensions: ['manifest'],
+      extensions: ['manifest', 'MANIFEST.in'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -5328,6 +5353,12 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'pyinstaller',
+      extensions: ['pyinstaller.spec'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'pypi',
       extensions: ['pyproject.toml'],
       filename: true,
@@ -5573,6 +5604,14 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['.rehyperc'],
       extensionsGlob: ['cjs', 'js', 'json', 'mjs', 'yml', 'yaml'],
       light: true,
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'relay',
+      extensions: [],
+      filenamesGlob: ['relay.config'],
+      extensionsGlob: ['json', 'js', 'mjs', 'ts'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -7253,6 +7292,12 @@ export const extensions: IFileCollection = {
       icon: 'wit',
       extensions: ['wit'],
       languages: [languages.wai],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'woke',
+      extensions: ['.woke.yaml', '.woke.yml'],
+      filename: true,
       format: FileFormat.svg,
     },
     {
