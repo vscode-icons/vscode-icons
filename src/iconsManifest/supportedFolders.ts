@@ -315,6 +315,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'domain',
+      extensions: ['domain', 'domains'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'drizzle_orm',
       extensions: ['drizzle'],
       light: true,
