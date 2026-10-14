@@ -37,7 +37,7 @@ npm run compile:dev    # Compile TypeScript (development mode)
 npm run build:dev      # Generate icon manifests package (development mode)
 ```
 
-`npm run check` perfomes the following tasks:
+`npm run check` performs the following tasks:
 
 ```bash
 npm run format         # Prettier fix
