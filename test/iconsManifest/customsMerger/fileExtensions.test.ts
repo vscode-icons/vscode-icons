@@ -47,7 +47,8 @@ describe('CustomsMerger: file extensions tests', function () {
       );
 
       const customDef = files.supported.find(
-        (file: IFileExtension) => file.icon === 'existing_icon',
+        (file: IFileExtension) =>
+          file.icon === 'existing_icon' && file.extensions.includes('custom'),
       );
 
       expect(customDef).to.exist;
@@ -86,7 +87,8 @@ describe('CustomsMerger: file extensions tests', function () {
       );
 
       const customDef = files.supported.find(
-        (file: IFileExtension) => file.icon === 'actionscript',
+        (file: IFileExtension) =>
+          file.icon === 'actionscript' && file.extensions.includes('as2'),
       );
 
       expect(customDef).to.exist;
