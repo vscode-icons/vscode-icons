@@ -4635,6 +4635,13 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'overcommit',
+      extensions: ['.overcommit.yml', '.local-overcommit.yml'],
+      filename: true,
+      light: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'overmind',
       extensions: ['.overmind.env'],
       filename: true,
