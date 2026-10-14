@@ -23,8 +23,9 @@ existing icon associations.
 - **Bundler**: Webpack
 - **Formatting**: Prettier
 - **JS/TS Linting**: ESLint
-- Markdown Linting: remark
+- **Markdown Linting**: remark
 - **SVG Linting**: SVGLint
+- **SVG Optimization**: SVGO
 - **Node**: >= 22.18.0
 
 ## Setup & Verification
@@ -43,6 +44,7 @@ npm run build:dev      # Generate icon manifests package (development mode)
 npm run format         # Prettier fix
 npm run lint           # ESLint fix
 npm run lint:md        # remark fix
+npm run lint:svgo      # SVGO optimization
 npm run lint:svg       # SVGLint check
 ```
 

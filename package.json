@@ -63,7 +63,7 @@
     "lint:svgo": "node ./out/src/tools/svgo_check.js",
     "precheck": "npm run format",
     "check": " npm run lint && npm run lint:md",
-    "postcheck": "npm run lint:svg **/*.svg && npm run lint:svgo **/*.svg",
+    "postcheck": "npm run lint:svgo **/*.svg && npm run lint:svg **/*.svg",
     "prebundle:dev": "rimraf --glob ./*.nls*.json",
     "bundle:dev": "node ./out/src/tools/bundle.js",
     "bundle": "npm run bundle:dev -- --release",
