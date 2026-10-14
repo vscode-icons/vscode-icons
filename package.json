@@ -61,7 +61,7 @@
     "lint:svg": "svglint --ci",
     "precheck": "npm run --silent format",
     "check": " npm run --silent lint && npm run --silent lint:md",
-    "postcheck": "npm run --silent lint:svg ./icons/*",
+    "postcheck": "npm run --silent lint:svg **/*.svg",
     "prebundle:dev": "rimraf --glob ./*.nls*.json",
     "bundle:dev": "node ./out/src/tools/bundle.js",
     "bundle": "npm run bundle:dev -- --release",
