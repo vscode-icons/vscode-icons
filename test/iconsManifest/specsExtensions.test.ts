@@ -54,9 +54,29 @@ describe('Specifications of supported extensions: tests', function () {
     context('each supported', function () {
       const iconsDirPath = ConfigManager.iconsDir;
 
+      function ensureFormat(file: IFileExtension): void {
+        file.format ??= FileFormat.svg;
+      }
+
       context('extension', function () {
+        it('defaults a missing format to svg', function () {
+          const file = { icon: 'example' } as IFileExtension;
+          ensureFormat(file);
+          expect(file.format).to.equal(FileFormat.svg);
+        });
+
+        it('preserves an explicit format', function () {
+          const file = {
+            icon: 'example',
+            format: FileFormat.svg,
+          } as IFileExtension;
+          ensureFormat(file);
+          expect(file.format).to.equal(FileFormat.svg);
+        });
+
         it('has an associated icon file', async function () {
           for (const supportedFile of files.supported) {
+            ensureFormat(supportedFile);
             const filename =
               `${constants.iconsManifest.fileTypePrefix}${supportedFile.icon}` +
               `${constants.iconsManifest.iconSuffix}.${
@@ -121,6 +141,7 @@ describe('Specifications of supported extensions: tests', function () {
             for (const supportedFile of files.supported.filter(
               (file: IFileExtension) => file.light,
             )) {
+              ensureFormat(supportedFile);
               const filename = `${constants.iconsManifest.fileTypeLightPrefix}${
                 supportedFile.icon
               }${constants.iconsManifest.iconSuffix}.${

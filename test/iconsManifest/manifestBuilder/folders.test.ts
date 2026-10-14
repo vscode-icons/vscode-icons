@@ -11,6 +11,7 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
+import { FileFormat } from '../../../src/models';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
 
@@ -19,13 +20,16 @@ describe('ManifestBuilder: folders icons test', function () {
     let sandbox: sinon.SinonSandbox;
     let pathUnixJoinStub: sinon.SinonStub;
     let emptyFileCollection: IFileCollection;
+    let fileFormatToStringStub: sinon.SinonStub;
 
     const iconsDirRelativeBasePath = '../../path/to/icons/dir';
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      sandbox.stub(Utils, 'fileFormatToString').returns('.svg');
+      fileFormatToStringStub = sandbox
+        .stub(Utils, 'fileFormatToString')
+        .returns('.svg');
 
       sandbox.stub(Utils, 'getRelativePath').resolves(iconsDirRelativeBasePath);
       pathUnixJoinStub = sandbox
@@ -40,6 +44,28 @@ describe('ManifestBuilder: folders icons test', function () {
 
     afterEach(function () {
       sandbox.restore();
+    });
+
+    it('uses a supported folder format when provided', async function () {
+      const folders = cloneDeep(fixtFolders);
+      const folder = folders.supported.find(({ icon }) => icon === 'api');
+
+      folder.format = FileFormat.png;
+      fileFormatToStringStub.withArgs(FileFormat.png).returns('.png');
+
+      const manifest = await ManifestBuilder.buildManifest(
+        emptyFileCollection,
+        folders,
+      );
+      const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+      const icon = manifest.vscode.iconDefinitions[
+        definition
+      ] as IIconAssociation;
+
+      expect(fileFormatToStringStub.calledWith(FileFormat.png)).to.be.true;
+      expect(icon.iconPath).to.equal(
+        `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypePrefix}${folder.icon}${constants.iconsManifest.iconSuffix}.png`,
+      );
     });
 
     context(`if a default 'light' icon is NOT defined`, function () {

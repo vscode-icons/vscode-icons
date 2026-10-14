@@ -22,6 +22,99 @@ describe('CustomsMerger: file extensions tests', function () {
       sandbox.restore();
     });
 
+    it('uses the existing icon format when it is defined', async function () {
+      const customFiles: IFileCollection = {
+        default: {},
+        supported: [{ icon: 'existing_icon', extensions: ['custom'] }],
+      };
+      const supportedFiles: IFileCollection = {
+        default: {},
+        supported: [
+          {
+            icon: 'existing_icon',
+            extensions: ['existing'],
+            format: FileFormat.png,
+          },
+        ],
+      };
+
+      const { files } = await CustomsMerger.merge(
+        customFiles,
+        supportedFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      );
+
+      const customDef = files.supported.find(
+        (file: IFileExtension) => file.icon === 'existing_icon',
+      );
+
+      expect(customDef).to.exist;
+      expect(customDef.format).to.equal(FileFormat.png);
+    });
+
+    it('defaults supported icons without a format to SVG', async function () {
+      const supportedFiles: IFileCollection = {
+        default: {},
+        supported: [{ icon: 'existing_icon', extensions: ['existing'] }],
+      };
+
+      const { files } = await CustomsMerger.merge(
+        { default: {}, supported: [] },
+        supportedFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      );
+
+      expect(files.supported[0].format).to.equal(FileFormat.svg);
+    });
+
+    it('inherits the existing icon format when the custom definition has no format', async function () {
+      const customFiles: IFileCollection = {
+        default: {},
+        supported: [{ icon: 'actionscript', extensions: ['as2'] }],
+      };
+
+      const { files } = await CustomsMerger.merge(
+        customFiles,
+        extFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      );
+
+      const customDef = files.supported.find(
+        (file: IFileExtension) => file.icon === 'actionscript',
+      );
+
+      expect(customDef).to.exist;
+      expect(customDef.format).to.equal(FileFormat.svg);
+    });
+
+    it('defaults a custom icon with no format to SVG', async function () {
+      const customFiles: IFileCollection = {
+        default: {},
+        supported: [{ icon: 'custom_icon', extensions: ['custom'] }],
+      };
+
+      const { files } = await CustomsMerger.merge(
+        customFiles,
+        extFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      );
+
+      const customDef = files.supported.find(
+        (file: IFileExtension) => file.icon === 'custom_icon',
+      );
+
+      expect(customDef).to.exist;
+      expect(customDef.format).to.equal(FileFormat.svg);
+    });
+
     it('new extensions are added to existing file icon and respect the format type', async function () {
       const customFiles: IFileCollection = {
         default: {},
@@ -45,8 +138,8 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs).to.be.an('array').with.lengthOf(2);
 
       newDefs.forEach((def: IFileExtension) => {
-        expect(def.icon).to.equal(customFiles.supported[0].icon);
-        expect(def.format).to.equals(FileFormat.svg);
+        expect(def.icon).to.eql(customFiles.supported[0].icon);
+        expect(def.format).to.eql(FileFormat.svg);
       });
       expect(newDefs[0].extensions).to.eql(['as']);
       expect(newDefs[1].extensions).to.eql(['as2']);

@@ -8,7 +8,7 @@ export interface IDefaultExtension {
   /**
    * format of the icon
    */
-  format: FileFormat | string;
+  format?: FileFormat | string;
   /**
    * user customization: if false the extension won't be exported.
    */
