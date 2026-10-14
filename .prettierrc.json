@@ -1,5 +1,12 @@
 {
   "singleQuote": true,
   "trailingComma": "all",
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "proseWrap": "always",
+  "overrides": [
+    {
+      "files": [".github/workflows/*.yml"],
+      "options": { "proseWrap": "preserve" }
+    }
+  ]
 }
