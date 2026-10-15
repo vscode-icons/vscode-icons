@@ -23,11 +23,17 @@ match.
    `src/iconsManifest/supportedExtensions.ts` in alphabetical order by icon
    name. Use the correct pattern:
    - For file extensions (no leading dot):
-     `{ icon: 'name', extensions: ['ext'], format: FileFormat.svg }`
+     ```typescript
+     { icon: 'name', extensions: ['ext'] }
+     ```
    - For filenames:
-     `{ icon: 'name', extensions: ['.configrc'], filename: true, format: FileFormat.svg }`
+     ```typescript
+     { icon: 'name', extensions: ['.configrc'], filename: true }
+     ```
    - For language IDs: Add to `languages.ts` first, then
-     `{ icon: 'name', extensions: [], languages: [languages.lang], format: FileFormat.svg }`
+     ```typescript
+     { icon: 'name', extensions: [], languages: [languages.{lang}] }
+     ```
 
 5. **Validate**: Run `npm test` to ensure all specs pass.
 

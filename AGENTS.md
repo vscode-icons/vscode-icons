@@ -60,7 +60,7 @@ src/
   models/extensions/
     fileExtension.ts                # IFileExtension interface
     folderExtension.ts              # IFolderExtension interface
-    fileFormat.ts                   # FileFormat enum (svg, png, etc.)
+    fileFormat.ts                   # FileFormat enum (svg, png)
   models/language/language.ts       # ILanguage interface
 test/                               # Test files (mirrors src/)
   iconsManifest/
@@ -90,13 +90,13 @@ test/                               # Test files (mirrors src/)
 
    ```typescript
    // By filename (e.g., config files):
-   { icon: 'name', extensions: ['.configrc'], filename: true, format: FileFormat.svg },
+   { icon: 'name', extensions: ['.configrc'], filename: true },
 
    // By file extension (NO leading dot):
-   { icon: 'name', extensions: ['ext1', 'ext2'], format: FileFormat.svg },
+   { icon: 'name', extensions: ['ext1', 'ext2'] },
 
    // By language ID:
-   { icon: 'name', extensions: [], languages: [languages.langName], format: FileFormat.svg },
+   { icon: 'name', extensions: [], languages: [languages.langName] },
 
    // With filename glob combinations:
    {
@@ -105,7 +105,6 @@ test/                               # Test files (mirrors src/)
      filenamesGlob: ['.babelrc', 'babel.config'],
      extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
      filename: true,
-     format: FileFormat.svg,
    },
    ```
 
@@ -129,7 +128,7 @@ test/                               # Test files (mirrors src/)
    order**:
 
    ```typescript
-   { icon: 'name', extensions: ['foldername', '.foldername'], format: FileFormat.svg },
+   { icon: 'name', extensions: ['foldername', '.foldername'] },
    ```
 
 3. Optional: Create light variants `folder_type_light_{name}.svg` +
@@ -156,7 +155,6 @@ Then reference it in `supportedExtensions.ts` via the `languages` property.
 - Adding a leading dot to file extensions when `filename` is not `true`
 - Forgetting the `_opened.svg` variant for folder icons
 - Not placing the entry in alphabetical order
-- Missing `format: FileFormat.svg` property
 - Creating duplicate icon entries
 - Empty `extensions` array without `languages` or glob alternatives
 - Forgetting light theme SVG when setting `light: true`
@@ -167,7 +165,7 @@ Then reference it in `supportedExtensions.ts` via the `languages` property.
 interface IFileExtension {
   icon: string; // Maps to file_type_{icon}.svg
   extensions?: string[]; // File extensions or filenames
-  format: FileFormat; // Always FileFormat.svg
+  format?: FileFormat | string; // Default is FileFormat.svg | 'svg'
   filename?: boolean; // true = extensions are full filenames
   languages?: ILanguage[]; // VS Code language associations
   light?: boolean; // Requires file_type_light_{icon}.svg
@@ -179,7 +177,7 @@ interface IFileExtension {
 interface IFolderExtension {
   icon: string; // Maps to folder_type_{icon}.svg
   extensions?: string[]; // Folder names to match
-  format: FileFormat; // Always FileFormat.svg
+  format?: FileFormat | string; // Default is FileFormat.svg | 'svg'
   light?: boolean; // Requires light theme variants
   disabled?: boolean; // Hidden by default
 }
