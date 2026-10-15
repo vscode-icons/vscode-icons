@@ -1,13 +1,12 @@
 import { createRequire } from 'node:module';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
 import webpack from 'webpack';
 
 const require = createRequire(import.meta.url);
 const { constants } = require('./out/src/constants');
 
-const rootDirectory = dirname(fileURLToPath(import.meta.url));
+const rootDirectory = import.meta.dirname;
 
 const getConfig = argv => ({
   context: resolve(rootDirectory, 'out'),
