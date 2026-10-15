@@ -137,6 +137,85 @@ const disallowTitle = (reporter, _cheerio, ast) => {
   });
 };
 
+const disallowMetadata = (reporter, _cheerio, ast) => {
+  reporter.name = 'no-metadata';
+  walk(ast, node => {
+    if (node.type === 'tag' && node.name === 'metadata') {
+      reporter.error('SVG <metadata> elements are not allowed');
+    }
+  });
+};
+
+const disallowImageAttributes = (reporter, _cheerio, ast) => {
+  reporter.name = 'no-image-attributes';
+  walk(ast, node => {
+    if (node.type !== 'tag' || node.name !== 'image') {
+      return;
+    }
+
+    for (const name of Object.keys(node.attribs ?? {})) {
+      reporter.error(`Disallowed SVG <image> attribute: '${name}'`);
+    }
+  });
+};
+
+const disallowEmbeddedImages = (reporter, _cheerio, ast) => {
+  reporter.name = 'no-embedded-images';
+  const disallowedElements = new Set(['image', 'feimage', 'foreignobject']);
+  walk(ast, node => {
+    if (
+      node.type === 'tag' &&
+      disallowedElements.has(node.name.toLowerCase())
+    ) {
+      reporter.error(`Disallowed embedded-image element: <${node.name}>`);
+    }
+  });
+};
+
+const disallowRaster = (reporter, _cheerio, ast) => {
+  reporter.name = 'no-raster-images';
+  const rasterDataUriPattern = /\bdata:image\/(?!svg\+xml(?:[;,]|$))/i;
+  const urlPattern = /url\(\s*(?:"([^"]*)"|'([^']*)'|([^)]*))\s*\)/gi;
+  const rasterFilePattern =
+    /\.(?:apng|avif|bmp|gif|heic|heif|ico|jpe?g|jxl|png|tiff?|webp)(?:[?#].*)?$/i;
+  const containsRasterReference = value =>
+    rasterDataUriPattern.test(value) ||
+    [...value.matchAll(urlPattern)].some(
+      ([, doubleQuoted, singleQuoted, unquoted]) =>
+        rasterFilePattern.test(
+          (doubleQuoted ?? singleQuoted ?? unquoted).trim(),
+        ),
+    );
+
+  walk(ast, node => {
+    const values =
+      node.type === 'tag'
+        ? Object.values(node.attribs ?? {})
+        : node.type === 'text'
+          ? [node.data ?? '']
+          : [];
+
+    if (values.some(containsRasterReference)) {
+      reporter.error('Raster image references are not allowed');
+    }
+  });
+};
+
+const disallowDescAttribute = (reporter, _cheerio, ast) => {
+  reporter.name = 'no-desc-attribute';
+  walk(ast, node => {
+    if (node.type !== 'tag') {
+      return;
+    }
+
+    for (const name of Object.keys(node.attribs ?? {})) {
+      if (name.toLowerCase() === 'desc') {
+        reporter.error("Disallowed SVG attribute: 'desc'");
+      }
+    }
+  });
+};
+
 const enforceTrailingNewline = (reporter, _cheerio, _ast, { filepath }) => {
   reporter.name = 'trailing-newline';
   if (readFileSync(filepath).at(-1) !== 0x0a) {
@@ -204,6 +283,11 @@ const customRuleSettings = {
   disallowSvgComments: true,
   disallowEditorAttributes: true,
   disallowSvgAttributes: true,
+  disallowMetadata: true,
+  disallowImageAttributes: true,
+  disallowEmbeddedImages: true,
+  disallowRaster: true,
+  disallowDescAttribute: true,
   enforceViewBox: true,
   enforceFileSize: false,
   enforceTrailingNewline: true,
@@ -215,6 +299,11 @@ const customRuleImplementations = {
   disallowSvgComments,
   disallowEditorAttributes,
   disallowSvgAttributes,
+  disallowMetadata,
+  disallowImageAttributes,
+  disallowEmbeddedImages,
+  disallowRaster,
+  disallowDescAttribute,
   enforceNumericPrecision,
   disallowTitle,
   enforceViewBox,
@@ -230,8 +319,6 @@ export default {
   rules: {
     elm: {
       svg: true,
-      image: false,
-      metadata: false,
     },
     attr: [
       {
