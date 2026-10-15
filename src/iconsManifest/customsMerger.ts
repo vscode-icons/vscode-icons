@@ -275,16 +275,6 @@ export class CustomsMerger {
     custom: models.IFileDefault,
     supported: models.IFileDefault,
   ): models.IFileDefault {
-    for (const file of [
-      custom.file,
-      custom.file_light,
-      supported.file,
-      supported.file_light,
-    ]) {
-      if (file) {
-        file.format ??= models.FileFormat.svg;
-      }
-    }
     return {
       file: custom.file || supported.file,
       file_light: custom.file_light || supported.file_light,
@@ -295,20 +285,6 @@ export class CustomsMerger {
     custom: models.IFolderDefault,
     supported: models.IFolderDefault,
   ): models.IFolderDefault {
-    for (const folder of [
-      custom.folder,
-      custom.folder_light,
-      custom.root_folder,
-      custom.root_folder_light,
-      supported.folder,
-      supported.folder_light,
-      supported.root_folder,
-      supported.root_folder_light,
-    ]) {
-      if (folder) {
-        folder.format ??= models.FileFormat.svg;
-      }
-    }
     return {
       folder: custom.folder || supported.folder,
       folder_light: custom.folder_light || supported.folder_light,
@@ -323,9 +299,6 @@ export class CustomsMerger {
     supported: models.IExtension[],
   ): models.IExtension[] {
     let final: models.IExtension[] = cloneDeep(supported);
-    final.forEach((file: models.IFileExtension) => {
-      file.format ??= models.FileFormat.svg;
-    });
     if (!custom || !custom.length) {
       return final;
     }
@@ -376,8 +349,6 @@ export class CustomsMerger {
             remove(extension.extensions, (el: string) => el === ext),
           ),
       );
-      // when no file format is specified default to 'svg'
-      file.format ??= models.FileFormat.svg;
       final.push(file);
     });
     return final;
@@ -401,7 +372,6 @@ export class CustomsMerger {
         workingCopy.supported.push({
           icon,
           extensions: [],
-          // format: models.FileFormat.svg,
           disabled: disable,
         });
       } else {

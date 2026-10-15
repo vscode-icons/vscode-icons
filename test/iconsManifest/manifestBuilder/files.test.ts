@@ -107,7 +107,7 @@ describe('ManifestBuilder: files icons test', function () {
         emptyFolderCollection,
       );
 
-      expect(fileFormatToStringStub.firstCall.args[0]).to.equal(FileFormat.svg);
+      expect(fileFormatToStringStub.firstCall.args[0]).to.be.undefined;
       expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
         `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file${constants.iconsManifest.iconSuffix}.svg`,
       );

@@ -91,6 +91,7 @@ describe('Utils: tests', function () {
 
     context(`the 'fileFormatToString' function`, function () {
       it(`returns the string representation of the 'FileFormat'`, function () {
+        expect(Utils.fileFormatToString()).to.equal('.svg');
         expect(Utils.fileFormatToString('svg')).to.equal('.svg');
         expect(Utils.fileFormatToString(FileFormat.svg)).to.equal('.svg');
       });
