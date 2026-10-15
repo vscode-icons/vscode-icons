@@ -32,7 +32,7 @@ match.
      ```
    - For language IDs: Add to `languages.ts` first, then
      ```typescript
-     { icon: 'name', extensions: [], languages: [languages.{lang}] }
+     { icon: 'name', extensions: [], languages: [languages.langName] }
      ```
 
 5. **Validate**: Run `npm test` to ensure all specs pass.
