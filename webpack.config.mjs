@@ -1,24 +1,20 @@
-import type { Configuration } from 'webpack';
+import { createRequire } from 'node:module';
+import { resolve } from 'node:path';
 
-import { resolve } from 'path';
+import webpack from 'webpack';
 
-import { BannerPlugin } from 'webpack';
+const require = createRequire(import.meta.url);
+const { constants } = require('./out/src/constants');
 
-import { constants } from './src/constants';
+const rootDirectory = import.meta.dirname;
 
-interface IWebpackArgv {
-  [key: string]: unknown;
-  mode?: 'development' | 'production' | 'none';
-  env?: Record<string, unknown>;
-}
-
-const getConfig = (argv: IWebpackArgv): Configuration => ({
-  context: resolve(__dirname, 'out'),
+const getConfig = argv => ({
+  context: resolve(rootDirectory, 'out'),
   // development mode only
   devtool: argv.mode === 'development' ? 'source-map' : false,
   // add our license notice
   plugins: [
-    new BannerPlugin({
+    new webpack.BannerPlugin({
       banner: `vscode-icons <https://vscode-icons.github.io/vscode-icons/>
 Copyright The vscode-icons Contributors
 Source code released under MIT license <https://raw.githubusercontent.com/vscode-icons/vscode-icons/refs/heads/master/LICENSE>
@@ -38,7 +34,7 @@ Branded icons are licensed under their copyright license`,
     __filename: false,
   },
   output: {
-    path: resolve(__dirname, 'dist/src'),
+    path: resolve(rootDirectory, 'dist/src'),
     libraryTarget: 'commonjs2',
     // development mode only
     devtoolModuleFilenameTemplate:
@@ -48,28 +44,19 @@ Branded icons are licensed under their copyright license`,
 });
 
 export default [
-  (
-    _env: string | Record<string, boolean | number | string>,
-    argv: IWebpackArgv,
-  ): Configuration => {
-    const config: Configuration = getConfig(argv);
+  (_env, argv) => {
+    const config = getConfig(argv);
     config.output.filename = constants.extension.distEntryFilename;
     return config;
   },
-  (
-    _env: string | Record<string, boolean | number | string>,
-    argv: IWebpackArgv,
-  ): Configuration => {
-    const config: Configuration = getConfig(argv);
+  (_env, argv) => {
+    const config = getConfig(argv);
     config.entry = './src/uninstall.js';
     config.output.filename = constants.extension.uninstallEntryFilename;
     return config;
   },
-  (
-    _env: string | Record<string, boolean | number | string>,
-    argv: IWebpackArgv,
-  ): Configuration => {
-    const config: Configuration = getConfig(argv);
+  (_env, argv) => {
+    const config = getConfig(argv);
     config.entry = './src/index.web.js';
     config.output.filename = constants.extension.distEntryFilenameWeb;
     return config;
