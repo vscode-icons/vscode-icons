@@ -146,19 +146,6 @@ const disallowMetadata = (reporter, _cheerio, ast) => {
   });
 };
 
-const disallowImageAttributes = (reporter, _cheerio, ast) => {
-  reporter.name = 'no-image-attributes';
-  walk(ast, node => {
-    if (node.type !== 'tag' || node.name !== 'image') {
-      return;
-    }
-
-    for (const name of Object.keys(node.attribs ?? {})) {
-      reporter.error(`Disallowed SVG <image> attribute: '${name}'`);
-    }
-  });
-};
-
 const disallowEmbeddedImages = (reporter, _cheerio, ast) => {
   reporter.name = 'no-embedded-images';
   const disallowedElements = new Set(['image', 'feimage', 'foreignobject']);
@@ -284,7 +271,6 @@ const customRuleSettings = {
   disallowEditorAttributes: true,
   disallowSvgAttributes: true,
   disallowMetadata: true,
-  disallowImageAttributes: true,
   disallowEmbeddedImages: true,
   disallowRaster: true,
   disallowDescAttribute: true,
@@ -300,7 +286,6 @@ const customRuleImplementations = {
   disallowEditorAttributes,
   disallowSvgAttributes,
   disallowMetadata,
-  disallowImageAttributes,
   disallowEmbeddedImages,
   disallowRaster,
   disallowDescAttribute,
