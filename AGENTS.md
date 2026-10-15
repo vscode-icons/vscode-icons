@@ -165,7 +165,7 @@ Then reference it in `supportedExtensions.ts` via the `languages` property.
 interface IFileExtension {
   icon: string; // Maps to file_type_{icon}.svg
   extensions?: string[]; // File extensions or filenames
-  format?: FileFormat | string; // Default is FileFormat.svg | 'svg'
+  format?: FileFormat | string; // Default is FileFormat.svg or 'svg'
   filename?: boolean; // true = extensions are full filenames
   languages?: ILanguage[]; // VS Code language associations
   light?: boolean; // Requires file_type_light_{icon}.svg
@@ -177,7 +177,7 @@ interface IFileExtension {
 interface IFolderExtension {
   icon: string; // Maps to folder_type_{icon}.svg
   extensions?: string[]; // Folder names to match
-  format?: FileFormat | string; // Default is FileFormat.svg | 'svg'
+  format?: FileFormat | string; // Default is FileFormat.svg or 'svg'
   light?: boolean; // Requires light theme variants
   disabled?: boolean; // Hidden by default
 }
