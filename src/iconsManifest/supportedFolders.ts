@@ -92,6 +92,11 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'bot', extensions: ['bot', '.bot'], format: FileFormat.svg },
     { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
+    {
+      icon: 'buck',
+      extensions: ['.buckd', '.buckconfig.d', 'buckconfig.d', 'buck-out'],
+      format: FileFormat.svg,
+    },
     { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
     { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
     {
@@ -312,6 +317,17 @@ export const extensions: IFolderCollection = {
     {
       icon: 'docs',
       extensions: ['docs', 'doc', 'document', 'documents'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'domain',
+      extensions: ['domain', 'domains'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'drizzle_orm',
+      extensions: ['drizzle'],
+      light: true,
       format: FileFormat.svg,
     },
     { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
@@ -550,6 +566,7 @@ export const extensions: IFolderCollection = {
       extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
       format: FileFormat.svg,
     },
+    { icon: 'lua', extensions: ['lua'], format: FileFormat.svg },
     { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
     {
       icon: 'mariadb',
@@ -708,6 +725,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'protobuf',
+      extensions: ['protobuf', 'proto', 'protos'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'public',
       extensions: ['public', '.public'],
       format: FileFormat.svg,
@@ -793,6 +815,12 @@ export const extensions: IFolderCollection = {
         '__shared__',
         '__share__',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'skill',
+      extensions: ['.skills', '.skill', 'skills', 'skill'],
+      light: true,
       format: FileFormat.svg,
     },
     {

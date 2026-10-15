@@ -1,27 +1,28 @@
 <div align="center">
 
+### Bring real icons to your [Visual Studio Code](https://code.visualstudio.com)
 
-<h3>Bring real icons to your <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a></h3>
-<p style="font-size:10px;">minimum supported version: <b>1.104.3</b></p>
-
-</div>
-
+<p><small>minimum supported version: <strong>1.104.3</strong></small></p>
 
 <br/>
 
 ![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
 
+</div>
+
 ---
 
 ## Installation
 
-To install the extension just execute the following command in the Command Palette of Visual Studio Code:
+To install the extension just execute the following command in the Command
+Palette of Visual Studio Code:
 
 ```sh
 ext install vscode-icons
 ```
 
-Some people have reported that they cannot find the extension when they insert the installation command.
+Some people have reported that they cannot find the extension when they insert
+the installation command.
 
 If you find yourself in the same position, try:
 
@@ -33,12 +34,14 @@ ext install "vscode-icons"
 
 ## Usage
 
-Once installed and after reloading `vscode`, you will be presented with a message to `Activate` the icons.
+Once installed and after reloading `vscode`, you will be presented with a
+message to `Activate` the icons.
 
-In case this doesn't happen, navigate to:
+In case this doesn’t happen, navigate to:
 
-* `Linux` & `Windows` `=>` **File > Preferences > Theme > File Icon Theme > VSCode Icons**.
-* `MacOS` `=>` **Code > Preferences > File Icon Theme > VSCode Icons**.
+- `Linux` & `Windows` `=>` **File > Preferences > Theme > File Icon Theme >
+  VSCode Icons**.
+- `MacOS` `=>` **Code > Preferences > File Icon Theme > VSCode Icons**.
 
 ## Features
 
@@ -52,53 +55,71 @@ Choose the icon you prefer for any particular file extension.
 
 ### Bring your own icons
 
-You don't see the icon you like...? No worries, we got you covered. This link will show you how you can use your own custom icon!
+You don’t see the icon you like...? No worries, we got you covered. This link
+will show you how you can use your own custom icon!
 
 [Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Custom)
 
 ### Project Auto Detection
 
-Are you using Angular? This feature will detect it and enable the icons for you. It also works with other frameworks.
+Are you using Angular? This feature will detect it and enable the icons for you.
+It also works with other frameworks.
 
 [Learn more...](https://github.com/vscode-icons/vscode-icons/wiki/Pad)
 
 ## Documentation
 
-In our [wiki](https://github.com/vscode-icons/vscode-icons/wiki) you can find more information about the extension features and more.
+In our [wiki](https://github.com/vscode-icons/vscode-icons/wiki) you can find
+more information about the extension features and more.
 
 Some examples:
 
-* [Extension's History](https://github.com/vscode-icons/vscode-icons/wiki/History)
-* [Supported file icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFiles).
-* [Supported folder icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFolders).
+- [Extension’s History](https://github.com/vscode-icons/vscode-icons/wiki/History)
+- [Supported file icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFiles).
+- [Supported folder icons](https://github.com/vscode-icons/vscode-icons/wiki/ListOfFolders).
 
 ## Globalization
 
-`vscode-icons` uses [Crowdin](https://crowdin.com/project/vscode-icons-i18n) to provide translations for `vscode` supported languages.
+`vscode-icons` uses [Crowdin](https://crowdin.com/project/vscode-icons-i18n) to
+provide translations for `vscode` supported languages.
 
-We are looking for translators and proofreaders for all `vscode` supported languages.
+We are looking for translators and proofreaders for all `vscode` supported
+languages.
 
-If you'd like to contribute, checkout the [translation section](https://github.com/vscode-icons/vscode-icons/wiki/Translation).
+If you’d like to contribute, checkout the
+[translation section](https://github.com/vscode-icons/vscode-icons/wiki/Translation).
 
 ## Contributing
 
-If you like to get involved with the source code, checkout the [build section](https://github.com/vscode-icons/vscode-icons/wiki/Build).
+If you like to get involved with the source code, checkout the
+[build section](https://github.com/vscode-icons/vscode-icons/wiki/Build).
 
-For those using [Docker](https://www.docker.com/) checkout the [docker section](https://github.com/vscode-icons/vscode-icons/wiki/Docker).
+For those using [Docker](https://www.docker.com/) checkout the
+[docker section](https://github.com/vscode-icons/vscode-icons/wiki/Docker).
 
-On the other hand, if you want to show the world your artistic side, checkout the [contributing section](https://github.com/vscode-icons/vscode-icons/wiki/Contributing).
+On the other hand, if you want to show the world your artistic side, checkout
+the
+[contributing section](https://github.com/vscode-icons/vscode-icons/wiki/Contributing).
 
-In any case, please follow our [contribution guidelines](https://github.com/vscode-icons/vscode-icons/blob/master/.github/CONTRIBUTING.md).
+To make a folder icon from an existing file icon, checkout the
+[folder icons section](https://github.com/vscode-icons/vscode-icons/wiki/FolderIcons).
+
+In any case, please follow our
+[contribution guidelines](https://github.com/vscode-icons/vscode-icons/blob/master/.github/CONTRIBUTING.md).
 
 ## Credits
 
-Kudos to all [contributors](https://github.com/vscode-icons/vscode-icons/graphs/contributors) that made this extension what it is.
+Kudos to all
+[contributors](https://github.com/vscode-icons/vscode-icons/graphs/contributors)
+that made this extension what it is.
 
 ## License
 
 The source code is licensed under the [MIT](LICENSE) license.
 
-The icons are licensed under the [Creative Commons - ShareAlike (CC BY-SA)](https://creativecommons.org/licenses/by-sa/4.0/) license.
+The icons are licensed under the
+[Creative Commons - ShareAlike (CC BY-SA)](https://creativecommons.org/licenses/by-sa/4.0/)
+license.
 
 Branded icons are licensed under their copyright license.
 
@@ -108,17 +129,21 @@ Branded icons are licensed under their copyright license.
 
 ## Change Log
 
-You can check out all our changes in our [change log](https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md).
+You can check out all our changes in our
+[change log](https://github.com/vscode-icons/vscode-icons/blob/master/CHANGELOG.md).
 
 ## Acknowledgements
 
-We like to express our "Special Thanks" to:
+We like to express our “Special Thanks” to:
 
-* All users that made us their favorite **Icons** theme. We wouldn't be where we are without you.
+- All users that made us their favorite **Icons** theme. We wouldn’t be where we
+  are without you.
 
-## Related extensions
+## Related projects
 
-* [vscode-icons for GitHub](https://github.com/dderevjanik/github-vscode-icons) by [@dderevjanik](https://github.com/dderevjanik) will allow you to see all `GitHub`'s files with `vscode-icons` icons.
-* [vscode-icons-js](https://github.com/dderevjanik/vscode-icons-js) by [@dderevjanik](https://github.com/dderevjanik) get file/folder specific icon from `vscode-icons` icons.
+- [folder-icon-maker](https://github.com/vscode-icons/folder-icon-maker) by
+  [@NaufalK25](https://github.com/NaufalK25) make
+  [`vscode-icons` folders](https://vscode-icons.github.io/folder-icon-maker/)
+  from your file icons.
 
 **Enjoy!**
