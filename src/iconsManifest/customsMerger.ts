@@ -298,11 +298,11 @@ export class CustomsMerger {
     custom: models.IExtension[],
     supported: models.IExtension[],
   ): models.IExtension[] {
-    let final: models.IExtension[] = cloneDeep(supported);
     if (!custom || !custom.length) {
-      return final;
+      return supported;
     }
     // start the merge operation
+    let final: models.IExtension[] = cloneDeep(supported);
     custom.forEach((file: models.IFileExtension) => {
       const officialFiles = final.filter(
         (extension: models.IExtension) => extension.icon === file.icon,
