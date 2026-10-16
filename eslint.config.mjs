@@ -176,7 +176,7 @@ export default defineConfig(
         'error',
         {
           selector:
-            "VariableDeclarator[init.type='ArrowFunctionExpression']:matches([parent.parent.type='Program'], [parent.parent.type='ExportNamedDeclaration'])",
+            "VariableDeclarator[init.type='ArrowFunctionExpression']:is([parent.parent.type='Program'], [parent.parent.type='ExportNamedDeclaration']), ExportDefaultDeclaration > ArrowFunctionExpression",
           message: 'Use a function declaration for top-level functions.',
         },
       ],
