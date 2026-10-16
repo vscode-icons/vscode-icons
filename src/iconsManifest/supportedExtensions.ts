@@ -348,9 +348,9 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    // https://en.wikipedia.org/wiki/Audio_file_format
     {
       icon: 'audio',
-      // https://en.wikipedia.org/wiki/Audio_file_format
       extensions: [
         'aac',
         'act',
@@ -550,9 +550,9 @@ export const extensions: IFileCollection = {
       languages: [languages.biml],
       format: FileFormat.svg,
     },
+    // http://www.file-extensions.org/filetype/extension/name/binary-files
     {
       icon: 'binary',
-      // http://www.file-extensions.org/filetype/extension/name/binary-files
       extensions: [
         'a',
         'app',
@@ -4682,9 +4682,9 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
+    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'oxc',
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       extensions: [
         '.oxlintignore',
         '.oxlintrc.json',
@@ -4809,9 +4809,9 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
+    // Taken from https://peeky.dev/logo.svg
     {
       icon: 'peeky',
-      // Taken from https://peeky.dev/logo.svg
       // See: https://peeky.dev/guide/config.html
       extensions: ['peeky.config.ts', 'peeky.config.js', 'peeky.config.mjs'],
       filename: true,
@@ -5779,9 +5779,9 @@ export const extensions: IFileCollection = {
       languages: [languages.robotstxt],
       format: FileFormat.svg,
     },
+    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'rolldown',
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       extensions: [],
       filenamesGlob: [
         'rolldown.config',
@@ -7017,9 +7017,9 @@ export const extensions: IFileCollection = {
       languages: [languages.vhdl],
       format: FileFormat.svg,
     },
+    // https://en.wikipedia.org/wiki/Video_file_format
     {
       icon: 'video',
-      // https://en.wikipedia.org/wiki/Video_file_format
       extensions: [
         '3g2',
         '3gp',
@@ -7064,9 +7064,9 @@ export const extensions: IFileCollection = {
       languages: [languages.viml],
       format: FileFormat.svg,
     },
+    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'vite',
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       filenamesGlob: ['vite.config'],
       extensions: [],
       extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
@@ -7074,9 +7074,9 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'vitest',
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.config'],
       extensions: [],
@@ -7086,9 +7086,9 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'vitest',
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.workspace', 'vitest.projects'],
       extensions: [],
@@ -7369,9 +7369,9 @@ export const extensions: IFileCollection = {
       languages: [languages.wikitext],
       format: FileFormat.svg,
     },
+    // Taken from https://windicss.org/assets/logo.svg
     {
       icon: 'windi',
-      // Taken from https://windicss.org/assets/logo.svg
       // See: https://windicss.org/guide/configuration.html#config-file
       extensions: ['windi.config.ts', 'windi.config.js'],
       filename: true,
