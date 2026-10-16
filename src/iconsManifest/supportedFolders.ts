@@ -879,6 +879,11 @@ export const extensions: IFolderCollection = {
       extensions: ['swagger'],
       format: FileFormat.svg,
     },
+    {
+      icon: 'subatom',
+      extensions: ['subatom'],
+      format: FileFormat.svg,
+    },
     { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
     {
       icon: 'telegram',
