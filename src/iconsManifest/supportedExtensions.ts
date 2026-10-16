@@ -348,7 +348,6 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    // https://en.wikipedia.org/wiki/Audio_file_format
     {
       icon: 'audio',
       extensions: [
@@ -550,7 +549,6 @@ export const extensions: IFileCollection = {
       languages: [languages.biml],
       format: FileFormat.svg,
     },
-    // http://www.file-extensions.org/filetype/extension/name/binary-files
     {
       icon: 'binary',
       extensions: [
@@ -4682,7 +4680,6 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     { icon: 'ovpn', extensions: ['ovpn'], format: FileFormat.svg },
-    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'oxc',
       extensions: [
@@ -4809,10 +4806,8 @@ export const extensions: IFileCollection = {
       filename: true,
       format: FileFormat.svg,
     },
-    // Taken from https://peeky.dev/logo.svg
     {
       icon: 'peeky',
-      // See: https://peeky.dev/guide/config.html
       extensions: ['peeky.config.ts', 'peeky.config.js', 'peeky.config.mjs'],
       filename: true,
       format: FileFormat.svg,
@@ -5779,7 +5774,6 @@ export const extensions: IFileCollection = {
       languages: [languages.robotstxt],
       format: FileFormat.svg,
     },
-    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'rolldown',
       extensions: [],
@@ -7017,7 +7011,6 @@ export const extensions: IFileCollection = {
       languages: [languages.vhdl],
       format: FileFormat.svg,
     },
-    // https://en.wikipedia.org/wiki/Video_file_format
     {
       icon: 'video',
       extensions: [
@@ -7064,7 +7057,6 @@ export const extensions: IFileCollection = {
       languages: [languages.viml],
       format: FileFormat.svg,
     },
-    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'vite',
       filenamesGlob: ['vite.config'],
@@ -7074,10 +7066,8 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
-    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'vitest',
-      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.config'],
       extensions: [],
       extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
@@ -7086,10 +7076,8 @@ export const extensions: IFileCollection = {
       light: true,
       format: FileFormat.svg,
     },
-    // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
     {
       icon: 'vitest',
-      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.workspace', 'vitest.projects'],
       extensions: [],
       extensionsGlob: ['json', 'js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
@@ -7369,10 +7357,8 @@ export const extensions: IFileCollection = {
       languages: [languages.wikitext],
       format: FileFormat.svg,
     },
-    // Taken from https://windicss.org/assets/logo.svg
     {
       icon: 'windi',
-      // See: https://windicss.org/guide/configuration.html#config-file
       extensions: ['windi.config.ts', 'windi.config.js'],
       filename: true,
       format: FileFormat.svg,
