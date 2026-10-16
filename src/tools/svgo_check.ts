@@ -1,11 +1,11 @@
-import type { Config } from 'svgo' with { 'resolution-mode': 'import' };
+import type { Config, Output } from 'svgo' with { 'resolution-mode': 'import' };
 
 import { readFileSync } from 'fs';
 import { styleText } from 'node:util';
 
 import { globSync } from 'glob';
 
-async function check_optimized(argv: string[]): Promise<void> {
+async function checkOptimized(argv: string[]): Promise<void> {
   const { loadConfig, optimize } = await import('svgo');
 
   const config: Config = await loadConfig('./svgo.config.mjs');
@@ -20,14 +20,14 @@ async function check_optimized(argv: string[]): Promise<void> {
         { stream: process.stderr },
       ),
     );
-    process.exit(1);
+    process.exitCode = 1;
+    return;
   }
 
   for (const file of files) {
-    const input = readFileSync(file, 'utf8');
-    config.path = file;
-    const { data } = optimize(input, config);
-    if (data !== input) {
+    const input: string = readFileSync(file, 'utf8');
+    const output: Output = optimize(input, { ...config, path: file });
+    if (output.data !== input) {
       failed.push(file);
     }
   }
@@ -40,8 +40,9 @@ async function check_optimized(argv: string[]): Promise<void> {
         { stream: process.stderr },
       ),
     );
-    process.exit(1);
+    process.exitCode = 1;
+    return;
   }
 }
 
-void check_optimized(process.argv);
+void checkOptimized(process.argv);
