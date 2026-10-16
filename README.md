@@ -95,6 +95,29 @@ If you’d like to contribute, checkout the
 If you like to get involved with the source code, checkout the
 [build section](https://github.com/vscode-icons/vscode-icons/wiki/Build).
 
+### Build bundling and performance
+
+The extension bundles are built with [Rolldown](https://rolldown.rs/), a
+Rust-based bundler with a Rollup-compatible API. Its native implementation is
+designed to reduce bundling time while retaining familiar module resolution and
+output configuration. Actual speed gains depend on the project and machine, so
+this change should be measured rather than assumed.
+
+To compare bundle build time and emitted JavaScript size against a baseline
+revision, prepare both checkouts with dependencies installed and compiled
+(`npm ci` and `npm run compile:dev`). From the Rolldown checkout, run the
+benchmark against each checkout:
+
+```sh
+node ./scripts/benchmark-bundler.mjs --project ../vscode-icons-baseline --runs 5 --output benchmark-baseline.json
+node ./scripts/benchmark-bundler.mjs --project . --runs 5 --output benchmark-rolldown.json
+```
+
+The benchmark performs one warm-up and reports each measured development bundle
+build, its median duration, and per-file and total JavaScript byte sizes. Use
+the same Node.js version, machine, and run count for both results; the benchmark
+runs the bundler only and excludes TypeScript compilation.
+
 For those using [Docker](https://www.docker.com/) checkout the
 [docker section](https://github.com/vscode-icons/vscode-icons/wiki/Docker).
 

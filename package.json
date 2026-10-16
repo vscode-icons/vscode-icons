@@ -78,9 +78,10 @@
     "lint": "eslint",
     "lint:md": "remark . --frail",
     "predist:dev": "npm run build:dev",
-    "dist:dev": "webpack --mode development",
+    "dist:dev": "node ./scripts/bundle.mjs development",
     "predist": "npm run build",
-    "dist": "webpack --mode production",
+    "dist": "node ./scripts/bundle.mjs production",
+    "benchmark:bundle": "node ./scripts/benchmark-bundler.mjs",
     "preserve": "npm run dist:dev",
     "serve": "vscode-test-web --quality stable --browser=chromium --extensionDevelopmentPath=. ."
   },
@@ -113,8 +114,7 @@
     "sinon": "^15.0.3",
     "typescript": "^6.0.0",
     "typescript-eslint": "^8.0.0",
-    "webpack": "^5.105.0",
-    "webpack-cli": "^5.1.4"
+    "rolldown": "^1.2.14"
   },
   "dependencies": {
     "inversify": "^6.0.1",
