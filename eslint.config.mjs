@@ -169,4 +169,17 @@ export default defineConfig(
       '@typescript-eslint/no-misused-promises': 'error',
     },
   },
+  {
+    files: ['src/**/*.ts'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            "VariableDeclarator[init.type='ArrowFunctionExpression']:matches([parent.parent.type='Program'], [parent.parent.type='ExportNamedDeclaration'])",
+          message: 'Use a function declaration for top-level functions.',
+        },
+      ],
+    },
+  },
 );
