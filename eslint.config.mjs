@@ -15,6 +15,14 @@ export default defineConfig(
       reportUnusedInlineConfigs: 'error',
     },
     rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            "VariableDeclarator[init.type='ArrowFunctionExpression']:is([parent.parent.type='Program'], [parent.parent.type='ExportNamedDeclaration']), ExportDefaultDeclaration > ArrowFunctionExpression",
+          message: 'Use a function declaration for top-level functions.',
+        },
+      ],
       'arrow-body-style': 'error',
       curly: 'error',
       'dot-notation': 'error',
@@ -167,19 +175,6 @@ export default defineConfig(
       '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/no-misused-promises': 'error',
-    },
-  },
-  {
-    files: ['src/**/*.ts'],
-    rules: {
-      'no-restricted-syntax': [
-        'error',
-        {
-          selector:
-            "VariableDeclarator[init.type='ArrowFunctionExpression']:is([parent.parent.type='Program'], [parent.parent.type='ExportNamedDeclaration']), ExportDefaultDeclaration > ArrowFunctionExpression",
-          message: 'Use a function declaration for top-level functions.',
-        },
-      ],
     },
   },
 );
