@@ -37,6 +37,14 @@ export default defineConfig(
       'no-invalid-this': 'error',
       'no-new-func': 'error',
       'no-new-wrappers': 'error',
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            "VariableDeclarator[init.type='ArrowFunctionExpression']:is([parent.parent.type='Program'], [parent.parent.type='ExportNamedDeclaration']), ExportDefaultDeclaration > ArrowFunctionExpression",
+          message: 'Use a function declaration for top-level functions.',
+        },
+      ],
       'no-return-await': 'error',
       'no-sequences': 'error',
       'no-template-curly-in-string': 'error',
