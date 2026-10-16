@@ -48,11 +48,6 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'astro', extensions: ['.astro'], format: FileFormat.svg },
     {
-      icon: 'aurelia',
-      extensions: ['aurelia_project'],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'audio',
       extensions: [
         'audio',
@@ -64,6 +59,11 @@ export const extensions: IFolderCollection = {
         'sounds',
         '.sounds',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'aurelia',
+      extensions: ['aurelia_project'],
       format: FileFormat.svg,
     },
     {
@@ -114,25 +114,31 @@ export const extensions: IFolderCollection = {
     { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
     { icon: 'claude', extensions: ['.claude'], format: FileFormat.svg },
     {
+      icon: 'cli',
+      extensions: [
+        'cli',
+        'cmd',
+        'command',
+        'commands',
+        'commandline',
+        'console',
+      ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'client',
+      extensions: ['client', 'clients'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'cloudflare',
       extensions: ['.cloudflare', 'cloudflare'],
       format: FileFormat.svg,
     },
+    { icon: 'cmake', extensions: ['.cmake', 'cmake'], format: FileFormat.svg },
     {
-      icon: 'controller',
-      extensions: [
-        '__controller__',
-        '__controllers__',
-        'controller',
-        'controllers',
-        '.controllers',
-        '__handler__',
-        '__handlers__',
-        'handler',
-        '.handler',
-        'handlers',
-        '.handlers',
-      ],
+      icon: 'common',
+      extensions: ['common'],
       format: FileFormat.svg,
     },
     {
@@ -151,29 +157,6 @@ export const extensions: IFolderCollection = {
     {
       icon: 'composer',
       extensions: ['composer', '.composer'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'cli',
-      extensions: [
-        'cli',
-        'cmd',
-        'command',
-        'commands',
-        'commandline',
-        'console',
-      ],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'client',
-      extensions: ['client', 'clients'],
-      format: FileFormat.svg,
-    },
-    { icon: 'cmake', extensions: ['.cmake', 'cmake'], format: FileFormat.svg },
-    {
-      icon: 'common',
-      extensions: ['common'],
       format: FileFormat.svg,
     },
     {
@@ -201,6 +184,23 @@ export const extensions: IFolderCollection = {
         '.ini',
         'initializers',
         '.initializers',
+      ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'controller',
+      extensions: [
+        '__controller__',
+        '__controllers__',
+        'controller',
+        'controllers',
+        '.controllers',
+        '__handler__',
+        '__handlers__',
+        'handler',
+        '.handler',
+        'handlers',
+        '.handlers',
       ],
       format: FileFormat.svg,
     },
@@ -365,11 +365,6 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'frontcommerce',
-      extensions: ['.front-commerce'],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
       format: FileFormat.svg,
@@ -385,13 +380,18 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
+    {
+      icon: 'frontcommerce',
+      extensions: ['.front-commerce'],
+      format: FileFormat.svg,
+    },
     { icon: 'gcp', extensions: ['gcp', '.gcp'], format: FileFormat.svg },
+    { icon: 'gemini', extensions: ['.gemini'], format: FileFormat.svg },
     {
       icon: 'gentoo',
       extensions: ['gentoo'],
       format: FileFormat.svg,
     },
-    { icon: 'gemini', extensions: ['.gemini'], format: FileFormat.svg },
     {
       icon: 'git',
       extensions: ['.git', 'submodules', '.submodules'],
@@ -595,7 +595,6 @@ export const extensions: IFolderCollection = {
       extensions: ['middleware', 'middlewares'],
       format: FileFormat.svg,
     },
-    { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
       icon: 'minecraft',
       extensions: ['.minecraft'],
@@ -606,14 +605,10 @@ export const extensions: IFolderCollection = {
       extensions: ['minikube', 'minik8s', 'minikuber'],
       format: FileFormat.svg,
     },
+    { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
       icon: 'mobile',
       extensions: ['mobile', 'mobiles', '.mobile', '.mobiles'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'mojo',
-      extensions: ['mojo'],
       format: FileFormat.svg,
     },
     {
@@ -639,6 +634,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'mojo',
+      extensions: ['mojo'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'mongodb',
       extensions: ['mongodb', 'mongo'],
       format: FileFormat.svg,
@@ -655,7 +655,6 @@ export const extensions: IFolderCollection = {
       light: true,
       format: FileFormat.svg,
     },
-
     {
       icon: 'netlify',
       extensions: ['netlify'],
@@ -685,13 +684,18 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
-    { icon: 'ohpm', extensions: ['oh_modules'], format: FileFormat.svg },
+    {
+      icon: 'nuxt',
+      extensions: ['nuxt', '.nuxt'],
+      format: FileFormat.svg,
+    },
     {
       icon: 'ocx',
       extensions: ['.ocx'],
       light: true,
       format: FileFormat.svg,
     },
+    { icon: 'ohpm', extensions: ['oh_modules'], format: FileFormat.svg },
     {
       icon: 'package',
       extensions: ['package', 'packages', '.package', '.packages', 'pkg'],
@@ -744,38 +748,22 @@ export const extensions: IFolderCollection = {
       extensions: ['.venv', '.virtualenv', '__pycache__'],
       format: FileFormat.svg,
     },
-    {
-      icon: 'vercel',
-      extensions: ['.vercel'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'vitepress',
-      extensions: ['.vitepress'],
-      format: FileFormat.svg,
-    },
-    { icon: 'redis', extensions: ['redis'], format: FileFormat.svg },
     { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
-    {
-      icon: 'route',
-      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
-      format: FileFormat.svg,
-    },
     {
       icon: 'redhat',
       extensions: ['redhat', 'rhel'],
       format: FileFormat.svg,
     },
+    { icon: 'redis', extensions: ['redis'], format: FileFormat.svg },
     {
       icon: 'redux',
       extensions: ['redux'],
       light: true,
       format: FileFormat.svg,
     },
-
     {
-      icon: 'nuxt',
-      extensions: ['nuxt', '.nuxt'],
+      icon: 'route',
+      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
       format: FileFormat.svg,
     },
     {
@@ -881,6 +869,16 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'temp',
+      extensions: ['temp', '.temp', 'tmp', '.tmp'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'template',
+      extensions: ['template', '.template', 'templates', '.templates'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'test',
       extensions: [
         'tests',
@@ -897,18 +895,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
-    {
-      icon: 'temp',
-      extensions: ['temp', '.temp', 'tmp', '.tmp'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'template',
-      extensions: ['template', '.template', 'templates', '.templates'],
-      format: FileFormat.svg,
-    },
     { icon: 'theme', extensions: ['theme', 'themes'], format: FileFormat.svg },
-    { icon: 'travis', extensions: ['.travis'], format: FileFormat.svg },
     {
       icon: 'tools',
       extensions: [
@@ -922,6 +909,7 @@ export const extensions: IFolderCollection = {
       ],
       format: FileFormat.svg,
     },
+    { icon: 'travis', extensions: ['.travis'], format: FileFormat.svg },
     {
       icon: 'trunk',
       extensions: ['.trunk'],
@@ -954,6 +942,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'vercel',
+      extensions: ['.vercel'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'video',
       extensions: ['video', '.video', 'videos', '.videos'],
       format: FileFormat.svg,
@@ -975,6 +968,11 @@ export const extensions: IFolderCollection = {
         '_page',
         '_pages',
       ],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'vitepress',
+      extensions: ['.vitepress'],
       format: FileFormat.svg,
     },
     {
@@ -1034,11 +1032,6 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
-      icon: 'wit',
-      extensions: ['wit'],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'webpack',
       extensions: ['webpack', '.webpack'],
       format: FileFormat.svg,
@@ -1051,6 +1044,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'windsurf',
       extensions: ['.windsurf'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'wit',
+      extensions: ['wit'],
       format: FileFormat.svg,
     },
     {

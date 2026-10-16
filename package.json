@@ -77,6 +77,8 @@
     "postcompile:dev": "npm run bundle:dev",
     "lint": "eslint",
     "lint:md": "remark . --frail",
+    "sort:api": "node ./src/tools/sortApi.mts",
+    "sort:api:check": "npm run sort:api -- --check",
     "predist:dev": "npm run build:dev",
     "dist:dev": "webpack --mode development",
     "predist": "npm run build",
