@@ -102,7 +102,7 @@ export default defineConfig(
     },
   },
   {
-    files: ['**/*.ts', '**/*.mts'],
+    files: ['**/*.ts'],
     extends: [
       tseslint.configs.recommendedTypeChecked,
       importX.flatConfigs.typescript,

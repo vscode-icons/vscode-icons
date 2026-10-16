@@ -15,10 +15,5 @@
     "types": ["node"],
     "resolveJsonModule": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.mts",
-    "test/**/*.ts",
-    "webpack.config.ts"
-  ]
+  "include": ["src/**/*.ts", "test/**/*.ts", "webpack.config.ts"]
 }

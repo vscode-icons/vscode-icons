@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join, resolve } from 'path';
 
+import { ErrorHandler } from '../common/errorHandler';
+
 interface ITarget {
   file: string;
   start: RegExp;
@@ -244,7 +246,7 @@ const sortApi = (argv: string[]): void => {
 
     process.exitCode = issues ? 1 : 0;
   } catch (error: unknown) {
-    console.error(error);
+    ErrorHandler.logError(error);
     process.exitCode = 2;
   }
 };
