@@ -3,7 +3,7 @@ import path from 'path';
 import * as glob from 'glob';
 import Mocha from 'mocha';
 
-export const run = async (testsRoot: string): Promise<void> => {
+export async function run(testsRoot: string): Promise<void> {
   const mocha = new Mocha({
     ui: 'bdd',
     timeout: 15000,
@@ -32,4 +32,4 @@ export const run = async (testsRoot: string): Promise<void> => {
     }
     throw new Error('Failed to run tests', { cause: error });
   }
-};
+}

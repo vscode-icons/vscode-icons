@@ -945,7 +945,7 @@ export const extensions: IFileCollection = {
     { icon: 'class', extensions: ['class'], format: FileFormat.svg },
     {
       icon: 'claude',
-      extensions: ['claude.md', 'claude.local.md'],
+      extensions: ['.claude.json', 'claude.md', 'claude.local.md'],
       filename: true,
       format: FileFormat.svg,
     },
@@ -6736,6 +6736,7 @@ export const extensions: IFileCollection = {
         'tsconfig.base',
         'tsconfig.build',
         'tsconfig.cjs',
+        'tsconfig.client',
         'tsconfig.common',
         'tsconfig.debug',
         'tsconfig.dev',
