@@ -59,7 +59,7 @@
     "lint": "eslint --fix",
     "lint:md": "remark . --quiet --output",
     "lint:svg": "svglint --ci",
-    "prelint:svgo": "npm run compile:dev",
+    "prelint:svgo": "tsc -p tsconfig.build.json",
     "lint:svgo": "node ./out/src/tools/svgo_check.js",
     "precheck": "npm run format",
     "check": " npm run lint && npm run lint:md",

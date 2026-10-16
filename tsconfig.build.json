@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "removeComments": true,
+    "sourceMap": false
+  },
+  "include": ["src/tools/svgo_check.ts"]
+}
