@@ -114,40 +114,41 @@ describe('ExtensionManager: messages tests', function () {
             configManagerStub.getIconTheme.returns(undefined);
           });
 
-          it(`when the 'welcomeShown' setting is 'false'`, async function () {
-            await manageIntroMessage.call(extensionManager);
+          context(`when the 'welcomeShown' setting is 'false'`, function () {
+            it(`and the icon theme is NOT set to this extension`, async function () {
+              await manageIntroMessage.call(extensionManager);
 
-            expect(showWelcomeMessageStub.calledOnceWithExactly()).to.be.true;
-            expect(showNewVersionMessageStub.called).to.be.false;
-          });
-
-          it(`when the icon theme is NOT set to this extension`, async function () {
-            await manageIntroMessage.call(extensionManager);
-
-            expect(showWelcomeMessageStub.calledOnceWithExactly()).to.be.true;
-            expect(showNewVersionMessageStub.called).to.be.false;
+              expect(showWelcomeMessageStub.calledOnceWithExactly()).to.be.true;
+              expect(showNewVersionMessageStub.called).to.be.false;
+            });
           });
         });
 
         context(`NOT shown`, function () {
-          beforeEach(function () {
-            state.welcomeShown = true;
-            settingsManagerStub.getState.returns(state);
-            configManagerStub.getIconTheme.returns(constants.extension.name);
+          context(`when the 'welcomeShown' setting is 'true'`, function () {
+            it(`and the icon theme is NOT set to this extension`, async function () {
+              state.welcomeShown = true;
+              settingsManagerStub.getState.returns(state);
+              configManagerStub.getIconTheme.returns(undefined);
+
+              await manageIntroMessage.call(extensionManager);
+
+              expect(showWelcomeMessageStub.called).to.be.false;
+              expect(showNewVersionMessageStub.called).to.be.false;
+            });
           });
 
-          it(`when the 'welcomeShown' setting is 'true'`, async function () {
-            await manageIntroMessage.call(extensionManager);
+          context(`when the 'welcomeShown' setting is 'false'`, function () {
+            it(`and the icon theme is set to this extension`, async function () {
+              state.welcomeShown = false;
+              settingsManagerStub.getState.returns(state);
+              configManagerStub.getIconTheme.returns(constants.extension.name);
 
-            expect(showWelcomeMessageStub.called).to.be.false;
-            expect(showNewVersionMessageStub.called).to.be.false;
-          });
+              await manageIntroMessage.call(extensionManager);
 
-          it(`when the icon theme is set to this extension`, async function () {
-            await manageIntroMessage.call(extensionManager);
-
-            expect(showWelcomeMessageStub.called).to.be.false;
-            expect(showNewVersionMessageStub.called).to.be.false;
+              expect(showWelcomeMessageStub.called).to.be.false;
+              expect(showNewVersionMessageStub.called).to.be.false;
+            });
           });
         });
       });
@@ -165,45 +166,43 @@ describe('ExtensionManager: messages tests', function () {
             configManagerStub.vsicons.dontShowNewVersionMessage = false;
           });
 
-          it(`when the 'isNewVersion' setting is 'true'`, async function () {
-            await manageIntroMessage.call(extensionManager);
+          context(`when the 'isNewVersion' setting is 'true'`, function () {
+            it(`and the 'dontShowNewVersionMessage' setting is 'false'`, async function () {
+              await manageIntroMessage.call(extensionManager);
 
-            expect(settingsManagerStub.isNewVersion).to.be.true;
-            expect(showWelcomeMessageStub.called).to.be.false;
-            expect(showNewVersionMessageStub.calledOnceWithExactly()).to.be
-              .true;
-          });
-
-          it(`when the 'dontShowNewVersionMessage' setting is 'false'`, async function () {
-            await manageIntroMessage.call(extensionManager);
-
-            expect(settingsManagerStub.isNewVersion).to.be.true;
-            expect(showWelcomeMessageStub.called).to.be.false;
-            expect(showNewVersionMessageStub.calledOnceWithExactly()).to.be
-              .true;
+              expect(settingsManagerStub.isNewVersion).to.be.true;
+              expect(showWelcomeMessageStub.called).to.be.false;
+              expect(showNewVersionMessageStub.calledOnceWithExactly()).to.be
+                .true;
+            });
           });
         });
 
         context(`NOT shown`, function () {
-          beforeEach(function () {
-            isNewVersionStub.value(false);
-            configManagerStub.vsicons.dontShowNewVersionMessage = true;
+          context(`when the 'isNewVersion' setting is 'false'`, function () {
+            it(`when the 'isNewVersion' setting is 'false' and the message is allowed`, async function () {
+              isNewVersionStub.value(false);
+              configManagerStub.vsicons.dontShowNewVersionMessage = false;
+
+              await manageIntroMessage.call(extensionManager);
+
+              expect(settingsManagerStub.isNewVersion).to.be.false;
+              expect(showWelcomeMessageStub.called).to.be.false;
+              expect(showNewVersionMessageStub.called).to.be.false;
+            });
           });
 
-          it(`when the 'isNewVersion' setting is 'false'`, async function () {
-            await manageIntroMessage.call(extensionManager);
+          context(`when the 'isNewVersion' setting is 'true'`, function () {
+            it(`and the message is disabled`, async function () {
+              isNewVersionStub.value(true);
+              configManagerStub.vsicons.dontShowNewVersionMessage = true;
 
-            expect(settingsManagerStub.isNewVersion).to.be.false;
-            expect(showWelcomeMessageStub.called).to.be.false;
-            expect(showNewVersionMessageStub.called).to.be.false;
-          });
+              await manageIntroMessage.call(extensionManager);
 
-          it(`when the 'dontShowNewVersionMessage' setting is 'true'`, async function () {
-            await manageIntroMessage.call(extensionManager);
-
-            expect(settingsManagerStub.isNewVersion).to.be.false;
-            expect(showWelcomeMessageStub.called).to.be.false;
-            expect(showNewVersionMessageStub.called).to.be.false;
+              expect(settingsManagerStub.isNewVersion).to.be.true;
+              expect(showWelcomeMessageStub.called).to.be.false;
+              expect(showNewVersionMessageStub.called).to.be.false;
+            });
           });
         });
       });

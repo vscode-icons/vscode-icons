@@ -1,4 +1,5 @@
 import type {
+  IFileCollection,
   IFileExtension,
   IFolderCollection,
   IIconAssociation,
@@ -12,6 +13,7 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
+import { FileFormat } from '../../../src/models';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
 
@@ -20,13 +22,16 @@ describe('ManifestBuilder: files icons test', function () {
     let sandbox: sinon.SinonSandbox;
     let pathUnixJoinStub: sinon.SinonStub;
     let emptyFolderCollection: IFolderCollection;
+    let fileFormatToStringStub: sinon.SinonStub;
 
     const iconsDirRelativeBasePath = '../../path/to/icons/dir';
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      sandbox.stub(Utils, 'fileFormatToString').returns('.svg');
+      fileFormatToStringStub = sandbox
+        .stub(Utils, 'fileFormatToString')
+        .returns('.svg');
       sandbox
         .stub(Utils, 'removeFirstDot')
         .callsFake((txt: string) => txt.replace(/^\./, ''));
@@ -54,6 +59,58 @@ describe('ManifestBuilder: files icons test', function () {
 
     afterEach(function () {
       sandbox.restore();
+    });
+
+    it('uses the configured format for the default file icon', async function () {
+      const files: IFileCollection = cloneDeep(fixtFiles);
+      files.default.file.format = FileFormat.png;
+      fileFormatToStringStub.withArgs(FileFormat.png).returns('.png');
+
+      const manifest = await ManifestBuilder.buildManifest(
+        files,
+        emptyFolderCollection,
+      );
+
+      expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
+        `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file${constants.iconsManifest.iconSuffix}.png`,
+      );
+    });
+
+    it('uses a supported file format when provided', async function () {
+      const files = cloneDeep(fixtFiles);
+      const file = files.supported.find(({ icon }) => icon === 'actionscript');
+
+      file.format = FileFormat.png;
+      fileFormatToStringStub.withArgs(FileFormat.png).returns('.png');
+
+      const manifest = await ManifestBuilder.buildManifest(
+        files,
+        emptyFolderCollection,
+      );
+      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+      const icon = manifest.vscode.iconDefinitions[
+        definition
+      ] as IIconAssociation;
+
+      expect(fileFormatToStringStub.calledWith(FileFormat.png)).to.be.true;
+      expect(icon.iconPath).to.equal(
+        `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}${file.icon}${constants.iconsManifest.iconSuffix}.png`,
+      );
+    });
+
+    it('defaults the default file format to SVG when it is undefined', async function () {
+      const files = cloneDeep(fixtFiles);
+      files.default.file.format = undefined;
+
+      const manifest = await ManifestBuilder.buildManifest(
+        files,
+        emptyFolderCollection,
+      );
+
+      expect(fileFormatToStringStub.firstCall.args[0]).to.be.undefined;
+      expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
+        `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file${constants.iconsManifest.iconSuffix}.svg`,
+      );
     });
 
     context(`if a default 'light' icon is NOT defined`, function () {
