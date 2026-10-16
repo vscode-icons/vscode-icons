@@ -6721,6 +6721,7 @@ export const extensions: IFileCollection = {
         'tsconfig.base',
         'tsconfig.build',
         'tsconfig.cjs',
+        'tsconfig.client',
         'tsconfig.common',
         'tsconfig.debug',
         'tsconfig.dev',
