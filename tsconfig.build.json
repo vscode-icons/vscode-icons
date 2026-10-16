@@ -4,5 +4,5 @@
     "removeComments": true,
     "sourceMap": false
   },
-  "include": ["src/tools/svgo_check.ts"]
+  "include": ["src/tools/svgoCheck.ts"]
 }
