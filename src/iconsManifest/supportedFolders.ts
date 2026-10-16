@@ -288,6 +288,11 @@ export const extensions: IFolderCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'discord',
+      extensions: ['discord', '.discord'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'dist',
       extensions: [
         'dist',
