@@ -9,8 +9,7 @@
     "editor.defaultFormatter": "unifiedjs.vscode-remark"
   },
   "[svg]": {
-    "files.insertFinalNewline": false,
-    "files.trimFinalNewlines": true
+    "files.insertFinalNewline": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
