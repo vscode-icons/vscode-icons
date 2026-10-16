@@ -76,8 +76,37 @@ export const extensions: IFileCollection = {
       languages: [languages.advpl],
     },
     {
+      icon: 'affectscript',
+      extensions: [],
+      languages: [languages.affectscript],
+    },
+    {
       icon: 'affinity',
       extensions: ['af', 'aftemplate'],
+    },
+    {
+      icon: 'affinitydesigner',
+      extensions: ['afdesign', 'affinitydesigner'],
+    },
+    {
+      icon: 'affinityphoto',
+      extensions: ['afphoto', 'affinityphoto'],
+    },
+    {
+      icon: 'affinitypublisher',
+      extensions: ['afpub', 'affinitypublisher'],
+    },
+    {
+      icon: 'agda',
+      extensions: [],
+      languages: [languages.agda],
+      light: true,
+    },
+    {
+      icon: 'agents',
+      extensions: ['agents.md'],
+      filename: true,
+      light: true,
     },
     { icon: 'ai', extensions: ['ai'] },
     { icon: 'ai2', extensions: ['ai'], disabled: true },
@@ -96,9 +125,21 @@ export const extensions: IFileCollection = {
       extensions: ['dal'],
     },
     {
+      icon: 'alchemy',
+      extensions: [],
+      filenamesGlob: ['alchemy.run'],
+      extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
+      filename: true,
+    },
+    {
       icon: 'allcontributors',
       extensions: ['.all-contributorsrc'],
       filename: true,
+    },
+    {
+      icon: 'alloy',
+      extensions: [],
+      languages: [languages.alloy],
     },
     {
       icon: 'allure',
@@ -113,38 +154,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'affinitydesigner',
-      extensions: ['afdesign', 'affinitydesigner'],
-    },
-    {
-      icon: 'affinityphoto',
-      extensions: ['afphoto', 'affinityphoto'],
-    },
-    {
-      icon: 'affinitypublisher',
-      extensions: ['afpub', 'affinitypublisher'],
-    },
-    {
-      icon: 'agents',
-      extensions: ['agents.md'],
-      filename: true,
-      light: true,
-    },
-    {
-      icon: 'agda',
-      extensions: [],
-      languages: [languages.agda],
-      light: true,
-    },
-    {
-      icon: 'appscript',
-      extensions: ['gs'],
-    },
-    {
-      icon: 'fitbit',
-      extensions: ['fba'],
-    },
-    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
@@ -156,338 +165,6 @@ export const extensions: IFileCollection = {
         'ngsw-config.json',
       ],
       filename: true,
-    },
-    {
-      icon: 'nanostaged',
-      extensions: [
-        '.nano-staged.js',
-        'nano-staged.js',
-        '.nano-staged.cjs',
-        'nano-staged.cjs',
-        '.nano-staged.mjs',
-        'nano-staged.mjs',
-        '.nano-staged.json',
-        'nano-staged.json',
-        '.nanostagedrc',
-      ],
-      filename: true,
-    },
-    {
-      icon: 'ng_component_dart',
-      extensions: ['component.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_component_ts',
-      extensions: ['component.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_component_js',
-      extensions: ['component.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_controller_ts',
-      extensions: ['controller.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_controller_js',
-      extensions: ['controller.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_directive_dart',
-      extensions: ['directive.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_directive_ts',
-      extensions: ['directive.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_directive_js',
-      extensions: ['directive.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_guard_dart',
-      extensions: ['guard.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_guard_ts',
-      extensions: ['guard.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_guard_js',
-      extensions: ['guard.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_module_dart',
-      extensions: ['module.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_module_ts',
-      extensions: ['module.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_module_js',
-      extensions: ['module.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_pipe_dart',
-      extensions: ['pipe.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_pipe_ts',
-      extensions: ['pipe.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_pipe_js',
-      extensions: ['pipe.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_dart',
-      extensions: ['routing.dart', 'routes.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_ts',
-      extensions: ['routing.ts', 'routes.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_js',
-      extensions: ['routing.js', 'routes.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_dart',
-      extensions: ['app-routing.module.dart'],
-      filename: true,
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_ts',
-      extensions: ['app-routing.module.ts'],
-      filename: true,
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_js',
-      extensions: ['app-routing.module.js'],
-      filename: true,
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_smart_component_dart',
-      extensions: ['page.dart', 'container.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_smart_component_ts',
-      extensions: ['page.ts', 'container.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_smart_component_js',
-      extensions: ['page.js', 'container.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_service_dart',
-      extensions: ['service.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_service_ts',
-      extensions: ['service.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_service_js',
-      extensions: ['service.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_interceptor_dart',
-      extensions: ['interceptor.dart'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_interceptor_ts',
-      extensions: ['interceptor.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_interceptor_js',
-      extensions: ['interceptor.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_component_ts2',
-      extensions: ['component.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_component_js2',
-      extensions: ['component.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_directive_ts2',
-      extensions: ['directive.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_directive_js2',
-      extensions: ['directive.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_module_ts2',
-      extensions: ['module.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_module_js2',
-      extensions: ['module.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_pipe_ts2',
-      extensions: ['pipe.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_pipe_js2',
-      extensions: ['pipe.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_ts2',
-      extensions: ['routing.ts', 'routes.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_js2',
-      extensions: ['routing.js', 'routes.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_ts2',
-      extensions: ['app-routing.module.ts'],
-      filename: true,
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_routing_js2',
-      extensions: ['app-routing.module.js'],
-      filename: true,
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_smart_component_ts2',
-      extensions: ['page.ts', 'container.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_smart_component_js2',
-      extensions: ['page.js', 'container.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_service_ts2',
-      extensions: ['service.ts'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_service_js2',
-      extensions: ['service.js'],
-
-      disabled: true,
-    },
-    {
-      icon: 'ng_tailwind',
-      extensions: ['ng-tailwind.js'],
-      filename: true,
-
-      disabled: true,
-    },
-    {
-      icon: 'affectscript',
-      extensions: [],
-      languages: [languages.affectscript],
-    },
-    {
-      icon: 'alchemy',
-      extensions: [],
-      filenamesGlob: ['alchemy.run'],
-      extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
-      filename: true,
-    },
-    {
-      icon: 'alloy',
-      extensions: [],
-      languages: [languages.alloy],
     },
     {
       icon: 'ansible',
@@ -520,14 +197,14 @@ export const extensions: IFileCollection = {
       languages: [languages.apex],
     },
     {
-      icon: 'apib',
-      extensions: [],
-      languages: [languages.apib],
-    },
-    {
       icon: 'api_extractor',
       extensions: ['api-extractor.json', 'api-extractor-base.json'],
       filename: true,
+    },
+    {
+      icon: 'apib',
+      extensions: [],
+      languages: [languages.apib],
     },
     {
       icon: 'apl',
@@ -539,6 +216,10 @@ export const extensions: IFileCollection = {
       icon: 'applescript',
       extensions: [],
       languages: [languages.applescript],
+    },
+    {
+      icon: 'appscript',
+      extensions: ['gs'],
     },
     {
       icon: 'appsemble',
@@ -561,11 +242,6 @@ export const extensions: IFileCollection = {
       extensions: ['ase', 'aseprite'],
     },
     {
-      icon: 'assembly_script',
-      extensions: ['asconfig.json'],
-      filename: true,
-    },
-    {
       icon: 'asp',
       extensions: [],
       languages: [languages.asp],
@@ -580,6 +256,11 @@ export const extensions: IFileCollection = {
       icon: 'assembly',
       extensions: ['asm', 's'],
       languages: [languages.assembly],
+    },
+    {
+      icon: 'assembly_script',
+      extensions: ['asconfig.json'],
+      filename: true,
     },
     {
       icon: 'astro',
@@ -622,7 +303,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      // https://en.wikipedia.org/wiki/Audio_file_format
       icon: 'audio',
       extensions: [
         'aac',
@@ -799,7 +479,6 @@ export const extensions: IFileCollection = {
       languages: [languages.biml],
     },
     {
-      // http://www.file-extensions.org/filetype/extension/name/binary-files
       icon: 'binary',
       extensions: [
         'a',
@@ -830,13 +509,19 @@ export const extensions: IFileCollection = {
       languages: [languages.binary],
     },
     {
-      icon: 'bithound',
-      extensions: ['.bithoundrc'],
+      icon: 'biome',
+      extensions: ['biome.json', 'biome.jsonc', '.biome.json', '.biome.jsonc'],
       filename: true,
+      languages: [languages.biomesyntaxtree],
     },
     {
       icon: 'bitbucketpipeline',
       extensions: ['bitbucket-pipelines.yml'],
+      filename: true,
+    },
+    {
+      icon: 'bithound',
+      extensions: ['.bithoundrc'],
       filename: true,
     },
     {
@@ -934,11 +619,11 @@ export const extensions: IFileCollection = {
     {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
+      filename: true,
     },
     {
       icon: 'bundler',
       extensions: ['gemfile', 'gemfile.lock'],
-      filename: true,
     },
     {
       icon: 'bunfig',
@@ -1091,6 +776,11 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'changie',
+      extensions: ['.changie.yaml', '.changie.yml'],
+      filename: true,
+    },
+    {
       icon: 'cheader',
       extensions: ['h'],
     },
@@ -1099,11 +789,6 @@ export const extensions: IFileCollection = {
       extensions: ['.checkov.yaml', '.checkov.yml'],
       filename: true,
       light: true,
-    },
-    {
-      icon: 'changie',
-      extensions: ['.changie.yaml', '.changie.yml'],
-      filename: true,
     },
     {
       icon: 'chef',
@@ -1115,6 +800,11 @@ export const extensions: IFileCollection = {
         'policyfile.lock.json',
       ],
       filename: true,
+    },
+    {
+      icon: 'chef_cookbook',
+      extensions: [],
+      languages: [languages.cookbook],
     },
     {
       icon: 'circleci',
@@ -1135,7 +825,7 @@ export const extensions: IFileCollection = {
     { icon: 'class', extensions: ['class'] },
     {
       icon: 'claude',
-      extensions: ['claude.md', 'claude.local.md'],
+      extensions: ['.claude.json', 'claude.md', 'claude.local.md'],
       filename: true,
     },
     {
@@ -1171,29 +861,6 @@ export const extensions: IFileCollection = {
       languages: [languages.cobol],
     },
     {
-      icon: 'codegen',
-      extensions: ['codegen.config.js'],
-      filenamesGlob: ['codegen', '.codegenrc'],
-      extensionsGlob: ['js', 'ts', 'json', 'yaml', 'yml'],
-      filename: true,
-    },
-    {
-      icon: 'codemagic',
-      extensions: ['codemagic.yaml'],
-      filename: true,
-    },
-    {
-      icon: 'codeql',
-      extensions: [],
-      languages: [languages.codeql],
-    },
-    {
-      icon: 'codeowners',
-      extensions: ['codeowners'],
-      filename: true,
-      light: true,
-    },
-    {
       icon: 'codacy',
       extensions: ['.codacy.yml', '.codacy.yaml'],
       light: true,
@@ -1210,7 +877,13 @@ export const extensions: IFileCollection = {
       extensions: ['codecov.yml', '.codecov.yml'],
       filename: true,
     },
-    { icon: 'codekit', extensions: ['kit'] },
+    {
+      icon: 'codegen',
+      extensions: ['codegen.config.js'],
+      filenamesGlob: ['codegen', '.codegenrc'],
+      extensionsGlob: ['js', 'ts', 'json', 'yaml', 'yml'],
+      filename: true,
+    },
     {
       icon: 'codekit',
       extensions: [
@@ -1222,6 +895,23 @@ export const extensions: IFileCollection = {
         '.config.codekit3',
       ],
       filename: true,
+    },
+    { icon: 'codekit', extensions: ['kit'] },
+    {
+      icon: 'codemagic',
+      extensions: ['codemagic.yaml'],
+      filename: true,
+    },
+    {
+      icon: 'codeowners',
+      extensions: ['codeowners'],
+      filename: true,
+      light: true,
+    },
+    {
+      icon: 'codeql',
+      extensions: [],
+      languages: [languages.codeql],
     },
     {
       icon: 'coderabbit',
@@ -1237,28 +927,6 @@ export const extensions: IFileCollection = {
       icon: 'coffeescript',
       extensions: [],
       languages: [languages.coffeescript],
-    },
-    {
-      icon: 'conan',
-      extensions: ['conanfile.txt', 'conanfile.py'],
-      filename: true,
-    },
-    {
-      icon: 'conda',
-      extensions: ['.condarc'],
-      filename: true,
-    },
-    {
-      icon: 'config',
-      extensions: ['plist'],
-      languages: [languages.properties, languages.springbootproperties],
-      light: true,
-    },
-    {
-      icon: 'config',
-      extensions: ['.tool-versions'],
-      light: true,
-      filename: true,
     },
     {
       icon: 'commitizen',
@@ -1290,9 +958,26 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'chef_cookbook',
-      extensions: [],
-      languages: [languages.cookbook],
+      icon: 'conan',
+      extensions: ['conanfile.txt', 'conanfile.py'],
+      filename: true,
+    },
+    {
+      icon: 'conda',
+      extensions: ['.condarc'],
+      filename: true,
+    },
+    {
+      icon: 'config',
+      extensions: ['.tool-versions'],
+      light: true,
+      filename: true,
+    },
+    {
+      icon: 'config',
+      extensions: ['plist'],
+      languages: [languages.properties, languages.springbootproperties],
+      light: true,
     },
     {
       icon: 'confluence',
@@ -1429,6 +1114,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'css2map',
+      extensions: ['css.map'],
+
+      disabled: true,
+    },
+    {
       icon: 'csscomb',
       extensions: ['.csscomb.json'],
       filename: true,
@@ -1439,12 +1130,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     { icon: 'cssmap', extensions: ['css.map'] },
-    {
-      icon: 'css2map',
-      extensions: ['css.map'],
-
-      disabled: true,
-    },
     {
       icon: 'csv',
       extensions: ['csv', 'tsv'],
@@ -1472,9 +1157,9 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'cython',
-      extensions: [],
-      languages: [languages.cython],
+      icon: 'cvs',
+      extensions: ['.cvsignore'],
+      filename: true,
     },
     {
       icon: 'cypress',
@@ -1503,9 +1188,9 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
-      icon: 'cvs',
-      extensions: ['.cvsignore'],
-      filename: true,
+      icon: 'cython',
+      extensions: [],
+      languages: [languages.cython],
     },
     {
       icon: 'dal',
@@ -1571,14 +1256,14 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'debian',
-      extensions: ['deb'],
-      languages: [languages.debian],
-    },
-    {
-      icon: 'debian',
       extensions: ['aptfile'],
       filename: true,
       languages: [],
+    },
+    {
+      icon: 'debian',
+      extensions: ['deb'],
+      languages: [languages.debian],
     },
     {
       icon: 'deepsource',
@@ -1673,16 +1358,6 @@ export const extensions: IFileCollection = {
       languages: [languages.dhall],
     },
     {
-      icon: 'django',
-      extensions: ['djt'],
-      languages: [languages.django],
-    },
-    {
-      icon: 'dlang',
-      extensions: [],
-      languages: [languages.dlang],
-    },
-    {
       icon: 'diff',
       extensions: [],
       languages: [languages.diff],
@@ -1691,6 +1366,16 @@ export const extensions: IFileCollection = {
       icon: 'direnv',
       extensions: ['.envrc'],
       filename: true,
+    },
+    {
+      icon: 'django',
+      extensions: ['djt'],
+      languages: [languages.django],
+    },
+    {
+      icon: 'dlang',
+      extensions: [],
+      languages: [languages.dlang],
     },
     {
       icon: 'docker',
@@ -1773,9 +1458,19 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'doppler',
+      extensions: ['doppler.yaml', 'doppler-template.yaml'],
+      filename: true,
+    },
+    {
       icon: 'dotenv',
       extensions: [],
       languages: [languages.dotenv],
+    },
+    {
+      icon: 'dotjs',
+      extensions: [],
+      languages: [languages.dotjs],
     },
     {
       icon: 'doxyfile',
@@ -1815,11 +1510,6 @@ export const extensions: IFileCollection = {
       languages: [languages.drools],
     },
     {
-      icon: 'dotjs',
-      extensions: [],
-      languages: [languages.dotjs],
-    },
-    {
       icon: 'dtd',
       extensions: ['dtd'],
       languages: [languages.dtd],
@@ -1828,6 +1518,12 @@ export const extensions: IFileCollection = {
       icon: 'duckdb',
       extensions: ['duckdb'],
       light: true,
+    },
+    {
+      icon: 'dune',
+      extensions: ['dune', 'dune-project', 'dune-workspace'],
+      filenamesGlob: [],
+      filename: true,
     },
     {
       icon: 'dustjs',
@@ -1844,12 +1540,6 @@ export const extensions: IFileCollection = {
       icon: 'dylan',
       extensions: [],
       languages: [languages.dylanlang],
-    },
-    {
-      icon: 'editorconfig',
-      extensions: ['.editorconfig'],
-      filename: true,
-      languages: [languages.editorconfig],
     },
     {
       icon: 'earthly',
@@ -1874,6 +1564,12 @@ export const extensions: IFileCollection = {
       languages: [languages.edge],
 
       disabled: true,
+    },
+    {
+      icon: 'editorconfig',
+      extensions: ['.editorconfig'],
+      filename: true,
+      languages: [languages.editorconfig],
     },
     {
       icon: 'eex',
@@ -2106,14 +1802,14 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'fauna',
-      extensions: ['.faunarc'],
-      languages: [languages.fauna],
+      icon: 'fastly',
+      extensions: ['fastly.toml'],
       filename: true,
     },
     {
-      icon: 'fastly',
-      extensions: ['fastly.toml'],
+      icon: 'fauna',
+      extensions: ['.faunarc'],
+      languages: [languages.fauna],
       filename: true,
     },
     {
@@ -2146,6 +1842,10 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'fitbit',
+      extensions: ['fba'],
+    },
+    {
       icon: 'fla',
       extensions: ['fla'],
       light: true,
@@ -2176,12 +1876,12 @@ export const extensions: IFileCollection = {
       extensions: ['.flooignore'],
       filename: true,
     },
-    { icon: 'flow', extensions: ['js.flow'] },
     {
       icon: 'flow',
       extensions: ['.flowconfig'],
       filename: true,
     },
+    { icon: 'flow', extensions: ['js.flow'] },
     { icon: 'flowgorithm', extensions: ['fprg'] },
     {
       icon: 'flue',
@@ -2244,12 +1944,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'fsharp',
-      extensions: [],
-      languages: [languages.fsharp],
-    },
-    { icon: 'fsproj', extensions: ['fsproj'] },
-    {
       icon: 'freemarker',
       extensions: [],
       languages: [languages.freemarker],
@@ -2268,6 +1962,12 @@ export const extensions: IFileCollection = {
       extensions: ['.front-commerce.js', 'front-commerce.config.ts'],
       filename: true,
     },
+    {
+      icon: 'fsharp',
+      extensions: [],
+      languages: [languages.fsharp],
+    },
+    { icon: 'fsproj', extensions: ['fsproj'] },
     {
       icon: 'fthtml',
       extensions: [],
@@ -2294,23 +1994,6 @@ export const extensions: IFileCollection = {
       languages: [languages.galen],
 
       disabled: true,
-    },
-    {
-      icon: 'git',
-      extensions: [
-        '.git',
-        '.gitattributes',
-        '.gitconfig',
-        '.gitignore',
-        '.gitmessage',
-        '.gitmodules',
-        '.gitkeep',
-        '.git-blame-ignore-revs',
-        '.mailmap',
-        '.issuetracker',
-      ],
-      filename: true,
-      languages: [languages.git],
     },
     {
       icon: 'gamemaker',
@@ -2343,6 +2026,11 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'gcloud',
+      extensions: ['.gcloudignore'],
+      filename: true,
+    },
+    {
       icon: 'gcode',
       extensions: [],
       languages: [languages.gcode],
@@ -2355,11 +2043,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'gduid',
       extensions: ['gd.uid'],
-    },
-    {
-      icon: 'gcloud',
-      extensions: ['.gcloudignore'],
-      filename: true,
     },
     {
       icon: 'gemini',
@@ -2378,6 +2061,23 @@ export const extensions: IFileCollection = {
     {
       icon: 'gimp',
       extensions: ['xcf'],
+    },
+    {
+      icon: 'git',
+      extensions: [
+        '.git',
+        '.gitattributes',
+        '.gitconfig',
+        '.gitignore',
+        '.gitmessage',
+        '.gitmodules',
+        '.gitkeep',
+        '.git-blame-ignore-revs',
+        '.mailmap',
+        '.issuetracker',
+      ],
+      filename: true,
+      languages: [languages.git],
     },
     {
       icon: 'gitlab',
@@ -2589,17 +2289,17 @@ export const extensions: IFileCollection = {
       languages: [languages.harbour],
     },
     {
-      icon: 'hashicorp',
-      extensions: ['hcl2', 'sentinel'],
-      languages: [languages.hcl],
-      light: true,
-    },
-    {
       icon: 'hardhat',
       extensions: [],
       filenamesGlob: ['hardhat.config'],
       extensionsGlob: ['cjs', 'js', 'ts'],
       filename: true,
+    },
+    {
+      icon: 'hashicorp',
+      extensions: ['hcl2', 'sentinel'],
+      languages: [languages.hcl],
+      light: true,
     },
     {
       icon: 'haskell',
@@ -2714,11 +2414,6 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
-      icon: 'hunspell',
-      extensions: [],
-      languages: [languages.hunspell],
-    },
-    {
       icon: 'hugo',
       extensions: ['hugo.json', 'hugo.toml', 'hugo.yaml', '.hugo_build.lock'],
       filename: true,
@@ -2727,6 +2422,11 @@ export const extensions: IFileCollection = {
       icon: 'humanstxt',
       extensions: ['humans.txt'],
       filename: true,
+    },
+    {
+      icon: 'hunspell',
+      extensions: [],
+      languages: [languages.hunspell],
     },
     {
       icon: 'hurl',
@@ -2817,6 +2517,17 @@ export const extensions: IFileCollection = {
       languages: [languages.innosetup],
     },
     {
+      icon: 'io',
+      extensions: [],
+      languages: [languages.io],
+      light: true,
+    },
+    {
+      icon: 'iodine',
+      extensions: [],
+      languages: [languages.iodine],
+    },
+    {
       icon: 'ionic',
       extensions: ['ionic.project', 'ionic.config.json'],
       filename: true,
@@ -2844,6 +2555,17 @@ export const extensions: IFileCollection = {
     },
     { icon: 'jbuilder', extensions: ['jbuilder'] },
     {
+      icon: 'jekyll',
+      extensions: ['.nojekyll'],
+      filename: true,
+      languages: [languages.jekyll],
+    },
+    {
+      icon: 'jenkins',
+      extensions: [],
+      languages: [languages.jenkins],
+    },
+    {
       icon: 'jest',
       extensions: [
         'jest.json',
@@ -2870,15 +2592,8 @@ export const extensions: IFileCollection = {
       languages: [languages.jestsnapshot],
     },
     {
-      icon: 'jekyll',
-      extensions: ['.nojekyll'],
-      filename: true,
-      languages: [languages.jekyll],
-    },
-    {
-      icon: 'jenkins',
-      extensions: [],
-      languages: [languages.jenkins],
+      icon: 'jetbrains',
+      extensions: ['iml'],
     },
     {
       icon: 'jinja',
@@ -2954,6 +2669,24 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'json2',
+      extensions: ['jsonl', 'ndjson'],
+      languages: [
+        languages.json,
+        languages.textmatejson,
+        languages.jsonc,
+        languages.jsonl,
+      ],
+
+      disabled: true,
+    },
+    {
+      icon: 'json5',
+      extensions: ['json5'],
+      languages: [languages.json5],
+      light: true,
+    },
+    {
       icon: 'json_official',
       extensions: ['jsonl', 'ndjson'],
       languages: [
@@ -2971,32 +2704,14 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
-      icon: 'json2',
-      extensions: ['jsonl', 'ndjson'],
-      languages: [
-        languages.json,
-        languages.textmatejson,
-        languages.jsonc,
-        languages.jsonl,
-      ],
-
-      disabled: true,
+      icon: 'jsonld',
+      extensions: ['jsonld', 'json-ld'],
+      light: true,
     },
     {
       icon: 'jsonnet',
       extensions: [],
       languages: [languages.jsonnet],
-    },
-    {
-      icon: 'json5',
-      extensions: ['json5'],
-      languages: [languages.json5],
-      light: true,
-    },
-    {
-      icon: 'jsonld',
-      extensions: ['jsonld', 'json-ld'],
-      light: true,
     },
     { icon: 'jsp', extensions: ['jsp'] },
     {
@@ -3028,21 +2743,6 @@ export const extensions: IFileCollection = {
       languages: [languages.just],
     },
     {
-      icon: 'io',
-      extensions: [],
-      languages: [languages.io],
-      light: true,
-    },
-    {
-      icon: 'iodine',
-      extensions: [],
-      languages: [languages.iodine],
-    },
-    {
-      icon: 'jetbrains',
-      extensions: ['iml'],
-    },
-    {
       icon: 'k',
       extensions: [],
       languages: [languages.k],
@@ -3056,14 +2756,14 @@ export const extensions: IFileCollection = {
     },
     { icon: 'key', extensions: ['key', 'pem'] },
     {
-      icon: 'kite',
-      extensions: ['.kiteignore'],
-      light: true,
+      icon: 'kitchenci',
+      extensions: ['.kitchen.yml', 'kitchen.yml'],
       filename: true,
     },
     {
-      icon: 'kitchenci',
-      extensions: ['.kitchen.yml', 'kitchen.yml'],
+      icon: 'kite',
+      extensions: ['.kiteignore'],
+      light: true,
       filename: true,
     },
     {
@@ -3076,6 +2776,20 @@ export const extensions: IFileCollection = {
       extensions: [],
       filenamesGlob: ['knexfile'],
       extensionsGlob: ['js', 'ts', 'coffee', 'ls', 'eg'],
+      filename: true,
+    },
+    {
+      icon: 'knip',
+      extensions: [
+        'knip.json',
+        'knip.jsonc',
+        '.knip.json',
+        '.knip.jsonc',
+        'knip.ts',
+        'knip.js',
+        'knip.config.ts',
+        'knip.config.js',
+      ],
       filename: true,
     },
     {
@@ -3110,11 +2824,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'latino',
-      extensions: [],
-      languages: [languages.latino],
-    },
-    {
       icon: 'language_configuration',
       extensions: ['language-configuration.json'],
       filename: true,
@@ -3122,10 +2831,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'language_configuration',
       extensions: ['language-configuration.json'],
-    },
-    {
-      icon: 'layout',
-      extensions: ['master', 'layout.html', 'layout.htm'],
     },
     {
       icon: 'lark',
@@ -3134,9 +2839,18 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'latino',
+      extensions: [],
+      languages: [languages.latino],
+    },
+    {
       icon: 'layout',
       extensions: ['layout.html', 'layout.htm'],
       filename: true,
+    },
+    {
+      icon: 'layout',
+      extensions: ['master', 'layout.html', 'layout.htm'],
     },
     {
       icon: 'lean',
@@ -3186,6 +2900,11 @@ export const extensions: IFileCollection = {
       icon: 'lex',
       extensions: [],
       languages: [languages.lex],
+    },
+    {
+      icon: 'liara',
+      extensions: ['liara.json', '.liaraignore'],
+      filename: true,
     },
     {
       icon: 'libreoffice_base',
@@ -3269,11 +2988,6 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.lilypond],
     },
-    {
-      icon: 'lisp',
-      extensions: [],
-      languages: [languages.lisp],
-    },
     { icon: 'lime', extensions: ['hxp'] },
     {
       icon: 'lime',
@@ -3308,6 +3022,11 @@ export const extensions: IFileCollection = {
       languages: [languages.liquid],
     },
     {
+      icon: 'lisp',
+      extensions: [],
+      languages: [languages.lisp],
+    },
+    {
       icon: 'livekit',
       extensions: ['livekit.yaml', 'livekit.toml'],
       filename: true,
@@ -3320,12 +3039,12 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.strings],
     },
-    { icon: 'log', extensions: ['log', 'tlg'] },
     {
       icon: 'log',
       extensions: ['log', 'tlg'],
       languages: [languages.log],
     },
+    { icon: 'log', extensions: ['log', 'tlg'] },
     {
       icon: 'lolcode',
       extensions: [],
@@ -3368,13 +3087,13 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'manifest_skip',
-      extensions: ['manifest.skip'],
+      icon: 'manifest_bak',
+      extensions: ['manifest.bak'],
       filename: true,
     },
     {
-      icon: 'manifest_bak',
-      extensions: ['manifest.bak'],
+      icon: 'manifest_skip',
+      extensions: ['manifest.skip'],
       filename: true,
     },
     { icon: 'map', extensions: ['map'] },
@@ -3436,16 +3155,16 @@ export const extensions: IFileCollection = {
       languages: [languages.matlab],
     },
     {
-      icon: 'maxscript',
-      extensions: [],
-      languages: [languages.maxscript],
-    },
-    {
       icon: 'maven',
       extensions: ['maven.config'],
       filenamesGlob: ['pom', 'extensions', 'settings'],
       extensionsGlob: ['xml'],
       filename: true,
+    },
+    {
+      icon: 'maxscript',
+      extensions: [],
+      languages: [languages.maxscript],
     },
     {
       icon: 'maya',
@@ -3525,11 +3244,21 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'minecraft',
+      extensions: ['mca', 'mcmeta'],
+      languages: [languages.minecraft],
+    },
+    {
       icon: 'mise',
       extensions: [],
       filenamesGlob: ['mise', '.mise', 'mise.local', '.mise.local'],
       extensionsGlob: ['toml'],
       filename: true,
+    },
+    {
+      icon: 'mivascript',
+      extensions: [],
+      languages: [languages.mv],
     },
     {
       icon: 'mjml',
@@ -3624,16 +3353,6 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
-      icon: 'minecraft',
-      extensions: ['mca', 'mcmeta'],
-      languages: [languages.minecraft],
-    },
-    {
-      icon: 'mivascript',
-      extensions: [],
-      languages: [languages.mv],
-    },
-    {
       icon: 'mvt',
       extensions: [],
       languages: [languages.mvt],
@@ -3664,6 +3383,21 @@ export const extensions: IFileCollection = {
       extensions: ['n64', 'z64', 'nrm'],
     },
     {
+      icon: 'nanostaged',
+      extensions: [
+        '.nano-staged.js',
+        'nano-staged.js',
+        '.nano-staged.cjs',
+        'nano-staged.cjs',
+        '.nano-staged.mjs',
+        'nano-staged.mjs',
+        '.nano-staged.json',
+        'nano-staged.json',
+        '.nanostagedrc',
+      ],
+      filename: true,
+    },
+    {
       icon: 'ndst',
       extensions: ['ndst.yaml', 'ndst.yml', 'ndst.json'],
     },
@@ -3677,16 +3411,6 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.cypher],
       light: true,
-    },
-    {
-      icon: 'nestjs',
-      extensions: [
-        '.nest-cli.json',
-        'nest-cli.json',
-        'nestconfig.json',
-        '.nestconfig.json',
-      ],
-      filename: true,
     },
     {
       icon: 'nest_adapter_js',
@@ -3821,6 +3545,16 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'nestjs',
+      extensions: [
+        '.nest-cli.json',
+        'nest-cli.json',
+        'nestconfig.json',
+        '.nestconfig.json',
+      ],
+      filename: true,
+    },
+    {
       icon: 'netlify',
       extensions: ['netlify.toml'],
       filename: true,
@@ -3840,15 +3574,315 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'ng-packagr',
+      extensions: ['ng-package.json', 'ng-package.js'],
+      filename: true,
+    },
+    {
+      icon: 'ng_component_dart',
+      extensions: ['component.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_component_js',
+      extensions: ['component.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_component_js2',
+      extensions: ['component.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_component_ts',
+      extensions: ['component.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_component_ts2',
+      extensions: ['component.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_controller_js',
+      extensions: ['controller.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_controller_ts',
+      extensions: ['controller.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_directive_dart',
+      extensions: ['directive.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_directive_js',
+      extensions: ['directive.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_directive_js2',
+      extensions: ['directive.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_directive_ts',
+      extensions: ['directive.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_directive_ts2',
+      extensions: ['directive.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_guard_dart',
+      extensions: ['guard.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_guard_js',
+      extensions: ['guard.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_guard_ts',
+      extensions: ['guard.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_interceptor_dart',
+      extensions: ['interceptor.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_interceptor_js',
+      extensions: ['interceptor.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_interceptor_ts',
+      extensions: ['interceptor.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_module_dart',
+      extensions: ['module.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_module_js',
+      extensions: ['module.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_module_js2',
+      extensions: ['module.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_module_ts',
+      extensions: ['module.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_module_ts2',
+      extensions: ['module.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_pipe_dart',
+      extensions: ['pipe.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_pipe_js',
+      extensions: ['pipe.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_pipe_js2',
+      extensions: ['pipe.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_pipe_ts',
+      extensions: ['pipe.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_pipe_ts2',
+      extensions: ['pipe.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_dart',
+      extensions: ['app-routing.module.dart'],
+      filename: true,
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_dart',
+      extensions: ['routing.dart', 'routes.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_js',
+      extensions: ['app-routing.module.js'],
+      filename: true,
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_js',
+      extensions: ['routing.js', 'routes.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_js2',
+      extensions: ['app-routing.module.js'],
+      filename: true,
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_js2',
+      extensions: ['routing.js', 'routes.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_ts',
+      extensions: ['app-routing.module.ts'],
+      filename: true,
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_ts',
+      extensions: ['routing.ts', 'routes.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_ts2',
+      extensions: ['app-routing.module.ts'],
+      filename: true,
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_routing_ts2',
+      extensions: ['routing.ts', 'routes.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_service_dart',
+      extensions: ['service.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_service_js',
+      extensions: ['service.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_service_js2',
+      extensions: ['service.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_service_ts',
+      extensions: ['service.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_service_ts2',
+      extensions: ['service.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_smart_component_dart',
+      extensions: ['page.dart', 'container.dart'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_smart_component_js',
+      extensions: ['page.js', 'container.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_smart_component_js2',
+      extensions: ['page.js', 'container.js'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_smart_component_ts',
+      extensions: ['page.ts', 'container.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_smart_component_ts2',
+      extensions: ['page.ts', 'container.ts'],
+
+      disabled: true,
+    },
+    {
+      icon: 'ng_tailwind',
+      extensions: ['ng-tailwind.js'],
+      filename: true,
+
+      disabled: true,
+    },
+    {
       icon: 'nginx',
       extensions: ['nginx.conf'],
       filename: true,
       languages: [languages.nginx],
-    },
-    {
-      icon: 'ng-packagr',
-      extensions: ['ng-package.json', 'ng-package.js'],
-      filename: true,
     },
     {
       icon: 'nim',
@@ -3886,16 +3920,16 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'noc',
-      extensions: ['noc'],
-    },
-    {
       icon: 'nix',
       extensions: ['flake.lock'],
       filename: true,
       languages: [languages.nix],
     },
     { icon: 'njsproj', extensions: ['njsproj'] },
+    {
+      icon: 'noc',
+      extensions: ['noc'],
+    },
     {
       icon: 'node',
       extensions: ['.node-version', '.nvmrc', 'node.config.json'],
@@ -4027,19 +4061,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'dune',
-      extensions: ['dune', 'dune-project', 'dune-workspace'],
-      filenamesGlob: [],
-      filename: true,
-    },
-    {
-      icon: 'opam',
-      extensions: ['opam'],
-      filenamesGlob: [],
-      extensionsGlob: [],
-      filename: false,
-    },
-    {
       icon: 'ogone',
       extensions: [],
       languages: [languages.ogone],
@@ -4054,9 +4075,17 @@ export const extensions: IFileCollection = {
       extensions: ['one', 'onepkg', 'onetoc', 'onetoc2', 'sig'],
     },
     {
-      icon: 'openscad',
+      icon: 'opam',
+      extensions: ['opam'],
+      filenamesGlob: [],
+      extensionsGlob: [],
+      filename: false,
+    },
+    {
+      icon: 'openHAB',
       extensions: [],
-      languages: [languages.scad],
+      languages: [languages.openHAB],
+      light: true,
     },
     { icon: 'opencl', extensions: ['cl', 'opencl'] },
     {
@@ -4066,19 +4095,18 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
-      icon: 'openHAB',
+      icon: 'openscad',
       extensions: [],
-      languages: [languages.openHAB],
-      light: true,
-    },
-    {
-      icon: 'opentofu',
-      extensions: ['tofu', 'tofu.json', 'tofutest.hcl', 'tofutest.json'],
+      languages: [languages.scad],
     },
     {
       icon: 'opentofu',
       extensions: ['.opentofu-version'],
       filename: true,
+    },
+    {
+      icon: 'opentofu',
+      extensions: ['tofu', 'tofu.json', 'tofutest.hcl', 'tofutest.json'],
     },
     {
       icon: 'org',
@@ -4109,7 +4137,6 @@ export const extensions: IFileCollection = {
     },
     { icon: 'ovpn', extensions: ['ovpn'] },
     {
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'oxc',
       extensions: [
         '.oxlintignore',
@@ -4138,8 +4165,20 @@ export const extensions: IFileCollection = {
       languages: [languages.packer],
     },
     {
-      icon: 'parquet',
-      extensions: ['parquet'],
+      icon: 'packship',
+      extensions: [
+        '.packshiprc',
+        '.packshiprc.json',
+        '.packshiprc.js',
+        '.packshiprc.ts',
+        'packship.config.js',
+        'packship.config.ts',
+        'packship.config.mjs',
+        'packship.config.mts',
+        'packship.config.json',
+      ],
+      filename: true,
+      light: true,
     },
     {
       icon: 'paket',
@@ -4159,22 +4198,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'packship',
-      extensions: [
-        '.packshiprc',
-        '.packshiprc.json',
-        '.packshiprc.js',
-        '.packshiprc.ts',
-        'packship.config.js',
-        'packship.config.ts',
-        'packship.config.mjs',
-        'packship.config.mts',
-        'packship.config.json',
-      ],
-      filename: true,
-      light: true,
-    },
-    {
       icon: 'pandacss',
       filenamesGlob: ['panda.config'],
       extensions: [],
@@ -4185,6 +4208,10 @@ export const extensions: IFileCollection = {
       icon: 'parcel',
       extensions: ['.parcelrc'],
       filename: true,
+    },
+    {
+      icon: 'parquet',
+      extensions: ['parquet'],
     },
     { icon: 'patch', extensions: ['patch'] },
     {
@@ -4199,14 +4226,14 @@ export const extensions: IFileCollection = {
       languages: [languages.pddl],
     },
     {
-      icon: 'pddl_plan',
-      extensions: [],
-      languages: [languages.pddlplan],
-    },
-    {
       icon: 'pddl_happenings',
       extensions: [],
       languages: [languages.pddlhappenings],
+    },
+    {
+      icon: 'pddl_plan',
+      extensions: [],
+      languages: [languages.pddlplan],
     },
     { icon: 'pdf', extensions: ['pdf'] },
     {
@@ -4223,9 +4250,7 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      // Taken from https://peeky.dev/logo.svg
       icon: 'peeky',
-      // See: https://peeky.dev/guide/config.html
       extensions: ['peeky.config.ts', 'peeky.config.js', 'peeky.config.mjs'],
       filename: true,
     },
@@ -4361,14 +4386,14 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'plantuml',
+      extensions: ['pu', 'plantuml', 'iuml', 'puml'],
+    },
+    {
       icon: 'platformio',
       extensions: ['platformio.ini'],
       filename: true,
       languages: [languages.platformio],
-    },
-    {
-      icon: 'plantuml',
-      extensions: ['pu', 'plantuml', 'iuml', 'puml'],
     },
     {
       icon: 'playwright',
@@ -4537,27 +4562,29 @@ export const extensions: IFileCollection = {
       languages: [languages.powershell],
     },
     {
-      icon: 'powershell_psm',
-      extensions: ['psm1'],
-    },
-    {
-      icon: 'powershell_psd',
-      extensions: ['psd1'],
+      icon: 'powershell2',
+      extensions: [],
+      languages: [languages.powershell],
+
+      disabled: true,
     },
     {
       icon: 'powershell_format',
       extensions: ['format.ps1xml'],
     },
     {
-      icon: 'powershell_types',
-      extensions: ['types.ps1xml'],
+      icon: 'powershell_psd',
+      extensions: ['psd1'],
     },
     {
-      icon: 'powershell2',
-      extensions: [],
-      languages: [languages.powershell],
+      icon: 'powershell_psd2',
+      extensions: ['psd1'],
 
       disabled: true,
+    },
+    {
+      icon: 'powershell_psm',
+      extensions: ['psm1'],
     },
     {
       icon: 'powershell_psm2',
@@ -4566,10 +4593,8 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'powershell_psd2',
-      extensions: ['psd1'],
-
-      disabled: true,
+      icon: 'powershell_types',
+      extensions: ['types.ps1xml'],
     },
     {
       icon: 'preact',
@@ -4598,14 +4623,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'prettier',
       extensions: [],
-      filenamesGlob: ['prettier.config'],
-      extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts', 'coffee'],
-      light: true,
-      filename: true,
-    },
-    {
-      icon: 'prettier',
-      extensions: [],
       filenamesGlob: ['.prettierrc'],
       extensionsGlob: [
         'js',
@@ -4620,6 +4637,14 @@ export const extensions: IFileCollection = {
         'yaml',
         'toml',
       ],
+      light: true,
+      filename: true,
+    },
+    {
+      icon: 'prettier',
+      extensions: [],
+      filenamesGlob: ['prettier.config'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts', 'coffee'],
       light: true,
       filename: true,
     },
@@ -4663,13 +4688,13 @@ export const extensions: IFileCollection = {
       languages: [languages.prometheus],
     },
     {
+      icon: 'proteus',
+      extensions: ['pdsprj', 'dsn'],
+    },
+    {
       icon: 'protobuf',
       extensions: [],
       languages: [languages.protobuf],
-    },
-    {
-      icon: 'proteus',
-      extensions: ['pdsprj', 'dsn'],
     },
     {
       icon: 'protractor',
@@ -4721,23 +4746,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'pyrefly',
-      extensions: ['pyrefly.toml'],
-      light: true,
-      filename: true,
-    },
-    {
-      icon: 'pyret',
-      extensions: [],
-      languages: [languages.pyret],
-    },
-    {
-      icon: 'biome',
-      extensions: ['biome.json', 'biome.jsonc', '.biome.json', '.biome.jsonc'],
-      filename: true,
-      languages: [languages.biomesyntaxtree],
-    },
-    {
       icon: 'pyenv',
       extensions: ['.python-version'],
       filename: true,
@@ -4751,6 +4759,17 @@ export const extensions: IFileCollection = {
       icon: 'pypi',
       extensions: ['pyproject.toml'],
       filename: true,
+    },
+    {
+      icon: 'pyrefly',
+      extensions: ['pyrefly.toml'],
+      light: true,
+      filename: true,
+    },
+    {
+      icon: 'pyret',
+      extensions: [],
+      languages: [languages.pyret],
     },
     {
       icon: 'pyscript',
@@ -4858,6 +4877,11 @@ export const extensions: IFileCollection = {
       languages: [languages.r],
     },
     {
+      icon: 'ra_syntax_tree',
+      extensions: ['rast'],
+      languages: [languages.rast],
+    },
+    {
       icon: 'racket',
       extensions: [],
       languages: [languages.racket],
@@ -4869,12 +4893,12 @@ export const extensions: IFileCollection = {
       filename: true,
       light: true,
     },
-    { icon: 'rake', extensions: ['rake'] },
     {
       icon: 'rake',
       extensions: ['Rakefile'],
       filename: true,
     },
+    { icon: 'rake', extensions: ['rake'] },
     {
       icon: 'raku',
       extensions: [],
@@ -4885,11 +4909,6 @@ export const extensions: IFileCollection = {
       icon: 'raml',
       extensions: [],
       languages: [languages.raml],
-    },
-    {
-      icon: 'ra_syntax_tree',
-      extensions: ['rast'],
-      languages: [languages.rast],
     },
     {
       icon: 'razor',
@@ -5048,6 +5067,11 @@ export const extensions: IFileCollection = {
       languages: [languages.ripple],
     },
     {
+      icon: 'rmd',
+      extensions: [],
+      languages: [languages.rmd],
+    },
+    {
       icon: 'rnc',
       extensions: ['rnc'],
       languages: [languages.rnc],
@@ -5075,7 +5099,6 @@ export const extensions: IFileCollection = {
       languages: [languages.robotstxt],
     },
     {
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'rolldown',
       extensions: [],
       filenamesGlob: [
@@ -5101,19 +5124,14 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'ron',
-      extensions: ['ron'],
-    },
-    {
       icon: 'rome',
       light: true,
       extensions: ['rome.json'],
       filename: true,
     },
     {
-      icon: 'rmd',
-      extensions: [],
-      languages: [languages.rmd],
+      icon: 'ron',
+      extensions: ['ron'],
     },
     { icon: 'rproj', extensions: ['rproj'] },
     {
@@ -5149,13 +5167,13 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'ruby',
-      extensions: ['rbs'],
-      languages: [languages.ruby],
+      extensions: ['.ruby-version'],
+      filename: true,
     },
     {
       icon: 'ruby',
-      extensions: ['.ruby-version'],
-      filename: true,
+      extensions: ['rbs'],
+      languages: [languages.ruby],
     },
     {
       icon: 'ruff',
@@ -5223,6 +5241,11 @@ export const extensions: IFileCollection = {
       languages: [languages.scala],
     },
     {
+      icon: 'scilab',
+      extensions: [],
+      languages: [languages.scilab],
+    },
+    {
       icon: 'script',
       extensions: [],
       languages: [languages.vbscript],
@@ -5231,11 +5254,6 @@ export const extensions: IFileCollection = {
       icon: 'scss',
       extensions: ['scssm'],
       languages: [languages.scss],
-    },
-    {
-      icon: 'scilab',
-      extensions: [],
-      languages: [languages.scilab],
     },
     {
       icon: 'sdlang',
@@ -5276,13 +5294,6 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'serverless',
-      extensions: [],
-      filenamesGlob: ['serverless'],
-      extensionsGlob: ['yml', 'json', 'js', 'ts'],
-      filename: true,
-    },
-    {
       icon: 'sequelize',
       extensions: ['.sequelizerc'],
       filenamesGlob: ['.sequelizerc'],
@@ -5290,9 +5301,16 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'shaderlab',
-      extensions: ['unity'],
-      languages: [languages.shaderlab],
+      icon: 'serverless',
+      extensions: [],
+      filenamesGlob: ['serverless'],
+      extensionsGlob: ['yml', 'json', 'js', 'ts'],
+      filename: true,
+    },
+    {
+      icon: 'shadcn',
+      extensions: ['components.json'],
+      filename: true,
       light: true,
     },
     {
@@ -5302,15 +5320,15 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'shaderlab',
+      extensions: ['unity'],
+      languages: [languages.shaderlab],
+      light: true,
+    },
+    {
       icon: 'shaderslang',
       extensions: [],
       languages: [languages.shaderslang],
-    },
-    {
-      icon: 'shadcn',
-      extensions: ['components.json'],
-      filename: true,
-      light: true,
     },
     {
       icon: 'shell',
@@ -5328,13 +5346,23 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'siyuan',
-      extensions: ['sy'],
+      icon: 'silverstripe',
+      extensions: [],
+      languages: [languages.silverstripe],
     },
     {
       icon: 'sino',
       extensions: [],
       languages: [languages.sino],
+    },
+    {
+      icon: 'sitemap',
+      extensions: ['sitemap.xml', 'sitemap.rss', 'sitemap.txt', 'sitemap.atom'],
+      filename: true,
+    },
+    {
+      icon: 'siyuan',
+      extensions: ['sy'],
     },
     { icon: 'sketch', extensions: ['sketch'] },
     {
@@ -5343,6 +5371,11 @@ export const extensions: IFileCollection = {
       languages: [languages.skill],
 
       light: true,
+    },
+    {
+      icon: 'skipper',
+      extensions: ['eskip'],
+      languages: [languages.skipper],
     },
     {
       icon: 'slangacademic',
@@ -5383,21 +5416,6 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
-      icon: 'silverstripe',
-      extensions: [],
-      languages: [languages.silverstripe],
-    },
-    {
-      icon: 'sitemap',
-      extensions: ['sitemap.xml', 'sitemap.rss', 'sitemap.txt', 'sitemap.atom'],
-      filename: true,
-    },
-    {
-      icon: 'skipper',
-      extensions: ['eskip'],
-      languages: [languages.skipper],
-    },
-    {
       icon: 'smarty',
       extensions: [],
       languages: [languages.smarty],
@@ -5409,12 +5427,12 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'smolmachine',
-      extensions: ['smolfile'],
+      extensions: ['.smolmachine', 'smolfile.toml'],
+      filename: true,
     },
     {
       icon: 'smolmachine',
-      extensions: ['.smolmachine', 'smolfile.toml'],
-      filename: true,
+      extensions: ['smolfile'],
     },
     {
       icon: 'snakemake',
@@ -5516,6 +5534,13 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.stencil, languages.stencilhtml],
     },
+    { icon: 'storyboard', extensions: ['storyboard'] },
+    {
+      icon: 'storybook',
+      extensions: [],
+      filenamesGlob: ['story', 'stories'],
+      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', 'mdx', 'svelte'],
+    },
     {
       icon: 'stryker',
       extensions: [],
@@ -5530,20 +5555,12 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['mjs', 'cjs', 'js', 'conf', 'json'],
       filename: true,
     },
-    { icon: 'style', extensions: [] },
-    {
-      icon: 'stylelint',
-      extensions: ['.stylelintrc', '.stylelintignore', '.stylelintcache'],
-      filenamesGlob: ['stylelint.config', '.stylelintrc'],
-      extensionsGlob: ['js', 'json', 'yaml', 'yml', 'ts', 'cjs', 'mjs'],
-      light: true,
-      filename: true,
-    },
     {
       icon: 'stylable',
       extensions: [],
       languages: [languages.stylable],
     },
+    { icon: 'style', extensions: [] },
     {
       icon: 'styleci',
       extensions: ['.styleci.yml'],
@@ -5555,6 +5572,14 @@ export const extensions: IFileCollection = {
       languages: [languages.styled],
     },
     {
+      icon: 'stylelint',
+      extensions: ['.stylelintrc', '.stylelintignore', '.stylelintcache'],
+      filenamesGlob: ['stylelint.config', '.stylelintrc'],
+      extensionsGlob: ['js', 'json', 'yaml', 'yml', 'ts', 'cjs', 'mjs'],
+      light: true,
+      filename: true,
+    },
+    {
       icon: 'stylish_haskell',
       extensions: ['.stylish-haskell.yaml'],
       filename: true,
@@ -5564,13 +5589,6 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.stylus],
       light: true,
-    },
-    { icon: 'storyboard', extensions: ['storyboard'] },
-    {
-      icon: 'storybook',
-      extensions: [],
-      filenamesGlob: ['story', 'stories'],
-      extensionsGlob: ['js', 'jsx', 'ts', 'tsx', 'mdx', 'svelte'],
     },
     {
       icon: 'sublime',
@@ -5660,11 +5678,9 @@ export const extensions: IFileCollection = {
       languages: [languages.t4],
     },
     {
-      icon: 'tamagui',
-      extensions: [],
-      filenamesGlob: ['tamagui', 'tamagui.config'],
-      extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
-      filename: true,
+      icon: 'tablegen',
+      extensions: ['td'],
+      languages: [languages.tablegen],
     },
     {
       icon: 'tailwind',
@@ -5677,6 +5693,13 @@ export const extensions: IFileCollection = {
         '.tailwindrc',
       ],
       extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json', 'mjs'],
+      filename: true,
+    },
+    {
+      icon: 'tamagui',
+      extensions: [],
+      filenamesGlob: ['tamagui', 'tamagui.config'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
       filename: true,
     },
     {
@@ -5703,11 +5726,7 @@ export const extensions: IFileCollection = {
       extensions: ['tauri.conf.json', '.taurignore'],
       filename: true,
     },
-    {
-      icon: 'tablegen',
-      extensions: ['td'],
-      languages: [languages.tablegen],
-    },
+    { icon: 'tcl', extensions: ['tcl', 'exp'] },
     {
       icon: 'teal',
       extensions: [],
@@ -5719,12 +5738,6 @@ export const extensions: IFileCollection = {
       languages: [languages.templ],
     },
     {
-      icon: 'tt',
-      extensions: ['tt2'],
-      languages: [languages.templatetoolkit],
-    },
-    { icon: 'tcl', extensions: ['tcl', 'exp'] },
-    {
       icon: 'tera',
       extensions: [],
       languages: [languages.tera],
@@ -5733,12 +5746,6 @@ export const extensions: IFileCollection = {
       icon: 'terraform',
       extensions: ['tfstate', 'tfvars', 'tf', 'tf.json'],
       languages: [languages.terraform],
-    },
-    {
-      icon: 'tm',
-      extensions: ['tm', 'tm.hcl'],
-
-      light: true,
     },
     { icon: 'test', extensions: ['tst'] },
     {
@@ -5756,13 +5763,6 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'testplane',
-      extensions: [],
-      filenamesGlob: ['testplane.conf', 'testplane.config'],
-      extensionsGlob: ['ts', 'js', 'cts', 'cjs'],
-      filename: true,
-    },
-    {
-      icon: 'testplane',
       extensions: [
         'testplane.ts',
         'testplane.js',
@@ -5772,6 +5772,13 @@ export const extensions: IFileCollection = {
         'testplane.jsx',
       ],
       filename: false,
+    },
+    {
+      icon: 'testplane',
+      extensions: [],
+      filenamesGlob: ['testplane.conf', 'testplane.config'],
+      extensionsGlob: ['ts', 'js', 'cts', 'cjs'],
+      filename: true,
     },
     {
       icon: 'testts',
@@ -5814,6 +5821,11 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'tfs',
+      extensions: ['.tfignore'],
+      filename: true,
+    },
+    {
       icon: 'thinkscript',
       extensions: [],
       languages: [languages.thinkscript],
@@ -5825,9 +5837,10 @@ export const extensions: IFileCollection = {
       languages: [languages.tiltfile],
     },
     {
-      icon: 'tfs',
-      extensions: ['.tfignore'],
-      filename: true,
+      icon: 'tm',
+      extensions: ['tm', 'tm.hcl'],
+
+      light: true,
     },
     {
       icon: 'tmux',
@@ -5914,6 +5927,7 @@ export const extensions: IFileCollection = {
         'tsconfig.base',
         'tsconfig.build',
         'tsconfig.cjs',
+        'tsconfig.client',
         'tsconfig.common',
         'tsconfig.debug',
         'tsconfig.dev',
@@ -5982,6 +5996,11 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'tt',
+      extensions: ['tt2'],
+      languages: [languages.templatetoolkit],
+    },
+    {
       icon: 'ttcn',
       extensions: [],
       languages: [languages.ttcn],
@@ -5990,6 +6009,17 @@ export const extensions: IFileCollection = {
       icon: 'tuc',
       extensions: [],
       languages: [languages.tuc],
+    },
+    {
+      icon: 'turbo',
+      extensions: [
+        'turbo.json',
+        'turbo.jsonc',
+        'microfrontends.json',
+        'microfrontends.jsonc',
+      ],
+      light: true,
+      filename: true,
     },
     {
       icon: 'twig',
@@ -6089,12 +6119,12 @@ export const extensions: IFileCollection = {
     },
     { icon: 'vanilla_extract', extensions: ['css.ts'] },
     { icon: 'vapi', extensions: ['vapi'] },
-    { icon: 'vash', extensions: ['vash'], light: true },
     {
       icon: 'vapor',
       extensions: ['vapor.yml'],
       filename: true,
     },
+    { icon: 'vash', extensions: ['vash'], light: true },
     {
       icon: 'vb',
       extensions: [],
@@ -6119,6 +6149,19 @@ export const extensions: IFileCollection = {
       languages: [languages.vento],
     },
     {
+      icon: 'vercel',
+      extensions: [
+        'now.json',
+        '.nowignore',
+        '.vercelignore',
+        '.vercel.approvers',
+      ],
+      filenamesGlob: ['vercel'],
+      extensionsGlob: ['json', 'js', 'cjs', 'mjs', 'ts', 'mts'],
+      light: true,
+      filename: true,
+    },
+    {
       icon: 'verilog',
       extensions: [],
       languages: [languages.verilog],
@@ -6129,7 +6172,6 @@ export const extensions: IFileCollection = {
       languages: [languages.vhdl],
     },
     {
-      // https://en.wikipedia.org/wiki/Video_file_format
       icon: 'video',
       extensions: [
         '3g2',
@@ -6174,7 +6216,6 @@ export const extensions: IFileCollection = {
       languages: [languages.viml],
     },
     {
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'vite',
       filenamesGlob: ['vite.config'],
       extensions: [],
@@ -6183,9 +6224,7 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'vitest',
-      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.config'],
       extensions: [],
       extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
@@ -6194,9 +6233,7 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
-      // Taken from https://drive.google.com/drive/folders/19FVA6toa2elRXRXO16wrmLn1Rsbhj2Te
       icon: 'vitest',
-      // See https://github.com/vitest-dev/vitest/blob/main/packages/vitest/src/constants.ts
       filenamesGlob: ['vitest.workspace', 'vitest.projects'],
       extensions: [],
       extensionsGlob: ['json', 'js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
@@ -6237,6 +6274,25 @@ export const extensions: IFileCollection = {
       extensionsGlob: [],
       languages: [languages.snippets],
       filename: false,
+    },
+    {
+      icon: 'vscode-insiders',
+      extensions: ['.vscodeignore'],
+      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
+      extensionsGlob: ['json'],
+      filename: true,
+
+      disabled: true,
+    },
+    {
+      icon: 'vscode-insiders',
+      extensions: ['code-snippets', 'code-workspace'],
+      filenamesGlob: [],
+      extensionsGlob: [],
+      languages: [languages.snippets],
+      filename: false,
+
+      disabled: true,
     },
     {
       icon: 'vscode2',
@@ -6283,25 +6339,6 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['js', 'json', 'mjs'],
       filename: true,
     },
-    {
-      icon: 'vscode-insiders',
-      extensions: ['.vscodeignore'],
-      filenamesGlob: ['.vscode/launch', '.vscode/tasks', 'vscodeignore'],
-      extensionsGlob: ['json'],
-      filename: true,
-
-      disabled: true,
-    },
-    {
-      icon: 'vscode-insiders',
-      extensions: ['code-snippets', 'code-workspace'],
-      filenamesGlob: [],
-      extensionsGlob: [],
-      languages: [languages.snippets],
-      filename: false,
-
-      disabled: true,
-    },
     { icon: 'vsix', extensions: ['vsix'], light: true },
     {
       icon: 'vsixmanifest',
@@ -6324,6 +6361,10 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'vvvvvv',
+      extensions: ['vvvvvv'],
+    },
+    {
       icon: 'vyper',
       extensions: ['vyi'],
       languages: [languages.vyper],
@@ -6341,9 +6382,10 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'watchmanconfig',
-      extensions: ['.watchmanconfig'],
+      icon: 'warp',
+      extensions: ['warp.md'],
       filename: true,
+      light: true,
     },
     {
       icon: 'wasm',
@@ -6354,6 +6396,11 @@ export const extensions: IFileCollection = {
       icon: 'wasp',
       extensions: ['wasp.ts'],
       languages: [languages.wasp],
+    },
+    {
+      icon: 'watchmanconfig',
+      extensions: ['.watchmanconfig'],
+      filename: true,
     },
     {
       icon: 'wdio',
@@ -6439,9 +6486,7 @@ export const extensions: IFileCollection = {
       languages: [languages.wikitext],
     },
     {
-      // Taken from https://windicss.org/assets/logo.svg
       icon: 'windi',
-      // See: https://windicss.org/guide/configuration.html#config-file
       extensions: ['windi.config.ts', 'windi.config.js'],
       filename: true,
     },
@@ -6489,12 +6534,16 @@ export const extensions: IFileCollection = {
       extensions: [],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
     },
-    { icon: 'xcode', extensions: ['xcodeproj'] },
+    {
+      icon: 'xaml',
+      extensions: ['xaml', 'axaml'],
+    },
     {
       icon: 'xcode',
       extensions: ['.xcode-version'],
       filename: true,
     },
+    { icon: 'xcode', extensions: ['xcodeproj'] },
     {
       icon: 'xfl',
       extensions: ['xfl'],
@@ -6509,11 +6558,6 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'xml',
-      extensions: ['pex', 'tmlanguage'],
-      languages: [languages.xml],
-    },
-    {
-      icon: 'xml',
       extensions: [
         '.actionScriptProperties',
         '.flexLibProperties',
@@ -6523,8 +6567,9 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'xaml',
-      extensions: ['xaml', 'axaml'],
+      icon: 'xml',
+      extensions: ['pex', 'tmlanguage'],
+      languages: [languages.xml],
     },
     {
       icon: 'xo',
@@ -6534,15 +6579,15 @@ export const extensions: IFileCollection = {
     {
       icon: 'xo',
       extensions: [],
-      filenamesGlob: ['xo.config'],
-      extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
+      filenamesGlob: ['.xo-config'],
+      extensionsGlob: ['js', 'json', 'cjs'],
       filename: true,
     },
     {
       icon: 'xo',
       extensions: [],
-      filenamesGlob: ['.xo-config'],
-      extensionsGlob: ['js', 'json', 'cjs'],
+      filenamesGlob: ['xo.config'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
       filename: true,
     },
     {
@@ -6573,16 +6618,6 @@ export const extensions: IFileCollection = {
       icon: 'xsl',
       extensions: [],
       languages: [languages.xsl],
-    },
-    {
-      icon: 'vvvvvv',
-      extensions: ['vvvvvv'],
-    },
-    {
-      icon: 'warp',
-      extensions: ['warp.md'],
-      filename: true,
-      light: true,
     },
     {
       icon: 'yacc',
@@ -6647,21 +6682,11 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
-      icon: 'vercel',
-      extensions: [
-        'now.json',
-        '.nowignore',
-        '.vercelignore',
-        '.vercel.approvers',
-      ],
-      filenamesGlob: ['vercel'],
-      extensionsGlob: ['json', 'js', 'cjs', 'mjs', 'ts', 'mts'],
+      icon: 'zed',
+      extensions: ['.zedignore'],
+      filenamesGlob: ['.zed/launch', '.zed/debug', '.zed/tasks', 'zedignore'],
+      extensionsGlob: ['json'],
       light: true,
-      filename: true,
-    },
-    {
-      icon: 'liara',
-      extensions: ['liara.json', '.liaraignore'],
       filename: true,
     },
     {
@@ -6673,30 +6698,6 @@ export const extensions: IFileCollection = {
       icon: 'zig',
       extensions: [],
       languages: [languages.zig],
-    },
-    {
-      icon: 'turbo',
-      extensions: [
-        'turbo.json',
-        'turbo.jsonc',
-        'microfrontends.json',
-        'microfrontends.jsonc',
-      ],
-      light: true,
-      filename: true,
-    },
-    {
-      icon: 'doppler',
-      extensions: ['doppler.yaml', 'doppler-template.yaml'],
-      filename: true,
-    },
-    {
-      icon: 'zed',
-      extensions: ['.zedignore'],
-      filenamesGlob: ['.zed/launch', '.zed/debug', '.zed/tasks', 'zedignore'],
-      extensionsGlob: ['json'],
-      light: true,
-      filename: true,
     },
     {
       icon: 'zip',
@@ -6740,20 +6741,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'zizmor',
       extensions: ['zizmor.yaml', 'zizmor.yml'],
-      filename: true,
-    },
-    {
-      icon: 'knip',
-      extensions: [
-        'knip.json',
-        'knip.jsonc',
-        '.knip.json',
-        '.knip.jsonc',
-        'knip.ts',
-        'knip.js',
-        'knip.config.ts',
-        'knip.config.js',
-      ],
       filename: true,
     },
     {

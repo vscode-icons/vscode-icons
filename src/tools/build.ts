@@ -4,7 +4,7 @@ import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';
 import { IconsGenerator } from '../iconsManifest/iconsGenerator';
 
-const build = async (argv: string[]): Promise<void> => {
+async function build(argv: string[]): Promise<void> {
   try {
     constants.environment.production = argv.some((arg: string) =>
       /release|production/.test(arg),
@@ -15,6 +15,6 @@ const build = async (argv: string[]): Promise<void> => {
   } catch (error: unknown) {
     ErrorHandler.logError(error);
   }
-};
+}
 
 void build(process.argv);

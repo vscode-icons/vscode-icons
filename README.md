@@ -1,13 +1,14 @@
 <div align="center">
-
-### Bring real icons to your [Visual Studio Code](https://code.visualstudio.com)
-
-<p><small>minimum supported version: <strong>1.104.3</strong></small></p>
-
-<br/>
-
-![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
-
+  <h3>
+    Bring real icons to your
+    <a href="https://code.visualstudio.com">Visual Studio Code</a>
+  </h3>
+  <p><small>minimum supported version: <strong>1.104.3</strong></small></p>
+  <br />
+  <img
+    src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif"
+    alt="demo"
+  />
 </div>
 
 ---

@@ -39,10 +39,6 @@ export const extensions: IFolderCollection = {
     },
     { icon: 'astro', extensions: ['.astro'] },
     {
-      icon: 'aurelia',
-      extensions: ['aurelia_project'],
-    },
-    {
       icon: 'audio',
       extensions: [
         'audio',
@@ -54,6 +50,10 @@ export const extensions: IFolderCollection = {
         'sounds',
         '.sounds',
       ],
+    },
+    {
+      icon: 'aurelia',
+      extensions: ['aurelia_project'],
     },
     {
       icon: 'auth',
@@ -97,24 +97,28 @@ export const extensions: IFolderCollection = {
     { icon: 'circleci', extensions: ['.circleci'] },
     { icon: 'claude', extensions: ['.claude'] },
     {
+      icon: 'cli',
+      extensions: [
+        'cli',
+        'cmd',
+        'command',
+        'commands',
+        'commandline',
+        'console',
+      ],
+    },
+    {
+      icon: 'client',
+      extensions: ['client', 'clients'],
+    },
+    {
       icon: 'cloudflare',
       extensions: ['.cloudflare', 'cloudflare'],
     },
+    { icon: 'cmake', extensions: ['.cmake', 'cmake'] },
     {
-      icon: 'controller',
-      extensions: [
-        '__controller__',
-        '__controllers__',
-        'controller',
-        'controllers',
-        '.controllers',
-        '__handler__',
-        '__handlers__',
-        'handler',
-        '.handler',
-        'handlers',
-        '.handlers',
-      ],
+      icon: 'common',
+      extensions: ['common'],
     },
     {
       icon: 'component',
@@ -131,26 +135,6 @@ export const extensions: IFolderCollection = {
     {
       icon: 'composer',
       extensions: ['composer', '.composer'],
-    },
-    {
-      icon: 'cli',
-      extensions: [
-        'cli',
-        'cmd',
-        'command',
-        'commands',
-        'commandline',
-        'console',
-      ],
-    },
-    {
-      icon: 'client',
-      extensions: ['client', 'clients'],
-    },
-    { icon: 'cmake', extensions: ['.cmake', 'cmake'] },
-    {
-      icon: 'common',
-      extensions: ['common'],
     },
     {
       icon: 'config',
@@ -177,6 +161,22 @@ export const extensions: IFolderCollection = {
         '.ini',
         'initializers',
         '.initializers',
+      ],
+    },
+    {
+      icon: 'controller',
+      extensions: [
+        '__controller__',
+        '__controllers__',
+        'controller',
+        'controllers',
+        '.controllers',
+        '__handler__',
+        '__handlers__',
+        'handler',
+        '.handler',
+        'handlers',
+        '.handlers',
       ],
     },
     { icon: 'coverage', extensions: ['coverage'] },
@@ -251,6 +251,10 @@ export const extensions: IFolderCollection = {
       light: true,
     },
     {
+      icon: 'discord',
+      extensions: ['discord', '.discord'],
+    },
+    {
       icon: 'dist',
       extensions: [
         'dist',
@@ -317,10 +321,6 @@ export const extensions: IFolderCollection = {
       light: true,
     },
     {
-      icon: 'frontcommerce',
-      extensions: ['.front-commerce'],
-    },
-    {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
     },
@@ -333,12 +333,16 @@ export const extensions: IFolderCollection = {
       extensions: ['fonts', 'font', 'fnt', 'webfonts'],
       light: true,
     },
+    {
+      icon: 'frontcommerce',
+      extensions: ['.front-commerce'],
+    },
     { icon: 'gcp', extensions: ['gcp', '.gcp'] },
+    { icon: 'gemini', extensions: ['.gemini'] },
     {
       icon: 'gentoo',
       extensions: ['gentoo'],
     },
-    { icon: 'gemini', extensions: ['.gemini'] },
     {
       icon: 'git',
       extensions: ['.git', 'submodules', '.submodules'],
@@ -521,7 +525,6 @@ export const extensions: IFolderCollection = {
       icon: 'middleware',
       extensions: ['middleware', 'middlewares'],
     },
-    { icon: 'mjml', extensions: ['mjml', '.mjml'] },
     {
       icon: 'minecraft',
       extensions: ['.minecraft'],
@@ -530,13 +533,10 @@ export const extensions: IFolderCollection = {
       icon: 'minikube',
       extensions: ['minikube', 'minik8s', 'minikuber'],
     },
+    { icon: 'mjml', extensions: ['mjml', '.mjml'] },
     {
       icon: 'mobile',
       extensions: ['mobile', 'mobiles', '.mobile', '.mobiles'],
-    },
-    {
-      icon: 'mojo',
-      extensions: ['mojo'],
     },
     {
       icon: 'mock',
@@ -558,6 +558,10 @@ export const extensions: IFolderCollection = {
       extensions: ['modules'],
     },
     {
+      icon: 'mojo',
+      extensions: ['mojo'],
+    },
+    {
       icon: 'mongodb',
       extensions: ['mongodb', 'mongo'],
     },
@@ -571,7 +575,6 @@ export const extensions: IFolderCollection = {
       extensions: ['mysqldb', 'mysql'],
       light: true,
     },
-
     {
       icon: 'netlify',
       extensions: ['netlify'],
@@ -596,12 +599,16 @@ export const extensions: IFolderCollection = {
       extensions: ['notification', 'notifications', 'event', 'events'],
     },
     { icon: 'nuget', extensions: ['.nuget'] },
-    { icon: 'ohpm', extensions: ['oh_modules'] },
+    {
+      icon: 'nuxt',
+      extensions: ['nuxt', '.nuxt'],
+    },
     {
       icon: 'ocx',
       extensions: ['.ocx'],
       light: true,
     },
+    { icon: 'ohpm', extensions: ['oh_modules'] },
     {
       icon: 'package',
       extensions: ['package', 'packages', '.package', '.packages', 'pkg'],
@@ -646,33 +653,20 @@ export const extensions: IFolderCollection = {
       icon: 'python',
       extensions: ['.venv', '.virtualenv', '__pycache__'],
     },
-    {
-      icon: 'vercel',
-      extensions: ['.vercel'],
-    },
-    {
-      icon: 'vitepress',
-      extensions: ['.vitepress'],
-    },
-    { icon: 'redis', extensions: ['redis'] },
     { icon: 'ravendb', extensions: ['ravendb'] },
-    {
-      icon: 'route',
-      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
-    },
     {
       icon: 'redhat',
       extensions: ['redhat', 'rhel'],
     },
+    { icon: 'redis', extensions: ['redis'] },
     {
       icon: 'redux',
       extensions: ['redux'],
       light: true,
     },
-
     {
-      icon: 'nuxt',
-      extensions: ['nuxt', '.nuxt'],
+      icon: 'route',
+      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
     },
     {
       icon: 'sass',
@@ -759,6 +753,14 @@ export const extensions: IFolderCollection = {
       extensions: ['telegram', '.telegram', 'Telegram', 'TelegramDesktop'],
     },
     {
+      icon: 'temp',
+      extensions: ['temp', '.temp', 'tmp', '.tmp'],
+    },
+    {
+      icon: 'template',
+      extensions: ['template', '.template', 'templates', '.templates'],
+    },
+    {
       icon: 'test',
       extensions: [
         'tests',
@@ -774,16 +776,7 @@ export const extensions: IFolderCollection = {
         'integration',
       ],
     },
-    {
-      icon: 'temp',
-      extensions: ['temp', '.temp', 'tmp', '.tmp'],
-    },
-    {
-      icon: 'template',
-      extensions: ['template', '.template', 'templates', '.templates'],
-    },
     { icon: 'theme', extensions: ['theme', 'themes'] },
-    { icon: 'travis', extensions: ['.travis'] },
     {
       icon: 'tools',
       extensions: [
@@ -796,6 +789,7 @@ export const extensions: IFolderCollection = {
         'tooling',
       ],
     },
+    { icon: 'travis', extensions: ['.travis'] },
     {
       icon: 'trunk',
       extensions: ['.trunk'],
@@ -823,6 +817,10 @@ export const extensions: IFolderCollection = {
       extensions: ['vagrant', '.vagrant'],
     },
     {
+      icon: 'vercel',
+      extensions: ['.vercel'],
+    },
+    {
       icon: 'video',
       extensions: ['video', '.video', 'videos', '.videos'],
     },
@@ -843,6 +841,10 @@ export const extensions: IFolderCollection = {
         '_page',
         '_pages',
       ],
+    },
+    {
+      icon: 'vitepress',
+      extensions: ['.vitepress'],
     },
     {
       icon: 'void',
@@ -896,10 +898,6 @@ export const extensions: IFolderCollection = {
       extensions: ['.wasp'],
     },
     {
-      icon: 'wit',
-      extensions: ['wit'],
-    },
-    {
       icon: 'webpack',
       extensions: ['webpack', '.webpack'],
     },
@@ -910,6 +908,10 @@ export const extensions: IFolderCollection = {
     {
       icon: 'windsurf',
       extensions: ['.windsurf'],
+    },
+    {
+      icon: 'wit',
+      extensions: ['wit'],
     },
     {
       icon: 'www',

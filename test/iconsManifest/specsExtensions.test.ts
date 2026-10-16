@@ -105,6 +105,7 @@ describe('Specifications of supported extensions: tests', function () {
               (!Reflect.has(_file, 'disabled') ||
                 _file.disabled !== file.disabled) &&
               !Reflect.has(_file, 'filename') &&
+              !Reflect.has(file, 'filename') &&
               !isEqual(_file.extensions, file.extensions) &&
               !_file.checked &&
               _file.icon === file.icon;
