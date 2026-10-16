@@ -188,17 +188,11 @@ const disallowRaster = (reporter, _cheerio, ast) => {
   });
 };
 
-const disallowDescAttribute = (reporter, _cheerio, ast) => {
-  reporter.name = 'no-desc-attribute';
+const disallowDescElement = (reporter, _cheerio, ast) => {
+  reporter.name = 'no-desc-element';
   walk(ast, node => {
-    if (node.type !== 'tag') {
-      return;
-    }
-
-    for (const name of Object.keys(node.attribs ?? {})) {
-      if (name.toLowerCase() === 'desc') {
-        reporter.error("Disallowed SVG attribute: 'desc'");
-      }
+    if (node.type === 'tag' && node.name === 'desc') {
+      reporter.error('SVG <desc> elements are not allowed');
     }
   });
 };
@@ -212,9 +206,9 @@ const enforceTrailingNewline = (reporter, _cheerio, _ast, { filepath }) => {
 
 const enforceFileSize = (reporter, _cheerio, _ast, { filepath }) => {
   // recommended SVG size targets
-  // Under 1 KB	-> Excellent for simple icons
-  // 1–3 KB	-> Ideal for most icons
-  // 3–5 KB	-> Reasonable for more detailed icons
+  // Under 1 KiB	-> Excellent for simple icons
+  // 1–3 KiB	-> Ideal for most icons
+  // 3–5 KiB	-> Reasonable for more detailed icons
   reporter.name = 'file-size';
   const maxFileSize = 5 * 1024;
 
@@ -273,7 +267,7 @@ const customRuleSettings = {
   disallowMetadata: true,
   disallowEmbeddedImages: true,
   disallowRaster: true,
-  disallowDescAttribute: true,
+  disallowDescElement: true,
   enforceViewBox: true,
   enforceFileSize: false,
   enforceTrailingNewline: true,
@@ -288,7 +282,7 @@ const customRuleImplementations = {
   disallowMetadata,
   disallowEmbeddedImages,
   disallowRaster,
-  disallowDescAttribute,
+  disallowDescElement,
   enforceNumericPrecision,
   disallowTitle,
   enforceViewBox,
