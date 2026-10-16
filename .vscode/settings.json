@@ -22,7 +22,7 @@
   "files.exclude": {
     "out": false
   },
-  "npm.exclude": "**/submodules/**",
+  "npm.exclude": ["**/submodules", "**/out"],
   "search.exclude": {
     "out": true,
     "images": true,
