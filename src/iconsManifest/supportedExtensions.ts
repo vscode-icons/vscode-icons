@@ -2649,6 +2649,11 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'geolibre',
+      extensions: ['geolibre'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'gemini',
       extensions: ['gemini.md', 'GEMINI.md'],
       filename: true,
@@ -4974,6 +4979,11 @@ export const extensions: IFileCollection = {
       filenamesGlob: ['ecosystem.config'],
       extensionsGlob: ['js', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'pmtiles',
+      extensions: ['pmtiles'],
       format: FileFormat.svg,
     },
     {
