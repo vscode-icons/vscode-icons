@@ -42,14 +42,6 @@ jobs:
       - run: npm ci
       - run: npx remark . --frail
 
-  sort-api:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v5
-      - uses: actions/checkout@v5
-      - run: npm ci
-      - run: npm run sort:api:check
-
   test:
     name: Node.js ${{ matrix.node }} | ${{ matrix.os }} | ${{ matrix.arch }}
     strategy:

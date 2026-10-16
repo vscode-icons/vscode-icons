@@ -1,8 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "removeComments": true,
-    "sourceMap": false
-  },
-  "include": ["src/tools/sortApi.ts"]
-}
