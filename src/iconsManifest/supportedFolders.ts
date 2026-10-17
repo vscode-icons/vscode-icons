@@ -126,9 +126,6 @@ export const extensions: IFolderCollection = {
         'component',
         'components',
         '.components',
-        'gui',
-        'src-ui',
-        'ui',
         'widgets',
       ],
     },
@@ -323,6 +320,11 @@ export const extensions: IFolderCollection = {
     {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
+    },
+    {
+      icon: 'frontend',
+      extensions: ['frontend', '.frontend', 'front-end', '.front-end', 'ui', 'gui', 'src-ui'],
+      format: FileFormat.svg,
     },
     {
       icon: 'flutter',
