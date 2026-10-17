@@ -52,6 +52,12 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'accessibility',
+      extensions: ['ACCESSIBILITY.md'],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'actionscript',
       extensions: ['part'],
       languages: [languages.actionscript],
