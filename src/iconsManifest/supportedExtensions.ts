@@ -903,6 +903,11 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'codeofconduct',
+      extensions: ['CODE_OF_CONDUCT.md'],
+      filename: true,
+    },
+    {
       icon: 'codeowners',
       extensions: ['codeowners'],
       filename: true,
@@ -965,11 +970,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'conda',
       extensions: ['.condarc'],
-      filename: true,
-    },
-    {
-      icon: 'codeofconduct',
-      extensions: ['CODE_OF_CONDUCT.md'],
       filename: true,
     },
     {
