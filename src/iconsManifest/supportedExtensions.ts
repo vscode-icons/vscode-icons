@@ -4401,6 +4401,14 @@ export const extensions: IFileCollection = {
       extensions: ['pu', 'plantuml', 'iuml', 'puml'],
     },
     {
+      icon: 'platformatic',
+      extensions: ['watt.json', 'watt.json5'],
+      filenamesGlob: ['platformatic'],
+      extensionsGlob: ['json', 'json5', 'yml', 'yaml', 'tml', 'toml'],
+      filename: true,
+      light: true,
+    },
+    {
       icon: 'platformio',
       extensions: ['platformio.ini'],
       filename: true,
