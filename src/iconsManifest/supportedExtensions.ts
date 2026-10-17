@@ -3056,6 +3056,12 @@ export const extensions: IFileCollection = {
       languages: [languages.lsl],
     },
     {
+      icon: 'lte',
+      extensions: [],
+      languages: [languages.lte],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lua',
       extensions: [],
       languages: [languages.lua],
