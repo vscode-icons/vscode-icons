@@ -1,10 +1,4 @@
-import { cloneDeep, isEqual, unionWith } from 'lodash';
-import { dirname, isAbsolute, resolve } from 'path';
-import { ErrorHandler } from '../common/errorHandler';
-import { existsAsync, readdirAsync } from '../common/fsAsync';
-import { constants } from '../constants';
-import {
-  ConfigurationTarget,
+import type {
   IConfigManager,
   IFileExtension,
   IFolderExtension,
@@ -13,6 +7,15 @@ import {
   IVSCodeWorkspaceConfiguration,
   IVSIcons,
 } from '../models';
+
+import { dirname, isAbsolute, resolve } from 'path';
+
+import { cloneDeep, isEqual, unionWith } from 'lodash';
+
+import { ErrorHandler } from '../common/errorHandler';
+import { existsAsync, readdirAsync } from '../common/fsAsync';
+import { constants } from '../constants';
+import { ConfigurationTarget } from '../models';
 import { Utils } from '../utils';
 
 export class ConfigManager implements IConfigManager {

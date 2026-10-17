@@ -1,4 +1,4 @@
-import { IIconPath } from './iconPath';
+import type { IIconPath } from './iconPath';
 
 export interface IIconDefinition {
   _file: IIconPath;

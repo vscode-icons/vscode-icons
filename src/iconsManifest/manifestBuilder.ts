@@ -1,8 +1,10 @@
+import type * as models from '../models';
+
 import { cloneDeep, sortBy, sortedUniq } from 'lodash';
+
 import { existsAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
-import * as models from '../models';
 import {
   schema as defaultSchema,
   zedSchema as defaultZedSchema,
@@ -131,19 +133,26 @@ export class ManifestBuilder {
         zedSchema.themes[0].directory_icons.expanded;
     }
 
-    // When folders are hidden, remove the folder mapping references
+    // When folders are hidden, set the folder mapping references to empty
     // so VS Code doesn't reserve space for invisible folder icons.
     // This prevents the misleading indentation gap described in issue #3353.
-    const foldersDisabled = folders.default.folder?.disabled;
-    if (foldersDisabled) {
-      delete vscSchema.folder;
-      delete vscSchema.folderExpanded;
-      delete vscSchema.rootFolder;
-      delete vscSchema.rootFolderExpanded;
-      delete vscSchema.light.folder;
-      delete vscSchema.light.folderExpanded;
-      delete vscSchema.light.rootFolder;
-      delete vscSchema.light.rootFolderExpanded;
+    const isDisabled = (entry?: { disabled?: boolean }) =>
+      !entry || entry.disabled;
+    if (isDisabled(folders.default.folder)) {
+      vscSchema.folder = '';
+      vscSchema.folderExpanded = '';
+    }
+    if (isDisabled(folders.default.root_folder)) {
+      vscSchema.rootFolder = '';
+      vscSchema.rootFolderExpanded = '';
+    }
+    if (isDisabled(folders.default.folder_light)) {
+      vscSchema.light.folder = '';
+      vscSchema.light.folderExpanded = '';
+    }
+    if (isDisabled(folders.default.root_folder_light)) {
+      vscSchema.light.rootFolder = '';
+      vscSchema.light.rootFolderExpanded = '';
     }
 
     // set the rest of the schema

@@ -1,7 +1,9 @@
-import js from '@eslint/js';
-import { importX } from 'eslint-plugin-import-x';
-import { defineConfig, includeIgnoreFile } from 'eslint/config';
 import { join } from 'node:path';
+
+import js from '@eslint/js';
+import { defineConfig, includeIgnoreFile } from 'eslint/config';
+import { importX } from 'eslint-plugin-import-x';
+import perfectionist from 'eslint-plugin-perfectionist';
 import tseslint from 'typescript-eslint';
 
 export default defineConfig(
@@ -30,12 +32,20 @@ export default defineConfig(
           allow: ['info', 'error'],
         },
       ],
-      'no-duplicate-imports': 'error',
+      'no-duplicate-imports': ['error', { allowSeparateTypeImports: true }],
       'no-eval': 'error',
       'no-extra-bind': 'error',
       'no-invalid-this': 'error',
       'no-new-func': 'error',
       'no-new-wrappers': 'error',
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            "VariableDeclarator[init.type='ArrowFunctionExpression']:is([parent.parent.type='Program'], [parent.parent.type='ExportNamedDeclaration']), ExportDefaultDeclaration > ArrowFunctionExpression",
+          message: 'Use a function declaration for top-level functions.',
+        },
+      ],
       'no-return-await': 'error',
       'no-sequences': 'error',
       'no-template-curly-in-string': 'error',
@@ -73,7 +83,24 @@ export default defineConfig(
           markers: ['#region', '#endregion'],
         },
       ],
-
+      'sort-imports': ['error', { ignoreDeclarationSort: true }],
+      'import-x/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+      'import-x/first': 'error',
+      'import-x/newline-after-import': 'error',
+      'import-x/order': [
+        'error',
+        {
+          alphabetize: { order: 'asc' },
+          groups: [
+            'type',
+            'builtin',
+            'external',
+            ['parent', 'sibling', 'index'],
+          ],
+          'newlines-between': 'always',
+          sortTypesGroup: true,
+        },
+      ],
       'import-x/namespace': 'off',
       'import-x/no-unresolved': [
         'error',
@@ -85,7 +112,6 @@ export default defineConfig(
   },
   {
     files: ['**/*.ts'],
-    ignores: ['webpack.config.ts'],
     extends: [
       tseslint.configs.recommendedTypeChecked,
       importX.flatConfigs.typescript,
@@ -109,6 +135,7 @@ export default defineConfig(
         },
       ],
       '@typescript-eslint/consistent-type-definitions': 'error',
+      '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {
@@ -147,6 +174,54 @@ export default defineConfig(
     rules: {
       'prefer-arrow-callback': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+    },
+  },
+  {
+    files: ['src/iconsManifest/*.ts'],
+    plugins: { perfectionist },
+    settings: {
+      perfectionist: {
+        // Plain code point order, so `al` < `al_dal` and `c3` < `c_al`.
+        type: 'custom',
+        alphabet: String.fromCharCode(
+          ...Array.from({ length: 95 }, (_, i) => i + 32),
+        ),
+        ignoreCase: false,
+      },
+    },
+  },
+  {
+    files: [
+      'src/iconsManifest/supportedExtensions.ts',
+      'src/iconsManifest/supportedFolders.ts',
+    ],
+    rules: {
+      // Entries start with `icon`, so sorting by element text sorts by icon name.
+      'perfectionist/sort-arrays': [
+        'error',
+        {
+          useConfigurationIf: {
+            matchesAstSelector:
+              'Property[key.name="supported"] > ArrayExpression',
+          },
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/iconsManifest/languages.ts'],
+    rules: {
+      'perfectionist/sort-objects': [
+        'error',
+        {
+          useConfigurationIf: {
+            matchesAstSelector:
+              'VariableDeclarator[id.name="languages"] > ObjectExpression',
+          },
+        },
+      ],
     },
   },
 );

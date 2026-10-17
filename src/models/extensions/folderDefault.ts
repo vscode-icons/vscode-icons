@@ -1,4 +1,4 @@
-import { IDefaultExtension } from './defaultExtension';
+import type { IDefaultExtension } from './defaultExtension';
 
 export interface IFolderDefault {
   folder?: IDefaultExtension;

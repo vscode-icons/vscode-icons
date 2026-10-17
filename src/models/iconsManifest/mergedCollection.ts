@@ -1,4 +1,4 @@
-import { IFileCollection, IFolderCollection } from '../extensions';
+import type { IFileCollection, IFolderCollection } from '../extensions';
 
 export interface IMergedCollection {
   files: IFileCollection;

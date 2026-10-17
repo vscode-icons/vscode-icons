@@ -1,16 +1,18 @@
+import type {
+  IVSCodeManager,
+  IVSCodeUri,
+  IVSCodeWorkspaceFolder,
+} from '../../src/models';
+import type { IPackageManifest } from '../../src/models/packageManifest';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import * as packageJson from '../../../package.json';
-import {
-  IVSCodeManager,
-  IVSCodeWorkspaceFolder,
-  IVSCodeUri,
-} from '../../src/models';
+
+import packageJson from '../../../package.json';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
 import { vscode } from '../fixtures/vscode';
-import { IPackageManifest } from '../../src/models/packageManifest';
 
 describe('VSCodeManager: tests', function () {
   context('ensures that', function () {
@@ -99,7 +101,7 @@ describe('VSCodeManager: tests', function () {
 
         context(`is supported`, function () {
           it(`returns 'true'`, function () {
-            vscode.version = '1.99.0';
+            vscode.version = '1.104.3';
 
             expect(vscodeManager.isSupportedVersion).to.be.true;
           });

@@ -1,10 +1,12 @@
+import type { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { IconsGenerator } from '../../src/iconsManifest';
 import * as models from '../../src/models';
-import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';

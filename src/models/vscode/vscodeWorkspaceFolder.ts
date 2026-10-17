@@ -1,4 +1,4 @@
-import { IVSCodeUri } from './vscodeUri';
+import type { IVSCodeUri } from './vscodeUri';
 
 export interface IVSCodeWorkspaceFolder {
   readonly uri: IVSCodeUri;

@@ -1,8 +1,10 @@
+import type { IVSCodeManifest } from '../../src/models/packageManifest/vscode';
+import type { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
+
 import { expect } from 'chai';
-import * as packageJson from '../../../package.json';
+
+import packageJson from '../../../package.json';
 import { constants } from '../../src/constants';
-import { IVSCodeManifest } from '../../src/models/packageManifest/vscode';
-import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
 
 describe('Specifications: tests', function () {
   let manifest: IVSCodeManifest;

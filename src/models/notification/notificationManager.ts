@@ -1,4 +1,4 @@
-import { LangResourceKeys } from '../i18n';
+import type { LangResourceKeys } from '../i18n';
 
 export type LangResourceLike = string | number | LangResourceKeys;
 

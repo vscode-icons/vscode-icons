@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IVSCodeMemento } from './vscodeMemento';
+import type { IVSCodeMemento } from './vscodeMemento';
 
 export interface IVSCodeExtensionContext {
   extensionPath: string;
