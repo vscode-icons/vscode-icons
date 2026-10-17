@@ -33,7 +33,7 @@ function disallowEmptyElements(elementName) {
   };
 }
 
-function disallowAttributes(ruleName, delegate) {
+function disallowAttributes(ruleName, rule) {
   return function (reporter, _cheerio, ast) {
     reporter.name = `no-${ruleName}-attributes`;
     walk(ast, node => {
@@ -42,7 +42,7 @@ function disallowAttributes(ruleName, delegate) {
       }
 
       for (const name of Object.keys(node.attribs ?? {})) {
-        if (delegate(name, node)) {
+        if (rule(name, node)) {
           reporter.error(`Disallowed SVG attribute: '${name}'`);
         }
       }
