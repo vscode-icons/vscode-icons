@@ -9,43 +9,140 @@ function walk(ast, check) {
   ast.forEach(visit);
 }
 
-function disallowSvgComments(reporter, _cheerio, ast) {
-  reporter.name = 'no-svg-comments';
+function disallowComments(reporter, _cheerio, ast) {
+  reporter.name = 'no-comments';
   walk(ast, node => {
     if (node.type === 'comment') {
-      reporter.error('SVG comments are not allowed');
+      reporter.error('Comments are not allowed');
     }
   });
 }
 
-function disallowEmptyDefs(reporter, _cheerio, ast) {
-  reporter.name = 'non-empty-defs';
+function disallowEmptyElements(elementName) {
+  return function (reporter, _cheerio, ast) {
+    reporter.name = `non-empty-${elementName}`;
+    walk(ast, node => {
+      if (
+        node.type === 'tag' &&
+        node.name === elementName &&
+        !node.children?.some(child => child.type === 'tag')
+      ) {
+        reporter.error(`Empty <${elementName}> is not allowed`);
+      }
+    });
+  };
+}
+
+function disallowAttributes(ruleName, delegate) {
+  return function (reporter, _cheerio, ast) {
+    reporter.name = `no-${ruleName}-attributes`;
+    walk(ast, node => {
+      if (node.type !== 'tag') {
+        return;
+      }
+
+      for (const name of Object.keys(node.attribs ?? {})) {
+        if (delegate(name, node)) {
+          reporter.error(`Disallowed SVG attribute: '${name}'`);
+        }
+      }
+    });
+  };
+}
+
+function disallowElement(elementName) {
+  return function (reporter, _cheerio, ast) {
+    reporter.name = `no-${elementName}-element`;
+    walk(ast, node => {
+      if (node.type === 'tag' && node.name === elementName) {
+        reporter.error(`SVG <${elementName}> elements are not allowed`);
+      }
+    });
+  };
+}
+
+function disallowEmbeddedImages(reporter, _cheerio, ast) {
+  reporter.name = 'no-embedded-images';
+  const disallowedElements = new Set(['image', 'feimage', 'foreignobject']);
   walk(ast, node => {
     if (
       node.type === 'tag' &&
-      node.name === 'defs' &&
-      !node.children?.some(child => child.type === 'tag')
+      disallowedElements.has(node.name.toLowerCase())
     ) {
-      reporter.error('Empty <defs> is not allowed');
+      reporter.error(`Disallowed embedded-image element: <${node.name}>`);
     }
   });
 }
 
-function disallowEditorAttributes(reporter, _cheerio, ast) {
-  reporter.name = 'no-editor-attributes';
+function disallowRasterImages(reporter, _cheerio, ast) {
+  reporter.name = 'no-raster-images';
+  const rasterDataUriPattern = /\bdata:image\/(?!svg\+xml(?:[;,]|$))/i;
+  const urlPattern = /url\(\s*(?:"([^"]*)"|'([^']*)'|([^)]*))\s*\)/gi;
+  const rasterFilePattern =
+    /\.(?:apng|avif|bmp|gif|heic|heif|ico|jpe?g|jxl|png|tiff?|webp)(?:[?#].*)?$/i;
+  const containsRasterReference = value =>
+    rasterDataUriPattern.test(value) ||
+    [...value.matchAll(urlPattern)].some(
+      ([, doubleQuoted, singleQuoted, unquoted]) =>
+        rasterFilePattern.test(
+          (doubleQuoted ?? singleQuoted ?? unquoted).trim(),
+        ),
+    );
+
   walk(ast, node => {
-    if (node.type !== 'tag') {
+    const values =
+      node.type === 'tag'
+        ? Object.values(node.attribs ?? {})
+        : node.type === 'text'
+          ? [node.data ?? '']
+          : [];
+
+    if (values.some(containsRasterReference)) {
+      reporter.error('Raster image references are not allowed');
+    }
+  });
+}
+
+function enforceTrailingNewline(reporter, _cheerio, _ast, { filepath }) {
+  reporter.name = 'trailing-newline';
+  if (readFileSync(filepath).at(-1) !== 0x0a) {
+    reporter.error('SVG file must end with a newline');
+  }
+}
+
+function enforceFileSize(reporter, _cheerio, _ast, { filepath }) {
+  // recommended SVG size targets
+  // Under 1 KiB	-> Excellent for simple icons
+  // 1–3 KiB	-> Ideal for most icons
+  // 3–5 KiB	-> Reasonable for more detailed icons
+  reporter.name = 'file-size';
+  const maxFileSize = 5 * 1024;
+
+  if (statSync(filepath).size > maxFileSize) {
+    reporter.error('File must not exceed 5 KiB');
+  }
+}
+
+function enforceViewBox(reporter, _cheerio, ast, { filepath }) {
+  reporter.name = 'svg-viewbox';
+  const expectedViewBox =
+    resolve(filepath) === resolve('images/logo.svg')
+      ? '0 0 128 128'
+      : '0 0 32 32';
+
+  walk(ast, node => {
+    if (node.type !== 'tag' || node.name !== 'svg') {
       return;
     }
 
-    for (const name of Object.keys(node.attribs ?? {})) {
-      if (
-        /^(?:xmlns:)?(?:inkscape|sodipodi|illustrator|sketch)(?::|$)/i.test(
-          name,
-        )
-      ) {
-        reporter.error(`Disallowed SVG attribute: '${name}'`);
-      }
+    const viewBox = Object.entries(node.attribs ?? {}).find(
+      ([name]) => name.toLowerCase() === 'viewbox',
+    )?.[1];
+
+    if (viewBox !== expectedViewBox) {
+      reporter.error(
+        `SVG root element must have a 'viewBox' of '${expectedViewBox}'`,
+      );
     }
   });
 }
@@ -128,146 +225,18 @@ function enforceNumericPrecision(reporter, _cheerio, ast) {
   });
 }
 
-function disallowTitle(reporter, _cheerio, ast) {
-  reporter.name = 'no-title';
-  walk(ast, node => {
-    if (node.type === 'tag' && node.name === 'title') {
-      reporter.error('SVG <title> elements are not allowed');
-    }
-  });
-}
-
-function disallowMetadata(reporter, _cheerio, ast) {
-  reporter.name = 'no-metadata';
-  walk(ast, node => {
-    if (node.type === 'tag' && node.name === 'metadata') {
-      reporter.error('SVG <metadata> elements are not allowed');
-    }
-  });
-}
-
-function disallowEmbeddedImages(reporter, _cheerio, ast) {
-  reporter.name = 'no-embedded-images';
-  const disallowedElements = new Set(['image', 'feimage', 'foreignobject']);
-  walk(ast, node => {
-    if (
-      node.type === 'tag' &&
-      disallowedElements.has(node.name.toLowerCase())
-    ) {
-      reporter.error(`Disallowed embedded-image element: <${node.name}>`);
-    }
-  });
-}
-
-function disallowRaster(reporter, _cheerio, ast) {
-  reporter.name = 'no-raster-images';
-  const rasterDataUriPattern = /\bdata:image\/(?!svg\+xml(?:[;,]|$))/i;
-  const urlPattern = /url\(\s*(?:"([^"]*)"|'([^']*)'|([^)]*))\s*\)/gi;
-  const rasterFilePattern =
-    /\.(?:apng|avif|bmp|gif|heic|heif|ico|jpe?g|jxl|png|tiff?|webp)(?:[?#].*)?$/i;
-  const containsRasterReference = value =>
-    rasterDataUriPattern.test(value) ||
-    [...value.matchAll(urlPattern)].some(
-      ([, doubleQuoted, singleQuoted, unquoted]) =>
-        rasterFilePattern.test(
-          (doubleQuoted ?? singleQuoted ?? unquoted).trim(),
-        ),
-    );
-
-  walk(ast, node => {
-    const values =
-      node.type === 'tag'
-        ? Object.values(node.attribs ?? {})
-        : node.type === 'text'
-          ? [node.data ?? '']
-          : [];
-
-    if (values.some(containsRasterReference)) {
-      reporter.error('Raster image references are not allowed');
-    }
-  });
-}
-
-function disallowDescElement(reporter, _cheerio, ast) {
-  reporter.name = 'no-desc-element';
-  walk(ast, node => {
-    if (node.type === 'tag' && node.name === 'desc') {
-      reporter.error('SVG <desc> elements are not allowed');
-    }
-  });
-}
-
-function enforceTrailingNewline(reporter, _cheerio, _ast, { filepath }) {
-  reporter.name = 'trailing-newline';
-  if (readFileSync(filepath).at(-1) !== 0x0a) {
-    reporter.error('SVG file must end with a newline');
-  }
-}
-
-function enforceFileSize(reporter, _cheerio, _ast, { filepath }) {
-  // recommended SVG size targets
-  // Under 1 KiB	-> Excellent for simple icons
-  // 1–3 KiB	-> Ideal for most icons
-  // 3–5 KiB	-> Reasonable for more detailed icons
-  reporter.name = 'file-size';
-  const maxFileSize = 5 * 1024;
-
-  if (statSync(filepath).size > maxFileSize) {
-    reporter.error('SVG file must not exceed 5 KiB');
-  }
-}
-
-function enforceViewBox(reporter, _cheerio, ast, { filepath }) {
-  reporter.name = 'svg-viewbox';
-  const expectedViewBox =
-    resolve(filepath) === resolve('images/logo.svg')
-      ? '0 0 128 128'
-      : '0 0 32 32';
-
-  walk(ast, node => {
-    if (node.type !== 'tag' || node.name !== 'svg') {
-      return;
-    }
-
-    const viewBox = Object.entries(node.attribs ?? {}).find(
-      ([name]) => name.toLowerCase() === 'viewbox',
-    )?.[1];
-
-    if (viewBox !== expectedViewBox) {
-      reporter.error(
-        `SVG root element must have a 'viewBox' of '${expectedViewBox}'`,
-      );
-    }
-  });
-}
-
-function disallowSvgAttributes(reporter, _cheerio, ast) {
-  reporter.name = 'svg-attributes';
-  const allowedAttributes = new Set(['xmlns', 'viewbox']);
-
-  walk(ast, node => {
-    if (node.type !== 'tag' || node.name !== 'svg') {
-      return;
-    }
-
-    for (const name of Object.keys(node.attribs ?? {})) {
-      if (!allowedAttributes.has(name.toLowerCase())) {
-        reporter.error(`Disallowed SVG root attribute: '${name}'`);
-      }
-    }
-  });
-}
-
 const customRuleSettings = {
-  disallowTitle: true,
-  disallowEmptyDefs: true,
-  disallowSvgComments: true,
-  disallowEditorAttributes: true,
-  disallowSvgAttributes: true,
-  disallowMetadata: true,
+  disallowComments: true,
+  disallowRasterImages: true,
   disallowEmbeddedImages: true,
-  disallowRaster: true,
   disallowDescElement: true,
+  disallowTitleElement: true,
+  disallowScriptElement: true,
+  disallowMetadataElement: true,
+  disallowEmptyDefsElements: true,
+  disallowSvgAttributes: true,
+  disallowStyleAttribute: true,
+  disallowEditorAttributes: true,
   enforceViewBox: true,
   enforceFileSize: false,
   enforceTrailingNewline: true,
@@ -275,19 +244,31 @@ const customRuleSettings = {
 };
 
 const customRuleImplementations = {
-  disallowEmptyDefs,
-  disallowSvgComments,
-  disallowEditorAttributes,
-  disallowSvgAttributes,
-  disallowMetadata,
+  disallowComments,
+  disallowEmptyDefsElements: disallowEmptyElements('defs'),
+  disallowEditorAttributes: disallowAttributes('editor', name =>
+    /^(?:xmlns:)?(?:inkscape|sodipodi|illustrator|sketch)(?::|$)/i.test(name),
+  ),
+  disallowStyleAttribute: disallowAttributes(
+    'style',
+    name => name.toLowerCase() === 'style',
+  ),
+  disallowSvgAttributes: disallowAttributes(
+    'svg',
+    (name, node) =>
+      node.name === 'svg' &&
+      !new Set(['xmlns', 'viewbox']).has(name.toLowerCase()),
+  ),
+  disallowRasterImages,
   disallowEmbeddedImages,
-  disallowRaster,
-  disallowDescElement,
-  enforceNumericPrecision,
-  disallowTitle,
+  disallowTitleElement: disallowElement('title'),
+  disallowScriptElement: disallowElement('script'),
+  disallowDescElement: disallowElement('desc'),
+  disallowMetadataElement: disallowElement('metadata'),
   enforceViewBox,
   enforceFileSize,
   enforceTrailingNewline,
+  enforceNumericPrecision,
 };
 
 const customRules = Object.entries(customRuleSettings)
