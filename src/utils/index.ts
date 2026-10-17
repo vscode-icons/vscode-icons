@@ -1,11 +1,13 @@
 import type { ChildProcess } from 'child_process';
 import type { Stats } from 'fs';
 
+import type { Options } from 'open';
+
 import { homedir, tmpdir } from 'os';
 import { isAbsolute, posix, relative, resolve, sep } from 'path';
 
 import { set } from 'lodash';
-import open = require('open');
+import open from 'open';
 
 import {
   existsAsync,
@@ -185,7 +187,7 @@ export class Utils {
 
   public static async open(
     target: string,
-    options?: open.Options,
+    options?: Options,
   ): Promise<ChildProcess> {
     await open(target, options);
     return;
