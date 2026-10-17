@@ -322,11 +322,6 @@ export const extensions: IFolderCollection = {
       extensions: ['flow', 'flow-typed'],
     },
     {
-      icon: 'frontend',
-      extensions: ['frontend', '.frontend', 'front-end', '.front-end', 'ui', 'gui', 'src-ui'],
-      format: FileFormat.svg,
-    },
-    {
       icon: 'flutter',
       extensions: ['flutter', 'Flutter'],
     },
@@ -338,6 +333,18 @@ export const extensions: IFolderCollection = {
     {
       icon: 'frontcommerce',
       extensions: ['.front-commerce'],
+    },
+    {
+      icon: 'frontend',
+      extensions: [
+        'frontend',
+        '.frontend',
+        'front-end',
+        '.front-end',
+        'ui',
+        'gui',
+        'src-ui'
+      ],
     },
     { icon: 'gcp', extensions: ['gcp', '.gcp'] },
     { icon: 'gemini', extensions: ['.gemini'] },
