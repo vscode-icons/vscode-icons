@@ -21,13 +21,13 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v5
         with:
           node-version: 22.18.0
           cache: npm
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 2
       - run: npm ci
       - name: Find changed files
         id: changed
