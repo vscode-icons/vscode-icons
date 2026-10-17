@@ -24,18 +24,39 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22.18.0
+          cache: npm
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
       - run: npm ci
+      - name: Find changed files
+        id: changed
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          [[ -z "$BASE_SHA" ]] && BASE_SHA=$(git rev-parse "$HEAD_SHA^" 2>/dev/null || echo 0)
+          [[ "$BASE_SHA" =~ ^0+$ ]] && BASE_SHA=$(git hash-object -t tree /dev/null)
+          git diff --name-only -z --diff-filter=ACMR "$BASE_SHA" "$HEAD_SHA" > "$RUNNER_TEMP/changed-files"
+          for t in prettier eslint markdown svg; do : > "$RUNNER_TEMP/$t-files"; done
+          while IFS= read -r -d '' f; do
+            [[ -f "$f" ]] || continue
+            printf '%s\0' "$f" >> "$RUNNER_TEMP/prettier-files"
+            case "$f" in
+              *.js|*.cjs|*.mjs|*.jsx|*.ts|*.tsx) t=eslint ;; *.md) t=markdown ;; *.svg) t=svg ;; *) continue ;;
+            esac
+            printf '%s\0' "$f" >> "$RUNNER_TEMP/$t-files"
+          done < "$RUNNER_TEMP/changed-files"
       - name: Prettier
-        run: npx prettier --log-level=error --check .
+        run: xargs -0 -r npx prettier --log-level=error --check -- < "$RUNNER_TEMP/prettier-files"
       - name: ESLint
-        run: npx eslint --quiet .
+        run: xargs -0 -r npx eslint --quiet -- < "$RUNNER_TEMP/eslint-files"
       - name: remark
-        run: npx remark --quiet --frail .
+        run: xargs -0 -r npx remark --quiet --frail -- < "$RUNNER_TEMP/markdown-files"
       - name: SVGLint
-        run: npx svglint --no-summary --ci **/*.svg
+        run: xargs -0 -r npx svglint --no-summary --ci -- < "$RUNNER_TEMP/svg-files"
       - name: Check SVG optimization
-        run: npm run lint:svgo **/*.svg
+        run: xargs -0 -r npm run lint:svgo -- < "$RUNNER_TEMP/svg-files"
 
   test:
     needs: lint
