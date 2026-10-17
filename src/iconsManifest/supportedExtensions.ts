@@ -3932,12 +3932,22 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'node',
-      extensions: ['.node-version', '.nvmrc', 'node.config.json'],
+      extensions: [
+        '.node_repl_history',
+        '.node-version',
+        '.nvmrc',
+        'node.config.json',
+      ],
       filename: true,
     },
     {
       icon: 'node2',
-      extensions: ['.node-version', '.nvmrc'],
+      extensions: [
+        '.node_repl_history',
+        '.node-version',
+        '.nvmrc',
+        'node.config.json',
+      ],
       filename: true,
 
       disabled: true,
@@ -3950,6 +3960,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'npm',
       extensions: [
+        '.npm-init.js',
         '.npmignore',
         '.npmrc',
         '.package-lock.json',
@@ -5613,6 +5624,13 @@ export const extensions: IFileCollection = {
       icon: 'svg',
       extensions: ['svg'],
       languages: [languages.svg],
+    },
+    {
+      icon: 'svglint',
+      extensions: [],
+      filenamesGlob: ['.svglintrc'],
+      extensionsGlob: ['cjs', 'js', 'mjs'],
+      filename: true,
     },
     {
       icon: 'svgo',
