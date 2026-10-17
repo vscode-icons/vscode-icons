@@ -990,6 +990,18 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'contributing',
+      extensions: [
+        'CONTRIBUTING.md',
+        'CONTRIBUTING.markdown',
+        'CONTRIBUTING.rst',
+        'CONTRIBUTING.txt',
+        'CONTRIBUTING',
+      ],
+      filename: true,
+      format: FileFormat.svg,
+    },
+    {
       icon: 'convex',
       extensions: ['convex.json', 'convex.config.js', 'convex.config.ts'],
       filename: true,
