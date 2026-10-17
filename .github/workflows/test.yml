@@ -48,7 +48,7 @@ jobs:
             printf '%s\0' "$f" >> "$RUNNER_TEMP/$t-files"
           done < "$RUNNER_TEMP/changed-files"
       - name: Prettier
-        run: xargs -0 -r npx prettier --log-level=error --check -- < "$RUNNER_TEMP/prettier-files"
+        run: xargs -0 -r npx prettier --log-level=error --ignore-unknown --check -- < "$RUNNER_TEMP/prettier-files"
       - name: ESLint
         run: xargs -0 -r npx eslint --quiet -- < "$RUNNER_TEMP/eslint-files"
       - name: remark
