@@ -971,7 +971,6 @@ export const extensions: IFileCollection = {
       icon: 'codeofconduct',
       extensions: ['CODE_OF_CONDUCT.md'],
       filename: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'config',
