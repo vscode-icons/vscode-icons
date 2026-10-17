@@ -3960,6 +3960,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'npm',
       extensions: [
+        '.npm-init.js',
         '.npmignore',
         '.npmrc',
         '.package-lock.json',
