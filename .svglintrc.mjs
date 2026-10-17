@@ -50,6 +50,37 @@ function disallowAttributes(ruleName, rule) {
   };
 }
 
+function restrictStyleAttribute(allowedProperties) {
+  return function (reporter, _cheerio, ast) {
+    reporter.name = 'restrict-style-attribute';
+    walk(ast, node => {
+      if (node.type !== 'tag') {
+        return;
+      }
+
+      const style = Object.entries(node.attribs ?? {}).find(
+        ([name]) => name.toLowerCase() === 'style',
+      )?.[1];
+
+      if (style === undefined) {
+        return;
+      }
+
+      // only CSS properties without a presentation attribute equivalent are allowed
+      const disallowedProperties = style
+        .split(';')
+        .map(declaration => declaration.split(':')[0].trim().toLowerCase())
+        .filter(property => property && !allowedProperties.has(property));
+
+      if (disallowedProperties.length) {
+        reporter.error(
+          `Disallowed properties in 'style' attribute: '${disallowedProperties.join("', '")}' (use presentation attributes instead)`,
+        );
+      }
+    });
+  };
+}
+
 function disallowElement(elementName) {
   return function (reporter, _cheerio, ast) {
     reporter.name = `no-${elementName}-element`;
@@ -235,7 +266,7 @@ const customRuleSettings = {
   disallowMetadataElement: true,
   disallowEmptyDefsElements: true,
   disallowSvgAttributes: true,
-  disallowStyleAttribute: true,
+  restrictStyleAttribute: true,
   disallowEditorAttributes: true,
   enforceViewBox: true,
   enforceFileSize: false,
@@ -249,9 +280,8 @@ const customRuleImplementations = {
   disallowEditorAttributes: disallowAttributes('editor', name =>
     /^(?:xmlns:)?(?:inkscape|sodipodi|illustrator|sketch)(?::|$)/i.test(name),
   ),
-  disallowStyleAttribute: disallowAttributes(
-    'style',
-    name => name.toLowerCase() === 'style',
+  restrictStyleAttribute: restrictStyleAttribute(
+    new Set(['isolation', 'mix-blend-mode']),
   ),
   disallowSvgAttributes: disallowAttributes(
     'svg',
