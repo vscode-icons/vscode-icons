@@ -24,7 +24,7 @@ The user will provide the folder icon name and the folder names it should match.
    `src/iconsManifest/supportedFolders.ts` in alphabetical order:
 
    ```typescript
-   { icon: 'name', extensions: ['foldername', '.foldername'], format: FileFormat.svg },
+   { icon: 'name', extensions: ['foldername', '.foldername'] },
    ```
 
 5. **Validate**: Run `npm test` to ensure all specs pass.

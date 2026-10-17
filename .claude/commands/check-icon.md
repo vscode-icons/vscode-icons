@@ -19,7 +19,6 @@ The user will provide an icon name to check.
    - Does the `icon` value match the SVG filename?
    - Are extensions formatted correctly (no leading dot for non-filename
      entries)?
-   - Is `format: FileFormat.svg` present?
    - If `extensions` is empty, are `languages` or glob alternatives provided?
 
 4. **Check for duplicates**: Verify no other entry shares the same extensions or

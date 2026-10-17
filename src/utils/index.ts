@@ -41,7 +41,9 @@ export class Utils {
     return tmpdir();
   }
 
-  public static fileFormatToString(extension: FileFormat | string): string {
+  public static fileFormatToString(
+    extension: FileFormat | string = FileFormat.svg,
+  ): string {
     return `.${
       typeof extension === 'string' ? extension.trim() : FileFormat[extension]
     }`;
