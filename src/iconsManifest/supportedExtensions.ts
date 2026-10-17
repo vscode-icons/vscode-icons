@@ -154,6 +154,11 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'android',
+      extensions: ['apk', 'apks'],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
