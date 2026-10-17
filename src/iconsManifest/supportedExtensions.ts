@@ -3932,12 +3932,22 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'node',
-      extensions: ['.node-version', '.nvmrc', 'node.config.json'],
+      extensions: [
+        '.node_repl_history',
+        '.node-version',
+        '.nvmrc',
+        'node.config.json',
+      ],
       filename: true,
     },
     {
       icon: 'node2',
-      extensions: ['.node-version', '.nvmrc'],
+      extensions: [
+        '.node_repl_history',
+        '.node-version',
+        '.nvmrc',
+        'node.config.json',
+      ],
       filename: true,
 
       disabled: true,
