@@ -22,7 +22,7 @@
   },
   "files.insertFinalNewline": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "always"
   },
   "editor.tabSize": 2,
   "files.associations": {

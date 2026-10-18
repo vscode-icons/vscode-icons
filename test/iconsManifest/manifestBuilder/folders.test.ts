@@ -2501,10 +2501,16 @@ describe('ManifestBuilder: folders icons test', function () {
       context(`an Error gets thrown`, function () {
         it(`if the closed and opened icons are NOT in the same directory`, async function () {
           sandbox
-            // @ts-ignore
-            .stub(ManifestBuilder, 'getIconPath')
+            .stub(
+              ManifestBuilder as unknown as {
+                getIconPath(filename: string): Promise<string>;
+              },
+              'getIconPath',
+            )
             .callsFake((file: string) =>
-              /opened/g.test(file) ? '' : iconsDirRelativeBasePath,
+              Promise.resolve(
+                /opened/g.test(file) ? '' : iconsDirRelativeBasePath,
+              ),
             );
 
           try {

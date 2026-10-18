@@ -61,7 +61,7 @@ describe('CompositionRootService: tests', function () {
       context(`throws an Error`, function () {
         it(`when it can NOT be found`, function () {
           expect(() => crs.get('Interface')).to.throw(
-            /No matching bindings found for serviceIdentifier: Interface/,
+            /No bindings found for service: "Interface"/,
           );
         });
       });
