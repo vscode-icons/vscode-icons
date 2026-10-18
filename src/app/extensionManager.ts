@@ -1,12 +1,14 @@
+import type { IPackageManifest } from '../models/packageManifest/package';
+import type { IVSCodeCommand } from '../models/vscode/vscodeCommand';
+
 import { dirname, resolve } from 'path';
+
 import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
-import { IPackageManifest } from '../models/packageManifest/package';
-import { IVSCodeCommand } from '../models/vscode/vscodeCommand';
 import { Utils } from '../utils';
 
 export class ExtensionManager implements models.IExtensionManager {
@@ -63,8 +65,6 @@ export class ExtensionManager implements models.IExtensionManager {
     ]);
 
     // function calls has to be done in this order strictly
-    await this.settingsManager.moveStateFromLegacyPlace();
-
     this.registerCommands(this.manifest.contributes.commands);
     await this.manageIntroMessage();
     await this.manageCustomizations();
@@ -85,7 +85,7 @@ export class ExtensionManager implements models.IExtensionManager {
 
   //#region Private functions
   private registerCommands(commands: IVSCodeCommand[]): void {
-    commands.forEach((command: IVSCodeCommand) =>
+    commands.forEach((command: IVSCodeCommand): number =>
       this.vscodeManager.context.subscriptions.push(
         this.vscodeManager.commands.registerCommand(
           command.command,
@@ -192,7 +192,7 @@ export class ExtensionManager implements models.IExtensionManager {
       if (
         this.vscodeManager.supportsThemesReload &&
         items.some(
-          (item: models.LangResourceLike) =>
+          (item: models.LangResourceLike): boolean =>
             item === models.LangResourceKeys.reload,
         )
       ) {
@@ -387,7 +387,8 @@ export class ExtensionManager implements models.IExtensionManager {
       }
       cbArgs = [
         (cbArgs[0] as models.IProjectDetectionResult[]).filter(
-          (cbArg: models.IProjectDetectionResult) => cbArg.project === project,
+          (cbArg: models.IProjectDetectionResult): boolean =>
+            cbArg.project === project,
         ),
       ];
       await this.configManager.updatePreset(
@@ -480,15 +481,15 @@ export class ExtensionManager implements models.IExtensionManager {
       !projectDetectionResults ||
       !projectDetectionResults.length ||
       projectDetectionResults.every(
-        (pdr: models.IProjectDetectionResult) => !pdr.apply,
+        (pdr: models.IProjectDetectionResult): boolean => !pdr.apply,
       )
     ) {
       return;
     }
 
     const conflict = projectDetectionResults.find(
-      (pdr: models.IProjectDetectionResult) =>
-        pdr.conflictingProjects && pdr.conflictingProjects.length,
+      (pdr: models.IProjectDetectionResult): boolean =>
+        !!pdr.conflictingProjects && !!pdr.conflictingProjects.length,
     );
     if (!conflict && this.configManager.vsicons.projectDetection.autoReload) {
       // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -499,7 +500,7 @@ export class ExtensionManager implements models.IExtensionManager {
       ? ([
           models.ProjectNames[conflict.project],
           ...conflict.conflictingProjects.map(
-            (cp: models.Projects) => models.ProjectNames[cp],
+            (cp: models.Projects): string => models.ProjectNames[cp],
           ),
         ] as string[])
       : [
@@ -625,7 +626,7 @@ export class ExtensionManager implements models.IExtensionManager {
       // In case the 'user settings' file has just been created
       // a delay needs to be introduced, in order for the 'preset'
       // change to get persisted on disk
-      setTimeout(() => this.executeAndReload(this.callback), 500);
+      setTimeout((): void => this.executeAndReload(this.callback), 500);
     } else if (!this.customMsgShown) {
       const currentConfig = this.configManager.vsicons;
       const configChanged =

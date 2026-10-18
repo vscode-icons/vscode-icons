@@ -1,4 +1,5 @@
 import { cloneDeep, remove } from 'lodash';
+
 import * as models from '../models';
 import { ManifestReader } from './manifestReader';
 
@@ -85,7 +86,7 @@ export class CustomsMerger {
           (Array.isArray(projectDetectionResults) && projectDetectionResults) ||
           []
         ).find(
-          (pdr: models.IProjectDetectionResult) =>
+          (pdr: models.IProjectDetectionResult): boolean =>
             pdr.project?.toString() === project,
         );
       const preset: boolean = await this.getPreset(
@@ -137,11 +138,11 @@ export class CustomsMerger {
         }_.*\\D$`,
       );
       const icons = files.supported
-        .filter((file: models.IFileExtension) => regex.test(file.icon))
-        .map((file: models.IFileExtension) => file.icon);
+        .filter((file: models.IFileExtension): boolean => regex.test(file.icon))
+        .map((file: models.IFileExtension): string => file.icon);
       const defaultIcons = defaultFiles.supported
-        .filter((file: models.IFileExtension) => regex.test(file.icon))
-        .map((file: models.IFileExtension) => file.icon);
+        .filter((file: models.IFileExtension): boolean => regex.test(file.icon))
+        .map((file: models.IFileExtension): string => file.icon);
       const temp = this.togglePreset(disable, icons, files);
       files = this.togglePreset(disable, defaultIcons, temp);
     }
@@ -165,23 +166,26 @@ export class CustomsMerger {
   ): models.IFolderCollection {
     const folderIcons = this.getNonDisabledIcons(customFolders);
     const defaultFolderIcons = defaultFolders.supported
-      .filter((folder: models.IFolderExtension) => !folder.disabled)
-      .filter((folder: models.IFolderExtension) =>
+      .filter((folder: models.IFolderExtension): boolean => !folder.disabled)
+      .filter((folder: models.IFolderExtension): boolean =>
         // Exclude overrides
         customFolders.supported.every(
-          (cFolder: models.IFolderExtension) =>
+          (cFolder: models.IFolderExtension): boolean =>
             cFolder.overrides !== folder.icon,
         ),
       )
-      .filter((folder: models.IFolderExtension) =>
+      .filter((folder: models.IFolderExtension): boolean =>
         // Exclude disabled by custom
         customFolders.supported
           .filter(
-            (cFolder: models.IFolderExtension) => folder.icon === cFolder.icon,
+            (cFolder: models.IFolderExtension): boolean =>
+              folder.icon === cFolder.icon,
           )
-          .every((cFolder: models.IFolderExtension) => !cFolder.disabled),
+          .every(
+            (cFolder: models.IFolderExtension): boolean => !cFolder.disabled,
+          ),
       )
-      .map((folder: models.IFolderExtension) => folder.icon);
+      .map((folder: models.IFolderExtension): string => folder.icon);
     const temp = this.togglePreset<models.IFolderCollection>(
       disable,
       folderIcons,
@@ -235,8 +239,8 @@ export class CustomsMerger {
     customFolders: models.IFolderCollection,
   ): string[] {
     return customFolders.supported
-      .filter((cFolder: models.IFolderExtension) => !cFolder.disabled)
-      .map((cFolder: models.IFolderExtension) => cFolder.icon);
+      .filter((cFolder: models.IFolderExtension): boolean => !cFolder.disabled)
+      .map((cFolder: models.IFolderExtension): string => cFolder.icon);
   }
 
   private static mergeCustoms(
@@ -302,18 +306,17 @@ export class CustomsMerger {
     }
     // start the merge operation
     let final: models.IExtension[] = cloneDeep(supported);
-    custom.forEach((file: models.IFileExtension) => {
+    custom.forEach((file: models.IFileExtension): void => {
       const officialFiles = final.filter(
-        (extension: models.IExtension) => extension.icon === file.icon,
+        (extension: models.IExtension): boolean => extension.icon === file.icon,
       );
       if (officialFiles.length) {
         // existing icon
         // checking if the icon is disabled
         if (file.disabled != null) {
-          officialFiles.forEach(
-            (extension: models.IExtension) =>
-              (extension.disabled = file.disabled),
-          );
+          officialFiles.forEach((extension: models.IExtension): void => {
+            extension.disabled = file.disabled;
+          });
           if (file.disabled) {
             return;
           }
@@ -327,27 +330,27 @@ export class CustomsMerger {
       if (file.extends) {
         final
           .filter(
-            (extension: models.IExtension) => extension.icon === file.extends,
+            (extension: models.IExtension): boolean =>
+              extension.icon === file.extends,
           )
-          .forEach(
-            (extension: models.IExtension) => (extension.icon = file.icon),
-          );
+          .forEach((extension: models.IExtension): void => {
+            extension.icon = file.icon;
+          });
       }
       // remove overrides
       final = final.filter(
-        (extension: models.IExtension) => extension.icon !== file.overrides,
+        (extension: models.IExtension): boolean =>
+          extension.icon !== file.overrides,
       );
       // check if file extensions are already in use and remove them
-      if (!file.extensions) {
-        file.extensions = [];
-      }
-      file.extensions.forEach((ext: string) =>
+      file.extensions ??= [];
+      file.extensions.forEach((ext: string): void =>
         final
-          .filter((extension: models.IExtension) =>
-            extension.extensions.find((el: string) => el === ext),
+          .filter((extension: models.IExtension): string =>
+            extension.extensions.find((el: string): boolean => el === ext),
           )
-          .forEach((extension: models.IExtension) =>
-            remove(extension.extensions, (el: string) => el === ext),
+          .forEach((extension: models.IExtension): string[] =>
+            remove(extension.extensions, (el: string): boolean => el === ext),
           ),
       );
       final.push(file);
@@ -365,21 +368,20 @@ export class CustomsMerger {
     customItems: models.IExtensionCollection<models.IExtension>,
   ): T {
     const workingCopy = cloneDeep(customItems);
-    icons.forEach((icon: string) => {
+    icons.forEach((icon: string): void => {
       const existing = workingCopy.supported.filter(
-        (extension: models.IExtension) => extension.icon === icon,
+        (extension: models.IExtension): boolean => extension.icon === icon,
       );
       if (!existing.length) {
         workingCopy.supported.push({
           icon,
           extensions: [],
-          format: models.FileFormat.svg,
           disabled: disable,
         });
       } else {
-        existing.forEach(
-          (extension: models.IExtension) => (extension.disabled = disable),
-        );
+        existing.forEach((extension: models.IExtension): void => {
+          extension.disabled = disable;
+        });
       }
     });
     return workingCopy as T;

@@ -1,6 +1,7 @@
+import type * as models from '../models';
+
 import langResources from '../../../lang.nls.bundle.json';
 import { constants } from '../constants';
-import * as models from '../models';
 
 export class LanguageResourceManager
   implements models.ILanguageResourceManager
@@ -19,9 +20,10 @@ export class LanguageResourceManager
     let msg = '';
     keys
       .filter(
-        (key: models.LangResourceLike) => key !== null && key !== undefined,
+        (key: models.LangResourceLike): boolean =>
+          key !== null && key !== undefined,
       )
-      .forEach((resourceKey: models.LangResourceLike) => {
+      .forEach((resourceKey: models.LangResourceLike): void => {
         if (typeof resourceKey === 'number') {
           if (this.currentLangResource.length > resourceKey) {
             // If no message is found fallback to english message
@@ -45,7 +47,7 @@ export class LanguageResourceManager
           );
         }
 
-        resourceKey.split('').forEach((char: string) => {
+        resourceKey.split('').forEach((char: string): void => {
           if (char.match(/[#^*|\\/{}+=]/g)) {
             throw new Error(`${char} is not valid`);
           }
@@ -63,7 +65,7 @@ export class LanguageResourceManager
       return undefined;
     }
     const key = this.currentLangResource.findIndex(
-      (res: never) => res === message,
+      (res: string): boolean => res === message,
     );
     return key > -1 ? key : undefined;
   }

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IVSCodeDisposable } from './vscodeDisposable';
+import type { IVSCodeDisposable } from './vscodeDisposable';
 
 export interface IVSCodeCommands {
   executeCommand<T>(command: string, ...rest: any[]): Thenable<T | undefined>;

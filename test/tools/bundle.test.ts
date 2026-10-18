@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
 import { constants } from '../../src/constants';
 

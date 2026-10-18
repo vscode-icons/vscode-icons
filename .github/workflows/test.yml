@@ -18,23 +18,50 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  eslint:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22.18.0
+          cache: npm
       - run: npm ci
-      - run: npx eslint .
-
-  prettier:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v4
-      - uses: actions/checkout@v4
-      - run: npm ci
-      - run: npx prettier --check .
+      - name: Find changed files
+        id: changed
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          [[ -z "$BASE_SHA" ]] && BASE_SHA=$(git rev-parse "$HEAD_SHA^" 2>/dev/null || echo 0)
+          # a shallow clone may not contain the base commit: fetch it, or fall back to linting everything
+          [[ "$BASE_SHA" =~ ^0+$ ]] || git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null || git fetch -q --no-tags --depth=1 origin "$BASE_SHA" 2>/dev/null || BASE_SHA=0
+          [[ "$BASE_SHA" =~ ^0+$ ]] && BASE_SHA=$(git hash-object -t tree /dev/null)
+          git diff --name-only -z --diff-filter=ACMR "$BASE_SHA" "$HEAD_SHA" > "$RUNNER_TEMP/changed-files"
+          for t in prettier eslint markdown svg; do : > "$RUNNER_TEMP/$t-files"; done
+          while IFS= read -r -d '' f; do
+            [[ -f "$f" ]] || continue
+            printf '%s\0' "$f" >> "$RUNNER_TEMP/prettier-files"
+            case "$f" in
+              *.js|*.cjs|*.mjs|*.jsx|*.ts|*.tsx) t=eslint ;; *.md) t=markdown ;; *.svg) t=svg ;; *) continue ;;
+            esac
+            printf '%s\0' "$f" >> "$RUNNER_TEMP/$t-files"
+          done < "$RUNNER_TEMP/changed-files"
+      - name: Prettier
+        run: xargs -0 -r npx prettier --log-level=error --ignore-unknown --check -- < "$RUNNER_TEMP/prettier-files"
+      - name: ESLint
+        run: xargs -0 -r npx eslint --quiet -- < "$RUNNER_TEMP/eslint-files"
+      - name: remark
+        run: xargs -0 -r npx remark --quiet --frail -- < "$RUNNER_TEMP/markdown-files"
+      - name: SVGLint
+        run: xargs -0 -r npx svglint --no-summary --ci -- < "$RUNNER_TEMP/svg-files"
+      - name: Check SVG optimization
+        run: xargs -0 -r npm run lint:svgo -- < "$RUNNER_TEMP/svg-files"
 
   test:
+    needs: lint
     name: Node.js ${{ matrix.node }} | ${{ matrix.os }} | ${{ matrix.arch }}
     strategy:
       max-parallel: 3
@@ -60,37 +87,31 @@ jobs:
         include:
           - os: ubuntu-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: macos-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: windows-latest
             node: node # latest node
-            arch: x64
             experimental: true
           - os: ubuntu-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
           - os: macos-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
           - os: windows-latest
             node: lts/* # latest lts node
-            arch: x64
             experimental: true
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setting up Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node }}
 
       - name: Cloning repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 5
 
@@ -105,33 +126,16 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
         run: npm test
 
-      - name: Uploading code coverage report
-        # if: >
-        #   (
-        #     success() &&
-        #     matrix.os == 'ubuntu-latest' &&
-        #     matrix.node == '22.18.0' &&
-        #     github.event_name == 'push' &&
-        #     github.repository_owner == 'vscode-icons' &&
-        #     github.actor != 'dependabot[bot]'
-        #   )
-        if: false
-        uses: paambaati/codeclimate-action@v9
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-
-      - name: Uploading code coverage artifact
-        if: >
-          (
-            success() &&
-            matrix.os == 'ubuntu-latest' &&
-            matrix.node == '22.18.0' &&
-            github.event_name == 'pull_request' &&
-            github.repository_owner == 'vscode-icons' &&
-            github.actor != 'dependabot[bot]'
-          )
-        uses: actions/upload-artifact@v4
+      - name: Upload coverage to Codecov
+        if: |
+          success() &&
+          matrix.os == 'ubuntu-latest' &&
+          matrix.node == '22.18.0' &&
+          github.repository_owner == 'vscode-icons' &&
+          github.actor != 'dependabot[bot]' &&
+          (github.event_name == 'push' || github.event_name == 'pull_request')
+        uses: codecov/codecov-action@v7
         with:
-          name: code-coverage-report
-          path: coverage/lcov.info
-          retention-days: 1
+          files: coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false

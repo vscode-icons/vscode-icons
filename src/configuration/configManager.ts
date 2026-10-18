@@ -1,10 +1,4 @@
-import { cloneDeep, isEqual, unionWith } from 'lodash';
-import { dirname, isAbsolute, resolve } from 'path';
-import { ErrorHandler } from '../common/errorHandler';
-import { existsAsync, readdirAsync } from '../common/fsAsync';
-import { constants } from '../constants';
-import {
-  ConfigurationTarget,
+import type {
   IConfigManager,
   IFileExtension,
   IFolderExtension,
@@ -13,6 +7,15 @@ import {
   IVSCodeWorkspaceConfiguration,
   IVSIcons,
 } from '../models';
+
+import { dirname, isAbsolute, resolve } from 'path';
+
+import { cloneDeep, isEqual, unionWith } from 'lodash';
+
+import { ErrorHandler } from '../common/errorHandler';
+import { existsAsync, readdirAsync } from '../common/fsAsync';
+import { constants } from '../constants';
+import { ConfigurationTarget } from '../models';
 import { Utils } from '../utils';
 
 export class ConfigManager implements IConfigManager {
@@ -118,7 +121,9 @@ export class ConfigManager implements IConfigManager {
     const extensionNameRegExp = new RegExp(`.*${constants.extension.name}`);
     const existingInstallations: number = (
       await readdirAsync(vscodeExtensionDirPath)
-    ).filter((filename: string) => extensionNameRegExp.test(filename)).length;
+    ).filter((filename: string): boolean =>
+      extensionNameRegExp.test(filename),
+    ).length;
     return existingInstallations === 1;
   }
 
@@ -190,7 +195,7 @@ export class ConfigManager implements IConfigManager {
       source.forEach(addTo);
       return linesToRemove;
     };
-    findLinesToRemove().forEach((lineIndex, i) =>
+    findLinesToRemove().forEach((lineIndex: number, i: number): string[] =>
       source.splice(lineIndex - i, 1),
     );
     return source;
@@ -198,7 +203,7 @@ export class ConfigManager implements IConfigManager {
 
   private static resetIconTheme(source: string[]): string[] {
     const foundLineIndex = source.findIndex(
-      (line: string) =>
+      (line: string): boolean =>
         line.includes(constants.vscode.iconThemeSetting) &&
         line.includes(constants.extension.name),
     );
@@ -230,8 +235,19 @@ export class ConfigManager implements IConfigManager {
   ): boolean {
     const filter = (obj: IVSIcons, keys: string[]): Record<string, string[]> =>
       (Reflect.ownKeys(obj || {}) as string[])
-        .filter((key, __, array) => (keys || array).includes(key))
-        .reduce((nObj, key) => ({ ...nObj, [key]: obj[key] as string[] }), {});
+        .filter((key: string, __: number, array: string[]): boolean =>
+          (keys || array).includes(key),
+        )
+        .reduce(
+          (
+            nObj: Record<string, string[]>,
+            key: string,
+          ): Record<string, string[]> => ({
+            ...nObj,
+            [key]: obj[key] as string[],
+          }),
+          {},
+        );
     const a = filter(this.initVSIconsConfig, sections);
     const b = filter(currentConfig, sections);
     return !isEqual(a, b);
@@ -250,9 +266,11 @@ export class ConfigManager implements IConfigManager {
       (await existsAsync(wsp)) ? wsp : '';
 
     const promises: Array<Promise<string>> = [];
-    workspacePaths.forEach((wsp: string) => promises.push(iterator(wsp)));
+    workspacePaths.forEach((wsp: string): number =>
+      promises.push(iterator(wsp)),
+    );
     const absWspPath: string = (await Promise.all(promises)).find(
-      (path: string) => !!path,
+      (path: string): boolean => !!path,
     );
     return Utils.pathUnixJoin(absWspPath, dPath);
   }

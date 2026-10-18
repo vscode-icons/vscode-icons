@@ -1,8 +1,8 @@
-import {
-  IFileExtension,
-  IFolderExtension,
+import type {
   IFileDefault,
+  IFileExtension,
   IFolderDefault,
+  IFolderExtension,
 } from '../extensions';
 
 export interface IAssociations {

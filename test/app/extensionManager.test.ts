@@ -1,14 +1,17 @@
+import type { IPackageManifest } from '../../src/models/packageManifest';
+
+import path from 'path';
+
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
-import path from 'path';
 import * as sinon from 'sinon';
+
 import packageJson from '../../../package.json';
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
 import * as models from '../../src/models';
-import { IPackageManifest } from '../../src/models/packageManifest';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
@@ -138,7 +141,14 @@ describe('ExtensionManager: tests', function () {
           'applyProjectDetection',
         );
 
-        padMngStub.detectProjects.resolves();
+        padMngStub.detectProjects = sandbox.stub<
+          [projectNames: models.Projects[]],
+          Promise<models.IProjectDetectionResult[]>
+        >();
+        settingsManagerStub.updateStatus = sandbox.stub<
+          [status?: models.ExtensionStatus],
+          Promise<models.IState>
+        >();
       });
 
       it(`functions are called with the specific order`, async function () {
@@ -146,11 +156,6 @@ describe('ExtensionManager: tests', function () {
 
         await extensionManager.activate();
 
-        expect(
-          registerCommandsStub.calledImmediatelyAfter(
-            settingsManagerStub.moveStateFromLegacyPlace,
-          ),
-        ).to.be.true;
         expect(
           manageIntroMessageStub.calledImmediatelyAfter(registerCommandsStub),
         ).to.be.true;
@@ -178,9 +183,6 @@ describe('ExtensionManager: tests', function () {
         ).to.be.true;
 
         expect(vscodeManagerStub.isSupportedVersion).to.be.true;
-        expect(
-          settingsManagerStub.moveStateFromLegacyPlace.calledOnceWithExactly(),
-        ).to.be.true;
         expect(settingsManagerStub.isNewVersion).to.be.true;
         expect(notifyManagerStub.notifyError.called).to.be.false;
       });
@@ -225,8 +227,6 @@ describe('ExtensionManager: tests', function () {
 
           expect(vscodeManagerStub.isSupportedVersion).to.be.false;
           expect(notifyManagerStub.notifyError.called).to.be.true;
-          expect(settingsManagerStub.moveStateFromLegacyPlace.called).to.be
-            .false;
           expect(registerCommandsStub.called).to.be.false;
           expect(manageIntroMessageStub.called).to.be.false;
           expect(manageCustomizationsStub.called).to.be.false;
