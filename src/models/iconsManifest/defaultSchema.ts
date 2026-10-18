@@ -1,6 +1,7 @@
 import type { IIconSchema, IZedIconSchema } from '..';
 
 export const schema: IIconSchema = {
+  $schema: 'vscode://schemas/icon-theme',
   iconDefinitions: {
     _file: { iconPath: '' },
     _folder: { iconPath: '' },
