@@ -2505,7 +2505,7 @@ export const extensions: IFileCollection = {
       icon: 'frontlangconfig',
       extensions: ['frontlang.toml', 'frontlang.lock'],
       filename: true,
-      format: FileFormat.svg
+      format: FileFormat.svg,
     },
     {
       icon: 'fthtml',
