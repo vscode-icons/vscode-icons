@@ -1,4 +1,4 @@
-import type { IFileCollection } from '../models';
+import { FileFormat, type IFileCollection } from '../models';
 
 import { languages } from './languages';
 
@@ -1961,6 +1961,17 @@ export const extensions: IFileCollection = {
       icon: 'frontcommerce',
       extensions: ['.front-commerce.js', 'front-commerce.config.ts'],
       filename: true,
+    },
+    {
+      icon: 'frontlang',
+      extensions: ['ft'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'frontlangconfig',
+      extensions: ['frontlang.toml', 'frontlang.lock'],
+      filename: true,
+      format: FileFormat.svg,
     },
     {
       icon: 'fsharp',
