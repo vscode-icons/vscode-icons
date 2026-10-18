@@ -14,10 +14,12 @@ export async function run(testsRoot: string): Promise<void> {
     const files: string[] = await glob.glob('**/**.test.js', {
       cwd: testsRoot,
     });
-    files.forEach((file: string) => mocha.addFile(path.join(testsRoot, file)));
+    files.forEach((file: string): Mocha =>
+      mocha.addFile(path.join(testsRoot, file)),
+    );
     // Run the tests
-    await new Promise<void>((resolve, reject) => {
-      mocha.run((failures: number) => {
+    await new Promise<void>((resolve, reject): void => {
+      mocha.run((failures: number): void => {
         mocha.dispose();
         if (failures > 0) {
           return reject(new Error(`${failures} tests failed.`));

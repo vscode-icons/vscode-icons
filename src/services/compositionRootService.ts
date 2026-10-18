@@ -81,10 +81,10 @@ export class CompositionRootService implements ICompositionRootService {
 
     this.injectableClasses
       .map(
-        (injectableClass: [Class, Array<ServiceIdentifier<symbol>>]) =>
+        (injectableClass: [Class, Array<ServiceIdentifier<symbol>>]): Class =>
           injectableClass[0],
       )
-      .forEach((klass: Class) => {
+      .forEach((klass: Class): void => {
         Reflect.deleteMetadata(
           '@inversifyjs/core/classIsInjectableFlagReflectKey',
           klass,
@@ -98,14 +98,15 @@ export class CompositionRootService implements ICompositionRootService {
 
   private initDecorations(): void {
     this.injectableClasses.forEach(
-      (injectableClass: [Class, Array<ServiceIdentifier<symbol>>]) => {
+      (injectableClass: [Class, Array<ServiceIdentifier<symbol>>]): void => {
         // declare classes as injectables
         const klass: Class = injectableClass[0];
         decorate(injectable(), klass);
         // declare injectable parameters
         const params: Array<ServiceIdentifier<symbol>> = injectableClass[1];
-        params.forEach((identifier: ServiceIdentifier<symbol>, index: number) =>
-          decorate(inject(identifier), klass, index),
+        params.forEach(
+          (identifier: ServiceIdentifier<symbol>, index: number): void =>
+            decorate(inject(identifier), klass, index),
         );
       },
     );

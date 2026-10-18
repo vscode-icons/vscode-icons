@@ -173,6 +173,23 @@ export default defineConfig(
     },
   },
   {
+    files: ['**/*.ts'],
+    ignores: ['**/*.test.ts'],
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
+        {
+          allowExpressions: false,
+          allowTypedFunctionExpressions: false,
+          allowHigherOrderFunctions: false,
+          allowConciseArrowFunctionExpressionsStartingWithVoid: false,
+          allowDirectConstAssertionInArrowFunctions: false,
+          allowIIFEs: false,
+        },
+      ],
+    },
+  },
+  {
     files: ['**/*.test.ts'],
     rules: {
       'prefer-arrow-callback': 'off',
