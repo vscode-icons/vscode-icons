@@ -224,4 +224,17 @@ export default defineConfig(
       ],
     },
   },
+  {
+    files: ['src/**/index.ts'],
+    plugins: { perfectionist },
+    rules: {
+      'perfectionist/sort-exports': [
+        'error',
+        {
+          type: 'alphabetical',
+          order: 'asc',
+        },
+      ],
+    },
+  },
 );
