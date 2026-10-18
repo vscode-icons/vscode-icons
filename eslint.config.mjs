@@ -154,7 +154,10 @@ export default defineConfig(
           prefix: ['I'],
         },
       ],
-      '@typescript-eslint/no-empty-function': 'error',
+      '@typescript-eslint/no-empty-function': [
+        'error',
+        { allow: ['private-constructors'] },
+      ],
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-shadow': 'error',
       '@typescript-eslint/no-use-before-define': 'error',
