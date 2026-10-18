@@ -1,7 +1,7 @@
 name: Update Wiki Page Icons List
 
 env:
-  NODE_VERSION: 18.15.0
+  NODE_VERSION: 22.18.0
 
 on:
   push:
@@ -16,10 +16,10 @@ jobs:
     continue-on-error: true
     steps:
       - name: Checkout vscode-icons repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setting up Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -29,7 +29,7 @@ jobs:
           npm run build
 
       - name: Checkout wpilgenerator repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: vscode-icons/wpilgenerator
           path: wpilgenerator

@@ -1,4 +1,5 @@
 import { cloneDeep, remove } from 'lodash';
+
 import * as models from '../models';
 import { ManifestReader } from './manifestReader';
 
@@ -338,9 +339,7 @@ export class CustomsMerger {
         (extension: models.IExtension) => extension.icon !== file.overrides,
       );
       // check if file extensions are already in use and remove them
-      if (!file.extensions) {
-        file.extensions = [];
-      }
+      file.extensions ??= [];
       file.extensions.forEach((ext: string) =>
         final
           .filter((extension: models.IExtension) =>
@@ -373,7 +372,6 @@ export class CustomsMerger {
         workingCopy.supported.push({
           icon,
           extensions: [],
-          format: models.FileFormat.svg,
           disabled: disable,
         });
       } else {

@@ -1,16 +1,17 @@
+import type {
+  IConfigManager,
+  IProjectAutoDetectionManager,
+  IVSCodeManager,
+} from '../../src/models';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
 import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ManifestReader } from '../../src/iconsManifest';
-import {
-  IConfigManager,
-  IProjectAutoDetectionManager,
-  IVSCodeManager,
-  LangResourceKeys,
-  Projects,
-} from '../../src/models';
+import { LangResourceKeys, Projects } from '../../src/models';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';

@@ -1,14 +1,17 @@
-import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
-import * as sinon from 'sinon';
-import * as fsAsync from '../../../src/common/fsAsync';
-import { constants } from '../../../src/constants';
-import { ManifestBuilder } from '../../../src/iconsManifest';
-import {
+import type {
   IFileCollection,
   IFolderExtension,
   IIconAssociation,
 } from '../../../src/models';
+
+import { expect } from 'chai';
+import { cloneDeep } from 'lodash';
+import * as sinon from 'sinon';
+
+import * as fsAsync from '../../../src/common/fsAsync';
+import { constants } from '../../../src/constants';
+import { ManifestBuilder } from '../../../src/iconsManifest';
+import { FileFormat } from '../../../src/models';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
 
@@ -17,13 +20,16 @@ describe('ManifestBuilder: folders icons test', function () {
     let sandbox: sinon.SinonSandbox;
     let pathUnixJoinStub: sinon.SinonStub;
     let emptyFileCollection: IFileCollection;
+    let fileFormatToStringStub: sinon.SinonStub;
 
     const iconsDirRelativeBasePath = '../../path/to/icons/dir';
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      sandbox.stub(Utils, 'fileFormatToString').returns('.svg');
+      fileFormatToStringStub = sandbox
+        .stub(Utils, 'fileFormatToString')
+        .returns('.svg');
 
       sandbox.stub(Utils, 'getRelativePath').resolves(iconsDirRelativeBasePath);
       pathUnixJoinStub = sandbox
@@ -38,6 +44,28 @@ describe('ManifestBuilder: folders icons test', function () {
 
     afterEach(function () {
       sandbox.restore();
+    });
+
+    it('uses a supported folder format when provided', async function () {
+      const folders = cloneDeep(fixtFolders);
+      const folder = folders.supported.find(({ icon }) => icon === 'api');
+
+      folder.format = FileFormat.png;
+      fileFormatToStringStub.withArgs(FileFormat.png).returns('.png');
+
+      const manifest = await ManifestBuilder.buildManifest(
+        emptyFileCollection,
+        folders,
+      );
+      const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+      const icon = manifest.vscode.iconDefinitions[
+        definition
+      ] as IIconAssociation;
+
+      expect(fileFormatToStringStub.calledWith(FileFormat.png)).to.be.true;
+      expect(icon.iconPath).to.equal(
+        `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypePrefix}${folder.icon}${constants.iconsManifest.iconSuffix}.png`,
+      );
     });
 
     context(`if a default 'light' icon is NOT defined`, function () {
@@ -242,23 +270,30 @@ describe('ManifestBuilder: folders icons test', function () {
       });
 
       context(`when the default folder is disabled`, function () {
-        it(`removes folder mapping references from the vscode schema`, async function () {
+        it(`folder mapping references in vscode schema are empty`, async function () {
           const folders = cloneDeep(fixtFolders);
-          folders.default.folder.disabled = true;
+          const disabled = true;
+          folders.default.folder.disabled = disabled;
+          folders.default.root_folder.disabled = disabled;
+          folders.supported.forEach(folder => (folder.disabled = disabled));
 
           const manifest = await ManifestBuilder.buildManifest(
             emptyFileCollection,
             folders,
           );
 
-          expect(manifest.vscode.folder).to.be.undefined;
-          expect(manifest.vscode.folderExpanded).to.be.undefined;
-          expect(manifest.vscode.rootFolder).to.be.undefined;
-          expect(manifest.vscode.rootFolderExpanded).to.be.undefined;
-          expect(manifest.vscode.light.folder).to.be.undefined;
-          expect(manifest.vscode.light.folderExpanded).to.be.undefined;
-          expect(manifest.vscode.light.rootFolder).to.be.undefined;
-          expect(manifest.vscode.light.rootFolderExpanded).to.be.undefined;
+          expect(manifest.vscode.folder).to.be.empty;
+          expect(manifest.vscode.folderExpanded).to.be.empty;
+          expect(manifest.vscode.rootFolder).to.be.empty;
+          expect(manifest.vscode.rootFolderExpanded).to.be.empty;
+          expect(manifest.vscode.folderNames).to.be.empty;
+          expect(manifest.vscode.folderNamesExpanded).to.be.empty;
+          expect(manifest.vscode.light.folder).to.be.empty;
+          expect(manifest.vscode.light.folderExpanded).to.be.empty;
+          expect(manifest.vscode.light.rootFolder).to.be.empty;
+          expect(manifest.vscode.light.rootFolderExpanded).to.be.empty;
+          expect(manifest.vscode.light.folderNames).to.be.empty;
+          expect(manifest.vscode.light.folderNamesExpanded).to.be.empty;
         });
       });
 

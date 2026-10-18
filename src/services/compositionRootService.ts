@@ -1,19 +1,22 @@
+import type { interfaces } from 'inversify';
+
+import type { ICompositionRootService } from '../models/services/compositionRootService';
+
 import {
   Container,
+  METADATA_KEY,
   decorate,
   inject,
   injectable,
-  interfaces,
-  METADATA_KEY,
 } from 'inversify';
 import 'reflect-metadata';
 import * as vscode from 'vscode';
+
 import { ExtensionManager } from '../app/extensionManager';
 import { ConfigManager } from '../configuration/configManager';
 import { LanguageResourceManager } from '../i18n/languageResourceManager';
 import { IconsGenerator } from '../iconsManifest';
 import * as models from '../models';
-import { ICompositionRootService } from '../models/services/compositionRootService';
 import { NotificationManager } from '../notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../pad/projectAutoDetectionManager';
 import { SettingsManager } from '../settings/settingsManager';

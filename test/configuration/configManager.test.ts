@@ -1,20 +1,22 @@
-import { expect } from 'chai';
-import * as sinon from 'sinon';
-import { cloneDeep } from 'lodash';
-import * as fsAsync from '../../src/common/fsAsync';
-import * as os from 'os';
-import * as path from 'path';
-import {
-  IVSCodeManager,
+import type {
   IConfigManager,
+  IVSCodeManager,
   IVSIcons,
-  ConfigurationTarget,
-  PresetNames,
 } from '../../src/models';
-import { constants } from '../../src/constants';
-import { Utils } from '../../src/utils';
+
+import os from 'os';
+import path from 'path';
+
+import { expect } from 'chai';
+import { cloneDeep } from 'lodash';
+import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
+import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
+import { constants } from '../../src/constants';
+import { ConfigurationTarget, PresetNames } from '../../src/models';
+import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 

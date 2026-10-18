@@ -1,0 +1,5 @@
+{
+  "exclude": ["!test/**"],
+  "exclude-after-remap": false,
+  "reporter": ["text", "lcov"]
+}

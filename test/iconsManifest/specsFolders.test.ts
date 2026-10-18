@@ -1,21 +1,45 @@
+import type { IFolderExtension } from '../../src/models';
+
+import { join } from 'path';
+
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
-import { join } from 'path';
+
 import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { extensions as folders } from '../../src/iconsManifest/supportedFolders';
-import { FileFormat, IFolderExtension } from '../../src/models';
+import { FileFormat } from '../../src/models';
 
 describe('Specifications of supported folders: tests', function () {
   context('ensures that', function () {
     const iconsDirPath = ConfigManager.iconsDir;
 
     context('each supported', function () {
+      function ensureFormat(folder: IFolderExtension): void {
+        folder.format ??= FileFormat.svg;
+      }
+
       context('folder', function () {
+        it('defaults a missing format to svg', function () {
+          const folder = { icon: 'example' } as IFolderExtension;
+          ensureFormat(folder);
+          expect(folder.format).to.equal(FileFormat.svg);
+        });
+
+        it('preserves an explicit format', function () {
+          const folder = {
+            icon: 'example',
+            format: FileFormat.svg,
+          } as IFolderExtension;
+          ensureFormat(folder);
+          expect(folder.format).to.equal(FileFormat.svg);
+        });
+
         it('has an associated icon file', async function () {
           await Promise.all(
             folders.supported.map(async (folder: IFolderExtension) => {
+              ensureFormat(folder);
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
                 `${constants.iconsManifest.iconSuffix}.${
@@ -33,6 +57,7 @@ describe('Specifications of supported folders: tests', function () {
         it('has an associated opened icon file', async function () {
           await Promise.all(
             folders.supported.map(async (folder: IFolderExtension) => {
+              ensureFormat(folder);
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                 `${constants.iconsManifest.iconSuffix}.${
@@ -91,6 +116,7 @@ describe('Specifications of supported folders: tests', function () {
               folders.supported
                 .filter((folder: IFolderExtension) => folder.light)
                 .map(async (folder: IFolderExtension) => {
+                  ensureFormat(folder);
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
                     `${constants.iconsManifest.iconSuffix}.${
@@ -109,6 +135,7 @@ describe('Specifications of supported folders: tests', function () {
               folders.supported
                 .filter((folder: IFolderExtension) => folder.light)
                 .map(async (folder: IFolderExtension) => {
+                  ensureFormat(folder);
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                     `${constants.iconsManifest.iconSuffix}.${

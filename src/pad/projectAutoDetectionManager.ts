@@ -1,9 +1,10 @@
+import type { IPackageManifest } from '../models/packageManifest';
+
 import { ErrorHandler } from '../common/errorHandler';
 import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import * as models from '../models';
-import { IPackageManifest } from '../models/packageManifest';
 import { Utils } from '../utils';
 
 export class ProjectAutoDetectionManager

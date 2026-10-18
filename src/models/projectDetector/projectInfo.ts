@@ -1,4 +1,4 @@
-import { Projects } from './projects';
+import type { Projects } from './projects';
 
 export interface IProjectInfo {
   name?: Projects;

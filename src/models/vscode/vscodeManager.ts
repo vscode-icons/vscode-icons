@@ -1,8 +1,8 @@
-import { IVSCodeWorkspace } from './vscodeWorkspace';
-import { IVSCodeEnv } from './vscodeEnv';
-import { IVSCodeCommands } from './vscodeCommands';
-import { IVSCodeWindow } from './vscodeWindow';
-import { IVSCodeExtensionContext } from './vscodeExtensionContext';
+import type { IVSCodeCommands } from './vscodeCommands';
+import type { IVSCodeEnv } from './vscodeEnv';
+import type { IVSCodeExtensionContext } from './vscodeExtensionContext';
+import type { IVSCodeWindow } from './vscodeWindow';
+import type { IVSCodeWorkspace } from './vscodeWorkspace';
 
 export interface IVSCodeManager {
   context: IVSCodeExtensionContext;

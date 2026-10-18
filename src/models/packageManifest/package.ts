@@ -1,4 +1,4 @@
-import { IVSCodeManifest } from './vscode';
+import type { IVSCodeManifest } from './vscode';
 
 export interface IPackageManifest extends IVSCodeManifest {
   name: string;

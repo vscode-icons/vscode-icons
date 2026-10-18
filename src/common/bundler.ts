@@ -1,5 +1,6 @@
 import { join } from 'path';
-import { readdirAsync, readFileAsync, writeFileAsync } from '../common/fsAsync';
+
+import { readFileAsync, readdirAsync, writeFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { Utils } from '../utils';
 
