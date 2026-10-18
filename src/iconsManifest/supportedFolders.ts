@@ -685,7 +685,7 @@ export const extensions: IFolderCollection = {
       icon: 'seedkit',
       extensions: ['seedkit', '.seedkit'],
     },
-    { icon: 'server', extensions: ['server'] },
+    { icon: 'server', extensions: ['server', 'backend', '.backend'] },
     {
       icon: 'services',
       extensions: ['service', 'services'],
