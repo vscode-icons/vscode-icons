@@ -4,7 +4,7 @@ import { constants } from '../constants';
 
 async function bundle(argv: string[]): Promise<void> {
   try {
-    constants.environment.production = argv.some((arg: string) =>
+    constants.environment.production = argv.some((arg: string): boolean =>
       /release|production/.test(arg),
     );
     await Bundler.bundleLangResources(

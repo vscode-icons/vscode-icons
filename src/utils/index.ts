@@ -96,7 +96,7 @@ export class Utils {
     };
     const promises: Array<Promise<void>> = [];
     const files: string[] = await readdirAsync(dirPath);
-    files.forEach((file: string) => promises.push(iterator(file)));
+    files.forEach((file: string): number => promises.push(iterator(file)));
     await Promise.all(promises);
     await rmdirAsync(dirPath);
   }
@@ -150,14 +150,14 @@ export class Utils {
 
   public static getDrives(...paths: string[]): string[] {
     const rx = new RegExp('^[a-zA-Z]:');
-    return paths.map((path: string) => (rx.exec(path) || [])[0]);
+    return paths.map((path: string): string => (rx.exec(path) || [])[0]);
   }
 
   public static combine(array1: string[], array2: string[]): string[] {
     return array1.reduce(
-      (previous: string[], current: string) =>
+      (previous: string[], current: string): string[] =>
         previous.concat(
-          array2.map((value: string) => [current, value].join('.')),
+          array2.map((value: string): string => [current, value].join('.')),
         ),
       [],
     );
@@ -179,7 +179,7 @@ export class Utils {
     lookupKey: string,
   ): T {
     const newObj = {};
-    Reflect.ownKeys(obj).forEach((key: string) =>
+    Reflect.ownKeys(obj).forEach((key: string): object =>
       set(newObj, key, obj[key][lookupKey]),
     );
     return newObj as T;

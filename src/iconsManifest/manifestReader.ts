@@ -11,13 +11,13 @@ export class ManifestReader {
   ): Promise<boolean> {
     const isNonIconsRelatedPreset = (): boolean =>
       [models.PresetNames.hideExplorerArrows].some(
-        (prst: models.PresetNames) => prst === preset,
+        (prst: models.PresetNames): boolean => prst === preset,
       );
     const isFoldersRelatedPreset = (): boolean =>
       [
         models.PresetNames.hideFolders,
         models.PresetNames.foldersAllDefaultIcon,
-      ].some((prst: models.PresetNames) => prst === preset);
+      ].some((prst: models.PresetNames): boolean => prst === preset);
     const presetName: string = models.PresetNames[preset];
     const iconName: string =
       models.IconNames[presetName as keyof typeof models.IconNames]?.toString();
@@ -40,7 +40,7 @@ export class ManifestReader {
       ? constants.iconsManifest.definitionFilePrefix
       : constants.iconsManifest.definitionFolderPrefix;
     const suffix: string = Reflect.ownKeys(models.Projects).some(
-      (key: string | number | symbol) => models.Projects[key] === name,
+      (key: string | number | symbol): boolean => models.Projects[key] === name,
     )
       ? '_'
       : '';
@@ -48,7 +48,7 @@ export class ManifestReader {
     return (
       !iconsJson ||
       !Reflect.ownKeys(iconsJson.iconDefinitions).filter(
-        (key: string | number | symbol) =>
+        (key: string | number | symbol): boolean =>
           key.toString().startsWith(defNamePattern),
       ).length
     );
