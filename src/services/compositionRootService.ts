@@ -1,19 +1,16 @@
-import {
-  Container,
-  decorate,
-  inject,
-  injectable,
-  interfaces,
-  METADATA_KEY,
-} from 'inversify';
+import type { BindToFluentSyntax, ServiceIdentifier } from 'inversify';
+
+import type { ICompositionRootService } from '../models/services/compositionRootService';
+
+import { Container, decorate, inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import * as vscode from 'vscode';
+
 import { ExtensionManager } from '../app/extensionManager';
 import { ConfigManager } from '../configuration/configManager';
 import { LanguageResourceManager } from '../i18n/languageResourceManager';
 import { IconsGenerator } from '../iconsManifest';
 import * as models from '../models';
-import { ICompositionRootService } from '../models/services/compositionRootService';
 import { NotificationManager } from '../notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../pad/projectAutoDetectionManager';
 import { SettingsManager } from '../settings/settingsManager';
@@ -24,7 +21,7 @@ type Class = new (...args: unknown[]) => unknown;
 export class CompositionRootService implements ICompositionRootService {
   private readonly container: Container;
   private injectableClasses: ReadonlyArray<
-    [Class, Array<interfaces.ServiceIdentifier<symbol>>]
+    [Class, Array<ServiceIdentifier<symbol>>]
   >;
 
   constructor(private context: models.IVSCodeExtensionContext) {
@@ -34,21 +31,12 @@ export class CompositionRootService implements ICompositionRootService {
     this.initBindings();
   }
 
-  public get<T>(serviceIdentifier: interfaces.ServiceIdentifier<T>): T {
+  public get<T>(serviceIdentifier: ServiceIdentifier<T>): T {
     return this.container.get<T>(serviceIdentifier);
   }
 
   public dispose(): void {
-    this.injectableClasses
-      .map(
-        (
-          injectableClass: [Class, Array<interfaces.ServiceIdentifier<symbol>>],
-        ) => injectableClass[0],
-      )
-      .forEach((klass: Class) => {
-        Reflect.deleteMetadata(METADATA_KEY.PARAM_TYPES, klass);
-        Reflect.deleteMetadata(METADATA_KEY.TAGGED, klass);
-      });
+    this.container.unbindAll();
   }
 
   private init(): void {
@@ -90,22 +78,34 @@ export class CompositionRootService implements ICompositionRootService {
         [models.SYMBOLS.IVSCode, models.SYMBOLS.IVSCodeExtensionContext],
       ],
     ];
-    this.dispose();
+
+    this.injectableClasses
+      .map(
+        (injectableClass: [Class, Array<ServiceIdentifier<symbol>>]): Class =>
+          injectableClass[0],
+      )
+      .forEach((klass: Class): void => {
+        Reflect.deleteMetadata(
+          '@inversifyjs/core/classIsInjectableFlagReflectKey',
+          klass,
+        );
+        Reflect.deleteMetadata(
+          '@inversifyjs/core/classMetadataReflectKey',
+          klass,
+        );
+      });
   }
 
   private initDecorations(): void {
     this.injectableClasses.forEach(
-      (
-        injectableClass: [Class, Array<interfaces.ServiceIdentifier<symbol>>],
-      ) => {
+      (injectableClass: [Class, Array<ServiceIdentifier<symbol>>]): void => {
         // declare classes as injectables
         const klass: Class = injectableClass[0];
         decorate(injectable(), klass);
         // declare injectable parameters
-        const params: Array<interfaces.ServiceIdentifier<symbol>> =
-          injectableClass[1];
+        const params: Array<ServiceIdentifier<symbol>> = injectableClass[1];
         params.forEach(
-          (identifier: interfaces.ServiceIdentifier<symbol>, index: number) =>
+          (identifier: ServiceIdentifier<symbol>, index: number): void =>
             decorate(inject(identifier), klass, index),
         );
       },
@@ -113,9 +113,8 @@ export class CompositionRootService implements ICompositionRootService {
   }
 
   private initBindings(): void {
-    const bind = <T>(
-      identifier: interfaces.ServiceIdentifier<T>,
-    ): interfaces.BindingToSyntax<T> => this.container.bind<T>(identifier);
+    const bind = <T>(identifier: ServiceIdentifier<T>): BindToFluentSyntax<T> =>
+      this.container.bind<T>(identifier);
 
     bind<string>(models.SYMBOLS.ILocale).toConstantValue(vscode.env.language);
     bind<models.IVSCode>(models.SYMBOLS.IVSCode).toConstantValue(vscode);

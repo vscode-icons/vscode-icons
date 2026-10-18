@@ -1,5 +1,5 @@
-import { IVSIcons } from '../contributions';
-import { ConfigurationTarget } from '../vscode';
+import type { IVSIcons } from '../contributions';
+import type { ConfigurationTarget } from '../vscode';
 
 export interface IConfigManager {
   vsicons: IVSIcons;

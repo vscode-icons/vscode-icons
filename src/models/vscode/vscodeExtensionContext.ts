@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { IVSCodeMemento } from './vscodeMemento';
+import type { IVSCodeDisposable } from './vscodeDisposable';
+import type { IVSCodeMemento } from './vscodeMemento';
 
 export interface IVSCodeExtensionContext {
   extensionPath: string;
   globalState: IVSCodeMemento;
   storagePath: string | undefined;
-  subscriptions: Array<{ dispose: any }>;
+  subscriptions: IVSCodeDisposable[];
   workspaceState: IVSCodeMemento;
 }

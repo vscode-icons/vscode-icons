@@ -1,4 +1,4 @@
-import { IProjectDetection, IPresets, IAssociations } from '.';
+import type { IAssociations, IPresets, IProjectDetection } from '.';
 
 export interface IVSIcons {
   associations: IAssociations;

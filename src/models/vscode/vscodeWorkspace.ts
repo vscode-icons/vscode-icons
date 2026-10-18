@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { IVSCodeUri } from './vscodeUri';
-import { IVSCodeDisposable } from './vscodeDisposable';
-import { IVSCodeWorkspaceFolder } from './vscodeWorkspaceFolder';
-import { IVSCodeCancellationToken } from './vscodeCancellationToken';
-import { IVSCodeWorkspaceConfiguration } from './vscodeWorkspaceConfiguration';
-import { IVSCodeConfigurationChangeEvent } from './vscodeConfigurationChangeEvent';
+import type { IVSCodeCancellationToken } from './vscodeCancellationToken';
+import type { IVSCodeConfigurationChangeEvent } from './vscodeConfigurationChangeEvent';
+import type { IVSCodeDisposable } from './vscodeDisposable';
+import type { IVSCodeUri } from './vscodeUri';
+import type { IVSCodeWorkspaceConfiguration } from './vscodeWorkspaceConfiguration';
+import type { IVSCodeWorkspaceFolder } from './vscodeWorkspaceFolder';
 
 export interface IVSCodeWorkspace {
   rootPath: string | undefined;
@@ -23,8 +22,8 @@ export interface IVSCodeWorkspace {
 }
 
 export type IVSCodeEvent<T> = (
-  listener: (e: T) => any,
-  thisArgs?: any,
+  listener: (e: T) => unknown,
+  thisArgs?: unknown,
   disposables?: IVSCodeDisposable[],
 ) => IVSCodeDisposable;
 

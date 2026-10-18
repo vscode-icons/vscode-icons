@@ -1,11 +1,13 @@
+import type { IExtensionManager } from '../src/models';
+
 import { expect } from 'chai';
-import * as sinon from 'sinon';
 import proxyq from 'proxyquire';
-import { constants } from '../src/constants';
-import { IExtensionManager } from '../src/models';
+import * as sinon from 'sinon';
+
 import { ExtensionManager } from '../src/app/extensionManager';
-import { context as extensionContext } from './fixtures/extensionContext';
 import { Debugger } from '../src/common';
+import { constants } from '../src/constants';
+import { context as extensionContext } from './fixtures/extensionContext';
 
 describe('Entry points: tests', function () {
   interface IEntrypoint {
@@ -47,11 +49,11 @@ describe('Entry points: tests', function () {
       let infoStub: sinon.SinonStub;
 
       beforeEach(function () {
-        infoStub = sandbox.stub(console, 'info');
+        infoStub = sandbox.stub(console, 'info').get(() => infoStub);
       });
 
-      it('activates the extension', function () {
-        EntryPoint.activate(extensionContext);
+      it('activates the extension', async function () {
+        await EntryPoint.activate(extensionContext);
 
         expect(extensionStub.activate.calledOnceWithExactly()).to.be.true;
       });

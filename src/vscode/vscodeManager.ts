@@ -1,11 +1,13 @@
-import { coerce, gte, parse } from 'semver';
-import packageJson from '../../../package.json';
-import * as models from '../models';
-import {
+import type * as models from '../models';
+import type {
   IPackageManifest,
   IVSCodeIconTheme,
   IVSCodeManifest,
 } from '../models/packageManifest';
+
+import { coerce, gte, parse } from 'semver';
+
+import packageJson from '../../../package.json';
 import { Utils } from '../utils';
 
 export class VSCodeManager implements models.IVSCodeManager {
@@ -54,7 +56,7 @@ export class VSCodeManager implements models.IVSCodeManager {
       manifest &&
       manifest.contributes &&
       manifest.contributes.iconThemes.some(
-        (theme: IVSCodeIconTheme) => theme._watch,
+        (theme: IVSCodeIconTheme): boolean => theme._watch,
       );
     return gte(this.version, this.supportsThemeReloadVersion) && watchable;
   }
@@ -74,10 +76,13 @@ export class VSCodeManager implements models.IVSCodeManager {
     }
     // 'workspaceFolders' on top of significance order
     if (this.workspace.workspaceFolders.length) {
-      return this.workspace.workspaceFolders.reduce<string[]>((a, b) => {
-        a.push(b.uri.fsPath);
-        return a;
-      }, []);
+      return this.workspace.workspaceFolders.reduce<string[]>(
+        (a, b): string[] => {
+          a.push(b.uri.fsPath);
+          return a;
+        },
+        [],
+      );
     }
     return [this.workspace.rootPath];
   }
