@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { IVSCodeCancellationToken } from './vscodeCancellationToken';
 import type { IVSCodeConfigurationChangeEvent } from './vscodeConfigurationChangeEvent';
 import type { IVSCodeDisposable } from './vscodeDisposable';
@@ -23,8 +22,8 @@ export interface IVSCodeWorkspace {
 }
 
 export type IVSCodeEvent<T> = (
-  listener: (e: T) => any,
-  thisArgs?: any,
+  listener: (e: T) => unknown,
+  thisArgs?: unknown,
   disposables?: IVSCodeDisposable[],
 ) => IVSCodeDisposable;
 

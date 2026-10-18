@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 export interface IVSCodeUri {
   readonly scheme: string;
   readonly authority: string;
@@ -15,5 +13,5 @@ export interface IVSCodeUri {
     fragment?: string;
   }): IVSCodeUri;
   toString(skipEncoding?: boolean): string;
-  toJSON(): any;
+  toJSON(): unknown;
 }
