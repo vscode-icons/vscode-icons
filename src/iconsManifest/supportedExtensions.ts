@@ -2497,6 +2497,17 @@ export const extensions: IFileCollection = {
       format: FileFormat.svg,
     },
     {
+      icon: 'frontlang',
+      extensions: ['ft'],
+      format: FileFormat.svg,
+    },
+    {
+      icon: 'frontlangconfig',
+      extensions: ['frontlang.toml', 'frontlang.lock'],
+      filename: true,
+      format: FileFormat.svg
+    },
+    {
       icon: 'fthtml',
       extensions: [],
       languages: [languages.fthtml],
