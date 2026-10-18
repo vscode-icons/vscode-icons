@@ -23,7 +23,6 @@ const declarationCountPlugin = {
       },
       create(context) {
         const declarations = [];
-
         return {
           'ClassDeclaration, ClassExpression, TSInterfaceDeclaration'(node) {
             declarations.push(node);
