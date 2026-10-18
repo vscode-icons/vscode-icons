@@ -1,4 +1,4 @@
-import type { IIconsGenerator } from '../models';
+import type { IIconsGenerator } from '../types';
 
 import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';

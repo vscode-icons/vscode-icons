@@ -19,7 +19,7 @@ import {
   unlinkAsync,
   writeFileAsync,
 } from '../common/fsAsync';
-import { FileFormat } from '../models';
+import * as enums from '../types/enums';
 
 export class Utils {
   public static getAppDataDirPath(): string {
@@ -44,10 +44,12 @@ export class Utils {
   }
 
   public static fileFormatToString(
-    extension: FileFormat | string = FileFormat.svg,
+    extension: enums.FileFormat | string = enums.FileFormat.svg,
   ): string {
     return `.${
-      typeof extension === 'string' ? extension.trim() : FileFormat[extension]
+      typeof extension === 'string'
+        ? extension.trim()
+        : enums.FileFormat[extension]
     }`;
   }
 

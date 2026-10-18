@@ -1,4 +1,4 @@
-import type { IFileCollection } from '../models';
+import type { IFileCollection } from '../types';
 
 import { languages } from './languages';
 
