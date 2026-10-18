@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ConfigurationTarget } from './vscodeConfigurationTarget';
 
 export interface IPreset<T> {
@@ -10,14 +9,14 @@ export interface IPreset<T> {
 }
 
 export interface IVSCodeWorkspaceConfiguration {
-  readonly [key: string]: any;
+  readonly [key: string]: unknown;
   get<T>(section: string): T | undefined;
   get<T>(section: string, defaultValue: T): T;
   has(section: string): boolean;
   inspect<T>(section: string): IPreset<T> | undefined;
   update(
     section: string,
-    value: any,
+    value: unknown,
     configurationTarget?: ConfigurationTarget | boolean,
   ): Thenable<void>;
 }
