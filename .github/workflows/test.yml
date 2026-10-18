@@ -36,6 +36,8 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           [[ -z "$BASE_SHA" ]] && BASE_SHA=$(git rev-parse "$HEAD_SHA^" 2>/dev/null || echo 0)
+          # a shallow clone may not contain the base commit: fetch it, or fall back to linting everything
+          [[ "$BASE_SHA" =~ ^0+$ ]] || git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null || git fetch -q --no-tags --depth=1 origin "$BASE_SHA" 2>/dev/null || BASE_SHA=0
           [[ "$BASE_SHA" =~ ^0+$ ]] && BASE_SHA=$(git hash-object -t tree /dev/null)
           git diff --name-only -z --diff-filter=ACMR "$BASE_SHA" "$HEAD_SHA" > "$RUNNER_TEMP/changed-files"
           for t in prettier eslint markdown svg; do : > "$RUNNER_TEMP/$t-files"; done
