@@ -3,4 +3,7 @@ export * from './iconDefinition';
 export * from './iconMapping';
 export * from './iconPath';
 export * from './iconSchema';
+export * from './zedFileIcons';
+export * from './zedFolderIcons';
 export * from './zedIconSchema';
+export * from './zedTheme';

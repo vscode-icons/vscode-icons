@@ -6,11 +6,45 @@ import { importX } from 'eslint-plugin-import-x';
 import perfectionist from 'eslint-plugin-perfectionist';
 import tseslint from 'typescript-eslint';
 
+const declarationCountPlugin = {
+  meta: { name: 'vscode-icons-declaration-count' },
+  rules: {
+    'max-class-interface-declarations': {
+      meta: {
+        type: 'problem',
+        docs: {
+          description: 'Enforce one class or interface declaration per file',
+        },
+        schema: [],
+        messages: {
+          excess:
+            'Only one class or interface declaration is allowed per file.',
+        },
+      },
+      create(context) {
+        const declarations = [];
+
+        return {
+          'ClassDeclaration, ClassExpression, TSInterfaceDeclaration'(node) {
+            declarations.push(node);
+          },
+          'Program:exit'() {
+            for (const declaration of declarations.slice(1)) {
+              context.report({ node: declaration, messageId: 'excess' });
+            }
+          },
+        };
+      },
+    },
+  },
+};
+
 export default defineConfig(
   includeIgnoreFile(join(import.meta.dirname, '.gitignore')),
   js.configs.recommended,
   importX.flatConfigs.recommended,
   {
+    plugins: { declarationCount: declarationCountPlugin },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
       reportUnusedInlineConfigs: 'error',
@@ -18,12 +52,12 @@ export default defineConfig(
     rules: {
       'arrow-body-style': 'error',
       curly: 'error',
+      'declarationCount/max-class-interface-declarations': 'error',
       'dot-notation': 'error',
       eqeqeq: ['error', 'smart'],
       'guard-for-in': 'error',
       'id-blacklist': ['error', 'any', 'number', 'string', 'boolean'],
       'id-match': 'error',
-      'max-classes-per-file': ['error', 1],
       'no-bitwise': 'error',
       'no-caller': 'error',
       'no-console': [

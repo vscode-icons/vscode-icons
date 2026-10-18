@@ -2,9 +2,18 @@
 import type { IVSCodeCancellationToken } from './vscodeCancellationToken';
 import type { IVSCodeConfigurationChangeEvent } from './vscodeConfigurationChangeEvent';
 import type { IVSCodeDisposable } from './vscodeDisposable';
+import type { IVSCodeRelativePattern } from './vscodeRelativePattern';
 import type { IVSCodeUri } from './vscodeUri';
 import type { IVSCodeWorkspaceConfiguration } from './vscodeWorkspaceConfiguration';
 import type { IVSCodeWorkspaceFolder } from './vscodeWorkspaceFolder';
+
+type GlobPattern = string | IVSCodeRelativePattern;
+
+export type IVSCodeEvent<T> = (
+  listener: (e: T) => any,
+  thisArgs?: any,
+  disposables?: IVSCodeDisposable[],
+) => IVSCodeDisposable;
 
 export interface IVSCodeWorkspace {
   rootPath: string | undefined;
@@ -20,19 +29,4 @@ export interface IVSCodeWorkspace {
     maxResults?: number,
     token?: IVSCodeCancellationToken,
   ): Thenable<IVSCodeUri[]>;
-}
-
-export type IVSCodeEvent<T> = (
-  listener: (e: T) => any,
-  thisArgs?: any,
-  disposables?: IVSCodeDisposable[],
-) => IVSCodeDisposable;
-
-type GlobPattern = string | IVSCodeRelativePattern;
-
-export interface IVSCodeRelativePattern {
-  baseUri: IVSCodeUri;
-  base: string;
-  pattern: string;
-  new (base: IVSCodeWorkspaceFolder | string, pattern: string);
 }

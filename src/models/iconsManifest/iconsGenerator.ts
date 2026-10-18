@@ -1,6 +1,7 @@
 import type { IFileCollection, IFolderCollection } from '../extensions';
 import type { IIconSchema, IZedIconSchema } from '../iconSchema';
 import type { IProjectDetectionResult } from '../projectDetector';
+import type { IIconManifest } from './iconManifest';
 
 export interface IIconsGenerator {
   generateIconsManifest(
@@ -12,9 +13,4 @@ export interface IIconsGenerator {
     iconsManifest: IIconManifest,
     updatePackageJson?: boolean,
   ): Promise<void>;
-}
-
-export interface IIconManifest {
-  vscode: IIconSchema;
-  zed: IZedIconSchema;
 }

@@ -9,6 +9,8 @@ export * from './vscodeEnv';
 export * from './vscodeExtensionContext';
 export * from './vscodeManager';
 export * from './vscodeMemento';
+export * from './vscodePreset';
+export * from './vscodeRelativePattern';
 export * from './vscodeUri';
 export * from './vscodeWindow';
 export * from './vscodeWorkspace';
