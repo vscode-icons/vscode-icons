@@ -70,11 +70,6 @@ export const extensions: IFolderCollection = {
         '.vsts',
       ],
     },
-    {
-      icon: 'backend',
-      extensions: ['backend', '.backend'],
-      format: FileFormat.svg,
-    },
     { icon: 'binary', extensions: ['bin', '.bin'] },
     { icon: 'bloc', extensions: ['blocs', 'bloc'] },
     {
@@ -690,7 +685,7 @@ export const extensions: IFolderCollection = {
       icon: 'seedkit',
       extensions: ['seedkit', '.seedkit'],
     },
-    { icon: 'server', extensions: ['server'] },
+    { icon: 'server', extensions: ['server', 'backend', '.backend'] },
     {
       icon: 'services',
       extensions: ['service', 'services'],
