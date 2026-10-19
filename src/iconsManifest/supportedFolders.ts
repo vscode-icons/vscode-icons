@@ -923,7 +923,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'zed',
-      extensions: ['.zed'],
+      extensions: ['.zed', 'zed'],
       light: true,
     },
   ],
