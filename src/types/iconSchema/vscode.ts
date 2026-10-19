@@ -1,6 +1,6 @@
 import type { IIconAssociation } from './common';
 
-export const schema: IIconSchema = {
+export const schema: IVSCodeIconSchema = {
   $schema: 'vscode://schemas/icon-theme',
   iconDefinitions: {
     _file: { iconPath: '' },
@@ -39,14 +39,14 @@ export const schema: IIconSchema = {
   hidesExplorerArrows: false,
 };
 
-export interface IIconSchema extends IIconMapping {
-  iconDefinitions: IIconDefinition;
-  light: IIconMapping;
-  highContrast?: IIconMapping;
+export interface IVSCodeIconSchema extends IVSCodeIconMapping {
+  iconDefinitions: IVSCodeIconDefinition;
+  light: IVSCodeIconMapping;
+  highContrast?: IVSCodeIconMapping;
   hidesExplorerArrows?: boolean;
 }
 
-export interface IIconMapping extends Record<string, unknown> {
+export interface IVSCodeIconMapping extends Record<string, unknown> {
   rootFolder: string;
   rootFolderExpanded: string;
   file: string;
@@ -59,19 +59,19 @@ export interface IIconMapping extends Record<string, unknown> {
   languageIds: IIconAssociation;
 }
 
-export interface IIconDefinition {
-  _file: IIconPath;
-  _folder: IIconPath;
-  _folder_open: IIconPath;
-  _file_light: IIconPath;
-  _folder_light: IIconPath;
-  _folder_light_open: IIconPath;
-  _root_folder: IIconPath;
-  _root_folder_open: IIconPath;
-  _root_folder_light: IIconPath;
-  _root_folder_light_open: IIconPath;
+export interface IVSCodeIconDefinition {
+  _file: IVSCodeIconPath;
+  _folder: IVSCodeIconPath;
+  _folder_open: IVSCodeIconPath;
+  _file_light: IVSCodeIconPath;
+  _folder_light: IVSCodeIconPath;
+  _folder_light_open: IVSCodeIconPath;
+  _root_folder: IVSCodeIconPath;
+  _root_folder_open: IVSCodeIconPath;
+  _root_folder_light: IVSCodeIconPath;
+  _root_folder_light_open: IVSCodeIconPath;
 }
 
-export interface IIconPath {
+export interface IVSCodeIconPath {
   iconPath: string;
 }

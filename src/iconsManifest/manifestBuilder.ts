@@ -172,7 +172,7 @@ export class ManifestBuilder {
 
   private static async buildDefaultIconPath(
     defaultExtension: types.IDefaultExtension,
-    schemaExtension: types.IIconPath,
+    schemaExtension: types.IVSCodeIconPath,
     isFolder = false,
     isOpenFolder = false,
   ): Promise<string> {
@@ -199,7 +199,7 @@ export class ManifestBuilder {
   private static async buildJsonStructure(
     files: types.IFileCollection,
     folders: types.IFolderCollection,
-    vscSchema: types.IIconSchema,
+    vscSchema: types.IVSCodeIconSchema,
     zedSchema: types.IZedIconSchema,
   ): Promise<types.IIconManifest> {
     // check for light files & folders
@@ -293,8 +293,8 @@ export class ManifestBuilder {
   private static buildVSCJsonStructure(
     files: types.IBuildFiles,
     folders: types.IBuildFolders,
-    schema: types.IIconSchema,
-  ): types.IIconSchema {
+    schema: types.IVSCodeIconSchema,
+  ): types.IVSCodeIconSchema {
     schema.iconDefinitions = {
       ...schema.iconDefinitions,
       ...folders.defs,
@@ -329,7 +329,7 @@ export class ManifestBuilder {
     const lightFileIcons: types.IZedFileIcons = {};
 
     Object.entries(files.defs).forEach(([key, def]): void => {
-      const iconDef = def as types.IIconPath;
+      const iconDef = def as types.IVSCodeIconPath;
       darkFileIcons[key] = { path: this.toZedPath(iconDef.iconPath) };
       lightFileIcons[key] = { path: this.toZedPath(iconDef.iconPath) };
       if (key.includes('_light')) {
@@ -378,8 +378,8 @@ export class ManifestBuilder {
 
     Object.entries(folders.light.folderNames).forEach(
       ([dirName, key]): void => {
-        const fd = folders.defs[key] as types.IIconPath;
-        const fdOpen = folders.defs[`${key}_open`] as types.IIconPath;
+        const fd = folders.defs[key] as types.IVSCodeIconPath;
+        const fdOpen = folders.defs[`${key}_open`] as types.IVSCodeIconPath;
 
         lightFolderIcons[dirName] = {
           collapsed: this.toZedPath(fd.iconPath),
@@ -389,8 +389,10 @@ export class ManifestBuilder {
         // if we have a light version icon, we need to find the dark version icon key.
         if (key.includes('_light')) {
           const darkKey = key.replace('_light', '');
-          const darkFd = folders.defs[darkKey] as types.IIconPath;
-          const darkFdOpen = folders.defs[`${darkKey}_open`] as types.IIconPath;
+          const darkFd = folders.defs[darkKey] as types.IVSCodeIconPath;
+          const darkFdOpen = folders.defs[
+            `${darkKey}_open`
+          ] as types.IVSCodeIconPath;
 
           darkFolderIcons[dirName] = {
             collapsed: this.toZedPath(darkFd.iconPath),
