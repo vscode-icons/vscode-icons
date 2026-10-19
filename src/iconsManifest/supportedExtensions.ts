@@ -1968,8 +1968,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'frontlangconfig',
-      extensions: ['frontlang.toml', 'frontlang.lock', '*.ftpkg', '*.ftbc'],
-      filename: true,
+      extensions: ['frontlang.toml', 'frontlang.lock', 'ftpkg', 'ftbc'],
     },
     {
       icon: 'fsharp',
