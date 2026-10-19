@@ -1,6 +1,6 @@
 import type { IIconAssociation } from './common';
 
-export const schema: IVSCodeIconSchema = {
+export const vscodeSchema: IVSCodeIconSchema = {
   $schema: 'vscode://schemas/icon-theme',
   iconDefinitions: {
     _file: { iconPath: '' },

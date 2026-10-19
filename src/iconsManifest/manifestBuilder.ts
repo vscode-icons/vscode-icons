@@ -6,7 +6,7 @@ import { existsAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import {
-  schema as defaultSchema,
+  vscodeSchema as defaultVSCodeSchema,
   zedSchema as defaultZedSchema,
 } from '../types/iconSchema';
 import { Utils } from '../utils';
@@ -26,7 +26,7 @@ export class ManifestBuilder {
       ConfigManager.iconsDir,
     );
 
-    const vscSchema = cloneDeep(defaultSchema);
+    const vscSchema = cloneDeep(defaultVSCodeSchema);
     const zedSchema = cloneDeep(defaultZedSchema);
     const vscDefs = vscSchema.iconDefinitions;
 

@@ -28,7 +28,7 @@ describe('ExtensionManager: actions tests', function () {
     let vsiconsClone: types.IVSIcons;
 
     const defaultManifest: types.IIconManifest = {
-      vscode: types.schema,
+      vscode: types.vscodeSchema,
       zed: types.zedSchema,
     };
 
