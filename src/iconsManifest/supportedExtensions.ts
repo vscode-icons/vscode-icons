@@ -1,6 +1,5 @@
 import type { IFileCollection } from '../models';
 
-import { FileFormat } from '../models';
 import { languages } from './languages';
 
 export const extensions: IFileCollection = {
@@ -1966,13 +1965,11 @@ export const extensions: IFileCollection = {
     {
       icon: 'frontlang',
       extensions: ['ft'],
-      format: FileFormat.svg,
     },
     {
       icon: 'frontlangconfig',
-      extensions: ['frontlang.toml', 'frontlang.lock'],
+      extensions: ['frontlang.toml', 'frontlang.lock', 'ftpkg', 'ftbc'],
       filename: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'fsharp',
