@@ -1,3 +1,5 @@
+import type * as types from '../../src/types';
+
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
@@ -7,35 +9,35 @@ import { ErrorHandler } from '../../src/common/errorHandler';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
-import * as models from '../../src/models';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
 describe('ExtensionManager: event listeners tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<models.IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<models.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<models.ISettingsManager>;
-    let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
-    let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<types.IVSCodeManager>;
+    let configManagerStub: sinon.SinonStubbedInstance<types.IConfigManager>;
+    let settingsManagerStub: sinon.SinonStubbedInstance<types.ISettingsManager>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<types.INotificationManager>;
+    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IIconsGenerator>;
+    let padMngStub: sinon.SinonStubbedInstance<types.IProjectAutoDetectionManager>;
 
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
 
-    let extensionManager: models.IExtensionManager;
-    let vsiconsClone: models.IVSIcons;
-    let state: models.IState;
+    let extensionManager: types.IExtensionManager;
+    let vsiconsClone: types.IVSIcons;
+    let state: types.IState;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<types.IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -45,22 +47,22 @@ describe('ExtensionManager: event listeners tests', function () {
       }));
 
       configManagerStub =
-        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<types.IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =
-        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
+        sandbox.createStubInstance<types.ISettingsManager>(SettingsManager);
       notifyManagerStub =
-        sandbox.createStubInstance<models.INotificationManager>(
+        sandbox.createStubInstance<types.INotificationManager>(
           NotificationManager,
         );
 
       iconsGeneratorStub =
-        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
+        sandbox.createStubInstance<types.IIconsGenerator>(IconsGenerator);
 
       padMngStub =
-        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+        sandbox.createStubInstance<types.IProjectAutoDetectionManager>(
           ProjectAutoDetectionManager,
         );
 
@@ -113,7 +115,7 @@ describe('ExtensionManager: event listeners tests', function () {
           context(`and the 'status' is NOT 'activated'`, function () {
             context(`the 'status' gets set to`, function () {
               it(`'activated' and gets updated`, function () {
-                state.status = models.ExtensionStatus.deactivated;
+                state.status = enums.ExtensionStatus.deactivated;
                 settingsManagerStub.getState.returns(state);
                 settingsManagerStub.updateStatus.resolves();
 
@@ -127,7 +129,7 @@ describe('ExtensionManager: event listeners tests', function () {
 
                 expect(
                   settingsManagerStub.updateStatus.calledOnceWithExactly(
-                    models.ExtensionStatus.activated,
+                    enums.ExtensionStatus.activated,
                   ),
                 ).to.be.true;
                 expect(
@@ -142,7 +144,7 @@ describe('ExtensionManager: event listeners tests', function () {
           context(`and the 'status' is 'activated'`, function () {
             context(`the 'status' gets`, function () {
               it(`NOT updated`, function () {
-                state.status = models.ExtensionStatus.activated;
+                state.status = enums.ExtensionStatus.activated;
                 settingsManagerStub.getState.returns(state);
 
                 onDidChangeConfigurationStub.callArgOnWith(
@@ -172,7 +174,7 @@ describe('ExtensionManager: event listeners tests', function () {
           context(`and the 'status' is 'activated'`, function () {
             context(`the extension 'status' gets set to`, function () {
               it(`'deactivated' and gets updated`, function () {
-                state.status = models.ExtensionStatus.activated;
+                state.status = enums.ExtensionStatus.activated;
                 settingsManagerStub.getState.returns(state);
                 settingsManagerStub.updateStatus.resolves();
 
@@ -186,7 +188,7 @@ describe('ExtensionManager: event listeners tests', function () {
 
                 expect(
                   settingsManagerStub.updateStatus.calledOnceWithExactly(
-                    models.ExtensionStatus.deactivated,
+                    enums.ExtensionStatus.deactivated,
                   ),
                 ).to.be.true;
                 expect(
@@ -201,7 +203,7 @@ describe('ExtensionManager: event listeners tests', function () {
           context(`and the 'status' is 'deactivated'`, function () {
             context(`the 'status' gets`, function () {
               it(`NOT updated`, function () {
-                state.status = models.ExtensionStatus.deactivated;
+                state.status = enums.ExtensionStatus.deactivated;
                 settingsManagerStub.getState.returns(state);
 
                 onDidChangeConfigurationStub.callArgOnWith(
@@ -316,7 +318,7 @@ describe('ExtensionManager: event listeners tests', function () {
                   ).to.be.true;
                   expect(
                     applyCustomizationCommandStub.calledOnceWithExactly([
-                      models.LangResourceKeys.dontShowThis,
+                      enums.LangResourceKeys.dontShowThis,
                     ]),
                   ).to.be.true;
                 });

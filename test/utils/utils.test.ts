@@ -9,7 +9,7 @@ import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
 
 import * as fsAsync from '../../src/common/fsAsync';
-import { FileFormat } from '../../src/models';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 
 describe('Utils: tests', function () {
@@ -93,7 +93,7 @@ describe('Utils: tests', function () {
       it(`returns the string representation of the 'FileFormat'`, function () {
         expect(Utils.fileFormatToString()).to.equal('.svg');
         expect(Utils.fileFormatToString('svg')).to.equal('.svg');
-        expect(Utils.fileFormatToString(FileFormat.svg)).to.equal('.svg');
+        expect(Utils.fileFormatToString(enums.FileFormat.svg)).to.equal('.svg');
       });
     });
 

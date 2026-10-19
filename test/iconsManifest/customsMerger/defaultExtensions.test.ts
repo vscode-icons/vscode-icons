@@ -1,4 +1,4 @@
-import type { IFileCollection, IFolderCollection } from '../../../src/models';
+import type { IFileCollection, IFolderCollection } from '../../../src/types';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';

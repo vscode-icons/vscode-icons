@@ -1,11 +1,10 @@
-import type * as models from '../models';
+import type * as types from '../types';
+import type * as enums from '../types/enums';
 
 import langResources from '../../../lang.nls.bundle.json';
 import { constants } from '../constants';
 
-export class LanguageResourceManager
-  implements models.ILanguageResourceManager
-{
+export class LanguageResourceManager implements types.ILanguageResourceManager {
   private defaultLangResource: string[];
   private currentLangResource: string[];
 
@@ -16,18 +15,18 @@ export class LanguageResourceManager
       (this.locale && languages[this.locale]) || this.defaultLangResource;
   }
 
-  public localize(...keys: models.LangResourceLike[]): string {
+  public localize(...keys: types.LangResourceLike[]): string {
     let msg = '';
     keys
       .filter(
-        (key: models.LangResourceLike): boolean =>
+        (key: types.LangResourceLike): boolean =>
           key !== null && key !== undefined,
       )
-      .forEach((resourceKey: models.LangResourceLike): void => {
+      .forEach((resourceKey: types.LangResourceLike): void => {
         if (typeof resourceKey === 'number') {
           if (this.currentLangResource.length > resourceKey) {
             // If no message is found fallback to english message
-            let message: string | models.IOSSpecific =
+            let message: string | types.IOSSpecific =
               this.currentLangResource[resourceKey] ||
               this.defaultLangResource[resourceKey];
 
@@ -60,7 +59,7 @@ export class LanguageResourceManager
 
   public getLangResourceKey(
     message?: string,
-  ): models.LangResourceKeys | undefined {
+  ): enums.LangResourceKeys | undefined {
     if (!message) {
       return undefined;
     }

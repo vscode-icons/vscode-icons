@@ -1,4 +1,4 @@
-import type { IFolderCollection } from '../models';
+import type { IFolderCollection } from '../types';
 
 export const extensions: IFolderCollection = {
   default: {

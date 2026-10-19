@@ -2,7 +2,7 @@ import type {
   IFileCollection,
   IFolderExtension,
   IIconAssociation,
-} from '../../../src/models';
+} from '../../../src/types';
 
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
@@ -11,7 +11,7 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
-import { FileFormat } from '../../../src/models';
+import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
 
@@ -50,8 +50,8 @@ describe('ManifestBuilder: folders icons test', function () {
       const folders = cloneDeep(fixtFolders);
       const folder = folders.supported.find(({ icon }) => icon === 'api');
 
-      folder.format = FileFormat.png;
-      fileFormatToStringStub.withArgs(FileFormat.png).returns('.png');
+      folder.format = enums.FileFormat.png;
+      fileFormatToStringStub.withArgs(enums.FileFormat.png).returns('.png');
 
       const manifest = await ManifestBuilder.buildManifest(
         emptyFileCollection,
@@ -62,7 +62,8 @@ describe('ManifestBuilder: folders icons test', function () {
         definition
       ] as IIconAssociation;
 
-      expect(fileFormatToStringStub.calledWith(FileFormat.png)).to.be.true;
+      expect(fileFormatToStringStub.calledWith(enums.FileFormat.png)).to.be
+        .true;
       expect(icon.iconPath).to.equal(
         `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypePrefix}${folder.icon}${constants.iconsManifest.iconSuffix}.png`,
       );

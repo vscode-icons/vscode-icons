@@ -1,22 +1,22 @@
-import type * as models from '../models';
+import type * as types from '../types';
 import type {
   IPackageManifest,
   IVSCodeIconTheme,
   IVSCodeManifest,
-} from '../models/packageManifest';
+} from '../types/package';
 
 import { coerce, gte, parse } from 'semver';
 
 import packageJson from '../../../package.json';
 import { Utils } from '../utils';
 
-export class VSCodeManager implements models.IVSCodeManager {
+export class VSCodeManager implements types.IVSCodeManager {
   private appUserDirPath: string;
   private supportsThemeReloadVersion = '1.34.0';
 
   constructor(
-    private vscode: models.IVSCode,
-    private extensionContext: models.IVSCodeExtensionContext,
+    private vscode: types.IVSCode,
+    private extensionContext: types.IVSCodeExtensionContext,
   ) {
     if (!vscode) {
       throw new ReferenceError(`'vscode' not set to an instance`);
@@ -26,15 +26,15 @@ export class VSCodeManager implements models.IVSCodeManager {
     }
   }
 
-  public get context(): models.IVSCodeExtensionContext {
+  public get context(): types.IVSCodeExtensionContext {
     return this.extensionContext;
   }
 
-  public get env(): models.IVSCodeEnv {
+  public get env(): types.IVSCodeEnv {
     return this.vscode.env;
   }
 
-  public get commands(): models.IVSCodeCommands {
+  public get commands(): types.IVSCodeCommands {
     return this.vscode.commands;
   }
 
@@ -42,11 +42,11 @@ export class VSCodeManager implements models.IVSCodeManager {
     return this.vscode.version;
   }
 
-  public get window(): models.IVSCodeWindow {
+  public get window(): types.IVSCodeWindow {
     return this.vscode.window;
   }
 
-  public get workspace(): models.IVSCodeWorkspace {
+  public get workspace(): types.IVSCodeWorkspace {
     return this.vscode.workspace;
   }
 

@@ -2,8 +2,8 @@ import type {
   IVSCodeManager,
   IVSCodeUri,
   IVSCodeWorkspaceFolder,
-} from '../../src/models';
-import type { IPackageManifest } from '../../src/models/packageManifest';
+} from '../../src/types';
+import type { IPackageManifest } from '../../src/types/package';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';

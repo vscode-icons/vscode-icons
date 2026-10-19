@@ -1,4 +1,4 @@
-import type { IVSCodeExtensionContext, IVSCodeMemento } from '../../src/models';
+import type { IVSCodeExtensionContext, IVSCodeMemento } from '../../src/types';
 
 export const context: IVSCodeExtensionContext = {
   extensionPath: undefined,
