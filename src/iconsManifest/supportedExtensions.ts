@@ -1967,13 +1967,13 @@ export const extensions: IFileCollection = {
       extensions: ['ft'],
     },
     {
-      icon: 'frontlangconfig',
-      extensions: ['frontlang.toml', 'frontlang.lock'],
-      filename: true,
+      icon: 'frontlang',
+      extensions: ['ftpkg', 'ftbc'],
     },
     {
       icon: 'frontlangconfig',
-      extensions: ['ftpkg', 'ftbc'],
+      extensions: ['frontlang.toml', 'frontlang.lock'],
+      filename: true,
     },
     {
       icon: 'fsharp',
