@@ -1964,11 +1964,11 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'frontlang',
-      extensions: ['ft'],
+      extensions: ['*.ft'],
     },
     {
       icon: 'frontlangconfig',
-      extensions: ['frontlang.toml', 'frontlang.lock', 'ftpkg', 'ftbc'],
+      extensions: ['frontlang.toml', 'frontlang.lock', '*.ftpkg', '*.ftbc'],
       filename: true,
     },
     {
