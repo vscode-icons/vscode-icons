@@ -3569,6 +3569,11 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'nextest',
+      extensions: ['nextest.toml'],
+      filename: true,
+    },
+    {
       icon: 'nextflow',
       extensions: ['.nf'],
       filename: true,
