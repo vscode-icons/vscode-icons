@@ -420,7 +420,7 @@ export const languages = {
   mvtjs: { ids: 'mvtjs', knownExtensions: ['mvt'] },
   mxml: { ids: 'mxml', knownExtensions: ['mxml'] },
   nearley: { ids: 'nearley', knownExtensions: ['ne'] },
-  nextflow: { ids: 'nextflow', knownExtensions: ['nf'] },
+  nextflow: { ids: 'nextflow', knownExtensions: ['nf', 'nf.test'] },
   nginx: { ids: ['nginx'], knownExtensions: ['nginx'] },
   nim: { ids: 'nim', knownExtensions: ['nim'] },
   nimble: { ids: 'nimble', knownExtensions: ['nimble'] },
