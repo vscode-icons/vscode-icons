@@ -769,6 +769,16 @@ export const extensions: IFileCollection = {
       disabled: true,
     },
     {
+      icon: 'changelog',
+      extensions: [
+        'CHANGELOG.md',
+        'HISTORY.md',
+        'CHANGES.md',
+        'NEWS.md',
+      ],
+      filename: true,
+    },
+    {
       icon: 'changelogen',
       extensions: ['.changelogrc', '.changelogenrc'],
       filenamesGlob: ['changelog.config'],
