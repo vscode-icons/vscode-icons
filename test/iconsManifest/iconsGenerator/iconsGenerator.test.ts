@@ -29,7 +29,7 @@ import {
 import { extensions as extFiles } from '../../../src/iconsManifest/supportedExtensions';
 import { extensions as extFolders } from '../../../src/iconsManifest/supportedFolders';
 import {
-  schema as defaultVSCodeSchema,
+  vscodeSchema as defaultVSCodeSchema,
   zedSchema as defaultZedSchema,
 } from '../../../src/types';
 import { Utils } from '../../../src/utils';

@@ -7,7 +7,7 @@ import type {
 } from './enums';
 import type {
   IIconAssociation,
-  IIconSchema,
+  IVSCodeIconSchema,
   IZedIconSchema,
 } from './iconSchema';
 
@@ -100,7 +100,7 @@ export interface IIconsGenerator {
     files?: IFileCollection,
     folders?: IFolderCollection,
     projectDetectionResults?: IProjectDetectionResult[],
-  ): Promise<{ vscode: IIconSchema; zed: IZedIconSchema }>;
+  ): Promise<{ vscode: IVSCodeIconSchema; zed: IZedIconSchema }>;
   persist(
     iconsManifest: IIconManifest,
     updatePackageJson?: boolean,
@@ -132,7 +132,7 @@ export interface IExtensionCollection<T> {
 }
 
 export interface IIconManifest {
-  vscode: IIconSchema;
+  vscode: IVSCodeIconSchema;
   zed: IZedIconSchema;
 }
 
