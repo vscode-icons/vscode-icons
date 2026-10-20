@@ -119,6 +119,7 @@ export class Utils {
     fromDirPath: string,
     toDirName: string,
     checkDirectory = true,
+    includeDotSlashPrefix = false,
   ): Promise<string> {
     if (fromDirPath == null) {
       throw new Error('fromDirPath not defined.');
@@ -133,7 +134,19 @@ export class Utils {
       throw new Error(`Directory '${toDirName}' not found.`);
     }
 
-    return relative(fromDirPath, toDirName).replace(/\\/g, '/').concat('/');
+    let relativePath = relative(fromDirPath, toDirName)
+      .replace(/\\/g, '/')
+      .concat('/');
+
+    if (!includeDotSlashPrefix) {
+      return relativePath;
+    }
+
+    relativePath = relativePath.startsWith('.')
+      ? relativePath
+      : `./${relativePath}`;
+
+    return relativePath;
   }
 
   public static removeFirstDot(txt: string): string {
