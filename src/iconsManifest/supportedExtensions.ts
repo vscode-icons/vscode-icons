@@ -771,7 +771,11 @@ export const extensions: IFileCollection = {
     {
       icon: 'changelog',
       extensions: [
+        'CHANGELOG',
         'CHANGELOG.md',
+        'CHANGELOG.markdown',
+        'CHANGELOG.rst',
+        'CHANGELOG.txt',
         'HISTORY.md',
         'CHANGES.md',
         'NEWS.md',
