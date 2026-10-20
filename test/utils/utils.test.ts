@@ -225,6 +225,30 @@ describe('Utils: tests', function () {
       });
 
       context('returns a relative path that', function () {
+        context('has a dot slash prefix when requested', function () {
+          it('if the relative path does NOT already start with a dot', async function () {
+            const relativePath = await Utils.getRelativePath(
+              'path/from',
+              'path/from/to',
+              false,
+              true,
+            );
+
+            expect(relativePath).to.be.equal('./to/');
+          });
+
+          it('if the relative path already starts with a dot', async function () {
+            const relativePath = await Utils.getRelativePath(
+              'path/from',
+              'path/to',
+              false,
+              true,
+            );
+
+            expect(relativePath).to.be.equal('../to/');
+          });
+        });
+
         context('has a trailing path separator', function () {
           const trailingPathSeparatorTest = async (
             toDirName: string,
