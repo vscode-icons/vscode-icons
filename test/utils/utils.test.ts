@@ -214,12 +214,14 @@ describe('Utils: tests', function () {
     context(`the 'getRelativePath' function`, function () {
       context(`does NOT throw an Error`, function () {
         context(`if the destination directory does NOT exists`, function () {
-          it('and a directory check should NOT be done', function () {
-            const toDirName = 'path/to';
+          it('and a directory check should NOT be done', async function () {
+            const relativePath = await Utils.getRelativePath(
+              'path/from',
+              'path/to',
+              false,
+            );
 
-            expect(() =>
-              Utils.getRelativePath('path/from', toDirName, false),
-            ).to.not.throw(Error, `Directory '${toDirName}' not found.`);
+            expect(relativePath).to.be.a('string');
           });
         });
       });
