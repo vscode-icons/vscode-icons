@@ -5764,6 +5764,11 @@ export const extensions: IFileCollection = {
       languages: [languages.teal],
     },
     {
+      icon: 'telvax',
+      extensions: ['tvx'],
+      light: true,
+    },
+    {
       icon: 'templ',
       extensions: ['templ'],
       languages: [languages.templ],
