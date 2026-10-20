@@ -112,6 +112,11 @@ export const extensions: IFolderCollection = {
       extensions: ['client', 'clients'],
     },
     {
+      icon: 'cline',
+      extensions: ['.clinerules', '.cline', 'Cline'],
+      light: true,
+    },
+    {
       icon: 'cloudflare',
       extensions: ['.cloudflare', 'cloudflare'],
     },
