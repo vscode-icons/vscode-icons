@@ -6255,6 +6255,11 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'viteplus',
+      extensions: [],
+      light: true,
+    },
+    {
       icon: 'vitest',
       filenamesGlob: ['vitest.config'],
       extensions: [],
@@ -6285,10 +6290,6 @@ export const extensions: IFileCollection = {
       icon: 'volt',
       extensions: [],
       languages: [languages.volt],
-    },
-    {
-      icon: 'vp',
-      extensions: [],
     },
     {
       icon: 'vroom',
