@@ -7,6 +7,7 @@ import type {
 } from './enums';
 import type {
   IIconAssociation,
+  IVSCodeIconPath,
   IVSCodeIconSchema,
   IZedIconSchema,
 } from './iconSchema';
@@ -137,7 +138,7 @@ export interface IIconManifest {
 }
 
 export interface IBuildFiles {
-  defs: Record<string, unknown>;
+  defs: Record<string, IVSCodeIconPath>;
   names: {
     fileExtensions: IIconAssociation;
     fileNames: IIconAssociation;
@@ -159,7 +160,7 @@ export interface IBuildFiles {
 }
 
 export interface IBuildFolders {
-  defs: Record<string, unknown>;
+  defs: Record<string, IVSCodeIconPath>;
   names: {
     folderNames: IIconAssociation;
     folderNamesExpanded: IIconAssociation;
