@@ -136,7 +136,7 @@ export class Utils {
 
     let relativePath = relative(fromDirPath, toDirName).replace(/\\/g, '/');
 
-    if (includeDotSlashPrefix && !/^\.\.?\//.test(relativePath)) {
+    if (includeDotSlashPrefix && !/^\.\.?(\/|$)/.test(relativePath)) {
       relativePath = `./${relativePath}`;
     }
 

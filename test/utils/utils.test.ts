@@ -262,7 +262,7 @@ describe('Utils: tests', function () {
               expect(relativePath).to.be.equal('./.to/');
             });
 
-            it('"fromDirPath" and "toDirName" is the same dirctory', async function () {
+            it('"fromDirPath" and "toDirName" is the same directory', async function () {
               const relativePath = await Utils.getRelativePath(
                 'path/from',
                 'path/from',
@@ -271,6 +271,17 @@ describe('Utils: tests', function () {
               );
 
               expect(relativePath).to.be.equal('./');
+            });
+
+            it('is the parent directory', async function () {
+              const relativePath = await Utils.getRelativePath(
+                'path/from',
+                'path',
+                false,
+                true,
+              );
+
+              expect(relativePath).to.be.equal('../');
             });
           });
         });
