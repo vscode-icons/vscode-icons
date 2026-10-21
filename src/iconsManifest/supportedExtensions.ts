@@ -6287,6 +6287,10 @@ export const extensions: IFileCollection = {
       languages: [languages.volt],
     },
     {
+      icon: 'vp',
+      extensions: [],
+    },
+    {
       icon: 'vroom',
       extensions: [],
       languages: [languages.vroom],
