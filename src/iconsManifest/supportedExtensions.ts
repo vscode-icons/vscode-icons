@@ -2222,6 +2222,7 @@ export const extensions: IFileCollection = {
       extensions: ['greenkeeper.json'],
       filename: true,
     },
+    { icon: 'greptile', extensions: ['greptile.json'], filename: true },
     {
       icon: 'gridsome',
       extensions: [],
