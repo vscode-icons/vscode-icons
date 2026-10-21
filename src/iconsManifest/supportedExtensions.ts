@@ -6256,7 +6256,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'viteplus',
-      extensions: ['vite.config.ts'],
+      filenamesGlob: ['vite.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       light: true,
       disabled: true,
