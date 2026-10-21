@@ -134,17 +134,15 @@ export class Utils {
       throw new Error(`Directory '${toDirName}' not found.`);
     }
 
-    let relativePath = relative(fromDirPath, toDirName)
-      .replace(/\\/g, '/')
-      .concat('/');
+    let relativePath = relative(fromDirPath, toDirName).replace(/\\/g, '/');
 
-    if (!includeDotSlashPrefix) {
-      return relativePath;
+    if (includeDotSlashPrefix && !/^\.\.?\//.test(relativePath)) {
+      relativePath = `./${relativePath}`;
     }
 
-    relativePath = relativePath.startsWith('.')
-      ? relativePath
-      : `./${relativePath}`;
+    if (!relativePath.endsWith('/')) {
+      relativePath += '/';
+    }
 
     return relativePath;
   }

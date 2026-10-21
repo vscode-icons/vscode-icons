@@ -35,15 +35,11 @@ export class ManifestBuilder {
 
     const vscSchema = cloneDeep(defaultVSCodeSchema);
 
-    // vscode only
-    const vscDefs = await this.configureVSCodeIconDefinitions(
-      files,
-      folders,
-      vscSchema,
-    );
+    await this.configureVSCodeIconDefinitions(files, folders, vscSchema);
 
-    // zed only
-    const zedSchema = this.configureZedThemesDirectoryIcons(vscDefs);
+    const zedSchema = this.configureZedThemesDirectoryIcons(
+      vscSchema.iconDefinitions,
+    );
 
     // When folders are hidden, we need to set the folder mapping references to empty
     // so VS Code doesn't reserve space for invisible folder icons.
@@ -89,11 +85,10 @@ export class ManifestBuilder {
     files: types.IFileCollection,
     folders: types.IFolderCollection,
     vscSchema: types.IVSCodeIconSchema,
-  ): Promise<types.IVSCodeIconDefinition> {
+  ): Promise<void> {
     const vscDefs = vscSchema.iconDefinitions;
 
     // set default icons for dark theme
-    // vscode only
     vscDefs._file.iconPath = await this.buildDefaultIconPath(
       files.default.file,
       vscDefs._file,
@@ -168,8 +163,6 @@ export class ManifestBuilder {
       true,
       true,
     );
-
-    return vscDefs;
   }
 
   private static configureZedThemesDirectoryIcons(
@@ -177,22 +170,18 @@ export class ManifestBuilder {
   ): types.IZedIconSchema {
     const zedSchema = cloneDeep(defaultZedSchema);
 
-    // dark theme folders
-    for (let i = 0; i < 4; i++) {
-      zedSchema.themes[i].directory_icons.collapsed = this.toIconFolderPath(
-        vscDefs._folder.iconPath,
-      );
-      zedSchema.themes[i].directory_icons.expanded = this.toIconFolderPath(
-        vscDefs._folder_open.iconPath,
-      );
+    for (const themeIndex of Object.values(constants.zed.dark_themes)) {
+      zedSchema.themes[themeIndex].directory_icons.collapsed =
+        this.toIconFolderPath(vscDefs._folder.iconPath);
+      zedSchema.themes[themeIndex].directory_icons.expanded =
+        this.toIconFolderPath(vscDefs._folder_open.iconPath);
     }
 
-    // light theme folders
-    for (let i = 4; i < 8; i++) {
-      zedSchema.themes[i].directory_icons.collapsed =
+    for (const themeIndex of Object.values(constants.zed.light_themes)) {
+      zedSchema.themes[themeIndex].directory_icons.collapsed =
         this.toIconFolderPath(vscDefs._folder_light.iconPath) ||
         zedSchema.themes[0].directory_icons.collapsed;
-      zedSchema.themes[i].directory_icons.expanded =
+      zedSchema.themes[themeIndex].directory_icons.expanded =
         this.toIconFolderPath(vscDefs._folder_light_open.iconPath) ||
         zedSchema.themes[0].directory_icons.expanded;
     }
@@ -201,10 +190,10 @@ export class ManifestBuilder {
   }
 
   private static toIconFolderPath(iconPath: string): string {
-    return iconPath.replace(
-      this.iconsRelativeDirPathFromSourceDir,
-      this.iconsRelativeDirPathFromRootDir,
-    );
+    const sourceIconsPrefix = this.iconsRelativeDirPathFromSourceDir;
+    return iconPath.startsWith(sourceIconsPrefix)
+      ? `${this.iconsRelativeDirPathFromRootDir}${iconPath.slice(sourceIconsPrefix.length)}`
+      : iconPath;
   }
 
   private static async buildDefaultIconPath(
@@ -285,65 +274,60 @@ export class ManifestBuilder {
       vscSchema,
     );
 
-    const zedFinalSchema = this.generateZedJsonStructure(
-      resFiles,
-      resFolders,
-      resFilesOfficial,
-      resFoldersOfficial,
-      resFilesAngular,
-      resFilesNest,
-      zedSchema,
-    );
+    const zedFinalSchema = this.generateZedJsonStructure({
+      files: resFiles,
+      folders: resFolders,
+      filesOfficial: resFilesOfficial,
+      foldersOfficial: resFoldersOfficial,
+      filesAngular: resFilesAngular,
+      filesNest: resFilesNest,
+      schema: zedSchema,
+    });
 
     return { vscode: vscFinalSchema, zed: zedFinalSchema };
   }
 
   private static generateZedJsonStructure(
-    resFiles: types.IBuildFiles,
-    resFolders: types.IBuildFolders,
-    resFilesOfficial: types.IBuildFiles,
-    resFoldersOfficial: types.IBuildFolders,
-    resFilesAngular: types.IBuildFiles,
-    resFilesNest: types.IBuildFiles,
-    zedSchema: types.IZedIconSchema,
+    options: types.IZedJsonStructureOptions,
   ): types.IZedIconSchema {
-    // zed has several themes:
-    // DARK:
-    //    [0] dark,
-    //    [1] official dark,
-    //    [2] angular official dark,
-    //    [3] nest official dark,
-    // LIGHT:
-    //    [4] light,
-    //    [5] official light,
-    //    [6] angular official light,
-    //    [7] nest official light
     let zedFinalSchema = this.buildZedJsonStructure(
-      resFiles,
-      resFolders,
-      zedSchema,
-      [0, 4],
+      options.files,
+      options.folders,
+      options.schema,
+      {
+        dark: constants.zed.dark_themes.dark,
+        light: constants.zed.light_themes.light,
+      },
     );
 
     zedFinalSchema = this.buildZedJsonStructure(
-      resFilesOfficial,
-      resFoldersOfficial,
+      options.filesOfficial,
+      options.foldersOfficial,
       zedFinalSchema,
-      [1, 5],
+      {
+        dark: constants.zed.dark_themes.official,
+        light: constants.zed.light_themes.official,
+      },
     );
 
     zedFinalSchema = this.buildZedJsonStructure(
-      resFilesAngular,
-      resFoldersOfficial,
+      options.filesAngular,
+      options.foldersOfficial,
       zedFinalSchema,
-      [2, 6],
+      {
+        dark: constants.zed.dark_themes.angular,
+        light: constants.zed.light_themes.angular,
+      },
     );
 
     zedFinalSchema = this.buildZedJsonStructure(
-      resFilesNest,
-      resFoldersOfficial,
+      options.filesNest,
+      options.foldersOfficial,
       zedFinalSchema,
-      [3, 7],
+      {
+        dark: constants.zed.dark_themes.nest,
+        light: constants.zed.light_themes.nest,
+      },
     );
 
     return zedFinalSchema;
@@ -378,17 +362,15 @@ export class ManifestBuilder {
     files: types.IBuildFiles,
     folders: types.IBuildFolders,
     schema: types.IZedIconSchema,
-    themePosition: [number, number],
+    theme: { dark: number; light: number },
   ): types.IZedIconSchema {
-    const darkSchema = schema.themes[themePosition[0]];
-    const lightSchema = schema.themes[themePosition[1]];
+    const darkSchema = schema.themes[theme.dark];
+    const lightSchema = schema.themes[theme.light];
 
-    // zed file icons
     const darkFileIcons: types.IZedFileIcons = {};
     const lightFileIcons: types.IZedFileIcons = {};
 
-    Object.entries(files.defs).forEach(([key, def]): void => {
-      const iconDef = def as types.IVSCodeIconPath;
+    Object.entries(files.defs).forEach(([key, iconDef]): void => {
       darkFileIcons[key] = { path: this.toIconFolderPath(iconDef.iconPath) };
       lightFileIcons[key] = {
         path: this.toIconFolderPath(iconDef.iconPath),
@@ -439,8 +421,8 @@ export class ManifestBuilder {
 
     Object.entries(folders.light.folderNames).forEach(
       ([dirName, key]): void => {
-        const folder = folders.defs[key] as types.IVSCodeIconPath;
-        const folderOpen = folders.defs[`${key}_open`] as types.IVSCodeIconPath;
+        const folder = folders.defs[key];
+        const folderOpen = folders.defs[`${key}_open`];
 
         lightFolderIcons[dirName] = {
           collapsed: this.toIconFolderPath(folder.iconPath),
@@ -450,10 +432,8 @@ export class ManifestBuilder {
         // if we have a light version icon, we need to find the dark version icon key.
         if (key.includes('_light')) {
           const darkKey = key.replace('_light', '');
-          const darkFolder = folders.defs[darkKey] as types.IVSCodeIconPath;
-          const darkFolderOpen = folders.defs[
-            `${darkKey}_open`
-          ] as types.IVSCodeIconPath;
+          const darkFolder = folders.defs[darkKey];
+          const darkFolderOpen = folders.defs[`${darkKey}_open`];
 
           darkFolderIcons[dirName] = {
             collapsed: this.toIconFolderPath(darkFolder.iconPath),
