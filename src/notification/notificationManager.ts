@@ -3,7 +3,7 @@ import type {
   INotificationManager,
   IVSCodeManager,
   LangResourceLike,
-} from '../models';
+} from '../types';
 
 import { format } from 'util';
 
@@ -57,14 +57,14 @@ export class NotificationManager implements INotificationManager {
     if (typeof message === 'string' && message.includes(' ')) {
       const matchesLength: number = message.match(/%s/g).length;
       const sItems: LangResourceLike[] = items.splice(0, matchesLength);
-      const msgs: string[] = sItems.map((sItem: LangResourceLike) =>
+      const msgs: string[] = sItems.map((sItem: LangResourceLike): string =>
         this.i18nManager.localize(sItem),
       );
       msg = format(message, ...msgs);
     } else {
       msg = this.i18nManager.localize(message);
     }
-    const msgItems: string[] = items.map((item: LangResourceLike) =>
+    const msgItems: string[] = items.map((item: LangResourceLike): string =>
       this.i18nManager.localize(item),
     );
     return { msg, msgItems };

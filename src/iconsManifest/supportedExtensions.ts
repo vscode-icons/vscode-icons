@@ -1,4 +1,4 @@
-import type { IFileCollection } from '../models';
+import type { IFileCollection } from '../types';
 
 import { languages } from './languages';
 
@@ -3569,6 +3569,11 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'nextest',
+      extensions: ['nextest.toml'],
+      filename: true,
+    },
+    {
       icon: 'nextflow',
       extensions: ['.nf'],
       filename: true,
@@ -4399,6 +4404,14 @@ export const extensions: IFileCollection = {
     {
       icon: 'plantuml',
       extensions: ['pu', 'plantuml', 'iuml', 'puml'],
+    },
+    {
+      icon: 'platformatic',
+      extensions: ['watt.json', 'watt.json5'],
+      filenamesGlob: ['platformatic'],
+      extensionsGlob: ['json', 'json5', 'yml', 'yaml', 'tml', 'toml'],
+      filename: true,
+      light: true,
     },
     {
       icon: 'platformio',

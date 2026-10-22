@@ -1,5 +1,5 @@
 /* tslint:disable max-line-length */
-import type { IFolderCollection } from '../../src/models';
+import type { IFolderCollection } from '../../src/types';
 
 export const extensions: IFolderCollection = {
   default: {

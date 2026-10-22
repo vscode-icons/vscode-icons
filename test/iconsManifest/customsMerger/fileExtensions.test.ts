@@ -1,11 +1,11 @@
-import type { IFileCollection, IFileExtension } from '../../../src/models';
+import type { IFileCollection, IFileExtension } from '../../../src/types';
 
 import { expect } from 'chai';
 import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
 
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import { FileFormat } from '../../../src/models';
+import * as enums from '../../../src/types/enums';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -33,7 +33,7 @@ describe('CustomsMerger: file extensions tests', function () {
           {
             icon: 'existing_icon',
             extensions: ['existing'],
-            format: FileFormat.png,
+            format: enums.FileFormat.png,
           },
         ],
       };
@@ -52,7 +52,7 @@ describe('CustomsMerger: file extensions tests', function () {
       );
 
       expect(customDef).to.exist;
-      expect(customDef.format).to.equal(FileFormat.png);
+      expect(customDef.format).to.equal(enums.FileFormat.png);
     });
 
     it(`'overrides' removes the specified icon`, async function () {

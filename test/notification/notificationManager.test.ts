@@ -2,7 +2,7 @@ import type {
   ILanguageResourceManager,
   INotificationManager,
   IVSCodeManager,
-} from '../../src/models';
+} from '../../src/types';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';

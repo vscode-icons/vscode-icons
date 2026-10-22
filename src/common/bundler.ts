@@ -28,13 +28,13 @@ export class Bundler {
         Record<string, string>
       >(content.toString());
       bundleObj[locale] = Reflect.ownKeys(translations).map(
-        (key: string) => translations[key],
+        (key: string): string => translations[key],
       );
     };
     const bundleJson = {};
     const promises: Array<Promise<void>> = [];
     const resourseFiles = await readdirAsync(sourceDirPath);
-    resourseFiles.forEach((filename: string) =>
+    resourseFiles.forEach((filename: string): number =>
       promises.push(iterator(filename, bundleJson)),
     );
     await Promise.all(promises);
@@ -73,7 +73,7 @@ export class Bundler {
     };
     const promises = [];
     const resourseFiles = await readdirAsync(sourceDirPath);
-    resourseFiles.forEach((filename: string) =>
+    resourseFiles.forEach((filename: string): number =>
       promises.push(iterator(filename)),
     );
     await Promise.all(promises);

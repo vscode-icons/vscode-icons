@@ -1,4 +1,4 @@
-import type { IFolderExtension } from '../../src/models';
+import type { IFolderExtension } from '../../src/types';
 
 import { join } from 'path';
 
@@ -9,7 +9,7 @@ import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { extensions as folders } from '../../src/iconsManifest/supportedFolders';
-import { FileFormat } from '../../src/models';
+import * as enums from '../../src/types/enums';
 
 describe('Specifications of supported folders: tests', function () {
   context('ensures that', function () {
@@ -17,23 +17,23 @@ describe('Specifications of supported folders: tests', function () {
 
     context('each supported', function () {
       function ensureFormat(folder: IFolderExtension): void {
-        folder.format ??= FileFormat.svg;
+        folder.format ??= enums.FileFormat.svg;
       }
 
       context('folder', function () {
         it('defaults a missing format to svg', function () {
           const folder = { icon: 'example' } as IFolderExtension;
           ensureFormat(folder);
-          expect(folder.format).to.equal(FileFormat.svg);
+          expect(folder.format).to.equal(enums.FileFormat.svg);
         });
 
         it('preserves an explicit format', function () {
           const folder = {
             icon: 'example',
-            format: FileFormat.svg,
+            format: enums.FileFormat.svg,
           } as IFolderExtension;
           ensureFormat(folder);
-          expect(folder.format).to.equal(FileFormat.svg);
+          expect(folder.format).to.equal(enums.FileFormat.svg);
         });
 
         it('has an associated icon file', async function () {
@@ -43,7 +43,7 @@ describe('Specifications of supported folders: tests', function () {
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
                 `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format] as string
+                  enums.FileFormat[folder.format] as string
                 }`;
               const iconFilePath = join(iconsDirPath, filename);
 
@@ -61,7 +61,7 @@ describe('Specifications of supported folders: tests', function () {
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                 `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format] as string
+                  enums.FileFormat[folder.format] as string
                 }`;
               const iconFilePath = join(iconsDirPath, filename);
 
@@ -120,7 +120,7 @@ describe('Specifications of supported folders: tests', function () {
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
                     `${constants.iconsManifest.iconSuffix}.${
-                      FileFormat[folder.format] as string
+                      enums.FileFormat[folder.format] as string
                     }`;
                   const iconFilePath = join(iconsDirPath, filename);
                   const pathExists = await existsAsync(iconFilePath);
@@ -139,7 +139,7 @@ describe('Specifications of supported folders: tests', function () {
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                     `${constants.iconsManifest.iconSuffix}.${
-                      FileFormat[folder.format] as string
+                      enums.FileFormat[folder.format] as string
                     }`;
                   const iconFilePath = join(iconsDirPath, filename);
                   const pathExists = await existsAsync(iconFilePath);

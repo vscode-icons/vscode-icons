@@ -1,4 +1,4 @@
-import type { IFolderCollection } from '../models';
+import type { IFolderCollection } from '../types';
 
 export const extensions: IFolderCollection = {
   default: {
@@ -689,7 +689,7 @@ export const extensions: IFolderCollection = {
       icon: 'seedkit',
       extensions: ['seedkit', '.seedkit'],
     },
-    { icon: 'server', extensions: ['server'] },
+    { icon: 'server', extensions: ['server', 'backend', '.backend'] },
     {
       icon: 'services',
       extensions: ['service', 'services'],
@@ -927,7 +927,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'zed',
-      extensions: ['.zed'],
+      extensions: ['.zed', 'zed'],
       light: true,
     },
   ],
