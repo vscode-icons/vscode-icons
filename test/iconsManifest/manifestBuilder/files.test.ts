@@ -697,6 +697,28 @@ describe('ManifestBuilder: files icons test', function () {
         });
       });
 
+      context('API schema', function () {
+        it('maps files, extensions, and filenames to icon paths', async function () {
+          const manifest = await ManifestBuilder.buildManifest(
+            fixtFiles,
+            emptyFolderCollection,
+          );
+
+          expect(manifest.api.files.default).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file.svg`,
+          );
+          expect(manifest.api.files.extensions.as).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}actionscript.svg`,
+          );
+          expect(manifest.api.files.filenames['angular-cli.json']).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}angular.svg`,
+          );
+          expect(manifest.api.light.files.extensions.plist).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypeLightPrefix}config.svg`,
+          );
+        });
+      });
+
       context('zed theme', function () {
         it('should get official icons for official theme', async function () {
           const files = cloneDeep(fixtFiles);

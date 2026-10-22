@@ -69,6 +69,34 @@ describe('ManifestBuilder: folders icons test', function () {
       );
     });
 
+    context('API schema', function () {
+      it('maps default and named folders to closed and opened icon paths', async function () {
+        const manifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        expect(manifest.api.folders.default.closed).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}folder.svg`,
+        );
+        expect(manifest.api.folders.default.opened).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}folder_opened.svg`,
+        );
+        expect(manifest.api.folders.api.closed).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypePrefix}api.svg`,
+        );
+        expect(manifest.api.folders.api.opened).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypePrefix}api_opened.svg`,
+        );
+        expect(manifest.api.light.folders.fonts.closed).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypeLightPrefix}fonts.svg`,
+        );
+        expect(manifest.api.light.folders.fonts.opened).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypeLightPrefix}fonts_opened.svg`,
+        );
+      });
+    });
+
     context(`if a default 'light' icon is NOT defined`, function () {
       context('and useBundledIcon is enabled', function () {
         it(`the 'default' folder icon path has the correct structure`, async function () {

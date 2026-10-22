@@ -90,6 +90,13 @@ export class IconsGenerator implements types.IIconsGenerator {
         ConfigManager.sourceDir,
         constants.extension.zedName,
       );
+
+      await this.writeIconsManifestToFile(
+        constants.iconsManifest.apiFilename,
+        iconsManifest.api,
+        ConfigManager.sourceDir,
+        constants.extension.apiName,
+      );
     }
 
     if (!updatePackageJson) {
@@ -100,7 +107,7 @@ export class IconsGenerator implements types.IIconsGenerator {
 
   private async writeIconsManifestToFile(
     iconsFilename: string,
-    iconsManifest: types.IVSCodeIconSchema | types.IZedIconSchema,
+    iconsManifest: types.IIconManifest[keyof types.IIconManifest],
     outDir: string,
     extensionName: string,
   ): Promise<void> {
