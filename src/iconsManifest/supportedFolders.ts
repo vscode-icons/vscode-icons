@@ -1,4 +1,4 @@
-import type { IFolderCollection } from '../models';
+import type { IFolderCollection } from '../types';
 
 export const extensions: IFolderCollection = {
   default: {
@@ -122,15 +122,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'component',
-      extensions: [
-        'component',
-        'components',
-        '.components',
-        'gui',
-        'src-ui',
-        'ui',
-        'widgets',
-      ],
+      extensions: ['component', 'components', '.components', 'widgets'],
     },
     {
       icon: 'composer',
@@ -336,6 +328,18 @@ export const extensions: IFolderCollection = {
     {
       icon: 'frontcommerce',
       extensions: ['.front-commerce'],
+    },
+    {
+      icon: 'frontend',
+      extensions: [
+        'frontend',
+        '.frontend',
+        'front-end',
+        '.front-end',
+        'ui',
+        'gui',
+        'src-ui',
+      ],
     },
     { icon: 'gcp', extensions: ['gcp', '.gcp'] },
     { icon: 'gemini', extensions: ['.gemini'] },
@@ -685,7 +689,7 @@ export const extensions: IFolderCollection = {
       icon: 'seedkit',
       extensions: ['seedkit', '.seedkit'],
     },
-    { icon: 'server', extensions: ['server'] },
+    { icon: 'server', extensions: ['server', 'backend', '.backend'] },
     {
       icon: 'services',
       extensions: ['service', 'services'],
@@ -923,7 +927,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'zed',
-      extensions: ['.zed'],
+      extensions: ['.zed', 'zed'],
       light: true,
     },
   ],

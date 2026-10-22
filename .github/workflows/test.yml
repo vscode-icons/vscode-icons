@@ -18,31 +18,50 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  eslint:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v5
       - uses: actions/checkout@v5
-      - run: npm ci
-      - run: npx eslint .
-
-  prettier:
-    runs-on: ubuntu-latest
-    steps:
+        with:
+          fetch-depth: 5
       - uses: actions/setup-node@v5
-      - uses: actions/checkout@v5
+        with:
+          node-version: 22.18.0
+          cache: npm
       - run: npm ci
-      - run: npx prettier --check .
-
-  remark:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v5
-      - uses: actions/checkout@v5
-      - run: npm ci
-      - run: npx remark . --frail
+      - name: Find changed files
+        id: changed
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          [[ -z "$BASE_SHA" ]] && BASE_SHA=$(git rev-parse "$HEAD_SHA^" 2>/dev/null || echo 0)
+          # a shallow clone may not contain the base commit: fetch it, or fall back to linting everything
+          [[ "$BASE_SHA" =~ ^0+$ ]] || git cat-file -e "$BASE_SHA^{commit}" 2>/dev/null || git fetch -q --no-tags --depth=1 origin "$BASE_SHA" 2>/dev/null || BASE_SHA=0
+          [[ "$BASE_SHA" =~ ^0+$ ]] && BASE_SHA=$(git hash-object -t tree /dev/null)
+          git diff --name-only -z --diff-filter=ACMR "$BASE_SHA" "$HEAD_SHA" > "$RUNNER_TEMP/changed-files"
+          for t in prettier eslint markdown svg; do : > "$RUNNER_TEMP/$t-files"; done
+          while IFS= read -r -d '' f; do
+            [[ -f "$f" ]] || continue
+            printf '%s\0' "$f" >> "$RUNNER_TEMP/prettier-files"
+            case "$f" in
+              *.js|*.cjs|*.mjs|*.jsx|*.ts|*.tsx) t=eslint ;; *.md) t=markdown ;; *.svg) t=svg ;; *) continue ;;
+            esac
+            printf '%s\0' "$f" >> "$RUNNER_TEMP/$t-files"
+          done < "$RUNNER_TEMP/changed-files"
+      - name: Prettier
+        run: xargs -0 -r npx prettier --log-level=error --ignore-unknown --check -- < "$RUNNER_TEMP/prettier-files"
+      - name: ESLint
+        run: xargs -0 -r npx eslint --quiet -- < "$RUNNER_TEMP/eslint-files"
+      - name: remark
+        run: xargs -0 -r npx remark --quiet --frail -- < "$RUNNER_TEMP/markdown-files"
+      - name: SVGLint
+        run: xargs -0 -r npx svglint --no-summary --ci -- < "$RUNNER_TEMP/svg-files"
+      - name: Check SVG optimization
+        run: xargs -0 -r npm run lint:svgo -- < "$RUNNER_TEMP/svg-files"
 
   test:
+    needs: lint
     name: Node.js ${{ matrix.node }} | ${{ matrix.os }} | ${{ matrix.arch }}
     strategy:
       max-parallel: 3

@@ -1,4 +1,4 @@
-import type { IFileCollection } from '../../src/models';
+import type { IFileCollection } from '../../src/types';
 
 import { languages } from '../../src/iconsManifest/languages';
 

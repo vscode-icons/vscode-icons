@@ -154,7 +154,10 @@ export default defineConfig(
           prefix: ['I'],
         },
       ],
-      '@typescript-eslint/no-empty-function': 'error',
+      '@typescript-eslint/no-empty-function': [
+        'error',
+        { allow: ['private-constructors'] },
+      ],
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-shadow': 'error',
       '@typescript-eslint/no-use-before-define': 'error',
@@ -165,6 +168,23 @@ export default defineConfig(
         'error',
         {
           allow: ['private'],
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.ts'],
+    ignores: ['**/*.test.ts'],
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
+        {
+          allowExpressions: false,
+          allowTypedFunctionExpressions: false,
+          allowHigherOrderFunctions: false,
+          allowConciseArrowFunctionExpressionsStartingWithVoid: false,
+          allowDirectConstAssertionInArrowFunctions: false,
+          allowIIFEs: false,
         },
       ],
     },
@@ -220,6 +240,19 @@ export default defineConfig(
             matchesAstSelector:
               'VariableDeclarator[id.name="languages"] > ObjectExpression',
           },
+        },
+      ],
+    },
+  },
+  {
+    files: ['src/**/index.ts'],
+    plugins: { perfectionist },
+    rules: {
+      'perfectionist/sort-exports': [
+        'error',
+        {
+          type: 'alphabetical',
+          order: 'asc',
         },
       ],
     },

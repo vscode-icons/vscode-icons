@@ -1,4 +1,4 @@
-import type { IExtensionManager } from '../src/models';
+import type { IExtensionManager } from '../src/types';
 
 import { expect } from 'chai';
 import proxyq from 'proxyquire';

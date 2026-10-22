@@ -1,18 +1,19 @@
-import type { IPackageManifest } from '../models/packageManifest';
+import type * as types from '../types';
+import type { IPackageManifest } from '../types/package';
 
 import { ErrorHandler } from '../common/errorHandler';
 import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
-import * as models from '../models';
+import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
 export class ProjectAutoDetectionManager
-  implements models.IProjectAutoDetectionManager
+  implements types.IProjectAutoDetectionManager
 {
   constructor(
-    private vscodeManager: models.IVSCodeManager,
-    private configManager: models.IConfigManager,
+    private vscodeManager: types.IVSCodeManager,
+    private configManager: types.IConfigManager,
   ) {
     if (!vscodeManager) {
       throw new ReferenceError(`'vscodeManager' not set to an instance`);
@@ -23,8 +24,8 @@ export class ProjectAutoDetectionManager
   }
 
   public async detectProjects(
-    projects: models.Projects[],
-  ): Promise<models.IProjectDetectionResult[]> {
+    projects: enums.Projects[],
+  ): Promise<types.IProjectDetectionResult[]> {
     if (!projects || !projects.length) {
       return null;
     }
@@ -36,7 +37,7 @@ export class ProjectAutoDetectionManager
         : this.vscodeManager.workspace.findFiles(
             '**/package.json',
             '**/node_modules/**',
-          ))) as models.IVSCodeUri[];
+          ))) as types.IVSCodeUri[];
       return this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
@@ -44,15 +45,15 @@ export class ProjectAutoDetectionManager
   }
 
   private async detect(
-    results: models.IVSCodeUri[],
-    projects: models.Projects[],
-  ): Promise<models.IProjectDetectionResult[]> {
-    const detectionResults: models.IProjectDetectionResult[] = [];
+    results: types.IVSCodeUri[],
+    projects: enums.Projects[],
+  ): Promise<types.IProjectDetectionResult[]> {
+    const detectionResults: types.IProjectDetectionResult[] = [];
     if (!results || !results.length) {
       return detectionResults;
     }
     for (const project of projects) {
-      const detectionResult: models.IProjectDetectionResult =
+      const detectionResult: types.IProjectDetectionResult =
         await this.checkForProject(results, project);
       detectionResults.push(detectionResult);
     }
@@ -60,14 +61,14 @@ export class ProjectAutoDetectionManager
   }
 
   private async checkForProject(
-    results: models.IVSCodeUri[],
-    project: models.Projects,
-  ): Promise<models.IProjectDetectionResult> {
-    const getPresetName = (_project: models.Projects): string => {
+    results: types.IVSCodeUri[],
+    project: enums.Projects,
+  ): Promise<types.IProjectDetectionResult> {
+    const getPresetName = (_project: enums.Projects): string => {
       switch (_project) {
-        case models.Projects.angular:
+        case enums.Projects.angular:
           return constants.vsicons.presets.angular;
-        case models.Projects.nestjs:
+        case enums.Projects.nestjs:
           return constants.vsicons.presets.nestjs;
         default:
           break;
@@ -75,7 +76,7 @@ export class ProjectAutoDetectionManager
     };
 
     // We need to check only the 'workspaceValue' ('user' setting should be ignored)
-    const getPreset = (proj: models.Projects): boolean =>
+    const getPreset = (proj: enums.Projects): boolean =>
       this.configManager.getPreset<boolean>(getPresetName(proj)).workspaceValue;
 
     const iconsDisabled: boolean = await ManifestReader.iconsDisabled(project);
@@ -98,7 +99,7 @@ export class ProjectAutoDetectionManager
     // 2. It's a detectable project
     // 3. The preset (when it's defined)
     // Use case: User has the preset set but project detection does not detect that project
-    const projectInfo: models.IProjectInfo = await this.getProjectInfo(
+    const projectInfo: types.IProjectInfo = await this.getProjectInfo(
       results,
       project,
     );
@@ -106,7 +107,7 @@ export class ProjectAutoDetectionManager
     const disableIcons = !iconsDisabled && (!projectInfo || preset === false);
 
     // Don't check for conflicting projects if user setting (preset) is explicitly set
-    const conflictingProjects: models.Projects[] = preset
+    const conflictingProjects: enums.Projects[] = preset
       ? []
       : await this.checkForConflictingProjects(results, project, enableIcons);
 
@@ -123,8 +124,8 @@ export class ProjectAutoDetectionManager
       return { apply: false };
     }
 
-    const langResourceKey: models.LangResourceKeys = conflictingProjects.length
-      ? models.LangResourceKeys.conflictProjectsDetected
+    const langResourceKey: enums.LangResourceKeys = conflictingProjects.length
+      ? enums.LangResourceKeys.conflictProjectsDetected
       : this.getDetectionLanguageResourseKey(project, enableIcons, preset);
 
     return {
@@ -137,17 +138,17 @@ export class ProjectAutoDetectionManager
   }
 
   private async checkForConflictingProjects(
-    results: models.IVSCodeUri[],
-    project: models.Projects,
+    results: types.IVSCodeUri[],
+    project: enums.Projects,
     enableIcons: boolean,
-  ): Promise<models.Projects[]> {
+  ): Promise<enums.Projects[]> {
     if (!enableIcons) {
       return [];
     }
     const conflictingProjects = async (
-      conflictProjects: models.Projects[],
-    ): Promise<models.Projects[]> => {
-      const projectInfos: models.Projects[] = [];
+      conflictProjects: enums.Projects[],
+    ): Promise<enums.Projects[]> => {
+      const projectInfos: enums.Projects[] = [];
       for (const cp of conflictProjects) {
         const info = await this.getProjectInfo(results, cp);
         if (info) {
@@ -158,24 +159,24 @@ export class ProjectAutoDetectionManager
     };
 
     switch (project) {
-      case models.Projects.nestjs:
-        return conflictingProjects([models.Projects.angular]);
-      case models.Projects.angular:
-        return conflictingProjects([models.Projects.nestjs]);
+      case enums.Projects.nestjs:
+        return conflictingProjects([enums.Projects.angular]);
+      case enums.Projects.angular:
+        return conflictingProjects([enums.Projects.nestjs]);
       default:
         return [];
     }
   }
 
   private getDetectionLanguageResourseKey(
-    project: models.Projects,
+    project: enums.Projects,
     enableIcons: boolean,
     preset: boolean,
-  ): models.LangResourceKeys {
+  ): enums.LangResourceKeys {
     switch (project) {
-      case models.Projects.angular:
+      case enums.Projects.angular:
         return this.getNgRelatedMessages(enableIcons, preset);
-      case models.Projects.nestjs:
+      case enums.Projects.nestjs:
         return this.getNestRelatedMessages(enableIcons, preset);
     }
   }
@@ -183,11 +184,11 @@ export class ProjectAutoDetectionManager
   private getNgRelatedMessages(enableIcons: boolean, preset: boolean): number {
     return enableIcons
       ? preset === true
-        ? models.LangResourceKeys.nonNgDetectedPresetTrue
-        : models.LangResourceKeys.ngDetected
+        ? enums.LangResourceKeys.nonNgDetectedPresetTrue
+        : enums.LangResourceKeys.ngDetected
       : preset === false
-        ? models.LangResourceKeys.ngDetectedPresetFalse
-        : models.LangResourceKeys.nonNgDetected;
+        ? enums.LangResourceKeys.ngDetectedPresetFalse
+        : enums.LangResourceKeys.nonNgDetected;
   }
 
   private getNestRelatedMessages(
@@ -196,18 +197,18 @@ export class ProjectAutoDetectionManager
   ): number {
     return enableIcons
       ? preset === true
-        ? models.LangResourceKeys.nonNestDetectedPresetTrue
-        : models.LangResourceKeys.nestDetected
+        ? enums.LangResourceKeys.nonNestDetectedPresetTrue
+        : enums.LangResourceKeys.nestDetected
       : preset === false
-        ? models.LangResourceKeys.nestDetectedPresetFalse
-        : models.LangResourceKeys.nonNestDetected;
+        ? enums.LangResourceKeys.nestDetectedPresetFalse
+        : enums.LangResourceKeys.nonNestDetected;
   }
 
   private async getProjectInfo(
-    results: models.IVSCodeUri[],
-    project: models.Projects,
-  ): Promise<models.IProjectInfo> {
-    let projectInfo: models.IProjectInfo = null;
+    results: types.IVSCodeUri[],
+    project: enums.Projects,
+  ): Promise<types.IProjectInfo> {
+    let projectInfo: types.IProjectInfo = null;
     for (const result of results) {
       const content: string = await readFileAsync(result.fsPath, 'utf8');
       const projectJson: IPackageManifest =
@@ -222,13 +223,13 @@ export class ProjectAutoDetectionManager
 
   private getInfo(
     projectJson: IPackageManifest,
-    name: models.Projects,
-  ): models.IProjectInfo {
+    name: enums.Projects,
+  ): types.IProjectInfo {
     if (!projectJson) {
       return null;
     }
 
-    const getInfo = (key: string): models.IProjectInfo => {
+    const getInfo = (key: string): types.IProjectInfo => {
       if (projectJson.dependencies && !!projectJson.dependencies[key]) {
         return { name, version: projectJson.dependencies[key] };
       }
@@ -239,9 +240,9 @@ export class ProjectAutoDetectionManager
     };
 
     switch (name) {
-      case models.Projects.angular:
+      case enums.Projects.angular:
         return getInfo('@angular/core');
-      case models.Projects.nestjs:
+      case enums.Projects.nestjs:
         return getInfo('@nestjs/core');
       default:
         return null;

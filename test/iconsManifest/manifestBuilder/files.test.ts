@@ -4,7 +4,7 @@ import type {
   IFolderCollection,
   IIconAssociation,
   ILanguage,
-} from '../../../src/models';
+} from '../../../src/types';
 
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
@@ -13,7 +13,7 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
-import { FileFormat } from '../../../src/models';
+import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
 
@@ -63,8 +63,8 @@ describe('ManifestBuilder: files icons test', function () {
 
     it('uses the configured format for the default file icon', async function () {
       const files: IFileCollection = cloneDeep(fixtFiles);
-      files.default.file.format = FileFormat.png;
-      fileFormatToStringStub.withArgs(FileFormat.png).returns('.png');
+      files.default.file.format = enums.FileFormat.png;
+      fileFormatToStringStub.withArgs(enums.FileFormat.png).returns('.png');
 
       const manifest = await ManifestBuilder.buildManifest(
         files,
@@ -80,8 +80,8 @@ describe('ManifestBuilder: files icons test', function () {
       const files = cloneDeep(fixtFiles);
       const file = files.supported.find(({ icon }) => icon === 'actionscript');
 
-      file.format = FileFormat.png;
-      fileFormatToStringStub.withArgs(FileFormat.png).returns('.png');
+      file.format = enums.FileFormat.png;
+      fileFormatToStringStub.withArgs(enums.FileFormat.png).returns('.png');
 
       const manifest = await ManifestBuilder.buildManifest(
         files,
@@ -92,7 +92,8 @@ describe('ManifestBuilder: files icons test', function () {
         definition
       ] as IIconAssociation;
 
-      expect(fileFormatToStringStub.calledWith(FileFormat.png)).to.be.true;
+      expect(fileFormatToStringStub.calledWith(enums.FileFormat.png)).to.be
+        .true;
       expect(icon.iconPath).to.equal(
         `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}${file.icon}${constants.iconsManifest.iconSuffix}.png`,
       );

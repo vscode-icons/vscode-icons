@@ -7,8 +7,8 @@ import type {
   IPresets,
   IVSCodeManager,
   IVSIcons,
-} from '../../../src/models';
-import type { IPackageManifest } from '../../../src/models/packageManifest/package';
+} from '../../../src/types';
+import type { IPackageManifest } from '../../../src/types/package';
 
 import { resolve } from 'path';
 
@@ -29,9 +29,9 @@ import {
 import { extensions as extFiles } from '../../../src/iconsManifest/supportedExtensions';
 import { extensions as extFolders } from '../../../src/iconsManifest/supportedFolders';
 import {
-  schema as defaultVSCodeSchema,
+  vscodeSchema as defaultVSCodeSchema,
   zedSchema as defaultZedSchema,
-} from '../../../src/models';
+} from '../../../src/types';
 import { Utils } from '../../../src/utils';
 import { VSCodeManager } from '../../../src/vscode/vscodeManager';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';

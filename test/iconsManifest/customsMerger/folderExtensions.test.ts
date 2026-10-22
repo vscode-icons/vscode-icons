@@ -1,4 +1,4 @@
-import type { IFolderCollection, IFolderExtension } from '../../../src/models';
+import type { IFolderCollection, IFolderExtension } from '../../../src/types';
 
 import { expect } from 'chai';
 import { isEqual } from 'lodash';

@@ -1,4 +1,4 @@
-import type { IFileCollection } from '../models';
+import type { IFileCollection } from '../types';
 
 import { languages } from './languages';
 
@@ -3569,6 +3569,11 @@ export const extensions: IFileCollection = {
       light: true,
     },
     {
+      icon: 'nextest',
+      extensions: ['nextest.toml'],
+      filename: true,
+    },
+    {
       icon: 'nextflow',
       extensions: ['.nf'],
       filename: true,
@@ -3932,12 +3937,22 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'node',
-      extensions: ['.node-version', '.nvmrc', 'node.config.json'],
+      extensions: [
+        '.node_repl_history',
+        '.node-version',
+        '.nvmrc',
+        'node.config.json',
+      ],
       filename: true,
     },
     {
       icon: 'node2',
-      extensions: ['.node-version', '.nvmrc'],
+      extensions: [
+        '.node_repl_history',
+        '.node-version',
+        '.nvmrc',
+        'node.config.json',
+      ],
       filename: true,
 
       disabled: true,
@@ -3950,6 +3965,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'npm',
       extensions: [
+        '.npm-init.js',
         '.npmignore',
         '.npmrc',
         '.package-lock.json',
@@ -4388,6 +4404,14 @@ export const extensions: IFileCollection = {
     {
       icon: 'plantuml',
       extensions: ['pu', 'plantuml', 'iuml', 'puml'],
+    },
+    {
+      icon: 'platformatic',
+      extensions: ['watt.json', 'watt.json5'],
+      filenamesGlob: ['platformatic'],
+      extensionsGlob: ['json', 'json5', 'yml', 'yaml', 'tml', 'toml'],
+      filename: true,
+      light: true,
     },
     {
       icon: 'platformio',
