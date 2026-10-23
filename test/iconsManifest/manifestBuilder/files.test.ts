@@ -99,6 +99,23 @@ describe('ManifestBuilder: files icons test', function () {
       );
     });
 
+    it('creates a definition without mappings when extensions are undefined', async function () {
+      const files = cloneDeep(fixtFiles);
+      const file = files.supported.find(({ icon }) => icon === 'actionscript');
+      files.supported = [file];
+      file.extensions = undefined;
+
+      const manifest = await ManifestBuilder.buildManifest(
+        files,
+        emptyFolderCollection,
+      );
+      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+
+      expect(manifest.vscode.iconDefinitions[definition]).to.exist;
+      expect(manifest.vscode.fileExtensions).to.be.empty;
+      expect(manifest.vscode.fileNames).to.be.empty;
+    });
+
     it('defaults the default file format to SVG when it is undefined', async function () {
       const files = cloneDeep(fixtFiles);
       files.default.file.format = undefined;
