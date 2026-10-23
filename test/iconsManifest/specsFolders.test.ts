@@ -3,7 +3,7 @@ import type { IFolderExtension } from '../../src/types';
 import { join } from 'path';
 
 import { expect } from 'chai';
-import { isEmpty, isEqual, uniqBy } from 'lodash';
+import { cloneDeep, isEmpty, isEqual, uniqBy } from 'lodash';
 
 import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
@@ -14,6 +14,12 @@ import * as enums from '../../src/types/enums';
 describe('Specifications of supported folders: tests', function () {
   context('ensures that', function () {
     const iconsDirPath = ConfigManager.iconsDir;
+    const supportedFolders = cloneDeep(folders.supported);
+    let testFolders: IFolderExtension[];
+
+    beforeEach(function () {
+      testFolders = cloneDeep(supportedFolders);
+    });
 
     context('each supported', function () {
       function ensureFormat(folder: IFolderExtension): void {
@@ -38,7 +44,7 @@ describe('Specifications of supported folders: tests', function () {
 
         it('has an associated icon file', async function () {
           await Promise.all(
-            folders.supported.map(async (folder: IFolderExtension) => {
+            testFolders.map(async (folder: IFolderExtension) => {
               ensureFormat(folder);
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
@@ -56,7 +62,7 @@ describe('Specifications of supported folders: tests', function () {
 
         it('has an associated opened icon file', async function () {
           await Promise.all(
-            folders.supported.map(async (folder: IFolderExtension) => {
+            testFolders.map(async (folder: IFolderExtension) => {
               ensureFormat(folder);
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
@@ -74,9 +80,9 @@ describe('Specifications of supported folders: tests', function () {
 
         context('does NOT have', function () {
           it(`duplicate declaration`, function () {
-            const unique = uniqBy(folders.supported, JSON.stringify);
+            const unique = uniqBy(testFolders, JSON.stringify);
 
-            expect(unique).to.have.lengthOf(folders.supported.length);
+            expect(unique).to.have.lengthOf(testFolders.length);
           });
 
           it(`same declaration with different 'extensions'`, function () {
@@ -91,19 +97,18 @@ describe('Specifications of supported folders: tests', function () {
               !_folder.checked &&
               _folder.icon === folder.icon;
 
-            folders.supported.forEach((folder: IFolderExtension) => {
+            testFolders.forEach((folder: IFolderExtension) => {
               folder.checked = true;
-              const otherDeclarations: IFolderExtension[] =
-                folders.supported.filter((_folder: IFolderExtension) =>
-                  checker(_folder, folder),
-                );
+              const otherDeclarations: IFolderExtension[] = testFolders.filter(
+                (_folder: IFolderExtension) => checker(_folder, folder),
+              );
 
               expect(otherDeclarations).to.be.empty;
             });
           });
 
           it(`empty 'extensions' declaration`, function () {
-            folders.supported.forEach(
+            testFolders.forEach(
               (folder: IFolderExtension) =>
                 expect(isEmpty(folder.extensions)).to.be.false,
             );
@@ -113,7 +118,7 @@ describe('Specifications of supported folders: tests', function () {
         context('that has a light theme version', function () {
           it('has an associated icon file', async function () {
             await Promise.all(
-              folders.supported
+              testFolders
                 .filter((folder: IFolderExtension) => folder.light)
                 .map(async (folder: IFolderExtension) => {
                   ensureFormat(folder);
@@ -132,7 +137,7 @@ describe('Specifications of supported folders: tests', function () {
 
           it('has an associated opened icon file', async function () {
             await Promise.all(
-              folders.supported
+              testFolders
                 .filter((folder: IFolderExtension) => folder.light)
                 .map(async (folder: IFolderExtension) => {
                   ensureFormat(folder);

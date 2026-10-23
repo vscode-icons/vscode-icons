@@ -3,7 +3,7 @@ import type { IFileExtension } from '../../src/types';
 import { join } from 'path';
 
 import { expect } from 'chai';
-import { isEmpty, isEqual, uniqBy } from 'lodash';
+import { cloneDeep, isEmpty, isEqual, uniqBy } from 'lodash';
 
 import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
@@ -13,8 +13,15 @@ import * as enums from '../../src/types/enums';
 
 describe('Specifications of supported extensions: tests', function () {
   context('ensures that', function () {
+    const supportedFiles = cloneDeep(files.supported);
+    let testFiles: IFileExtension[];
+
+    beforeEach(function () {
+      testFiles = cloneDeep(supportedFiles);
+    });
+
     it(`an 'extension' declaration should NOT have a leading dot`, function () {
-      files.supported
+      testFiles
         .filter(
           (file: IFileExtension) => file.extensions.length && !file.filename,
         )
@@ -30,7 +37,7 @@ describe('Specifications of supported extensions: tests', function () {
     });
 
     it('all Angular icons are disabled by default', function () {
-      const ngIcons = files.supported.filter((file: IFileExtension) =>
+      const ngIcons = testFiles.filter((file: IFileExtension) =>
         file.icon.startsWith('ng_'),
       );
 
@@ -41,7 +48,7 @@ describe('Specifications of supported extensions: tests', function () {
     });
 
     it('all Nest icons are disabled by default', function () {
-      const nestIcons = files.supported.filter((file: IFileExtension) =>
+      const nestIcons = testFiles.filter((file: IFileExtension) =>
         file.icon.startsWith('nest_'),
       );
 
@@ -75,7 +82,7 @@ describe('Specifications of supported extensions: tests', function () {
         });
 
         it('has an associated icon file', async function () {
-          for (const supportedFile of files.supported) {
+          for (const supportedFile of testFiles) {
             ensureFormat(supportedFile);
             const filename =
               `${constants.iconsManifest.fileTypePrefix}${supportedFile.icon}` +
@@ -92,9 +99,9 @@ describe('Specifications of supported extensions: tests', function () {
 
         context('does NOT have', function () {
           it(`duplicate declaration`, function () {
-            const unique = uniqBy(files.supported, JSON.stringify);
+            const unique = uniqBy(testFiles, JSON.stringify);
 
-            expect(unique).to.have.lengthOf(files.supported.length);
+            expect(unique).to.have.lengthOf(testFiles.length);
           });
 
           it(`same declaration with different 'extensions'`, function () {
@@ -110,12 +117,11 @@ describe('Specifications of supported extensions: tests', function () {
               !_file.checked &&
               _file.icon === file.icon;
 
-            files.supported.forEach((file: IFileExtension) => {
+            testFiles.forEach((file: IFileExtension) => {
               file.checked = true;
-              const otherDeclarations: IFileExtension[] =
-                files.supported.filter((_file: IFileExtension) =>
-                  checker(_file, file),
-                );
+              const otherDeclarations: IFileExtension[] = testFiles.filter(
+                (_file: IFileExtension) => checker(_file, file),
+              );
 
               expect(otherDeclarations).to.be.empty;
             });
@@ -130,7 +136,7 @@ describe('Specifications of supported extensions: tests', function () {
                 isEmpty(_file.languages) &&
                 isEmpty(_file.extensions);
 
-              files.supported.forEach((file: IFileExtension) => {
+              testFiles.forEach((file: IFileExtension) => {
                 expect(testCase(file)).to.be.false;
               });
             });
@@ -139,7 +145,7 @@ describe('Specifications of supported extensions: tests', function () {
 
         context('that has a light theme version', function () {
           it('has an associated icon file', async function () {
-            for (const supportedFile of files.supported.filter(
+            for (const supportedFile of testFiles.filter(
               (file: IFileExtension) => file.light,
             )) {
               ensureFormat(supportedFile);
