@@ -770,26 +770,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'changelog',
-      extensions: [
-        'CHANGELOG',
-        'changelog',
-        'HISTORY',
-        'history',
-        'CHANGES',
-        'changes',
-        'NEWS',
-        'news'
-      ],
-      filenamesGlob: [
-        'CHANGELOG',
-        'changelog',
-        'HISTORY',
-        'history',
-        'CHANGES',
-        'changes',
-        'NEWS',
-        'news'
-      ],
+      extensions: ['changelog', 'history', 'changes', 'news'],
+      filenamesGlob: ['changelog', 'history', 'changes', 'news'],
       extensionsGlob: ['md', 'rst', 'txt'],
       filename: true,
     },
