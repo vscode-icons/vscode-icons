@@ -93,7 +93,18 @@ describe('Utils: tests', function () {
       it(`returns the string representation of the 'FileFormat'`, function () {
         expect(Utils.fileFormatToString()).to.equal('.svg');
         expect(Utils.fileFormatToString('svg')).to.equal('.svg');
+        expect(Utils.fileFormatToString('..svg')).to.equal('.svg');
         expect(Utils.fileFormatToString(enums.FileFormat.svg)).to.equal('.svg');
+        expect(Utils.fileFormatToString('png')).to.equal('.png');
+        expect(Utils.fileFormatToString(enums.FileFormat.png)).to.equal('.png');
+      });
+
+      it('falls back to svg when the string is not a FileFormat variant', function () {
+        expect(Utils.fileFormatToString('jpg')).to.equal('.svg');
+        expect(Utils.fileFormatToString('   ')).to.equal('.svg');
+        expect(Utils.fileFormatToString(2 as enums.FileFormat)).to.equal(
+          '.svg',
+        );
       });
     });
 

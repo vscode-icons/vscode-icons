@@ -43,14 +43,31 @@ export class Utils {
     return tmpdir();
   }
 
+  /**
+   * Converts a file format enum or string into a normalized string with a leading dot.
+   * Defaults to '.svg' if the format is not recognized.
+   */
   public static fileFormatToString(
     extension: enums.FileFormat | string = enums.FileFormat.svg,
   ): string {
-    return `.${
+    // Normalize the file format string
+    // by removing leading dots and trimming whitespace
+    const fileFormat: string | undefined =
       typeof extension === 'string'
-        ? extension.trim()
-        : enums.FileFormat[extension]
-    }`;
+        ? extension.trim().replace(/^\.+/, '')
+        : enums.FileFormat[extension];
+
+    // Fallback to svg if the file format is not recognized
+    if (
+      !Object.values(enums.FileFormat).some(
+        (format: unknown): boolean =>
+          typeof format === 'string' && format === fileFormat,
+      )
+    ) {
+      return `.${enums.FileFormat[enums.FileFormat.svg]}`;
+    }
+
+    return `.${fileFormat}`;
   }
 
   /**
