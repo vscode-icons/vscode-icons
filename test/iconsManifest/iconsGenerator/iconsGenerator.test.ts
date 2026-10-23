@@ -1,8 +1,22 @@
+import type {
+  IConfigManager,
+  IFileCollection,
+  IFolderCollection,
+  IIconManifest,
+  IIconsGenerator,
+  IPresets,
+  IVSCodeManager,
+  IVSIcons,
+} from '../../../src/types';
+import type { IPackageManifest } from '../../../src/types/package';
+
+import { resolve } from 'path';
+
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
-import { resolve } from 'path';
 import * as sinon from 'sinon';
-import * as packageJson from '../../../../package.json';
+
+import packageJson from '../../../package.json';
 import { ErrorHandler } from '../../../src/common/errorHandler';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { ConfigManager } from '../../../src/configuration/configManager';
@@ -15,18 +29,9 @@ import {
 import { extensions as extFiles } from '../../../src/iconsManifest/supportedExtensions';
 import { extensions as extFolders } from '../../../src/iconsManifest/supportedFolders';
 import {
-  IConfigManager,
-  IFileCollection,
-  IFolderCollection,
-  IIconManifest,
-  IIconsGenerator,
-  IPresets,
-  IVSCodeManager,
-  IVSIcons,
-  schema as defaultVSCodeSchema,
+  vscodeSchema as defaultVSCodeSchema,
   zedSchema as defaultZedSchema,
-} from '../../../src/models';
-import { IPackageManifest } from '../../../src/models/packageManifest/package';
+} from '../../../src/types';
 import { Utils } from '../../../src/utils';
 import { VSCodeManager } from '../../../src/vscode/vscodeManager';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
@@ -232,7 +237,7 @@ describe('IconsGenerator: tests', function () {
         writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
         logErrorStub = sandbox.stub(ErrorHandler, 'logError');
         pathUnixJoinStub = sandbox.stub(Utils, 'pathUnixJoin').returns('');
-        infoStub = sandbox.stub(console, 'info');
+        infoStub = sandbox.stub(console, 'info').get(() => infoStub);
         getRelativePathStub = sandbox.stub(Utils, 'getRelativePath');
         updateFileStub = sandbox.stub(Utils, 'updateFile');
       });
@@ -298,25 +303,14 @@ describe('IconsGenerator: tests', function () {
               null,
               0,
             );
-            const zedStringified = JSON.stringify(defaultManifest.zed, null, 0);
 
-            pathUnixJoinStub.onFirstCall().returns(vscFilePath);
-            pathUnixJoinStub.onSecondCall().returns(zedFilePath);
+            pathUnixJoinStub.returns(vscFilePath);
 
             await iconsGenerator.persist(defaultManifest);
 
-            expect(writeFileAsyncStub.calledTwice).to.be.true;
+            expect(writeFileAsyncStub.calledOnce).to.be.true;
             expect(
-              writeFileAsyncStub.firstCall.calledWithExactly(
-                vscFilePath,
-                vscStringified,
-              ),
-            ).to.be.true;
-            expect(
-              writeFileAsyncStub.secondCall.calledWithExactly(
-                zedFilePath,
-                zedStringified,
-              ),
+              writeFileAsyncStub.calledWithExactly(vscFilePath, vscStringified),
             ).to.be.true;
           });
         });
@@ -376,7 +370,7 @@ describe('IconsGenerator: tests', function () {
           let manifest: IPackageManifest;
 
           beforeEach(function () {
-            manifest = packageJson as IPackageManifest;
+            manifest = packageJson;
             getRelativePathStub.resolves(
               `${constants.extension.outDirName}/${constants.extension.srcDirName}/`,
             );

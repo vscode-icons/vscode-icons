@@ -1,25 +1,49 @@
+import type { IFolderExtension } from '../../src/types';
+
+import { join } from 'path';
+
 import { expect } from 'chai';
 import { isEmpty, isEqual, uniqBy } from 'lodash';
-import { join } from 'path';
+
 import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { extensions as folders } from '../../src/iconsManifest/supportedFolders';
-import { FileFormat, IFolderExtension } from '../../src/models';
+import * as enums from '../../src/types/enums';
 
 describe('Specifications of supported folders: tests', function () {
   context('ensures that', function () {
     const iconsDirPath = ConfigManager.iconsDir;
 
     context('each supported', function () {
+      function ensureFormat(folder: IFolderExtension): void {
+        folder.format ??= enums.FileFormat.svg;
+      }
+
       context('folder', function () {
+        it('defaults a missing format to svg', function () {
+          const folder = { icon: 'example' } as IFolderExtension;
+          ensureFormat(folder);
+          expect(folder.format).to.equal(enums.FileFormat.svg);
+        });
+
+        it('preserves an explicit format', function () {
+          const folder = {
+            icon: 'example',
+            format: enums.FileFormat.svg,
+          } as IFolderExtension;
+          ensureFormat(folder);
+          expect(folder.format).to.equal(enums.FileFormat.svg);
+        });
+
         it('has an associated icon file', async function () {
           await Promise.all(
             folders.supported.map(async (folder: IFolderExtension) => {
+              ensureFormat(folder);
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
                 `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format] as string
+                  enums.FileFormat[folder.format] as string
                 }`;
               const iconFilePath = join(iconsDirPath, filename);
 
@@ -33,10 +57,11 @@ describe('Specifications of supported folders: tests', function () {
         it('has an associated opened icon file', async function () {
           await Promise.all(
             folders.supported.map(async (folder: IFolderExtension) => {
+              ensureFormat(folder);
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                 `${constants.iconsManifest.iconSuffix}.${
-                  FileFormat[folder.format] as string
+                  enums.FileFormat[folder.format] as string
                 }`;
               const iconFilePath = join(iconsDirPath, filename);
 
@@ -91,10 +116,11 @@ describe('Specifications of supported folders: tests', function () {
               folders.supported
                 .filter((folder: IFolderExtension) => folder.light)
                 .map(async (folder: IFolderExtension) => {
+                  ensureFormat(folder);
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
                     `${constants.iconsManifest.iconSuffix}.${
-                      FileFormat[folder.format] as string
+                      enums.FileFormat[folder.format] as string
                     }`;
                   const iconFilePath = join(iconsDirPath, filename);
                   const pathExists = await existsAsync(iconFilePath);
@@ -109,10 +135,11 @@ describe('Specifications of supported folders: tests', function () {
               folders.supported
                 .filter((folder: IFolderExtension) => folder.light)
                 .map(async (folder: IFolderExtension) => {
+                  ensureFormat(folder);
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
                     `${constants.iconsManifest.iconSuffix}.${
-                      FileFormat[folder.format] as string
+                      enums.FileFormat[folder.format] as string
                     }`;
                   const iconFilePath = join(iconsDirPath, filename);
                   const pathExists = await existsAsync(iconFilePath);

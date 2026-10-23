@@ -1,12 +1,10 @@
+import type { IFolderCollection, IFolderExtension } from '../../../src/types';
+
 import { expect } from 'chai';
 import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
+
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import {
-  FileFormat,
-  IFolderExtension,
-  IFolderCollection,
-} from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -23,33 +21,35 @@ describe('CustomsMerger: folder extensions tests', function () {
       sandbox.restore();
     });
 
-    it('new extensions are added to existing folder icon and respect the format type', async function () {
-      const customFolders: IFolderCollection = {
-        default: {},
-        supported: [{ icon: 'aws', extensions: ['aws3'], format: 'svg' }],
-      };
+    context('new extensions are added to existing folder icon', function () {
+      it('and respect the format type', async function () {
+        const customFolders: IFolderCollection = {
+          default: {},
+          supported: [{ icon: 'aws', extensions: ['aws3'], format: 'svg' }],
+        };
 
-      const newDefs = (
-        await CustomsMerger.merge(
-          null,
-          extFiles,
-          customFolders,
-          extFolders,
-          vsicons.presets,
-        )
-      ).folders.supported.filter(
-        (folder: IFolderExtension) =>
-          folder.icon === customFolders.supported[0].icon,
-      );
+        const newDefs = (
+          await CustomsMerger.merge(
+            null,
+            extFiles,
+            customFolders,
+            extFolders,
+            vsicons.presets,
+          )
+        ).folders.supported.filter(
+          (folder: IFolderExtension) =>
+            folder.icon === customFolders.supported[0].icon,
+        );
 
-      expect(newDefs).to.be.an('array').with.lengthOf(2);
+        expect(newDefs).to.be.an('array').with.lengthOf(2);
 
-      newDefs.forEach((def: IFolderExtension) => {
-        expect(def.icon).to.equal(customFolders.supported[0].icon);
-        expect(def.format).to.equals(FileFormat.svg);
+        newDefs.forEach((def: IFolderExtension) => {
+          expect(def.icon).to.equal(customFolders.supported[0].icon);
+          expect(def.format).to.be.undefined;
+        });
+        expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
+        expect(newDefs[1].extensions).to.eql(['aws3']);
       });
-      expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
-      expect(newDefs[1].extensions).to.eql(['aws3']);
     });
 
     it(`'overrides' removes the specified icon`, async function () {
@@ -125,7 +125,7 @@ describe('CustomsMerger: folder extensions tests', function () {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
-      expect(newDefs[0].format).to.equals(FileFormat.svg);
+      expect(newDefs[0].format).to.be.undefined;
 
       expect(newDefs[1].extensions).to.eql(
         customFolders.supported[0].extensions,
@@ -182,7 +182,7 @@ describe('CustomsMerger: folder extensions tests', function () {
       expect(newDefs).to.be.an('array').with.lengthOf(2);
       newDefs.forEach((def: IFolderExtension) => {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
-        expect(def.format).to.equal(FileFormat.svg);
+        expect(def.format).to.be.undefined;
         expect(def.disabled).to.be.false;
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
@@ -214,7 +214,7 @@ describe('CustomsMerger: folder extensions tests', function () {
       newDefs.forEach((def: IFolderExtension) => {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
         expect(def.disabled).to.be.false;
-        expect(def.format).to.equal(FileFormat.svg);
+        expect(def.format).to.be.undefined;
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
       expect(newDefs[1].extensions).to.eql([]);

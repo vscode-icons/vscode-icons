@@ -1,40 +1,42 @@
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
+
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { IconsGenerator, ManifestReader } from '../../src/iconsManifest';
-import * as models from '../../src/models';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as types from '../../src/types';
+import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
 describe('ExtensionManager: actions tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<models.IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<models.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<models.ISettingsManager>;
-    let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
-    let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<types.IVSCodeManager>;
+    let configManagerStub: sinon.SinonStubbedInstance<types.IConfigManager>;
+    let settingsManagerStub: sinon.SinonStubbedInstance<types.ISettingsManager>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<types.INotificationManager>;
+    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IIconsGenerator>;
+    let padMngStub: sinon.SinonStubbedInstance<types.IProjectAutoDetectionManager>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
-    let extensionManager: models.IExtensionManager;
-    let vsiconsClone: models.IVSIcons;
+    let extensionManager: types.IExtensionManager;
+    let vsiconsClone: types.IVSIcons;
 
-    const defaultManifest: models.IIconManifest = {
-      vscode: models.schema,
-      zed: models.zedSchema,
+    const defaultManifest: types.IIconManifest = {
+      vscode: types.vscodeSchema,
+      zed: types.zedSchema,
     };
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<types.IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -44,22 +46,22 @@ describe('ExtensionManager: actions tests', function () {
       }));
 
       configManagerStub =
-        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<types.IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =
-        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
+        sandbox.createStubInstance<types.ISettingsManager>(SettingsManager);
       notifyManagerStub =
-        sandbox.createStubInstance<models.INotificationManager>(
+        sandbox.createStubInstance<types.INotificationManager>(
           NotificationManager,
         );
 
       iconsGeneratorStub =
-        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
+        sandbox.createStubInstance<types.IIconsGenerator>(IconsGenerator);
 
       padMngStub =
-        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+        sandbox.createStubInstance<types.IProjectAutoDetectionManager>(
           ProjectAutoDetectionManager,
         );
 
@@ -115,7 +117,7 @@ describe('ExtensionManager: actions tests', function () {
       });
 
       context(`applies the customizations`, function () {
-        let projectDetectionResults: models.IProjectDetectionResult[];
+        let projectDetectionResults: types.IProjectDetectionResult[];
         let applyCustomizationStub: sinon.SinonStub;
 
         beforeEach(function () {
@@ -160,9 +162,9 @@ describe('ExtensionManager: actions tests', function () {
               showCustomizationMessageStub.calledOnceWithExactly(
                 projectDetectionResults[0].langResourceKey,
                 [
-                  models.LangResourceKeys.reload,
-                  models.LangResourceKeys.autoReload,
-                  models.LangResourceKeys.disableDetect,
+                  enums.LangResourceKeys.reload,
+                  enums.LangResourceKeys.autoReload,
+                  enums.LangResourceKeys.disableDetect,
                 ],
                 applyCustomizationStub,
                 [projectDetectionResults],
@@ -173,7 +175,7 @@ describe('ExtensionManager: actions tests', function () {
           context('by showing a choice message', function () {
             it('when conflicting project icons are detected', function () {
               projectDetectionResults[0].conflictingProjects = [
-                models.Projects.nestjs,
+                enums.Projects.nestjs,
               ];
 
               applyProjectDetection.call(
@@ -214,28 +216,28 @@ describe('ExtensionManager: actions tests', function () {
 
           await togglePreset.call(
             extensionManager,
-            models.PresetNames.tsOfficial,
-            models.CommandNames.tsPreset,
+            enums.PresetNames.tsOfficial,
+            enums.CommandNames.tsPreset,
             false,
-            models.ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           );
 
           expect(
             showCustomizationMessageStub.calledOnceWithExactly(
               '%s %s',
               [
-                models.LangResourceKeys[
-                  `${models.CommandNames[models.CommandNames.tsPreset]}Enabled`
+                enums.LangResourceKeys[
+                  `${enums.CommandNames[enums.CommandNames.tsPreset]}Enabled`
                 ],
-                models.LangResourceKeys.restart,
-                models.LangResourceKeys.reload,
+                enums.LangResourceKeys.restart,
+                enums.LangResourceKeys.reload,
               ],
               // eslint-disable-next-line @typescript-eslint/unbound-method
               configManagerStub.updatePreset,
               [
-                models.PresetNames[models.PresetNames.tsOfficial],
+                enums.PresetNames[enums.PresetNames.tsOfficial],
                 toggledValue,
-                models.ConfigurationTarget.Global,
+                enums.ConfigurationTarget.Global,
               ],
             ),
           ).to.be.true;
@@ -250,30 +252,28 @@ describe('ExtensionManager: actions tests', function () {
 
             await togglePreset.call(
               extensionManager,
-              models.PresetNames.hideFolders,
-              models.CommandNames.hideFoldersPreset,
+              enums.PresetNames.hideFolders,
+              enums.CommandNames.hideFoldersPreset,
               true,
-              models.ConfigurationTarget.Global,
+              enums.ConfigurationTarget.Global,
             );
 
             expect(
               showCustomizationMessageStub.calledOnceWithExactly(
                 '%s %s',
                 [
-                  models.LangResourceKeys[
-                    `${
-                      models.CommandNames[models.CommandNames.hideFoldersPreset]
-                    }Enabled`
+                  enums.LangResourceKeys[
+                    `${enums.CommandNames[enums.CommandNames.hideFoldersPreset]}Enabled`
                   ],
-                  models.LangResourceKeys.restart,
-                  models.LangResourceKeys.reload,
+                  enums.LangResourceKeys.restart,
+                  enums.LangResourceKeys.reload,
                 ],
                 // eslint-disable-next-line @typescript-eslint/unbound-method
                 configManagerStub.updatePreset,
                 [
-                  models.PresetNames[models.PresetNames.hideFolders],
+                  enums.PresetNames[enums.PresetNames.hideFolders],
                   toggledValue,
-                  models.ConfigurationTarget.Global,
+                  enums.ConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -285,30 +285,28 @@ describe('ExtensionManager: actions tests', function () {
 
             await togglePreset.call(
               extensionManager,
-              models.PresetNames.hideFolders,
-              models.CommandNames.hideFoldersPreset,
+              enums.PresetNames.hideFolders,
+              enums.CommandNames.hideFoldersPreset,
               true,
-              models.ConfigurationTarget.Global,
+              enums.ConfigurationTarget.Global,
             );
 
             expect(
               showCustomizationMessageStub.calledOnceWithExactly(
                 '%s %s',
                 [
-                  models.LangResourceKeys[
-                    `${
-                      models.CommandNames[models.CommandNames.hideFoldersPreset]
-                    }Disabled`
+                  enums.LangResourceKeys[
+                    `${enums.CommandNames[enums.CommandNames.hideFoldersPreset]}Disabled`
                   ],
-                  models.LangResourceKeys.restart,
-                  models.LangResourceKeys.reload,
+                  enums.LangResourceKeys.restart,
+                  enums.LangResourceKeys.reload,
                 ],
                 // eslint-disable-next-line @typescript-eslint/unbound-method
                 configManagerStub.updatePreset,
                 [
-                  models.PresetNames[models.PresetNames.hideFolders],
+                  enums.PresetNames[enums.PresetNames.hideFolders],
                   toggledValue,
-                  models.ConfigurationTarget.Global,
+                  enums.ConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -324,30 +322,28 @@ describe('ExtensionManager: actions tests', function () {
 
             await togglePreset.call(
               extensionManager,
-              models.PresetNames.jsonOfficial,
-              models.CommandNames.jsonPreset,
+              enums.PresetNames.jsonOfficial,
+              enums.CommandNames.jsonPreset,
               false,
-              models.ConfigurationTarget.Global,
+              enums.ConfigurationTarget.Global,
             );
 
             expect(
               showCustomizationMessageStub.calledOnceWithExactly(
                 '%s %s',
                 [
-                  models.LangResourceKeys[
-                    `${
-                      models.CommandNames[models.CommandNames.jsonPreset]
-                    }Disabled`
+                  enums.LangResourceKeys[
+                    `${enums.CommandNames[enums.CommandNames.jsonPreset]}Disabled`
                   ],
-                  models.LangResourceKeys.restart,
-                  models.LangResourceKeys.reload,
+                  enums.LangResourceKeys.restart,
+                  enums.LangResourceKeys.reload,
                 ],
                 // eslint-disable-next-line @typescript-eslint/unbound-method
                 configManagerStub.updatePreset,
                 [
-                  models.PresetNames[models.PresetNames.jsonOfficial],
+                  enums.PresetNames[enums.PresetNames.jsonOfficial],
                   toggledValue,
-                  models.ConfigurationTarget.Global,
+                  enums.ConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -359,30 +355,28 @@ describe('ExtensionManager: actions tests', function () {
 
             await togglePreset.call(
               extensionManager,
-              models.PresetNames.jsonOfficial,
-              models.CommandNames.jsonPreset,
+              enums.PresetNames.jsonOfficial,
+              enums.CommandNames.jsonPreset,
               false,
-              models.ConfigurationTarget.Global,
+              enums.ConfigurationTarget.Global,
             );
 
             expect(
               showCustomizationMessageStub.calledOnceWithExactly(
                 '%s %s',
                 [
-                  models.LangResourceKeys[
-                    `${
-                      models.CommandNames[models.CommandNames.jsonPreset]
-                    }Enabled`
+                  enums.LangResourceKeys[
+                    `${enums.CommandNames[enums.CommandNames.jsonPreset]}Enabled`
                   ],
-                  models.LangResourceKeys.restart,
-                  models.LangResourceKeys.reload,
+                  enums.LangResourceKeys.restart,
+                  enums.LangResourceKeys.reload,
                 ],
                 // eslint-disable-next-line @typescript-eslint/unbound-method
                 configManagerStub.updatePreset,
                 [
-                  models.PresetNames[models.PresetNames.jsonOfficial],
+                  enums.PresetNames[enums.PresetNames.jsonOfficial],
                   toggledValue,
-                  models.ConfigurationTarget.Global,
+                  enums.ConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -399,10 +393,10 @@ describe('ExtensionManager: actions tests', function () {
               try {
                 await togglePreset.call(
                   extensionManager,
-                  models.PresetNames.jsOfficial,
+                  enums.PresetNames.jsOfficial,
                   undefined,
                   false,
-                  models.ConfigurationTarget.Global,
+                  enums.ConfigurationTarget.Global,
                 );
               } catch (error) {
                 expect(error).to.match(/undefinedEnabled is not valid/);
@@ -415,10 +409,10 @@ describe('ExtensionManager: actions tests', function () {
               try {
                 await togglePreset.call(
                   extensionManager,
-                  models.PresetNames.jsOfficial,
+                  enums.PresetNames.jsOfficial,
                   undefined,
                   false,
-                  models.ConfigurationTarget.Global,
+                  enums.ConfigurationTarget.Global,
                 );
               } catch (error) {
                 expect(error).to.match(/undefinedDisabled is not valid/);
@@ -431,8 +425,8 @@ describe('ExtensionManager: actions tests', function () {
 
     context(`applying the customization`, function () {
       context(`generates and saves an icons manifest`, function () {
-        let files: models.IFileCollection;
-        let folders: models.IFolderCollection;
+        let files: types.IFileCollection;
+        let folders: types.IFolderCollection;
         let applyCustomization: (...arg: unknown[]) => Promise<void>;
 
         beforeEach(function () {
@@ -468,7 +462,7 @@ describe('ExtensionManager: actions tests', function () {
         });
 
         it(`including the project detection result`, async function () {
-          const projectDetectionResults: models.IProjectDetectionResult[] = [
+          const projectDetectionResults: types.IProjectDetectionResult[] = [
             {
               apply: true,
             },

@@ -1,14 +1,15 @@
-import { expect } from 'chai';
-import * as sinon from 'sinon';
-import { CustomsMerger, ManifestReader } from '../../../src/iconsManifest';
-import {
-  IconNames,
+import type {
   IFileExtension,
   IFolderCollection,
   IPresets,
   IProjectDetectionResult,
-  Projects,
-} from '../../../src/models';
+} from '../../../src/types';
+
+import { expect } from 'chai';
+import * as sinon from 'sinon';
+
+import { CustomsMerger, ManifestReader } from '../../../src/iconsManifest';
+import * as enums from '../../../src/types/enums';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -27,6 +28,8 @@ describe('CustomsMerger: toggle presets tests', function () {
     });
 
     afterEach(function () {
+      vsicons.presets.foldersAllDefaultIcon = false;
+      vsicons.presets.hideFolders = false;
       sandbox.restore();
     });
 
@@ -80,11 +83,12 @@ describe('CustomsMerger: toggle presets tests', function () {
               regex.test(file.icon),
             ),
             jsDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js.toString(),
+              (file: IFileExtension) =>
+                file.icon === enums.IconNames.js.toString(),
             ),
             officialJSDefs: files.supported.filter(
               (file: IFileExtension) =>
-                file.icon === IconNames.jsOfficial.toString(),
+                file.icon === enums.IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -93,7 +97,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         let icons = await toggle(false, [
           {
             apply: true,
-            project: Projects.angular,
+            project: enums.Projects.angular,
             value: true,
           },
         ]);
@@ -170,7 +174,7 @@ describe('CustomsMerger: toggle presets tests', function () {
             [
               {
                 apply: true,
-                project: Projects.angular,
+                project: enums.Projects.angular,
                 value: true,
               },
             ],
@@ -233,11 +237,12 @@ describe('CustomsMerger: toggle presets tests', function () {
               regex.test(file.icon),
             ),
             jsDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js.toString(),
+              (file: IFileExtension) =>
+                file.icon === enums.IconNames.js.toString(),
             ),
             officialJSDefs: files.supported.filter(
               (file: IFileExtension) =>
-                file.icon === IconNames.jsOfficial.toString(),
+                file.icon === enums.IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -246,7 +251,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         let icons = await toggle(false, [
           {
             apply: true,
-            project: Projects.nestjs,
+            project: enums.Projects.nestjs,
             value: true,
           },
         ]);
@@ -323,7 +328,7 @@ describe('CustomsMerger: toggle presets tests', function () {
             [
               {
                 apply: true,
-                project: Projects.nestjs,
+                project: enums.Projects.nestjs,
                 value: true,
               },
             ],
@@ -352,11 +357,12 @@ describe('CustomsMerger: toggle presets tests', function () {
 
           return {
             defs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js.toString(),
+              (file: IFileExtension) =>
+                file.icon === enums.IconNames.js.toString(),
             ),
             officialDefs: files.supported.filter(
               (file: IFileExtension) =>
-                file.icon === IconNames.jsOfficial.toString(),
+                file.icon === enums.IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -403,27 +409,28 @@ describe('CustomsMerger: toggle presets tests', function () {
 
             return {
               tsDefs: files.supported.filter(
-                (file: IFileExtension) => file.icon === IconNames.ts.toString(),
+                (file: IFileExtension) =>
+                  file.icon === enums.IconNames.ts.toString(),
               ),
               officialTsDefs: files.supported.filter(
                 (file: IFileExtension) =>
-                  file.icon === IconNames.tsOfficial.toString(),
+                  file.icon === enums.IconNames.tsOfficial.toString(),
               ),
               tsConfig: files.supported.filter(
                 (file: IFileExtension) =>
-                  file.icon === IconNames.tsConfig.toString(),
+                  file.icon === enums.IconNames.tsConfig.toString(),
               ),
               tsConfigOfficial: files.supported.filter(
                 (file: IFileExtension) =>
-                  file.icon === IconNames.tsConfigOfficial.toString(),
+                  file.icon === enums.IconNames.tsConfigOfficial.toString(),
               ),
               typesDefs: files.supported.filter(
                 (file: IFileExtension) =>
-                  file.icon === IconNames.tsDef.toString(),
+                  file.icon === enums.IconNames.tsDef.toString(),
               ),
               officialTypesDefs: files.supported.filter(
                 (file: IFileExtension) =>
-                  file.icon === IconNames.tsDefOfficial.toString(),
+                  file.icon === enums.IconNames.tsDefOfficial.toString(),
               ),
             };
           };
@@ -485,11 +492,12 @@ describe('CustomsMerger: toggle presets tests', function () {
 
           return {
             defs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.json.toString(),
+              (file: IFileExtension) =>
+                file.icon === enums.IconNames.json.toString(),
             ),
             officialDefs: files.supported.filter(
               (file: IFileExtension) =>
-                file.icon === IconNames.jsonOfficial.toString(),
+                file.icon === enums.IconNames.jsonOfficial.toString(),
             ),
           };
         };
@@ -534,11 +542,12 @@ describe('CustomsMerger: toggle presets tests', function () {
 
           return {
             defs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.yaml.toString(),
+              (file: IFileExtension) =>
+                file.icon === enums.IconNames.yaml.toString(),
             ),
             officialDefs: files.supported.filter(
               (file: IFileExtension) =>
-                file.icon === IconNames.yamlOfficial.toString(),
+                file.icon === enums.IconNames.yamlOfficial.toString(),
             ),
           };
         };

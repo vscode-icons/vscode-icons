@@ -1,18 +1,21 @@
-import { cloneDeep, isEqual, unionWith } from 'lodash';
-import { dirname, isAbsolute, resolve } from 'path';
-import { ErrorHandler } from '../common/errorHandler';
-import { existsAsync, readdirAsync } from '../common/fsAsync';
-import { constants } from '../constants';
-import {
-  ConfigurationTarget,
+import type {
   IConfigManager,
   IFileExtension,
   IFolderExtension,
-  IPreset,
   IVSCodeManager,
+  IVSCodePreset,
   IVSCodeWorkspaceConfiguration,
   IVSIcons,
-} from '../models';
+} from '../types';
+
+import { dirname, isAbsolute, resolve } from 'path';
+
+import { cloneDeep, isEqual, unionWith } from 'lodash';
+
+import { ErrorHandler } from '../common/errorHandler';
+import { existsAsync, readdirAsync } from '../common/fsAsync';
+import { constants } from '../constants';
+import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
 export class ConfigManager implements IConfigManager {
@@ -63,7 +66,7 @@ export class ConfigManager implements IConfigManager {
         constants.vsicons.name
       ] as IVSIcons,
     );
-    const files: IPreset<IFileExtension[]> = this.configuration.inspect<
+    const files: IVSCodePreset<IFileExtension[]> = this.configuration.inspect<
       IFileExtension[]
     >(constants.vsicons.associations.filesSetting);
     mergedConfig.associations.files = unionWith<IFileExtension>(
@@ -71,9 +74,10 @@ export class ConfigManager implements IConfigManager {
       files.globalValue,
       isEqual,
     );
-    const folders: IPreset<IFolderExtension[]> = this.configuration.inspect<
-      IFolderExtension[]
-    >(constants.vsicons.associations.foldersSetting);
+    const folders: IVSCodePreset<IFolderExtension[]> =
+      this.configuration.inspect<IFolderExtension[]>(
+        constants.vsicons.associations.foldersSetting,
+      );
     mergedConfig.associations.folders = unionWith<IFolderExtension>(
       folders.workspaceValue,
       folders.globalValue,
@@ -118,7 +122,9 @@ export class ConfigManager implements IConfigManager {
     const extensionNameRegExp = new RegExp(`.*${constants.extension.name}`);
     const existingInstallations: number = (
       await readdirAsync(vscodeExtensionDirPath)
-    ).filter((filename: string) => extensionNameRegExp.test(filename)).length;
+    ).filter((filename: string): boolean =>
+      extensionNameRegExp.test(filename),
+    ).length;
     return existingInstallations === 1;
   }
 
@@ -190,7 +196,7 @@ export class ConfigManager implements IConfigManager {
       source.forEach(addTo);
       return linesToRemove;
     };
-    findLinesToRemove().forEach((lineIndex, i) =>
+    findLinesToRemove().forEach((lineIndex: number, i: number): string[] =>
       source.splice(lineIndex - i, 1),
     );
     return source;
@@ -198,7 +204,7 @@ export class ConfigManager implements IConfigManager {
 
   private static resetIconTheme(source: string[]): string[] {
     const foundLineIndex = source.findIndex(
-      (line: string) =>
+      (line: string): boolean =>
         line.includes(constants.vscode.iconThemeSetting) &&
         line.includes(constants.extension.name),
     );
@@ -230,8 +236,19 @@ export class ConfigManager implements IConfigManager {
   ): boolean {
     const filter = (obj: IVSIcons, keys: string[]): Record<string, string[]> =>
       (Reflect.ownKeys(obj || {}) as string[])
-        .filter((key, __, array) => (keys || array).includes(key))
-        .reduce((nObj, key) => ({ ...nObj, [key]: obj[key] as string[] }), {});
+        .filter((key: string, __: number, array: string[]): boolean =>
+          (keys || array).includes(key),
+        )
+        .reduce(
+          (
+            nObj: Record<string, string[]>,
+            key: string,
+          ): Record<string, string[]> => ({
+            ...nObj,
+            [key]: obj[key] as string[],
+          }),
+          {},
+        );
     const a = filter(this.initVSIconsConfig, sections);
     const b = filter(currentConfig, sections);
     return !isEqual(a, b);
@@ -250,9 +267,11 @@ export class ConfigManager implements IConfigManager {
       (await existsAsync(wsp)) ? wsp : '';
 
     const promises: Array<Promise<string>> = [];
-    workspacePaths.forEach((wsp: string) => promises.push(iterator(wsp)));
+    workspacePaths.forEach((wsp: string): number =>
+      promises.push(iterator(wsp)),
+    );
     const absWspPath: string = (await Promise.all(promises)).find(
-      (path: string) => !!path,
+      (path: string): boolean => !!path,
     );
     return Utils.pathUnixJoin(absWspPath, dPath);
   }
@@ -261,7 +280,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.get<string>(constants.vscode.iconThemeSetting);
   }
 
-  public getPreset<T>(presetName: string): IPreset<T> | undefined {
+  public getPreset<T>(presetName: string): IVSCodePreset<T> | undefined {
     return this.configuration.inspect<T>(presetName);
   }
 
@@ -269,7 +288,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.dontShowNewVersionMessageSetting,
       value,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
@@ -279,7 +298,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
       value,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
@@ -287,7 +306,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.projectDetectionAutoReloadSetting,
       value,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
@@ -295,7 +314,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.projectDetectionDisableDetectSetting,
       value,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
@@ -303,14 +322,14 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vscode.iconThemeSetting,
       constants.extension.name,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
   public async updatePreset(
     presetName: string,
     value: boolean,
-    configurationTarget: ConfigurationTarget | boolean,
+    configurationTarget: enums.ConfigurationTarget | boolean,
   ): Promise<void> {
     const removePreset =
       this.configuration.inspect(

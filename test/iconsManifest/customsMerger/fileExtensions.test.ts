@@ -1,12 +1,11 @@
+import type { IFileCollection, IFileExtension } from '../../../src/types';
+
 import { expect } from 'chai';
 import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
+
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import {
-  FileFormat,
-  IFileCollection,
-  IFileExtension,
-} from '../../../src/models';
+import * as enums from '../../../src/types/enums';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -23,34 +22,37 @@ describe('CustomsMerger: file extensions tests', function () {
       sandbox.restore();
     });
 
-    it('new extensions are added to existing file icon and respect the format type', async function () {
+    it('uses the existing icon format when it is defined', async function () {
       const customFiles: IFileCollection = {
         default: {},
+        supported: [{ icon: 'existing_icon', extensions: ['custom'] }],
+      };
+      const supportedFiles: IFileCollection = {
+        default: {},
         supported: [
-          { icon: 'actionscript', extensions: ['as2'], format: 'svg' },
+          {
+            icon: 'existing_icon',
+            extensions: ['existing'],
+            format: enums.FileFormat.png,
+          },
         ],
       };
 
-      const newDefs = (
-        await CustomsMerger.merge(
-          customFiles,
-          extFiles,
-          null,
-          extFolders,
-          vsicons.presets,
-        )
-      ).files.supported.filter(
-        (file: IFileExtension) => file.icon === customFiles.supported[0].icon,
+      const { files } = await CustomsMerger.merge(
+        customFiles,
+        supportedFiles,
+        null,
+        extFolders,
+        vsicons.presets,
       );
 
-      expect(newDefs).to.be.an('array').with.lengthOf(2);
+      const customDef = files.supported.find(
+        (file: IFileExtension) =>
+          file.icon === 'existing_icon' && file.extensions.includes('custom'),
+      );
 
-      newDefs.forEach((def: IFileExtension) => {
-        expect(def.icon).to.equal(customFiles.supported[0].icon);
-        expect(def.format).to.equals(FileFormat.svg);
-      });
-      expect(newDefs[0].extensions).to.eql(['as']);
-      expect(newDefs[1].extensions).to.eql(['as2']);
+      expect(customDef).to.exist;
+      expect(customDef.format).to.equal(enums.FileFormat.png);
     });
 
     it(`'overrides' removes the specified icon`, async function () {
@@ -122,7 +124,7 @@ describe('CustomsMerger: file extensions tests', function () {
         expect(def.icon).to.equal(customFiles.supported[0].icon);
       });
       expect(newDefs[0].extensions).to.eql(['as']);
-      expect(newDefs[0].format).to.equals(FileFormat.svg);
+      expect(newDefs[0].format).to.be.undefined;
 
       expect(newDefs[1].extensions).to.eql(customFiles.supported[0].extensions);
       expect(newDefs[1].format).to.equals(customFiles.supported[0].format);
@@ -185,7 +187,7 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs).to.be.an('array').with.lengthOf(2);
       newDefs.forEach((def: IFileExtension) => {
         expect(def.icon).to.equal(customFiles.supported[0].icon);
-        expect(def.format).to.equal(FileFormat.svg);
+        expect(def.format).to.be.undefined;
         expect(def.disabled).to.be.false;
       });
       expect(newDefs[0].extensions).to.eql(['as']);
@@ -220,7 +222,7 @@ describe('CustomsMerger: file extensions tests', function () {
       newDefs.forEach((def: IFileExtension) => {
         expect(def.icon).to.equal(customFiles.supported[0].icon);
         expect(def.disabled).to.be.false;
-        expect(def.format).to.equal(FileFormat.svg);
+        expect(def.format).to.be.undefined;
       });
       expect(newDefs[0].extensions).to.eql(['as']);
       expect(newDefs[1].extensions).to.eql([]);

@@ -1,8 +1,9 @@
-import * as path from 'path';
-import * as Mocha from 'mocha';
-import * as glob from 'glob';
+import path from 'path';
 
-export const run = async (testsRoot: string): Promise<void | Error> => {
+import * as glob from 'glob';
+import Mocha from 'mocha';
+
+export async function run(testsRoot: string): Promise<void> {
   const mocha = new Mocha({
     ui: 'bdd',
     timeout: 15000,
@@ -13,18 +14,24 @@ export const run = async (testsRoot: string): Promise<void | Error> => {
     const files: string[] = await glob.glob('**/**.test.js', {
       cwd: testsRoot,
     });
-    files.forEach((file: string) => mocha.addFile(path.join(testsRoot, file)));
+    files.forEach((file: string): Mocha =>
+      mocha.addFile(path.join(testsRoot, file)),
+    );
     // Run the tests
-    mocha.run((failures: number) => {
-      if (failures > 0) {
-        throw new Error(`${failures} tests failed.`);
-      }
-      mocha.dispose();
+    await new Promise<void>((resolve, reject): void => {
+      mocha.run((failures: number): void => {
+        mocha.dispose();
+        if (failures > 0) {
+          return reject(new Error(`${failures} tests failed.`));
+        }
+        resolve();
+      });
     });
   } catch (error: unknown) {
     if (error instanceof Error) {
-      return error;
+      error.stack = error.message;
+      throw error;
     }
     throw new Error('Failed to run tests', { cause: error });
   }
-};
+}
