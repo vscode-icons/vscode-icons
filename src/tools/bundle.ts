@@ -14,6 +14,7 @@ async function bundle(argv: string[]): Promise<void> {
     await Bundler.copyPackageResources('./locale/package', '.');
   } catch (error: unknown) {
     ErrorHandler.logError(error);
+    process.exitCode = 1;
   }
 }
 

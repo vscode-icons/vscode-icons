@@ -54,9 +54,14 @@ describe('Build: tests', function () {
       it(`generates and saves the default icons manifest`, async function () {
         await build();
 
-        expect(generateIconsManifestStub.calledOnceWithExactly()).to.be.true;
-        expect(persistStub.calledOnceWithExactly(vscodeSchema, true)).to.be
-          .true;
+        expect(
+          generateIconsManifestStub.calledOnce,
+          'generateIconsManifest should be called once',
+        ).to.be.true;
+        expect(
+          persistStub.calledOnceWithExactly(vscodeSchema, false),
+          'persist should be called once with correct arguments',
+        ).to.be.true;
         expect(logErrorStub.called).to.be.false;
       });
 
@@ -76,6 +81,10 @@ describe('Build: tests', function () {
             expect(ConfigManager.outDir).to.match(
               new RegExp(`.*[\\\\|/]${constants.extension.distDirName}$`),
             );
+            expect(
+              persistStub.calledOnceWithExactly(vscodeSchema, true),
+              'persist should be called once with correct arguments',
+            ).to.be.true;
           });
 
           it(`'production'`, async function () {
@@ -87,6 +96,10 @@ describe('Build: tests', function () {
             expect(ConfigManager.outDir).to.match(
               new RegExp(`.*[\\\\|/]${constants.extension.distDirName}$`),
             );
+            expect(
+              persistStub.calledOnceWithExactly(vscodeSchema, true),
+              'persist should be called once with correct arguments',
+            ).to.be.true;
           });
         });
       });
