@@ -517,10 +517,10 @@ export class ManifestBuilder {
 
     const toFolderPaths = (
       names: Record<string, string>,
-    ): Record<string, { closed: string; opened: string }> =>
+    ): Record<string, Record<types.State, string>> =>
       Object.fromEntries(
         Object.entries(names).map(
-          ([name, key]): [string, { closed: string; opened: string }] => [
+          ([name, key]): [string, Record<types.State, string>] => [
             name,
             {
               closed: this.toIconFolderPath(folders.defs[key].iconPath),

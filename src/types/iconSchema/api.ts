@@ -41,7 +41,7 @@ export interface IApiIconDefinitions {
     extensions: Record<string, string>;
     filenames: Record<string, string>;
   };
-  folders: Record<string, Partial<Record<State, string>>>;
+  folders: Record<string, Record<State, string>>;
 }
 
 export interface IApiIconFileOptions {
