@@ -121,6 +121,9 @@ export type IVSCodeEvent<T> = (
 ) => IVSCodeDisposable;
 
 export interface IVSCodeWorkspace {
+  fs: {
+    readFile(uri: IVSCodeUri): Thenable<Uint8Array>;
+  };
   rootPath: string | undefined;
   workspaceFolders: readonly IVSCodeWorkspaceFolder[] | undefined;
   onDidChangeConfiguration: IVSCodeEvent<IVSCodeConfigurationChangeEvent>;
