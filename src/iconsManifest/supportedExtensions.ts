@@ -5296,6 +5296,11 @@ export const extensions: IFileCollection = {
       languages: [languages.searchresult],
     },
     {
+      icon: 'security',
+      extensions: ['SECURITY.md'],
+      filename: true,
+    },
+    {
       icon: 'seedkit',
       extensions: [],
       filenamesGlob: ['seedkit.config'],
