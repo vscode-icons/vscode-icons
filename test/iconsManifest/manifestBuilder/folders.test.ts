@@ -76,10 +76,10 @@ describe('ManifestBuilder: folders icons test', function () {
           fixtFolders,
         );
 
-        expect(manifest.api.folders.default.closed).to.equal(
+        expect(manifest.api.folders._default.closed).to.equal(
           `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}folder.svg`,
         );
-        expect(manifest.api.folders.default.opened).to.equal(
+        expect(manifest.api.folders._default.opened).to.equal(
           `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}folder_opened.svg`,
         );
         expect(manifest.api.folders.api.closed).to.equal(

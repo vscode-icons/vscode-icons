@@ -704,7 +704,7 @@ describe('ManifestBuilder: files icons test', function () {
             emptyFolderCollection,
           );
 
-          expect(manifest.api.files.default).to.equal(
+          expect(manifest.api.files._default).to.equal(
             `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file.svg`,
           );
           expect(manifest.api.files.extensions.as).to.equal(
@@ -716,6 +716,52 @@ describe('ManifestBuilder: files icons test', function () {
           expect(manifest.api.light.files.extensions.plist).to.equal(
             `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypeLightPrefix}config.svg`,
           );
+        });
+
+        it('gives supported extensions and filenames precedence over language known ones', async function () {
+          const python: ILanguage = {
+            ids: 'python',
+            knownExtensions: ['pyc'],
+            knownFilenames: ['.zshrc'],
+          };
+          const languageEntry: IFileExtension = {
+            icon: 'python',
+            extensions: [],
+            languages: [python],
+            format: enums.FileFormat.svg,
+          };
+          const nameEntries: IFileExtension[] = [
+            {
+              icon: 'binary',
+              extensions: ['pyc'],
+              format: enums.FileFormat.svg,
+            },
+            {
+              icon: 'zsh',
+              extensions: ['.zshrc'],
+              filename: true,
+              format: enums.FileFormat.svg,
+            },
+          ];
+          const prefix = `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}`;
+
+          for (const supported of [
+            [languageEntry, ...nameEntries],
+            [...nameEntries, languageEntry],
+          ]) {
+            const manifest = await ManifestBuilder.buildManifest(
+              { default: {}, supported },
+              emptyFolderCollection,
+            );
+
+            for (const section of [
+              manifest.api.files,
+              manifest.api.light.files,
+            ]) {
+              expect(section.extensions.pyc).to.equal(`${prefix}binary.svg`);
+              expect(section.filenames['.zshrc']).to.equal(`${prefix}zsh.svg`);
+            }
+          }
         });
       });
 

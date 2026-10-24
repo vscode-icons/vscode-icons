@@ -176,11 +176,11 @@ export class ManifestBuilder {
 
     // set the default and root icons
     // dark theme
-    apiSchema.files.default = this.toIconFolderPath(vscDefs._file.iconPath);
-    apiSchema.folders.default.closed = this.toIconFolderPath(
+    apiSchema.files._default = this.toIconFolderPath(vscDefs._file.iconPath);
+    apiSchema.folders._default.closed = this.toIconFolderPath(
       vscDefs._folder.iconPath,
     );
-    apiSchema.folders.default.opened = this.toIconFolderPath(
+    apiSchema.folders._default.opened = this.toIconFolderPath(
       vscDefs._folder_open.iconPath,
     );
     apiSchema.folders.root = {
@@ -189,13 +189,13 @@ export class ManifestBuilder {
     };
 
     // light theme
-    apiSchema.light.files.default = this.toIconFolderPath(
+    apiSchema.light.files._default = this.toIconFolderPath(
       vscDefs._file_light.iconPath,
     );
-    apiSchema.light.folders.default.closed = this.toIconFolderPath(
+    apiSchema.light.folders._default.closed = this.toIconFolderPath(
       vscDefs._folder_light.iconPath,
     );
-    apiSchema.light.folders.default.opened = this.toIconFolderPath(
+    apiSchema.light.folders._default.opened = this.toIconFolderPath(
       vscDefs._folder_light_open.iconPath,
     );
     apiSchema.light.folders.root = {
@@ -532,7 +532,8 @@ export class ManifestBuilder {
         ),
       );
 
-    // language ids go first, supported extensions and filenames overwrite them
+    // language ids go first, supported extensions and filenames overwrite them.
+    // Do NOT flip the spread order (e.g. `pyc` must resolve to `binary`, not `python`).
     schema.files.extensions = toFilePaths({
       ...files.language.fileExtensions,
       ...files.names.fileExtensions,

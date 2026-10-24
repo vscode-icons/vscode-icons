@@ -1,23 +1,23 @@
 export const apiSchema: IApiIconSchema = {
   files: {
-    default: '',
+    _default: '',
     extensions: {},
     filenames: {},
   },
   folders: {
-    default: {
+    _default: {
       closed: '',
       opened: '',
     },
   },
   light: {
     files: {
-      default: '',
+      _default: '',
       extensions: {},
       filenames: {},
     },
     folders: {
-      default: {
+      _default: {
         closed: '',
         opened: '',
       },
@@ -25,7 +25,6 @@ export const apiSchema: IApiIconSchema = {
   },
 };
 
-export type Theme = 'dark' | 'light';
 export type State = 'closed' | 'opened';
 
 export interface IApiIconSchema {
@@ -36,26 +35,17 @@ export interface IApiIconSchema {
 }
 
 export interface IApiIconFileDefinitions {
-  default: string;
+  _default: string;
   extensions: Record<string, string>;
   filenames: Record<string, string>;
 }
 
 export interface IApiIconFolderDefinitions {
   [name: string]: Record<State, string>;
-  default: Record<State, string>;
+  _default: Record<State, string>;
 }
 
 export interface IApiIconDefinitions {
   files: IApiIconFileDefinitions;
   folders: IApiIconFolderDefinitions;
-}
-
-export interface IApiIconFileOptions {
-  includePath?: boolean;
-  theme?: Theme;
-}
-
-export interface IApiIconFolderOptions extends IApiIconFileOptions {
-  state?: State;
 }

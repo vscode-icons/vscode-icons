@@ -56,6 +56,7 @@ export default defineConfig(
         {
           allow: [
             '_watch',
+            '_default',
             '_file',
             '_file_light',
             '_folder',
