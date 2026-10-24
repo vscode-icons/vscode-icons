@@ -930,5 +930,11 @@ export const extensions: IFolderCollection = {
       extensions: ['.zed', 'zed'],
       light: true,
     },
+    {
+      icon: 'postgres',
+      extensions: ['postgres', 'postgresql', 'postgresdb', 'postgresqldb'],
+      light: true,
+      format: FileFormat.svg,
+    },
   ],
 };
