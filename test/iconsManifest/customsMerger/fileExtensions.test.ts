@@ -130,6 +130,32 @@ describe('CustomsMerger: file extensions tests', function () {
       expect(newDefs[1].format).to.equals(customFiles.supported[0].format);
     });
 
+    it('merges a custom association when a supported icon has no extensions', async function () {
+      const customFiles: IFileCollection = {
+        default: {},
+        supported: [{ icon: 'js', extensions: ['foo'] }],
+      };
+      const supportedFiles: IFileCollection = {
+        default: {},
+        supported: [{ icon: 'js', extensions: [] }, { icon: 'language_only' }],
+      };
+
+      const { files } = await CustomsMerger.merge(
+        customFiles,
+        supportedFiles,
+        null,
+        extFolders,
+        vsicons.presets,
+      );
+
+      const customDef = files.supported.find(
+        (file: IFileExtension) =>
+          file.icon === 'js' && file.extensions.includes('foo'),
+      );
+
+      expect(customDef).to.exist;
+    });
+
     it('disabled extensions are NOT included into the manifest', async function () {
       const customFiles: IFileCollection = {
         default: {},
