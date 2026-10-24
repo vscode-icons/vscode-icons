@@ -3634,7 +3634,6 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'noir',
-      extensions: [],
       languages: [languages.noir],
       light: true,
     },
