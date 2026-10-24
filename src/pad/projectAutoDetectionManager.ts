@@ -2,7 +2,6 @@ import type * as types from '../types';
 import type { IPackageManifest } from '../types/package';
 
 import { ErrorHandler } from '../common/errorHandler';
-import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import * as enums from '../types/enums';
@@ -38,7 +37,7 @@ export class ProjectAutoDetectionManager
             '**/package.json',
             '**/node_modules/**',
           ))) as types.IVSCodeUri[];
-      return this.detect(results, projects);
+      return await this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
     }
@@ -210,7 +209,9 @@ export class ProjectAutoDetectionManager
   ): Promise<types.IProjectInfo> {
     let projectInfo: types.IProjectInfo = null;
     for (const result of results) {
-      const content: string = await readFileAsync(result.fsPath, 'utf8');
+      const content: string = new TextDecoder().decode(
+        await this.vscodeManager.workspace.fs.readFile(result),
+      );
       const projectJson: IPackageManifest =
         Utils.parseJSONSafe<IPackageManifest>(content);
       projectInfo = this.getInfo(projectJson, project);
