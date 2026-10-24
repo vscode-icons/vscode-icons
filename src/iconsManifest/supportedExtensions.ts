@@ -5054,6 +5054,12 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'renpy',
+      extensions: [],
+      languages: [languages.renpy],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'replit',
       extensions: ['.replit', 'replit.nix'],
       filename: true,
