@@ -2792,6 +2792,7 @@ export const extensions: IFileCollection = {
       ],
       filename: true,
     },
+    { icon: 'ko', extensions: ['.ko.yaml'], filename: true },
     {
       icon: 'kodiak',
       extensions: ['.kodiak.toml'],
