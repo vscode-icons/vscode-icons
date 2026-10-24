@@ -360,6 +360,7 @@ export const extensions: IFolderCollection = {
       light: true,
     },
     { icon: 'graphql', extensions: ['graphql'] },
+    { icon: 'greptile', extensions: ['.greptile'] },
     { icon: 'grok', extensions: ['.grok'] },
     { icon: 'grunt', extensions: ['grunt'] },
     {
