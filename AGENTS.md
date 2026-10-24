@@ -108,7 +108,7 @@ test/                               # Test files (mirrors src/)
    { icon: 'name', extensions: ['ext1', 'ext2'] },
 
    // By language ID:
-   { icon: 'name', extensions: [], languages: [languages.langName] },
+   { icon: 'name', languages: [languages.langName] },
 
    // With filename glob combinations:
    {
