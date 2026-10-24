@@ -1,26 +1,34 @@
 name: SVG Icon Check (Comment)
 
-# Trusted half of the two-step handoff: runs from the default branch with secrets,
+# Trusted half of the two-step handoff: runs from the default branch with write permissions,
 # and only consumes the artifact produced by the build workflow (never fork code).
+# Preview images are committed to the orphan `previews` branch and served via raw.githubusercontent.com.
+# Only the latest previews of each PR are kept there; older ones remain in the branch history.
 on:
   workflow_run:
     workflows: ['SVG Icon Check (Build)']
     types:
       - completed
 
-permissions:
-  contents: read
-  pull-requests: write
-  actions: read
+# Each job declares only the permissions it needs.
+permissions: {}
 
 concurrency:
   group: svg-icon-check-comment-${{ github.event.workflow_run.id }}
   cancel-in-progress: true
 
 jobs:
-  post_comment:
+  publish_previews:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: write
+      pull-requests: read
+    outputs:
+      found: ${{ steps.pr.outputs.found }}
+      pr_number: ${{ steps.pr.outputs.pr_number }}
+      comment_body: ${{ steps.generate-comment.outputs.comment_body }}
     steps:
       - name: Download previews artifact
         id: download
@@ -31,8 +39,12 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read PR number
+      - name: Read and validate PR number
         id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
           if [ ! -f previews/pr_number.txt ]; then
             echo "No PR number found; nothing to do."
@@ -45,67 +57,138 @@ jobs:
             echo "found=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+
+          # The PR number comes from the untrusted artifact: only accept it if that PR's current head
+          # is exactly the commit the build workflow ran on. This also skips outdated runs.
+          pr_head_sha=$(gh api "repos/${REPO}/pulls/${pr_number}" --jq '.head.sha' 2>/dev/null || true)
+          if [ "$pr_head_sha" != "$HEAD_SHA" ]; then
+            echo "::warning::PR #${pr_number} head (${pr_head_sha:-not found}) does not match build commit ${HEAD_SHA}; skipping."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           echo "pr_number=$pr_number" >> "$GITHUB_OUTPUT"
           echo "found=true" >> "$GITHUB_OUTPUT"
 
-      - name: Upload previews and build comment body
+      - name: Publish previews to the previews branch and build comment body
         if: steps.pr.outputs.found == 'true'
         id: generate-comment
         env:
-          IMAGE_UPLOAD: ${{ secrets.IMAGES_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          PREVIEWS_BRANCH: previews
         run: |
-          sudo apt-get install -y jq
-
           COMMENT_BODY="## Icons Background Test\n\n"
 
-          # Strip any stray whitespace/newlines picked up when the secret was pasted.
-          IMAGE_UPLOAD=$(printf '%s' "$IMAGE_UPLOAD" | tr -d '[:space:]')
+          # Only the latest previews of each PR are kept: the PR folder is wiped on every run.
+          # The run id is part of the path so URLs change on every update and are never served stale from cache.
+          pr_dir="pr-${PR_NUMBER}"
+          dest_dir="${pr_dir}/${RUN_ID}"
+          staging_dir="$RUNNER_TEMP/previews-staging"
+          work_dir="$RUNNER_TEMP/previews-branch"
+          remote_url="https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
 
-          if [ -z "$IMAGE_UPLOAD" ]; then
-            echo "::error::IMAGES_API_KEY secret is not set; cannot upload previews."
-            COMMENT_BODY+="> [!WARNING]\n"
-            COMMENT_BODY+="> Preview images could not be generated because the \`IMAGES_API_KEY\` secret is not configured in this repository.\n"
-            {
-              echo "comment_body<<EOF"
-              echo -e "$COMMENT_BODY"
-              echo "EOF"
-            } >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
+          mkdir -p "$staging_dir"
+          published=()
 
           while IFS=$'\t' read -r base_name size png_name; do
             [ -z "$png_name" ] && continue
             # Sanitize fork-controlled values before using them in shell/markdown.
             safe_name=$(printf '%s' "$base_name" | tr -cd 'A-Za-z0-9._-')
             safe_size=$(printf '%s' "$size" | tr -cd '0-9')
-            png_file="previews/$(printf '%s' "$png_name" | tr -cd 'A-Za-z0-9._-')"
+            safe_png=$(printf '%s' "$png_name" | tr -cd 'A-Za-z0-9._-')
+            png_file="previews/${safe_png}"
 
-            if [ ! -f "$png_file" ]; then
+            if [ -z "$safe_png" ] || [ ! -f "$png_file" ]; then
               echo "Skipping missing preview: $png_file"
               continue
             fi
 
-            response=$(curl -s --location 'https://freeimage.host/api/1/upload' \
-              --form "source=@${png_file}" \
-              --form "action=upload" \
-              --form "format=json" \
-              --form "key=${IMAGE_UPLOAD}")
-
-            image_url=$(echo "$response" | jq -r '.image.url // empty')
-            if [ -z "$image_url" ]; then
-              # Full response is safe to log: the API key is only sent in the request, never returned.
-              echo "freeimage.host raw response for ${safe_name}: ${response}"
-              error_msg=$(echo "$response" | jq -r '.error.message // "unknown error"' 2>/dev/null || echo "unknown error")
-              echo "::error::Upload failed for ${safe_name}: ${error_msg}"
+            # The artifact comes from untrusted code: only publish real PNG files.
+            if [ "$(file --brief --mime-type "$png_file")" != 'image/png' ]; then
+              echo "::warning::Skipping ${safe_png}: not a PNG file."
               COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
-              COMMENT_BODY+="⚠️ _Preview upload failed: ${error_msg}_\n\n"
+              COMMENT_BODY+="⚠️ _Preview skipped: generated file is not a valid PNG._\n\n"
               continue
             fi
-            echo "Uploaded: $image_url"
 
-            COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
-            COMMENT_BODY+="![Preview](${image_url})\n\n"
+            cp "$png_file" "$staging_dir/${safe_png}"
+            published+=("${safe_name}"$'\t'"${safe_size}"$'\t'"${safe_png}")
           done < previews/manifest.tsv
+
+          git init -q "$work_dir"
+          cd "$work_dir"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote add origin "$remote_url"
+
+          # Checks out the latest tip of the previews branch (or creates it) and replaces this PR's previews.
+          # Returns 1 when there is nothing to commit.
+          prepare_commit() {
+            if git ls-remote --exit-code --heads origin "$PREVIEWS_BRANCH" > /dev/null; then
+              git fetch -q --depth=1 origin "$PREVIEWS_BRANCH"
+              git checkout -q -B "$PREVIEWS_BRANCH" FETCH_HEAD
+              git clean -q -fdx
+            else
+              echo "Branch '$PREVIEWS_BRANCH' not found; creating it as an orphan branch."
+              git checkout -q --orphan "$PREVIEWS_BRANCH"
+              git rm -q -rf --cached . > /dev/null 2>&1 || true
+              git clean -q -fdx
+              printf '%s\n' \
+                '# SVG icon previews' \
+                '' \
+                'Auto-generated by the `SVG Icon Check (Comment)` workflow.' \
+                'Only the latest previews of each PR are kept under `pr-<number>/<run-id>/`.' \
+                'Do not edit this branch manually.' \
+                > README.md
+            fi
+
+            rm -rf "$pr_dir"
+            if [ ${#published[@]} -gt 0 ]; then
+              mkdir -p "$dest_dir"
+              cp "$staging_dir"/*.png "$dest_dir/"
+            fi
+
+            git add -A
+            if git diff --cached --quiet; then
+              return 1
+            fi
+            git commit -q -m "chore(previews): update previews for PR #${PR_NUMBER} (run ${RUN_ID})"
+          }
+
+          # Other runs may push concurrently; on rejection, redo the update on top of the new tip.
+          pushed=false
+          for attempt in 1 2 3 4 5; do
+            if ! prepare_commit; then
+              echo "No preview changes to publish."
+              pushed=true
+              break
+            fi
+            if git push -q origin "HEAD:${PREVIEWS_BRANCH}"; then
+              pushed=true
+              break
+            fi
+            echo "Push attempt ${attempt} failed; retrying..."
+            sleep $((attempt * 2))
+          done
+          cd - > /dev/null
+
+          if [ "$pushed" != 'true' ]; then
+            echo "::error::Could not push previews to the '${PREVIEWS_BRANCH}' branch."
+            COMMENT_BODY+="> [!WARNING]\n"
+            COMMENT_BODY+="> Preview images could not be published to the \`${PREVIEWS_BRANCH}\` branch.\n"
+            published=()
+          fi
+
+          base_url="https://raw.githubusercontent.com/${REPO}/${PREVIEWS_BRANCH}/${dest_dir}"
+          for entry in "${published[@]}"; do
+            IFS=$'\t' read -r safe_name safe_size safe_png <<< "$entry"
+            echo "Published: ${base_url}/${safe_png}"
+            COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
+            COMMENT_BODY+="![Preview](${base_url}/${safe_png})\n\n"
+          done
 
           {
             echo "comment_body<<EOF"
@@ -113,24 +196,29 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
+  post_comment:
+    needs: publish_previews
+    if: needs.publish_previews.outputs.found == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
       - name: Find comment ID if it exists
-        if: steps.pr.outputs.found == 'true'
         uses: peter-evans/find-comment@v4
         id: find-comment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ steps.pr.outputs.pr_number }}
+          issue-number: ${{ needs.publish_previews.outputs.pr_number }}
           comment-author: 'github-actions[bot]'
           body-includes: <!-- svg-preview-comment -->
 
       - name: Post/Update Comment
-        if: steps.pr.outputs.found == 'true'
         uses: peter-evans/create-or-update-comment@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ steps.pr.outputs.pr_number }}
+          issue-number: ${{ needs.publish_previews.outputs.pr_number }}
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           body: |
-            ${{ steps.generate-comment.outputs.comment_body }}
+            ${{ needs.publish_previews.outputs.comment_body }}
             <!-- svg-preview-comment -->
           edit-mode: replace
