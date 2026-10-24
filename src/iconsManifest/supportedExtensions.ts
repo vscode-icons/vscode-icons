@@ -3633,6 +3633,12 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     {
+      icon: 'noir',
+      extensions: [],
+      languages: [languages.noir],
+      light: true,
+    },
+    {
       icon: 'npm',
       extensions: [
         '.npm-init.js',

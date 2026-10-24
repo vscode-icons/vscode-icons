@@ -1,8 +1,5 @@
 name: Update Wiki Page Icons List
 
-env:
-  NODE_VERSION: 22.18.0
-
 on:
   push:
     branches:
@@ -19,10 +16,10 @@ jobs:
       - name: Checkout vscode-icons repository
         uses: actions/checkout@v5
 
-      - name: Setting up Node.js ${{ env.NODE_VERSION }}
+      - name: Setting up Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: .nvmrc
 
       - name: Install and build vscode-icons
         run: |
