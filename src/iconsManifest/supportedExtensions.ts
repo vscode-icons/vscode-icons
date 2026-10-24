@@ -4974,18 +4974,9 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'readme',
-      extensions: [
-        'README',
-        'README.md',
-        'README.markdown',
-        'README.rst',
-        'README.txt',
-        'INDEX',
-        'INDEX.md',
-        'INDEX.markdown',
-        'INDEX.rst',
-        'INDEX.txt',
-      ],
+      extensions: ['readme', 'index'],
+      filenamesGlob: ['readme', 'index'],
+      extensionsGlob: ['md', 'markdown', 'rst', 'txt'],
       filename: true,
     },
     {
