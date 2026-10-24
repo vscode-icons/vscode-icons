@@ -30,18 +30,25 @@ export type State = 'closed' | 'opened';
 
 export interface IApiIconSchema {
   $schema?: string;
-  files: IApiIconDefinitions['files'];
-  folders: IApiIconDefinitions['folders'];
+  files: IApiIconFileDefinitions;
+  folders: IApiIconFolderDefinitions;
   light: IApiIconDefinitions;
 }
 
+export interface IApiIconFileDefinitions {
+  default: string;
+  extensions: Record<string, string>;
+  filenames: Record<string, string>;
+}
+
+export interface IApiIconFolderDefinitions {
+  [name: string]: Record<State, string>;
+  default: Record<State, string>;
+}
+
 export interface IApiIconDefinitions {
-  files: {
-    default: string;
-    extensions: Record<string, string>;
-    filenames: Record<string, string>;
-  };
-  folders: Record<string, Record<State, string>>;
+  files: IApiIconFileDefinitions;
+  folders: IApiIconFolderDefinitions;
 }
 
 export interface IApiIconFileOptions {
