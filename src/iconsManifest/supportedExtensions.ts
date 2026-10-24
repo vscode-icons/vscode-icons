@@ -3412,6 +3412,7 @@ export const extensions: IFileCollection = {
       languages: [languages.cypher],
       light: true,
     },
+    { icon: 'neon', extensions: ['neon.ts', '.neon'], filename: true },
     {
       icon: 'nest_adapter_js',
       extensions: ['adapter.js'],
