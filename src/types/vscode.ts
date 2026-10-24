@@ -120,10 +120,12 @@ export type IVSCodeEvent<T> = (
   disposables?: IVSCodeDisposable[],
 ) => IVSCodeDisposable;
 
+export interface IVSCodeFileSystem {
+  readFile(uri: IVSCodeUri): Thenable<Uint8Array>;
+}
+
 export interface IVSCodeWorkspace {
-  fs: {
-    readFile(uri: IVSCodeUri): Thenable<Uint8Array>;
-  };
+  fs: IVSCodeFileSystem;
   rootPath: string | undefined;
   workspaceFolders: readonly IVSCodeWorkspaceFolder[] | undefined;
   onDidChangeConfiguration: IVSCodeEvent<IVSCodeConfigurationChangeEvent>;
