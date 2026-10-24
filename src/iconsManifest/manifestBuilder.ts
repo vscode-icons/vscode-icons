@@ -6,6 +6,7 @@ import { existsAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import {
+  apiSchema as defaultApiSchema,
   vscodeSchema as defaultVSCodeSchema,
   zedSchema as defaultZedSchema,
 } from '../types/iconSchema';
@@ -37,6 +38,8 @@ export class ManifestBuilder {
 
     await this.configureVSCodeIconDefinitions(files, folders, vscSchema);
 
+    const apiSchema = this.configureApiDefaultIcons(vscSchema.iconDefinitions);
+
     const zedSchema = this.configureZedThemesDirectoryIcons(
       vscSchema.iconDefinitions,
     );
@@ -50,6 +53,7 @@ export class ManifestBuilder {
     const finalManifest = await this.buildJsonStructure(
       files,
       folders,
+      apiSchema,
       vscSchema,
       zedSchema,
     );
@@ -165,6 +169,43 @@ export class ManifestBuilder {
     );
   }
 
+  private static configureApiDefaultIcons(
+    vscDefs: types.IVSCodeIconDefinition,
+  ): types.IApiIconSchema {
+    const apiSchema = cloneDeep(defaultApiSchema);
+
+    // set the default and root icons
+    // dark theme
+    apiSchema.files._default = this.toIconFolderPath(vscDefs._file.iconPath);
+    apiSchema.folders._default.closed = this.toIconFolderPath(
+      vscDefs._folder.iconPath,
+    );
+    apiSchema.folders._default.opened = this.toIconFolderPath(
+      vscDefs._folder_open.iconPath,
+    );
+    apiSchema.folders.root = {
+      closed: this.toIconFolderPath(vscDefs._root_folder.iconPath),
+      opened: this.toIconFolderPath(vscDefs._root_folder_open.iconPath),
+    };
+
+    // light theme
+    apiSchema.light.files._default = this.toIconFolderPath(
+      vscDefs._file_light.iconPath,
+    );
+    apiSchema.light.folders._default.closed = this.toIconFolderPath(
+      vscDefs._folder_light.iconPath,
+    );
+    apiSchema.light.folders._default.opened = this.toIconFolderPath(
+      vscDefs._folder_light_open.iconPath,
+    );
+    apiSchema.light.folders.root = {
+      closed: this.toIconFolderPath(vscDefs._root_folder_light.iconPath),
+      opened: this.toIconFolderPath(vscDefs._root_folder_light_open.iconPath),
+    };
+
+    return apiSchema;
+  }
+
   private static configureZedThemesDirectoryIcons(
     vscDefs: types.IVSCodeIconDefinition,
   ): types.IZedIconSchema {
@@ -225,6 +266,7 @@ export class ManifestBuilder {
   private static async buildJsonStructure(
     files: types.IFileCollection,
     folders: types.IFolderCollection,
+    apiSchema: types.IApiIconSchema,
     vscSchema: types.IVSCodeIconSchema,
     zedSchema: types.IZedIconSchema,
   ): Promise<types.IIconManifest> {
@@ -284,7 +326,13 @@ export class ManifestBuilder {
       schema: zedSchema,
     });
 
-    return { vscode: vscFinalSchema, zed: zedFinalSchema };
+    const apiFinalSchema = this.buildAPIJsonStructure(
+      resFiles,
+      resFolders,
+      apiSchema,
+    );
+
+    return { api: apiFinalSchema, vscode: vscFinalSchema, zed: zedFinalSchema };
   }
 
   private static generateZedJsonStructure(
@@ -448,6 +496,69 @@ export class ManifestBuilder {
 
     darkSchema.named_directory_icons = darkFolderIcons;
     lightSchema.named_directory_icons = lightFolderIcons;
+
+    return schema;
+  }
+
+  private static buildAPIJsonStructure(
+    files: types.IBuildFiles,
+    folders: types.IBuildFolders,
+    schema: types.IApiIconSchema,
+  ): types.IApiIconSchema {
+    const toFilePaths = (
+      names: Record<string, string>,
+    ): Record<string, string> =>
+      Object.fromEntries(
+        Object.entries(names).map(([name, key]): [string, string] => [
+          name,
+          this.toIconFolderPath(files.defs[key].iconPath),
+        ]),
+      );
+
+    const toFolderPaths = (
+      names: Record<string, string>,
+    ): Record<string, Record<types.State, string>> =>
+      Object.fromEntries(
+        Object.entries(names).map(
+          ([name, key]): [string, Record<types.State, string>] => [
+            name,
+            {
+              closed: this.toIconFolderPath(folders.defs[key].iconPath),
+              opened: this.toIconFolderPath(
+                folders.defs[`${key}_open`].iconPath,
+              ),
+            },
+          ],
+        ),
+      );
+
+    // language ids go first, supported extensions and filenames overwrite them.
+    // Do NOT flip the spread order (e.g. `pyc` must resolve to `binary`, not `python`).
+    schema.files.extensions = toFilePaths({
+      ...files.language.fileExtensions,
+      ...files.names.fileExtensions,
+    });
+    schema.files.filenames = toFilePaths({
+      ...files.language.fileNames,
+      ...files.names.fileNames,
+    });
+    schema.folders = {
+      ...schema.folders,
+      ...toFolderPaths(folders.names.folderNames),
+    };
+
+    schema.light.files.extensions = toFilePaths({
+      ...files.light.language.fileExtensions,
+      ...files.light.fileExtensions,
+    });
+    schema.light.files.filenames = toFilePaths({
+      ...files.light.language.fileNames,
+      ...files.light.fileNames,
+    });
+    schema.light.folders = {
+      ...schema.light.folders,
+      ...toFolderPaths(folders.light.folderNames),
+    };
 
     return schema;
   }

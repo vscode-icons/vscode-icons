@@ -697,6 +697,74 @@ describe('ManifestBuilder: files icons test', function () {
         });
       });
 
+      context('API schema', function () {
+        it('maps files, extensions, and filenames to icon paths', async function () {
+          const manifest = await ManifestBuilder.buildManifest(
+            fixtFiles,
+            emptyFolderCollection,
+          );
+
+          expect(manifest.api.files._default).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file.svg`,
+          );
+          expect(manifest.api.files.extensions.as).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}actionscript.svg`,
+          );
+          expect(manifest.api.files.filenames['angular-cli.json']).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}angular.svg`,
+          );
+          expect(manifest.api.light.files.extensions.plist).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypeLightPrefix}config.svg`,
+          );
+        });
+
+        it('gives supported extensions and filenames precedence over language known ones', async function () {
+          const python: ILanguage = {
+            ids: 'python',
+            knownExtensions: ['pyc'],
+            knownFilenames: ['.zshrc'],
+          };
+          const languageEntry: IFileExtension = {
+            icon: 'python',
+            extensions: [],
+            languages: [python],
+            format: enums.FileFormat.svg,
+          };
+          const nameEntries: IFileExtension[] = [
+            {
+              icon: 'binary',
+              extensions: ['pyc'],
+              format: enums.FileFormat.svg,
+            },
+            {
+              icon: 'zsh',
+              extensions: ['.zshrc'],
+              filename: true,
+              format: enums.FileFormat.svg,
+            },
+          ];
+          const prefix = `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}`;
+
+          for (const supported of [
+            [languageEntry, ...nameEntries],
+            [...nameEntries, languageEntry],
+          ]) {
+            const manifest = await ManifestBuilder.buildManifest(
+              { default: {}, supported },
+              emptyFolderCollection,
+            );
+
+            for (const section of [
+              manifest.api.files,
+              manifest.api.light.files,
+            ]) {
+              expect(section.extensions.pyc).to.equal(`${prefix}binary.svg`);
+              expect(section.filenames['.zshrc']).to.equal(`${prefix}zsh.svg`);
+            }
+          }
+        });
+      });
+
       context('zed theme', function () {
         it('should get official icons for official theme', async function () {
           const files = cloneDeep(fixtFiles);
