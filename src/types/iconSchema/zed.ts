@@ -105,7 +105,10 @@ export const zedSchema: IZedIconSchema = {
   ],
 };
 
-export interface IZedIconSchema extends Record<string, unknown> {
+export interface IZedIconSchema {
+  $schema?: string;
+  author: string;
+  name: string;
   themes: IZedTheme[];
 }
 

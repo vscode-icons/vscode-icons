@@ -6,6 +6,7 @@ export const constants = {
   environment: { production: false },
   extension: {
     name: 'vscode-icons',
+    apiName: 'vscode-icons-api',
     zedName: 'vscode-icons-zed',
     settingsFilename: 'vsicons.settings.json',
     version: (manifest as IPackageManifest).version,
@@ -51,6 +52,7 @@ export const constants = {
   urlOfficialApi:
     'https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-file-icon-theme',
   iconsManifest: {
+    apiFilename: 'vsicons-icon-api.json',
     filename: 'vsicons-icon-theme.json',
     zedFilename: 'vsicons-icon-theme-zed.json',
     iconSuffix: '',

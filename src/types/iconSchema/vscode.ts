@@ -40,13 +40,14 @@ export const vscodeSchema: IVSCodeIconSchema = {
 };
 
 export interface IVSCodeIconSchema extends IVSCodeIconMapping {
+  $schema?: string;
   iconDefinitions: IVSCodeIconDefinition;
   light: IVSCodeIconMapping;
   highContrast?: IVSCodeIconMapping;
   hidesExplorerArrows?: boolean;
 }
 
-export interface IVSCodeIconMapping extends Record<string, unknown> {
+export interface IVSCodeIconMapping {
   rootFolder: string;
   rootFolderExpanded: string;
   file: string;
