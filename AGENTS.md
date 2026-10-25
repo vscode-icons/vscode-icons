@@ -217,7 +217,9 @@ Tests automatically validate:
 - No leading dots on non-filename extensions
 - Folder icons have both closed and opened variants
 - Light theme entries have corresponding light SVG files
-- Extensions array is not empty (unless languages or globs are set)
+- No empty `extensions`, `languages`, `filenamesGlob` or `extensionsGlob` arrays
+  (omit the property instead)
+- Entries without `extensions` provide `languages` or glob alternatives
 
 **Always run `npm test` before submitting changes.**
 
