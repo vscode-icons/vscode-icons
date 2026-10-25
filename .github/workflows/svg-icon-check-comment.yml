@@ -33,7 +33,6 @@ jobs:
     outputs:
       found: ${{ steps.pr.outputs.found }}
       pr_number: ${{ steps.pr.outputs.pr_number }}
-      comment_body: ${{ steps.generate-comment.outputs.comment_body }}
     steps:
       - name: Download previews artifact
         id: download
@@ -75,7 +74,7 @@ jobs:
           echo "pr_number=$pr_number" >> "$GITHUB_OUTPUT"
           echo "found=true" >> "$GITHUB_OUTPUT"
 
-      - name: Publish previews to the wiki and build comment body
+      - name: Publish previews to the wiki and build comment bodies
         if: steps.pr.outputs.found == 'true'
         id: generate-comment
         env:
@@ -85,7 +84,8 @@ jobs:
           RUN_ID: ${{ github.event.workflow_run.id }}
           WIKI_BRANCH: master
         run: |
-          COMMENT_BODY="## Icons Background Test\n\n"
+          notices=''
+          entries=()
 
           # Only the latest previews of each PR are kept: the PR folder is wiped on every run.
           # The run id is part of the path so URLs change on every update and are never served stale from cache.
@@ -114,8 +114,9 @@ jobs:
             # The artifact comes from untrusted code: only publish real PNG files.
             if [ "$(file --brief --mime-type "$png_file")" != 'image/png' ]; then
               echo "::warning::Skipping ${safe_png}: not a PNG file."
-              COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
-              COMMENT_BODY+="⚠️ _Preview skipped: generated file is not a valid PNG._\n\n"
+              printf -v entry '#### %s (%s bytes)\n⚠️ _Preview skipped: generated file is not a valid PNG._\n\n' \
+                "$safe_name" "$safe_size"
+              entries+=("$entry")
               continue
             fi
 
@@ -167,48 +168,124 @@ jobs:
 
           if [ "$pushed" != 'true' ]; then
             echo "::error::Could not push previews to the wiki."
-            COMMENT_BODY+="> [!WARNING]\n"
-            COMMENT_BODY+="> Preview images could not be published to the wiki.\n"
+            notices+=$'> [!WARNING]\n> Preview images could not be published to the wiki.\n\n'
             published=()
           fi
 
           base_url="https://raw.githubusercontent.com/wiki/${REPO}/${dest_dir}"
-          for entry in "${published[@]}"; do
-            IFS=$'\t' read -r safe_name safe_size safe_png <<< "$entry"
-            echo "Published: ${base_url}/${safe_png}"
-            COMMENT_BODY+="#### ${safe_name} (${safe_size} bytes)\n"
-            COMMENT_BODY+="![Preview](${base_url}/${safe_png})\n\n"
+          for item in "${published[@]}"; do
+            IFS=$'\t' read -r safe_name safe_size safe_png <<< "$item"
+            printf -v entry '#### %s (%s bytes)\n![Preview](%s/%s)\n\n' "$safe_name" "$safe_size" "$base_url" "$safe_png"
+            entries+=("$entry")
           done
+          echo "Published ${#published[@]} previews to ${base_url}"
 
-          {
-            echo "comment_body<<EOF"
-            echo -e "$COMMENT_BODY"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+          # GitHub caps comments at 65536 characters: split the previews into several comments,
+          # never breaking an entry. Sizes are measured in bytes, which is always >= characters.
+          export LC_ALL=C
+          max_bytes=60000
+          chunks=()
+          current="$notices"
+          for entry in "${entries[@]}"; do
+            if [ -n "$current" ] && [ $((${#current} + ${#entry})) -gt "$max_bytes" ]; then
+              chunks+=("$current")
+              current=''
+            fi
+            current+="$entry"
+          done
+          chunks+=("$current")
+
+          comments_dir="$RUNNER_TEMP/preview-comments"
+          mkdir -p "$comments_dir"
+          total=${#chunks[@]}
+          for i in "${!chunks[@]}"; do
+            n=$((i + 1))
+            title='## Icons Background Test'
+            if [ "$total" -gt 1 ]; then
+              title+=" (${n}/${total})"
+            fi
+            printf '%s\n\n%s<!-- svg-preview-comment:%d -->\n' "$title" "${chunks[$i]}" "$n" \
+              > "$comments_dir/$(printf '%04d' "$n").md"
+          done
+          echo "Prepared ${total} comment(s)."
+          echo "comments_dir=$comments_dir" >> "$GITHUB_OUTPUT"
+
+      - name: Upload comment bodies
+        if: steps.pr.outputs.found == 'true'
+        uses: actions/upload-artifact@v6
+        with:
+          name: preview-comments
+          path: ${{ steps.generate-comment.outputs.comments_dir }}
+          retention-days: 1
+          overwrite: true
 
   post_comment:
     needs: publish_previews
     if: needs.publish_previews.outputs.found == 'true'
     runs-on: ubuntu-latest
+    # Never edit the comments of the same PR from two runs at once.
+    concurrency:
+      group: svg-preview-comments-${{ needs.publish_previews.outputs.pr_number }}
     permissions:
       pull-requests: write
     steps:
-      - name: Find comment ID if it exists
-        uses: peter-evans/find-comment@v4
-        id: find-comment
+      - name: Download comment bodies
+        uses: actions/download-artifact@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ needs.publish_previews.outputs.pr_number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: <!-- svg-preview-comment -->
+          name: preview-comments
+          path: comments
 
-      - name: Post/Update Comment
-        uses: peter-evans/create-or-update-comment@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ needs.publish_previews.outputs.pr_number }}
-          comment-id: ${{ steps.find-comment.outputs.comment-id }}
-          body: |
-            ${{ needs.publish_previews.outputs.comment_body }}
-            <!-- svg-preview-comment -->
-          edit-mode: replace
+      - name: Create, update or delete preview comments
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ needs.publish_previews.outputs.pr_number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          # A newer push may have been processed while this run was waiting: never overwrite its comments.
+          pr_head_sha=$(gh api "repos/${REPO}/pulls/${PR_NUMBER}" --jq '.head.sha')
+          if [ "$pr_head_sha" != "$HEAD_SHA" ]; then
+            echo "::warning::PR #${PR_NUMBER} head moved to ${pr_head_sha}; skipping outdated comments."
+            exit 0
+          fi
+
+          # Existing preview comments by index. Legacy comments (marker without index) count as index 1.
+          declare -A existing=()
+          duplicates=()
+          while IFS=$'\t' read -r id index; do
+            [ -z "$id" ] && continue
+            if [ -z "${existing[$index]:-}" ]; then
+              existing[$index]=$id
+            else
+              duplicates+=("$id")
+            fi
+          done < <(gh api --paginate "repos/${REPO}/issues/${PR_NUMBER}/comments" --jq '
+            .[]
+            | select(.user.login == "github-actions[bot]")
+            | (.body | capture("<!-- svg-preview-comment(:(?<n>[0-9]+))? -->")) as $m
+            | "\(.id)\t\($m.n // "1")"')
+
+          mapfile -t files < <(find comments -name '*.md' | sort)
+          total=${#files[@]}
+
+          # Editing an existing comment doesn't notify subscribers; only new comments do.
+          for i in "${!files[@]}"; do
+            n=$((i + 1))
+            payload=$(jq -Rs '{body: .}' "${files[$i]}")
+            id="${existing[$n]:-}"
+            if [ -n "$id" ]; then
+              gh api -X PATCH "repos/${REPO}/issues/comments/${id}" --input - <<< "$payload" > /dev/null
+              echo "Updated comment ${n}/${total} (${id})."
+              unset "existing[$n]"
+            else
+              gh api -X POST "repos/${REPO}/issues/${PR_NUMBER}/comments" --input - <<< "$payload" > /dev/null
+              echo "Created comment ${n}/${total}."
+              sleep 1
+            fi
+          done
+
+          # Remove comments left over from a previous run with more previews.
+          for id in "${existing[@]}" "${duplicates[@]}"; do
+            gh api -X DELETE "repos/${REPO}/issues/comments/${id}" > /dev/null
+            echo "Deleted stale comment ${id}."
+          done
