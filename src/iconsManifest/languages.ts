@@ -425,6 +425,7 @@ export const languages = {
   nim: { ids: 'nim', knownExtensions: ['nim'] },
   nimble: { ids: 'nimble', knownExtensions: ['nimble'] },
   nix: { ids: 'nix', knownExtensions: ['nix'] },
+  noir: { ids: 'noir', knownExtensions: ['nr'] },
   nsis: { ids: ['nsis', 'nfl', 'nsl', 'bridlensis'], knownExtensions: ['nsi'] },
   nunjucks: { ids: 'nunjucks', knownExtensions: ['nunjucks'] },
   nushell: { ids: 'nushell', knownExtensions: ['nu'] },

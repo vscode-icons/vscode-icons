@@ -715,7 +715,7 @@ export class ManifestBuilder {
           }
         };
 
-        current.extensions.forEach(populateFn);
+        current.extensions?.forEach(populateFn);
 
         const hasGlobDefinitions =
           current.filenamesGlob &&
@@ -827,7 +827,7 @@ export class ManifestBuilder {
           };
         }
 
-        current.extensions.forEach((extension: string): void => {
+        current.extensions?.forEach((extension: string): void => {
           const key = extension;
           names.folderNames[key] = iconFolderDefinition;
           names.folderNamesExpanded[key] = iconOpenFolderDefinition;

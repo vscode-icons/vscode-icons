@@ -345,7 +345,7 @@ export class CustomsMerger {
       file.extensions.forEach((ext: string): void =>
         final
           .filter((extension: types.IExtension): string =>
-            extension.extensions.find((el: string): boolean => el === ext),
+            extension.extensions?.find((el: string): boolean => el === ext),
           )
           .forEach((extension: types.IExtension): string[] =>
             remove(extension.extensions, (el: string): boolean => el === ext),
@@ -373,7 +373,6 @@ export class CustomsMerger {
       if (!existing.length) {
         workingCopy.supported.push({
           icon,
-          extensions: [],
           disabled: disable,
         });
       } else {
