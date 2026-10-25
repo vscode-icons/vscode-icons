@@ -174,6 +174,11 @@ export class ManifestBuilder {
   ): types.IApiIconSchema {
     const apiSchema = cloneDeep(defaultApiSchema);
 
+    // In production environment, return the default API schema immediately
+    if (constants.environment.production) {
+      return apiSchema;
+    }
+
     // set the default and root icons
     // dark theme
     apiSchema.files._default = this.toIconFolderPath(vscDefs._file.iconPath);
@@ -210,6 +215,11 @@ export class ManifestBuilder {
     vscDefs: types.IVSCodeIconDefinition,
   ): types.IZedIconSchema {
     const zedSchema = cloneDeep(defaultZedSchema);
+
+    // In production environment, return the default API schema immediately
+    if (constants.environment.production) {
+      return zedSchema;
+    }
 
     for (const themeIndex of Object.values(constants.zed.dark_themes)) {
       zedSchema.themes[themeIndex].directory_icons.collapsed =
