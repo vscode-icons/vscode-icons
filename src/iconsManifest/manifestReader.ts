@@ -36,8 +36,8 @@ export class ManifestReader {
     isFile = true,
   ): Promise<boolean> {
     const iconManifest: string = await this.getIconManifest();
-    const iconsJson: types.IIconSchema =
-      Utils.parseJSONSafe<types.IIconSchema>(iconManifest);
+    const iconsJson: types.IVSCodeIconSchema =
+      Utils.parseJSONSafe<types.IVSCodeIconSchema>(iconManifest);
     const prefix: string = isFile
       ? constants.iconsManifest.definitionFilePrefix
       : constants.iconsManifest.definitionFolderPrefix;
@@ -60,8 +60,8 @@ export class ManifestReader {
     presetName: string,
   ): Promise<boolean> {
     const manifest: string = await this.getIconManifest();
-    const iconsJson: types.IIconSchema =
-      Utils.parseJSONSafe<types.IIconSchema>(manifest);
+    const iconsJson: types.IVSCodeIconSchema =
+      Utils.parseJSONSafe<types.IVSCodeIconSchema>(manifest);
     if (!iconsJson) {
       return true;
     }

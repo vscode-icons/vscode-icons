@@ -1,4 +1,5 @@
 import type { IIconAssociation } from './common';
+import type { IBuildFiles, IBuildFolders } from '../vsIcons';
 
 export const zedSchema: IZedIconSchema = {
   $schema: 'https://zed.dev/schema/icon_themes/v0.3.0.json',
@@ -130,4 +131,14 @@ export interface IZedFolderIcons {
     collapsed: string;
     expanded: string;
   };
+}
+
+export interface IZedJsonStructureOptions {
+  files: IBuildFiles;
+  folders: IBuildFolders;
+  filesOfficial: IBuildFiles;
+  foldersOfficial: IBuildFolders;
+  filesAngular: IBuildFiles;
+  filesNest: IBuildFiles;
+  schema: IZedIconSchema;
 }
