@@ -624,7 +624,7 @@ export const extensions: IFileCollection = {
       languages: [languages.cairo],
     },
     { icon: 'cake', extensions: ['cake'] },
-    { icon: 'cakephp' },
+    { icon: 'cakephp', extensions: ['ctp'] },
     {
       icon: 'cangjie',
       languages: [languages.cangjie],
