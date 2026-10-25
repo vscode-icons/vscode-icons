@@ -11,7 +11,7 @@ export async function run(testsRoot: string): Promise<void> {
   });
   try {
     // Add files into Mocha
-    const files: string[] = await glob.glob('**/**.test.js', {
+    const files: string[] = await glob.glob('**/*.test.js', {
       cwd: testsRoot,
     });
     files.forEach((file: string): Mocha =>
