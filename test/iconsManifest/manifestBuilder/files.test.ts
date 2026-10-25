@@ -395,11 +395,15 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileExtensions' referencing its definition`, async function () {
+                  const files = cloneDeep(fixtFiles);
+                  files.supported.find(
+                    ({ icon }) => icon === 'mlang',
+                  ).extensions = undefined;
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         !file.filename && file.light && !file.disabled,
