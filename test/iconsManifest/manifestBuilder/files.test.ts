@@ -26,6 +26,16 @@ describe('ManifestBuilder: files icons test', function () {
 
     const iconsDirRelativeBasePath = '../../path/to/icons/dir';
 
+    const filesWithExtensionlessLightFilename = (): IFileCollection => {
+      const files = cloneDeep(fixtFiles);
+      files.supported.push({
+        icon: 'extensionless_filename_light',
+        filename: true,
+        light: true,
+      });
+      return files;
+    };
+
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
@@ -424,11 +434,12 @@ describe('ManifestBuilder: files icons test', function () {
             context('that is a filename', function () {
               context('and has NOT a light theme version', function () {
                 it(`has a 'fileNames' referencing its definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -450,11 +461,12 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileNames' referencing its definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -622,11 +634,12 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileNames' referencing its 'light' definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -1081,11 +1094,12 @@ describe('ManifestBuilder: files icons test', function () {
             context('that is a filename', function () {
               context('and has NOT a light theme version', function () {
                 it(`has a 'fileNames' referencing its definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -1107,11 +1121,12 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileNames' referencing its definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -1279,11 +1294,12 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileNames' referencing its 'light' definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
