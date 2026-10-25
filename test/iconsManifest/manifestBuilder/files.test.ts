@@ -744,23 +744,30 @@ describe('ManifestBuilder: files icons test', function () {
             },
           ];
           const prefix = `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}`;
+          const files = cloneDeep(fixtFiles);
 
           for (const supported of [
             [languageEntry, ...nameEntries],
             [...nameEntries, languageEntry],
           ]) {
+            files.supported = supported;
             const manifest = await ManifestBuilder.buildManifest(
-              { default: {}, supported },
+              files,
               emptyFolderCollection,
             );
 
-            for (const section of [
-              manifest.api.files,
-              manifest.api.light.files,
-            ]) {
-              expect(section.extensions.pyc).to.equal(`${prefix}binary.svg`);
-              expect(section.filenames['.zshrc']).to.equal(`${prefix}zsh.svg`);
-            }
+            expect(manifest.api.files.extensions.pyc).to.equal(
+              `${prefix}binary.svg`,
+            );
+            expect(manifest.api.files.filenames['.zshrc']).to.equal(
+              `${prefix}zsh.svg`,
+            );
+            expect(manifest.api.light.files.extensions.pyc).to.equal(
+              `${prefix}binary.svg`,
+            );
+            expect(manifest.api.light.files.filenames['.zshrc']).to.equal(
+              `${prefix}zsh.svg`,
+            );
           }
         });
       });
