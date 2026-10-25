@@ -174,7 +174,8 @@ Then reference it in `supportedExtensions.ts` via the `languages` property.
 - Forgetting the `_opened.svg` variant for folder icons
 - Not placing the entry in alphabetical order
 - Creating duplicate icon entries
-- Empty `extensions` array without `languages` or glob alternatives
+- Empty `extensions` array
+- Non-present `extensions` array without `languages` or glob alternatives
 - Forgetting light theme SVG when setting `light: true`
 
 ## Key Interfaces
