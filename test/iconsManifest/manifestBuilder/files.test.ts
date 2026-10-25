@@ -13,6 +13,7 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
+import { apiSchema, zedSchema } from '../../../src/types';
 import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
@@ -732,6 +733,22 @@ describe('ManifestBuilder: files icons test', function () {
       });
 
       context('API schema', function () {
+        it('uses default schema in production', async function () {
+          sandbox.stub(constants.environment, 'production').value(true);
+
+          const manifest = await ManifestBuilder.buildManifest(
+            fixtFiles,
+            emptyFolderCollection,
+          );
+
+          expect(manifest.api.files._default).to.equal(
+            apiSchema.files._default,
+          );
+          expect(manifest.api.light.files._default).to.equal(
+            apiSchema.light.files._default,
+          );
+        });
+
         it('maps files, extensions, and filenames to icon paths', async function () {
           const manifest = await ManifestBuilder.buildManifest(
             fixtFiles,
@@ -807,6 +824,21 @@ describe('ManifestBuilder: files icons test', function () {
       });
 
       context('zed theme', function () {
+        it('uses default schema in production', async function () {
+          sandbox.stub(constants.environment, 'production').value(true);
+
+          const manifest = await ManifestBuilder.buildManifest(
+            fixtFiles,
+            emptyFolderCollection,
+          );
+
+          expect(
+            manifest.zed.themes.map(({ directory_icons }) => directory_icons),
+          ).to.deep.equal(
+            zedSchema.themes.map(({ directory_icons }) => directory_icons),
+          );
+        });
+
         it('should get official icons for official theme', async function () {
           const files = cloneDeep(fixtFiles);
 

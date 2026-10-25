@@ -11,6 +11,7 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
+import { apiSchema } from '../../../src/types';
 import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
@@ -87,6 +88,22 @@ describe('ManifestBuilder: folders icons test', function () {
     });
 
     context('API schema', function () {
+      it('uses default schema in production', async function () {
+        sandbox.stub(constants.environment, 'production').value(true);
+
+        const manifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        expect(manifest.api.folders._default).to.deep.equal(
+          apiSchema.folders._default,
+        );
+        expect(manifest.api.light.folders._default).to.deep.equal(
+          apiSchema.light.folders._default,
+        );
+      });
+
       it('maps default and named folders to closed and opened icon paths', async function () {
         const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
