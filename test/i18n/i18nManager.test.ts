@@ -1,6 +1,6 @@
-import type { IVSCodeManifest } from '../../src/types/package';
-import type { ILanguageResourceManager } from '../../src/types/vsIcons';
-import type { IVSCodeCommand } from '../../src/types/vscode';
+import type { VSCodeManifest } from '../../src/types/package';
+import type { VSCodeCommand } from '../../src/types/vscode';
+import type { LanguageResourceManagerContract } from '../../src/types/vsicons';
 
 import { expect } from 'chai';
 import proxyq from 'proxyquire';
@@ -17,7 +17,7 @@ describe('LanguageResourceManager: tests', function () {
 
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let i18nManager: ILanguageResourceManager;
+    let i18nManager: LanguageResourceManagerContract;
     let LanguageResourceManager: (
       resource: Record<string, unknown>,
     ) => LanguageResourceManager;
@@ -82,7 +82,7 @@ describe('LanguageResourceManager: tests', function () {
 
         i18nManager = new (LanguageResourceManager(resourceCollection))(
           'en',
-        ) as ILanguageResourceManager;
+        ) as LanguageResourceManagerContract;
 
         const msg = i18nManager.localize(null);
 
@@ -94,7 +94,7 @@ describe('LanguageResourceManager: tests', function () {
 
         i18nManager = new (LanguageResourceManager(resourceCollection))(
           'en',
-        ) as ILanguageResourceManager;
+        ) as LanguageResourceManagerContract;
 
         const msg = i18nManager.localize(undefined);
 
@@ -110,7 +110,7 @@ describe('LanguageResourceManager: tests', function () {
 
         i18nManager = new (LanguageResourceManager(resourceCollection))(
           'en',
-        ) as ILanguageResourceManager;
+        ) as LanguageResourceManagerContract;
 
         const literalString1 = '10';
         const literalString2 = ' ';
@@ -144,7 +144,7 @@ describe('LanguageResourceManager: tests', function () {
 
           i18nManager = new (LanguageResourceManager(resourceCollection))(
             'es',
-          ) as ILanguageResourceManager;
+          ) as LanguageResourceManagerContract;
 
           const msg = i18nManager.localize(enums.LangResourceKeys.reload);
 
@@ -154,7 +154,7 @@ describe('LanguageResourceManager: tests', function () {
         it('if no locale is provided', function () {
           i18nManager = new (LanguageResourceManager(
             langResources,
-          ))() as ILanguageResourceManager;
+          ))() as LanguageResourceManagerContract;
 
           const msg = i18nManager.localize(enums.LangResourceKeys.reload);
 
@@ -164,7 +164,7 @@ describe('LanguageResourceManager: tests', function () {
         it('if no locale exists', function () {
           i18nManager = new (LanguageResourceManager(langResources))(
             'bg',
-          ) as ILanguageResourceManager;
+          ) as LanguageResourceManagerContract;
 
           const msg = i18nManager.localize(enums.LangResourceKeys.reload);
 
@@ -187,7 +187,7 @@ describe('LanguageResourceManager: tests', function () {
 
           i18nManager = new (LanguageResourceManager(resourceCollection))(
             'test',
-          ) as ILanguageResourceManager;
+          ) as LanguageResourceManagerContract;
         });
 
         context('returns properly messages for', function () {
@@ -238,7 +238,7 @@ describe('LanguageResourceManager: tests', function () {
 
           i18nManager = new (LanguageResourceManager(resourceCollection))(
             'en',
-          ) as ILanguageResourceManager;
+          ) as LanguageResourceManagerContract;
         });
 
         it('a literal string', function () {
@@ -293,7 +293,7 @@ describe('LanguageResourceManager: tests', function () {
           resourceCollection = { en: initResourceCollection };
           i18nManager = new (LanguageResourceManager(resourceCollection))(
             'en',
-          ) as ILanguageResourceManager;
+          ) as LanguageResourceManagerContract;
         });
 
         it('resource keys', function () {
@@ -318,7 +318,7 @@ describe('LanguageResourceManager: tests', function () {
       beforeEach(function () {
         i18nManager = new (LanguageResourceManager(langResources))(
           'en',
-        ) as ILanguageResourceManager;
+        ) as LanguageResourceManagerContract;
       });
 
       context(`returns 'undefined'`, function () {
@@ -337,17 +337,17 @@ describe('LanguageResourceManager: tests', function () {
     });
 
     context('each', function () {
-      let manifest: IVSCodeManifest;
+      let manifest: VSCodeManifest;
 
       beforeEach(function () {
-        manifest = packageJson as IVSCodeManifest;
+        manifest = packageJson as VSCodeManifest;
       });
 
       it('command title has an nls entry', function () {
         expect(manifest.contributes).to.exist;
         expect(manifest.contributes.commands).to.exist;
         expect(manifest.contributes.commands).to.be.an.instanceOf(Array);
-        manifest.contributes.commands.forEach((command: IVSCodeCommand) => {
+        manifest.contributes.commands.forEach((command: VSCodeCommand) => {
           const title = command.title;
           const nlsEntry = title.replace(/%/g, '');
           expect(title).to.exist;

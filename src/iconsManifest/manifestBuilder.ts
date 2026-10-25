@@ -18,10 +18,10 @@ export class ManifestBuilder {
   private static customIconDirPath: string;
 
   public static async buildManifest(
-    files: types.IFileCollection,
-    folders: types.IFolderCollection,
+    files: types.FileCollection,
+    folders: types.FolderCollection,
     customIconsDirPath?: string,
-  ): Promise<types.IIconManifest> {
+  ): Promise<types.IconManifest> {
     this.customIconDirPath = customIconsDirPath;
     this.iconsRelativeDirPathFromSourceDir = await Utils.getRelativePath(
       ConfigManager.sourceDir,
@@ -62,8 +62,8 @@ export class ManifestBuilder {
   }
 
   private static updateFolderIconMappings(
-    folders: types.IFolderCollection,
-    vscSchema: types.IVSCodeIconSchema,
+    folders: types.FolderCollection,
+    vscSchema: types.VSCodeIconSchema,
   ): void {
     const isDisabled = (entry?: { disabled?: boolean }): boolean =>
       !entry || entry.disabled;
@@ -86,9 +86,9 @@ export class ManifestBuilder {
   }
 
   private static async configureVSCodeIconDefinitions(
-    files: types.IFileCollection,
-    folders: types.IFolderCollection,
-    vscSchema: types.IVSCodeIconSchema,
+    files: types.FileCollection,
+    folders: types.FolderCollection,
+    vscSchema: types.VSCodeIconSchema,
   ): Promise<void> {
     const vscDefs = vscSchema.iconDefinitions;
 
@@ -170,8 +170,8 @@ export class ManifestBuilder {
   }
 
   private static configureApiDefaultIcons(
-    vscDefs: types.IVSCodeIconDefinition,
-  ): types.IApiIconSchema {
+    vscDefs: types.VSCodeIconDefinition,
+  ): types.ApiIconSchema {
     const apiSchema = cloneDeep(defaultApiSchema);
 
     // set the default and root icons
@@ -207,8 +207,8 @@ export class ManifestBuilder {
   }
 
   private static configureZedThemesDirectoryIcons(
-    vscDefs: types.IVSCodeIconDefinition,
-  ): types.IZedIconSchema {
+    vscDefs: types.VSCodeIconDefinition,
+  ): types.ZedIconSchema {
     const zedSchema = cloneDeep(defaultZedSchema);
 
     for (const themeIndex of Object.values(constants.zed.dark_themes)) {
@@ -238,8 +238,8 @@ export class ManifestBuilder {
   }
 
   private static async buildDefaultIconPath(
-    defaultExtension: types.IDefaultExtension,
-    schemaExtension: types.IVSCodeIconPath,
+    defaultExtension: types.DefaultExtension,
+    schemaExtension: types.VSCodeIconPath,
     isFolder = false,
     isOpenFolder = false,
   ): Promise<string> {
@@ -264,12 +264,12 @@ export class ManifestBuilder {
   }
 
   private static async buildJsonStructure(
-    files: types.IFileCollection,
-    folders: types.IFolderCollection,
-    apiSchema: types.IApiIconSchema,
-    vscSchema: types.IVSCodeIconSchema,
-    zedSchema: types.IZedIconSchema,
-  ): Promise<types.IIconManifest> {
+    files: types.FileCollection,
+    folders: types.FolderCollection,
+    apiSchema: types.ApiIconSchema,
+    vscSchema: types.VSCodeIconSchema,
+    zedSchema: types.ZedIconSchema,
+  ): Promise<types.IconManifest> {
     // check for light files & folders
     // NOTE: We're checking VS Code schema but bear in mind that Zed use the same icons.
     // So it's guaranteed that if there is a light folder/file in VS Code schema, Zed will have it too.
@@ -336,8 +336,8 @@ export class ManifestBuilder {
   }
 
   private static generateZedJsonStructure(
-    options: types.IZedJsonStructureOptions,
-  ): types.IZedIconSchema {
+    options: types.ZedJsonStructureOptions,
+  ): types.ZedIconSchema {
     let zedFinalSchema = this.buildZedJsonStructure(
       options.files,
       options.folders,
@@ -382,10 +382,10 @@ export class ManifestBuilder {
   }
 
   private static buildVSCJsonStructure(
-    files: types.IBuildFiles,
-    folders: types.IBuildFolders,
-    schema: types.IVSCodeIconSchema,
-  ): types.IVSCodeIconSchema {
+    files: types.BuildFiles,
+    folders: types.BuildFolders,
+    schema: types.VSCodeIconSchema,
+  ): types.VSCodeIconSchema {
     schema.iconDefinitions = {
       ...schema.iconDefinitions,
       ...folders.defs,
@@ -407,16 +407,16 @@ export class ManifestBuilder {
   }
 
   private static buildZedJsonStructure(
-    files: types.IBuildFiles,
-    folders: types.IBuildFolders,
-    schema: types.IZedIconSchema,
+    files: types.BuildFiles,
+    folders: types.BuildFolders,
+    schema: types.ZedIconSchema,
     theme: { dark: number; light: number },
-  ): types.IZedIconSchema {
+  ): types.ZedIconSchema {
     const darkSchema = schema.themes[theme.dark];
     const lightSchema = schema.themes[theme.light];
 
-    const darkFileIcons: types.IZedFileIcons = {};
-    const lightFileIcons: types.IZedFileIcons = {};
+    const darkFileIcons: types.ZedFileIcons = {};
+    const lightFileIcons: types.ZedFileIcons = {};
 
     Object.entries(files.defs).forEach(([key, iconDef]): void => {
       darkFileIcons[key] = { path: this.toIconFolderPath(iconDef.iconPath) };
@@ -464,8 +464,8 @@ export class ManifestBuilder {
     // NOTE: the light folder list contains all the folders, so we can use it to build both themes
     // with just one iteration. On the other hand, we will leverage naming conventions to find the
     // correct icon paths depending on the theme and the state (collapsed/expanded).
-    const darkFolderIcons: types.IZedFolderIcons = {};
-    const lightFolderIcons: types.IZedFolderIcons = {};
+    const darkFolderIcons: types.ZedFolderIcons = {};
+    const lightFolderIcons: types.ZedFolderIcons = {};
 
     Object.entries(folders.light.folderNames).forEach(
       ([dirName, key]): void => {
@@ -501,10 +501,10 @@ export class ManifestBuilder {
   }
 
   private static buildAPIJsonStructure(
-    files: types.IBuildFiles,
-    folders: types.IBuildFolders,
-    schema: types.IApiIconSchema,
-  ): types.IApiIconSchema {
+    files: types.BuildFiles,
+    folders: types.BuildFolders,
+    schema: types.ApiIconSchema,
+  ): types.ApiIconSchema {
     const toFilePaths = (
       names: Record<string, string>,
     ): Record<string, string> =>
@@ -517,10 +517,10 @@ export class ManifestBuilder {
 
     const toFolderPaths = (
       names: Record<string, string>,
-    ): Record<string, Record<types.State, string>> =>
+    ): Record<string, Record<types.FolderState, string>> =>
       Object.fromEntries(
         Object.entries(names).map(
-          ([name, key]): [string, Record<types.State, string>] => [
+          ([name, key]): [string, Record<types.FolderState, string>] => [
             name,
             {
               closed: this.toIconFolderPath(folders.defs[key].iconPath),
@@ -564,25 +564,25 @@ export class ManifestBuilder {
   }
 
   private static buildFiles(
-    files: types.IFileCollection,
+    files: types.FileCollection,
     hasDefaultLightFile: boolean,
     options?: 'officialIcons' | 'angularIcons' | 'nestIcons',
-  ): Promise<types.IBuildFiles> {
+  ): Promise<types.BuildFiles> {
     const sts = constants.iconsManifest;
 
-    let collection: types.IFileExtension[];
+    let collection: types.FileExtension[];
 
-    const officialFilter = (file: types.IFileExtension): boolean =>
+    const officialFilter = (file: types.FileExtension): boolean =>
       file.icon &&
       (!file.disabled ||
         (file.icon.endsWith('_official') && file.icon !== 'json_official'));
 
-    const angularFilter = (file: types.IFileExtension): boolean =>
+    const angularFilter = (file: types.FileExtension): boolean =>
       file.icon &&
       (!file.disabled ||
         (file.icon.startsWith('ng_') && !file.icon.endsWith('2')));
 
-    const nestFilter = (file: types.IFileExtension): boolean =>
+    const nestFilter = (file: types.FileExtension): boolean =>
       file.icon && (!file.disabled || file.icon.startsWith('nest_'));
 
     switch (options) {
@@ -592,30 +592,29 @@ export class ManifestBuilder {
 
       case 'angularIcons':
         collection = files.supported.filter(
-          (file: types.IFileExtension): boolean =>
+          (file: types.FileExtension): boolean =>
             officialFilter(file) || angularFilter(file),
         );
         break;
 
       case 'nestIcons':
         collection = files.supported.filter(
-          (file: types.IFileExtension): boolean =>
+          (file: types.FileExtension): boolean =>
             officialFilter(file) || nestFilter(file),
         );
         break;
 
       default:
         collection = files.supported.filter(
-          (file: types.IFileExtension): boolean =>
-            !file.disabled && !!file.icon,
+          (file: types.FileExtension): boolean => !file.disabled && !!file.icon,
         );
         break;
     }
 
     return sortedUniq(
-      sortBy(collection, (item: types.IFileExtension): string => item.icon),
+      sortBy(collection, (item: types.FileExtension): string => item.icon),
     ).reduce(
-      async (previous, current): Promise<types.IBuildFiles> => {
+      async (previous, current): Promise<types.BuildFiles> => {
         const old = await previous;
         const defs = old.defs;
         const names = old.names;
@@ -658,7 +657,7 @@ export class ManifestBuilder {
         if (current.languages) {
           const assignLanguages = (
             langId: string,
-            lang: types.ILanguage,
+            lang: types.Language,
           ): void => {
             language.languageIds[langId] = iconFileDefinition;
             // assign known extensions and filenames
@@ -672,7 +671,7 @@ export class ManifestBuilder {
 
           const assignLanguagesLight = (
             langId: string,
-            lang: types.ILanguage,
+            lang: types.Language,
           ): void => {
             const iconDef = hasLightVersion
               ? iconFileLightDefinition
@@ -687,7 +686,7 @@ export class ManifestBuilder {
             });
           };
 
-          current.languages.forEach((lang: types.ILanguage): void => {
+          current.languages.forEach((lang: types.Language): void => {
             if (Array.isArray(lang.ids)) {
               lang.ids.forEach((id: string): void => {
                 assignLanguages(id, lang);
@@ -731,7 +730,7 @@ export class ManifestBuilder {
 
         return old;
       },
-      Promise.resolve<types.IBuildFiles>({
+      Promise.resolve<types.BuildFiles>({
         defs: {},
         names: { fileExtensions: {}, fileNames: {} },
         light: {
@@ -745,28 +744,28 @@ export class ManifestBuilder {
   }
 
   private static buildFolders(
-    folders: types.IFolderCollection,
+    folders: types.FolderCollection,
     hasDefaultLightFolder: boolean,
     officialIcons = false,
-  ): Promise<types.IBuildFolders> {
+  ): Promise<types.BuildFolders> {
     const sts = constants.iconsManifest;
     const collection = officialIcons
       ? folders.supported.filter(
-          (folder: types.IFolderExtension): boolean =>
+          (folder: types.FolderExtension): boolean =>
             folder.icon &&
             (!folder.disabled ||
               (folder.icon.endsWith('_official') &&
                 folder.icon !== 'json_official')),
         )
       : folders.supported.filter(
-          (folder: types.IFolderExtension): boolean =>
+          (folder: types.FolderExtension): boolean =>
             !folder.disabled && !!folder.icon,
         );
     return sortBy(
       collection,
-      (item: types.IFolderExtension): string => item.icon,
+      (item: types.FolderExtension): string => item.icon,
     ).reduce(
-      async (previous, current): Promise<types.IBuildFolders> => {
+      async (previous, current): Promise<types.BuildFolders> => {
         const old = await previous;
         const defs = old.defs;
         const names = old.names;

@@ -52,7 +52,7 @@ npm run lint:svg       # SVGLint check
 
 - Single quotes, trailing commas (always-multiline), arrow parens as-needed
 - Max line length: 120 characters
-- Interfaces prefixed with `I` (e.g., `IFileExtension`)
+- Interfaces use PascalCase without a prefix (e.g., `FileExtension`)
 - Explicit member accessibility (public/private/protected)
 - No `console.log` (use `console.info` or `console.error`)
 - Pre-commit hooks enforce Prettier + ESLint + SVGLint via lint-staged
@@ -70,10 +70,10 @@ src/
     iconsGenerator.ts               # Orchestrates manifest generation
     customsMerger.ts                # Merges user customizations
   models/extensions/
-    fileExtension.ts                # IFileExtension interface
-    folderExtension.ts              # IFolderExtension interface
+    fileExtension.ts                # FileExtension interface
+    folderExtension.ts              # FolderExtension interface
     fileFormat.ts                   # FileFormat enum (svg, png)
-  models/language/language.ts       # ILanguage interface
+  models/language/language.ts       # Language interface
 test/                               # Test files (mirrors src/)
   iconsManifest/
     specsExtensions.test.ts         # Validates all file icon entries
@@ -181,19 +181,19 @@ Then reference it in `supportedExtensions.ts` via the `languages` property.
 ## Key Interfaces
 
 ```typescript
-interface IFileExtension {
+interface FileExtension {
   icon: string; // Maps to file_type_{icon}.svg
   extensions?: string[]; // File extensions or filenames
   format?: FileFormat | string; // Default is FileFormat.svg or 'svg'
   filename?: boolean; // true = extensions are full filenames
-  languages?: ILanguage[]; // VS Code language associations
+  languages?: Language[]; // VS Code language associations
   light?: boolean; // Requires file_type_light_{icon}.svg
   disabled?: boolean; // Hidden by default
   filenamesGlob?: string[]; // Glob filename patterns
   extensionsGlob?: string[]; // Glob extension patterns
 }
 
-interface IFolderExtension {
+interface FolderExtension {
   icon: string; // Maps to folder_type_{icon}.svg
   extensions?: string[]; // Folder names to match
   format?: FileFormat | string; // Default is FileFormat.svg or 'svg'
@@ -201,7 +201,7 @@ interface IFolderExtension {
   disabled?: boolean; // Hidden by default
 }
 
-interface ILanguage {
+interface Language {
   ids: string | string[]; // VS Code language ID(s)
   knownExtensions?: string[]; // For Zed editor
   knownFilenames?: string[]; // For Zed editor

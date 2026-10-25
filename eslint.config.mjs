@@ -152,7 +152,6 @@ export default defineConfig(
         {
           selector: 'interface',
           format: ['PascalCase'],
-          prefix: ['I'],
         },
       ],
       '@typescript-eslint/no-empty-function': [

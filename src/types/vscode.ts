@@ -1,19 +1,19 @@
 import type { ConfigurationTarget } from './enums';
 
-export interface IVSCode {
-  env: IVSCodeEnv;
-  commands: IVSCodeCommands;
+export interface VSCode {
+  env: VSCodeEnv;
+  commands: VSCodeCommands;
   version: string;
-  window: IVSCodeWindow;
-  workspace: IVSCodeWorkspace;
+  window: VSCodeWindow;
+  workspace: VSCodeWorkspace;
 }
 
-export interface IVSCodeCancellationToken {
+export interface VSCodeCancellationToken {
   isCancellationRequested: boolean;
   onCancellationRequested: IVSCodeEvent<unknown>;
 }
 
-export interface IVSCodeCommand {
+export interface VSCodeCommand {
   title: string;
   command: string;
   tooltip?: string;
@@ -24,7 +24,7 @@ export interface IVSCodeCommand {
   callbackName?: string;
 }
 
-export interface IVSCodeCommands {
+export interface VSCodeCommands {
   executeCommand<T>(
     command: string,
     ...rest: unknown[]
@@ -33,51 +33,51 @@ export interface IVSCodeCommands {
     command: string,
     callback: CallableFunction,
     thisArg?: unknown,
-  ): IVSCodeDisposable;
+  ): VSCodeDisposable;
 }
 
-export interface IVSCodeConfigurationChangeEvent {
-  affectsConfiguration(section: string, resource?: IVSCodeUri): boolean;
+export interface VSCodeConfigurationChangeEvent {
+  affectsConfiguration(section: string, resource?: VSCodeUri): boolean;
 }
 
-export interface IVSCodeDisposable {
+export interface VSCodeDisposable {
   dispose(): unknown;
 }
 
-export interface IVSCodeEnv {
+export interface VSCodeEnv {
   appName: string;
   language: string;
 }
 
-export interface IVSCodeExtensionContext {
+export interface VSCodeExtensionContext {
   extensionPath: string;
-  globalState: IVSCodeMemento;
+  globalState: VSCodeMemento;
   storagePath: string | undefined;
-  subscriptions: IVSCodeDisposable[];
-  workspaceState: IVSCodeMemento;
+  subscriptions: VSCodeDisposable[];
+  workspaceState: VSCodeMemento;
 }
 
-export interface IVSCodeManager {
-  context: IVSCodeExtensionContext;
-  env: IVSCodeEnv;
-  commands: IVSCodeCommands;
+export interface VSCodeManagerContract {
+  context: VSCodeExtensionContext;
+  env: VSCodeEnv;
+  commands: VSCodeCommands;
   version: string;
-  window: IVSCodeWindow;
-  workspace: IVSCodeWorkspace;
+  window: VSCodeWindow;
+  workspace: VSCodeWorkspace;
   supportsThemesReload: boolean;
   isSupportedVersion: boolean;
   getWorkspacePaths(): string[];
   getAppUserDirPath(): string;
 }
 
-export interface IVSCodeMemento {
+export interface VSCodeMemento {
   get<T>(key: string): T | undefined;
   get<T>(key: string, defaultValue: T): T;
   update(key: string, value: unknown): Thenable<void>;
   setKeysForSync(keys: readonly string[]): void;
 }
 
-export interface IVSCodeUri {
+export interface VSCodeUri {
   readonly scheme: string;
   readonly authority: string;
   readonly path: string;
@@ -90,12 +90,12 @@ export interface IVSCodeUri {
     path?: string;
     query?: string;
     fragment?: string;
-  }): IVSCodeUri;
+  }): VSCodeUri;
   toString(skipEncoding?: boolean): string;
   toJSON(): unknown;
 }
 
-export interface IVSCodeWindow {
+export interface VSCodeWindow {
   showInformationMessage(
     message: string,
     ...items: string[]
@@ -112,38 +112,38 @@ export interface IVSCodeWindow {
   ): Thenable<string | undefined>;
 }
 
-type GlobPattern = string | IVSCodeRelativePattern;
+type GlobPattern = string | VSCodeRelativePattern;
 
 export type IVSCodeEvent<T> = (
   listener: (e: T) => unknown,
   thisArgs?: unknown,
-  disposables?: IVSCodeDisposable[],
-) => IVSCodeDisposable;
+  disposables?: VSCodeDisposable[],
+) => VSCodeDisposable;
 
-export interface IVSCodeWorkspace {
+export interface VSCodeWorkspace {
   rootPath: string | undefined;
-  workspaceFolders: readonly IVSCodeWorkspaceFolder[] | undefined;
-  onDidChangeConfiguration: IVSCodeEvent<IVSCodeConfigurationChangeEvent>;
+  workspaceFolders: readonly VSCodeWorkspaceFolder[] | undefined;
+  onDidChangeConfiguration: IVSCodeEvent<VSCodeConfigurationChangeEvent>;
   getConfiguration(
     section?: string,
-    resource?: IVSCodeUri,
-  ): IVSCodeWorkspaceConfiguration;
+    resource?: VSCodeUri,
+  ): VSCodeWorkspaceConfiguration;
   findFiles(
     include: GlobPattern,
     exclude?: GlobPattern,
     maxResults?: number,
-    token?: IVSCodeCancellationToken,
-  ): Thenable<IVSCodeUri[]>;
+    token?: VSCodeCancellationToken,
+  ): Thenable<VSCodeUri[]>;
 }
 
-export interface IVSCodeRelativePattern {
-  baseUri: IVSCodeUri;
+export interface VSCodeRelativePattern {
+  baseUri: VSCodeUri;
   base: string;
   pattern: string;
-  new (base: IVSCodeWorkspaceFolder | string, pattern: string);
+  new (base: VSCodeWorkspaceFolder | string, pattern: string);
 }
 
-export interface IVSCodePreset<T> {
+export interface VSCodePreset<T> {
   key: string;
   defaultValue?: T;
   globalValue?: T;
@@ -151,12 +151,12 @@ export interface IVSCodePreset<T> {
   workspaceFolderValue?: T;
 }
 
-export interface IVSCodeWorkspaceConfiguration {
+export interface VSCodeWorkspaceConfiguration {
   readonly [key: string]: unknown;
   get<T>(section: string): T | undefined;
   get<T>(section: string, defaultValue: T): T;
   has(section: string): boolean;
-  inspect<T>(section: string): IVSCodePreset<T> | undefined;
+  inspect<T>(section: string): VSCodePreset<T> | undefined;
   update(
     section: string,
     value: unknown,
@@ -164,8 +164,8 @@ export interface IVSCodeWorkspaceConfiguration {
   ): Thenable<void>;
 }
 
-export interface IVSCodeWorkspaceFolder {
-  readonly uri: IVSCodeUri;
+export interface VSCodeWorkspaceFolder {
+  readonly uri: VSCodeUri;
   readonly name: string;
   readonly index: number;
 }

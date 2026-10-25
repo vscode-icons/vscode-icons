@@ -1,4 +1,8 @@
-import type { ISettingsManager, IState, IVSCodeManager } from '../types';
+import type {
+  SettingsManagerContract,
+  State,
+  VSCodeManagerContract,
+} from '../types';
 
 import { lt } from 'semver';
 
@@ -6,14 +10,14 @@ import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';
 import * as enums from '../types/enums';
 
-export class SettingsManager implements ISettingsManager {
-  public static defaultState: IState = {
+export class SettingsManager implements SettingsManagerContract {
+  public static defaultState: State = {
     version: '0.0.0',
     status: enums.ExtensionStatus.deactivated,
     welcomeShown: false,
   };
 
-  constructor(private vscodeManager: IVSCodeManager) {
+  constructor(private vscodeManager: VSCodeManagerContract) {
     if (!vscodeManager) {
       throw new ReferenceError(`'vscodeManager' not set to an instance`);
     }
@@ -23,14 +27,14 @@ export class SettingsManager implements ISettingsManager {
     return lt(this.getState().version, constants.extension.version);
   }
 
-  public getState(): IState {
-    const state = this.vscodeManager.context.globalState.get<IState>(
+  public getState(): State {
+    const state = this.vscodeManager.context.globalState.get<State>(
       constants.vsicons.name,
     );
     return state || SettingsManager.defaultState;
   }
 
-  public async setState(state: IState): Promise<void> {
+  public async setState(state: State): Promise<void> {
     try {
       await this.vscodeManager.context.globalState.update(
         constants.vsicons.name,
@@ -41,7 +45,7 @@ export class SettingsManager implements ISettingsManager {
     }
   }
 
-  public async updateStatus(status?: enums.ExtensionStatus): Promise<IState> {
+  public async updateStatus(status?: enums.ExtensionStatus): Promise<State> {
     const state = this.getState();
     state.version = constants.extension.version;
     state.status = status == null ? state.status : status;
