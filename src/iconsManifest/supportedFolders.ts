@@ -127,15 +127,7 @@ export const extensions: IFolderCollection = {
     },
     {
       icon: 'component',
-      extensions: [
-        'component',
-        'components',
-        '.components',
-        'gui',
-        'src-ui',
-        'ui',
-        'widgets',
-      ],
+      extensions: ['component', 'components', '.components', 'widgets'],
     },
     {
       icon: 'composer',
@@ -341,6 +333,18 @@ export const extensions: IFolderCollection = {
     {
       icon: 'frontcommerce',
       extensions: ['.front-commerce'],
+    },
+    {
+      icon: 'frontend',
+      extensions: [
+        'frontend',
+        '.frontend',
+        'front-end',
+        '.front-end',
+        'ui',
+        'gui',
+        'src-ui',
+      ],
     },
     { icon: 'gcp', extensions: ['gcp', '.gcp'] },
     { icon: 'gemini', extensions: ['.gemini'] },

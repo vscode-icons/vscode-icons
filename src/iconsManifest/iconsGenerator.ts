@@ -100,7 +100,7 @@ export class IconsGenerator implements types.IIconsGenerator {
 
   private async writeIconsManifestToFile(
     iconsFilename: string,
-    iconsManifest: types.IIconSchema | types.IZedIconSchema,
+    iconsManifest: types.IVSCodeIconSchema | types.IZedIconSchema,
     outDir: string,
     extensionName: string,
   ): Promise<void> {
