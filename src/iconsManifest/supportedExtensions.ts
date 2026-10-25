@@ -1059,7 +1059,6 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'cucumberconfig',
-      extensions: [],
       filenamesGlob: ['cucumber'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'json', 'yaml', 'yml'],
       filename: true,

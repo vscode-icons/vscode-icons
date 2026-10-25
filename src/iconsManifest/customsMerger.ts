@@ -373,7 +373,6 @@ export class CustomsMerger {
       if (!existing.length) {
         workingCopy.supported.push({
           icon,
-          extensions: [],
           disabled: disable,
         });
       } else {

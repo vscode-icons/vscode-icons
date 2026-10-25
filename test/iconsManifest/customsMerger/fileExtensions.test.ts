@@ -137,7 +137,7 @@ describe('CustomsMerger: file extensions tests', function () {
       };
       const supportedFiles: IFileCollection = {
         default: {},
-        supported: [{ icon: 'js', extensions: [] }, { icon: 'language_only' }],
+        supported: [{ icon: 'js' }, { icon: 'language_only' }],
       };
 
       const { files } = await CustomsMerger.merge(
@@ -150,7 +150,7 @@ describe('CustomsMerger: file extensions tests', function () {
 
       const customDef = files.supported.find(
         (file: IFileExtension) =>
-          file.icon === 'js' && file.extensions.includes('foo'),
+          file.icon === 'js' && file.extensions?.includes('foo'),
       );
 
       expect(customDef).to.exist;
@@ -162,7 +162,6 @@ describe('CustomsMerger: file extensions tests', function () {
         supported: [
           {
             icon: 'actionscript',
-            extensions: [],
             disabled: true,
             format: 'svg',
           },
@@ -392,7 +391,6 @@ describe('CustomsMerger: file extensions tests', function () {
           supported: [
             {
               icon: 'actionscript',
-              extensions: [],
               format: 'svg',
               languages: [{ ids: 'newlang', knownExtensions: ['newlang'] }],
             },

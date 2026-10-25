@@ -64,7 +64,6 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mlang',
-      extensions: [],
       languages: [languages.mlang],
       light: true,
     },
@@ -418,31 +417,26 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'js',
-      extensions: [],
       light: true,
       languages: [languages.javascript],
     },
     {
       icon: 'js_official',
-      extensions: [],
       languages: [languages.javascript],
       disabled: true,
     },
     {
       icon: 'json',
-      extensions: [],
       light: true,
       languages: [languages.json, languages.textmatejson, languages.jsonc],
     },
     {
       icon: 'json_official',
-      extensions: [],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
       disabled: true,
     },
     {
       icon: 'yaml',
-      extensions: [],
       languages: [
         languages.yaml,
         languages.textmateyaml,
@@ -452,7 +446,6 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'yaml_official',
-      extensions: [],
       languages: [
         languages.yaml,
         languages.textmateyaml,
@@ -463,19 +456,16 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'taskfile',
-      extensions: [],
       filename: true,
       filenamesGlob: ['Taskfile', 'Taskfile.dist'],
       extensionsGlob: ['yml', 'yaml'],
     },
     {
       icon: 'typescript',
-      extensions: [],
       languages: [languages.typescript],
     },
     {
       icon: 'typescript_official',
-      extensions: [],
       languages: [languages.typescript],
       disabled: true,
     },
