@@ -216,7 +216,7 @@ export class ManifestBuilder {
   ): types.IZedIconSchema {
     const zedSchema = cloneDeep(defaultZedSchema);
 
-    // In production environment, return the default API schema immediately
+    // In production environment, return the default Zed schema immediately
     if (constants.environment.production) {
       return zedSchema;
     }
@@ -289,6 +289,20 @@ export class ManifestBuilder {
     const hasDefaultLightFile =
       vscSchema.iconDefinitions._file_light.iconPath != null &&
       vscSchema.iconDefinitions._file_light.iconPath !== '';
+    // In production only the VS Code manifest is persisted,
+    // so skip building the Zed and API manifests altogether.
+    if (constants.environment.production) {
+      const [resFiles, resFolders] = await Promise.all([
+        this.buildFiles(files, hasDefaultLightFile),
+        this.buildFolders(folders, hasDefaultLightFolder),
+      ]);
+      return {
+        api: apiSchema,
+        vscode: this.buildVSCJsonStructure(resFiles, resFolders, vscSchema),
+        zed: zedSchema,
+      };
+    }
+
     const res = {
       //  files section
       files: this.buildFiles(files, hasDefaultLightFile),

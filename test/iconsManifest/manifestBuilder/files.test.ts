@@ -732,6 +732,31 @@ describe('ManifestBuilder: files icons test', function () {
         });
       });
 
+      context('production', function () {
+        it('builds only the VS Code manifest', async function () {
+          const devManifest = await ManifestBuilder.buildManifest(
+            fixtFiles,
+            emptyFolderCollection,
+          );
+
+          sandbox.stub(constants.environment, 'production').value(true);
+
+          const prodManifest = await ManifestBuilder.buildManifest(
+            fixtFiles,
+            emptyFolderCollection,
+          );
+
+          expect(prodManifest.vscode).to.deep.equal(devManifest.vscode);
+          expect(prodManifest.api.files.extensions).to.deep.equal(
+            apiSchema.files.extensions,
+          );
+          expect(prodManifest.api.files.filenames).to.deep.equal(
+            apiSchema.files.filenames,
+          );
+          expect(prodManifest.zed).to.deep.equal(zedSchema);
+        });
+      });
+
       context('API schema', function () {
         it('uses default schema in production', async function () {
           sandbox.stub(constants.environment, 'production').value(true);
