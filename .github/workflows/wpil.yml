@@ -12,6 +12,11 @@ jobs:
     name: Update Wiki Pages
     runs-on: ubuntu-latest
     continue-on-error: true
+    # Shared with the SVG previews workflow so pushes to the wiki never overlap.
+    # `queue: max` keeps every pending run instead of replacing it.
+    concurrency:
+      group: wiki-write
+      queue: max
     steps:
       - name: Checkout vscode-icons repository
         uses: actions/checkout@v5
