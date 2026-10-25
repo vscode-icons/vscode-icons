@@ -4923,7 +4923,7 @@ export const extensions: IFileCollection = {
       extensions: [],
       languages: [languages.racket],
     },
-    { icon: 'rails', extensions: [] },
+    { icon: 'rails', extensions: ['rails'], filename: true },
     {
       icon: 'railway',
       extensions: ['railway.toml', 'railway.json'],
