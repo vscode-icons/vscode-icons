@@ -83,9 +83,10 @@
     "compile:dev": "tsc",
     "postcompile:dev": "npm run bundle:dev",
     "predist:dev": "npm run build:dev",
-    "dist:dev": "webpack --mode development",
+    "dist:dev": "node ./scripts/bundle.mjs development",
     "predist": "npm run build",
-    "dist": "webpack --mode production",
+    "dist": "node ./scripts/bundle.mjs production",
+    "benchmark:bundle": "node ./scripts/benchmark-bundler.mjs",
     "preserve": "npm run dist:dev",
     "serve": "vscode-test-web --quality stable --browser=chromium --extensionDevelopmentPath=. .",
     "optimize-icons": "svgo --quiet --folder ./icons/",
@@ -122,8 +123,7 @@
     "svgo": "^4.1.0",
     "typescript": "^6.0.0",
     "typescript-eslint": "^8.0.0",
-    "webpack": "^5.105.0",
-    "webpack-cli": "^7.2.3"
+    "rolldown": "^1.2.14"
   },
   "dependencies": {
     "inversify": "^8.2.3",
