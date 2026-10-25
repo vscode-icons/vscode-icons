@@ -4528,7 +4528,7 @@ export const extensions: IFileCollection = {
       icon: 'racket',
       languages: [languages.racket],
     },
-    { icon: 'rails' },
+    { icon: 'rails', extensions: ['rails'], filename: true },
     {
       icon: 'railway',
       extensions: ['railway.toml', 'railway.json'],
