@@ -384,7 +384,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.fileExtensions[extension],
                         ).to.equal(definition),
@@ -407,7 +407,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.fileExtensions[extension],
                         ).to.equal(definition),
@@ -556,7 +556,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -1041,7 +1041,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.fileExtensions[extension],
                         ).to.equal(definition),
@@ -1213,7 +1213,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
