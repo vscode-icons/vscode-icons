@@ -1476,7 +1476,11 @@ export const extensions: IFileCollection = {
       icon: 'elastic',
       languages: [languages.elastic],
     },
-    { icon: 'elasticbeanstalk' },
+    {
+      icon: 'elasticbeanstalk',
+      extensions: ['.ebignore', 'Dockerrun.aws.json'],
+      filename: true,
+    },
     {
       icon: 'electron',
       extensions: ['forge.config.js', 'forge.config.ts'],
