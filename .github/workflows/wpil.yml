@@ -1,12 +1,10 @@
 name: Update Wiki Page Icons List
 
-env:
-  NODE_VERSION: 22.18.0
-
 on:
   push:
     branches:
       - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -14,14 +12,19 @@ jobs:
     name: Update Wiki Pages
     runs-on: ubuntu-latest
     continue-on-error: true
+    # Shared with the SVG previews workflow so pushes to the wiki never overlap.
+    # `queue: max` keeps every pending run instead of replacing it.
+    concurrency:
+      group: wiki-write
+      queue: max
     steps:
       - name: Checkout vscode-icons repository
         uses: actions/checkout@v5
 
-      - name: Setting up Node.js ${{ env.NODE_VERSION }}
+      - name: Setting up Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: .nvmrc
 
       - name: Install and build vscode-icons
         run: |

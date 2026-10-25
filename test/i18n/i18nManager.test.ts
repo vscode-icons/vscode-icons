@@ -1,5 +1,5 @@
 import type { IVSCodeManifest } from '../../src/types/package';
-import type { ILanguageResourceManager } from '../../src/types/vscIcons';
+import type { ILanguageResourceManager } from '../../src/types/vsIcons';
 import type { IVSCodeCommand } from '../../src/types/vscode';
 
 import { expect } from 'chai';
