@@ -103,6 +103,15 @@ describe('Specifications of supported extensions: tests', function () {
         });
 
         context('does NOT have', function () {
+          it('icon-only declaration', function () {
+            testFiles.forEach((file: IFileExtension) => {
+              expect(
+                Object.keys(file),
+                `Icon-only declaration for ${file.icon}`,
+              ).to.have.length.greaterThan(1);
+            });
+          });
+
           it(`duplicate declaration`, function () {
             const unique = uniqBy(testFiles, JSON.stringify);
 
