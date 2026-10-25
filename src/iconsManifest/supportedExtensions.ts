@@ -3575,12 +3575,12 @@ export const extensions: IFileCollection = {
       filename: true,
       light: true,
     },
-    { icon: 'nextflow', extensions: [], languages: [languages.nextflow] },
     {
       icon: 'nextest',
       extensions: ['nextest.toml'],
       filename: true,
     },
+    { icon: 'nextflow', extensions: [], languages: [languages.nextflow] },
     {
       icon: 'ng-packagr',
       extensions: ['ng-package.json', 'ng-package.js'],
