@@ -29,7 +29,7 @@ describe('Specifications of supported folders: tests', function () {
           folder.format = Utils.fileFormatToString(folder.format);
           expect(
             folder.format,
-            `Folder format not preserved: ${folder.format}`,
+            `Folder format not defaulted to svg: ${folder.format}`,
           ).to.equal(`.${enums.FileFormat[enums.FileFormat.svg]}`);
         });
 
@@ -38,10 +38,12 @@ describe('Specifications of supported folders: tests', function () {
             icon: 'example',
             format: enums.FileFormat.svg,
           } as IFolderExtension;
+          folder.format = Utils.fileFormatToString(folder.format);
+
           expect(
             folder.format,
             `Folder format not preserved: ${folder.format}`,
-          ).to.equal(enums.FileFormat.svg);
+          ).to.equal(`.${enums.FileFormat[enums.FileFormat.svg]}`);
         });
 
         it('has an associated icon file', async function () {

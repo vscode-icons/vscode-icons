@@ -67,9 +67,10 @@ describe('Specifications of supported extensions: tests', function () {
           const file = { icon: 'example' } as IFileExtension;
           file.format = Utils.fileFormatToString(file.format);
 
-          expect(file.format).to.equal(
-            `.${enums.FileFormat[enums.FileFormat.svg]}`,
-          );
+          expect(
+            file.format,
+            `File format not defaulted to svg: ${file.format}`,
+          ).to.equal(`.${enums.FileFormat[enums.FileFormat.svg]}`);
         });
 
         it('preserves an explicit format', function () {
