@@ -69,6 +69,23 @@ describe('ManifestBuilder: folders icons test', function () {
       );
     });
 
+    it('creates a definition without mappings when extensions are undefined', async function () {
+      const folders = cloneDeep(fixtFolders);
+      const folder = folders.supported.find(({ icon }) => icon === 'api');
+      folders.supported = [folder];
+      folder.extensions = undefined;
+
+      const manifest = await ManifestBuilder.buildManifest(
+        emptyFileCollection,
+        folders,
+      );
+      const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
+
+      expect(manifest.vscode.iconDefinitions[definition]).to.exist;
+      expect(manifest.vscode.folderNames).to.be.empty;
+      expect(manifest.vscode.folderNamesExpanded).to.be.empty;
+    });
+
     context(`if a default 'light' icon is NOT defined`, function () {
       context('and useBundledIcon is enabled', function () {
         it(`the 'default' folder icon path has the correct structure`, async function () {

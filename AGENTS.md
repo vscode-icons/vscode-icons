@@ -108,7 +108,7 @@ test/                               # Test files (mirrors src/)
    { icon: 'name', extensions: ['ext1', 'ext2'] },
 
    // By language ID:
-   { icon: 'name', extensions: [], languages: [languages.langName] },
+   { icon: 'name', languages: [languages.langName] },
 
    // With filename glob combinations:
    {
@@ -174,7 +174,8 @@ Then reference it in `supportedExtensions.ts` via the `languages` property.
 - Forgetting the `_opened.svg` variant for folder icons
 - Not placing the entry in alphabetical order
 - Creating duplicate icon entries
-- Empty `extensions` array without `languages` or glob alternatives
+- Empty `extensions` array
+- Non-present `extensions` array without `languages` or glob alternatives
 - Forgetting light theme SVG when setting `light: true`
 
 ## Key Interfaces
@@ -216,7 +217,9 @@ Tests automatically validate:
 - No leading dots on non-filename extensions
 - Folder icons have both closed and opened variants
 - Light theme entries have corresponding light SVG files
-- Extensions array is not empty (unless languages or globs are set)
+- No empty `extensions`, `languages`, `filenamesGlob` or `extensionsGlob` arrays
+  (omit the property instead)
+- Entries without `extensions` provide `languages` or glob alternatives
 
 **Always run `npm test` before submitting changes.**
 
