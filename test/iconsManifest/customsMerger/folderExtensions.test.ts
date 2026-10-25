@@ -136,9 +136,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     it('disabled icons are NOT included into the manifest', async function () {
       const customFolders: IFolderCollection = {
         default: {},
-        supported: [
-          { icon: 'aws', extensions: [], disabled: true, format: 'svg' },
-        ],
+        supported: [{ icon: 'aws', disabled: true, format: 'svg' }],
       };
 
       const newDefs = (
@@ -161,9 +159,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     it('NOT disabled icons are included into the manifest', async function () {
       const customFolders: IFolderCollection = {
         default: {},
-        supported: [
-          { icon: 'aws', extensions: [], disabled: false, format: 'svg' },
-        ],
+        supported: [{ icon: 'aws', disabled: false, format: 'svg' }],
       };
 
       const newDefs = (

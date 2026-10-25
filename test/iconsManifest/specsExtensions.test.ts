@@ -24,7 +24,8 @@ describe('Specifications of supported extensions: tests', function () {
     it(`an 'extension' declaration should NOT have a leading dot`, function () {
       testFiles
         .filter(
-          (file: IFileExtension) => file.extensions.length && !file.filename,
+          (file: IFileExtension) =>
+            !!file.extensions && !!file.extensions.length && !file.filename,
         )
         .forEach((file: IFileExtension) =>
           file.extensions.forEach(
@@ -131,7 +132,7 @@ describe('Specifications of supported extensions: tests', function () {
             });
           });
 
-          context(`empty 'extensions' declaration`, function () {
+          context(`empty association declaration`, function () {
             it(`with 'filename' declaration`, function () {
               const testCase = (_file: IFileExtension): boolean =>
                 (!!_file.filename || !!_file.light) &&
@@ -143,6 +144,54 @@ describe('Specifications of supported extensions: tests', function () {
               testFiles.forEach((file: IFileExtension) => {
                 expect(testCase(file)).to.be.false;
               });
+            });
+
+            it(`does NOT declare empty 'extensions'`, function () {
+              files.supported
+                .filter((file: IFileExtension) => file.extensions !== undefined)
+                .forEach((file: IFileExtension) => {
+                  expect(
+                    file.extensions,
+                    `Empty 'extensions' declaration for ${file.icon}`,
+                  ).to.not.be.empty;
+                });
+            });
+
+            it(`does NOT declare empty 'filenamesGlob'`, function () {
+              files.supported
+                .filter(
+                  (file: IFileExtension) => file.filenamesGlob !== undefined,
+                )
+                .forEach((file: IFileExtension) => {
+                  expect(
+                    file.filenamesGlob,
+                    `Empty 'filenamesGlob' declaration for ${file.icon}`,
+                  ).to.not.be.empty;
+                });
+            });
+
+            it(`does NOT declare empty 'extensionsGlob'`, function () {
+              files.supported
+                .filter(
+                  (file: IFileExtension) => file.extensionsGlob !== undefined,
+                )
+                .forEach((file: IFileExtension) => {
+                  expect(
+                    file.extensionsGlob,
+                    `Empty 'extensionsGlob' declaration for ${file.icon}`,
+                  ).to.not.be.empty;
+                });
+            });
+
+            it(`does NOT declare empty 'languages'`, function () {
+              files.supported
+                .filter((file: IFileExtension) => file.languages !== undefined)
+                .forEach((file: IFileExtension) => {
+                  expect(
+                    file.languages,
+                    `Empty 'languages' declaration for ${file.icon}`,
+                  ).to.not.be.empty;
+                });
             });
           });
         });
