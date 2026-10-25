@@ -3305,7 +3305,7 @@ export const extensions: IFileCollection = {
       extensions: ['nextest.toml'],
       filename: true,
     },
-    { icon: 'nextflow', extensions: [], languages: [languages.nextflow] },
+    { icon: 'nextflow', languages: [languages.nextflow] },
     {
       icon: 'ng-packagr',
       extensions: ['ng-package.json', 'ng-package.js'],
@@ -5649,7 +5649,7 @@ export const extensions: IFileCollection = {
       extensions: ['uv.lock', 'uv.toml'],
       filename: true,
     },
-    { icon: 'uvue', extensions: [], languages: [languages.uvue] },
+    { icon: 'uvue', languages: [languages.uvue] },
     {
       icon: 'vagrant',
       extensions: ['vagrantfile'],
@@ -6041,7 +6041,7 @@ export const extensions: IFileCollection = {
       icon: 'wurst',
       languages: [languages.wurst],
     },
-    { icon: 'wxml', extensions: [], languages: [languages.wxml] },
+    { icon: 'wxml', languages: [languages.wxml] },
     { icon: 'wxss', extensions: ['wxss'] },
     {
       icon: 'wxt',
