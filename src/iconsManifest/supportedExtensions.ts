@@ -1058,6 +1058,13 @@ export const extensions: IFileCollection = {
       languages: [languages.cucumber],
     },
     {
+      icon: 'cucumberconfig',
+      extensions: [],
+      filenamesGlob: ['cucumber'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'json', 'yaml', 'yml'],
+      filename: true,
+    },
+    {
       icon: 'cuda',
       languages: [languages.cuda],
     },
