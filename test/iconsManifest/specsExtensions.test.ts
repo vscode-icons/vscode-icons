@@ -10,6 +10,7 @@ import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { extensions as files } from '../../src/iconsManifest/supportedExtensions';
 import * as enums from '../../src/types/enums';
+import { Utils } from '../../src/utils';
 
 describe('Specifications of supported extensions: tests', function () {
   context('ensures that', function () {
@@ -61,15 +62,14 @@ describe('Specifications of supported extensions: tests', function () {
     context('each supported', function () {
       const iconsDirPath = ConfigManager.iconsDir;
 
-      function ensureFormat(file: IFileExtension): void {
-        file.format ??= enums.FileFormat.svg;
-      }
-
       context('extension', function () {
         it('defaults a missing format to svg', function () {
           const file = { icon: 'example' } as IFileExtension;
-          ensureFormat(file);
-          expect(file.format).to.equal(enums.FileFormat.svg);
+          file.format = Utils.fileFormatToString(file.format);
+
+          expect(file.format).to.equal(
+            `.${enums.FileFormat[enums.FileFormat.svg]}`,
+          );
         });
 
         it('preserves an explicit format', function () {
@@ -77,18 +77,21 @@ describe('Specifications of supported extensions: tests', function () {
             icon: 'example',
             format: enums.FileFormat.svg,
           } as IFileExtension;
-          ensureFormat(file);
-          expect(file.format).to.equal(enums.FileFormat.svg);
+          file.format = Utils.fileFormatToString(file.format);
+
+          expect(file.format).to.equal(
+            `.${enums.FileFormat[enums.FileFormat.svg]}`,
+          );
         });
 
         it('has an associated icon file', async function () {
           for (const supportedFile of testFiles) {
-            ensureFormat(supportedFile);
+            supportedFile.format = Utils.fileFormatToString(
+              supportedFile.format,
+            );
             const filename =
               `${constants.iconsManifest.fileTypePrefix}${supportedFile.icon}` +
-              `${constants.iconsManifest.iconSuffix}.${
-                enums.FileFormat[supportedFile.format] as string
-              }`;
+              `${constants.iconsManifest.iconSuffix}${supportedFile.format}`;
             const iconFilePath = join(iconsDirPath, filename);
 
             const pathExists = await existsAsync(iconFilePath);
@@ -148,12 +151,12 @@ describe('Specifications of supported extensions: tests', function () {
             for (const supportedFile of testFiles.filter(
               (file: IFileExtension) => file.light,
             )) {
-              ensureFormat(supportedFile);
+              supportedFile.format = Utils.fileFormatToString(
+                supportedFile.format,
+              );
               const filename = `${constants.iconsManifest.fileTypeLightPrefix}${
                 supportedFile.icon
-              }${constants.iconsManifest.iconSuffix}.${
-                enums.FileFormat[supportedFile.format] as string
-              }`;
+              }${constants.iconsManifest.iconSuffix}${supportedFile.format}`;
               const iconFilePath = join(iconsDirPath, filename);
 
               const pathExists = await existsAsync(iconFilePath);
