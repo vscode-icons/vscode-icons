@@ -1,4 +1,4 @@
-import type { IPackageManifest } from '../models/packageManifest';
+import type { IPackageManifest } from '../types/package';
 
 import manifest from '../../package.json';
 
@@ -63,5 +63,19 @@ export const constants = {
     definitionFileLightPrefix: '_f_light_',
     definitionFolderPrefix: '_fd_',
     definitionFolderLightPrefix: '_fd_light_',
+  },
+  zed: {
+    dark_themes: {
+      dark: 0,
+      official: 1,
+      angular: 2,
+      nest: 3,
+    },
+    light_themes: {
+      light: 4,
+      official: 5,
+      angular: 6,
+      nest: 7,
+    },
   },
 };

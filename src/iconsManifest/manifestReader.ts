@@ -1,26 +1,28 @@
+import type * as types from '../types';
+
 import { readFileAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
-import * as models from '../models';
+import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
 export class ManifestReader {
   public static async getToggledValue(
-    preset: models.PresetNames,
-    presets: models.IPresets,
+    preset: enums.PresetNames,
+    presets: types.IPresets,
   ): Promise<boolean> {
     const isNonIconsRelatedPreset = (): boolean =>
-      [models.PresetNames.hideExplorerArrows].some(
-        (prst: models.PresetNames): boolean => prst === preset,
+      [enums.PresetNames.hideExplorerArrows].some(
+        (prst: enums.PresetNames): boolean => prst === preset,
       );
     const isFoldersRelatedPreset = (): boolean =>
       [
-        models.PresetNames.hideFolders,
-        models.PresetNames.foldersAllDefaultIcon,
-      ].some((prst: models.PresetNames): boolean => prst === preset);
-    const presetName: string = models.PresetNames[preset];
+        enums.PresetNames.hideFolders,
+        enums.PresetNames.foldersAllDefaultIcon,
+      ].some((prst: enums.PresetNames): boolean => prst === preset);
+    const presetName: string = enums.PresetNames[preset];
     const iconName: string =
-      models.IconNames[presetName as keyof typeof models.IconNames]?.toString();
+      enums.IconNames[presetName as keyof typeof enums.IconNames]?.toString();
 
     return isNonIconsRelatedPreset()
       ? !presets[presetName]
@@ -34,13 +36,13 @@ export class ManifestReader {
     isFile = true,
   ): Promise<boolean> {
     const iconManifest: string = await this.getIconManifest();
-    const iconsJson: models.IIconSchema =
-      Utils.parseJSONSafe<models.IIconSchema>(iconManifest);
+    const iconsJson: types.IVSCodeIconSchema =
+      Utils.parseJSONSafe<types.IVSCodeIconSchema>(iconManifest);
     const prefix: string = isFile
       ? constants.iconsManifest.definitionFilePrefix
       : constants.iconsManifest.definitionFolderPrefix;
-    const suffix: string = Reflect.ownKeys(models.Projects).some(
-      (key: string | number | symbol): boolean => models.Projects[key] === name,
+    const suffix: string = Reflect.ownKeys(enums.Projects).some(
+      (key: string | number | symbol): boolean => enums.Projects[key] === name,
     )
       ? '_'
       : '';
@@ -58,18 +60,18 @@ export class ManifestReader {
     presetName: string,
   ): Promise<boolean> {
     const manifest: string = await this.getIconManifest();
-    const iconsJson: models.IIconSchema =
-      Utils.parseJSONSafe<models.IIconSchema>(manifest);
+    const iconsJson: types.IVSCodeIconSchema =
+      Utils.parseJSONSafe<types.IVSCodeIconSchema>(manifest);
     if (!iconsJson) {
       return true;
     }
-    switch (models.PresetNames[presetName]) {
-      case models.PresetNames.hideFolders:
+    switch (enums.PresetNames[presetName]) {
+      case enums.PresetNames.hideFolders:
         return (
           Reflect.ownKeys(iconsJson.folderNames).length === 0 &&
           iconsJson.iconDefinitions._folder.iconPath === ''
         );
-      case models.PresetNames.foldersAllDefaultIcon:
+      case enums.PresetNames.foldersAllDefaultIcon:
         return (
           Reflect.ownKeys(iconsJson.folderNames).length === 0 &&
           iconsJson.iconDefinitions._folder.iconPath !== ''

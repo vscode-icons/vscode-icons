@@ -1,16 +1,12 @@
-import type {
-  ISettingsManager,
-  IState,
-  IVSCodeManager,
-} from '../../src/models';
+import type { ISettingsManager, IState, IVSCodeManager } from '../../src/types';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 
 import { ErrorHandler } from '../../src/common/errorHandler';
 import { constants } from '../../src/constants';
-import { ExtensionStatus } from '../../src/models';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
@@ -46,7 +42,7 @@ describe('SettingsManager: tests', function () {
 
       stateMock = {
         version: '0.0.0',
-        status: ExtensionStatus.deactivated,
+        status: enums.ExtensionStatus.deactivated,
         welcomeShown: false,
       };
     });
@@ -95,7 +91,7 @@ describe('SettingsManager: tests', function () {
       globalStateGetStub.returns(stateMock);
       globalStateUpdateStub.resolves();
 
-      const status = ExtensionStatus.activated;
+      const status = enums.ExtensionStatus.activated;
 
       const state = await settingsManager.updateStatus(status);
 

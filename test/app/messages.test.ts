@@ -1,3 +1,5 @@
+import type * as types from '../../src/types';
+
 import { expect } from 'chai';
 import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
@@ -7,10 +9,10 @@ import { ErrorHandler } from '../../src/common/errorHandler';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
-import * as models from '../../src/models';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
@@ -18,24 +20,24 @@ import { vsicons } from '../fixtures/vsicons';
 describe('ExtensionManager: messages tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<models.IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<models.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<models.ISettingsManager>;
-    let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
-    let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<types.IVSCodeManager>;
+    let configManagerStub: sinon.SinonStubbedInstance<types.IConfigManager>;
+    let settingsManagerStub: sinon.SinonStubbedInstance<types.ISettingsManager>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<types.INotificationManager>;
+    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IIconsGenerator>;
+    let padMngStub: sinon.SinonStubbedInstance<types.IProjectAutoDetectionManager>;
     let isNewVersionStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
 
-    let extensionManager: models.IExtensionManager;
-    let vsiconsClone: models.IVSIcons;
-    let state: models.IState;
+    let extensionManager: types.IExtensionManager;
+    let vsiconsClone: types.IVSIcons;
+    let state: types.IState;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<types.IVSCodeManager>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -44,26 +46,26 @@ describe('ExtensionManager: messages tests', function () {
       }));
 
       configManagerStub =
-        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<types.IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =
-        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
+        sandbox.createStubInstance<types.ISettingsManager>(SettingsManager);
       isNewVersionStub = sandbox
         .stub(settingsManagerStub, 'isNewVersion')
         .get(() => false);
 
       notifyManagerStub =
-        sandbox.createStubInstance<models.INotificationManager>(
+        sandbox.createStubInstance<types.INotificationManager>(
           NotificationManager,
         );
 
       iconsGeneratorStub =
-        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
+        sandbox.createStubInstance<types.IIconsGenerator>(IconsGenerator);
 
       padMngStub =
-        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+        sandbox.createStubInstance<types.IProjectAutoDetectionManager>(
           ProjectAutoDetectionManager,
         );
 
@@ -323,10 +325,10 @@ describe('ExtensionManager: messages tests', function () {
 
             expect(
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
-                models.LangResourceKeys.welcome,
-                models.LangResourceKeys.activate,
-                models.LangResourceKeys.aboutOfficialApi,
-                models.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.welcome,
+                enums.LangResourceKeys.activate,
+                enums.LangResourceKeys.aboutOfficialApi,
+                enums.LangResourceKeys.seeReadme,
               ),
             ).to.be.true;
             expect(activationCommandStub.called).to.be.false;
@@ -337,17 +339,17 @@ describe('ExtensionManager: messages tests', function () {
         context(`to activate the extension`, function () {
           it(`calls the activation command`, async function () {
             notifyManagerStub.notifyInfo.resolves(
-              models.LangResourceKeys.activate,
+              enums.LangResourceKeys.activate,
             );
 
             await showWelcomeMessage.call(extensionManager);
 
             expect(
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
-                models.LangResourceKeys.welcome,
-                models.LangResourceKeys.activate,
-                models.LangResourceKeys.aboutOfficialApi,
-                models.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.welcome,
+                enums.LangResourceKeys.activate,
+                enums.LangResourceKeys.aboutOfficialApi,
+                enums.LangResourceKeys.seeReadme,
               ),
             ).to.be.true;
             expect(activationCommandStub.calledOnceWithExactly()).to.be.true;
@@ -358,17 +360,17 @@ describe('ExtensionManager: messages tests', function () {
           it(`opens the official API url and re-displays the message`, async function () {
             notifyManagerStub.notifyInfo
               .onFirstCall()
-              .resolves(models.LangResourceKeys.aboutOfficialApi)
+              .resolves(enums.LangResourceKeys.aboutOfficialApi)
               .resolves();
 
             await showWelcomeMessage.call(extensionManager);
 
             expect(
               notifyManagerStub.notifyInfo.calledWithExactly(
-                models.LangResourceKeys.welcome,
-                models.LangResourceKeys.activate,
-                models.LangResourceKeys.aboutOfficialApi,
-                models.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.welcome,
+                enums.LangResourceKeys.activate,
+                enums.LangResourceKeys.aboutOfficialApi,
+                enums.LangResourceKeys.seeReadme,
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
@@ -381,17 +383,17 @@ describe('ExtensionManager: messages tests', function () {
           it(`opens the readme url and re-displays the message`, async function () {
             notifyManagerStub.notifyInfo
               .onFirstCall()
-              .resolves(models.LangResourceKeys.seeReadme)
+              .resolves(enums.LangResourceKeys.seeReadme)
               .resolves();
 
             await showWelcomeMessage.call(extensionManager);
 
             expect(
               notifyManagerStub.notifyInfo.calledWithExactly(
-                models.LangResourceKeys.welcome,
-                models.LangResourceKeys.activate,
-                models.LangResourceKeys.aboutOfficialApi,
-                models.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.welcome,
+                enums.LangResourceKeys.activate,
+                enums.LangResourceKeys.aboutOfficialApi,
+                enums.LangResourceKeys.seeReadme,
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
@@ -436,9 +438,9 @@ describe('ExtensionManager: messages tests', function () {
             expect(
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
                 `%s v${constants.extension.version}`,
-                models.LangResourceKeys.newVersion,
-                models.LangResourceKeys.seeReleaseNotes,
-                models.LangResourceKeys.dontShowThis,
+                enums.LangResourceKeys.newVersion,
+                enums.LangResourceKeys.seeReleaseNotes,
+                enums.LangResourceKeys.dontShowThis,
               ),
             ).to.be.true;
             expect(openStub.called).to.be.false;
@@ -451,16 +453,16 @@ describe('ExtensionManager: messages tests', function () {
           it(`opens the release notes url`, async function () {
             notifyManagerStub.notifyInfo
               .onFirstCall()
-              .resolves(models.LangResourceKeys.seeReleaseNotes);
+              .resolves(enums.LangResourceKeys.seeReleaseNotes);
 
             await showNewVersionMessage.call(extensionManager);
 
             expect(
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
                 `%s v${constants.extension.version}`,
-                models.LangResourceKeys.newVersion,
-                models.LangResourceKeys.seeReleaseNotes,
-                models.LangResourceKeys.dontShowThis,
+                enums.LangResourceKeys.newVersion,
+                enums.LangResourceKeys.seeReleaseNotes,
+                enums.LangResourceKeys.dontShowThis,
               ),
             ).to.be.true;
             expect(openStub.calledOnceWithExactly(constants.urlReleaseNote)).to
@@ -471,7 +473,7 @@ describe('ExtensionManager: messages tests', function () {
         context(`to NOT show this message again`, function () {
           it(`updates the configuration`, async function () {
             notifyManagerStub.notifyInfo.resolves(
-              models.LangResourceKeys.dontShowThis,
+              enums.LangResourceKeys.dontShowThis,
             );
 
             await showNewVersionMessage.call(extensionManager);
@@ -479,9 +481,9 @@ describe('ExtensionManager: messages tests', function () {
             expect(
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
                 `%s v${constants.extension.version}`,
-                models.LangResourceKeys.newVersion,
-                models.LangResourceKeys.seeReleaseNotes,
-                models.LangResourceKeys.dontShowThis,
+                enums.LangResourceKeys.newVersion,
+                enums.LangResourceKeys.seeReleaseNotes,
+                enums.LangResourceKeys.dontShowThis,
               ),
             ).to.be.true;
             expect(
@@ -547,7 +549,7 @@ describe('ExtensionManager: messages tests', function () {
       context(`when editor theme reload is supported`, function () {
         it(`calls the action handler`, async function () {
           const message = 'test';
-          const items = [models.LangResourceKeys.reload];
+          const items = [enums.LangResourceKeys.reload];
           const cb = sinon.fake();
           const cbArgs = [];
           supportsThemesReloadStub.get(() => true);
@@ -563,7 +565,7 @@ describe('ExtensionManager: messages tests', function () {
           expect(notifyManagerStub.notifyInfo.called).to.be.false;
           expect(
             handleActionStub.calledOnceWithExactly(
-              models.LangResourceKeys.reload,
+              enums.LangResourceKeys.reload,
               cb,
               cbArgs,
             ),
@@ -593,7 +595,7 @@ describe('ExtensionManager: messages tests', function () {
 
         it(`when the handling action fails`, async function () {
           const message = 'test';
-          const items = [models.LangResourceKeys.reload];
+          const items = [enums.LangResourceKeys.reload];
           const error = new Error();
           handleActionStub.throws(error);
           supportsThemesReloadStub.get(() => true);
@@ -603,7 +605,7 @@ describe('ExtensionManager: messages tests', function () {
           expect(notifyManagerStub.notifyInfo.called).to.be.false;
           expect(
             handleActionStub.calledOnceWithExactly(
-              models.LangResourceKeys.reload,
+              enums.LangResourceKeys.reload,
               undefined,
               undefined,
             ),

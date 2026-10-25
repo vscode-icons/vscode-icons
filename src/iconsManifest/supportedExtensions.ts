@@ -1,4 +1,4 @@
-import type { IFileCollection } from '../models';
+import type { IFileCollection } from '../types';
 
 import { languages } from './languages';
 
@@ -1139,6 +1139,13 @@ export const extensions: IFileCollection = {
       icon: 'cucumber',
       extensions: [],
       languages: [languages.cucumber],
+    },
+    {
+      icon: 'cucumberconfig',
+      extensions: [],
+      filenamesGlob: ['cucumber'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'json', 'yaml', 'yml'],
+      filename: true,
     },
     {
       icon: 'cuda',
@@ -3570,6 +3577,11 @@ export const extensions: IFileCollection = {
     },
     { icon: 'nextflow', extensions: [], languages: [languages.nextflow] },
     {
+      icon: 'nextest',
+      extensions: ['nextest.toml'],
+      filename: true,
+    },
+    {
       icon: 'ng-packagr',
       extensions: ['ng-package.json', 'ng-package.js'],
       filename: true,
@@ -3952,6 +3964,12 @@ export const extensions: IFileCollection = {
       icon: 'nodemon',
       extensions: ['nodemon.json'],
       filename: true,
+    },
+    {
+      icon: 'noir',
+      extensions: [],
+      languages: [languages.noir],
+      light: true,
     },
     {
       icon: 'npm',
@@ -6241,6 +6259,15 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
       light: true,
+    },
+    {
+      icon: 'viteplus',
+      filenamesGlob: ['vite.config'],
+      extensions: [],
+      extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
+      filename: true,
+      light: true,
+      disabled: true,
     },
     {
       icon: 'vitest',

@@ -2,11 +2,11 @@ import type {
   IConfigManager,
   IFileExtension,
   IFolderExtension,
-  IPreset,
   IVSCodeManager,
+  IVSCodePreset,
   IVSCodeWorkspaceConfiguration,
   IVSIcons,
-} from '../models';
+} from '../types';
 
 import { dirname, isAbsolute, resolve } from 'path';
 
@@ -15,7 +15,7 @@ import { cloneDeep, isEqual, unionWith } from 'lodash';
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, readdirAsync } from '../common/fsAsync';
 import { constants } from '../constants';
-import { ConfigurationTarget } from '../models';
+import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
 export class ConfigManager implements IConfigManager {
@@ -66,7 +66,7 @@ export class ConfigManager implements IConfigManager {
         constants.vsicons.name
       ] as IVSIcons,
     );
-    const files: IPreset<IFileExtension[]> = this.configuration.inspect<
+    const files: IVSCodePreset<IFileExtension[]> = this.configuration.inspect<
       IFileExtension[]
     >(constants.vsicons.associations.filesSetting);
     mergedConfig.associations.files = unionWith<IFileExtension>(
@@ -74,9 +74,10 @@ export class ConfigManager implements IConfigManager {
       files.globalValue,
       isEqual,
     );
-    const folders: IPreset<IFolderExtension[]> = this.configuration.inspect<
-      IFolderExtension[]
-    >(constants.vsicons.associations.foldersSetting);
+    const folders: IVSCodePreset<IFolderExtension[]> =
+      this.configuration.inspect<IFolderExtension[]>(
+        constants.vsicons.associations.foldersSetting,
+      );
     mergedConfig.associations.folders = unionWith<IFolderExtension>(
       folders.workspaceValue,
       folders.globalValue,
@@ -279,7 +280,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.get<string>(constants.vscode.iconThemeSetting);
   }
 
-  public getPreset<T>(presetName: string): IPreset<T> | undefined {
+  public getPreset<T>(presetName: string): IVSCodePreset<T> | undefined {
     return this.configuration.inspect<T>(presetName);
   }
 
@@ -287,7 +288,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.dontShowNewVersionMessageSetting,
       value,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
@@ -297,7 +298,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
       value,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
@@ -305,7 +306,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.projectDetectionAutoReloadSetting,
       value,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
@@ -313,7 +314,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vsicons.projectDetectionDisableDetectSetting,
       value,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
@@ -321,14 +322,14 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.update(
       constants.vscode.iconThemeSetting,
       constants.extension.name,
-      ConfigurationTarget.Global,
+      enums.ConfigurationTarget.Global,
     );
   }
 
   public async updatePreset(
     presetName: string,
     value: boolean,
-    configurationTarget: ConfigurationTarget | boolean,
+    configurationTarget: enums.ConfigurationTarget | boolean,
   ): Promise<void> {
     const removePreset =
       this.configuration.inspect(

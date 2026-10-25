@@ -1,15 +1,15 @@
-import type { ISettingsManager, IState, IVSCodeManager } from '../models';
+import type { ISettingsManager, IState, IVSCodeManager } from '../types';
 
 import { lt } from 'semver';
 
 import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';
-import { ExtensionStatus } from '../models';
+import * as enums from '../types/enums';
 
 export class SettingsManager implements ISettingsManager {
   public static defaultState: IState = {
     version: '0.0.0',
-    status: ExtensionStatus.deactivated,
+    status: enums.ExtensionStatus.deactivated,
     welcomeShown: false,
   };
 
@@ -41,7 +41,7 @@ export class SettingsManager implements ISettingsManager {
     }
   }
 
-  public async updateStatus(status?: ExtensionStatus): Promise<IState> {
+  public async updateStatus(status?: enums.ExtensionStatus): Promise<IState> {
     const state = this.getState();
     state.version = constants.extension.version;
     state.status = status == null ? state.status : status;

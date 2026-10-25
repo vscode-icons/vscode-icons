@@ -3,7 +3,7 @@ import type {
   INotificationManager,
   IVSCodeManager,
   LangResourceLike,
-} from '../models';
+} from '../types';
 
 import { format } from 'util';
 

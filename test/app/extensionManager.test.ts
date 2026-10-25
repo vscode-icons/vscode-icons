@@ -1,4 +1,5 @@
-import type { IPackageManifest } from '../../src/models/packageManifest';
+import type * as types from '../../src/types';
+import type { IPackageManifest } from '../../src/types/package';
 
 import path from 'path';
 
@@ -11,33 +12,33 @@ import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
 import { IconsGenerator } from '../../src/iconsManifest';
-import * as models from '../../src/models';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
 describe('ExtensionManager: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<models.IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<models.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<models.ISettingsManager>;
-    let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
-    let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<types.IVSCodeManager>;
+    let configManagerStub: sinon.SinonStubbedInstance<types.IConfigManager>;
+    let settingsManagerStub: sinon.SinonStubbedInstance<types.ISettingsManager>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<types.INotificationManager>;
+    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IIconsGenerator>;
+    let padMngStub: sinon.SinonStubbedInstance<types.IProjectAutoDetectionManager>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let registerCommandStub: sinon.SinonStub;
     let executeCommandStub: sinon.SinonStub;
-    let extensionManager: models.IExtensionManager;
-    let vsiconsClone: models.IVSIcons;
+    let extensionManager: types.IExtensionManager;
+    let vsiconsClone: types.IVSIcons;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<models.IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<types.IVSCodeManager>(VSCodeManager);
 
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
@@ -55,23 +56,23 @@ describe('ExtensionManager: tests', function () {
       }));
 
       configManagerStub =
-        sandbox.createStubInstance<models.IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<types.IConfigManager>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =
-        sandbox.createStubInstance<models.ISettingsManager>(SettingsManager);
+        sandbox.createStubInstance<types.ISettingsManager>(SettingsManager);
 
       notifyManagerStub =
-        sandbox.createStubInstance<models.INotificationManager>(
+        sandbox.createStubInstance<types.INotificationManager>(
           NotificationManager,
         );
 
       iconsGeneratorStub =
-        sandbox.createStubInstance<models.IIconsGenerator>(IconsGenerator);
+        sandbox.createStubInstance<types.IIconsGenerator>(IconsGenerator);
 
       padMngStub =
-        sandbox.createStubInstance<models.IProjectAutoDetectionManager>(
+        sandbox.createStubInstance<types.IProjectAutoDetectionManager>(
           ProjectAutoDetectionManager,
         );
 
@@ -142,12 +143,12 @@ describe('ExtensionManager: tests', function () {
         );
 
         padMngStub.detectProjects = sandbox.stub<
-          [projectNames: models.Projects[]],
-          Promise<models.IProjectDetectionResult[]>
+          [projectNames: enums.Projects[]],
+          Promise<types.IProjectDetectionResult[]>
         >();
         settingsManagerStub.updateStatus = sandbox.stub<
-          [status?: models.ExtensionStatus],
-          Promise<models.IState>
+          [status?: enums.ExtensionStatus],
+          Promise<types.IState>
         >();
       });
 
@@ -412,7 +413,7 @@ describe('ExtensionManager: tests', function () {
             it(`and does nothing`, async function () {
               await handleAction.call(
                 extensionManager,
-                models.LangResourceKeys.dontShowThis,
+                enums.LangResourceKeys.dontShowThis,
               );
 
               // @ts-ignore
@@ -436,7 +437,7 @@ describe('ExtensionManager: tests', function () {
               it(`does nothing`, async function () {
                 await handleAction.call(
                   extensionManager,
-                  models.LangResourceKeys.dontShowThis,
+                  enums.LangResourceKeys.dontShowThis,
                   sandbox.spy(),
                 );
 
@@ -465,7 +466,7 @@ describe('ExtensionManager: tests', function () {
 
                 await handleAction.call(
                   extensionManager,
-                  models.LangResourceKeys.dontShowThis,
+                  enums.LangResourceKeys.dontShowThis,
                   cb,
                 );
 
@@ -498,7 +499,7 @@ describe('ExtensionManager: tests', function () {
           it(`but updates the setting`, async function () {
             await handleAction.call(
               extensionManager,
-              models.LangResourceKeys.disableDetect,
+              enums.LangResourceKeys.disableDetect,
             );
 
             // @ts-ignore
@@ -533,7 +534,7 @@ describe('ExtensionManager: tests', function () {
 
             await handleAction.call(
               extensionManager,
-              models.LangResourceKeys.autoReload,
+              enums.LangResourceKeys.autoReload,
               cb,
               cbArgs,
             );
@@ -565,7 +566,7 @@ describe('ExtensionManager: tests', function () {
 
             await handleAction.call(
               extensionManager,
-              models.LangResourceKeys.reload,
+              enums.LangResourceKeys.reload,
               cb,
             );
 
@@ -592,7 +593,7 @@ describe('ExtensionManager: tests', function () {
 
             await handleAction.call(
               extensionManager,
-              models.LangResourceKeys.reload,
+              enums.LangResourceKeys.reload,
               cb,
               cbArgs,
             );
@@ -622,7 +623,7 @@ describe('ExtensionManager: tests', function () {
 
             await handleAction.call(
               extensionManager,
-              models.LangResourceKeys.reload,
+              enums.LangResourceKeys.reload,
               cb,
               cbArgs,
             );
@@ -648,7 +649,7 @@ describe('ExtensionManager: tests', function () {
         it(`does nothing`, async function () {
           await handleAction.call(
             extensionManager,
-            models.LangResourceKeys.activate,
+            enums.LangResourceKeys.activate,
           );
 
           // @ts-ignore
@@ -704,12 +705,12 @@ describe('ExtensionManager: tests', function () {
 
           expect(cbArgs[0][0])
             .to.haveOwnProperty('project')
-            .and.that.to.equal(models.Projects.angular);
+            .and.that.to.equal(enums.Projects.angular);
           expect(
             configManagerStub.updatePreset.calledOnceWithExactly(
-              models.PresetNames[models.PresetNames.angular],
+              enums.PresetNames[enums.PresetNames.angular],
               true,
-              models.ConfigurationTarget.Workspace,
+              enums.ConfigurationTarget.Workspace,
             ),
           ).to.be.true;
           expect(handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)).to.be
@@ -724,12 +725,12 @@ describe('ExtensionManager: tests', function () {
 
           expect(cbArgs[0][0])
             .to.haveOwnProperty('project')
-            .and.that.to.equal(models.Projects.nestjs);
+            .and.that.to.equal(enums.Projects.nestjs);
           expect(
             configManagerStub.updatePreset.calledOnceWithExactly(
-              models.PresetNames[models.PresetNames.nestjs],
+              enums.PresetNames[enums.PresetNames.nestjs],
               true,
-              models.ConfigurationTarget.Workspace,
+              enums.ConfigurationTarget.Workspace,
             ),
           ).to.be.true;
           expect(handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)).to.be
@@ -801,7 +802,7 @@ describe('ExtensionManager: tests', function () {
             it(`and reloads the editor`, function () {
               const cb = sinon.fake();
               const cbArgs = [
-                models.PresetNames[models.PresetNames.angular],
+                enums.PresetNames[enums.PresetNames.angular],
                 false,
               ];
 

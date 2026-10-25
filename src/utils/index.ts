@@ -19,7 +19,7 @@ import {
   unlinkAsync,
   writeFileAsync,
 } from '../common/fsAsync';
-import { FileFormat } from '../models';
+import * as enums from '../types/enums';
 
 export class Utils {
   public static getAppDataDirPath(): string {
@@ -43,12 +43,31 @@ export class Utils {
     return tmpdir();
   }
 
+  /**
+   * Converts a file format enum or string into a normalized string with a leading dot.
+   * Defaults to '.svg' if the format is not recognized.
+   */
   public static fileFormatToString(
-    extension: FileFormat | string = FileFormat.svg,
+    extension: enums.FileFormat | string = enums.FileFormat.svg,
   ): string {
-    return `.${
-      typeof extension === 'string' ? extension.trim() : FileFormat[extension]
-    }`;
+    // Normalize the file format string
+    // by removing leading dots and trimming whitespace
+    const fileFormat: string | undefined =
+      typeof extension === 'string'
+        ? extension.trim().replace(/^\.+/, '')
+        : enums.FileFormat[extension];
+
+    // Fallback to svg if the file format is not recognized
+    if (
+      !Object.values(enums.FileFormat).some(
+        (format: unknown): boolean =>
+          typeof format === 'string' && format === fileFormat,
+      )
+    ) {
+      return `.${enums.FileFormat[enums.FileFormat.svg]}`;
+    }
+
+    return `.${fileFormat}`;
   }
 
   /**
@@ -117,6 +136,7 @@ export class Utils {
     fromDirPath: string,
     toDirName: string,
     checkDirectory = true,
+    includeDotSlashPrefix = false,
   ): Promise<string> {
     if (fromDirPath == null) {
       throw new Error('fromDirPath not defined.');
@@ -131,7 +151,17 @@ export class Utils {
       throw new Error(`Directory '${toDirName}' not found.`);
     }
 
-    return relative(fromDirPath, toDirName).replace(/\\/g, '/').concat('/');
+    let relativePath = relative(fromDirPath, toDirName).replace(/\\/g, '/');
+
+    if (includeDotSlashPrefix && !/^\.\.?(\/|$)/.test(relativePath)) {
+      relativePath = `./${relativePath}`;
+    }
+
+    if (!relativePath.endsWith('/')) {
+      relativePath += '/';
+    }
+
+    return relativePath;
   }
 
   public static removeFirstDot(txt: string): string {
