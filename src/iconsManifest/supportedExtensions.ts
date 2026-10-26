@@ -343,7 +343,7 @@ export const extensions: IFileCollection = {
       icon: 'awk',
       extensions: ['awk'],
     },
-    { icon: 'aws' },
+    { icon: 'aws', disabled: true },
     {
       icon: 'azure',
       languages: [languages.azcli],
@@ -883,7 +883,7 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'mjs', 'ts', 'cts'],
       filename: true,
     },
-    { icon: 'compass' },
+    { icon: 'compass', disabled: true },
     {
       icon: 'composer',
       extensions: ['composer.json', 'composer.lock'],
@@ -5065,7 +5065,7 @@ export const extensions: IFileCollection = {
       languages: [languages.solidity],
       light: true,
     },
-    { icon: 'source' },
+    { icon: 'source', disabled: true },
     {
       icon: 'spacengine',
       extensions: ['spe'],
@@ -5145,7 +5145,7 @@ export const extensions: IFileCollection = {
       icon: 'stylable',
       languages: [languages.stylable],
     },
-    { icon: 'style' },
+    { icon: 'style', disabled: true },
     {
       icon: 'styleci',
       extensions: ['.styleci.yml'],
@@ -5754,7 +5754,7 @@ export const extensions: IFileCollection = {
         'wmv',
       ],
     },
-    { icon: 'view' },
+    { icon: 'view', disabled: true },
     {
       icon: 'vim',
       extensions: ['.vimrc', '.gvimrc'],
