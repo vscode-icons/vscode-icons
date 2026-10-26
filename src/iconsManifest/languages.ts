@@ -485,11 +485,7 @@ export const languages = {
   },
   plaintext: { ids: ['plaintext', 'vim-help'], knownExtensions: ['txt'] },
   platformio: {
-    ids: [
-      'platformio-debug.disassembly',
-      'platformio-debug.memoryview',
-      'platformio-debug.asm',
-    ],
+    ids: ['platformio-debug.disassembly', 'platformio-debug.memoryview'],
     knownExtensions: ['dbgasm'],
   },
   plsql: {
