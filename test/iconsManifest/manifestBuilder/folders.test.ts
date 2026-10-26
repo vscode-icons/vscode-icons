@@ -11,7 +11,7 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
-import { apiSchema } from '../../../src/types';
+import { apiSchema, zedSchema } from '../../../src/types';
 import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
@@ -88,7 +88,7 @@ describe('ManifestBuilder: folders icons test', function () {
     });
 
     context('API schema', function () {
-      it('uses default schema in production', async function () {
+      it('builds only the default schema in production', async function () {
         sandbox.stub(constants.environment, 'production').value(true);
 
         const manifest = await ManifestBuilder.buildManifest(
@@ -128,6 +128,38 @@ describe('ManifestBuilder: folders icons test', function () {
         expect(manifest.api.light.folders.fonts.opened).to.equal(
           `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypeLightPrefix}fonts_opened.svg`,
         );
+      });
+    });
+
+    context('zed theme', function () {
+      it('builds only the default schema in production', async function () {
+        sandbox.stub(constants.environment, 'production').value(true);
+
+        const manifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        expect(manifest.zed.themes).to.deep.equal(zedSchema.themes);
+      });
+
+      it('builds the zed schema in development', async function () {
+        sandbox.stub(constants.environment, 'production').value(false);
+
+        const manifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        expect(
+          manifest.zed.themes.map(({ directory_icons }) => directory_icons),
+        ).to.not.deep.equal(
+          zedSchema.themes.map(({ directory_icons }) => directory_icons),
+        );
+
+        manifest.zed.themes.forEach(({ directory_icons }) => {
+          expect(directory_icons).to.not.be.empty;
+        });
       });
     });
 

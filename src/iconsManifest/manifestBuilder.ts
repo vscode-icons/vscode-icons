@@ -172,12 +172,12 @@ export class ManifestBuilder {
   private static configureApiDefaultIcons(
     vscDefs: types.IVSCodeIconDefinition,
   ): types.IApiIconSchema {
-    const apiSchema = cloneDeep(defaultApiSchema);
-
     // In production environment, return the default API schema immediately
     if (constants.environment.production) {
-      return apiSchema;
+      return defaultApiSchema;
     }
+
+    const apiSchema = cloneDeep(defaultApiSchema);
 
     // set the default and root icons
     // dark theme
@@ -214,12 +214,12 @@ export class ManifestBuilder {
   private static configureZedThemesDirectoryIcons(
     vscDefs: types.IVSCodeIconDefinition,
   ): types.IZedIconSchema {
-    const zedSchema = cloneDeep(defaultZedSchema);
-
-    // In production environment, return the default API schema immediately
+    // In production environment, return the default Zed schema immediately
     if (constants.environment.production) {
-      return zedSchema;
+      return defaultZedSchema;
     }
+
+    const zedSchema = cloneDeep(defaultZedSchema);
 
     for (const themeIndex of Object.values(constants.zed.dark_themes)) {
       zedSchema.themes[themeIndex].directory_icons.collapsed =
@@ -348,6 +348,11 @@ export class ManifestBuilder {
   private static generateZedJsonStructure(
     options: types.IZedJsonStructureOptions,
   ): types.IZedIconSchema {
+    // In production environment, return the provided schema immediately
+    if (constants.environment.production) {
+      return options.schema;
+    }
+
     let zedFinalSchema = this.buildZedJsonStructure(
       options.files,
       options.folders,
@@ -515,6 +520,11 @@ export class ManifestBuilder {
     folders: types.IBuildFolders,
     schema: types.IApiIconSchema,
   ): types.IApiIconSchema {
+    // In production environment, return the default API schema immediately
+    if (constants.environment.production) {
+      return schema;
+    }
+
     const toFilePaths = (
       names: Record<string, string>,
     ): Record<string, string> =>
