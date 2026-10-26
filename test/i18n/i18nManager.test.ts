@@ -60,7 +60,7 @@ describe('LanguageResourceManager: tests', function () {
       sandbox.restore();
     });
 
-    it(`'LangResourceKeys' length match ILangResource length`, function () {
+    it(`'LangResourceKeys' length match LangResource length`, function () {
       for (const collection of Reflect.ownKeys(langResources) as string[]) {
         expect(langResources[collection]).to.have.lengthOf(
           numberOfLangResourceKeys,
@@ -68,7 +68,7 @@ describe('LanguageResourceManager: tests', function () {
       }
     });
 
-    it(`'ILangResource' length match LangResourceKeys length`, function () {
+    it(`'LangResource' length match LangResourceKeys length`, function () {
       for (const collection of Reflect.ownKeys(langResources) as string[]) {
         expect(numberOfLangResourceKeys).to.equal(
           langResources[collection].length,

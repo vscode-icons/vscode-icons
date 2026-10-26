@@ -10,7 +10,7 @@ export interface VSCode {
 
 export interface VSCodeCancellationToken {
   isCancellationRequested: boolean;
-  onCancellationRequested: IVSCodeEvent<unknown>;
+  onCancellationRequested: VSCodeEvent<unknown>;
 }
 
 export interface VSCodeCommand {
@@ -114,7 +114,7 @@ export interface VSCodeWindow {
 
 type GlobPattern = string | VSCodeRelativePattern;
 
-export type IVSCodeEvent<T> = (
+export type VSCodeEvent<T> = (
   listener: (e: T) => unknown,
   thisArgs?: unknown,
   disposables?: VSCodeDisposable[],
@@ -123,7 +123,7 @@ export type IVSCodeEvent<T> = (
 export interface VSCodeWorkspace {
   rootPath: string | undefined;
   workspaceFolders: readonly VSCodeWorkspaceFolder[] | undefined;
-  onDidChangeConfiguration: IVSCodeEvent<VSCodeConfigurationChangeEvent>;
+  onDidChangeConfiguration: VSCodeEvent<VSCodeConfigurationChangeEvent>;
   getConfiguration(
     section?: string,
     resource?: VSCodeUri,
