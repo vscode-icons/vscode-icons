@@ -65,9 +65,48 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
 
       beforeEach(function () {
         vsicons.projectDetection.disableDetect = false;
-        findFilesStub.resolves([{ fsPath: packageJsonPath }]);
+        findFilesStub.callsFake((pattern: string) =>
+          pattern.includes('package.json') ? [{ fsPath: packageJsonPath }] : [],
+        );
         readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
         iconsDisabledStub = sandbox.stub(ManifestReader, 'iconsDisabled');
+      });
+
+      context(`detects a NestJS project from config files`, function () {
+        it('nest-cli.json', async function () {
+          const nestConfigPath = 'apps/api/nest-cli.json';
+          findFilesStub.callsFake((pattern: string) =>
+            pattern.includes('nest-cli.json')
+              ? [{ fsPath: nestConfigPath }]
+              : [],
+          );
+          getPresetStub.returns({ workspaceValue: undefined });
+          iconsDisabledStub.resolves(true);
+
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
+          const firstResult = res[0];
+
+          expect(readFileAsyncStub.called).to.be.false;
+          expect(res).to.be.an('array');
+          expect(firstResult).to.be.an('object');
+          expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
+          expect(firstResult).to.have.all.keys(
+            'apply',
+            'project',
+            'conflictingProjects',
+            'langResourceKey',
+            'value',
+          );
+          expect(firstResult).ownProperty('apply').to.be.true;
+          expect(firstResult)
+            .ownProperty('project')
+            .to.equal(enums.Projects.nestjs);
+          expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
+          expect(firstResult)
+            .ownProperty('langResourceKey')
+            .to.equal(enums.LangResourceKeys.nestDetected);
+          expect(firstResult).ownProperty('value').to.be.true;
+        });
       });
 
       context(`detects a 'package.json' file`, function () {
