@@ -34,7 +34,10 @@ export class ProjectAutoDetectionManager
       const results = (await (this.configManager.vsicons.projectDetection
         .disableDetect
         ? Promise.resolve(null)
-        : this.findProjectFiles('**/node_modules/**'))) as types.IVSCodeUri[];
+        : this.vscodeManager.workspace.findFiles(
+            '**/{package.json,nest-cli.json,.nest-cli.json,nestconfig.json,.nestconfig.json}',
+            '**/node_modules/**',
+          ))) as types.IVSCodeUri[];
       return this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
