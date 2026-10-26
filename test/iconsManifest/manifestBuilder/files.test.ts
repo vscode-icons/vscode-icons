@@ -1,17 +1,19 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
-import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
-import * as sinon from 'sinon';
-import * as fsAsync from '../../../src/common/fsAsync';
-import { constants } from '../../../src/constants';
-import { ManifestBuilder } from '../../../src/iconsManifest';
-import {
+import type {
+  IFileCollection,
   IFileExtension,
   IFolderCollection,
   IIconAssociation,
   ILanguage,
-} from '../../../src/models';
+} from '../../../src/types';
+
+import { expect } from 'chai';
+import { cloneDeep } from 'lodash';
+import * as sinon from 'sinon';
+
+import * as fsAsync from '../../../src/common/fsAsync';
+import { constants } from '../../../src/constants';
+import { ManifestBuilder } from '../../../src/iconsManifest';
+import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
 
@@ -20,13 +22,26 @@ describe('ManifestBuilder: files icons test', function () {
     let sandbox: sinon.SinonSandbox;
     let pathUnixJoinStub: sinon.SinonStub;
     let emptyFolderCollection: IFolderCollection;
+    let fileFormatToStringStub: sinon.SinonStub;
 
     const iconsDirRelativeBasePath = '../../path/to/icons/dir';
+
+    const filesWithExtensionlessLightFilename = (): IFileCollection => {
+      const files = cloneDeep(fixtFiles);
+      files.supported.push({
+        icon: 'extensionless_filename_light',
+        filename: true,
+        light: true,
+      });
+      return files;
+    };
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      sandbox.stub(Utils, 'fileFormatToString').returns('.svg');
+      fileFormatToStringStub = sandbox
+        .stub(Utils, 'fileFormatToString')
+        .returns('.svg');
       sandbox
         .stub(Utils, 'removeFirstDot')
         .callsFake((txt: string) => txt.replace(/^\./, ''));
@@ -54,6 +69,76 @@ describe('ManifestBuilder: files icons test', function () {
 
     afterEach(function () {
       sandbox.restore();
+    });
+
+    it('uses the configured format for the default file icon', async function () {
+      const files: IFileCollection = cloneDeep(fixtFiles);
+      files.default.file.format = enums.FileFormat.png;
+      fileFormatToStringStub.withArgs(enums.FileFormat.png).returns('.png');
+
+      const manifest = await ManifestBuilder.buildManifest(
+        files,
+        emptyFolderCollection,
+      );
+
+      expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
+        `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file${constants.iconsManifest.iconSuffix}.png`,
+      );
+    });
+
+    it('uses a supported file format when provided', async function () {
+      const files = cloneDeep(fixtFiles);
+      const file = files.supported.find(({ icon }) => icon === 'actionscript');
+
+      file.format = enums.FileFormat.png;
+      fileFormatToStringStub.withArgs(enums.FileFormat.png).returns('.png');
+
+      const manifest = await ManifestBuilder.buildManifest(
+        files,
+        emptyFolderCollection,
+      );
+      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+      const icon = manifest.vscode.iconDefinitions[
+        definition
+      ] as IIconAssociation;
+
+      expect(fileFormatToStringStub.calledWith(enums.FileFormat.png)).to.be
+        .true;
+      expect(icon.iconPath).to.equal(
+        `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}${file.icon}${constants.iconsManifest.iconSuffix}.png`,
+      );
+    });
+
+    it('creates a definition without mappings when extensions are undefined', async function () {
+      const files = cloneDeep(fixtFiles);
+      const file = files.supported.find(({ icon }) => icon === 'actionscript');
+      files.supported = [file];
+      file.extensions = undefined;
+
+      const manifest = await ManifestBuilder.buildManifest(
+        files,
+        emptyFolderCollection,
+      );
+      const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
+
+      expect(manifest.vscode.iconDefinitions[definition]).to.exist;
+      expect(manifest.vscode.fileExtensions).to.be.empty;
+      expect(manifest.vscode.fileNames).to.be.empty;
+    });
+
+    it('defaults the default file format to SVG when it is undefined', async function () {
+      const files = cloneDeep(fixtFiles);
+      files.default.file.format = undefined;
+
+      const manifest = await ManifestBuilder.buildManifest(
+        files,
+        emptyFolderCollection,
+      );
+
+      expect(fileFormatToStringStub.firstCall.args[0]).to.be.undefined;
+      expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
+        `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file${constants.iconsManifest.iconSuffix}.svg`,
+      );
     });
 
     context(`if a default 'light' icon is NOT defined`, function () {
@@ -309,7 +394,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.fileExtensions[extension],
                         ).to.equal(definition),
@@ -320,11 +405,15 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileExtensions' referencing its definition`, async function () {
+                  const files = cloneDeep(fixtFiles);
+                  files.supported.find(
+                    ({ icon }) => icon === 'mlang',
+                  ).extensions = undefined;
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         !file.filename && file.light && !file.disabled,
@@ -332,7 +421,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.fileExtensions[extension],
                         ).to.equal(definition),
@@ -345,11 +434,12 @@ describe('ManifestBuilder: files icons test', function () {
             context('that is a filename', function () {
               context('and has NOT a light theme version', function () {
                 it(`has a 'fileNames' referencing its definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -360,7 +450,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(manifest.vscode.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -371,11 +461,12 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileNames' referencing its definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -386,7 +477,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(manifest.vscode.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -481,7 +572,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -504,7 +595,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -532,7 +623,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileNames[extension],
                         ).to.equal(definition),
@@ -543,11 +634,12 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileNames' referencing its 'light' definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -558,7 +650,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileNames[extension],
                         ).to.equal(definition),
@@ -636,6 +728,81 @@ describe('ManifestBuilder: files icons test', function () {
               });
             });
           });
+        });
+      });
+
+      context('API schema', function () {
+        it('maps files, extensions, and filenames to icon paths', async function () {
+          const manifest = await ManifestBuilder.buildManifest(
+            fixtFiles,
+            emptyFolderCollection,
+          );
+
+          expect(manifest.api.files._default).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file.svg`,
+          );
+          expect(manifest.api.files.extensions.as).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}actionscript.svg`,
+          );
+          expect(manifest.api.files.filenames['angular-cli.json']).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}angular.svg`,
+          );
+          expect(manifest.api.light.files.extensions.plist).to.equal(
+            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypeLightPrefix}config.svg`,
+          );
+        });
+
+        it('gives supported extensions and filenames precedence over language known ones', async function () {
+          const python: ILanguage = {
+            ids: 'python',
+            knownExtensions: ['pyc'],
+            knownFilenames: ['.zshrc'],
+          };
+          const languageEntry: IFileExtension = {
+            icon: 'python',
+            extensions: [],
+            languages: [python],
+            format: enums.FileFormat.svg,
+          };
+          const nameEntries: IFileExtension[] = [
+            {
+              icon: 'binary',
+              extensions: ['pyc'],
+              format: enums.FileFormat.svg,
+            },
+            {
+              icon: 'zsh',
+              extensions: ['.zshrc'],
+              filename: true,
+              format: enums.FileFormat.svg,
+            },
+          ];
+          const prefix = `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}`;
+          const files = cloneDeep(fixtFiles);
+
+          for (const supported of [
+            [languageEntry, ...nameEntries],
+            [...nameEntries, languageEntry],
+          ]) {
+            files.supported = supported;
+            const manifest = await ManifestBuilder.buildManifest(
+              files,
+              emptyFolderCollection,
+            );
+
+            expect(manifest.api.files.extensions.pyc).to.equal(
+              `${prefix}binary.svg`,
+            );
+            expect(manifest.api.files.filenames['.zshrc']).to.equal(
+              `${prefix}zsh.svg`,
+            );
+            expect(manifest.api.light.files.extensions.pyc).to.equal(
+              `${prefix}binary.svg`,
+            );
+            expect(manifest.api.light.files.filenames['.zshrc']).to.equal(
+              `${prefix}zsh.svg`,
+            );
+          }
         });
       });
 
@@ -966,7 +1133,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.fileExtensions[extension],
                         ).to.equal(definition),
@@ -989,7 +1156,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.fileExtensions[extension],
                         ).to.equal(definition),
@@ -1002,11 +1169,12 @@ describe('ManifestBuilder: files icons test', function () {
             context('that is a filename', function () {
               context('and has NOT a light theme version', function () {
                 it(`has a 'fileNames' referencing its definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -1017,7 +1185,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(manifest.vscode.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -1028,11 +1196,12 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileNames' referencing its definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -1043,7 +1212,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(manifest.vscode.fileNames[extension]).to.equal(
                           definition,
                         ),
@@ -1138,7 +1307,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -1161,7 +1330,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileExtensions[extension],
                         ).to.equal(definition),
@@ -1189,7 +1358,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFilePrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileNames[extension],
                         ).to.equal(definition),
@@ -1200,11 +1369,12 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileNames' referencing its 'light' definition`, async function () {
+                  const files = filesWithExtensionlessLightFilename();
                   const manifest = await ManifestBuilder.buildManifest(
-                    fixtFiles,
+                    files,
                     emptyFolderCollection,
                   );
-                  fixtFiles.supported
+                  files.supported
                     .filter(
                       (file: IFileExtension) =>
                         file.filename &&
@@ -1215,7 +1385,7 @@ describe('ManifestBuilder: files icons test', function () {
                     .forEach((file: IFileExtension) => {
                       const definition = `${constants.iconsManifest.definitionFileLightPrefix}${file.icon}`;
 
-                      file.extensions.forEach((extension: string) =>
+                      file.extensions?.forEach((extension: string) =>
                         expect(
                           manifest.vscode.light.fileNames[extension],
                         ).to.equal(definition),

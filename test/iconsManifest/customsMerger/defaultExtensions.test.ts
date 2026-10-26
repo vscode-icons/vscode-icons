@@ -1,9 +1,9 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
+import type { IFileCollection, IFolderCollection } from '../../../src/types';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
-import { IFileCollection, IFolderCollection } from '../../../src/models';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';

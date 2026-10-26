@@ -1,10 +1,10 @@
-import {
+import type {
   IVSCode,
-  IVSCodeEnv,
   IVSCodeCommands,
+  IVSCodeEnv,
   IVSCodeWindow,
   IVSCodeWorkspace,
-} from '../../src/models';
+} from '../../src/types';
 
 const env: IVSCodeEnv = {} as IVSCodeEnv;
 const commands: IVSCodeCommands = {} as IVSCodeCommands;

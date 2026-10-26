@@ -1,10 +1,11 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
+import type { IPresets } from '../../../src/types';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import * as fsAsync from '../../../src/common/fsAsync';
 import { ManifestReader } from '../../../src/iconsManifest';
-import { IPresets, PresetNames, Projects } from '../../../src/models';
+import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 
 describe('ManifestReader: tests', function () {
@@ -44,7 +45,7 @@ describe('ManifestReader: tests', function () {
       context(`for non icons related presets`, function () {
         it(`returns 'true' when the preset is 'false'`, async function () {
           const sut = await ManifestReader.getToggledValue(
-            PresetNames.hideExplorerArrows,
+            enums.PresetNames.hideExplorerArrows,
             presets,
           );
 
@@ -55,7 +56,7 @@ describe('ManifestReader: tests', function () {
           presets.hideExplorerArrows = true;
 
           const sut = await ManifestReader.getToggledValue(
-            PresetNames.hideExplorerArrows,
+            enums.PresetNames.hideExplorerArrows,
             presets,
           );
 
@@ -72,7 +73,7 @@ describe('ManifestReader: tests', function () {
             parseJSONStub.returns(JSON.parse(iconManifest));
 
             const sut = await ManifestReader.getToggledValue(
-              PresetNames.hideFolders,
+              enums.PresetNames.hideFolders,
               presets,
             );
 
@@ -86,7 +87,7 @@ describe('ManifestReader: tests', function () {
             parseJSONStub.returns(JSON.parse(iconManifest));
 
             const sut = await ManifestReader.getToggledValue(
-              PresetNames.hideFolders,
+              enums.PresetNames.hideFolders,
               presets,
             );
 
@@ -102,7 +103,7 @@ describe('ManifestReader: tests', function () {
             parseJSONStub.returns(JSON.parse(iconManifest));
 
             const sut = await ManifestReader.getToggledValue(
-              PresetNames.foldersAllDefaultIcon,
+              enums.PresetNames.foldersAllDefaultIcon,
               presets,
             );
 
@@ -116,7 +117,7 @@ describe('ManifestReader: tests', function () {
             parseJSONStub.returns(JSON.parse(iconManifest));
 
             const sut = await ManifestReader.getToggledValue(
-              PresetNames.foldersAllDefaultIcon,
+              enums.PresetNames.foldersAllDefaultIcon,
               presets,
             );
 
@@ -131,7 +132,7 @@ describe('ManifestReader: tests', function () {
           parseJSONStub.returns(JSON.parse(iconManifest));
 
           const sut = await ManifestReader.getToggledValue(
-            PresetNames.angular,
+            enums.PresetNames.angular,
             presets,
           );
 
@@ -143,7 +144,7 @@ describe('ManifestReader: tests', function () {
           parseJSONStub.returns(JSON.parse(iconManifest));
 
           const sut = await ManifestReader.getToggledValue(
-            PresetNames.angular,
+            enums.PresetNames.angular,
             presets,
           );
 
@@ -158,7 +159,9 @@ describe('ManifestReader: tests', function () {
           const iconManifest = '{ "iconDefinitions": { "_f_ng_": {} } }';
           parseJSONStub.returns(JSON.parse(iconManifest));
 
-          const sut = await ManifestReader.iconsDisabled(Projects.angular);
+          const sut = await ManifestReader.iconsDisabled(
+            enums.Projects.angular,
+          );
 
           expect(sut).to.be.false;
         });
@@ -167,7 +170,9 @@ describe('ManifestReader: tests', function () {
           const iconManifest = '{ "iconDefinitions": { "_f_codecov": {} } }';
           parseJSONStub.returns(JSON.parse(iconManifest));
 
-          const sut = await ManifestReader.iconsDisabled(Projects.angular);
+          const sut = await ManifestReader.iconsDisabled(
+            enums.Projects.angular,
+          );
 
           expect(sut).to.be.true;
         });
@@ -175,7 +180,9 @@ describe('ManifestReader: tests', function () {
         it('disabled, if they do NOT exist', async function () {
           parseJSONStub.returns(null);
 
-          const sut = await ManifestReader.iconsDisabled(Projects.angular);
+          const sut = await ManifestReader.iconsDisabled(
+            enums.Projects.angular,
+          );
 
           expect(sut).to.be.true;
         });
@@ -183,7 +190,9 @@ describe('ManifestReader: tests', function () {
         it('assumed disabled, if icon manifest file fails to be loaded', async function () {
           readFileAsyncStub.throws(Error);
 
-          const sut = await ManifestReader.iconsDisabled(Projects.angular);
+          const sut = await ManifestReader.iconsDisabled(
+            enums.Projects.angular,
+          );
 
           expect(sut).to.be.true;
         });
@@ -319,15 +328,16 @@ describe('ManifestReader: tests', function () {
                 '"_fd_aws": {} }, "folderNames": { "aws": "_fd_aws" } }';
               parseJSONStub.returns(JSON.parse(iconManifest));
 
-              void Reflect.ownKeys(PresetNames)
+              void Reflect.ownKeys(enums.PresetNames)
                 .filter(
                   (preset: string) =>
                     isNaN(parseInt(preset, 10)) &&
                     [
-                      PresetNames.hideFolders,
-                      PresetNames.foldersAllDefaultIcon,
+                      enums.PresetNames.hideFolders,
+                      enums.PresetNames.foldersAllDefaultIcon,
                     ].every(
-                      (prst: PresetNames) => prst !== PresetNames[preset],
+                      (prst: enums.PresetNames) =>
+                        prst !== enums.PresetNames[preset],
                     ),
                 )
                 .map(async (preset: string) => {
