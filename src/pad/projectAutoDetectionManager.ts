@@ -34,9 +34,7 @@ export class ProjectAutoDetectionManager
       const results = (await (this.configManager.vsicons.projectDetection
         .disableDetect
         ? Promise.resolve(null)
-        : this.findProjectFiles(
-            '**/node_modules/**',
-          ))) as types.IVSCodeUri[];
+        : this.findProjectFiles('**/node_modules/**'))) as types.IVSCodeUri[];
       return this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
@@ -228,9 +226,7 @@ export class ProjectAutoDetectionManager
     return projectInfo;
   }
 
-  private async findProjectFiles(
-    exclude: string,
-  ): Promise<types.IVSCodeUri[]> {
+  private async findProjectFiles(exclude: string): Promise<types.IVSCodeUri[]> {
     const patterns = [
       '**/package.json',
       '**/nest-cli.json',
