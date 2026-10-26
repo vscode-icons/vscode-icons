@@ -64,9 +64,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
 
       beforeEach(function () {
         vsicons.projectDetection.disableDetect = false;
-        findFilesStub.callsFake((pattern: string) =>
-          pattern.includes('package.json') ? [{ fsPath: packageJsonPath }] : [],
-        );
+        findFilesStub.resolves([{ fsPath: packageJsonPath }]);
         readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
         iconsDisabledStub = sandbox.stub(ManifestReader, 'iconsDisabled');
       });
@@ -74,11 +72,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
       context(`detects a NestJS project from config files`, function () {
         it('nest-cli.json', async function () {
           const nestConfigPath = 'apps/api/nest-cli.json';
-          findFilesStub.callsFake((pattern: string) =>
-            pattern.includes('nest-cli.json')
-              ? [{ fsPath: nestConfigPath }]
-              : [],
-          );
+          findFilesStub.resolves([{ fsPath: nestConfigPath }]);
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
