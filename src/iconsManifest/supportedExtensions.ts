@@ -57,6 +57,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'actionscript2',
+      extensions: ['part'],
       light: true,
       languages: [languages.actionscript],
       disabled: true,
@@ -1501,6 +1502,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'eleventy2',
       extensions: [
+        '.eleventyignore',
         '.eleventy.js',
         'eleventy.config.js',
         'eleventy.config.cjs',
@@ -2047,6 +2049,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'gradle2',
       extensions: ['gradle'],
+      languages: [languages.gradle],
       disabled: true,
     },
     {
@@ -5012,6 +5015,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'sln2',
       extensions: ['sln', 'slnx', 'slnf'],
+      languages: [languages.sln],
       disabled: true,
     },
     {
@@ -5522,19 +5526,28 @@ export const extensions: IFileCollection = {
         'tsconfig.app',
         'tsconfig.base',
         'tsconfig.build',
+        'tsconfig.cjs',
+        'tsconfig.client',
         'tsconfig.common',
+        'tsconfig.debug',
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.eslint',
+        'tsconfig.esm',
+        'tsconfig.mjs',
         'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
+        'tsconfig.release',
         'tsconfig.server',
         'tsconfig.spec',
         'tsconfig.staging',
         'tsconfig.test',
+        'tsconfig.types',
         'tsconfig.lib',
         'tsconfig.lib.prod',
+        'tsfmt',
       ],
       extensionsGlob: ['json'],
       filename: true,
@@ -6246,6 +6259,7 @@ export const extensions: IFileCollection = {
         'zipx',
         'br',
       ],
+      languages: [languages.zip],
       disabled: true,
     },
     {
