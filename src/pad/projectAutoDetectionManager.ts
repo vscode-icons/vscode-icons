@@ -211,12 +211,12 @@ export class ProjectAutoDetectionManager
     let projectInfo: types.IProjectInfo = null;
     for (const result of results) {
       const fileName = result.fsPath.split(/[\\/]/).pop();
-      if (
-        project === enums.Projects.nestjs &&
-        this.isNestProjectFile(fileName)
-      ) {
-        projectInfo = { name: project, version: '' };
-        break;
+      if (this.isNestProjectFile(fileName)) {
+        if (project === enums.Projects.nestjs) {
+          projectInfo = { name: project, version: '' };
+          break;
+        }
+        continue;
       }
       const content: string = await readFileAsync(result.fsPath, 'utf8');
       const projectJson: IPackageManifest =
@@ -227,27 +227,6 @@ export class ProjectAutoDetectionManager
       }
     }
     return projectInfo;
-  }
-
-  private async findProjectFiles(exclude: string): Promise<types.IVSCodeUri[]> {
-    const patterns = [
-      '**/package.json',
-      '**/nest-cli.json',
-      '**/.nest-cli.json',
-      '**/nestconfig.json',
-      '**/.nestconfig.json',
-    ];
-    const files: types.IVSCodeUri[] = [];
-    for (const pattern of patterns) {
-      const matches = await this.vscodeManager.workspace.findFiles(
-        pattern,
-        exclude,
-      );
-      if (matches) {
-        files.push(...matches);
-      }
-    }
-    return files;
   }
 
   private isNestProjectFile(fileName: string): boolean {
