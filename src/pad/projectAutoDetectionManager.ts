@@ -234,12 +234,17 @@ export class ProjectAutoDetectionManager
       '**/nestconfig.json',
       '**/.nestconfig.json',
     ];
-    const results = await Promise.all(
-      patterns.map(pattern =>
-        this.vscodeManager.workspace.findFiles(pattern, exclude),
-      ),
-    );
-    return results.flat();
+    const files: types.IVSCodeUri[] = [];
+    for (const pattern of patterns) {
+      const matches = await this.vscodeManager.workspace.findFiles(
+        pattern,
+        exclude,
+      );
+      if (matches) {
+        files.push(...matches);
+      }
+    }
+    return files;
   }
 
   private isNestProjectFile(fileName: string): boolean {
