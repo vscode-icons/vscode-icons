@@ -1,18 +1,16 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
+import type { IVSCodeManifest } from '../../src/types/package';
+import type { ILanguageResourceManager } from '../../src/types/vsIcons';
+import type { IVSCodeCommand } from '../../src/types/vscode';
+
 import { expect } from 'chai';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
-import * as langResourcesJson from '../../../lang.nls.bundle.json';
-import * as nlsTemplateJson from '../../../locale/package.nls.template.json';
-import * as nlsJson from '../../../locale/package/package.nls.json';
-import * as packageJson from '../../../package.json';
-import {
-  ILanguageResourceManager,
-  LangResourceKeys,
-} from '../../src/models/i18n';
-import { IVSCodeManifest } from '../../src/models/packageManifest';
-import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
+
+import langResourcesJson from '../../../lang.nls.bundle.json';
+import nlsJson from '../../../locale/package/package.nls.json';
+import nlsTemplateJson from '../../../locale/package.nls.template.json';
+import packageJson from '../../../package.json';
+import * as enums from '../../src/types/enums';
 
 describe('LanguageResourceManager: tests', function () {
   type LanguageResourceManager = (arg?: string) => void;
@@ -48,7 +46,7 @@ describe('LanguageResourceManager: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-      numberOfLangResourceKeys = Reflect.ownKeys(LangResourceKeys).filter(
+      numberOfLangResourceKeys = Reflect.ownKeys(enums.LangResourceKeys).filter(
         (key: string) => isNaN(parseInt(key, 10)),
       ).length;
       initResourceCollection = Array(numberOfLangResourceKeys).fill(
@@ -80,10 +78,7 @@ describe('LanguageResourceManager: tests', function () {
 
     context(`function 'localize'`, function () {
       it(`filters out 'null' keys`, function () {
-        resourceCollection = { en: initResourceCollection } as Record<
-          string,
-          string[]
-        >;
+        resourceCollection = { en: initResourceCollection };
 
         i18nManager = new (LanguageResourceManager(resourceCollection))(
           'en',
@@ -95,10 +90,7 @@ describe('LanguageResourceManager: tests', function () {
       });
 
       it(`filters out 'undefined' keys`, function () {
-        resourceCollection = { en: initResourceCollection } as Record<
-          string,
-          string[]
-        >;
+        resourceCollection = { en: initResourceCollection };
 
         i18nManager = new (LanguageResourceManager(resourceCollection))(
           'en',
@@ -111,8 +103,9 @@ describe('LanguageResourceManager: tests', function () {
 
       it('returns properly a combination of resource and literal messages', function () {
         resourceCollection = { en: initResourceCollection };
-        resourceCollection.en[LangResourceKeys.newVersion] = 'brave flees';
-        resourceCollection.en[LangResourceKeys.restart] =
+        resourceCollection.en[enums.LangResourceKeys.newVersion] =
+          'brave flees';
+        resourceCollection.en[enums.LangResourceKeys.restart] =
           'jumped over the fence';
 
         i18nManager = new (LanguageResourceManager(resourceCollection))(
@@ -124,17 +117,17 @@ describe('LanguageResourceManager: tests', function () {
         const literalString3 = '!';
         const expectedMsg =
           `${literalString1}${literalString2}` +
-          `${resourceCollection.en[LangResourceKeys.newVersion] as string}` +
+          `${resourceCollection.en[enums.LangResourceKeys.newVersion] as string}` +
           `${literalString2}${
-            resourceCollection.en[LangResourceKeys.restart] as string
+            resourceCollection.en[enums.LangResourceKeys.restart] as string
           }${literalString3}`;
 
         const msg = i18nManager.localize(
           literalString1,
           literalString2,
-          LangResourceKeys.newVersion,
+          enums.LangResourceKeys.newVersion,
           literalString2,
-          LangResourceKeys.restart,
+          enums.LangResourceKeys.restart,
           literalString3,
         );
 
@@ -147,13 +140,13 @@ describe('LanguageResourceManager: tests', function () {
             en: Array.from(initResourceCollection),
             es: Array.from(initResourceCollection),
           };
-          resourceCollection.en[LangResourceKeys.reload] = 'Restart';
+          resourceCollection.en[enums.LangResourceKeys.reload] = 'Restart';
 
           i18nManager = new (LanguageResourceManager(resourceCollection))(
             'es',
           ) as ILanguageResourceManager;
 
-          const msg = i18nManager.localize(LangResourceKeys.reload);
+          const msg = i18nManager.localize(enums.LangResourceKeys.reload);
 
           expect(msg).to.equal('Restart');
         });
@@ -163,7 +156,7 @@ describe('LanguageResourceManager: tests', function () {
             langResources,
           ))() as ILanguageResourceManager;
 
-          const msg = i18nManager.localize(LangResourceKeys.reload);
+          const msg = i18nManager.localize(enums.LangResourceKeys.reload);
 
           expect(msg).to.equal('Restart');
         });
@@ -173,7 +166,7 @@ describe('LanguageResourceManager: tests', function () {
             'bg',
           ) as ILanguageResourceManager;
 
-          const msg = i18nManager.localize(LangResourceKeys.reload);
+          const msg = i18nManager.localize(enums.LangResourceKeys.reload);
 
           expect(msg).to.equal('Restart');
         });
@@ -186,7 +179,7 @@ describe('LanguageResourceManager: tests', function () {
           platformStub = sandbox.stub(process, 'platform');
           resourceCollection = { test: initResourceCollection };
 
-          resourceCollection.test[LangResourceKeys.welcome] = {
+          resourceCollection.test[enums.LangResourceKeys.welcome] = {
             darwin: 'Macintosh',
             linux: 'Linux',
             win32: 'Windows',
@@ -199,9 +192,9 @@ describe('LanguageResourceManager: tests', function () {
 
         context('returns properly messages for', function () {
           const testCase = (): void => {
-            const msg = i18nManager.localize(LangResourceKeys.welcome);
+            const msg = i18nManager.localize(enums.LangResourceKeys.welcome);
             const testResource: string[] = resourceCollection.test[
-              LangResourceKeys.welcome
+              enums.LangResourceKeys.welcome
             ] as string[];
 
             expect(msg).to.equal(testResource[process.platform]);
@@ -229,19 +222,19 @@ describe('LanguageResourceManager: tests', function () {
         it('will throw an Error for NOT implemented platforms', function () {
           platformStub.value('freebsd');
 
-          expect(() => i18nManager.localize(LangResourceKeys.welcome)).to.throw(
-            Error,
-            /Not Implemented/,
-          );
+          expect(() =>
+            i18nManager.localize(enums.LangResourceKeys.welcome),
+          ).to.throw(Error, /Not Implemented/);
         });
       });
 
       context('returns proper message for', function () {
         beforeEach(function () {
           resourceCollection = { en: initResourceCollection };
-          resourceCollection.en[LangResourceKeys.newVersion] =
+          resourceCollection.en[enums.LangResourceKeys.newVersion] =
             '10 brave flees jumped ';
-          resourceCollection.en[LangResourceKeys.welcome] = 'over the fence';
+          resourceCollection.en[enums.LangResourceKeys.welcome] =
+            'over the fence';
 
           i18nManager = new (LanguageResourceManager(resourceCollection))(
             'en',
@@ -282,14 +275,14 @@ describe('LanguageResourceManager: tests', function () {
 
         it(`an array of 'LangResourceKeys'`, function () {
           const msg = i18nManager.localize(
-            LangResourceKeys.newVersion,
+            enums.LangResourceKeys.newVersion,
             ' ',
-            LangResourceKeys.welcome,
+            enums.LangResourceKeys.welcome,
           );
 
           expect(msg).to.equal(
-            `${resourceCollection.en[LangResourceKeys.newVersion] as string} ${
-              resourceCollection.en[LangResourceKeys.welcome] as string
+            `${resourceCollection.en[enums.LangResourceKeys.newVersion] as string} ${
+              resourceCollection.en[enums.LangResourceKeys.welcome] as string
             }`,
           );
         });

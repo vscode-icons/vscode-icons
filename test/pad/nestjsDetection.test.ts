@@ -1,18 +1,17 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
-import { expect } from 'chai';
-import * as sinon from 'sinon';
-import * as fsAsync from '../../src/common/fsAsync';
-import { ConfigManager } from '../../src/configuration/configManager';
-import { ManifestReader } from '../../src/iconsManifest';
-import {
+import type {
   IConfigManager,
   IProjectAutoDetectionManager,
   IVSCodeManager,
-  LangResourceKeys,
-  Projects,
-} from '../../src/models';
+} from '../../src/types';
+
+import { expect } from 'chai';
+import * as sinon from 'sinon';
+
+import * as fsAsync from '../../src/common/fsAsync';
+import { ConfigManager } from '../../src/configuration/configManager';
+import { ManifestReader } from '../../src/iconsManifest';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
@@ -118,7 +117,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(
@@ -138,7 +137,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(
@@ -158,7 +157,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'))
@@ -174,11 +173,13 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             'value',
           );
           expect(firstResult).ownProperty('apply').to.be.true;
-          expect(firstResult).ownProperty('project').to.equal(Projects.nestjs);
+          expect(firstResult)
+            .ownProperty('project')
+            .to.equal(enums.Projects.nestjs);
           expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
           expect(firstResult)
             .ownProperty('langResourceKey')
-            .to.equal(LangResourceKeys.nestDetected);
+            .to.equal(enums.LangResourceKeys.nestDetected);
           expect(firstResult).ownProperty('value').to.be.true;
         });
 
@@ -189,7 +190,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'))
@@ -205,11 +206,13 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             'value',
           );
           expect(firstResult).ownProperty('apply').to.be.true;
-          expect(firstResult).ownProperty('project').to.equal(Projects.nestjs);
+          expect(firstResult)
+            .ownProperty('project')
+            .to.equal(enums.Projects.nestjs);
           expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
           expect(firstResult)
             .ownProperty('langResourceKey')
-            .to.equal(LangResourceKeys.nestDetected);
+            .to.equal(enums.LangResourceKeys.nestDetected);
           expect(firstResult).ownProperty('value').to.be.true;
         });
       });
@@ -223,7 +226,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
@@ -239,7 +242,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
@@ -263,7 +266,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(
@@ -281,7 +284,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(
@@ -299,7 +302,7 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.nestjs]);
+          const res = await padManager.detectProjects([enums.Projects.nestjs]);
           const firstResult = res[0];
 
           expect(
@@ -321,7 +324,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
-          const res = await padManager.detectProjects([Projects.angularjs]);
+          const res = await padManager.detectProjects([
+            enums.Projects.angularjs,
+          ]);
           const firstResult = res[0];
 
           expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
@@ -347,7 +352,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               getPresetStub.returns({ workspaceValue: true });
               iconsDisabledStub.resolves(true);
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
@@ -365,12 +372,12 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult).ownProperty('apply').to.be.true;
               expect(firstResult)
                 .ownProperty('project')
-                .to.equal(Projects.nestjs);
+                .to.equal(enums.Projects.nestjs);
               expect(firstResult).ownProperty('conflictingProjects').to.be
                 .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
-                .to.equal(LangResourceKeys.nonNestDetectedPresetTrue);
+                .to.equal(enums.LangResourceKeys.nonNestDetectedPresetTrue);
               expect(firstResult).ownProperty('value').to.be.true;
             });
 
@@ -378,7 +385,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               getPresetStub.returns({ workspaceValue: undefined });
               iconsDisabledStub.resolves(true);
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(
@@ -397,12 +406,12 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult).ownProperty('apply').to.be.true;
               expect(firstResult)
                 .ownProperty('project')
-                .to.equal(Projects.nestjs);
+                .to.equal(enums.Projects.nestjs);
               expect(firstResult).ownProperty('conflictingProjects').to.be
                 .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
-                .to.equal(LangResourceKeys.nestDetected);
+                .to.equal(enums.LangResourceKeys.nestDetected);
               expect(firstResult).ownProperty('value').to.be.true;
             });
           });
@@ -416,7 +425,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               getPresetStub.returns({ workspaceValue: true });
               iconsDisabledStub.resolves(true);
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
@@ -434,12 +445,12 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult).ownProperty('apply').to.be.true;
               expect(firstResult)
                 .ownProperty('project')
-                .to.equal(Projects.nestjs);
+                .to.equal(enums.Projects.nestjs);
               expect(firstResult).ownProperty('conflictingProjects').to.be
                 .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
-                .to.equal(LangResourceKeys.nonNestDetectedPresetTrue);
+                .to.equal(enums.LangResourceKeys.nonNestDetectedPresetTrue);
               expect(firstResult).ownProperty('value').to.be.true;
             });
           });
@@ -457,7 +468,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               getPresetStub.returns({ workspaceValue: false });
               iconsDisabledStub.resolves(false);
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
@@ -475,12 +488,12 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult).ownProperty('apply').to.be.true;
               expect(firstResult)
                 .ownProperty('project')
-                .to.equal(Projects.nestjs);
+                .to.equal(enums.Projects.nestjs);
               expect(firstResult).ownProperty('conflictingProjects').to.be
                 .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
-                .to.equal(LangResourceKeys.nestDetectedPresetFalse);
+                .to.equal(enums.LangResourceKeys.nestDetectedPresetFalse);
               expect(firstResult).ownProperty('value').to.be.false;
             });
 
@@ -488,7 +501,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               getPresetStub.returns({ workspaceValue: undefined });
               iconsDisabledStub.resolves(false);
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
@@ -506,12 +521,12 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult).ownProperty('apply').to.be.true;
               expect(firstResult)
                 .ownProperty('project')
-                .to.equal(Projects.nestjs);
+                .to.equal(enums.Projects.nestjs);
               expect(firstResult).ownProperty('conflictingProjects').to.be
                 .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
-                .to.equal(LangResourceKeys.nonNestDetected);
+                .to.equal(enums.LangResourceKeys.nonNestDetected);
               expect(firstResult).ownProperty('value').to.be.false;
             });
           });
@@ -527,7 +542,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               getPresetStub.returns({ workspaceValue: false });
               iconsDisabledStub.resolves(false);
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
@@ -545,12 +562,12 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               expect(firstResult).ownProperty('apply').to.be.true;
               expect(firstResult)
                 .ownProperty('project')
-                .to.equal(Projects.nestjs);
+                .to.equal(enums.Projects.nestjs);
               expect(firstResult).ownProperty('conflictingProjects').to.be
                 .empty;
               expect(firstResult)
                 .ownProperty('langResourceKey')
-                .to.equal(LangResourceKeys.nestDetectedPresetFalse);
+                .to.equal(enums.LangResourceKeys.nestDetectedPresetFalse);
               expect(firstResult).ownProperty('value').to.be.false;
             });
           });
@@ -573,7 +590,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             it(`preset is 'true'`, async function () {
               getPresetStub.returns({ workspaceValue: true });
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.called).to.be.false;
@@ -588,7 +607,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             it(`preset is 'undefined'`, async function () {
               getPresetStub.returns({ workspaceValue: undefined });
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
@@ -610,7 +631,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             it(`preset is 'true'`, async function () {
               getPresetStub.returns({ workspaceValue: true });
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.called).to.be.false;
@@ -637,7 +660,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             it(`preset is 'false'`, async function () {
               getPresetStub.returns({ workspaceValue: false });
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.called).to.be.false;
@@ -652,7 +677,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             it(`preset is 'undefined'`, async function () {
               getPresetStub.returns({ workspaceValue: undefined });
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
@@ -676,7 +703,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
             it(`preset is 'false'`, async function () {
               getPresetStub.returns({ workspaceValue: false });
 
-              const res = await padManager.detectProjects([Projects.nestjs]);
+              const res = await padManager.detectProjects([
+                enums.Projects.nestjs,
+              ]);
               const firstResult = res[0];
 
               expect(readFileAsyncStub.called).to.be.false;
@@ -704,7 +733,9 @@ describe('ProjectAutoDetectionManager: NestJS project tests', function () {
               .returns({ workspaceValue: undefined });
             iconsDisabledStub.onSecondCall().resolves(false).resolves(true);
 
-            const res = await padManager.detectProjects([Projects.nestjs]);
+            const res = await padManager.detectProjects([
+              enums.Projects.nestjs,
+            ]);
             const firstResult = res[0];
 
             expect(iconsDisabledStub.callCount).to.be.equal(1);

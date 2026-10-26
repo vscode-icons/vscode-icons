@@ -1,7 +1,6 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
 
 describe('ErrorHandler: tests', function () {
@@ -11,7 +10,9 @@ describe('ErrorHandler: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-      consoleErrorStub = sandbox.stub(console, 'error');
+      consoleErrorStub = sandbox
+        .stub(console, 'error')
+        .get(() => consoleErrorStub);
     });
 
     afterEach(function () {

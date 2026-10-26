@@ -1,8 +1,7 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
 import { constants } from '../../src/constants';
 
