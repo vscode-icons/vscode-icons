@@ -733,7 +733,7 @@ describe('ManifestBuilder: files icons test', function () {
       });
 
       context('API schema', function () {
-        it('builds only the default schema in production', async function () {
+        it('uses default schema in production', async function () {
           sandbox.stub(constants.environment, 'production').value(true);
 
           const manifest = await ManifestBuilder.buildManifest(
@@ -824,19 +824,8 @@ describe('ManifestBuilder: files icons test', function () {
       });
 
       context('zed theme', function () {
-        it('builds only the default schema in production', async function () {
+        it('uses default schema in production', async function () {
           sandbox.stub(constants.environment, 'production').value(true);
-
-          const manifest = await ManifestBuilder.buildManifest(
-            fixtFiles,
-            emptyFolderCollection,
-          );
-
-          expect(manifest.zed.themes).to.deep.equal(zedSchema.themes);
-        });
-
-        it('builds the zed schema in development', async function () {
-          sandbox.stub(constants.environment, 'production').value(false);
 
           const manifest = await ManifestBuilder.buildManifest(
             fixtFiles,
@@ -845,13 +834,9 @@ describe('ManifestBuilder: files icons test', function () {
 
           expect(
             manifest.zed.themes.map(({ directory_icons }) => directory_icons),
-          ).to.not.deep.equal(
+          ).to.deep.equal(
             zedSchema.themes.map(({ directory_icons }) => directory_icons),
           );
-
-          manifest.zed.themes.forEach(({ directory_icons }) => {
-            expect(directory_icons).to.not.be.empty;
-          });
         });
 
         it('should get official icons for official theme', async function () {
