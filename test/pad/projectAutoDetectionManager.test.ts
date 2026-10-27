@@ -2,7 +2,7 @@ import type {
   IConfigManager,
   IProjectAutoDetectionManager,
   IVSCodeManager,
-} from '../../src/models';
+} from '../../src/types';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';
@@ -11,8 +11,8 @@ import { ErrorHandler } from '../../src/common/errorHandler';
 import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ManifestReader } from '../../src/iconsManifest';
-import { LangResourceKeys, Projects } from '../../src/models';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
@@ -71,7 +71,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
       const error = new Error('failure');
       findFilesStub.rejects(error);
 
-      await padManager.detectProjects([Projects.angular]);
+      await padManager.detectProjects([enums.Projects.angular]);
 
       expect(logErrorStub.calledOnceWith(error)).to.be.true;
     });
@@ -94,7 +94,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
       // @ts-ignore
       sandbox.stub(padManager, 'getProjectInfo').resolves({});
 
-      const res = await padManager.detectProjects([Projects.angularjs]);
+      const res = await padManager.detectProjects([enums.Projects.angularjs]);
       const firstResult = res[0];
 
       expect(res).to.be.an('array');
@@ -104,7 +104,9 @@ describe('ProjectAutoDetectionManager: tests', function () {
     });
 
     context('does NOT detect a project when', function () {
-      const testCase = async (projectNames: Projects[]): Promise<void> => {
+      const testCase = async (
+        projectNames: enums.Projects[],
+      ): Promise<void> => {
         const res = await padManager.detectProjects(projectNames);
 
         expect(res).to.not.be.an('object');
@@ -121,19 +123,19 @@ describe('ProjectAutoDetectionManager: tests', function () {
       it(`detection fails`, async function () {
         findFilesStub.resolves(undefined);
 
-        await testCase([Projects.angular]);
+        await testCase([enums.Projects.angular]);
       });
 
       it(`no 'package.json' exists`, async function () {
         findFilesStub.resolves([]);
 
-        await testCase([Projects.angular]);
+        await testCase([enums.Projects.angular]);
       });
 
       it('detection is disabled', async function () {
         vsicons.projectDetection.disableDetect = true;
 
-        await testCase([Projects.angular]);
+        await testCase([enums.Projects.angular]);
       });
     });
 
@@ -155,8 +157,8 @@ describe('ProjectAutoDetectionManager: tests', function () {
         sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
 
         const res = await padManager.detectProjects([
-          Projects.angular,
-          Projects.nestjs,
+          enums.Projects.angular,
+          enums.Projects.nestjs,
         ]);
         const firstResult = res[0];
 
@@ -164,7 +166,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
         expect(firstResult)
           .to.be.an('object')
           .and.have.ownProperty('langResourceKey')
-          .to.equal(LangResourceKeys.conflictProjectsDetected);
+          .to.equal(enums.LangResourceKeys.conflictProjectsDetected);
       });
     });
   });

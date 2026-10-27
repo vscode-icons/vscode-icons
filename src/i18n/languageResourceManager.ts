@@ -1,11 +1,10 @@
-import type * as models from '../models';
+import type * as types from '../types';
+import type * as enums from '../types/enums';
 
 import langResources from '../../../lang.nls.bundle.json';
 import { constants } from '../constants';
 
-export class LanguageResourceManager
-  implements models.ILanguageResourceManager
-{
+export class LanguageResourceManager implements types.ILanguageResourceManager {
   private defaultLangResource: string[];
   private currentLangResource: string[];
 
@@ -16,17 +15,18 @@ export class LanguageResourceManager
       (this.locale && languages[this.locale]) || this.defaultLangResource;
   }
 
-  public localize(...keys: models.LangResourceLike[]): string {
+  public localize(...keys: types.LangResourceLike[]): string {
     let msg = '';
     keys
       .filter(
-        (key: models.LangResourceLike) => key !== null && key !== undefined,
+        (key: types.LangResourceLike): boolean =>
+          key !== null && key !== undefined,
       )
-      .forEach((resourceKey: models.LangResourceLike) => {
+      .forEach((resourceKey: types.LangResourceLike): void => {
         if (typeof resourceKey === 'number') {
           if (this.currentLangResource.length > resourceKey) {
             // If no message is found fallback to english message
-            let message: string | models.IOSSpecific =
+            let message: string | types.IOSSpecific =
               this.currentLangResource[resourceKey] ||
               this.defaultLangResource[resourceKey];
 
@@ -46,7 +46,7 @@ export class LanguageResourceManager
           );
         }
 
-        resourceKey.split('').forEach((char: string) => {
+        resourceKey.split('').forEach((char: string): void => {
           if (char.match(/[#^*|\\/{}+=]/g)) {
             throw new Error(`${char} is not valid`);
           }
@@ -59,12 +59,12 @@ export class LanguageResourceManager
 
   public getLangResourceKey(
     message?: string,
-  ): models.LangResourceKeys | undefined {
+  ): enums.LangResourceKeys | undefined {
     if (!message) {
       return undefined;
     }
     const key = this.currentLangResource.findIndex(
-      (res: never) => res === message,
+      (res: string): boolean => res === message,
     );
     return key > -1 ? key : undefined;
   }

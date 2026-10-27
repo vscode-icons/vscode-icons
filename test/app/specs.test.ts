@@ -1,5 +1,5 @@
-import type { IVSCodeManifest } from '../../src/models/packageManifest/vscode';
-import type { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
+import type { IVSCodeManifest } from '../../src/types/package';
+import type { IVSCodeCommand } from '../../src/types/vscode';
 
 import { expect } from 'chai';
 

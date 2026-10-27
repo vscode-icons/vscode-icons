@@ -7,8 +7,8 @@ import type {
   IPresets,
   IVSCodeManager,
   IVSIcons,
-} from '../../../src/models';
-import type { IPackageManifest } from '../../../src/models/packageManifest/package';
+} from '../../../src/types';
+import type { IPackageManifest } from '../../../src/types/package';
 
 import { resolve } from 'path';
 
@@ -29,9 +29,10 @@ import {
 import { extensions as extFiles } from '../../../src/iconsManifest/supportedExtensions';
 import { extensions as extFolders } from '../../../src/iconsManifest/supportedFolders';
 import {
-  schema as defaultVSCodeSchema,
+  apiSchema as defaultApiSchema,
+  vscodeSchema as defaultVSCodeSchema,
   zedSchema as defaultZedSchema,
-} from '../../../src/models';
+} from '../../../src/types';
 import { Utils } from '../../../src/utils';
 import { VSCodeManager } from '../../../src/vscode/vscodeManager';
 import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
@@ -53,6 +54,7 @@ describe('IconsGenerator: tests', function () {
     let vsiconsClone: IVSIcons;
 
     const defaultManifest: IIconManifest = {
+      api: defaultApiSchema,
       vscode: defaultVSCodeSchema,
       zed: defaultZedSchema,
     };
@@ -247,14 +249,15 @@ describe('IconsGenerator: tests', function () {
 
         await iconsGenerator.persist(defaultManifest);
 
-        expect(
-          createDirAsyncStub.calledTwice,
-          `not called twice: ${createDirAsyncStub.callCount}`,
-        ).to.be.true;
+        expect(createDirAsyncStub.callCount, `not called three times`).to.equal(
+          3,
+        );
+
         expect(createDirAsyncStub.calledWithMatch(/\.*[/|\\]src/)).to.be.true;
       });
 
       context(`writes the icons manifest to storage`, function () {
+        const apiFilePath = `./${constants.iconsManifest.apiFilename}`;
         const vscFilePath = `./${constants.iconsManifest.filename}`;
         const zedFilePath = `./${constants.iconsManifest.zedFilename}`;
 
@@ -266,13 +269,15 @@ describe('IconsGenerator: tests', function () {
               2,
             );
             const zedStringified = JSON.stringify(defaultManifest.zed, null, 2);
+            const apiStringified = JSON.stringify(defaultManifest.api, null, 2);
 
             pathUnixJoinStub.onFirstCall().returns(vscFilePath);
             pathUnixJoinStub.onSecondCall().returns(zedFilePath);
+            pathUnixJoinStub.onThirdCall().returns(apiFilePath);
 
             await iconsGenerator.persist(defaultManifest);
 
-            expect(writeFileAsyncStub.calledTwice).to.be.true;
+            expect(writeFileAsyncStub.calledThrice).to.be.true;
             expect(
               writeFileAsyncStub.firstCall.calledWithExactly(
                 vscFilePath,
@@ -283,6 +288,12 @@ describe('IconsGenerator: tests', function () {
               writeFileAsyncStub.secondCall.calledWithExactly(
                 zedFilePath,
                 zedStringified,
+              ),
+            ).to.be.true;
+            expect(
+              writeFileAsyncStub.thirdCall.calledWithExactly(
+                apiFilePath,
+                apiStringified,
               ),
             ).to.be.true;
           });
@@ -303,25 +314,14 @@ describe('IconsGenerator: tests', function () {
               null,
               0,
             );
-            const zedStringified = JSON.stringify(defaultManifest.zed, null, 0);
 
-            pathUnixJoinStub.onFirstCall().returns(vscFilePath);
-            pathUnixJoinStub.onSecondCall().returns(zedFilePath);
+            pathUnixJoinStub.returns(vscFilePath);
 
             await iconsGenerator.persist(defaultManifest);
 
-            expect(writeFileAsyncStub.calledTwice).to.be.true;
+            expect(writeFileAsyncStub.calledOnce).to.be.true;
             expect(
-              writeFileAsyncStub.firstCall.calledWithExactly(
-                vscFilePath,
-                vscStringified,
-              ),
-            ).to.be.true;
-            expect(
-              writeFileAsyncStub.secondCall.calledWithExactly(
-                zedFilePath,
-                zedStringified,
-              ),
+              writeFileAsyncStub.calledWithExactly(vscFilePath, vscStringified),
             ).to.be.true;
           });
         });
@@ -340,6 +340,11 @@ describe('IconsGenerator: tests', function () {
             `[${constants.extension.zedName}] Icons manifest file successfully generated!`,
           ),
         ).to.be.true;
+        expect(
+          infoStub.thirdCall.calledWithExactly(
+            `[${constants.extension.apiName}] Icons manifest file successfully generated!`,
+          ),
+        ).to.be.true;
       });
 
       context(`logs an Error`, function () {
@@ -350,7 +355,7 @@ describe('IconsGenerator: tests', function () {
 
           await iconsGenerator.persist(defaultManifest);
 
-          expect(createDirAsyncStub.calledTwice).to.be.true;
+          expect(createDirAsyncStub.calledThrice).to.be.true;
           expect(createDirAsyncStub.calledWithMatch(/\.*[/|\\]src/)).to.be.true;
           expect(logErrorStub.calledWithExactly(error)).to.be.true;
         });
@@ -360,7 +365,7 @@ describe('IconsGenerator: tests', function () {
           writeFileAsyncStub.rejects(error);
 
           await iconsGenerator.persist(defaultManifest);
-          expect(logErrorStub.calledTwice).to.be.true;
+          expect(logErrorStub.calledThrice).to.be.true;
           expect(logErrorStub.calledWithExactly(error)).to.be.true;
         });
 
@@ -461,7 +466,7 @@ describe('IconsGenerator: tests', function () {
 
                 expect(updateFileStub.calledOnce, 'updateFiles not called once')
                   .to.be.true;
-                expect(infoStub.calledTwice, 'info not called twice').to.be
+                expect(infoStub.calledThrice, 'info not called thrice').to.be
                   .true;
 
                 expect(
@@ -472,6 +477,11 @@ describe('IconsGenerator: tests', function () {
                 expect(
                   infoStub.secondCall.calledWithExactly(
                     `[${constants.extension.zedName}] Icons manifest file successfully generated!`,
+                  ),
+                ).to.be.true;
+                expect(
+                  infoStub.thirdCall.calledWithExactly(
+                    `[${constants.extension.apiName}] Icons manifest file successfully generated!`,
                   ),
                 ).to.be.true;
               });
@@ -488,11 +498,13 @@ describe('IconsGenerator: tests', function () {
               await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.calledOnce).to.be.true;
-              expect(infoStub.calledThrice).to.be.true;
+              expect(infoStub.callCount, 'not called four times').to.equal(4);
               expect(
-                infoStub.thirdCall.calledWithExactly(
-                  `[${constants.extension.name}] Icons path in 'package.json' updated`,
-                ),
+                infoStub
+                  .getCall(3)
+                  .calledWithExactly(
+                    `[${constants.extension.name}] Icons path in 'package.json' updated`,
+                  ),
               ).to.be.true;
             });
           });
@@ -505,7 +517,7 @@ describe('IconsGenerator: tests', function () {
                 await iconsGenerator.persist(defaultManifest, true);
 
                 expect(updateFileStub.calledOnce).to.be.true;
-                expect(infoStub.calledTwice).to.be.true;
+                expect(infoStub.calledThrice).to.be.true;
                 expect(
                   infoStub.firstCall.calledWithExactly(
                     `[${constants.extension.name}] Icons manifest file successfully generated!`,
@@ -514,6 +526,11 @@ describe('IconsGenerator: tests', function () {
                 expect(
                   infoStub.secondCall.calledWithExactly(
                     `[${constants.extension.zedName}] Icons manifest file successfully generated!`,
+                  ),
+                ).to.be.true;
+                expect(
+                  infoStub.thirdCall.calledWithExactly(
+                    `[${constants.extension.apiName}] Icons manifest file successfully generated!`,
                   ),
                 ).to.be.true;
               });
@@ -528,10 +545,12 @@ describe('IconsGenerator: tests', function () {
               await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.calledOnce).to.be.true;
-              expect(infoStub.callCount).to.be.equal(4);
+              expect(infoStub.callCount, `not called five times`).to.be.equal(
+                5,
+              );
               expect(
                 infoStub
-                  .getCall(3)
+                  .getCall(4)
                   .calledWithExactly(
                     `[${constants.extension.name}] Entrypoint in 'package.json' updated`,
                   ),
@@ -601,8 +620,10 @@ describe('IconsGenerator: tests', function () {
 
                 expect(updateFileStub.calledOnce, 'updateFiles not called once')
                   .to.be.true;
-                expect(infoStub.calledTwice, 'console.info not called twice').to
-                  .be.true;
+                expect(
+                  infoStub.callCount,
+                  'console.info not called thrice',
+                ).to.equal(3);
                 expect(
                   infoStub.firstCall.calledWithExactly(
                     `[${constants.extension.name}] Icons manifest file successfully generated!`,
@@ -611,6 +632,11 @@ describe('IconsGenerator: tests', function () {
                 expect(
                   infoStub.secondCall.calledWithExactly(
                     `[${constants.extension.zedName}] Icons manifest file successfully generated!`,
+                  ),
+                ).to.be.true;
+                expect(
+                  infoStub.thirdCall.calledWithExactly(
+                    `[${constants.extension.apiName}] Icons manifest file successfully generated!`,
                   ),
                 ).to.be.true;
               });
@@ -627,11 +653,13 @@ describe('IconsGenerator: tests', function () {
               await iconsGenerator.persist(defaultManifest, true);
 
               expect(updateFileStub.calledOnce).to.be.true;
-              expect(infoStub.callCount).to.equal(5);
+              expect(infoStub.callCount, `not called six times`).to.equal(6);
               expect(
-                infoStub.calledWithExactly(
-                  `[${constants.extension.name}] Script 'vscode:uninstall' in 'package.json' updated`,
-                ),
+                infoStub
+                  .getCall(5)
+                  .calledWithExactly(
+                    `[${constants.extension.name}] Script 'vscode:uninstall' in 'package.json' updated`,
+                  ),
               ).to.be.true;
             });
           });

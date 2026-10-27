@@ -1,24 +1,24 @@
-import type * as models from '../models';
-import type { IPackageManifest } from '../models/packageManifest';
+import type * as types from '../types';
+import type { IPackageManifest } from '../types/package';
 
+import { CustomsMerger } from './customsMerger';
+import { ManifestBuilder } from './manifestBuilder';
+import { extensions as extFiles } from './supportedExtensions';
+import { extensions as extFolders } from './supportedFolders';
 import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, writeFileAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { Utils } from '../utils';
-import { CustomsMerger } from './customsMerger';
-import { ManifestBuilder } from './manifestBuilder';
-import { extensions as extFiles } from './supportedExtensions';
-import { extensions as extFolders } from './supportedFolders';
 
-export class IconsGenerator implements models.IIconsGenerator {
+export class IconsGenerator implements types.IIconsGenerator {
   private readonly manifest: IPackageManifest;
-  private affectedPresets: models.IPresets;
+  private affectedPresets: types.IPresets;
 
   constructor(
-    private vscodeManager?: models.IVSCodeManager,
-    private configManager?: models.IConfigManager,
+    private vscodeManager?: types.IVSCodeManager,
+    private configManager?: types.IConfigManager,
   ) {
     this.manifest = packageJson as IPackageManifest;
     // register event listener for configuration changes
@@ -33,10 +33,10 @@ export class IconsGenerator implements models.IIconsGenerator {
   }
 
   public async generateIconsManifest(
-    files?: models.IFileCollection,
-    folders?: models.IFolderCollection,
-    projectDetectionResults?: models.IProjectDetectionResult[],
-  ): Promise<models.IIconManifest> {
+    files?: types.IFileCollection,
+    folders?: types.IFolderCollection,
+    projectDetectionResults?: types.IProjectDetectionResult[],
+  ): Promise<types.IIconManifest> {
     // default icons manifest
     if (!files && !folders) {
       return ManifestBuilder.buildManifest(extFiles, extFolders);
@@ -73,7 +73,7 @@ export class IconsGenerator implements models.IIconsGenerator {
   }
 
   public async persist(
-    iconsManifest: models.IIconManifest,
+    iconsManifest: types.IIconManifest,
     updatePackageJson = false,
   ): Promise<void> {
     await this.writeIconsManifestToFile(
@@ -82,12 +82,22 @@ export class IconsGenerator implements models.IIconsGenerator {
       ConfigManager.sourceDir,
       constants.extension.name,
     );
-    await this.writeIconsManifestToFile(
-      constants.iconsManifest.zedFilename,
-      iconsManifest.zed,
-      ConfigManager.sourceDir,
-      constants.extension.zedName,
-    );
+
+    if (!constants.environment.production) {
+      await this.writeIconsManifestToFile(
+        constants.iconsManifest.zedFilename,
+        iconsManifest.zed,
+        ConfigManager.sourceDir,
+        constants.extension.zedName,
+      );
+
+      await this.writeIconsManifestToFile(
+        constants.iconsManifest.apiFilename,
+        iconsManifest.api,
+        ConfigManager.sourceDir,
+        constants.extension.apiName,
+      );
+    }
 
     if (!updatePackageJson) {
       return;
@@ -97,7 +107,7 @@ export class IconsGenerator implements models.IIconsGenerator {
 
   private async writeIconsManifestToFile(
     iconsFilename: string,
-    iconsManifest: models.IIconSchema | models.IZedIconSchema,
+    iconsManifest: types.IIconManifest[keyof types.IIconManifest],
     outDir: string,
     extensionName: string,
   ): Promise<void> {
@@ -209,7 +219,7 @@ export class IconsGenerator implements models.IIconsGenerator {
   }
 
   private didChangeConfigurationListener(
-    e: models.IVSCodeConfigurationChangeEvent,
+    e: types.IVSCodeConfigurationChangeEvent,
   ): void {
     this.affectedPresets = {
       angular: e.affectsConfiguration(constants.vsicons.presets.angular),
