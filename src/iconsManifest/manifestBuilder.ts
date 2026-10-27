@@ -289,13 +289,15 @@ export class ManifestBuilder {
     const hasDefaultLightFile =
       vscSchema.iconDefinitions._file_light.iconPath != null &&
       vscSchema.iconDefinitions._file_light.iconPath !== '';
+
+    // build the initial files and folders structures for VS Code manifest
+    const [resFiles, resFolders] = await Promise.all([
+      this.buildFiles(files, hasDefaultLightFile),
+      this.buildFolders(folders, hasDefaultLightFolder),
+    ]);
+
     // In production only the VS Code manifest is persisted,
-    // so skip building the Zed and API manifests altogether.
     if (constants.environment.production) {
-      const [resFiles, resFolders] = await Promise.all([
-        this.buildFiles(files, hasDefaultLightFile),
-        this.buildFolders(folders, hasDefaultLightFolder),
-      ]);
       return {
         api: apiSchema,
         vscode: this.buildVSCJsonStructure(resFiles, resFolders, vscSchema),
@@ -303,35 +305,18 @@ export class ManifestBuilder {
       };
     }
 
-    const res = {
-      //  files section
-      files: this.buildFiles(files, hasDefaultLightFile),
-      filesOfficial: this.buildFiles(
-        files,
-        hasDefaultLightFile,
-        'officialIcons',
-      ),
-      filesAngular: this.buildFiles(files, hasDefaultLightFile, 'angularIcons'),
-      filesNest: this.buildFiles(files, hasDefaultLightFile, 'nestIcons'),
-      // folders section
-      folders: this.buildFolders(folders, hasDefaultLightFolder),
-      foldersOfficial: this.buildFolders(folders, hasDefaultLightFolder, true),
-    };
-    // map structure to the schema
+    // build the additional structures for Zed manifest
+    // in non-production environments
     const [
-      resFiles,
       resFilesOfficial,
-      resFolders,
-      resFoldersOfficial,
       resFilesAngular,
       resFilesNest,
+      resFoldersOfficial,
     ] = await Promise.all([
-      res.files,
-      res.filesOfficial,
-      res.folders,
-      res.foldersOfficial,
-      res.filesAngular,
-      res.filesNest,
+      this.buildFiles(files, hasDefaultLightFile, 'officialIcons'), // filesOfficial
+      this.buildFiles(files, hasDefaultLightFile, 'angularIcons'), // filesAngular
+      this.buildFiles(files, hasDefaultLightFile, 'nestIcons'), // filesNest
+      this.buildFolders(folders, hasDefaultLightFolder, true), // foldersOfficial
     ]);
 
     const vscFinalSchema = this.buildVSCJsonStructure(

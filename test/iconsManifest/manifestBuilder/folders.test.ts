@@ -11,7 +11,7 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
-import { apiSchema } from '../../../src/types';
+import { apiSchema, zedSchema } from '../../../src/types';
 import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
@@ -41,6 +41,7 @@ describe('ManifestBuilder: folders icons test', function () {
         default: { file: { icon: 'file', format: 'svg' } },
         supported: [],
       };
+      sandbox.stub(constants.environment, 'production').value(false);
     });
 
     afterEach(function () {
@@ -87,24 +88,35 @@ describe('ManifestBuilder: folders icons test', function () {
       expect(manifest.vscode.folderNamesExpanded).to.be.empty;
     });
 
-    context('API schema', function () {
-      it('uses default schema in production', async function () {
-        sandbox.stub(constants.environment, 'production').value(true);
-
-        const manifest = await ManifestBuilder.buildManifest(
+    context('production', function () {
+      it('builds only the VS Code manifest', async function () {
+        const devManifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
         );
 
-        expect(manifest.api.folders._default).to.deep.equal(
-          apiSchema.folders._default,
-        );
-        expect(manifest.api.light.folders._default).to.deep.equal(
-          apiSchema.light.folders._default,
-        );
-      });
+        sandbox.stub(constants.environment, 'production').value(true);
 
+        const prodManifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        expect(prodManifest.vscode).to.deep.equal(devManifest.vscode);
+        expect(prodManifest.api.files.extensions).to.deep.equal(
+          apiSchema.files.extensions,
+        );
+        expect(prodManifest.api.files.filenames).to.deep.equal(
+          apiSchema.files.filenames,
+        );
+        expect(prodManifest.zed).to.deep.equal(zedSchema);
+      });
+    });
+
+    context('API schema', function () {
       it('maps default and named folders to closed and opened icon paths', async function () {
+        sandbox.stub(constants.environment, 'production').value(false);
+
         const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
@@ -127,6 +139,29 @@ describe('ManifestBuilder: folders icons test', function () {
         );
         expect(manifest.api.light.folders.fonts.opened).to.equal(
           `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypeLightPrefix}fonts_opened.svg`,
+        );
+      });
+    });
+
+    context('Zed theme', function () {
+      it('includes collapsed and expanded icons for every directory', async function () {
+        const manifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        manifest.zed.themes.forEach(
+          ({ directory_icons, named_directory_icons }) => {
+            expect(directory_icons.collapsed).not.to.be.empty;
+            expect(directory_icons.expanded).not.to.be.empty;
+
+            Object.values(named_directory_icons).forEach(
+              ({ collapsed, expanded }) => {
+                expect(collapsed).not.to.be.empty;
+                expect(expanded).not.to.be.empty;
+              },
+            );
+          },
         );
       });
     });
