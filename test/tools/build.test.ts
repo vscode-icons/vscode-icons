@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
+import { sys } from 'typescript';
 
 import { ErrorHandler } from '../../src/common/errorHandler';
 import { ConfigManager } from '../../src/configuration/configManager';
@@ -47,7 +48,17 @@ describe('Build: tests', function () {
     });
 
     context(`the 'build' script`, function () {
+      let originalRootDir: string;
+      let originalExitCode: string | number | undefined;
+
+      beforeEach(function () {
+        originalRootDir = ConfigManager.rootDir;
+        originalExitCode = process.exitCode;
+      });
+
       afterEach(function () {
+        ConfigManager.rootDir = originalRootDir;
+        process.exitCode = originalExitCode;
         constants.environment.production = false;
       });
 
@@ -63,6 +74,114 @@ describe('Build: tests', function () {
           'persist should be called once with correct arguments',
         ).to.be.true;
         expect(logErrorStub.called).to.be.false;
+      });
+
+      it(`generates and saves the API JSON schema`, async function () {
+        ConfigManager.rootDir = process.cwd();
+
+        const generatedSchema = {
+          $schema: 'https://json-schema.org/draft/2020-12/schema',
+          type: 'object',
+        };
+        const createSchemaStub = sandbox.stub().returns(generatedSchema);
+        const createGeneratorStub = sandbox
+          .stub()
+          .returns({ createSchema: createSchemaStub });
+        const writeFileAsyncStub = sandbox.stub().resolves();
+        const buildWithSchemaStubs = (): Promise<void> =>
+          proxyq('../../src/tools/build', {
+            '../iconsManifest/iconsGenerator': {
+              IconsGenerator: sandbox.stub().callsFake(() => ({
+                generateIconsManifest: generateIconsManifestStub,
+                persist: persistStub,
+              })),
+            },
+            '../common/fsAsync': { writeFileAsync: writeFileAsyncStub },
+            'ts-json-schema-generator': {
+              createGenerator: createGeneratorStub,
+            },
+          }) as Promise<void>;
+
+        await buildWithSchemaStubs();
+
+        // The build runs fire-and-forget on import,
+        // so let its promise chain finish before asserting
+        await new Promise<void>(resolve => setImmediate(resolve));
+
+        expect(logErrorStub.called).to.be.false;
+        expect(
+          createGeneratorStub.calledOnce,
+          'createGenerator should be called once',
+        ).to.be.true;
+        expect(createGeneratorStub.firstCall.args[0]).to.deep.equal({
+          path: `${ConfigManager.rootDir}/${constants.schemas.apiSourceFile}`,
+          topRef: false,
+          tsconfig: `${ConfigManager.rootDir}/tsconfig.json`,
+          type: 'ApiIconSchema',
+        });
+        expect(
+          createSchemaStub.calledOnceWithExactly('ApiIconSchema'),
+          'createSchema should receive the discovered API type name',
+        ).to.be.true;
+        expect(
+          writeFileAsyncStub.calledOnceWithExactly(
+            `${ConfigManager.rootDir}/${constants.schemas.apiSchemaFile}`,
+            JSON.stringify(
+              {
+                $schema: generatedSchema.$schema,
+                title: 'ApiIconSchema',
+                type: 'object',
+              },
+              null,
+              2,
+            ),
+          ),
+          'writeFileAsync should persist the titled API schema',
+        ).to.be.true;
+      });
+
+      it(`logs an error when the API schema declaration has no type annotation`, async function () {
+        ConfigManager.rootDir = process.cwd();
+        sandbox.stub(sys, 'readFile').returns('export const apiSchema = {};');
+
+        await build();
+        await new Promise<void>(resolve => setImmediate(resolve));
+
+        expect(logErrorStub.calledOnce).to.be.true;
+        expect(logErrorStub.firstCall.args[0]).to.be.instanceOf(Error);
+        expect((logErrorStub.firstCall.args[0] as Error).message).to.equal(
+          'Unable to find the API schema type annotation',
+        );
+      });
+
+      it(`logs an error when the API schema declaration is missing`, async function () {
+        ConfigManager.rootDir = process.cwd();
+        sandbox.stub(sys, 'readFile').returns('export const otherSchema = {};');
+
+        await build();
+        await new Promise<void>(resolve => setImmediate(resolve));
+
+        expect(logErrorStub.calledOnce).to.be.true;
+        expect(logErrorStub.firstCall.args[0]).to.be.instanceOf(Error);
+        expect((logErrorStub.firstCall.args[0] as Error).message).to.equal(
+          'Unable to find the API schema type annotation',
+        );
+      });
+
+      it(`logs an error when the API schema annotation is not a type reference`, async function () {
+        ConfigManager.rootDir = process.cwd();
+        sandbox
+          .stub(sys, 'readFile')
+          .returns("export const apiSchema: string = '';\n");
+
+        await build();
+        await new Promise<void>(resolve => setImmediate(resolve));
+
+        expect(logErrorStub.calledOnce).to.be.true;
+        expect(logErrorStub.firstCall.args[0]).to.be.instanceOf(Error);
+        expect((logErrorStub.firstCall.args[0] as Error).message).to.equal(
+          'Unable to find the API schema type annotation',
+        );
       });
 
       context(`changes the 'out' directory to 'dist'`, function () {

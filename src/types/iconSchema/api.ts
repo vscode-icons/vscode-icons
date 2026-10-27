@@ -1,4 +1,7 @@
+import { constants } from '../../constants';
+
 export const apiSchema: ApiIconSchema = {
+  $schema: `https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/${constants.schemas.apiSchemaFile}`,
   files: {
     _default: '',
     extensions: {},

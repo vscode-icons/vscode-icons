@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ApiIconSchema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "files": {
+      "$ref": "#/definitions/ApiIconFileDefinitions"
+    },
+    "folders": {
+      "$ref": "#/definitions/ApiIconFolderDefinitions"
+    },
+    "light": {
+      "$ref": "#/definitions/ApiIconDefinitions"
+    }
+  },
+  "required": ["files", "folders", "light"],
+  "additionalProperties": false,
+  "definitions": {
+    "ApiIconFileDefinitions": {
+      "type": "object",
+      "properties": {
+        "_default": {
+          "type": "string"
+        },
+        "extensions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "filenames": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["_default", "extensions", "filenames"],
+      "additionalProperties": false
+    },
+    "ApiIconFolderDefinitions": {
+      "type": "object",
+      "properties": {
+        "_default": {
+          "type": "object",
+          "properties": {
+            "closed": {
+              "type": "string"
+            },
+            "opened": {
+              "type": "string"
+            }
+          },
+          "required": ["closed", "opened"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["_default"],
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "closed": {
+            "type": "string"
+          },
+          "opened": {
+            "type": "string"
+          }
+        },
+        "required": ["closed", "opened"],
+        "additionalProperties": false
+      }
+    },
+    "ApiIconDefinitions": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "$ref": "#/definitions/ApiIconFileDefinitions"
+        },
+        "folders": {
+          "$ref": "#/definitions/ApiIconFolderDefinitions"
+        }
+      },
+      "required": ["files", "folders"],
+      "additionalProperties": false
+    }
+  }
+}

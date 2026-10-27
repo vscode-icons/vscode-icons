@@ -51,6 +51,10 @@ export const constants = {
     'https://github.com/vscode-icons/vscode-icons/blob/master/README.md',
   urlOfficialApi:
     'https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-file-icon-theme',
+  schemas: {
+    apiSourceFile: 'src/types/iconSchema/api.ts',
+    apiSchemaFile: 'schemas/api/v1/schema.json',
+  },
   iconsManifest: {
     apiFilename: 'vsicons-icon-api.json',
     filename: 'vsicons-icon-theme.json',
