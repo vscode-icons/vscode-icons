@@ -1,5 +1,5 @@
 {
   "exclude": ["!test/**"],
   "exclude-after-remap": false,
-  "reporter": ["text", "lcov"]
+  "reporter": ["text-summary", "lcov"]
 }
