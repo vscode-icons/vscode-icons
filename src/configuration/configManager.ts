@@ -1,11 +1,11 @@
 import type {
-  IConfigManager,
-  IFileExtension,
-  IFolderExtension,
-  IVSCodeManager,
-  IVSCodePreset,
-  IVSCodeWorkspaceConfiguration,
-  IVSIcons,
+  ConfigManagerContract,
+  FileExtension,
+  FolderExtension,
+  VSCodeManagerContract,
+  VSCodePreset,
+  VSCodeWorkspaceConfiguration,
+  VSIcons,
 } from '../types';
 
 import { dirname, isAbsolute, resolve } from 'path';
@@ -18,13 +18,13 @@ import { constants } from '../constants';
 import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
-export class ConfigManager implements IConfigManager {
+export class ConfigManager implements ConfigManagerContract {
   private static rootdir: string;
 
-  private readonly configuration: IVSCodeWorkspaceConfiguration;
-  private initVSIconsConfig: IVSIcons;
+  private readonly configuration: VSCodeWorkspaceConfiguration;
+  private initVSIconsConfig: VSIcons;
 
-  constructor(private vscodeManager: IVSCodeManager) {
+  constructor(private vscodeManager: VSCodeManagerContract) {
     // Acts as a static reference to configuration
     // Should only be used when you want to access the configuration functions
     // DO NOT use it to access the `vsicons` configuration,
@@ -59,26 +59,25 @@ export class ConfigManager implements IConfigManager {
    * **Note:** When you want to access `vsicons` configuration always
    * call this function
    */
-  public get vsicons(): IVSIcons {
+  public get vsicons(): VSIcons {
     // ALWAYS use 'getConfiguration' to get a fresh copy of the `vsicons` configurations
-    const mergedConfig: IVSIcons = cloneDeep<IVSIcons>(
+    const mergedConfig: VSIcons = cloneDeep<VSIcons>(
       this.vscodeManager.workspace.getConfiguration()[
         constants.vsicons.name
-      ] as IVSIcons,
+      ] as VSIcons,
     );
-    const files: IVSCodePreset<IFileExtension[]> = this.configuration.inspect<
-      IFileExtension[]
+    const files: VSCodePreset<FileExtension[]> = this.configuration.inspect<
+      FileExtension[]
     >(constants.vsicons.associations.filesSetting);
-    mergedConfig.associations.files = unionWith<IFileExtension>(
+    mergedConfig.associations.files = unionWith<FileExtension>(
       files.workspaceValue,
       files.globalValue,
       isEqual,
     );
-    const folders: IVSCodePreset<IFolderExtension[]> =
-      this.configuration.inspect<IFolderExtension[]>(
-        constants.vsicons.associations.foldersSetting,
-      );
-    mergedConfig.associations.folders = unionWith<IFolderExtension>(
+    const folders: VSCodePreset<FolderExtension[]> = this.configuration.inspect<
+      FolderExtension[]
+    >(constants.vsicons.associations.foldersSetting);
+    mergedConfig.associations.folders = unionWith<FolderExtension>(
       folders.workspaceValue,
       folders.globalValue,
       isEqual,
@@ -231,10 +230,10 @@ export class ConfigManager implements IConfigManager {
   }
 
   public hasConfigChanged(
-    currentConfig: IVSIcons | undefined,
+    currentConfig: VSIcons | undefined,
     sections?: string[],
   ): boolean {
-    const filter = (obj: IVSIcons, keys: string[]): Record<string, string[]> =>
+    const filter = (obj: VSIcons, keys: string[]): Record<string, string[]> =>
       (Reflect.ownKeys(obj || {}) as string[])
         .filter((key: string, __: number, array: string[]): boolean =>
           (keys || array).includes(key),
@@ -280,7 +279,7 @@ export class ConfigManager implements IConfigManager {
     return this.configuration.get<string>(constants.vscode.iconThemeSetting);
   }
 
-  public getPreset<T>(presetName: string): IVSCodePreset<T> | undefined {
+  public getPreset<T>(presetName: string): VSCodePreset<T> | undefined {
     return this.configuration.inspect<T>(presetName);
   }
 

@@ -1,14 +1,14 @@
 import type {
-  IConfigManager,
-  IFileCollection,
-  IFolderCollection,
-  IIconManifest,
-  IIconsGenerator,
-  IPresets,
-  IVSCodeManager,
-  IVSIcons,
+  ConfigManagerContract,
+  FileCollection,
+  FolderCollection,
+  IconManifest,
+  IconsGeneratorContract,
+  Presets,
+  VSCodeManagerContract,
+  VSIcons,
 } from '../../../src/types';
-import type { IPackageManifest } from '../../../src/types/package';
+import type { PackageManifest } from '../../../src/types/package';
 
 import { resolve } from 'path';
 
@@ -39,21 +39,21 @@ import { extensions as fixtFiles } from '../../fixtures/supportedExtensions';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
 
-describe('IconsGenerator: tests', function () {
+describe('IconsGeneratorContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<IConfigManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
+    let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let mergeStub: sinon.SinonStub;
     let buildManifestStaticStub: sinon.SinonStub;
 
-    let iconsGenerator: IIconsGenerator;
-    let filesCollection: IFileCollection;
-    let foldersCollection: IFolderCollection;
-    let vsiconsClone: IVSIcons;
+    let iconsGenerator: IconsGeneratorContract;
+    let filesCollection: FileCollection;
+    let foldersCollection: FolderCollection;
+    let vsiconsClone: VSIcons;
 
-    const defaultManifest: IIconManifest = {
+    const defaultManifest: IconManifest = {
       api: defaultApiSchema,
       vscode: defaultVSCodeSchema,
       zed: defaultZedSchema,
@@ -63,7 +63,7 @@ describe('IconsGenerator: tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sinon.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sinon.createStubInstance<VSCodeManagerContract>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -75,7 +75,7 @@ describe('IconsGenerator: tests', function () {
       vscodeManagerStub.getAppUserDirPath.returns('/path/to/app/user/dir/');
 
       configManagerStub =
-        sandbox.createStubInstance<IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
@@ -383,7 +383,7 @@ describe('IconsGenerator: tests', function () {
 
       context(`the 'package.json' file gets`, function () {
         context(`NOT updated`, function () {
-          let manifest: IPackageManifest;
+          let manifest: PackageManifest;
 
           beforeEach(function () {
             manifest = packageJson;
@@ -675,7 +675,7 @@ describe('IconsGenerator: tests', function () {
           });
 
           // @ts-ignore
-          const affectedPresets = iconsGenerator.affectedPresets as IPresets;
+          const affectedPresets = iconsGenerator.affectedPresets as Presets;
 
           expect(affectedPresets.angular).to.be.true;
         });
@@ -686,7 +686,7 @@ describe('IconsGenerator: tests', function () {
           });
 
           // @ts-ignore
-          const affectedPresets = iconsGenerator.affectedPresets as IPresets;
+          const affectedPresets = iconsGenerator.affectedPresets as Presets;
 
           expect(affectedPresets.angular).to.be.false;
         });

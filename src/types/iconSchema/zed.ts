@@ -1,7 +1,7 @@
-import type { IIconAssociation } from './common';
-import type { IBuildFiles, IBuildFolders } from '../vsIcons';
+import type { IconAssociation } from './common';
+import type { BuildFiles, BuildFolders } from '../vsicons';
 
-export const zedSchema: IZedIconSchema = {
+export const zedSchema: ZedIconSchema = {
   $schema: 'https://zed.dev/schema/icon_themes/v0.3.0.json',
   name: 'VSCode Icons Original',
   author: 'Roberto Huertas <roberto.huertas@outlook.com>',
@@ -105,43 +105,43 @@ export const zedSchema: IZedIconSchema = {
   ],
 };
 
-export interface IZedIconSchema {
+export interface ZedIconSchema {
   $schema?: string;
   author: string;
   name: string;
-  themes: IZedTheme[];
+  themes: ZedTheme[];
 }
 
-export interface IZedTheme {
+export interface ZedTheme {
   name: string;
   appearance: 'light' | 'dark';
   directory_icons: {
     collapsed: string;
     expanded: string;
   };
-  named_directory_icons: IZedFolderIcons;
-  file_stems: IIconAssociation;
-  file_suffixes: IIconAssociation;
-  file_icons: IZedFileIcons;
+  named_directory_icons: ZedFolderIcons;
+  file_stems: IconAssociation;
+  file_suffixes: IconAssociation;
+  file_icons: ZedFileIcons;
 }
 
-export interface IZedFileIcons {
+export interface ZedFileIcons {
   [iconName: string]: { path: string };
 }
 
-export interface IZedFolderIcons {
+export interface ZedFolderIcons {
   [iconName: string]: {
     collapsed: string;
     expanded: string;
   };
 }
 
-export interface IZedJsonStructureOptions {
-  files: IBuildFiles;
-  folders: IBuildFolders;
-  filesOfficial: IBuildFiles;
-  foldersOfficial: IBuildFolders;
-  filesAngular: IBuildFiles;
-  filesNest: IBuildFiles;
-  schema: IZedIconSchema;
+export interface ZedJsonStructureOptions {
+  files: BuildFiles;
+  folders: BuildFolders;
+  filesOfficial: BuildFiles;
+  foldersOfficial: BuildFolders;
+  filesAngular: BuildFiles;
+  filesNest: BuildFiles;
+  schema: ZedIconSchema;
 }
