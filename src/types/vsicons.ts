@@ -6,35 +6,35 @@ import type {
   Projects,
 } from './enums';
 import type {
-  IApiIconSchema,
-  IIconAssociation,
-  IVSCodeIconPath,
-  IVSCodeIconSchema,
-  IZedIconSchema,
+  ApiIconSchema,
+  IconAssociation,
+  VSCodeIconPath,
+  VSCodeIconSchema,
+  ZedIconSchema,
 } from './iconSchema';
 
-export interface IVSIcons {
-  associations: IAssociations;
+export interface VSIcons {
+  associations: Associations;
   customIconFolderPath: string;
   dontShowNewVersionMessage: boolean;
   dontShowConfigManuallyChangedMessage: boolean;
-  projectDetection: IProjectDetection;
-  presets: IPresets;
+  projectDetection: ProjectDetection;
+  presets: Presets;
 }
 
-export interface IAssociations {
-  files: IFileExtension[];
-  folders: IFolderExtension[];
-  fileDefault: IFileDefault;
-  folderDefault: IFolderDefault;
+export interface Associations {
+  files: FileExtension[];
+  folders: FolderExtension[];
+  fileDefault: FileDefault;
+  folderDefault: FolderDefault;
 }
 
-export interface IProjectDetection {
+export interface ProjectDetection {
   autoReload: boolean;
   disableDetect: boolean;
 }
 
-export interface IPresets {
+export interface Presets {
   angular: boolean;
   nestjs: boolean;
   jsOfficial: boolean;
@@ -46,11 +46,11 @@ export interface IPresets {
   yamlOfficial: boolean;
 }
 
-export interface IConfigManager {
-  vsicons: IVSIcons;
+export interface ConfigManagerContract {
+  vsicons: VSIcons;
   updateVSIconsConfigState(): void;
   hasConfigChanged(
-    currentConfig: IVSIcons | undefined,
+    currentConfig: VSIcons | undefined,
     sections?: string[],
   ): boolean;
   getCustomIconsDirPath(path: string): Promise<string>;
@@ -76,15 +76,15 @@ export interface IConfigManager {
   ): Promise<void>;
 }
 
-export interface IExtensionManager {
+export interface ExtensionManagerContract {
   activate(): Promise<void>;
 }
 
-export interface IProjectAutoDetectionManager {
-  detectProjects(projectNames: Projects[]): Promise<IProjectDetectionResult[]>;
+export interface ProjectAutoDetectionManagerContract {
+  detectProjects(projectNames: Projects[]): Promise<ProjectDetectionResult[]>;
 }
 
-export interface IProjectDetectionResult {
+export interface ProjectDetectionResult {
   apply: boolean;
   project?: Projects;
   conflictingProjects?: Projects[];
@@ -92,93 +92,93 @@ export interface IProjectDetectionResult {
   value?: boolean;
 }
 
-export interface IProjectInfo {
+export interface ProjectInfo {
   name?: Projects;
   version?: string;
 }
 
-export interface IIconsGenerator {
+export interface IconsGeneratorContract {
   generateIconsManifest(
-    files?: IFileCollection,
-    folders?: IFolderCollection,
-    projectDetectionResults?: IProjectDetectionResult[],
-  ): Promise<IIconManifest>;
+    files?: FileCollection,
+    folders?: FolderCollection,
+    projectDetectionResults?: ProjectDetectionResult[],
+  ): Promise<IconManifest>;
   persist(
-    iconsManifest: IIconManifest,
+    iconsManifest: IconManifest,
     updatePackageJson?: boolean,
   ): Promise<void>;
 }
 
-export interface IFileCollection extends IExtensionCollection<IFileExtension> {
-  default: IFileDefault;
+export interface FileCollection extends ExtensionCollection<FileExtension> {
+  default: FileDefault;
 }
 
-export interface IFileDefault {
-  file?: IDefaultExtension;
-  file_light?: IDefaultExtension;
+export interface FileDefault {
+  file?: DefaultExtension;
+  file_light?: DefaultExtension;
 }
 
-export interface IFolderCollection extends IExtensionCollection<IFolderExtension> {
-  default: IFolderDefault;
+export interface FolderCollection extends ExtensionCollection<FolderExtension> {
+  default: FolderDefault;
 }
 
-export interface IFolderDefault {
-  folder?: IDefaultExtension;
-  folder_light?: IDefaultExtension;
-  root_folder?: IDefaultExtension;
-  root_folder_light?: IDefaultExtension;
+export interface FolderDefault {
+  folder?: DefaultExtension;
+  folder_light?: DefaultExtension;
+  root_folder?: DefaultExtension;
+  root_folder_light?: DefaultExtension;
 }
 
-export interface IExtensionCollection<T> {
+export interface ExtensionCollection<T> {
   supported: T[];
 }
 
-export interface IIconManifest {
-  api: IApiIconSchema;
-  vscode: IVSCodeIconSchema;
-  zed: IZedIconSchema;
+export interface IconManifest {
+  api: ApiIconSchema;
+  vscode: VSCodeIconSchema;
+  zed: ZedIconSchema;
 }
 
-export interface IBuildFiles {
-  defs: Record<string, IVSCodeIconPath>;
+export interface BuildFiles {
+  defs: Record<string, VSCodeIconPath>;
   names: {
-    fileExtensions: IIconAssociation;
-    fileNames: IIconAssociation;
+    fileExtensions: IconAssociation;
+    fileNames: IconAssociation;
   };
   light: {
-    fileExtensions: IIconAssociation;
-    fileNames: IIconAssociation;
+    fileExtensions: IconAssociation;
+    fileNames: IconAssociation;
     language: {
-      fileExtensions: IIconAssociation;
-      fileNames: IIconAssociation;
-      languageIds: IIconAssociation;
+      fileExtensions: IconAssociation;
+      fileNames: IconAssociation;
+      languageIds: IconAssociation;
     };
   };
   language: {
-    fileExtensions: IIconAssociation;
-    fileNames: IIconAssociation;
-    languageIds: IIconAssociation;
+    fileExtensions: IconAssociation;
+    fileNames: IconAssociation;
+    languageIds: IconAssociation;
   };
 }
 
-export interface IBuildFolders {
-  defs: Record<string, IVSCodeIconPath>;
+export interface BuildFolders {
+  defs: Record<string, VSCodeIconPath>;
   names: {
-    folderNames: IIconAssociation;
-    folderNamesExpanded: IIconAssociation;
+    folderNames: IconAssociation;
+    folderNamesExpanded: IconAssociation;
   };
   light: {
-    folderNames: IIconAssociation;
-    folderNamesExpanded: IIconAssociation;
+    folderNames: IconAssociation;
+    folderNamesExpanded: IconAssociation;
   };
 }
 
-export interface IMergedCollection {
-  files: IFileCollection;
-  folders: IFolderCollection;
+export interface MergedCollection {
+  files: FileCollection;
+  folders: FolderCollection;
 }
 
-export interface IFileExtension extends IExtension {
+export interface FileExtension extends Extension {
   /** @interal */
   checked?: boolean;
   /**
@@ -188,7 +188,7 @@ export interface IFileExtension extends IExtension {
   /**
    * collection of languages associated to the icon.
    */
-  languages?: ILanguage[];
+  languages?: Language[];
   /**
    * array of file names to generate with file extensions to associate to the icon.
    */
@@ -199,12 +199,12 @@ export interface IFileExtension extends IExtension {
   extensionsGlob?: string[];
 }
 
-export interface IFolderExtension extends IExtension {
+export interface FolderExtension extends Extension {
   /** @internal */
   checked?: boolean;
 }
 
-export interface IExtension extends IDefaultExtension {
+export interface Extension extends DefaultExtension {
   /**
    * set of extensions associated to the icon.
    */
@@ -223,7 +223,7 @@ export interface IExtension extends IDefaultExtension {
   extends?: string;
 }
 
-export interface IDefaultExtension {
+export interface DefaultExtension {
   /**
    * name of the icon.
    */
@@ -242,7 +242,7 @@ export interface IDefaultExtension {
    */
   useBundledIcon?: boolean;
 }
-export interface ILanguage {
+export interface Language {
   ids: string | string[];
   /**
    * Used by extension manifests not supporting language ids.
@@ -256,11 +256,11 @@ export interface ILanguage {
   knownFilenames?: string[];
 }
 
-export interface ILanguageResourceManager {
+export interface LanguageResourceManagerContract {
   localize(...keys: LangResourceLike[]): string;
   getLangResourceKey(message?: string): LangResourceKeys | undefined;
 }
-export interface IOSSpecific {
+export interface OSSpecific {
   darwin: string;
   linux: string;
   win32: string;
@@ -268,7 +268,7 @@ export interface IOSSpecific {
 
 export type LangResourceLike = string | number | LangResourceKeys;
 
-export interface INotificationManager {
+export interface NotificationManagerContract {
   notifyInfo(
     message: LangResourceLike,
     ...items: LangResourceLike[]
@@ -285,15 +285,15 @@ export interface INotificationManager {
   ): Promise<LangResourceLike>;
 }
 
-export interface ISettingsManager {
+export interface SettingsManagerContract {
   isNewVersion: boolean;
-  getState: () => IState;
-  setState: (state: IState) => Promise<void>;
-  updateStatus: (status?: ExtensionStatus) => Promise<IState>;
+  getState: () => State;
+  setState: (state: State) => Promise<void>;
+  updateStatus: (status?: ExtensionStatus) => Promise<State>;
   deleteState: () => Promise<void>;
 }
 
-export interface IState extends Record<string, unknown> {
+export interface State extends Record<string, unknown> {
   version: string;
   status: ExtensionStatus;
   welcomeShown: boolean;

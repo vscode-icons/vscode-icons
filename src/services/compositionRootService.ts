@@ -1,6 +1,6 @@
 import type { BindToFluentSyntax, ServiceIdentifier } from 'inversify';
 
-import type { ICompositionRootService } from '../types/services';
+import type { CompositionRootServiceContract } from '../types/services';
 
 import { Container, decorate, inject, injectable } from 'inversify';
 import 'reflect-metadata';
@@ -18,13 +18,13 @@ import { VSCodeManager } from '../vscode/vscodeManager';
 
 type Class = new (...args: unknown[]) => unknown;
 
-export class CompositionRootService implements ICompositionRootService {
+export class CompositionRootService implements CompositionRootServiceContract {
   private readonly container: Container;
   private injectableClasses: ReadonlyArray<
     [Class, Array<ServiceIdentifier<symbol>>]
   >;
 
-  constructor(private context: types.IVSCodeExtensionContext) {
+  constructor(private context: types.VSCodeExtensionContext) {
     this.container = new Container({ defaultScope: 'Singleton' });
     this.init();
     this.initDecorations();
@@ -47,32 +47,32 @@ export class CompositionRootService implements ICompositionRootService {
       [
         ExtensionManager,
         [
-          types.SYMBOLS.IVSCodeManager,
-          types.SYMBOLS.IConfigManager,
-          types.SYMBOLS.ISettingsManager,
-          types.SYMBOLS.INotificationManager,
-          types.SYMBOLS.IIconsGenerator,
-          types.SYMBOLS.IProjectAutoDetectionManager,
+          types.SYMBOLS.VSCodeManager,
+          types.SYMBOLS.ConfigManager,
+          types.SYMBOLS.SettingsManager,
+          types.SYMBOLS.NotificationManager,
+          types.SYMBOLS.IconsGenerator,
+          types.SYMBOLS.ProjectAutoDetectionManager,
         ],
       ],
-      [ConfigManager, [types.SYMBOLS.IVSCodeManager]],
-      [LanguageResourceManager, [types.SYMBOLS.ILocale]],
+      [ConfigManager, [types.SYMBOLS.VSCodeManager]],
+      [LanguageResourceManager, [types.SYMBOLS.Locale]],
       [
         IconsGenerator,
-        [types.SYMBOLS.IVSCodeManager, types.SYMBOLS.IConfigManager],
+        [types.SYMBOLS.VSCodeManager, types.SYMBOLS.ConfigManager],
       ],
       [
         NotificationManager,
-        [types.SYMBOLS.IVSCodeManager, types.SYMBOLS.ILanguageResourceManager],
+        [types.SYMBOLS.VSCodeManager, types.SYMBOLS.LanguageResourceManager],
       ],
       [
         ProjectAutoDetectionManager,
-        [types.SYMBOLS.IVSCodeManager, types.SYMBOLS.IConfigManager],
+        [types.SYMBOLS.VSCodeManager, types.SYMBOLS.ConfigManager],
       ],
-      [SettingsManager, [types.SYMBOLS.IVSCodeManager]],
+      [SettingsManager, [types.SYMBOLS.VSCodeManager]],
       [
         VSCodeManager,
-        [types.SYMBOLS.IVSCode, types.SYMBOLS.IVSCodeExtensionContext],
+        [types.SYMBOLS.VSCode, types.SYMBOLS.VSCodeExtensionContext],
       ],
     ];
 
@@ -113,31 +113,35 @@ export class CompositionRootService implements ICompositionRootService {
     const bind = <T>(identifier: ServiceIdentifier<T>): BindToFluentSyntax<T> =>
       this.container.bind<T>(identifier);
 
-    bind<string>(types.SYMBOLS.ILocale).toConstantValue(vscode.env.language);
-    bind<types.IVSCode>(types.SYMBOLS.IVSCode).toConstantValue(vscode);
-    bind<types.IVSCodeExtensionContext>(
-      types.SYMBOLS.IVSCodeExtensionContext,
+    bind<string>(types.SYMBOLS.Locale).toConstantValue(vscode.env.language);
+    bind<types.VSCode>(types.SYMBOLS.VSCode).toConstantValue(vscode);
+    bind<types.VSCodeExtensionContext>(
+      types.SYMBOLS.VSCodeExtensionContext,
     ).toConstantValue(this.context);
 
-    bind<types.IExtensionManager>(types.SYMBOLS.IExtensionManager).to(
+    bind<types.ExtensionManagerContract>(types.SYMBOLS.ExtensionManager).to(
       ExtensionManager,
     );
-    bind<types.IConfigManager>(types.SYMBOLS.IConfigManager).to(ConfigManager);
-    bind<types.ISettingsManager>(types.SYMBOLS.ISettingsManager).to(
+    bind<types.ConfigManagerContract>(types.SYMBOLS.ConfigManager).to(
+      ConfigManager,
+    );
+    bind<types.SettingsManagerContract>(types.SYMBOLS.SettingsManager).to(
       SettingsManager,
     );
-    bind<types.ILanguageResourceManager>(
-      types.SYMBOLS.ILanguageResourceManager,
+    bind<types.LanguageResourceManagerContract>(
+      types.SYMBOLS.LanguageResourceManager,
     ).to(LanguageResourceManager);
-    bind<types.INotificationManager>(types.SYMBOLS.INotificationManager).to(
-      NotificationManager,
-    );
-    bind<types.IIconsGenerator>(types.SYMBOLS.IIconsGenerator).to(
+    bind<types.NotificationManagerContract>(
+      types.SYMBOLS.NotificationManager,
+    ).to(NotificationManager);
+    bind<types.IconsGeneratorContract>(types.SYMBOLS.IconsGenerator).to(
       IconsGenerator,
     );
-    bind<types.IProjectAutoDetectionManager>(
-      types.SYMBOLS.IProjectAutoDetectionManager,
+    bind<types.ProjectAutoDetectionManagerContract>(
+      types.SYMBOLS.ProjectAutoDetectionManager,
     ).to(ProjectAutoDetectionManager);
-    bind<types.IVSCodeManager>(types.SYMBOLS.IVSCodeManager).to(VSCodeManager);
+    bind<types.VSCodeManagerContract>(types.SYMBOLS.VSCodeManager).to(
+      VSCodeManager,
+    );
   }
 }

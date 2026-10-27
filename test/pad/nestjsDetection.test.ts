@@ -1,7 +1,7 @@
 import type {
-  IConfigManager,
-  IProjectAutoDetectionManager,
-  IVSCodeManager,
+  ConfigManagerContract,
+  ProjectAutoDetectionManagerContract,
+  VSCodeManagerContract,
 } from '../../src/types';
 
 import { expect } from 'chai';
@@ -16,28 +16,28 @@ import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
-describe('ProjectAutoDetectionManager: NestJS project tests', function () {
+describe('ProjectAutoDetectionManagerContract: NestJS project tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let configManagerStub: sinon.SinonStubbedInstance<IConfigManager>;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
+    let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let findFilesStub: sinon.SinonStub;
     let getPresetStub: sinon.SinonStub;
     let parseJSONStub: sinon.SinonStub;
-    let padManager: IProjectAutoDetectionManager;
+    let padManager: ProjectAutoDetectionManagerContract;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
 
       configManagerStub =
-        sandbox.createStubInstance<IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
 
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
       // eslint-disable-next-line @typescript-eslint/unbound-method
       getPresetStub = configManagerStub.getPreset;
 
       vscodeManagerStub =
-        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({

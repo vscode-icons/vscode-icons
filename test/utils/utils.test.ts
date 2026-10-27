@@ -13,7 +13,7 @@ import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 
 describe('Utils: tests', function () {
-  interface IUtils {
+  interface Utils {
     open: (target: string, options?: object) => Promise<ChildProcess>;
   }
 
@@ -525,7 +525,7 @@ describe('Utils: tests', function () {
         const utils = (
           proxyq.noCallThru().load('../../src/utils', {
             open: openStub,
-          }) as Record<string, IUtils>
+          }) as Record<string, Utils>
         ).Utils;
 
         await utils.open(target);
