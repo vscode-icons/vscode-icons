@@ -1,5 +1,5 @@
 import type * as types from '../types';
-import type { IPackageManifest } from '../types/package';
+import type { PackageManifest } from '../types/package';
 
 import { basename } from 'path';
 
@@ -11,7 +11,7 @@ import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
 export class ProjectAutoDetectionManager
-  implements types.IProjectAutoDetectionManager
+  implements types.ProjectAutoDetectionManagerContract
 {
   private readonly nestConfigFiles: string[] = [
     'nest-cli.json',
@@ -21,8 +21,8 @@ export class ProjectAutoDetectionManager
   ];
 
   constructor(
-    private vscodeManager: types.IVSCodeManager,
-    private configManager: types.IConfigManager,
+    private vscodeManager: types.VSCodeManagerContract,
+    private configManager: types.ConfigManagerContract,
   ) {
     if (!vscodeManager) {
       throw new ReferenceError(`'vscodeManager' not set to an instance`);
@@ -34,7 +34,7 @@ export class ProjectAutoDetectionManager
 
   public async detectProjects(
     projects: enums.Projects[],
-  ): Promise<types.IProjectDetectionResult[]> {
+  ): Promise<types.ProjectDetectionResult[]> {
     if (!projects || !projects.length) {
       return null;
     }
@@ -46,7 +46,7 @@ export class ProjectAutoDetectionManager
         : this.vscodeManager.workspace.findFiles(
             `**/{package.json,${this.nestConfigFiles.join(',')}}`,
             '**/node_modules/**',
-          ))) as types.IVSCodeUri[];
+          ))) as types.VSCodeUri[];
       return this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
@@ -54,15 +54,15 @@ export class ProjectAutoDetectionManager
   }
 
   private async detect(
-    results: types.IVSCodeUri[],
+    results: types.VSCodeUri[],
     projects: enums.Projects[],
-  ): Promise<types.IProjectDetectionResult[]> {
-    const detectionResults: types.IProjectDetectionResult[] = [];
+  ): Promise<types.ProjectDetectionResult[]> {
+    const detectionResults: types.ProjectDetectionResult[] = [];
     if (!results || !results.length) {
       return detectionResults;
     }
     for (const project of projects) {
-      const detectionResult: types.IProjectDetectionResult =
+      const detectionResult: types.ProjectDetectionResult =
         await this.checkForProject(results, project);
       detectionResults.push(detectionResult);
     }
@@ -70,9 +70,9 @@ export class ProjectAutoDetectionManager
   }
 
   private async checkForProject(
-    results: types.IVSCodeUri[],
+    results: types.VSCodeUri[],
     project: enums.Projects,
-  ): Promise<types.IProjectDetectionResult> {
+  ): Promise<types.ProjectDetectionResult> {
     const getPresetName = (_project: enums.Projects): string => {
       switch (_project) {
         case enums.Projects.angular:
@@ -108,7 +108,7 @@ export class ProjectAutoDetectionManager
     // 2. It's a detectable project
     // 3. The preset (when it's defined)
     // Use case: User has the preset set but project detection does not detect that project
-    const projectInfo: types.IProjectInfo = await this.getProjectInfo(
+    const projectInfo: types.ProjectInfo = await this.getProjectInfo(
       results,
       project,
     );
@@ -147,7 +147,7 @@ export class ProjectAutoDetectionManager
   }
 
   private async checkForConflictingProjects(
-    results: types.IVSCodeUri[],
+    results: types.VSCodeUri[],
     project: enums.Projects,
     enableIcons: boolean,
   ): Promise<enums.Projects[]> {
@@ -214,10 +214,10 @@ export class ProjectAutoDetectionManager
   }
 
   private async getProjectInfo(
-    results: types.IVSCodeUri[],
+    results: types.VSCodeUri[],
     project: enums.Projects,
-  ): Promise<types.IProjectInfo> {
-    let projectInfo: types.IProjectInfo = null;
+  ): Promise<types.ProjectInfo> {
+    let projectInfo: types.ProjectInfo = null;
     for (const result of results) {
       if (this.isNestProjectFile(basename(result.fsPath))) {
         if (project === enums.Projects.nestjs) {
@@ -227,8 +227,8 @@ export class ProjectAutoDetectionManager
         continue;
       }
       const content: string = await readFileAsync(result.fsPath, 'utf8');
-      const projectJson: IPackageManifest =
-        Utils.parseJSONSafe<IPackageManifest>(content);
+      const projectJson: PackageManifest =
+        Utils.parseJSONSafe<PackageManifest>(content);
       projectInfo = this.getInfo(projectJson, project);
       if (projectInfo) {
         break;
@@ -242,14 +242,14 @@ export class ProjectAutoDetectionManager
   }
 
   private getInfo(
-    projectJson: IPackageManifest,
+    projectJson: PackageManifest,
     name: enums.Projects,
-  ): types.IProjectInfo {
+  ): types.ProjectInfo {
     if (!projectJson) {
       return null;
     }
 
-    const getInfo = (key: string): types.IProjectInfo => {
+    const getInfo = (key: string): types.ProjectInfo => {
       if (projectJson.dependencies && !!projectJson.dependencies[key]) {
         return { name, version: projectJson.dependencies[key] };
       }

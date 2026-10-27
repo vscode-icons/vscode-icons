@@ -1,4 +1,4 @@
-import type { ILanguage } from '../types';
+import type { Language } from '../types';
 
 export const languages = {
   actionscript: { ids: 'actionscript', knownExtensions: ['as'] },
@@ -749,4 +749,4 @@ export const languages = {
   yarnlock: { ids: 'yarnlock', knownFilenames: ['yarn.lock'] },
   zig: { ids: 'zig', knownExtensions: ['zig'] },
   zip: { ids: 'zip', knownExtensions: ['zip'] },
-} satisfies Record<string, ILanguage>;
+} satisfies Record<string, Language>;

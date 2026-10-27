@@ -1,4 +1,4 @@
-import type { IPackageManifest } from '../types/package';
+import type { PackageManifest } from '../types/package';
 
 import manifest from '../../package.json';
 
@@ -9,7 +9,7 @@ export const constants = {
     apiName: 'vscode-icons-api',
     zedName: 'vscode-icons-zed',
     settingsFilename: 'vsicons.settings.json',
-    version: (manifest as IPackageManifest).version,
+    version: (manifest as PackageManifest).version,
     customIconFolderName: 'vsicons-custom-icons',
     distEntryFilename: 'vscode-icons.bundle.js',
     distEntryFilenameWeb: 'vscode-icons.web.bundle.js',

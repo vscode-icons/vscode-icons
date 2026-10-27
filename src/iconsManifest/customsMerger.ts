@@ -7,14 +7,14 @@ import * as enums from '../types/enums';
 
 export class CustomsMerger {
   public static async merge(
-    customFiles: types.IFileCollection,
-    extFiles: types.IFileCollection,
-    customFolders: types.IFolderCollection,
-    extFolders: types.IFolderCollection,
-    presets: types.IPresets,
-    projectDetectionResults?: types.IProjectDetectionResult[],
-    affectedPresets?: types.IPresets,
-  ): Promise<types.IMergedCollection> {
+    customFiles: types.FileCollection,
+    extFiles: types.FileCollection,
+    customFolders: types.FolderCollection,
+    extFolders: types.FolderCollection,
+    presets: types.Presets,
+    projectDetectionResults?: types.ProjectDetectionResult[],
+    affectedPresets?: types.Presets,
+  ): Promise<types.MergedCollection> {
     const projectPresets = await this.getProjectPresets(
       [enums.PresetNames.angular, enums.PresetNames.nestjs],
       presets,
@@ -75,22 +75,21 @@ export class CustomsMerger {
 
   private static async getProjectPresets(
     presetNames: enums.PresetNames[],
-    presets: types.IPresets,
-    projectDetectionResults?: types.IProjectDetectionResult[],
-    affectedPresets?: types.IPresets,
+    presets: types.Presets,
+    projectDetectionResults?: types.ProjectDetectionResult[],
+    affectedPresets?: types.Presets,
   ): Promise<Array<Record<string, boolean>>> {
     const projectPresets: Array<Record<string, boolean>> = [];
     for (const presetName of presetNames) {
       const name: string = enums.PresetNames[presetName];
       const project: string = enums.Projects[name] as string;
-      const projectDetectionResult: types.IProjectDetectionResult | undefined =
-        (
-          (Array.isArray(projectDetectionResults) && projectDetectionResults) ||
-          []
-        ).find(
-          (pdr: types.IProjectDetectionResult): boolean =>
-            pdr.project?.toString() === project,
-        );
+      const projectDetectionResult: types.ProjectDetectionResult | undefined = (
+        (Array.isArray(projectDetectionResults) && projectDetectionResults) ||
+        []
+      ).find(
+        (pdr: types.ProjectDetectionResult): boolean =>
+          pdr.project?.toString() === project,
+      );
       const preset: boolean = await this.getPreset(
         name,
         project,
@@ -106,9 +105,9 @@ export class CustomsMerger {
   private static async getPreset(
     name: string,
     project: string,
-    presets: types.IPresets,
-    projectDetectionResult?: types.IProjectDetectionResult,
-    affectedPresets?: types.IPresets,
+    presets: types.Presets,
+    projectDetectionResult?: types.ProjectDetectionResult,
+    affectedPresets?: types.Presets,
   ): Promise<boolean> {
     const hasProjectDetectionResult: boolean =
       !!projectDetectionResult &&
@@ -125,9 +124,9 @@ export class CustomsMerger {
 
   private static toggleProjectPreset(
     projectPresets: Array<Record<string, boolean>>,
-    customFiles: types.IFileCollection,
-    defaultFiles: types.IFileCollection,
-  ): types.IFileCollection {
+    customFiles: types.FileCollection,
+    defaultFiles: types.FileCollection,
+  ): types.FileCollection {
     let files = customFiles;
     for (const preset of projectPresets) {
       const key: string = Object.keys(preset)[0];
@@ -136,11 +135,11 @@ export class CustomsMerger {
         `^${enums.IconNames[enums.PresetNames[key] as keyof typeof enums.IconNames]}_.*\\D$`,
       );
       const icons = files.supported
-        .filter((file: types.IFileExtension): boolean => regex.test(file.icon))
-        .map((file: types.IFileExtension): string => file.icon);
+        .filter((file: types.FileExtension): boolean => regex.test(file.icon))
+        .map((file: types.FileExtension): string => file.icon);
       const defaultIcons = defaultFiles.supported
-        .filter((file: types.IFileExtension): boolean => regex.test(file.icon))
-        .map((file: types.IFileExtension): string => file.icon);
+        .filter((file: types.FileExtension): boolean => regex.test(file.icon))
+        .map((file: types.FileExtension): string => file.icon);
       const temp = this.togglePreset(disable, icons, files);
       files = this.togglePreset(disable, defaultIcons, temp);
     }
@@ -149,47 +148,47 @@ export class CustomsMerger {
 
   private static toggleOfficialIconsPreset(
     disable: boolean,
-    customFiles: types.IFileCollection,
+    customFiles: types.FileCollection,
     officialIcons: string[],
     defaultIcons: string[],
-  ): types.IFileCollection {
+  ): types.FileCollection {
     const temp = this.togglePreset(disable, officialIcons, customFiles);
     return this.togglePreset(!disable, defaultIcons, temp);
   }
 
   private static toggleFoldersAllDefaultIconPreset(
     disable: boolean,
-    customFolders: types.IFolderCollection,
-    defaultFolders: types.IFolderCollection,
-  ): types.IFolderCollection {
+    customFolders: types.FolderCollection,
+    defaultFolders: types.FolderCollection,
+  ): types.FolderCollection {
     const folderIcons = this.getNonDisabledIcons(customFolders);
     const defaultFolderIcons = defaultFolders.supported
-      .filter((folder: types.IFolderExtension): boolean => !folder.disabled)
-      .filter((folder: types.IFolderExtension): boolean =>
+      .filter((folder: types.FolderExtension): boolean => !folder.disabled)
+      .filter((folder: types.FolderExtension): boolean =>
         // Exclude overrides
         customFolders.supported.every(
-          (cFolder: types.IFolderExtension): boolean =>
+          (cFolder: types.FolderExtension): boolean =>
             cFolder.overrides !== folder.icon,
         ),
       )
-      .filter((folder: types.IFolderExtension): boolean =>
+      .filter((folder: types.FolderExtension): boolean =>
         // Exclude disabled by custom
         customFolders.supported
           .filter(
-            (cFolder: types.IFolderExtension): boolean =>
+            (cFolder: types.FolderExtension): boolean =>
               folder.icon === cFolder.icon,
           )
           .every(
-            (cFolder: types.IFolderExtension): boolean => !cFolder.disabled,
+            (cFolder: types.FolderExtension): boolean => !cFolder.disabled,
           ),
       )
-      .map((folder: types.IFolderExtension): string => folder.icon);
-    const temp = this.togglePreset<types.IFolderCollection>(
+      .map((folder: types.FolderExtension): string => folder.icon);
+    const temp = this.togglePreset<types.FolderCollection>(
       disable,
       folderIcons,
       customFolders,
     );
-    const collection = this.togglePreset<types.IFolderCollection>(
+    const collection = this.togglePreset<types.FolderCollection>(
       disable,
       defaultFolderIcons,
       temp,
@@ -210,10 +209,10 @@ export class CustomsMerger {
 
   private static toggleHideFoldersPreset(
     disable: boolean,
-    customFolders: types.IFolderCollection,
-  ): types.IFolderCollection {
+    customFolders: types.FolderCollection,
+  ): types.FolderCollection {
     const folderIcons = this.getNonDisabledIcons(customFolders);
-    const collection = this.togglePreset<types.IFolderCollection>(
+    const collection = this.togglePreset<types.FolderCollection>(
       disable,
       folderIcons,
       customFolders,
@@ -234,20 +233,20 @@ export class CustomsMerger {
   }
 
   private static getNonDisabledIcons(
-    customFolders: types.IFolderCollection,
+    customFolders: types.FolderCollection,
   ): string[] {
     return customFolders.supported
-      .filter((cFolder: types.IFolderExtension): boolean => !cFolder.disabled)
-      .map((cFolder: types.IFolderExtension): string => cFolder.icon);
+      .filter((cFolder: types.FolderExtension): boolean => !cFolder.disabled)
+      .map((cFolder: types.FolderExtension): string => cFolder.icon);
   }
 
   private static mergeCustoms(
-    customFiles: types.IFileCollection,
-    supportedFiles: types.IFileCollection,
-    customFolders: types.IFolderCollection,
-    supportedFolders: types.IFolderCollection,
-  ): types.IMergedCollection {
-    const files: types.IFileCollection = {
+    customFiles: types.FileCollection,
+    supportedFiles: types.FileCollection,
+    customFolders: types.FolderCollection,
+    supportedFolders: types.FolderCollection,
+  ): types.MergedCollection {
+    const files: types.FileCollection = {
       default: this.mergeDefaultFiles(
         customFiles.default,
         supportedFiles.default,
@@ -258,7 +257,7 @@ export class CustomsMerger {
       ),
     };
 
-    const folders: types.IFolderCollection = {
+    const folders: types.FolderCollection = {
       default: this.mergeDefaultFolders(
         customFolders.default,
         supportedFolders.default,
@@ -273,9 +272,9 @@ export class CustomsMerger {
   }
 
   private static mergeDefaultFiles(
-    custom: types.IFileDefault,
-    supported: types.IFileDefault,
-  ): types.IFileDefault {
+    custom: types.FileDefault,
+    supported: types.FileDefault,
+  ): types.FileDefault {
     return {
       file: custom.file || supported.file,
       file_light: custom.file_light || supported.file_light,
@@ -283,9 +282,9 @@ export class CustomsMerger {
   }
 
   private static mergeDefaultFolders(
-    custom: types.IFolderDefault,
-    supported: types.IFolderDefault,
-  ): types.IFolderDefault {
+    custom: types.FolderDefault,
+    supported: types.FolderDefault,
+  ): types.FolderDefault {
     return {
       folder: custom.folder || supported.folder,
       folder_light: custom.folder_light || supported.folder_light,
@@ -296,23 +295,23 @@ export class CustomsMerger {
   }
 
   private static mergeSupported(
-    custom: types.IExtension[],
-    supported: types.IExtension[],
-  ): types.IExtension[] {
+    custom: types.Extension[],
+    supported: types.Extension[],
+  ): types.Extension[] {
     if (!custom || !custom.length) {
       return supported;
     }
     // start the merge operation
-    let final: types.IExtension[] = cloneDeep(supported);
-    custom.forEach((file: types.IFileExtension): void => {
+    let final: types.Extension[] = cloneDeep(supported);
+    custom.forEach((file: types.FileExtension): void => {
       const officialFiles = final.filter(
-        (extension: types.IExtension): boolean => extension.icon === file.icon,
+        (extension: types.Extension): boolean => extension.icon === file.icon,
       );
       if (officialFiles.length) {
         // existing icon
         // checking if the icon is disabled
         if (file.disabled != null) {
-          officialFiles.forEach((extension: types.IExtension): void => {
+          officialFiles.forEach((extension: types.Extension): void => {
             extension.disabled = file.disabled;
           });
           if (file.disabled) {
@@ -328,26 +327,26 @@ export class CustomsMerger {
       if (file.extends) {
         final
           .filter(
-            (extension: types.IExtension): boolean =>
+            (extension: types.Extension): boolean =>
               extension.icon === file.extends,
           )
-          .forEach((extension: types.IExtension): void => {
+          .forEach((extension: types.Extension): void => {
             extension.icon = file.icon;
           });
       }
       // remove overrides
       final = final.filter(
-        (extension: types.IExtension): boolean =>
+        (extension: types.Extension): boolean =>
           extension.icon !== file.overrides,
       );
       // check if file extensions are already in use and remove them
       file.extensions ??= [];
       file.extensions.forEach((ext: string): void =>
         final
-          .filter((extension: types.IExtension): string =>
+          .filter((extension: types.Extension): string =>
             extension.extensions?.find((el: string): boolean => el === ext),
           )
-          .forEach((extension: types.IExtension): string[] =>
+          .forEach((extension: types.Extension): string[] =>
             remove(extension.extensions, (el: string): boolean => el === ext),
           ),
       );
@@ -357,18 +356,18 @@ export class CustomsMerger {
   }
 
   // Note: generics and union types don't work very well :(
-  // that's why we had to use IExtensionCollection<> instead of T
+  // that's why we had to use ExtensionCollection<> instead of T
   private static togglePreset<
-    T extends types.IFileCollection | types.IFolderCollection,
+    T extends types.FileCollection | types.FolderCollection,
   >(
     disable: boolean,
     icons: string[],
-    customItems: types.IExtensionCollection<types.IExtension>,
+    customItems: types.ExtensionCollection<types.Extension>,
   ): T {
     const workingCopy = cloneDeep(customItems);
     icons.forEach((icon: string): void => {
       const existing = workingCopy.supported.filter(
-        (extension: types.IExtension): boolean => extension.icon === icon,
+        (extension: types.Extension): boolean => extension.icon === icon,
       );
       if (!existing.length) {
         workingCopy.supported.push({
@@ -376,7 +375,7 @@ export class CustomsMerger {
           disabled: disable,
         });
       } else {
-        existing.forEach((extension: types.IExtension): void => {
+        existing.forEach((extension: types.Extension): void => {
           extension.disabled = disable;
         });
       }

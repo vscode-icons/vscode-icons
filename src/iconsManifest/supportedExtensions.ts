@@ -1,8 +1,8 @@
-import type { IFileCollection } from '../types';
+import type { FileCollection } from '../types';
 
 import { languages } from './languages';
 
-export const extensions: IFileCollection = {
+export const extensions: FileCollection = {
   default: {
     file: { icon: 'file' },
   },

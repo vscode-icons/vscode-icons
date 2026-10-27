@@ -1,4 +1,4 @@
-import type { IExtensionManager } from '../src/types';
+import type { ExtensionManagerContract } from '../src/types';
 
 import { expect } from 'chai';
 import proxyq from 'proxyquire';
@@ -10,27 +10,27 @@ import { constants } from '../src/constants';
 import { context as extensionContext } from './fixtures/extensionContext';
 
 describe('Entry points: tests', function () {
-  interface IEntrypoint {
+  interface Entrypoint {
     activate: (arg: unknown) => unknown;
     deactivate: () => unknown;
   }
 
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let extensionStub: sinon.SinonStubbedInstance<IExtensionManager>;
-    let EntryPoint: IEntrypoint;
+    let extensionStub: sinon.SinonStubbedInstance<ExtensionManagerContract>;
+    let EntryPoint: Entrypoint;
 
     before(function () {
       proxyq.noCallThru();
       extensionStub =
-        sinon.createStubInstance<IExtensionManager>(ExtensionManager);
+        sinon.createStubInstance<ExtensionManagerContract>(ExtensionManager);
       EntryPoint = proxyq('../src/index', {
         './services/compositionRootService': {
           CompositionRootService: sinon
             .stub()
             .returns({ get: sinon.stub().returns(extensionStub) }),
         },
-      }) as IEntrypoint;
+      }) as Entrypoint;
     });
 
     after(function () {

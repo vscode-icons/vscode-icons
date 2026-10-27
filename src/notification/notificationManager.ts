@@ -1,16 +1,16 @@
 import type {
-  ILanguageResourceManager,
-  INotificationManager,
-  IVSCodeManager,
   LangResourceLike,
+  LanguageResourceManagerContract,
+  NotificationManagerContract,
+  VSCodeManagerContract,
 } from '../types';
 
 import { format } from 'util';
 
-export class NotificationManager implements INotificationManager {
+export class NotificationManager implements NotificationManagerContract {
   constructor(
-    private vscodeManager: IVSCodeManager,
-    private i18nManager: ILanguageResourceManager,
+    private vscodeManager: VSCodeManagerContract,
+    private i18nManager: LanguageResourceManagerContract,
   ) {}
 
   public async notifyInfo(

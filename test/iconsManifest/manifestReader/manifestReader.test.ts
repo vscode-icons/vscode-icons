@@ -1,4 +1,4 @@
-import type { IPresets } from '../../../src/types';
+import type { Presets } from '../../../src/types';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';
@@ -26,7 +26,7 @@ describe('ManifestReader: tests', function () {
     });
 
     context(`function 'getToggledValue'`, function () {
-      let presets: IPresets;
+      let presets: Presets;
 
       beforeEach(function () {
         presets = {

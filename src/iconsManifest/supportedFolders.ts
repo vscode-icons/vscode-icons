@@ -1,6 +1,6 @@
-import type { IFolderCollection } from '../types';
+import type { FolderCollection } from '../types';
 
-export const extensions: IFolderCollection = {
+export const extensions: FolderCollection = {
   default: {
     folder: { icon: 'folder' },
     root_folder: { icon: 'root_folder' },
