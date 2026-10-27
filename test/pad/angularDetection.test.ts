@@ -69,6 +69,39 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
         iconsDisabledStub = sandbox.stub(ManifestReader, 'iconsDisabled');
       });
 
+      context(`detects an Angular project from config files`, function () {
+        it('angular.json', async function () {
+          const ngConfigPath = 'apps/web/angular.json';
+          findFilesStub.resolves([{ fsPath: ngConfigPath }]);
+          getPresetStub.returns({ workspaceValue: undefined });
+          iconsDisabledStub.resolves(true);
+
+          const res = await padManager.detectProjects([enums.Projects.angular]);
+          const firstResult = res[0];
+
+          expect(readFileAsyncStub.called).to.be.false;
+          expect(res).to.be.an('array');
+          expect(firstResult).to.be.an('object');
+          expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
+          expect(firstResult).to.have.all.keys(
+            'apply',
+            'project',
+            'conflictingProjects',
+            'langResourceKey',
+            'value',
+          );
+          expect(firstResult).ownProperty('apply').to.be.true;
+          expect(firstResult)
+            .ownProperty('project')
+            .to.equal(enums.Projects.angular);
+          expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
+          expect(firstResult)
+            .ownProperty('langResourceKey')
+            .to.equal(enums.LangResourceKeys.ngDetected);
+          expect(firstResult).ownProperty('value').to.be.true;
+        });
+      });
+
       context(`detects a 'package.json' file`, function () {
         beforeEach(function () {
           parseJSONStub.returns({ name: 'project' });
