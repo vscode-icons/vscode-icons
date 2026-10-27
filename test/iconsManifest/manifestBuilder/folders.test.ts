@@ -104,6 +104,14 @@ describe('ManifestBuilder: folders icons test', function () {
         expect(prodManifest.vscode).to.deep.equal(devManifest.vscode);
         expect(prodManifest.api.files.extensions).to.be.empty;
         expect(prodManifest.api.files.filenames).to.be.empty;
+        expect(prodManifest.api.files._default).to.equal('');
+        expect(prodManifest.api.folders._default.closed).to.equal('');
+        expect(prodManifest.api.folders._default.opened).to.equal('');
+        expect(prodManifest.api.folders).to.not.have.property('root');
+        expect(prodManifest.api.light.files._default).to.equal('');
+        expect(prodManifest.api.light.folders._default.closed).to.equal('');
+        expect(prodManifest.api.light.folders._default.opened).to.equal('');
+        expect(prodManifest.api.light.folders).to.not.have.property('root');
         for (const theme of prodManifest.zed.themes) {
           expect(theme.directory_icons.collapsed).to.equal('');
           expect(theme.directory_icons.expanded).to.equal('');
