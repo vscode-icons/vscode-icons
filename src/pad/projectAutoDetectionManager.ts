@@ -7,18 +7,17 @@ import { ErrorHandler } from '../common/errorHandler';
 import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
+import { extensions as extFiles } from '../iconsManifest/supportedExtensions';
 import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
 export class ProjectAutoDetectionManager
   implements types.ProjectAutoDetectionManagerContract
 {
-  private readonly nestConfigFiles: string[] = [
-    'nest-cli.json',
-    '.nest-cli.json',
-    'nestconfig.json',
-    '.nestconfig.json',
-  ];
+  private readonly nestConfigFiles: string[] = extFiles.supported.find(
+    (ext: types.FileExtension): boolean =>
+      ext.icon === enums.PresetNames[enums.PresetNames.nestjs],
+  ).extensions;
 
   constructor(
     private vscodeManager: types.VSCodeManagerContract,
