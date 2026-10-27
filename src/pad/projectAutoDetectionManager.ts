@@ -14,6 +14,11 @@ import { Utils } from '../utils';
 export class ProjectAutoDetectionManager
   implements types.ProjectAutoDetectionManagerContract
 {
+  private readonly ngConfigFiles: string[] = extFiles.supported.find(
+    (ext: types.FileExtension): boolean =>
+      ext.icon === enums.PresetNames[enums.PresetNames.angular],
+  ).extensions;
+
   private readonly nestConfigFiles: string[] = extFiles.supported.find(
     (ext: types.FileExtension): boolean =>
       ext.icon === enums.PresetNames[enums.PresetNames.nestjs],
@@ -43,7 +48,7 @@ export class ProjectAutoDetectionManager
         .disableDetect
         ? Promise.resolve(null)
         : this.vscodeManager.workspace.findFiles(
-            `**/{package.json,${this.nestConfigFiles.join(',')}}`,
+            `**/{package.json,${this.ngConfigFiles.join(',')},${this.nestConfigFiles.join(',')}}`,
             '**/node_modules/**',
           ))) as types.VSCodeUri[];
       return this.detect(results, projects);
@@ -218,7 +223,15 @@ export class ProjectAutoDetectionManager
   ): Promise<types.ProjectInfo> {
     let projectInfo: types.ProjectInfo = null;
     for (const result of results) {
-      if (this.isNestProjectFile(basename(result.fsPath))) {
+      const fileName: string = basename(result.fsPath);
+      if (this.isNgProjectFile(fileName)) {
+        if (project === enums.Projects.angular) {
+          projectInfo = { name: project, version: '' };
+          break;
+        }
+        continue;
+      }
+      if (this.isNestProjectFile(fileName)) {
         if (project === enums.Projects.nestjs) {
           projectInfo = { name: project, version: '' };
           break;
@@ -234,6 +247,10 @@ export class ProjectAutoDetectionManager
       }
     }
     return projectInfo;
+  }
+
+  private isNgProjectFile(fileName: string): boolean {
+    return this.ngConfigFiles.includes(fileName);
   }
 
   private isNestProjectFile(fileName: string): boolean {
