@@ -8,7 +8,6 @@ import { expect } from 'chai';
 import * as sinon from 'sinon';
 
 import { ErrorHandler } from '../../src/common/errorHandler';
-import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ManifestReader } from '../../src/iconsManifest';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
@@ -23,6 +22,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
     let configManagerStub: sinon.SinonStubbedInstance<IConfigManager>;
     let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
     let findFilesStub: sinon.SinonStub;
+    let readFileStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
     let padManager: IProjectAutoDetectionManager;
 
@@ -38,8 +38,10 @@ describe('ProjectAutoDetectionManager: tests', function () {
         sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
+      readFileStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
         findFiles: findFilesStub,
+        fs: { readFile: readFileStub },
       }));
 
       padManager = new ProjectAutoDetectionManager(
@@ -76,10 +78,26 @@ describe('ProjectAutoDetectionManager: tests', function () {
       expect(logErrorStub.calledOnceWith(error)).to.be.true;
     });
 
+    it(`logs an Error when reading a 'package.json' fails`, async function () {
+      vsicons.projectDetection.disableDetect = false;
+      const error = new Error('ENOENT');
+      findFilesStub.resolves([{ fsPath: '' }]);
+      readFileStub.rejects(error);
+      configManagerStub.getPreset.returns({
+        key: '',
+        workspaceValue: undefined,
+      });
+      sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+
+      await padManager.detectProjects([enums.Projects.angular]);
+
+      expect(logErrorStub.calledOnceWith(error)).to.be.true;
+    });
+
     it('detects non conflicting projects', async function () {
       vsicons.projectDetection.disableDetect = false;
       findFilesStub.resolves([{ fsPath: '' }]);
-      sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+      readFileStub.resolves(undefined);
       sandbox.stub(Utils, 'parseJSONSafe').returns({
         dependencies: {
           angularjs: '1.0.0',
@@ -143,7 +161,7 @@ describe('ProjectAutoDetectionManager: tests', function () {
       it(`returns the conflict project detected 'LangResourceKey'`, async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '' }]);
-        sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+        readFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',
