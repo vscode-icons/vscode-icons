@@ -82,7 +82,7 @@ describe('Specifications of supported folders: tests', function () {
 
         context('does NOT have', function () {
           it('icon-only declaration', function () {
-            testFolders.forEach((folder: IFolderExtension) => {
+            testFolders.forEach((folder: FolderExtension) => {
               expect(
                 Object.keys(folder),
                 `Icon-only declaration for ${folder.icon}`,

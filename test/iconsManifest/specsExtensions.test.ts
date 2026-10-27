@@ -104,7 +104,7 @@ describe('Specifications of supported extensions: tests', function () {
 
         context('does NOT have', function () {
           it('icon-only declaration', function () {
-            testFiles.forEach((file: IFileExtension) => {
+            testFiles.forEach((file: FileExtension) => {
               expect(
                 Object.keys(file),
                 `Icon-only declaration for ${file.icon}`,
