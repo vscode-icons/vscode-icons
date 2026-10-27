@@ -81,6 +81,15 @@ describe('Specifications of supported folders: tests', function () {
         });
 
         context('does NOT have', function () {
+          it('icon-only declaration', function () {
+            testFolders.forEach((folder: FolderExtension) => {
+              expect(
+                Object.keys(folder),
+                `Icon-only declaration for ${folder.icon}`,
+              ).to.have.length.greaterThan(1);
+            });
+          });
+
           it(`duplicate declaration`, function () {
             const unique = uniqBy(testFolders, JSON.stringify);
 
