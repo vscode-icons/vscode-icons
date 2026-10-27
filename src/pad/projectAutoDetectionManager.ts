@@ -1,6 +1,8 @@
 import type * as types from '../types';
 import type { IPackageManifest } from '../types/package';
 
+import { basename } from 'path';
+
 import { ErrorHandler } from '../common/errorHandler';
 import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
@@ -11,6 +13,13 @@ import { Utils } from '../utils';
 export class ProjectAutoDetectionManager
   implements types.IProjectAutoDetectionManager
 {
+  private readonly nestConfigFiles: string[] = [
+    'nest-cli.json',
+    '.nest-cli.json',
+    'nestconfig.json',
+    '.nestconfig.json',
+  ];
+
   constructor(
     private vscodeManager: types.IVSCodeManager,
     private configManager: types.IConfigManager,
@@ -35,7 +44,7 @@ export class ProjectAutoDetectionManager
         .disableDetect
         ? Promise.resolve(null)
         : this.vscodeManager.workspace.findFiles(
-            '**/{package.json,nest-cli.json,.nest-cli.json,nestconfig.json,.nestconfig.json}',
+            `**/{package.json,${this.nestConfigFiles.join(',')}}`,
             '**/node_modules/**',
           ))) as types.IVSCodeUri[];
       return this.detect(results, projects);
@@ -210,8 +219,7 @@ export class ProjectAutoDetectionManager
   ): Promise<types.IProjectInfo> {
     let projectInfo: types.IProjectInfo = null;
     for (const result of results) {
-      const fileName = result.fsPath.split(/[\\/]/).pop();
-      if (this.isNestProjectFile(fileName)) {
+      if (this.isNestProjectFile(basename(result.fsPath))) {
         if (project === enums.Projects.nestjs) {
           projectInfo = { name: project, version: '' };
           break;
@@ -230,12 +238,7 @@ export class ProjectAutoDetectionManager
   }
 
   private isNestProjectFile(fileName: string): boolean {
-    return [
-      'nest-cli.json',
-      '.nest-cli.json',
-      'nestconfig.json',
-      '.nestconfig.json',
-    ].includes(fileName);
+    return this.nestConfigFiles.includes(fileName);
   }
 
   private getInfo(
