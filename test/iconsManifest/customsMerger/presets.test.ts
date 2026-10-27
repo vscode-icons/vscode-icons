@@ -612,6 +612,54 @@ describe('CustomsMerger: toggle presets tests', function () {
         ).to.be.true;
       });
 
+      it('preserves light folder defaults when toggling folder presets', async function () {
+        const toggle = async (
+          defaultDisabled: boolean,
+          foldersAllDefaultIcon: boolean,
+          hideFolders: boolean,
+        ): Promise<FolderCollection> => {
+          vsicons.presets.foldersAllDefaultIcon = foldersAllDefaultIcon;
+          vsicons.presets.hideFolders = hideFolders;
+          const foldersWithLightDefaults: FolderCollection = {
+            default: {
+              folder: { icon: 'folder', disabled: defaultDisabled },
+              folder_light: {
+                icon: 'folder_light',
+                disabled: defaultDisabled,
+              },
+              root_folder: { icon: 'root_folder', disabled: defaultDisabled },
+              root_folder_light: {
+                icon: 'root_folder_light',
+                disabled: defaultDisabled,
+              },
+            },
+            supported: extFolders.supported,
+          };
+          const { folders } = await CustomsMerger.merge(
+            null,
+            extFiles,
+            null,
+            foldersWithLightDefaults,
+            vsicons.presets,
+          );
+          return folders;
+        };
+
+        const expectDefaultDisabled = (
+          folders: FolderCollection,
+          disabled: boolean,
+        ): void => {
+          expect(folders.default.folder.disabled).to.equal(disabled);
+          expect(folders.default.folder_light.disabled).to.equal(disabled);
+          expect(folders.default.root_folder.disabled).to.equal(disabled);
+          expect(folders.default.root_folder_light.disabled).to.equal(disabled);
+        };
+
+        expectDefaultDisabled(await toggle(true, false, false), true);
+        expectDefaultDisabled(await toggle(false, true, false), false);
+        expectDefaultDisabled(await toggle(false, false, true), true);
+      });
+
       it(`custom folder associations are merged after presets`, async function () {
         vsicons.presets.foldersAllDefaultIcon = true;
         const customFolders = {
