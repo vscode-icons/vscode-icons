@@ -22,14 +22,7 @@ export class CustomsMerger {
       affectedPresets,
     );
 
-    let { files, folders } = this.mergeCustoms(
-      customFiles || { default: {}, supported: [] },
-      extFiles,
-      customFolders || { default: {}, supported: [] },
-      extFolders,
-    );
-
-    files = this.toggleProjectPreset(projectPresets, files, extFiles);
+    let files = this.toggleProjectPreset(projectPresets, extFiles, extFiles);
 
     files = this.toggleOfficialIconsPreset(
       !presets.jsOfficial,
@@ -63,14 +56,19 @@ export class CustomsMerger {
       [enums.IconNames.yaml],
     );
 
-    folders = this.toggleFoldersAllDefaultIconPreset(
+    let folders = this.toggleFoldersAllDefaultIconPreset(
       presets.foldersAllDefaultIcon,
-      folders,
+      extFolders,
       extFolders,
     );
     folders = this.toggleHideFoldersPreset(presets.hideFolders, folders);
 
-    return { files, folders };
+    return this.mergeCustoms(
+      customFiles || { default: {}, supported: [] },
+      files,
+      customFolders || { default: {}, supported: [] },
+      folders,
+    );
   }
 
   private static async getProjectPresets(

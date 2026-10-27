@@ -110,10 +110,9 @@ describe('CustomsMerger: default extensions tests', function () {
           )
         ).folders.default.folder_light;
 
-        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFolders.default.folder_light.icon);
         expect(def.format).to.equal(customFolders.default.folder_light.format);
-        expect(def.disabled).to.be.false;
       });
 
       it('overriden', async function () {
@@ -134,10 +133,9 @@ describe('CustomsMerger: default extensions tests', function () {
           )
         ).folders.default.folder;
 
-        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFolders.default.folder.icon);
         expect(def.format).to.equal(customFolders.default.folder.format);
-        expect(def.disabled).to.be.false;
       });
 
       it('disabled', async function () {
@@ -186,12 +184,11 @@ describe('CustomsMerger: default extensions tests', function () {
           )
         ).folders.default.root_folder_light;
 
-        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFolders.default.root_folder_light.icon);
         expect(def.format).to.equal(
           customFolders.default.root_folder_light.format,
         );
-        expect(def.disabled).to.be.false;
       });
 
       it('overriden', async function () {
@@ -212,10 +209,9 @@ describe('CustomsMerger: default extensions tests', function () {
           )
         ).folders.default.root_folder;
 
-        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFolders.default.root_folder.icon);
         expect(def.format).to.equal(customFolders.default.root_folder.format);
-        expect(def.disabled).to.be.false;
       });
 
       it('disabled', async function () {

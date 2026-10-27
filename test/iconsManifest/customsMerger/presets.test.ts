@@ -612,7 +612,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         ).to.be.true;
       });
 
-      it(`default custom icons 'associations' are respected`, async function () {
+      it(`custom folder associations are merged after presets`, async function () {
         vsicons.presets.foldersAllDefaultIcon = true;
         const customFolders = {
           default: {
@@ -638,9 +638,13 @@ describe('CustomsMerger: toggle presets tests', function () {
 
         expect(folders.default.folder.disabled).to.be.true;
         expect(folders.default.root_folder.disabled).to.be.true;
-        folders.supported.forEach(
-          (def: FileExtension) => expect(def.disabled).to.be.true,
-        );
+        expect(
+          folders.supported.find((def: FileExtension) => def.icon === 'aws3')
+            .disabled,
+        ).to.be.undefined;
+        folders.supported
+          .filter((def: FileExtension) => def.icon !== 'aws3')
+          .forEach((def: FileExtension) => expect(def.disabled).to.be.true);
       });
     });
 
@@ -680,7 +684,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         ).to.be.true;
       });
 
-      it(`custom icons 'associations' are ignored`, async function () {
+      it(`custom folder associations are merged after presets`, async function () {
         vsicons.presets.hideFolders = true;
         const customFolders = {
           default: {
@@ -704,12 +708,12 @@ describe('CustomsMerger: toggle presets tests', function () {
           vsicons.presets,
         );
 
-        expect(folders.default.folder.disabled).to.be.true;
-        expect(folders.default.root_folder.disabled).to.be.true;
+        expect(folders.default.folder.disabled).to.be.undefined;
+        expect(folders.default.root_folder.disabled).to.be.undefined;
         expect(
           folders.supported.find((def: FileExtension) => def.icon === 'aws3')
             .disabled,
-        ).to.be.true;
+        ).to.be.undefined;
         folders.supported
           .filter((def: FileExtension) => def.icon !== 'aws3')
           .forEach((def: FileExtension) => expect(def.disabled).to.be.true);
