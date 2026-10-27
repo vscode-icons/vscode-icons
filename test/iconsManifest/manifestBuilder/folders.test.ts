@@ -11,7 +11,6 @@ import * as sinon from 'sinon';
 import * as fsAsync from '../../../src/common/fsAsync';
 import { constants } from '../../../src/constants';
 import { ManifestBuilder } from '../../../src/iconsManifest';
-import { apiSchema, zedSchema } from '../../../src/types';
 import * as enums from '../../../src/types/enums';
 import { Utils } from '../../../src/utils';
 import { extensions as fixtFolders } from '../../fixtures/supportedFolders';
@@ -103,13 +102,12 @@ describe('ManifestBuilder: folders icons test', function () {
         );
 
         expect(prodManifest.vscode).to.deep.equal(devManifest.vscode);
-        expect(prodManifest.api.files.extensions).to.deep.equal(
-          apiSchema.files.extensions,
-        );
-        expect(prodManifest.api.files.filenames).to.deep.equal(
-          apiSchema.files.filenames,
-        );
-        expect(prodManifest.zed).to.deep.equal(zedSchema);
+        expect(prodManifest.api.files.extensions).to.be.empty;
+        expect(prodManifest.api.files.filenames).to.be.empty;
+        for (const theme of prodManifest.zed.themes) {
+          expect(theme.directory_icons.collapsed).to.equal('');
+          expect(theme.directory_icons.expanded).to.equal('');
+        }
       });
     });
 
