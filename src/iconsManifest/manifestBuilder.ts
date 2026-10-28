@@ -172,6 +172,11 @@ export class ManifestBuilder {
   private static configureApiDefaultIcons(
     vscDefs: types.VSCodeIconDefinition,
   ): types.ApiIconSchema {
+    // In production environment, return the default API schema immediately
+    if (constants.environment.production) {
+      return defaultApiSchema;
+    }
+
     const apiSchema = cloneDeep(defaultApiSchema);
 
     // set the default and root icons
@@ -209,6 +214,11 @@ export class ManifestBuilder {
   private static configureZedThemesDirectoryIcons(
     vscDefs: types.VSCodeIconDefinition,
   ): types.ZedIconSchema {
+    // In production environment, return the default Zed schema immediately
+    if (constants.environment.production) {
+      return defaultZedSchema;
+    }
+
     const zedSchema = cloneDeep(defaultZedSchema);
 
     for (const themeIndex of Object.values(constants.zed.dark_themes)) {
@@ -279,35 +289,34 @@ export class ManifestBuilder {
     const hasDefaultLightFile =
       vscSchema.iconDefinitions._file_light.iconPath != null &&
       vscSchema.iconDefinitions._file_light.iconPath !== '';
-    const res = {
-      //  files section
-      files: this.buildFiles(files, hasDefaultLightFile),
-      filesOfficial: this.buildFiles(
-        files,
-        hasDefaultLightFile,
-        'officialIcons',
-      ),
-      filesAngular: this.buildFiles(files, hasDefaultLightFile, 'angularIcons'),
-      filesNest: this.buildFiles(files, hasDefaultLightFile, 'nestIcons'),
-      // folders section
-      folders: this.buildFolders(folders, hasDefaultLightFolder),
-      foldersOfficial: this.buildFolders(folders, hasDefaultLightFolder, true),
-    };
-    // map structure to the schema
+
+    // build the initial files and folders structures for VS Code manifest
+    const [resFiles, resFolders] = await Promise.all([
+      this.buildFiles(files, hasDefaultLightFile),
+      this.buildFolders(folders, hasDefaultLightFolder),
+    ]);
+
+    // In production only the VS Code manifest is persisted,
+    if (constants.environment.production) {
+      return {
+        api: apiSchema,
+        vscode: this.buildVSCJsonStructure(resFiles, resFolders, vscSchema),
+        zed: zedSchema,
+      };
+    }
+
+    // build the additional structures for Zed manifest
+    // in non-production environments
     const [
-      resFiles,
       resFilesOfficial,
-      resFolders,
-      resFoldersOfficial,
       resFilesAngular,
       resFilesNest,
+      resFoldersOfficial,
     ] = await Promise.all([
-      res.files,
-      res.filesOfficial,
-      res.folders,
-      res.foldersOfficial,
-      res.filesAngular,
-      res.filesNest,
+      this.buildFiles(files, hasDefaultLightFile, 'officialIcons'), // filesOfficial
+      this.buildFiles(files, hasDefaultLightFile, 'angularIcons'), // filesAngular
+      this.buildFiles(files, hasDefaultLightFile, 'nestIcons'), // filesNest
+      this.buildFolders(folders, hasDefaultLightFolder, true), // foldersOfficial
     ]);
 
     const vscFinalSchema = this.buildVSCJsonStructure(

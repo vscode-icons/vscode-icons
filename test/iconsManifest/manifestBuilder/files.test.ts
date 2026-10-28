@@ -65,6 +65,7 @@ describe('ManifestBuilder: files icons test', function () {
         default: { folder: { icon: 'folder', format: 'svg' } },
         supported: [],
       };
+      sandbox.stub(constants.environment, 'production').value(false);
     });
 
     afterEach(function () {
@@ -139,6 +140,160 @@ describe('ManifestBuilder: files icons test', function () {
       expect(manifest.vscode.iconDefinitions._file.iconPath).to.equal(
         `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file${constants.iconsManifest.iconSuffix}.svg`,
       );
+    });
+
+    context('production', function () {
+      it('builds only the VS Code manifest', async function () {
+        const devManifest = await ManifestBuilder.buildManifest(
+          fixtFiles,
+          emptyFolderCollection,
+        );
+
+        sandbox.stub(constants.environment, 'production').value(true);
+
+        const prodManifest = await ManifestBuilder.buildManifest(
+          fixtFiles,
+          emptyFolderCollection,
+        );
+
+        expect(prodManifest.vscode).to.deep.equal(devManifest.vscode);
+        expect(prodManifest.api.files.extensions).to.be.empty;
+        expect(prodManifest.api.files.filenames).to.be.empty;
+        expect(prodManifest.api.files._default).to.equal('');
+        expect(prodManifest.api.folders._default.closed).to.equal('');
+        expect(prodManifest.api.folders._default.opened).to.equal('');
+        expect(prodManifest.api.folders).to.not.have.property('root');
+        expect(prodManifest.api.light.files._default).to.equal('');
+        expect(prodManifest.api.light.folders._default.closed).to.equal('');
+        expect(prodManifest.api.light.folders._default.opened).to.equal('');
+        expect(prodManifest.api.light.folders).to.not.have.property('root');
+        for (const theme of prodManifest.zed.themes) {
+          expect(theme.directory_icons.collapsed).to.equal('');
+          expect(theme.directory_icons.expanded).to.equal('');
+        }
+      });
+    });
+
+    context('API schema', function () {
+      it('maps files, extensions, and filenames to icon paths', async function () {
+        const manifest = await ManifestBuilder.buildManifest(
+          fixtFiles,
+          emptyFolderCollection,
+        );
+
+        expect(manifest.api.files._default).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file.svg`,
+        );
+        expect(manifest.api.files.extensions.as).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}actionscript.svg`,
+        );
+        expect(manifest.api.files.filenames['angular-cli.json']).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}angular.svg`,
+        );
+        expect(manifest.api.light.files.extensions.plist).to.equal(
+          `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypeLightPrefix}config.svg`,
+        );
+      });
+
+      it('gives supported extensions and filenames precedence over language known ones', async function () {
+        const python: Language = {
+          ids: 'python',
+          knownExtensions: ['pyc'],
+          knownFilenames: ['.zshrc'],
+        };
+        const languageEntry: FileExtension = {
+          icon: 'python',
+          extensions: [],
+          languages: [python],
+          format: enums.FileFormat.svg,
+        };
+        const nameEntries: FileExtension[] = [
+          {
+            icon: 'binary',
+            extensions: ['pyc'],
+            format: enums.FileFormat.svg,
+          },
+          {
+            icon: 'zsh',
+            extensions: ['.zshrc'],
+            filename: true,
+            format: enums.FileFormat.svg,
+          },
+        ];
+        const prefix = `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}`;
+        const files = cloneDeep(fixtFiles);
+
+        for (const supported of [
+          [languageEntry, ...nameEntries],
+          [...nameEntries, languageEntry],
+        ]) {
+          files.supported = supported;
+          const manifest = await ManifestBuilder.buildManifest(
+            files,
+            emptyFolderCollection,
+          );
+
+          expect(manifest.api.files.extensions.pyc).to.equal(
+            `${prefix}binary.svg`,
+          );
+          expect(manifest.api.files.filenames['.zshrc']).to.equal(
+            `${prefix}zsh.svg`,
+          );
+          expect(manifest.api.light.files.extensions.pyc).to.equal(
+            `${prefix}binary.svg`,
+          );
+          expect(manifest.api.light.files.filenames['.zshrc']).to.equal(
+            `${prefix}zsh.svg`,
+          );
+        }
+      });
+    });
+
+    context('Zed theme', function () {
+      it('should get official icons for official theme', async function () {
+        const files = cloneDeep(fixtFiles);
+
+        const manifest = await ManifestBuilder.buildManifest(
+          files,
+          emptyFolderCollection,
+        );
+
+        const officialTheme = manifest.zed.themes[1];
+
+        // should have js
+        const jsId = officialTheme.file_suffixes.js;
+        expect(jsId.endsWith('official')).to.be.true;
+
+        // should not have json
+        const jsonId = officialTheme.file_suffixes.json;
+        expect(jsonId.endsWith('official')).to.be.false;
+      });
+
+      it('should not have light theme defs in dark themes', async function () {
+        const files = cloneDeep(fixtFiles);
+
+        const manifest = await ManifestBuilder.buildManifest(
+          files,
+          emptyFolderCollection,
+        );
+
+        const darkTheme = manifest.zed.themes[0];
+        const lightTheme = manifest.zed.themes[4];
+
+        const jsDark = darkTheme.file_suffixes.js;
+        const jsLight = lightTheme.file_suffixes.js;
+
+        expect(jsDark).to.not.include('light_');
+        expect(jsLight).to.include('light_');
+
+        // Check that dark theme has only the dark version
+        expect(darkTheme.file_icons).to.have.property('_f_js');
+        expect(darkTheme.file_icons).to.not.have.property('_f_light_js');
+
+        // Check that light theme has only the light version
+        expect(lightTheme.file_icons).to.have.property('_f_light_js');
+        expect(lightTheme.file_icons).to.not.have.property('_f_js');
+      });
     });
 
     context(`if a default 'light' icon is NOT defined`, function () {
@@ -727,128 +882,6 @@ describe('ManifestBuilder: files icons test', function () {
               });
             });
           });
-        });
-      });
-
-      context('API schema', function () {
-        it('maps files, extensions, and filenames to icon paths', async function () {
-          const manifest = await ManifestBuilder.buildManifest(
-            fixtFiles,
-            emptyFolderCollection,
-          );
-
-          expect(manifest.api.files._default).to.equal(
-            `${iconsDirRelativeBasePath}/${constants.iconsManifest.defaultPrefix}file.svg`,
-          );
-          expect(manifest.api.files.extensions.as).to.equal(
-            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}actionscript.svg`,
-          );
-          expect(manifest.api.files.filenames['angular-cli.json']).to.equal(
-            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}angular.svg`,
-          );
-          expect(manifest.api.light.files.extensions.plist).to.equal(
-            `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypeLightPrefix}config.svg`,
-          );
-        });
-
-        it('gives supported extensions and filenames precedence over language known ones', async function () {
-          const python: Language = {
-            ids: 'python',
-            knownExtensions: ['pyc'],
-            knownFilenames: ['.zshrc'],
-          };
-          const languageEntry: FileExtension = {
-            icon: 'python',
-            extensions: [],
-            languages: [python],
-            format: enums.FileFormat.svg,
-          };
-          const nameEntries: FileExtension[] = [
-            {
-              icon: 'binary',
-              extensions: ['pyc'],
-              format: enums.FileFormat.svg,
-            },
-            {
-              icon: 'zsh',
-              extensions: ['.zshrc'],
-              filename: true,
-              format: enums.FileFormat.svg,
-            },
-          ];
-          const prefix = `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}`;
-          const files = cloneDeep(fixtFiles);
-
-          for (const supported of [
-            [languageEntry, ...nameEntries],
-            [...nameEntries, languageEntry],
-          ]) {
-            files.supported = supported;
-            const manifest = await ManifestBuilder.buildManifest(
-              files,
-              emptyFolderCollection,
-            );
-
-            expect(manifest.api.files.extensions.pyc).to.equal(
-              `${prefix}binary.svg`,
-            );
-            expect(manifest.api.files.filenames['.zshrc']).to.equal(
-              `${prefix}zsh.svg`,
-            );
-            expect(manifest.api.light.files.extensions.pyc).to.equal(
-              `${prefix}binary.svg`,
-            );
-            expect(manifest.api.light.files.filenames['.zshrc']).to.equal(
-              `${prefix}zsh.svg`,
-            );
-          }
-        });
-      });
-
-      context('zed theme', function () {
-        it('should get official icons for official theme', async function () {
-          const files = cloneDeep(fixtFiles);
-
-          const manifest = await ManifestBuilder.buildManifest(
-            files,
-            emptyFolderCollection,
-          );
-
-          const officialTheme = manifest.zed.themes[1];
-
-          // should have js
-          const jsId = officialTheme.file_suffixes.js;
-          expect(jsId.endsWith('official')).to.be.true;
-
-          // should not have json
-          const jsonId = officialTheme.file_suffixes.json;
-          expect(jsonId.endsWith('official')).to.be.false;
-        });
-
-        it('should not have light theme defs in dark themes', async function () {
-          const files = cloneDeep(fixtFiles);
-
-          const manifest = await ManifestBuilder.buildManifest(
-            files,
-            emptyFolderCollection,
-          );
-
-          const darkTheme = manifest.zed.themes[0];
-          const lightTheme = manifest.zed.themes[4];
-
-          const jsDark = darkTheme.file_suffixes.js;
-          const jsLight = lightTheme.file_suffixes.js;
-
-          expect(jsDark).to.not.include('light_');
-          expect(jsLight).to.include('light_');
-
-          // Check that dark theme has only the dark version
-          expect(darkTheme.file_icons).to.have.property('_f_js');
-          expect(darkTheme.file_icons).to.not.have.property('_f_light_js');
-
-          // Check that light theme has only the light version
-          expect(lightTheme.file_icons).to.have.property('_f_light_js');
-          expect(lightTheme.file_icons).to.not.have.property('_f_js');
         });
       });
     });

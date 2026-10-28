@@ -66,14 +66,12 @@ src/
     supportedExtensions.ts          # File icon definitions (main config)
     supportedFolders.ts             # Folder icon definitions
     languages.ts                    # Language ID mappings
-    manifestBuilder.ts              # Builds VSCode + Zed manifests
+    manifestBuilder.ts              # Builds VSCode + Zed + API manifests
     iconsGenerator.ts               # Orchestrates manifest generation
     customsMerger.ts                # Merges user customizations
-  models/extensions/
-    fileExtension.ts                # FileExtension interface
-    folderExtension.ts              # FolderExtension interface
-    fileFormat.ts                   # FileFormat enum (svg, png)
-  models/language/language.ts       # Language interface
+  types/
+    vsicons.ts                      # FileExtension, FolderExtension, Language interfaces
+    enums.ts                        # FileFormat enum (svg, png)
 test/                               # Test files (mirrors src/)
   iconsManifest/
     specsExtensions.test.ts         # Validates all file icon entries
