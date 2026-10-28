@@ -137,11 +137,7 @@ export class CustomsMerger {
       const icons = updatedFiles.supported
         .filter((file: types.FileExtension): boolean => regex.test(file.icon))
         .map((file: types.FileExtension): string => file.icon);
-      const defaultIcons = files.supported
-        .filter((file: types.FileExtension): boolean => regex.test(file.icon))
-        .map((file: types.FileExtension): string => file.icon);
-      const temp = this.togglePreset(disable, icons, updatedFiles);
-      updatedFiles = this.togglePreset(disable, defaultIcons, temp);
+      updatedFiles = this.togglePreset(disable, icons, updatedFiles);
     }
     return updatedFiles;
   }
