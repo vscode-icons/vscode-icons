@@ -76,7 +76,7 @@ async function generateApiJsonSchema(): Promise<void> {
 
   await writeFileAsync(
     Utils.pathUnixJoin(ConfigManager.rootDir, constants.schemas.apiSchemaFile),
-    JSON.stringify(schema, null, 2),
+    `${JSON.stringify(schema, null, 2)}\n`,
   );
 
   console.info(

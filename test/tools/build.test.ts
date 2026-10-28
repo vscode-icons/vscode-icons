@@ -128,7 +128,7 @@ describe('Build: tests', function () {
         expect(
           writeFileAsyncStub.calledOnceWithExactly(
             `${ConfigManager.rootDir}/${constants.schemas.apiSchemaFile}`,
-            JSON.stringify(
+            `${JSON.stringify(
               {
                 $schema: generatedSchema.$schema,
                 title: 'ApiIconSchema',
@@ -136,7 +136,7 @@ describe('Build: tests', function () {
               },
               null,
               2,
-            ),
+            )}\n`,
           ),
           'writeFileAsync should persist the titled API schema',
         ).to.be.true;
