@@ -658,6 +658,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         expectDefaultDisabled(await toggle(true, false, false), true);
         expectDefaultDisabled(await toggle(false, true, false), false);
         expectDefaultDisabled(await toggle(false, false, true), true);
+        expectDefaultDisabled(await toggle(false, true, true), true);
       });
 
       it(`custom folder associations are merged after presets`, async function () {
