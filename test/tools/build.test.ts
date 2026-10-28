@@ -14,6 +14,7 @@ describe('Build: tests', function () {
     let generateIconsManifestStub: sinon.SinonStub;
     let persistStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
+    let infoStub: sinon.SinonStub;
     let build: () => Promise<void>;
 
     before(function () {
@@ -30,6 +31,7 @@ describe('Build: tests', function () {
       generateIconsManifestStub = sandbox.stub().resolves(vscodeSchema);
       persistStub = sandbox.stub().resolves();
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
+      infoStub = sandbox.stub(console, 'info').get(() => infoStub);
 
       const iconsGeneratorStub = sandbox.stub().callsFake(() => ({
         generateIconsManifest: generateIconsManifestStub,
@@ -78,7 +80,6 @@ describe('Build: tests', function () {
 
       it(`generates and saves the API JSON schema`, async function () {
         ConfigManager.rootDir = process.cwd();
-
         const generatedSchema = {
           $schema: 'https://json-schema.org/draft/2020-12/schema',
           type: 'object',
@@ -160,6 +161,33 @@ describe('Build: tests', function () {
 
         expect(logErrorStub.called).to.be.false;
         expect(writeFileAsyncStub.calledOnce).to.be.true;
+      });
+
+      context(`prints a success message to 'console' stdout`, function () {
+        it(`when the API JSON schema is generated`, async function () {
+          ConfigManager.rootDir = process.cwd();
+          const writeFileAsyncStub = sandbox.stub().resolves();
+          const buildWithRealSchemaGenerator = (): Promise<void> =>
+            proxyq('../../src/tools/build', {
+              '../iconsManifest/iconsGenerator': {
+                IconsGenerator: sandbox.stub().callsFake(() => ({
+                  generateIconsManifest: generateIconsManifestStub,
+                  persist: persistStub,
+                })),
+              },
+              '../common/fsAsync': { writeFileAsync: writeFileAsyncStub },
+            }) as Promise<void>;
+
+          await buildWithRealSchemaGenerator();
+          await new Promise<void>(resolve => setImmediate(resolve));
+
+          expect(logErrorStub.called).to.be.false;
+          expect(
+            infoStub.calledOnceWithExactly(
+              `[${constants.extension.apiName}] API schema file successfully generated!`,
+            ),
+          ).to.be.true;
+        });
       });
 
       it(`logs an error when the API schema declaration has no type annotation`, async function () {

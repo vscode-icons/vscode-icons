@@ -79,9 +79,9 @@ async function generateApiJsonSchema(): Promise<void> {
     JSON.stringify(schema, null, 2),
   );
 
-  // console.info(
-  //   `[${constants.extension.apiName}] API schema file successfully generated!`,
-  // );
+  console.info(
+    `[${constants.extension.apiName}] API schema file successfully generated!`,
+  );
 }
 
 async function build(argv: string[]): Promise<void> {
