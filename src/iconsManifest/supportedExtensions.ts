@@ -5335,8 +5335,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'testjs',
-      filenamesGlob: ['test', 'spec'],
-      extensionsGlob: ['js', 'jsx', 'mjs'],
+      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
+      extensionsGlob: ['js', 'jsx', 'mjs', 'cjs'],
       light: true,
     },
     {
@@ -5360,7 +5360,7 @@ export const extensions: FileCollection = {
     {
       icon: 'testts',
       filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec', 'test-d'],
-      extensionsGlob: ['ts', 'tsx', 'mts'],
+      extensionsGlob: ['ts', 'tsx', 'mts', 'cts'],
     },
     {
       icon: 'tex',
