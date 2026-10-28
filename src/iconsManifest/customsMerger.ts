@@ -180,25 +180,25 @@ export class CustomsMerger {
     disable: boolean,
     customFolders: types.FolderCollection,
   ): types.FolderCollection {
-    const folderIcons = this.getNonDisabledIcons(customFolders);
-    const collection = this.togglePreset<types.FolderCollection>(
+    const nonDisabledFolderIcons = this.getNonDisabledIcons(customFolders);
+    const updatedFolders = this.togglePreset<types.FolderCollection>(
       disable,
-      folderIcons,
+      nonDisabledFolderIcons,
       customFolders,
     );
-    collection.default.folder.disabled =
+    updatedFolders.default.folder.disabled =
       customFolders.default.folder.disabled || disable;
     if (customFolders.default.folder_light) {
-      collection.default.folder_light.disabled =
+      updatedFolders.default.folder_light.disabled =
         customFolders.default.folder_light.disabled || disable;
     }
-    collection.default.root_folder.disabled =
+    updatedFolders.default.root_folder.disabled =
       customFolders.default.root_folder.disabled || disable;
     if (customFolders.default.root_folder_light) {
-      collection.default.root_folder_light.disabled =
+      updatedFolders.default.root_folder_light.disabled =
         customFolders.default.root_folder_light.disabled || disable;
     }
-    return collection;
+    return updatedFolders;
   }
 
   private static getNonDisabledIcons(
