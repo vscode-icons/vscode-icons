@@ -63,7 +63,6 @@ export class CustomsMerger {
       this.toggleFoldersAllDefaultIconPreset(
         presets.foldersAllDefaultIcon,
         extFolders,
-        extFolders,
       );
     folders = this.toggleHideFoldersPreset(presets.hideFolders, folders);
 
@@ -159,53 +158,26 @@ export class CustomsMerger {
 
   private static toggleFoldersAllDefaultIconPreset(
     disable: boolean,
-    customFolders: types.FolderCollection,
-    defaultFolders: types.FolderCollection,
+    folders: types.FolderCollection,
   ): types.FolderCollection {
-    const folderIcons = this.getNonDisabledIcons(customFolders);
-    const defaultFolderIcons = defaultFolders.supported
-      .filter((folder: types.FolderExtension): boolean => !folder.disabled)
-      .filter((folder: types.FolderExtension): boolean =>
-        // Exclude overrides
-        customFolders.supported.every(
-          (cFolder: types.FolderExtension): boolean =>
-            cFolder.overrides !== folder.icon,
-        ),
-      )
-      .filter((folder: types.FolderExtension): boolean =>
-        // Exclude disabled by custom
-        customFolders.supported
-          .filter(
-            (cFolder: types.FolderExtension): boolean =>
-              folder.icon === cFolder.icon,
-          )
-          .every(
-            (cFolder: types.FolderExtension): boolean => !cFolder.disabled,
-          ),
-      )
-      .map((folder: types.FolderExtension): string => folder.icon);
-    const temp = this.togglePreset<types.FolderCollection>(
+    const nonDisabledFolderIcons = this.getNonDisabledIcons(folders);
+    const updatedFolders = this.togglePreset<types.FolderCollection>(
       disable,
-      folderIcons,
-      customFolders,
+      nonDisabledFolderIcons,
+      folders,
     );
-    const collection = this.togglePreset<types.FolderCollection>(
-      disable,
-      defaultFolderIcons,
-      temp,
-    );
-    collection.default.folder.disabled = customFolders.default.folder.disabled;
-    if (customFolders.default.folder_light) {
-      collection.default.folder_light.disabled =
-        customFolders.default.folder_light.disabled;
+    updatedFolders.default.folder.disabled = folders.default.folder.disabled;
+    if (folders.default.folder_light) {
+      updatedFolders.default.folder_light.disabled =
+        folders.default.folder_light.disabled;
     }
-    collection.default.root_folder.disabled =
-      customFolders.default.root_folder.disabled;
-    if (customFolders.default.root_folder_light) {
-      collection.default.root_folder_light.disabled =
-        customFolders.default.root_folder_light.disabled;
+    updatedFolders.default.root_folder.disabled =
+      folders.default.root_folder.disabled;
+    if (folders.default.root_folder_light) {
+      updatedFolders.default.root_folder_light.disabled =
+        folders.default.root_folder_light.disabled;
     }
-    return collection;
+    return updatedFolders;
   }
 
   private static toggleHideFoldersPreset(
