@@ -22,7 +22,10 @@ export class CustomsMerger {
       affectedPresets,
     );
 
-    let files = this.toggleProjectPreset(projectPresets, extFiles, extFiles);
+    let files: types.FileCollection = this.toggleProjectPreset(
+      projectPresets,
+      extFiles,
+    );
 
     files = this.toggleOfficialIconsPreset(
       !presets.jsOfficial,
@@ -56,11 +59,12 @@ export class CustomsMerger {
       [enums.IconNames.yaml],
     );
 
-    let folders = this.toggleFoldersAllDefaultIconPreset(
-      presets.foldersAllDefaultIcon,
-      extFolders,
-      extFolders,
-    );
+    let folders: types.FolderCollection =
+      this.toggleFoldersAllDefaultIconPreset(
+        presets.foldersAllDefaultIcon,
+        extFolders,
+        extFolders,
+      );
     folders = this.toggleHideFoldersPreset(presets.hideFolders, folders);
 
     return this.mergeCustoms(
@@ -122,26 +126,25 @@ export class CustomsMerger {
 
   private static toggleProjectPreset(
     projectPresets: Array<Record<string, boolean>>,
-    customFiles: types.FileCollection,
-    defaultFiles: types.FileCollection,
+    files: types.FileCollection,
   ): types.FileCollection {
-    let files = customFiles;
+    let updatedFiles = files;
     for (const preset of projectPresets) {
       const key: string = Object.keys(preset)[0];
       const disable: boolean = preset[key];
       const regex = new RegExp(
         `^${enums.IconNames[enums.PresetNames[key] as keyof typeof enums.IconNames]}_.*\\D$`,
       );
-      const icons = files.supported
+      const icons = updatedFiles.supported
         .filter((file: types.FileExtension): boolean => regex.test(file.icon))
         .map((file: types.FileExtension): string => file.icon);
-      const defaultIcons = defaultFiles.supported
+      const defaultIcons = files.supported
         .filter((file: types.FileExtension): boolean => regex.test(file.icon))
         .map((file: types.FileExtension): string => file.icon);
-      const temp = this.togglePreset(disable, icons, files);
-      files = this.togglePreset(disable, defaultIcons, temp);
+      const temp = this.togglePreset(disable, icons, updatedFiles);
+      updatedFiles = this.togglePreset(disable, defaultIcons, temp);
     }
-    return files;
+    return updatedFiles;
   }
 
   private static toggleOfficialIconsPreset(
