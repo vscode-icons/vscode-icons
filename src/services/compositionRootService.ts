@@ -1,54 +1,42 @@
-import {
-  Container,
-  decorate,
-  inject,
-  injectable,
-  interfaces,
-  METADATA_KEY,
-} from 'inversify';
-import { ServiceIdentifierOrFunc } from 'inversify/lib/annotation/lazy_service_identifier';
+import type { BindToFluentSyntax, ServiceIdentifier } from 'inversify';
+
+import type { CompositionRootServiceContract } from '../types/services';
+
+import { Container, decorate, inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import * as vscode from 'vscode';
+
 import { ExtensionManager } from '../app/extensionManager';
 import { ConfigManager } from '../configuration/configManager';
 import { LanguageResourceManager } from '../i18n/languageResourceManager';
 import { IconsGenerator } from '../iconsManifest';
-import * as models from '../models';
-import { ICompositionRootService } from '../models/services/compositionRootService';
 import { NotificationManager } from '../notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../pad/projectAutoDetectionManager';
 import { SettingsManager } from '../settings/settingsManager';
+import * as types from '../types';
 import { VSCodeManager } from '../vscode/vscodeManager';
 
 type Class = new (...args: unknown[]) => unknown;
 
-export class CompositionRootService implements ICompositionRootService {
+export class CompositionRootService implements CompositionRootServiceContract {
   private readonly container: Container;
   private injectableClasses: ReadonlyArray<
-    [Class, Array<ServiceIdentifierOrFunc<symbol>>]
+    [Class, Array<ServiceIdentifier<symbol>>]
   >;
 
-  constructor(private context: models.IVSCodeExtensionContext) {
+  constructor(private context: types.VSCodeExtensionContext) {
     this.container = new Container({ defaultScope: 'Singleton' });
     this.init();
     this.initDecorations();
     this.initBindings();
   }
 
-  public get<T>(serviceIdentifier: interfaces.ServiceIdentifier<T>): T {
+  public get<T>(serviceIdentifier: ServiceIdentifier<T>): T {
     return this.container.get<T>(serviceIdentifier);
   }
 
   public dispose(): void {
-    this.injectableClasses
-      .map(
-        (injectableClass: [Class, Array<ServiceIdentifierOrFunc<symbol>>]) =>
-          injectableClass[0],
-      )
-      .forEach((klass: Class) => {
-        Reflect.deleteMetadata(METADATA_KEY.PARAM_TYPES, klass);
-        Reflect.deleteMetadata(METADATA_KEY.TAGGED, klass);
-      });
+    this.container.unbindAll();
   }
 
   private init(): void {
@@ -59,51 +47,62 @@ export class CompositionRootService implements ICompositionRootService {
       [
         ExtensionManager,
         [
-          models.SYMBOLS.IVSCodeManager,
-          models.SYMBOLS.IConfigManager,
-          models.SYMBOLS.ISettingsManager,
-          models.SYMBOLS.INotificationManager,
-          models.SYMBOLS.IIconsGenerator,
-          models.SYMBOLS.IProjectAutoDetectionManager,
+          types.SYMBOLS.VSCodeManager,
+          types.SYMBOLS.ConfigManager,
+          types.SYMBOLS.SettingsManager,
+          types.SYMBOLS.NotificationManager,
+          types.SYMBOLS.IconsGenerator,
+          types.SYMBOLS.ProjectAutoDetectionManager,
         ],
       ],
-      [ConfigManager, [models.SYMBOLS.IVSCodeManager]],
-      [LanguageResourceManager, [models.SYMBOLS.ILocale]],
+      [ConfigManager, [types.SYMBOLS.VSCodeManager]],
+      [LanguageResourceManager, [types.SYMBOLS.Locale]],
       [
         IconsGenerator,
-        [models.SYMBOLS.IVSCodeManager, models.SYMBOLS.IConfigManager],
+        [types.SYMBOLS.VSCodeManager, types.SYMBOLS.ConfigManager],
       ],
       [
         NotificationManager,
-        [
-          models.SYMBOLS.IVSCodeManager,
-          models.SYMBOLS.ILanguageResourceManager,
-        ],
+        [types.SYMBOLS.VSCodeManager, types.SYMBOLS.LanguageResourceManager],
       ],
       [
         ProjectAutoDetectionManager,
-        [models.SYMBOLS.IVSCodeManager, models.SYMBOLS.IConfigManager],
+        [types.SYMBOLS.VSCodeManager, types.SYMBOLS.ConfigManager],
       ],
-      [SettingsManager, [models.SYMBOLS.IVSCodeManager]],
+      [SettingsManager, [types.SYMBOLS.VSCodeManager]],
       [
         VSCodeManager,
-        [models.SYMBOLS.IVSCode, models.SYMBOLS.IVSCodeExtensionContext],
+        [types.SYMBOLS.VSCode, types.SYMBOLS.VSCodeExtensionContext],
       ],
     ];
-    this.dispose();
+
+    this.injectableClasses
+      .map(
+        (injectableClass: [Class, Array<ServiceIdentifier<symbol>>]): Class =>
+          injectableClass[0],
+      )
+      .forEach((klass: Class): void => {
+        Reflect.deleteMetadata(
+          '@inversifyjs/core/classIsInjectableFlagReflectKey',
+          klass,
+        );
+        Reflect.deleteMetadata(
+          '@inversifyjs/core/classMetadataReflectKey',
+          klass,
+        );
+      });
   }
 
   private initDecorations(): void {
     this.injectableClasses.forEach(
-      (injectableClass: [Class, Array<ServiceIdentifierOrFunc<symbol>>]) => {
+      (injectableClass: [Class, Array<ServiceIdentifier<symbol>>]): void => {
         // declare classes as injectables
         const klass: Class = injectableClass[0];
         decorate(injectable(), klass);
         // declare injectable parameters
-        const params: Array<ServiceIdentifierOrFunc<symbol>> =
-          injectableClass[1];
+        const params: Array<ServiceIdentifier<symbol>> = injectableClass[1];
         params.forEach(
-          (identifier: ServiceIdentifierOrFunc<symbol>, index: number) =>
+          (identifier: ServiceIdentifier<symbol>, index: number): void =>
             decorate(inject(identifier), klass, index),
         );
       },
@@ -111,38 +110,37 @@ export class CompositionRootService implements ICompositionRootService {
   }
 
   private initBindings(): void {
-    const bind = <T>(
-      identifier: interfaces.ServiceIdentifier<T>,
-    ): interfaces.BindingToSyntax<T> => this.container.bind<T>(identifier);
+    const bind = <T>(identifier: ServiceIdentifier<T>): BindToFluentSyntax<T> =>
+      this.container.bind<T>(identifier);
 
-    bind<string>(models.SYMBOLS.ILocale).toConstantValue(vscode.env.language);
-    bind<models.IVSCode>(models.SYMBOLS.IVSCode).toConstantValue(vscode);
-    bind<models.IVSCodeExtensionContext>(
-      models.SYMBOLS.IVSCodeExtensionContext,
+    bind<string>(types.SYMBOLS.Locale).toConstantValue(vscode.env.language);
+    bind<types.VSCode>(types.SYMBOLS.VSCode).toConstantValue(vscode);
+    bind<types.VSCodeExtensionContext>(
+      types.SYMBOLS.VSCodeExtensionContext,
     ).toConstantValue(this.context);
 
-    bind<models.IExtensionManager>(models.SYMBOLS.IExtensionManager).to(
+    bind<types.ExtensionManagerContract>(types.SYMBOLS.ExtensionManager).to(
       ExtensionManager,
     );
-    bind<models.IConfigManager>(models.SYMBOLS.IConfigManager).to(
+    bind<types.ConfigManagerContract>(types.SYMBOLS.ConfigManager).to(
       ConfigManager,
     );
-    bind<models.ISettingsManager>(models.SYMBOLS.ISettingsManager).to(
+    bind<types.SettingsManagerContract>(types.SYMBOLS.SettingsManager).to(
       SettingsManager,
     );
-    bind<models.ILanguageResourceManager>(
-      models.SYMBOLS.ILanguageResourceManager,
+    bind<types.LanguageResourceManagerContract>(
+      types.SYMBOLS.LanguageResourceManager,
     ).to(LanguageResourceManager);
-    bind<models.INotificationManager>(models.SYMBOLS.INotificationManager).to(
-      NotificationManager,
-    );
-    bind<models.IIconsGenerator>(models.SYMBOLS.IIconsGenerator).to(
+    bind<types.NotificationManagerContract>(
+      types.SYMBOLS.NotificationManager,
+    ).to(NotificationManager);
+    bind<types.IconsGeneratorContract>(types.SYMBOLS.IconsGenerator).to(
       IconsGenerator,
     );
-    bind<models.IProjectAutoDetectionManager>(
-      models.SYMBOLS.IProjectAutoDetectionManager,
+    bind<types.ProjectAutoDetectionManagerContract>(
+      types.SYMBOLS.ProjectAutoDetectionManager,
     ).to(ProjectAutoDetectionManager);
-    bind<models.IVSCodeManager>(models.SYMBOLS.IVSCodeManager).to(
+    bind<types.VSCodeManagerContract>(types.SYMBOLS.VSCodeManager).to(
       VSCodeManager,
     );
   }

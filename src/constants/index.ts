@@ -1,12 +1,15 @@
-import * as manifest from '../../../package.json';
-import { IPackageManifest } from '../models/packageManifest';
+import type { PackageManifest } from '../types/package';
+
+import manifest from '../../package.json';
 
 export const constants = {
   environment: { production: false },
   extension: {
     name: 'vscode-icons',
+    apiName: 'vscode-icons-api',
+    zedName: 'vscode-icons-zed',
     settingsFilename: 'vsicons.settings.json',
-    version: (manifest as IPackageManifest).version,
+    version: (manifest as PackageManifest).version,
     customIconFolderName: 'vsicons-custom-icons',
     distEntryFilename: 'vscode-icons.bundle.js',
     distEntryFilenameWeb: 'vscode-icons.web.bundle.js',
@@ -49,7 +52,9 @@ export const constants = {
   urlOfficialApi:
     'https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-file-icon-theme',
   iconsManifest: {
+    apiFilename: 'vsicons-icon-api.json',
     filename: 'vsicons-icon-theme.json',
+    zedFilename: 'vsicons-icon-theme-zed.json',
     iconSuffix: '',
     fileTypePrefix: 'file_type_',
     fileTypeLightPrefix: 'file_type_light_',
@@ -60,5 +65,19 @@ export const constants = {
     definitionFileLightPrefix: '_f_light_',
     definitionFolderPrefix: '_fd_',
     definitionFolderLightPrefix: '_fd_light_',
+  },
+  zed: {
+    dark_themes: {
+      dark: 0,
+      official: 1,
+      angular: 2,
+      nest: 3,
+    },
+    light_themes: {
+      light: 4,
+      official: 5,
+      angular: 6,
+      nest: 7,
+    },
   },
 };

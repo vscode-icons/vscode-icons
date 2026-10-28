@@ -1,38 +1,38 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
+import type { CompositionRootServiceContract } from '../../src/types/services';
+
 import { expect } from 'chai';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import 'reflect-metadata';
 import * as sinon from 'sinon';
+
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
 import { IconsGenerator } from '../../src/iconsManifest';
-import * as models from '../../src/models';
-import { ICompositionRootService } from '../../src/models/services/compositionRootService';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as types from '../../src/types';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
 import { vscode } from '../fixtures/vscode';
 
-describe('CompositionRootService: tests', function () {
-  type CompositionRootService = new (
+describe('CompositionRootServiceContract: tests', function () {
+  type CompositionRootServiceFactory = new (
     ...args: unknown[]
-  ) => ICompositionRootService;
+  ) => CompositionRootServiceContract;
 
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let CRService: CompositionRootService;
-    let crs: ICompositionRootService;
+    let CRService: CompositionRootServiceFactory;
+    let crs: CompositionRootServiceContract;
 
     before(function () {
       proxyq.noCallThru();
       CRService = (
         proxyq('../../src/services/compositionRootService', {
           vscode,
-        }) as Record<string, CompositionRootService>
+        }) as Record<string, CompositionRootServiceFactory>
       ).CompositionRootService;
     });
 
@@ -61,41 +61,41 @@ describe('CompositionRootService: tests', function () {
       context(`throws an Error`, function () {
         it(`when it can NOT be found`, function () {
           expect(() => crs.get('Interface')).to.throw(
-            /No matching bindings found for serviceIdentifier: Interface/,
+            /No bindings found for service: "Interface"/,
           );
         });
       });
 
       it(`returns that object`, function () {
-        expect(crs.get(models.SYMBOLS.IVSCodeManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.VSCodeManager)).to.be.an.instanceOf(
           VSCodeManager,
         );
 
-        expect(crs.get(models.SYMBOLS.IConfigManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.ConfigManager)).to.be.an.instanceOf(
           ConfigManager,
         );
 
-        expect(crs.get(models.SYMBOLS.ISettingsManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.SettingsManager)).to.be.an.instanceOf(
           SettingsManager,
         );
 
-        expect(
-          crs.get(models.SYMBOLS.INotificationManager),
-        ).to.be.an.instanceOf(NotificationManager);
+        expect(crs.get(types.SYMBOLS.NotificationManager)).to.be.an.instanceOf(
+          NotificationManager,
+        );
 
-        expect(crs.get(models.SYMBOLS.IIconsGenerator)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.IconsGenerator)).to.be.an.instanceOf(
           IconsGenerator,
         );
 
         expect(
-          crs.get(models.SYMBOLS.IProjectAutoDetectionManager),
+          crs.get(types.SYMBOLS.ProjectAutoDetectionManager),
         ).to.be.an.instanceOf(ProjectAutoDetectionManager);
 
         expect(
-          crs.get(models.SYMBOLS.ILanguageResourceManager),
+          crs.get(types.SYMBOLS.LanguageResourceManager),
         ).to.be.an.instanceOf(LanguageResourceManager);
 
-        expect(crs.get(models.SYMBOLS.IExtensionManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.ExtensionManager)).to.be.an.instanceOf(
           ExtensionManager,
         );
       });

@@ -1,20 +1,22 @@
+import type * as types from '../types';
+import type {
+  PackageManifest,
+  VSCodeIconTheme,
+  VSCodeManifest,
+} from '../types/package';
+
 import { coerce, gte, parse } from 'semver';
-import * as packageJson from '../../../package.json';
-import * as models from '../models';
-import {
-  IPackageManifest,
-  IVSCodeIconTheme,
-  IVSCodeManifest,
-} from '../models/packageManifest';
+
+import packageJson from '../../../package.json';
 import { Utils } from '../utils';
 
-export class VSCodeManager implements models.IVSCodeManager {
+export class VSCodeManager implements types.VSCodeManagerContract {
   private appUserDirPath: string;
   private supportsThemeReloadVersion = '1.34.0';
 
   constructor(
-    private vscode: models.IVSCode,
-    private extensionContext: models.IVSCodeExtensionContext,
+    private vscode: types.VSCode,
+    private extensionContext: types.VSCodeExtensionContext,
   ) {
     if (!vscode) {
       throw new ReferenceError(`'vscode' not set to an instance`);
@@ -24,15 +26,15 @@ export class VSCodeManager implements models.IVSCodeManager {
     }
   }
 
-  public get context(): models.IVSCodeExtensionContext {
+  public get context(): types.VSCodeExtensionContext {
     return this.extensionContext;
   }
 
-  public get env(): models.IVSCodeEnv {
+  public get env(): types.VSCodeEnv {
     return this.vscode.env;
   }
 
-  public get commands(): models.IVSCodeCommands {
+  public get commands(): types.VSCodeCommands {
     return this.vscode.commands;
   }
 
@@ -40,27 +42,27 @@ export class VSCodeManager implements models.IVSCodeManager {
     return this.vscode.version;
   }
 
-  public get window(): models.IVSCodeWindow {
+  public get window(): types.VSCodeWindow {
     return this.vscode.window;
   }
 
-  public get workspace(): models.IVSCodeWorkspace {
+  public get workspace(): types.VSCodeWorkspace {
     return this.vscode.workspace;
   }
 
   public get supportsThemesReload(): boolean {
-    const manifest: IVSCodeManifest = packageJson as IVSCodeManifest;
+    const manifest: VSCodeManifest = packageJson as VSCodeManifest;
     const watchable: boolean =
       manifest &&
       manifest.contributes &&
       manifest.contributes.iconThemes.some(
-        (theme: IVSCodeIconTheme) => theme._watch,
+        (theme: VSCodeIconTheme): boolean => theme._watch,
       );
     return gte(this.version, this.supportsThemeReloadVersion) && watchable;
   }
 
   public get isSupportedVersion(): boolean {
-    const manifest: IPackageManifest = packageJson as IPackageManifest;
+    const manifest: PackageManifest = packageJson as PackageManifest;
     const minVersion = (
       (manifest && manifest.engines && coerce(manifest.engines.vscode)) ||
       parse('1.0.0')
@@ -74,10 +76,13 @@ export class VSCodeManager implements models.IVSCodeManager {
     }
     // 'workspaceFolders' on top of significance order
     if (this.workspace.workspaceFolders.length) {
-      return this.workspace.workspaceFolders.reduce<string[]>((a, b) => {
-        a.push(b.uri.fsPath);
-        return a;
-      }, []);
+      return this.workspace.workspaceFolders.reduce<string[]>(
+        (a, b): string[] => {
+          a.push(b.uri.fsPath);
+          return a;
+        },
+        [],
+      );
     }
     return [this.workspace.rootPath];
   }

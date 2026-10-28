@@ -1,12 +1,10 @@
 name: Update Wiki Page Icons List
 
-env:
-  NODE_VERSION: 18.15.0
-
 on:
   push:
     branches:
       - master
+      - main
   workflow_dispatch:
 
 jobs:
@@ -14,14 +12,43 @@ jobs:
     name: Update Wiki Pages
     runs-on: ubuntu-latest
     continue-on-error: true
+    # Shared with the SVG previews workflow so pushes to the wiki never overlap.
+    # `queue: max` keeps every pending run instead of replacing it.
+    concurrency:
+      group: wiki-write
+      queue: max
     steps:
-      - name: Setting up Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v3
+      - name: Checkout vscode-icons repository
+        uses: actions/checkout@v5
+
+      - name: Setting up Node.js
+        uses: actions/setup-node@v5
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: .nvmrc
+
+      - name: Install and build vscode-icons
+        run: |
+          npm install
+          npm run build
+
+      - name: Checkout wpilgenerator repository
+        uses: actions/checkout@v5
+        with:
+          repository: vscode-icons/wpilgenerator
+          path: wpilgenerator
+
+      - name: Configure git identity
+        run: |
+          git config --global user.email "vscode-icons-bot[bot]@users.noreply.github.com"
+          git config --global user.name "vscode-icons-bot[bot]"
 
       - name: Update Wiki Page Icons List
         timeout-minutes: 2
-        run: npx --yes vscode-icons/wpilgenerator
+        run: |
+          # npx -i vscode-icons/wpilgenerator
+          cd wpilgenerator
+          npm install
+          cd ..
+          node wpilgenerator/lib/wpilgen.js
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
