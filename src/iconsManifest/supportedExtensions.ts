@@ -968,6 +968,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'cql',
       languages: [languages.cql],
+      light: true,
     },
     {
       icon: 'craco',
