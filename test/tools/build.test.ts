@@ -115,6 +115,7 @@ describe('Build: tests', function () {
         ).to.be.true;
         expect(createGeneratorStub.firstCall.args[0]).to.deep.equal({
           path: `${ConfigManager.rootDir}/${constants.schemas.apiSourceFile}`,
+          skipTypeCheck: true,
           topRef: false,
           tsconfig: `${ConfigManager.rootDir}/tsconfig.json`,
           type: 'ApiIconSchema',
@@ -138,6 +139,27 @@ describe('Build: tests', function () {
           ),
           'writeFileAsync should persist the titled API schema',
         ).to.be.true;
+      });
+
+      it(`does not throw an error when generating the API JSON schema`, async function () {
+        ConfigManager.rootDir = process.cwd();
+        const writeFileAsyncStub = sandbox.stub().resolves();
+        const buildWithRealSchemaGenerator = (): Promise<void> =>
+          proxyq('../../src/tools/build', {
+            '../iconsManifest/iconsGenerator': {
+              IconsGenerator: sandbox.stub().callsFake(() => ({
+                generateIconsManifest: generateIconsManifestStub,
+                persist: persistStub,
+              })),
+            },
+            '../common/fsAsync': { writeFileAsync: writeFileAsyncStub },
+          }) as Promise<void>;
+
+        await buildWithRealSchemaGenerator();
+        await new Promise<void>(resolve => setImmediate(resolve));
+
+        expect(logErrorStub.called).to.be.false;
+        expect(writeFileAsyncStub.calledOnce).to.be.true;
       });
 
       it(`logs an error when the API schema declaration has no type annotation`, async function () {

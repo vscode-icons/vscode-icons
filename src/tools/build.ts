@@ -1,4 +1,9 @@
-import type { NodeArray, VariableDeclaration } from 'typescript';
+import type {
+  NodeArray,
+  TypeNode,
+  VariableDeclaration,
+  VariableStatement,
+} from 'typescript';
 
 import type { IconManifest } from '../types';
 
@@ -38,14 +43,14 @@ function getApiSchemaTypeName(): string {
   const apiSchemaDeclaration = sourceFile.statements
     .filter(isVariableStatement)
     .flatMap(
-      (statement): NodeArray<VariableDeclaration> =>
+      (statement: VariableStatement): NodeArray<VariableDeclaration> =>
         statement.declarationList.declarations,
     )
     .find(
-      (declaration): boolean =>
+      (declaration: VariableDeclaration): boolean =>
         isIdentifier(declaration.name) && declaration.name.text === 'apiSchema',
     );
-  const apiSchemaType = apiSchemaDeclaration?.type;
+  const apiSchemaType: TypeNode = apiSchemaDeclaration?.type;
 
   if (!apiSchemaType || !isTypeReferenceNode(apiSchemaType)) {
     throw new Error(`Unable to find the API schema type annotation`);
@@ -61,6 +66,7 @@ async function generateApiJsonSchema(): Promise<void> {
       ConfigManager.rootDir,
       constants.schemas.apiSourceFile,
     ),
+    skipTypeCheck: true,
     topRef: false,
     tsconfig: Utils.pathUnixJoin(ConfigManager.rootDir, 'tsconfig.json'),
     type,
@@ -72,6 +78,10 @@ async function generateApiJsonSchema(): Promise<void> {
     Utils.pathUnixJoin(ConfigManager.rootDir, constants.schemas.apiSchemaFile),
     JSON.stringify(schema, null, 2),
   );
+
+  // console.info(
+  //   `[${constants.extension.apiName}] API schema file successfully generated!`,
+  // );
 }
 
 async function build(argv: string[]): Promise<void> {
