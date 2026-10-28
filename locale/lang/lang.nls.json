@@ -1,8 +1,8 @@
 {
   "newVersion": "Welcome to the new version of %extensionName%.",
-  "seeReleaseNotes": "Information about the latest changes",
-  "dontShowThis": "Don't show me this message next time",
-  "seeReadme": "Learn about this extension",
+  "seeReleaseNotes": "Release Notes",
+  "dontShowThis": "Don't Show Again",
+  "seeReadme": "Learn More",
   "welcome": "Thanks for installing %extensionName%.",
   "activate": "Activate",
   "aboutOfficialApi": "Learn more about File & Folder icons",

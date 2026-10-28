@@ -331,7 +331,6 @@ describe('ExtensionManagerContract: messages tests', function () {
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
                 enums.LangResourceKeys.welcome,
                 enums.LangResourceKeys.activate,
-                enums.LangResourceKeys.aboutOfficialApi,
                 enums.LangResourceKeys.seeReadme,
               ),
             ).to.be.true;
@@ -352,34 +351,10 @@ describe('ExtensionManagerContract: messages tests', function () {
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
                 enums.LangResourceKeys.welcome,
                 enums.LangResourceKeys.activate,
-                enums.LangResourceKeys.aboutOfficialApi,
                 enums.LangResourceKeys.seeReadme,
               ),
             ).to.be.true;
             expect(activationCommandStub.calledOnceWithExactly()).to.be.true;
-          });
-        });
-
-        context(`to read about the official API`, function () {
-          it(`opens the official API url and re-displays the message`, async function () {
-            notifyManagerStub.notifyInfo
-              .onFirstCall()
-              .resolves(enums.LangResourceKeys.aboutOfficialApi)
-              .resolves();
-
-            await showWelcomeMessage.call(extensionManager);
-
-            expect(
-              notifyManagerStub.notifyInfo.calledWithExactly(
-                enums.LangResourceKeys.welcome,
-                enums.LangResourceKeys.activate,
-                enums.LangResourceKeys.aboutOfficialApi,
-                enums.LangResourceKeys.seeReadme,
-              ),
-            ).to.be.true;
-            expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
-            expect(openStub.calledOnceWithExactly(constants.urlOfficialApi)).to
-              .be.true;
           });
         });
 
@@ -396,7 +371,6 @@ describe('ExtensionManagerContract: messages tests', function () {
               notifyManagerStub.notifyInfo.calledWithExactly(
                 enums.LangResourceKeys.welcome,
                 enums.LangResourceKeys.activate,
-                enums.LangResourceKeys.aboutOfficialApi,
                 enums.LangResourceKeys.seeReadme,
               ),
             ).to.be.true;

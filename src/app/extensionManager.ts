@@ -135,18 +135,12 @@ export class ExtensionManager implements types.ExtensionManagerContract {
         const btn = await this.notificationManager.notifyInfo(
           enums.LangResourceKeys.welcome,
           enums.LangResourceKeys.activate,
-          enums.LangResourceKeys.aboutOfficialApi,
           enums.LangResourceKeys.seeReadme,
         );
 
         switch (btn) {
           case enums.LangResourceKeys.activate:
             return this.activationCommand();
-          case enums.LangResourceKeys.aboutOfficialApi: {
-            void Utils.open(constants.urlOfficialApi);
-            // Display the message again so the user can choose to activate or not
-            return displayMessage();
-          }
           case enums.LangResourceKeys.seeReadme: {
             void Utils.open(constants.urlReadme);
             // Display the message again so the user can choose to activate or not
