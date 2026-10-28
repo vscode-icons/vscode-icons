@@ -16,7 +16,11 @@
       "$ref": "#/definitions/ApiIconDefinitions"
     }
   },
-  "required": ["files", "folders", "light"],
+  "required": [
+    "files",
+    "folders",
+    "light"
+  ],
   "additionalProperties": false,
   "definitions": {
     "ApiIconFileDefinitions": {
@@ -38,7 +42,11 @@
           }
         }
       },
-      "required": ["_default", "extensions", "filenames"],
+      "required": [
+        "_default",
+        "extensions",
+        "filenames"
+      ],
       "additionalProperties": false
     },
     "ApiIconFolderDefinitions": {
@@ -54,11 +62,16 @@
               "type": "string"
             }
           },
-          "required": ["closed", "opened"],
+          "required": [
+            "closed",
+            "opened"
+          ],
           "additionalProperties": false
         }
       },
-      "required": ["_default"],
+      "required": [
+        "_default"
+      ],
       "additionalProperties": {
         "type": "object",
         "properties": {
@@ -69,7 +82,10 @@
             "type": "string"
           }
         },
-        "required": ["closed", "opened"],
+        "required": [
+          "closed",
+          "opened"
+        ],
         "additionalProperties": false
       }
     },
@@ -83,7 +99,10 @@
           "$ref": "#/definitions/ApiIconFolderDefinitions"
         }
       },
-      "required": ["files", "folders"],
+      "required": [
+        "files",
+        "folders"
+      ],
       "additionalProperties": false
     }
   }
