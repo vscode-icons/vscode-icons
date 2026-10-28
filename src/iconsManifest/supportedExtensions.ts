@@ -2513,6 +2513,12 @@ export const extensions: FileCollection = {
     {
       icon: 'json_schema',
       extensions: ['schema.json'],
+      filename: true,
+      light: true,
+    },
+    {
+      icon: 'json_schema',
+      extensions: ['schema.json'],
       light: true,
     },
     {
