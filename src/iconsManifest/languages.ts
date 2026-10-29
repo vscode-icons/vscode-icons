@@ -226,6 +226,7 @@ export const languages = {
   goctl: { ids: 'goctl', knownExtensions: ['api'] },
   gomod: { ids: 'go.mod', knownExtensions: ['mod'] },
   gowork: { ids: 'go.work', knownExtensions: ['work'] },
+  gujarati: { ids: 'gujarati', knownExtensions: ['gj'] },
   gradle: { ids: 'gradle-kotlin-dsl', knownExtensions: ['gradle.kts'] },
   grain: { ids: 'grain', knownExtensions: ['gr'] },
   graphql: { ids: 'graphql', knownExtensions: ['gql'] },

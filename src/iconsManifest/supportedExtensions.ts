@@ -2023,6 +2023,11 @@ export const extensions: FileCollection = {
       languages: [languages.goctl],
     },
     {
+      icon: 'gujarati',
+      extensions: ['gj'],
+      languages: [languages.gujarati],
+    },
+    {
       icon: 'godot',
       extensions: ['godot'],
     },
