@@ -538,6 +538,7 @@ export const extensions: FolderCollection = {
       extensions: ['minikube', 'minik8s', 'minikuber'],
     },
     { icon: 'mjml', extensions: ['mjml', '.mjml'] },
+    { icon: 'mnema', extensions: ['.mnema'] },
     {
       icon: 'mobile',
       extensions: ['mobile', 'mobiles', '.mobile', '.mobiles'],
