@@ -105,22 +105,6 @@ describe('ExtensionManagerContract: actions tests', function () {
           extensionManager.applyProjectDetection as (...arg: unknown[]) => void;
       });
 
-      context(`does nothing`, function () {
-        it(`when no project detection results exist`, function () {
-          applyProjectDetection.call(extensionManager);
-
-          expect(executeAndReloadStub.called).to.be.false;
-          expect(showCustomizationMessageStub.called).to.be.false;
-        });
-
-        it(`when project detection results apply is 'false'`, function () {
-          applyProjectDetection.call(extensionManager, { apply: false });
-
-          expect(executeAndReloadStub.called).to.be.false;
-          expect(showCustomizationMessageStub.called).to.be.false;
-        });
-      });
-
       context(`applies the customizations`, function () {
         let projectDetectionResults: types.ProjectDetectionResult[];
         let applyCustomizationStub: sinon.SinonStub;
@@ -135,6 +119,20 @@ describe('ExtensionManagerContract: actions tests', function () {
         });
 
         context(`automatically`, function () {
+          it(`when no project detection results exist`, function () {
+            applyProjectDetection.call(extensionManager);
+
+            expect(applyCustomizationStub.called).to.be.true;
+            expect(showCustomizationMessageStub.called).to.be.false;
+          });
+
+          it(`when project detection results apply is 'false'`, function () {
+            applyProjectDetection.call(extensionManager, { apply: false });
+
+            expect(applyCustomizationStub.called).to.be.true;
+            expect(showCustomizationMessageStub.called).to.be.false;
+          });
+
           it(`when the 'autoReload' setting is 'true'`, function () {
             configManagerStub.vsicons.projectDetection.autoReload = true;
 

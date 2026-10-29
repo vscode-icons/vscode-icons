@@ -78,7 +78,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
 
     it('detects non conflicting projects', async function () {
       vsicons.projectDetection.disableDetect = false;
-      findFilesStub.resolves([{ fsPath: '' }]);
+      findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
       sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
       sandbox.stub(Utils, 'parseJSONSafe').returns({
         dependencies: {
@@ -95,12 +95,15 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       sandbox.stub(padManager, 'getProjectInfo').resolves({});
 
       const res = await padManager.detectProjects([enums.Projects.angularjs]);
-      const firstResult = res[0];
 
       expect(res).to.be.an('array');
-      expect(firstResult)
-        .to.be.an('object')
-        .and.have.ownProperty('conflictingProjects').that.is.empty;
+      expect(res).to.not.be.empty;
+
+      const firstResult = res[0];
+
+      expect(firstResult).to.be.an('object');
+      expect(firstResult).to.have.property('apply', false);
+      expect(firstResult).to.not.have.property('conflictingProjects');
     });
 
     context('does NOT detect a project when', function () {
@@ -140,9 +143,37 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     });
 
     context('when conflicting project icons are detected', function () {
+      it('does not detect conflicts for projects without conflict rules', async function () {
+        vsicons.projectDetection.disableDetect = false;
+        findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
+        configManagerStub.getPreset.returns({
+          key: '',
+          workspaceValue: undefined,
+        });
+        sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+        sandbox
+          .stub(
+            padManager as unknown as {
+              getProjectInfo: () => Promise<{ name: enums.Projects }>;
+            },
+            'getProjectInfo',
+          )
+          .resolves({ name: enums.Projects.angularjs });
+
+        const res = await padManager.detectProjects([enums.Projects.angularjs]);
+
+        expect(res).to.be.an('array');
+        expect(res).to.not.be.empty;
+
+        const firstResult = res[0];
+
+        expect(firstResult).to.have.property('conflictingProjects').that.is
+          .empty;
+      });
+
       it(`returns the conflict project detected 'LangResourceKey'`, async function () {
         vsicons.projectDetection.disableDetect = false;
-        findFilesStub.resolves([{ fsPath: '' }]);
+        findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
         sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
@@ -160,13 +191,54 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
           enums.Projects.angular,
           enums.Projects.nestjs,
         ]);
-        const firstResult = res[0];
 
         expect(res).to.be.an('array');
+        expect(res).to.not.be.empty;
+
+        const firstResult = res[0];
+
         expect(firstResult)
           .to.be.an('object')
           .and.have.ownProperty('langResourceKey')
           .to.equal(enums.LangResourceKeys.conflictProjectsDetected);
+      });
+
+      it('detects config-file conflicts when only one project is requested', async function () {
+        vsicons.projectDetection.disableDetect = false;
+        findFilesStub.resolves([
+          { fsPath: '/workspace/angular.json' },
+          { fsPath: '/workspace/nest-cli.json' },
+        ]);
+        sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+
+        const res = await padManager.detectProjects([enums.Projects.angular]);
+
+        expect(findFilesStub.firstCall.args[0]).to.contain('nest-cli.json');
+        expect(res).to.have.lengthOf(1);
+        expect(res[0].conflictingProjects).to.deep.equal([
+          enums.Projects.nestjs,
+        ]);
+      });
+
+      it('detects a project when no workspace preset is configured', async function () {
+        vsicons.projectDetection.disableDetect = false;
+        findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
+        sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+        sandbox.stub(Utils, 'parseJSONSafe').returns({
+          dependencies: {
+            '@angular/core': '1.0.0',
+          },
+        });
+        sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+
+        const res = await padManager.detectProjects([enums.Projects.angular]);
+
+        expect(res).to.be.an('array');
+        expect(res).to.not.be.empty;
+
+        const firstResult = res[0];
+
+        expect(firstResult).to.have.property('apply', true);
       });
     });
   });

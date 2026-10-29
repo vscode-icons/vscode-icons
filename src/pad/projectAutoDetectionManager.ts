@@ -3,27 +3,19 @@ import type { PackageManifest } from '../types/package';
 
 import { basename } from 'path';
 
+import { isEmpty } from 'lodash';
+
 import { ErrorHandler } from '../common/errorHandler';
 import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
-import { extensions as extFiles } from '../iconsManifest/supportedExtensions';
+import { extensions } from '../iconsManifest/supportedExtensions';
 import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
 export class ProjectAutoDetectionManager
   implements types.ProjectAutoDetectionManagerContract
 {
-  private readonly ngConfigFiles: string[] = extFiles.supported.find(
-    (ext: types.FileExtension): boolean =>
-      ext.icon === enums.PresetNames[enums.PresetNames.angular],
-  ).extensions;
-
-  private readonly nestConfigFiles: string[] = extFiles.supported.find(
-    (ext: types.FileExtension): boolean =>
-      ext.icon === enums.PresetNames[enums.PresetNames.nestjs],
-  ).extensions;
-
   constructor(
     private vscodeManager: types.VSCodeManagerContract,
     private configManager: types.ConfigManagerContract,
@@ -40,17 +32,33 @@ export class ProjectAutoDetectionManager
     projects: enums.Projects[],
   ): Promise<types.ProjectDetectionResult[]> {
     if (!projects || !projects.length) {
-      return null;
+      return [];
     }
 
     try {
-      const results = (await (this.configManager.vsicons.projectDetection
-        .disableDetect
-        ? Promise.resolve(null)
-        : this.vscodeManager.workspace.findFiles(
-            `**/{package.json,${this.ngConfigFiles.join(',')},${this.nestConfigFiles.join(',')}}`,
-            '**/node_modules/**',
-          ))) as types.VSCodeUri[];
+      if (this.configManager.vsicons.projectDetection.disableDetect) {
+        return [];
+      }
+      const projectsToSearch: enums.Projects[] = [
+        ...new Set(
+          projects.flatMap((project: enums.Projects): enums.Projects[] => [
+            project,
+            ...this.getConflictingProjects(project),
+          ]),
+        ),
+      ];
+      const projectConfigFiles: string[] = projectsToSearch.flatMap(
+        (project: enums.Projects): string[] => this.getConfigFilesOf(project),
+      );
+      const filesToInclude: string = [
+        'package.json',
+        ...projectConfigFiles,
+      ].join(',');
+      const results: types.VSCodeUri[] =
+        await this.vscodeManager.workspace.findFiles(
+          `**/{${filesToInclude}}`,
+          '**/node_modules/**',
+        );
       return this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
@@ -89,8 +97,9 @@ export class ProjectAutoDetectionManager
     };
 
     // We need to check only the 'workspaceValue' ('user' setting should be ignored)
-    const getPreset = (proj: enums.Projects): boolean =>
-      this.configManager.getPreset<boolean>(getPresetName(proj)).workspaceValue;
+    const getPreset = (proj: enums.Projects): boolean | undefined =>
+      this.configManager.getPreset<boolean>(getPresetName(proj))
+        ?.workspaceValue;
 
     const iconsDisabled: boolean = await ManifestReader.iconsDisabled(project);
 
@@ -98,9 +107,9 @@ export class ProjectAutoDetectionManager
     // 1. Preset is set to 'false' and icons are not present in the manifest file
     // 2. Preset is set to 'true' and icons are present in the manifest file
     // For this cases PAD will not display a message
-    const preset = getPreset(project);
+    const preset: boolean | undefined = getPreset(project);
     let bypass =
-      preset != null &&
+      preset !== undefined &&
       ((!preset && iconsDisabled) || (preset && !iconsDisabled));
 
     if (bypass) {
@@ -116,13 +125,15 @@ export class ProjectAutoDetectionManager
       results,
       project,
     );
-    const enableIcons = iconsDisabled && (!!projectInfo || preset === true);
-    const disableIcons = !iconsDisabled && (!projectInfo || preset === false);
+    const hasProjectInfo = !isEmpty(projectInfo);
+    const enableIcons = iconsDisabled && (hasProjectInfo || preset === true);
+    const disableIcons =
+      !iconsDisabled && (!hasProjectInfo || preset === false);
 
-    // Don't check for conflicting projects if user setting (preset) is explicitly set
-    const conflictingProjects: enums.Projects[] = preset
-      ? []
-      : await this.checkForConflictingProjects(results, project, enableIcons);
+    const conflictingProjects: enums.Projects[] =
+      preset || !hasProjectInfo
+        ? []
+        : await this.checkForConflictingProjects(results, project, enableIcons);
 
     // bypass, if user explicitly has any preset of a conficting project set
     // and those icons are enabled
@@ -162,20 +173,27 @@ export class ProjectAutoDetectionManager
       conflictProjects: enums.Projects[],
     ): Promise<enums.Projects[]> => {
       const projectInfos: enums.Projects[] = [];
-      for (const cp of conflictProjects) {
-        const info = await this.getProjectInfo(results, cp);
-        if (info) {
-          projectInfos.push(cp);
+      for (const conflictProject of conflictProjects) {
+        const info: types.ProjectInfo = await this.getProjectInfo(
+          results,
+          conflictProject,
+        );
+        if (!isEmpty(info)) {
+          projectInfos.push(conflictProject);
         }
       }
       return projectInfos;
     };
 
+    return conflictingProjects(this.getConflictingProjects(project));
+  }
+
+  private getConflictingProjects(project: enums.Projects): enums.Projects[] {
     switch (project) {
       case enums.Projects.nestjs:
-        return conflictingProjects([enums.Projects.angular]);
+        return [enums.Projects.angular];
       case enums.Projects.angular:
-        return conflictingProjects([enums.Projects.nestjs]);
+        return [enums.Projects.nestjs];
       default:
         return [];
     }
@@ -221,40 +239,40 @@ export class ProjectAutoDetectionManager
     results: types.VSCodeUri[],
     project: enums.Projects,
   ): Promise<types.ProjectInfo> {
-    let projectInfo: types.ProjectInfo = null;
     for (const result of results) {
-      const fileName: string = basename(result.fsPath);
-      if (this.isNgProjectFile(fileName)) {
-        if (project === enums.Projects.angular) {
-          projectInfo = { name: project, version: '' };
-          break;
-        }
-        continue;
+      if (this.isConfigFileOf(project, result.fsPath)) {
+        return { name: project };
       }
-      if (this.isNestProjectFile(fileName)) {
-        if (project === enums.Projects.nestjs) {
-          projectInfo = { name: project, version: '' };
-          break;
-        }
+      if (!result.fsPath.endsWith('package.json')) {
         continue;
       }
       const content: string = await readFileAsync(result.fsPath, 'utf8');
       const projectJson: PackageManifest =
         Utils.parseJSONSafe<PackageManifest>(content);
-      projectInfo = this.getInfo(projectJson, project);
-      if (projectInfo) {
-        break;
+      const projectInfo = this.getInfo(projectJson, project);
+      if (!isEmpty(projectInfo)) {
+        return projectInfo;
       }
     }
-    return projectInfo;
+    return {};
   }
 
-  private isNgProjectFile(fileName: string): boolean {
-    return this.ngConfigFiles.includes(fileName);
+  private getConfigFilesOf(project: enums.Projects): string[] {
+    // convert project enum to project key string
+    const projectKey: string = Object.keys(enums.Projects).find(
+      (key: string): boolean => enums.Projects[key] === project,
+    );
+    return (
+      extensions.supported.find(
+        (ext: types.FileExtension): boolean => ext.icon === projectKey,
+      )?.extensions ?? []
+    );
   }
 
-  private isNestProjectFile(fileName: string): boolean {
-    return this.nestConfigFiles.includes(fileName);
+  private isConfigFileOf(project: enums.Projects, filePath: string): boolean {
+    return this.getConfigFilesOf(project).some(
+      (configFile: string): boolean => basename(filePath) === configFile,
+    );
   }
 
   private getInfo(
@@ -262,7 +280,7 @@ export class ProjectAutoDetectionManager
     name: enums.Projects,
   ): types.ProjectInfo {
     if (!projectJson) {
-      return null;
+      return {};
     }
 
     const getInfo = (key: string): types.ProjectInfo => {
@@ -272,7 +290,7 @@ export class ProjectAutoDetectionManager
       if (projectJson.devDependencies && !!projectJson.devDependencies[key]) {
         return { name, version: projectJson.devDependencies[key] };
       }
-      return null;
+      return {};
     };
 
     switch (name) {
@@ -281,7 +299,7 @@ export class ProjectAutoDetectionManager
       case enums.Projects.nestjs:
         return getInfo('@nestjs/core');
       default:
-        return null;
+        return {};
     }
   }
 }
