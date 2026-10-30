@@ -49,6 +49,8 @@ export const constants = {
   urlReleaseNote: 'https://github.com/vscode-icons/vscode-icons/releases',
   urlReadme:
     'https://github.com/vscode-icons/vscode-icons/blob/master/README.md',
+  urlOfficialApi:
+    'https://code.visualstudio.com/docs/getstarted/themes#_selecting-the-file-icon-theme',
   iconsManifest: {
     apiFilename: 'vsicons-icon-api.json',
     filename: 'vsicons-icon-theme.json',

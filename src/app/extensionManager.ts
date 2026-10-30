@@ -136,11 +136,17 @@ export class ExtensionManager implements types.ExtensionManagerContract {
           enums.LangResourceKeys.welcome,
           enums.LangResourceKeys.activate,
           enums.LangResourceKeys.seeReadme,
+          enums.LangResourceKeys.aboutOfficialApi,
         );
 
         switch (btn) {
           case enums.LangResourceKeys.activate:
             return this.activationCommand();
+          case enums.LangResourceKeys.aboutOfficialApi: {
+            void Utils.open(constants.urlOfficialApi);
+            // Display the message again so the user can choose to activate or not
+            return displayMessage();
+          }
           case enums.LangResourceKeys.seeReadme: {
             void Utils.open(constants.urlReadme);
             // Display the message again so the user can choose to activate or not
