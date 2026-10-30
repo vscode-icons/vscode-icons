@@ -2008,13 +2008,12 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'go_package',
-      extensions: ['go.sum', 'go.mod'],
+      extensions: ['go.work.sum'],
       filename: true,
-      languages: [languages.gomod],
+      languages: [languages.gomod, languages.gosum],
     },
     {
       icon: 'go_work',
-      extensions: ['go.work', 'go.work.sum'],
       filename: true,
       languages: [languages.gowork],
     },
