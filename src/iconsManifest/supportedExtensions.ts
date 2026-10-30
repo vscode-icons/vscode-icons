@@ -2541,6 +2541,7 @@ export const extensions: FileCollection = {
       icon: 'jsx',
       extensions: [],
       languages: [languages.javascriptreact],
+      disabled: true,
     },
     {
       icon: 'juice',
@@ -4576,6 +4577,11 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'reactjs',
+      extensions: [],
+      languages: [languages.javascriptreact],
+    },
+    {
       icon: 'reactrouter',
       filenamesGlob: ['react-router.config'],
       extensionsGlob: ['js', 'ts'],
@@ -4583,6 +4589,11 @@ export const extensions: FileCollection = {
       filename: true,
     },
     { icon: 'reacttemplate', extensions: ['rt'] },
+    {
+      icon: 'reactts',
+      extensions: [],
+      languages: [languages.typescriptreact],
+    },
     {
       icon: 'readme',
       extensions: [
@@ -5576,6 +5587,7 @@ export const extensions: FileCollection = {
       icon: 'tsx',
       extensions: [],
       languages: [languages.typescriptreact],
+      disabled: true,
     },
     {
       icon: 'tt',
