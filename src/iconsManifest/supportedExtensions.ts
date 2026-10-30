@@ -4578,7 +4578,6 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'reactjs',
-      extensions: [],
       languages: [languages.javascriptreact],
     },
     {
@@ -4591,7 +4590,6 @@ export const extensions: FileCollection = {
     { icon: 'reacttemplate', extensions: ['rt'] },
     {
       icon: 'reactts',
-      extensions: [],
       languages: [languages.typescriptreact],
     },
     {
