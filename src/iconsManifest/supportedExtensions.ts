@@ -2539,7 +2539,6 @@ export const extensions: FileCollection = {
     { icon: 'jss', extensions: ['jss'] },
     {
       icon: 'jsx',
-      extensions: [],
       languages: [languages.javascriptreact],
       light: true,
       disabled: true,
@@ -5586,7 +5585,6 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'tsx',
-      extensions: [],
       languages: [languages.typescriptreact],
       disabled: true,
     },
