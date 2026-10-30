@@ -397,6 +397,7 @@ describe('ExtensionManagerContract: messages tests', function () {
                 enums.LangResourceKeys.welcome,
                 enums.LangResourceKeys.activate,
                 enums.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.aboutOfficialApi,
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
