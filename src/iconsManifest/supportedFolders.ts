@@ -1,55 +1,43 @@
-import { FileFormat, IFolderCollection } from '../models';
+import type { FolderCollection } from '../types';
 
-export const extensions: IFolderCollection = {
+export const extensions: FolderCollection = {
   default: {
-    folder: { icon: 'folder', format: FileFormat.svg },
-    root_folder: { icon: 'root_folder', format: FileFormat.svg },
+    folder: { icon: 'folder' },
+    root_folder: { icon: 'root_folder' },
   },
   supported: [
     {
       icon: 'alpine',
       extensions: ['alpine'],
       light: true,
-      format: FileFormat.svg,
     },
-    { icon: 'android', extensions: ['android'], format: FileFormat.svg },
-    { icon: 'angular', extensions: ['.angular'], format: FileFormat.svg },
+    { icon: 'android', extensions: ['android'] },
+    { icon: 'angular', extensions: ['.angular'] },
     {
       icon: 'apache',
       extensions: ['apache', 'apache2', 'httpd'],
-      format: FileFormat.svg,
     },
     {
       icon: 'api',
       extensions: ['api', '.api', 'apis', '.apis'],
-      format: FileFormat.svg,
     },
     {
       icon: 'app',
       extensions: ['app', 'apps', '.app', 'application', 'applications'],
-      format: FileFormat.svg,
     },
     {
       icon: 'arangodb',
       extensions: ['arangodb', 'arango'],
-      format: FileFormat.svg,
     },
     {
       icon: 'arch',
       extensions: ['arch'],
-      format: FileFormat.svg,
     },
     {
       icon: 'asset',
       extensions: ['assets', '.assets'],
-      format: FileFormat.svg,
     },
-    { icon: 'astro', extensions: ['.astro'], format: FileFormat.svg },
-    {
-      icon: 'aurelia',
-      extensions: ['aurelia_project'],
-      format: FileFormat.svg,
-    },
+    { icon: 'astro', extensions: ['.astro'] },
     {
       icon: 'audio',
       extensions: [
@@ -62,15 +50,17 @@ export const extensions: IFolderCollection = {
         'sounds',
         '.sounds',
       ],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'aurelia',
+      extensions: ['aurelia_project'],
     },
     {
       icon: 'auth',
       extensions: ['auth', 'authentication', 'authorisation', 'authorization'],
-      format: FileFormat.svg,
     },
-    { icon: 'aws', extensions: ['aws', '.aws'], format: FileFormat.svg },
-    { icon: 'azure', extensions: ['azure', '.azure'], format: FileFormat.svg },
+    { icon: 'aws', extensions: ['aws', '.aws'] },
+    { icon: 'azure', extensions: ['azure', '.azure'] },
     {
       icon: 'azurepipelines',
       extensions: [
@@ -79,73 +69,33 @@ export const extensions: IFolderCollection = {
         '.azuredevops',
         '.vsts',
       ],
-      format: FileFormat.svg,
     },
-    { icon: 'binary', extensions: ['bin', '.bin'], format: FileFormat.svg },
-    { icon: 'bloc', extensions: ['blocs', 'bloc'], format: FileFormat.svg },
+    { icon: 'binary', extensions: ['bin', '.bin'] },
+    { icon: 'bloc', extensions: ['blocs', 'bloc'] },
     {
       icon: 'blueprint',
       extensions: ['blueprint', '.blueprint', 'blueprints', '.blueprints'],
-      format: FileFormat.svg,
     },
-    { icon: 'bot', extensions: ['bot', '.bot'], format: FileFormat.svg },
-    { icon: 'bower', extensions: ['bower_components'], format: FileFormat.svg },
-    { icon: 'buildkite', extensions: ['.buildkite'], format: FileFormat.svg },
-    { icon: 'cake', extensions: ['cake', '.cake'], format: FileFormat.svg },
+    { icon: 'bot', extensions: ['bot', '.bot'] },
+    { icon: 'bower', extensions: ['bower_components'] },
+    {
+      icon: 'buck',
+      extensions: ['.buckd', '.buckconfig.d', 'buckconfig.d', 'buck-out'],
+    },
+    { icon: 'buildkite', extensions: ['.buildkite'] },
+    { icon: 'cake', extensions: ['cake', '.cake'] },
     {
       icon: 'cargo',
       extensions: ['cargo', '.cargo', 'crates'],
-      format: FileFormat.svg,
     },
     {
       icon: 'certificate',
       extensions: ['certificates', '.certificates', 'certs', 'certs.'],
-      format: FileFormat.svg,
     },
-    { icon: 'changesets', extensions: ['.changeset'], format: FileFormat.svg },
-    { icon: 'chef', extensions: ['chef', '.chef'], format: FileFormat.svg },
-    { icon: 'circleci', extensions: ['.circleci'], format: FileFormat.svg },
-    { icon: 'claude', extensions: ['.claude'], format: FileFormat.svg },
-    {
-      icon: 'cloudflare',
-      extensions: ['.cloudflare', 'cloudflare'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'controller',
-      extensions: [
-        '__controller__',
-        '__controllers__',
-        'controller',
-        'controllers',
-        '.controllers',
-        '__handler__',
-        '__handlers__',
-        'handler',
-        '.handler',
-        'handlers',
-        '.handlers',
-      ],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'component',
-      extensions: [
-        'component',
-        'components',
-        '.components',
-        'gui',
-        'src-ui',
-        'ui',
-        'widgets',
-      ],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'composer',
-      extensions: ['composer', '.composer'],
-      format: FileFormat.svg,
-    },
+    { icon: 'changesets', extensions: ['.changeset'] },
+    { icon: 'chef', extensions: ['chef', '.chef'] },
+    { icon: 'circleci', extensions: ['.circleci'] },
+    { icon: 'claude', extensions: ['.claude'] },
     {
       icon: 'cli',
       extensions: [
@@ -156,18 +106,27 @@ export const extensions: IFolderCollection = {
         'commandline',
         'console',
       ],
-      format: FileFormat.svg,
     },
     {
       icon: 'client',
       extensions: ['client', 'clients'],
-      format: FileFormat.svg,
     },
-    { icon: 'cmake', extensions: ['.cmake', 'cmake'], format: FileFormat.svg },
+    {
+      icon: 'cloudflare',
+      extensions: ['.cloudflare', 'cloudflare'],
+    },
+    { icon: 'cmake', extensions: ['.cmake', 'cmake'] },
     {
       icon: 'common',
       extensions: ['common'],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'component',
+      extensions: ['component', 'components', '.components', 'widgets'],
+    },
+    {
+      icon: 'composer',
+      extensions: ['composer', '.composer'],
     },
     {
       icon: 'config',
@@ -195,52 +154,60 @@ export const extensions: IFolderCollection = {
         'initializers',
         '.initializers',
       ],
-      format: FileFormat.svg,
     },
-    { icon: 'coverage', extensions: ['coverage'], format: FileFormat.svg },
+    {
+      icon: 'controller',
+      extensions: [
+        '__controller__',
+        '__controllers__',
+        'controller',
+        'controllers',
+        '.controllers',
+        '__handler__',
+        '__handlers__',
+        'handler',
+        '.handler',
+        'handlers',
+        '.handlers',
+      ],
+    },
+    { icon: 'coverage', extensions: ['coverage'] },
     {
       icon: 'css',
       extensions: ['css', '_css'],
-      format: FileFormat.svg,
     },
     {
       icon: 'css2',
       extensions: ['css', '_css'],
-      format: FileFormat.svg,
+
       disabled: true,
     },
-    { icon: 'cubit', extensions: ['cubits', 'cubit'], format: FileFormat.svg },
+    { icon: 'cubit', extensions: ['cubits', 'cubit'] },
     {
       icon: 'cursor',
       extensions: ['.cursor'],
       light: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'cypress',
       extensions: ['cypress'],
       light: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'dapr',
       extensions: ['.dapr', 'dapr'],
-      format: FileFormat.svg,
     },
     {
       icon: 'dart',
       extensions: ['dart', '.dart_tool'],
-      format: FileFormat.svg,
     },
     {
       icon: 'databricks',
       extensions: ['.databricks'],
-      format: FileFormat.svg,
     },
     {
       icon: 'datadog',
       extensions: ['datadog', '.datadog'],
-      format: FileFormat.svg,
     },
     {
       icon: 'db',
@@ -257,28 +224,27 @@ export const extensions: IFolderCollection = {
         'storage',
         'storages',
       ],
-      format: FileFormat.svg,
     },
     {
       icon: 'debian',
       extensions: ['debian', 'deb'],
-      format: FileFormat.svg,
     },
     {
       icon: 'dependabot',
       extensions: ['.dependabot'],
-      format: FileFormat.svg,
     },
     {
       icon: 'devcontainer',
       extensions: ['.devcontainer'],
-      format: FileFormat.svg,
     },
     {
       icon: 'devenv',
       extensions: ['.devenv'],
       light: true,
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'discord',
+      extensions: ['discord', '.discord'],
     },
     {
       icon: 'dist',
@@ -300,97 +266,102 @@ export const extensions: IFolderCollection = {
         'target',
         'targets',
       ],
-      format: FileFormat.svg,
     },
     {
       icon: 'docker',
       extensions: ['docker', '.docker'],
-      format: FileFormat.svg,
     },
     {
       icon: 'docs',
       extensions: ['docs', 'doc', 'document', 'documents'],
-      format: FileFormat.svg,
     },
-    { icon: 'e2e', extensions: ['e2e'], format: FileFormat.svg },
+    {
+      icon: 'domain',
+      extensions: ['domain', 'domains'],
+    },
+    {
+      icon: 'drizzle_orm',
+      extensions: ['drizzle'],
+      light: true,
+    },
+    { icon: 'e2e', extensions: ['e2e'] },
     {
       icon: 'elasticbeanstalk',
       extensions: ['.elasticbeanstalk', '.ebextensions'],
-      format: FileFormat.svg,
     },
     {
       icon: 'electron',
       extensions: ['electron'],
       light: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'environments',
       extensions: ['environments'],
-      format: FileFormat.svg,
     },
     {
       icon: 'expo',
       extensions: ['.expo', '.expo-shared'],
       light: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'favicon',
       extensions: ['favicon', 'favicons'],
-      format: FileFormat.svg,
     },
     {
       icon: 'fedora',
       extensions: ['fedora'],
       light: true,
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'frontcommerce',
-      extensions: ['.front-commerce'],
-      format: FileFormat.svg,
     },
     {
       icon: 'flow',
       extensions: ['flow', 'flow-typed'],
-      format: FileFormat.svg,
     },
     {
       icon: 'flutter',
       extensions: ['flutter', 'Flutter'],
-      format: FileFormat.svg,
     },
     {
       icon: 'fonts',
       extensions: ['fonts', 'font', 'fnt', 'webfonts'],
       light: true,
-      format: FileFormat.svg,
     },
-    { icon: 'gcp', extensions: ['gcp', '.gcp'], format: FileFormat.svg },
+    {
+      icon: 'frontcommerce',
+      extensions: ['.front-commerce'],
+    },
+    {
+      icon: 'frontend',
+      extensions: [
+        'frontend',
+        '.frontend',
+        'front-end',
+        '.front-end',
+        'ui',
+        'gui',
+        'src-ui',
+      ],
+    },
+    { icon: 'gcp', extensions: ['gcp', '.gcp'] },
+    { icon: 'gemini', extensions: ['.gemini'] },
     {
       icon: 'gentoo',
       extensions: ['gentoo'],
-      format: FileFormat.svg,
     },
-    { icon: 'gemini', extensions: ['.gemini'], format: FileFormat.svg },
     {
       icon: 'git',
       extensions: ['.git', 'submodules', '.submodules'],
-      format: FileFormat.svg,
     },
-    { icon: 'github', extensions: ['.github'], format: FileFormat.svg },
-    { icon: 'gitlab', extensions: ['.gitlab'], format: FileFormat.svg },
-    { icon: 'godot', extensions: ['godot', '.godot'], format: FileFormat.svg },
+    { icon: 'github', extensions: ['.github'] },
+    { icon: 'gitlab', extensions: ['.gitlab'] },
+    { icon: 'godot', extensions: ['godot', '.godot'] },
     {
       icon: 'gradle',
       extensions: ['gradle', '.gradle'],
       light: true,
-      format: FileFormat.svg,
     },
-    { icon: 'graphql', extensions: ['graphql'], format: FileFormat.svg },
-    { icon: 'grok', extensions: ['.grok'], format: FileFormat.svg },
-    { icon: 'grunt', extensions: ['grunt'], format: FileFormat.svg },
+    { icon: 'graphql', extensions: ['graphql'] },
+    { icon: 'grok', extensions: ['.grok'] },
+    { icon: 'grunt', extensions: ['grunt'] },
     {
       icon: 'gulp',
       extensions: [
@@ -402,34 +373,28 @@ export const extensions: IFolderCollection = {
         'gulpfile.babel.coffee',
         'gulpfile.babel.ts',
       ],
-      format: FileFormat.svg,
     },
     {
       icon: 'haxelib',
       extensions: ['.haxelib', 'haxe_libraries'],
-      format: FileFormat.svg,
     },
     {
       icon: 'helper',
       extensions: ['helper', '.helper', 'helpers', '.helpers'],
-      format: FileFormat.svg,
     },
     {
       icon: 'histoire',
       extensions: ['.histoire'],
-      format: FileFormat.svg,
     },
     {
       icon: 'hook',
       extensions: ['hook', '.hook', 'hooks', '.hooks'],
-      format: FileFormat.svg,
     },
     {
       icon: 'husky',
       extensions: ['.husky'],
-      format: FileFormat.svg,
     },
-    { icon: 'idea', extensions: ['.idea'], format: FileFormat.svg },
+    { icon: 'idea', extensions: ['.idea'] },
     {
       icon: 'images',
       extensions: [
@@ -450,7 +415,6 @@ export const extensions: IFolderCollection = {
         'texture',
         'textures',
       ],
-      format: FileFormat.svg,
     },
     {
       icon: 'include',
@@ -468,29 +432,26 @@ export const extensions: IFolderCollection = {
         '_incl',
         '_inc',
       ],
-      format: FileFormat.svg,
     },
     {
       icon: 'interfaces',
       extensions: ['interface', 'interfaces'],
-      format: FileFormat.svg,
     },
-    { icon: 'ios', extensions: ['ios'], format: FileFormat.svg },
-    { icon: 'js', extensions: ['js'], format: FileFormat.svg },
-    { icon: 'json', extensions: ['json'], format: FileFormat.svg },
+    { icon: 'ios', extensions: ['ios'] },
+    { icon: 'js', extensions: ['js'] },
+    { icon: 'json', extensions: ['json'] },
     {
       icon: 'json_official',
       extensions: ['json'],
-      format: FileFormat.svg,
+
       disabled: true,
     },
-    { icon: 'junie', extensions: ['.junie'], format: FileFormat.svg },
-    { icon: 'kadence', extensions: ['.kadence'], format: FileFormat.svg },
-    { icon: 'kiro', extensions: ['.kiro'], format: FileFormat.svg },
+    { icon: 'junie', extensions: ['.junie'] },
+    { icon: 'kadence', extensions: ['.kadence'] },
+    { icon: 'kiro', extensions: ['.kiro'] },
     {
       icon: 'kotlin',
       extensions: ['kotlin', 'Kotlin', '.kotlin'],
-      format: FileFormat.svg,
     },
     {
       icon: 'kubernetes',
@@ -504,9 +465,8 @@ export const extensions: IFolderCollection = {
         '.kube',
         '.kuber',
       ],
-      format: FileFormat.svg,
     },
-    { icon: 'less', extensions: ['less', '_less'], format: FileFormat.svg },
+    { icon: 'less', extensions: ['less', '_less'] },
     {
       icon: 'library',
       extensions: [
@@ -519,9 +479,8 @@ export const extensions: IFolderCollection = {
         'library',
         'libraries',
       ],
-      format: FileFormat.svg,
     },
-    { icon: 'linux', extensions: ['linux'], format: FileFormat.svg },
+    { icon: 'linux', extensions: ['linux'] },
     {
       icon: 'locale',
       extensions: [
@@ -541,66 +500,51 @@ export const extensions: IFolderCollection = {
         'translation',
         'translations',
       ],
-      format: FileFormat.svg,
     },
     {
       icon: 'log',
       extensions: ['log', 'logs', 'logging', 'logger', 'loggers'],
-      format: FileFormat.svg,
     },
-    { icon: 'macos', extensions: ['macos', 'darwin'], format: FileFormat.svg },
+    { icon: 'lua', extensions: ['lua'] },
+    { icon: 'macos', extensions: ['macos', 'darwin'] },
     {
       icon: 'mariadb',
       extensions: ['mariadb', 'maria'],
-      format: FileFormat.svg,
     },
-    { icon: 'maven', extensions: ['.mvn'], format: FileFormat.svg },
+    { icon: 'maven', extensions: ['.mvn'] },
     {
       icon: 'mediawiki',
       extensions: ['mediawiki'],
-      format: FileFormat.svg,
     },
     {
       icon: 'memcached',
       extensions: ['memcached', '.memcached'],
-      format: FileFormat.svg,
     },
     {
       icon: 'meteor',
       extensions: ['.meteor'],
       light: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'middleware',
       extensions: ['middleware', 'middlewares'],
-      format: FileFormat.svg,
     },
-    { icon: 'mjml', extensions: ['mjml', '.mjml'], format: FileFormat.svg },
     {
       icon: 'minecraft',
       extensions: ['.minecraft'],
-      format: FileFormat.svg,
     },
     {
       icon: 'minikube',
       extensions: ['minikube', 'minik8s', 'minikuber'],
-      format: FileFormat.svg,
     },
+    { icon: 'mjml', extensions: ['mjml', '.mjml'] },
     {
       icon: 'mobile',
       extensions: ['mobile', 'mobiles', '.mobile', '.mobiles'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'mojo',
-      extensions: ['mojo'],
-      format: FileFormat.svg,
     },
     {
       icon: 'mock',
       extensions: ['mocks', '.mocks', '__mocks__'],
-      format: FileFormat.svg,
     },
     {
       icon: 'model',
@@ -612,78 +556,72 @@ export const extensions: IFolderCollection = {
         'entities',
         '.entities',
       ],
-      format: FileFormat.svg,
     },
     {
       icon: 'module',
       extensions: ['modules'],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'mojo',
+      extensions: ['mojo'],
     },
     {
       icon: 'mongodb',
       extensions: ['mongodb', 'mongo'],
-      format: FileFormat.svg,
     },
     {
       icon: 'mypy',
       extensions: ['.mypy_cache'],
       light: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'mysql',
       extensions: ['mysqldb', 'mysql'],
       light: true,
-      format: FileFormat.svg,
     },
-
     {
       icon: 'netlify',
       extensions: ['netlify'],
-      format: FileFormat.svg,
     },
-    { icon: 'next', extensions: ['.next'], format: FileFormat.svg },
-    { icon: 'nginx', extensions: ['nginx', 'conf.d'], format: FileFormat.svg },
+    { icon: 'next', extensions: ['.next'] },
+    { icon: 'nginx', extensions: ['nginx', 'conf.d'] },
     {
       icon: 'nix',
       extensions: ['.niv', '.nix', 'nix', 'niv'],
-      format: FileFormat.svg,
     },
     {
       icon: 'node',
       extensions: ['node_modules'],
       light: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'notebooks',
       extensions: ['notebooks', 'notebook'],
-      format: FileFormat.svg,
     },
     {
       icon: 'notification',
       extensions: ['notification', 'notifications', 'event', 'events'],
-      format: FileFormat.svg,
     },
-    { icon: 'nuget', extensions: ['.nuget'], format: FileFormat.svg },
-    { icon: 'ohpm', extensions: ['oh_modules'], format: FileFormat.svg },
+    { icon: 'nuget', extensions: ['.nuget'] },
+    {
+      icon: 'nuxt',
+      extensions: ['nuxt', '.nuxt'],
+    },
     {
       icon: 'ocx',
       extensions: ['.ocx'],
       light: true,
-      format: FileFormat.svg,
     },
+    { icon: 'ohpm', extensions: ['oh_modules'] },
     {
       icon: 'package',
       extensions: ['package', 'packages', '.package', '.packages', 'pkg'],
-      format: FileFormat.svg,
     },
-    { icon: 'paket', extensions: ['.paket'], format: FileFormat.svg },
-    { icon: 'php', extensions: ['php'], format: FileFormat.svg },
+    { icon: 'paket', extensions: ['.paket'] },
+    { icon: 'php', extensions: ['php'] },
     {
       icon: 'platformio',
       extensions: ['.pio', '.pioenvs'],
-      format: FileFormat.svg,
     },
     {
       icon: 'plugin',
@@ -697,89 +635,64 @@ export const extensions: IFolderCollection = {
         'extensions',
         '.extensions',
       ],
-      format: FileFormat.svg,
     },
-    { icon: 'prisma', extensions: ['prisma'], format: FileFormat.svg },
+    { icon: 'prisma', extensions: ['prisma'] },
     {
       icon: 'private',
       extensions: ['private', '.private'],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'protobuf',
+      extensions: ['protobuf', 'proto', 'protos'],
     },
     {
       icon: 'public',
       extensions: ['public', '.public'],
-      format: FileFormat.svg,
     },
     {
       icon: 'pytest',
       extensions: ['.pytest_cache'],
-      format: FileFormat.svg,
     },
     {
       icon: 'python',
       extensions: ['.venv', '.virtualenv', '__pycache__'],
-      format: FileFormat.svg,
     },
-    {
-      icon: 'vercel',
-      extensions: ['.vercel'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'vitepress',
-      extensions: ['.vitepress'],
-      format: FileFormat.svg,
-    },
-    { icon: 'redis', extensions: ['redis'], format: FileFormat.svg },
-    { icon: 'ravendb', extensions: ['ravendb'], format: FileFormat.svg },
-    {
-      icon: 'route',
-      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
-      format: FileFormat.svg,
-    },
+    { icon: 'ravendb', extensions: ['ravendb'] },
     {
       icon: 'redhat',
       extensions: ['redhat', 'rhel'],
-      format: FileFormat.svg,
     },
+    { icon: 'redis', extensions: ['redis'] },
     {
       icon: 'redux',
       extensions: ['redux'],
       light: true,
-      format: FileFormat.svg,
     },
-
     {
-      icon: 'nuxt',
-      extensions: ['nuxt', '.nuxt'],
-      format: FileFormat.svg,
+      icon: 'route',
+      extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
     },
     {
       icon: 'sass',
       extensions: ['sass', 'scss', '_sass', '_scss'],
       light: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'schema',
       extensions: ['schema', 'schemas'],
-      format: FileFormat.svg,
     },
     {
       icon: 'script',
       extensions: ['script', 'scripts'],
-      format: FileFormat.svg,
     },
     {
       icon: 'seedkit',
       extensions: ['seedkit', '.seedkit'],
-      format: FileFormat.svg,
     },
-    { icon: 'server', extensions: ['server'], format: FileFormat.svg },
+    { icon: 'server', extensions: ['server', 'backend', '.backend'] },
     {
       icon: 'services',
       extensions: ['service', 'services'],
-      format: FileFormat.svg,
     },
     {
       icon: 'shared',
@@ -791,64 +704,65 @@ export const extensions: IFolderCollection = {
         '__shared__',
         '__share__',
       ],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'skill',
+      extensions: ['.skills', '.skill', 'skills', 'skill'],
+      light: true,
     },
     {
       icon: 'slackware',
       extensions: ['slackware'],
-      format: FileFormat.svg,
     },
     {
       icon: 'snaplet',
       extensions: ['.snaplet'],
-      format: FileFormat.svg,
     },
     {
       icon: 'spin',
       extensions: ['.spin'],
-      format: FileFormat.svg,
     },
     {
       icon: 'src',
       extensions: ['src', 'source', 'sources', '__src__'],
-      format: FileFormat.svg,
     },
     {
       icon: 'sso',
       extensions: ['sso'],
-      format: FileFormat.svg,
     },
     {
       icon: 'story',
       extensions: ['story', 'stories', '__stories__', '.storybook'],
-      format: FileFormat.svg,
     },
-    { icon: 'style', extensions: ['style', 'styles'], format: FileFormat.svg },
+    { icon: 'style', extensions: ['style', 'styles'] },
     {
       icon: 'supabase',
       extensions: ['supabase'],
-      format: FileFormat.svg,
     },
     {
       icon: 'suse',
       extensions: ['suse', 'opensuse'],
-      format: FileFormat.svg,
     },
     {
       icon: 'svelte',
       extensions: ['svelte', '.svelte-kit'],
-      format: FileFormat.svg,
     },
     {
       icon: 'swagger',
       extensions: ['swagger'],
-      format: FileFormat.svg,
     },
-    { icon: 'tauri', extensions: ['src-tauri'], format: FileFormat.svg },
+    { icon: 'tauri', extensions: ['src-tauri'] },
     {
       icon: 'telegram',
       extensions: ['telegram', '.telegram', 'Telegram', 'TelegramDesktop'],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'temp',
+      extensions: ['temp', '.temp', 'tmp', '.tmp'],
+    },
+    {
+      icon: 'template',
+      extensions: ['template', '.template', 'templates', '.templates'],
     },
     {
       icon: 'test',
@@ -865,20 +779,8 @@ export const extensions: IFolderCollection = {
         '.specs',
         'integration',
       ],
-      format: FileFormat.svg,
     },
-    {
-      icon: 'temp',
-      extensions: ['temp', '.temp', 'tmp', '.tmp'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'template',
-      extensions: ['template', '.template', 'templates', '.templates'],
-      format: FileFormat.svg,
-    },
-    { icon: 'theme', extensions: ['theme', 'themes'], format: FileFormat.svg },
-    { icon: 'travis', extensions: ['.travis'], format: FileFormat.svg },
+    { icon: 'theme', extensions: ['theme', 'themes'] },
     {
       icon: 'tools',
       extensions: [
@@ -890,43 +792,41 @@ export const extensions: IFolderCollection = {
         'utilities',
         'tooling',
       ],
-      format: FileFormat.svg,
     },
+    { icon: 'travis', extensions: ['.travis'] },
     {
       icon: 'trunk',
       extensions: ['.trunk'],
-      format: FileFormat.svg,
     },
     {
       icon: 'turbo',
       extensions: ['.turbo'],
-      format: FileFormat.svg,
     },
     {
       icon: 'typescript',
       extensions: ['typescript', 'ts'],
-      format: FileFormat.svg,
     },
     {
       icon: 'typings',
       extensions: ['typings', 'types', '@types'],
-      format: FileFormat.svg,
     },
     {
       icon: 'typings2',
       extensions: ['typings', 'types', '@types'],
-      format: FileFormat.svg,
+
       disabled: true,
     },
     {
       icon: 'vagrant',
       extensions: ['vagrant', '.vagrant'],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'vercel',
+      extensions: ['.vercel'],
     },
     {
       icon: 'video',
       extensions: ['video', '.video', 'videos', '.videos'],
-      format: FileFormat.svg,
     },
     {
       icon: 'view',
@@ -945,99 +845,90 @@ export const extensions: IFolderCollection = {
         '_page',
         '_pages',
       ],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'vitepress',
+      extensions: ['.vitepress'],
     },
     {
       icon: 'void',
       extensions: ['void'],
-      format: FileFormat.svg,
     },
-    { icon: 'vs', extensions: ['.vs'], format: FileFormat.svg },
+    { icon: 'vs', extensions: ['.vs'] },
     {
       icon: 'vs2',
       extensions: ['.vs'],
-      format: FileFormat.svg,
+
       disabled: true,
     },
     {
       icon: 'vscode',
       extensions: ['.vscode', 'vscode'],
-      format: FileFormat.svg,
     },
     {
       icon: 'vscode2',
       extensions: ['.vscode', 'vscode'],
-      format: FileFormat.svg,
+
       disabled: true,
     },
     {
       icon: 'vscode3',
       extensions: ['.vscode', 'vscode'],
-      format: FileFormat.svg,
+
       disabled: true,
     },
     {
       icon: 'vscode_test',
       extensions: ['.vscode-test'],
-      format: FileFormat.svg,
     },
     {
       icon: 'vscode_test2',
       extensions: ['.vscode-test'],
-      format: FileFormat.svg,
+
       disabled: true,
     },
     {
       icon: 'vscode_test3',
       extensions: ['.vscode-test'],
-      format: FileFormat.svg,
+
       disabled: true,
     },
     {
       icon: 'wasm',
       extensions: ['wasm', 'WASM', 'webassembly', 'WebAssembly'],
-      format: FileFormat.svg,
     },
     {
       icon: 'wasp',
       extensions: ['.wasp'],
-      format: FileFormat.svg,
-    },
-    {
-      icon: 'wit',
-      extensions: ['wit'],
-      format: FileFormat.svg,
     },
     {
       icon: 'webpack',
       extensions: ['webpack', '.webpack'],
-      format: FileFormat.svg,
     },
     {
       icon: 'windows',
       extensions: ['windows', 'win32'],
-      format: FileFormat.svg,
     },
     {
       icon: 'windsurf',
       extensions: ['.windsurf'],
-      format: FileFormat.svg,
+    },
+    {
+      icon: 'wit',
+      extensions: ['wit'],
     },
     {
       icon: 'www',
       extensions: ['.web', 'www', 'wwwroot', 'web'],
-      format: FileFormat.svg,
     },
     {
       icon: 'yarn',
       extensions: ['.yarn'],
-      format: FileFormat.svg,
     },
     {
       icon: 'zed',
-      extensions: ['.zed'],
+      extensions: ['.zed', 'zed'],
       light: true,
-      format: FileFormat.svg,
     },
   ],
 };

@@ -1,27 +1,29 @@
-import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
+import type {
+  ConfigManagerContract,
+  VSCodeManagerContract,
+  VSIcons,
+} from '../../src/types';
+
 import os from 'os';
 import path from 'path';
+
+import { expect } from 'chai';
+import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
 import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { constants } from '../../src/constants';
-import {
-  ConfigurationTarget,
-  IConfigManager,
-  IVSCodeManager,
-  IVSIcons,
-  PresetNames,
-} from '../../src/models';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
-describe('ConfigManager: tests', function () {
+describe('ConfigManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let readdirAsyncStub: sinon.SinonStub;
     let envStub: sinon.SinonStub;
     let updateFileStub: sinon.SinonStub;
@@ -32,8 +34,8 @@ describe('ConfigManager: tests', function () {
     let inspectStub: sinon.SinonStub;
     let updateStub: sinon.SinonStub;
     let pathUnixJoinStub: sinon.SinonStub;
-    let vsiconsClone: IVSIcons;
-    let configManager: IConfigManager;
+    let vsiconsClone: VSIcons;
+    let configManager: ConfigManagerContract;
     let splitter: (content: string) => string[];
 
     beforeEach(function () {
@@ -55,7 +57,7 @@ describe('ConfigManager: tests', function () {
       });
 
       vscodeManagerStub =
-        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       getStub = sandbox.stub();
       inspectStub = sandbox.stub().returns({
@@ -1071,7 +1073,7 @@ describe('ConfigManager: tests', function () {
 
         it(`updates the initial configuration state`, function () {
           // @ts-ignore
-          const initConfig = configManager.initVSIconsConfig as IVSIcons;
+          const initConfig = configManager.initVSIconsConfig as VSIcons;
           vsiconsClone.presets.angular = true;
 
           configManager.updateVSIconsConfigState();
@@ -1088,7 +1090,7 @@ describe('ConfigManager: tests', function () {
 
         it(`does NOT update the initial configuration state`, function () {
           // @ts-ignore
-          const initConfig = configManager.initVSIconsConfig as IVSIcons;
+          const initConfig = configManager.initVSIconsConfig as VSIcons;
           vsiconsClone.presets.angular = true;
 
           configManager.updateVSIconsConfigState();
@@ -1236,7 +1238,7 @@ describe('ConfigManager: tests', function () {
     context(`function 'getPreset'`, function () {
       it(`returns the preset setting`, function () {
         const expected = {
-          key: PresetNames[PresetNames.hideFolders],
+          key: enums.PresetNames[enums.PresetNames.hideFolders],
           defaultValue: false,
           globalValue: undefined,
           workspaceValue: undefined,
@@ -1246,13 +1248,13 @@ describe('ConfigManager: tests', function () {
 
         expect(
           configManager.getPreset<boolean>(
-            PresetNames[PresetNames.hideFolders],
+            enums.PresetNames[enums.PresetNames.hideFolders],
           ),
         ).to.eql(expected);
         expect(
           inspectStub
             .getCall(2)
-            .calledWith(PresetNames[PresetNames.hideFolders]),
+            .calledWith(enums.PresetNames[enums.PresetNames.hideFolders]),
         ).to.be.true;
       });
 
@@ -1272,7 +1274,7 @@ describe('ConfigManager: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.dontShowNewVersionMessageSetting,
             true,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1284,7 +1286,7 @@ describe('ConfigManager: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.dontShowNewVersionMessageSetting,
             false,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1300,7 +1302,7 @@ describe('ConfigManager: tests', function () {
             updateStub.calledOnceWith(
               constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
               true,
-              ConfigurationTarget.Global,
+              enums.ConfigurationTarget.Global,
             ),
           ).to.be.true;
         });
@@ -1312,7 +1314,7 @@ describe('ConfigManager: tests', function () {
             updateStub.calledOnceWith(
               constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
               false,
-              ConfigurationTarget.Global,
+              enums.ConfigurationTarget.Global,
             ),
           ).to.be.true;
         });
@@ -1327,7 +1329,7 @@ describe('ConfigManager: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.projectDetectionAutoReloadSetting,
             true,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1339,7 +1341,7 @@ describe('ConfigManager: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.projectDetectionAutoReloadSetting,
             false,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1353,7 +1355,7 @@ describe('ConfigManager: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.projectDetectionDisableDetectSetting,
             true,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1365,7 +1367,7 @@ describe('ConfigManager: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.projectDetectionDisableDetectSetting,
             false,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1379,7 +1381,7 @@ describe('ConfigManager: tests', function () {
           updateStub.calledOnceWith(
             constants.vscode.iconThemeSetting,
             constants.extension.name,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1390,9 +1392,9 @@ describe('ConfigManager: tests', function () {
         inspectStub.returns({ defaultValue: false });
 
         await configManager.updatePreset(
-          PresetNames[PresetNames.tsOfficial],
+          enums.PresetNames[enums.PresetNames.tsOfficial],
           true,
-          ConfigurationTarget.Global,
+          enums.ConfigurationTarget.Global,
         );
 
         expect(
@@ -1400,17 +1402,17 @@ describe('ConfigManager: tests', function () {
             .getCall(2)
             .calledWith(
               `${constants.vsicons.presets.fullname}.${
-                PresetNames[PresetNames.tsOfficial]
+                enums.PresetNames[enums.PresetNames.tsOfficial]
               }`,
             ),
         ).to.be.true;
         expect(
           updateStub.calledOnceWith(
             `${constants.vsicons.presets.fullname}.${
-              PresetNames[PresetNames.tsOfficial]
+              enums.PresetNames[enums.PresetNames.tsOfficial]
             }`,
             true,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1419,9 +1421,9 @@ describe('ConfigManager: tests', function () {
         inspectStub.returns({ defaultValue: false });
 
         await configManager.updatePreset(
-          PresetNames[PresetNames.jsOfficial],
+          enums.PresetNames[enums.PresetNames.jsOfficial],
           false,
-          ConfigurationTarget.Global,
+          enums.ConfigurationTarget.Global,
         );
 
         expect(
@@ -1429,17 +1431,17 @@ describe('ConfigManager: tests', function () {
             .getCall(2)
             .calledWith(
               `${constants.vsicons.presets.fullname}.${
-                PresetNames[PresetNames.jsOfficial]
+                enums.PresetNames[enums.PresetNames.jsOfficial]
               }`,
             ),
         ).to.be.true;
         expect(
           updateStub.calledOnceWith(
             `${constants.vsicons.presets.fullname}.${
-              PresetNames[PresetNames.jsOfficial]
+              enums.PresetNames[enums.PresetNames.jsOfficial]
             }`,
             undefined,
-            ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1448,9 +1450,9 @@ describe('ConfigManager: tests', function () {
         inspectStub.returns({ defaultValue: false });
 
         await configManager.updatePreset(
-          PresetNames[PresetNames.angular],
+          enums.PresetNames[enums.PresetNames.angular],
           false,
-          ConfigurationTarget.Workspace,
+          enums.ConfigurationTarget.Workspace,
         );
 
         expect(
@@ -1458,17 +1460,17 @@ describe('ConfigManager: tests', function () {
             .getCall(2)
             .calledWith(
               `${constants.vsicons.presets.fullname}.${
-                PresetNames[PresetNames.angular]
+                enums.PresetNames[enums.PresetNames.angular]
               }`,
             ),
         ).to.be.true;
         expect(
           updateStub.calledOnceWith(
             `${constants.vsicons.presets.fullname}.${
-              PresetNames[PresetNames.angular]
+              enums.PresetNames[enums.PresetNames.angular]
             }`,
             undefined,
-            ConfigurationTarget.Workspace,
+            enums.ConfigurationTarget.Workspace,
           ),
         ).to.be.true;
       });

@@ -1,35 +1,34 @@
+import type {
+  SettingsManagerContract,
+  State,
+  VSCodeManagerContract,
+} from '../../src/types';
+
 import { expect } from 'chai';
-import semver from 'semver';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
-import * as fsAsync from '../../src/common/fsAsync';
 import { constants } from '../../src/constants';
-import {
-  ExtensionStatus,
-  ISettingsManager,
-  IState,
-  IVSCodeManager,
-} from '../../src/models';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
-describe('SettingsManager: tests', function () {
+describe('SettingsManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
-    let settingsManager: ISettingsManager;
-    let stateMock: IState;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
+    let settingsManager: SettingsManagerContract;
+    let stateMock: State;
     let globalStateGetStub: sinon.SinonStub;
     let globalStateUpdateStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
-    let parseJSONStub: sinon.SinonStub;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       globalStateGetStub = sandbox.stub();
       globalStateUpdateStub = sandbox.stub();
@@ -43,12 +42,11 @@ describe('SettingsManager: tests', function () {
       settingsManager = new SettingsManager(vscodeManagerStub);
 
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
-      parseJSONStub = sandbox.stub(Utils, 'parseJSONSafe');
       sandbox.stub(Utils, 'pathUnixJoin');
 
       stateMock = {
         version: '0.0.0',
-        status: ExtensionStatus.deactivated,
+        status: enums.ExtensionStatus.deactivated,
         welcomeShown: false,
       };
     });
@@ -62,138 +60,6 @@ describe('SettingsManager: tests', function () {
       expect(() => new SettingsManager(null))
         .to.throw(ReferenceError)
         .that.matches(/'vscodeManager' not set to an instance/);
-    });
-
-    context('moving the state from its legacy place', function () {
-      let existsAsyncStub: sinon.SinonStub;
-      let readFileAsyncStub: sinon.SinonStub;
-      let unlinkFileAsyncStub: sinon.SinonStub;
-      let semverSpy: sinon.SinonSpy;
-
-      beforeEach(function () {
-        existsAsyncStub = sandbox.stub(fsAsync, 'existsAsync');
-        readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
-        unlinkFileAsyncStub = sandbox.stub(fsAsync, 'unlinkAsync');
-        vscodeManagerStub.getAppUserDirPath.returns('');
-      });
-
-      it('when the file is NOT found, no moving happens', async function () {
-        existsAsyncStub.resolves(false);
-        globalStateUpdateStub.resolves();
-
-        await settingsManager.moveStateFromLegacyPlace();
-
-        expect(existsAsyncStub.calledOnce).to.be.true;
-        expect(readFileAsyncStub.called).to.be.false;
-        expect(globalStateUpdateStub.called).to.be.false;
-        expect(unlinkFileAsyncStub.called).to.be.false;
-      });
-
-      context(`when the file is found`, function () {
-        beforeEach(function () {
-          semverSpy = sandbox.spy(semver, 'eq');
-        });
-
-        context(`it gets not moved`, function () {
-          it(`if state version equals the default state version`, async function () {
-            existsAsyncStub.resolves(true);
-            readFileAsyncStub.resolves(JSON.stringify(stateMock));
-            globalStateUpdateStub.resolves();
-
-            await settingsManager.moveStateFromLegacyPlace();
-
-            expect(existsAsyncStub.calledOnce).to.be.true;
-            expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
-              .true;
-            expect(globalStateUpdateStub.called).to.be.false;
-            expect(unlinkFileAsyncStub.called).to.be.false;
-          });
-
-          it(`if parsing the state fails`, async function () {
-            existsAsyncStub.resolves(true);
-            readFileAsyncStub.resolves('sometext');
-            globalStateUpdateStub.resolves();
-
-            await settingsManager.moveStateFromLegacyPlace();
-
-            expect(existsAsyncStub.calledOnce).to.be.true;
-            expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
-              .true;
-            expect(globalStateUpdateStub.called).to.be.false;
-            expect(unlinkFileAsyncStub.called).to.be.false;
-          });
-        });
-
-        context(`it gets moved`, function () {
-          it(`if state version does NOT equal the default state version`, async function () {
-            stateMock.version = '1.0.0';
-            existsAsyncStub.resolves(true);
-            parseJSONStub.returns(stateMock);
-            globalStateUpdateStub.resolves();
-
-            await settingsManager.moveStateFromLegacyPlace();
-
-            expect(existsAsyncStub.calledOnce).to.be.true;
-            expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'))
-              .to.be.true;
-            expect(
-              globalStateUpdateStub.calledOnceWithExactly(
-                constants.vsicons.name,
-                stateMock,
-              ),
-            ).to.be.true;
-            expect(unlinkFileAsyncStub.calledOnce).to.be.true;
-          });
-        });
-
-        context(`an Error gets logged when`, function () {
-          it(`reading the file fails`, async function () {
-            existsAsyncStub.resolves(true);
-            const error = new Error();
-            readFileAsyncStub.rejects(error);
-            globalStateUpdateStub.resolves();
-
-            await settingsManager.moveStateFromLegacyPlace();
-
-            expect(logErrorStub.calledOnceWithExactly(error, true)).to.be.true;
-            expect(existsAsyncStub.calledOnce).to.be.true;
-            expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(semverSpy.calledOnceWithExactly('0.0.0', '0.0.0')).to.be
-              .true;
-            expect(globalStateUpdateStub.called).to.be.false;
-            expect(unlinkFileAsyncStub.called).to.be.false;
-          });
-
-          it(`deleting the file fails`, async function () {
-            stateMock.version = '1.0.0';
-            existsAsyncStub.resolves(true);
-            parseJSONStub.returns(stateMock);
-            globalStateUpdateStub.resolves();
-
-            const error = new Error();
-            unlinkFileAsyncStub.rejects(error);
-
-            await settingsManager.moveStateFromLegacyPlace();
-
-            expect(existsAsyncStub.calledOnce).to.be.true;
-            expect(readFileAsyncStub.calledOnce).to.be.true;
-            expect(semverSpy.calledOnceWithExactly(stateMock.version, '0.0.0'))
-              .to.be.true;
-            expect(
-              globalStateUpdateStub.calledOnceWithExactly(
-                constants.vsicons.name,
-                stateMock,
-              ),
-            ).to.be.true;
-            expect(unlinkFileAsyncStub.calledOnceWithExactly(undefined)).to.be
-              .true;
-            expect(logErrorStub.calledOnceWithExactly(error)).to.be.true;
-          });
-        });
-      });
     });
 
     it('the state gets set to the global state storage', async function () {
@@ -229,7 +95,7 @@ describe('SettingsManager: tests', function () {
       globalStateGetStub.returns(stateMock);
       globalStateUpdateStub.resolves();
 
-      const status = ExtensionStatus.activated;
+      const status = enums.ExtensionStatus.activated;
 
       const state = await settingsManager.updateStatus(status);
 

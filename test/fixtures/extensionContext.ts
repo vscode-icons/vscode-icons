@@ -1,9 +1,9 @@
-import { IVSCodeExtensionContext, IVSCodeMemento } from '../../src/models';
+import type { VSCodeExtensionContext, VSCodeMemento } from '../../src/types';
 
-export const context: IVSCodeExtensionContext = {
+export const context: VSCodeExtensionContext = {
   extensionPath: undefined,
-  globalState: {} as IVSCodeMemento,
+  globalState: {} as VSCodeMemento,
   storagePath: undefined,
   subscriptions: [],
-  workspaceState: {} as IVSCodeMemento,
+  workspaceState: {} as VSCodeMemento,
 };

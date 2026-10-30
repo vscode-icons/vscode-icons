@@ -1,10 +1,11 @@
 import { expect } from 'chai';
-import * as sinon from 'sinon';
 import proxyq from 'proxyquire';
-import { schema } from '../../src/models/iconsManifest/defaultSchema';
+import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
-import { constants } from '../../src/constants';
 import { ConfigManager } from '../../src/configuration/configManager';
+import { constants } from '../../src/constants';
+import { vscodeSchema } from '../../src/types/iconSchema/vscode';
 
 describe('Build: tests', function () {
   context('ensures that', function () {
@@ -25,7 +26,7 @@ describe('Build: tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      generateIconsManifestStub = sandbox.stub().resolves(schema);
+      generateIconsManifestStub = sandbox.stub().resolves(vscodeSchema);
       persistStub = sandbox.stub().resolves();
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
 
@@ -53,8 +54,14 @@ describe('Build: tests', function () {
       it(`generates and saves the default icons manifest`, async function () {
         await build();
 
-        expect(generateIconsManifestStub.calledOnceWithExactly()).to.be.true;
-        expect(persistStub.calledOnceWithExactly(schema, true)).to.be.true;
+        expect(
+          generateIconsManifestStub.calledOnce,
+          'generateIconsManifest should be called once',
+        ).to.be.true;
+        expect(
+          persistStub.calledOnceWithExactly(vscodeSchema, false),
+          'persist should be called once with correct arguments',
+        ).to.be.true;
         expect(logErrorStub.called).to.be.false;
       });
 
@@ -74,6 +81,10 @@ describe('Build: tests', function () {
             expect(ConfigManager.outDir).to.match(
               new RegExp(`.*[\\\\|/]${constants.extension.distDirName}$`),
             );
+            expect(
+              persistStub.calledOnceWithExactly(vscodeSchema, true),
+              'persist should be called once with correct arguments',
+            ).to.be.true;
           });
 
           it(`'production'`, async function () {
@@ -85,6 +96,10 @@ describe('Build: tests', function () {
             expect(ConfigManager.outDir).to.match(
               new RegExp(`.*[\\\\|/]${constants.extension.distDirName}$`),
             );
+            expect(
+              persistStub.calledOnceWithExactly(vscodeSchema, true),
+              'persist should be called once with correct arguments',
+            ).to.be.true;
           });
         });
       });

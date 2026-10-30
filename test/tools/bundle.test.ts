@@ -1,11 +1,12 @@
 import { expect } from 'chai';
 import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
 import { constants } from '../../src/constants';
 
 describe('Bundle: tests', function () {
-  interface IBundler {
+  interface Bundler {
     bundleLangResources: (...arg: unknown[]) => Promise<void>;
     copyPackageResources: (...arg: unknown[]) => Promise<void>;
   }
@@ -40,7 +41,7 @@ describe('Bundle: tests', function () {
               bundleLangResources: bundleLangResourcesStub,
               copyPackageResources: copyPackageResourcesStub,
             },
-          } as Record<string, IBundler>,
+          } as Record<string, Bundler>,
         }) as Promise<void>;
     });
 

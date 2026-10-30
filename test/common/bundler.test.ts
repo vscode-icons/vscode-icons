@@ -1,6 +1,8 @@
-import { expect } from 'chai';
 import { join } from 'path';
+
+import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { Bundler } from '../../src/common/bundler';
 import * as fsAsync from '../../src/common/fsAsync';
 import { constants } from '../../src/constants';

@@ -1,21 +1,23 @@
+import type {
+  VSCodeManagerContract,
+  VSCodeUri,
+  VSCodeWorkspaceFolder,
+} from '../../src/types';
+import type { PackageManifest } from '../../src/types/package';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import packageJson from '../../../package.json';
-import {
-  IVSCodeManager,
-  IVSCodeUri,
-  IVSCodeWorkspaceFolder,
-} from '../../src/models';
-import { IPackageManifest } from '../../src/models/packageManifest';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
 import { vscode } from '../fixtures/vscode';
 
-describe('VSCodeManager: tests', function () {
+describe('VSCodeManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManager: IVSCodeManager;
+    let vscodeManager: VSCodeManagerContract;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
@@ -109,10 +111,10 @@ describe('VSCodeManager: tests', function () {
       context(`when minimum supported version`, function () {
         context(`can NOT be determined`, function () {
           let manifestVSCodeEngineOriginalValue: string;
-          let manifest: IPackageManifest;
+          let manifest: PackageManifest;
 
           beforeEach(function () {
-            manifest = packageJson as IPackageManifest;
+            manifest = packageJson as PackageManifest;
             manifestVSCodeEngineOriginalValue = manifest.engines.vscode;
             vscode.version = '1.26.0';
           });
@@ -161,13 +163,13 @@ describe('VSCodeManager: tests', function () {
           '/path/to/workspace/folder1/root',
           '/path/to/workspace/folder2/root',
         ];
-        const workspaceFolder: IVSCodeWorkspaceFolder = {
-          uri: { fsPath: paths[0] } as IVSCodeUri,
+        const workspaceFolder: VSCodeWorkspaceFolder = {
+          uri: { fsPath: paths[0] } as VSCodeUri,
           name: '',
           index: 0,
         };
-        const workspaceFolder1: IVSCodeWorkspaceFolder = {
-          uri: { fsPath: paths[1] } as IVSCodeUri,
+        const workspaceFolder1: VSCodeWorkspaceFolder = {
+          uri: { fsPath: paths[1] } as VSCodeUri,
           name: '',
           index: 0,
         };

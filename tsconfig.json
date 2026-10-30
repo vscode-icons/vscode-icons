@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2022"],
-    "module": "node16",
+    "module": "node20",
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -12,7 +12,8 @@
     "strictFunctionTypes": false,
     "strictNullChecks": false,
     "target": "es6",
-    "types": ["node"]
+    "types": ["node"],
+    "resolveJsonModule": true
   },
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }

@@ -1,17 +1,17 @@
-import {
-  IVSCode,
-  IVSCodeEnv,
-  IVSCodeCommands,
-  IVSCodeWindow,
-  IVSCodeWorkspace,
-} from '../../src/models';
+import type {
+  VSCode,
+  VSCodeCommands,
+  VSCodeEnv,
+  VSCodeWindow,
+  VSCodeWorkspace,
+} from '../../src/types';
 
-const env: IVSCodeEnv = {} as IVSCodeEnv;
-const commands: IVSCodeCommands = {} as IVSCodeCommands;
-const window: IVSCodeWindow = {} as IVSCodeWindow;
-const workspace: IVSCodeWorkspace = {} as IVSCodeWorkspace;
+const env: VSCodeEnv = {} as VSCodeEnv;
+const commands: VSCodeCommands = {} as VSCodeCommands;
+const window: VSCodeWindow = {} as VSCodeWindow;
+const workspace: VSCodeWorkspace = {} as VSCodeWorkspace;
 
-export const vscode: IVSCode = {
+export const vscode: VSCode = {
   env,
   commands,
   version: '1.0.0',

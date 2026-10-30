@@ -1,14 +1,15 @@
+import type {
+  FileExtension,
+  FolderCollection,
+  Presets,
+  ProjectDetectionResult,
+} from '../../../src/types';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { CustomsMerger, ManifestReader } from '../../../src/iconsManifest';
-import {
-  IconNames,
-  IFileExtension,
-  IFolderCollection,
-  IPresets,
-  IProjectDetectionResult,
-  Projects,
-} from '../../../src/models';
+import * as enums from '../../../src/types/enums';
 import { extensions as extFiles } from '../../fixtures/supportedExtensions';
 import { extensions as extFolders } from '../../fixtures/supportedFolders';
 import { vsicons } from '../../fixtures/vsicons';
@@ -27,13 +28,15 @@ describe('CustomsMerger: toggle presets tests', function () {
     });
 
     afterEach(function () {
+      vsicons.presets.foldersAllDefaultIcon = false;
+      vsicons.presets.hideFolders = false;
       sandbox.restore();
     });
 
     context(`'Angular' icons can be`, function () {
       const regex = /^ng_.*\D$/;
       it('enabled and disabled', async function () {
-        const toggle = async (enable: boolean): Promise<IFileExtension[]> => {
+        const toggle = async (enable: boolean): Promise<FileExtension[]> => {
           vsicons.presets.angular = enable;
           const mergedCollection = await CustomsMerger.merge(
             null,
@@ -43,27 +46,27 @@ describe('CustomsMerger: toggle presets tests', function () {
             vsicons.presets,
           );
           return mergedCollection.files.supported.filter(
-            (file: IFileExtension) => regex.test(file.icon),
+            (file: FileExtension) => regex.test(file.icon),
           );
         };
 
         // Set Angular icons as enabled
         let defs = await toggle(true);
 
-        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.false);
+        defs.forEach((def: FileExtension) => expect(def.disabled).to.be.false);
 
         // Set Angular icons as disabled
         defs = await toggle(false);
 
-        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
+        defs.forEach((def: FileExtension) => expect(def.disabled).to.be.true);
       });
 
       it(`preserved, if enabled by PAD, when toggling any preset`, async function () {
         const toggle = async (
           enable: boolean,
-          padResults: IProjectDetectionResult[],
-          affectPresets?: IPresets,
-        ): Promise<Record<string, IFileExtension[]>> => {
+          padResults: ProjectDetectionResult[],
+          affectPresets?: Presets,
+        ): Promise<Record<string, FileExtension[]>> => {
           vsicons.presets.jsOfficial = enable;
           const { files } = await CustomsMerger.merge(
             null,
@@ -76,15 +79,16 @@ describe('CustomsMerger: toggle presets tests', function () {
           );
 
           return {
-            ngDefs: files.supported.filter((file: IFileExtension) =>
+            ngDefs: files.supported.filter((file: FileExtension) =>
               regex.test(file.icon),
             ),
             jsDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.js.toString(),
             ),
             officialJSDefs: files.supported.filter(
-              (file: IFileExtension) =>
-                file.icon === IconNames.jsOfficial.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -93,48 +97,48 @@ describe('CustomsMerger: toggle presets tests', function () {
         let icons = await toggle(false, [
           {
             apply: true,
-            project: Projects.angular,
+            project: enums.Projects.angular,
             value: true,
           },
         ]);
 
         icons.jsDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.officialJSDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.ngDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
 
         // Angular icons are enabled
         iconsDisabledStub.resolves(false);
 
         // User toggles to enable JS Official icons
-        icons = await toggle(true, undefined, { angular: false } as IPresets);
+        icons = await toggle(true, undefined, { angular: false } as Presets);
 
         icons.jsDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.officialJSDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.ngDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
 
         // User toggles to disable JS Official icons
-        icons = await toggle(false, undefined, { angular: false } as IPresets);
+        icons = await toggle(false, undefined, { angular: false } as Presets);
 
         icons.jsDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.officialJSDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.ngDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
       });
 
@@ -152,11 +156,11 @@ describe('CustomsMerger: toggle presets tests', function () {
               },
             ],
           )
-        ).files.supported.filter((file: IFileExtension) =>
+        ).files.supported.filter((file: FileExtension) =>
           regex.test(file.icon),
         );
 
-        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
+        defs.forEach((def: FileExtension) => expect(def.disabled).to.be.true);
       });
 
       it(`enabled, when an 'Angular' project is detected by PAD`, async function () {
@@ -170,23 +174,23 @@ describe('CustomsMerger: toggle presets tests', function () {
             [
               {
                 apply: true,
-                project: Projects.angular,
+                project: enums.Projects.angular,
                 value: true,
               },
             ],
           )
-        ).files.supported.filter((file: IFileExtension) =>
+        ).files.supported.filter((file: FileExtension) =>
           regex.test(file.icon),
         );
 
-        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.false);
+        defs.forEach((def: FileExtension) => expect(def.disabled).to.be.false);
       });
     });
 
     context(`'NestJS' icons can be`, function () {
       const regex = /^nest_.*\D$/;
       it('enabled and disabled', async function () {
-        const toggle = async (enable: boolean): Promise<IFileExtension[]> => {
+        const toggle = async (enable: boolean): Promise<FileExtension[]> => {
           vsicons.presets.nestjs = enable;
           const mergedCollection = await CustomsMerger.merge(
             null,
@@ -196,27 +200,27 @@ describe('CustomsMerger: toggle presets tests', function () {
             vsicons.presets,
           );
           return mergedCollection.files.supported.filter(
-            (file: IFileExtension) => regex.test(file.icon),
+            (file: FileExtension) => regex.test(file.icon),
           );
         };
 
         // Set Angular icons as enabled
         let defs = await toggle(true);
 
-        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.false);
+        defs.forEach((def: FileExtension) => expect(def.disabled).to.be.false);
 
         // Set Angular icons as disabled
         defs = await toggle(false);
 
-        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
+        defs.forEach((def: FileExtension) => expect(def.disabled).to.be.true);
       });
 
       it(`preserved, if enabled by PAD, when toggling any preset`, async function () {
         const toggle = async (
           enable: boolean,
-          padResult: IProjectDetectionResult[],
-          affectPresets?: IPresets,
-        ): Promise<Record<string, IFileExtension[]>> => {
+          padResult: ProjectDetectionResult[],
+          affectPresets?: Presets,
+        ): Promise<Record<string, FileExtension[]>> => {
           vsicons.presets.jsOfficial = enable;
           const { files } = await CustomsMerger.merge(
             null,
@@ -229,15 +233,16 @@ describe('CustomsMerger: toggle presets tests', function () {
           );
 
           return {
-            ngDefs: files.supported.filter((file: IFileExtension) =>
+            ngDefs: files.supported.filter((file: FileExtension) =>
               regex.test(file.icon),
             ),
             jsDefs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.js.toString(),
             ),
             officialJSDefs: files.supported.filter(
-              (file: IFileExtension) =>
-                file.icon === IconNames.jsOfficial.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -246,48 +251,48 @@ describe('CustomsMerger: toggle presets tests', function () {
         let icons = await toggle(false, [
           {
             apply: true,
-            project: Projects.nestjs,
+            project: enums.Projects.nestjs,
             value: true,
           },
         ]);
 
         icons.jsDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.officialJSDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.ngDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
 
         // Angular icons are enabled
         iconsDisabledStub.resolves(false);
 
         // User toggles to enable JS Official icons
-        icons = await toggle(true, undefined, { nestjs: false } as IPresets);
+        icons = await toggle(true, undefined, { nestjs: false } as Presets);
 
         icons.jsDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.officialJSDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.ngDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
 
         // User toggles to disable JS Official icons
-        icons = await toggle(false, undefined, { nestjs: false } as IPresets);
+        icons = await toggle(false, undefined, { nestjs: false } as Presets);
 
         icons.jsDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.officialJSDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.ngDefs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
       });
 
@@ -305,11 +310,11 @@ describe('CustomsMerger: toggle presets tests', function () {
               },
             ],
           )
-        ).files.supported.filter((file: IFileExtension) =>
+        ).files.supported.filter((file: FileExtension) =>
           regex.test(file.icon),
         );
 
-        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
+        defs.forEach((def: FileExtension) => expect(def.disabled).to.be.true);
       });
 
       it(`enabled, when an 'NestJS' project is detected by PAD`, async function () {
@@ -323,16 +328,16 @@ describe('CustomsMerger: toggle presets tests', function () {
             [
               {
                 apply: true,
-                project: Projects.nestjs,
+                project: enums.Projects.nestjs,
                 value: true,
               },
             ],
           )
-        ).files.supported.filter((file: IFileExtension) =>
+        ).files.supported.filter((file: FileExtension) =>
           regex.test(file.icon),
         );
 
-        defs.forEach((def: IFileExtension) => expect(def.disabled).to.be.false);
+        defs.forEach((def: FileExtension) => expect(def.disabled).to.be.false);
       });
     });
 
@@ -340,7 +345,7 @@ describe('CustomsMerger: toggle presets tests', function () {
       it('enabled and disabled', async function () {
         const toggle = async (
           enable: boolean,
-        ): Promise<Record<string, IFileExtension[]>> => {
+        ): Promise<Record<string, FileExtension[]>> => {
           vsicons.presets.jsOfficial = enable;
           const { files } = await CustomsMerger.merge(
             null,
@@ -352,11 +357,12 @@ describe('CustomsMerger: toggle presets tests', function () {
 
           return {
             defs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.js.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.js.toString(),
             ),
             officialDefs: files.supported.filter(
-              (file: IFileExtension) =>
-                file.icon === IconNames.jsOfficial.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.jsOfficial.toString(),
             ),
           };
         };
@@ -365,10 +371,10 @@ describe('CustomsMerger: toggle presets tests', function () {
         let icons = await toggle(true);
 
         icons.defs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.officialDefs.forEach(
-          (officialDef: IFileExtension) =>
+          (officialDef: FileExtension) =>
             expect(officialDef.disabled).to.be.false,
         );
 
@@ -376,10 +382,10 @@ describe('CustomsMerger: toggle presets tests', function () {
         icons = await toggle(false);
 
         icons.defs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.officialDefs.forEach(
-          (officialDef: IFileExtension) =>
+          (officialDef: FileExtension) =>
             expect(officialDef.disabled).to.be.true,
         );
       });
@@ -391,7 +397,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         it('enabled and disabled', async function () {
           const toggle = async (
             enable: boolean,
-          ): Promise<Record<string, IFileExtension[]>> => {
+          ): Promise<Record<string, FileExtension[]>> => {
             vsicons.presets.tsOfficial = enable;
             const { files } = await CustomsMerger.merge(
               null,
@@ -403,27 +409,28 @@ describe('CustomsMerger: toggle presets tests', function () {
 
             return {
               tsDefs: files.supported.filter(
-                (file: IFileExtension) => file.icon === IconNames.ts.toString(),
+                (file: FileExtension) =>
+                  file.icon === enums.IconNames.ts.toString(),
               ),
               officialTsDefs: files.supported.filter(
-                (file: IFileExtension) =>
-                  file.icon === IconNames.tsOfficial.toString(),
+                (file: FileExtension) =>
+                  file.icon === enums.IconNames.tsOfficial.toString(),
               ),
               tsConfig: files.supported.filter(
-                (file: IFileExtension) =>
-                  file.icon === IconNames.tsConfig.toString(),
+                (file: FileExtension) =>
+                  file.icon === enums.IconNames.tsConfig.toString(),
               ),
               tsConfigOfficial: files.supported.filter(
-                (file: IFileExtension) =>
-                  file.icon === IconNames.tsConfigOfficial.toString(),
+                (file: FileExtension) =>
+                  file.icon === enums.IconNames.tsConfigOfficial.toString(),
               ),
               typesDefs: files.supported.filter(
-                (file: IFileExtension) =>
-                  file.icon === IconNames.tsDef.toString(),
+                (file: FileExtension) =>
+                  file.icon === enums.IconNames.tsDef.toString(),
               ),
               officialTypesDefs: files.supported.filter(
-                (file: IFileExtension) =>
-                  file.icon === IconNames.tsDefOfficial.toString(),
+                (file: FileExtension) =>
+                  file.icon === enums.IconNames.tsDefOfficial.toString(),
               ),
             };
           };
@@ -432,18 +439,18 @@ describe('CustomsMerger: toggle presets tests', function () {
           let icons = await toggle(true);
 
           icons.tsDefs.forEach(
-            (def: IFileExtension) => expect(def.disabled).to.be.true,
+            (def: FileExtension) => expect(def.disabled).to.be.true,
           );
           icons.officialTsDefs.forEach(
-            (officialDef: IFileExtension) =>
+            (officialDef: FileExtension) =>
               expect(officialDef.disabled).to.be.false,
           );
 
           icons.typesDefs.forEach(
-            (def: IFileExtension) => expect(def.disabled).to.be.true,
+            (def: FileExtension) => expect(def.disabled).to.be.true,
           );
           icons.officialTypesDefs.forEach(
-            (officialDef: IFileExtension) =>
+            (officialDef: FileExtension) =>
               expect(officialDef.disabled).to.be.false,
           );
 
@@ -451,18 +458,18 @@ describe('CustomsMerger: toggle presets tests', function () {
           icons = await toggle(false);
 
           icons.tsDefs.forEach(
-            (def: IFileExtension) => expect(def.disabled).to.be.false,
+            (def: FileExtension) => expect(def.disabled).to.be.false,
           );
           icons.officialTsDefs.forEach(
-            (officialDef: IFileExtension) =>
+            (officialDef: FileExtension) =>
               expect(officialDef.disabled).to.be.true,
           );
 
           icons.typesDefs.forEach(
-            (def: IFileExtension) => expect(def.disabled).to.be.false,
+            (def: FileExtension) => expect(def.disabled).to.be.false,
           );
           icons.officialTypesDefs.forEach(
-            (officialDef: IFileExtension) =>
+            (officialDef: FileExtension) =>
               expect(officialDef.disabled).to.be.true,
           );
         });
@@ -473,7 +480,7 @@ describe('CustomsMerger: toggle presets tests', function () {
       it('enabled and disabled', async function () {
         const toggle = async (
           enable: boolean,
-        ): Promise<Record<string, IFileExtension[]>> => {
+        ): Promise<Record<string, FileExtension[]>> => {
           vsicons.presets.jsonOfficial = enable;
           const { files } = await CustomsMerger.merge(
             null,
@@ -485,11 +492,12 @@ describe('CustomsMerger: toggle presets tests', function () {
 
           return {
             defs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.json.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.json.toString(),
             ),
             officialDefs: files.supported.filter(
-              (file: IFileExtension) =>
-                file.icon === IconNames.jsonOfficial.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.jsonOfficial.toString(),
             ),
           };
         };
@@ -498,10 +506,10 @@ describe('CustomsMerger: toggle presets tests', function () {
         let icons = await toggle(true);
 
         icons.defs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.officialDefs.forEach(
-          (officialDef: IFileExtension) =>
+          (officialDef: FileExtension) =>
             expect(officialDef.disabled).to.be.false,
         );
 
@@ -509,10 +517,10 @@ describe('CustomsMerger: toggle presets tests', function () {
         icons = await toggle(false);
 
         icons.defs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.officialDefs.forEach(
-          (officialDef: IFileExtension) =>
+          (officialDef: FileExtension) =>
             expect(officialDef.disabled).to.be.true,
         );
       });
@@ -522,7 +530,7 @@ describe('CustomsMerger: toggle presets tests', function () {
       it('enabled and disabled', async function () {
         const toggle = async (
           enable: boolean,
-        ): Promise<Record<string, IFileExtension[]>> => {
+        ): Promise<Record<string, FileExtension[]>> => {
           vsicons.presets.yamlOfficial = enable;
           const { files } = await CustomsMerger.merge(
             null,
@@ -534,11 +542,12 @@ describe('CustomsMerger: toggle presets tests', function () {
 
           return {
             defs: files.supported.filter(
-              (file: IFileExtension) => file.icon === IconNames.yaml.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.yaml.toString(),
             ),
             officialDefs: files.supported.filter(
-              (file: IFileExtension) =>
-                file.icon === IconNames.yamlOfficial.toString(),
+              (file: FileExtension) =>
+                file.icon === enums.IconNames.yamlOfficial.toString(),
             ),
           };
         };
@@ -547,10 +556,10 @@ describe('CustomsMerger: toggle presets tests', function () {
         let icons = await toggle(true);
 
         icons.defs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
         icons.officialDefs.forEach(
-          (officialDef: IFileExtension) =>
+          (officialDef: FileExtension) =>
             expect(officialDef.disabled).to.be.false,
         );
 
@@ -558,10 +567,10 @@ describe('CustomsMerger: toggle presets tests', function () {
         icons = await toggle(false);
 
         icons.defs.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.false,
+          (def: FileExtension) => expect(def.disabled).to.be.false,
         );
         icons.officialDefs.forEach(
-          (officialDef: IFileExtension) =>
+          (officialDef: FileExtension) =>
             expect(officialDef.disabled).to.be.true,
         );
       });
@@ -569,7 +578,7 @@ describe('CustomsMerger: toggle presets tests', function () {
 
     context('all specific folders icons can be', function () {
       it('disabled and enabled', async function () {
-        const toggle = async (enabled: boolean): Promise<IFolderCollection> => {
+        const toggle = async (enabled: boolean): Promise<FolderCollection> => {
           vsicons.presets.foldersAllDefaultIcon = enabled;
           const { folders } = await CustomsMerger.merge(
             null,
@@ -586,7 +595,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         expect(defs.default.folder.disabled).to.be.false;
         expect(defs.default.root_folder.disabled).to.be.false;
         defs.supported.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
 
         // Enable icons
@@ -630,14 +639,14 @@ describe('CustomsMerger: toggle presets tests', function () {
         expect(folders.default.folder.disabled).to.be.true;
         expect(folders.default.root_folder.disabled).to.be.true;
         folders.supported.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
       });
     });
 
     context('all folder icons can be', function () {
       it('hidden and shown', async function () {
-        const toggle = async (enabled: boolean): Promise<IFolderCollection> => {
+        const toggle = async (enabled: boolean): Promise<FolderCollection> => {
           vsicons.presets.hideFolders = enabled;
           const { folders } = await CustomsMerger.merge(
             null,
@@ -654,7 +663,7 @@ describe('CustomsMerger: toggle presets tests', function () {
         expect(defs.default.folder.disabled).to.be.true;
         expect(defs.default.root_folder.disabled).to.be.true;
         defs.supported.forEach(
-          (def: IFileExtension) => expect(def.disabled).to.be.true,
+          (def: FileExtension) => expect(def.disabled).to.be.true,
         );
 
         // Show icons
@@ -698,12 +707,12 @@ describe('CustomsMerger: toggle presets tests', function () {
         expect(folders.default.folder.disabled).to.be.true;
         expect(folders.default.root_folder.disabled).to.be.true;
         expect(
-          folders.supported.find((def: IFileExtension) => def.icon === 'aws3')
+          folders.supported.find((def: FileExtension) => def.icon === 'aws3')
             .disabled,
         ).to.be.true;
         folders.supported
-          .filter((def: IFileExtension) => def.icon !== 'aws3')
-          .forEach((def: IFileExtension) => expect(def.disabled).to.be.true);
+          .filter((def: FileExtension) => def.icon !== 'aws3')
+          .forEach((def: FileExtension) => expect(def.disabled).to.be.true);
       });
     });
   });
