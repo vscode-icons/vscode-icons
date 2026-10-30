@@ -2538,6 +2538,12 @@ export const extensions: FileCollection = {
     },
     { icon: 'jss', extensions: ['jss'] },
     {
+      icon: 'jsx',
+      languages: [languages.javascriptreact],
+      light: true,
+      disabled: true,
+    },
+    {
       icon: 'juice',
       extensions: ['juice'],
     },
@@ -5574,6 +5580,11 @@ export const extensions: FileCollection = {
       icon: 'tslint',
       extensions: ['tslint.json', 'tslint.yaml', 'tslint.yml'],
       filename: true,
+    },
+    {
+      icon: 'tsx',
+      languages: [languages.typescriptreact],
+      disabled: true,
     },
     {
       icon: 'tt',
