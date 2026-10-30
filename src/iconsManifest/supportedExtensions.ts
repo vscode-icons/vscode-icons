@@ -2628,7 +2628,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'ghidra',
       extensions: ['gar', 'gdt', 'gpr', 'gzf'],
-      format: FileFormat.svg,
     },
     {
       icon: 'gimp',
