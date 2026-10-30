@@ -319,37 +319,6 @@ describe('ExtensionManagerContract: tests', function () {
           supportsThemesReloadStub.value(false);
         });
 
-        context(`does NOT reload the editor when`, function () {
-          it(`project detection results are empty`, function () {
-            // @ts-ignore
-            const cb = sandbox.stub(extensionManager, 'applyCustomization');
-            const cbArgs: unknown[] = [[]];
-
-            executeAndReload.call(extensionManager, cb, cbArgs);
-
-            expect(cb.calledOnce).to.be.true;
-            expect(cb.firstCall.args).to.deep.equal([[]]);
-            expect(executeCommandStub.called).to.be.false;
-          });
-
-          it(`when the customization callback has no arguments`, function () {
-            const callback = sandbox.stub(
-              extensionManager,
-              // @ts-ignore
-              'applyCustomization',
-            );
-
-            executeAndReload.call(extensionManager, callback);
-
-            expect(callback.calledOnceWithExactly()).to.be.true;
-            expect(
-              executeCommandStub.calledOnceWithExactly(
-                constants.vscode.reloadWindowActionSetting,
-              ),
-            ).to.be.true;
-          });
-        });
-
         context(`reloads the editor`, function () {
           it(`without executing the callback, when it's NOT provided`, function () {
             executeAndReload.call(extensionManager);

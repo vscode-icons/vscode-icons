@@ -363,17 +363,6 @@ export class ExtensionManager implements types.ExtensionManagerContract {
     if (this.vscodeManager.supportsThemesReload) {
       return;
     }
-    const hasEmptyProjectDetectionResults: boolean =
-      callback === this.applyCustomization &&
-      cbArgs?.length === 1 &&
-      Array.isArray(cbArgs[0]) &&
-      cbArgs[0].length === 0;
-
-    // if there are empty project detection results,
-    // do not reload to avoid reload loop
-    if (hasEmptyProjectDetectionResults) {
-      return;
-    }
     // reload
     void this.vscodeManager.commands.executeCommand(
       constants.vscode.reloadWindowActionSetting,
@@ -496,7 +485,6 @@ export class ExtensionManager implements types.ExtensionManagerContract {
         (pdr: types.ProjectDetectionResult): boolean => !pdr.apply,
       )
     ) {
-      await this.applyCustomization(projectDetectionResults);
       return;
     }
 

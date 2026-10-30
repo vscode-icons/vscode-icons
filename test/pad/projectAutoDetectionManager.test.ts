@@ -106,13 +106,36 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       expect(firstResult).to.not.have.property('conflictingProjects');
     });
 
+    context('requests icons disabling', function () {
+      it('when icons are enabled but no projects are found', async function () {
+        vsicons.projectDetection.disableDetect = false;
+        vsicons.projectDetection.autoReload = true;
+        findFilesStub.resolves([]);
+        configManagerStub.getPreset.returns({
+          key: '',
+          workspaceValue: undefined,
+        });
+        sandbox.stub(ManifestReader, 'iconsDisabled').resolves(false);
+
+        const res = await padManager.detectProjects([enums.Projects.angular]);
+
+        expect(res).to.be.an('array');
+        expect(res).to.not.be.empty;
+
+        const firstResult = res[0];
+
+        expect(firstResult).to.have.property('apply', true);
+        expect(firstResult).to.have.property('value', false);
+      });
+    });
+
     context('does NOT detect a project when', function () {
       const testCase = async (
         projectNames: enums.Projects[],
       ): Promise<void> => {
         const res = await padManager.detectProjects(projectNames);
 
-        expect(res).to.not.be.an('object');
+        expect(res).to.be.an('array').that.is.empty;
       };
 
       it(`project names are 'undefined'`, async function () {
@@ -123,16 +146,13 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
         await testCase([]);
       });
 
-      it(`detection fails`, async function () {
-        findFilesStub.resolves(undefined);
-
-        await testCase([enums.Projects.angular]);
-      });
-
       it(`no 'package.json' exists`, async function () {
         findFilesStub.resolves([]);
+        sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
 
-        await testCase([enums.Projects.angular]);
+        const res = await padManager.detectProjects([enums.Projects.angular]);
+
+        expect(res).to.deep.equal([{ apply: false }]);
       });
 
       it('detection is disabled', async function () {

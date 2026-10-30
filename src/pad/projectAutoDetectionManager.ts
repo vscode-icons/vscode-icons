@@ -70,10 +70,8 @@ export class ProjectAutoDetectionManager
     projects: enums.Projects[],
   ): Promise<types.ProjectDetectionResult[]> {
     const detectionResults: types.ProjectDetectionResult[] = [];
-    if (!results || !results.length) {
-      return detectionResults;
-    }
     for (const project of projects) {
+      // No files found still needs checking, to disable icons that are enabled
       const detectionResult: types.ProjectDetectionResult =
         await this.checkForProject(results, project);
       detectionResults.push(detectionResult);

@@ -122,14 +122,14 @@ describe('ExtensionManagerContract: actions tests', function () {
           it(`when no project detection results exist`, function () {
             applyProjectDetection.call(extensionManager);
 
-            expect(applyCustomizationStub.called).to.be.true;
+            expect(applyCustomizationStub.called).to.be.false;
             expect(showCustomizationMessageStub.called).to.be.false;
           });
 
           it(`when project detection results apply is 'false'`, function () {
             applyProjectDetection.call(extensionManager, { apply: false });
 
-            expect(applyCustomizationStub.called).to.be.true;
+            expect(applyCustomizationStub.called).to.be.false;
             expect(showCustomizationMessageStub.called).to.be.false;
           });
 
