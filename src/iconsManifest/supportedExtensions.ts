@@ -2541,6 +2541,7 @@ export const extensions: FileCollection = {
       icon: 'jsx',
       extensions: [],
       languages: [languages.javascriptreact],
+      light: true,
       disabled: true,
     },
     {
