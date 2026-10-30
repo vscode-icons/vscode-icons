@@ -311,6 +311,44 @@ describe('ExtensionManagerContract: commands tests', function () {
       });
     });
 
+    context(`the toggle reactjs preset command`, function () {
+      it(`toggles the reactjs preset`, function () {
+        const toggleReactJsPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleReactJsPresetCommand as () => void;
+
+        toggleReactJsPresetCommand.call(extensionManager);
+
+        expect(
+          togglePresetStub.calledOnceWithExactly(
+            enums.PresetNames.reactjsOfficial,
+            enums.CommandNames.reactjsPreset,
+            false,
+            enums.ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
+      });
+    });
+
+    context(`the toggle reactts preset command`, function () {
+      it(`toggles the reactts preset`, function () {
+        const toggleReactTsPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleReactTsPresetCommand as () => void;
+
+        toggleReactTsPresetCommand.call(extensionManager);
+
+        expect(
+          togglePresetStub.calledOnceWithExactly(
+            enums.PresetNames.reacttsOfficial,
+            enums.CommandNames.reacttsPreset,
+            false,
+            enums.ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
+      });
+    });
+
     context(`the toggle json preset command`, function () {
       it(`toggles the json preset`, function () {
         const toggleJsonPresetCommand =

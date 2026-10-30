@@ -304,6 +304,26 @@ export class ExtensionManager implements types.ExtensionManagerContract {
   }
 
   // @ts-ignore: Called via reflection
+  private toggleReactJsPresetCommand(): Promise<void> {
+    return this.togglePreset(
+      enums.PresetNames.reactjsOfficial,
+      enums.CommandNames.reactjsPreset,
+      false,
+      enums.ConfigurationTarget.Global,
+    );
+  }
+
+  // @ts-ignore: Called via reflection
+  private toggleReactTsPresetCommand(): Promise<void> {
+    return this.togglePreset(
+      enums.PresetNames.reacttsOfficial,
+      enums.CommandNames.reacttsPreset,
+      false,
+      enums.ConfigurationTarget.Global,
+    );
+  }
+
+  // @ts-ignore: Called via reflection
   private toggleJsonPresetCommand(): Promise<void> {
     return this.togglePreset(
       enums.PresetNames.jsonOfficial,
