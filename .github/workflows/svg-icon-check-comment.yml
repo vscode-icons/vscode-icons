@@ -1,0 +1,291 @@
+name: SVG Icon Check (Comment)
+
+# Trusted half of the two-step handoff: runs from the default branch with write permissions,
+# and only consumes the artifact produced by the build workflow (never fork code).
+# Preview images are committed to the `previews/` folder of the wiki repo and served via raw.githubusercontent.com.
+# Only the latest previews of each PR are kept there; older ones remain in the wiki history.
+on:
+  workflow_run:
+    workflows: ['SVG Icon Check (Build)']
+    types:
+      - completed
+
+# Each job declares only the permissions it needs.
+permissions: {}
+
+concurrency:
+  group: svg-icon-check-comment-${{ github.event.workflow_run.id }}
+  cancel-in-progress: true
+
+jobs:
+  publish_previews:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    # Shared with the wiki pages workflow (wpil.yml) so pushes to the wiki never overlap.
+    # `queue: max` keeps every pending run instead of replacing it.
+    concurrency:
+      group: wiki-write
+      queue: max
+    permissions:
+      actions: read
+      contents: write
+      pull-requests: read
+    outputs:
+      found: ${{ steps.pr.outputs.found }}
+      pr_number: ${{ steps.pr.outputs.pr_number }}
+    steps:
+      - name: Download previews artifact
+        id: download
+        uses: actions/download-artifact@v7
+        with:
+          name: svg-previews
+          path: previews
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Read and validate PR number
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          if [ ! -f previews/pr_number.txt ]; then
+            echo "No PR number found; nothing to do."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          pr_number=$(tr -cd '0-9' < previews/pr_number.txt)
+          if [ -z "$pr_number" ]; then
+            echo "PR number empty; nothing to do."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # The PR number comes from the untrusted artifact: only accept it if that PR's current head
+          # is exactly the commit the build workflow ran on. This also skips outdated runs.
+          pr_head_sha=$(gh api "repos/${REPO}/pulls/${pr_number}" --jq '.head.sha' 2>/dev/null || true)
+          if [ "$pr_head_sha" != "$HEAD_SHA" ]; then
+            echo "::warning::PR #${pr_number} head (${pr_head_sha:-not found}) does not match build commit ${HEAD_SHA}; skipping."
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "pr_number=$pr_number" >> "$GITHUB_OUTPUT"
+          echo "found=true" >> "$GITHUB_OUTPUT"
+
+      - name: Publish previews to the wiki and build comment bodies
+        if: steps.pr.outputs.found == 'true'
+        id: generate-comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          WIKI_BRANCH: master
+        run: |
+          notices=''
+          entries=()
+
+          # Only the latest previews of each PR are kept: the PR folder is wiped on every run.
+          # The run id is part of the path so URLs change on every update and are never served stale from cache.
+          pr_dir="previews/pr-${PR_NUMBER}"
+          dest_dir="${pr_dir}/${RUN_ID}"
+          staging_dir="$RUNNER_TEMP/previews-staging"
+          work_dir="$RUNNER_TEMP/wiki"
+          remote_url="https://x-access-token:${GH_TOKEN}@github.com/${REPO}.wiki.git"
+
+          mkdir -p "$staging_dir"
+          published=()
+
+          while IFS=$'\t' read -r base_name size png_name; do
+            [ -z "$png_name" ] && continue
+            # Sanitize fork-controlled values before using them in shell/markdown.
+            safe_name=$(printf '%s' "$base_name" | tr -cd 'A-Za-z0-9._-')
+            safe_size=$(printf '%s' "$size" | tr -cd '0-9')
+            safe_png=$(printf '%s' "$png_name" | tr -cd 'A-Za-z0-9._-')
+            png_file="previews/${safe_png}"
+
+            if [ -z "$safe_png" ] || [ ! -f "$png_file" ]; then
+              echo "Skipping missing preview: $png_file"
+              continue
+            fi
+
+            # The artifact comes from untrusted code: only publish real PNG files.
+            if [ "$(file --brief --mime-type "$png_file")" != 'image/png' ]; then
+              echo "::warning::Skipping ${safe_png}: not a PNG file."
+              printf -v entry '#### %s (%s bytes)\n⚠️ _Preview skipped: generated file is not a valid PNG._\n\n' \
+                "$safe_name" "$safe_size"
+              entries+=("$entry")
+              continue
+            fi
+
+            cp "$png_file" "$staging_dir/${safe_png}"
+            published+=("${safe_name}"$'\t'"${safe_size}"$'\t'"${safe_png}")
+          done < previews/manifest.tsv
+
+          git init -q "$work_dir"
+          cd "$work_dir"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git remote add origin "$remote_url"
+
+          # Checks out the latest tip of the wiki and replaces this PR's previews. Returns 1 when there is nothing to commit.
+          prepare_commit() {
+            git fetch -q --depth=1 origin "$WIKI_BRANCH"
+            git checkout -q -B "$WIKI_BRANCH" FETCH_HEAD
+            git clean -q -fdx
+
+            rm -rf "$pr_dir"
+            if [ ${#published[@]} -gt 0 ]; then
+              mkdir -p "$dest_dir"
+              cp "$staging_dir"/*.png "$dest_dir/"
+            fi
+
+            git add -A
+            if git diff --cached --quiet; then
+              return 1
+            fi
+            git commit -q -m "chore(previews): update previews for PR #${PR_NUMBER} (run ${RUN_ID})"
+          }
+
+          # Pushes are serialized by the `wiki-write` concurrency group; retries cover manual wiki edits.
+          pushed=false
+          for attempt in 1 2 3 4 5; do
+            if ! prepare_commit; then
+              echo "No preview changes to publish."
+              pushed=true
+              break
+            fi
+            if git push -q origin "HEAD:${WIKI_BRANCH}"; then
+              pushed=true
+              break
+            fi
+            echo "Push attempt ${attempt} failed; retrying..."
+            sleep $((attempt * 2))
+          done
+          cd - > /dev/null
+
+          if [ "$pushed" != 'true' ]; then
+            echo "::error::Could not push previews to the wiki."
+            notices+=$'> [!WARNING]\n> Preview images could not be published to the wiki.\n\n'
+            published=()
+          fi
+
+          base_url="https://raw.githubusercontent.com/wiki/${REPO}/${dest_dir}"
+          for item in "${published[@]}"; do
+            IFS=$'\t' read -r safe_name safe_size safe_png <<< "$item"
+            printf -v entry '#### %s (%s bytes)\n![Preview](%s/%s)\n\n' "$safe_name" "$safe_size" "$base_url" "$safe_png"
+            entries+=("$entry")
+          done
+          echo "Published ${#published[@]} previews to ${base_url}"
+
+          # GitHub caps comments at 65536 characters: split the previews into several comments,
+          # never breaking an entry. Sizes are measured in bytes, which is always >= characters.
+          export LC_ALL=C
+          max_bytes=60000
+          chunks=()
+          current="$notices"
+          for entry in "${entries[@]}"; do
+            if [ -n "$current" ] && [ $((${#current} + ${#entry})) -gt "$max_bytes" ]; then
+              chunks+=("$current")
+              current=''
+            fi
+            current+="$entry"
+          done
+          chunks+=("$current")
+
+          comments_dir="$RUNNER_TEMP/preview-comments"
+          mkdir -p "$comments_dir"
+          total=${#chunks[@]}
+          for i in "${!chunks[@]}"; do
+            n=$((i + 1))
+            title='## Icons Background Test'
+            if [ "$total" -gt 1 ]; then
+              title+=" (${n}/${total})"
+            fi
+            printf '%s\n\n%s<!-- svg-preview-comment:%d -->\n' "$title" "${chunks[$i]}" "$n" \
+              > "$comments_dir/$(printf '%04d' "$n").md"
+          done
+          echo "Prepared ${total} comment(s)."
+          echo "comments_dir=$comments_dir" >> "$GITHUB_OUTPUT"
+
+      - name: Upload comment bodies
+        if: steps.pr.outputs.found == 'true'
+        uses: actions/upload-artifact@v6
+        with:
+          name: preview-comments
+          path: ${{ steps.generate-comment.outputs.comments_dir }}
+          retention-days: 1
+          overwrite: true
+
+  post_comment:
+    needs: publish_previews
+    if: needs.publish_previews.outputs.found == 'true'
+    runs-on: ubuntu-latest
+    # Never edit the comments of the same PR from two runs at once.
+    concurrency:
+      group: svg-preview-comments-${{ needs.publish_previews.outputs.pr_number }}
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Download comment bodies
+        uses: actions/download-artifact@v7
+        with:
+          name: preview-comments
+          path: comments
+
+      - name: Create, update or delete preview comments
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ needs.publish_previews.outputs.pr_number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          # A newer push may have been processed while this run was waiting: never overwrite its comments.
+          pr_head_sha=$(gh api "repos/${REPO}/pulls/${PR_NUMBER}" --jq '.head.sha')
+          if [ "$pr_head_sha" != "$HEAD_SHA" ]; then
+            echo "::warning::PR #${PR_NUMBER} head moved to ${pr_head_sha}; skipping outdated comments."
+            exit 0
+          fi
+
+          # Existing preview comments by index. Legacy comments (marker without index) count as index 1.
+          declare -A existing=()
+          duplicates=()
+          while IFS=$'\t' read -r id index; do
+            [ -z "$id" ] && continue
+            if [ -z "${existing[$index]:-}" ]; then
+              existing[$index]=$id
+            else
+              duplicates+=("$id")
+            fi
+          done < <(gh api --paginate "repos/${REPO}/issues/${PR_NUMBER}/comments" --jq '
+            .[]
+            | select(.user.login == "github-actions[bot]")
+            | (.body | capture("<!-- svg-preview-comment(:(?<n>[0-9]+))? -->")) as $m
+            | "\(.id)\t\($m.n // "1")"')
+
+          mapfile -t files < <(find comments -name '*.md' | sort)
+          total=${#files[@]}
+
+          # Editing an existing comment doesn't notify subscribers; only new comments do.
+          for i in "${!files[@]}"; do
+            n=$((i + 1))
+            payload=$(jq -Rs '{body: .}' "${files[$i]}")
+            id="${existing[$n]:-}"
+            if [ -n "$id" ]; then
+              gh api -X PATCH "repos/${REPO}/issues/comments/${id}" --input - <<< "$payload" > /dev/null
+              echo "Updated comment ${n}/${total} (${id})."
+              unset "existing[$n]"
+            else
+              gh api -X POST "repos/${REPO}/issues/${PR_NUMBER}/comments" --input - <<< "$payload" > /dev/null
+              echo "Created comment ${n}/${total}."
+              sleep 1
+            fi
+          done
+
+          # Remove comments left over from a previous run with more previews.
+          for id in "${existing[@]}" "${duplicates[@]}"; do
+            gh api -X DELETE "repos/${REPO}/issues/comments/${id}" > /dev/null
+            echo "Deleted stale comment ${id}."
+          done

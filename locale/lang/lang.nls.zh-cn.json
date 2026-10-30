@@ -22,6 +22,8 @@
   "tsPresetDisabled": "取消使用官方的 TS 图标",
   "jsonPresetEnabled": "使用官方的 JSON 图标",
   "jsonPresetDisabled": "取消使用官方的 JSON 图标",
+  "yamlPresetEnabled": "使用官方的 YAML 图标",
+  "yamlPresetDisabled": "取消使用官方的 YAML 图标",
   "hideFoldersPresetEnabled": "现在使用文件夹图标",
   "hideFoldersPresetDisabled": "现在隐藏文件夹图标",
   "foldersAllDefaultIconPresetEnabled": "现在使用指定的文件夹图标",
@@ -39,6 +41,5 @@
   "nonNestDetectedPresetTrue": "%extensionName% 检测到了这不是个NestJS项目, 但是'预设'的设置是'true'. 我们建议从设置中删除所有的'预设'设置. 选择'重新启动'会启用NestJS图标",
   "projectDetectionReset": "重设自动检测工程文件为默认设置",
   "conflictProjectsDetected": "%extensionName%检测到了工程图标冲突. 请选择你想要用的工程图标. 注意: 这个设定还会改变你的工作区设置",
-  "unsupportedVersion": "不支持这个版本的VS Code:",
-  "integrityFailure": "此插件完整性受到了损害. 不能保证此插件会正常运行"
+  "unsupportedVersion": "不支持这个版本的VS Code:"
 }

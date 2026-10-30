@@ -1,7 +1,6 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { ErrorHandler } from '../../src/common/errorHandler';
 
 describe('ErrorHandler: tests', function () {
@@ -11,7 +10,9 @@ describe('ErrorHandler: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-      consoleErrorStub = sandbox.stub(console, 'error');
+      consoleErrorStub = sandbox
+        .stub(console, 'error')
+        .get(() => consoleErrorStub);
     });
 
     afterEach(function () {
@@ -24,6 +25,16 @@ describe('ErrorHandler: tests', function () {
     });
 
     context('it logs', function () {
+      it('the error as a string', function () {
+        const error = 'error';
+        ErrorHandler.logError(error);
+        expect(
+          consoleErrorStub.calledOnceWithExactly(`Unhandled Error: ${error}`),
+        ).to.be.true;
+        expect(error).to.not.haveOwnProperty('stack').to.be.true;
+        expect(error).to.not.haveOwnProperty('message').to.be.true;
+      });
+
       it('the error stack', function () {
         const error = new Error();
         error.stack = 'contextOfStack';

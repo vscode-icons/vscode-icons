@@ -2,9 +2,9 @@ import { Bundler } from '../common/bundler';
 import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';
 
-const bundle = async (argv: string[]): Promise<void> => {
+async function bundle(argv: string[]): Promise<void> {
   try {
-    constants.environment.production = argv.some((arg: string) =>
+    constants.environment.production = argv.some((arg: string): boolean =>
       /release|production/.test(arg),
     );
     await Bundler.bundleLangResources(
@@ -12,9 +12,10 @@ const bundle = async (argv: string[]): Promise<void> => {
       './lang.nls.bundle.json',
     );
     await Bundler.copyPackageResources('./locale/package', '.');
-  } catch (error) {
+  } catch (error: unknown) {
     ErrorHandler.logError(error);
+    process.exitCode = 1;
   }
-};
+}
 
 void bundle(process.argv);

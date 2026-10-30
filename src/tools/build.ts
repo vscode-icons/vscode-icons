@@ -1,19 +1,25 @@
+import type { IconManifest } from '../types';
+
 import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';
 import { IconsGenerator } from '../iconsManifest/iconsGenerator';
-import { IIconsGenerator } from '../models';
 
-const build = async (argv: string[]): Promise<void> => {
+async function build(argv: string[]): Promise<void> {
   try {
-    constants.environment.production = argv.some((arg: string) =>
+    constants.environment.production = argv.some((arg: string): boolean =>
       /release|production/.test(arg),
     );
-    const iconsGenerator: IIconsGenerator = new IconsGenerator();
-    const iconsManifest = await iconsGenerator.generateIconsManifest();
-    await iconsGenerator.persist(iconsManifest, /* updatePackageJson */ true);
-  } catch (error) {
+    const iconsGenerator = new IconsGenerator();
+    const iconsManifest: IconManifest =
+      await iconsGenerator.generateIconsManifest();
+    await iconsGenerator.persist(
+      iconsManifest,
+      constants.environment.production,
+    );
+  } catch (error: unknown) {
     ErrorHandler.logError(error);
+    process.exitCode = 1;
   }
-};
+}
 
 void build(process.argv);

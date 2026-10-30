@@ -1,20 +1,25 @@
-import open = require('open');
-import { ChildProcess } from 'child_process';
-import { Stats } from 'fs';
-import { set } from 'lodash';
+import type { ChildProcess } from 'child_process';
+import type { Stats } from 'fs';
+
+import type { Options } from 'open';
+
 import { homedir, tmpdir } from 'os';
 import { isAbsolute, posix, relative, resolve, sep } from 'path';
+
+import { set } from 'lodash';
+import open from 'open';
+
 import {
   existsAsync,
   lstatAsync,
   mkdirAsync,
-  readdirAsync,
   readFileAsync,
+  readdirAsync,
   rmdirAsync,
   unlinkAsync,
   writeFileAsync,
 } from '../common/fsAsync';
-import { FileFormat } from '../models';
+import * as enums from '../types/enums';
 
 export class Utils {
   public static getAppDataDirPath(): string {
@@ -38,10 +43,31 @@ export class Utils {
     return tmpdir();
   }
 
-  public static fileFormatToString(extension: FileFormat | string): string {
-    return `.${
-      typeof extension === 'string' ? extension.trim() : FileFormat[extension]
-    }`;
+  /**
+   * Converts a file format enum or string into a normalized string with a leading dot.
+   * Defaults to '.svg' if the format is not recognized.
+   */
+  public static fileFormatToString(
+    extension: enums.FileFormat | string = enums.FileFormat.svg,
+  ): string {
+    // Normalize the file format string
+    // by removing leading dots and trimming whitespace
+    const fileFormat: string | undefined =
+      typeof extension === 'string'
+        ? extension.trim().replace(/^\.+/, '')
+        : enums.FileFormat[extension];
+
+    // Fallback to svg if the file format is not recognized
+    if (
+      !Object.values(enums.FileFormat).some(
+        (format: unknown): boolean =>
+          typeof format === 'string' && format === fileFormat,
+      )
+    ) {
+      return `.${enums.FileFormat[enums.FileFormat.svg]}`;
+    }
+
+    return `.${fileFormat}`;
   }
 
   /**
@@ -89,7 +115,7 @@ export class Utils {
     };
     const promises: Array<Promise<void>> = [];
     const files: string[] = await readdirAsync(dirPath);
-    files.forEach((file: string) => promises.push(iterator(file)));
+    files.forEach((file: string): number => promises.push(iterator(file)));
     await Promise.all(promises);
     await rmdirAsync(dirPath);
   }
@@ -101,7 +127,7 @@ export class Utils {
   public static parseJSONSafe<T>(text: string): T {
     try {
       return JSON.parse(text) as T;
-    } catch (err) {
+    } catch {
       return {} as T;
     }
   }
@@ -110,6 +136,7 @@ export class Utils {
     fromDirPath: string,
     toDirName: string,
     checkDirectory = true,
+    includeDotSlashPrefix = false,
   ): Promise<string> {
     if (fromDirPath == null) {
       throw new Error('fromDirPath not defined.');
@@ -124,7 +151,17 @@ export class Utils {
       throw new Error(`Directory '${toDirName}' not found.`);
     }
 
-    return relative(fromDirPath, toDirName).replace(/\\/g, '/').concat('/');
+    let relativePath = relative(fromDirPath, toDirName).replace(/\\/g, '/');
+
+    if (includeDotSlashPrefix && !/^\.\.?(\/|$)/.test(relativePath)) {
+      relativePath = `./${relativePath}`;
+    }
+
+    if (!relativePath.endsWith('/')) {
+      relativePath += '/';
+    }
+
+    return relativePath;
   }
 
   public static removeFirstDot(txt: string): string {
@@ -143,14 +180,14 @@ export class Utils {
 
   public static getDrives(...paths: string[]): string[] {
     const rx = new RegExp('^[a-zA-Z]:');
-    return paths.map((path: string) => (rx.exec(path) || [])[0]);
+    return paths.map((path: string): string => (rx.exec(path) || [])[0]);
   }
 
   public static combine(array1: string[], array2: string[]): string[] {
     return array1.reduce(
-      (previous: string[], current: string) =>
+      (previous: string[], current: string): string[] =>
         previous.concat(
-          array2.map((value: string) => [current, value].join('.')),
+          array2.map((value: string): string => [current, value].join('.')),
         ),
       [],
     );
@@ -172,16 +209,17 @@ export class Utils {
     lookupKey: string,
   ): T {
     const newObj = {};
-    Reflect.ownKeys(obj).forEach((key: string) =>
+    Reflect.ownKeys(obj).forEach((key: string): object =>
       set(newObj, key, obj[key][lookupKey]),
     );
     return newObj as T;
   }
 
-  public static open(
+  public static async open(
     target: string,
-    options?: Record<string, unknown>,
+    options?: Options,
   ): Promise<ChildProcess> {
-    return open(target, options);
+    await open(target, options);
+    return;
   }
 }

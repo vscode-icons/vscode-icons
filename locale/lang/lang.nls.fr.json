@@ -22,6 +22,8 @@
   "tsPresetDisabled": "L'icône officielle TS va être désactivé.",
   "jsonPresetEnabled": "L'icône officielle JSON va être activé.",
   "jsonPresetDisabled": "L'icône officielle JSON va être désactivé.",
+  "yamlPresetEnabled": "L'icône officielle YAML va être activé.",
+  "yamlPresetDisabled": "L'icône officielle YAML va être désactivé.",
   "hideFoldersPresetEnabled": "Les icônes de fichier vont êtres activées.",
   "hideFoldersPresetDisabled": "Les icônes de fichier vont êtres désactivées.",
   "foldersAllDefaultIconPresetEnabled": "Les icônes pour dossier vont êtres activées.",
@@ -39,6 +41,5 @@
   "nonNestDetectedPresetTrue": "%extensionName% a détecter un projet non NestJS, mais le paramètre 'preset' est configuré à 'true'. Il est fortement recommandé de supprimer 'preset' entièrement des paramètres. Sélectionner 'Redémarrer' va activer les icônes NestJS.",
   "projectDetectionReset": "La détection de projet va être réinitialisé.",
   "conflictProjectsDetected": "%extensionName% a détecté un conflit d'icônes dans le projet. Choisissez quelles icônes utiliser. Note : cette action modifiera les paramètres de votre espace de travail.",
-  "unsupportedVersion": "Version de 'VS Code' non supportée:",
-  "integrityFailure": "L'intégrité de l'extension est compromise. Il n'y a AUCUNE garantie qu'elle fonctionnera comme prévu."
+  "unsupportedVersion": "Version de 'VS Code' non supportée:"
 }

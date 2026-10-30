@@ -1,2 +1,12 @@
-*.md
-package*.json
+*.sh
+.editorconfig
+.git*
+.*ignore
+.*rc
+LICENSE
+.husky/
+icons/
+images/
+!.prettierrc
+!.nrcrc
+!.github/

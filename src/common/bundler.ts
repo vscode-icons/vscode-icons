@@ -1,5 +1,6 @@
 import { join } from 'path';
-import { readdirAsync, readFileAsync, writeFileAsync } from '../common/fsAsync';
+
+import { readFileAsync, readdirAsync, writeFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { Utils } from '../utils';
 
@@ -17,8 +18,8 @@ export class Bundler {
         filename === 'lang.nls.json'
           ? 'en'
           : match && match.length > 1
-          ? match[1]
-          : undefined;
+            ? match[1]
+            : undefined;
       if (!locale) {
         throw new Error(`No locale found for: ${filename}`);
       }
@@ -27,13 +28,13 @@ export class Bundler {
         Record<string, string>
       >(content.toString());
       bundleObj[locale] = Reflect.ownKeys(translations).map(
-        (key: string) => translations[key],
+        (key: string): string => translations[key],
       );
     };
     const bundleJson = {};
     const promises: Array<Promise<void>> = [];
     const resourseFiles = await readdirAsync(sourceDirPath);
-    resourseFiles.forEach((filename: string) =>
+    resourseFiles.forEach((filename: string): number =>
       promises.push(iterator(filename, bundleJson)),
     );
     await Promise.all(promises);
@@ -72,7 +73,7 @@ export class Bundler {
     };
     const promises = [];
     const resourseFiles = await readdirAsync(sourceDirPath);
-    resourseFiles.forEach((filename: string) =>
+    resourseFiles.forEach((filename: string): number =>
       promises.push(iterator(filename)),
     );
     await Promise.all(promises);

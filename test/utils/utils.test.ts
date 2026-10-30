@@ -1,18 +1,20 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
+import type { ChildProcess } from 'child_process';
+import type { Stats } from 'fs';
+
+import os from 'os';
+import path from 'path';
+
 import { expect } from 'chai';
-import { Stats } from 'fs';
-import * as os from 'os';
-import * as path from 'path';
-import * as proxyq from 'proxyquire';
+import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
+
 import * as fsAsync from '../../src/common/fsAsync';
-import { FileFormat } from '../../src/models';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 
 describe('Utils: tests', function () {
-  interface IUtils {
-    open: (arg: string) => Promise<void>;
+  interface Utils {
+    open: (target: string, options?: object) => Promise<ChildProcess>;
   }
 
   context('ensures that', function () {
@@ -89,8 +91,20 @@ describe('Utils: tests', function () {
 
     context(`the 'fileFormatToString' function`, function () {
       it(`returns the string representation of the 'FileFormat'`, function () {
+        expect(Utils.fileFormatToString()).to.equal('.svg');
         expect(Utils.fileFormatToString('svg')).to.equal('.svg');
-        expect(Utils.fileFormatToString(FileFormat.svg)).to.equal('.svg');
+        expect(Utils.fileFormatToString('..svg')).to.equal('.svg');
+        expect(Utils.fileFormatToString(enums.FileFormat.svg)).to.equal('.svg');
+        expect(Utils.fileFormatToString('png')).to.equal('.png');
+        expect(Utils.fileFormatToString(enums.FileFormat.png)).to.equal('.png');
+      });
+
+      it('falls back to svg when the string is not a FileFormat variant', function () {
+        expect(Utils.fileFormatToString('jpg')).to.equal('.svg');
+        expect(Utils.fileFormatToString('   ')).to.equal('.svg');
+        expect(Utils.fileFormatToString(2 as enums.FileFormat)).to.equal(
+          '.svg',
+        );
       });
     });
 
@@ -195,9 +209,8 @@ describe('Utils: tests', function () {
 
     context(`the 'parseJSON' function`, function () {
       it('returns an object when parsing succeeds', function () {
-        const json = Utils.parseJSONSafe<Record<string, string>>(
-          '{"test": "test"}',
-        );
+        const json =
+          Utils.parseJSONSafe<Record<string, string>>('{"test": "test"}');
 
         expect(json).to.be.instanceOf(Object);
         expect(Object.getOwnPropertyNames(json)).to.include('test');
@@ -212,17 +225,78 @@ describe('Utils: tests', function () {
     context(`the 'getRelativePath' function`, function () {
       context(`does NOT throw an Error`, function () {
         context(`if the destination directory does NOT exists`, function () {
-          it('and a directory check should NOT be done', function () {
-            const toDirName = 'path/to';
+          it('and a directory check should NOT be done', async function () {
+            const relativePath = await Utils.getRelativePath(
+              'path/from',
+              'path/to',
+              false,
+            );
 
-            expect(() =>
-              Utils.getRelativePath('path/from', toDirName, false),
-            ).to.not.throw(Error, `Directory '${toDirName}' not found.`);
+            expect(relativePath).to.be.a('string');
           });
         });
       });
 
       context('returns a relative path that', function () {
+        context('has a dot slash prefix when requested', function () {
+          context('if the relative path', function () {
+            it('does NOT already start with a dot', async function () {
+              const relativePath = await Utils.getRelativePath(
+                'path/from',
+                'path/from/to',
+                false,
+                true,
+              );
+
+              expect(relativePath).to.be.equal('./to/');
+            });
+
+            it('already starts with a dot', async function () {
+              const relativePath = await Utils.getRelativePath(
+                './path/from',
+                './path/to',
+                false,
+                true,
+              );
+
+              expect(relativePath).to.be.equal('../to/');
+            });
+
+            it('contains directory that starts with a dot', async function () {
+              const relativePath = await Utils.getRelativePath(
+                'path/from',
+                'path/from/.to',
+                false,
+                true,
+              );
+
+              expect(relativePath).to.be.equal('./.to/');
+            });
+
+            it('"fromDirPath" and "toDirName" is the same directory', async function () {
+              const relativePath = await Utils.getRelativePath(
+                'path/from',
+                'path/from',
+                false,
+                true,
+              );
+
+              expect(relativePath).to.be.equal('./');
+            });
+
+            it('is the parent directory', async function () {
+              const relativePath = await Utils.getRelativePath(
+                'path/from',
+                'path',
+                false,
+                true,
+              );
+
+              expect(relativePath).to.be.equal('../');
+            });
+          });
+        });
+
         context('has a trailing path separator', function () {
           const trailingPathSeparatorTest = async (
             toDirName: string,
@@ -295,15 +369,13 @@ describe('Utils: tests', function () {
 
     context(`the 'belongToSameDrive' function`, function () {
       it(`returns 'false', when paths do NOT belong to the same drive`, function () {
-        expect(
-          Utils.belongToSameDrive('C:\\path\\to', 'D:\\path\to'),
-        ).to.be.false;
+        expect(Utils.belongToSameDrive('C:\\path\\to', 'D:\\path\to')).to.be
+          .false;
       });
 
       it(`returns 'true', when paths do belong to the same drive`, function () {
-        expect(
-          Utils.belongToSameDrive('C:\\path\\to', 'C:\\anotherpath\to'),
-        ).to.be.true;
+        expect(Utils.belongToSameDrive('C:\\path\\to', 'C:\\anotherpath\to')).to
+          .be.true;
       });
     });
 
@@ -441,9 +513,8 @@ describe('Utils: tests', function () {
         expect(Utils.unflattenProperties(obj, 'default'))
           .to.be.an('object')
           .with.ownProperty('vsicons')
-          .and.that.to.haveOwnProperty(
-            'dontShowNewVersionMessage',
-          ).and.that.to.be.false;
+          .and.that.to.haveOwnProperty('dontShowNewVersionMessage').and.that.to
+          .be.false;
       });
     });
 
@@ -451,9 +522,11 @@ describe('Utils: tests', function () {
       it(`to call the external module`, async function () {
         const openStub = sandbox.stub().resolves();
         const target = 'target';
-        const utils = (proxyq.noCallThru().load('../../src/utils', {
-          open: openStub,
-        }) as Record<string, IUtils>).Utils;
+        const utils = (
+          proxyq.noCallThru().load('../../src/utils', {
+            open: openStub,
+          }) as Record<string, Utils>
+        ).Utils;
 
         await utils.open(target);
 

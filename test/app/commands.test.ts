@@ -1,40 +1,38 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
+import type * as types from '../../src/types';
+import type { VSCodeCommand } from '../../src/types/vscode';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
+
 import { ExtensionManager } from '../../src/app/extensionManager';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { IconsGenerator } from '../../src/iconsManifest';
-import { IntegrityManager } from '../../src/integrity/integrityManager';
-import * as models from '../../src/models';
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { IVSCodeCommand } from '../../src/models/vscode/vscodeCommand';
 
-describe('ExtensionManager: commands tests', function () {
+describe('ExtensionManagerContract: commands tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<models.IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<models.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<models.ISettingsManager>;
-    let notifyManagerStub: sinon.SinonStubbedInstance<models.INotificationManager>;
-    let iconsGeneratorStub: sinon.SinonStubbedInstance<models.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<models.IProjectAutoDetectionManager>;
-    let integrityManagerStub: sinon.SinonStubbedInstance<models.IIntegrityManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<types.VSCodeManagerContract>;
+    let configManagerStub: sinon.SinonStubbedInstance<types.ConfigManagerContract>;
+    let settingsManagerStub: sinon.SinonStubbedInstance<types.SettingsManagerContract>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<types.NotificationManagerContract>;
+    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IconsGeneratorContract>;
+    let padMngStub: sinon.SinonStubbedInstance<types.ProjectAutoDetectionManagerContract>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let registerCommandStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
     let togglePresetStub: sinon.SinonStub;
-    let extensionManager: models.IExtensionManager;
+    let extensionManager: types.ExtensionManagerContract;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<models.IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<types.VSCodeManagerContract>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -48,28 +46,27 @@ describe('ExtensionManager: commands tests', function () {
         executeCommand: sandbox.stub(),
       }));
 
-      configManagerStub = sandbox.createStubInstance<models.IConfigManager>(
-        ConfigManager,
-      );
+      configManagerStub =
+        sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
 
-      settingsManagerStub = sandbox.createStubInstance<models.ISettingsManager>(
-        SettingsManager,
-      );
-      notifyManagerStub = sandbox.createStubInstance<
-        models.INotificationManager
-      >(NotificationManager);
+      settingsManagerStub =
+        sandbox.createStubInstance<types.SettingsManagerContract>(
+          SettingsManager,
+        );
+      notifyManagerStub =
+        sandbox.createStubInstance<types.NotificationManagerContract>(
+          NotificationManager,
+        );
 
-      iconsGeneratorStub = sandbox.createStubInstance<models.IIconsGenerator>(
-        IconsGenerator,
-      );
+      iconsGeneratorStub =
+        sandbox.createStubInstance<types.IconsGeneratorContract>(
+          IconsGenerator,
+        );
 
-      padMngStub = sandbox.createStubInstance<
-        models.IProjectAutoDetectionManager
-      >(ProjectAutoDetectionManager);
-
-      integrityManagerStub = sandbox.createStubInstance<
-        models.IIntegrityManager
-      >(IntegrityManager);
+      padMngStub =
+        sandbox.createStubInstance<types.ProjectAutoDetectionManagerContract>(
+          ProjectAutoDetectionManager,
+        );
 
       extensionManager = new ExtensionManager(
         vscodeManagerStub,
@@ -78,7 +75,6 @@ describe('ExtensionManager: commands tests', function () {
         notifyManagerStub,
         iconsGeneratorStub,
         padMngStub,
-        integrityManagerStub,
       );
 
       showCustomizationMessageStub = sandbox.stub(
@@ -99,7 +95,7 @@ describe('ExtensionManager: commands tests', function () {
     });
 
     context(`registering the commands`, function () {
-      let commands: IVSCodeCommand[];
+      let commands: VSCodeCommand[];
       let reflectGetSpy: sinon.SinonSpy;
       let registerCommands: (...arg: unknown[]) => void;
 
@@ -131,30 +127,30 @@ describe('ExtensionManager: commands tests', function () {
         registerCommandStub.callArg(1);
 
         expect(reflectGetSpy.returned(undefined)).to.be.true;
-        expect(
-          registerCommandStub.calledOnceWith(commands[0].command),
-        ).to.be.true;
+        expect(registerCommandStub.calledOnceWith(commands[0].command)).to.be
+          .true;
       });
     });
 
     context(`the activation command`, function () {
       it(`updates the icon theme setting`, function () {
-        // @ts-ignore
-        const activationCommand = extensionManager.activationCommand as () => void;
+        const activationCommand =
+          // @ts-ignore
+          extensionManager.activationCommand as () => void;
 
         activationCommand.call(extensionManager);
 
-        expect(
-          configManagerStub.updateIconTheme.calledOnceWithExactly(),
-        ).to.be.true;
+        expect(configManagerStub.updateIconTheme.calledOnceWithExactly()).to.be
+          .true;
       });
     });
 
     context(`the apply customization command`, function () {
       context(`shows the customization message`, function () {
         it(`with 'applyCustomization' as callback`, function () {
-          // @ts-ignore
-          const applyCustomizationCommand = extensionManager.applyCustomizationCommand as () => void;
+          const applyCustomizationCommand =
+            // @ts-ignore
+            extensionManager.applyCustomizationCommand as () => void;
           const applyCustomizationStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -167,9 +163,9 @@ describe('ExtensionManager: commands tests', function () {
             showCustomizationMessageStub.calledOnceWithExactly(
               `%s %s`,
               [
-                models.LangResourceKeys.iconCustomization,
-                models.LangResourceKeys.restart,
-                models.LangResourceKeys.reload,
+                enums.LangResourceKeys.iconCustomization,
+                enums.LangResourceKeys.restart,
+                enums.LangResourceKeys.reload,
                 ...[],
               ],
               applyCustomizationStub,
@@ -182,8 +178,9 @@ describe('ExtensionManager: commands tests', function () {
     context(`the restore default manifest command`, function () {
       context(`shows the customization message`, function () {
         it(`with 'restoreManifest' as callback`, function () {
-          // @ts-ignore
-          const restoreDefaultManifestCommand = extensionManager.restoreDefaultManifestCommand as () => void;
+          const restoreDefaultManifestCommand =
+            // @ts-ignore
+            extensionManager.restoreDefaultManifestCommand as () => void;
           const restoreManifestStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -196,9 +193,9 @@ describe('ExtensionManager: commands tests', function () {
             showCustomizationMessageStub.calledOnceWithExactly(
               `%s %s`,
               [
-                models.LangResourceKeys.iconRestore,
-                models.LangResourceKeys.restart,
-                models.LangResourceKeys.reload,
+                enums.LangResourceKeys.iconRestore,
+                enums.LangResourceKeys.restart,
+                enums.LangResourceKeys.reload,
                 ...[],
               ],
               restoreManifestStub,
@@ -226,9 +223,9 @@ describe('ExtensionManager: commands tests', function () {
             showCustomizationMessageStub.calledOnceWithExactly(
               `%s %s`,
               [
-                models.LangResourceKeys.projectDetectionReset,
-                models.LangResourceKeys.restart,
-                models.LangResourceKeys.reload,
+                enums.LangResourceKeys.projectDetectionReset,
+                enums.LangResourceKeys.restart,
+                enums.LangResourceKeys.reload,
                 ...[],
               ],
               resetProjectDetectionDefaultsStub,
@@ -248,10 +245,10 @@ describe('ExtensionManager: commands tests', function () {
 
         expect(
           togglePresetStub.calledOnceWithExactly(
-            models.PresetNames.angular,
-            models.CommandNames.ngPreset,
+            enums.PresetNames.angular,
+            enums.CommandNames.ngPreset,
             false,
-            models.ConfigurationTarget.Workspace,
+            enums.ConfigurationTarget.Workspace,
           ),
         ).to.be.true;
       });
@@ -267,10 +264,10 @@ describe('ExtensionManager: commands tests', function () {
 
         expect(
           togglePresetStub.calledOnceWithExactly(
-            models.PresetNames.nestjs,
-            models.CommandNames.nestPreset,
+            enums.PresetNames.nestjs,
+            enums.CommandNames.nestPreset,
             false,
-            models.ConfigurationTarget.Workspace,
+            enums.ConfigurationTarget.Workspace,
           ),
         ).to.be.true;
       });
@@ -278,17 +275,18 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle js preset command`, function () {
       it(`toggles the js preset`, function () {
-        // @ts-ignore
-        const toggleJsPresetCommand = extensionManager.toggleJsPresetCommand as () => void;
+        const toggleJsPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleJsPresetCommand as () => void;
 
         toggleJsPresetCommand.call(extensionManager);
 
         expect(
           togglePresetStub.calledOnceWithExactly(
-            models.PresetNames.jsOfficial,
-            models.CommandNames.jsPreset,
+            enums.PresetNames.jsOfficial,
+            enums.CommandNames.jsPreset,
             false,
-            models.ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -296,17 +294,18 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle ts preset command`, function () {
       it(`toggles the ts preset`, function () {
-        // @ts-ignore
-        const toggleTsPresetCommand = extensionManager.toggleTsPresetCommand as () => void;
+        const toggleTsPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleTsPresetCommand as () => void;
 
         toggleTsPresetCommand.call(extensionManager);
 
         expect(
           togglePresetStub.calledOnceWithExactly(
-            models.PresetNames.tsOfficial,
-            models.CommandNames.tsPreset,
+            enums.PresetNames.tsOfficial,
+            enums.CommandNames.tsPreset,
             false,
-            models.ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -314,17 +313,37 @@ describe('ExtensionManager: commands tests', function () {
 
     context(`the toggle json preset command`, function () {
       it(`toggles the json preset`, function () {
-        // @ts-ignore
-        const toggleJsonPresetCommand = extensionManager.toggleJsonPresetCommand as () => void;
+        const toggleJsonPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleJsonPresetCommand as () => void;
 
         toggleJsonPresetCommand.call(extensionManager);
 
         expect(
           togglePresetStub.calledOnceWithExactly(
-            models.PresetNames.jsonOfficial,
-            models.CommandNames.jsonPreset,
+            enums.PresetNames.jsonOfficial,
+            enums.CommandNames.jsonPreset,
             false,
-            models.ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
+          ),
+        ).to.be.true;
+      });
+    });
+
+    context(`the toggle yaml preset command`, function () {
+      it(`toggles the yaml preset`, function () {
+        const toggleYamlPresetCommand =
+          // @ts-ignore
+          extensionManager.toggleYamlPresetCommand as () => void;
+
+        toggleYamlPresetCommand.call(extensionManager);
+
+        expect(
+          togglePresetStub.calledOnceWithExactly(
+            enums.PresetNames.yamlOfficial,
+            enums.CommandNames.yamlPreset,
+            false,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -340,10 +359,10 @@ describe('ExtensionManager: commands tests', function () {
 
         expect(
           togglePresetStub.calledOnceWithExactly(
-            models.PresetNames.hideFolders,
-            models.CommandNames.hideFoldersPreset,
+            enums.PresetNames.hideFolders,
+            enums.CommandNames.hideFoldersPreset,
             true,
-            models.ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -359,10 +378,10 @@ describe('ExtensionManager: commands tests', function () {
 
         expect(
           togglePresetStub.calledOnceWithExactly(
-            models.PresetNames.foldersAllDefaultIcon,
-            models.CommandNames.foldersAllDefaultIconPreset,
+            enums.PresetNames.foldersAllDefaultIcon,
+            enums.CommandNames.foldersAllDefaultIconPreset,
             true,
-            models.ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -378,10 +397,10 @@ describe('ExtensionManager: commands tests', function () {
 
         expect(
           togglePresetStub.calledOnceWithExactly(
-            models.PresetNames.hideExplorerArrows,
-            models.CommandNames.hideExplorerArrowsPreset,
+            enums.PresetNames.hideExplorerArrows,
+            enums.CommandNames.hideExplorerArrowsPreset,
             true,
-            models.ConfigurationTarget.Global,
+            enums.ConfigurationTarget.Global,
           ),
         ).to.be.true;
       });

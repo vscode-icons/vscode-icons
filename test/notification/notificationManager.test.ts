@@ -1,22 +1,22 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable no-unused-expressions */
+import type {
+  LanguageResourceManagerContract,
+  NotificationManagerContract,
+  VSCodeManagerContract,
+} from '../../src/types';
+
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import {
-  IVSCodeManager,
-  INotificationManager,
-  ILanguageResourceManager,
-} from '../../src/models';
-import { VSCodeManager } from '../../src/vscode/vscodeManager';
+
 import { LanguageResourceManager } from '../../src/i18n/languageResourceManager';
 import { NotificationManager } from '../../src/notification/notificationManager';
+import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
-describe('NotificationManager: tests', function () {
+describe('NotificationManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
-    let i18nManagerStub: sinon.SinonStubbedInstance<ILanguageResourceManager>;
-    let notificationManager: INotificationManager;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
+    let i18nManagerStub: sinon.SinonStubbedInstance<LanguageResourceManagerContract>;
+    let notificationManager: NotificationManagerContract;
     let showInformationMessageStub: sinon.SinonStub;
     let showWarningMessageStub: sinon.SinonStub;
     let showErrorMessageStub: sinon.SinonStub;
@@ -24,9 +24,8 @@ describe('NotificationManager: tests', function () {
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
-      vscodeManagerStub = sandbox.createStubInstance<IVSCodeManager>(
-        VSCodeManager,
-      );
+      vscodeManagerStub =
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       showInformationMessageStub = sandbox.stub().resolves();
       showWarningMessageStub = sandbox.stub().resolves();
@@ -38,9 +37,10 @@ describe('NotificationManager: tests', function () {
         showErrorMessage: showErrorMessageStub,
       }));
 
-      i18nManagerStub = sandbox.createStubInstance<ILanguageResourceManager>(
-        LanguageResourceManager,
-      );
+      i18nManagerStub =
+        sandbox.createStubInstance<LanguageResourceManagerContract>(
+          LanguageResourceManager,
+        );
       notificationManager = new NotificationManager(
         vscodeManagerStub,
         i18nManagerStub,
@@ -57,9 +57,8 @@ describe('NotificationManager: tests', function () {
         it(`once`, async function () {
           await notificationManager.notifyInfo(undefined);
 
-          expect(
-            showInformationMessageStub.calledOnceWithExactly(undefined),
-          ).to.be.true;
+          expect(showInformationMessageStub.calledOnceWithExactly(undefined)).to
+            .be.true;
         });
 
         it(`and then calls 'i18nManager.getLangResourceKey' once`, async function () {
@@ -89,9 +88,8 @@ describe('NotificationManager: tests', function () {
           it(`with the correct arguments`, async function () {
             await notificationManager.notifyInfo(message, ...items);
 
-            expect(
-              showInformationMessageStub.calledWith(message, ...items),
-            ).to.be.true;
+            expect(showInformationMessageStub.calledWith(message, ...items)).to
+              .be.true;
           });
 
           context(`returns the 'message'`, function () {
@@ -154,9 +152,8 @@ describe('NotificationManager: tests', function () {
 
             await notificationManager.notifyInfo(message, ...items);
 
-            expect(
-              showInformationMessageStub.calledWith(msg, ...msgItems),
-            ).to.be.true;
+            expect(showInformationMessageStub.calledWith(msg, ...msgItems)).to
+              .be.true;
           });
 
           it(`returns the 'message'`, async function () {
@@ -193,9 +190,8 @@ describe('NotificationManager: tests', function () {
         it(`once`, async function () {
           await notificationManager.notifyWarning(undefined);
 
-          expect(
-            showWarningMessageStub.calledOnceWithExactly(undefined),
-          ).to.be.true;
+          expect(showWarningMessageStub.calledOnceWithExactly(undefined)).to.be
+            .true;
         });
 
         it(`and then calls 'i18nManager.getLangResourceKey' once`, async function () {
@@ -225,9 +221,8 @@ describe('NotificationManager: tests', function () {
           it(`with the correct arguments`, async function () {
             await notificationManager.notifyWarning(message, ...items);
 
-            expect(
-              showWarningMessageStub.calledWith(message, ...items),
-            ).to.be.true;
+            expect(showWarningMessageStub.calledWith(message, ...items)).to.be
+              .true;
           });
 
           context(`returns the 'message'`, function () {
@@ -290,9 +285,8 @@ describe('NotificationManager: tests', function () {
 
             await notificationManager.notifyWarning(message, ...items);
 
-            expect(
-              showWarningMessageStub.calledWith(msg, ...msgItems),
-            ).to.be.true;
+            expect(showWarningMessageStub.calledWith(msg, ...msgItems)).to.be
+              .true;
           });
 
           it(`returns the 'message'`, async function () {
@@ -329,9 +323,8 @@ describe('NotificationManager: tests', function () {
         it(`once`, async function () {
           await notificationManager.notifyError(undefined);
 
-          expect(
-            showErrorMessageStub.calledOnceWithExactly(undefined),
-          ).to.be.true;
+          expect(showErrorMessageStub.calledOnceWithExactly(undefined)).to.be
+            .true;
         });
 
         it(`and then calls 'i18nManager.getLangResourceKey' once`, async function () {
@@ -361,9 +354,8 @@ describe('NotificationManager: tests', function () {
           it(`with the correct arguments`, async function () {
             await notificationManager.notifyError(message, ...items);
 
-            expect(
-              showErrorMessageStub.calledWith(message, ...items),
-            ).to.be.true;
+            expect(showErrorMessageStub.calledWith(message, ...items)).to.be
+              .true;
           });
           context(`returns the 'message'`, function () {
             it(`when no 'items' are provided`, async function () {
@@ -425,9 +417,8 @@ describe('NotificationManager: tests', function () {
 
             await notificationManager.notifyError(message, ...items);
 
-            expect(
-              showErrorMessageStub.calledWith(msg, ...msgItems),
-            ).to.be.true;
+            expect(showErrorMessageStub.calledWith(msg, ...msgItems)).to.be
+              .true;
           });
 
           it(`returns the 'message'`, async function () {
