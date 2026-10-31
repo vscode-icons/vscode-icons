@@ -495,7 +495,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
     }
   }
 
-  private applyProjectDetection(
+  private async applyProjectDetection(
     projectDetectionResults: types.ProjectDetectionResult[],
   ): Promise<void> {
     if (
