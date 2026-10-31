@@ -2859,6 +2859,12 @@ export const extensions: FileCollection = {
       languages: [languages.lsl],
     },
     {
+      icon: 'lte',
+      extensions: [],
+      languages: [languages.lte],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'lua',
       languages: [languages.lua],
     },
