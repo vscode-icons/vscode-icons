@@ -1,4 +1,4 @@
-import type { IFolderExtension } from '../../src/types';
+import type { FolderExtension } from '../../src/types';
 
 import { join } from 'path';
 
@@ -16,7 +16,7 @@ describe('Specifications of supported folders: tests', function () {
   context('ensures that', function () {
     const iconsDirPath = ConfigManager.iconsDir;
     const supportedFolders = cloneDeep(folders.supported);
-    let testFolders: IFolderExtension[];
+    let testFolders: FolderExtension[];
 
     beforeEach(function () {
       testFolders = cloneDeep(supportedFolders);
@@ -25,7 +25,7 @@ describe('Specifications of supported folders: tests', function () {
     context('each supported', function () {
       context('folder', function () {
         it('defaults a missing format to svg', function () {
-          const folder = { icon: 'example' } as IFolderExtension;
+          const folder = { icon: 'example' } as FolderExtension;
           folder.format = Utils.fileFormatToString(folder.format);
           expect(
             folder.format,
@@ -37,7 +37,7 @@ describe('Specifications of supported folders: tests', function () {
           const folder = {
             icon: 'example',
             format: enums.FileFormat.svg,
-          } as IFolderExtension;
+          } as FolderExtension;
           folder.format = Utils.fileFormatToString(folder.format);
 
           expect(
@@ -48,7 +48,7 @@ describe('Specifications of supported folders: tests', function () {
 
         it('has an associated icon file', async function () {
           await Promise.all(
-            testFolders.map(async (folder: IFolderExtension) => {
+            testFolders.map(async (folder: FolderExtension) => {
               folder.format = Utils.fileFormatToString(folder.format);
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
@@ -65,7 +65,7 @@ describe('Specifications of supported folders: tests', function () {
 
         it('has an associated opened icon file', async function () {
           await Promise.all(
-            testFolders.map(async (folder: IFolderExtension) => {
+            testFolders.map(async (folder: FolderExtension) => {
               folder.format = Utils.fileFormatToString(folder.format);
               const filename =
                 `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +
@@ -81,6 +81,15 @@ describe('Specifications of supported folders: tests', function () {
         });
 
         context('does NOT have', function () {
+          it('icon-only declaration', function () {
+            testFolders.forEach((folder: FolderExtension) => {
+              expect(
+                Object.keys(folder),
+                `Icon-only declaration for ${folder.icon}`,
+              ).to.have.length.greaterThan(1);
+            });
+          });
+
           it(`duplicate declaration`, function () {
             const unique = uniqBy(testFolders, JSON.stringify);
 
@@ -89,8 +98,8 @@ describe('Specifications of supported folders: tests', function () {
 
           it(`same declaration with different 'extensions'`, function () {
             const checker = (
-              _folder: IFolderExtension,
-              folder: IFolderExtension,
+              _folder: FolderExtension,
+              folder: FolderExtension,
             ): boolean =>
               (!Reflect.has(_folder, 'disabled') ||
                 _folder.disabled !== folder.disabled) &&
@@ -99,10 +108,10 @@ describe('Specifications of supported folders: tests', function () {
               !_folder.checked &&
               _folder.icon === folder.icon;
 
-            testFolders.forEach((folder: IFolderExtension) => {
+            testFolders.forEach((folder: FolderExtension) => {
               folder.checked = true;
-              const otherDeclarations: IFolderExtension[] = testFolders.filter(
-                (_folder: IFolderExtension) => checker(_folder, folder),
+              const otherDeclarations: FolderExtension[] = testFolders.filter(
+                (_folder: FolderExtension) => checker(_folder, folder),
               );
 
               expect(otherDeclarations).to.be.empty;
@@ -111,7 +120,7 @@ describe('Specifications of supported folders: tests', function () {
 
           it(`empty 'extensions' declaration`, function () {
             testFolders.forEach(
-              (folder: IFolderExtension) =>
+              (folder: FolderExtension) =>
                 expect(isEmpty(folder.extensions)).to.be.false,
             );
           });
@@ -121,8 +130,8 @@ describe('Specifications of supported folders: tests', function () {
           it('has an associated icon file', async function () {
             await Promise.all(
               testFolders
-                .filter((folder: IFolderExtension) => folder.light)
-                .map(async (folder: IFolderExtension) => {
+                .filter((folder: FolderExtension) => folder.light)
+                .map(async (folder: FolderExtension) => {
                   folder.format = Utils.fileFormatToString(folder.format);
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}` +
@@ -139,8 +148,8 @@ describe('Specifications of supported folders: tests', function () {
           it('has an associated opened icon file', async function () {
             await Promise.all(
               testFolders
-                .filter((folder: IFolderExtension) => folder.light)
-                .map(async (folder: IFolderExtension) => {
+                .filter((folder: FolderExtension) => folder.light)
+                .map(async (folder: FolderExtension) => {
                   folder.format = Utils.fileFormatToString(folder.format);
                   const filename =
                     `${constants.iconsManifest.folderTypePrefix}${folder.icon}_opened` +

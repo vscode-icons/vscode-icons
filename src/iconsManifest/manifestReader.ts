@@ -9,7 +9,7 @@ import { Utils } from '../utils';
 export class ManifestReader {
   public static async getToggledValue(
     preset: enums.PresetNames,
-    presets: types.IPresets,
+    presets: types.Presets,
   ): Promise<boolean> {
     const isNonIconsRelatedPreset = (): boolean =>
       [enums.PresetNames.hideExplorerArrows].some(
@@ -36,8 +36,8 @@ export class ManifestReader {
     isFile = true,
   ): Promise<boolean> {
     const iconManifest: string = await this.getIconManifest();
-    const iconsJson: types.IVSCodeIconSchema =
-      Utils.parseJSONSafe<types.IVSCodeIconSchema>(iconManifest);
+    const iconsJson: types.VSCodeIconSchema =
+      Utils.parseJSONSafe<types.VSCodeIconSchema>(iconManifest);
     const prefix: string = isFile
       ? constants.iconsManifest.definitionFilePrefix
       : constants.iconsManifest.definitionFolderPrefix;
@@ -60,8 +60,8 @@ export class ManifestReader {
     presetName: string,
   ): Promise<boolean> {
     const manifest: string = await this.getIconManifest();
-    const iconsJson: types.IVSCodeIconSchema =
-      Utils.parseJSONSafe<types.IVSCodeIconSchema>(manifest);
+    const iconsJson: types.VSCodeIconSchema =
+      Utils.parseJSONSafe<types.VSCodeIconSchema>(manifest);
     if (!iconsJson) {
       return true;
     }

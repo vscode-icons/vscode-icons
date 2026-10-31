@@ -13,21 +13,22 @@ import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
-describe('ExtensionManager: actions tests', function () {
+describe('ExtensionManagerContract: actions tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<types.IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<types.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<types.ISettingsManager>;
-    let notifyManagerStub: sinon.SinonStubbedInstance<types.INotificationManager>;
-    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<types.IProjectAutoDetectionManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<types.VSCodeManagerContract>;
+    let configManagerStub: sinon.SinonStubbedInstance<types.ConfigManagerContract>;
+    let settingsManagerStub: sinon.SinonStubbedInstance<types.SettingsManagerContract>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<types.NotificationManagerContract>;
+    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IconsGeneratorContract>;
+    let padMngStub: sinon.SinonStubbedInstance<types.ProjectAutoDetectionManagerContract>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
-    let extensionManager: types.IExtensionManager;
-    let vsiconsClone: types.IVSIcons;
+    let extensionManager: types.ExtensionManagerContract;
+    let vsiconsClone: types.VSIcons;
 
-    const defaultManifest: types.IIconManifest = {
+    const defaultManifest: types.IconManifest = {
+      api: types.apiSchema,
       vscode: types.vscodeSchema,
       zed: types.zedSchema,
     };
@@ -36,7 +37,7 @@ describe('ExtensionManager: actions tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<types.IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<types.VSCodeManagerContract>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -46,22 +47,26 @@ describe('ExtensionManager: actions tests', function () {
       }));
 
       configManagerStub =
-        sandbox.createStubInstance<types.IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =
-        sandbox.createStubInstance<types.ISettingsManager>(SettingsManager);
+        sandbox.createStubInstance<types.SettingsManagerContract>(
+          SettingsManager,
+        );
       notifyManagerStub =
-        sandbox.createStubInstance<types.INotificationManager>(
+        sandbox.createStubInstance<types.NotificationManagerContract>(
           NotificationManager,
         );
 
       iconsGeneratorStub =
-        sandbox.createStubInstance<types.IIconsGenerator>(IconsGenerator);
+        sandbox.createStubInstance<types.IconsGeneratorContract>(
+          IconsGenerator,
+        );
 
       padMngStub =
-        sandbox.createStubInstance<types.IProjectAutoDetectionManager>(
+        sandbox.createStubInstance<types.ProjectAutoDetectionManagerContract>(
           ProjectAutoDetectionManager,
         );
 
@@ -117,7 +122,7 @@ describe('ExtensionManager: actions tests', function () {
       });
 
       context(`applies the customizations`, function () {
-        let projectDetectionResults: types.IProjectDetectionResult[];
+        let projectDetectionResults: types.ProjectDetectionResult[];
         let applyCustomizationStub: sinon.SinonStub;
 
         beforeEach(function () {
@@ -425,8 +430,8 @@ describe('ExtensionManager: actions tests', function () {
 
     context(`applying the customization`, function () {
       context(`generates and saves an icons manifest`, function () {
-        let files: types.IFileCollection;
-        let folders: types.IFolderCollection;
+        let files: types.FileCollection;
+        let folders: types.FolderCollection;
         let applyCustomization: (...arg: unknown[]) => Promise<void>;
 
         beforeEach(function () {
@@ -462,7 +467,7 @@ describe('ExtensionManager: actions tests', function () {
         });
 
         it(`including the project detection result`, async function () {
-          const projectDetectionResults: types.IProjectDetectionResult[] = [
+          const projectDetectionResults: types.ProjectDetectionResult[] = [
             {
               apply: true,
             },

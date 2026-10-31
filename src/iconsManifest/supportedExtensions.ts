@@ -1,8 +1,8 @@
-import type { IFileCollection } from '../types';
+import type { FileCollection } from '../types';
 
 import { languages } from './languages';
 
-export const extensions: IFileCollection = {
+export const extensions: FileCollection = {
   default: {
     file: { icon: 'file' },
   },
@@ -57,6 +57,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'actionscript2',
+      extensions: ['part'],
       light: true,
       languages: [languages.actionscript],
       disabled: true,
@@ -162,8 +163,7 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'antlers_html',
-      extensions: ['antlers.html'],
-      filename: true,
+      extensions: ['antlers.html', 'antlers.php', 'antlers.xml'],
     },
     {
       icon: 'antlr',
@@ -343,7 +343,7 @@ export const extensions: IFileCollection = {
       icon: 'awk',
       extensions: ['awk'],
     },
-    { icon: 'aws' },
+    { icon: 'aws', disabled: true },
     {
       icon: 'azure',
       languages: [languages.azcli],
@@ -883,7 +883,7 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'mjs', 'ts', 'cts'],
       filename: true,
     },
-    { icon: 'compass' },
+    { icon: 'compass', disabled: true },
     {
       icon: 'composer',
       extensions: ['composer.json', 'composer.lock'],
@@ -1501,6 +1501,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'eleventy2',
       extensions: [
+        '.eleventyignore',
         '.eleventy.js',
         'eleventy.config.js',
         'eleventy.config.cjs',
@@ -1924,6 +1925,10 @@ export const extensions: IFileCollection = {
       extensions: ['geojson'],
     },
     {
+      icon: 'ghidra',
+      extensions: ['gar', 'gdt', 'gpr', 'gzf'],
+    },
+    {
       icon: 'gimp',
       extensions: ['xcf'],
     },
@@ -2047,6 +2052,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'gradle2',
       extensions: ['gradle'],
+      languages: [languages.gradle],
       disabled: true,
     },
     {
@@ -2510,6 +2516,12 @@ export const extensions: IFileCollection = {
     {
       icon: 'json_schema',
       extensions: ['schema.json'],
+      filename: true,
+      light: true,
+    },
+    {
+      icon: 'json_schema',
+      extensions: ['schema.json'],
       light: true,
     },
     {
@@ -2528,6 +2540,12 @@ export const extensions: IFileCollection = {
       filename: true,
     },
     { icon: 'jss', extensions: ['jss'] },
+    {
+      icon: 'jsx',
+      languages: [languages.javascriptreact],
+      light: true,
+      disabled: true,
+    },
     {
       icon: 'juice',
       extensions: ['juice'],
@@ -5008,6 +5026,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'sln2',
       extensions: ['sln', 'slnx', 'slnf'],
+      languages: [languages.sln],
       disabled: true,
     },
     {
@@ -5061,7 +5080,7 @@ export const extensions: IFileCollection = {
       languages: [languages.solidity],
       light: true,
     },
-    { icon: 'source' },
+    { icon: 'source', disabled: true },
     {
       icon: 'spacengine',
       extensions: ['spe'],
@@ -5141,7 +5160,7 @@ export const extensions: IFileCollection = {
       icon: 'stylable',
       languages: [languages.stylable],
     },
-    { icon: 'style' },
+    { icon: 'style', disabled: true },
     {
       icon: 'styleci',
       extensions: ['.styleci.yml'],
@@ -5327,8 +5346,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'testjs',
-      filenamesGlob: ['test', 'spec'],
-      extensionsGlob: ['js', 'jsx', 'mjs'],
+      filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec'],
+      extensionsGlob: ['js', 'jsx', 'mjs', 'cjs'],
       light: true,
     },
     {
@@ -5352,7 +5371,7 @@ export const extensions: IFileCollection = {
     {
       icon: 'testts',
       filenamesGlob: ['test', 'spec', 'e2e-test', 'e2e-spec', 'test-d'],
-      extensionsGlob: ['ts', 'tsx', 'mts'],
+      extensionsGlob: ['ts', 'tsx', 'mts', 'cts'],
     },
     {
       icon: 'tex',
@@ -5518,19 +5537,28 @@ export const extensions: IFileCollection = {
         'tsconfig.app',
         'tsconfig.base',
         'tsconfig.build',
+        'tsconfig.cjs',
+        'tsconfig.client',
         'tsconfig.common',
+        'tsconfig.debug',
         'tsconfig.dev',
         'tsconfig.development',
         'tsconfig.e2e',
+        'tsconfig.eslint',
+        'tsconfig.esm',
+        'tsconfig.mjs',
         'tsconfig.node',
         'tsconfig.prod',
         'tsconfig.production',
+        'tsconfig.release',
         'tsconfig.server',
         'tsconfig.spec',
         'tsconfig.staging',
         'tsconfig.test',
+        'tsconfig.types',
         'tsconfig.lib',
         'tsconfig.lib.prod',
+        'tsfmt',
       ],
       extensionsGlob: ['json'],
       filename: true,
@@ -5551,6 +5579,11 @@ export const extensions: IFileCollection = {
       icon: 'tslint',
       extensions: ['tslint.json', 'tslint.yaml', 'tslint.yml'],
       filename: true,
+    },
+    {
+      icon: 'tsx',
+      languages: [languages.typescriptreact],
+      disabled: true,
     },
     {
       icon: 'tt',
@@ -5747,7 +5780,7 @@ export const extensions: IFileCollection = {
         'wmv',
       ],
     },
-    { icon: 'view' },
+    { icon: 'view', disabled: true },
     {
       icon: 'vim',
       extensions: ['.vimrc', '.gvimrc'],
@@ -6239,6 +6272,7 @@ export const extensions: IFileCollection = {
         'zipx',
         'br',
       ],
+      languages: [languages.zip],
       disabled: true,
     },
     {
