@@ -613,6 +613,7 @@ export const extensions: FolderCollection = {
       light: true,
     },
     { icon: 'ohpm', extensions: ['oh_modules'] },
+    { icon: 'opencode', extensions: ['.opencode', 'opencode'], light: true },
     {
       icon: 'package',
       extensions: ['package', 'packages', '.package', '.packages', 'pkg'],
