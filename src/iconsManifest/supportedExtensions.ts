@@ -3802,6 +3802,11 @@ export const extensions: FileCollection = {
       languages: [languages.openHAB],
       light: true,
     },
+    {
+      icon: 'openapi',
+      extensions: ['openapi.json', 'openapi.yaml'],
+      filename: true,
+    },
     { icon: 'opencl', extensions: ['cl', 'opencl'] },
     {
       icon: 'opencode',
@@ -5233,12 +5238,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'swagger',
-      extensions: [
-        'swagger.json',
-        'swagger.yaml',
-        'openapi.json',
-        'openapi.yaml',
-      ],
+      extensions: ['swagger.json', 'swagger.yaml'],
       languages: [languages.swagger],
       filename: true,
     },
