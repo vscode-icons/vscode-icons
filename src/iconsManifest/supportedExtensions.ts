@@ -5233,7 +5233,14 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'swagger',
+      extensions: [
+        'swagger.json',
+        'swagger.yaml',
+        'openapi.json',
+        'openapi.yaml',
+      ],
       languages: [languages.swagger],
+      filename: true,
     },
     {
       icon: 'swc',
