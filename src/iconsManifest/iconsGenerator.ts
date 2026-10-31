@@ -1,5 +1,5 @@
 import type * as types from '../types';
-import type { IPackageManifest } from '../types/package';
+import type { PackageManifest } from '../types/package';
 
 import { CustomsMerger } from './customsMerger';
 import { ManifestBuilder } from './manifestBuilder';
@@ -12,15 +12,15 @@ import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { Utils } from '../utils';
 
-export class IconsGenerator implements types.IIconsGenerator {
-  private readonly manifest: IPackageManifest;
-  private affectedPresets: types.IPresets;
+export class IconsGenerator implements types.IconsGeneratorContract {
+  private readonly manifest: PackageManifest;
+  private affectedPresets: types.Presets;
 
   constructor(
-    private vscodeManager?: types.IVSCodeManager,
-    private configManager?: types.IConfigManager,
+    private vscodeManager?: types.VSCodeManagerContract,
+    private configManager?: types.ConfigManagerContract,
   ) {
-    this.manifest = packageJson as IPackageManifest;
+    this.manifest = packageJson as PackageManifest;
     // register event listener for configuration changes
     if (this.vscodeManager) {
       this.vscodeManager.workspace.onDidChangeConfiguration(
@@ -33,10 +33,10 @@ export class IconsGenerator implements types.IIconsGenerator {
   }
 
   public async generateIconsManifest(
-    files?: types.IFileCollection,
-    folders?: types.IFolderCollection,
-    projectDetectionResults?: types.IProjectDetectionResult[],
-  ): Promise<types.IIconManifest> {
+    files?: types.FileCollection,
+    folders?: types.FolderCollection,
+    projectDetectionResults?: types.ProjectDetectionResult[],
+  ): Promise<types.IconManifest> {
     // default icons manifest
     if (!files && !folders) {
       return ManifestBuilder.buildManifest(extFiles, extFolders);
@@ -73,7 +73,7 @@ export class IconsGenerator implements types.IIconsGenerator {
   }
 
   public async persist(
-    iconsManifest: types.IIconManifest,
+    iconsManifest: types.IconManifest,
     updatePackageJson = false,
   ): Promise<void> {
     await this.writeIconsManifestToFile(
@@ -90,6 +90,13 @@ export class IconsGenerator implements types.IIconsGenerator {
         ConfigManager.sourceDir,
         constants.extension.zedName,
       );
+
+      await this.writeIconsManifestToFile(
+        constants.iconsManifest.apiFilename,
+        iconsManifest.api,
+        ConfigManager.sourceDir,
+        constants.extension.apiName,
+      );
     }
 
     if (!updatePackageJson) {
@@ -100,7 +107,7 @@ export class IconsGenerator implements types.IIconsGenerator {
 
   private async writeIconsManifestToFile(
     iconsFilename: string,
-    iconsManifest: types.IVSCodeIconSchema | types.IZedIconSchema,
+    iconsManifest: types.IconManifest[keyof types.IconManifest],
     outDir: string,
     extensionName: string,
   ): Promise<void> {
@@ -212,7 +219,7 @@ export class IconsGenerator implements types.IIconsGenerator {
   }
 
   private didChangeConfigurationListener(
-    e: types.IVSCodeConfigurationChangeEvent,
+    e: types.VSCodeConfigurationChangeEvent,
   ): void {
     this.affectedPresets = {
       angular: e.affectsConfiguration(constants.vsicons.presets.angular),

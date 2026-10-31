@@ -1,8 +1,8 @@
-import type { IFileCollection } from '../../src/types';
+import type { FileCollection } from '../../src/types';
 
 import { languages } from '../../src/iconsManifest/languages';
 
-export const extensions: IFileCollection = {
+export const extensions: FileCollection = {
   default: {
     file: { icon: 'file' },
   },
@@ -20,7 +20,6 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'asp',
-      extensions: [],
       languages: [languages.asp],
     },
     { icon: 'aspx', extensions: ['aspx', 'ascx'] },
@@ -39,7 +38,6 @@ export const extensions: IFileCollection = {
       extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
       light: true,
       filename: true,
-
       disabled: true,
     },
     {
@@ -66,455 +64,379 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'mlang',
-      extensions: [],
       languages: [languages.mlang],
       light: true,
     },
     {
       icon: 'nest_component_ts',
       extensions: ['component.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_component_js',
       extensions: ['component.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_controller_ts',
       extensions: ['controller.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_controller_js',
       extensions: ['controller.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_smart_component_ts',
       extensions: ['page.ts', 'container.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_smart_component_js',
       extensions: ['page.js', 'container.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_directive_ts',
       extensions: ['directive.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_directive_js',
       extensions: ['directive.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_pipe_ts',
       extensions: ['pipe.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_pipe_js',
       extensions: ['pipe.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_service_ts',
       extensions: ['service.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_service_js',
       extensions: ['service.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_module_ts',
       extensions: ['module.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_module_js',
       extensions: ['module.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_routinest_ts',
       extensions: ['routinest.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_routinest_js',
       extensions: ['routinest.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_routinest_ts',
       extensions: ['app-routinest.module.ts'],
       filename: true,
-
       disabled: true,
     },
     {
       icon: 'nest_routinest_js',
       extensions: ['app-routinest.module.js'],
       filename: true,
-
       disabled: true,
     },
     {
       icon: 'nest_component_ts2',
       extensions: ['component.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_component_js2',
       extensions: ['component.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_smart_component_ts2',
       extensions: ['page.ts', 'container.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_smart_component_js2',
       extensions: ['page.js', 'container.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_directive_ts2',
       extensions: ['directive.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_directive_js2',
       extensions: ['directive.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_pipe_ts2',
       extensions: ['pipe.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_pipe_js2',
       extensions: ['pipe.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_service_ts2',
       extensions: ['service.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_service_js2',
       extensions: ['service.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_module_ts2',
       extensions: ['module.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_module_js2',
       extensions: ['module.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_routinest_ts2',
       extensions: ['routinest.ts'],
-
       disabled: true,
     },
     {
       icon: 'nest_routinest_js2',
       extensions: ['routinest.js'],
-
       disabled: true,
     },
     {
       icon: 'nest_routinest_ts2',
       extensions: ['app-routinest.module.ts'],
       filename: true,
-
       disabled: true,
     },
     {
       icon: 'nest_routinest_js2',
       extensions: ['app-routinest.module.js'],
       filename: true,
-
       disabled: true,
     },
     {
       icon: 'ng_component_ts',
       extensions: ['component.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_component_js',
       extensions: ['component.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_controller_ts',
       extensions: ['controller.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_controller_js',
       extensions: ['controller.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_smart_component_ts',
       extensions: ['page.ts', 'container.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_smart_component_js',
       extensions: ['page.js', 'container.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_directive_ts',
       extensions: ['directive.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_directive_js',
       extensions: ['directive.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_pipe_ts',
       extensions: ['pipe.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_pipe_js',
       extensions: ['pipe.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_service_ts',
       extensions: ['service.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_service_js',
       extensions: ['service.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_module_ts',
       extensions: ['module.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_module_js',
       extensions: ['module.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_routing_ts',
       extensions: ['routing.ts', 'routes.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_routing_js',
       extensions: ['routing.js', 'routes.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_routing_ts',
       extensions: ['app-routing.module.ts'],
       filename: true,
-
       disabled: true,
     },
     {
       icon: 'ng_routing_js',
       extensions: ['app-routing.module.js'],
       filename: true,
-
       disabled: true,
     },
     {
       icon: 'ng_component_ts2',
       extensions: ['component.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_component_js2',
       extensions: ['component.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_smart_component_ts2',
       extensions: ['page.ts', 'container.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_smart_component_js2',
       extensions: ['page.js', 'container.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_directive_ts2',
       extensions: ['directive.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_directive_js2',
       extensions: ['directive.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_pipe_ts2',
       extensions: ['pipe.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_pipe_js2',
       extensions: ['pipe.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_service_ts2',
       extensions: ['service.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_service_js2',
       extensions: ['service.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_module_ts2',
       extensions: ['module.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_module_js2',
       extensions: ['module.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_routing_ts2',
       extensions: ['routing.ts', 'routes.ts'],
-
       disabled: true,
     },
     {
       icon: 'ng_routing_js2',
       extensions: ['routing.js', 'routes.js'],
-
       disabled: true,
     },
     {
       icon: 'ng_routing_ts2',
       extensions: ['app-routing.module.ts'],
       filename: true,
-
       disabled: true,
     },
     {
       icon: 'ng_routing_js2',
       extensions: ['app-routing.module.js'],
       filename: true,
-
       disabled: true,
     },
     {
       icon: 'js',
-      extensions: [],
       light: true,
       languages: [languages.javascript],
     },
     {
       icon: 'js_official',
-      extensions: [],
       languages: [languages.javascript],
-
       disabled: true,
     },
     {
       icon: 'json',
-      extensions: [],
       light: true,
       languages: [languages.json, languages.textmatejson, languages.jsonc],
     },
     {
       icon: 'json_official',
-      extensions: [],
       languages: [languages.json, languages.textmatejson, languages.jsonc],
-
       disabled: true,
     },
     {
       icon: 'yaml',
-      extensions: [],
       languages: [
         languages.yaml,
         languages.textmateyaml,
@@ -524,41 +446,33 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'yaml_official',
-      extensions: [],
       languages: [
         languages.yaml,
         languages.textmateyaml,
         languages.springbootpropertiesyaml,
       ],
       light: true,
-
       disabled: true,
     },
     {
       icon: 'taskfile',
-      extensions: [],
-
       filename: true,
       filenamesGlob: ['Taskfile', 'Taskfile.dist'],
       extensionsGlob: ['yml', 'yaml'],
     },
     {
       icon: 'typescript',
-      extensions: [],
       languages: [languages.typescript],
     },
     {
       icon: 'typescript_official',
-      extensions: [],
       languages: [languages.typescript],
-
       disabled: true,
     },
     { icon: 'typescriptdef', extensions: ['d.ts'] },
     {
       icon: 'typescriptdef_official',
       extensions: ['d.ts'],
-
       disabled: true,
     },
   ],

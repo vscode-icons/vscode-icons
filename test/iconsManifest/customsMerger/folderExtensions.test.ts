@@ -1,4 +1,4 @@
-import type { IFolderCollection, IFolderExtension } from '../../../src/types';
+import type { FolderCollection, FolderExtension } from '../../../src/types';
 
 import { expect } from 'chai';
 import { isEqual } from 'lodash';
@@ -23,7 +23,7 @@ describe('CustomsMerger: folder extensions tests', function () {
 
     context('new extensions are added to existing folder icon', function () {
       it('and respect the format type', async function () {
-        const customFolders: IFolderCollection = {
+        const customFolders: FolderCollection = {
           default: {},
           supported: [{ icon: 'aws', extensions: ['aws3'], format: 'svg' }],
         };
@@ -37,13 +37,13 @@ describe('CustomsMerger: folder extensions tests', function () {
             vsicons.presets,
           )
         ).folders.supported.filter(
-          (folder: IFolderExtension) =>
+          (folder: FolderExtension) =>
             folder.icon === customFolders.supported[0].icon,
         );
 
         expect(newDefs).to.be.an('array').with.lengthOf(2);
 
-        newDefs.forEach((def: IFolderExtension) => {
+        newDefs.forEach((def: FolderExtension) => {
           expect(def.icon).to.equal(customFolders.supported[0].icon);
           expect(def.format).to.be.undefined;
         });
@@ -53,7 +53,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it(`'overrides' removes the specified icon`, async function () {
-      const customFolders: IFolderCollection = {
+      const customFolders: FolderCollection = {
         default: {},
         supported: [
           {
@@ -73,11 +73,11 @@ describe('CustomsMerger: folder extensions tests', function () {
         vsicons.presets,
       );
       const overridenDef = folders.supported.filter(
-        (folder: IFolderExtension) =>
+        (folder: FolderExtension) =>
           folder.icon === customFolders.supported[0].overrides,
       );
       const newDefs = folders.supported.filter(
-        (folder: IFolderExtension) =>
+        (folder: FolderExtension) =>
           folder.icon === customFolders.supported[0].icon,
       );
 
@@ -91,7 +91,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it(`'extends' replaces the specified icon`, async function () {
-      const customFolders: IFolderCollection = {
+      const customFolders: FolderCollection = {
         default: {},
         supported: [
           {
@@ -111,17 +111,17 @@ describe('CustomsMerger: folder extensions tests', function () {
         vsicons.presets,
       );
       const extendedDef = folders.supported.filter(
-        (folder: IFolderExtension) =>
+        (folder: FolderExtension) =>
           folder.icon === customFolders.supported[0].extends,
       );
       const newDefs = folders.supported.filter(
-        (folder: IFolderExtension) =>
+        (folder: FolderExtension) =>
           folder.icon === customFolders.supported[0].icon,
       );
 
       expect(extendedDef).to.be.an('array').with.lengthOf(1);
       expect(newDefs).to.be.an('array').with.lengthOf(2);
-      newDefs.forEach((def: IFolderExtension) => {
+      newDefs.forEach((def: FolderExtension) => {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
       });
       expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
@@ -134,11 +134,9 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it('disabled icons are NOT included into the manifest', async function () {
-      const customFolders: IFolderCollection = {
+      const customFolders: FolderCollection = {
         default: {},
-        supported: [
-          { icon: 'aws', extensions: [], disabled: true, format: 'svg' },
-        ],
+        supported: [{ icon: 'aws', disabled: true, format: 'svg' }],
       };
 
       const newDefs = (
@@ -150,7 +148,7 @@ describe('CustomsMerger: folder extensions tests', function () {
           vsicons.presets,
         )
       ).folders.supported.filter(
-        (folder: IFolderExtension) =>
+        (folder: FolderExtension) =>
           folder.icon === customFolders.supported[0].icon,
       );
 
@@ -159,40 +157,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it('NOT disabled icons are included into the manifest', async function () {
-      const customFolders: IFolderCollection = {
-        default: {},
-        supported: [
-          { icon: 'aws', extensions: [], disabled: false, format: 'svg' },
-        ],
-      };
-
-      const newDefs = (
-        await CustomsMerger.merge(
-          null,
-          extFiles,
-          customFolders,
-          extFolders,
-          vsicons.presets,
-        )
-      ).folders.supported.filter(
-        (folder: IFolderExtension) =>
-          folder.icon === customFolders.supported[0].icon,
-      );
-
-      expect(newDefs).to.be.an('array').with.lengthOf(2);
-      newDefs.forEach((def: IFolderExtension) => {
-        expect(def.icon).to.equal(customFolders.supported[0].icon);
-        expect(def.format).to.be.undefined;
-        expect(def.disabled).to.be.false;
-      });
-      expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
-      expect(newDefs[1].extensions).to.eql(
-        customFolders.supported[0].extensions,
-      );
-    });
-
-    it(`if 'extensions' is NOT defined, it gets added internally`, async function () {
-      const customFolders: IFolderCollection = {
+      const customFolders: FolderCollection = {
         default: {},
         supported: [{ icon: 'aws', disabled: false, format: 'svg' }],
       };
@@ -206,12 +171,43 @@ describe('CustomsMerger: folder extensions tests', function () {
           vsicons.presets,
         )
       ).folders.supported.filter(
-        (folder: IFolderExtension) =>
+        (folder: FolderExtension) =>
           folder.icon === customFolders.supported[0].icon,
       );
 
       expect(newDefs).to.be.an('array').with.lengthOf(2);
-      newDefs.forEach((def: IFolderExtension) => {
+      newDefs.forEach((def: FolderExtension) => {
+        expect(def.icon).to.equal(customFolders.supported[0].icon);
+        expect(def.format).to.be.undefined;
+        expect(def.disabled).to.be.false;
+      });
+      expect(newDefs[0].extensions).to.eql(['aws', '.aws']);
+      expect(newDefs[1].extensions).to.eql(
+        customFolders.supported[0].extensions,
+      );
+    });
+
+    it(`if 'extensions' is NOT defined, it gets added internally`, async function () {
+      const customFolders: FolderCollection = {
+        default: {},
+        supported: [{ icon: 'aws', disabled: false, format: 'svg' }],
+      };
+
+      const newDefs = (
+        await CustomsMerger.merge(
+          null,
+          extFiles,
+          customFolders,
+          extFolders,
+          vsicons.presets,
+        )
+      ).folders.supported.filter(
+        (folder: FolderExtension) =>
+          folder.icon === customFolders.supported[0].icon,
+      );
+
+      expect(newDefs).to.be.an('array').with.lengthOf(2);
+      newDefs.forEach((def: FolderExtension) => {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
         expect(def.disabled).to.be.false;
         expect(def.format).to.be.undefined;
@@ -221,7 +217,7 @@ describe('CustomsMerger: folder extensions tests', function () {
     });
 
     it(`existing icon have its 'extensions' reassigned to new custom icon`, async function () {
-      const customFolders: IFolderCollection = {
+      const customFolders: FolderCollection = {
         default: {},
         supported: [
           { icon: 'newIcon', extensions: ['aws', '.aws'], format: 'svg' },
@@ -237,14 +233,14 @@ describe('CustomsMerger: folder extensions tests', function () {
       );
 
       const oldDefs = folders.supported.filter(
-        (folder: IFolderExtension) =>
+        (folder: FolderExtension) =>
           folder.icon ===
-          extFolders.supported.find((ef: IFolderExtension) =>
+          extFolders.supported.find((ef: FolderExtension) =>
             isEqual(ef.extensions, customFolders.supported[0].extensions),
           ).icon,
       );
       const newDefs = folders.supported.filter(
-        (folder: IFolderExtension) =>
+        (folder: FolderExtension) =>
           folder.icon === customFolders.supported[0].icon,
       );
 
@@ -258,7 +254,7 @@ describe('CustomsMerger: folder extensions tests', function () {
 
     context('custom icon', function () {
       it(`keeps the correct 'format'`, async function () {
-        const customFolders: IFolderCollection = {
+        const customFolders: FolderCollection = {
           default: {},
           supported: [
             {
@@ -278,7 +274,7 @@ describe('CustomsMerger: folder extensions tests', function () {
             vsicons.presets,
           )
         ).folders.supported.filter(
-          (folder: IFolderExtension) =>
+          (folder: FolderExtension) =>
             folder.icon === customFolders.supported[0].icon,
         );
 

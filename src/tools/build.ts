@@ -1,4 +1,4 @@
-import type { IIconManifest } from '../types';
+import type { IconManifest } from '../types';
 
 import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';
@@ -10,7 +10,7 @@ async function build(argv: string[]): Promise<void> {
       /release|production/.test(arg),
     );
     const iconsGenerator = new IconsGenerator();
-    const iconsManifest: IIconManifest =
+    const iconsManifest: IconManifest =
       await iconsGenerator.generateIconsManifest();
     await iconsGenerator.persist(
       iconsManifest,

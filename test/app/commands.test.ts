@@ -1,5 +1,5 @@
 import type * as types from '../../src/types';
-import type { IVSCodeCommand } from '../../src/types/vscode';
+import type { VSCodeCommand } from '../../src/types/vscode';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';
@@ -13,26 +13,26 @@ import { SettingsManager } from '../../src/settings/settingsManager';
 import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
-describe('ExtensionManager: commands tests', function () {
+describe('ExtensionManagerContract: commands tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<types.IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<types.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<types.ISettingsManager>;
-    let notifyManagerStub: sinon.SinonStubbedInstance<types.INotificationManager>;
-    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<types.IProjectAutoDetectionManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<types.VSCodeManagerContract>;
+    let configManagerStub: sinon.SinonStubbedInstance<types.ConfigManagerContract>;
+    let settingsManagerStub: sinon.SinonStubbedInstance<types.SettingsManagerContract>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<types.NotificationManagerContract>;
+    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IconsGeneratorContract>;
+    let padMngStub: sinon.SinonStubbedInstance<types.ProjectAutoDetectionManagerContract>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let registerCommandStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
     let togglePresetStub: sinon.SinonStub;
-    let extensionManager: types.IExtensionManager;
+    let extensionManager: types.ExtensionManagerContract;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<types.IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<types.VSCodeManagerContract>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -47,20 +47,24 @@ describe('ExtensionManager: commands tests', function () {
       }));
 
       configManagerStub =
-        sandbox.createStubInstance<types.IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
 
       settingsManagerStub =
-        sandbox.createStubInstance<types.ISettingsManager>(SettingsManager);
+        sandbox.createStubInstance<types.SettingsManagerContract>(
+          SettingsManager,
+        );
       notifyManagerStub =
-        sandbox.createStubInstance<types.INotificationManager>(
+        sandbox.createStubInstance<types.NotificationManagerContract>(
           NotificationManager,
         );
 
       iconsGeneratorStub =
-        sandbox.createStubInstance<types.IIconsGenerator>(IconsGenerator);
+        sandbox.createStubInstance<types.IconsGeneratorContract>(
+          IconsGenerator,
+        );
 
       padMngStub =
-        sandbox.createStubInstance<types.IProjectAutoDetectionManager>(
+        sandbox.createStubInstance<types.ProjectAutoDetectionManagerContract>(
           ProjectAutoDetectionManager,
         );
 
@@ -91,7 +95,7 @@ describe('ExtensionManager: commands tests', function () {
     });
 
     context(`registering the commands`, function () {
-      let commands: IVSCodeCommand[];
+      let commands: VSCodeCommand[];
       let reflectGetSpy: sinon.SinonSpy;
       let registerCommands: (...arg: unknown[]) => void;
 

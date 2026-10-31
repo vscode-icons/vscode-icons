@@ -1,6 +1,6 @@
 import type * as types from '../types';
-import type { IPackageManifest } from '../types/package';
-import type { IVSCodeCommand } from '../types/vscode';
+import type { PackageManifest } from '../types/package';
+import type { VSCodeCommand } from '../types/vscode';
 
 import { dirname, resolve } from 'path';
 
@@ -12,9 +12,9 @@ import { ManifestReader } from '../iconsManifest';
 import * as enums from '../types/enums';
 import { Utils } from '../utils';
 
-export class ExtensionManager implements types.IExtensionManager {
+export class ExtensionManager implements types.ExtensionManagerContract {
   //#region Properties
-  private readonly manifest: IPackageManifest;
+  private readonly manifest: PackageManifest;
   private doReload: boolean;
   private customMsgShown: boolean;
   private callback: (...args: unknown[]) => unknown;
@@ -22,14 +22,14 @@ export class ExtensionManager implements types.IExtensionManager {
 
   //#region Constructor
   constructor(
-    private vscodeManager: types.IVSCodeManager,
-    private configManager: types.IConfigManager,
-    private settingsManager: types.ISettingsManager,
-    private notificationManager: types.INotificationManager,
-    private iconsGenerator: types.IIconsGenerator,
-    private projectAutoDetectionManager: types.IProjectAutoDetectionManager,
+    private vscodeManager: types.VSCodeManagerContract,
+    private configManager: types.ConfigManagerContract,
+    private settingsManager: types.SettingsManagerContract,
+    private notificationManager: types.NotificationManagerContract,
+    private iconsGenerator: types.IconsGeneratorContract,
+    private projectAutoDetectionManager: types.ProjectAutoDetectionManagerContract,
   ) {
-    this.manifest = packageJson as IPackageManifest;
+    this.manifest = packageJson as PackageManifest;
     // register event listener for configuration changes
     this.vscodeManager.workspace.onDidChangeConfiguration(
       // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -70,7 +70,7 @@ export class ExtensionManager implements types.IExtensionManager {
     await this.manageIntroMessage();
     await this.manageCustomizations();
 
-    const detectionResults: types.IProjectDetectionResult[] =
+    const detectionResults: types.ProjectDetectionResult[] =
       await this.projectAutoDetectionManager.detectProjects([
         enums.Projects.angular,
         enums.Projects.nestjs,
@@ -85,8 +85,8 @@ export class ExtensionManager implements types.IExtensionManager {
   //#endregion
 
   //#region Private functions
-  private registerCommands(commands: IVSCodeCommand[]): void {
-    commands.forEach((command: IVSCodeCommand): number =>
+  private registerCommands(commands: VSCodeCommand[]): void {
+    commands.forEach((command: VSCodeCommand): number =>
       this.vscodeManager.context.subscriptions.push(
         this.vscodeManager.commands.registerCommand(
           command.command,
@@ -118,7 +118,7 @@ export class ExtensionManager implements types.IExtensionManager {
     const configChanged =
       this.settingsManager.isNewVersion &&
       this.configManager.hasConfigChanged(
-        Utils.unflattenProperties<{ vsicons: types.IVSIcons }>(
+        Utils.unflattenProperties<{ vsicons: types.VSIcons }>(
           this.manifest.contributes.configuration.properties,
           'default',
         ).vsicons,
@@ -387,8 +387,8 @@ export class ExtensionManager implements types.IExtensionManager {
         throw new Error('Arguments missing');
       }
       cbArgs = [
-        (cbArgs[0] as types.IProjectDetectionResult[]).filter(
-          (cbArg: types.IProjectDetectionResult): boolean =>
+        (cbArgs[0] as types.ProjectDetectionResult[]).filter(
+          (cbArg: types.ProjectDetectionResult): boolean =>
             cbArg.project === project,
         ),
       ];
@@ -460,7 +460,7 @@ export class ExtensionManager implements types.IExtensionManager {
     // Note: This condition works also for auto-reload handling
     if (
       this.configManager.vsicons.presets[cbArgs[0] as string] ===
-      (cbArgs[1] as types.IPresets)
+      (cbArgs[1] as types.Presets)
     ) {
       // eslint-disable-next-line @typescript-eslint/unbound-method
       this.executeAndReload(this.applyCustomization);
@@ -476,20 +476,20 @@ export class ExtensionManager implements types.IExtensionManager {
   }
 
   private applyProjectDetection(
-    projectDetectionResults: types.IProjectDetectionResult[],
+    projectDetectionResults: types.ProjectDetectionResult[],
   ): Promise<void> {
     if (
       !projectDetectionResults ||
       !projectDetectionResults.length ||
       projectDetectionResults.every(
-        (pdr: types.IProjectDetectionResult): boolean => !pdr.apply,
+        (pdr: types.ProjectDetectionResult): boolean => !pdr.apply,
       )
     ) {
       return;
     }
 
     const conflict = projectDetectionResults.find(
-      (pdr: types.IProjectDetectionResult): boolean =>
+      (pdr: types.ProjectDetectionResult): boolean =>
         !!pdr.conflictingProjects && !!pdr.conflictingProjects.length,
     );
     if (!conflict && this.configManager.vsicons.projectDetection.autoReload) {
@@ -557,14 +557,14 @@ export class ExtensionManager implements types.IExtensionManager {
   }
 
   private async applyCustomization(
-    projectDetectionResults?: types.IProjectDetectionResult[],
+    projectDetectionResults?: types.ProjectDetectionResult[],
   ): Promise<void> {
     const associations = this.configManager.vsicons.associations;
-    const customFiles: types.IFileCollection = {
+    const customFiles: types.FileCollection = {
       default: associations.fileDefault,
       supported: associations.files,
     };
-    const customFolders: types.IFolderCollection = {
+    const customFolders: types.FolderCollection = {
       default: associations.folderDefault,
       supported: associations.folders,
     };
@@ -596,7 +596,7 @@ export class ExtensionManager implements types.IExtensionManager {
 
   //#region Event Listeners
   private async didChangeConfigurationListener(
-    e: types.IVSCodeConfigurationChangeEvent,
+    e: types.VSCodeConfigurationChangeEvent,
   ): Promise<void> {
     // Update the status in extension settings
     if (e.affectsConfiguration(constants.vscode.iconThemeSetting)) {

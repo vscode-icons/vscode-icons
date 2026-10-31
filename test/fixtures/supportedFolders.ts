@@ -1,7 +1,6 @@
-/* tslint:disable max-line-length */
-import type { IFolderCollection } from '../../src/types';
+import type { FolderCollection } from '../../src/types';
 
-export const extensions: IFolderCollection = {
+export const extensions: FolderCollection = {
   default: {
     folder: { icon: 'folder' },
     root_folder: { icon: 'root_folder' },
@@ -12,7 +11,6 @@ export const extensions: IFolderCollection = {
     {
       icon: 'aws2',
       extensions: ['aws', '.aws'],
-
       disabled: true,
     },
     {
@@ -24,7 +22,6 @@ export const extensions: IFolderCollection = {
     {
       icon: 'json_official',
       extensions: ['json'],
-
       disabled: true,
     },
   ],
