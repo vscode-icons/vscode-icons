@@ -135,8 +135,8 @@ export class ExtensionManager implements types.ExtensionManagerContract {
         const btn = await this.notificationManager.notifyInfo(
           enums.LangResourceKeys.welcome,
           enums.LangResourceKeys.activate,
-          enums.LangResourceKeys.aboutOfficialApi,
           enums.LangResourceKeys.seeReadme,
+          enums.LangResourceKeys.aboutOfficialApi,
         );
 
         switch (btn) {
@@ -298,6 +298,26 @@ export class ExtensionManager implements types.ExtensionManagerContract {
     return this.togglePreset(
       enums.PresetNames.tsOfficial,
       enums.CommandNames.tsPreset,
+      false,
+      enums.ConfigurationTarget.Global,
+    );
+  }
+
+  // @ts-ignore: Called via reflection
+  private toggleReactJsPresetCommand(): Promise<void> {
+    return this.togglePreset(
+      enums.PresetNames.reactjsOfficial,
+      enums.CommandNames.reactjsPreset,
+      false,
+      enums.ConfigurationTarget.Global,
+    );
+  }
+
+  // @ts-ignore: Called via reflection
+  private toggleReactTsPresetCommand(): Promise<void> {
+    return this.togglePreset(
+      enums.PresetNames.reacttsOfficial,
+      enums.CommandNames.reacttsPreset,
       false,
       enums.ConfigurationTarget.Global,
     );
@@ -475,7 +495,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
     }
   }
 
-  private applyProjectDetection(
+  private async applyProjectDetection(
     projectDetectionResults: types.ProjectDetectionResult[],
   ): Promise<void> {
     if (

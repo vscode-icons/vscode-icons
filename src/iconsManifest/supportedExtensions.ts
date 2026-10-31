@@ -558,13 +558,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'bun',
-      extensions: [
-        '.bun-version',
-        '.bunfig.toml',
-        'bunfig.toml',
-        'bun.lockb',
-        'bun.lock',
-      ],
+      extensions: ['.bun-version', 'bun.lockb', 'bun.lock'],
       languages: [languages.bunlockb],
       filename: true,
     },
@@ -591,7 +585,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'bunfig',
-      extensions: ['bunfig.toml'],
+      extensions: ['.bunfig.toml', 'bunfig.toml'],
       filename: true,
     },
     {
@@ -1637,12 +1631,12 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'excel',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'xlsb'],
       languages: [languages.excel],
     },
     {
       icon: 'excel2',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'xlsb'],
       languages: [languages.excel],
       disabled: true,
     },
@@ -2545,12 +2539,6 @@ export const extensions: FileCollection = {
     },
     { icon: 'jss', extensions: ['jss'] },
     {
-      icon: 'jsx',
-      languages: [languages.javascriptreact],
-      light: true,
-      disabled: true,
-    },
-    {
       icon: 'juice',
       extensions: ['juice'],
     },
@@ -2737,7 +2725,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'libreoffice_math',
-      extensions: ['odf', 'otf'],
+      extensions: ['odf'],
     },
     {
       icon: 'libreoffice_writer',
@@ -3327,11 +3315,7 @@ export const extensions: FileCollection = {
       extensions: ['nextest.toml'],
       filename: true,
     },
-    {
-      icon: 'nextflow',
-      extensions: ['.nf'],
-      filename: true,
-    },
+    { icon: 'nextflow', languages: [languages.nextflow] },
     {
       icon: 'ng-packagr',
       extensions: ['ng-package.json', 'ng-package.js'],
@@ -4591,6 +4575,12 @@ export const extensions: FileCollection = {
     {
       icon: 'reactjs',
       languages: [languages.javascriptreact],
+      light: true,
+      disabled: true,
+    },
+    {
+      icon: 'reactjs_official',
+      languages: [languages.javascriptreact],
     },
     {
       icon: 'reactrouter',
@@ -4602,6 +4592,11 @@ export const extensions: FileCollection = {
     { icon: 'reacttemplate', extensions: ['rt'] },
     {
       icon: 'reactts',
+      languages: [languages.typescriptreact],
+      disabled: true,
+    },
+    {
+      icon: 'reactts_official',
       languages: [languages.typescriptreact],
     },
     {
@@ -5596,11 +5591,6 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
-      icon: 'tsx',
-      languages: [languages.typescriptreact],
-      disabled: true,
-    },
-    {
       icon: 'tt',
       extensions: ['tt2'],
       languages: [languages.templatetoolkit],
@@ -5697,10 +5687,7 @@ export const extensions: FileCollection = {
       extensions: ['uv.lock', 'uv.toml'],
       filename: true,
     },
-    {
-      icon: 'uvue',
-      extensions: ['uvue'],
-    },
+    { icon: 'uvue', languages: [languages.uvue] },
     {
       icon: 'vagrant',
       extensions: ['vagrantfile'],
@@ -6092,7 +6079,7 @@ export const extensions: FileCollection = {
       icon: 'wurst',
       languages: [languages.wurst],
     },
-    { icon: 'wxml', extensions: ['wxml'] },
+    { icon: 'wxml', languages: [languages.wxml] },
     { icon: 'wxss', extensions: ['wxss'] },
     {
       icon: 'wxt',

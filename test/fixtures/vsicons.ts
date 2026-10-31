@@ -19,8 +19,10 @@ export const vsicons = Object.freeze({
     hideExplorerArrows: false,
     hideFolders: false,
     jsOfficial: false,
-    jsonOfficial: false,
     tsOfficial: false,
+    reactjsOfficial: true,
+    reacttsOfficial: true,
+    jsonOfficial: false,
     yamlOfficial: false,
   },
 });
