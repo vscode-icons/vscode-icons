@@ -4791,6 +4791,12 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'rpy',
+      extensions: ['rpy'],
+      languages: [languages.rpy],
+      format: FileFormat.svg,
+    },
+    {
       icon: 'rspec',
       extensions: ['.rspec'],
       filename: true,

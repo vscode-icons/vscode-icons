@@ -572,6 +572,7 @@ export const languages = {
   rnc: { ids: 'rnc', knownExtensions: ['rnc'] },
   robot: { ids: ['robot', 'robotframework'], knownExtensions: ['robot'] },
   robotstxt: { ids: 'robots-txt', knownFilenames: ['robots.txt'] },
+  rpy: { ids: 'rpy', defaultExtension: 'rpy' },
   ruby: {
     ids: 'ruby',
     knownExtensions: [
