@@ -765,6 +765,12 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'cline',
+      extensions: ['.clinerules'],
+      filename: true,
+      light: true,
+    },
+    {
       icon: 'clojure',
       extensions: ['cjm', 'cljc'],
       languages: [languages.clojure],
