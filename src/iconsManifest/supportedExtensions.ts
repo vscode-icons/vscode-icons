@@ -145,6 +145,10 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'android',
+      extensions: ['apk', 'apks'],
+    },
+    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
@@ -163,8 +167,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'antlers_html',
-      extensions: ['antlers.html'],
-      filename: true,
+      extensions: ['antlers.html', 'antlers.php', 'antlers.xml'],
     },
     {
       icon: 'antlr',
@@ -1924,6 +1927,10 @@ export const extensions: FileCollection = {
     {
       icon: 'geojson',
       extensions: ['geojson'],
+    },
+    {
+      icon: 'ghidra',
+      extensions: ['gar', 'gdt', 'gpr', 'gzf'],
     },
     {
       icon: 'gimp',
@@ -4573,6 +4580,12 @@ export const extensions: FileCollection = {
     {
       icon: 'reactjs',
       languages: [languages.javascriptreact],
+      light: true,
+      disabled: true,
+    },
+    {
+      icon: 'reactjs_official',
+      languages: [languages.javascriptreact],
     },
     {
       icon: 'reactrouter',
@@ -4584,6 +4597,11 @@ export const extensions: FileCollection = {
     { icon: 'reacttemplate', extensions: ['rt'] },
     {
       icon: 'reactts',
+      languages: [languages.typescriptreact],
+      disabled: true,
+    },
+    {
+      icon: 'reactts_official',
       languages: [languages.typescriptreact],
     },
     {
