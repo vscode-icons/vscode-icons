@@ -1,4 +1,5 @@
 export const apiSchema: ApiIconSchema = {
+  $schema: `https://raw.githubusercontent.com/vscode-icons/vscode-icons-api/refs/heads/main/schemas/v1/schema.json`,
   files: {
     _default: '',
     extensions: {},
