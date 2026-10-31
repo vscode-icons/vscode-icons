@@ -966,6 +966,11 @@ export const extensions: FileCollection = {
       extensions: ['hpp', 'hh', 'hxx', 'h++'],
     },
     {
+      icon: 'cql',
+      languages: [languages.cql],
+      light: true,
+    },
+    {
       icon: 'craco',
       extensions: [
         'craco.config.ts',
