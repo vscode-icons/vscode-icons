@@ -42,7 +42,7 @@ export class ManifestReader {
       ? constants.iconsManifest.definitionFilePrefix
       : constants.iconsManifest.definitionFolderPrefix;
     const suffix: string = Reflect.ownKeys(enums.Projects).some(
-      (key: string | number | symbol): boolean => enums.Projects[key] === name,
+      (key: string | symbol): boolean => enums.Projects[key] === name,
     )
       ? '_'
       : '';
@@ -50,7 +50,7 @@ export class ManifestReader {
     return (
       !iconsJson ||
       !Reflect.ownKeys(iconsJson.iconDefinitions).filter(
-        (key: string | number | symbol): boolean =>
+        (key: string | symbol): boolean =>
           key.toString().startsWith(defNamePattern),
       ).length
     );

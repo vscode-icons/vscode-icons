@@ -34,6 +34,8 @@ describe('ManifestReader: tests', function () {
           nestjs: false,
           jsOfficial: false,
           tsOfficial: false,
+          reactjsOfficial: false,
+          reacttsOfficial: false,
           jsonOfficial: false,
           foldersAllDefaultIcon: false,
           hideFolders: false,

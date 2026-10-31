@@ -39,6 +39,8 @@ export interface Presets {
   nestjs: boolean;
   jsOfficial: boolean;
   tsOfficial: boolean;
+  reactjsOfficial: boolean;
+  reacttsOfficial: boolean;
   jsonOfficial: boolean;
   hideFolders: boolean;
   foldersAllDefaultIcon: boolean;

@@ -50,6 +50,20 @@ export class CustomsMerger {
     );
 
     files = this.toggleOfficialIconsPreset(
+      !presets.reactjsOfficial,
+      files,
+      [enums.IconNames.reactjsOfficial],
+      [enums.IconNames.reactjs],
+    );
+
+    files = this.toggleOfficialIconsPreset(
+      !presets.reacttsOfficial,
+      files,
+      [enums.IconNames.reacttsOfficial],
+      [enums.IconNames.reactts],
+    );
+
+    files = this.toggleOfficialIconsPreset(
       !presets.jsonOfficial,
       files,
       [enums.IconNames.jsonOfficial],

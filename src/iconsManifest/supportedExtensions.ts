@@ -2545,12 +2545,6 @@ export const extensions: FileCollection = {
     },
     { icon: 'jss', extensions: ['jss'] },
     {
-      icon: 'jsx',
-      languages: [languages.javascriptreact],
-      light: true,
-      disabled: true,
-    },
-    {
       icon: 'juice',
       extensions: ['juice'],
     },
@@ -4586,6 +4580,12 @@ export const extensions: FileCollection = {
     {
       icon: 'reactjs',
       languages: [languages.javascriptreact],
+      light: true,
+      disabled: true,
+    },
+    {
+      icon: 'reactjs_official',
+      languages: [languages.javascriptreact],
     },
     {
       icon: 'reactrouter',
@@ -4597,6 +4597,11 @@ export const extensions: FileCollection = {
     { icon: 'reacttemplate', extensions: ['rt'] },
     {
       icon: 'reactts',
+      languages: [languages.typescriptreact],
+      disabled: true,
+    },
+    {
+      icon: 'reactts_official',
       languages: [languages.typescriptreact],
     },
     {
@@ -5587,11 +5592,6 @@ export const extensions: FileCollection = {
       icon: 'tslint',
       extensions: ['tslint.json', 'tslint.yaml', 'tslint.yml'],
       filename: true,
-    },
-    {
-      icon: 'tsx',
-      languages: [languages.typescriptreact],
-      disabled: true,
     },
     {
       icon: 'tt',
