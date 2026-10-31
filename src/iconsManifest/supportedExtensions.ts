@@ -163,8 +163,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'antlers_html',
-      extensions: ['antlers.html'],
-      filename: true,
+      extensions: ['antlers.html', 'antlers.php', 'antlers.xml'],
     },
     {
       icon: 'antlr',
