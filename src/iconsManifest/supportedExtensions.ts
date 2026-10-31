@@ -163,8 +163,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'antlers_html',
-      extensions: ['antlers.html'],
-      filename: true,
+      extensions: ['antlers.html', 'antlers.php', 'antlers.xml'],
     },
     {
       icon: 'antlr',
@@ -1924,6 +1923,10 @@ export const extensions: FileCollection = {
     {
       icon: 'geojson',
       extensions: ['geojson'],
+    },
+    {
+      icon: 'ghidra',
+      extensions: ['gar', 'gdt', 'gpr', 'gzf'],
     },
     {
       icon: 'gimp',
