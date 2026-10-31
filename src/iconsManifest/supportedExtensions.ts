@@ -707,6 +707,13 @@ export const extensions: FileCollection = {
       disabled: true,
     },
     {
+      icon: 'changelog',
+      extensions: ['changelog', 'history', 'changes', 'news'],
+      filenamesGlob: ['changelog', 'history', 'changes', 'news'],
+      extensionsGlob: ['md', 'rst', 'txt'],
+      filename: true,
+    },
+    {
       icon: 'changelogen',
       extensions: ['.changelogrc', '.changelogenrc'],
       filenamesGlob: ['changelog.config'],
