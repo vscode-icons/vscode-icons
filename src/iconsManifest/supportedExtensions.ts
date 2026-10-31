@@ -1925,6 +1925,10 @@ export const extensions: FileCollection = {
       extensions: ['geojson'],
     },
     {
+      icon: 'ghidra',
+      extensions: ['gar', 'gdt', 'gpr', 'gzf'],
+    },
+    {
       icon: 'gimp',
       extensions: ['xcf'],
     },
