@@ -558,13 +558,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'bun',
-      extensions: [
-        '.bun-version',
-        '.bunfig.toml',
-        'bunfig.toml',
-        'bun.lockb',
-        'bun.lock',
-      ],
+      extensions: ['.bun-version', 'bun.lockb', 'bun.lock'],
       languages: [languages.bunlockb],
       filename: true,
     },
@@ -591,7 +585,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'bunfig',
-      extensions: ['bunfig.toml'],
+      extensions: ['.bunfig.toml', 'bunfig.toml'],
       filename: true,
     },
     {
@@ -1637,12 +1631,12 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'excel',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'xlsb'],
       languages: [languages.excel],
     },
     {
       icon: 'excel2',
-      extensions: ['xls', 'xlsx', 'xlsm', 'ods', 'fods', 'xlsb'],
+      extensions: ['xls', 'xlsx', 'xlsm', 'xlsb'],
       languages: [languages.excel],
       disabled: true,
     },
@@ -2731,7 +2725,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'libreoffice_math',
-      extensions: ['odf', 'otf'],
+      extensions: ['odf'],
     },
     {
       icon: 'libreoffice_writer',
