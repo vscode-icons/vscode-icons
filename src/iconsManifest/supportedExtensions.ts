@@ -145,6 +145,10 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'android',
+      extensions: ['apk', 'apks'],
+    },
+    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
