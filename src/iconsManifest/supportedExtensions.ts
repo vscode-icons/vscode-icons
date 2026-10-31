@@ -837,6 +837,11 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'codeofconduct',
+      extensions: ['CODE_OF_CONDUCT.md'],
+      filename: true,
+    },
+    {
       icon: 'codeowners',
       extensions: ['codeowners'],
       filename: true,
