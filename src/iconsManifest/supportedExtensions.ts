@@ -3788,7 +3788,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'openapi',
-      extensions: ['openapi.json', 'openapi.yaml'],
+      filenamesGlob: ['openapi'],
+      extensionsGlob: ['json', 'yaml'],
       filename: true,
     },
     { icon: 'opencl', extensions: ['cl', 'opencl'] },
@@ -5233,7 +5234,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'swagger',
-      extensions: ['swagger.json', 'swagger.yaml'],
+      filenamesGlob: ['swagger'],
+      extensionsGlob: ['json', 'yaml'],
       languages: [languages.swagger],
       filename: true,
     },
