@@ -119,7 +119,7 @@ describe('CustomsMerger: folder extensions tests', function () {
           folder.icon === customFolders.supported[0].icon,
       );
 
-      expect(extendedDef).to.be.an('array').with.lengthOf(1);
+      expect(extendedDef).to.be.empty;
       expect(newDefs).to.be.an('array').with.lengthOf(2);
       newDefs.forEach((def: FolderExtension) => {
         expect(def.icon).to.equal(customFolders.supported[0].icon);
