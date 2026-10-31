@@ -145,6 +145,10 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'android',
+      extensions: ['apk', 'apks'],
+    },
+    {
       icon: 'angular',
       extensions: [
         '.angular-cli.json',
@@ -163,8 +167,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'antlers_html',
-      extensions: ['antlers.html'],
-      filename: true,
+      extensions: ['antlers.html', 'antlers.php', 'antlers.xml'],
     },
     {
       icon: 'antlr',
@@ -1926,6 +1929,10 @@ export const extensions: FileCollection = {
       extensions: ['geojson'],
     },
     {
+      icon: 'ghidra',
+      extensions: ['gar', 'gdt', 'gpr', 'gzf'],
+    },
+    {
       icon: 'gimp',
       extensions: ['xcf'],
     },
@@ -2537,12 +2544,6 @@ export const extensions: FileCollection = {
       filename: true,
     },
     { icon: 'jss', extensions: ['jss'] },
-    {
-      icon: 'jsx',
-      languages: [languages.javascriptreact],
-      light: true,
-      disabled: true,
-    },
     {
       icon: 'juice',
       extensions: ['juice'],
@@ -4579,6 +4580,12 @@ export const extensions: FileCollection = {
     {
       icon: 'reactjs',
       languages: [languages.javascriptreact],
+      light: true,
+      disabled: true,
+    },
+    {
+      icon: 'reactjs_official',
+      languages: [languages.javascriptreact],
     },
     {
       icon: 'reactrouter',
@@ -4590,6 +4597,11 @@ export const extensions: FileCollection = {
     { icon: 'reacttemplate', extensions: ['rt'] },
     {
       icon: 'reactts',
+      languages: [languages.typescriptreact],
+      disabled: true,
+    },
+    {
+      icon: 'reactts_official',
       languages: [languages.typescriptreact],
     },
     {
@@ -5580,11 +5592,6 @@ export const extensions: FileCollection = {
       icon: 'tslint',
       extensions: ['tslint.json', 'tslint.yaml', 'tslint.yml'],
       filename: true,
-    },
-    {
-      icon: 'tsx',
-      languages: [languages.typescriptreact],
-      disabled: true,
     },
     {
       icon: 'tt',

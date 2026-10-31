@@ -224,13 +224,29 @@ export class IconsGenerator implements types.IconsGeneratorContract {
     this.affectedPresets = {
       angular: e.affectsConfiguration(constants.vsicons.presets.angular),
       nestjs: e.affectsConfiguration(constants.vsicons.presets.nestjs),
-      jsOfficial: false,
-      tsOfficial: false,
-      jsonOfficial: false,
-      foldersAllDefaultIcon: false,
-      hideExplorerArrows: false,
-      hideFolders: false,
-      yamlOfficial: false,
+      jsOfficial: e.affectsConfiguration(constants.vsicons.presets.jsOfficial),
+      tsOfficial: e.affectsConfiguration(constants.vsicons.presets.tsOfficial),
+      reactjsOfficial: e.affectsConfiguration(
+        constants.vsicons.presets.reactjsOfficial,
+      ),
+      reacttsOfficial: e.affectsConfiguration(
+        constants.vsicons.presets.reacttsOfficial,
+      ),
+      jsonOfficial: e.affectsConfiguration(
+        constants.vsicons.presets.jsonOfficial,
+      ),
+      foldersAllDefaultIcon: e.affectsConfiguration(
+        constants.vsicons.presets.foldersAllDefaultIcon,
+      ),
+      hideExplorerArrows: e.affectsConfiguration(
+        constants.vsicons.presets.hideExplorerArrows,
+      ),
+      hideFolders: e.affectsConfiguration(
+        constants.vsicons.presets.hideFolders,
+      ),
+      yamlOfficial: e.affectsConfiguration(
+        constants.vsicons.presets.yamlOfficial,
+      ),
     };
   }
 }

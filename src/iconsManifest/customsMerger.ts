@@ -22,14 +22,10 @@ export class CustomsMerger {
       affectedPresets,
     );
 
-    let { files, folders } = this.mergeCustoms(
-      customFiles || { default: {}, supported: [] },
+    let files: types.FileCollection = this.toggleProjectPreset(
+      projectPresets,
       extFiles,
-      customFolders || { default: {}, supported: [] },
-      extFolders,
     );
-
-    files = this.toggleProjectPreset(projectPresets, files, extFiles);
 
     files = this.toggleOfficialIconsPreset(
       !presets.jsOfficial,
@@ -50,6 +46,20 @@ export class CustomsMerger {
     );
 
     files = this.toggleOfficialIconsPreset(
+      !presets.reactjsOfficial,
+      files,
+      [enums.IconNames.reactjsOfficial],
+      [enums.IconNames.reactjs],
+    );
+
+    files = this.toggleOfficialIconsPreset(
+      !presets.reacttsOfficial,
+      files,
+      [enums.IconNames.reacttsOfficial],
+      [enums.IconNames.reactts],
+    );
+
+    files = this.toggleOfficialIconsPreset(
       !presets.jsonOfficial,
       files,
       [enums.IconNames.jsonOfficial],
@@ -63,14 +73,19 @@ export class CustomsMerger {
       [enums.IconNames.yaml],
     );
 
-    folders = this.toggleFoldersAllDefaultIconPreset(
-      presets.foldersAllDefaultIcon,
-      folders,
-      extFolders,
-    );
+    let folders: types.FolderCollection =
+      this.toggleFoldersAllDefaultIconPreset(
+        presets.foldersAllDefaultIcon,
+        extFolders,
+      );
     folders = this.toggleHideFoldersPreset(presets.hideFolders, folders);
 
-    return { files, folders };
+    return this.mergeCustoms(
+      customFiles || { default: {}, supported: [] },
+      files,
+      customFolders || { default: {}, supported: [] },
+      folders,
+    );
   }
 
   private static async getProjectPresets(
@@ -124,26 +139,21 @@ export class CustomsMerger {
 
   private static toggleProjectPreset(
     projectPresets: Array<Record<string, boolean>>,
-    customFiles: types.FileCollection,
-    defaultFiles: types.FileCollection,
+    files: types.FileCollection,
   ): types.FileCollection {
-    let files = customFiles;
+    let updatedFiles = files;
     for (const preset of projectPresets) {
       const key: string = Object.keys(preset)[0];
       const disable: boolean = preset[key];
       const regex = new RegExp(
         `^${enums.IconNames[enums.PresetNames[key] as keyof typeof enums.IconNames]}_.*\\D$`,
       );
-      const icons = files.supported
+      const icons = updatedFiles.supported
         .filter((file: types.FileExtension): boolean => regex.test(file.icon))
         .map((file: types.FileExtension): string => file.icon);
-      const defaultIcons = defaultFiles.supported
-        .filter((file: types.FileExtension): boolean => regex.test(file.icon))
-        .map((file: types.FileExtension): string => file.icon);
-      const temp = this.togglePreset(disable, icons, files);
-      files = this.togglePreset(disable, defaultIcons, temp);
+      updatedFiles = this.togglePreset(disable, icons, updatedFiles);
     }
-    return files;
+    return updatedFiles;
   }
 
   private static toggleOfficialIconsPreset(
@@ -158,78 +168,51 @@ export class CustomsMerger {
 
   private static toggleFoldersAllDefaultIconPreset(
     disable: boolean,
-    customFolders: types.FolderCollection,
-    defaultFolders: types.FolderCollection,
+    folders: types.FolderCollection,
   ): types.FolderCollection {
-    const folderIcons = this.getNonDisabledIcons(customFolders);
-    const defaultFolderIcons = defaultFolders.supported
-      .filter((folder: types.FolderExtension): boolean => !folder.disabled)
-      .filter((folder: types.FolderExtension): boolean =>
-        // Exclude overrides
-        customFolders.supported.every(
-          (cFolder: types.FolderExtension): boolean =>
-            cFolder.overrides !== folder.icon,
-        ),
-      )
-      .filter((folder: types.FolderExtension): boolean =>
-        // Exclude disabled by custom
-        customFolders.supported
-          .filter(
-            (cFolder: types.FolderExtension): boolean =>
-              folder.icon === cFolder.icon,
-          )
-          .every(
-            (cFolder: types.FolderExtension): boolean => !cFolder.disabled,
-          ),
-      )
-      .map((folder: types.FolderExtension): string => folder.icon);
-    const temp = this.togglePreset<types.FolderCollection>(
+    const nonDisabledFolderIcons = this.getNonDisabledIcons(folders);
+    const updatedFolders = this.togglePreset<types.FolderCollection>(
       disable,
-      folderIcons,
-      customFolders,
+      nonDisabledFolderIcons,
+      folders,
     );
-    const collection = this.togglePreset<types.FolderCollection>(
-      disable,
-      defaultFolderIcons,
-      temp,
-    );
-    collection.default.folder.disabled = customFolders.default.folder.disabled;
-    if (customFolders.default.folder_light) {
-      collection.default.folder_light.disabled =
-        customFolders.default.folder_light.disabled;
+    updatedFolders.default.folder.disabled = folders.default.folder.disabled;
+    if (folders.default.folder_light) {
+      updatedFolders.default.folder_light.disabled =
+        folders.default.folder_light.disabled;
     }
-    collection.default.root_folder.disabled =
-      customFolders.default.root_folder.disabled;
-    if (customFolders.default.root_folder_light) {
-      collection.default.root_folder_light.disabled =
-        customFolders.default.root_folder_light.disabled;
+    updatedFolders.default.root_folder.disabled =
+      folders.default.root_folder.disabled;
+    if (folders.default.root_folder_light) {
+      updatedFolders.default.root_folder_light.disabled =
+        folders.default.root_folder_light.disabled;
     }
-    return collection;
+    return updatedFolders;
   }
 
   private static toggleHideFoldersPreset(
     disable: boolean,
     customFolders: types.FolderCollection,
   ): types.FolderCollection {
-    const folderIcons = this.getNonDisabledIcons(customFolders);
-    const collection = this.togglePreset<types.FolderCollection>(
+    const nonDisabledFolderIcons = this.getNonDisabledIcons(customFolders);
+    const updatedFolders = this.togglePreset<types.FolderCollection>(
       disable,
-      folderIcons,
+      nonDisabledFolderIcons,
       customFolders,
     );
-    collection.default.folder.disabled =
+    updatedFolders.default.folder.disabled =
       customFolders.default.folder.disabled || disable;
     if (customFolders.default.folder_light) {
-      collection.default.folder_light.disabled =
+      updatedFolders.default.folder_light.disabled =
         customFolders.default.folder_light.disabled || disable;
     }
-    collection.default.root_folder.disabled =
+    updatedFolders.default.root_folder.disabled =
       customFolders.default.root_folder.disabled || disable;
     if (customFolders.default.root_folder_light) {
-      collection.default.root_folder_light.disabled =
+      updatedFolders.default.root_folder_light.disabled =
         customFolders.default.root_folder_light.disabled || disable;
     }
-    return collection;
+    return updatedFolders;
   }
 
   private static getNonDisabledIcons(
