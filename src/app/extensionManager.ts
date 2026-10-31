@@ -135,8 +135,8 @@ export class ExtensionManager implements types.ExtensionManagerContract {
         const btn = await this.notificationManager.notifyInfo(
           enums.LangResourceKeys.welcome,
           enums.LangResourceKeys.activate,
-          enums.LangResourceKeys.aboutOfficialApi,
           enums.LangResourceKeys.seeReadme,
+          enums.LangResourceKeys.aboutOfficialApi,
         );
 
         switch (btn) {

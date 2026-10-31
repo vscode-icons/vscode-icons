@@ -331,8 +331,8 @@ describe('ExtensionManagerContract: messages tests', function () {
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
                 enums.LangResourceKeys.welcome,
                 enums.LangResourceKeys.activate,
-                enums.LangResourceKeys.aboutOfficialApi,
                 enums.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.aboutOfficialApi,
               ),
             ).to.be.true;
             expect(activationCommandStub.called).to.be.false;
@@ -352,8 +352,8 @@ describe('ExtensionManagerContract: messages tests', function () {
               notifyManagerStub.notifyInfo.calledOnceWithExactly(
                 enums.LangResourceKeys.welcome,
                 enums.LangResourceKeys.activate,
-                enums.LangResourceKeys.aboutOfficialApi,
                 enums.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.aboutOfficialApi,
               ),
             ).to.be.true;
             expect(activationCommandStub.calledOnceWithExactly()).to.be.true;
@@ -373,8 +373,8 @@ describe('ExtensionManagerContract: messages tests', function () {
               notifyManagerStub.notifyInfo.calledWithExactly(
                 enums.LangResourceKeys.welcome,
                 enums.LangResourceKeys.activate,
-                enums.LangResourceKeys.aboutOfficialApi,
                 enums.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.aboutOfficialApi,
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
@@ -396,8 +396,8 @@ describe('ExtensionManagerContract: messages tests', function () {
               notifyManagerStub.notifyInfo.calledWithExactly(
                 enums.LangResourceKeys.welcome,
                 enums.LangResourceKeys.activate,
-                enums.LangResourceKeys.aboutOfficialApi,
                 enums.LangResourceKeys.seeReadme,
+                enums.LangResourceKeys.aboutOfficialApi,
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
