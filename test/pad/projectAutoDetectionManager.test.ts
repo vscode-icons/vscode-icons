@@ -22,7 +22,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
     let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let findFilesStub: sinon.SinonStub;
-    let readFileStub: sinon.SinonStub;
+    let workspaceReadFileStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
     let padManager: ProjectAutoDetectionManagerContract;
 
@@ -38,10 +38,10 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
         sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
-      readFileStub = sandbox.stub();
+      workspaceReadFileStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
         findFiles: findFilesStub,
-        fs: { readFile: readFileStub },
+        fs: { readFile: workspaceReadFileStub },
       }));
 
       padManager = new ProjectAutoDetectionManager(
@@ -82,7 +82,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       vsicons.projectDetection.disableDetect = false;
       const error = new Error('ENOENT');
       findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-      readFileStub.rejects(error);
+      workspaceReadFileStub.rejects(error);
       configManagerStub.getPreset.returns({
         key: '',
         workspaceValue: undefined,
@@ -97,7 +97,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     it('detects non conflicting projects', async function () {
       vsicons.projectDetection.disableDetect = false;
       findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-      readFileStub.resolves(undefined);
+      workspaceReadFileStub.resolves(undefined);
       sandbox.stub(Utils, 'parseJSONSafe').returns({
         dependencies: {
           angularjs: '1.0.0',
@@ -212,7 +212,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       it(`returns the conflict project detected 'LangResourceKey'`, async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-        readFileStub.resolves(undefined);
+        workspaceReadFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',
@@ -261,7 +261,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       it('detects a project when no workspace preset is configured', async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-        readFileStub.resolves(undefined);
+        workspaceReadFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',
