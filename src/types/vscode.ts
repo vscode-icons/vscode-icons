@@ -64,7 +64,6 @@ export interface VSCodeManagerContract {
   version: string;
   window: VSCodeWindow;
   workspace: VSCodeWorkspace;
-  supportsThemesReload: boolean;
   isSupportedVersion: boolean;
   getWorkspacePaths(): string[];
   getAppUserDirPath(): string;

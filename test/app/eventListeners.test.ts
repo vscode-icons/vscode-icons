@@ -231,15 +231,9 @@ describe('ExtensionManagerContract: event listeners tests', function () {
       });
 
       context(`when the affected configuration`, function () {
-        let executeAndReloadStub: sinon.SinonStub;
         let applyCustomizationCommandStub: sinon.SinonStub;
 
         beforeEach(function () {
-          executeAndReloadStub = sandbox.stub(
-            extensionManager,
-            // @ts-ignore
-            'executeAndReload',
-          );
           applyCustomizationCommandStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -250,11 +244,29 @@ describe('ExtensionManagerContract: event listeners tests', function () {
 
         context(`is the 'presets' or the 'associations'`, function () {
           context(`and is set to 'reload' the editor`, function () {
-            it(`calls the 'executeAndReload' function`, function () {
+            it(`continues when no callback is set`, function () {
               const timer = sandbox.useFakeTimers();
 
               // @ts-ignore
               extensionManager.doReload = true;
+
+              onDidChangeConfigurationStub.callArgOnWith(0, extensionManager, {
+                affectsConfiguration: affectsConfigurationStub,
+              });
+
+              expect(() => timer.tick(500)).to.not.throw();
+
+              timer.restore();
+            });
+
+            it(`applies the customization after settings are persisted`, function () {
+              const timer = sandbox.useFakeTimers();
+              const callback = sinon.fake();
+
+              // @ts-ignore
+              extensionManager.doReload = true;
+              // @ts-ignore
+              extensionManager.callback = callback;
 
               onDidChangeConfigurationStub.callArgOnWith(0, extensionManager, {
                 affectsConfiguration: affectsConfigurationStub,
@@ -266,8 +278,7 @@ describe('ExtensionManagerContract: event listeners tests', function () {
 
               timer.tick(500);
 
-              expect(executeAndReloadStub.calledOnceWithExactly(undefined)).to
-                .be.true;
+              expect(callback.calledOnceWithExactly()).to.be.true;
 
               timer.restore();
             });
@@ -381,7 +392,6 @@ describe('ExtensionManagerContract: event listeners tests', function () {
 
             expect(affectsConfigurationStub.calledThrice).to.be.true;
             expect(applyCustomizationCommandStub.called).to.be.false;
-            expect(executeAndReloadStub.called).to.be.false;
           });
         });
       });
