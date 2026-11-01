@@ -1,5 +1,4 @@
 import type { ChildProcess } from 'child_process';
-import type { Stats } from 'fs';
 
 import os from 'os';
 import path from 'path';
@@ -169,41 +168,6 @@ describe('Utils: tests', function () {
             await testCase('/path/to', false, 3);
           });
         });
-      });
-    });
-
-    context(`the 'deleteDirectoryRecursively' function`, function () {
-      let readdirAsyncStub: sinon.SinonStub;
-
-      it('deletes a directory and all subdirectories asynchronously', async function () {
-        readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync').resolves();
-        const directoryPath = '/path/to';
-        const lstatsAsyncStub = sandbox.stub(fsAsync, 'lstatAsync').resolves();
-        const fileCheck = existsAsyncStub
-          .onFirstCall()
-          .resolves(true)
-          .onSecondCall()
-          .resolves(false);
-        const readDirectory = readdirAsyncStub.resolves(['dir', 'file.txt']);
-        const lstats = lstatsAsyncStub
-          .onFirstCall()
-          .resolves({
-            isDirectory: () => true,
-          } as Stats)
-          .onSecondCall()
-          .resolves({
-            isDirectory: () => false,
-          } as Stats);
-        const deleteFile = sandbox.stub(fsAsync, 'unlinkAsync').resolves();
-        const removeDirectory = sandbox.stub(fsAsync, 'rmdirAsync').resolves();
-
-        await Utils.deleteDirectoryRecursively(directoryPath);
-
-        expect(fileCheck.calledTwice).to.be.true;
-        expect(readDirectory.calledOnce).to.be.true;
-        expect(lstats.calledTwice).to.be.true;
-        expect(deleteFile.calledOnce).to.be.true;
-        expect(removeDirectory.calledOnce).to.be.true;
       });
     });
 

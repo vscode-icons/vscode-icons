@@ -1,5 +1,4 @@
 import type { ChildProcess } from 'child_process';
-import type { Stats } from 'fs';
 
 import type { Options } from 'open';
 
@@ -11,12 +10,8 @@ import open from 'open';
 
 import {
   existsAsync,
-  lstatAsync,
   mkdirAsync,
   readFileAsync,
-  readdirAsync,
-  rmdirAsync,
-  unlinkAsync,
   writeFileAsync,
 } from '../common/fsAsync';
 import * as enums from '../types/enums';
@@ -90,34 +85,6 @@ export class Utils {
     await dirPath
       .split(sep)
       .reduce(callbackFn, Promise.resolve(isAbsolute(dirPath) ? sep : ''));
-  }
-
-  /**
-   * Deletes a directory and all subdirectories asynchronously
-   */
-  public static async deleteDirectoryRecursively(
-    dirPath: string,
-  ): Promise<void> {
-    const dirExists: boolean = await existsAsync(dirPath);
-    if (!dirExists) {
-      return;
-    }
-    const iterator = async (file: string): Promise<void> => {
-      const curPath = `${dirPath}/${file}`;
-      const stats: Stats = await lstatAsync(curPath);
-      if (stats.isDirectory()) {
-        // recurse
-        await this.deleteDirectoryRecursively(curPath);
-      } else {
-        // delete file
-        await unlinkAsync(curPath);
-      }
-    };
-    const promises: Array<Promise<void>> = [];
-    const files: string[] = await readdirAsync(dirPath);
-    files.forEach((file: string): number => promises.push(iterator(file)));
-    await Promise.all(promises);
-    await rmdirAsync(dirPath);
   }
 
   /**
