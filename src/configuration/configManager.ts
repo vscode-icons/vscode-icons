@@ -8,6 +8,7 @@ import type {
   VSIcons,
 } from '../types';
 
+import { isDeepStrictEqual } from 'node:util';
 import { dirname, isAbsolute, resolve } from 'path';
 
 import { ErrorHandler } from '../common/errorHandler';
@@ -73,7 +74,7 @@ export class ConfigManager implements ConfigManagerContract {
     ].filter(
       (file: FileExtension, index: number, all: FileExtension[]): boolean =>
         all.findIndex((candidate: FileExtension): boolean =>
-          Utils.isEqual(candidate, file),
+          isDeepStrictEqual(candidate, file),
         ) === index,
     );
     const folders: VSCodePreset<FolderExtension[]> = this.configuration.inspect<
@@ -89,7 +90,7 @@ export class ConfigManager implements ConfigManagerContract {
         all: FolderExtension[],
       ): boolean =>
         all.findIndex((candidate: FolderExtension): boolean =>
-          Utils.isEqual(candidate, folder),
+          isDeepStrictEqual(candidate, folder),
         ) === index,
     );
     return mergedConfig;
@@ -260,7 +261,7 @@ export class ConfigManager implements ConfigManagerContract {
         );
     const a = filter(this.initVSIconsConfig, sections);
     const b = filter(currentConfig, sections);
-    return !Utils.isEqual(a, b);
+    return !isDeepStrictEqual(a, b);
   }
 
   public async getCustomIconsDirPath(dirPath: string): Promise<string> {

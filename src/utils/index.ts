@@ -205,30 +205,6 @@ export class Utils {
     return typeof value !== 'object' || Object.keys(value).length === 0;
   }
 
-  public static isEqual(value: unknown, other: unknown): boolean {
-    if (value === other) {
-      return true;
-    }
-    if (
-      value === null ||
-      other === null ||
-      typeof value !== 'object' ||
-      typeof other !== 'object'
-    ) {
-      return false;
-    }
-
-    const valueKeys = Object.keys(value);
-    const otherKeys = Object.keys(other);
-    return (
-      valueKeys.length === otherKeys.length &&
-      valueKeys.every(
-        (key: string): boolean =>
-          Object.hasOwn(other, key) && this.isEqual(value[key], other[key]),
-      )
-    );
-  }
-
   public static async updateFile(
     filePath: string,
     replaceFn: (rawText: string[]) => string[],
