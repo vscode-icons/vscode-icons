@@ -847,6 +847,11 @@ export const extensions: FolderCollection = {
       ],
     },
     {
+      icon: 'viteplus',
+      extensions: ['vite-plus', '.vite-hooks'],
+      light: true,
+    },
+    {
       icon: 'vitepress',
       extensions: ['.vitepress'],
     },
