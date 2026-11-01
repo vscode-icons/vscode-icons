@@ -3,17 +3,12 @@ import type { ChildProcess } from 'child_process';
 import type { Options } from 'open';
 
 import { homedir, tmpdir } from 'os';
-import { isAbsolute, posix, relative, resolve, sep } from 'path';
+import { posix, relative } from 'path';
 
 import { set } from 'lodash';
 import open from 'open';
 
-import {
-  existsAsync,
-  mkdirAsync,
-  readFileAsync,
-  writeFileAsync,
-} from '../common/fsAsync';
+import { existsAsync, readFileAsync, writeFileAsync } from '../common/fsAsync';
 import * as enums from '../types/enums';
 
 export class Utils {
@@ -63,28 +58,6 @@ export class Utils {
     }
 
     return `.${fileFormat}`;
-  }
-
-  /**
-   * Creates a directory and all subdirectories asynchronously
-   */
-  public static async createDirectoryRecursively(
-    dirPath: string,
-  ): Promise<void> {
-    const callbackFn = async (
-      parentDir: Promise<string>,
-      childDir: string,
-    ): Promise<string> => {
-      const curDir = resolve(await parentDir, childDir);
-      const dirExists: boolean = await existsAsync(curDir);
-      if (!dirExists) {
-        await mkdirAsync(curDir);
-      }
-      return curDir;
-    };
-    await dirPath
-      .split(sep)
-      .reduce(callbackFn, Promise.resolve(isAbsolute(dirPath) ? sep : ''));
   }
 
   /**

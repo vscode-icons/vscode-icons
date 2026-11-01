@@ -233,9 +233,7 @@ describe('IconsGeneratorContract: tests', function () {
 
       beforeEach(function () {
         existsAsyncStub = sandbox.stub(fsAsync, 'existsAsync').resolves(true);
-        createDirAsyncStub = sandbox
-          .stub(Utils, 'createDirectoryRecursively')
-          .resolves();
+        createDirAsyncStub = sandbox.stub(fsAsync, 'mkdirAsync').resolves();
         writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
         logErrorStub = sandbox.stub(ErrorHandler, 'logError');
         pathUnixJoinStub = sandbox.stub(Utils, 'pathUnixJoin').returns('');
