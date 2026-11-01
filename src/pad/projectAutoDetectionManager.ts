@@ -61,6 +61,7 @@ export class ProjectAutoDetectionManager
       return await this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
+      return [];
     }
   }
 
