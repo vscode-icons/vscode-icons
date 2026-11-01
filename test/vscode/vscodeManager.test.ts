@@ -143,18 +143,18 @@ describe('VSCodeManagerContract: tests', function () {
 
     context(`function 'getWorkspacePaths'`, function () {
       it(`returns an empty array, when no 'workspaceFolders' and no 'rootPath'`, function () {
-        vscodeManager.workspace.rootPath = undefined;
-        vscodeManager.workspace.workspaceFolders = undefined;
+        vscode.workspace.rootPath = undefined;
+        vscode.workspace.workspaceFolders = undefined;
 
         expect(vscodeManager.getWorkspacePaths()).to.eql([]);
       });
 
       it(`returns the 'rootPath' as an array, when 'workspaceFolders' is an empty array`, function () {
-        vscodeManager.workspace.rootPath = '/path/to/workspace/root';
-        vscodeManager.workspace.workspaceFolders = [];
+        vscode.workspace.rootPath = '/path/to/workspace/root';
+        vscode.workspace.workspaceFolders = [];
 
         expect(vscodeManager.getWorkspacePaths()).to.eql([
-          vscodeManager.workspace.rootPath,
+          vscode.workspace.rootPath,
         ]);
       });
 
@@ -173,11 +173,8 @@ describe('VSCodeManagerContract: tests', function () {
           name: '',
           index: 0,
         };
-        vscodeManager.workspace.rootPath = '/path/to/workspace/root';
-        vscodeManager.workspace.workspaceFolders = [
-          workspaceFolder,
-          workspaceFolder1,
-        ];
+        vscode.workspace.rootPath = '/path/to/workspace/root';
+        vscode.workspace.workspaceFolders = [workspaceFolder, workspaceFolder1];
 
         expect(vscodeManager.getWorkspacePaths()).to.eql(paths);
       });
@@ -220,7 +217,7 @@ describe('VSCodeManagerContract: tests', function () {
 
       context('returns the correct path when application name is', function () {
         it(`'Code'`, function () {
-          vscodeManager.env.appName = 'Visual Studio Code';
+          vscode.env.appName = 'Visual Studio Code';
           pathUnixJoinStub.returns(`${Utils.getAppDataDirPath()}/Code/User`);
 
           expect(vscodeManager.getAppUserDirPath()).to.equal(
@@ -229,7 +226,7 @@ describe('VSCodeManagerContract: tests', function () {
         });
 
         it(`'Code - Insiders'`, function () {
-          vscodeManager.env.appName = 'Visual Studio Code - Insiders';
+          vscode.env.appName = 'Visual Studio Code - Insiders';
           pathUnixJoinStub.returns(
             `${Utils.getAppDataDirPath()}/Code - Insiders/User`,
           );
@@ -240,7 +237,7 @@ describe('VSCodeManagerContract: tests', function () {
         });
 
         it(`'Code - OSS'`, function () {
-          vscodeManager.env.appName = 'VSCode OSS';
+          vscode.env.appName = 'VSCode OSS';
           pathUnixJoinStub.returns(
             `${Utils.getAppDataDirPath()}/Code - OSS/User`,
           );
@@ -251,7 +248,7 @@ describe('VSCodeManagerContract: tests', function () {
         });
 
         it(`'Code - OSS - Dev'`, function () {
-          vscodeManager.env.appName = 'VSCode OSS Dev';
+          vscode.env.appName = 'VSCode OSS Dev';
           pathUnixJoinStub.returns(
             `${Utils.getAppDataDirPath()}/code-oss-dev/User`,
           );
