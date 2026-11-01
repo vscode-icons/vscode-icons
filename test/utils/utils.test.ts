@@ -17,9 +17,17 @@ describe('Utils: tests', function () {
 
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
+    let fsAsyncStub: (
+      name: Exclude<keyof typeof fsAsync, 'existsAsync'>,
+    ) => sinon.SinonStub;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
+      fsAsyncStub = (name: Exclude<keyof typeof fsAsync, 'existsAsync'>) => {
+        const stub = sandbox.stub();
+        sandbox.stub(fsAsync, name).get(() => stub);
+        return stub;
+      };
     });
 
     afterEach(function () {
@@ -335,8 +343,8 @@ describe('Utils: tests', function () {
       let replacerStub: sinon.SinonStub;
 
       beforeEach(function () {
-        readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
-        writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
+        readFileAsyncStub = fsAsyncStub('readFileAsync');
+        writeFileAsyncStub = fsAsyncStub('writeFileAsync').resolves();
         replacerStub = sandbox.stub();
       });
 

@@ -11,13 +11,15 @@ import {
   writeFile,
 } from 'node:fs/promises';
 
-export const readdirAsync = readdir;
-export const mkdirAsync = mkdir;
-export const rmdirAsync = rm;
-export const readFileAsync = readFile;
-export const writeFileAsync = writeFile;
-export const unlinkAsync = unlink;
-export const lstatAsync = lstat;
+export {
+  readdir as readdirAsync,
+  mkdir as mkdirAsync,
+  rm as rmdirAsync,
+  readFile as readFileAsync,
+  writeFile as writeFileAsync,
+  unlink as unlinkAsync,
+  lstat as lstatAsync,
+};
 export async function existsAsync(path: PathLike): Promise<boolean> {
   try {
     await access(path);
