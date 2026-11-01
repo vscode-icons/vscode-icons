@@ -1,7 +1,7 @@
 import type {
-  ILanguageResourceManager,
-  INotificationManager,
-  IVSCodeManager,
+  LanguageResourceManagerContract,
+  NotificationManagerContract,
+  VSCodeManagerContract,
 } from '../../src/types';
 
 import { expect } from 'chai';
@@ -11,12 +11,12 @@ import { LanguageResourceManager } from '../../src/i18n/languageResourceManager'
 import { NotificationManager } from '../../src/notification/notificationManager';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
-describe('NotificationManager: tests', function () {
+describe('NotificationManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
-    let i18nManagerStub: sinon.SinonStubbedInstance<ILanguageResourceManager>;
-    let notificationManager: INotificationManager;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
+    let i18nManagerStub: sinon.SinonStubbedInstance<LanguageResourceManagerContract>;
+    let notificationManager: NotificationManagerContract;
     let showInformationMessageStub: sinon.SinonStub;
     let showWarningMessageStub: sinon.SinonStub;
     let showErrorMessageStub: sinon.SinonStub;
@@ -25,7 +25,7 @@ describe('NotificationManager: tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       showInformationMessageStub = sandbox.stub().resolves();
       showWarningMessageStub = sandbox.stub().resolves();
@@ -37,9 +37,10 @@ describe('NotificationManager: tests', function () {
         showErrorMessage: showErrorMessageStub,
       }));
 
-      i18nManagerStub = sandbox.createStubInstance<ILanguageResourceManager>(
-        LanguageResourceManager,
-      );
+      i18nManagerStub =
+        sandbox.createStubInstance<LanguageResourceManagerContract>(
+          LanguageResourceManager,
+        );
       notificationManager = new NotificationManager(
         vscodeManagerStub,
         i18nManagerStub,

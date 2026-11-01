@@ -17,14 +17,15 @@ The user will provide a PR number or URL.
    `supportedFolders.ts`:
    - Is it in alphabetical order?
    - Does the `icon` value match the SVG filename?
-   - Are extensions formatted correctly (no leading dot for non-filename
-     entries)?
+   - Are `extensions` entries formatted correctly (no leading dot for
+     non-filename entries)?
    - If `light: true`, does the light SVG exist?
    - If folder, does the `_opened.svg` variant exist?
 
 4. **Check for common issues**:
    - Duplicate entries
-   - Empty extensions without alternatives (languages/globs)
+   - Empty `extensions` array
+   - Non-present `extensions` array without alternatives (languages/globs)
    - ESLint/Prettier violations (single quotes, trailing commas, 120 char max)
    - Oversized SVGs (should be optimized)
 

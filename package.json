@@ -211,6 +211,20 @@
         "enablement": "!isWeb"
       },
       {
+        "command": "vscode-icons.reactjsPreset",
+        "title": "%command.reactjsPreset.title%",
+        "category": "Icons",
+        "callbackName": "toggleReactJsPresetCommand",
+        "enablement": "!isWeb"
+      },
+      {
+        "command": "vscode-icons.reacttsPreset",
+        "title": "%command.reacttsPreset.title%",
+        "category": "Icons",
+        "callbackName": "toggleReactTsPresetCommand",
+        "enablement": "!isWeb"
+      },
+      {
         "command": "vscode-icons.jsonPreset",
         "title": "%command.jsonPreset.title%",
         "category": "Icons",
@@ -302,6 +316,16 @@
           "type": "boolean",
           "default": false,
           "description": "%configuration.presets.tsOfficial.description%"
+        },
+        "vsicons.presets.reactjsOfficial": {
+          "type": "boolean",
+          "default": true,
+          "description": "%configuration.presets.reactjsOfficial.description%"
+        },
+        "vsicons.presets.reacttsOfficial": {
+          "type": "boolean",
+          "default": true,
+          "description": "%configuration.presets.reacttsOfficial.description%"
         },
         "vsicons.presets.jsonOfficial": {
           "type": "boolean",

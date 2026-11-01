@@ -17,12 +17,14 @@ The user will provide an icon name to check.
 3. **Check config entry**:
    - Is it in alphabetical order relative to neighbors?
    - Does the `icon` value match the SVG filename?
-   - Are extensions formatted correctly (no leading dot for non-filename
+   - Are `extensions` formatted correctly (no leading dot for non-filename
      entries)?
-   - If `extensions` is empty, are `languages` or glob alternatives provided?
+   - Is `extensions` array empty?
+   - If `extensions` array is not present, are `languages` or glob alternatives
+     provided?
 
-4. **Check for duplicates**: Verify no other entry shares the same extensions or
-   icon name.
+4. **Check for duplicates**: Verify no other entry shares the same `extensions`
+   or `icon` name.
 
 5. **Run tests**: Execute `npm test` to confirm all validations pass.
 

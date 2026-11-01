@@ -56,6 +56,7 @@ export default defineConfig(
         {
           allow: [
             '_watch',
+            '_default',
             '_file',
             '_file_light',
             '_folder',
@@ -151,7 +152,6 @@ export default defineConfig(
         {
           selector: 'interface',
           format: ['PascalCase'],
-          prefix: ['I'],
         },
       ],
       '@typescript-eslint/no-empty-function': [

@@ -1,4 +1,8 @@
-import type { IConfigManager, IVSCodeManager, IVSIcons } from '../../src/types';
+import type {
+  ConfigManagerContract,
+  VSCodeManagerContract,
+  VSIcons,
+} from '../../src/types';
 
 import os from 'os';
 import path from 'path';
@@ -16,10 +20,10 @@ import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
-describe('ConfigManager: tests', function () {
+describe('ConfigManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let readdirAsyncStub: sinon.SinonStub;
     let envStub: sinon.SinonStub;
     let updateFileStub: sinon.SinonStub;
@@ -30,8 +34,8 @@ describe('ConfigManager: tests', function () {
     let inspectStub: sinon.SinonStub;
     let updateStub: sinon.SinonStub;
     let pathUnixJoinStub: sinon.SinonStub;
-    let vsiconsClone: IVSIcons;
-    let configManager: IConfigManager;
+    let vsiconsClone: VSIcons;
+    let configManager: ConfigManagerContract;
     let splitter: (content: string) => string[];
 
     beforeEach(function () {
@@ -53,7 +57,7 @@ describe('ConfigManager: tests', function () {
       });
 
       vscodeManagerStub =
-        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       getStub = sandbox.stub();
       inspectStub = sandbox.stub().returns({
@@ -1069,7 +1073,7 @@ describe('ConfigManager: tests', function () {
 
         it(`updates the initial configuration state`, function () {
           // @ts-ignore
-          const initConfig = configManager.initVSIconsConfig as IVSIcons;
+          const initConfig = configManager.initVSIconsConfig as VSIcons;
           vsiconsClone.presets.angular = true;
 
           configManager.updateVSIconsConfigState();
@@ -1086,7 +1090,7 @@ describe('ConfigManager: tests', function () {
 
         it(`does NOT update the initial configuration state`, function () {
           // @ts-ignore
-          const initConfig = configManager.initVSIconsConfig as IVSIcons;
+          const initConfig = configManager.initVSIconsConfig as VSIcons;
           vsiconsClone.presets.angular = true;
 
           configManager.updateVSIconsConfigState();

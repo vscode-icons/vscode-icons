@@ -1,7 +1,7 @@
 import type {
-  IConfigManager,
-  IProjectAutoDetectionManager,
-  IVSCodeManager,
+  ConfigManagerContract,
+  ProjectAutoDetectionManagerContract,
+  VSCodeManagerContract,
 } from '../../src/types';
 
 import { expect } from 'chai';
@@ -15,29 +15,29 @@ import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
-describe('ProjectAutoDetectionManager: Angular project tests', function () {
+describe('ProjectAutoDetectionManagerContract: Angular project tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let configManagerStub: sinon.SinonStubbedInstance<IConfigManager>;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
+    let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let findFilesStub: sinon.SinonStub;
     let readFileStub: sinon.SinonStub;
     let getPresetStub: sinon.SinonStub;
     let parseJSONStub: sinon.SinonStub;
-    let padManager: IProjectAutoDetectionManager;
+    let padManager: ProjectAutoDetectionManagerContract;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
 
       configManagerStub =
-        sandbox.createStubInstance<IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
 
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
       // eslint-disable-next-line @typescript-eslint/unbound-method
       getPresetStub = configManagerStub.getPreset;
 
       vscodeManagerStub =
-        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
       readFileStub = sandbox.stub();
@@ -69,6 +69,57 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
         iconsDisabledStub = sandbox.stub(ManifestReader, 'iconsDisabled');
       });
 
+      context(`detects an Angular project from config files`, function () {
+        it('angular.json', async function () {
+          const ngConfigPath = '/workspace/angular.json';
+          findFilesStub.resolves([{ fsPath: ngConfigPath }]);
+          getPresetStub.returns({ workspaceValue: undefined });
+          iconsDisabledStub.resolves(true);
+
+          const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
+          const firstResult = res[0];
+
+          expect(readFileStub.called).to.be.false;
+          expect(firstResult).to.be.an('object');
+          expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
+          expect(firstResult).to.have.all.keys(
+            'apply',
+            'project',
+            'conflictingProjects',
+            'langResourceKey',
+            'value',
+          );
+          expect(firstResult).ownProperty('apply').to.be.true;
+          expect(firstResult)
+            .ownProperty('project')
+            .to.equal(enums.Projects.angular);
+          expect(firstResult).ownProperty('conflictingProjects').to.be.empty;
+          expect(firstResult)
+            .ownProperty('langResourceKey')
+            .to.equal(enums.LangResourceKeys.ngDetected);
+          expect(firstResult).ownProperty('value').to.be.true;
+        });
+
+        it('does not match a config filename suffix', async function () {
+          findFilesStub.resolves([{ fsPath: '/workspace/my-angular.json' }]);
+          iconsDisabledStub.resolves(true);
+
+          const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
+          const firstResult = res[0];
+
+          expect(firstResult).to.have.property('apply', false);
+          expect(readFileStub.called).to.be.false;
+        });
+      });
+
       context(`detects a 'package.json' file`, function () {
         beforeEach(function () {
           parseJSONStub.returns({ name: 'project' });
@@ -79,12 +130,15 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(
             readFileStub.calledOnceWithExactly({ fsPath: packageJsonPath }),
           ).to.be.true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -99,12 +153,15 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(
             readFileStub.calledOnceWithExactly({ fsPath: packageJsonPath }),
           ).to.be.true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult)
@@ -115,17 +172,60 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
       });
 
       context(`detects an Angular project from`, function () {
+        it('a later package.json after an unrelated one', async function () {
+          const workspacePackageJsonPath = '/workspace/package.json';
+          const appPackageJsonPath = '/workspace/apps/web/package.json';
+          findFilesStub.resolves([
+            { fsPath: workspacePackageJsonPath },
+            { fsPath: appPackageJsonPath },
+          ]);
+          parseJSONStub
+            .onFirstCall()
+            .returns({ name: 'workspace' })
+            .onSecondCall()
+            .returns({ dependencies: { '@angular/core': '1.0.0' } });
+          getPresetStub.returns({ workspaceValue: true });
+          iconsDisabledStub.resolves(true);
+
+          const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
+          const firstResult = res[0];
+
+          expect(firstResult).to.have.property('apply', true);
+          expect(firstResult).to.have.property(
+            'project',
+            enums.Projects.angular,
+          );
+          expect(readFileStub.calledTwice).to.be.true;
+          expect(
+            readFileStub.firstCall.calledWithExactly({
+              fsPath: workspacePackageJsonPath,
+            }),
+          ).to.be.true;
+          expect(
+            readFileStub.secondCall.calledWithExactly({
+              fsPath: appPackageJsonPath,
+            }),
+          ).to.be.true;
+        });
+
         it('dependencies', async function () {
           parseJSONStub.returns({ dependencies: { '@angular/core': '1.0.0' } });
           getPresetStub.returns({ workspaceValue: undefined });
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(readFileStub.calledWithExactly({ fsPath: packageJsonPath })).to
             .be.true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
           expect(firstResult).to.have.all.keys(
@@ -154,11 +254,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(readFileStub.calledWithExactly({ fsPath: packageJsonPath })).to
             .be.true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
           expect(firstResult).to.have.all.keys(
@@ -190,11 +293,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath })).to.be
             .true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -206,11 +312,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath })).to.be
             .true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -230,12 +339,15 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(
             readFileStub.calledOnceWithExactly({ fsPath: packageJsonPath }),
           ).to.be.true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -248,12 +360,15 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(
             readFileStub.calledOnceWithExactly({ fsPath: packageJsonPath }),
           ).to.be.true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -266,12 +381,15 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           iconsDisabledStub.resolves(true);
 
           const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(
             readFileStub.calledOnceWithExactly({ fsPath: packageJsonPath }),
           ).to.be.true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -290,11 +408,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
           const res = await padManager.detectProjects([
             enums.Projects.angularjs,
           ]);
+
+          expect(res).to.be.an('array');
+          expect(res).to.not.be.empty;
+
           const firstResult = res[0];
 
           expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath })).to.be
             .true;
-          expect(res).to.be.an('array');
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -318,11 +439,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath }))
                 .to.be.true;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -351,12 +475,15 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(
                 readFileStub.calledWithExactly({ fsPath: packageJsonPath }),
               ).to.be.true;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -391,11 +518,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath }))
                 .to.be.true;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -434,11 +564,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath }))
                 .to.be.true;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -467,11 +600,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath }))
                 .to.be.true;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -508,11 +644,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath }))
                 .to.be.true;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -556,10 +695,13 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.called).to.be.false;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -573,11 +715,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath }))
                 .to.be.true;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -597,10 +742,13 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.called).to.be.false;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -626,10 +774,13 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.called).to.be.false;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -643,11 +794,14 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.calledOnceWith({ fsPath: packageJsonPath }))
                 .to.be.true;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -669,10 +823,13 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
               const res = await padManager.detectProjects([
                 enums.Projects.angular,
               ]);
+
+              expect(res).to.be.an('array');
+              expect(res).to.not.be.empty;
+
               const firstResult = res[0];
 
               expect(readFileStub.called).to.be.false;
-              expect(res).to.be.an('array');
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -699,10 +856,13 @@ describe('ProjectAutoDetectionManager: Angular project tests', function () {
             const res = await padManager.detectProjects([
               enums.Projects.angular,
             ]);
+
+            expect(res).to.be.an('array');
+            expect(res).to.not.be.empty;
+
             const firstResult = res[0];
 
             expect(iconsDisabledStub.callCount).to.be.equal(1);
-            expect(res).to.be.an('array');
             expect(firstResult).to.be.an('object');
             expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
             expect(firstResult)

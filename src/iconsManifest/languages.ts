@@ -1,4 +1,4 @@
-import type { ILanguage } from '../types';
+import type { Language } from '../types';
 
 export const languages = {
   actionscript: { ids: 'actionscript', knownExtensions: ['as'] },
@@ -420,7 +420,7 @@ export const languages = {
   mvtjs: { ids: 'mvtjs', knownExtensions: ['mvt'] },
   mxml: { ids: 'mxml', knownExtensions: ['mxml'] },
   nearley: { ids: 'nearley', knownExtensions: ['ne'] },
-  nextflow: { ids: 'nextflow', knownExtensions: ['nf'] },
+  nextflow: { ids: 'nextflow', knownExtensions: ['nf', 'nf.test'] },
   nginx: { ids: ['nginx'], knownExtensions: ['nginx'] },
   nim: { ids: 'nim', knownExtensions: ['nim'] },
   nimble: { ids: 'nimble', knownExtensions: ['nimble'] },
@@ -485,11 +485,7 @@ export const languages = {
   },
   plaintext: { ids: ['plaintext', 'vim-help'], knownExtensions: ['txt'] },
   platformio: {
-    ids: [
-      'platformio-debug.disassembly',
-      'platformio-debug.memoryview',
-      'platformio-debug.asm',
-    ],
+    ids: ['platformio-debug.disassembly', 'platformio-debug.memoryview'],
     knownExtensions: ['dbgasm'],
   },
   plsql: {
@@ -749,4 +745,4 @@ export const languages = {
   yarnlock: { ids: 'yarnlock', knownFilenames: ['yarn.lock'] },
   zig: { ids: 'zig', knownExtensions: ['zig'] },
   zip: { ids: 'zip', knownExtensions: ['zip'] },
-} satisfies Record<string, ILanguage>;
+} satisfies Record<string, Language>;

@@ -1,6 +1,6 @@
-import type { IVSCodeCommand } from './vscode';
+import type { VSCodeCommand } from './vscode';
 
-export interface IPackageManifest extends IVSCodeManifest {
+export interface PackageManifest extends VSCodeManifest {
   name: string;
   version: string;
   main: string;
@@ -11,26 +11,26 @@ export interface IPackageManifest extends IVSCodeManifest {
   devDependencies: Record<string, string>;
 }
 
-export interface IVSCodeManifest {
-  contributes: IVSCodeContributes;
+export interface VSCodeManifest {
+  contributes: VSCodeContributes;
 }
 
-export interface IVSCodeContributes {
-  iconThemes: IVSCodeIconTheme[];
-  commands: IVSCodeCommand[];
-  configuration: IVSCodeConfiguration;
+export interface VSCodeContributes {
+  iconThemes: VSCodeIconTheme[];
+  commands: VSCodeCommand[];
+  configuration: VSCodeConfiguration;
 }
 
-export interface IVSCodeIconTheme {
+export interface VSCodeIconTheme {
   path: string;
   _watch: boolean;
 }
 
-export interface IVSCodeConfiguration {
+export interface VSCodeConfiguration {
   title: string;
-  properties: Record<string, IVSCodeProperties>;
+  properties: Record<string, VSCodeProperties>;
 }
-export interface IVSCodeProperties {
+export interface VSCodeProperties {
   type: string;
   default: boolean | string | unknown[] | null;
   description: string;

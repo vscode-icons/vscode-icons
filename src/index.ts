@@ -1,17 +1,15 @@
-import type { IExtensionManager, IVSCodeExtensionContext } from './types';
+import type { ExtensionManagerContract, VSCodeExtensionContext } from './types';
 
 import { Debugger } from './common/debugger';
 import { constants } from './constants';
 import { CompositionRootService } from './services/compositionRootService';
 import { SYMBOLS } from './types';
 
-export async function activate(
-  context: IVSCodeExtensionContext,
-): Promise<void> {
+export async function activate(context: VSCodeExtensionContext): Promise<void> {
   const crs = new CompositionRootService(context);
 
-  const extension: IExtensionManager = crs.get<IExtensionManager>(
-    SYMBOLS.IExtensionManager,
+  const extension: ExtensionManagerContract = crs.get<ExtensionManagerContract>(
+    SYMBOLS.ExtensionManager,
   );
   await extension.activate();
 

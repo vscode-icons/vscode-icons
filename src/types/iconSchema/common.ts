@@ -1,3 +1,3 @@
-export interface IIconAssociation {
+export interface IconAssociation {
   [iconName: string]: string;
 }

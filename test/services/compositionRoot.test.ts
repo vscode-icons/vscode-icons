@@ -1,4 +1,4 @@
-import type { ICompositionRootService } from '../../src/types/services';
+import type { CompositionRootServiceContract } from '../../src/types/services';
 
 import { expect } from 'chai';
 import proxyq from 'proxyquire';
@@ -17,22 +17,22 @@ import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { context as extensionContext } from '../fixtures/extensionContext';
 import { vscode } from '../fixtures/vscode';
 
-describe('CompositionRootService: tests', function () {
-  type CompositionRootService = new (
+describe('CompositionRootServiceContract: tests', function () {
+  type CompositionRootServiceFactory = new (
     ...args: unknown[]
-  ) => ICompositionRootService;
+  ) => CompositionRootServiceContract;
 
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let CRService: CompositionRootService;
-    let crs: ICompositionRootService;
+    let CRService: CompositionRootServiceFactory;
+    let crs: CompositionRootServiceContract;
 
     before(function () {
       proxyq.noCallThru();
       CRService = (
         proxyq('../../src/services/compositionRootService', {
           vscode,
-        }) as Record<string, CompositionRootService>
+        }) as Record<string, CompositionRootServiceFactory>
       ).CompositionRootService;
     });
 
@@ -67,35 +67,35 @@ describe('CompositionRootService: tests', function () {
       });
 
       it(`returns that object`, function () {
-        expect(crs.get(types.SYMBOLS.IVSCodeManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.VSCodeManager)).to.be.an.instanceOf(
           VSCodeManager,
         );
 
-        expect(crs.get(types.SYMBOLS.IConfigManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.ConfigManager)).to.be.an.instanceOf(
           ConfigManager,
         );
 
-        expect(crs.get(types.SYMBOLS.ISettingsManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.SettingsManager)).to.be.an.instanceOf(
           SettingsManager,
         );
 
-        expect(crs.get(types.SYMBOLS.INotificationManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.NotificationManager)).to.be.an.instanceOf(
           NotificationManager,
         );
 
-        expect(crs.get(types.SYMBOLS.IIconsGenerator)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.IconsGenerator)).to.be.an.instanceOf(
           IconsGenerator,
         );
 
         expect(
-          crs.get(types.SYMBOLS.IProjectAutoDetectionManager),
+          crs.get(types.SYMBOLS.ProjectAutoDetectionManager),
         ).to.be.an.instanceOf(ProjectAutoDetectionManager);
 
         expect(
-          crs.get(types.SYMBOLS.ILanguageResourceManager),
+          crs.get(types.SYMBOLS.LanguageResourceManager),
         ).to.be.an.instanceOf(LanguageResourceManager);
 
-        expect(crs.get(types.SYMBOLS.IExtensionManager)).to.be.an.instanceOf(
+        expect(crs.get(types.SYMBOLS.ExtensionManager)).to.be.an.instanceOf(
           ExtensionManager,
         );
       });
