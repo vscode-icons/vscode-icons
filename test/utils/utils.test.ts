@@ -432,6 +432,20 @@ describe('Utils: tests', function () {
       });
     });
 
+    context(`the 'isEmpty' function`, function () {
+      it('checks empty and non-empty strings, arrays, sets, and objects', function () {
+        expect(Utils.isEmpty(undefined)).to.be.true;
+        expect(Utils.isEmpty('')).to.be.true;
+        expect(Utils.isEmpty([])).to.be.true;
+        expect(Utils.isEmpty(new Set())).to.be.true;
+        expect(Utils.isEmpty({})).to.be.true;
+        expect(Utils.isEmpty('value')).to.be.false;
+        expect(Utils.isEmpty([1])).to.be.false;
+        expect(Utils.isEmpty(new Set([1]))).to.be.false;
+        expect(Utils.isEmpty({ value: true })).to.be.false;
+      });
+    });
+
     context(`the 'updateFile' function`, function () {
       let readFileAsyncStub: sinon.SinonStub;
       let writeFileAsyncStub: sinon.SinonStub;
@@ -515,6 +529,51 @@ describe('Utils: tests', function () {
           .with.ownProperty('vsicons')
           .and.that.to.haveOwnProperty('dontShowNewVersionMessage').and.that.to
           .be.false;
+      });
+
+      it(`reuses an existing nested object`, function () {
+        const result = Utils.unflattenProperties<Record<string, unknown>>(
+          {
+            'settings.group.first': { default: true },
+            'settings.group.second': { default: false },
+          },
+          'default',
+        );
+
+        expect(result).to.deep.equal({
+          settings: {
+            group: {
+              first: true,
+              second: false,
+            },
+          },
+        });
+      });
+
+      it(`replaces a non-object intermediate value`, function () {
+        const result = Utils.unflattenProperties<Record<string, unknown>>(
+          {
+            settings: { default: 0 },
+            'settings.enabled': { default: true },
+          },
+          'default',
+        );
+
+        expect(result).to.deep.equal({
+          settings: {
+            enabled: true,
+          },
+        });
+      });
+
+      it(`does not mutate the object prototype for special keys`, function () {
+        const result = Utils.unflattenProperties<Record<string, unknown>>(
+          { '__proto__.polluted': { default: true } },
+          'default',
+        );
+
+        expect(Object.hasOwn(result, '__proto__')).to.be.true;
+        expect(Object.hasOwn(Object.prototype, 'polluted')).to.be.false;
       });
     });
 

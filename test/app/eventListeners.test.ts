@@ -1,7 +1,6 @@
 import type * as types from '../../src/types';
 
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import { ExtensionManager } from '../../src/app/extensionManager';
@@ -48,7 +47,7 @@ describe('ExtensionManagerContract: event listeners tests', function () {
 
       configManagerStub =
         sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
-      vsiconsClone = cloneDeep(vsicons);
+      vsiconsClone = structuredClone(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =

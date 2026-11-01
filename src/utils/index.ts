@@ -6,7 +6,6 @@ import type { Options } from 'open';
 import { homedir, tmpdir } from 'os';
 import { isAbsolute, posix, relative, resolve, sep } from 'path';
 
-import { set } from 'lodash';
 import open from 'open';
 
 import {
@@ -193,6 +192,43 @@ export class Utils {
     );
   }
 
+  public static isEmpty(value: unknown): boolean {
+    if (value == null) {
+      return true;
+    }
+    if (typeof value === 'string' || Array.isArray(value)) {
+      return value.length === 0;
+    }
+    if (value instanceof Map || value instanceof Set) {
+      return value.size === 0;
+    }
+    return typeof value !== 'object' || Object.keys(value).length === 0;
+  }
+
+  public static isEqual(value: unknown, other: unknown): boolean {
+    if (value === other) {
+      return true;
+    }
+    if (
+      value === null ||
+      other === null ||
+      typeof value !== 'object' ||
+      typeof other !== 'object'
+    ) {
+      return false;
+    }
+
+    const valueKeys = Object.keys(value);
+    const otherKeys = Object.keys(other);
+    return (
+      valueKeys.length === otherKeys.length &&
+      valueKeys.every(
+        (key: string): boolean =>
+          Object.hasOwn(other, key) && this.isEqual(value[key], other[key]),
+      )
+    );
+  }
+
   public static async updateFile(
     filePath: string,
     replaceFn: (rawText: string[]) => string[],
@@ -208,10 +244,32 @@ export class Utils {
     obj: Record<string, unknown>,
     lookupKey: string,
   ): T {
-    const newObj = {};
-    Reflect.ownKeys(obj).forEach((key: string): object =>
-      set(newObj, key, obj[key][lookupKey]),
-    );
+    const newObj: Record<string, unknown> = {};
+    Reflect.ownKeys(obj).forEach((key: string): void => {
+      const path = key.split('.');
+      let current: Record<string, unknown> = newObj;
+      for (const part of path.slice(0, -1)) {
+        const existing = Object.hasOwn(current, part) ? current[part] : null;
+        if (existing && typeof existing === 'object') {
+          current = existing as Record<string, unknown>;
+        } else {
+          const nested: Record<string, unknown> = {};
+          Object.defineProperty(current, part, {
+            configurable: true,
+            enumerable: true,
+            value: nested,
+            writable: true,
+          });
+          current = nested;
+        }
+      }
+      Object.defineProperty(current, path[path.length - 1], {
+        configurable: true,
+        enumerable: true,
+        value: obj[key][lookupKey],
+        writable: true,
+      });
+    });
     return newObj as T;
   }
 

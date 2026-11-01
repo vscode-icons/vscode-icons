@@ -10,8 +10,6 @@ import type {
 
 import { dirname, isAbsolute, resolve } from 'path';
 
-import { cloneDeep, isEqual, unionWith } from 'lodash';
-
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, readdirAsync } from '../common/fsAsync';
 import { constants } from '../constants';
@@ -61,7 +59,7 @@ export class ConfigManager implements ConfigManagerContract {
    */
   public get vsicons(): VSIcons {
     // ALWAYS use 'getConfiguration' to get a fresh copy of the `vsicons` configurations
-    const mergedConfig: VSIcons = cloneDeep<VSIcons>(
+    const mergedConfig: VSIcons = structuredClone<VSIcons>(
       this.vscodeManager.workspace.getConfiguration()[
         constants.vsicons.name
       ] as VSIcons,
@@ -69,18 +67,30 @@ export class ConfigManager implements ConfigManagerContract {
     const files: VSCodePreset<FileExtension[]> = this.configuration.inspect<
       FileExtension[]
     >(constants.vsicons.associations.filesSetting);
-    mergedConfig.associations.files = unionWith<FileExtension>(
-      files.workspaceValue,
-      files.globalValue,
-      isEqual,
+    mergedConfig.associations.files = [
+      ...(files.workspaceValue || []),
+      ...(files.globalValue || []),
+    ].filter(
+      (file: FileExtension, index: number, all: FileExtension[]): boolean =>
+        all.findIndex((candidate: FileExtension): boolean =>
+          Utils.isEqual(candidate, file),
+        ) === index,
     );
     const folders: VSCodePreset<FolderExtension[]> = this.configuration.inspect<
       FolderExtension[]
     >(constants.vsicons.associations.foldersSetting);
-    mergedConfig.associations.folders = unionWith<FolderExtension>(
-      folders.workspaceValue,
-      folders.globalValue,
-      isEqual,
+    mergedConfig.associations.folders = [
+      ...(folders.workspaceValue || []),
+      ...(folders.globalValue || []),
+    ].filter(
+      (
+        folder: FolderExtension,
+        index: number,
+        all: FolderExtension[],
+      ): boolean =>
+        all.findIndex((candidate: FolderExtension): boolean =>
+          Utils.isEqual(candidate, folder),
+        ) === index,
     );
     return mergedConfig;
   }
@@ -250,7 +260,7 @@ export class ConfigManager implements ConfigManagerContract {
         );
     const a = filter(this.initVSIconsConfig, sections);
     const b = filter(currentConfig, sections);
-    return !isEqual(a, b);
+    return !Utils.isEqual(a, b);
   }
 
   public async getCustomIconsDirPath(dirPath: string): Promise<string> {
