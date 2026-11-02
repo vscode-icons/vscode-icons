@@ -60,38 +60,23 @@ export class ConfigManager implements ConfigManagerContract {
    */
   public get vsicons(): VSIcons {
     // ALWAYS use 'getConfiguration' to get a fresh copy of the `vsicons` configurations
-    const mergedConfig: VSIcons = structuredClone<VSIcons>(
-      this.vscodeManager.workspace.getConfiguration()[
-        constants.vsicons.name
-      ] as VSIcons,
-    );
+    const config: VSCodeWorkspaceConfiguration =
+      this.vscodeManager.workspace.getConfiguration(constants.vsicons.name);
+    // VS Code returns readonly proxies, which `structuredClone` can't clone
+    const mergedConfig = JSON.parse(JSON.stringify(config)) as VSIcons;
     const files: VSCodePreset<FileExtension[]> = this.configuration.inspect<
       FileExtension[]
     >(constants.vsicons.associations.filesSetting);
-    mergedConfig.associations.files = [
-      ...(files.workspaceValue || []),
-      ...(files.globalValue || []),
-    ].filter(
-      (file: FileExtension, index: number, all: FileExtension[]): boolean =>
-        all.findIndex((candidate: FileExtension): boolean =>
-          isDeepStrictEqual(candidate, file),
-        ) === index,
+    mergedConfig.associations.files = ConfigManager.mergeUnique(
+      files.workspaceValue,
+      files.globalValue,
     );
     const folders: VSCodePreset<FolderExtension[]> = this.configuration.inspect<
       FolderExtension[]
     >(constants.vsicons.associations.foldersSetting);
-    mergedConfig.associations.folders = [
-      ...(folders.workspaceValue || []),
-      ...(folders.globalValue || []),
-    ].filter(
-      (
-        folder: FolderExtension,
-        index: number,
-        all: FolderExtension[],
-      ): boolean =>
-        all.findIndex((candidate: FolderExtension): boolean =>
-          isDeepStrictEqual(candidate, folder),
-        ) === index,
+    mergedConfig.associations.folders = ConfigManager.mergeUnique(
+      folders.workspaceValue,
+      folders.globalValue,
     );
     return mergedConfig;
   }
@@ -231,6 +216,16 @@ export class ConfigManager implements ConfigManagerContract {
     }
     source[lastSettingsLine] = source[lastSettingsLine].replace(/,\s*$/, '');
     return source;
+  }
+
+  private static mergeUnique<T>(workspace: T[] = [], global: T[] = []): T[] {
+    const all = [...workspace, ...global];
+    return all.filter(
+      (item: T, index: number): boolean =>
+        all.findIndex((candidate: T): boolean =>
+          isDeepStrictEqual(candidate, item),
+        ) === index,
+    );
   }
 
   public updateVSIconsConfigState(): void {

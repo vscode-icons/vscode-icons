@@ -66,7 +66,7 @@ describe('ConfigManagerContract: tests', function () {
       updateStub = sandbox.stub().resolves();
       vsiconsClone = structuredClone(vsicons);
       getConfigurationStub = sandbox.stub().returns({
-        vsicons: vsiconsClone,
+        ...vsiconsClone,
         get: getStub,
         inspect: inspectStub,
         update: updateStub,
