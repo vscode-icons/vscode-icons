@@ -607,6 +607,7 @@ export const extensions: FolderCollection = {
       icon: 'nuxt',
       extensions: ['nuxt', '.nuxt'],
     },
+    { icon: 'nyc', extensions: ['.nyc_output'] },
     {
       icon: 'ocx',
       extensions: ['.ocx'],
