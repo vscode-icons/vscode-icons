@@ -66,6 +66,7 @@ describe('ConfigManagerContract: tests', function () {
       });
       updateStub = sandbox.stub().resolves();
       vsiconsClone = cloneDeep(vsicons);
+      getStub.withArgs(constants.vsicons.name).returns(vsiconsClone);
       getConfigurationStub = sandbox.stub().returns({
         vsicons: vsiconsClone,
         get: getStub,
@@ -1219,6 +1220,7 @@ describe('ConfigManagerContract: tests', function () {
 
     context(`function 'getIconTheme'`, function () {
       it(`returns the icon theme setting`, function () {
+        getStub.resetHistory();
         getStub.returns(constants.vsicons.name);
 
         expect(configManager.getIconTheme()).to.equal(constants.vsicons.name);
@@ -1227,6 +1229,7 @@ describe('ConfigManagerContract: tests', function () {
       });
 
       it(`returns 'undefined' if the icon theme setting does NOT exists`, function () {
+        getStub.resetHistory();
         getStub.returns(undefined);
 
         expect(configManager.getIconTheme()).to.be.undefined;
@@ -1274,7 +1277,7 @@ describe('ConfigManagerContract: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.dontShowNewVersionMessageSetting,
             true,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1286,7 +1289,7 @@ describe('ConfigManagerContract: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.dontShowNewVersionMessageSetting,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1302,7 +1305,7 @@ describe('ConfigManagerContract: tests', function () {
             updateStub.calledOnceWith(
               constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
               true,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             ),
           ).to.be.true;
         });
@@ -1314,7 +1317,7 @@ describe('ConfigManagerContract: tests', function () {
             updateStub.calledOnceWith(
               constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
               false,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             ),
           ).to.be.true;
         });
@@ -1329,7 +1332,7 @@ describe('ConfigManagerContract: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.projectDetectionAutoReloadSetting,
             true,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1341,7 +1344,7 @@ describe('ConfigManagerContract: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.projectDetectionAutoReloadSetting,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1355,7 +1358,7 @@ describe('ConfigManagerContract: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.projectDetectionDisableDetectSetting,
             true,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1367,7 +1370,7 @@ describe('ConfigManagerContract: tests', function () {
           updateStub.calledOnceWith(
             constants.vsicons.projectDetectionDisableDetectSetting,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1381,7 +1384,7 @@ describe('ConfigManagerContract: tests', function () {
           updateStub.calledOnceWith(
             constants.vscode.iconThemeSetting,
             constants.extension.name,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1394,7 +1397,7 @@ describe('ConfigManagerContract: tests', function () {
         await configManager.updatePreset(
           enums.PresetNames[enums.PresetNames.tsOfficial],
           true,
-          enums.ConfigurationTarget.Global,
+          enums.VSCodeConfigurationTarget.Global,
         );
 
         expect(
@@ -1412,7 +1415,7 @@ describe('ConfigManagerContract: tests', function () {
               enums.PresetNames[enums.PresetNames.tsOfficial]
             }`,
             true,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1423,7 +1426,7 @@ describe('ConfigManagerContract: tests', function () {
         await configManager.updatePreset(
           enums.PresetNames[enums.PresetNames.jsOfficial],
           false,
-          enums.ConfigurationTarget.Global,
+          enums.VSCodeConfigurationTarget.Global,
         );
 
         expect(
@@ -1441,7 +1444,7 @@ describe('ConfigManagerContract: tests', function () {
               enums.PresetNames[enums.PresetNames.jsOfficial]
             }`,
             undefined,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -1452,7 +1455,7 @@ describe('ConfigManagerContract: tests', function () {
         await configManager.updatePreset(
           enums.PresetNames[enums.PresetNames.angular],
           false,
-          enums.ConfigurationTarget.Workspace,
+          enums.VSCodeConfigurationTarget.Workspace,
         );
 
         expect(
@@ -1470,7 +1473,7 @@ describe('ConfigManagerContract: tests', function () {
               enums.PresetNames[enums.PresetNames.angular]
             }`,
             undefined,
-            enums.ConfigurationTarget.Workspace,
+            enums.VSCodeConfigurationTarget.Workspace,
           ),
         ).to.be.true;
       });
