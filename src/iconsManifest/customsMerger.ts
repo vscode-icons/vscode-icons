@@ -1,7 +1,5 @@
 import type * as types from '../types';
 
-import { cloneDeep, remove } from 'lodash';
-
 import { ManifestReader } from './manifestReader';
 import * as enums from '../types/enums';
 
@@ -285,7 +283,7 @@ export class CustomsMerger {
       return supported;
     }
     // start the merge operation
-    let final: types.Extension[] = cloneDeep(supported);
+    let final: types.Extension[] = structuredClone(supported);
     custom.forEach((file: types.FileExtension): void => {
       const officialFiles = final.filter(
         (extension: types.Extension): boolean => extension.icon === file.icon,
@@ -326,12 +324,20 @@ export class CustomsMerger {
       file.extensions ??= [];
       file.extensions.forEach((ext: string): void =>
         final
-          .filter((extension: types.Extension): string =>
-            extension.extensions?.find((el: string): boolean => el === ext),
+          .filter((extension: types.Extension): boolean =>
+            extension.extensions?.includes(ext),
           )
-          .forEach((extension: types.Extension): string[] =>
-            remove(extension.extensions, (el: string): boolean => el === ext),
-          ),
+          .forEach((extension: types.Extension): void => {
+            for (
+              let index = extension.extensions.length - 1;
+              index >= 0;
+              index--
+            ) {
+              if (extension.extensions[index] === ext) {
+                extension.extensions.splice(index, 1);
+              }
+            }
+          }),
       );
       final.push(file);
     });
@@ -347,7 +353,7 @@ export class CustomsMerger {
     icons: string[],
     customItems: types.ExtensionCollection<types.Extension>,
   ): T {
-    const workingCopy = cloneDeep(customItems);
+    const workingCopy = structuredClone(customItems);
     icons.forEach((icon: string): void => {
       const existing = workingCopy.supported.filter(
         (extension: types.Extension): boolean => extension.icon === icon,

@@ -5,7 +5,6 @@ import type {
 } from '../../../src/types';
 
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import * as fsAsync from '../../../src/common/fsAsync';
@@ -48,7 +47,7 @@ describe('ManifestBuilder: folders icons test', function () {
     });
 
     it('uses a supported folder format when provided', async function () {
-      const folders = cloneDeep(fixtFolders);
+      const folders = structuredClone(fixtFolders);
       const folder = folders.supported.find(({ icon }) => icon === 'api');
 
       folder.format = enums.FileFormat.png;
@@ -71,7 +70,7 @@ describe('ManifestBuilder: folders icons test', function () {
     });
 
     it('creates a definition without mappings when extensions are undefined', async function () {
-      const folders = cloneDeep(fixtFolders);
+      const folders = structuredClone(fixtFolders);
       const folder = folders.supported.find(({ icon }) => icon === 'api');
       folders.supported = [folder];
       folder.extensions = undefined;
@@ -181,7 +180,7 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders.default.folder.format,
           )}`;
 
-          const folders = cloneDeep(fixtFolders);
+          const folders = structuredClone(fixtFolders);
 
           folders.default.folder.useBundledIcon = true;
 
@@ -202,7 +201,7 @@ describe('ManifestBuilder: folders icons test', function () {
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
 
-          const folders = cloneDeep(fixtFolders);
+          const folders = structuredClone(fixtFolders);
 
           folders.default.folder.useBundledIcon = true;
 
@@ -375,7 +374,7 @@ describe('ManifestBuilder: folders icons test', function () {
 
       context(`when the default folder is disabled`, function () {
         it(`folder mapping references in vscode schema are empty`, async function () {
-          const folders = cloneDeep(fixtFolders);
+          const folders = structuredClone(fixtFolders);
           const disabled = true;
           folders.default.folder.disabled = disabled;
           folders.default.root_folder.disabled = disabled;
@@ -992,7 +991,7 @@ describe('ManifestBuilder: folders icons test', function () {
             fixtFolders.default.folder.format,
           )}`;
 
-          const folders = cloneDeep(fixtFolders);
+          const folders = structuredClone(fixtFolders);
 
           folders.default.folder.useBundledIcon = true;
 
@@ -1013,7 +1012,7 @@ describe('ManifestBuilder: folders icons test', function () {
             constants.iconsManifest.iconSuffix
           }${Utils.fileFormatToString(fixtFolders.default.folder.format)}`;
 
-          const folders = cloneDeep(fixtFolders);
+          const folders = structuredClone(fixtFolders);
 
           folders.default.folder.useBundledIcon = true;
 
