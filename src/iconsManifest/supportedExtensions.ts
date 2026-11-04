@@ -4896,6 +4896,11 @@ export const extensions: FileCollection = {
       languages: [languages.searchresult],
     },
     {
+      icon: 'security',
+      extensions: ['SECURITY.md'],
+      filename: true,
+    },
+    {
       icon: 'seedkit',
       filenamesGlob: ['seedkit.config'],
       extensionsGlob: ['js', 'ts', 'mjs'],
