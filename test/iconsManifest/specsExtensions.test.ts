@@ -118,6 +118,83 @@ describe('Specifications of supported extensions: tests', function () {
             expect(unique).to.have.lengthOf(testFiles.length);
           });
 
+          it(`filename extensions that can be expressed with glob declarations`, function () {
+            function getGlobExpressibleFilenameExtensions(
+              fileDeclarations: FileExtension[],
+            ): string[] {
+              const offenders: string[] = [];
+
+              fileDeclarations
+                .filter(
+                  (file: FileExtension) =>
+                    file.filename &&
+                    file.extensions &&
+                    file.extensions.length > 1,
+                )
+                .forEach((file: FileExtension) => {
+                  const parts = file.extensions.map((extension: string) => {
+                    const separatorIndex = extension.lastIndexOf('.');
+
+                    return separatorIndex > 0 &&
+                      separatorIndex < extension.length - 1
+                      ? [
+                          extension.slice(0, separatorIndex),
+                          extension.slice(separatorIndex + 1),
+                        ]
+                      : undefined;
+                  });
+
+                  if (parts.some(part => part === undefined)) {
+                    return;
+                  }
+
+                  const filenamesGlob = [
+                    ...new Set(parts.map(part => part[0])),
+                  ];
+                  const extensionsGlob = [
+                    ...new Set(parts.map(part => part[1])),
+                  ];
+                  const combinations = Utils.combine(
+                    filenamesGlob,
+                    extensionsGlob,
+                  );
+                  const declaredExtensions = new Set(file.extensions);
+                  const isMatrix =
+                    combinations.length === declaredExtensions.size &&
+                    combinations.every((extension: string) =>
+                      declaredExtensions.has(extension),
+                    );
+
+                  if (isMatrix) {
+                    offenders.push(
+                      `${file.icon}: ${file.extensions.join(', ')}`,
+                    );
+                  }
+                });
+
+              return offenders;
+            }
+
+            const offenders = getGlobExpressibleFilenameExtensions(testFiles);
+
+            const matrixOffenders = getGlobExpressibleFilenameExtensions([
+              {
+                icon: 'matrix',
+                filename: true,
+                extensions: ['babel.js', 'babel.cjs'],
+              },
+            ]);
+
+            expect(
+              offenders,
+              `Filename extensions can be expressed with glob declarations: ${offenders.join('; ')}`,
+            ).to.be.empty;
+
+            expect(matrixOffenders).to.deep.equal([
+              'matrix: babel.js, babel.cjs',
+            ]);
+          });
+
           it(`same declaration with different 'extensions'`, function () {
             const checker = (
               _file: FileExtension,
