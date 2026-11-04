@@ -5802,17 +5802,10 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'vitest',
-      filenamesGlob: ['vitest.config'],
-      extensionsGlob: ['js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
-      filename: true,
-      languages: [languages.vitestsnapshot],
-      light: true,
-    },
-    {
-      icon: 'vitest',
-      filenamesGlob: ['vitest.workspace', 'vitest.projects'],
+      filenamesGlob: ['vitest.config', 'vitest.workspace', 'vitest.projects'],
       extensionsGlob: ['json', 'js', 'mjs', 'ts', 'cjs', 'mts', 'cts'],
       filename: true,
+      languages: [languages.vitestsnapshot],
       light: true,
     },
     {
