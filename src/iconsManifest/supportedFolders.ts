@@ -352,6 +352,10 @@ export const extensions: FolderCollection = {
       extensions: ['.git', 'submodules', '.submodules'],
     },
     { icon: 'github', extensions: ['.github'] },
+    {
+      icon: 'githubactions',
+      extensions: ['workflows', 'workflow-templates', 'actions'],
+    },
     { icon: 'gitlab', extensions: ['.gitlab'] },
     { icon: 'godot', extensions: ['godot', '.godot'] },
     {
