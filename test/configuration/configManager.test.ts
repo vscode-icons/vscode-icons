@@ -1057,47 +1057,15 @@ describe('ConfigManagerContract: tests', function () {
     });
 
     context(`function 'updateVSIconsConfigState'`, function () {
-      let supportsThemesReloadStub: sinon.SinonStub;
+      it(`updates the initial configuration state`, function () {
+        // @ts-ignore
+        const initConfig = configManager.initVSIconsConfig as VSIcons;
+        vsiconsClone.presets.angular = true;
 
-      beforeEach(function () {
-        supportsThemesReloadStub = sandbox.stub(
-          vscodeManagerStub,
-          'supportsThemesReload',
-        );
-      });
+        configManager.updateVSIconsConfigState();
 
-      context(`when editor supports themes reload`, function () {
-        beforeEach(function () {
-          supportsThemesReloadStub.value(true);
-        });
-
-        it(`updates the initial configuration state`, function () {
-          // @ts-ignore
-          const initConfig = configManager.initVSIconsConfig as VSIcons;
-          vsiconsClone.presets.angular = true;
-
-          configManager.updateVSIconsConfigState();
-
-          // @ts-ignore
-          expect(configManager.initVSIconsConfig).to.not.be.eql(initConfig);
-        });
-      });
-
-      context(`when editor does NOT support themes reload`, function () {
-        beforeEach(function () {
-          supportsThemesReloadStub.value(false);
-        });
-
-        it(`does NOT update the initial configuration state`, function () {
-          // @ts-ignore
-          const initConfig = configManager.initVSIconsConfig as VSIcons;
-          vsiconsClone.presets.angular = true;
-
-          configManager.updateVSIconsConfigState();
-
-          // @ts-ignore
-          expect(configManager.initVSIconsConfig).to.be.eql(initConfig);
-        });
+        // @ts-ignore
+        expect(configManager.initVSIconsConfig).to.not.be.eql(initConfig);
       });
     });
 
