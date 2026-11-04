@@ -852,6 +852,11 @@ export const extensions: FolderCollection = {
       extensions: ['.vitepress'],
     },
     {
+      icon: 'vitest',
+      extensions: ['.vitest', '.vitest-attachments', '.vitest-reports'],
+      light: true,
+    },
+    {
       icon: 'void',
       extensions: ['void'],
     },
