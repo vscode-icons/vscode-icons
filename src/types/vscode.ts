@@ -120,7 +120,12 @@ export type VSCodeEvent<T> = (
   disposables?: VSCodeDisposable[],
 ) => VSCodeDisposable;
 
+export interface VSCodeFileSystem {
+  readFile(uri: VSCodeUri): Thenable<Uint8Array>;
+}
+
 export interface VSCodeWorkspace {
+  fs: VSCodeFileSystem;
   rootPath: string | undefined;
   workspaceFolders: readonly VSCodeWorkspaceFolder[] | undefined;
   onDidChangeConfiguration: VSCodeEvent<VSCodeConfigurationChangeEvent>;
