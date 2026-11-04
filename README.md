@@ -19,18 +19,7 @@ To install the extension just execute the following command in the Command
 Palette of Visual Studio Code:
 
 ```sh
-ext install vscode-icons
-```
-
-Some people have reported that they cannot find the extension when they insert
-the installation command.
-
-If you find yourself in the same position, try:
-
-```sh
-ext install icons
-# or
-ext install "vscode-icons"
+ext install vscode-icons-team.vscode-icons
 ```
 
 ## Usage
