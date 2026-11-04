@@ -16,8 +16,11 @@ describe('ManifestReader: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-
-      readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
+      readFileAsyncStub = (() => {
+        const stub = sandbox.stub();
+        sandbox.stub(fsAsync, 'readFileAsync').get(() => stub);
+        return stub;
+      })();
       parseJSONStub = sandbox.stub(Utils, 'parseJSONSafe');
     });
 
