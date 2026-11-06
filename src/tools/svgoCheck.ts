@@ -1,18 +1,18 @@
-import type { Config, Output } from 'svgo' with { 'resolution-mode': 'import' };
+import type { Config } from 'svgo' with { 'resolution-mode': 'import' };
 
-import { readFile } from 'node:fs/promises';
+import { glob, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { styleText } from 'node:util';
-
-import { globSync } from 'glob';
 
 async function checkOptimized(argv: string[]): Promise<void> {
   const { loadConfig, optimize } = await import('svgo');
 
   const projectRoot: string = resolve(__dirname, '../../..');
   const config: Config | null = await loadConfig(undefined, projectRoot);
-  const files: string[] = globSync(argv.slice(2), { nodir: true });
-  const failed: string[] = [];
+  const files: string[] = [];
+  for await (const file of glob(argv.slice(2))) {
+    files.push(file);
+  }
 
   if (!files.length) {
     console.error(
@@ -26,13 +26,13 @@ async function checkOptimized(argv: string[]): Promise<void> {
     return;
   }
 
-  for (const file of files) {
-    const input: string = await readFile(file, 'utf8');
-    const output: Output = optimize(input, { ...config, path: file });
-    if (output.data !== input) {
-      failed.push(file);
-    }
-  }
+  const inputs: string[] = await Promise.all(
+    files.map((file: string): Promise<string> => readFile(file, 'utf8')),
+  );
+  const failed: string[] = files.filter(
+    (file: string, index: number): boolean =>
+      optimize(inputs[index], { ...config, path: file }).data !== inputs[index],
+  );
 
   if (failed.length) {
     console.error(
