@@ -65,6 +65,20 @@ describe('Build: tests', function () {
         expect(logErrorStub.called).to.be.false;
       });
 
+      it(`stays in development when only the script path contains 'production'`, async function () {
+        sandbox
+          .stub(process, 'argv')
+          .value(['node', '/home/me/production/repo/out/src/tools/build.js']);
+
+        await build();
+
+        expect(constants.environment.production).to.be.false;
+        expect(
+          persistStub.calledOnceWithExactly(vscodeSchema, false),
+          'persist should be called once with correct arguments',
+        ).to.be.true;
+      });
+
       context(`changes the 'out' directory to 'dist'`, function () {
         context(`when environment is production using flag`, function () {
           let argvStub: sinon.SinonStub;
@@ -88,7 +102,7 @@ describe('Build: tests', function () {
           });
 
           it(`'production'`, async function () {
-            argvStub.value(['--production']);
+            argvStub.value(['node', 'script', '--production']);
 
             await build();
 
