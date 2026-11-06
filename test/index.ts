@@ -1,6 +1,6 @@
+import { globSync } from 'node:fs';
 import path from 'path';
 
-import * as glob from 'glob';
 import Mocha from 'mocha';
 
 export async function run(testsRoot: string): Promise<void> {
@@ -11,7 +11,7 @@ export async function run(testsRoot: string): Promise<void> {
   });
   try {
     // Add files into Mocha
-    const files: string[] = await glob.glob('**/*.test.js', {
+    const files: string[] = globSync('**/*.test.js', {
       cwd: testsRoot,
     });
     files.forEach((file: string): Mocha =>
