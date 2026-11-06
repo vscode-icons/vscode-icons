@@ -143,12 +143,12 @@ export class ExtensionManager implements types.ExtensionManagerContract {
           case enums.LangResourceKeys.activate:
             return this.activationCommand();
           case enums.LangResourceKeys.aboutOfficialApi: {
-            void Utils.open(constants.urlOfficialApi);
+            void this.vscodeManager.openExternal(constants.urlOfficialApi);
             // Display the message again so the user can choose to activate or not
             return displayMessage();
           }
           case enums.LangResourceKeys.seeReadme: {
-            void Utils.open(constants.urlReadme);
+            void this.vscodeManager.openExternal(constants.urlReadme);
             // Display the message again so the user can choose to activate or not
             return displayMessage();
           }
@@ -172,7 +172,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       );
       switch (btn) {
         case enums.LangResourceKeys.seeReleaseNotes:
-          return void Utils.open(constants.urlReleaseNote);
+          return void this.vscodeManager.openExternal(constants.urlReleaseNote);
         case enums.LangResourceKeys.dontShowThis:
           return this.configManager.updateDontShowNewVersionMessage(true);
         default:

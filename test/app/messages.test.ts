@@ -310,7 +310,6 @@ describe('ExtensionManagerContract: messages tests', function () {
 
       context(`selecting`, function () {
         let activationCommandStub: sinon.SinonStub;
-        let openStub: sinon.SinonStub;
 
         beforeEach(function () {
           activationCommandStub = sandbox.stub(
@@ -318,7 +317,6 @@ describe('ExtensionManagerContract: messages tests', function () {
             // @ts-ignore
             'activationCommand',
           );
-          openStub = sandbox.stub(Utils, 'open');
         });
 
         context(`an unsupported option`, function () {
@@ -336,7 +334,7 @@ describe('ExtensionManagerContract: messages tests', function () {
               ),
             ).to.be.true;
             expect(activationCommandStub.called).to.be.false;
-            expect(openStub.called).to.be.false;
+            expect(vscodeManagerStub.openExternal.called).to.be.false;
           });
         });
 
@@ -378,8 +376,11 @@ describe('ExtensionManagerContract: messages tests', function () {
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
-            expect(openStub.calledOnceWithExactly(constants.urlOfficialApi)).to
-              .be.true;
+            expect(
+              vscodeManagerStub.openExternal.calledOnceWithExactly(
+                constants.urlOfficialApi,
+              ),
+            ).to.be.true;
           });
         });
 
@@ -401,8 +402,11 @@ describe('ExtensionManagerContract: messages tests', function () {
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
-            expect(openStub.calledOnceWithExactly(constants.urlReadme)).to.be
-              .true;
+            expect(
+              vscodeManagerStub.openExternal.calledOnceWithExactly(
+                constants.urlReadme,
+              ),
+            ).to.be.true;
           });
         });
       });
@@ -427,12 +431,6 @@ describe('ExtensionManagerContract: messages tests', function () {
       });
 
       context(`selecting`, function () {
-        let openStub: sinon.SinonStub;
-
-        beforeEach(function () {
-          openStub = sandbox.stub(Utils, 'open');
-        });
-
         context(`an unsupported option`, function () {
           it(`does nothing`, async function () {
             notifyManagerStub.notifyInfo.resolves();
@@ -447,7 +445,7 @@ describe('ExtensionManagerContract: messages tests', function () {
                 enums.LangResourceKeys.dontShowThis,
               ),
             ).to.be.true;
-            expect(openStub.called).to.be.false;
+            expect(vscodeManagerStub.openExternal.called).to.be.false;
             expect(configManagerStub.updateDontShowNewVersionMessage.called).to
               .be.false;
           });
@@ -469,8 +467,11 @@ describe('ExtensionManagerContract: messages tests', function () {
                 enums.LangResourceKeys.dontShowThis,
               ),
             ).to.be.true;
-            expect(openStub.calledOnceWithExactly(constants.urlReleaseNote)).to
-              .be.true;
+            expect(
+              vscodeManagerStub.openExternal.calledOnceWithExactly(
+                constants.urlReleaseNote,
+              ),
+            ).to.be.true;
           });
         });
 
