@@ -117,4 +117,8 @@ export class VSCodeManager implements types.VSCodeManagerContract {
     );
     return this.appUserDirPath;
   }
+
+  public openExternal(url: string): Thenable<boolean> {
+    return this.vscode.env.openExternal(this.vscode.Uri.parse(url));
+  }
 }
