@@ -122,6 +122,7 @@ export const extensions: FileCollection = {
       filenamesGlob: ['alchemy.run'],
       extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
       filename: true,
+      light: true,
     },
     {
       icon: 'allcontributors',
