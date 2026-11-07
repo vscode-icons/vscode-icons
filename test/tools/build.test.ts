@@ -65,7 +65,7 @@ describe('Build: tests', function () {
         expect(logErrorStub.called).to.be.false;
       });
 
-      it(`stays in development when only the script path contains 'production'`, async function () {
+      it(`stays in development when 'production' is not a script option`, async function () {
         sandbox
           .stub(process, 'argv')
           .value(['node', '/home/me/production/repo/out/src/tools/build.js']);
