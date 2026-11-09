@@ -144,6 +144,8 @@ We like to express our “Special Thanks” to:
 
 - [vscode-icons-api](https://github.com/vscode-icons/vscode-icons-api) by the
   [vscode-icons dev team](https://github.com/orgs/vscode-icons/teams/development).
+- [vscode-icons-web](https://github.com/vscode-icons/vscode-icons-web) by the
+  [vscode-icons dev team](https://github.com/orgs/vscode-icons/teams/development).
 - [folder-icon-maker](https://github.com/vscode-icons/folder-icon-maker) by
   [@NaufalK25](https://github.com/NaufalK25) make
   [`vscode-icons` folders](https://vscode-icons.github.io/folder-icon-maker/)
