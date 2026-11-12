@@ -4977,6 +4977,13 @@ export const extensions: FileCollection = {
       languages: [languages.silverstripe],
     },
     {
+      icon: 'simple_icons',
+      filenamesGlob: ['.svglintrc'],
+      extensionsGlob: ['js', 'cjs', 'mjs'],
+      filename: true,
+      light: true,
+    },
+    {
       icon: 'sino',
       languages: [languages.sino],
     },
@@ -5214,12 +5221,6 @@ export const extensions: FileCollection = {
       icon: 'svg',
       extensions: ['svg'],
       languages: [languages.svg],
-    },
-    {
-      icon: 'svglint',
-      filenamesGlob: ['.svglintrc'],
-      extensionsGlob: ['cjs', 'js', 'mjs'],
-      filename: true,
     },
     {
       icon: 'svgo',
