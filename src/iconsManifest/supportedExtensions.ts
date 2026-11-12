@@ -5222,12 +5222,6 @@ export const extensions: FileCollection = {
       languages: [languages.svg],
     },
     {
-      icon: 'svglint',
-      filenamesGlob: ['.svglintrc'],
-      extensionsGlob: ['cjs', 'js', 'mjs'],
-      filename: true,
-    },
-    {
       icon: 'svgo',
       filenamesGlob: ['svgo.config'],
       extensionsGlob: ['cjs', 'js', 'mjs'],
