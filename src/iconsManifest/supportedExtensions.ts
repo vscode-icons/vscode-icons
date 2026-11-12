@@ -4981,6 +4981,7 @@ export const extensions: FileCollection = {
       filenamesGlob: ['.svglintrc'],
       extensionsGlob: ['js', 'cjs', 'mjs'],
       filename: true,
+      light: true,
     },
     {
       icon: 'sino',
