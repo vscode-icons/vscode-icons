@@ -1,4 +1,4 @@
-import type { IPackageManifest } from '../types/package';
+import type { PackageManifest } from '../types/package';
 
 import manifest from '../../package.json';
 
@@ -9,7 +9,7 @@ export const constants = {
     apiName: 'vscode-icons-api',
     zedName: 'vscode-icons-zed',
     settingsFilename: 'vsicons.settings.json',
-    version: (manifest as IPackageManifest).version,
+    version: (manifest as PackageManifest).version,
     customIconFolderName: 'vsicons-custom-icons',
     distEntryFilename: 'vscode-icons.bundle.js',
     distEntryFilenameWeb: 'vscode-icons.web.bundle.js',
@@ -41,6 +41,15 @@ export const constants = {
       fullname: 'vsicons.presets',
       angular: 'vsicons.presets.angular',
       nestjs: 'vsicons.presets.nestjs',
+      jsOfficial: 'vsicons.presets.jsOfficial',
+      tsOfficial: 'vsicons.presets.tsOfficial',
+      reactjsOfficial: 'vsicons.presets.reactjsOfficial',
+      reacttsOfficial: 'vsicons.presets.reacttsOfficial',
+      jsonOfficial: 'vsicons.presets.jsonOfficial',
+      foldersAllDefaultIcon: 'vsicons.presets.foldersAllDefaultIcon',
+      hideExplorerArrows: 'vsicons.presets.hideExplorerArrows',
+      hideFolders: 'vsicons.presets.hideFolders',
+      yamlOfficial: 'vsicons.presets.yamlOfficial',
     },
     projectDetectionAutoReloadSetting: 'vsicons.projectDetection.autoReload',
     projectDetectionDisableDetectSetting:

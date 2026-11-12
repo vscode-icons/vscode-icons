@@ -79,7 +79,7 @@ jobs:
           # - 24.18.0 # vscode >= 1.129.0 <= 1.133.0 - Jul-Aug 2026
           # - 24.17.0 # vscode >= 1.128.0 <= 1.128.1 - July 2026
           - 24.15.0 # vscode >= 1.123.0 <= 1.127.0 - June 2026
-          - 22.18.0 # vscode >= 1.104.0 <= 1.104.3 - August 2025
+          - &minimum-node 22.18.0 # vscode >= 1.104.0 <= 1.104.3 - August 2025
         arch:
           - x64
         experimental:
@@ -103,6 +103,9 @@ jobs:
           - os: windows-latest
             node: lts/* # latest lts node
             experimental: true
+          - os: ubuntu-latest
+            node: *minimum-node
+            coverage: true
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setting up Node.js ${{ matrix.node }}
@@ -129,8 +132,7 @@ jobs:
       - name: Upload coverage to Codecov
         if: |
           success() &&
-          matrix.os == 'ubuntu-latest' &&
-          matrix.node == '22.18.0' &&
+          matrix.coverage == true &&
           github.repository_owner == 'vscode-icons' &&
           github.actor != 'dependabot[bot]' &&
           (github.event_name == 'push' || github.event_name == 'pull_request')

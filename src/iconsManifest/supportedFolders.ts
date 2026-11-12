@@ -1,6 +1,6 @@
-import type { IFolderCollection } from '../types';
+import type { FolderCollection } from '../types';
 
-export const extensions: IFolderCollection = {
+export const extensions: FolderCollection = {
   default: {
     folder: { icon: 'folder' },
     root_folder: { icon: 'root_folder' },
@@ -607,6 +607,7 @@ export const extensions: IFolderCollection = {
       icon: 'nuxt',
       extensions: ['nuxt', '.nuxt'],
     },
+    { icon: 'nyc', extensions: ['.nyc_output'] },
     {
       icon: 'ocx',
       extensions: ['.ocx'],

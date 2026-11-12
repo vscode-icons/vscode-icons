@@ -1,4 +1,4 @@
-import type { IFileCollection, IFolderCollection } from '../../../src/types';
+import type { FileCollection, FolderCollection } from '../../../src/types';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';
@@ -22,7 +22,7 @@ describe('CustomsMerger: default extensions tests', function () {
 
     context('default file icons can be', function () {
       it('added', async function () {
-        const customFiles: IFileCollection = {
+        const customFiles: FileCollection = {
           default: {
             file_light: { icon: 'customFileIconLight', format: 'svg' },
           },
@@ -45,7 +45,7 @@ describe('CustomsMerger: default extensions tests', function () {
       });
 
       it('overriden', async function () {
-        const customFiles: IFileCollection = {
+        const customFiles: FileCollection = {
           default: {
             file: { icon: 'customFileIcon', format: 'svg' },
           },
@@ -68,7 +68,7 @@ describe('CustomsMerger: default extensions tests', function () {
       });
 
       it('disabled', async function () {
-        const customFiles: IFileCollection = {
+        const customFiles: FileCollection = {
           default: {
             file: { icon: '', format: 'svg', disabled: true },
           },
@@ -93,7 +93,7 @@ describe('CustomsMerger: default extensions tests', function () {
 
     context('default folder icons can be', function () {
       it('added', async function () {
-        const customFolders: IFolderCollection = {
+        const customFolders: FolderCollection = {
           default: {
             folder_light: { icon: 'customFolderIconLight', format: 'svg' },
           },
@@ -110,14 +110,13 @@ describe('CustomsMerger: default extensions tests', function () {
           )
         ).folders.default.folder_light;
 
-        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFolders.default.folder_light.icon);
         expect(def.format).to.equal(customFolders.default.folder_light.format);
-        expect(def.disabled).to.be.false;
       });
 
       it('overriden', async function () {
-        const customFolders: IFolderCollection = {
+        const customFolders: FolderCollection = {
           default: {
             folder: { icon: 'customFolderIcon', format: 'svg' },
           },
@@ -134,14 +133,13 @@ describe('CustomsMerger: default extensions tests', function () {
           )
         ).folders.default.folder;
 
-        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFolders.default.folder.icon);
         expect(def.format).to.equal(customFolders.default.folder.format);
-        expect(def.disabled).to.be.false;
       });
 
       it('disabled', async function () {
-        const customFolders: IFolderCollection = {
+        const customFolders: FolderCollection = {
           default: {
             folder: { icon: '', format: 'svg', disabled: true },
           },
@@ -166,7 +164,7 @@ describe('CustomsMerger: default extensions tests', function () {
 
     context('default root folder icons can be', function () {
       it('added', async function () {
-        const customFolders: IFolderCollection = {
+        const customFolders: FolderCollection = {
           default: {
             root_folder_light: {
               icon: 'customRootFolderIconLight',
@@ -186,16 +184,15 @@ describe('CustomsMerger: default extensions tests', function () {
           )
         ).folders.default.root_folder_light;
 
-        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFolders.default.root_folder_light.icon);
         expect(def.format).to.equal(
           customFolders.default.root_folder_light.format,
         );
-        expect(def.disabled).to.be.false;
       });
 
       it('overriden', async function () {
-        const customFolders: IFolderCollection = {
+        const customFolders: FolderCollection = {
           default: {
             root_folder: { icon: 'customRootFolderIcon', format: 'svg' },
           },
@@ -212,14 +209,13 @@ describe('CustomsMerger: default extensions tests', function () {
           )
         ).folders.default.root_folder;
 
-        expect(def).to.be.an('object').with.keys('icon', 'format', 'disabled');
+        expect(def).to.be.an('object').with.keys('icon', 'format');
         expect(def.icon).to.equal(customFolders.default.root_folder.icon);
         expect(def.format).to.equal(customFolders.default.root_folder.format);
-        expect(def.disabled).to.be.false;
       });
 
       it('disabled', async function () {
-        const customFolders: IFolderCollection = {
+        const customFolders: FolderCollection = {
           default: {
             root_folder: { icon: '', format: 'svg', disabled: true },
           },

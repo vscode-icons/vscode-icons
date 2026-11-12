@@ -1,7 +1,7 @@
 import type {
-  IFileCollection,
-  IFolderExtension,
-  IIconAssociation,
+  FileCollection,
+  FolderExtension,
+  IconAssociation,
 } from '../../../src/types';
 
 import { expect } from 'chai';
@@ -19,7 +19,7 @@ describe('ManifestBuilder: folders icons test', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
     let pathUnixJoinStub: sinon.SinonStub;
-    let emptyFileCollection: IFileCollection;
+    let emptyFileCollection: FileCollection;
     let fileFormatToStringStub: sinon.SinonStub;
 
     const iconsDirRelativeBasePath = '../../path/to/icons/dir';
@@ -40,6 +40,7 @@ describe('ManifestBuilder: folders icons test', function () {
         default: { file: { icon: 'file', format: 'svg' } },
         supported: [],
       };
+      sandbox.stub(constants.environment, 'production').value(false);
     });
 
     afterEach(function () {
@@ -60,7 +61,7 @@ describe('ManifestBuilder: folders icons test', function () {
       const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
       const icon = manifest.vscode.iconDefinitions[
         definition
-      ] as IIconAssociation;
+      ] as IconAssociation;
 
       expect(fileFormatToStringStub.calledWith(enums.FileFormat.png)).to.be
         .true;
@@ -86,8 +87,42 @@ describe('ManifestBuilder: folders icons test', function () {
       expect(manifest.vscode.folderNamesExpanded).to.be.empty;
     });
 
+    context('production', function () {
+      it('builds only the VS Code manifest', async function () {
+        const devManifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        sandbox.stub(constants.environment, 'production').value(true);
+
+        const prodManifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        expect(prodManifest.vscode).to.deep.equal(devManifest.vscode);
+        expect(prodManifest.api.files.extensions).to.be.empty;
+        expect(prodManifest.api.files.filenames).to.be.empty;
+        expect(prodManifest.api.files._default).to.equal('');
+        expect(prodManifest.api.folders._default.closed).to.equal('');
+        expect(prodManifest.api.folders._default.opened).to.equal('');
+        expect(prodManifest.api.folders).to.not.have.property('root');
+        expect(prodManifest.api.light.files._default).to.equal('');
+        expect(prodManifest.api.light.folders._default.closed).to.equal('');
+        expect(prodManifest.api.light.folders._default.opened).to.equal('');
+        expect(prodManifest.api.light.folders).to.not.have.property('root');
+        for (const theme of prodManifest.zed.themes) {
+          expect(theme.directory_icons.collapsed).to.equal('');
+          expect(theme.directory_icons.expanded).to.equal('');
+        }
+      });
+    });
+
     context('API schema', function () {
       it('maps default and named folders to closed and opened icon paths', async function () {
+        sandbox.stub(constants.environment, 'production').value(false);
+
         const manifest = await ManifestBuilder.buildManifest(
           emptyFileCollection,
           fixtFolders,
@@ -110,6 +145,29 @@ describe('ManifestBuilder: folders icons test', function () {
         );
         expect(manifest.api.light.folders.fonts.opened).to.equal(
           `${iconsDirRelativeBasePath}/${constants.iconsManifest.folderTypeLightPrefix}fonts_opened.svg`,
+        );
+      });
+    });
+
+    context('Zed theme', function () {
+      it('includes collapsed and expanded icons for every directory', async function () {
+        const manifest = await ManifestBuilder.buildManifest(
+          emptyFileCollection,
+          fixtFolders,
+        );
+
+        manifest.zed.themes.forEach(
+          ({ directory_icons, named_directory_icons }) => {
+            expect(directory_icons.collapsed).not.to.be.empty;
+            expect(directory_icons.expanded).not.to.be.empty;
+
+            Object.values(named_directory_icons).forEach(
+              ({ collapsed, expanded }) => {
+                expect(collapsed).not.to.be.empty;
+                expect(expanded).not.to.be.empty;
+              },
+            );
+          },
         );
       });
     });
@@ -351,8 +409,8 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                 expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -366,8 +424,8 @@ describe('ManifestBuilder: folders icons test', function () {
             );
 
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                 expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -380,12 +438,12 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                 const def = manifest.vscode.iconDefinitions[
                   definition
-                ] as IIconAssociation;
+                ] as IconAssociation;
 
                 expect(def.iconPath).not.to.be.empty;
               });
@@ -397,12 +455,12 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                 const def = manifest.vscode.iconDefinitions[
                   definition
-                ] as IIconAssociation;
+                ] as IconAssociation;
 
                 expect(def.iconPath).not.to.be.empty;
               });
@@ -416,8 +474,8 @@ describe('ManifestBuilder: folders icons test', function () {
               );
 
               fixtFolders.supported
-                .filter((folder: IFolderExtension) => !folder.disabled)
-                .forEach((folder: IFolderExtension) => {
+                .filter((folder: FolderExtension) => !folder.disabled)
+                .forEach((folder: FolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}${
@@ -427,7 +485,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).to.equal(
                     `${iconsDirRelativeBasePath}/${filename}`,
@@ -442,8 +500,8 @@ describe('ManifestBuilder: folders icons test', function () {
               );
 
               fixtFolders.supported
-                .filter((folder: IFolderExtension) => !folder.disabled)
-                .forEach((folder: IFolderExtension) => {
+                .filter((folder: FolderExtension) => !folder.disabled)
+                .forEach((folder: FolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}_opened${
@@ -453,7 +511,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).to.equal(
                     `${iconsDirRelativeBasePath}/${filename}`,
@@ -470,10 +528,10 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -488,10 +546,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -505,14 +563,14 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -525,14 +583,14 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -547,10 +605,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}${
@@ -560,7 +618,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -576,10 +634,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
@@ -589,7 +647,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -607,10 +665,9 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -624,10 +681,9 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -641,14 +697,13 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -661,14 +716,13 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -683,10 +737,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}${
@@ -696,7 +750,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -712,10 +766,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
@@ -725,7 +779,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -744,10 +798,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -765,10 +819,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -788,10 +842,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -809,10 +863,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -834,10 +888,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -855,10 +909,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -878,10 +932,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -899,10 +953,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1178,8 +1232,8 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                 expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -1193,8 +1247,8 @@ describe('ManifestBuilder: folders icons test', function () {
             );
 
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                 expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -1207,12 +1261,12 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                 const def = manifest.vscode.iconDefinitions[
                   definition
-                ] as IIconAssociation;
+                ] as IconAssociation;
 
                 expect(def.iconPath).not.to.be.empty;
               });
@@ -1224,12 +1278,12 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                 const def = manifest.vscode.iconDefinitions[
                   definition
-                ] as IIconAssociation;
+                ] as IconAssociation;
 
                 expect(def.iconPath).not.to.be.empty;
               });
@@ -1243,8 +1297,8 @@ describe('ManifestBuilder: folders icons test', function () {
               );
 
               fixtFolders.supported
-                .filter((folder: IFolderExtension) => !folder.disabled)
-                .forEach((folder: IFolderExtension) => {
+                .filter((folder: FolderExtension) => !folder.disabled)
+                .forEach((folder: FolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}${
@@ -1254,7 +1308,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).to.equal(
                     `${iconsDirRelativeBasePath}/${filename}`,
@@ -1269,8 +1323,8 @@ describe('ManifestBuilder: folders icons test', function () {
               );
 
               fixtFolders.supported
-                .filter((folder: IFolderExtension) => !folder.disabled)
-                .forEach((folder: IFolderExtension) => {
+                .filter((folder: FolderExtension) => !folder.disabled)
+                .forEach((folder: FolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}_opened${
@@ -1280,7 +1334,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).to.equal(
                     `${iconsDirRelativeBasePath}/${filename}`,
@@ -1297,10 +1351,10 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -1315,10 +1369,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -1332,14 +1386,14 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -1352,14 +1406,14 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -1374,10 +1428,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}${
@@ -1387,7 +1441,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -1403,10 +1457,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
@@ -1416,7 +1470,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -1434,10 +1488,9 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -1451,10 +1504,9 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -1468,14 +1520,13 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -1488,14 +1539,13 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -1510,10 +1560,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}${
@@ -1523,7 +1573,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -1539,10 +1589,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
@@ -1552,7 +1602,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -1571,10 +1621,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1592,10 +1642,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1615,10 +1665,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1636,10 +1686,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1661,10 +1711,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1682,10 +1732,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1705,10 +1755,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1726,10 +1776,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -1962,8 +2012,8 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                 expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -1977,8 +2027,8 @@ describe('ManifestBuilder: folders icons test', function () {
             );
 
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                 expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -1991,12 +2041,12 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                 const def = manifest.vscode.iconDefinitions[
                   definition
-                ] as IIconAssociation;
+                ] as IconAssociation;
 
                 expect(def.iconPath).not.to.be.empty;
               });
@@ -2008,12 +2058,12 @@ describe('ManifestBuilder: folders icons test', function () {
               fixtFolders,
             );
             fixtFolders.supported
-              .filter((folder: IFolderExtension) => !folder.disabled)
-              .forEach((folder: IFolderExtension) => {
+              .filter((folder: FolderExtension) => !folder.disabled)
+              .forEach((folder: FolderExtension) => {
                 const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                 const def = manifest.vscode.iconDefinitions[
                   definition
-                ] as IIconAssociation;
+                ] as IconAssociation;
 
                 expect(def.iconPath).not.to.be.empty;
               });
@@ -2027,8 +2077,8 @@ describe('ManifestBuilder: folders icons test', function () {
               );
 
               fixtFolders.supported
-                .filter((folder: IFolderExtension) => !folder.disabled)
-                .forEach((folder: IFolderExtension) => {
+                .filter((folder: FolderExtension) => !folder.disabled)
+                .forEach((folder: FolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}${
@@ -2038,7 +2088,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).to.equal(
                     `${iconsDirRelativeBasePath}/${filename}`,
@@ -2053,8 +2103,8 @@ describe('ManifestBuilder: folders icons test', function () {
               );
 
               fixtFolders.supported
-                .filter((folder: IFolderExtension) => !folder.disabled)
-                .forEach((folder: IFolderExtension) => {
+                .filter((folder: FolderExtension) => !folder.disabled)
+                .forEach((folder: FolderExtension) => {
                   const filename = `${
                     constants.iconsManifest.folderTypePrefix
                   }${folder.icon}_opened${
@@ -2064,7 +2114,7 @@ describe('ManifestBuilder: folders icons test', function () {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).to.equal(
                     `${iconsDirRelativeBasePath}/${filename}`,
@@ -2081,10 +2131,10 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -2099,10 +2149,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -2116,14 +2166,14 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -2136,14 +2186,14 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
+                  (folder: FolderExtension) =>
                     !folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -2158,10 +2208,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}${
@@ -2171,7 +2221,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -2187,10 +2237,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
@@ -2200,7 +2250,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -2218,10 +2268,9 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -2235,10 +2284,9 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
 
                   expect(manifest.vscode.iconDefinitions[definition]).to.exist;
@@ -2252,14 +2300,13 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -2272,14 +2319,13 @@ describe('ManifestBuilder: folders icons test', function () {
               );
               fixtFolders.supported
                 .filter(
-                  (folder: IFolderExtension) =>
-                    folder.light && !folder.disabled,
+                  (folder: FolderExtension) => folder.light && !folder.disabled,
                 )
-                .forEach((folder: IFolderExtension) => {
+                .forEach((folder: FolderExtension) => {
                   const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
                   const def = manifest.vscode.iconDefinitions[
                     definition
-                  ] as IIconAssociation;
+                  ] as IconAssociation;
 
                   expect(def.iconPath).not.to.be.empty;
                 });
@@ -2294,10 +2340,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}${
@@ -2307,7 +2353,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -2323,10 +2369,10 @@ describe('ManifestBuilder: folders icons test', function () {
 
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const filename = `${
                       constants.iconsManifest.folderTypePrefix
                     }${folder.icon}_opened${
@@ -2336,7 +2382,7 @@ describe('ManifestBuilder: folders icons test', function () {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
                     const def = manifest.vscode.iconDefinitions[
                       definition
-                    ] as IIconAssociation;
+                    ] as IconAssociation;
 
                     expect(def.iconPath).to.equal(
                       `${iconsDirRelativeBasePath}/${filename}`,
@@ -2355,10 +2401,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -2376,10 +2422,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -2399,10 +2445,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -2420,10 +2466,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -2445,10 +2491,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -2466,10 +2512,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       !folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -2489,10 +2535,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}`;
 
                     folder.extensions.forEach((extension: string) =>
@@ -2510,10 +2556,10 @@ describe('ManifestBuilder: folders icons test', function () {
                 );
                 fixtFolders.supported
                   .filter(
-                    (folder: IFolderExtension) =>
+                    (folder: FolderExtension) =>
                       folder.light && !folder.disabled,
                   )
-                  .forEach((folder: IFolderExtension) => {
+                  .forEach((folder: FolderExtension) => {
                     const definition = `${constants.iconsManifest.definitionFolderLightPrefix}${folder.icon}_open`;
 
                     folder.extensions.forEach((extension: string) =>

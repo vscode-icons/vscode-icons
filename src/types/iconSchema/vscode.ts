@@ -1,6 +1,6 @@
-import type { IIconAssociation } from './common';
+import type { IconAssociation } from './common';
 
-export const vscodeSchema: IVSCodeIconSchema = {
+export const vscodeSchema: VSCodeIconSchema = {
   $schema: 'vscode://schemas/icon-theme',
   iconDefinitions: {
     _file: { iconPath: '' },
@@ -39,40 +39,40 @@ export const vscodeSchema: IVSCodeIconSchema = {
   hidesExplorerArrows: false,
 };
 
-export interface IVSCodeIconSchema extends IVSCodeIconMapping {
+export interface VSCodeIconSchema extends VSCodeIconMapping {
   $schema?: string;
-  iconDefinitions: IVSCodeIconDefinition;
-  light: IVSCodeIconMapping;
-  highContrast?: IVSCodeIconMapping;
+  iconDefinitions: VSCodeIconDefinition;
+  light: VSCodeIconMapping;
+  highContrast?: VSCodeIconMapping;
   hidesExplorerArrows?: boolean;
 }
 
-export interface IVSCodeIconMapping {
+export interface VSCodeIconMapping {
   rootFolder: string;
   rootFolderExpanded: string;
   file: string;
   folder: string;
   folderExpanded: string;
-  folderNames: IIconAssociation;
-  folderNamesExpanded: IIconAssociation;
-  fileExtensions: IIconAssociation;
-  fileNames: IIconAssociation;
-  languageIds: IIconAssociation;
+  folderNames: IconAssociation;
+  folderNamesExpanded: IconAssociation;
+  fileExtensions: IconAssociation;
+  fileNames: IconAssociation;
+  languageIds: IconAssociation;
 }
 
-export interface IVSCodeIconDefinition {
-  _file: IVSCodeIconPath;
-  _folder: IVSCodeIconPath;
-  _folder_open: IVSCodeIconPath;
-  _file_light: IVSCodeIconPath;
-  _folder_light: IVSCodeIconPath;
-  _folder_light_open: IVSCodeIconPath;
-  _root_folder: IVSCodeIconPath;
-  _root_folder_open: IVSCodeIconPath;
-  _root_folder_light: IVSCodeIconPath;
-  _root_folder_light_open: IVSCodeIconPath;
+export interface VSCodeIconDefinition {
+  _file: VSCodeIconPath;
+  _folder: VSCodeIconPath;
+  _folder_open: VSCodeIconPath;
+  _file_light: VSCodeIconPath;
+  _folder_light: VSCodeIconPath;
+  _folder_light_open: VSCodeIconPath;
+  _root_folder: VSCodeIconPath;
+  _root_folder_open: VSCodeIconPath;
+  _root_folder_light: VSCodeIconPath;
+  _root_folder_light_open: VSCodeIconPath;
 }
 
-export interface IVSCodeIconPath {
+export interface VSCodeIconPath {
   iconPath: string;
 }

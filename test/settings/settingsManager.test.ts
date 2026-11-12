@@ -1,4 +1,8 @@
-import type { ISettingsManager, IState, IVSCodeManager } from '../../src/types';
+import type {
+  SettingsManagerContract,
+  State,
+  VSCodeManagerContract,
+} from '../../src/types';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';
@@ -10,12 +14,12 @@ import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
-describe('SettingsManager: tests', function () {
+describe('SettingsManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
-    let settingsManager: ISettingsManager;
-    let stateMock: IState;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
+    let settingsManager: SettingsManagerContract;
+    let stateMock: State;
     let globalStateGetStub: sinon.SinonStub;
     let globalStateUpdateStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
@@ -24,7 +28,7 @@ describe('SettingsManager: tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       globalStateGetStub = sandbox.stub();
       globalStateUpdateStub = sandbox.stub();

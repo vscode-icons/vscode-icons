@@ -4,7 +4,9 @@ import type * as enums from '../types/enums';
 import langResources from '../../../lang.nls.bundle.json';
 import { constants } from '../constants';
 
-export class LanguageResourceManager implements types.ILanguageResourceManager {
+export class LanguageResourceManager
+  implements types.LanguageResourceManagerContract
+{
   private defaultLangResource: string[];
   private currentLangResource: string[];
 
@@ -26,11 +28,11 @@ export class LanguageResourceManager implements types.ILanguageResourceManager {
         if (typeof resourceKey === 'number') {
           if (this.currentLangResource.length > resourceKey) {
             // If no message is found fallback to english message
-            let message: string | types.IOSSpecific =
+            let message: string | types.OSSpecific =
               this.currentLangResource[resourceKey] ||
               this.defaultLangResource[resourceKey];
 
-            // If not a string then it's of type IOSSpecific
+            // If not a string then it's of type OSSpecific
             if (typeof message !== 'string') {
               if (Reflect.has(message, process.platform)) {
                 message = message[process.platform];

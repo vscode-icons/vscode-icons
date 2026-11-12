@@ -16,28 +16,28 @@ import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 import { vsicons } from '../fixtures/vsicons';
 
-describe('ExtensionManager: event listeners tests', function () {
+describe('ExtensionManagerContract: event listeners tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<types.IVSCodeManager>;
-    let configManagerStub: sinon.SinonStubbedInstance<types.IConfigManager>;
-    let settingsManagerStub: sinon.SinonStubbedInstance<types.ISettingsManager>;
-    let notifyManagerStub: sinon.SinonStubbedInstance<types.INotificationManager>;
-    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IIconsGenerator>;
-    let padMngStub: sinon.SinonStubbedInstance<types.IProjectAutoDetectionManager>;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<types.VSCodeManagerContract>;
+    let configManagerStub: sinon.SinonStubbedInstance<types.ConfigManagerContract>;
+    let settingsManagerStub: sinon.SinonStubbedInstance<types.SettingsManagerContract>;
+    let notifyManagerStub: sinon.SinonStubbedInstance<types.NotificationManagerContract>;
+    let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IconsGeneratorContract>;
+    let padMngStub: sinon.SinonStubbedInstance<types.ProjectAutoDetectionManagerContract>;
 
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
 
-    let extensionManager: types.IExtensionManager;
-    let vsiconsClone: types.IVSIcons;
-    let state: types.IState;
+    let extensionManager: types.ExtensionManagerContract;
+    let vsiconsClone: types.VSIcons;
+    let state: types.State;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<types.IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<types.VSCodeManagerContract>(VSCodeManager);
       sandbox.stub(vscodeManagerStub, 'context').get(() => ({
         subscriptions: [],
       }));
@@ -47,22 +47,26 @@ describe('ExtensionManager: event listeners tests', function () {
       }));
 
       configManagerStub =
-        sandbox.createStubInstance<types.IConfigManager>(ConfigManager);
+        sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =
-        sandbox.createStubInstance<types.ISettingsManager>(SettingsManager);
+        sandbox.createStubInstance<types.SettingsManagerContract>(
+          SettingsManager,
+        );
       notifyManagerStub =
-        sandbox.createStubInstance<types.INotificationManager>(
+        sandbox.createStubInstance<types.NotificationManagerContract>(
           NotificationManager,
         );
 
       iconsGeneratorStub =
-        sandbox.createStubInstance<types.IIconsGenerator>(IconsGenerator);
+        sandbox.createStubInstance<types.IconsGeneratorContract>(
+          IconsGenerator,
+        );
 
       padMngStub =
-        sandbox.createStubInstance<types.IProjectAutoDetectionManager>(
+        sandbox.createStubInstance<types.ProjectAutoDetectionManagerContract>(
           ProjectAutoDetectionManager,
         );
 

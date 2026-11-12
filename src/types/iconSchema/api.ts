@@ -1,4 +1,5 @@
-export const apiSchema: IApiIconSchema = {
+export const apiSchema: ApiIconSchema = {
+  $schema: `https://raw.githubusercontent.com/vscode-icons/vscode-icons-api/refs/heads/main/schemas/v1/schema.json`,
   files: {
     _default: '',
     extensions: {},
@@ -25,27 +26,27 @@ export const apiSchema: IApiIconSchema = {
   },
 };
 
-export type State = 'closed' | 'opened';
+export type FolderState = 'closed' | 'opened';
 
-export interface IApiIconSchema {
+export interface ApiIconSchema {
   $schema?: string;
-  files: IApiIconFileDefinitions;
-  folders: IApiIconFolderDefinitions;
-  light: IApiIconDefinitions;
+  files: ApiIconFileDefinitions;
+  folders: ApiIconFolderDefinitions;
+  light: ApiIconDefinitions;
 }
 
-export interface IApiIconFileDefinitions {
+export interface ApiIconFileDefinitions {
   _default: string;
   extensions: Record<string, string>;
   filenames: Record<string, string>;
 }
 
-export interface IApiIconFolderDefinitions {
-  [name: string]: Record<State, string>;
-  _default: Record<State, string>;
+export interface ApiIconFolderDefinitions {
+  [name: string]: Record<FolderState, string>;
+  _default: Record<FolderState, string>;
 }
 
-export interface IApiIconDefinitions {
-  files: IApiIconFileDefinitions;
-  folders: IApiIconFolderDefinitions;
+export interface ApiIconDefinitions {
+  files: ApiIconFileDefinitions;
+  folders: ApiIconFolderDefinitions;
 }

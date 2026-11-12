@@ -1,8 +1,8 @@
 import type * as types from '../types';
 import type {
-  IPackageManifest,
-  IVSCodeIconTheme,
-  IVSCodeManifest,
+  PackageManifest,
+  VSCodeIconTheme,
+  VSCodeManifest,
 } from '../types/package';
 
 import { coerce, gte, parse } from 'semver';
@@ -10,13 +10,13 @@ import { coerce, gte, parse } from 'semver';
 import packageJson from '../../../package.json';
 import { Utils } from '../utils';
 
-export class VSCodeManager implements types.IVSCodeManager {
+export class VSCodeManager implements types.VSCodeManagerContract {
   private appUserDirPath: string;
   private supportsThemeReloadVersion = '1.34.0';
 
   constructor(
-    private vscode: types.IVSCode,
-    private extensionContext: types.IVSCodeExtensionContext,
+    private vscode: types.VSCode,
+    private extensionContext: types.VSCodeExtensionContext,
   ) {
     if (!vscode) {
       throw new ReferenceError(`'vscode' not set to an instance`);
@@ -26,15 +26,15 @@ export class VSCodeManager implements types.IVSCodeManager {
     }
   }
 
-  public get context(): types.IVSCodeExtensionContext {
+  public get context(): types.VSCodeExtensionContext {
     return this.extensionContext;
   }
 
-  public get env(): types.IVSCodeEnv {
+  public get env(): types.VSCodeEnv {
     return this.vscode.env;
   }
 
-  public get commands(): types.IVSCodeCommands {
+  public get commands(): types.VSCodeCommands {
     return this.vscode.commands;
   }
 
@@ -42,27 +42,27 @@ export class VSCodeManager implements types.IVSCodeManager {
     return this.vscode.version;
   }
 
-  public get window(): types.IVSCodeWindow {
+  public get window(): types.VSCodeWindow {
     return this.vscode.window;
   }
 
-  public get workspace(): types.IVSCodeWorkspace {
+  public get workspace(): types.VSCodeWorkspace {
     return this.vscode.workspace;
   }
 
   public get supportsThemesReload(): boolean {
-    const manifest: IVSCodeManifest = packageJson as IVSCodeManifest;
+    const manifest: VSCodeManifest = packageJson as VSCodeManifest;
     const watchable: boolean =
       manifest &&
       manifest.contributes &&
       manifest.contributes.iconThemes.some(
-        (theme: IVSCodeIconTheme): boolean => theme._watch,
+        (theme: VSCodeIconTheme): boolean => theme._watch,
       );
     return gte(this.version, this.supportsThemeReloadVersion) && watchable;
   }
 
   public get isSupportedVersion(): boolean {
-    const manifest: IPackageManifest = packageJson as IPackageManifest;
+    const manifest: PackageManifest = packageJson as PackageManifest;
     const minVersion = (
       (manifest && manifest.engines && coerce(manifest.engines.vscode)) ||
       parse('1.0.0')
