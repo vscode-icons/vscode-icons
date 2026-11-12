@@ -649,6 +649,11 @@ export const extensions: IFileCollection = {
       languages: [languages.casc],
     },
     {
+      icon: 'cassandra',
+      languages: [languages.cql],
+      light: true,
+    },
+    {
       icon: 'cddl',
       languages: [languages.cddl],
     },
@@ -964,11 +969,6 @@ export const extensions: IFileCollection = {
     {
       icon: 'cppheader',
       extensions: ['hpp', 'hh', 'hxx', 'h++'],
-    },
-    {
-      icon: 'cql',
-      languages: [languages.cql],
-      light: true,
     },
     {
       icon: 'craco',
