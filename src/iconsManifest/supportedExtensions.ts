@@ -934,7 +934,6 @@ export const extensions: FileCollection = {
         'CONTRIBUTING',
       ],
       filename: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'convex',
