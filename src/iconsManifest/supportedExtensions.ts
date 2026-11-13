@@ -1562,7 +1562,7 @@ export const extensions: FileCollection = {
     {
       icon: 'esbuild',
       filenamesGlob: ['esbuild', 'esbuild.config'],
-      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
       filename: true,
     },
     {
