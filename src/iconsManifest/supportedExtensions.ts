@@ -648,6 +648,11 @@ export const extensions: FileCollection = {
       languages: [languages.casc],
     },
     {
+      icon: 'cassandra',
+      languages: [languages.cql],
+      light: true,
+    },
+    {
       icon: 'cddl',
       languages: [languages.cddl],
     },
