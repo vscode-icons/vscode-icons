@@ -609,6 +609,7 @@ export const extensions: FileCollection = {
     {
       icon: 'cabal',
       languages: [languages.cabal],
+      light: true,
     },
     {
       icon: 'caddy',
@@ -3587,6 +3588,7 @@ export const extensions: FileCollection = {
     {
       icon: 'nim',
       languages: [languages.nim],
+      light: true,
     },
     {
       icon: 'nimble',
@@ -5830,6 +5832,7 @@ export const extensions: FileCollection = {
       icon: 'vlt',
       extensions: ['vlt.json', 'vlt-lock.json'],
       filename: true,
+      light: true,
     },
     {
       icon: 'volt',
