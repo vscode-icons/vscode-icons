@@ -196,6 +196,11 @@ export const extensions: FileCollection = {
       languages: [languages.apib],
     },
     {
+      icon: 'apib2',
+      languages: [languages.apib],
+      disabled: true,
+    },
+    {
       icon: 'apl',
       languages: [languages.apl],
       light: true,
@@ -518,6 +523,12 @@ export const extensions: FileCollection = {
       icon: 'bower',
       extensions: ['.bowerrc', 'bower.json'],
       filename: true,
+    },
+    {
+      icon: 'bower2',
+      extensions: ['.bowerrc', 'bower.json'],
+      filename: true,
+      disabled: true,
     },
     {
       icon: 'brakeman',
@@ -1847,6 +1858,11 @@ export const extensions: FileCollection = {
       icon: 'fsharp',
       languages: [languages.fsharp],
     },
+    {
+      icon: 'fsharp2',
+      languages: [languages.fsharp],
+      disabled: true,
+    },
     { icon: 'fsproj', extensions: ['fsproj'] },
     {
       icon: 'fthtml',
@@ -1952,6 +1968,24 @@ export const extensions: FileCollection = {
       ],
       filename: true,
       languages: [languages.git],
+    },
+    {
+      icon: 'git2',
+      extensions: [
+        '.git',
+        '.gitattributes',
+        '.gitconfig',
+        '.gitignore',
+        '.gitmessage',
+        '.gitmodules',
+        '.gitkeep',
+        '.git-blame-ignore-revs',
+        '.mailmap',
+        '.issuetracker',
+      ],
+      filename: true,
+      languages: [languages.git],
+      disabled: true,
     },
     {
       icon: 'gitlab',
@@ -4894,6 +4928,12 @@ export const extensions: FileCollection = {
       languages: [languages.scss],
     },
     {
+      icon: 'scss2',
+      extensions: ['scssm'],
+      languages: [languages.scss],
+      disabled: true,
+    },
+    {
       icon: 'sdlang',
       languages: [languages.sdlang],
     },
@@ -5830,6 +5870,13 @@ export const extensions: FileCollection = {
       icon: 'vlt',
       extensions: ['vlt.json', 'vlt-lock.json'],
       filename: true,
+    },
+    {
+      icon: 'vlt2',
+      extensions: ['vlt.json', 'vlt-lock.json'],
+      filename: true,
+      light: true,
+      disabled: true,
     },
     {
       icon: 'volt',
