@@ -4968,8 +4968,8 @@ export const extensions: IFileCollection = {
     },
     {
       icon: 'readme',
-      extensions: ['readme', 'index'],
-      filenamesGlob: ['readme', 'index'],
+      extensions: ['readme', 'README', 'index', 'INDEX'],
+      filenamesGlob: ['readme', 'README', 'index', 'INDEX'],
       extensionsGlob: ['md', 'markdown', 'rst', 'txt'],
       filename: true,
     },
