@@ -54,7 +54,6 @@ export const extensions: FileCollection = {
       icon: 'accessibility',
       extensions: ['ACCESSIBILITY.md'],
       filename: true,
-      format: FileFormat.svg,
     },
     {
       icon: 'actionscript',
