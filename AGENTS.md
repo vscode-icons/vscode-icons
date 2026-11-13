@@ -21,47 +21,57 @@ existing icon associations.
 - **DI**: inversify
 - **Tests**: Mocha + Chai + Sinon
 - **Bundler**: Webpack
-- **Linting**: ESLint + Prettier
+- **Formatting**: Prettier
+- **JS/TS Linting**: ESLint
+- **Markdown Linting**: remark
+- **SVG Linting**: SVGLint
+- **SVG Optimization**: SVGO
 - **Node**: >= 22.18.0
 
 ## Setup & Verification
 
 ```bash
-npm install                # Install dependencies
-npm test                   # Compile + run tests (validates all icon entries)
-npm run lint               # ESLint check
-npm run lint:md            # remark check
-npm run format             # Prettier + ESLint fix + remark fix
-npm run compile:dev        # Compile TypeScript (dev, with tests)
-npm run build:dev          # Compile + generate icon manifests
+npm install            # Install dependencies
+npm test               # Runs tests (compiles and validates all icon entries)
+npm run check          # Perform format and linting (with fixes where applicable)
+npm run compile:dev    # Compile TypeScript (development mode)
+npm run build:dev      # Generate icon manifests package (development mode)
+```
+
+`npm run check` performs the following tasks:
+
+```bash
+npm run format         # Prettier fix
+npm run lint           # ESLint fix
+npm run lint:md        # remark fix
+npm run lint:svgo      # SVGO optimization
+npm run lint:svg       # SVGLint check
 ```
 
 ## Code Style
 
 - Single quotes, trailing commas (always-multiline), arrow parens as-needed
 - Max line length: 120 characters
-- Interfaces prefixed with `I` (e.g., `IFileExtension`)
+- Interfaces use PascalCase without a prefix (e.g., `FileExtension`)
 - Explicit member accessibility (public/private/protected)
 - No `console.log` (use `console.info` or `console.error`)
-- Pre-commit hooks enforce Prettier + ESLint via lint-staged
+- Pre-commit hooks enforce Prettier + ESLint + SVGLint via lint-staged
 
 ## Project Structure
 
 ```
-icons/                              # SVG icon files (~1475 files)
+icons/                              # SVG icon files (1700+ files)
 src/
   iconsManifest/
     supportedExtensions.ts          # File icon definitions (main config)
     supportedFolders.ts             # Folder icon definitions
     languages.ts                    # Language ID mappings
-    manifestBuilder.ts              # Builds VSCode + Zed manifests
+    manifestBuilder.ts              # Builds VSCode + Zed + API manifests
     iconsGenerator.ts               # Orchestrates manifest generation
     customsMerger.ts                # Merges user customizations
-  models/extensions/
-    fileExtension.ts                # IFileExtension interface
-    folderExtension.ts              # IFolderExtension interface
-    fileFormat.ts                   # FileFormat enum (svg, png, etc.)
-  models/language/language.ts       # ILanguage interface
+  types/
+    vsicons.ts                      # FileExtension, FolderExtension, Language interfaces
+    enums.ts                        # FileFormat enum (svg, png)
 test/                               # Test files (mirrors src/)
   iconsManifest/
     specsExtensions.test.ts         # Validates all file icon entries
@@ -72,7 +82,7 @@ test/                               # Test files (mirrors src/)
 
 - **`src/iconsManifest/supportedExtensions.ts`**: The `supported` array starts
   at **line 8**. Entries are alphabetically ordered by `icon` name (first entry:
-  `access`, last: \~`knip`). New entries must be inserted in alphabetical order
+  `access`, last: `zsh`). New entries must be inserted in alphabetical order
   within this array.
 - **`src/iconsManifest/supportedFolders.ts`**: The `supported` array starts at
   **line 8**. Entries are alphabetically ordered by `icon` name (first:
@@ -90,13 +100,13 @@ test/                               # Test files (mirrors src/)
 
    ```typescript
    // By filename (e.g., config files):
-   { icon: 'name', extensions: ['.configrc'], filename: true, format: FileFormat.svg },
+   { icon: 'name', extensions: ['.configrc'], filename: true },
 
    // By file extension (NO leading dot):
-   { icon: 'name', extensions: ['ext1', 'ext2'], format: FileFormat.svg },
+   { icon: 'name', extensions: ['ext1', 'ext2'] },
 
    // By language ID:
-   { icon: 'name', extensions: [], languages: [languages.langName], format: FileFormat.svg },
+   { icon: 'name', languages: [languages.langName] },
 
    // With filename glob combinations:
    {
@@ -105,7 +115,6 @@ test/                               # Test files (mirrors src/)
      filenamesGlob: ['.babelrc', 'babel.config'],
      extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
      filename: true,
-     format: FileFormat.svg,
    },
    ```
 
@@ -129,7 +138,7 @@ test/                               # Test files (mirrors src/)
    order**:
 
    ```typescript
-   { icon: 'name', extensions: ['foldername', '.foldername'], format: FileFormat.svg },
+   { icon: 'name', extensions: ['foldername', '.foldername'] },
    ```
 
 3. Optional: Create light variants `folder_type_light_{name}.svg` +
@@ -145,6 +154,12 @@ In `src/iconsManifest/languages.ts`:
 langName: { ids: 'vscode-language-id', knownExtensions: ['ext'] },
 ```
 
+or
+
+```typescript
+langName: { ids: ['vscode-language-id'], knownExtensions: ['ext'] },
+```
+
 - `ids`: VS Code language ID (string or string\[])
 - `knownExtensions`: File extensions for Zed editor support
 - `knownFilenames`: Specific filenames for Zed editor support
@@ -156,35 +171,35 @@ Then reference it in `supportedExtensions.ts` via the `languages` property.
 - Adding a leading dot to file extensions when `filename` is not `true`
 - Forgetting the `_opened.svg` variant for folder icons
 - Not placing the entry in alphabetical order
-- Missing `format: FileFormat.svg` property
 - Creating duplicate icon entries
-- Empty `extensions` array without `languages` or glob alternatives
+- Empty `extensions` array
+- Non-present `extensions` array without `languages` or glob alternatives
 - Forgetting light theme SVG when setting `light: true`
 
 ## Key Interfaces
 
 ```typescript
-interface IFileExtension {
+interface FileExtension {
   icon: string; // Maps to file_type_{icon}.svg
   extensions?: string[]; // File extensions or filenames
-  format: FileFormat; // Always FileFormat.svg
+  format?: FileFormat | string; // Default is FileFormat.svg or 'svg'
   filename?: boolean; // true = extensions are full filenames
-  languages?: ILanguage[]; // VS Code language associations
+  languages?: Language[]; // VS Code language associations
   light?: boolean; // Requires file_type_light_{icon}.svg
   disabled?: boolean; // Hidden by default
   filenamesGlob?: string[]; // Glob filename patterns
   extensionsGlob?: string[]; // Glob extension patterns
 }
 
-interface IFolderExtension {
+interface FolderExtension {
   icon: string; // Maps to folder_type_{icon}.svg
   extensions?: string[]; // Folder names to match
-  format: FileFormat; // Always FileFormat.svg
+  format?: FileFormat | string; // Default is FileFormat.svg or 'svg'
   light?: boolean; // Requires light theme variants
   disabled?: boolean; // Hidden by default
 }
 
-interface ILanguage {
+interface Language {
   ids: string | string[]; // VS Code language ID(s)
   knownExtensions?: string[]; // For Zed editor
   knownFilenames?: string[]; // For Zed editor
@@ -200,9 +215,21 @@ Tests automatically validate:
 - No leading dots on non-filename extensions
 - Folder icons have both closed and opened variants
 - Light theme entries have corresponding light SVG files
-- Extensions array is not empty (unless languages or globs are set)
+- No empty `extensions`, `languages`, `filenamesGlob` or `extensionsGlob` arrays
+  (omit the property instead)
+- Entries without `extensions` provide `languages` or glob alternatives
 
 **Always run `npm test` before submitting changes.**
+
+## SVG Icon Optimization & Linting
+
+```bash
+npm run optimize-icon ./icons/<filename>.svg
+```
+
+```bash
+npm run lint:svg ./icons/<filename>.svg
+```
 
 ## Commit Convention
 

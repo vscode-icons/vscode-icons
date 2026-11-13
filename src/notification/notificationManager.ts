@@ -1,16 +1,16 @@
 import type {
-  ILanguageResourceManager,
-  INotificationManager,
-  IVSCodeManager,
   LangResourceLike,
-} from '../models';
+  LanguageResourceManagerContract,
+  NotificationManagerContract,
+  VSCodeManagerContract,
+} from '../types';
 
 import { format } from 'util';
 
-export class NotificationManager implements INotificationManager {
+export class NotificationManager implements NotificationManagerContract {
   constructor(
-    private vscodeManager: IVSCodeManager,
-    private i18nManager: ILanguageResourceManager,
+    private vscodeManager: VSCodeManagerContract,
+    private i18nManager: LanguageResourceManagerContract,
   ) {}
 
   public async notifyInfo(
@@ -57,14 +57,14 @@ export class NotificationManager implements INotificationManager {
     if (typeof message === 'string' && message.includes(' ')) {
       const matchesLength: number = message.match(/%s/g).length;
       const sItems: LangResourceLike[] = items.splice(0, matchesLength);
-      const msgs: string[] = sItems.map((sItem: LangResourceLike) =>
+      const msgs: string[] = sItems.map((sItem: LangResourceLike): string =>
         this.i18nManager.localize(sItem),
       );
       msg = format(message, ...msgs);
     } else {
       msg = this.i18nManager.localize(message);
     }
-    const msgItems: string[] = items.map((item: LangResourceLike) =>
+    const msgItems: string[] = items.map((item: LangResourceLike): string =>
       this.i18nManager.localize(item),
     );
     return { msg, msgItems };

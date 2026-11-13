@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2022"],
-    "module": "node16",
+    "module": "node20",
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
