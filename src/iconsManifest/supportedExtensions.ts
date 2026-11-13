@@ -1955,6 +1955,12 @@ export const extensions: FileCollection = {
       languages: [languages.git],
     },
     {
+      icon: 'githubactions',
+      filenamesGlob: ['action'],
+      extensionsGlob: ['yml', 'yaml'],
+      filename: true,
+    },
+    {
       icon: 'gitlab',
       extensions: ['.gitlab-ci.yml'],
       filename: true,
