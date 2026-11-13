@@ -59,6 +59,39 @@
         "${workspaceFolder}/out/src/**/*.js"
       ],
       "preLaunchTask": "npm: build - dev"
+    },
+    {
+      "name": "Debug Build",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/out/src/tools/build.js",
+      "console": "integratedTerminal",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "preLaunchTask": "npm: build - dev"
+    },
+    {
+      "name": "Debug Bundle",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/out/src/tools/bundle.js",
+      "console": "integratedTerminal",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "preLaunchTask": "npm: build - dev"
+    },
+    {
+      "name": "Debug SVGO Check",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/out/src/tools/svgoCheck.js",
+      "console": "integratedTerminal",
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "preLaunchTask": "npm: build - dev"
     }
   ]
 }

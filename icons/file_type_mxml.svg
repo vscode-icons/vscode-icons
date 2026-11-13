@@ -1,14 +1,1 @@
-<svg width="32" height="32" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><style>.accent {
-                fill: #C41718;
-                font-family: Arial, Helvetica, sans-serif;
-                font-weight: 700;
-                font-size: 38px;
-            }
-
-            .stroke {
-                fill: none;
-                stroke: #C41718;
-                stroke-width: 6;
-                stroke-linecap: round;
-                stroke-linejoin: round;
-            }</style></defs><g transform="matrix(.33594 0 0 .33594 1.7227 2.2266)"><polyline class="stroke" points="18 21 4 41 18 61"/><polyline class="stroke" points="67 21 81 41 67 61"/><text class="accent" x="18" y="51">Mx</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="none" stroke="#c41718" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.016" d="m7.77 9.281-4.704 6.72 4.704 6.718M24.23 9.281l4.704 6.72-4.703 6.718"/><text x="18" y="51" fill="#c41718" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" transform="translate(1.723 2.227)scale(.33594)">Mx</text></svg>

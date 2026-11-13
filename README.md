@@ -1,13 +1,14 @@
 <div align="center">
-
-### Bring real icons to your [Visual Studio Code](https://code.visualstudio.com)
-
-<p><small>minimum supported version: <strong>1.104.3</strong></small></p>
-
-<br/>
-
-![demo](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif)
-
+  <h3>
+    Bring real icons to your
+    <a href="https://code.visualstudio.com">Visual Studio Code</a>
+  </h3>
+  <p><small>minimum supported version: <strong>1.104.3</strong></small></p>
+  <br />
+  <img
+    src="https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/images/screenshot.gif"
+    alt="demo"
+  />
 </div>
 
 ---
@@ -141,6 +142,10 @@ We like to express our “Special Thanks” to:
 
 ## Related projects
 
+- [vscode-icons-api](https://github.com/vscode-icons/vscode-icons-api) by the
+  [vscode-icons dev team](https://github.com/orgs/vscode-icons/teams/development).
+- [vscode-icons-web](https://github.com/vscode-icons/vscode-icons-web) by the
+  [vscode-icons dev team](https://github.com/orgs/vscode-icons/teams/development).
 - [folder-icon-maker](https://github.com/vscode-icons/folder-icon-maker) by
   [@NaufalK25](https://github.com/NaufalK25) make
   [`vscode-icons` folders](https://vscode-icons.github.io/folder-icon-maker/)

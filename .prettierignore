@@ -9,3 +9,4 @@ icons/
 images/
 !.prettierrc
 !.nrcrc
+!.github/

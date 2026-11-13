@@ -1,25 +1,25 @@
 import type {
-  ISettingsManager,
-  IState,
-  IVSCodeManager,
-} from '../../src/models';
+  SettingsManagerContract,
+  State,
+  VSCodeManagerContract,
+} from '../../src/types';
 
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 
 import { ErrorHandler } from '../../src/common/errorHandler';
 import { constants } from '../../src/constants';
-import { ExtensionStatus } from '../../src/models';
 import { SettingsManager } from '../../src/settings/settingsManager';
+import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
 
-describe('SettingsManager: tests', function () {
+describe('SettingsManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let vscodeManagerStub: sinon.SinonStubbedInstance<IVSCodeManager>;
-    let settingsManager: ISettingsManager;
-    let stateMock: IState;
+    let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
+    let settingsManager: SettingsManagerContract;
+    let stateMock: State;
     let globalStateGetStub: sinon.SinonStub;
     let globalStateUpdateStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
@@ -28,7 +28,7 @@ describe('SettingsManager: tests', function () {
       sandbox = sinon.createSandbox();
 
       vscodeManagerStub =
-        sandbox.createStubInstance<IVSCodeManager>(VSCodeManager);
+        sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       globalStateGetStub = sandbox.stub();
       globalStateUpdateStub = sandbox.stub();
@@ -46,7 +46,7 @@ describe('SettingsManager: tests', function () {
 
       stateMock = {
         version: '0.0.0',
-        status: ExtensionStatus.deactivated,
+        status: enums.ExtensionStatus.deactivated,
         welcomeShown: false,
       };
     });
@@ -95,7 +95,7 @@ describe('SettingsManager: tests', function () {
       globalStateGetStub.returns(stateMock);
       globalStateUpdateStub.resolves();
 
-      const status = ExtensionStatus.activated;
+      const status = enums.ExtensionStatus.activated;
 
       const state = await settingsManager.updateStatus(status);
 

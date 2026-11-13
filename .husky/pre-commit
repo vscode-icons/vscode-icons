@@ -3,6 +3,4 @@ if [ "$CI" = "true" ]; then
   exit 0
 fi
 
-. "$(dirname -- "$0")/_/husky.sh"
-
 npx lint-staged
