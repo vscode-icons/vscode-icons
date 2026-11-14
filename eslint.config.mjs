@@ -218,6 +218,43 @@ export default defineConfig(
       'src/iconsManifest/supportedFolders.ts',
     ],
     rules: {
+      'perfectionist/sort-objects': [
+        'error',
+        {
+          customGroups: [
+            { elementNamePattern: '^icon$', groupName: 'icon' },
+            { elementNamePattern: '^extensions$', groupName: 'extensions' },
+            {
+              elementNamePattern: '^filenamesGlob$',
+              groupName: 'filenamesGlob',
+            },
+            {
+              elementNamePattern: '^extensionsGlob$',
+              groupName: 'extensionsGlob',
+            },
+            { elementNamePattern: '^filename$', groupName: 'filename' },
+            { elementNamePattern: '^languages$', groupName: 'languages' },
+            { elementNamePattern: '^light$', groupName: 'light' },
+            { elementNamePattern: '^disabled$', groupName: 'disabled' },
+          ],
+          groups: [
+            'icon',
+            'extensions',
+            'filenamesGlob',
+            'extensionsGlob',
+            'filename',
+            'languages',
+            'light',
+            'disabled',
+          ],
+          newlinesBetween: 0,
+          newlinesInside: 0,
+          useConfigurationIf: {
+            matchesAstSelector:
+              'Property[key.name="supported"] > ArrayExpression > ObjectExpression',
+          },
+        },
+      ],
       // Entries start with `icon`, so sorting by element text sorts by icon name.
       'perfectionist/sort-arrays': [
         'error',
