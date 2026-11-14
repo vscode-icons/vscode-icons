@@ -74,6 +74,16 @@ describe('Bundle: tests', function () {
         expect(logErrorStub.called).to.be.false;
       });
 
+      it(`stays in development when 'production' is not a script option`, async function () {
+        sandbox
+          .stub(process, 'argv')
+          .value(['node', '/home/me/production/repo/out/src/tools/bundle.js']);
+
+        await bundle();
+
+        expect(constants.environment.production).to.be.false;
+      });
+
       context(`changes environment to production when`, function () {
         context(`using flag`, function () {
           let argvStub: sinon.SinonStub;
@@ -90,7 +100,7 @@ describe('Bundle: tests', function () {
           });
 
           it(`'production'`, async function () {
-            argvStub.value(['--production']);
+            argvStub.value(['node', 'script', '--production']);
 
             await bundle();
 
