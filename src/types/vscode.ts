@@ -6,6 +6,7 @@ export interface VSCode {
   version: string;
   window: VSCodeWindow;
   workspace: VSCodeWorkspace;
+  Uri: VSCodeUriStatic;
 }
 
 export interface VSCodeCancellationToken {
@@ -47,6 +48,7 @@ export interface VSCodeDisposable {
 export interface VSCodeEnv {
   appName: string;
   language: string;
+  openExternal(target: VSCodeUri): Thenable<boolean>;
 }
 
 export interface VSCodeExtensionContext {
@@ -68,6 +70,7 @@ export interface VSCodeManagerContract {
   isSupportedVersion: boolean;
   getWorkspacePaths(): string[];
   getAppUserDirPath(): string;
+  openExternal(url: string): Thenable<boolean>;
 }
 
 export interface VSCodeMemento {
@@ -93,6 +96,10 @@ export interface VSCodeUri {
   }): VSCodeUri;
   toString(skipEncoding?: boolean): string;
   toJSON(): unknown;
+}
+
+export interface VSCodeUriStatic {
+  parse(value: string): VSCodeUri;
 }
 
 export interface VSCodeWindow {
