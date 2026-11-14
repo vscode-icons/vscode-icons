@@ -90,8 +90,9 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       this.vscodeManager.context.subscriptions.push(
         this.vscodeManager.commands.registerCommand(
           command.command,
-          (Reflect.get(this, command.callbackName) as CallableFunction) ||
-            ((): void => void 0),
+          (Reflect.get(this, command.callbackName) as (
+            ...args: unknown[]
+          ) => unknown) || ((): void => void 0),
           this,
         ),
       ),
@@ -269,7 +270,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.angular,
       enums.CommandNames.ngPreset,
       false,
-      enums.ConfigurationTarget.Workspace,
+      enums.VSCodeConfigurationTarget.Workspace,
     );
   }
 
@@ -279,7 +280,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.nestjs,
       enums.CommandNames.nestPreset,
       false,
-      enums.ConfigurationTarget.Workspace,
+      enums.VSCodeConfigurationTarget.Workspace,
     );
   }
 
@@ -289,7 +290,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.jsOfficial,
       enums.CommandNames.jsPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -299,7 +300,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.tsOfficial,
       enums.CommandNames.tsPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -309,7 +310,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.reactjsOfficial,
       enums.CommandNames.reactjsPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -319,7 +320,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.reacttsOfficial,
       enums.CommandNames.reacttsPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -329,7 +330,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.jsonOfficial,
       enums.CommandNames.jsonPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -339,7 +340,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.yamlOfficial,
       enums.CommandNames.yamlPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -349,7 +350,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.hideFolders,
       enums.CommandNames.hideFoldersPreset,
       true,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -359,7 +360,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.foldersAllDefaultIcon,
       enums.CommandNames.foldersAllDefaultIconPreset,
       true,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -369,7 +370,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.hideExplorerArrows,
       enums.CommandNames.hideExplorerArrowsPreset,
       true,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -415,7 +416,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       await this.configManager.updatePreset(
         enums.PresetNames[preset],
         true,
-        enums.ConfigurationTarget.Workspace,
+        enums.VSCodeConfigurationTarget.Workspace,
       );
       this.handleUpdatePreset(callback, cbArgs);
     };
@@ -543,7 +544,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
     preset: enums.PresetNames,
     command: enums.CommandNames,
     reverseAction: boolean,
-    configurationTarget: enums.ConfigurationTarget | boolean,
+    configurationTarget: types.ConfigurationTarget | boolean | null,
   ): Promise<void> {
     const presetName = enums.PresetNames[preset];
     const commandName = enums.CommandNames[command];

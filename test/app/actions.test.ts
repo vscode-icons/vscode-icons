@@ -222,7 +222,7 @@ describe('ExtensionManagerContract: actions tests', function () {
             enums.PresetNames.tsOfficial,
             enums.CommandNames.tsPreset,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           );
 
           expect(
@@ -240,7 +240,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               [
                 enums.PresetNames[enums.PresetNames.tsOfficial],
                 toggledValue,
-                enums.ConfigurationTarget.Global,
+                enums.VSCodeConfigurationTarget.Global,
               ],
             ),
           ).to.be.true;
@@ -258,7 +258,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               enums.PresetNames.hideFolders,
               enums.CommandNames.hideFoldersPreset,
               true,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             );
 
             expect(
@@ -276,7 +276,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                 [
                   enums.PresetNames[enums.PresetNames.hideFolders],
                   toggledValue,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -291,7 +291,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               enums.PresetNames.hideFolders,
               enums.CommandNames.hideFoldersPreset,
               true,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             );
 
             expect(
@@ -309,7 +309,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                 [
                   enums.PresetNames[enums.PresetNames.hideFolders],
                   toggledValue,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -328,7 +328,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               enums.PresetNames.jsonOfficial,
               enums.CommandNames.jsonPreset,
               false,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             );
 
             expect(
@@ -346,7 +346,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                 [
                   enums.PresetNames[enums.PresetNames.jsonOfficial],
                   toggledValue,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -361,7 +361,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               enums.PresetNames.jsonOfficial,
               enums.CommandNames.jsonPreset,
               false,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             );
 
             expect(
@@ -379,7 +379,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                 [
                   enums.PresetNames[enums.PresetNames.jsonOfficial],
                   toggledValue,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -399,7 +399,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                   enums.PresetNames.jsOfficial,
                   undefined,
                   false,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 );
               } catch (error) {
                 expect(error).to.match(/undefinedEnabled is not valid/);
@@ -415,7 +415,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                   enums.PresetNames.jsOfficial,
                   undefined,
                   false,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 );
               } catch (error) {
                 expect(error).to.match(/undefinedDisabled is not valid/);

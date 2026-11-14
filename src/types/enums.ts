@@ -1,3 +1,11 @@
+import type { ConfigurationTarget } from './vscode';
+
+export const VSCodeConfigurationTarget = {
+  Global: 1 as ConfigurationTarget,
+  Workspace: 2 as ConfigurationTarget,
+  WorkspaceFolder: 3 as ConfigurationTarget,
+};
+
 export enum CommandNames {
   activateIcons,
   regenerateIcons,
@@ -14,12 +22,6 @@ export enum CommandNames {
   foldersAllDefaultIconPreset,
   hideExplorerArrowsPreset,
   yamlPreset,
-}
-
-export enum ConfigurationTarget {
-  Global = 1,
-  Workspace = 2,
-  WorkspaceFolder = 3,
 }
 
 export enum ExtensionStatus {
