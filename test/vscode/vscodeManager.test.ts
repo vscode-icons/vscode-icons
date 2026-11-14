@@ -69,26 +69,6 @@ describe('VSCodeManagerContract: tests', function () {
       expect(vscodeManager.workspace).to.equal(vscode.workspace);
     });
 
-    context(`function 'supportsThemesReload'`, function () {
-      context(`when editor theme reload`, function () {
-        context(`is NOT supported`, function () {
-          it(`returns 'false'`, function () {
-            vscode.version = '1.33.0';
-
-            expect(vscodeManager.supportsThemesReload).to.be.false;
-          });
-
-          context(`is supported`, function () {
-            it(`returns 'true'`, function () {
-              vscode.version = '1.34.0';
-
-              expect(vscodeManager.supportsThemesReload).to.be.true;
-            });
-          });
-        });
-      });
-    });
-
     context(`function 'isSupportedVersion'`, function () {
       context(`when editor version`, function () {
         context(`is NOT supported`, function () {
