@@ -1,6 +1,6 @@
+import { glob } from 'node:fs/promises';
 import path from 'path';
 
-import * as glob from 'glob';
 import Mocha from 'mocha';
 
 export async function run(testsRoot: string): Promise<void> {
@@ -11,12 +11,9 @@ export async function run(testsRoot: string): Promise<void> {
   });
   try {
     // Add files into Mocha
-    const files: string[] = await glob.glob('**/*.test.js', {
-      cwd: testsRoot,
-    });
-    files.forEach((file: string): Mocha =>
-      mocha.addFile(path.join(testsRoot, file)),
-    );
+    for await (const file of glob('**/*.test.js', { cwd: testsRoot })) {
+      mocha.addFile(path.join(testsRoot, file));
+    }
     // Run the tests
     await new Promise<void>((resolve, reject): void => {
       mocha.run((failures: number): void => {
