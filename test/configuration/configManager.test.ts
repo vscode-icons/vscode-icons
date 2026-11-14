@@ -8,7 +8,6 @@ import os from 'os';
 import path from 'path';
 
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import { ErrorHandler } from '../../src/common/errorHandler';
@@ -65,9 +64,9 @@ describe('ConfigManagerContract: tests', function () {
         workspaceValue: undefined,
       });
       updateStub = sandbox.stub().resolves();
-      vsiconsClone = cloneDeep(vsicons);
+      vsiconsClone = structuredClone(vsicons);
       getConfigurationStub = sandbox.stub().returns({
-        vsicons: vsiconsClone,
+        ...vsiconsClone,
         get: getStub,
         inspect: inspectStub,
         update: updateStub,

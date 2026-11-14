@@ -1,7 +1,5 @@
 import type * as types from '../types';
 
-import { cloneDeep, sortBy, sortedUniq } from 'lodash';
-
 import { existsAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
@@ -34,7 +32,7 @@ export class ManifestBuilder {
       true, // includeDotSlashPrefix
     );
 
-    const vscSchema = cloneDeep(defaultVSCodeSchema);
+    const vscSchema = structuredClone(defaultVSCodeSchema);
 
     await this.configureVSCodeIconDefinitions(files, folders, vscSchema);
 
@@ -177,7 +175,7 @@ export class ManifestBuilder {
       return defaultApiSchema;
     }
 
-    const apiSchema = cloneDeep(defaultApiSchema);
+    const apiSchema = structuredClone(defaultApiSchema);
 
     // set the default and root icons
     // dark theme
@@ -219,7 +217,7 @@ export class ManifestBuilder {
       return defaultZedSchema;
     }
 
-    const zedSchema = cloneDeep(defaultZedSchema);
+    const zedSchema = structuredClone(defaultZedSchema);
 
     for (const themeIndex of Object.values(constants.zed.dark_themes)) {
       zedSchema.themes[themeIndex].directory_icons.collapsed =
@@ -620,9 +618,12 @@ export class ManifestBuilder {
         break;
     }
 
-    return sortedUniq(
-      sortBy(collection, (item: types.FileExtension): string => item.icon),
-    ).reduce(
+    const sortedCollection = this.sortByIcon<types.FileExtension>(collection);
+    const uniqueCollection = sortedCollection.filter(
+      (item: types.FileExtension, index: number): boolean =>
+        index === 0 || item !== sortedCollection[index - 1],
+    );
+    return uniqueCollection.reduce(
       async (previous, current): Promise<types.BuildFiles> => {
         const old = await previous;
         const defs = old.defs;
@@ -770,10 +771,7 @@ export class ManifestBuilder {
           (folder: types.FolderExtension): boolean =>
             !folder.disabled && !!folder.icon,
         );
-    return sortBy(
-      collection,
-      (item: types.FolderExtension): string => item.icon,
-    ).reduce(
+    return this.sortByIcon<types.FolderExtension>(collection).reduce(
       async (previous, current): Promise<types.BuildFolders> => {
         const old = await previous;
         const defs = old.defs;
@@ -886,5 +884,11 @@ export class ManifestBuilder {
     const relativePath = await Utils.getRelativePath('.', folderPath, false);
     const filePath = Utils.pathUnixJoin(relativePath, filename);
     return existsAsync(filePath);
+  }
+
+  private static sortByIcon<T extends types.Extension>(collection: T[]): T[] {
+    return [...collection].sort((left: T, right: T): number =>
+      left.icon < right.icon ? -1 : left.icon > right.icon ? 1 : 0,
+    );
   }
 }

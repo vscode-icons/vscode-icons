@@ -8,9 +8,8 @@ import type {
   VSIcons,
 } from '../types';
 
+import { isDeepStrictEqual } from 'node:util';
 import { dirname, isAbsolute, resolve } from 'path';
-
-import { cloneDeep, isEqual, unionWith } from 'lodash';
 
 import { ErrorHandler } from '../common/errorHandler';
 import { existsAsync, readdirAsync } from '../common/fsAsync';
@@ -61,26 +60,23 @@ export class ConfigManager implements ConfigManagerContract {
    */
   public get vsicons(): VSIcons {
     // ALWAYS use 'getConfiguration' to get a fresh copy of the `vsicons` configurations
-    const mergedConfig: VSIcons = cloneDeep<VSIcons>(
-      this.vscodeManager.workspace.getConfiguration()[
-        constants.vsicons.name
-      ] as VSIcons,
-    );
+    const config: VSCodeWorkspaceConfiguration =
+      this.vscodeManager.workspace.getConfiguration(constants.vsicons.name);
+    // VS Code returns readonly proxies, which `structuredClone` can't clone
+    const mergedConfig = JSON.parse(JSON.stringify(config)) as VSIcons;
     const files: VSCodePreset<FileExtension[]> = this.configuration.inspect<
       FileExtension[]
     >(constants.vsicons.associations.filesSetting);
-    mergedConfig.associations.files = unionWith<FileExtension>(
+    mergedConfig.associations.files = ConfigManager.mergeUnique(
       files.workspaceValue,
       files.globalValue,
-      isEqual,
     );
     const folders: VSCodePreset<FolderExtension[]> = this.configuration.inspect<
       FolderExtension[]
     >(constants.vsicons.associations.foldersSetting);
-    mergedConfig.associations.folders = unionWith<FolderExtension>(
+    mergedConfig.associations.folders = ConfigManager.mergeUnique(
       folders.workspaceValue,
       folders.globalValue,
-      isEqual,
     );
     return mergedConfig;
   }
@@ -222,6 +218,16 @@ export class ConfigManager implements ConfigManagerContract {
     return source;
   }
 
+  private static mergeUnique<T>(workspace: T[] = [], global: T[] = []): T[] {
+    const all = [...workspace, ...global];
+    return all.filter(
+      (item: T, index: number): boolean =>
+        all.findIndex((candidate: T): boolean =>
+          isDeepStrictEqual(candidate, item),
+        ) === index,
+    );
+  }
+
   public updateVSIconsConfigState(): void {
     if (!this.vscodeManager.supportsThemesReload) {
       return;
@@ -250,7 +256,7 @@ export class ConfigManager implements ConfigManagerContract {
         );
     const a = filter(this.initVSIconsConfig, sections);
     const b = filter(currentConfig, sections);
-    return !isEqual(a, b);
+    return !isDeepStrictEqual(a, b);
   }
 
   public async getCustomIconsDirPath(dirPath: string): Promise<string> {
