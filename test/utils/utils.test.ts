@@ -1,8 +1,6 @@
 import type { ChildProcess } from 'child_process';
-import type { Stats } from 'fs';
 
 import os from 'os';
-import path from 'path';
 
 import { expect } from 'chai';
 import proxyq from 'proxyquire';
@@ -19,11 +17,17 @@ describe('Utils: tests', function () {
 
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let existsAsyncStub: sinon.SinonStub;
+    let fsAsyncStub: (
+      name: Exclude<keyof typeof fsAsync, 'existsAsync'>,
+    ) => sinon.SinonStub;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-      existsAsyncStub = sandbox.stub(fsAsync, 'existsAsync').resolves();
+      fsAsyncStub = (name: Exclude<keyof typeof fsAsync, 'existsAsync'>) => {
+        const stub = sandbox.stub();
+        sandbox.stub(fsAsync, name).get(() => stub);
+        return stub;
+      };
     });
 
     afterEach(function () {
@@ -105,105 +109,6 @@ describe('Utils: tests', function () {
         expect(Utils.fileFormatToString(2 as enums.FileFormat)).to.equal(
           '.svg',
         );
-      });
-    });
-
-    context(`the 'createDirectoryRecursively' function`, function () {
-      context('creates all directories asynchronously', function () {
-        context(`when the process platform is`, function () {
-          let pathSepStub: sinon.SinonStub;
-          let mkdirAsyncStub: sinon.SinonStub;
-
-          beforeEach(function () {
-            pathSepStub = sandbox.stub(path, 'sep');
-            mkdirAsyncStub = sandbox.stub(fsAsync, 'mkdirAsync').resolves();
-          });
-
-          const testCase = async (
-            directoryPath: string,
-            dirExists: boolean,
-            expectedCounts: number,
-          ): Promise<void> => {
-            const fileCheck = existsAsyncStub.callsFake(
-              (dirPath: string) =>
-                dirExists || directoryPath.split(path.sep).includes(dirPath),
-            );
-            const createDirectory = mkdirAsyncStub.resolves();
-
-            fileCheck.resetHistory();
-            createDirectory.resetHistory();
-
-            await Utils.createDirectoryRecursively(directoryPath);
-
-            expect(fileCheck.callCount).to.be.equal(
-              dirExists ? expectedCounts + 2 : expectedCounts,
-            );
-            expect(createDirectory.callCount).to.equal(expectedCounts);
-          };
-
-          it('win32 (windows)', async function () {
-            pathSepStub.value('\\');
-
-            // Directory Exists
-            await testCase('path\\to', true, 0);
-
-            // Create Directory
-            // - Relative path
-            await testCase('.\\path', false, 2);
-
-            // - Absolute path
-            await testCase('C:\\path\\to', false, 3);
-          });
-
-          it('*nix', async function () {
-            pathSepStub.value('/');
-
-            // Directory Exists
-            await testCase('path/to', true, 0);
-
-            // Create Directory
-            // - Relative path
-            await testCase('path/to', false, 2);
-
-            // - Absolute path
-            await testCase('/path/to', false, 3);
-          });
-        });
-      });
-    });
-
-    context(`the 'deleteDirectoryRecursively' function`, function () {
-      let readdirAsyncStub: sinon.SinonStub;
-
-      it('deletes a directory and all subdirectories asynchronously', async function () {
-        readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync').resolves();
-        const directoryPath = '/path/to';
-        const lstatsAsyncStub = sandbox.stub(fsAsync, 'lstatAsync').resolves();
-        const fileCheck = existsAsyncStub
-          .onFirstCall()
-          .resolves(true)
-          .onSecondCall()
-          .resolves(false);
-        const readDirectory = readdirAsyncStub.resolves(['dir', 'file.txt']);
-        const lstats = lstatsAsyncStub
-          .onFirstCall()
-          .resolves({
-            isDirectory: () => true,
-          } as Stats)
-          .onSecondCall()
-          .resolves({
-            isDirectory: () => false,
-          } as Stats);
-        const deleteFile = sandbox.stub(fsAsync, 'unlinkAsync').resolves();
-        const removeDirectory = sandbox.stub(fsAsync, 'rmdirAsync').resolves();
-
-        await Utils.deleteDirectoryRecursively(directoryPath);
-
-        expect(fileCheck.calledTwice).to.be.true;
-        expect(readDirectory.calledOnce).to.be.true;
-        expect(lstats.calledTwice).to.be.true;
-        expect(deleteFile.calledOnce).to.be.true;
-        expect(removeDirectory.calledOnce).to.be.true;
       });
     });
 
@@ -438,8 +343,8 @@ describe('Utils: tests', function () {
       let replacerStub: sinon.SinonStub;
 
       beforeEach(function () {
-        readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
-        writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
+        readFileAsyncStub = fsAsyncStub('readFileAsync');
+        writeFileAsyncStub = fsAsyncStub('writeFileAsync').resolves();
         replacerStub = sandbox.stub();
       });
 
