@@ -4965,6 +4965,13 @@ export const extensions: FileCollection = {
       light: true,
     },
     {
+      icon: 'semgrep',
+      extensions: ['.semgrepignore'],
+      filenamesGlob: ['.semgrep'],
+      extensionsGlob: ['yaml', 'yml'],
+      filename: true,
+    },
+    {
       icon: 'sentry',
       extensions: ['.sentryclirc'],
       filename: true,
