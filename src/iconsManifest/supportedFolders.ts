@@ -690,6 +690,7 @@ export const extensions: FolderCollection = {
       icon: 'seedkit',
       extensions: ['seedkit', '.seedkit'],
     },
+    { icon: 'semgrep', extensions: ['.semgrep'] },
     { icon: 'server', extensions: ['server', 'backend', '.backend'] },
     {
       icon: 'services',
