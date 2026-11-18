@@ -2308,7 +2308,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'husky',
-      extensions: ['.huskyrc', 'husky.config.js'],
+      extensions: ['.huskyrc', 'husky.config.js', '.husky/pre-commit'],
       filenamesGlob: ['.huskyrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
