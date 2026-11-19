@@ -4457,7 +4457,9 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'pylint',
-      extensions: ['.pylintrc', 'pylintrc', '.pylintrc.toml', 'pylintrc.toml'],
+      extensions: ['.pylintrc', 'pylintrc'],
+      filenamesGlob: ['.pylintrc', 'pylintrc'],
+      extensionsGlob: ['toml'],
       filename: true,
     },
     {
