@@ -6104,7 +6104,9 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'woke',
-      extensions: ['.woke.yaml', '.woke.yml'],
+      extensions: ['.wokeignore'],
+      filenamesGlob: ['.woke'],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
     },
     {
