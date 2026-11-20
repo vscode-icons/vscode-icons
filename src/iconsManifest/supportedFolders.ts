@@ -779,6 +779,7 @@ export const extensions: FolderCollection = {
         'specs',
         '.specs',
         'integration',
+        'integration_test',
       ],
     },
     { icon: 'theme', extensions: ['theme', 'themes'] },
