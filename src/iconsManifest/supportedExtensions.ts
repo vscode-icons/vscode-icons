@@ -2329,6 +2329,7 @@ export const extensions: FileCollection = {
       icon: 'icl',
       languages: [languages.icl],
     },
+    { icon: 'ida', extensions: ['i64'] },
     { icon: 'idris', extensions: ['idr', 'lidr'] },
     { icon: 'idrisbin', extensions: ['ibc'] },
     { icon: 'idrispkg', extensions: ['ipkg'] },
