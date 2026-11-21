@@ -592,10 +592,6 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
-      icon: 'bundler',
-      extensions: ['gemfile', 'gemfile.lock'],
-    },
-    {
       icon: 'bunfig',
       extensions: ['.bunfig.toml', 'bunfig.toml'],
       filename: true,
