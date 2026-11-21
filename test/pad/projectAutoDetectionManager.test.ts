@@ -20,6 +20,9 @@ import { vsicons } from '../fixtures/vsicons';
 describe('ProjectAutoDetectionManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
+    let fsAsyncStub: (
+      name: Exclude<keyof typeof fsAsync, 'existsAsync'>,
+    ) => sinon.SinonStub;
     let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
     let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let findFilesStub: sinon.SinonStub;
@@ -28,6 +31,11 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
+      fsAsyncStub = (name: Exclude<keyof typeof fsAsync, 'existsAsync'>) => {
+        const stub = sandbox.stub();
+        sandbox.stub(fsAsync, name).get(() => stub);
+        return stub;
+      };
 
       configManagerStub =
         sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
@@ -79,7 +87,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     it('detects non conflicting projects', async function () {
       vsicons.projectDetection.disableDetect = false;
       findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-      sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+      fsAsyncStub('readFileAsync').resolves(undefined);
       sandbox.stub(Utils, 'parseJSONSafe').returns({
         dependencies: {
           angularjs: '1.0.0',
@@ -194,7 +202,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       it(`returns the conflict project detected 'LangResourceKey'`, async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-        sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+        fsAsyncStub('readFileAsync').resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',
@@ -243,7 +251,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       it('detects a project when no workspace preset is configured', async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-        sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+        fsAsyncStub('readFileAsync').resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',

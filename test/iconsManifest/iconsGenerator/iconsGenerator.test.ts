@@ -42,6 +42,9 @@ import { vsicons } from '../../fixtures/vsicons';
 describe('IconsGeneratorContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
+    let fsAsyncStub: (
+      name: Exclude<keyof typeof fsAsync, 'existsAsync'>,
+    ) => sinon.SinonStub;
     let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
@@ -61,6 +64,11 @@ describe('IconsGeneratorContract: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
+      fsAsyncStub = (name: Exclude<keyof typeof fsAsync, 'existsAsync'>) => {
+        const stub = sandbox.stub();
+        sandbox.stub(fsAsync, name).get(() => stub);
+        return stub;
+      };
 
       vscodeManagerStub =
         sinon.createStubInstance<VSCodeManagerContract>(VSCodeManager);
@@ -233,10 +241,8 @@ describe('IconsGeneratorContract: tests', function () {
 
       beforeEach(function () {
         existsAsyncStub = sandbox.stub(fsAsync, 'existsAsync').resolves(true);
-        createDirAsyncStub = sandbox
-          .stub(Utils, 'createDirectoryRecursively')
-          .resolves();
-        writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
+        createDirAsyncStub = fsAsyncStub('mkdirAsync').resolves();
+        writeFileAsyncStub = fsAsyncStub('writeFileAsync').resolves();
         logErrorStub = sandbox.stub(ErrorHandler, 'logError');
         pathUnixJoinStub = sandbox.stub(Utils, 'pathUnixJoin').returns('');
         infoStub = sandbox.stub(console, 'info').get(() => infoStub);

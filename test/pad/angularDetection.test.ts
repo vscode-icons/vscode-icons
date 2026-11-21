@@ -65,7 +65,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
       beforeEach(function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: packageJsonPath }]);
-        readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
+        readFileAsyncStub = (() => {
+          const stub = sandbox.stub();
+          sandbox.stub(fsAsync, 'readFileAsync').get(() => stub);
+          return stub;
+        })();
         iconsDisabledStub = sandbox.stub(ManifestReader, 'iconsDisabled');
       });
 
