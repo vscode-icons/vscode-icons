@@ -7,7 +7,7 @@ import { IconsGenerator } from '../iconsManifest/iconsGenerator';
 async function build(argv: string[]): Promise<void> {
   try {
     constants.environment.production = argv.some((arg: string): boolean =>
-      /release|production/.test(arg),
+      /^--(release|production)$/.test(arg),
     );
     const iconsGenerator = new IconsGenerator();
     const iconsManifest: IconManifest =
