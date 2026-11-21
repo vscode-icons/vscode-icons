@@ -1,9 +1,5 @@
 import type * as types from '../types';
-import type {
-  PackageManifest,
-  VSCodeIconTheme,
-  VSCodeManifest,
-} from '../types/package';
+import type { PackageManifest } from '../types/package';
 
 import { coerce, gte, parse } from 'semver';
 
@@ -12,7 +8,6 @@ import { Utils } from '../utils';
 
 export class VSCodeManager implements types.VSCodeManagerContract {
   private appUserDirPath: string;
-  private supportsThemeReloadVersion = '1.34.0';
 
   constructor(
     private vscode: types.VSCode,
@@ -48,17 +43,6 @@ export class VSCodeManager implements types.VSCodeManagerContract {
 
   public get workspace(): types.VSCodeWorkspace {
     return this.vscode.workspace;
-  }
-
-  public get supportsThemesReload(): boolean {
-    const manifest: VSCodeManifest = packageJson as VSCodeManifest;
-    const watchable: boolean =
-      manifest &&
-      manifest.contributes &&
-      manifest.contributes.iconThemes.some(
-        (theme: VSCodeIconTheme): boolean => theme._watch,
-      );
-    return gte(this.version, this.supportsThemeReloadVersion) && watchable;
   }
 
   public get isSupportedVersion(): boolean {

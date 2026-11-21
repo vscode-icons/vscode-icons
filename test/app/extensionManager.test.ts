@@ -1,6 +1,7 @@
 import type * as types from '../../src/types';
 import type { PackageManifest } from '../../src/types/package';
 
+import { rejects } from 'node:assert/strict';
 import path from 'path';
 
 import { expect } from 'chai';
@@ -29,8 +30,6 @@ describe('ExtensionManagerContract: tests', function () {
     let iconsGeneratorStub: sinon.SinonStubbedInstance<types.IconsGeneratorContract>;
     let padMngStub: sinon.SinonStubbedInstance<types.ProjectAutoDetectionManagerContract>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
-    let registerCommandStub: sinon.SinonStub;
-    let executeCommandStub: sinon.SinonStub;
     let extensionManager: types.ExtensionManagerContract;
     let vsiconsClone: types.VSIcons;
 
@@ -48,13 +47,6 @@ describe('ExtensionManagerContract: tests', function () {
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
         onDidChangeConfiguration: onDidChangeConfigurationStub,
       }));
-      registerCommandStub = sandbox.stub();
-      executeCommandStub = sandbox.stub();
-      sandbox.stub(vscodeManagerStub, 'commands').get(() => ({
-        registerCommand: registerCommandStub,
-        executeCommand: executeCommandStub,
-      }));
-
       configManagerStub =
         sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
       vsiconsClone = cloneDeep(vsicons);
@@ -300,91 +292,11 @@ describe('ExtensionManagerContract: tests', function () {
       });
     });
 
-    context(`the execute and reload`, function () {
-      let supportsThemesReloadStub: sinon.SinonStub;
-      let executeAndReload: (...arg: unknown[]) => void;
-
-      beforeEach(function () {
-        supportsThemesReloadStub = sandbox.stub(
-          vscodeManagerStub,
-          'supportsThemesReload',
-        );
-        executeAndReload =
-          // @ts-ignore
-          extensionManager.executeAndReload as (...arg: unknown[]) => void;
-      });
-
-      context(`when editor theme reload is NOT supported`, function () {
-        beforeEach(function () {
-          supportsThemesReloadStub.value(false);
-        });
-
-        context(`reloads the editor`, function () {
-          it(`without executing the callback, when it's NOT provided`, function () {
-            executeAndReload.call(extensionManager);
-
-            expect(
-              executeCommandStub.calledOnceWithExactly(
-                constants.vscode.reloadWindowActionSetting,
-              ),
-            ).to.be.true;
-          });
-
-          it(`executing the callback first`, function () {
-            const cb = sinon.fake();
-
-            executeAndReload.call(extensionManager, cb);
-
-            expect(cb.calledOnceWithExactly()).to.be.true;
-            expect(
-              executeCommandStub.calledOnceWithExactly(
-                constants.vscode.reloadWindowActionSetting,
-              ),
-            ).to.be.true;
-          });
-
-          it(`executing the callback, with its arguments, first`, function () {
-            const cb = sinon.fake();
-            const cbArgs = ['arg1', 'arg2'];
-
-            executeAndReload.call(extensionManager, cb, cbArgs);
-
-            expect(cb.calledOnceWithExactly(...cbArgs)).to.be.true;
-            expect(
-              executeCommandStub.calledOnceWithExactly(
-                constants.vscode.reloadWindowActionSetting,
-              ),
-            ).to.be.true;
-          });
-        });
-      });
-
-      context(`when editor theme reload is supported`, function () {
-        beforeEach(function () {
-          supportsThemesReloadStub.value(true);
-        });
-
-        it(`does NOT reload the editor`, function () {
-          const cb = sinon.fake();
-
-          executeAndReload.call(extensionManager, cb);
-
-          expect(executeCommandStub.called).to.be.false;
-        });
-      });
-    });
-
     context(`the handle action`, function () {
-      let executeAndReloadStub: sinon.SinonStub;
       let handleUpdatePresetStub: sinon.SinonStub;
       let handleAction: (...arg: unknown[]) => Promise<void>;
 
       beforeEach(function () {
-        executeAndReloadStub = sandbox.stub(
-          extensionManager,
-          // @ts-ignore
-          'executeAndReload',
-        );
         handleUpdatePresetStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
@@ -401,7 +313,6 @@ describe('ExtensionManagerContract: tests', function () {
 
           // @ts-ignore
           expect(extensionManager.customMsgShown).to.be.false;
-          expect(executeAndReloadStub.called).to.be.false;
           expect(
             configManagerStub.updateDontShowConfigManuallyChangedMessage.called,
           ).to.be.false;
@@ -422,7 +333,6 @@ describe('ExtensionManagerContract: tests', function () {
 
               // @ts-ignore
               expect(extensionManager.customMsgShown).to.be.undefined;
-              expect(executeAndReloadStub.called).to.be.false;
               expect(configManagerStub.updateDisableDetection.called).to.be
                 .false;
               expect(configManagerStub.updateAutoReload.called).to.be.false;
@@ -447,7 +357,6 @@ describe('ExtensionManagerContract: tests', function () {
 
                 // @ts-ignore
                 expect(extensionManager.customMsgShown).to.be.undefined;
-                expect(executeAndReloadStub.called).to.be.false;
                 expect(configManagerStub.updateDisableDetection.called).to.be
                   .false;
                 expect(configManagerStub.updateAutoReload.called).to.be.false;
@@ -476,7 +385,6 @@ describe('ExtensionManagerContract: tests', function () {
 
                 // @ts-ignore
                 expect(extensionManager.customMsgShown).to.be.false;
-                expect(executeAndReloadStub.called).to.be.false;
                 expect(configManagerStub.updateDisableDetection.called).to.be
                   .false;
                 expect(configManagerStub.updateAutoReload.called).to.be.false;
@@ -510,7 +418,6 @@ describe('ExtensionManagerContract: tests', function () {
             expect(extensionManager.doReload).to.be.false;
             // @ts-ignore
             expect(extensionManager.customMsgShown).to.be.undefined;
-            expect(executeAndReloadStub.called).to.be.false;
             expect(
               configManagerStub.updateDontShowConfigManuallyChangedMessage
                 .called,
@@ -565,6 +472,15 @@ describe('ExtensionManagerContract: tests', function () {
 
       context(`when the 'reload' action is requested`, function () {
         context(`executes the callback and reloads the editor`, function () {
+          it(`does nothing when no callback is provided`, async function () {
+            await handleAction.call(
+              extensionManager,
+              enums.LangResourceKeys.reload,
+            );
+
+            expect(handleUpdatePresetStub.called).to.be.false;
+          });
+
           it(`when no callback arguments are provided`, async function () {
             const cb = sinon.fake();
 
@@ -587,8 +503,7 @@ describe('ExtensionManagerContract: tests', function () {
             expect(configManagerStub.updateDisableDetection.called).to.be.false;
             expect(configManagerStub.updateAutoReload.called).to.be.false;
             expect(handleUpdatePresetStub.called).to.be.false;
-            expect(executeAndReloadStub.calledOnceWithExactly(cb, undefined)).to
-              .be.true;
+            expect(cb.calledOnceWithExactly()).to.be.true;
           });
 
           it(`when callback arguments length is NOT the expected`, async function () {
@@ -615,8 +530,7 @@ describe('ExtensionManagerContract: tests', function () {
             expect(configManagerStub.updateDisableDetection.called).to.be.false;
             expect(configManagerStub.updateAutoReload.called).to.be.false;
             expect(handleUpdatePresetStub.called).to.be.false;
-            expect(executeAndReloadStub.calledOnceWithExactly(cb, cbArgs)).to.be
-              .true;
+            expect(cb.calledOnceWithExactly(...cbArgs)).to.be.true;
           });
         });
 
@@ -636,7 +550,6 @@ describe('ExtensionManagerContract: tests', function () {
             expect(extensionManager.customMsgShown).to.be.undefined;
             // @ts-ignore
             expect(extensionManager.callback).to.equal(cb);
-            expect(executeAndReloadStub.called).to.be.false;
             expect(
               configManagerStub.updateDontShowConfigManuallyChangedMessage
                 .called,
@@ -663,7 +576,6 @@ describe('ExtensionManagerContract: tests', function () {
           // @ts-ignore
           expect(extensionManager.callback).to.be.undefined;
           // @ts-ignore
-          expect(executeAndReloadStub.called).to.be.false;
           expect(
             configManagerStub.updateDontShowConfigManuallyChangedMessage.called,
           ).to.be.false;
@@ -744,56 +656,55 @@ describe('ExtensionManagerContract: tests', function () {
     });
 
     context(`the handle update preset`, function () {
-      let handleUpdatePreset: (...arg: unknown[]) => void;
+      let handleUpdatePreset: (...arg: unknown[]) => Promise<void>;
 
       beforeEach(function () {
         handleUpdatePreset =
           // @ts-ignore
-          extensionManager.handleUpdatePreset as (...arg: unknown[]) => void;
+          extensionManager.handleUpdatePreset as (
+            ...arg: unknown[]
+          ) => Promise<void>;
       });
 
       context(`throws an Error`, function () {
-        it(`when no callback is provided`, function () {
-          expect(() => handleUpdatePreset.call(extensionManager)).to.throw(
-            Error,
+        it(`when no callback is provided`, async function () {
+          await rejects(
+            handleUpdatePreset.call(extensionManager),
             /Callback function missing/,
           );
         });
 
-        it(`when no callback arguments are provided`, function () {
-          expect(() =>
+        it(`when no callback arguments are provided`, async function () {
+          await rejects(
             handleUpdatePreset.call(extensionManager, sinon.fake()),
-          ).to.throw(Error, /Arguments missing/);
+            /Arguments missing/,
+          );
         });
 
         context(`when provided callback arguments`, function () {
-          it(`are empty`, function () {
-            expect(() =>
+          it(`are empty`, async function () {
+            await rejects(
               handleUpdatePreset.call(extensionManager, sinon.fake(), []),
-            ).to.throw(Error, /Arguments missing/);
+              /Arguments missing/,
+            );
           });
 
-          it(`are mismatching`, function () {
-            expect(() =>
+          it(`are mismatching`, async function () {
+            await rejects(
               handleUpdatePreset.call(extensionManager, sinon.fake(), [
                 'arg1',
                 'arg2',
               ]),
-            ).to.throw(Error, /Arguments mismatch/);
+              /Arguments mismatch/,
+            );
           });
         });
       });
 
       context(`when the preset is`, function () {
-        let executeAndReloadStub: sinon.SinonStub;
         let applyCustomizationStub: sinon.SinonStub;
 
         beforeEach(function () {
-          executeAndReloadStub = sandbox.stub(
-            extensionManager,
-            // @ts-ignore
-            'executeAndReload',
-          );
           applyCustomizationStub = sandbox.stub(
             extensionManager,
             // @ts-ignore
@@ -803,14 +714,14 @@ describe('ExtensionManagerContract: tests', function () {
 
         context(`the same as the toggled value`, function () {
           context(`applies the customizations`, function () {
-            it(`and reloads the editor`, function () {
+            it(`and reloads the editor`, async function () {
               const cb = sinon.fake();
               const cbArgs = [
                 enums.PresetNames[enums.PresetNames.angular],
                 false,
               ];
 
-              handleUpdatePreset.call(extensionManager, cb, cbArgs);
+              await handleUpdatePreset.call(extensionManager, cb, cbArgs);
 
               // @ts-ignore
               expect(extensionManager.customMsgShown).to.be.undefined;
@@ -824,9 +735,7 @@ describe('ExtensionManagerContract: tests', function () {
                 configManagerStub.updateDontShowConfigManuallyChangedMessage
                   .called,
               ).to.be.false;
-              expect(
-                executeAndReloadStub.calledOnceWith(applyCustomizationStub),
-              ).to.be.true;
+              expect(applyCustomizationStub.calledOnce).to.be.true;
             });
           });
         });
@@ -834,11 +743,11 @@ describe('ExtensionManagerContract: tests', function () {
         context(`different than the toggled value`, function () {
           context(`gets set to reload the editor`, function () {
             context(`applying the customizations`, function () {
-              it(`and updates the settings`, function () {
+              it(`and updates the settings`, async function () {
                 const cb = sinon.fake();
                 const cbArgs = ['arg1', 'arg2', 'arg3'];
 
-                handleUpdatePreset.call(extensionManager, cb, cbArgs);
+                await handleUpdatePreset.call(extensionManager, cb, cbArgs);
 
                 // @ts-ignore
                 expect(extensionManager.customMsgShown).to.be.undefined;
