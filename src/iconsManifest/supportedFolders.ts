@@ -932,5 +932,11 @@ export const extensions: FolderCollection = {
       extensions: ['.zed', 'zed'],
       light: true,
     },
+    {
+      icon: 'postgres',
+      extensions: ['postgres', 'postgresql', 'postgresdb', 'postgresqldb'],
+      light: true,
+      format: FileFormat.svg,
+    },
   ],
 };
