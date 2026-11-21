@@ -581,7 +581,8 @@ export const extensions: FolderCollection = {
     },
     {
       icon: 'netlify',
-      extensions: ['netlify'],
+      extensions: ['.netlify', 'netlify'],
+      light: true,
     },
     { icon: 'next', extensions: ['.next'] },
     { icon: 'nginx', extensions: ['nginx', 'conf.d'] },
