@@ -2121,6 +2121,7 @@ export const extensions: FileCollection = {
       extensions: ['greenkeeper.json'],
       filename: true,
     },
+    { icon: 'greptile', extensions: ['greptile.json'], filename: true },
     {
       icon: 'gridsome',
       filenamesGlob: ['gridsome.config', 'gridsome.server', 'gridsome.client'],
