@@ -752,6 +752,7 @@ export const extensions: FolderCollection = {
       icon: 'swagger',
       extensions: ['swagger'],
     },
+    { icon: 'tanstack', extensions: ['.tanstack'], light: true },
     { icon: 'tauri', extensions: ['src-tauri'] },
     {
       icon: 'telegram',

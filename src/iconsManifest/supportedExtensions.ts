@@ -5367,6 +5367,11 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'tanstack_router',
+      extensions: ['tsr.config.json'],
+      filename: true,
+    },
+    {
       icon: 'taplo',
       extensions: ['.taplo.toml', 'taplo.toml'],
       filename: true,
