@@ -4874,6 +4874,15 @@ export const extensions: FileCollection = {
       languages: [languages.ruby],
     },
     {
+      icon: 'rubygems',
+      extensions: ['.gemrc', 'gemrc'],
+      filename: true,
+    },
+    {
+      icon: 'rubygems',
+      extensions: ['gem', 'gemspec'],
+    },
+    {
       icon: 'ruff',
       extensions: ['ruff.toml', '.ruff.toml'],
       filename: true,
