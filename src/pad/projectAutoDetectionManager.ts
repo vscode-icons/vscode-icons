@@ -260,11 +260,14 @@ export class ProjectAutoDetectionManager
     const projectKey: string = Object.keys(enums.Projects).find(
       (key: string): boolean => enums.Projects[key] === project,
     );
-    return (
-      extensions.supported.find(
-        (ext: types.FileExtension): boolean => ext.icon === projectKey,
-      )?.extensions ?? []
-    );
+    return extensions.supported
+      .filter((ext: types.FileExtension): boolean => ext.icon === projectKey)
+      .flatMap((ext: types.FileExtension): string[] => [
+        ...(ext.extensions ?? []),
+        ...(ext.filenamesGlob && ext.extensionsGlob
+          ? Utils.combine(ext.filenamesGlob, ext.extensionsGlob)
+          : []),
+      ]);
   }
 
   private isConfigFileOf(project: enums.Projects, filePath: string): boolean {

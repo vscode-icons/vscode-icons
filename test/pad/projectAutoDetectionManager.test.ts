@@ -11,6 +11,7 @@ import { ErrorHandler } from '../../src/common/errorHandler';
 import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ManifestReader } from '../../src/iconsManifest';
+import { extensions } from '../../src/iconsManifest/supportedExtensions';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
@@ -238,6 +239,33 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
         expect(res[0].conflictingProjects).to.deep.equal([
           enums.Projects.nestjs,
         ]);
+      });
+
+      it('includes explicit config-file extensions in the search', async function () {
+        const previousDisableDetect = vsicons.projectDetection.disableDetect;
+        vsicons.projectDetection.disableDetect = false;
+        findFilesStub.resolves([{ fsPath: '/workspace/angular-custom.json' }]);
+        sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+        const declaration = {
+          icon: 'angular',
+          extensions: ['angular-custom.json'],
+        };
+        extensions.supported.push(declaration);
+
+        try {
+          const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(findFilesStub.firstCall.args[0]).to.contain(
+            'angular-custom.json',
+          );
+          expect(res[0]).to.have.property('apply', true);
+        } finally {
+          extensions.supported.splice(
+            extensions.supported.indexOf(declaration),
+            1,
+          );
+          vsicons.projectDetection.disableDetect = previousDisableDetect;
+        }
       });
 
       it('detects a project when no workspace preset is configured', async function () {
