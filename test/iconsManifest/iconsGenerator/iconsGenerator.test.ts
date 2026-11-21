@@ -13,7 +13,6 @@ import type { PackageManifest } from '../../../src/types/package';
 import { resolve } from 'path';
 
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import packageJson from '../../../package.json';
@@ -76,7 +75,7 @@ describe('IconsGeneratorContract: tests', function () {
 
       configManagerStub =
         sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
-      vsiconsClone = cloneDeep(vsicons);
+      vsiconsClone = structuredClone(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       sandbox

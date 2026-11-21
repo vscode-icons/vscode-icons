@@ -1,7 +1,6 @@
 import type { FolderCollection, FolderExtension } from '../../../src/types';
 
 import { expect } from 'chai';
-import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
 
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
@@ -235,8 +234,10 @@ describe('CustomsMerger: folder extensions tests', function () {
       const oldDefs = folders.supported.filter(
         (folder: FolderExtension) =>
           folder.icon ===
-          extFolders.supported.find((ef: FolderExtension) =>
-            isEqual(ef.extensions, customFolders.supported[0].extensions),
+          extFolders.supported.find(
+            (ef: FolderExtension) =>
+              JSON.stringify(ef.extensions) ===
+              JSON.stringify(customFolders.supported[0].extensions),
           ).icon,
       );
       const newDefs = folders.supported.filter(

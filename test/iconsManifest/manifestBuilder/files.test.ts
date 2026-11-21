@@ -7,7 +7,6 @@ import type {
 } from '../../../src/types';
 
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import * as fsAsync from '../../../src/common/fsAsync';
@@ -27,7 +26,7 @@ describe('ManifestBuilder: files icons test', function () {
     const iconsDirRelativeBasePath = '../../path/to/icons/dir';
 
     const filesWithExtensionlessLightFilename = (): FileCollection => {
-      const files = cloneDeep(fixtFiles);
+      const files = structuredClone(fixtFiles);
       files.supported.push({
         icon: 'extensionless_filename_light',
         filename: true,
@@ -73,7 +72,7 @@ describe('ManifestBuilder: files icons test', function () {
     });
 
     it('uses the configured format for the default file icon', async function () {
-      const files: FileCollection = cloneDeep(fixtFiles);
+      const files: FileCollection = structuredClone(fixtFiles);
       files.default.file.format = enums.FileFormat.png;
       fileFormatToStringStub.withArgs(enums.FileFormat.png).returns('.png');
 
@@ -88,7 +87,7 @@ describe('ManifestBuilder: files icons test', function () {
     });
 
     it('uses a supported file format when provided', async function () {
-      const files = cloneDeep(fixtFiles);
+      const files = structuredClone(fixtFiles);
       const file = files.supported.find(({ icon }) => icon === 'actionscript');
 
       file.format = enums.FileFormat.png;
@@ -111,7 +110,7 @@ describe('ManifestBuilder: files icons test', function () {
     });
 
     it('creates a definition without mappings when extensions are undefined', async function () {
-      const files = cloneDeep(fixtFiles);
+      const files = structuredClone(fixtFiles);
       const file = files.supported.find(({ icon }) => icon === 'actionscript');
       files.supported = [file];
       file.extensions = undefined;
@@ -128,7 +127,7 @@ describe('ManifestBuilder: files icons test', function () {
     });
 
     it('defaults the default file format to SVG when it is undefined', async function () {
-      const files = cloneDeep(fixtFiles);
+      const files = structuredClone(fixtFiles);
       files.default.file.format = undefined;
 
       const manifest = await ManifestBuilder.buildManifest(
@@ -221,7 +220,7 @@ describe('ManifestBuilder: files icons test', function () {
           },
         ];
         const prefix = `${iconsDirRelativeBasePath}/${constants.iconsManifest.fileTypePrefix}`;
-        const files = cloneDeep(fixtFiles);
+        const files = structuredClone(fixtFiles);
 
         for (const supported of [
           [languageEntry, ...nameEntries],
@@ -251,7 +250,7 @@ describe('ManifestBuilder: files icons test', function () {
 
     context('Zed theme', function () {
       it('should get official icons for official theme', async function () {
-        const files = cloneDeep(fixtFiles);
+        const files = structuredClone(fixtFiles);
 
         const manifest = await ManifestBuilder.buildManifest(
           files,
@@ -270,7 +269,7 @@ describe('ManifestBuilder: files icons test', function () {
       });
 
       it('should not have light theme defs in dark themes', async function () {
-        const files = cloneDeep(fixtFiles);
+        const files = structuredClone(fixtFiles);
 
         const manifest = await ManifestBuilder.buildManifest(
           files,
@@ -305,7 +304,7 @@ describe('ManifestBuilder: files icons test', function () {
             fixtFiles.default.file.format,
           )}`;
 
-          const files = cloneDeep(fixtFiles);
+          const files = structuredClone(fixtFiles);
           files.default.file.useBundledIcon = true;
 
           const manifest = await ManifestBuilder.buildManifest(
@@ -560,7 +559,7 @@ describe('ManifestBuilder: files icons test', function () {
 
               context('and has a light theme version', function () {
                 it(`has a 'fileExtensions' referencing its definition`, async function () {
-                  const files = cloneDeep(fixtFiles);
+                  const files = structuredClone(fixtFiles);
                   files.supported.find(
                     ({ icon }) => icon === 'mlang',
                   ).extensions = undefined;
@@ -903,7 +902,7 @@ describe('ManifestBuilder: files icons test', function () {
             fixtFiles.default.file.format,
           )}`;
 
-          const files = cloneDeep(fixtFiles);
+          const files = structuredClone(fixtFiles);
           files.default.file.useBundledIcon = true;
 
           const manifest = await ManifestBuilder.buildManifest(

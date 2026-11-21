@@ -3,7 +3,6 @@ import type { FileExtension } from '../../src/types';
 import { join } from 'path';
 
 import { expect } from 'chai';
-import { cloneDeep, isEmpty, isEqual, uniqBy } from 'lodash';
 
 import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
@@ -14,11 +13,11 @@ import { Utils } from '../../src/utils';
 
 describe('Specifications of supported extensions: tests', function () {
   context('ensures that', function () {
-    const supportedFiles = cloneDeep(files.supported);
+    const supportedFiles = structuredClone(files.supported);
     let testFiles: FileExtension[];
 
     beforeEach(function () {
-      testFiles = cloneDeep(supportedFiles);
+      testFiles = structuredClone(supportedFiles);
     });
 
     it(`an 'extension' declaration should NOT have a leading dot`, function () {
@@ -113,9 +112,13 @@ describe('Specifications of supported extensions: tests', function () {
           });
 
           it(`duplicate declaration`, function () {
-            const unique = uniqBy(testFiles, JSON.stringify);
+            const unique = new Set(
+              testFiles.map((file: FileExtension): string =>
+                JSON.stringify(file),
+              ),
+            );
 
-            expect(unique).to.have.lengthOf(testFiles.length);
+            expect(unique.size).to.equal(testFiles.length);
           });
 
           it(`same declaration with different 'extensions'`, function () {
@@ -127,7 +130,8 @@ describe('Specifications of supported extensions: tests', function () {
                 _file.disabled !== file.disabled) &&
               !Reflect.has(_file, 'filename') &&
               !Reflect.has(file, 'filename') &&
-              !isEqual(_file.extensions, file.extensions) &&
+              JSON.stringify(_file.extensions) !==
+                JSON.stringify(file.extensions) &&
               !_file.checked &&
               _file.icon === file.icon;
 
@@ -145,14 +149,16 @@ describe('Specifications of supported extensions: tests', function () {
             it(`with 'filename' declaration`, function () {
               const testCase = (_file: FileExtension): boolean =>
                 (!!_file.filename || !!_file.light) &&
-                isEmpty(_file.filenamesGlob) &&
-                isEmpty(_file.extensionsGlob) &&
-                isEmpty(_file.languages) &&
-                isEmpty(_file.extensions);
+                Utils.isEmpty(_file.filenamesGlob) &&
+                Utils.isEmpty(_file.extensionsGlob) &&
+                Utils.isEmpty(_file.languages) &&
+                Utils.isEmpty(_file.extensions);
 
               testFiles.forEach((file: FileExtension) => {
                 expect(testCase(file)).to.be.false;
               });
+
+              expect(testCase({ icon: 'example', filename: true })).to.be.true;
             });
 
             it(`does NOT declare empty 'extensions'`, function () {
