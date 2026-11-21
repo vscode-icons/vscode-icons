@@ -65,3 +65,15 @@ jobs:
           token: ${{ secrets.ZED_SYNC_PAT }}
           repository: vscode-icons/vscode-icons-zed
           event-type: icons-updated
+
+  notify-api:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify vscode-icons-api of new release
+        uses: peter-evans/repository-dispatch@v4
+        with:
+          # PAT with repo scope, since GITHUB_TOKEN can't dispatch to another repository
+          token: ${{ secrets.API_SYNC_PAT }}
+          repository: vscode-icons/vscode-icons-api
+          event-type: icons-updated
