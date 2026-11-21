@@ -1,0 +1,42 @@
+<svg width="32" height="32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g transform="scale(1.1667)" fill-rule="evenodd">
+
+    <path d="M0 0h24v24H0z" />
+
+    <path
+      d="M24 0v24H0V0zm-13.067 15.89h-4.093v5.52h4.198v-.93H7.955v-1.503h2.77v-.93h-2.77v-1.224h2.978v-.934zm2.146 0h-1.084v5.52h1.035v-3.6l2.226 3.6h1.118v-5.52h-1.036v3.686l-2.259-3.687zm5.117 0h-1.208l1.973 5.52h1.19l1.976-5.52h-1.182l-1.352 4.085-1.397-4.086zm-12.796 3.79h-1.68v1.68h1.68z"
+      fill="#ecd53f"
+      fill-rule="nonzero"
+    />
+
+    <path
+      d="M14 0H24V10H17Q14 10 14 7Z"
+      fill="#E53935"
+      fill-rule="nonzero"
+    />
+
+    <polygon
+      points="14,0 24,0 24,10"
+      fill="#000000"
+      opacity="0.1"
+      fill-rule="nonzero"
+    />
+
+    <g
+      transform="translate(15.0,1.05) scale(0.315)"
+      stroke="white"
+      stroke-width="2.25"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    >
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+      <path
+        d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" />
+      <path
+        d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" />
+    </g>
+
+  </g>
+</svg>
