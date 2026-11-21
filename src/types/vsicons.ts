@@ -1,5 +1,4 @@
 import type {
-  ConfigurationTarget,
   ExtensionStatus,
   FileFormat,
   LangResourceKeys,
@@ -12,6 +11,14 @@ import type {
   VSCodeIconSchema,
   ZedIconSchema,
 } from './iconSchema';
+import type {
+  ConfigurationTarget,
+  VSCodeCommands,
+  VSCodeEnv,
+  VSCodeExtensionContext,
+  VSCodeWindow,
+  VSCodeWorkspace,
+} from './vscode';
 
 export interface VSIcons {
   associations: Associations;
@@ -74,8 +81,21 @@ export interface ConfigManagerContract {
   updatePreset(
     presetName: string,
     value: boolean,
-    configurationTarget: ConfigurationTarget | boolean,
+    configurationTarget?: ConfigurationTarget | boolean | null,
   ): Promise<void>;
+}
+
+export interface VSCodeManagerContract {
+  context: VSCodeExtensionContext;
+  env: VSCodeEnv;
+  commands: VSCodeCommands;
+  version: string;
+  window: VSCodeWindow;
+  workspace: VSCodeWorkspace;
+  supportsThemesReload: boolean;
+  isSupportedVersion: boolean;
+  getWorkspacePaths(): string[];
+  getAppUserDirPath(): string;
 }
 
 export interface ExtensionManagerContract {

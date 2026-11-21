@@ -1,5 +1,6 @@
 import type {
   ConfigManagerContract,
+  ConfigurationTarget,
   FileExtension,
   FolderExtension,
   VSCodeManagerContract,
@@ -62,21 +63,21 @@ export class ConfigManager implements ConfigManagerContract {
   public get vsicons(): VSIcons {
     // ALWAYS use 'getConfiguration' to get a fresh copy of the `vsicons` configurations
     const mergedConfig: VSIcons = cloneDeep<VSIcons>(
-      this.vscodeManager.workspace.getConfiguration()[
-        constants.vsicons.name
-      ] as VSIcons,
+      this.vscodeManager.workspace
+        .getConfiguration()
+        .get<VSIcons>(constants.vsicons.name),
     );
-    const files: VSCodePreset<FileExtension[]> = this.configuration.inspect<
-      FileExtension[]
-    >(constants.vsicons.associations.filesSetting);
+    const files = this.configuration.inspect<FileExtension[]>(
+      constants.vsicons.associations.filesSetting,
+    );
     mergedConfig.associations.files = unionWith<FileExtension>(
       files.workspaceValue,
       files.globalValue,
       isEqual,
     );
-    const folders: VSCodePreset<FolderExtension[]> = this.configuration.inspect<
-      FolderExtension[]
-    >(constants.vsicons.associations.foldersSetting);
+    const folders = this.configuration.inspect<FolderExtension[]>(
+      constants.vsicons.associations.foldersSetting,
+    );
     mergedConfig.associations.folders = unionWith<FolderExtension>(
       folders.workspaceValue,
       folders.globalValue,
@@ -287,7 +288,7 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vsicons.dontShowNewVersionMessageSetting,
       value,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -297,7 +298,7 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
       value,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -305,7 +306,7 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vsicons.projectDetectionAutoReloadSetting,
       value,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -313,7 +314,7 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vsicons.projectDetectionDisableDetectSetting,
       value,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -321,14 +322,14 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vscode.iconThemeSetting,
       constants.extension.name,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
   public async updatePreset(
     presetName: string,
     value: boolean,
-    configurationTarget: enums.ConfigurationTarget | boolean,
+    configurationTarget?: ConfigurationTarget | boolean | null,
   ): Promise<void> {
     const removePreset =
       this.configuration.inspect(
