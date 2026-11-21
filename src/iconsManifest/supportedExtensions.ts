@@ -937,6 +937,17 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'contributing',
+      extensions: [
+        'CONTRIBUTING.md',
+        'CONTRIBUTING.markdown',
+        'CONTRIBUTING.rst',
+        'CONTRIBUTING.txt',
+        'CONTRIBUTING',
+      ],
+      filename: true,
+    },
+    {
       icon: 'convex',
       extensions: ['convex.json', 'convex.config.js', 'convex.config.ts'],
       filename: true,
