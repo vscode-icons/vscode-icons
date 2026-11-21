@@ -2626,6 +2626,12 @@ export const extensions: FileCollection = {
     },
     { icon: 'key', extensions: ['key', 'pem'] },
     {
+      icon: 'keystatic',
+      filenamesGlob: ['keystatic.config'],
+      extensionsGlob: ['mjs', 'js', 'mts', 'ts', 'jsx', 'tsx', 'json'],
+      filename: true,
+    },
+    {
       icon: 'kitchenci',
       extensions: ['.kitchen.yml', 'kitchen.yml'],
       filename: true,
