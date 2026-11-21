@@ -2607,6 +2607,10 @@ export const extensions: FileCollection = {
       extensionsGlob: ['js', 'coffee', 'ts'],
       filename: true,
     },
+    {
+      icon: 'kdl',
+      languages: [languages.kdl],
+    },
     { icon: 'key', extensions: ['key', 'pem'] },
     {
       icon: 'kitchenci',
