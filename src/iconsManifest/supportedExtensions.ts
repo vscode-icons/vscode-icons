@@ -995,8 +995,10 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'crowdin',
-      extensions: ['crowdin.yml'],
+      filenamesGlob: ['crowdin'],
+      extensionsGlob: ['yml', 'yaml'],
       filename: true,
+      light: true,
     },
     {
       icon: 'crystal',
