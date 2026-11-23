@@ -5165,6 +5165,12 @@ export const extensions: FileCollection = {
       languages: [languages.sparql],
     },
     {
+      icon: 'spectral',
+      filenamesGlob: ['.spectral', 'spectral'],
+      extensionsGlob: ['yml', 'yaml', 'json', 'js', 'mjs'],
+      filename: true,
+    },
+    {
       icon: 'spin',
       extensions: ['spin.toml'],
       light: true,
