@@ -326,6 +326,10 @@ export const extensions: FolderCollection = {
       light: true,
     },
     {
+      icon: 'forgejo',
+      extensions: ['.forgejo'],
+    },
+    {
       icon: 'frontcommerce',
       extensions: ['.front-commerce'],
     },
