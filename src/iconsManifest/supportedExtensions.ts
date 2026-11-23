@@ -6260,6 +6260,8 @@ export const extensions: FileCollection = {
     {
       icon: 'yamllint',
       extensions: ['.yamllint'],
+      filenamesGlob: ['.yamllint'],
+      extensionsGlob: ['yml', 'yaml'],
       filename: true,
     },
     {
