@@ -42,8 +42,8 @@ jobs:
       - name: Download CLI Tool
         if: steps.changed-svgs.outputs.SVG_CHANGED == 'true'
         run: |
-          LATEST_URL="https://github.com/robertohuertasm/svg-icon-check/releases/latest/download/svg-icon-check"
-          curl -L "$LATEST_URL" -o svg-icon-check
+          URL="https://github.com/robertohuertasm/svg-icon-check/releases/latest/download/svg-icon-check@0.1.0"
+          curl -L "$URL" -o svg-icon-check
           chmod +x svg-icon-check
 
       - name: Generate Preview Images and Manifest
