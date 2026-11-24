@@ -122,6 +122,7 @@ export const extensions: FileCollection = {
       filenamesGlob: ['alchemy.run'],
       extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
       filename: true,
+      light: true,
     },
     {
       icon: 'allcontributors',
@@ -193,6 +194,11 @@ export const extensions: FileCollection = {
     {
       icon: 'apib',
       languages: [languages.apib],
+    },
+    {
+      icon: 'apib2',
+      languages: [languages.apib],
+      disabled: true,
     },
     {
       icon: 'apl',
@@ -519,6 +525,12 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'bower2',
+      extensions: ['.bowerrc', 'bower.json'],
+      filename: true,
+      disabled: true,
+    },
+    {
       icon: 'brakeman',
       extensions: ['brakeman.yml', 'brakeman.ignore'],
       filename: true,
@@ -608,6 +620,7 @@ export const extensions: FileCollection = {
     {
       icon: 'cabal',
       languages: [languages.cabal],
+      light: true,
     },
     {
       icon: 'caddy',
@@ -645,6 +658,11 @@ export const extensions: FileCollection = {
     {
       icon: 'casc',
       languages: [languages.casc],
+    },
+    {
+      icon: 'cassandra',
+      languages: [languages.cql],
+      light: true,
     },
     {
       icon: 'cddl',
@@ -1555,7 +1573,7 @@ export const extensions: FileCollection = {
     {
       icon: 'esbuild',
       filenamesGlob: ['esbuild', 'esbuild.config'],
-      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
       filename: true,
     },
     {
@@ -1841,6 +1859,11 @@ export const extensions: FileCollection = {
       icon: 'fsharp',
       languages: [languages.fsharp],
     },
+    {
+      icon: 'fsharp2',
+      languages: [languages.fsharp],
+      disabled: true,
+    },
     { icon: 'fsproj', extensions: ['fsproj'] },
     {
       icon: 'fthtml',
@@ -1946,6 +1969,24 @@ export const extensions: FileCollection = {
       ],
       filename: true,
       languages: [languages.git],
+    },
+    {
+      icon: 'git2',
+      extensions: [
+        '.git',
+        '.gitattributes',
+        '.gitconfig',
+        '.gitignore',
+        '.gitmessage',
+        '.gitmodules',
+        '.gitkeep',
+        '.git-blame-ignore-revs',
+        '.mailmap',
+        '.issuetracker',
+      ],
+      filename: true,
+      languages: [languages.git],
+      disabled: true,
     },
     {
       icon: 'gitlab',
@@ -2267,7 +2308,24 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'husky',
-      extensions: ['.huskyrc', 'husky.config.js'],
+      extensions: [
+        '.huskyrc',
+        'husky.config.js',
+        '.husky/applypatch-msg',
+        '.husky/commit-msg',
+        '.husky/post-applypatch',
+        '.husky/post-checkout',
+        '.husky/post-commit',
+        '.husky/post-merge',
+        '.husky/post-rewrite',
+        '.husky/pre-applypatch',
+        '.husky/pre-auto-gc',
+        '.husky/pre-commit',
+        '.husky/pre-merge-commit',
+        '.husky/pre-push',
+        '.husky/pre-rebase',
+        '.husky/prepare-commit-msg',
+      ],
       filenamesGlob: ['.huskyrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
@@ -3581,6 +3639,7 @@ export const extensions: FileCollection = {
     {
       icon: 'nim',
       languages: [languages.nim],
+      light: true,
     },
     {
       icon: 'nimble',
@@ -3720,7 +3779,20 @@ export const extensions: FileCollection = {
       icon: 'nuxt',
       extensions: ['.nuxtignore', '.nuxtrc'],
       filenamesGlob: ['nuxt.config', 'nuxt'],
-      extensionsGlob: ['js', 'ts', 'mjs'],
+      extensionsGlob: [
+        'js',
+        'ts',
+        'mjs',
+        'cjs',
+        'mts',
+        'cts',
+        'json',
+        'jsonc',
+        'json5',
+        'yaml',
+        'yml',
+        'toml',
+      ],
       filename: true,
     },
     {
@@ -4888,6 +4960,12 @@ export const extensions: FileCollection = {
       languages: [languages.scss],
     },
     {
+      icon: 'scss2',
+      extensions: ['scssm'],
+      languages: [languages.scss],
+      disabled: true,
+    },
+    {
       icon: 'sdlang',
       languages: [languages.sdlang],
     },
@@ -4974,6 +5052,13 @@ export const extensions: FileCollection = {
     {
       icon: 'silverstripe',
       languages: [languages.silverstripe],
+    },
+    {
+      icon: 'simple_icons',
+      filenamesGlob: ['.svglintrc'],
+      extensionsGlob: ['js', 'cjs', 'mjs'],
+      filename: true,
+      light: true,
     },
     {
       icon: 'sino',
@@ -5213,12 +5298,6 @@ export const extensions: FileCollection = {
       icon: 'svg',
       extensions: ['svg'],
       languages: [languages.svg],
-    },
-    {
-      icon: 'svglint',
-      filenamesGlob: ['.svglintrc'],
-      extensionsGlob: ['cjs', 'js', 'mjs'],
-      filename: true,
     },
     {
       icon: 'svgo',
@@ -5823,6 +5902,14 @@ export const extensions: FileCollection = {
       icon: 'vlt',
       extensions: ['vlt.json', 'vlt-lock.json'],
       filename: true,
+      light: true,
+    },
+    {
+      icon: 'vlt2',
+      extensions: ['vlt.json', 'vlt-lock.json'],
+      filename: true,
+      light: true,
+      disabled: true,
     },
     {
       icon: 'volt',

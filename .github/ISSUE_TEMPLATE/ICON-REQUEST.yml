@@ -12,8 +12,8 @@ body:
   - type: checkboxes
     id: icon-category
     attributes:
-      label: Icon Type
-      description: What type of icon are you requesting?
+      label: Icon Category
+      description: What category of icon are you requesting?
       options:
         - label: File Icon
         - label: Folder Icon
