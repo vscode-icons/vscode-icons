@@ -262,5 +262,20 @@ describe('VSCodeManagerContract: tests', function () {
         });
       });
     });
+
+    context(`function 'openExternal'`, function () {
+      it(`opens the parsed URL`, async function () {
+        const url = 'https://example.com';
+        const uri = {} as VSCodeUri;
+        const parseStub = sandbox.stub().returns(uri);
+        const openExternalStub = sandbox.stub().resolves(true);
+        vscode.Uri.parse = parseStub;
+        vscodeManager.env.openExternal = openExternalStub;
+
+        expect(await vscodeManager.openExternal(url)).to.be.true;
+        expect(parseStub.calledOnceWithExactly(url)).to.be.true;
+        expect(openExternalStub.calledOnceWithExactly(uri)).to.be.true;
+      });
+    });
   });
 });
