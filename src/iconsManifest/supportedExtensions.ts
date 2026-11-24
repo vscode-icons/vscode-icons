@@ -3779,7 +3779,7 @@ export const extensions: FileCollection = {
       icon: 'nuxt',
       extensions: ['.nuxtignore', '.nuxtrc'],
       filenamesGlob: ['nuxt.config', 'nuxt'],
-      extensionsGlob: ['js', 'ts', 'mjs'],
+      extensionsGlob: ['js', 'ts', 'mjs', 'mts'],
       filename: true,
     },
     {
