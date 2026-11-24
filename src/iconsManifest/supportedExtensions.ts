@@ -2657,7 +2657,6 @@ export const extensions: FileCollection = {
         'knip.js',
         'knip.config.ts',
         'knip.config.js',
-        'knip.config.mts',
       ],
       filename: true,
     },
