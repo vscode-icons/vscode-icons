@@ -2648,18 +2648,7 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'knip',
-      extensions: [
-        'knip.json',
-        'knip.jsonc',
-        '.knip.json',
-        '.knip.jsonc',
-        'knip.ts',
-        'knip.js',
-        'knip.config.ts',
-        'knip.config.js',
-        'knip.config.mjs',
-        'knip.config.mts',
-      ],
+      extensions: ['.knip.json', '.knip.jsonc'],
       filenamesGlob: ['knip.config', 'knip'],
       extensionsGlob: [
         'js',
