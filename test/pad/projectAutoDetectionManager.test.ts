@@ -8,7 +8,6 @@ import { expect } from 'chai';
 import * as sinon from 'sinon';
 
 import { ErrorHandler } from '../../src/common/errorHandler';
-import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ManifestReader } from '../../src/iconsManifest';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
@@ -20,22 +19,15 @@ import { vsicons } from '../fixtures/vsicons';
 describe('ProjectAutoDetectionManagerContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
-    let fsAsyncStub: (
-      name: Exclude<keyof typeof fsAsync, 'existsAsync'>,
-    ) => sinon.SinonStub;
     let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
     let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let findFilesStub: sinon.SinonStub;
+    let workspaceReadFileStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
     let padManager: ProjectAutoDetectionManagerContract;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
-      fsAsyncStub = (name: Exclude<keyof typeof fsAsync, 'existsAsync'>) => {
-        const stub = sandbox.stub();
-        sandbox.stub(fsAsync, name).get(() => stub);
-        return stub;
-      };
 
       configManagerStub =
         sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
@@ -46,8 +38,10 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
         sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
+      workspaceReadFileStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
         findFiles: findFilesStub,
+        fs: { readFile: workspaceReadFileStub },
       }));
 
       padManager = new ProjectAutoDetectionManager(
@@ -84,10 +78,26 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       expect(logErrorStub.calledOnceWith(error)).to.be.true;
     });
 
+    it(`logs an Error when reading a 'package.json' fails`, async function () {
+      vsicons.projectDetection.disableDetect = false;
+      const error = new Error('ENOENT');
+      findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
+      workspaceReadFileStub.rejects(error);
+      configManagerStub.getPreset.returns({
+        key: '',
+        workspaceValue: undefined,
+      });
+      sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+
+      await padManager.detectProjects([enums.Projects.angular]);
+
+      expect(logErrorStub.calledOnceWith(error)).to.be.true;
+    });
+
     it('detects non conflicting projects', async function () {
       vsicons.projectDetection.disableDetect = false;
       findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-      fsAsyncStub('readFileAsync').resolves(undefined);
+      workspaceReadFileStub.resolves(undefined);
       sandbox.stub(Utils, 'parseJSONSafe').returns({
         dependencies: {
           angularjs: '1.0.0',
@@ -202,7 +212,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       it(`returns the conflict project detected 'LangResourceKey'`, async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-        fsAsyncStub('readFileAsync').resolves(undefined);
+        workspaceReadFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',
@@ -251,7 +261,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       it('detects a project when no workspace preset is configured', async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-        fsAsyncStub('readFileAsync').resolves(undefined);
+        workspaceReadFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',

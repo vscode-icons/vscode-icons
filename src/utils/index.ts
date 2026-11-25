@@ -1,12 +1,7 @@
-import type { ChildProcess } from 'child_process';
-
-import type { Options } from 'open';
-
 import { homedir, tmpdir } from 'os';
 import { posix, relative } from 'path';
 
 import { set } from 'lodash';
-import open from 'open';
 
 import { existsAsync, readFileAsync, writeFileAsync } from '../common/fsAsync';
 import * as enums from '../types/enums';
@@ -153,13 +148,5 @@ export class Utils {
       set(newObj, key, obj[key][lookupKey]),
     );
     return newObj as T;
-  }
-
-  public static async open(
-    target: string,
-    options?: Options,
-  ): Promise<ChildProcess> {
-    await open(target, options);
-    return;
   }
 }

@@ -1,9 +1,6 @@
-import type { ChildProcess } from 'child_process';
-
 import os from 'os';
 
 import { expect } from 'chai';
-import proxyq from 'proxyquire';
 import * as sinon from 'sinon';
 
 import * as fsAsync from '../../src/common/fsAsync';
@@ -11,10 +8,6 @@ import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 
 describe('Utils: tests', function () {
-  interface Utils {
-    open: (target: string, options?: object) => Promise<ChildProcess>;
-  }
-
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
     let fsAsyncStub: (
@@ -420,22 +413,6 @@ describe('Utils: tests', function () {
           .with.ownProperty('vsicons')
           .and.that.to.haveOwnProperty('dontShowNewVersionMessage').and.that.to
           .be.false;
-      });
-    });
-
-    context(`the 'open' function`, function () {
-      it(`to call the external module`, async function () {
-        const openStub = sandbox.stub().resolves();
-        const target = 'target';
-        const utils = (
-          proxyq.noCallThru().load('../../src/utils', {
-            open: openStub,
-          }) as Record<string, Utils>
-        ).Utils;
-
-        await utils.open(target);
-
-        expect(openStub.calledOnceWithExactly(target, undefined)).to.be.true;
       });
     });
   });
