@@ -1,5 +1,6 @@
 import type {
   ConfigManagerContract,
+  ConfigurationTarget,
   FileExtension,
   FolderExtension,
   VSCodeManagerContract,
@@ -290,7 +291,7 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vsicons.dontShowNewVersionMessageSetting,
       value,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -300,7 +301,7 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vsicons.dontShowConfigManuallyChangedMessageSetting,
       value,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -308,7 +309,7 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vsicons.projectDetectionAutoReloadSetting,
       value,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -316,7 +317,7 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vsicons.projectDetectionDisableDetectSetting,
       value,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -324,14 +325,14 @@ export class ConfigManager implements ConfigManagerContract {
     return this.configuration.update(
       constants.vscode.iconThemeSetting,
       constants.extension.name,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
   public async updatePreset(
     presetName: string,
     value: boolean,
-    configurationTarget: enums.ConfigurationTarget | boolean,
+    configurationTarget?: ConfigurationTarget | boolean | null,
   ): Promise<void> {
     const removePreset =
       this.configuration.inspect(

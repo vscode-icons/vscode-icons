@@ -625,7 +625,7 @@ describe('ExtensionManagerContract: tests', function () {
             configManagerStub.updatePreset.calledOnceWithExactly(
               enums.PresetNames[enums.PresetNames.angular],
               true,
-              enums.ConfigurationTarget.Workspace,
+              enums.VSCodeConfigurationTarget.Workspace,
             ),
           ).to.be.true;
           expect(handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)).to.be
@@ -645,7 +645,7 @@ describe('ExtensionManagerContract: tests', function () {
             configManagerStub.updatePreset.calledOnceWithExactly(
               enums.PresetNames[enums.PresetNames.nestjs],
               true,
-              enums.ConfigurationTarget.Workspace,
+              enums.VSCodeConfigurationTarget.Workspace,
             ),
           ).to.be.true;
           expect(handleUpdatePresetStub.calledOnceWithExactly(cb, cbArgs)).to.be

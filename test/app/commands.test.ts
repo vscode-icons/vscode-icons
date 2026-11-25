@@ -248,7 +248,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.angular,
             enums.CommandNames.ngPreset,
             false,
-            enums.ConfigurationTarget.Workspace,
+            enums.VSCodeConfigurationTarget.Workspace,
           ),
         ).to.be.true;
       });
@@ -267,7 +267,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.nestjs,
             enums.CommandNames.nestPreset,
             false,
-            enums.ConfigurationTarget.Workspace,
+            enums.VSCodeConfigurationTarget.Workspace,
           ),
         ).to.be.true;
       });
@@ -286,7 +286,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.jsOfficial,
             enums.CommandNames.jsPreset,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -305,7 +305,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.tsOfficial,
             enums.CommandNames.tsPreset,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -324,7 +324,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.reactjsOfficial,
             enums.CommandNames.reactjsPreset,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -343,7 +343,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.reacttsOfficial,
             enums.CommandNames.reacttsPreset,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -362,7 +362,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.jsonOfficial,
             enums.CommandNames.jsonPreset,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -381,7 +381,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.yamlOfficial,
             enums.CommandNames.yamlPreset,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -400,7 +400,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.hideFolders,
             enums.CommandNames.hideFoldersPreset,
             true,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -419,7 +419,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.foldersAllDefaultIcon,
             enums.CommandNames.foldersAllDefaultIconPreset,
             true,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
@@ -438,7 +438,7 @@ describe('ExtensionManagerContract: commands tests', function () {
             enums.PresetNames.hideExplorerArrows,
             enums.CommandNames.hideExplorerArrowsPreset,
             true,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           ),
         ).to.be.true;
       });
