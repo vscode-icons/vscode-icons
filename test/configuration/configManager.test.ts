@@ -40,8 +40,11 @@ describe('ConfigManagerContract: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
-
-      readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync');
+      readdirAsyncStub = (() => {
+        const stub = sandbox.stub();
+        sandbox.stub(fsAsync, 'readdirAsync').get(() => stub);
+        return stub;
+      })();
       envStub = sandbox.stub(process, 'env');
       logErrorStub = sandbox.stub(ErrorHandler, 'logError');
       updateFileStub = sandbox.stub(Utils, 'updateFile');
