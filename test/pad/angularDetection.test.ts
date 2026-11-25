@@ -7,7 +7,6 @@ import type {
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 
-import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ManifestReader } from '../../src/iconsManifest';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
@@ -22,6 +21,7 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
     let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
     let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let findFilesStub: sinon.SinonStub;
+    let workspaceReadFileStub: sinon.SinonStub;
     let getPresetStub: sinon.SinonStub;
     let parseJSONStub: sinon.SinonStub;
     let padManager: ProjectAutoDetectionManagerContract;
@@ -40,8 +40,10 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
         sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
+      workspaceReadFileStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
         findFiles: findFilesStub,
+        fs: { readFile: workspaceReadFileStub },
       }));
 
       padManager = new ProjectAutoDetectionManager(
@@ -58,14 +60,12 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
     });
 
     context('when detection is enabled', function () {
-      let readFileAsyncStub: sinon.SinonStub;
       let iconsDisabledStub: sinon.SinonStub;
       let packageJsonPath = 'package.json';
 
       beforeEach(function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: packageJsonPath }]);
-        readFileAsyncStub = sandbox.stub(fsAsync, 'readFileAsync');
         iconsDisabledStub = sandbox.stub(ManifestReader, 'iconsDisabled');
       });
 
@@ -83,7 +83,7 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
           const firstResult = res[0];
 
-          expect(readFileAsyncStub.called).to.be.false;
+          expect(workspaceReadFileStub.called).to.be.false;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
           expect(firstResult).to.have.all.keys(
@@ -116,7 +116,7 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
           const firstResult = res[0];
 
           expect(firstResult).to.have.property('apply', false);
-          expect(readFileAsyncStub.called).to.be.false;
+          expect(workspaceReadFileStub.called).to.be.false;
         });
       });
 
@@ -137,7 +137,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
           const firstResult = res[0];
 
           expect(
-            readFileAsyncStub.calledOnceWithExactly(packageJsonPath, 'utf8'),
+            workspaceReadFileStub.calledOnceWithExactly({
+              fsPath: packageJsonPath,
+            }),
           ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
@@ -160,7 +162,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
           const firstResult = res[0];
 
           expect(
-            readFileAsyncStub.calledOnceWithExactly(packageJsonPath, 'utf8'),
+            workspaceReadFileStub.calledOnceWithExactly({
+              fsPath: packageJsonPath,
+            }),
           ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
@@ -199,18 +203,16 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
             'project',
             enums.Projects.angular,
           );
-          expect(readFileAsyncStub.calledTwice).to.be.true;
+          expect(workspaceReadFileStub.calledTwice).to.be.true;
           expect(
-            readFileAsyncStub.firstCall.calledWithExactly(
-              workspacePackageJsonPath,
-              'utf8',
-            ),
+            workspaceReadFileStub.firstCall.calledWithExactly({
+              fsPath: workspacePackageJsonPath,
+            }),
           ).to.be.true;
           expect(
-            readFileAsyncStub.secondCall.calledWithExactly(
-              appPackageJsonPath,
-              'utf8',
-            ),
+            workspaceReadFileStub.secondCall.calledWithExactly({
+              fsPath: appPackageJsonPath,
+            }),
           ).to.be.true;
         });
 
@@ -226,8 +228,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
           const firstResult = res[0];
 
-          expect(readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'))
-            .to.be.true;
+          expect(
+            workspaceReadFileStub.calledWithExactly({
+              fsPath: packageJsonPath,
+            }),
+          ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
           expect(firstResult).to.have.all.keys(
@@ -262,8 +267,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
           const firstResult = res[0];
 
-          expect(readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'))
-            .to.be.true;
+          expect(
+            workspaceReadFileStub.calledWithExactly({
+              fsPath: packageJsonPath,
+            }),
+          ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
           expect(firstResult).to.have.all.keys(
@@ -301,8 +309,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
           const firstResult = res[0];
 
-          expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
-            .be.true;
+          expect(
+            workspaceReadFileStub.calledOnceWith({ fsPath: packageJsonPath }),
+          ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -320,8 +329,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
           const firstResult = res[0];
 
-          expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
-            .be.true;
+          expect(
+            workspaceReadFileStub.calledOnceWith({ fsPath: packageJsonPath }),
+          ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -348,7 +358,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
           const firstResult = res[0];
 
           expect(
-            readFileAsyncStub.calledOnceWithExactly(packageJsonPath, 'utf8'),
+            workspaceReadFileStub.calledOnceWithExactly({
+              fsPath: packageJsonPath,
+            }),
           ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
@@ -369,7 +381,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
           const firstResult = res[0];
 
           expect(
-            readFileAsyncStub.calledOnceWithExactly(packageJsonPath, 'utf8'),
+            workspaceReadFileStub.calledOnceWithExactly({
+              fsPath: packageJsonPath,
+            }),
           ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
@@ -390,7 +404,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
           const firstResult = res[0];
 
           expect(
-            readFileAsyncStub.calledOnceWithExactly(packageJsonPath, 'utf8'),
+            workspaceReadFileStub.calledOnceWithExactly({
+              fsPath: packageJsonPath,
+            }),
           ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
@@ -416,8 +432,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
           const firstResult = res[0];
 
-          expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8')).to
-            .be.true;
+          expect(
+            workspaceReadFileStub.calledOnceWith({ fsPath: packageJsonPath }),
+          ).to.be.true;
           expect(firstResult).to.be.an('object');
           expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
           expect(firstResult).to.have.all.keys('apply').and.ownProperty('apply')
@@ -447,8 +464,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
-                .to.be.true;
+              expect(
+                workspaceReadFileStub.calledOnceWith({
+                  fsPath: packageJsonPath,
+                }),
+              ).to.be.true;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -484,7 +504,9 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
               const firstResult = res[0];
 
               expect(
-                readFileAsyncStub.calledWithExactly(packageJsonPath, 'utf8'),
+                workspaceReadFileStub.calledWithExactly({
+                  fsPath: packageJsonPath,
+                }),
               ).to.be.true;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
@@ -526,8 +548,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
-                .to.be.true;
+              expect(
+                workspaceReadFileStub.calledOnceWith({
+                  fsPath: packageJsonPath,
+                }),
+              ).to.be.true;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -572,8 +597,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
-                .to.be.true;
+              expect(
+                workspaceReadFileStub.calledOnceWith({
+                  fsPath: packageJsonPath,
+                }),
+              ).to.be.true;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -608,8 +636,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
-                .to.be.true;
+              expect(
+                workspaceReadFileStub.calledOnceWith({
+                  fsPath: packageJsonPath,
+                }),
+              ).to.be.true;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -652,8 +683,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
-                .to.be.true;
+              expect(
+                workspaceReadFileStub.calledOnceWith({
+                  fsPath: packageJsonPath,
+                }),
+              ).to.be.true;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(5);
               expect(firstResult).to.have.all.keys(
@@ -703,7 +737,7 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.called).to.be.false;
+              expect(workspaceReadFileStub.called).to.be.false;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -723,8 +757,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
-                .to.be.true;
+              expect(
+                workspaceReadFileStub.calledOnceWith({
+                  fsPath: packageJsonPath,
+                }),
+              ).to.be.true;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -750,7 +787,7 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.called).to.be.false;
+              expect(workspaceReadFileStub.called).to.be.false;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -782,7 +819,7 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.called).to.be.false;
+              expect(workspaceReadFileStub.called).to.be.false;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -802,8 +839,11 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.calledOnceWith(packageJsonPath, 'utf8'))
-                .to.be.true;
+              expect(
+                workspaceReadFileStub.calledOnceWith({
+                  fsPath: packageJsonPath,
+                }),
+              ).to.be.true;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)
@@ -831,7 +871,7 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
               const firstResult = res[0];
 
-              expect(readFileAsyncStub.called).to.be.false;
+              expect(workspaceReadFileStub.called).to.be.false;
               expect(firstResult).to.be.an('object');
               expect(Reflect.ownKeys(firstResult)).to.have.lengthOf(1);
               expect(firstResult)

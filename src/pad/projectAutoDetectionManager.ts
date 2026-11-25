@@ -4,7 +4,6 @@ import type { PackageManifest } from '../types/package';
 import { basename } from 'path';
 
 import { ErrorHandler } from '../common/errorHandler';
-import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import { extensions } from '../iconsManifest/supportedExtensions';
@@ -57,9 +56,10 @@ export class ProjectAutoDetectionManager
           `**/{${filesToInclude}}`,
           '**/node_modules/**',
         );
-      return this.detect(results, projects);
+      return await this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
+      return [];
     }
   }
 
@@ -242,7 +242,9 @@ export class ProjectAutoDetectionManager
       if (!result.fsPath.endsWith('package.json')) {
         continue;
       }
-      const content: string = await readFileAsync(result.fsPath, 'utf8');
+      const content: string = new TextDecoder().decode(
+        await this.vscodeManager.workspace.fs.readFile(result),
+      );
       const projectJson: PackageManifest =
         Utils.parseJSONSafe<PackageManifest>(content);
       const projectInfo = this.getInfo(projectJson, project);
@@ -258,11 +260,14 @@ export class ProjectAutoDetectionManager
     const projectKey: string = Object.keys(enums.Projects).find(
       (key: string): boolean => enums.Projects[key] === project,
     );
-    return (
-      extensions.supported.find(
-        (ext: types.FileExtension): boolean => ext.icon === projectKey,
-      )?.extensions ?? []
-    );
+    return extensions.supported
+      .filter((ext: types.FileExtension): boolean => ext.icon === projectKey)
+      .flatMap((ext: types.FileExtension): string[] => [
+        ...(ext.extensions ?? []),
+        ...(ext.filenamesGlob && ext.extensionsGlob
+          ? Utils.combine(ext.filenamesGlob, ext.extensionsGlob)
+          : []),
+      ]);
   }
 
   private isConfigFileOf(project: enums.Projects, filePath: string): boolean {

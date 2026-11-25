@@ -100,6 +100,7 @@ export const languages = {
     knownExtensions: ['instructions.md'],
   },
   cpp: { ids: 'cpp', knownExtensions: ['cpp'] },
+  cql: { ids: 'cql', knownExtensions: ['cql'] },
   crystal: { ids: 'crystal', knownExtensions: ['cr'] },
   csharp: { ids: 'csharp', knownExtensions: ['cs'] },
   css: {

@@ -6,6 +6,7 @@ export interface VSCode {
   version: string;
   window: VSCodeWindow;
   workspace: VSCodeWorkspace;
+  Uri: VSCodeUriStatic;
 }
 
 export interface VSCodeCancellationToken {
@@ -47,6 +48,7 @@ export interface VSCodeDisposable {
 export interface VSCodeEnv {
   appName: string;
   language: string;
+  openExternal(target: VSCodeUri): Thenable<boolean>;
 }
 
 export interface VSCodeExtensionContext {
@@ -64,10 +66,10 @@ export interface VSCodeManagerContract {
   version: string;
   window: VSCodeWindow;
   workspace: VSCodeWorkspace;
-  supportsThemesReload: boolean;
   isSupportedVersion: boolean;
   getWorkspacePaths(): string[];
   getAppUserDirPath(): string;
+  openExternal(url: string): Thenable<boolean>;
 }
 
 export interface VSCodeMemento {
@@ -95,6 +97,10 @@ export interface VSCodeUri {
   toJSON(): unknown;
 }
 
+export interface VSCodeUriStatic {
+  parse(value: string): VSCodeUri;
+}
+
 export interface VSCodeWindow {
   showInformationMessage(
     message: string,
@@ -120,7 +126,12 @@ export type VSCodeEvent<T> = (
   disposables?: VSCodeDisposable[],
 ) => VSCodeDisposable;
 
+export interface VSCodeFileSystem {
+  readFile(uri: VSCodeUri): Thenable<Uint8Array>;
+}
+
 export interface VSCodeWorkspace {
+  fs: VSCodeFileSystem;
   rootPath: string | undefined;
   workspaceFolders: readonly VSCodeWorkspaceFolder[] | undefined;
   onDidChangeConfiguration: VSCodeEvent<VSCodeConfigurationChangeEvent>;

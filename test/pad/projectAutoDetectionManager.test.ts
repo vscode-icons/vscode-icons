@@ -8,9 +8,9 @@ import { expect } from 'chai';
 import * as sinon from 'sinon';
 
 import { ErrorHandler } from '../../src/common/errorHandler';
-import * as fsAsync from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
 import { ManifestReader } from '../../src/iconsManifest';
+import { extensions } from '../../src/iconsManifest/supportedExtensions';
 import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionManager';
 import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
@@ -23,6 +23,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
     let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let findFilesStub: sinon.SinonStub;
+    let workspaceReadFileStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
     let padManager: ProjectAutoDetectionManagerContract;
 
@@ -38,8 +39,10 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
         sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
 
       findFilesStub = sandbox.stub();
+      workspaceReadFileStub = sandbox.stub();
       sandbox.stub(vscodeManagerStub, 'workspace').get(() => ({
         findFiles: findFilesStub,
+        fs: { readFile: workspaceReadFileStub },
       }));
 
       padManager = new ProjectAutoDetectionManager(
@@ -76,10 +79,26 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       expect(logErrorStub.calledOnceWith(error)).to.be.true;
     });
 
+    it(`logs an Error when reading a 'package.json' fails`, async function () {
+      vsicons.projectDetection.disableDetect = false;
+      const error = new Error('ENOENT');
+      findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
+      workspaceReadFileStub.rejects(error);
+      configManagerStub.getPreset.returns({
+        key: '',
+        workspaceValue: undefined,
+      });
+      sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+
+      await padManager.detectProjects([enums.Projects.angular]);
+
+      expect(logErrorStub.calledOnceWith(error)).to.be.true;
+    });
+
     it('detects non conflicting projects', async function () {
       vsicons.projectDetection.disableDetect = false;
       findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-      sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+      workspaceReadFileStub.resolves(undefined);
       sandbox.stub(Utils, 'parseJSONSafe').returns({
         dependencies: {
           angularjs: '1.0.0',
@@ -194,7 +213,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       it(`returns the conflict project detected 'LangResourceKey'`, async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-        sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+        workspaceReadFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',
@@ -240,10 +259,37 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
         ]);
       });
 
+      it('includes explicit config-file extensions in the search', async function () {
+        const previousDisableDetect = vsicons.projectDetection.disableDetect;
+        vsicons.projectDetection.disableDetect = false;
+        findFilesStub.resolves([{ fsPath: '/workspace/angular-custom.json' }]);
+        sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+        const declaration = {
+          icon: 'angular',
+          extensions: ['angular-custom.json'],
+        };
+        extensions.supported.push(declaration);
+
+        try {
+          const res = await padManager.detectProjects([enums.Projects.angular]);
+
+          expect(findFilesStub.firstCall.args[0]).to.contain(
+            'angular-custom.json',
+          );
+          expect(res[0]).to.have.property('apply', true);
+        } finally {
+          extensions.supported.splice(
+            extensions.supported.indexOf(declaration),
+            1,
+          );
+          vsicons.projectDetection.disableDetect = previousDisableDetect;
+        }
+      });
+
       it('detects a project when no workspace preset is configured', async function () {
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
-        sandbox.stub(fsAsync, 'readFileAsync').resolves(undefined);
+        workspaceReadFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
           dependencies: {
             '@angular/core': '1.0.0',

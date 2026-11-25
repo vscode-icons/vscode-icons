@@ -229,9 +229,6 @@ export class ConfigManager implements ConfigManagerContract {
   }
 
   public updateVSIconsConfigState(): void {
-    if (!this.vscodeManager.supportsThemesReload) {
-      return;
-    }
     this.initVSIconsConfig = this.vsicons;
   }
 
