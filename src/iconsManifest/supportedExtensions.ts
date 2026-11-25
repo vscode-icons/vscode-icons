@@ -5937,7 +5937,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'vlt2',
-      extensions: ['vlt.json', 'vlt-lock.json'],
+      filenamesGlob: ['vlt', 'vlt-lock'],
+      extensionsGlob: ['json'],
       filename: true,
       light: true,
       disabled: true,
