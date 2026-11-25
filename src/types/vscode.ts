@@ -7,7 +7,7 @@ interface VSCodeCommandExtension {
 
 export type VSCode = Pick<
   typeof vscode,
-  'commands' | 'env' | 'version' | 'window' | 'workspace'
+  'commands' | 'env' | 'version' | 'window' | 'workspace' | 'Uri'
 >;
 
 export type {
@@ -33,6 +33,8 @@ export type VSCodeEnv = typeof vscode.env;
 export type VSCodeWindow = typeof vscode.window;
 
 export type VSCodeWorkspace = typeof vscode.workspace;
+
+export type VSCodeUriStatic = typeof vscode.Uri;
 
 export interface VSCodePreset<T> {
   key: string;

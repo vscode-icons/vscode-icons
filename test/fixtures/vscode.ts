@@ -2,6 +2,7 @@ import type {
   VSCode,
   VSCodeCommands,
   VSCodeEnv,
+  VSCodeUriStatic,
   VSCodeWindow,
   VSCodeWorkspace,
 } from '../../src/types';
@@ -14,9 +15,10 @@ interface VSCodeMutableExtension {
   env: Mutable<VSCodeEnv>;
   version: string;
   workspace: Mutable<VSCodeWorkspace>;
+  Uri: VSCodeUriStatic;
 }
 
-export type TestVSCode = Omit<VSCode, 'env' | 'version' | 'workspace'> &
+export type TestVSCode = Pick<VSCode, 'commands' | 'window'> &
   VSCodeMutableExtension;
 
 export const vscode: TestVSCode = {
@@ -25,4 +27,5 @@ export const vscode: TestVSCode = {
   version: '1.0.0',
   window: {} as VSCodeWindow,
   workspace: {} as Mutable<VSCodeWorkspace>,
+  Uri: {} as VSCodeUriStatic,
 };

@@ -3,7 +3,6 @@ import type { FolderExtension } from '../../src/types';
 import { join } from 'path';
 
 import { expect } from 'chai';
-import { cloneDeep, isEmpty, isEqual, uniqBy } from 'lodash';
 
 import { existsAsync } from '../../src/common/fsAsync';
 import { ConfigManager } from '../../src/configuration/configManager';
@@ -15,11 +14,11 @@ import { Utils } from '../../src/utils';
 describe('Specifications of supported folders: tests', function () {
   context('ensures that', function () {
     const iconsDirPath = ConfigManager.iconsDir;
-    const supportedFolders = cloneDeep(folders.supported);
+    const supportedFolders = structuredClone(folders.supported);
     let testFolders: FolderExtension[];
 
     beforeEach(function () {
-      testFolders = cloneDeep(supportedFolders);
+      testFolders = structuredClone(supportedFolders);
     });
 
     context('each supported', function () {
@@ -91,9 +90,13 @@ describe('Specifications of supported folders: tests', function () {
           });
 
           it(`duplicate declaration`, function () {
-            const unique = uniqBy(testFolders, JSON.stringify);
+            const unique = new Set(
+              testFolders.map((folder: FolderExtension): string =>
+                JSON.stringify(folder),
+              ),
+            );
 
-            expect(unique).to.have.lengthOf(testFolders.length);
+            expect(unique.size).to.equal(testFolders.length);
           });
 
           it(`same declaration with different 'extensions'`, function () {
@@ -104,7 +107,8 @@ describe('Specifications of supported folders: tests', function () {
               (!Reflect.has(_folder, 'disabled') ||
                 _folder.disabled !== folder.disabled) &&
               !Reflect.has(_folder, 'filename') &&
-              !isEqual(_folder.extensions, folder.extensions) &&
+              JSON.stringify(_folder.extensions) !==
+                JSON.stringify(folder.extensions) &&
               !_folder.checked &&
               _folder.icon === folder.icon;
 
@@ -121,7 +125,7 @@ describe('Specifications of supported folders: tests', function () {
           it(`empty 'extensions' declaration`, function () {
             testFolders.forEach(
               (folder: FolderExtension) =>
-                expect(isEmpty(folder.extensions)).to.be.false,
+                expect(Utils.isEmpty(folder.extensions)).to.be.false,
             );
           });
         });

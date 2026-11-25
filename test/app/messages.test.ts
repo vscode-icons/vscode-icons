@@ -1,7 +1,6 @@
 import type * as types from '../../src/types';
 
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import { ExtensionManager } from '../../src/app/extensionManager';
@@ -47,7 +46,7 @@ describe('ExtensionManagerContract: messages tests', function () {
 
       configManagerStub =
         sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
-      vsiconsClone = cloneDeep(vsicons);
+      vsiconsClone = structuredClone(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =
@@ -310,7 +309,6 @@ describe('ExtensionManagerContract: messages tests', function () {
 
       context(`selecting`, function () {
         let activationCommandStub: sinon.SinonStub;
-        let openStub: sinon.SinonStub;
 
         beforeEach(function () {
           activationCommandStub = sandbox.stub(
@@ -318,7 +316,6 @@ describe('ExtensionManagerContract: messages tests', function () {
             // @ts-ignore
             'activationCommand',
           );
-          openStub = sandbox.stub(Utils, 'open');
         });
 
         context(`an unsupported option`, function () {
@@ -336,7 +333,7 @@ describe('ExtensionManagerContract: messages tests', function () {
               ),
             ).to.be.true;
             expect(activationCommandStub.called).to.be.false;
-            expect(openStub.called).to.be.false;
+            expect(vscodeManagerStub.openExternal.called).to.be.false;
           });
         });
 
@@ -378,8 +375,11 @@ describe('ExtensionManagerContract: messages tests', function () {
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
-            expect(openStub.calledOnceWithExactly(constants.urlOfficialApi)).to
-              .be.true;
+            expect(
+              vscodeManagerStub.openExternal.calledOnceWithExactly(
+                constants.urlOfficialApi,
+              ),
+            ).to.be.true;
           });
         });
 
@@ -401,8 +401,11 @@ describe('ExtensionManagerContract: messages tests', function () {
               ),
             ).to.be.true;
             expect(notifyManagerStub.notifyInfo.calledTwice).to.be.true;
-            expect(openStub.calledOnceWithExactly(constants.urlReadme)).to.be
-              .true;
+            expect(
+              vscodeManagerStub.openExternal.calledOnceWithExactly(
+                constants.urlReadme,
+              ),
+            ).to.be.true;
           });
         });
       });
@@ -427,12 +430,6 @@ describe('ExtensionManagerContract: messages tests', function () {
       });
 
       context(`selecting`, function () {
-        let openStub: sinon.SinonStub;
-
-        beforeEach(function () {
-          openStub = sandbox.stub(Utils, 'open');
-        });
-
         context(`an unsupported option`, function () {
           it(`does nothing`, async function () {
             notifyManagerStub.notifyInfo.resolves();
@@ -447,7 +444,7 @@ describe('ExtensionManagerContract: messages tests', function () {
                 enums.LangResourceKeys.dontShowThis,
               ),
             ).to.be.true;
-            expect(openStub.called).to.be.false;
+            expect(vscodeManagerStub.openExternal.called).to.be.false;
             expect(configManagerStub.updateDontShowNewVersionMessage.called).to
               .be.false;
           });
@@ -469,8 +466,11 @@ describe('ExtensionManagerContract: messages tests', function () {
                 enums.LangResourceKeys.dontShowThis,
               ),
             ).to.be.true;
-            expect(openStub.calledOnceWithExactly(constants.urlReleaseNote)).to
-              .be.true;
+            expect(
+              vscodeManagerStub.openExternal.calledOnceWithExactly(
+                constants.urlReleaseNote,
+              ),
+            ).to.be.true;
           });
         });
 
@@ -501,15 +501,10 @@ describe('ExtensionManagerContract: messages tests', function () {
     });
 
     context(`showing the customization message`, function () {
-      let supportsThemesReloadStub: sinon.SinonStub;
       let handleActionStub: sinon.SinonStub;
       let showCustomizationMessage: (...arg: unknown[]) => Promise<void>;
 
       beforeEach(function () {
-        supportsThemesReloadStub = sandbox.stub(
-          vscodeManagerStub,
-          'supportsThemesReload',
-        );
         handleActionStub = sandbox.stub(
           extensionManager,
           // @ts-ignore
@@ -522,13 +517,12 @@ describe('ExtensionManagerContract: messages tests', function () {
           ) => Promise<void>;
       });
 
-      context(`when editor theme reload is NOT supported`, function () {
+      context(`when no reload option is provided`, function () {
         it(`calls the action handler`, async function () {
           const message = 'test';
           const items = ['item'];
           const cb = sinon.fake();
           const cbArgs = [];
-          supportsThemesReloadStub.get(() => false);
           notifyManagerStub.notifyInfo.resolves('btn');
 
           await showCustomizationMessage.call(
@@ -550,14 +544,12 @@ describe('ExtensionManagerContract: messages tests', function () {
         });
       });
 
-      context(`when editor theme reload is supported`, function () {
+      context(`when a reload option is provided`, function () {
         it(`calls the action handler`, async function () {
           const message = 'test';
           const items = [enums.LangResourceKeys.reload];
           const cb = sinon.fake();
           const cbArgs = [];
-          supportsThemesReloadStub.get(() => true);
-
           await showCustomizationMessage.call(
             extensionManager,
             message,
@@ -583,8 +575,6 @@ describe('ExtensionManagerContract: messages tests', function () {
           const items = ['item'];
           const error = new Error();
           notifyManagerStub.notifyInfo.rejects(error);
-          supportsThemesReloadStub.get(() => false);
-
           await showCustomizationMessage.call(extensionManager, message, items);
 
           expect(
@@ -602,8 +592,6 @@ describe('ExtensionManagerContract: messages tests', function () {
           const items = [enums.LangResourceKeys.reload];
           const error = new Error();
           handleActionStub.throws(error);
-          supportsThemesReloadStub.get(() => true);
-
           await showCustomizationMessage.call(extensionManager, message, items);
 
           expect(notifyManagerStub.notifyInfo.called).to.be.false;

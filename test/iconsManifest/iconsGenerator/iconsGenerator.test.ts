@@ -13,7 +13,6 @@ import type { PackageManifest } from '../../../src/types/package';
 import { resolve } from 'path';
 
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import packageJson from '../../../package.json';
@@ -42,6 +41,9 @@ import { vsicons } from '../../fixtures/vsicons';
 describe('IconsGeneratorContract: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
+    let fsAsyncStub: (
+      name: Exclude<keyof typeof fsAsync, 'existsAsync'>,
+    ) => sinon.SinonStub;
     let vscodeManagerStub: sinon.SinonStubbedInstance<VSCodeManagerContract>;
     let configManagerStub: sinon.SinonStubbedInstance<ConfigManagerContract>;
     let onDidChangeConfigurationStub: sinon.SinonStub;
@@ -61,6 +63,11 @@ describe('IconsGeneratorContract: tests', function () {
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
+      fsAsyncStub = (name: Exclude<keyof typeof fsAsync, 'existsAsync'>) => {
+        const stub = sandbox.stub();
+        sandbox.stub(fsAsync, name).get(() => stub);
+        return stub;
+      };
 
       vscodeManagerStub =
         sinon.createStubInstance<VSCodeManagerContract>(VSCodeManager);
@@ -76,7 +83,7 @@ describe('IconsGeneratorContract: tests', function () {
 
       configManagerStub =
         sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
-      vsiconsClone = cloneDeep(vsicons);
+      vsiconsClone = structuredClone(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       sandbox
@@ -233,10 +240,8 @@ describe('IconsGeneratorContract: tests', function () {
 
       beforeEach(function () {
         existsAsyncStub = sandbox.stub(fsAsync, 'existsAsync').resolves(true);
-        createDirAsyncStub = sandbox
-          .stub(Utils, 'createDirectoryRecursively')
-          .resolves();
-        writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
+        createDirAsyncStub = fsAsyncStub('mkdirAsync').resolves();
+        writeFileAsyncStub = fsAsyncStub('writeFileAsync').resolves();
         logErrorStub = sandbox.stub(ErrorHandler, 'logError');
         pathUnixJoinStub = sandbox.stub(Utils, 'pathUnixJoin').returns('');
         infoStub = sandbox.stub(console, 'info').get(() => infoStub);

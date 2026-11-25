@@ -58,8 +58,8 @@ export const extensions: FileCollection = {
     {
       icon: 'actionscript2',
       extensions: ['part'],
-      light: true,
       languages: [languages.actionscript],
+      light: true,
       disabled: true,
     },
     {
@@ -122,6 +122,7 @@ export const extensions: FileCollection = {
       filenamesGlob: ['alchemy.run'],
       extensionsGlob: ['js', 'mjs', 'ts', 'mts'],
       filename: true,
+      light: true,
     },
     {
       icon: 'allcontributors',
@@ -134,14 +135,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'allure',
-      extensions: [
-        'allurerc.js',
-        'allurerc.mjs',
-        'allurerc.cjs',
-        'allurerc.json',
-        'allurerc.yaml',
-        'allurerc.yml',
-      ],
+      filenamesGlob: ['allurerc'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'json', 'yaml', 'yml'],
       filename: true,
     },
     {
@@ -150,15 +145,16 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'angular',
-      extensions: [
-        '.angular-cli.json',
-        'angular-cli.json',
-        'angular.json',
-        '.angular.json',
-        '.angular-config.json',
-        'ngsw.json',
-        'ngsw-config.json',
+      filenamesGlob: [
+        '.angular-cli',
+        'angular-cli',
+        'angular',
+        '.angular',
+        '.angular-config',
+        'ngsw',
+        'ngsw-config',
       ],
+      extensionsGlob: ['json'],
       filename: true,
     },
     {
@@ -187,12 +183,18 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'api_extractor',
-      extensions: ['api-extractor.json', 'api-extractor-base.json'],
+      filenamesGlob: ['api-extractor', 'api-extractor-base'],
+      extensionsGlob: ['json'],
       filename: true,
     },
     {
       icon: 'apib',
       languages: [languages.apib],
+    },
+    {
+      icon: 'apib2',
+      languages: [languages.apib],
+      disabled: true,
     },
     {
       icon: 'apl',
@@ -209,12 +211,14 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'appsemble',
-      extensions: ['.appsemblerc.yaml', 'app-definition.yaml'],
+      filenamesGlob: ['.appsemblerc', 'app-definition'],
+      extensionsGlob: ['yaml'],
       filename: true,
     },
     {
       icon: 'appveyor',
-      extensions: ['appveyor.yml', '.appveyor.yml'],
+      filenamesGlob: ['appveyor', '.appveyor'],
+      extensionsGlob: ['yml'],
       filename: true,
     },
     { icon: 'arduino', extensions: ['ino', 'pde'] },
@@ -254,9 +258,9 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'astroconfig',
-      filename: true,
       filenamesGlob: ['astro.config'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
+      filename: true,
       light: true,
     },
     {
@@ -280,7 +284,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'aube',
-      extensions: ['aube-lock.yaml', 'aube-workspace.yaml'],
+      filenamesGlob: ['aube-lock', 'aube-workspace'],
+      extensionsGlob: ['yaml'],
       filename: true,
     },
     {
@@ -354,18 +359,20 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'azurepipelines',
-      extensions: ['azure-pipelines.yml', '.vsts-ci.yml'],
+      filenamesGlob: ['azure-pipelines', '.vsts-ci'],
+      extensionsGlob: ['yml'],
       filename: true,
       languages: [languages.azurepipelines],
     },
     {
       icon: 'azureresourcemanager',
-      extensions: [
-        'azuredeploy.json',
-        'azuredeploy.parameters.json',
-        'azuredeploy.parameters.us.json',
-        'createUiDefinition.json',
+      filenamesGlob: [
+        'azuredeploy',
+        'azuredeploy.parameters',
+        'azuredeploy.parameters.us',
+        'createUiDefinition',
       ],
+      extensionsGlob: ['json'],
       filename: true,
     },
     {
@@ -377,16 +384,16 @@ export const extensions: FileCollection = {
       extensions: ['.babelrc', '.babelignore'],
       filenamesGlob: ['.babelrc', 'babel.config'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'babel2',
       extensions: ['.babelrc', '.babelignore'],
       filenamesGlob: ['.babelrc', 'babel.config'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'json'],
-      light: true,
       filename: true,
+      light: true,
       disabled: true,
     },
     {
@@ -432,9 +439,15 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'behat',
-      extensions: ['behat.yaml.dist', 'behat.yml.dist'],
       filenamesGlob: ['behat', 'behat.dist'],
       extensionsGlob: ['yaml', 'yml', 'php'],
+      filename: true,
+      light: true,
+    },
+    {
+      icon: 'behat',
+      filenamesGlob: ['behat.yaml', 'behat.yml'],
+      extensionsGlob: ['dist'],
       filename: true,
       light: true,
     },
@@ -478,7 +491,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'biome',
-      extensions: ['biome.json', 'biome.jsonc', '.biome.json', '.biome.jsonc'],
+      filenamesGlob: ['biome', '.biome'],
+      extensionsGlob: ['json', 'jsonc'],
       filename: true,
       languages: [languages.biomesyntaxtree],
     },
@@ -519,8 +533,15 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'bower2',
+      extensions: ['.bowerrc', 'bower.json'],
+      filename: true,
+      disabled: true,
+    },
+    {
       icon: 'brakeman',
-      extensions: ['brakeman.yml', 'brakeman.ignore'],
+      filenamesGlob: ['brakeman'],
+      extensionsGlob: ['yml', 'ignore'],
       filename: true,
     },
     {
@@ -545,22 +566,15 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'buf',
-      extensions: [
-        'buf.yaml',
-        'buf.yml',
-        'buf.gen.yml',
-        'buf.gen.yaml',
-        'buf.work.yaml',
-        'buf.work.yml',
-      ],
+      filenamesGlob: ['buf', 'buf.gen', 'buf.work'],
+      extensionsGlob: ['yaml', 'yml'],
       languages: [languages.buf],
-      filename: true,
     },
     {
       icon: 'bun',
       extensions: ['.bun-version', 'bun.lockb', 'bun.lock'],
-      languages: [languages.bunlockb],
       filename: true,
+      languages: [languages.bunlockb],
     },
     {
       icon: 'bundlemon',
@@ -585,7 +599,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'bunfig',
-      extensions: ['.bunfig.toml', 'bunfig.toml'],
+      filenamesGlob: ['.bunfig', 'bunfig'],
+      extensionsGlob: ['toml'],
       filename: true,
     },
     {
@@ -608,6 +623,7 @@ export const extensions: FileCollection = {
     {
       icon: 'cabal',
       languages: [languages.cabal],
+      light: true,
     },
     {
       icon: 'caddy',
@@ -629,9 +645,9 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'capacitor',
+      filenamesGlob: ['capacitor.config'],
       extensionsGlob: ['json', 'ts'],
       filename: true,
-      filenamesGlob: ['capacitor.config'],
     },
     {
       icon: 'capnp',
@@ -639,12 +655,18 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'cargo',
-      extensions: ['Cargo.toml', 'Cargo.lock'],
+      filenamesGlob: ['Cargo'],
+      extensionsGlob: ['toml', 'lock'],
       filename: true,
     },
     {
       icon: 'casc',
       languages: [languages.casc],
+    },
+    {
+      icon: 'cassandra',
+      languages: [languages.cql],
+      light: true,
     },
     {
       icon: 'cddl',
@@ -713,7 +735,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'changie',
-      extensions: ['.changie.yaml', '.changie.yml'],
+      filenamesGlob: ['.changie'],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
     },
     {
@@ -722,7 +745,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'checkov',
-      extensions: ['.checkov.yaml', '.checkov.yml'],
+      filenamesGlob: ['.checkov'],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
       light: true,
     },
@@ -744,8 +768,8 @@ export const extensions: FileCollection = {
     {
       icon: 'circleci',
       extensions: ['circle.yml'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'circom',
@@ -774,15 +798,16 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'cloudflare',
-      extensions: ['wrangler.json', 'wrangler.jsonc', 'wrangler.toml'],
+      filenamesGlob: ['wrangler'],
+      extensionsGlob: ['json', 'jsonc', 'toml'],
       filename: true,
     },
     {
       icon: 'cloudfoundry',
       extensions: ['.cfignore'],
-      light: true,
       filename: true,
       languages: [languages.cloudfoundrymanifest],
+      light: true,
     },
     {
       icon: 'cmake',
@@ -794,19 +819,20 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'codacy',
-      extensions: ['.codacy.yml', '.codacy.yaml'],
+      filenamesGlob: ['.codacy'],
+      extensionsGlob: ['yml', 'yaml'],
       light: true,
-      filename: true,
     },
     {
       icon: 'codeclimate',
       extensions: ['.codeclimate.yml'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'codecov',
-      extensions: ['codecov.yml', '.codecov.yml'],
+      filenamesGlob: ['codecov', '.codecov'],
+      extensionsGlob: ['yml'],
       filename: true,
     },
     {
@@ -816,19 +842,13 @@ export const extensions: FileCollection = {
       extensionsGlob: ['js', 'ts', 'json', 'yaml', 'yml'],
       filename: true,
     },
+    { icon: 'codekit', extensions: ['kit'] },
     {
       icon: 'codekit',
-      extensions: [
-        'config.codekit',
-        'config.codekit2',
-        'config.codekit3',
-        '.config.codekit',
-        '.config.codekit2',
-        '.config.codekit3',
-      ],
+      filenamesGlob: ['config', '.config'],
+      extensionsGlob: ['codekit', 'codekit2', 'codekit3'],
       filename: true,
     },
-    { icon: 'codekit', extensions: ['kit'] },
     {
       icon: 'codemagic',
       extensions: ['codemagic.yaml'],
@@ -870,26 +890,27 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'commitlint',
-      extensions: [
-        'commitlint.config.js',
-        'commitlint.config.cjs',
-        'commitlint.config.mjs',
-        'commitlint.config.ts',
-        'commitlint.config.cts',
-      ],
       filenamesGlob: ['.commitlintrc'],
       extensionsGlob: ['json', 'yaml', 'yml', 'js', 'cjs', 'mjs', 'ts', 'cts'],
+      filename: true,
+    },
+    {
+      icon: 'commitlint',
+      filenamesGlob: ['commitlint.config'],
+      extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts'],
       filename: true,
     },
     { icon: 'compass', disabled: true },
     {
       icon: 'composer',
-      extensions: ['composer.json', 'composer.lock'],
+      filenamesGlob: ['composer'],
+      extensionsGlob: ['json', 'lock'],
       filename: true,
     },
     {
       icon: 'conan',
-      extensions: ['conanfile.txt', 'conanfile.py'],
+      filenamesGlob: ['conanfile'],
+      extensionsGlob: ['txt', 'py'],
       filename: true,
     },
     {
@@ -900,8 +921,8 @@ export const extensions: FileCollection = {
     {
       icon: 'config',
       extensions: ['.tool-versions'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'config',
@@ -1134,7 +1155,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'databricks',
-      extensions: ['databricks.yml', 'databricks.yaml'],
+      filenamesGlob: ['databricks'],
+      extensionsGlob: ['yml', 'yaml'],
       filename: true,
     },
     {
@@ -1163,7 +1185,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'dbt_bouncer',
-      extensions: ['dbt-bouncer.yml', 'dbt-bouncer.yaml', 'dbt-bouncer.toml'],
+      filenamesGlob: ['dbt-bouncer'],
+      extensionsGlob: ['yml', 'yaml', 'toml'],
       filename: true,
     },
     {
@@ -1201,7 +1224,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'dependabot',
-      extensions: ['dependabot.yml', 'dependabot.yaml'],
+      filenamesGlob: ['dependabot'],
+      extensionsGlob: ['yml', 'yaml'],
       filename: true,
     },
     {
@@ -1222,34 +1246,36 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'devcontainer',
-      extensions: [
-        'devcontainer.json',
-        'devcontainer-lock.json',
-        '.devcontainer.json',
-        '.devcontainer-lock.json',
+      filenamesGlob: [
+        'devcontainer',
+        'devcontainer-lock',
+        '.devcontainer',
+        '.devcontainer-lock',
       ],
+      extensionsGlob: ['json'],
       filename: true,
     },
     {
       icon: 'devenv',
-      extensions: ['devenv.lock', 'devenv.nix', 'devenv.yaml'],
+      filenamesGlob: ['devenv'],
+      extensionsGlob: ['lock', 'nix', 'yaml'],
       filename: true,
       light: true,
     },
     {
       icon: 'devprune',
-      extensions: ['.devprune.json', 'ignore.devprune.json'],
+      filenamesGlob: ['.devprune', 'ignore.devprune'],
+      extensionsGlob: ['json'],
       filename: true,
     },
     {
       icon: 'devvit',
-      filename: true,
       filenamesGlob: ['devvit', 'devvit.dev', 'devvit.prod', 'devvit.test'],
       extensionsGlob: ['json'],
+      filename: true,
     },
     {
       icon: 'devvit',
-      filename: true,
       filenamesGlob: [
         'devvit.config',
         'devvit.config.dev',
@@ -1257,11 +1283,12 @@ export const extensions: FileCollection = {
         'devvit.config.test',
       ],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'mts'],
+      filename: true,
     },
     {
       icon: 'dhall',
-      light: true,
       languages: [languages.dhall],
+      light: true,
     },
     {
       icon: 'diff',
@@ -1360,7 +1387,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'doppler',
-      extensions: ['doppler.yaml', 'doppler-template.yaml'],
+      filenamesGlob: ['doppler', 'doppler-template'],
+      extensionsGlob: ['yaml'],
       filename: true,
     },
     {
@@ -1374,8 +1402,8 @@ export const extensions: FileCollection = {
     {
       icon: 'doxyfile',
       extensions: ['Doxyfile'],
-      languages: [languages.doxyfile],
       filename: true,
+      languages: [languages.doxyfile],
     },
     {
       icon: 'doxygen',
@@ -1398,8 +1426,8 @@ export const extensions: FileCollection = {
     {
       icon: 'drone',
       extensions: ['.drone.yml', '.drone.yml.sig'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'drools',
@@ -1442,8 +1470,8 @@ export const extensions: FileCollection = {
     {
       icon: 'eas-metadata',
       extensions: ['store.config.json'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'edge',
@@ -1481,7 +1509,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'electron',
-      extensions: ['forge.config.js', 'forge.config.ts'],
+      filenamesGlob: ['forge.config'],
+      extensionsGlob: ['js', 'ts'],
       filename: true,
     },
     {
@@ -1555,7 +1584,7 @@ export const extensions: FileCollection = {
     {
       icon: 'esbuild',
       filenamesGlob: ['esbuild', 'esbuild.config'],
-      extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
+      extensionsGlob: ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
       filename: true,
     },
     {
@@ -1654,8 +1683,8 @@ export const extensions: FileCollection = {
         'eas.json',
         '.easignore',
       ],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'falcon',
@@ -1691,8 +1720,8 @@ export const extensions: FileCollection = {
     {
       icon: 'fauna',
       extensions: ['.faunarc'],
-      languages: [languages.fauna],
       filename: true,
+      languages: [languages.fauna],
     },
     {
       icon: 'favicon',
@@ -1708,20 +1737,20 @@ export const extensions: FileCollection = {
     {
       icon: 'firebasehosting',
       extensions: ['firebase.json'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'firebasestorage',
       extensions: ['storage.rules'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'firestore',
       extensions: ['firestore.rules', 'firestore.indexes.json'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'fitbit',
@@ -1825,7 +1854,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'fresh',
-      extensions: ['fresh.gen.ts', 'fresh.config.ts'],
+      filenamesGlob: ['fresh.gen', 'fresh.config'],
+      extensionsGlob: ['ts'],
       filename: true,
     },
     {
@@ -1840,6 +1870,11 @@ export const extensions: FileCollection = {
     {
       icon: 'fsharp',
       languages: [languages.fsharp],
+    },
+    {
+      icon: 'fsharp2',
+      languages: [languages.fsharp],
+      disabled: true,
     },
     { icon: 'fsproj', extensions: ['fsproj'] },
     {
@@ -1911,7 +1946,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'gemini',
-      extensions: ['gemini.md', 'GEMINI.md'],
+      filenamesGlob: ['gemini', 'GEMINI'],
+      extensionsGlob: ['md'],
       filename: true,
     },
     {
@@ -1946,6 +1982,24 @@ export const extensions: FileCollection = {
       ],
       filename: true,
       languages: [languages.git],
+    },
+    {
+      icon: 'git2',
+      extensions: [
+        '.git',
+        '.gitattributes',
+        '.gitconfig',
+        '.gitignore',
+        '.gitmessage',
+        '.gitmodules',
+        '.gitkeep',
+        '.git-blame-ignore-revs',
+        '.mailmap',
+        '.issuetracker',
+      ],
+      filename: true,
+      languages: [languages.git],
+      disabled: true,
     },
     {
       icon: 'gitlab',
@@ -2009,7 +2063,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'go_package',
-      extensions: ['go.sum', 'go.mod'],
+      filenamesGlob: ['go'],
+      extensionsGlob: ['sum', 'mod'],
       filename: true,
       languages: [languages.gomod],
     },
@@ -2029,12 +2084,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'golangci',
-      extensions: [
-        '.golangci.yml',
-        '.golangci.yaml',
-        '.golangci.toml',
-        '.golangci.json',
-      ],
+      filenamesGlob: ['.golangci'],
+      extensionsGlob: ['yml', 'yaml', 'toml', 'json'],
       filename: true,
     },
     {
@@ -2092,7 +2143,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'grok',
-      extensions: ['grok.md', 'GROK.md'],
+      filenamesGlob: ['grok', 'GROK'],
+      extensionsGlob: ['md'],
       filename: true,
       light: true,
     },
@@ -2174,7 +2226,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'helm',
-      extensions: ['chart.lock', 'chart.yaml'],
+      filenamesGlob: ['chart'],
+      extensionsGlob: ['lock', 'yaml'],
       filename: true,
       languages: [languages.helm],
     },
@@ -2192,12 +2245,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'histoire',
-      extensions: [
-        'histoire.config.ts',
-        'histoire.config.js',
-        '.histoire.ts',
-        '.histoire.js',
-      ],
+      filenamesGlob: ['histoire.config', '.histoire'],
+      extensionsGlob: ['ts', 'js'],
       filename: true,
     },
     {
@@ -2233,10 +2282,10 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'htmlvalidate',
-      filename: true,
-      filenamesGlob: ['.htmlvalidate'],
       extensions: ['.htmlvalidateignore'],
+      filenamesGlob: ['.htmlvalidate'],
       extensionsGlob: ['js', 'cjs', 'json'],
+      filename: true,
     },
     {
       icon: 'http',
@@ -2267,7 +2316,24 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'husky',
-      extensions: ['.huskyrc', 'husky.config.js'],
+      extensions: [
+        '.huskyrc',
+        'husky.config.js',
+        '.husky/applypatch-msg',
+        '.husky/commit-msg',
+        '.husky/post-applypatch',
+        '.husky/post-checkout',
+        '.husky/post-commit',
+        '.husky/post-merge',
+        '.husky/post-rewrite',
+        '.husky/pre-applypatch',
+        '.husky/pre-auto-gc',
+        '.husky/pre-commit',
+        '.husky/pre-merge-commit',
+        '.husky/pre-push',
+        '.husky/pre-rebase',
+        '.husky/prepare-commit-msg',
+      ],
       filenamesGlob: ['.huskyrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml'],
       filename: true,
@@ -2420,7 +2486,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'jitpack',
-      extensions: ['jitpack.yml', '.jitpack.yml'],
+      filenamesGlob: ['jitpack', '.jitpack'],
+      extensionsGlob: ['yml'],
       filename: true,
       light: true,
     },
@@ -2452,8 +2519,8 @@ export const extensions: FileCollection = {
     {
       icon: 'jsconfig',
       extensions: ['jsconfig.json'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'jscpd',
@@ -2534,7 +2601,8 @@ export const extensions: FileCollection = {
     { icon: 'jsp', extensions: ['jsp'] },
     {
       icon: 'jsr',
-      extensions: ['jsr.json', 'jsr.jsonc'],
+      filenamesGlob: ['jsr'],
+      extensionsGlob: ['json', 'jsonc'],
       filename: true,
     },
     { icon: 'jss', extensions: ['jss'] },
@@ -2569,14 +2637,15 @@ export const extensions: FileCollection = {
     { icon: 'key', extensions: ['key', 'pem'] },
     {
       icon: 'kitchenci',
-      extensions: ['.kitchen.yml', 'kitchen.yml'],
+      filenamesGlob: ['.kitchen', 'kitchen'],
+      extensionsGlob: ['yml'],
       filename: true,
     },
     {
       icon: 'kite',
       extensions: ['.kiteignore'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'kivy',
@@ -2650,17 +2719,18 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'layout',
-      extensions: ['layout.html', 'layout.htm'],
-      filename: true,
-    },
-    {
-      icon: 'layout',
       extensions: ['master', 'layout.html', 'layout.htm'],
     },
     {
+      icon: 'layout',
+      filenamesGlob: ['layout'],
+      extensionsGlob: ['html', 'htm'],
+      filename: true,
+    },
+    {
       icon: 'lean',
-      light: true,
       languages: [languages.lean],
+      light: true,
     },
     {
       icon: 'leanconfig',
@@ -2670,8 +2740,8 @@ export const extensions: FileCollection = {
         'lake-manifest.json',
         'lean-toolchain',
       ],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'lefthook',
@@ -2691,8 +2761,8 @@ export const extensions: FileCollection = {
     {
       icon: 'lerna',
       extensions: ['lerna.json'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'less',
@@ -2779,9 +2849,14 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'lighthouse',
-      extensions: ['budget.json', 'budgets.json'],
       filenamesGlob: ['.lighthouserc'],
       extensionsGlob: ['cjs', 'js', 'json', 'yaml', 'yml'],
+      filename: true,
+    },
+    {
+      icon: 'lighthouse',
+      filenamesGlob: ['budget', 'budgets'],
+      extensionsGlob: ['json'],
       filename: true,
     },
     {
@@ -2826,7 +2901,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'livekit',
-      extensions: ['livekit.yaml', 'livekit.toml'],
+      filenamesGlob: ['livekit'],
+      extensionsGlob: ['yaml', 'toml'],
       filename: true,
       light: true,
     },
@@ -2898,10 +2974,10 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'markdownlint',
-      filename: true,
       extensions: ['.markdownlintrc'],
       filenamesGlob: ['.markdownlint', '.markdownlint-cli2'],
       extensionsGlob: ['json', 'jsonc', 'yml', 'yaml', 'cjs'],
+      filename: true,
     },
     {
       icon: 'markdownlint_ignore',
@@ -2963,9 +3039,9 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'mcp',
-      extensions: ['.mcp.json', 'mcp.json'],
+      filenamesGlob: ['.mcp', 'mcp'],
+      extensionsGlob: ['json'],
       light: true,
-      filename: true,
     },
     {
       icon: 'mdx',
@@ -2976,8 +3052,8 @@ export const extensions: FileCollection = {
       icon: 'mdx-components',
       filenamesGlob: ['mdx-components'],
       extensionsGlob: ['cjs', 'cts', 'js', 'jsx', 'mjs', 'mts', 'ts', 'tsx'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'mdxlint',
@@ -3141,7 +3217,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'mypy',
-      extensions: ['mypy.ini', '.mypy.ini'],
+      filenamesGlob: ['mypy', '.mypy'],
+      extensionsGlob: ['ini'],
       filename: true,
       light: true,
     },
@@ -3289,12 +3366,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'nestjs',
-      extensions: [
-        '.nest-cli.json',
-        'nest-cli.json',
-        'nestconfig.json',
-        '.nestconfig.json',
-      ],
+      filenamesGlob: ['.nest-cli', 'nest-cli', 'nestconfig', '.nestconfig'],
+      extensionsGlob: ['json'],
       filename: true,
     },
     {
@@ -3318,7 +3391,8 @@ export const extensions: FileCollection = {
     { icon: 'nextflow', languages: [languages.nextflow] },
     {
       icon: 'ng-packagr',
-      extensions: ['ng-package.json', 'ng-package.js'],
+      filenamesGlob: ['ng-package'],
+      extensionsGlob: ['json', 'js'],
       filename: true,
     },
     {
@@ -3581,6 +3655,7 @@ export const extensions: FileCollection = {
     {
       icon: 'nim',
       languages: [languages.nim],
+      light: true,
     },
     {
       icon: 'nimble',
@@ -3720,7 +3795,20 @@ export const extensions: FileCollection = {
       icon: 'nuxt',
       extensions: ['.nuxtignore', '.nuxtrc'],
       filenamesGlob: ['nuxt.config', 'nuxt'],
-      extensionsGlob: ['js', 'ts', 'mjs'],
+      extensionsGlob: [
+        'js',
+        'ts',
+        'mjs',
+        'cjs',
+        'mts',
+        'cts',
+        'json',
+        'jsonc',
+        'json5',
+        'yaml',
+        'yml',
+        'toml',
+      ],
       filename: true,
     },
     {
@@ -3745,8 +3833,8 @@ export const extensions: FileCollection = {
     {
       icon: 'objidconfig',
       extensions: ['.objidconfig'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'ocaml',
@@ -3760,7 +3848,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'ocx',
-      extensions: ['ocx.toml', 'ocx.lock'],
+      filenamesGlob: ['ocx'],
+      extensionsGlob: ['toml', 'lock'],
       filename: true,
     },
     {
@@ -3789,7 +3878,8 @@ export const extensions: FileCollection = {
     { icon: 'opencl', extensions: ['cl', 'opencl'] },
     {
       icon: 'opencode',
-      extensions: ['opencode.json', 'opencode.jsonc'],
+      filenamesGlob: ['opencode'],
+      extensionsGlob: ['json', 'jsonc'],
       filename: true,
       light: true,
     },
@@ -3823,7 +3913,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'overcommit',
-      extensions: ['.overcommit.yml', '.local-overcommit.yml'],
+      filenamesGlob: ['.overcommit', '.local-overcommit'],
+      extensionsGlob: ['yml'],
       filename: true,
       light: true,
     },
@@ -3941,7 +4032,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'peeky',
-      extensions: ['peeky.config.ts', 'peeky.config.js', 'peeky.config.mjs'],
+      filenamesGlob: ['peeky.config'],
+      extensionsGlob: ['ts', 'js', 'mjs'],
       filename: true,
     },
     {
@@ -4053,8 +4145,8 @@ export const extensions: FileCollection = {
     {
       icon: 'pip',
       extensions: ['pipfile', 'pipfile.lock'],
-      languages: [languages.pip],
       filename: true,
+      languages: [languages.pip],
     },
     {
       icon: 'pipeline',
@@ -4062,7 +4154,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'pixi',
-      extensions: ['pixi.lock', 'pixi.toml'],
+      filenamesGlob: ['pixi'],
+      extensionsGlob: ['lock', 'toml'],
       filename: true,
     },
     {
@@ -4071,9 +4164,15 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'platformatic',
-      extensions: ['watt.json', 'watt.json5'],
       filenamesGlob: ['platformatic'],
       extensionsGlob: ['json', 'json5', 'yml', 'yaml', 'tml', 'toml'],
+      filename: true,
+      light: true,
+    },
+    {
+      icon: 'platformatic',
+      filenamesGlob: ['watt'],
+      extensionsGlob: ['json', 'json5'],
       filename: true,
       light: true,
     },
@@ -4122,8 +4221,8 @@ export const extensions: FileCollection = {
         'pnpm-lock.yaml',
         'pnpm-workspace.yaml',
       ],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'poedit',
@@ -4288,8 +4387,8 @@ export const extensions: FileCollection = {
     {
       icon: 'prettier',
       extensions: ['.prettierrc', '.prettierignore'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'prettier',
@@ -4307,15 +4406,15 @@ export const extensions: FileCollection = {
         'yaml',
         'toml',
       ],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'prettier',
       filenamesGlob: ['prettier.config'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts', 'coffee'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'prisma',
@@ -4421,8 +4520,8 @@ export const extensions: FileCollection = {
     {
       icon: 'pyrefly',
       extensions: ['pyrefly.toml'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'pyret',
@@ -4434,7 +4533,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'pytest',
-      extensions: ['pytest.ini', '.pytest.ini', 'pytest.toml', '.pytest.toml'],
+      filenamesGlob: ['pytest', '.pytest'],
+      extensionsGlob: ['ini', 'toml'],
       filename: true,
     },
     {
@@ -4505,7 +4605,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'quartoconfig',
-      extensions: ['_quarto.yaml', '_quarto.yml'],
+      filenamesGlob: ['_quarto'],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
     },
     {
@@ -4513,8 +4614,8 @@ export const extensions: FileCollection = {
       extensions: ['quasar.conf.js'],
       filenamesGlob: ['quasar.config'],
       extensionsGlob: ['js', 'mjs', 'cjs', 'ts'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'quokka',
@@ -4537,7 +4638,8 @@ export const extensions: FileCollection = {
     { icon: 'rails', extensions: ['rails'], filename: true },
     {
       icon: 'railway',
-      extensions: ['railway.toml', 'railway.json'],
+      filenamesGlob: ['railway'],
+      extensionsGlob: ['toml', 'json'],
       filename: true,
       light: true,
     },
@@ -4564,8 +4666,8 @@ export const extensions: FileCollection = {
       icon: 'razzle',
       filenamesGlob: ['razzle.config'],
       extensionsGlob: ['js'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'reactjs',
@@ -4581,8 +4683,8 @@ export const extensions: FileCollection = {
       icon: 'reactrouter',
       filenamesGlob: ['react-router.config'],
       extensionsGlob: ['js', 'ts'],
-      light: true,
       filename: true,
+      light: true,
     },
     { icon: 'reacttemplate', extensions: ['rt'] },
     {
@@ -4596,18 +4698,9 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'readme',
-      extensions: [
-        'README',
-        'README.md',
-        'README.markdown',
-        'README.rst',
-        'README.txt',
-        'INDEX',
-        'INDEX.md',
-        'INDEX.markdown',
-        'INDEX.rst',
-        'INDEX.txt',
-      ],
+      extensions: ['readme', 'README', 'index', 'INDEX'],
+      filenamesGlob: ['readme', 'README', 'index', 'INDEX'],
+      extensionsGlob: ['md', 'markdown', 'rst', 'txt'],
       filename: true,
     },
     {
@@ -4640,8 +4733,8 @@ export const extensions: FileCollection = {
       extensions: ['.rehyperc', '.rehypeignore'],
       filenamesGlob: ['.rehyperc'],
       extensionsGlob: ['cjs', 'js', 'json', 'mjs', 'yml', 'yaml'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'relay',
@@ -4654,8 +4747,8 @@ export const extensions: FileCollection = {
       extensions: ['.remarkrc', '.remarkignore'],
       filenamesGlob: ['.remarkrc'],
       extensionsGlob: ['cjs', 'js', 'json', 'mjs', 'yml', 'yaml'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'render',
@@ -4688,8 +4781,8 @@ export const extensions: FileCollection = {
       extensions: ['.retextrc', '.retextignore'],
       filenamesGlob: ['.retextrc'],
       extensionsGlob: ['cjs', 'js', 'json', 'mjs', 'yml', 'yaml'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'reuse',
@@ -4764,9 +4857,9 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'rome',
-      light: true,
       extensions: ['rome.json'],
       filename: true,
+      light: true,
     },
     {
       icon: 'ron',
@@ -4775,7 +4868,12 @@ export const extensions: FileCollection = {
     { icon: 'rproj', extensions: ['rproj'] },
     {
       icon: 'rspack',
-      extensions: ['rslint.json', 'rslint.jsonc'],
+      filenamesGlob: ['rslint'],
+      extensionsGlob: ['json', 'jsonc'],
+      filename: true,
+    },
+    {
+      icon: 'rspack',
       filenamesGlob: [
         'rstack.config',
         'rspack.config',
@@ -4800,7 +4898,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'rubocop',
-      extensions: ['.rubocop.yml', '.rubocop_todo.yml'],
+      filenamesGlob: ['.rubocop', '.rubocop_todo'],
+      extensionsGlob: ['yml'],
       filename: true,
       light: true,
     },
@@ -4816,7 +4915,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'ruff',
-      extensions: ['ruff.toml', '.ruff.toml'],
+      filenamesGlob: ['ruff', '.ruff'],
+      extensionsGlob: ['toml'],
       filename: true,
     },
     {
@@ -4834,8 +4934,8 @@ export const extensions: FileCollection = {
       icon: 's-lang',
       extensions: ['.slshrc', '.isisrc', '.jedrc'],
       extensionsGlob: ['sl'],
-      languages: [languages.s_lang],
       filename: true,
+      languages: [languages.s_lang],
     },
     {
       icon: 'safetensors',
@@ -4886,6 +4986,12 @@ export const extensions: FileCollection = {
       icon: 'scss',
       extensions: ['scssm'],
       languages: [languages.scss],
+    },
+    {
+      icon: 'scss2',
+      extensions: ['scssm'],
+      languages: [languages.scss],
+      disabled: true,
     },
     {
       icon: 'sdlang',
@@ -4976,12 +5082,20 @@ export const extensions: FileCollection = {
       languages: [languages.silverstripe],
     },
     {
+      icon: 'simple_icons',
+      filenamesGlob: ['.svglintrc'],
+      extensionsGlob: ['js', 'cjs', 'mjs'],
+      filename: true,
+      light: true,
+    },
+    {
       icon: 'sino',
       languages: [languages.sino],
     },
     {
       icon: 'sitemap',
-      extensions: ['sitemap.xml', 'sitemap.rss', 'sitemap.txt', 'sitemap.atom'],
+      filenamesGlob: ['sitemap'],
+      extensionsGlob: ['xml', 'rss', 'txt', 'atom'],
       filename: true,
     },
     {
@@ -5061,7 +5175,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'snaplet',
-      extensions: ['snaplet.config.js', 'snaplet.config.ts'],
+      filenamesGlob: ['snaplet.config'],
+      extensionsGlob: ['js', 'ts'],
       filename: true,
     },
     {
@@ -5095,8 +5210,8 @@ export const extensions: FileCollection = {
     {
       icon: 'spin',
       extensions: ['spin.toml'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'sqf',
@@ -5178,8 +5293,8 @@ export const extensions: FileCollection = {
       extensions: ['.stylelintrc', '.stylelintignore', '.stylelintcache'],
       filenamesGlob: ['stylelint.config', '.stylelintrc'],
       extensionsGlob: ['js', 'json', 'yaml', 'yml', 'ts', 'cjs', 'mjs'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'stylish_haskell',
@@ -5206,19 +5321,14 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'svelteconfig',
-      extensions: ['svelte.config.js', 'svelte.config.ts'],
+      filenamesGlob: ['svelte.config'],
+      extensionsGlob: ['js', 'ts'],
       filename: true,
     },
     {
       icon: 'svg',
       extensions: ['svg'],
       languages: [languages.svg],
-    },
-    {
-      icon: 'svglint',
-      filenamesGlob: ['.svglintrc'],
-      extensionsGlob: ['cjs', 'js', 'mjs'],
-      filename: true,
     },
     {
       icon: 'svgo',
@@ -5248,8 +5358,8 @@ export const extensions: FileCollection = {
     {
       icon: 'symfony',
       extensions: ['symfony.lock'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'syncpack',
@@ -5284,7 +5394,6 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'tailwind',
-      languages: [languages.tailwindcss],
       filenamesGlob: [
         'tailwind',
         'tailwind.config',
@@ -5293,6 +5402,7 @@ export const extensions: FileCollection = {
       ],
       extensionsGlob: ['js', 'cjs', 'coffee', 'ts', 'json', 'mjs'],
       filename: true,
+      languages: [languages.tailwindcss],
     },
     {
       icon: 'tamagui',
@@ -5302,14 +5412,15 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'taplo',
-      extensions: ['.taplo.toml', 'taplo.toml'],
+      filenamesGlob: ['.taplo', 'taplo'],
+      extensionsGlob: ['toml'],
       filename: true,
     },
     {
       icon: 'taskfile',
-      filename: true,
       filenamesGlob: ['taskfile', 'taskfile.dist'],
       extensionsGlob: ['yml', 'yaml'],
+      filename: true,
     },
     {
       icon: 'tasks_json',
@@ -5437,13 +5548,14 @@ export const extensions: FileCollection = {
     { icon: 'todo', extensions: ['todo'], light: true },
     {
       icon: 'toit',
-      languages: [languages.toit],
       filename: true,
+      languages: [languages.toit],
       light: true,
     },
     {
       icon: 'tombi',
-      extensions: ['tombi.toml', '.tombi.toml'],
+      filenamesGlob: ['tombi', '.tombi'],
+      extensionsGlob: ['toml'],
       filename: true,
     },
     {
@@ -5580,7 +5692,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'tslint',
-      extensions: ['tslint.json', 'tslint.yaml', 'tslint.yml'],
+      filenamesGlob: ['tslint'],
+      extensionsGlob: ['json', 'yaml', 'yml'],
       filename: true,
     },
     {
@@ -5598,14 +5711,9 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'turbo',
-      extensions: [
-        'turbo.json',
-        'turbo.jsonc',
-        'microfrontends.json',
-        'microfrontends.jsonc',
-      ],
+      filenamesGlob: ['turbo', 'microfrontends'],
+      extensionsGlob: ['json', 'jsonc'],
       light: true,
-      filename: true,
     },
     {
       icon: 'twig',
@@ -5677,7 +5785,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'uv',
-      extensions: ['uv.lock', 'uv.toml'],
+      filenamesGlob: ['uv'],
+      extensionsGlob: ['lock', 'toml'],
       filename: true,
     },
     { icon: 'uvue', languages: [languages.uvue] },
@@ -5730,8 +5839,8 @@ export const extensions: FileCollection = {
       ],
       filenamesGlob: ['vercel'],
       extensionsGlob: ['json', 'js', 'cjs', 'mjs', 'ts', 'mts'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'verilog',
@@ -5821,8 +5930,18 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'vlt',
-      extensions: ['vlt.json', 'vlt-lock.json'],
+      filenamesGlob: ['vlt', 'vlt-lock'],
+      extensionsGlob: ['json'],
       filename: true,
+      light: true,
+    },
+    {
+      icon: 'vlt2',
+      filenamesGlob: ['vlt', 'vlt-lock'],
+      extensionsGlob: ['json'],
+      filename: true,
+      light: true,
+      disabled: true,
     },
     {
       icon: 'volt',
@@ -5842,8 +5961,8 @@ export const extensions: FileCollection = {
     {
       icon: 'vscode',
       extensions: ['code-snippets', 'code-workspace'],
-      languages: [languages.snippets],
       filename: false,
+      languages: [languages.snippets],
     },
     {
       icon: 'vscode-insiders',
@@ -5856,8 +5975,8 @@ export const extensions: FileCollection = {
     {
       icon: 'vscode-insiders',
       extensions: ['code-snippets', 'code-workspace'],
-      languages: [languages.snippets],
       filename: false,
+      languages: [languages.snippets],
       disabled: true,
     },
     {
@@ -5871,8 +5990,8 @@ export const extensions: FileCollection = {
     {
       icon: 'vscode2',
       extensions: ['code-snippets', 'code-workspace'],
-      languages: [languages.snippets],
       filename: false,
+      languages: [languages.snippets],
       disabled: true,
     },
     {
@@ -5886,8 +6005,8 @@ export const extensions: FileCollection = {
     {
       icon: 'vscode3',
       extensions: ['code-snippets', 'code-workspace'],
-      languages: [languages.snippets],
       filename: false,
+      languages: [languages.snippets],
       disabled: true,
     },
     {
@@ -5933,7 +6052,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'wally',
-      extensions: ['wally.toml', 'wally.lock'],
+      filenamesGlob: ['wally'],
+      extensionsGlob: ['toml', 'lock'],
       filename: true,
     },
     {
@@ -5960,8 +6080,8 @@ export const extensions: FileCollection = {
     {
       icon: 'wdio',
       filenamesGlob: ['wdio', 'wdio.conf'],
-      filename: true,
       extensionsGlob: ['json', 'js', 'mjs', 'cjs', 'ts', 'mts', 'cts'],
+      filename: true,
     },
     {
       icon: 'weblate',
@@ -6018,7 +6138,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'werf',
-      extensions: ['werf.yaml', 'werf-giterminism.yaml', 'werf-includes.yaml'],
+      filenamesGlob: ['werf', 'werf-giterminism', 'werf-includes'],
+      extensionsGlob: ['yaml'],
       filename: true,
     },
     {
@@ -6037,7 +6158,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'windi',
-      extensions: ['windi.config.ts', 'windi.config.js'],
+      filenamesGlob: ['windi.config'],
+      extensionsGlob: ['ts', 'js'],
       filename: true,
     },
     {
@@ -6047,7 +6169,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'woke',
-      extensions: ['.woke.yaml', '.woke.yml'],
+      filenamesGlob: ['.woke'],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
     },
     {
@@ -6076,9 +6199,9 @@ export const extensions: FileCollection = {
     { icon: 'wxss', extensions: ['wxss'] },
     {
       icon: 'wxt',
-      filename: true,
       filenamesGlob: ['wxt.config'],
       extensionsGlob: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts'],
+      filename: true,
     },
     {
       icon: 'xaml',
@@ -6222,8 +6345,8 @@ export const extensions: FileCollection = {
       extensions: ['.zedignore'],
       filenamesGlob: ['.zed/launch', '.zed/debug', '.zed/tasks', 'zedignore'],
       extensionsGlob: ['json'],
-      light: true,
       filename: true,
+      light: true,
     },
     {
       icon: 'zensical',
@@ -6275,7 +6398,8 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'zizmor',
-      extensions: ['zizmor.yaml', 'zizmor.yml'],
+      filenamesGlob: ['zizmor'],
+      extensionsGlob: ['yaml', 'yml'],
       filename: true,
     },
     {

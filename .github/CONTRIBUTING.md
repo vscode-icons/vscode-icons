@@ -15,7 +15,7 @@
 1. Use the present tense in your commit message.
 2. Fill in the provided pull request template.
 3. Reference issues whenever possible.
-4. Try to make your code clean and observe the TSLint Rules.
+4. Try to make your code clean and observe the ESLint and Prettier rules.
 5. Make sure to create a branch (do not push on master).
 
 Thanks for helping out! :smile:

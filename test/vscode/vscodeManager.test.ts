@@ -69,26 +69,6 @@ describe('VSCodeManagerContract: tests', function () {
       expect(vscodeManager.workspace).to.equal(vscode.workspace);
     });
 
-    context(`function 'supportsThemesReload'`, function () {
-      context(`when editor theme reload`, function () {
-        context(`is NOT supported`, function () {
-          it(`returns 'false'`, function () {
-            vscode.version = '1.33.0';
-
-            expect(vscodeManager.supportsThemesReload).to.be.false;
-          });
-
-          context(`is supported`, function () {
-            it(`returns 'true'`, function () {
-              vscode.version = '1.34.0';
-
-              expect(vscodeManager.supportsThemesReload).to.be.true;
-            });
-          });
-        });
-      });
-    });
-
     context(`function 'isSupportedVersion'`, function () {
       context(`when editor version`, function () {
         context(`is NOT supported`, function () {
@@ -257,6 +237,21 @@ describe('VSCodeManagerContract: tests', function () {
             `${Utils.getAppDataDirPath()}/code-oss-dev/User`,
           );
         });
+      });
+    });
+
+    context(`function 'openExternal'`, function () {
+      it(`opens the parsed URL`, async function () {
+        const url = 'https://example.com';
+        const uri = {} as VSCodeUri;
+        const parseStub = sandbox.stub().returns(uri);
+        const openExternalStub = sandbox.stub().resolves(true);
+        vscode.Uri.parse = parseStub;
+        vscodeManager.env.openExternal = openExternalStub;
+
+        expect(await vscodeManager.openExternal(url)).to.be.true;
+        expect(parseStub.calledOnceWithExactly(url)).to.be.true;
+        expect(openExternalStub.calledOnceWithExactly(uri)).to.be.true;
       });
     });
   });
