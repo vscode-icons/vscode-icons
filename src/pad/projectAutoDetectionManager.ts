@@ -6,7 +6,6 @@ import { basename } from 'path';
 import { isEmpty } from 'lodash';
 
 import { ErrorHandler } from '../common/errorHandler';
-import { readFileAsync } from '../common/fsAsync';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
 import { extensions } from '../iconsManifest/supportedExtensions';
@@ -59,9 +58,10 @@ export class ProjectAutoDetectionManager
           `**/{${filesToInclude}}`,
           '**/node_modules/**',
         );
-      return this.detect(results, projects);
+      return await this.detect(results, projects);
     } catch (error: unknown) {
       ErrorHandler.logError(error);
+      return [];
     }
   }
 
@@ -244,7 +244,9 @@ export class ProjectAutoDetectionManager
       if (!result.fsPath.endsWith('package.json')) {
         continue;
       }
-      const content: string = await readFileAsync(result.fsPath, 'utf8');
+      const content: string = new TextDecoder().decode(
+        await this.vscodeManager.workspace.fs.readFile(result),
+      );
       const projectJson: PackageManifest =
         Utils.parseJSONSafe<PackageManifest>(content);
       const projectInfo = this.getInfo(projectJson, project);
