@@ -91,18 +91,14 @@ describe('ExtensionManagerContract: actions tests', function () {
     });
 
     context(`applying the project detection`, function () {
-      let executeAndReloadStub: sinon.SinonStub;
-      let applyProjectDetection: (...arg: unknown[]) => void;
+      let applyProjectDetection: (...arg: unknown[]) => Promise<void>;
 
       beforeEach(function () {
-        executeAndReloadStub = sandbox.stub(
-          extensionManager,
-          // @ts-ignore
-          'executeAndReload',
-        );
         applyProjectDetection =
           // @ts-ignore
-          extensionManager.applyProjectDetection as (...arg: unknown[]) => void;
+          extensionManager.applyProjectDetection as (
+            ...arg: unknown[]
+          ) => Promise<void>;
       });
 
       context(`applies the customizations`, function () {
@@ -119,32 +115,33 @@ describe('ExtensionManagerContract: actions tests', function () {
         });
 
         context(`automatically`, function () {
-          it(`when no project detection results exist`, function () {
-            applyProjectDetection.call(extensionManager);
+          it(`when no project detection results exist`, async function () {
+            await applyProjectDetection.call(extensionManager);
 
             expect(applyCustomizationStub.called).to.be.false;
             expect(showCustomizationMessageStub.called).to.be.false;
           });
 
-          it(`when project detection results apply is 'false'`, function () {
-            applyProjectDetection.call(extensionManager, { apply: false });
+          it(`when project detection results apply is 'false'`, async function () {
+            await applyProjectDetection.call(extensionManager, {
+              apply: false,
+            });
 
             expect(applyCustomizationStub.called).to.be.false;
             expect(showCustomizationMessageStub.called).to.be.false;
           });
 
-          it(`when the 'autoReload' setting is 'true'`, function () {
+          it(`when the 'autoReload' setting is 'true'`, async function () {
             configManagerStub.vsicons.projectDetection.autoReload = true;
 
-            applyProjectDetection.call(
+            await applyProjectDetection.call(
               extensionManager,
               projectDetectionResults,
             );
 
             expect(
-              executeAndReloadStub.calledOnceWithExactly(
-                applyCustomizationStub,
-                [projectDetectionResults],
+              applyCustomizationStub.calledOnceWithExactly(
+                projectDetectionResults,
               ),
             ).to.be.true;
             expect(showCustomizationMessageStub.called).to.be.false;
@@ -152,15 +149,14 @@ describe('ExtensionManagerContract: actions tests', function () {
         });
 
         context(`by showing a message first`, function () {
-          it(`when the 'autoReload' setting is 'false'`, function () {
+          it(`when the 'autoReload' setting is 'false'`, async function () {
             configManagerStub.vsicons.projectDetection.autoReload = false;
 
-            applyProjectDetection.call(
+            await applyProjectDetection.call(
               extensionManager,
               projectDetectionResults,
             );
 
-            expect(executeAndReloadStub.called).to.be.false;
             expect(
               showCustomizationMessageStub.calledOnceWithExactly(
                 projectDetectionResults[0].langResourceKey,
@@ -176,17 +172,16 @@ describe('ExtensionManagerContract: actions tests', function () {
           });
 
           context('by showing a choice message', function () {
-            it('when conflicting project icons are detected', function () {
+            it('when conflicting project icons are detected', async function () {
               projectDetectionResults[0].conflictingProjects = [
                 enums.Projects.nestjs,
               ];
 
-              applyProjectDetection.call(
+              await applyProjectDetection.call(
                 extensionManager,
                 projectDetectionResults,
               );
 
-              expect(executeAndReloadStub.called).to.be.false;
               expect(
                 showCustomizationMessageStub.calledOnceWithExactly(
                   projectDetectionResults[0].langResourceKey,
