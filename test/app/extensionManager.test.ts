@@ -5,7 +5,6 @@ import { rejects } from 'node:assert/strict';
 import path from 'path';
 
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import packageJson from '../../../package.json';
@@ -49,7 +48,7 @@ describe('ExtensionManagerContract: tests', function () {
       }));
       configManagerStub =
         sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
-      vsiconsClone = cloneDeep(vsicons);
+      vsiconsClone = structuredClone(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =

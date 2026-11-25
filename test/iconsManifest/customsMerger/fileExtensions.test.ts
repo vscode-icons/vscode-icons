@@ -1,7 +1,6 @@
 import type { FileCollection, FileExtension } from '../../../src/types';
 
 import { expect } from 'chai';
-import { isEqual } from 'lodash';
 import * as sinon from 'sinon';
 
 import { CustomsMerger } from '../../../src/iconsManifest/customsMerger';
@@ -338,7 +337,8 @@ describe('CustomsMerger: file extensions tests', function () {
           const ng = customFiles.supported.find(
             (cf: FileExtension) =>
               cf.icon === file.icon &&
-              isEqual(cf.extensions, file.extensions) &&
+              JSON.stringify(cf.extensions) ===
+                JSON.stringify(file.extensions) &&
               cf.format === file.format,
           );
           expect(ng).to.exist;
@@ -367,8 +367,10 @@ describe('CustomsMerger: file extensions tests', function () {
         const oldDefs = files.supported.filter(
           (file: FileExtension) =>
             file.icon ===
-            extFiles.supported.find((ef: FileExtension) =>
-              isEqual(ef.extensions, customFiles.supported[0].extensions),
+            extFiles.supported.find(
+              (ef: FileExtension) =>
+                JSON.stringify(ef.extensions) ===
+                JSON.stringify(customFiles.supported[0].extensions),
             ).icon,
         );
         const newDefs = files.supported.filter(

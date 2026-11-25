@@ -3,8 +3,6 @@ import type { PackageManifest } from '../types/package';
 
 import { basename } from 'path';
 
-import { isEmpty } from 'lodash';
-
 import { ErrorHandler } from '../common/errorHandler';
 import { constants } from '../constants';
 import { ManifestReader } from '../iconsManifest';
@@ -123,7 +121,7 @@ export class ProjectAutoDetectionManager
       results,
       project,
     );
-    const hasProjectInfo = !isEmpty(projectInfo);
+    const hasProjectInfo = !Utils.isEmpty(projectInfo);
     const enableIcons = iconsDisabled && (hasProjectInfo || preset === true);
     const disableIcons =
       !iconsDisabled && (!hasProjectInfo || preset === false);
@@ -176,7 +174,7 @@ export class ProjectAutoDetectionManager
           results,
           conflictProject,
         );
-        if (!isEmpty(info)) {
+        if (!Utils.isEmpty(info)) {
           projectInfos.push(conflictProject);
         }
       }
@@ -250,7 +248,7 @@ export class ProjectAutoDetectionManager
       const projectJson: PackageManifest =
         Utils.parseJSONSafe<PackageManifest>(content);
       const projectInfo = this.getInfo(projectJson, project);
-      if (!isEmpty(projectInfo)) {
+      if (!Utils.isEmpty(projectInfo)) {
         return projectInfo;
       }
     }
