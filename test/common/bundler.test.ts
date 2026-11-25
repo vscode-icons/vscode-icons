@@ -10,13 +10,21 @@ import { constants } from '../../src/constants';
 describe('Bundler: tests', function () {
   context('ensures that', function () {
     let sandbox: sinon.SinonSandbox;
+    let fsAsyncStub: (
+      name: Exclude<keyof typeof fsAsync, 'existsAsync'>,
+    ) => sinon.SinonStub;
     let writeFileAsyncStub: sinon.SinonStub;
     let jsonStringifiedSpy: sinon.SinonSpy;
 
     beforeEach(function () {
       sandbox = sinon.createSandbox();
+      fsAsyncStub = (name: Exclude<keyof typeof fsAsync, 'existsAsync'>) => {
+        const stub = sandbox.stub();
+        sandbox.stub(fsAsync, name).get(() => stub);
+        return stub;
+      };
 
-      writeFileAsyncStub = sandbox.stub(fsAsync, 'writeFileAsync').resolves();
+      writeFileAsyncStub = fsAsyncStub('writeFileAsync').resolves();
       jsonStringifiedSpy = sandbox.spy(JSON, 'stringify');
     });
 
@@ -94,7 +102,7 @@ describe('Bundler: tests', function () {
       context('throws an Error', function () {
         let readdirAsyncStub: sinon.SinonStub;
         beforeEach(function () {
-          readdirAsyncStub = sandbox.stub(fsAsync, 'readdirAsync');
+          readdirAsyncStub = fsAsyncStub('readdirAsync');
         });
 
         it('when no locale found', async function () {

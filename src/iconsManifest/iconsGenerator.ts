@@ -7,7 +7,7 @@ import { extensions as extFiles } from './supportedExtensions';
 import { extensions as extFolders } from './supportedFolders';
 import packageJson from '../../../package.json';
 import { ErrorHandler } from '../common/errorHandler';
-import { existsAsync, writeFileAsync } from '../common/fsAsync';
+import { existsAsync, mkdirAsync, writeFileAsync } from '../common/fsAsync';
 import { ConfigManager } from '../configuration/configManager';
 import { constants } from '../constants';
 import { Utils } from '../utils';
@@ -114,7 +114,7 @@ export class IconsGenerator implements types.IconsGeneratorContract {
     try {
       const dirExists = await existsAsync(outDir);
       if (!dirExists) {
-        await Utils.createDirectoryRecursively(outDir);
+        await mkdirAsync(outDir, { recursive: true });
       }
 
       await writeFileAsync(

@@ -1,20 +1,9 @@
-import type { Stats } from 'fs';
-
 import { homedir, tmpdir } from 'os';
-import { isAbsolute, posix, relative, resolve, sep } from 'path';
+import { posix, relative } from 'path';
 
 import { set } from 'lodash';
 
-import {
-  existsAsync,
-  lstatAsync,
-  mkdirAsync,
-  readFileAsync,
-  readdirAsync,
-  rmdirAsync,
-  unlinkAsync,
-  writeFileAsync,
-} from '../common/fsAsync';
+import { existsAsync, readFileAsync, writeFileAsync } from '../common/fsAsync';
 import * as enums from '../types/enums';
 
 export class Utils {
@@ -64,56 +53,6 @@ export class Utils {
     }
 
     return `.${fileFormat}`;
-  }
-
-  /**
-   * Creates a directory and all subdirectories asynchronously
-   */
-  public static async createDirectoryRecursively(
-    dirPath: string,
-  ): Promise<void> {
-    const callbackFn = async (
-      parentDir: Promise<string>,
-      childDir: string,
-    ): Promise<string> => {
-      const curDir = resolve(await parentDir, childDir);
-      const dirExists: boolean = await existsAsync(curDir);
-      if (!dirExists) {
-        await mkdirAsync(curDir);
-      }
-      return curDir;
-    };
-    await dirPath
-      .split(sep)
-      .reduce(callbackFn, Promise.resolve(isAbsolute(dirPath) ? sep : ''));
-  }
-
-  /**
-   * Deletes a directory and all subdirectories asynchronously
-   */
-  public static async deleteDirectoryRecursively(
-    dirPath: string,
-  ): Promise<void> {
-    const dirExists: boolean = await existsAsync(dirPath);
-    if (!dirExists) {
-      return;
-    }
-    const iterator = async (file: string): Promise<void> => {
-      const curPath = `${dirPath}/${file}`;
-      const stats: Stats = await lstatAsync(curPath);
-      if (stats.isDirectory()) {
-        // recurse
-        await this.deleteDirectoryRecursively(curPath);
-      } else {
-        // delete file
-        await unlinkAsync(curPath);
-      }
-    };
-    const promises: Array<Promise<void>> = [];
-    const files: string[] = await readdirAsync(dirPath);
-    files.forEach((file: string): number => promises.push(iterator(file)));
-    await Promise.all(promises);
-    await rmdirAsync(dirPath);
   }
 
   /**
