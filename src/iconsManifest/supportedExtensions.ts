@@ -51,6 +51,11 @@ export const extensions: FileCollection = {
       disabled: true,
     },
     {
+      icon: 'accessibility',
+      extensions: ['ACCESSIBILITY.md'],
+      filename: true,
+    },
+    {
       icon: 'actionscript',
       extensions: ['part'],
       languages: [languages.actionscript],
