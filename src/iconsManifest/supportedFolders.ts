@@ -179,7 +179,6 @@ export const extensions: FolderCollection = {
     {
       icon: 'css2',
       extensions: ['css', '_css'],
-
       disabled: true,
     },
     { icon: 'cubit', extensions: ['cubits', 'cubit'] },
@@ -443,7 +442,6 @@ export const extensions: FolderCollection = {
     {
       icon: 'json_official',
       extensions: ['json'],
-
       disabled: true,
     },
     { icon: 'junie', extensions: ['.junie'] },
@@ -779,6 +777,7 @@ export const extensions: FolderCollection = {
         'specs',
         '.specs',
         'integration',
+        'integration_test',
       ],
     },
     { icon: 'theme', extensions: ['theme', 'themes'] },
@@ -814,7 +813,6 @@ export const extensions: FolderCollection = {
     {
       icon: 'typings2',
       extensions: ['typings', 'types', '@types'],
-
       disabled: true,
     },
     {
@@ -859,7 +857,6 @@ export const extensions: FolderCollection = {
     {
       icon: 'vs2',
       extensions: ['.vs'],
-
       disabled: true,
     },
     {
@@ -869,13 +866,11 @@ export const extensions: FolderCollection = {
     {
       icon: 'vscode2',
       extensions: ['.vscode', 'vscode'],
-
       disabled: true,
     },
     {
       icon: 'vscode3',
       extensions: ['.vscode', 'vscode'],
-
       disabled: true,
     },
     {
@@ -885,13 +880,11 @@ export const extensions: FolderCollection = {
     {
       icon: 'vscode_test2',
       extensions: ['.vscode-test'],
-
       disabled: true,
     },
     {
       icon: 'vscode_test3',
       extensions: ['.vscode-test'],
-
       disabled: true,
     },
     {

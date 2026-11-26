@@ -2,19 +2,30 @@ import type {
   VSCode,
   VSCodeCommands,
   VSCodeEnv,
+  VSCodeUriStatic,
   VSCodeWindow,
   VSCodeWorkspace,
 } from '../../src/types';
 
-const env: VSCodeEnv = {} as VSCodeEnv;
-const commands: VSCodeCommands = {} as VSCodeCommands;
-const window: VSCodeWindow = {} as VSCodeWindow;
-const workspace: VSCodeWorkspace = {} as VSCodeWorkspace;
+type Mutable<T> = {
+  -readonly [Key in keyof T]: T[Key];
+};
 
-export const vscode: VSCode = {
-  env,
-  commands,
+interface VSCodeMutableExtension {
+  env: Mutable<VSCodeEnv>;
+  version: string;
+  workspace: Mutable<VSCodeWorkspace>;
+  Uri: VSCodeUriStatic;
+}
+
+export type TestVSCode = Pick<VSCode, 'commands' | 'window'> &
+  VSCodeMutableExtension;
+
+export const vscode: TestVSCode = {
+  env: {} as Mutable<VSCodeEnv>,
+  commands: {} as VSCodeCommands,
   version: '1.0.0',
-  window,
-  workspace,
+  window: {} as VSCodeWindow,
+  workspace: {} as Mutable<VSCodeWorkspace>,
+  Uri: {} as VSCodeUriStatic,
 };

@@ -69,26 +69,6 @@ describe('VSCodeManagerContract: tests', function () {
       expect(vscodeManager.workspace).to.equal(vscode.workspace);
     });
 
-    context(`function 'supportsThemesReload'`, function () {
-      context(`when editor theme reload`, function () {
-        context(`is NOT supported`, function () {
-          it(`returns 'false'`, function () {
-            vscode.version = '1.33.0';
-
-            expect(vscodeManager.supportsThemesReload).to.be.false;
-          });
-
-          context(`is supported`, function () {
-            it(`returns 'true'`, function () {
-              vscode.version = '1.34.0';
-
-              expect(vscodeManager.supportsThemesReload).to.be.true;
-            });
-          });
-        });
-      });
-    });
-
     context(`function 'isSupportedVersion'`, function () {
       context(`when editor version`, function () {
         context(`is NOT supported`, function () {
@@ -143,18 +123,18 @@ describe('VSCodeManagerContract: tests', function () {
 
     context(`function 'getWorkspacePaths'`, function () {
       it(`returns an empty array, when no 'workspaceFolders' and no 'rootPath'`, function () {
-        vscodeManager.workspace.rootPath = undefined;
-        vscodeManager.workspace.workspaceFolders = undefined;
+        vscode.workspace.rootPath = undefined;
+        vscode.workspace.workspaceFolders = undefined;
 
         expect(vscodeManager.getWorkspacePaths()).to.eql([]);
       });
 
       it(`returns the 'rootPath' as an array, when 'workspaceFolders' is an empty array`, function () {
-        vscodeManager.workspace.rootPath = '/path/to/workspace/root';
-        vscodeManager.workspace.workspaceFolders = [];
+        vscode.workspace.rootPath = '/path/to/workspace/root';
+        vscode.workspace.workspaceFolders = [];
 
         expect(vscodeManager.getWorkspacePaths()).to.eql([
-          vscodeManager.workspace.rootPath,
+          vscode.workspace.rootPath,
         ]);
       });
 
@@ -173,11 +153,8 @@ describe('VSCodeManagerContract: tests', function () {
           name: '',
           index: 0,
         };
-        vscodeManager.workspace.rootPath = '/path/to/workspace/root';
-        vscodeManager.workspace.workspaceFolders = [
-          workspaceFolder,
-          workspaceFolder1,
-        ];
+        vscode.workspace.rootPath = '/path/to/workspace/root';
+        vscode.workspace.workspaceFolders = [workspaceFolder, workspaceFolder1];
 
         expect(vscodeManager.getWorkspacePaths()).to.eql(paths);
       });
@@ -220,7 +197,7 @@ describe('VSCodeManagerContract: tests', function () {
 
       context('returns the correct path when application name is', function () {
         it(`'Code'`, function () {
-          vscodeManager.env.appName = 'Visual Studio Code';
+          vscode.env.appName = 'Visual Studio Code';
           pathUnixJoinStub.returns(`${Utils.getAppDataDirPath()}/Code/User`);
 
           expect(vscodeManager.getAppUserDirPath()).to.equal(
@@ -229,7 +206,7 @@ describe('VSCodeManagerContract: tests', function () {
         });
 
         it(`'Code - Insiders'`, function () {
-          vscodeManager.env.appName = 'Visual Studio Code - Insiders';
+          vscode.env.appName = 'Visual Studio Code - Insiders';
           pathUnixJoinStub.returns(
             `${Utils.getAppDataDirPath()}/Code - Insiders/User`,
           );
@@ -240,7 +217,7 @@ describe('VSCodeManagerContract: tests', function () {
         });
 
         it(`'Code - OSS'`, function () {
-          vscodeManager.env.appName = 'VSCode OSS';
+          vscode.env.appName = 'VSCode OSS';
           pathUnixJoinStub.returns(
             `${Utils.getAppDataDirPath()}/Code - OSS/User`,
           );
@@ -251,7 +228,7 @@ describe('VSCodeManagerContract: tests', function () {
         });
 
         it(`'Code - OSS - Dev'`, function () {
-          vscodeManager.env.appName = 'VSCode OSS Dev';
+          vscode.env.appName = 'VSCode OSS Dev';
           pathUnixJoinStub.returns(
             `${Utils.getAppDataDirPath()}/code-oss-dev/User`,
           );
@@ -260,6 +237,21 @@ describe('VSCodeManagerContract: tests', function () {
             `${Utils.getAppDataDirPath()}/code-oss-dev/User`,
           );
         });
+      });
+    });
+
+    context(`function 'openExternal'`, function () {
+      it(`opens the parsed URL`, async function () {
+        const url = 'https://example.com';
+        const uri = {} as VSCodeUri;
+        const parseStub = sandbox.stub().returns(uri);
+        const openExternalStub = sandbox.stub().resolves(true);
+        vscode.Uri.parse = parseStub;
+        vscodeManager.env.openExternal = openExternalStub;
+
+        expect(await vscodeManager.openExternal(url)).to.be.true;
+        expect(parseStub.calledOnceWithExactly(url)).to.be.true;
+        expect(openExternalStub.calledOnceWithExactly(uri)).to.be.true;
       });
     });
   });

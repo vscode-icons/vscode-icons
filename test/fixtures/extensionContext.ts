@@ -1,9 +1,9 @@
-import type { VSCodeExtensionContext, VSCodeMemento } from '../../src/types';
+import type { VSCodeExtensionContext } from '../../src/types';
 
-export const context: VSCodeExtensionContext = {
+export const context = {
   extensionPath: undefined,
-  globalState: {} as VSCodeMemento,
+  globalState: {},
   storagePath: undefined,
   subscriptions: [],
-  workspaceState: {} as VSCodeMemento,
-};
+  workspaceState: {},
+} as unknown as VSCodeExtensionContext;

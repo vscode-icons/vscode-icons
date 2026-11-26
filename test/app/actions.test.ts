@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import { cloneDeep } from 'lodash';
 import * as sinon from 'sinon';
 
 import { ExtensionManager } from '../../src/app/extensionManager';
@@ -48,7 +47,7 @@ describe('ExtensionManagerContract: actions tests', function () {
 
       configManagerStub =
         sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
-      vsiconsClone = cloneDeep(vsicons);
+      vsiconsClone = structuredClone(vsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       settingsManagerStub =
@@ -91,18 +90,14 @@ describe('ExtensionManagerContract: actions tests', function () {
     });
 
     context(`applying the project detection`, function () {
-      let executeAndReloadStub: sinon.SinonStub;
-      let applyProjectDetection: (...arg: unknown[]) => void;
+      let applyProjectDetection: (...arg: unknown[]) => Promise<void>;
 
       beforeEach(function () {
-        executeAndReloadStub = sandbox.stub(
-          extensionManager,
-          // @ts-ignore
-          'executeAndReload',
-        );
         applyProjectDetection =
           // @ts-ignore
-          extensionManager.applyProjectDetection as (...arg: unknown[]) => void;
+          extensionManager.applyProjectDetection as (
+            ...arg: unknown[]
+          ) => Promise<void>;
       });
 
       context(`applies the customizations`, function () {
@@ -119,32 +114,33 @@ describe('ExtensionManagerContract: actions tests', function () {
         });
 
         context(`automatically`, function () {
-          it(`when no project detection results exist`, function () {
-            applyProjectDetection.call(extensionManager);
+          it(`when no project detection results exist`, async function () {
+            await applyProjectDetection.call(extensionManager);
 
             expect(applyCustomizationStub.called).to.be.false;
             expect(showCustomizationMessageStub.called).to.be.false;
           });
 
-          it(`when project detection results apply is 'false'`, function () {
-            applyProjectDetection.call(extensionManager, { apply: false });
+          it(`when project detection results apply is 'false'`, async function () {
+            await applyProjectDetection.call(extensionManager, {
+              apply: false,
+            });
 
             expect(applyCustomizationStub.called).to.be.false;
             expect(showCustomizationMessageStub.called).to.be.false;
           });
 
-          it(`when the 'autoReload' setting is 'true'`, function () {
+          it(`when the 'autoReload' setting is 'true'`, async function () {
             configManagerStub.vsicons.projectDetection.autoReload = true;
 
-            applyProjectDetection.call(
+            await applyProjectDetection.call(
               extensionManager,
               projectDetectionResults,
             );
 
             expect(
-              executeAndReloadStub.calledOnceWithExactly(
-                applyCustomizationStub,
-                [projectDetectionResults],
+              applyCustomizationStub.calledOnceWithExactly(
+                projectDetectionResults,
               ),
             ).to.be.true;
             expect(showCustomizationMessageStub.called).to.be.false;
@@ -152,15 +148,14 @@ describe('ExtensionManagerContract: actions tests', function () {
         });
 
         context(`by showing a message first`, function () {
-          it(`when the 'autoReload' setting is 'false'`, function () {
+          it(`when the 'autoReload' setting is 'false'`, async function () {
             configManagerStub.vsicons.projectDetection.autoReload = false;
 
-            applyProjectDetection.call(
+            await applyProjectDetection.call(
               extensionManager,
               projectDetectionResults,
             );
 
-            expect(executeAndReloadStub.called).to.be.false;
             expect(
               showCustomizationMessageStub.calledOnceWithExactly(
                 projectDetectionResults[0].langResourceKey,
@@ -176,17 +171,16 @@ describe('ExtensionManagerContract: actions tests', function () {
           });
 
           context('by showing a choice message', function () {
-            it('when conflicting project icons are detected', function () {
+            it('when conflicting project icons are detected', async function () {
               projectDetectionResults[0].conflictingProjects = [
                 enums.Projects.nestjs,
               ];
 
-              applyProjectDetection.call(
+              await applyProjectDetection.call(
                 extensionManager,
                 projectDetectionResults,
               );
 
-              expect(executeAndReloadStub.called).to.be.false;
               expect(
                 showCustomizationMessageStub.calledOnceWithExactly(
                   projectDetectionResults[0].langResourceKey,
@@ -222,7 +216,7 @@ describe('ExtensionManagerContract: actions tests', function () {
             enums.PresetNames.tsOfficial,
             enums.CommandNames.tsPreset,
             false,
-            enums.ConfigurationTarget.Global,
+            enums.VSCodeConfigurationTarget.Global,
           );
 
           expect(
@@ -240,7 +234,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               [
                 enums.PresetNames[enums.PresetNames.tsOfficial],
                 toggledValue,
-                enums.ConfigurationTarget.Global,
+                enums.VSCodeConfigurationTarget.Global,
               ],
             ),
           ).to.be.true;
@@ -258,7 +252,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               enums.PresetNames.hideFolders,
               enums.CommandNames.hideFoldersPreset,
               true,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             );
 
             expect(
@@ -276,7 +270,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                 [
                   enums.PresetNames[enums.PresetNames.hideFolders],
                   toggledValue,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -291,7 +285,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               enums.PresetNames.hideFolders,
               enums.CommandNames.hideFoldersPreset,
               true,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             );
 
             expect(
@@ -309,7 +303,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                 [
                   enums.PresetNames[enums.PresetNames.hideFolders],
                   toggledValue,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -328,7 +322,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               enums.PresetNames.jsonOfficial,
               enums.CommandNames.jsonPreset,
               false,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             );
 
             expect(
@@ -346,7 +340,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                 [
                   enums.PresetNames[enums.PresetNames.jsonOfficial],
                   toggledValue,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -361,7 +355,7 @@ describe('ExtensionManagerContract: actions tests', function () {
               enums.PresetNames.jsonOfficial,
               enums.CommandNames.jsonPreset,
               false,
-              enums.ConfigurationTarget.Global,
+              enums.VSCodeConfigurationTarget.Global,
             );
 
             expect(
@@ -379,7 +373,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                 [
                   enums.PresetNames[enums.PresetNames.jsonOfficial],
                   toggledValue,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 ],
               ),
             ).to.be.true;
@@ -399,7 +393,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                   enums.PresetNames.jsOfficial,
                   undefined,
                   false,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 );
               } catch (error) {
                 expect(error).to.match(/undefinedEnabled is not valid/);
@@ -415,7 +409,7 @@ describe('ExtensionManagerContract: actions tests', function () {
                   enums.PresetNames.jsOfficial,
                   undefined,
                   false,
-                  enums.ConfigurationTarget.Global,
+                  enums.VSCodeConfigurationTarget.Global,
                 );
               } catch (error) {
                 expect(error).to.match(/undefinedDisabled is not valid/);

@@ -90,8 +90,9 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       this.vscodeManager.context.subscriptions.push(
         this.vscodeManager.commands.registerCommand(
           command.command,
-          (Reflect.get(this, command.callbackName) as CallableFunction) ||
-            ((): void => void 0),
+          (Reflect.get(this, command.callbackName) as (
+            ...args: unknown[]
+          ) => unknown) || ((): void => void 0),
           this,
         ),
       ),
@@ -143,12 +144,12 @@ export class ExtensionManager implements types.ExtensionManagerContract {
           case enums.LangResourceKeys.activate:
             return this.activationCommand();
           case enums.LangResourceKeys.aboutOfficialApi: {
-            void Utils.open(constants.urlOfficialApi);
+            void this.vscodeManager.openExternal(constants.urlOfficialApi);
             // Display the message again so the user can choose to activate or not
             return displayMessage();
           }
           case enums.LangResourceKeys.seeReadme: {
-            void Utils.open(constants.urlReadme);
+            void this.vscodeManager.openExternal(constants.urlReadme);
             // Display the message again so the user can choose to activate or not
             return displayMessage();
           }
@@ -172,7 +173,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       );
       switch (btn) {
         case enums.LangResourceKeys.seeReleaseNotes:
-          return void Utils.open(constants.urlReleaseNote);
+          return void this.vscodeManager.openExternal(constants.urlReleaseNote);
         case enums.LangResourceKeys.dontShowThis:
           return this.configManager.updateDontShowNewVersionMessage(true);
         default:
@@ -191,7 +192,6 @@ export class ExtensionManager implements types.ExtensionManagerContract {
   ): Promise<void> {
     try {
       if (
-        this.vscodeManager.supportsThemesReload &&
         items.some(
           (item: types.LangResourceLike): boolean =>
             item === enums.LangResourceKeys.reload,
@@ -269,7 +269,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.angular,
       enums.CommandNames.ngPreset,
       false,
-      enums.ConfigurationTarget.Workspace,
+      enums.VSCodeConfigurationTarget.Workspace,
     );
   }
 
@@ -279,7 +279,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.nestjs,
       enums.CommandNames.nestPreset,
       false,
-      enums.ConfigurationTarget.Workspace,
+      enums.VSCodeConfigurationTarget.Workspace,
     );
   }
 
@@ -289,7 +289,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.jsOfficial,
       enums.CommandNames.jsPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -299,7 +299,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.tsOfficial,
       enums.CommandNames.tsPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -309,7 +309,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.reactjsOfficial,
       enums.CommandNames.reactjsPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -319,7 +319,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.reacttsOfficial,
       enums.CommandNames.reacttsPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -329,7 +329,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.jsonOfficial,
       enums.CommandNames.jsonPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -339,7 +339,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.yamlOfficial,
       enums.CommandNames.yamlPreset,
       false,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -349,7 +349,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.hideFolders,
       enums.CommandNames.hideFoldersPreset,
       true,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -359,7 +359,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.foldersAllDefaultIcon,
       enums.CommandNames.foldersAllDefaultIconPreset,
       true,
-      enums.ConfigurationTarget.Global,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -369,23 +369,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       enums.PresetNames.hideExplorerArrows,
       enums.CommandNames.hideExplorerArrowsPreset,
       true,
-      enums.ConfigurationTarget.Global,
-    );
-  }
-
-  private executeAndReload(
-    callback: (...args: unknown[]) => unknown,
-    cbArgs?: unknown[],
-  ): void {
-    if (callback) {
-      callback.apply(this, cbArgs);
-    }
-    if (this.vscodeManager.supportsThemesReload) {
-      return;
-    }
-    // reload
-    void this.vscodeManager.commands.executeCommand(
-      constants.vscode.reloadWindowActionSetting,
+      enums.VSCodeConfigurationTarget.Global,
     );
   }
 
@@ -415,9 +399,9 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       await this.configManager.updatePreset(
         enums.PresetNames[preset],
         true,
-        enums.ConfigurationTarget.Workspace,
+        enums.VSCodeConfigurationTarget.Workspace,
       );
-      this.handleUpdatePreset(callback, cbArgs);
+      await this.handleUpdatePreset(callback, cbArgs);
     };
 
     this.callback = callback;
@@ -450,15 +434,15 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       }
       case enums.LangResourceKeys.autoReload: {
         await this.configManager.updateAutoReload(true);
-        this.handleUpdatePreset(callback, cbArgs);
+        await this.handleUpdatePreset(callback, cbArgs);
         break;
       }
       case enums.LangResourceKeys.reload: {
         if (!cbArgs || cbArgs.length !== 3) {
-          this.executeAndReload(callback, cbArgs);
+          callback?.apply(this, cbArgs);
           break;
         }
-        this.handleUpdatePreset(callback, cbArgs);
+        await this.handleUpdatePreset(callback, cbArgs);
         break;
       }
       default:
@@ -466,10 +450,10 @@ export class ExtensionManager implements types.ExtensionManagerContract {
     }
   }
 
-  private handleUpdatePreset(
+  private async handleUpdatePreset(
     callback: (...args: unknown[]) => unknown,
     cbArgs: unknown[],
-  ): void {
+  ): Promise<void> {
     if (!callback) {
       throw new Error('Callback function missing');
     }
@@ -482,8 +466,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       this.configManager.vsicons.presets[cbArgs[0] as string] ===
       (cbArgs[1] as types.Presets)
     ) {
-      // eslint-disable-next-line @typescript-eslint/unbound-method
-      this.executeAndReload(this.applyCustomization);
+      await this.applyCustomization();
     } else {
       if (cbArgs.length !== 3) {
         throw new Error('Arguments mismatch');
@@ -491,7 +474,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       this.doReload = true;
       // eslint-disable-next-line @typescript-eslint/unbound-method
       this.callback = this.applyCustomization;
-      callback.apply(this.configManager, cbArgs);
+      await callback.apply(this.configManager, cbArgs);
     }
   }
 
@@ -513,8 +496,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
         !!pdr.conflictingProjects && !!pdr.conflictingProjects.length,
     );
     if (!conflict && this.configManager.vsicons.projectDetection.autoReload) {
-      // eslint-disable-next-line @typescript-eslint/unbound-method
-      this.executeAndReload(this.applyCustomization, [projectDetectionResults]);
+      await this.applyCustomization(projectDetectionResults);
       return;
     }
     const items = conflict
@@ -543,7 +525,7 @@ export class ExtensionManager implements types.ExtensionManagerContract {
     preset: enums.PresetNames,
     command: enums.CommandNames,
     reverseAction: boolean,
-    configurationTarget: enums.ConfigurationTarget | boolean,
+    configurationTarget: types.ConfigurationTarget | boolean | null,
   ): Promise<void> {
     const presetName = enums.PresetNames[preset];
     const commandName = enums.CommandNames[command];
@@ -647,7 +629,9 @@ export class ExtensionManager implements types.ExtensionManagerContract {
       // In case the 'user settings' file has just been created
       // a delay needs to be introduced, in order for the 'preset'
       // change to get persisted on disk
-      setTimeout((): void => this.executeAndReload(this.callback), 500);
+      setTimeout((): void => {
+        this.callback?.apply(this);
+      }, 500);
     } else if (!this.customMsgShown) {
       const currentConfig = this.configManager.vsicons;
       const configChanged =
