@@ -328,6 +328,7 @@ export const languages = {
   julia: { ids: ['julia', 'juliamarkdown'], knownExtensions: ['jl'] },
   just: { ids: 'just', knownFilenames: ['justfile', 'Justfile'] },
   k: { ids: 'k', knownExtensions: ['k'] },
+  kdl: { ids: 'kdl', knownExtensions: ['kdl'] },
   kivy: { ids: 'kivy', knownExtensions: ['kv'] },
   kos: { ids: 'kos', knownExtensions: ['ks'] },
   kotlin: { ids: ['kotlin', 'kotlinscript'], knownExtensions: ['kt'] },
