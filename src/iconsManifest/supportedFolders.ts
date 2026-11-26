@@ -577,6 +577,7 @@ export const extensions: FolderCollection = {
       extensions: ['mysqldb', 'mysql'],
       light: true,
     },
+    { icon: 'neon', extensions: ['neon'] },
     {
       icon: 'netlify',
       extensions: ['netlify'],
