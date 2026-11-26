@@ -2673,6 +2673,7 @@ export const extensions: FileCollection = {
       ],
       filename: true,
     },
+    { icon: 'ko', extensions: ['.ko.yaml'], filename: true },
     {
       icon: 'kodiak',
       extensions: ['.kodiak.toml'],
