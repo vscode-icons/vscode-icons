@@ -5532,6 +5532,11 @@ export const extensions: FileCollection = {
       languages: [languages.thinkscript],
     },
     {
+      icon: 'tidelift',
+      extensions: ['.tidelift', '.tidelift.yml'],
+      filename: true,
+    },
+    {
       icon: 'tiltfile',
       extensions: ['.tiltignore'],
       filename: true,
