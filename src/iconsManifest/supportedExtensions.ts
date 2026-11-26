@@ -568,6 +568,7 @@ export const extensions: FileCollection = {
       icon: 'buf',
       filenamesGlob: ['buf', 'buf.gen', 'buf.work'],
       extensionsGlob: ['yaml', 'yml'],
+      filename: true,
       languages: [languages.buf],
     },
     {
@@ -821,6 +822,7 @@ export const extensions: FileCollection = {
       icon: 'codacy',
       filenamesGlob: ['.codacy'],
       extensionsGlob: ['yml', 'yaml'],
+      filename: true,
       light: true,
     },
     {
@@ -3041,6 +3043,7 @@ export const extensions: FileCollection = {
       icon: 'mcp',
       filenamesGlob: ['.mcp', 'mcp'],
       extensionsGlob: ['json'],
+      filename: true,
       light: true,
     },
     {
@@ -5713,6 +5716,7 @@ export const extensions: FileCollection = {
       icon: 'turbo',
       filenamesGlob: ['turbo', 'microfrontends'],
       extensionsGlob: ['json', 'jsonc'],
+      filename: true,
       light: true,
     },
     {
