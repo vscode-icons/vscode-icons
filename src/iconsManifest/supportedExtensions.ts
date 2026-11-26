@@ -489,6 +489,7 @@ export const extensions: FileCollection = {
       ],
       languages: [languages.binary],
     },
+    { icon: 'binary_ninja', extensions: ['bndb'] },
     {
       icon: 'biome',
       filenamesGlob: ['biome', '.biome'],
