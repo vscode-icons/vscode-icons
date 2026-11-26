@@ -2,6 +2,7 @@ import type {
   ConfigManagerContract,
   ProjectAutoDetectionManagerContract,
   VSCodeManagerContract,
+  VSIcons,
 } from '../../src/types';
 
 import { expect } from 'chai';
@@ -26,6 +27,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     let workspaceReadFileStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
     let padManager: ProjectAutoDetectionManagerContract;
+    let vsiconsClone: VSIcons;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
@@ -33,7 +35,8 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       configManagerStub =
         sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
 
-      sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
+      vsiconsClone = structuredClone(vsicons);
+      sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
 
       vscodeManagerStub =
         sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
@@ -80,7 +83,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     });
 
     it(`logs an Error when reading a 'package.json' fails`, async function () {
-      vsicons.projectDetection.disableDetect = false;
+      vsiconsClone.projectDetection.disableDetect = false;
       const error = new Error('ENOENT');
       findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
       workspaceReadFileStub.rejects(error);
@@ -96,7 +99,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     });
 
     it('detects non conflicting projects', async function () {
-      vsicons.projectDetection.disableDetect = false;
+      vsiconsClone.projectDetection.disableDetect = false;
       findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
       workspaceReadFileStub.resolves(undefined);
       sandbox.stub(Utils, 'parseJSONSafe').returns({
@@ -127,8 +130,8 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
 
     context('requests icons disabling', function () {
       it('when icons are enabled but no projects are found', async function () {
-        vsicons.projectDetection.disableDetect = false;
-        vsicons.projectDetection.autoReload = true;
+        vsiconsClone.projectDetection.disableDetect = false;
+        vsiconsClone.projectDetection.autoReload = true;
         findFilesStub.resolves([]);
         configManagerStub.getPreset.returns({
           key: '',
@@ -175,7 +178,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       });
 
       it('detection is disabled', async function () {
-        vsicons.projectDetection.disableDetect = true;
+        vsiconsClone.projectDetection.disableDetect = true;
 
         await testCase([enums.Projects.angular]);
       });
@@ -183,7 +186,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
 
     context('when conflicting project icons are detected', function () {
       it('does not detect conflicts for projects without conflict rules', async function () {
-        vsicons.projectDetection.disableDetect = false;
+        vsiconsClone.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
         configManagerStub.getPreset.returns({
           key: '',
@@ -211,7 +214,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       });
 
       it(`returns the conflict project detected 'LangResourceKey'`, async function () {
-        vsicons.projectDetection.disableDetect = false;
+        vsiconsClone.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
         workspaceReadFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
@@ -243,7 +246,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       });
 
       it('detects config-file conflicts when only one project is requested', async function () {
-        vsicons.projectDetection.disableDetect = false;
+        vsiconsClone.projectDetection.disableDetect = false;
         findFilesStub.resolves([
           { fsPath: '/workspace/angular.json' },
           { fsPath: '/workspace/nest-cli.json' },
@@ -260,8 +263,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       });
 
       it('includes explicit config-file extensions in the search', async function () {
-        const previousDisableDetect = vsicons.projectDetection.disableDetect;
-        vsicons.projectDetection.disableDetect = false;
+        vsiconsClone.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/angular-custom.json' }]);
         sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
         const declaration = {
@@ -282,12 +284,11 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
             extensions.supported.indexOf(declaration),
             1,
           );
-          vsicons.projectDetection.disableDetect = previousDisableDetect;
         }
       });
 
       it('detects a project when no workspace preset is configured', async function () {
-        vsicons.projectDetection.disableDetect = false;
+        vsiconsClone.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/package.json' }]);
         workspaceReadFileStub.resolves(undefined);
         sandbox.stub(Utils, 'parseJSONSafe').returns({
