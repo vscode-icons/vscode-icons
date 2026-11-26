@@ -672,6 +672,10 @@ export const extensions: FolderCollection = {
       extensions: ['route', 'routes', '_route', '_routes', 'router', 'routers'],
     },
     {
+      icon: 'rubygems',
+      extensions: ['.gem', 'gem'],
+    },
+    {
       icon: 'sass',
       extensions: ['sass', 'scss', '_sass', '_scss'],
       light: true,
