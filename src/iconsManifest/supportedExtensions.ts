@@ -4934,6 +4934,12 @@ export const extensions: FileCollection = {
       light: true,
     },
     {
+      icon: 'rustfmt',
+      filenamesGlob: ['rustfmt', '.rustfmt'],
+      extensionsGlob: ['toml'],
+      filename: true,
+    },
+    {
       icon: 's-lang',
       extensions: ['.slshrc', '.isisrc', '.jedrc'],
       extensionsGlob: ['sl'],
