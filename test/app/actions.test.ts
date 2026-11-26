@@ -10,7 +10,7 @@ import { SettingsManager } from '../../src/settings/settingsManager';
 import * as types from '../../src/types';
 import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { vsicons } from '../fixtures/vsicons';
+import { vsicons as fixtVsicons } from '../fixtures/vsicons';
 
 describe('ExtensionManagerContract: actions tests', function () {
   context('ensures that', function () {
@@ -24,7 +24,7 @@ describe('ExtensionManagerContract: actions tests', function () {
     let onDidChangeConfigurationStub: sinon.SinonStub;
     let showCustomizationMessageStub: sinon.SinonStub;
     let extensionManager: types.ExtensionManagerContract;
-    let vsiconsClone: types.VSIcons;
+    let vsicons: types.VSIcons;
 
     const defaultManifest: types.IconManifest = {
       api: types.apiSchema,
@@ -47,8 +47,8 @@ describe('ExtensionManagerContract: actions tests', function () {
 
       configManagerStub =
         sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
-      vsiconsClone = structuredClone(vsicons);
-      sandbox.stub(configManagerStub, 'vsicons').get(() => vsiconsClone);
+      vsicons = structuredClone(fixtVsicons);
+      sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
 
       settingsManagerStub =
         sandbox.createStubInstance<types.SettingsManagerContract>(

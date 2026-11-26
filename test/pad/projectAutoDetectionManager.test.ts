@@ -2,6 +2,7 @@ import type {
   ConfigManagerContract,
   ProjectAutoDetectionManagerContract,
   VSCodeManagerContract,
+  VSIcons,
 } from '../../src/types';
 
 import { expect } from 'chai';
@@ -15,7 +16,7 @@ import { ProjectAutoDetectionManager } from '../../src/pad/projectAutoDetectionM
 import * as enums from '../../src/types/enums';
 import { Utils } from '../../src/utils';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { vsicons } from '../fixtures/vsicons';
+import { vsicons as fixtVsicons } from '../fixtures/vsicons';
 
 describe('ProjectAutoDetectionManagerContract: tests', function () {
   context('ensures that', function () {
@@ -26,6 +27,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     let workspaceReadFileStub: sinon.SinonStub;
     let logErrorStub: sinon.SinonStub;
     let padManager: ProjectAutoDetectionManagerContract;
+    let vsicons: VSIcons;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
@@ -33,6 +35,7 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       configManagerStub =
         sandbox.createStubInstance<ConfigManagerContract>(ConfigManager);
 
+      vsicons = structuredClone(fixtVsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
 
       vscodeManagerStub =
@@ -260,7 +263,6 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
       });
 
       it('includes explicit config-file extensions in the search', async function () {
-        const previousDisableDetect = vsicons.projectDetection.disableDetect;
         vsicons.projectDetection.disableDetect = false;
         findFilesStub.resolves([{ fsPath: '/workspace/angular-custom.json' }]);
         sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
@@ -282,7 +284,6 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
             extensions.supported.indexOf(declaration),
             1,
           );
-          vsicons.projectDetection.disableDetect = previousDisableDetect;
         }
       });
 
