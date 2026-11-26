@@ -1870,6 +1870,15 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'frontlang',
+      extensions: ['ft', 'ftpkg', 'ftbc'],
+    },
+    {
+      icon: 'frontlangconfig',
+      extensions: ['frontlang.toml', 'frontlang.lock'],
+      filename: true,
+    },
+    {
       icon: 'fsharp',
       languages: [languages.fsharp],
     },
