@@ -4516,6 +4516,13 @@ export const extensions: FileCollection = {
       filename: true,
     },
     {
+      icon: 'pylint',
+      extensions: ['.pylintrc', 'pylintrc'],
+      filenamesGlob: ['.pylintrc', 'pylintrc'],
+      extensionsGlob: ['toml'],
+      filename: true,
+    },
+    {
       icon: 'pypi',
       extensions: ['pyproject.toml'],
       filename: true,
