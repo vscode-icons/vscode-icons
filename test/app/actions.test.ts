@@ -10,7 +10,7 @@ import { SettingsManager } from '../../src/settings/settingsManager';
 import * as types from '../../src/types';
 import * as enums from '../../src/types/enums';
 import { VSCodeManager } from '../../src/vscode/vscodeManager';
-import { vsicons as fixtureVsicons } from '../fixtures/vsicons';
+import { vsicons as fixtVsicons } from '../fixtures/vsicons';
 
 describe('ExtensionManagerContract: actions tests', function () {
   context('ensures that', function () {
@@ -47,7 +47,7 @@ describe('ExtensionManagerContract: actions tests', function () {
 
       configManagerStub =
         sandbox.createStubInstance<types.ConfigManagerContract>(ConfigManager);
-      vsicons = structuredClone(fixtureVsicons);
+      vsicons = structuredClone(fixtVsicons);
       sandbox.stub(configManagerStub, 'vsicons').get(() => vsicons);
 
       settingsManagerStub =
