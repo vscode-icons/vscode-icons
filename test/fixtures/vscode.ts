@@ -18,10 +18,14 @@ interface VSCodeMutableExtension {
   Uri: VSCodeUriStatic;
 }
 
-export type TestVSCode = Pick<VSCode, 'commands' | 'window'> &
+export type TestVSCode = Pick<
+  VSCode,
+  'commands' | 'window' | 'CancellationTokenSource'
+> &
   VSCodeMutableExtension;
 
 export const vscode: TestVSCode = {
+  CancellationTokenSource: {} as VSCode['CancellationTokenSource'],
   env: {} as Mutable<VSCodeEnv>,
   commands: {} as VSCodeCommands,
   version: '1.0.0',

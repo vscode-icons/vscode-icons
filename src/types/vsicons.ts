@@ -13,6 +13,7 @@ import type {
 } from './iconSchema';
 import type {
   ConfigurationTarget,
+  VSCodeCancellationTokenSource,
   VSCodeCommands,
   VSCodeEnv,
   VSCodeExtensionContext,
@@ -93,6 +94,7 @@ export interface VSCodeManagerContract {
   window: VSCodeWindow;
   workspace: VSCodeWorkspace;
   isSupportedVersion: boolean;
+  createCancellationTokenSource(): VSCodeCancellationTokenSource;
   getWorkspacePaths(): string[];
   getAppUserDirPath(): string;
   openExternal(url: string): Thenable<boolean>;

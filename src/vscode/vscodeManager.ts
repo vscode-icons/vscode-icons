@@ -54,6 +54,10 @@ export class VSCodeManager implements types.VSCodeManagerContract {
     return gte(this.version, minVersion);
   }
 
+  public createCancellationTokenSource(): types.VSCodeCancellationTokenSource {
+    return new this.vscode.CancellationTokenSource();
+  }
+
   public getWorkspacePaths(): string[] {
     if (!this.workspace.workspaceFolders && !this.workspace.rootPath) {
       return [];
