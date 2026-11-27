@@ -223,6 +223,19 @@ Tests automatically validate:
 
 ## SVG Icon Optimization & Linting
 
+Keep visible SVG artwork at least 2px from every edge, except the left edge of
+folder icons; `npm run lint:svg` enforces this margin.
+
+Folder type icons and default root folder icons must begin with the
+corresponding paths from `icons/default_folder.svg` or
+`icons/default_folder_opened.svg` (colors may differ), followed by the overlay
+artwork. The opened and closed folder shapes must have equal top, right, and
+bottom margins, and their overlays must be identical, including their colors and
+position. The shape and margin checks compare the linted file with its
+corresponding default folder shape; the overlay check compares both variants.
+The overlay check skips missing counterparts; tests verify icon files for
+supported folder entries.
+
 ```bash
 npm run optimize-icon ./icons/<filename>.svg
 ```
