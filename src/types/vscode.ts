@@ -7,12 +7,19 @@ interface VSCodeCommandExtension {
 
 export type VSCode = Pick<
   typeof vscode,
-  'commands' | 'env' | 'version' | 'window' | 'workspace' | 'Uri'
+  | 'commands'
+  | 'env'
+  | 'version'
+  | 'window'
+  | 'workspace'
+  | 'Uri'
+  | 'CancellationTokenSource'
 >;
 
 export type {
   ConfigurationTarget,
   CancellationToken as VSCodeCancellationToken,
+  CancellationTokenSource as VSCodeCancellationTokenSource,
   ConfigurationChangeEvent as VSCodeConfigurationChangeEvent,
   Disposable as VSCodeDisposable,
   Event as VSCodeEvent,

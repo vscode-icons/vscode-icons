@@ -32,6 +32,8 @@ export class ProjectAutoDetectionManager
       return [];
     }
 
+    let cancellation: types.VSCodeCancellationTokenSource;
+    let timeout: ReturnType<typeof setTimeout>;
     try {
       if (this.configManager.vsicons.projectDetection.disableDetect) {
         return [];
@@ -51,15 +53,28 @@ export class ProjectAutoDetectionManager
         'package.json',
         ...projectConfigFiles,
       ].join(',');
+      cancellation = this.vscodeManager.createCancellationTokenSource();
+      timeout = setTimeout((): void => cancellation.cancel(), 5000);
       const results: types.VSCodeUri[] =
         await this.vscodeManager.workspace.findFiles(
           `**/{${filesToInclude}}`,
           '**/node_modules/**',
+          undefined,
+          cancellation.token,
         );
+      clearTimeout(timeout);
+      if (cancellation.token.isCancellationRequested) {
+        return [];
+      }
       return await this.detect(results, projects);
     } catch (error: unknown) {
-      ErrorHandler.logError(error);
+      if (!cancellation?.token.isCancellationRequested) {
+        ErrorHandler.logError(error);
+      }
       return [];
+    } finally {
+      clearTimeout(timeout);
+      cancellation?.dispose();
     }
   }
 

@@ -1,4 +1,5 @@
 import type {
+  VSCodeCancellationTokenSource,
   VSCodeManagerContract,
   VSCodeUri,
   VSCodeWorkspaceFolder,
@@ -67,6 +68,17 @@ describe('VSCodeManagerContract: tests', function () {
 
     it(`function 'workspace' returns the 'vscode workspace' object`, function () {
       expect(vscodeManager.workspace).to.equal(vscode.workspace);
+    });
+
+    it('creates a VS Code cancellation token source', function () {
+      const cancellation = {} as VSCodeCancellationTokenSource;
+      const constructor = sandbox.stub().returns(cancellation);
+      sandbox.stub(vscode, 'CancellationTokenSource').value(constructor);
+
+      expect(vscodeManager.createCancellationTokenSource()).to.equal(
+        cancellation,
+      );
+      expect(constructor.calledWithNew()).to.be.true;
     });
 
     context(`function 'isSupportedVersion'`, function () {

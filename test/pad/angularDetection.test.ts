@@ -38,6 +38,14 @@ describe('ProjectAutoDetectionManagerContract: Angular project tests', function 
 
       vscodeManagerStub =
         sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
+      vscodeManagerStub.createCancellationTokenSource.returns({
+        token: {
+          isCancellationRequested: false,
+          onCancellationRequested: sandbox.stub(),
+        },
+        cancel: sandbox.stub(),
+        dispose: sandbox.stub(),
+      });
 
       findFilesStub = sandbox.stub();
       workspaceReadFileStub = sandbox.stub();

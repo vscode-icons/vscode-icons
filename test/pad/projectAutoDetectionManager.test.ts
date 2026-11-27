@@ -1,6 +1,7 @@
 import type {
   ConfigManagerContract,
   ProjectAutoDetectionManagerContract,
+  VSCodeCancellationTokenSource,
   VSCodeManagerContract,
   VSIcons,
 } from '../../src/types';
@@ -28,6 +29,9 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     let logErrorStub: sinon.SinonStub;
     let padManager: ProjectAutoDetectionManagerContract;
     let vsicons: VSIcons;
+    let cancellation: VSCodeCancellationTokenSource;
+    let cancelStub: sinon.SinonStub;
+    let disposeStub: sinon.SinonStub;
 
     beforeEach(() => {
       sandbox = sinon.createSandbox();
@@ -40,6 +44,20 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
 
       vscodeManagerStub =
         sandbox.createStubInstance<VSCodeManagerContract>(VSCodeManager);
+
+      cancelStub = sandbox.stub();
+      disposeStub = sandbox.stub();
+      cancellation = {
+        token: {
+          get isCancellationRequested() {
+            return cancelStub.called;
+          },
+          onCancellationRequested: sandbox.stub(),
+        },
+        cancel: cancelStub,
+        dispose: disposeStub,
+      };
+      vscodeManagerStub.createCancellationTokenSource.returns(cancellation);
 
       findFilesStub = sandbox.stub();
       workspaceReadFileStub = sandbox.stub();
@@ -74,12 +92,67 @@ describe('ProjectAutoDetectionManagerContract: tests', function () {
     });
 
     it(`logs an Error when searching for a 'package.json' fails`, async function () {
+      const clock = sandbox.useFakeTimers();
       const error = new Error('failure');
       findFilesStub.rejects(error);
 
       await padManager.detectProjects([enums.Projects.angular]);
 
       expect(logErrorStub.calledOnceWith(error)).to.be.true;
+      await clock.tickAsync(5000);
+      expect(cancelStub.called).to.be.false;
+      expect(disposeStub.calledOnce).to.be.true;
+    });
+
+    it('cancels a slow search without changing project presets', async function () {
+      const clock = sandbox.useFakeTimers();
+      findFilesStub.callsFake(
+        () => new Promise(resolve => cancelStub.callsFake(() => resolve([]))),
+      );
+      const iconsDisabledStub = sandbox
+        .stub(ManifestReader, 'iconsDisabled')
+        .resolves(false);
+
+      const detection = padManager.detectProjects([enums.Projects.angular]);
+      expect(findFilesStub.firstCall.args[3]).to.equal(cancellation.token);
+      await clock.tickAsync(4999);
+      expect(cancelStub.called).to.be.false;
+      await clock.tickAsync(1);
+
+      expect(await detection).to.deep.equal([]);
+      expect(cancelStub.calledOnce).to.be.true;
+      expect(iconsDisabledStub.called).to.be.false;
+      expect(disposeStub.calledOnce).to.be.true;
+    });
+
+    it('does not report an expected search cancellation as an error', async function () {
+      const clock = sandbox.useFakeTimers();
+      findFilesStub.callsFake(
+        () =>
+          new Promise((_, reject) => {
+            cancelStub.callsFake(() => reject(new Error('Canceled')));
+          }),
+      );
+
+      const detection = padManager.detectProjects([enums.Projects.angular]);
+      await clock.tickAsync(5000);
+
+      expect(await detection).to.deep.equal([]);
+      expect(logErrorStub.called).to.be.false;
+      expect(disposeStub.calledOnce).to.be.true;
+    });
+
+    it('clears the timeout after a completed search', async function () {
+      const clock = sandbox.useFakeTimers();
+      findFilesStub.resolves([]);
+      sandbox.stub(ManifestReader, 'iconsDisabled').resolves(true);
+
+      const result = await padManager.detectProjects([enums.Projects.angular]);
+      await clock.tickAsync(5000);
+
+      expect(result).to.deep.equal([{ apply: false }]);
+      expect(cancelStub.called).to.be.false;
+      expect(disposeStub.calledOnce).to.be.true;
     });
 
     it(`logs an Error when reading a 'package.json' fails`, async function () {
