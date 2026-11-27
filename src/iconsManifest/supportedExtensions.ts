@@ -1842,8 +1842,11 @@ export const extensions: FileCollection = {
     },
     {
       icon: 'fossa',
-      extensions: ['.fossaignore'],
+      extensions: ['.fossaignore', 'fossa-deps.json'],
+      filenamesGlob: ['.fossa', 'fossa-deps'],
+      extensionsGlob: ['yml', 'yaml'],
       filename: true,
+      light: true,
     },
     {
       icon: 'fossil',
